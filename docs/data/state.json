@@ -1,0 +1,119 @@
+{
+ "book": {
+  "name": "Perseverance",
+  "run": 1,
+  "cash": 100.0,
+  "start": 100.0,
+  "goal": 1000.0,
+  "peak": 100.0,
+  "status": "racing",
+  "started": "2026-10-26T22:18:47Z",
+  "bets": [],
+  "runs": []
+ },
+ "params": {
+  "min_edge": 0.03,
+  "kelly_mult": 0.25,
+  "max_bet_pct": 0.08,
+  "max_exposure_pct": 0.45,
+  "max_bets_per_run": 6,
+  "max_dec": 8.0,
+  "arb_min": 0.005,
+  "arb_pct": 0.2,
+  "parlay_enabled": true
+ },
+ "arms": {
+  "value_fav": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
+  },
+  "value_dog": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
+  },
+  "longshot": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
+  },
+  "arb": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
+  },
+  "parlay_ev": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
+  }
+ },
+ "sports": {
+  "basketball_nba": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "icehockey_nhl": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "americanfootball_nfl": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "baseball_mlb": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "americanfootball_ncaaf": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "soccer_italy_serie_a": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "basketball_wnba": {
+   "last_scanned": "2026-10-26T22:18:51Z"
+  },
+  "tennis_atp_vienna_open": {
+   "last_scanned": "2026-10-26T22:18:52Z"
+  }
+ },
+ "journal": [
+  {
+   "ts": "2026-10-26T22:18:52Z",
+   "kind": "scan",
+   "text": "Scanned basketball_nba (9), icehockey_nhl (14), americanfootball_nfl (1), baseball_mlb (1), americanfootball_ncaaf (2), soccer_italy_serie_a (3), basketball_wnba (1), tennis_atp_vienna_open (6) for 23 credits. Nothing cleared the bar. Equity $100.00."
+  }
+ ],
+ "learned_ids": [],
+ "strategist": null,
+ "updated": "2026-10-26T22:18:52Z",
+ "stats": {
+  "bets": 0,
+  "won": 0,
+  "lost": 0,
+  "push": 0,
+  "staked": 0,
+  "profit": 0,
+  "roi": 0,
+  "clv": null,
+  "clv_n": 0,
+  "open": 0,
+  "equity": 100.0
+ },
+ "weights": {
+  "value_fav": 1.0,
+  "value_dog": 1.0,
+  "longshot": 1.0,
+  "arb": 1.0,
+  "parlay_ev": 1.0
+ },
+ "paused": []
+}
