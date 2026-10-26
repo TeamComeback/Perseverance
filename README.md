@@ -12,14 +12,14 @@ Named to sit next to Curiosity and Ingenuity.
    - **Value**: it removes the vig from each book to get a fair price, averages the other books into a consensus, and bets the best price when it beats that consensus by the minimum edge.
    - **Arbitrage**: opposite sides at different books that lock in a profit no matter who wins.
    - **+EV parlays**: two value legs from different games, so the edges multiply.
-4. **Sizes bets** with fractional Kelly, within caps on any single bet and on total money at risk.
+4. **Sizes bets** with fractional Kelly, within caps on any single bet and on total money at risk. **Every bet is at least $5**, for the agent and for you. That's the one fixed rule; the agent and the strategist can reshape everything else.
 5. **Grades** every bet from final scores and tracks **closing-line value**, which shows whether it beat the market before the game started.
 6. **Adapts** after every grading pass:
    - It raises or lowers its minimum edge based on closing-line value.
    - It cuts bet size when it's in a drawdown and presses a little at new highs.
    - It leans into playbooks that are working and benches the ones that aren't, but still gives benched ones the odd exploratory bet.
    - Every change is written to the journal with the reason.
-7. **Overnight strategist (optional).** With an `ANTHROPIC_API_KEY` secret set, Claude reviews the numbers each night and can retune the settings, always within the hard limits in `agent/config.py`.
+7. **Overnight strategist (optional).** With an `ANTHROPIC_API_KEY` secret set, Claude reviews the numbers each night and can retune the settings, including turning parlays on or off and shifting which sports it focuses on.
 
 A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts automatically, and everything the agent has learned carries over.
 

@@ -74,7 +74,7 @@ def adapt(state):
             p["min_edge"] = clamp("min_edge", p["min_edge"] + 0.005)
             note(state, "adapt", f"Closing-line value is {clv:+.1%} over {len(recent)} legs, so the "
                                  f"market is beating my picks. Raising the minimum edge to {p['min_edge']:.1%}.")
-        elif clv > 0.02 and p["min_edge"] > config.BOUNDS["min_edge"][0]:
+        elif clv > 0.02 and p["min_edge"] > 0.005:
             p["min_edge"] = clamp("min_edge", p["min_edge"] - 0.0025)
             note(state, "adapt", f"Beating the close by {clv:+.1%}. Lowering the minimum edge to "
                                  f"{p['min_edge']:.1%} to take more volume.")
@@ -101,7 +101,7 @@ def drought(state, scanned, placed):
         return
     state["dry_scans"] = 0 if placed else state.get("dry_scans", 0) + 1
     p = state["params"]
-    if state["dry_scans"] >= 3 and p["min_edge"] > config.BOUNDS["min_edge"][0]:
+    if state["dry_scans"] >= 3 and p["min_edge"] > 0.005:
         p["min_edge"] = clamp("min_edge", p["min_edge"] - 0.0025)
         state["dry_scans"] = 0
         note(state, "adapt", f"Three scans in a row with nothing worth betting. Easing the minimum "
@@ -133,7 +133,7 @@ def pick_sports(state, client, budget):
         if st.get("last_scanned"):
             hrs = (store.now() - store.parse(st["last_scanned"])).total_seconds() / 3600
             recency = min(1.3, 0.6 + hrs / 24)       # rotate the board
-        score = base * sport_weight(st) * recency * min(1.5, 0.7 + len(evs) / 10)
+        score = base * state.get("sport_boost", {}).get(key, 1.0) * sport_weight(st) * recency * min(1.5, 0.7 + len(evs) / 10)
         scored.append((score * random.uniform(0.9, 1.1), key, len(evs)))
     scored.sort(reverse=True)
     return scored
@@ -147,8 +147,9 @@ def size(state, p, dec, weight, mult=1.0):
     room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.open_bets(book))
     if raw <= 0:
         return 0.0
-    raw = max(raw, 1.0)   # books take $1 bets; a real edge shouldn't be skipped for being small
-    return round(max(0, min(raw, eq * pr["max_bet_pct"], room, book["cash"])), 2)
+    stake = min(max(raw, config.MIN_STAKE), max(eq * pr["max_bet_pct"], config.MIN_STAKE))
+    stake = min(stake, room, book["cash"])
+    return round(stake, 2) if stake >= config.MIN_STAKE else 0.0
 
 
 def bet_on_board(state, events):
@@ -169,7 +170,9 @@ def bet_on_board(state, events):
         room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.open_bets(book))
         total = min(eq * pr["arb_pct"] * arm_weight(arm), room, book["cash"])
         inv = sum(1 / l["price"] for l in a["legs"])
-        if total < len(a["legs"]):
+        need = config.MIN_STAKE * inv * max(l["price"] for l in a["legs"])   # smallest leg ≥ $5
+        total = max(total, need)
+        if total > min(room, book["cash"]):
             continue
         gid = f"arb-{a['event']['id'][:10]}"
         for l in a["legs"]:
@@ -195,7 +198,7 @@ def bet_on_board(state, events):
         if benched(arm) and random.random() > 0.15:
             continue
         stake = size(state, c["p"], c["dec"], arm_weight(arm))
-        if stake < 1:
+        if stake < config.MIN_STAKE:
             continue
         b = bk.place(book, [c["leg"]], stake, c["playbook"], ev=c["ev"], p=c["p"],
                      note=f"{c['ev']:.1%} edge vs {c['line']['outcomes'][0]['n']}-book consensus")
@@ -223,7 +226,9 @@ def bet_on_board(state, events):
 # ---- Optional overnight strategist ------------------------------------------
 STRATEGIST_PROMPT = """You are the overnight strategist for Perseverance, a PAPER (fake money) sports-betting agent
 racing to turn ${start:.0f} into ${goal:.0f}. Review its numbers and propose parameter changes.
-It bets value gaps against the multi-book consensus, arbitrage, and small +EV parlays.
+It bets value gaps against the multi-book consensus, arbitrage, and +EV parlays.
+The strategy is yours to reshape freely. The only fixed rules: paper money, every bet is at least $5,
+a run ends at ${goal:.0f} or when it can't afford a $5 bet.
 
 Current params: {params}
 Hard bounds (anything outside is clipped): {bounds}
@@ -232,8 +237,11 @@ Playbooks: {arms}
 Sports: {sports}
 Recent journal: {journal}
 
-Reply with ONLY a JSON object: {{"params": {{...only keys you want to change...}},
-"bench": [playbook names to pause], "unbench": [...], "note": "2-3 sentences explaining your reasoning"}}"""
+Sport focus multipliers now: {boost}
+
+Reply with ONLY a JSON object: {{"params": {{...only keys you want to change; parlay_enabled may be true/false...}},
+"bench": [playbook names to pause], "unbench": [...], "sport_boost": {{"sport_key": 0.2-2.5, ...}},
+"note": "2-3 sentences explaining your reasoning"}}"""
 
 
 def strategist(state):
@@ -246,7 +254,8 @@ def strategist(state):
         arms=json.dumps({k: {**v, "weight": round(arm_weight(v), 2)} for k, v in state["arms"].items()}),
         sports=json.dumps({k: {kk: round(vv, 2) if isinstance(vv, float) else vv for kk, vv in v.items()}
                            for k, v in state["sports"].items()}),
-        journal=json.dumps([j["text"] for j in state["journal"][-12:]]))
+        journal=json.dumps([j["text"] for j in state["journal"][-12:]]),
+        boost=json.dumps(state.get("sport_boost", {})))
     req = urllib.request.Request(
         "https://api.anthropic.com/v1/messages", method="POST",
         data=json.dumps({"model": config.STRATEGIST_MODEL, "max_tokens": 800,
@@ -262,7 +271,10 @@ def strategist(state):
         return
     changes = []
     for k, v in (plan.get("params") or {}).items():
-        if k in config.BOUNDS and isinstance(v, (int, float)):
+        if k == "parlay_enabled" and isinstance(v, bool) and v != state["params"][k]:
+            changes.append(f"parlays {'on' if v else 'off'}"); state["params"][k] = v
+            continue
+        if k in config.BOUNDS and isinstance(v, (int, float)) and not isinstance(v, bool):
             new = clamp(k, v)
             if new != state["params"][k]:
                 changes.append(f"{k} {state['params'][k]} → {new}")
@@ -273,5 +285,10 @@ def strategist(state):
     for name in plan.get("unbench") or []:
         if name in state["arms"]:
             state["arms"][name]["paused"] = False; changes.append(f"resume {name}")
+    for sport, m in (plan.get("sport_boost") or {}).items():
+        if isinstance(m, (int, float)):
+            m = round(max(0.2, min(2.5, m)), 2)
+            if state.setdefault("sport_boost", {}).get(sport) != m:
+                state["sport_boost"][sport] = m; changes.append(f"{sport} focus ×{m}")
     state["strategist"] = {"ts": store.iso(store.now()), "note": plan.get("note", ""), "changes": changes}
     note(state, "strategist", (plan.get("note", "") + (" Changes: " + "; ".join(changes) if changes else "")).strip())

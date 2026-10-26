@@ -201,6 +201,10 @@ def manual_issue():
         try:
             dec = market.from_american(f["odds"].replace("+", ""))
             stake = float(f.get("stake", "5").replace("$", ""))
+            if stake < config.MIN_STAKE:
+                store.gh_comment(num, f"Minimum bet is ${config.MIN_STAKE:.0f}. Edit the stake and open a new bet.")
+                store.gh_close(num)
+                return
         except Exception:
             store.gh_comment(num, "Couldn't read the odds or stake. Odds look like `-110` or `+150`.")
             return
@@ -225,7 +229,7 @@ def manual_issue():
                "book": f.get("book"), "fair_p": None, "close_p": None, "result": None}
         b = bk.place(book, [leg], stake, "manual", note=f.get("notes", ""), source="you", issue=num)
         if not b:
-            store.gh_comment(num, "Stake must be at least $1."); return
+            store.gh_comment(num, f"Minimum bet is ${config.MIN_STAKE:.0f}."); return
         how = ("I'll grade it automatically from the final score." if evinfo else
                "Comment `/settle won`, `/settle lost` or `/settle push` when it's decided.")
         store.gh_comment(num, f"Logged: ${stake:.2f} on {describe(b)}. {how} "

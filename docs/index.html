@@ -205,7 +205,7 @@ function brain(state) {
   const p = state.params;
   const items = [["Min edge", pl(p.min_edge)], ["Kelly fraction", p.kelly_mult.toFixed(2)], ["Max bet", pl(p.max_bet_pct, 0)],
     ["Max at risk", pl(p.max_exposure_pct, 0)], ["Bets per scan", p.max_bets_per_run], ["Longest odds", am(p.max_dec)],
-    ["Arb floor", pl(p.arb_min)], ["Parlays", p.parlay_enabled ? "on" : "off"]];
+    ["Arb floor", pl(p.arb_min)], ["Parlays", p.parlay_enabled ? "on" : "off"], ["Min bet", "$5 (fixed)"]];
   const strat = state.strategist ? `<div class="card" style="margin-bottom:12px;background:var(--panel2)"><div class="label">Overnight strategist · ${ago(state.strategist.ts)}</div><div>${esc(state.strategist.note)}</div>${state.strategist.changes?.length ? `<div class="desc" style="color:var(--mars);font-size:12px;margin-top:4px">${esc(state.strategist.changes.join(" · "))}</div>` : ""}</div>` : "";
   const kinds = ["all", "adapt", "scan", "result", "race", "daily"];
   const sel = window._jk || "all";

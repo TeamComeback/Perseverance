@@ -7,6 +7,7 @@ DATA = Path(os.environ.get("PERSEVERANCE_DATA", ROOT / "docs" / "data"))
 
 # ---- The race ---------------------------------------------------------------
 START_BANKROLL = 100.0
+MIN_STAKE = 5.0            # the one fixed rule: every bet is at least $5 (agent and you)
 GOAL = 1000.0
 BUST_LINE = 5.0           # cash below this with nothing open = run over
 AUTO_RESTART = True        # after a bust or a win, start a new run (lessons carry over)
@@ -58,10 +59,11 @@ DEFAULT_PARAMS = {
     "parlay_enabled": True,
 }
 # Hard guardrails: the agent (or the overnight strategist) can't go outside these.
+# Wide on purpose: the strategy is the agent's to reshape. These only stop nonsense values.
 BOUNDS = {
-    "min_edge": (0.015, 0.10), "kelly_mult": (0.10, 0.50), "max_bet_pct": (0.02, 0.15),
-    "max_exposure_pct": (0.20, 0.70), "max_bets_per_run": (1, 12), "max_dec": (2.5, 15.0),
-    "arb_min": (0.002, 0.03), "arb_pct": (0.05, 0.35),
+    "min_edge": (0.0, 0.15), "kelly_mult": (0.05, 1.0), "max_bet_pct": (0.05, 0.60),
+    "max_exposure_pct": (0.10, 1.0), "max_bets_per_run": (1, 25), "max_dec": (1.5, 51.0),
+    "arb_min": (0.0, 0.05), "arb_pct": (0.05, 0.60),
 }
 
 PLAYBOOKS = {

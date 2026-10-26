@@ -22,7 +22,7 @@ def equity(book):
 
 def place(book, legs, stake, playbook, ev=None, p=None, note="", group=None, source="agent", issue=None):
     stake = round(min(stake, book["cash"]), 2)
-    if stake < 1:
+    if stake < config.MIN_STAKE:
         return None
     dec = 1.0
     for l in legs:
