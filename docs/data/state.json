@@ -2,13 +2,49 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 100.0,
+  "cash": 95.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
   "status": "racing",
   "started": "2026-10-26T22:18:47Z",
-  "bets": [],
+  "bets": [
+   {
+    "id": "c83a8adf",
+    "placed": "2026-10-26T22:33:11Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "f1b86cba8c192fb71581b00443f4af8a",
+      "sport": "icehockey_nhl",
+      "commence": "2026-10-27T23:00:00Z",
+      "home": "Philadelphia Flyers",
+      "away": "Columbus Blue Jackets",
+      "market": "spreads",
+      "outcome": "Columbus Blue Jackets",
+      "point": -1.5,
+      "price": 3.25,
+      "book": "betrivers",
+      "fair_p": 0.3177,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 3.25,
+    "stake": 5.0,
+    "ev": 0.0327,
+    "p": 0.3177,
+    "note": "3.3% edge vs 8-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   }
+  ],
   "runs": []
  },
  "params": {
@@ -61,28 +97,31 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:10Z"
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:10Z"
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:11Z"
   },
   "baseball_mlb": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:11Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:11Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:11Z"
   },
   "basketball_wnba": {
-   "last_scanned": "2026-10-26T22:18:51Z"
+   "last_scanned": "2026-10-26T22:33:11Z"
   },
   "tennis_atp_vienna_open": {
    "last_scanned": "2026-10-26T22:18:52Z"
+  },
+  "soccer_england_league1": {
+   "last_scanned": "2026-10-26T22:33:11Z"
   }
  },
  "journal": [
@@ -90,11 +129,16 @@
    "ts": "2026-10-26T22:18:52Z",
    "kind": "scan",
    "text": "Scanned basketball_nba (9), icehockey_nhl (14), americanfootball_nfl (1), baseball_mlb (1), americanfootball_ncaaf (2), soccer_italy_serie_a (3), basketball_wnba (1), tennis_atp_vienna_open (6) for 23 credits. Nothing cleared the bar. Equity $100.00."
+  },
+  {
+   "ts": "2026-10-26T22:33:11Z",
+   "kind": "scan",
+   "text": "Scanned basketball_nba (9), icehockey_nhl (14), americanfootball_nfl (1), americanfootball_ncaaf (2), baseball_mlb (1), soccer_england_league1 (5), soccer_italy_serie_a (3), basketball_wnba (1) for 22 credits. Placed 1: Columbus Blue Jackets -1.5 @ +225 (betrivers) Equity $100.00."
   }
  ],
  "learned_ids": [],
  "strategist": null,
- "updated": "2026-10-26T22:18:52Z",
+ "updated": "2026-10-26T22:33:11Z",
  "stats": {
   "bets": 0,
   "won": 0,
@@ -105,7 +149,7 @@
   "roi": 0,
   "clv": null,
   "clv_n": 0,
-  "open": 0,
+  "open": 1,
   "equity": 100.0
  },
  "weights": {
@@ -115,5 +159,6 @@
   "arb": 1.0,
   "parlay_ev": 1.0
  },
- "paused": []
+ "paused": [],
+ "dry_scans": 0
 }
