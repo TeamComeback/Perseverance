@@ -95,6 +95,19 @@ def adapt(state):
                                  f"(${a['profit']:+.2f}). It still gets the odd exploratory bet.")
 
 
+def drought(state, scanned, placed):
+    """If the bar is so high that nothing gets bet, the agent can't learn. Ease it down."""
+    if not scanned:
+        return
+    state["dry_scans"] = 0 if placed else state.get("dry_scans", 0) + 1
+    p = state["params"]
+    if state["dry_scans"] >= 3 and p["min_edge"] > config.BOUNDS["min_edge"][0]:
+        p["min_edge"] = clamp("min_edge", p["min_edge"] - 0.0025)
+        state["dry_scans"] = 0
+        note(state, "adapt", f"Three scans in a row with nothing worth betting. Easing the minimum "
+                             f"edge to {p['min_edge']:.2%} so I get enough bets to learn from.")
+
+
 # ---- Choosing what to scan --------------------------------------------------
 def pick_sports(state, client, budget):
     """Free calls decide where to spend paid ones: which sports have games soon."""
@@ -132,6 +145,9 @@ def size(state, p, dec, weight, mult=1.0):
     eq = bk.equity(book)
     raw = eq * pr["kelly_mult"] * weight * mult * market.kelly(p, dec)
     room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.open_bets(book))
+    if raw <= 0:
+        return 0.0
+    raw = max(raw, 1.0)   # books take $1 bets; a real edge shouldn't be skipped for being small
     return round(max(0, min(raw, eq * pr["max_bet_pct"], room, book["cash"])), 2)
 
 

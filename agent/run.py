@@ -112,6 +112,7 @@ def cycle():
 
     market.closing_update(bk.open_bets(state["book"]) + bk.open_bets(manual["book"]), events)
     placed = brain.bet_on_board(state, events) if events else []
+    brain.drought(state, scanned, placed)
 
     board = store.load("board.json", {"events": []})
     fresh = market.board_summary(events)
