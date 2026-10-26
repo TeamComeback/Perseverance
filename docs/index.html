@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Perseverance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f17; --panel:#121826; --panel2:#182033; --line:#232c42; --text:#e7ecf5; --dim:#8a94ab;
+  --mars:#ff6a3d; --mars-d:#ff6a3d22; --win:#3ddc97; --win-d:#3ddc9722; --loss:#ff5d73; --loss-d:#ff5d7322;
+  --you:#7aa2ff; --you-d:#7aa2ff22; --gold:#ffc857;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 Inter,system-ui,sans-serif}
+body{padding:max(16px,env(safe-area-inset-top)) 16px 48px}
+.wrap{max-width:760px;margin:0 auto}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--mars);box-shadow:0 0 14px var(--mars)}
+h1{font-size:17px;letter-spacing:.18em;margin:0;font-weight:700}
+.tag{font-size:11px;color:var(--dim);border:1px solid var(--line);padding:3px 8px;border-radius:99px;white-space:nowrap}
+.race{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.race{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card.agent{border-top:3px solid var(--mars)} .card.you{border-top:3px solid var(--you)}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.big{font-size:32px;font-weight:700;margin:2px 0 8px}
+.track{position:relative;height:8px;background:var(--panel2);border-radius:99px;overflow:visible;margin:6px 0 4px}
+.fill{height:100%;border-radius:99px}
+.tick{position:absolute;top:-3px;width:1px;height:14px;background:var(--line)}
+.ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--dim)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--dim)}
+.row b{color:var(--text);font-weight:600}
+.pos{color:var(--win)} .neg{color:var(--loss)}
+.chart{margin-top:10px} .chart svg{width:100%;height:150px;display:block}
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-top:10px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary .meta{font-weight:500;font-size:12px;color:var(--dim)}
+summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg);margin-left:6px;transition:transform .2s;flex:none}
+details[open] summary::after{transform:rotate(-135deg)}
+.body{padding:0 14px 14px}
+.bet{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid var(--line)}
+.bet:first-child{border-top:0}
+.bet .what{font-weight:600}
+.bet .sub{font-size:12px;color:var(--dim);grid-column:1}
+.bet .amt{text-align:right;font-family:var(--mono);font-size:13px}
+.pill{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;background:var(--panel2);color:var(--dim);margin-right:4px;letter-spacing:.04em}
+.pill.won{background:var(--win-d);color:var(--win)} .pill.lost{background:var(--loss-d);color:var(--loss)}
+.pill.arb{background:#ffc85722;color:var(--gold)} .pill.mars{background:var(--mars-d);color:var(--mars)}
+.arm{padding:10px 0;border-top:1px solid var(--line)} .arm:first-child{border-top:0}
+.arm .top{display:flex;justify-content:space-between;gap:8px}
+.arm .desc{font-size:12px;color:var(--dim)}
+.wbar{height:5px;background:var(--panel2);border-radius:99px;margin-top:6px;position:relative}
+.wbar i{position:absolute;inset:0 auto 0 0;border-radius:99px;background:var(--mars)}
+.wbar .mid{position:absolute;left:62.5%;top:-3px;width:1px;height:11px;background:var(--dim)}
+.params{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:12px}
+.param{background:var(--panel2);border-radius:10px;padding:8px 10px}
+.param .v{font-family:var(--mono);font-size:16px;font-weight:700}
+.log{border-left:2px solid var(--line);padding-left:12px}
+.log div{padding:6px 0;font-size:13px}
+.log time{display:block;font-size:11px;color:var(--dim)}
+.log .k-adapt time,.log .k-strategist time{color:var(--mars)} .log .k-race time{color:var(--gold)}
+.ev{padding:12px 0;border-top:1px solid var(--line)} .ev:first-child{border-top:0}
+.ev .h{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:8px}
+.ev .h span{color:var(--dim);white-space:nowrap}
+.mk{font-size:10px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin:6px 0 4px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px}
+a.opt{display:block;text-decoration:none;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+a.opt:active{transform:scale(.98)}
+a.opt.plus{border-color:#3ddc9766}
+a.opt .n{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+a.opt .o{font-family:var(--mono);font-weight:700}
+a.opt .b{font-size:10px;color:var(--dim)}
+.btn{display:inline-block;background:var(--you);color:#0b0f17;font-weight:700;text-decoration:none;padding:10px 14px;border-radius:10px;margin:4px 0 8px}
+.meter{height:10px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--win),var(--gold))}
+.empty{color:var(--dim);font-size:13px;padding:6px 0}
+.note{font-size:12px;color:var(--dim);margin-top:16px;text-align:center}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.filters button{background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:5px 10px;font:inherit;font-size:12px}
+.filters button.on{color:var(--text);border-color:var(--mars)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><div class="dot"></div><h1>PERSEVERANCE</h1></div>
+    <span class="tag" id="updated">loading…</span>
+  </header>
+
+  <div class="race">
+    <div class="card agent" id="agentCard"></div>
+    <div class="card you" id="youCard"></div>
+  </div>
+  <div class="card chart"><div class="label">Equity · agent vs you</div><div id="chart"></div></div>
+
+  <details open id="openD"><summary>Agent's open bets <span class="meta" id="openMeta"></span></summary><div class="body" id="openBets"></div></details>
+  <details id="resD"><summary>Agent's results <span class="meta" id="resMeta"></span></summary><div class="body" id="results"></div></details>
+  <details id="armsD"><summary>Playbooks <span class="meta">what it leans on</span></summary><div class="body" id="arms"></div></details>
+  <details id="brainD"><summary>Brain <span class="meta">live strategy + journal</span></summary><div class="body" id="brain"></div></details>
+  <details id="boardD"><summary>Board · bet it yourself <span class="meta" id="boardMeta"></span></summary><div class="body" id="board"></div></details>
+  <details id="youD"><summary>Your book <span class="meta" id="youMeta"></span></summary><div class="body" id="you"></div></details>
+  <details id="runsD"><summary>Past runs <span class="meta" id="runsMeta"></span></summary><div class="body" id="runs"></div></details>
+  <details id="credD"><summary>Odds API credits <span class="meta" id="credMeta"></span></summary><div class="body" id="credits"></div></details>
+
+  <p class="note">Paper money only. A good paper run is not a reason to bet real money: small samples lie.</p>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const money = (v, sign) => (sign && v > 0 ? "+" : v < 0 ? "−" : "") + "$" + Math.abs(v).toFixed(2);
+const pct = (v, d=1) => v == null ? "—" : (v > 0 ? "+" : "") + (v*100).toFixed(d) + "%";
+const pl = (v, d=1) => (v*100).toFixed(d) + "%";
+const am = d => d >= 2 ? "+" + Math.round((d-1)*100) : "−" + Math.round(100/(d-1));
+const cls = v => v > 0 ? "pos" : v < 0 ? "neg" : "";
+const SPORT = k => ({americanfootball_nfl:"NFL",americanfootball_ncaaf:"NCAAF",basketball_nba:"NBA",basketball_ncaab:"NCAAB",basketball_wnba:"WNBA",icehockey_nhl:"NHL",baseball_mlb:"MLB",soccer_epl:"EPL",soccer_uefa_champs_league:"UCL",soccer_usa_mls:"MLS",mma_mixed_martial_arts:"UFC"}[k] || (k||"").split("_").slice(-1)[0].toUpperCase());
+const MK = {h2h:"Moneyline", spreads:"Spread", totals:"Total", custom:"Custom"};
+const PB = {value_fav:"Value · favorite", value_dog:"Value · underdog", longshot:"Longshot", arb:"Arbitrage", parlay_ev:"+EV parlay", manual:"Yours"};
+const when = ts => { const d = new Date(ts); return d.toLocaleString([], {weekday:"short", hour:"numeric", minute:"2-digit"}); };
+const ago = ts => { const m = Math.max(0, (Date.now() - new Date(ts)) / 60000); return m < 1 ? "just now" : m < 60 ? Math.round(m) + "m ago" : m < 1440 ? Math.round(m/60) + "h ago" : Math.round(m/1440) + "d ago"; };
+
+// repo for "bet this" links: <owner>.github.io/<repo>/
+const OWNER = location.hostname.endsWith("github.io") ? location.hostname.split(".")[0] : "TeamComeback";
+const REPO = location.hostname.endsWith("github.io") ? (location.pathname.split("/")[1] || "Perseverance") : "Perseverance";
+const issueUrl = f => "https://github.com/" + OWNER + "/" + REPO + "/issues/new?" + new URLSearchParams({template:"bet.yml", ...f});
+
+// remember which panels are open
+document.querySelectorAll("details").forEach(d => {
+  try { const v = localStorage.getItem("pz-" + d.id); if (v) d.open = v === "1"; } catch(e) {}
+  d.addEventListener("toggle", () => { try { localStorage.setItem("pz-" + d.id, d.open ? "1" : "0"); } catch(e) {} });
+});
+
+async function get(name, fallback) {
+  try { const r = await fetch("data/" + name + "?t=" + Date.now()); return r.ok ? await r.json() : fallback; } catch(e) { return fallback; }
+}
+
+function legText(l) {
+  const pt = l.point == null ? "" : l.market === "spreads" ? " " + (l.point > 0 ? "+" : "") + l.point : " " + l.point;
+  return esc(l.outcome) + pt;
+}
+function betRow(b) {
+  const l = b.legs[0];
+  const multi = b.legs.length > 1;
+  const title = multi ? b.legs.map(legText).join(" + ") : legText(l);
+  const game = multi ? b.legs.map(x => SPORT(x.sport)).join(" · ") : (l.home ? esc(l.away) + " @ " + esc(l.home) : "");
+  const status = b.status === "open" ? "" : `<span class="pill ${b.status}">${b.status.toUpperCase()}</span>`;
+  const pb = `<span class="pill ${b.playbook === "arb" ? "arb" : b.playbook === "manual" ? "" : "mars"}">${PB[b.playbook] || b.playbook}</span>`;
+  const right = b.status === "open"
+    ? `${money(b.stake)}<br><span style="color:var(--dim)">to win ${money(b.stake*(b.dec-1))}</span>`
+    : `<span class="${cls(b.profit)}">${money(b.profit, true)}</span><br><span style="color:var(--dim)">${money(b.stake)}</span>`;
+  const sub = [l.sport && SPORT(l.sport), MK[l.market] && !multi ? MK[l.market] : "", game, l.commence && b.status === "open" ? when(l.commence) : "",
+               (l.book || "") + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "", b.note].filter(Boolean).map(esc).join(" · ");
+  return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div></div>`;
+}
+
+function raceCard(el, name, book, stats, color) {
+  const eq = stats.equity, prog = Math.max(0, Math.min(1, Math.log10(Math.max(eq, 1) / book.start)));
+  const pos = v => (Math.log10(v / book.start) * 100) + "%";
+  el.innerHTML = `
+    <div class="label">${name} · run #${book.run}</div>
+    <div class="big num">${money(eq)}</div>
+    <div class="track"><div class="fill" style="width:${prog*100}%;background:${color}"></div>
+      <div class="tick" style="left:${pos(250)}"></div><div class="tick" style="left:${pos(500)}"></div></div>
+    <div class="ticks num"><span>$100</span><span>$250</span><span>$500</span><span>$1,000</span></div>
+    <div class="row"><span>Record <b class="num">${stats.won}-${stats.lost}-${stats.push}</b></span>
+      <span>P&amp;L <b class="num ${cls(stats.profit)}">${money(stats.profit, true)}</b></span>
+      <span>ROI <b class="num ${cls(stats.roi)}">${pct(stats.roi)}</b></span>
+      ${stats.clv != null ? `<span>CLV <b class="num ${cls(stats.clv)}">${pct(stats.clv)}</b></span>` : ""}
+      <span>Open <b class="num">${stats.open}</b></span></div>`;
+}
+
+function chart(hist) {
+  if (hist.length < 2) { $("chart").innerHTML = '<div class="empty">The line starts after the first couple of runs.</div>'; return; }
+  const W = 700, H = 150, P = 6;
+  const vals = hist.flatMap(h => [h.a, h.m]);
+  const lo = Math.min(...vals, 100) * 0.95, hi = Math.max(...vals, 100) * 1.05;
+  const x = i => P + i * (W - 2*P) / (hist.length - 1), y = v => H - P - (v - lo) / (hi - lo) * (H - 2*P);
+  const path = k => hist.map((h, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(h[k]).toFixed(1)).join("");
+  $("chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    <line x1="0" x2="${W}" y1="${y(100)}" y2="${y(100)}" stroke="#232c42" stroke-dasharray="4 4"/>
+    <path d="${path("m")}" fill="none" stroke="var(--you)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <path d="${path("a")}" fill="none" stroke="var(--mars)" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>
+    <div class="row"><span style="color:var(--mars)">● Agent ${money(hist.at(-1).a)}</span><span style="color:var(--you)">● You ${money(hist.at(-1).m)}</span><span>dashed = $100 start</span></div>`;
+}
+
+function arms(state) {
+  $("arms").innerHTML = Object.entries(state.arms).map(([k, a]) => {
+    const w = state.weights[k] ?? 1, paused = (state.paused || []).includes(k);
+    return `<div class="arm"><div class="top"><b>${PB[k]}</b><span class="num ${cls(a.profit)}">${money(a.profit, true)}</span></div>
+      <div class="desc">${a.bets} bets · ${money(a.staked)} staked${a.clv_n ? " · CLV " + pct(a.clv_sum / a.clv_n) : ""}${paused ? ' · <span class="neg">paused</span>' : ""}</div>
+      <div class="wbar"><i style="width:${(w/1.6)*100}%"></i><span class="mid"></span></div>
+      <div class="desc">confidence ×${w.toFixed(2)} (tick = neutral)</div></div>`;
+  }).join("");
+}
+
+function brain(state) {
+  const p = state.params;
+  const items = [["Min edge", pl(p.min_edge)], ["Kelly fraction", p.kelly_mult.toFixed(2)], ["Max bet", pl(p.max_bet_pct, 0)],
+    ["Max at risk", pl(p.max_exposure_pct, 0)], ["Bets per scan", p.max_bets_per_run], ["Longest odds", am(p.max_dec)],
+    ["Arb floor", pl(p.arb_min)], ["Parlays", p.parlay_enabled ? "on" : "off"]];
+  const strat = state.strategist ? `<div class="card" style="margin-bottom:12px;background:var(--panel2)"><div class="label">Overnight strategist · ${ago(state.strategist.ts)}</div><div>${esc(state.strategist.note)}</div>${state.strategist.changes?.length ? `<div class="desc" style="color:var(--mars);font-size:12px;margin-top:4px">${esc(state.strategist.changes.join(" · "))}</div>` : ""}</div>` : "";
+  const kinds = ["all", "adapt", "scan", "result", "race", "daily"];
+  const sel = window._jk || "all";
+  const entries = state.journal.slice().reverse().filter(j => sel === "all" || j.kind === sel || (sel === "adapt" && j.kind === "strategist")).slice(0, 40);
+  $("brain").innerHTML = `<div class="params">${items.map(([k, v]) => `<div class="param"><div class="label">${k}</div><div class="v">${v}</div></div>`).join("")}</div>${strat}
+    <div class="filters">${kinds.map(k => `<button class="${k === sel ? "on" : ""}" data-k="${k}">${k}</button>`).join("")}</div>
+    <div class="log">${entries.map(j => `<div class="k-${j.kind}"><time>${j.kind} · ${when(j.ts)}</time>${esc(j.text)}</div>`).join("") || '<div class="empty">Nothing yet.</div>'}</div>`;
+  $("brain").querySelectorAll("button").forEach(b => b.onclick = () => { window._jk = b.dataset.k; brain(state); });
+}
+
+function board(bd) {
+  const evs = (bd.events || []).filter(e => new Date(e.commence) > Date.now());
+  $("boardMeta").textContent = evs.length ? evs.length + " games · " + ago(bd.updated) : "";
+  if (!evs.length) { $("board").innerHTML = '<div class="empty">No upcoming lines scanned yet. The board fills in after the agent scans.</div>'; return; }
+  const sports = [...new Set(evs.map(e => e.sport))];
+  const sel = window._bs || "all";
+  const show = evs.filter(e => sel === "all" || e.sport === sel).slice(0, 40);
+  $("board").innerHTML = `<div class="filters">${["all", ...sports].map(s => `<button class="${s === sel ? "on" : ""}" data-s="${s}">${s === "all" ? "all" : SPORT(s)}</button>`).join("")}</div>` +
+   show.map(e => `<div class="ev"><div class="h"><b>${esc(e.away)} @ ${esc(e.home)}</b><span>${SPORT(e.sport)} · ${when(e.commence)}</span></div>` +
+    e.lines.map(l => `<div class="mk">${MK[l.market] || l.market}</div><div class="opts">` + l.outcomes.map(o => {
+      const pt = o.point == null ? "" : l.market === "spreads" ? " " + (o.point > 0 ? "+" : "") + o.point : " " + o.point;
+      const url = issueUrl({title: "Bet: " + o.name + pt + " (" + e.away + " @ " + e.home + ")", selection: o.name, odds: (o.am > 0 ? "+" : "") + o.am,
+        stake: "5", book: o.book, point: o.point ?? "", market: l.market, event_id: e.id, sport: e.sport});
+      return `<a class="opt ${o.ev > 0 ? "plus" : ""}" href="${url}" target="_blank" rel="noopener"><div class="n">${esc(o.name)}${pt}</div>
+        <div class="o">${o.am > 0 ? "+" : ""}${o.am}</div><div class="b">${esc(o.book)}${o.ev > 0 ? ' · <span class="pos">' + pct(o.ev) + "</span>" : ""}</div></a>`;
+    }).join("") + "</div>").join("") + "</div>").join("") +
+   '<div class="desc" style="font-size:12px;color:var(--dim);margin-top:8px">Best price across books. Green = priced above the market\'s fair odds. Tap to open a prefilled bet, then submit it.</div>';
+  $("board").querySelectorAll("button").forEach(b => b.onclick = () => { window._bs = b.dataset.s; board(bd); });
+}
+
+(async () => {
+  const [state, manual, budget, bd, hist] = await Promise.all([
+    get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", [])]);
+  if (!state) { $("updated").textContent = "waiting for first run"; $("agentCard").innerHTML = '<div class="empty">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; return; }
+  $("updated").textContent = "updated " + ago(state.updated);
+  raceCard($("agentCard"), "Agent", state.book, state.stats, "var(--mars)");
+  raceCard($("youCard"), "You", manual.book, manual.stats, "var(--you)");
+  chart(hist);
+
+  const open = state.book.bets.filter(b => b.status === "open").reverse();
+  $("openMeta").textContent = open.length ? open.length + " · " + money(open.reduce((s, b) => s + b.stake, 0)) + " riding" : "none";
+  $("openBets").innerHTML = open.map(betRow).join("") || '<div class="empty">Nothing riding right now.</div>';
+  const done = state.book.bets.filter(b => b.status !== "open").reverse();
+  $("resMeta").textContent = done.length + " settled";
+  $("results").innerHTML = done.slice(0, 50).map(betRow).join("") || '<div class="empty">No results yet.</div>';
+
+  arms(state); brain(state); board(bd);
+
+  const mb = manual.book.bets.slice().reverse();
+  $("youMeta").textContent = money(manual.stats.equity) + " · " + manual.stats.open + " open";
+  $("you").innerHTML = `<a class="btn" href="${issueUrl({title: "Bet: "})}" target="_blank" rel="noopener">+ Log a custom bet</a>
+    <div class="desc" style="font-size:12px;color:var(--dim)">Board bets grade themselves. For custom bets, comment <span class="num">/settle won</span>, <span class="num">/settle lost</span> or <span class="num">/settle push</span> on the issue.</div>` +
+    (mb.map(betRow).join("") || '<div class="empty">No bets yet. Pick one from the board.</div>');
+
+  const runs = state.book.runs.concat(manual.book.runs.map(r => ({...r, you: true}))).sort((a, b) => b.ended.localeCompare(a.ended));
+  $("runsMeta").textContent = runs.length ? runs.length + " finished" : "none yet";
+  $("runs").innerHTML = runs.map(r => `<div class="bet"><div class="what"><span class="pill ${r.result === "won" ? "won" : "lost"}">${r.result.toUpperCase()}</span>${r.you ? "You" : "Agent"} · run #${r.run}</div>
+    <div class="amt">${money(r.final)}</div><div class="sub">peak ${money(r.peak)} · ${r.bets} bets · ${when(r.started)} → ${when(r.ended)}</div></div>`).join("") || '<div class="empty">Every run ends at $1,000 or broke. None have finished yet.</div>';
+
+  const rem = budget.remaining ?? 0, mon = budget.monthly || 500;
+  $("credMeta").textContent = budget.remaining != null ? rem + " / " + mon + " left" : "";
+  $("credits").innerHTML = `<div class="meter"><i style="width:${Math.min(100, rem / mon * 100)}%"></i></div>
+    <div class="row"><span>Left <b class="num">${rem}</b></span><span>Per scan <b class="num">${budget.allowance ?? "—"}</b></span>
+    <span>Floor <b class="num">${budget.reserve ?? 25}</b></span><span>Scans left this month <b class="num">${budget.runs_left ?? "—"}</b></span></div>
+    <div class="desc" style="font-size:12px;color:var(--dim);margin-top:8px">The agent splits what's left evenly across the remaining scans and never spends below the floor, so the free tier can't run out before it resets.</div>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+name: Manual bets
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: perseverance-data
+  cancel-in-progress: false
+
+jobs:
+  log:
+    # Only bet issues, and only from people with access to the repo.
+    if: >-
+      startsWith(github.event.issue.title, 'Bet') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
+        github.event.comment.author_association || github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Record bet
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m agent.run manual-issue
+      - name: Save books
+        run: |
+          git config user.name "perseverance-bot"
+          git config user.email "perseverance-bot@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "manual bet: #${{ github.event.issue.number }}"
+          git pull --rebase -q && git push

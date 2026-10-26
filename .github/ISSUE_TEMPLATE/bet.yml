@@ -1,0 +1,52 @@
+name: Log a paper bet
+description: Fake money only. Tap "Bet this" on the dashboard to prefill everything.
+title: "Bet: "
+body:
+  - type: input
+    id: selection
+    attributes:
+      label: Selection
+      description: Team, Over/Under, or anything (e.g. "Chiefs ML + Kelce 60+ yds")
+    validations:
+      required: true
+  - type: input
+    id: odds
+    attributes:
+      label: Odds (American)
+      placeholder: "-110 or +150"
+    validations:
+      required: true
+  - type: input
+    id: stake
+    attributes:
+      label: Stake ($)
+      value: "5"
+    validations:
+      required: true
+  - type: input
+    id: book
+    attributes:
+      label: Sportsbook
+  - type: input
+    id: point
+    attributes:
+      label: Line
+      description: Spread or total number, if any
+  - type: input
+    id: market
+    attributes:
+      label: Market
+      description: Filled by the dashboard (h2h, spreads, totals)
+  - type: input
+    id: event_id
+    attributes:
+      label: Event ID
+      description: Filled by the dashboard so the bet grades itself. Leave blank for custom bets, then comment /settle won|lost|push.
+  - type: input
+    id: sport
+    attributes:
+      label: Sport key
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
