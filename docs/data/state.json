@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 85.0,
+  "cash": 75.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -63,7 +63,7 @@
       "price": 6.25,
       "book": "betrivers",
       "fair_p": 0.1733,
-      "close_p": null,
+      "close_p": 0.1561,
       "result": null
      }
     ],
@@ -98,7 +98,7 @@
       "price": 2.18,
       "book": "betrivers",
       "fair_p": 0.4726,
-      "close_p": null,
+      "close_p": 0.4673,
       "result": null
      }
     ],
@@ -107,6 +107,76 @@
     "ev": 0.0304,
     "p": 0.4726,
     "note": "3.0% edge vs 4-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "7c50e6a5",
+    "placed": "2026-10-27T23:40:48Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "ab6757d920885818de2ea52539580308",
+      "sport": "soccer_usa_mls",
+      "commence": "2026-10-29T00:30:00Z",
+      "home": "Chicago Fire",
+      "away": "Orlando City SC",
+      "market": "h2h",
+      "outcome": "Orlando City SC",
+      "point": null,
+      "price": 5.1,
+      "book": "fanduel",
+      "fair_p": 0.208,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 5.1,
+    "stake": 5.0,
+    "ev": 0.0609,
+    "p": 0.208,
+    "note": "6.1% edge vs 9-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "90a4c80b",
+    "placed": "2026-10-27T23:40:48Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "c053847753ea72ff5c917f7ae0ec5b64",
+      "sport": "soccer_usa_mls",
+      "commence": "2026-10-29T02:30:00Z",
+      "home": "Vancouver Whitecaps FC",
+      "away": "San Diego FC",
+      "market": "h2h",
+      "outcome": "San Diego FC",
+      "point": null,
+      "price": 6.5,
+      "book": "fanduel",
+      "fair_p": 0.1589,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 6.5,
+    "stake": 5.0,
+    "ev": 0.0326,
+    "p": 0.1589,
+    "note": "3.3% edge vs 9-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -189,10 +259,10 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-27T20:01:28Z"
+   "last_scanned": "2026-10-27T23:40:48Z"
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-27T20:01:28Z"
+   "last_scanned": "2026-10-27T23:40:48Z"
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -204,7 +274,7 @@
    "last_scanned": "2026-10-27T20:01:28Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-27T02:21:19Z"
+   "last_scanned": "2026-10-27T23:40:48Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -214,6 +284,12 @@
   },
   "soccer_england_league1": {
    "last_scanned": "2026-10-26T22:33:11Z"
+  },
+  "soccer_usa_mls": {
+   "last_scanned": "2026-10-27T23:40:48Z"
+  },
+  "soccer_mexico_ligamx": {
+   "last_scanned": "2026-10-27T23:40:48Z"
   }
  },
  "journal": [
@@ -241,11 +317,16 @@
    "ts": "2026-10-27T20:01:28Z",
    "kind": "scan",
    "text": "Scanned icehockey_nhl (15), basketball_nba (5), americanfootball_ncaaf (4), baseball_mlb (1) for 12 credits. Placed 2: Brooklyn Nets @ +525 (betrivers); Washington Capitals -1.5 @ +118 (betrivers) Equity $100.00."
+  },
+  {
+   "ts": "2026-10-27T23:40:48Z",
+   "kind": "scan",
+   "text": "Scanned basketball_nba (15), soccer_italy_serie_a (5), icehockey_nhl (14), soccer_usa_mls (14), soccer_mexico_ligamx (1) for 12 credits. Placed 2: Orlando City SC @ +410 (fanduel); San Diego FC @ +550 (fanduel) Equity $100.00."
   }
  ],
  "learned_ids": [],
  "strategist": null,
- "updated": "2026-10-27T20:01:28Z",
+ "updated": "2026-10-27T23:40:48Z",
  "stats": {
   "bets": 0,
   "won": 0,
@@ -254,9 +335,9 @@
   "staked": 0,
   "profit": 0,
   "roi": 0,
-  "clv": 0.0121,
-  "clv_n": 1,
-  "open": 3,
+  "clv": 0.0021,
+  "clv_n": 3,
+  "open": 5,
   "equity": 100.0
  },
  "weights": {
