@@ -28,7 +28,7 @@
       "price": 3.25,
       "book": "betrivers",
       "fair_p": 0.3177,
-      "close_p": null,
+      "close_p": 0.3175,
       "result": null
      }
     ],
@@ -56,7 +56,15 @@
   "max_dec": 8.0,
   "arb_min": 0.005,
   "arb_pct": 0.2,
-  "parlay_enabled": true
+  "parlay_enabled": true,
+  "props_enabled": true,
+  "prop_min_edge": 0.04,
+  "prop_model_weight": 0.4,
+  "prop_max_bets": 4,
+  "w_dvp": 0.45,
+  "w_sim": 0.4,
+  "w_h2h": 0.25,
+  "matchup_strength": 1.0
  },
  "arms": {
   "value_fav": {
@@ -93,14 +101,28 @@
    "profit": 0.0,
    "clv_n": 0,
    "clv_sum": 0.0
+  },
+  "matchup_over": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
+  },
+  "matchup_under": {
+   "bets": 0,
+   "staked": 0.0,
+   "profit": 0.0,
+   "clv_n": 0,
+   "clv_sum": 0.0
   }
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-26T22:33:10Z"
+   "last_scanned": "2026-10-27T02:21:19Z"
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-26T22:33:10Z"
+   "last_scanned": "2026-10-27T02:21:19Z"
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -109,10 +131,10 @@
    "last_scanned": "2026-10-26T22:33:11Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-26T22:33:11Z"
+   "last_scanned": "2026-10-27T02:21:19Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-26T22:33:11Z"
+   "last_scanned": "2026-10-27T02:21:19Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -134,11 +156,16 @@
    "ts": "2026-10-26T22:33:11Z",
    "kind": "scan",
    "text": "Scanned basketball_nba (9), icehockey_nhl (14), americanfootball_nfl (1), americanfootball_ncaaf (2), baseball_mlb (1), soccer_england_league1 (5), soccer_italy_serie_a (3), basketball_wnba (1) for 22 credits. Placed 1: Columbus Blue Jackets -1.5 @ +225 (betrivers) Equity $100.00."
+  },
+  {
+   "ts": "2026-10-27T02:21:19Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (11), basketball_nba (4), americanfootball_ncaaf (2), soccer_italy_serie_a (3) for 11 credits. Nothing cleared the bar. Equity $100.00."
   }
  ],
  "learned_ids": [],
  "strategist": null,
- "updated": "2026-10-26T22:33:11Z",
+ "updated": "2026-10-27T02:21:19Z",
  "stats": {
   "bets": 0,
   "won": 0,
@@ -147,8 +174,8 @@
   "staked": 0,
   "profit": 0,
   "roi": 0,
-  "clv": null,
-  "clv_n": 0,
+  "clv": 0.0319,
+  "clv_n": 1,
   "open": 1,
   "equity": 100.0
  },
@@ -157,8 +184,10 @@
   "value_dog": 1.0,
   "longshot": 1.0,
   "arb": 1.0,
-  "parlay_ev": 1.0
+  "parlay_ev": 1.0,
+  "matchup_over": 1.0,
+  "matchup_under": 1.0
  },
  "paused": [],
- "dry_scans": 0
+ "dry_scans": 1
 }
