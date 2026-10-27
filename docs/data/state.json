@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 95.0,
+  "cash": 85.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -28,7 +28,7 @@
       "price": 3.25,
       "book": "betrivers",
       "fair_p": 0.3177,
-      "close_p": 0.3175,
+      "close_p": 0.3114,
       "result": null
      }
     ],
@@ -37,6 +37,76 @@
     "ev": 0.0327,
     "p": 0.3177,
     "note": "3.3% edge vs 8-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "dc24a15b",
+    "placed": "2026-10-27T20:01:28Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "9ad8cc650802c0c5c3c23a1f32c3e0f6",
+      "sport": "basketball_nba",
+      "commence": "2026-10-27T23:40:00Z",
+      "home": "Boston Celtics",
+      "away": "Brooklyn Nets",
+      "market": "h2h",
+      "outcome": "Brooklyn Nets",
+      "point": null,
+      "price": 6.25,
+      "book": "betrivers",
+      "fair_p": 0.1733,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 6.25,
+    "stake": 5.0,
+    "ev": 0.0829,
+    "p": 0.1733,
+    "note": "8.3% edge vs 9-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "78582f01",
+    "placed": "2026-10-27T20:01:28Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "46dec80debcc79de4c248a0edd4f8d74",
+      "sport": "icehockey_nhl",
+      "commence": "2026-10-28T23:40:00Z",
+      "home": "Washington Capitals",
+      "away": "Philadelphia Flyers",
+      "market": "spreads",
+      "outcome": "Washington Capitals",
+      "point": -1.5,
+      "price": 2.18,
+      "book": "betrivers",
+      "fair_p": 0.4726,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 2.18,
+    "stake": 5.0,
+    "ev": 0.0304,
+    "p": 0.4726,
+    "note": "3.0% edge vs 4-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -119,19 +189,19 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-27T02:21:19Z"
+   "last_scanned": "2026-10-27T20:01:28Z"
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-27T02:21:19Z"
+   "last_scanned": "2026-10-27T20:01:28Z"
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-10-26T22:33:11Z"
   },
   "baseball_mlb": {
-   "last_scanned": "2026-10-26T22:33:11Z"
+   "last_scanned": "2026-10-27T20:01:28Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-27T02:21:19Z"
+   "last_scanned": "2026-10-27T20:01:28Z"
   },
   "soccer_italy_serie_a": {
    "last_scanned": "2026-10-27T02:21:19Z"
@@ -166,11 +236,16 @@
    "ts": "2026-10-27T15:19:30Z",
    "kind": "daily",
    "text": "Day close \u2014 equity $100.00 (run #1), 0-0-0, ROI +0.0%, CLV +3.2%."
+  },
+  {
+   "ts": "2026-10-27T20:01:28Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (15), basketball_nba (5), americanfootball_ncaaf (4), baseball_mlb (1) for 12 credits. Placed 2: Brooklyn Nets @ +525 (betrivers); Washington Capitals -1.5 @ +118 (betrivers) Equity $100.00."
   }
  ],
  "learned_ids": [],
  "strategist": null,
- "updated": "2026-10-27T15:19:30Z",
+ "updated": "2026-10-27T20:01:28Z",
  "stats": {
   "bets": 0,
   "won": 0,
@@ -179,9 +254,9 @@
   "staked": 0,
   "profit": 0,
   "roi": 0,
-  "clv": 0.0319,
+  "clv": 0.0121,
   "clv_n": 1,
-  "open": 1,
+  "open": 3,
   "equity": 100.0
  },
  "weights": {
@@ -194,5 +269,5 @@
   "matchup_under": 1.0
  },
  "paused": [],
- "dry_scans": 1
+ "dry_scans": 0
 }
