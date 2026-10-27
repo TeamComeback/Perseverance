@@ -29,18 +29,21 @@ class Budget:
         self.spent_this_run = 0
         self.allowance = 0
 
-    def start_run(self):
+    def start_run(self, units=1):
+        """Each scan is 1 unit; the evening NBA props run is config.PROPS_UNITS units,
+        so it gets a bigger share of the day's credits."""
         today = store.now().strftime("%Y-%m-%d")
         if self.b.get("runs_day") != today:
             self.b["runs_day"], self.b["runs_today"] = today, 0
         n = store.now()
         last = calendar.monthrange(n.year, n.month)[1]
-        runs_left = max(1, (last - n.day + 1) * config.RUNS_PER_DAY - self.b["runs_today"])
+        per_day = config.RUNS_PER_DAY + config.PROPS_UNITS
+        runs_left = max(units, (last - n.day + 1) * per_day - self.b["runs_today"])
         rem = self.b["remaining"] if self.b["remaining"] is not None else config.MONTHLY_CREDITS
         spendable = max(0, rem - config.RESERVE_CREDITS)
-        self.allowance = spendable // runs_left
+        self.allowance = spendable * units // runs_left
         self.b["runs"] += 1
-        self.b["runs_today"] += 1
+        self.b["runs_today"] += units
         self.b["runs_left"] = runs_left
         self.b["allowance"] = self.allowance
 
@@ -112,6 +115,12 @@ class OddsClient:
             "commenceTimeFrom": store.iso(n),
             "commenceTimeTo": store.iso(n + timedelta(hours=config.WINDOW_MAX_H)),
         }, cost)
+
+    def event_odds(self, sport, event_id, markets):
+        """Player props for one game. Costs one credit per market."""
+        return self._get(f"/sports/{sport}/events/{event_id}/odds", {
+            "regions": config.REGIONS, "markets": ",".join(markets), "oddsFormat": "decimal"},
+            len(markets) * len(config.REGIONS.split(",")))
 
     def scores(self, sport, essential=True):
         return self._get(f"/sports/{sport}/scores", {"daysFrom": 3}, 2, essential)

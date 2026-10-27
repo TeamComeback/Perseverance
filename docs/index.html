@@ -86,6 +86,15 @@ a.opt .b{font-size:10px;color:var(--dim)}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
 .filters button{background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:5px 10px;font:inherit;font-size:12px}
 .filters button.on{color:var(--text);border-color:var(--mars)}
+.mu{padding:12px 0;border-top:1px solid var(--line)} .mu:first-of-type{border-top:0}
+.mu .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.mu .nm{font-weight:700} .mu .gm{font-size:12px;color:var(--dim)}
+.mu .proj{font-family:var(--mono);font-size:13px;text-align:right;white-space:nowrap}
+.mu ul{margin:6px 0 0;padding-left:16px;font-size:12.5px;color:var(--dim)} .mu li{margin:2px 0}
+.mu .line{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;background:var(--panel2);border-radius:10px;padding:8px 10px;font-size:13px}
+.mu .line a{background:var(--you);color:#0b0f17;font-weight:700;text-decoration:none;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.lean{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;letter-spacing:.04em}
+.lean.Over{background:var(--win-d);color:var(--win)} .lean.Under{background:var(--loss-d);color:var(--loss)}
 </style>
 </head>
 <body>
@@ -105,6 +114,7 @@ a.opt .b{font-size:10px;color:var(--dim)}
   <details id="resD"><summary>Agent's results <span class="meta" id="resMeta"></span></summary><div class="body" id="results"></div></details>
   <details id="armsD"><summary>Playbooks <span class="meta">what it leans on</span></summary><div class="body" id="arms"></div></details>
   <details id="brainD"><summary>Brain <span class="meta">live strategy + journal</span></summary><div class="body" id="brain"></div></details>
+  <details id="nbaD"><summary>NBA matchups <span class="meta" id="nbaMeta"></span></summary><div class="body" id="nba"></div></details>
   <details id="boardD"><summary>Board · bet it yourself <span class="meta" id="boardMeta"></span></summary><div class="body" id="board"></div></details>
   <details id="youD"><summary>Your book <span class="meta" id="youMeta"></span></summary><div class="body" id="you"></div></details>
   <details id="runsD"><summary>Past runs <span class="meta" id="runsMeta"></span></summary><div class="body" id="runs"></div></details>
@@ -122,8 +132,11 @@ const pl = (v, d=1) => (v*100).toFixed(d) + "%";
 const am = d => d >= 2 ? "+" + Math.round((d-1)*100) : "−" + Math.round(100/(d-1));
 const cls = v => v > 0 ? "pos" : v < 0 ? "neg" : "";
 const SPORT = k => ({americanfootball_nfl:"NFL",americanfootball_ncaaf:"NCAAF",basketball_nba:"NBA",basketball_ncaab:"NCAAB",basketball_wnba:"WNBA",icehockey_nhl:"NHL",baseball_mlb:"MLB",soccer_epl:"EPL",soccer_uefa_champs_league:"UCL",soccer_usa_mls:"MLS",mma_mixed_martial_arts:"UFC"}[k] || (k||"").split("_").slice(-1)[0].toUpperCase());
-const MK = {h2h:"Moneyline", spreads:"Spread", totals:"Total", custom:"Custom"};
-const PB = {value_fav:"Value · favorite", value_dog:"Value · underdog", longshot:"Longshot", arb:"Arbitrage", parlay_ev:"+EV parlay", manual:"Yours"};
+const MK = {h2h:"Moneyline", spreads:"Spread", totals:"Total", custom:"Custom", player_points:"Points", player_rebounds:"Rebounds",
+  player_assists:"Assists", player_threes:"Threes", player_points_rebounds_assists:"Pts+Reb+Ast"};
+const PB = {value_fav:"Value · favorite", value_dog:"Value · underdog", longshot:"Longshot", arb:"Arbitrage", parlay_ev:"+EV parlay",
+  matchup_over:"Matchup · over", matchup_under:"Matchup · under", manual:"Yours"};
+const STATN = {pts:"PTS", reb:"REB", ast:"AST", tpm:"3PM", pra:"PRA"};
 const when = ts => { const d = new Date(ts); return d.toLocaleString([], {weekday:"short", hour:"numeric", minute:"2-digit"}); };
 const ago = ts => { const m = Math.max(0, (Date.now() - new Date(ts)) / 60000); return m < 1 ? "just now" : m < 60 ? Math.round(m) + "m ago" : m < 1440 ? Math.round(m/60) + "h ago" : Math.round(m/1440) + "d ago"; };
 
@@ -157,7 +170,8 @@ function betRow(b) {
     ? `${money(b.stake)}<br><span style="color:var(--dim)">to win ${money(b.stake*(b.dec-1))}</span>`
     : `<span class="${cls(b.profit)}">${money(b.profit, true)}</span><br><span style="color:var(--dim)">${money(b.stake)}</span>`;
   const sub = [l.sport && SPORT(l.sport), MK[l.market] && !multi ? MK[l.market] : "", game, l.commence && b.status === "open" ? when(l.commence) : "",
-               (l.book || "") + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "", b.note].filter(Boolean).map(esc).join(" · ");
+               (l.book || "") + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "",
+               l.actual != null ? "finished with " + l.actual : "", b.note].filter(Boolean).map(esc).join(" · ");
   return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div></div>`;
 }
 
@@ -205,9 +219,10 @@ function brain(state) {
   const p = state.params;
   const items = [["Min edge", pl(p.min_edge)], ["Kelly fraction", p.kelly_mult.toFixed(2)], ["Max bet", pl(p.max_bet_pct, 0)],
     ["Max at risk", pl(p.max_exposure_pct, 0)], ["Bets per scan", p.max_bets_per_run], ["Longest odds", am(p.max_dec)],
-    ["Arb floor", pl(p.arb_min)], ["Parlays", p.parlay_enabled ? "on" : "off"], ["Min bet", "$5 (fixed)"]];
+    ["Arb floor", pl(p.arb_min)], ["Parlays", p.parlay_enabled ? "on" : "off"], ["Min bet", "$5 (fixed)"],
+    ["Prop edge", pl(p.prop_min_edge ?? 0.04)], ["Model vs market", pl(p.prop_model_weight ?? 0.4, 0)], ["Matchup dial", (p.matchup_strength ?? 1).toFixed(2)]];
   const strat = state.strategist ? `<div class="card" style="margin-bottom:12px;background:var(--panel2)"><div class="label">Overnight strategist · ${ago(state.strategist.ts)}</div><div>${esc(state.strategist.note)}</div>${state.strategist.changes?.length ? `<div class="desc" style="color:var(--mars);font-size:12px;margin-top:4px">${esc(state.strategist.changes.join(" · "))}</div>` : ""}</div>` : "";
-  const kinds = ["all", "adapt", "scan", "result", "race", "daily"];
+  const kinds = ["all", "adapt", "scan", "props", "result", "race", "daily"];
   const sel = window._jk || "all";
   const entries = state.journal.slice().reverse().filter(j => sel === "all" || j.kind === sel || (sel === "adapt" && j.kind === "strategist")).slice(0, 40);
   $("brain").innerHTML = `<div class="params">${items.map(([k, v]) => `<div class="param"><div class="label">${k}</div><div class="v">${v}</div></div>`).join("")}</div>${strat}
@@ -236,9 +251,39 @@ function board(bd) {
   $("board").querySelectorAll("button").forEach(b => b.onclick = () => { window._bs = b.dataset.s; board(bd); });
 }
 
+function nba(pz, state) {
+  const today = (pz.spots || []).filter(x => new Date(x.start) > Date.now());
+  $("nbaMeta").textContent = today.length ? (pz.games || []).length + " games · " + ago(pz.updated) : "";
+  if (!today.length) { $("nba").innerHTML = '<div class="empty">The matchup board fills in at about 6pm ET on NBA nights.</div>'; return; }
+  const agentBets = new Set(state.book.bets.filter(b => b.status === "open").flatMap(b => b.legs.map(l => l.player_id + "|" + l.stat)));
+  const fs = window._ns || "all", fl = window._nl || "all";
+  const show = today.filter(x => (fs === "all" || x.stat === fs) && (fl === "all" || x.lean === fl)).slice(0, 30);
+  $("nba").innerHTML = `<div class="filters">${["all", "pts", "reb", "ast", "tpm", "pra"].map(s => `<button class="${s === fs ? "on" : ""}" data-s="${s}">${s === "all" ? "all stats" : STATN[s]}</button>`).join("")}
+      ${["all", "Over", "Under"].map(s => `<button class="${s === fl ? "on" : ""}" data-l="${s}">${s === "all" ? "both" : s.toLowerCase() + "s"}</button>`).join("")}</div>` +
+    show.map(x => {
+      const sig = x.signals.filter(s => s.k !== "ha").slice(0, 4).map(s => `<li>${esc(s.txt)}</li>`).join("");
+      let line = "";
+      if (x.line != null) {
+        const sel = x.name + " " + x.side, ptxt = x.side + " " + x.line;
+        const url = issueUrl({title: "Bet: " + x.name + " " + ptxt + " " + STATN[x.stat] + " (" + x.team + " vs " + x.opp + ")", selection: sel,
+          odds: (x.am > 0 ? "+" : "") + x.am, stake: "5", book: x.book, point: x.line, market: x.market, event_id: x.event_id, sport: "basketball_nba"});
+        line = `<div class="line"><span><b>${ptxt}</b> ${STATN[x.stat]} · ${x.am > 0 ? "+" : ""}${x.am} ${esc(x.book)} · model ${pl(x.p_model, 0)} vs market ${pl(x.p_mkt, 0)}
+          ${x.ev > 0 ? ' · <span class="pos">' + pct(x.ev) + "</span>" : ""}</span><a href="${url}" target="_blank" rel="noopener">Bet this</a></div>`;
+      }
+      const mine = agentBets.has(x.pid + "|" + x.stat) ? '<span class="pill mars">agent bet</span>' : "";
+      return `<div class="mu"><div class="top"><div><span class="nm">${esc(x.name)}</span><span class="lean ${x.lean}">${x.lean.toUpperCase()}</span> ${mine}
+          <div class="gm">${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} · ${esc(x.role)} · ${when(x.start)}${x.status ? " · " + esc(x.status) : ""}</div></div>
+        <div class="proj">${STATN[x.stat]} ${x.base.toFixed(1)} → <b>${x.proj.toFixed(1)}</b><br><span class="${cls(x.mult - 1)}">${pct(x.mult - 1, 0)}</span> · ${x.minutes.toFixed(0)} min</div></div>
+        <ul>${sig}</ul>${line}</div>`;
+    }).join("") +
+    '<div class="desc" style="font-size:12px;color:var(--dim);margin-top:8px">Ranked by how far the matchup moves each player from his own norm. Lines appear for the games the agent bought prop odds for. Unders in tough matchups have been the more reliable signal in testing.</div>';
+  $("nba").querySelectorAll("button[data-s]").forEach(b => b.onclick = () => { window._ns = b.dataset.s; nba(pz, state); });
+  $("nba").querySelectorAll("button[data-l]").forEach(b => b.onclick = () => { window._nl = b.dataset.l; nba(pz, state); });
+}
+
 (async () => {
-  const [state, manual, budget, bd, hist] = await Promise.all([
-    get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", [])]);
+  const [state, manual, budget, bd, hist, pz] = await Promise.all([
+    get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []), get("props.json", {})]);
   if (!state) { $("updated").textContent = "waiting for first run"; $("agentCard").innerHTML = '<div class="empty">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; return; }
   $("updated").textContent = "updated " + ago(state.updated);
   raceCard($("agentCard"), "Agent", state.book, state.stats, "var(--mars)");
@@ -252,7 +297,7 @@ function board(bd) {
   $("resMeta").textContent = done.length + " settled";
   $("results").innerHTML = done.slice(0, 50).map(betRow).join("") || '<div class="empty">No results yet.</div>';
 
-  arms(state); brain(state); board(bd);
+  arms(state); brain(state); board(bd); nba(pz, state);
 
   const mb = manual.book.bets.slice().reverse();
   $("youMeta").textContent = money(manual.stats.equity) + " · " + manual.stats.open + " open";

@@ -226,7 +226,9 @@ def bet_on_board(state, events):
 # ---- Optional overnight strategist ------------------------------------------
 STRATEGIST_PROMPT = """You are the overnight strategist for Perseverance, a PAPER (fake money) sports-betting agent
 racing to turn ${start:.0f} into ${goal:.0f}. Review its numbers and propose parameter changes.
-It bets value gaps against the multi-book consensus, arbitrage, and +EV parlays.
+It bets value gaps against the multi-book consensus, arbitrage, +EV parlays, and NBA player props
+picked by a matchup model (defense vs position w_dvp, similar-player history w_sim, own head-to-head w_h2h,
+overall dial matchup_strength; prop_model_weight blends the model with the market price).
 The strategy is yours to reshape freely. The only fixed rules: paper money, every bet is at least $5,
 a run ends at ${goal:.0f} or when it can't afford a $5 bet.
 
@@ -271,8 +273,8 @@ def strategist(state):
         return
     changes = []
     for k, v in (plan.get("params") or {}).items():
-        if k == "parlay_enabled" and isinstance(v, bool) and v != state["params"][k]:
-            changes.append(f"parlays {'on' if v else 'off'}"); state["params"][k] = v
+        if isinstance(config.DEFAULT_PARAMS.get(k), bool) and isinstance(v, bool) and v != state["params"].get(k):
+            changes.append(f"{k} {'on' if v else 'off'}"); state["params"][k] = v
             continue
         if k in config.BOUNDS and isinstance(v, (int, float)) and not isinstance(v, bool):
             new = clamp(k, v)

@@ -5,11 +5,14 @@ on:
     - cron: "5 20 * * *"    # ~4pm ET   — afternoon / early slate
     - cron: "35 23 * * *"   # ~7:30pm ET — prime-time slate
     - cron: "10 9 * * *"    # ~5am ET   — overnight grading + strategist
+    - cron: "5 22 * * *"    # ~6pm ET (5pm in winter) — NBA matchup props, after most injury news
   workflow_dispatch:
     inputs:
       mode:
-        description: "cycle or nightly"
+        description: "cycle, props or nightly"
         default: cycle
+        type: choice
+        options: [cycle, props, nightly]
 
 permissions:
   contents: write
@@ -35,13 +38,17 @@ jobs:
         run: |
           MODE="${{ github.event.inputs.mode }}"
           if [ -z "$MODE" ]; then
-            if [ "${{ github.event.schedule }}" = "10 9 * * *" ]; then MODE=nightly; else MODE=cycle; fi
+            case "${{ github.event.schedule }}" in
+              "10 9 * * *") MODE=nightly ;;
+              "5 22 * * *") MODE=props ;;
+              *) MODE=cycle ;;
+            esac
           fi
           python -m agent.run "$MODE"
       - name: Save books
         run: |
           git config user.name "perseverance-bot"
           git config user.email "perseverance-bot@users.noreply.github.com"
-          git add docs/data
+          git add docs/data data/nba
           git diff --cached --quiet || git commit -m "agent: $(date -u +%FT%RZ)"
           git pull --rebase -q && git push

@@ -21,6 +21,26 @@ Named to sit next to Curiosity and Ingenuity.
    - Every change is written to the journal with the reason.
 7. **Overnight strategist (optional).** With an `ANTHROPIC_API_KEY` secret set, Claude reviews the numbers each night and can retune the settings, including turning parlays on or off and shifting which sports it focuses on.
 
+## NBA matchup props (evening run, ~6pm ET)
+
+The agent hunts player props where the matchup moves a player away from his own norm: a sharpshooter against a team that leaks threes to his position (over), or a big against an elite interior defense (under).
+
+- **Data (free, ESPN):** every box score from 2025-26 and this season, kept in `data/nba/`, refreshed nightly. Injury report checked each run; anyone listed Out or Doubtful is skipped.
+- **Signals**, all measured as how much players beat or miss their *own* per-minute norm, shrunk toward neutral when the sample is small:
+  - **Defense vs position**: how the opponent treats point guards, wings, bigs, etc. (positions derived from each player's stats).
+  - **Similar players**: how players with his statistical profile have done against this opponent.
+  - **His own history** against this opponent.
+  - **Home/away split**, plus team defense, offense and pace ranks shown for context.
+- **Projection** = per-minute rate × projected minutes × matchup multiplier, turned into an over/under probability.
+- **Credits:** the model ranks the whole slate for free, then buys prop odds (1 credit per stat per game) only for the games holding the strongest spots. The evening run gets 3 scans' worth of the day's credits.
+- **Betting:** model probability is blended with the market's no-vig price (`prop_model_weight`, starts at 40%); the bet must point the same way as the matchup and clear `prop_min_edge` (starts at 4%). Playbooks `matchup_over` and `matchup_under` are tracked separately so the agent learns which side works.
+- **Grading** comes from the ESPN box score; a player who doesn't play is voided, as books do.
+- The agent and the overnight strategist can retune every weight (`w_dvp`, `w_sim`, `w_h2h`, `matchup_strength`).
+
+**Tested walk-forward on 2025-26** (`tests/backtest_matchups.py`, `tests/calibration.py`): in the softest fifth of matchups players beat their norms by roughly 4-11%, in the toughest fifth they fell short in rebounds, assists and threes. With lines set at a player's norm, unders the model flagged hit 62% vs a 57% base rate, overs 50% vs 43%. Probabilities were calibrated so a predicted 45% came in at 45%. That's a modest edge, and books already price some of it, which is why the model is blended with the market rather than trusted alone.
+
+The **NBA matchups** panel on the dashboard lists tonight's strongest spots with the reasons, and a Bet this button for any line the agent priced.
+
 A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts automatically, and everything the agent has learned carries over.
 
 ## Credit budget (free tier: 500/month)

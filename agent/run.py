@@ -6,6 +6,7 @@ import sys
 
 from . import book as bk
 from . import brain, config, market, store
+from . import props as nba_props
 from .odds import Budget, OddsClient, OutOfBudget
 
 
@@ -52,6 +53,19 @@ def describe(bet):
 
 
 def grade(state, manual, client):
+    try:
+        done = nba_props.grade(state["book"])
+        brain.learn_from(state, done)
+        for b in done:
+            brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)}"
+                       + (f" (finished with {b['legs'][0].get('actual'):g})" if b["legs"][0].get("actual") is not None else ""))
+        for b in nba_props.grade(manual["book"]):
+            if b.get("issue"):
+                store.gh_comment(b["issue"], f"**{b['status'].upper()}** {signed(b['profit'])}. "
+                                 f"Your bankroll: ${bk.equity(manual['book']):.2f}")
+                store.gh_close(b["issue"])
+    except Exception as e:
+        brain.note(state, "error", f"Prop grading failed: {e}")
     sports = bk.due_sports([state["book"], manual["book"]])
     for sport in sorted(sports):
         try:
@@ -135,6 +149,43 @@ def cycle():
     print(state["journal"][-1]["text"])
 
 
+def props_run():
+    """Evening NBA matchup run (about 6pm ET, after most injury news)."""
+    budget = Budget()
+    client = OddsClient(budget)
+    state, manual = load_all()
+    try:
+        client.sports()
+    except Exception as e:
+        brain.note(state, "error", f"Odds API unreachable: {e}")
+        save_all(state, manual, budget)
+        return
+    budget.start_run(units=config.PROPS_UNITS)
+    grade(state, manual, client)
+    try:
+        out = nba_props.run(state, manual, client, budget)
+    except Exception as e:
+        import traceback; traceback.print_exc()
+        brain.note(state, "error", f"NBA props run failed: {e}")
+        save_all(state, manual, budget)
+        return
+    if not out["games"]:
+        brain.note(state, "props", out.get("note", "No NBA games today."))
+    else:
+        top = out["spots"][:3]
+        tops = "; ".join(f"{x['name']} {x['stat']} {(x['mult'] - 1) * 100:+.0f}% vs {x['opp']}" for x in top)
+        placed = out.get("placed", [])
+        brain.note(state, "props",
+                   f"NBA matchups: {len(out['games'])} games, strongest spots: {tops}. "
+                   + (f"Bought prop odds for {', '.join(out['bought'])} ({budget.spent_this_run} credits). " if out.get("bought")
+                      else f"No credits to price props this run (allowance {budget.allowance}). ")
+                   + (f"Placed {len(placed)}: " + "; ".join(describe(b) for b in placed) if placed
+                      else ("Nothing cleared the bar." if out.get("bought") else "")))
+    history_point(state, manual)
+    save_all(state, manual, budget)
+    print(state["journal"][-1]["text"])
+
+
 def nightly():
     budget = Budget()                       # no scan allowance: only essential grading
     client = OddsClient(budget)
@@ -144,6 +195,11 @@ def nightly():
     except Exception:
         pass
     grade(state, manual, client)
+    try:
+        from . import nba_data
+        nba_data.update(log=lambda m: None)
+    except Exception as e:
+        brain.note(state, "error", f"NBA box-score refresh failed: {e}")
     brain.adapt(state)
     brain.strategist(state)
     s = bk.record_stats(state["book"])
@@ -221,6 +277,29 @@ def manual_issue():
                 store.gh_close(num)
                 return
         point = float(f["point"]) if f.get("point") not in (None, "", "None") else None
+        if str(f.get("market", "")).startswith("player_") and f.get("event_id"):
+            # a prop from the NBA matchup board: grade it from the box score
+            pb = store.load("props.json", {})
+            pe = (pb.get("events") or {}).get(f["event_id"])
+            sel = f.get("selection", "")
+            side = "Under" if sel.lower().rstrip().endswith("under") else "Over"
+            who = re.sub(r"\s+(over|under)\s*$", "", sel, flags=re.I).strip()
+            key_stat = {v: k for k, v in __import__("agent.nba_model", fromlist=["x"]).ODDS_KEY.items()}
+            if pe and point is not None and f["market"] in key_stat:
+                if store.parse(pe["commence"]) <= store.now():
+                    store.gh_comment(num, "That game has already started, so it can't be bet.")
+                    store.gh_close(num)
+                    return
+                leg = {"event_id": f["event_id"], "sport": "basketball_nba", "commence": pe["commence"],
+                       "home": pe["home"], "away": pe["away"], "market": f["market"], "outcome": f"{who} {side}",
+                       "side": side, "player": who, "player_id": (pb.get("players") or {}).get(nba_props.norm(who)),
+                       "stat": key_stat[f["market"]], "espn_id": pe["espn_id"], "point": point,
+                       "price": round(dec, 3), "book": f.get("book"), "fair_p": None, "close_p": None, "result": None}
+                b = bk.place(book, [leg], stake, "manual", note=f.get("notes", ""), source="you", issue=num)
+                store.gh_comment(num, f"Logged: ${stake:.2f} on {describe(b)}. I'll grade it from the box score. "
+                                      f"Cash left: ${book['cash']:.2f}")
+                save_all(state, manual)
+                return
         leg = {"event_id": evinfo and evinfo["id"], "sport": evinfo and evinfo["sport"],
                "commence": evinfo["commence"] if evinfo else store.iso(store.now()),
                "home": evinfo["home"] if evinfo else "", "away": evinfo["away"] if evinfo else "",
@@ -238,4 +317,4 @@ def manual_issue():
 
 
 if __name__ == "__main__":
-    {"cycle": cycle, "nightly": nightly, "manual-issue": manual_issue}[sys.argv[1]]()
+    {"cycle": cycle, "nightly": nightly, "props": props_run, "manual-issue": manual_issue}[sys.argv[1]]()

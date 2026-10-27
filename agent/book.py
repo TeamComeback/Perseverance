@@ -87,6 +87,7 @@ def due_sports(books):
         for b in open_bets(book):
             for l in b["legs"]:
                 if l["result"] is None and l.get("sport") and l.get("event_id") \
+                        and not str(l.get("market", "")).startswith("player_") \
                         and store.parse(l["commence"]) < cut:
                     out.add(l["sport"])
     return out
@@ -99,7 +100,8 @@ def apply_scores(book, sport, games):
     void_cut = store.now() - timedelta(days=config.VOID_AFTER_D)
     for b in open_bets(book):
         for l in b["legs"]:
-            if l["result"] is not None or l.get("sport") != sport:
+            if l["result"] is not None or l.get("sport") != sport \
+                    or str(l.get("market", "")).startswith("player_"):
                 continue
             g = by_id.get(l["event_id"])
             if g and g.get("completed"):

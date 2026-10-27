@@ -19,6 +19,7 @@ MOCK = os.environ.get("ODDS_MOCK") == "1"
 MONTHLY_CREDITS = int(os.environ.get("ODDS_MONTHLY_CREDITS", "500"))
 RESERVE_CREDITS = 25       # never spend below this — the hard floor
 RUNS_PER_DAY = 3           # scheduled scans; used to spread credits across the month
+PROPS_UNITS = 3            # the evening NBA props run gets this many scans' worth of credits
 REGIONS = "us"             # one region = 1 credit per market per sport
 
 # ---- Market reading ---------------------------------------------------------
@@ -57,6 +58,15 @@ DEFAULT_PARAMS = {
     "arb_min": 0.005,          # minimum locked-in profit for an arbitrage
     "arb_pct": 0.20,           # bankroll share put into one arb
     "parlay_enabled": True,
+    # NBA matchup props
+    "props_enabled": True,
+    "prop_min_edge": 0.04,     # minimum expected value on a player prop
+    "prop_model_weight": 0.40, # how much the matchup model counts vs the market's own price
+    "prop_max_bets": 4,
+    "w_dvp": 0.45,             # defense vs position
+    "w_sim": 0.40,             # how similar players did vs this team
+    "w_h2h": 0.25,             # the player's own history vs this team
+    "matchup_strength": 1.0,   # overall dial on matchup adjustments
 }
 # Hard guardrails: the agent (or the overnight strategist) can't go outside these.
 # Wide on purpose: the strategy is the agent's to reshape. These only stop nonsense values.
@@ -64,6 +74,8 @@ BOUNDS = {
     "min_edge": (0.0, 0.15), "kelly_mult": (0.05, 1.0), "max_bet_pct": (0.05, 0.60),
     "max_exposure_pct": (0.10, 1.0), "max_bets_per_run": (1, 25), "max_dec": (1.5, 51.0),
     "arb_min": (0.0, 0.05), "arb_pct": (0.05, 0.60),
+    "prop_min_edge": (0.0, 0.20), "prop_model_weight": (0.0, 1.0), "prop_max_bets": (0, 12),
+    "w_dvp": (0.0, 1.5), "w_sim": (0.0, 1.5), "w_h2h": (0.0, 1.0), "matchup_strength": (0.0, 2.5),
 }
 
 PLAYBOOKS = {
@@ -72,6 +84,8 @@ PLAYBOOKS = {
     "longshot": "Big underdog with a pricing gap",
     "arb": "Opposite sides at different books that lock a profit",
     "parlay_ev": "Two +EV legs from different games, edges compounded",
+    "matchup_over": "NBA player over in a soft matchup (defense vs position, similar players, history)",
+    "matchup_under": "NBA player under in a tough matchup",
 }
 
 # ---- Optional overnight strategist (Claude) ---------------------------------
