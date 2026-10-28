@@ -4,10 +4,12 @@ A paper sports-betting agent that races to turn **$100 into $1,000**, plus your 
 
 Named to sit next to Curiosity and Ingenuity.
 
+> **Owner rule (do not change):** the agent only uses **DraftKings, FanDuel and Caesars**. Odds are requested from those three books, prices are compared across them, bets are placed at them, and closing lines for CLV come from them. The list is `ALLOWED_BOOKS` in `agent/config.py`. It is a fixed constant, not a tunable setting, so neither the agent nor the overnight strategist may change it. Bets placed before this rule keep their original book and settle normally. The $5 minimum bet still applies.
+
 ## How the agent bets
 
 1. **Picks where to look (free calls).** It lists every in-season sport and its upcoming games, then ranks them by priority, by how well it has done in that sport, and by how long since it last checked.
-2. **Reads the board (paid calls).** It pulls moneylines, spreads and totals from every US book for the top sports its credit budget allows.
+2. **Reads the board (paid calls).** It pulls moneylines, spreads and totals from the three allowed books for the top sports its credit budget allows.
 3. **Finds edges:**
    - **Value**: it removes the vig from each book to get a fair price, averages the other books into a consensus, and bets the best price when it beats that consensus by the minimum edge.
    - **Arbitrage**: opposite sides at different books that lock in a profit no matter who wins.

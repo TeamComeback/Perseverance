@@ -30,6 +30,8 @@ def analyse_event(ev):
     [{market, outcomes:[{name, point, best, book, fair_p, n}], arb}]"""
     groups = {}
     for bk in ev.get("bookmakers", []):
+        if not config.book_ok(bk.get("key")):      # owner rule: three books only
+            continue
         for m in bk.get("markets", []):
             outs = m.get("outcomes", [])
             if len(outs) < 2 or any(o.get("price", 0) <= 1 for o in outs):

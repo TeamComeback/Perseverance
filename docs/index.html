@@ -165,6 +165,8 @@ const cls = v => v > 0 ? "pos" : v < 0 ? "neg" : "";
 const SPORT = k => ({americanfootball_nfl:"NFL",americanfootball_ncaaf:"NCAAF",basketball_nba:"NBA",basketball_ncaab:"NCAAB",basketball_wnba:"WNBA",icehockey_nhl:"NHL",baseball_mlb:"MLB",soccer_epl:"EPL",soccer_uefa_champs_league:"UCL",soccer_usa_mls:"MLS",mma_mixed_martial_arts:"UFC"}[k] || (k||"").split("_").slice(-1)[0].toUpperCase());
 const MK = {h2h:"Moneyline", spreads:"Spread", totals:"Total", custom:"Custom", player_points:"Points", player_rebounds:"Rebounds",
   player_assists:"Assists", player_threes:"Threes", player_points_rebounds_assists:"Pts+Reb+Ast"};
+const BOOKN = {draftkings:"DraftKings", fanduel:"FanDuel", williamhill_us:"Caesars", caesars:"Caesars"};
+const bookName = k => BOOKN[k] || k || "";
 const PB = {value_fav:"Value · favorite", value_dog:"Value · underdog", longshot:"Longshot", arb:"Arbitrage", parlay_ev:"+EV parlay",
   matchup_over:"Matchup · over", matchup_under:"Matchup · under", manual:"Yours"};
 const STATN = {pts:"PTS", reb:"REB", ast:"AST", tpm:"3PM", pra:"PRA"};
@@ -215,7 +217,7 @@ function betRow(b) {
   const placed = b.placed ? "Placed " + when(b.placed) + (b.status === "open" ? " (" + ago(b.placed) + ")" : "") : "";
   const settled = b.settled && b.status !== "open" ? "settled " + when(b.settled) : "";
   const sub = [l.sport && SPORT(l.sport), MK[l.market] && !multi ? MK[l.market] : "", game, l.commence && b.status === "open" ? "starts " + when(l.commence) : "",
-               (l.book || "") + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "",
+               bookName(l.book) + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "",
                l.actual != null ? "finished with " + l.actual : "", b.note].filter(Boolean).map(esc).join(" · ");
   const time = [placed, settled].filter(Boolean).join(" · ");
   return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div>` +
@@ -293,7 +295,7 @@ function board(bd) {
       const url = issueUrl({title: "Bet: " + o.name + pt + " (" + e.away + " @ " + e.home + ")", selection: o.name, odds: (o.am > 0 ? "+" : "") + o.am,
         stake: "5", book: o.book, point: o.point ?? "", market: l.market, event_id: e.id, sport: e.sport});
       return `<a class="opt ${o.ev > 0 ? "plus" : ""}" href="${url}" target="_blank" rel="noopener"><div class="n">${esc(o.name)}${pt}</div>
-        <div class="o">${o.am > 0 ? "+" : ""}${o.am}</div><div class="b">${esc(o.book)}${o.ev > 0 ? ' · <span class="pos">' + pct(o.ev) + "</span>" : ""}</div></a>`;
+        <div class="o">${o.am > 0 ? "+" : ""}${o.am}</div><div class="b">${esc(bookName(o.book))}${o.ev > 0 ? ' · <span class="pos">' + pct(o.ev) + "</span>" : ""}</div></a>`;
     }).join("") + "</div>").join("") + "</div>").join("") +
    '<div class="desc" style="font-size:12px;color:var(--dim);margin-top:8px">Best price across books. Green = priced above the market\'s fair odds. Tap to open a prefilled bet, then submit it.</div>';
   $("board").querySelectorAll("button").forEach(b => b.onclick = () => { window._bs = b.dataset.s; board(bd); });
@@ -315,7 +317,7 @@ function nba(pz, state) {
         const sel = x.name + " " + x.side, ptxt = x.side + " " + x.line;
         const url = issueUrl({title: "Bet: " + x.name + " " + ptxt + " " + STATN[x.stat] + " (" + x.team + " vs " + x.opp + ")", selection: sel,
           odds: (x.am > 0 ? "+" : "") + x.am, stake: "5", book: x.book, point: x.line, market: x.market, event_id: x.event_id, sport: "basketball_nba"});
-        line = `<div class="line"><span><b>${ptxt}</b> ${STATN[x.stat]} · ${x.am > 0 ? "+" : ""}${x.am} ${esc(x.book)} · model ${pl(x.p_model, 0)} vs market ${pl(x.p_mkt, 0)}
+        line = `<div class="line"><span><b>${ptxt}</b> ${STATN[x.stat]} · ${x.am > 0 ? "+" : ""}${x.am} ${esc(bookName(x.book))} · model ${pl(x.p_model, 0)} vs market ${pl(x.p_mkt, 0)}
           ${x.ev > 0 ? ' · <span class="pos">' + pct(x.ev) + "</span>" : ""}</span><a href="${url}" target="_blank" rel="noopener">Bet this</a></div>`;
       }
       const mine = agentBets.has(x.pid + "|" + x.stat) ? '<span class="pill mars">agent bet</span>' : "";
@@ -349,7 +351,7 @@ function timeLog(state, manual) {
       const amt = e.kind === "placed" ? money(b.stake) : money(b.profit ?? 0, true);
       return `<div class="e ${e.kind === "placed" ? e.who : e.kind}"><time>${when(e.ts)} · ${ago(e.ts)} · ${e.who === "you" ? "You" : "Agent"}</time>
         <span class="r ${e.kind === "placed" ? "" : cls(b.profit)}">${amt}</span><b>${verb}</b> · ${esc(e.title)}
-        <div style="font-size:12px;color:var(--dim)">${e.kind !== "placed" && b.review ? esc((b.review.final ? b.review.final + " · " : "") + b.review.headline.replace(/^[A-Z]+: /, "")) : esc(b.legs[0].home ? b.legs[0].away + " @ " + b.legs[0].home : "") + (b.legs[0].book ? " · " + esc(b.legs[0].book) + " " + am(b.dec) : "")}</div></div>`;
+        <div style="font-size:12px;color:var(--dim)">${e.kind !== "placed" && b.review ? esc((b.review.final ? b.review.final + " · " : "") + b.review.headline.replace(/^[A-Z]+: /, "")) : esc(b.legs[0].home ? b.legs[0].away + " @ " + b.legs[0].home : "") + (b.legs[0].book ? " · " + esc(bookName(b.legs[0].book)) + " " + am(b.dec) : "")}</div></div>`;
     }).join("")}</div>` : '<div class="empty">No bets yet.</div>');
   $("tlog").querySelectorAll("button").forEach(b => b.onclick = () => { window._tl = b.dataset.k; timeLog(state, manual); });
 }

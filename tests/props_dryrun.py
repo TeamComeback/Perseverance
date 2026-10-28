@@ -20,7 +20,7 @@ class FakeClient:
         g = next(x for x in self.slate if "fake-" + x["espn_id"] == eid)
         rng = random.Random(eid)
         books = []
-        for bkey in ("draftkings", "fanduel", "betmgm", "caesars"):
+        for bkey in ("draftkings", "fanduel", "williamhill_us", "betmgm"):
             mk = []
             for mkey in markets:
                 s = {v: k for k, v in nm.ODDS_KEY.items()}[mkey]

@@ -20,10 +20,23 @@ MONTHLY_CREDITS = int(os.environ.get("ODDS_MONTHLY_CREDITS", "500"))
 RESERVE_CREDITS = 25       # never spend below this — the hard floor
 RUNS_PER_DAY = 3           # scheduled scans; used to spread credits across the month
 PROPS_UNITS = 3            # the evening NBA props run gets this many scans' worth of credits
-REGIONS = "us"             # one region = 1 credit per market per sport
+REGIONS = "us"             # fallback only; requests name the books below instead
+
+# ---- OWNER RULE: sportsbooks (the owner set this; the agent and strategist must NOT change it) ----
+# The agent reads odds from, compares prices across, and places bets at only these three books.
+# Closing lines for CLV come from the same three. This is a plain constant, not a tunable
+# parameter, so the adaptation loop and the overnight strategist cannot reach it.
+# The Odds API key for Caesars is "williamhill_us". Up to 10 books count as one region for
+# billing, so three books cost the same credits as regions=us.
+ALLOWED_BOOKS = ("draftkings", "fanduel", "williamhill_us")
+BOOK_NAMES = {"draftkings": "DraftKings", "fanduel": "FanDuel", "williamhill_us": "Caesars"}
+
+
+def book_ok(key):
+    return key in ALLOWED_BOOKS
 
 # ---- Market reading ---------------------------------------------------------
-MIN_BOOKS = 4              # books needed before we trust a consensus price
+MIN_BOOKS = 2              # books needed for a consensus (only three books are allowed, see ALLOWED_BOOKS)
 MAX_EV = 0.20              # an "edge" bigger than this is a stale/bad line, skip it
 MAX_ARB = 0.05             # real arbs are small; a bigger one is almost always a bad line
 WINDOW_MIN_H = 0.25        # only bet games starting 15 min ...

@@ -84,6 +84,8 @@ def parse_props(ev_odds):
     """{(player_norm, market, point): {"name", "books": {book: {"Over": p, "Under": p}}}}"""
     out = {}
     for bkm in ev_odds.get("bookmakers", []):
+        if not config.book_ok(bkm.get("key")):     # owner rule: three books only
+            continue
         for m in bkm.get("markets", []):
             for o in m.get("outcomes", []):
                 who, side, pt, price = o.get("description"), o.get("name"), o.get("point"), o.get("price")

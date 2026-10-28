@@ -4,6 +4,7 @@ import hashlib
 import json
 import math
 import random
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import timedelta
@@ -67,6 +68,15 @@ class Budget:
         store.save("budget.json", self.b)
 
 
+def only_allowed(data):
+    """Drop every bookmaker that is not on the owner's list, from a list of events or one event."""
+    def one(ev):
+        if isinstance(ev, dict) and "bookmakers" in ev:
+            ev = {**ev, "bookmakers": [b for b in ev["bookmakers"] if config.book_ok(b.get("key"))]}
+        return ev
+    return [one(e) for e in data] if isinstance(data, list) else one(data)
+
+
 class OddsClient:
     def __init__(self, budget: Budget):
         self.budget = budget
@@ -106,21 +116,32 @@ class OddsClient:
     def events(self, sport):                # free
         return self._get(f"/sports/{sport}/events", {}, 0)
 
+    def _by_books(self, path, params, n_markets):
+        """Ask only for the allowed books (owner rule). Up to 10 books bill as one region.
+        If the API rejects the book list (HTTP 422), fall back to the US region and filter the
+        reply ourselves; the filter below keeps every other book out either way."""
+        cost = n_markets * max(1, -(-len(config.ALLOWED_BOOKS) // 10))
+        try:
+            data = self._get(path, {**params, "bookmakers": ",".join(config.ALLOWED_BOOKS)}, cost)
+        except urllib.error.HTTPError as e:
+            if e.code != 422:
+                raise
+            data = self._get(path, {**params, "regions": config.REGIONS}, n_markets)
+        return only_allowed(data)
+
     def odds(self, sport):
         markets = config.markets_for(sport)
-        cost = len(markets.split(",")) * len(config.REGIONS.split(","))
         n = store.now()
-        return self._get(f"/sports/{sport}/odds", {
-            "regions": config.REGIONS, "markets": markets, "oddsFormat": "decimal",
+        return self._by_books(f"/sports/{sport}/odds", {
+            "markets": markets, "oddsFormat": "decimal",
             "commenceTimeFrom": store.iso(n),
             "commenceTimeTo": store.iso(n + timedelta(hours=config.WINDOW_MAX_H)),
-        }, cost)
+        }, len(markets.split(",")))
 
     def event_odds(self, sport, event_id, markets):
         """Player props for one game. Costs one credit per market."""
-        return self._get(f"/sports/{sport}/events/{event_id}/odds", {
-            "regions": config.REGIONS, "markets": ",".join(markets), "oddsFormat": "decimal"},
-            len(markets) * len(config.REGIONS.split(",")))
+        return self._by_books(f"/sports/{sport}/events/{event_id}/odds",
+                              {"markets": ",".join(markets), "oddsFormat": "decimal"}, len(markets))
 
     def scores(self, sport, essential=True):
         return self._get(f"/sports/{sport}/scores", {"daysFrom": 3}, 2, essential)
@@ -128,7 +149,7 @@ class OddsClient:
 
 # ---- Mock market for offline testing ----------------------------------------
 MOCK_SPORTS = ["basketball_nba", "icehockey_nhl", "soccer_epl"]
-BOOKS = ["draftkings", "fanduel", "betmgm", "caesars", "espnbet", "betrivers", "fanatics", "bovada"]
+BOOKS = ["draftkings", "fanduel", "williamhill_us", "betmgm", "betrivers", "bovada"]   # mock: extras prove the filter works
 
 
 def _rng(*parts):
