@@ -166,8 +166,10 @@
       "price": 5.1,
       "book": "fanduel",
       "fair_p": 0.208,
-      "close_p": null,
-      "result": null
+      "close_p": 0.1723,
+      "result": null,
+      "close_at": "2026-10-28T23:58:42Z",
+      "close_mins": 31
      }
     ],
     "dec": 5.1,
@@ -201,8 +203,10 @@
       "price": 6.5,
       "book": "fanduel",
       "fair_p": 0.1589,
-      "close_p": null,
-      "result": null
+      "close_p": 0.1615,
+      "result": null,
+      "close_at": "2026-10-28T23:58:42Z",
+      "close_mins": 151
      }
     ],
     "dec": 6.5,
@@ -236,10 +240,10 @@
       "price": 3.8,
       "book": "bovada",
       "fair_p": 0.2771,
-      "close_p": 0.2606,
+      "close_p": 0.2572,
       "result": null,
-      "close_at": "2026-10-28T20:12:46Z",
-      "close_mins": 237
+      "close_at": "2026-10-28T23:58:42Z",
+      "close_mins": 11
      }
     ],
     "dec": 3.8,
@@ -347,8 +351,10 @@
       "price": 2.54,
       "book": "draftkings",
       "fair_p": 0.4076,
-      "close_p": null,
-      "result": null
+      "close_p": 0.3812,
+      "result": null,
+      "close_at": "2026-10-28T23:58:42Z",
+      "close_mins": 1451
      }
     ],
     "dec": 2.54,
@@ -455,19 +461,19 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-28T20:12:46Z",
+   "last_scanned": "2026-10-28T23:58:42Z",
    "bets": 1.0,
    "staked": 5.0,
    "profit": -5.0
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-28T20:12:46Z",
+   "last_scanned": "2026-10-28T23:58:41Z",
    "bets": 1.0,
    "staked": 5.0,
    "profit": -5.0
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-28T20:12:46Z"
+   "last_scanned": "2026-10-28T23:58:42Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -476,7 +482,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-27T23:40:48Z"
+   "last_scanned": "2026-10-28T23:58:42Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -488,13 +494,16 @@
    "last_scanned": "2026-10-26T22:33:11Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-10-27T23:40:48Z"
+   "last_scanned": "2026-10-28T23:58:41Z"
   },
   "soccer_mexico_ligamx": {
    "last_scanned": "2026-10-27T23:40:48Z"
   },
   "boxing_boxing": {
    "last_scanned": "2026-10-28T02:32:11Z"
+  },
+  "soccer_brazil_campeonato": {
+   "last_scanned": "2026-10-28T23:58:42Z"
   }
  },
  "journal": [
@@ -557,6 +566,11 @@
    "ts": "2026-10-28T20:12:46Z",
    "kind": "scan",
    "text": "Scanned basketball_nba (12), icehockey_nhl (15), americanfootball_nfl (1), americanfootball_ncaaf (4), baseball_mlb (1) for 15 credits. Placed 1: Dallas Stars -1.5 @ +154 (draftkings) Equity $90.00."
+  },
+  {
+   "ts": "2026-10-28T23:58:42Z",
+   "kind": "scan",
+   "text": "Scanned soccer_usa_mls (9), icehockey_nhl (14), soccer_italy_serie_a (2), basketball_nba (8), americanfootball_nfl (1), soccer_brazil_campeonato (5) for 15 credits. Nothing cleared the bar. Equity $90.00."
   }
  ],
  "learned_ids": [
@@ -564,7 +578,7 @@
   "dc24a15b"
  ],
  "strategist": null,
- "updated": "2026-10-28T20:12:46Z",
+ "updated": "2026-10-28T23:58:42Z",
  "stats": {
   "bets": 2,
   "won": 0,
@@ -573,10 +587,10 @@
   "staked": 10.0,
   "profit": -10.0,
   "roi": -1.0,
-  "clv": -0.0384,
-  "clv_n": 6,
+  "clv": -0.0385,
+  "clv_n": 9,
   "clv_no_close": 0,
-  "close_mins_median": 207,
+  "close_mins_median": 177,
   "open": 7,
   "equity": 90.0
  },
@@ -590,5 +604,5 @@
   "matchup_under": 1.0
  },
  "paused": [],
- "dry_scans": 0
+ "dry_scans": 1
 }
