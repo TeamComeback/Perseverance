@@ -2,7 +2,7 @@
 import uuid
 from datetime import timedelta
 
-from . import config, store
+from . import config, review, store
 
 
 def new_book(name, run=1):
@@ -74,6 +74,7 @@ def settle(book, bet, result=None):
     payout = round(bet["stake"] * mult, 2)
     bet.update(status=result, payout=payout, profit=round(payout - bet["stake"], 2),
                settled=store.iso(store.now()))
+    bet["review"] = review.build(bet)
     book["cash"] = round(book["cash"] + payout, 2)
     book["peak"] = max(book["peak"], equity(book))
     return True
@@ -106,6 +107,9 @@ def apply_scores(book, sport, games):
             g = by_id.get(l["event_id"])
             if g and g.get("completed"):
                 l["result"] = grade_leg(l, g)
+                sc = {x["name"]: float(x["score"]) for x in (g.get("scores") or [])}
+                if l["home"] in sc and l["away"] in sc:
+                    l["final"] = {"home": sc[l["home"]], "away": sc[l["away"]]}
             if l["result"] is None and store.parse(l["commence"]) < void_cut:
                 l["result"] = "void"
         if settle(book, b):

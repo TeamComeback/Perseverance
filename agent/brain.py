@@ -46,6 +46,12 @@ def learn_from(state, settled):
         state["learned_ids"] = (state["learned_ids"] + [b["id"]])[-3000:]
         a = state["arms"].setdefault(b["playbook"], _blank())
         a["bets"] += 1; a["staked"] += b["stake"]; a["profit"] += b["profit"]
+        tg = a.setdefault("tags", {})
+        for t in (b.get("review") or {}).get("tags", []):
+            e = tg.setdefault(t, {"n": 0, "won": 0, "lost": 0})
+            e["n"] += 1
+            if b["status"] in ("won", "lost"):
+                e[b["status"]] += 1
         for l in b["legs"]:
             if l.get("close_p"):
                 a["clv_n"] += 1; a["clv_sum"] += l["price"] * l["close_p"] - 1

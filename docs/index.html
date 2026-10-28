@@ -113,6 +113,12 @@ a.opt .b{font-size:10px;color:var(--dim)}
 .pill.fin{background:var(--panel);color:var(--text)}
 @keyframes pulse{50%{opacity:.25}}
 .lv .leg{margin-top:6px;padding-top:6px;border-top:1px solid var(--line)} .lv .leg:first-child{margin-top:0;padding-top:0;border-top:0}
+.rv{grid-column:1/-1;margin-top:6px;background:var(--panel2);border-radius:10px;padding:9px 10px;font-size:12.5px}
+.rv .fin{font-weight:600;font-size:13px}
+.rv ul{margin:6px 0 0;padding-left:16px;color:var(--dim)} .rv li{margin:3px 0}
+.rv .tags{margin-top:7px}
+.tg{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;margin:0 4px 4px 0;background:var(--panel);color:var(--dim);border:1px solid var(--line)}
+.tg.good{color:var(--win);border-color:#3ddc9755} .tg.bad{color:var(--loss);border-color:#ff5d7355} .tg.mid{color:var(--gold);border-color:#ffc85755}
 .tl{border-left:2px solid var(--line);margin-left:4px;padding-left:14px}
 .tl .e{position:relative;padding:7px 0;font-size:13px}
 .tl .e::before{content:"";position:absolute;left:-20px;top:13px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--mars)}
@@ -184,6 +190,18 @@ function legText(l) {
   const pt = l.point == null ? "" : l.market === "spreads" ? " " + (l.point > 0 ? "+" : "") + l.point : " " + l.point;
   return esc(l.outcome) + pt;
 }
+const TAGS = {"beat-closing-line":["Beat closing line","good"], "lost-closing-line":["Line moved against us","bad"], "near-miss":["Near miss","mid"],
+  "narrow-win":["Narrow win","mid"], "blowout":["Blowout","mid"], "minutes-short":["Minutes short","bad"], "minutes-long":["Extra minutes","mid"],
+  "ordinary-variance":["Ordinary variance","mid"], "model-miss":["Model miss","bad"], "model-beat":["Model beat","good"],
+  "matchup-read-right":["Matchup read right","good"], "matchup-read-wrong":["Matchup read wrong","bad"], "underdog-lost":["Underdog lost","mid"],
+  "upset-hit":["Upset hit","good"], "favorite-upset":["Favorite upset","bad"], "dnp-void":["Didn't play","mid"], "void":["Voided","mid"]};
+function reviewHtml(b) {
+  const r = b.review; if (!r || b.status === "open") return "";
+  const legs = (r.legs || []).map(x => `${r.legs.length > 1 ? `<div class="fin" style="margin-top:6px">${esc((x.result || "").toUpperCase())} · ${esc(x.outcome)}</div>` : ""}
+    ${x.why && x.why.length ? `<ul>${x.why.map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}`).join("");
+  const tags = (r.tags || []).map(t => { const [lbl, c] = TAGS[t] || [t, ""]; return `<span class="tg ${c}">${esc(lbl)}</span>`; }).join("");
+  return `<div class="rv"><div class="fin">${r.final ? esc(r.final) + " · " : ""}${esc(r.headline)}</div>${legs}${tags ? `<div class="tags">${tags}</div>` : ""}</div>`;
+}
 function betRow(b) {
   const l = b.legs[0];
   const multi = b.legs.length > 1;
@@ -202,7 +220,7 @@ function betRow(b) {
   const time = [placed, settled].filter(Boolean).join(" · ");
   return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div>` +
     (time ? `<div class="sub" style="grid-column:1/-1">⏱ ${esc(time)}</div>` : "") +
-    (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") + `</div>`;
+    reviewHtml(b) + (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") + `</div>`;
 }
 
 function raceCard(el, name, book, stats, color) {
@@ -331,7 +349,7 @@ function timeLog(state, manual) {
       const amt = e.kind === "placed" ? money(b.stake) : money(b.profit ?? 0, true);
       return `<div class="e ${e.kind === "placed" ? e.who : e.kind}"><time>${when(e.ts)} · ${ago(e.ts)} · ${e.who === "you" ? "You" : "Agent"}</time>
         <span class="r ${e.kind === "placed" ? "" : cls(b.profit)}">${amt}</span><b>${verb}</b> · ${esc(e.title)}
-        <div style="font-size:12px;color:var(--dim)">${esc(b.legs[0].home ? b.legs[0].away + " @ " + b.legs[0].home : "")}${b.legs[0].book ? " · " + esc(b.legs[0].book) + " " + am(b.dec) : ""}</div></div>`;
+        <div style="font-size:12px;color:var(--dim)">${e.kind !== "placed" && b.review ? esc((b.review.final ? b.review.final + " · " : "") + b.review.headline.replace(/^[A-Z]+: /, "")) : esc(b.legs[0].home ? b.legs[0].away + " @ " + b.legs[0].home : "") + (b.legs[0].book ? " · " + esc(b.legs[0].book) + " " + am(b.dec) : "")}</div></div>`;
     }).join("")}</div>` : '<div class="empty">No bets yet.</div>');
   $("tlog").querySelectorAll("button").forEach(b => b.onclick = () => { window._tl = b.dataset.k; timeLog(state, manual); });
 }

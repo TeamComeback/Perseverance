@@ -43,6 +43,8 @@ The **NBA matchups** panel on the dashboard lists tonight's strongest spots with
 
 **Live tracking:** every open bet shows when it was placed, a game-progress bar, the current score, time remaining and whether it is winning, covering or on pace. Props also show the player's live stat against the line. It comes from ESPN's free feed, fetched by your browser every 30 seconds, so it costs no Odds API credits. The **Time log** panel lists every bet placed and settled, newest first.
 
+**Post-mortems:** every settled bet records the final score, the margin against the line, and why it won or lost. Props add the player's box-score line, minutes played vs projected, the model's projection and error in standard deviations, and whether the matchup read was right. Each review carries tags such as near miss, blowout, minutes short, ordinary variance, model miss and beat/lost closing line. The tags are tallied per playbook so patterns show up over time.
+
 A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts automatically, and everything the agent has learned carries over.
 
 ## Credit budget (free tier: 500/month)

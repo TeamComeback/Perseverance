@@ -53,6 +53,11 @@ def grade(book):
                     boxes[eid] = None
             g = boxes.get(eid)
             if g:
+                tm = list(g["teams"].values())
+                hh = next((t for t in tm if t["home"]), None)
+                aa = next((t for t in tm if not t["home"]), None)
+                if hh and aa:
+                    l["final"] = {"home": hh["score"], "away": aa["score"]}
                 row = next((p for p in g["players"] if p[nd.P_ID] == l.get("player_id")), None)
                 if row is None:
                     row = next((p for p in g["players"] if norm(p[nd.P_NAME]) == norm(l.get("player", ""))), None)
@@ -61,6 +66,9 @@ def grade(book):
                 else:
                     v = nm._val(row, l["stat"])
                     l["actual"] = v
+                    l["box"] = {"min": row[nd.P_MIN], "pts": row[nd.P_PTS], "reb": row[nd.P_REB], "ast": row[nd.P_AST],
+                                "tpm": row[nd.P_TPM], "tpa": row[nd.P_TPA], "fga": row[nd.P_FGA], "fta": row[nd.P_FTA],
+                                "tov": row[nd.P_TOV]}
                     over = l["side"] == "Over"
                     diff = (v - l["point"]) if over else (l["point"] - v)
                     l["result"] = "win" if diff > 0 else "loss" if diff < 0 else "push"
@@ -234,7 +242,11 @@ def run(state, manual, client, budget):
                "outcome": f"{pr['name']} {c['side']}", "side": c["side"], "player": pr["name"],
                "player_id": pr["pid"], "stat": pr["stat"], "espn_id": c["g"]["espn_id"], "point": c["point"],
                "price": round(c["price"], 3), "book": c["book"], "fair_p": round(c["p_mkt"], 4),
-               "close_p": None, "result": None}
+               "close_p": None, "result": None,
+               "model": {"proj": pr["proj"], "base": pr["base"], "minutes": pr["minutes"], "mult": pr["mult"],
+                         "sd": round(math.sqrt(max(pr.get("var") or 0, 0)), 2), "p_model": round(c["p_model"], 4),
+                         "p_mkt": round(c["p_mkt"], 4),
+                         "signals": [{"k": sg["k"], "v": sg.get("v"), "txt": sg["txt"]} for sg in pr["signals"] if sg["k"] != "ha"][:4]}}
         why = " · ".join(sg["txt"] for sg in pr["signals"][:3])
         b = bk.place(state["book"], [leg], stake, pb, ev=c["ev"], p=c["p"],
                      note=f"Proj {pr['proj']:.1f} vs line {c['point']:g} (norm {pr['base']:.1f}, {pr['minutes']:.0f} min). "

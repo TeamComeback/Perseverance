@@ -57,8 +57,8 @@ def grade(state, manual, client):
         done = nba_props.grade(state["book"])
         brain.learn_from(state, done)
         for b in done:
-            brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)}"
-                       + (f" (finished with {b['legs'][0].get('actual'):g})" if b["legs"][0].get("actual") is not None else ""))
+            brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)} — {b['review']['headline']}"
+                       + (f" [{', '.join(b['review']['tags'])}]" if b["review"].get("tags") else ""))
         for b in nba_props.grade(manual["book"]):
             if b.get("issue"):
                 store.gh_comment(b["issue"], f"**{b['status'].upper()}** {signed(b['profit'])}. "
@@ -79,7 +79,8 @@ def grade(state, manual, client):
         done = bk.apply_scores(state["book"], sport, games)
         brain.learn_from(state, done)
         for b in done:
-            brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)}")
+            brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)} — {b['review']['headline']}"
+                       + (f" [{', '.join(b['review']['tags'])}]" if b["review"].get("tags") else ""))
         for b in bk.apply_scores(manual["book"], sport, games):
             if b.get("issue"):
                 store.gh_comment(b["issue"], f"**{b['status'].upper()}** {signed(b['profit'])}. "
