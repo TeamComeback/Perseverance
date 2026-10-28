@@ -235,7 +235,7 @@ function raceCard(el, name, book, stats, color) {
     <div class="row"><span>Record <b class="num">${stats.won}-${stats.lost}-${stats.push}</b></span>
       <span>P&amp;L <b class="num ${cls(stats.profit)}">${money(stats.profit, true)}</b></span>
       <span>ROI <b class="num ${cls(stats.roi)}">${pct(stats.roi)}</b></span>
-      ${stats.clv != null ? `<span>CLV <b class="num ${cls(stats.clv)}">${pct(stats.clv)}</b></span>` : ""}
+      ${stats.clv != null ? `<span>CLV <b class="num ${cls(stats.clv)}">${pct(stats.clv)}</b> <span style="color:var(--dim)">(${stats.clv_n} legs${stats.close_mins_median != null ? `, close ~${stats.close_mins_median} min before start` : ""}${stats.clv_no_close ? `, ${stats.clv_no_close} with no close` : ""})</span></span>` : ""}
       <span>Open <b class="num">${stats.open}</b></span></div>`;
 }
 

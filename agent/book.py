@@ -146,8 +146,13 @@ def record_stats(book):
     won = sum(b["status"] == "won" for b in settled)
     lost = sum(b["status"] == "lost" for b in settled)
     clvs = [l["price"] * l["close_p"] - 1 for b in book["bets"] for l in b["legs"] if l.get("close_p")]
+    settled_legs = [l for b in settled for l in b["legs"]]
+    no_close = sum(1 for l in settled_legs if not l.get("close_p"))
+    mins = [l["close_mins"] for b in book["bets"] for l in b["legs"] if l.get("close_mins") is not None]
     return {"bets": len(settled), "won": won, "lost": lost,
             "push": len(settled) - won - lost, "staked": round(staked, 2),
             "profit": round(profit, 2), "roi": round(profit / staked, 4) if staked else 0,
             "clv": round(sum(clvs) / len(clvs), 4) if clvs else None, "clv_n": len(clvs),
+            "clv_no_close": no_close,
+            "close_mins_median": sorted(mins)[len(mins) // 2] if mins else None,
             "open": len(open_bets(book)), "equity": equity(book)}
