@@ -64,7 +64,11 @@
       "book": "betrivers",
       "fair_p": 0.1733,
       "close_p": 0.1561,
-      "result": null
+      "result": "loss",
+      "final": {
+       "home": 125.0,
+       "away": 124.0
+      }
      }
     ],
     "dec": 6.25,
@@ -74,10 +78,37 @@
     "note": "8.3% edge vs 9-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-28T15:58:53Z",
+    "review": {
+     "headline": "LOST: Brooklyn Nets lost by 1",
+     "final": "Brooklyn Nets 124 \u2013 Boston Celtics 125",
+     "legs": [
+      {
+       "outcome": "Brooklyn Nets",
+       "result": "loss",
+       "headline": "Brooklyn Nets lost by 1",
+       "final": "Brooklyn Nets 124 \u2013 Boston Celtics 125",
+       "why": [
+        "Brooklyn Nets lost by 1.",
+        "We priced it at 17% to hit vs 16% needed to break even at 6.25x (+8.3% expected edge).",
+        "Closing consensus 16% vs 16% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "underdog-lost",
+        "near-miss",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line",
+      "near-miss",
+      "underdog-lost"
+     ]
+    }
    },
    {
     "id": "78582f01",
@@ -327,11 +358,28 @@
    "clv_sum": 0.012050000000000116
   },
   "longshot": {
-   "bets": 0,
-   "staked": 0.0,
-   "profit": 0.0,
-   "clv_n": 0,
-   "clv_sum": 0.0
+   "bets": 1,
+   "staked": 5.0,
+   "profit": -5.0,
+   "clv_n": 1,
+   "clv_sum": -0.024375000000000036,
+   "tags": {
+    "lost-closing-line": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "near-miss": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "underdog-lost": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    }
+   }
   },
   "arb": {
    "bets": 0,
@@ -364,7 +412,10 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-28T02:32:11Z"
+   "last_scanned": "2026-10-28T02:32:11Z",
+   "bets": 1.0,
+   "staked": 5.0,
+   "profit": -5.0
   },
   "icehockey_nhl": {
    "last_scanned": "2026-10-28T02:32:11Z",
@@ -448,30 +499,43 @@
    "ts": "2026-10-28T02:32:11Z",
    "kind": "scan",
    "text": "Scanned basketball_nba (13), tennis_atp_vienna_open (8), americanfootball_ncaaf (2), icehockey_nhl (5), boxing_boxing (4) for 15 credits. Placed 3: Milwaukee Bucks @ +280 (bovada); Washington Wizards @ +330 (bovada); Indiana Pacers @ +160 (bovada) Equity $95.00."
+  },
+  {
+   "ts": "2026-10-28T15:58:53Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Brooklyn Nets @ +525 (betrivers) \u2014 LOST: Brooklyn Nets lost by 1 [lost-closing-line, near-miss, underdog-lost]"
+  },
+  {
+   "ts": "2026-10-28T15:58:53Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $90.00 (run #1), 0-2-0, ROI -100.0%, CLV -0.8%."
   }
  ],
  "learned_ids": [
-  "c83a8adf"
+  "c83a8adf",
+  "dc24a15b"
  ],
  "strategist": null,
- "updated": "2026-10-28T02:32:11Z",
+ "updated": "2026-10-28T15:58:53Z",
  "stats": {
-  "bets": 1,
+  "bets": 2,
   "won": 0,
-  "lost": 1,
+  "lost": 2,
   "push": 0,
-  "staked": 5.0,
-  "profit": -5.0,
+  "staked": 10.0,
+  "profit": -10.0,
   "roi": -1.0,
   "clv": -0.0078,
   "clv_n": 3,
-  "open": 7,
-  "equity": 95.0
+  "clv_no_close": 0,
+  "close_mins_median": null,
+  "open": 6,
+  "equity": 90.0
  },
  "weights": {
   "value_fav": 1.0,
   "value_dog": 0.848,
-  "longshot": 1.0,
+  "longshot": 0.842,
   "arb": 1.0,
   "parlay_ev": 1.0,
   "matchup_over": 1.0,
