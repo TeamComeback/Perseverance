@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 75.0,
+  "cash": 60.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -29,7 +29,7 @@
       "book": "betrivers",
       "fair_p": 0.3177,
       "close_p": 0.3114,
-      "result": null
+      "result": "loss"
      }
     ],
     "dec": 3.25,
@@ -39,10 +39,10 @@
     "note": "3.3% edge vs 8-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-28T02:32:06Z"
    },
    {
     "id": "dc24a15b",
@@ -98,7 +98,7 @@
       "price": 2.18,
       "book": "betrivers",
       "fair_p": 0.4726,
-      "close_p": 0.4673,
+      "close_p": 0.4536,
       "result": null
      }
     ],
@@ -183,6 +183,111 @@
     "payout": null,
     "profit": null,
     "settled": null
+   },
+   {
+    "id": "85d9f868",
+    "placed": "2026-10-28T02:32:11Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "83ca338f605b5664b7b1da34c19a0222",
+      "sport": "basketball_nba",
+      "commence": "2026-10-29T00:10:00Z",
+      "home": "Milwaukee Bucks",
+      "away": "Houston Rockets",
+      "market": "h2h",
+      "outcome": "Milwaukee Bucks",
+      "point": null,
+      "price": 3.8,
+      "book": "bovada",
+      "fair_p": 0.2771,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 3.8,
+    "stake": 5.0,
+    "ev": 0.0529,
+    "p": 0.2771,
+    "note": "5.3% edge vs 6-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "e7bfb631",
+    "placed": "2026-10-28T02:32:11Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "f2a1271ffcfd7c85f51640ebff3b7ddd",
+      "sport": "basketball_nba",
+      "commence": "2026-10-28T23:10:00Z",
+      "home": "Cleveland Cavaliers",
+      "away": "Washington Wizards",
+      "market": "h2h",
+      "outcome": "Washington Wizards",
+      "point": null,
+      "price": 4.3,
+      "book": "bovada",
+      "fair_p": 0.2413,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 4.3,
+    "stake": 5.0,
+    "ev": 0.0377,
+    "p": 0.2413,
+    "note": "3.8% edge vs 6-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "4d82a0ba",
+    "placed": "2026-10-28T02:32:11Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "5997ee5c9fbdc53f9c86732b02f58158",
+      "sport": "basketball_nba",
+      "commence": "2026-10-28T23:10:00Z",
+      "home": "Indiana Pacers",
+      "away": "Philadelphia 76ers",
+      "market": "h2h",
+      "outcome": "Indiana Pacers",
+      "point": null,
+      "price": 2.6,
+      "book": "bovada",
+      "fair_p": 0.3976,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 2.6,
+    "stake": 5.0,
+    "ev": 0.0338,
+    "p": 0.3976,
+    "note": "3.4% edge vs 6-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -215,11 +320,11 @@
    "clv_sum": 0.0
   },
   "value_dog": {
-   "bets": 0,
-   "staked": 0.0,
-   "profit": 0.0,
-   "clv_n": 0,
-   "clv_sum": 0.0
+   "bets": 1,
+   "staked": 5.0,
+   "profit": -5.0,
+   "clv_n": 1,
+   "clv_sum": 0.012050000000000116
   },
   "longshot": {
    "bets": 0,
@@ -259,10 +364,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-27T23:40:48Z"
+   "last_scanned": "2026-10-28T02:32:11Z"
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-27T23:40:48Z"
+   "last_scanned": "2026-10-28T02:32:11Z",
+   "bets": 1.0,
+   "staked": 5.0,
+   "profit": -5.0
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -271,7 +379,7 @@
    "last_scanned": "2026-10-27T20:01:28Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-27T20:01:28Z"
+   "last_scanned": "2026-10-28T02:32:11Z"
   },
   "soccer_italy_serie_a": {
    "last_scanned": "2026-10-27T23:40:48Z"
@@ -280,7 +388,7 @@
    "last_scanned": "2026-10-26T22:33:11Z"
   },
   "tennis_atp_vienna_open": {
-   "last_scanned": "2026-10-26T22:18:52Z"
+   "last_scanned": "2026-10-28T02:32:11Z"
   },
   "soccer_england_league1": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -290,6 +398,9 @@
   },
   "soccer_mexico_ligamx": {
    "last_scanned": "2026-10-27T23:40:48Z"
+  },
+  "boxing_boxing": {
+   "last_scanned": "2026-10-28T02:32:11Z"
   }
  },
  "journal": [
@@ -327,27 +438,39 @@
    "ts": "2026-10-28T01:12:38Z",
    "kind": "props",
    "text": "NBA matchups: 1 games, strongest spots: Scoot Henderson reb -10% vs LAL; Walker Kessler pts +10% vs POR; Jrue Holiday ast +10% vs LAL. No credits to price props this run (allowance 40). "
+  },
+  {
+   "ts": "2026-10-28T02:32:06Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Columbus Blue Jackets -1.5 @ +225 (betrivers)"
+  },
+  {
+   "ts": "2026-10-28T02:32:11Z",
+   "kind": "scan",
+   "text": "Scanned basketball_nba (13), tennis_atp_vienna_open (8), americanfootball_ncaaf (2), icehockey_nhl (5), boxing_boxing (4) for 15 credits. Placed 3: Milwaukee Bucks @ +280 (bovada); Washington Wizards @ +330 (bovada); Indiana Pacers @ +160 (bovada) Equity $95.00."
   }
  ],
- "learned_ids": [],
+ "learned_ids": [
+  "c83a8adf"
+ ],
  "strategist": null,
- "updated": "2026-10-28T01:12:38Z",
+ "updated": "2026-10-28T02:32:11Z",
  "stats": {
-  "bets": 0,
+  "bets": 1,
   "won": 0,
-  "lost": 0,
+  "lost": 1,
   "push": 0,
-  "staked": 0,
-  "profit": 0,
-  "roi": 0,
-  "clv": 0.0021,
+  "staked": 5.0,
+  "profit": -5.0,
+  "roi": -1.0,
+  "clv": -0.0078,
   "clv_n": 3,
-  "open": 5,
-  "equity": 100.0
+  "open": 7,
+  "equity": 95.0
  },
  "weights": {
   "value_fav": 1.0,
-  "value_dog": 1.0,
+  "value_dog": 0.848,
   "longshot": 1.0,
   "arb": 1.0,
   "parlay_ev": 1.0,
