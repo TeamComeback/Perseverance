@@ -132,3 +132,7 @@ def closing_update(open_bets, events):
                 for o in line["outcomes"]:
                     if o["name"] == leg["outcome"] and o["point"] == leg["point"]:
                         leg["close_p"] = round(o["all_fair"], 4)
+                        # When the "close" was taken: the last scan before the game. Minutes
+                        # before start show how close to the real closing line it is.
+                        leg["close_at"] = store.iso(store.now())
+                        leg["close_mins"] = int((store.parse(ev["commence_time"]) - store.now()).total_seconds() // 60)
