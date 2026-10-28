@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 60.0,
+  "cash": 55.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -129,8 +129,10 @@
       "price": 2.18,
       "book": "betrivers",
       "fair_p": 0.4726,
-      "close_p": 0.4536,
-      "result": null
+      "close_p": 0.4578,
+      "result": null,
+      "close_at": "2026-10-28T20:12:46Z",
+      "close_mins": 207
      }
     ],
     "dec": 2.18,
@@ -234,8 +236,10 @@
       "price": 3.8,
       "book": "bovada",
       "fair_p": 0.2771,
-      "close_p": null,
-      "result": null
+      "close_p": 0.2606,
+      "result": null,
+      "close_at": "2026-10-28T20:12:46Z",
+      "close_mins": 237
      }
     ],
     "dec": 3.8,
@@ -269,8 +273,10 @@
       "price": 4.3,
       "book": "bovada",
       "fair_p": 0.2413,
-      "close_p": null,
-      "result": null
+      "close_p": 0.2344,
+      "result": null,
+      "close_at": "2026-10-28T20:12:46Z",
+      "close_mins": 177
      }
     ],
     "dec": 4.3,
@@ -304,8 +310,10 @@
       "price": 2.6,
       "book": "bovada",
       "fair_p": 0.3976,
-      "close_p": null,
-      "result": null
+      "close_p": 0.3023,
+      "result": null,
+      "close_at": "2026-10-28T20:12:46Z",
+      "close_mins": 177
      }
     ],
     "dec": 2.6,
@@ -313,6 +321,41 @@
     "ev": 0.0338,
     "p": 0.3976,
     "note": "3.4% edge vs 6-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "30595077",
+    "placed": "2026-10-28T20:12:46Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "2f65119127127c0185cf3bdc236a00f2",
+      "sport": "icehockey_nhl",
+      "commence": "2026-10-30T00:10:00Z",
+      "home": "Dallas Stars",
+      "away": "Montr\u00e9al Canadiens",
+      "market": "spreads",
+      "outcome": "Dallas Stars",
+      "point": -1.5,
+      "price": 2.54,
+      "book": "draftkings",
+      "fair_p": 0.4076,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 2.54,
+    "stake": 5.0,
+    "ev": 0.0353,
+    "p": 0.4076,
+    "note": "3.5% edge vs 2-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -412,25 +455,25 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-28T02:32:11Z",
+   "last_scanned": "2026-10-28T20:12:46Z",
    "bets": 1.0,
    "staked": 5.0,
    "profit": -5.0
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-28T02:32:11Z",
+   "last_scanned": "2026-10-28T20:12:46Z",
    "bets": 1.0,
    "staked": 5.0,
    "profit": -5.0
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-26T22:33:11Z"
+   "last_scanned": "2026-10-28T20:12:46Z"
   },
   "baseball_mlb": {
-   "last_scanned": "2026-10-27T20:01:28Z"
+   "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-28T02:32:11Z"
+   "last_scanned": "2026-10-28T20:12:46Z"
   },
   "soccer_italy_serie_a": {
    "last_scanned": "2026-10-27T23:40:48Z"
@@ -509,6 +552,11 @@
    "ts": "2026-10-28T15:58:53Z",
    "kind": "daily",
    "text": "Day close \u2014 equity $90.00 (run #1), 0-2-0, ROI -100.0%, CLV -0.8%."
+  },
+  {
+   "ts": "2026-10-28T20:12:46Z",
+   "kind": "scan",
+   "text": "Scanned basketball_nba (12), icehockey_nhl (15), americanfootball_nfl (1), americanfootball_ncaaf (4), baseball_mlb (1) for 15 credits. Placed 1: Dallas Stars -1.5 @ +154 (draftkings) Equity $90.00."
   }
  ],
  "learned_ids": [
@@ -516,7 +564,7 @@
   "dc24a15b"
  ],
  "strategist": null,
- "updated": "2026-10-28T15:58:53Z",
+ "updated": "2026-10-28T20:12:46Z",
  "stats": {
   "bets": 2,
   "won": 0,
@@ -525,11 +573,11 @@
   "staked": 10.0,
   "profit": -10.0,
   "roi": -1.0,
-  "clv": -0.0078,
-  "clv_n": 3,
+  "clv": -0.0384,
+  "clv_n": 6,
   "clv_no_close": 0,
-  "close_mins_median": null,
-  "open": 6,
+  "close_mins_median": 207,
+  "open": 7,
   "equity": 90.0
  },
  "weights": {
