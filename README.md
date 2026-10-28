@@ -41,6 +41,8 @@ The agent hunts player props where the matchup moves a player away from his own 
 
 The **NBA matchups** panel on the dashboard lists tonight's strongest spots with the reasons, and a Bet this button for any line the agent priced.
 
+**Live tracking:** every open bet shows when it was placed, a game-progress bar, the current score, time remaining and whether it is winning, covering or on pace. Props also show the player's live stat against the line. It comes from ESPN's free feed, fetched by your browser every 30 seconds, so it costs no Odds API credits. The **Time log** panel lists every bet placed and settled, newest first.
+
 A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts automatically, and everything the agent has learned carries over.
 
 ## Credit budget (free tier: 500/month)

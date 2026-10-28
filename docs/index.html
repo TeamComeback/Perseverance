@@ -95,6 +95,30 @@ a.opt .b{font-size:10px;color:var(--dim)}
 .mu .line a{background:var(--you);color:#0b0f17;font-weight:700;text-decoration:none;padding:6px 10px;border-radius:8px;white-space:nowrap}
 .lean{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;letter-spacing:.04em}
 .lean.Over{background:var(--win-d);color:var(--win)} .lean.Under{background:var(--loss-d);color:var(--loss)}
+.lv{grid-column:1/-1;margin-top:8px;background:var(--panel2);border-radius:10px;padding:9px 10px}
+.lv .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:13px}
+.lv .t .sc{font-family:var(--mono);font-weight:700;white-space:nowrap}
+.lv .t .st{color:var(--dim);font-size:12px}
+.lv .s{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-top:5px;color:var(--dim)}
+.lv .s b{font-weight:600}
+.lv .tone-win{color:var(--win)} .lv .tone-lose{color:var(--loss)} .lv .tone-even{color:var(--gold)}
+.pbar{height:6px;background:#0b0f17;border-radius:99px;margin-top:7px;overflow:hidden;position:relative}
+.pbar i{display:block;height:100%;border-radius:99px;background:var(--dim);transition:width .6s}
+.pbar.win i{background:var(--win)} .pbar.lose i{background:var(--loss)} .pbar.even i{background:var(--gold)}
+.sbar{height:6px;background:#0b0f17;border-radius:99px;margin-top:5px;position:relative;overflow:visible}
+.sbar i{display:block;height:100%;border-radius:99px;background:var(--you);transition:width .6s}
+.sbar u{position:absolute;top:-3px;width:2px;height:12px;background:var(--text);border-radius:1px}
+.sbar.win i{background:var(--win)} .sbar.lose i{background:var(--loss)}
+.pill.live{background:var(--loss-d);color:var(--loss)} .pill.live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--loss);margin-right:5px;animation:pulse 1.4s infinite}
+.pill.fin{background:var(--panel);color:var(--text)}
+@keyframes pulse{50%{opacity:.25}}
+.lv .leg{margin-top:6px;padding-top:6px;border-top:1px solid var(--line)} .lv .leg:first-child{margin-top:0;padding-top:0;border-top:0}
+.tl{border-left:2px solid var(--line);margin-left:4px;padding-left:14px}
+.tl .e{position:relative;padding:7px 0;font-size:13px}
+.tl .e::before{content:"";position:absolute;left:-20px;top:13px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--mars)}
+.tl .e.you::before{border-color:var(--you)} .tl .e.won::before{border-color:var(--win);background:var(--win)} .tl .e.lost::before{border-color:var(--loss);background:var(--loss)} .tl .e.push::before{border-color:var(--dim)}
+.tl time{display:block;font-size:11px;color:var(--dim)}
+.tl .e span.r{float:right;font-family:var(--mono);font-size:12px}
 </style>
 </head>
 <body>
@@ -111,6 +135,7 @@ a.opt .b{font-size:10px;color:var(--dim)}
   <div class="card chart"><div class="label">Equity · agent vs you</div><div id="chart"></div></div>
 
   <details open id="openD"><summary>Agent's open bets <span class="meta" id="openMeta"></span></summary><div class="body" id="openBets"></div></details>
+  <details id="logD"><summary>Time log <span class="meta" id="logMeta"></span></summary><div class="body" id="tlog"></div></details>
   <details id="resD"><summary>Agent's results <span class="meta" id="resMeta"></span></summary><div class="body" id="results"></div></details>
   <details id="armsD"><summary>Playbooks <span class="meta">what it leans on</span></summary><div class="body" id="arms"></div></details>
   <details id="brainD"><summary>Brain <span class="meta">live strategy + journal</span></summary><div class="body" id="brain"></div></details>
@@ -169,10 +194,15 @@ function betRow(b) {
   const right = b.status === "open"
     ? `${money(b.stake)}<br><span style="color:var(--dim)">to win ${money(b.stake*(b.dec-1))}</span>`
     : `<span class="${cls(b.profit)}">${money(b.profit, true)}</span><br><span style="color:var(--dim)">${money(b.stake)}</span>`;
-  const sub = [l.sport && SPORT(l.sport), MK[l.market] && !multi ? MK[l.market] : "", game, l.commence && b.status === "open" ? when(l.commence) : "",
+  const placed = b.placed ? "Placed " + when(b.placed) + (b.status === "open" ? " (" + ago(b.placed) + ")" : "") : "";
+  const settled = b.settled && b.status !== "open" ? "settled " + when(b.settled) : "";
+  const sub = [l.sport && SPORT(l.sport), MK[l.market] && !multi ? MK[l.market] : "", game, l.commence && b.status === "open" ? "starts " + when(l.commence) : "",
                (l.book || "") + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "",
                l.actual != null ? "finished with " + l.actual : "", b.note].filter(Boolean).map(esc).join(" · ");
-  return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div></div>`;
+  const time = [placed, settled].filter(Boolean).join(" · ");
+  return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div>` +
+    (time ? `<div class="sub" style="grid-column:1/-1">⏱ ${esc(time)}</div>` : "") +
+    (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") + `</div>`;
 }
 
 function raceCard(el, name, book, stats, color) {
@@ -281,6 +311,225 @@ function nba(pz, state) {
   $("nba").querySelectorAll("button[data-l]").forEach(b => b.onclick = () => { window._nl = b.dataset.l; nba(pz, state); });
 }
 
+
+// ---------- time log ----------
+function timeLog(state, manual) {
+  const sel = window._tl || "all";
+  const ev = [];
+  const add = (b, who) => {
+    const l = b.legs[0], multi = b.legs.length > 1;
+    const title = multi ? b.legs.map(legText).join(" + ") : legText(l) + (MK[l.market] && l.market !== "h2h" && l.market !== "spreads" && l.market !== "totals" ? " " + MK[l.market] : "");
+    if (b.placed) ev.push({ts: b.placed, who, kind: "placed", b, title});
+    if (b.settled && b.status !== "open") ev.push({ts: b.settled, who, kind: b.status, b, title});
+  };
+  state.book.bets.forEach(b => add(b, "agent")); manual.book.bets.forEach(b => add(b, "you"));
+  const rows = ev.filter(e => sel === "all" || e.who === sel).sort((a, b) => b.ts.localeCompare(a.ts));
+  $("logMeta").textContent = ev.length ? ev.filter(e => e.kind === "placed").length + " bets" : "";
+  $("tlog").innerHTML = `<div class="filters">${["all", "agent", "you"].map(k => `<button class="${k === sel ? "on" : ""}" data-k="${k}">${k}</button>`).join("")}</div>` +
+    (rows.length ? `<div class="tl">${rows.slice(0, 80).map(e => {
+      const b = e.b, verb = e.kind === "placed" ? "Bet placed" : e.kind === "won" ? "Won" : e.kind === "lost" ? "Lost" : e.kind === "push" ? "Push" : "Settled";
+      const amt = e.kind === "placed" ? money(b.stake) : money(b.profit ?? 0, true);
+      return `<div class="e ${e.kind === "placed" ? e.who : e.kind}"><time>${when(e.ts)} · ${ago(e.ts)} · ${e.who === "you" ? "You" : "Agent"}</time>
+        <span class="r ${e.kind === "placed" ? "" : cls(b.profit)}">${amt}</span><b>${verb}</b> · ${esc(e.title)}
+        <div style="font-size:12px;color:var(--dim)">${esc(b.legs[0].home ? b.legs[0].away + " @ " + b.legs[0].home : "")}${b.legs[0].book ? " · " + esc(b.legs[0].book) + " " + am(b.dec) : ""}</div></div>`;
+    }).join("")}</div>` : '<div class="empty">No bets yet.</div>');
+  $("tlog").querySelectorAll("button").forEach(b => b.onclick = () => { window._tl = b.dataset.k; timeLog(state, manual); });
+}
+
+// ---------- live games (free ESPN feed, fetched by your browser) ----------
+const ESPN = {
+  basketball_nba:{p:"basketball/nba", per:4, len:12}, basketball_wnba:{p:"basketball/wnba", per:4, len:10},
+  basketball_ncaab:{p:"basketball/mens-college-basketball", per:2, len:20, q:"&groups=50"},
+  americanfootball_nfl:{p:"football/nfl", per:4, len:15}, americanfootball_ncaaf:{p:"football/college-football", per:4, len:15, q:"&groups=80"},
+  icehockey_nhl:{p:"hockey/nhl", per:3, len:20}, baseball_mlb:{p:"baseball/mlb", inn:9},
+  soccer_epl:{p:"soccer/eng.1", soc:1}, soccer_usa_mls:{p:"soccer/usa.1", soc:1}, soccer_uefa_champs_league:{p:"soccer/uefa.champions", soc:1},
+  mma_mixed_martial_arts:{p:"mma/ufc", none:1}
+};
+const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/";
+const _cache = {};
+async function cached(key, ttl, fn) {
+  const c = _cache[key];
+  if (c && Date.now() - c.t < ttl) return c.v;
+  try { const v = await fn(); _cache[key] = {t: Date.now(), v}; return v; } catch (e) { return c ? c.v : null; }
+}
+const etDate = ts => new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit"}).format(new Date(ts)).replaceAll("-", "");
+const nk = s => String(s || "").toLowerCase().replace(/^la /, "los angeles ").replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
+function teamOf(c) {
+  const t = c.team || {};
+  return {name: t.displayName, nick: t.name, loc: t.location, abbr: t.abbreviation, score: Number(c.score ?? 0)};
+}
+const dispSec = d => { const m = /^(\d+):(\d+)(?:\.\d+)?$/.exec(d || ""); return m ? +m[1] * 60 + +m[2] : (/^\d+(\.\d+)?$/.test(d || "") ? +d : null); };
+function normGame(e) {
+  const st = e.status || {}, ty = st.type || {};
+  const comp = (e.competitions && e.competitions[0]) || e, cs = comp.competitors || [];
+  const h = cs.find(c => c.homeAway === "home"), a = cs.find(c => c.homeAway === "away");
+  if (!h || !a) return null;
+  return {id: e.id, state: ty.state || "pre", detail: ty.shortDetail || ty.detail || "", period: st.period || 0, clock: st.clock ?? dispSec(st.displayClock),
+          disp: st.displayClock || "", home: teamOf(h), away: teamOf(a), start: e.date};
+}
+const sameTeam = (odds, t) => {
+  const o = nk(odds), full = nk(t.name);
+  if (!o || !t.name) return false;
+  if (o === full) return true;
+  const nick = nk(t.nick), loc = nk(t.loc);
+  return !!nick && o.endsWith(nick) && (!loc || o.startsWith(loc) || nk(t.loc) === "la");
+};
+async function scoreboard(sport, date) {
+  const cfg = ESPN[sport]; if (!cfg) return null;
+  return cached("sb|" + sport + date, 25000, async () => {
+    const r = await fetch(ESPN_BASE + cfg.p + "/scoreboard?dates=" + date + "&limit=400" + (cfg.q || ""));
+    const d = await r.json(); return (d.events || []).map(normGame).filter(Boolean);
+  });
+}
+async function summary(sport, id) {
+  const cfg = ESPN[sport]; if (!cfg) return null;
+  return cached("sm|" + id, 25000, async () => {
+    const r = await fetch(ESPN_BASE + cfg.p + "/summary?event=" + id); const d = await r.json();
+    const comp = d.header.competitions[0];
+    const g = normGame({id, date: comp.date, status: comp.status, competitions: [comp]});
+    const players = {};
+    for (const t of (d.boxscore?.players || [])) for (const grp of (t.statistics || [])) {
+      const L = grp.labels || [];
+      for (const a of (grp.athletes || [])) {
+        const row = {}; L.forEach((k, i) => row[k] = a.stats?.[i]);
+        players[a.athlete.id] = row;
+      }
+    }
+    return {g, players};
+  });
+}
+const clockStr = sec => { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); };
+function progress(sport, g) {
+  const cfg = ESPN[sport] || {};
+  if (g.state === "pre") return {frac: 0, left: ""};
+  if (g.state === "post") return {frac: 1, left: "Final"};
+  if (cfg.per) {
+    const total = cfg.per * cfg.len * 60, p = g.period, c = g.clock ?? 0;
+    if (p > cfg.per) return {frac: 1, left: "Overtime · " + clockStr(c) + " in period"};
+    const el = (p - 1) * cfg.len * 60 + (cfg.len * 60 - c);
+    return {frac: Math.min(1, el / total), left: clockStr(total - el) + " left in regulation"};
+  }
+  if (cfg.inn) {
+    const p = g.period || 1, d = g.detail.toLowerCase();
+    const off = d.startsWith("top") ? 0.25 : d.startsWith("mid") ? 0.5 : d.startsWith("bot") ? 0.75 : d.startsWith("end") ? 1 : 0.5;
+    const el = p - 1 + off;
+    return {frac: Math.min(0.99, el / cfg.inn), left: el >= cfg.inn ? "Extra innings" : "≈ " + (cfg.inn - el).toFixed(1).replace(".0", "") + " innings left"};
+  }
+  if (cfg.soc) {
+    const m = parseInt(g.disp) || 0;
+    return {frac: Math.min(1, m / 90), left: m >= 90 ? "Stoppage time" : "≈ " + (90 - m) + " min left"};
+  }
+  return {frac: 0.5, left: ""};
+}
+function evalLeg(l, g) {
+  const mine = l.outcome === l.home ? g.home : l.outcome === l.away ? g.away : null;
+  const other = mine === g.home ? g.away : g.home;
+  const fin = g.state === "post", F = x => (Math.abs(x) % 1 ? x.toFixed(1) : x.toFixed(0));
+  if (l.market === "h2h") {
+    if (!mine) return {tone: g.home.score === g.away.score ? "win" : "lose", txt: g.home.score === g.away.score ? "Level — the draw is live" : "Draw needs level scores"};
+    const d = mine.score - other.score;
+    return {tone: d > 0 ? "win" : d < 0 ? "lose" : "even", txt: d > 0 ? (fin ? "Won" : "Winning") + " by " + F(d) : d < 0 ? (fin ? "Lost" : "Trailing") + " by " + F(-d) : "Tied"};
+  }
+  if (l.market === "spreads" && mine) {
+    const m = mine.score - other.score + (l.point || 0);
+    return {tone: m > 0 ? "win" : m < 0 ? "lose" : "even", txt: m > 0 ? (fin ? "Covered" : "Covering") + " by " + F(m) : m < 0 ? (fin ? "Missed" : "Not covering") + " by " + F(-m) : "On the number"};
+  }
+  if (l.market === "totals") {
+    const tot = g.home.score + g.away.score, over = String(l.outcome).toLowerCase() === "over", gap = tot - l.point;
+    const ok = over ? gap > 0 : gap < 0;
+    const need = Math.floor(l.point - tot) + 1;
+    return {tone: gap === 0 ? "even" : ok ? "win" : "lose",
+      txt: "Total " + F(tot) + " · " + (over ? (gap > 0 ? "over by " + F(gap) : "needs " + need + " more") : (gap < 0 ? F(-gap) + " of room" : "busted by " + F(gap)))};
+  }
+  return null;
+}
+function statVal(row, stat) {
+  if (!row) return null;
+  const n = k => Number(row[k]) || 0;
+  switch (stat) {
+    case "pts": return n("PTS"); case "reb": return n("REB"); case "ast": return n("AST");
+    case "tpm": return Number(String(row["3PT"] || "0-0").split("-")[0]) || 0;
+    case "pra": return n("PTS") + n("REB") + n("AST");
+  }
+  return null;
+}
+const STATWORD = {pts: "pts", reb: "reb", ast: "ast", tpm: "threes", pra: "PRA"};
+function untilStr(ts) {
+  const m = Math.round((new Date(ts) - Date.now()) / 60000);
+  if (m <= 0) return "any minute";
+  return m < 60 ? m + "m" : m < 1440 ? Math.floor(m / 60) + "h " + (m % 60) + "m" : Math.floor(m / 1440) + "d " + Math.floor((m % 1440) / 60) + "h";
+}
+
+async function liveFor(b) {
+  const legs = b.legs.filter(l => l.sport && l.commence);
+  if (!legs.length) return "";
+  const parts = [];
+  let tones = [], frac = null, anyLive = false;
+  for (const l of legs) {
+    const isProp = String(l.market).startsWith("player_") || l.stat;
+    const startMs = new Date(l.commence).getTime(), now = Date.now();
+    const label = legs.length > 1 ? `<div style="font-size:12px;margin-bottom:3px">${legText(l)}</div>` : "";
+    if (now < startMs - 15 * 60000) {
+      parts.push(`<div class="leg">${label}<div class="t"><span class="st">Starts in <b class="num" style="color:var(--text)">${untilStr(l.commence)}</b> · ${when(l.commence)}</span></div></div>`);
+      tones.push("even"); continue;
+    }
+    let g = null, players = null;
+    if (isProp && l.espn_id) {
+      const sm = await summary(l.sport, l.espn_id); if (sm) { g = sm.g; players = sm.players; }
+    } else {
+      const sb = await scoreboard(l.sport, etDate(l.commence));
+      g = (sb || []).find(x => sameTeam(l.home, x.home) && sameTeam(l.away, x.away)) || null;
+    }
+    if (!g) {
+      parts.push(`<div class="leg">${label}<div class="t"><span class="st">${now < startMs ? "Starting soon" : "Started " + ago(l.commence)} · live feed not available for this game</span></div></div>`);
+      tones.push("even"); continue;
+    }
+    const pr = progress(l.sport, g);
+    if (g.state === "in") anyLive = true;
+    frac = frac == null ? pr.frac : Math.min(frac, pr.frac);
+    const sc = `${esc(g.away.abbr || g.away.name)} <b>${g.away.score}</b> – ${esc(g.home.abbr || g.home.name)} <b>${g.home.score}</b>`;
+    const badge = g.state === "in" ? '<span class="pill live">LIVE</span>' : g.state === "post" ? '<span class="pill fin">FINAL</span>' : '<span class="pill">SOON</span>';
+    let ev = null, statBar = "";
+    if (isProp && players) {
+      const row = players[l.player_id], v = statVal(row, l.stat), over = String(l.side).toLowerCase() === "over";
+      if (v == null) {
+        ev = {tone: "even", txt: g.state === "pre" ? "Waiting for tip-off" : "Not in the box score yet (hasn't played)"};
+      } else {
+        const cashed = over && v > l.point, busted = !over && v > l.point;
+        const ok = over ? v > l.point : v < l.point;
+        const tone = cashed ? "win" : busted ? "lose" : (g.state === "post" ? (ok ? "win" : "lose") : "even");
+        const tail = over ? (cashed ? "cleared" : "needs " + (Math.floor(l.point - v) + 1) + " more") : (busted ? "busted" : (l.point - v).toFixed(1).replace(".0", "") + " of room");
+        ev = {tone, txt: `${v} ${STATWORD[l.stat]} · ${over ? "O" : "U"} ${l.point} · ${tail}`};
+        const mx = Math.max(l.point * 1.25, v, 1);
+        statBar = `<div class="sbar ${tone}"><i style="width:${Math.min(100, v / mx * 100)}%"></i><u style="left:${l.point / mx * 100}%"></u></div>`;
+      }
+    } else if (!isProp) {
+      ev = evalLeg(l, g);
+    }
+    tones.push(ev ? ev.tone : "even");
+    parts.push(`<div class="leg">${label}<div class="t"><span>${badge} <span class="st">${esc(g.state === "pre" ? when(l.commence) : g.detail)}</span></span><span class="sc">${sc}</span></div>` +
+      `<div class="pbar ${ev ? ev.tone : ""}"><i style="width:${Math.max(2, pr.frac * 100)}%"></i></div>${statBar}` +
+      `<div class="s"><b class="${ev ? "tone-" + ev.tone : ""}">${ev ? esc(ev.txt) : ""}</b><span>${esc(pr.left)}</span></div></div>`);
+  }
+  return parts.length ? `<div class="lv">${parts.join("")}</div>` : "";
+}
+
+let _liveBusy = false;
+async function liveTick(bets) {
+  if (_liveBusy || document.hidden) return; _liveBusy = true;
+  try {
+    const slots = [...document.querySelectorAll(".lvslot")];
+    let live = 0;
+    await Promise.all(slots.map(async el => {
+      const b = bets.find(x => x.id === el.dataset.id); if (!b) return;
+      const html = await liveFor(b);
+      if (el.innerHTML !== html) el.innerHTML = html;
+      if (html.includes("pill live")) live++;
+    }));
+    const m = $("openMeta"); if (m && m.dataset.base != null) m.textContent = m.dataset.base + (live ? " · " + live + " live" : "");
+  } finally { _liveBusy = false; }
+}
+
 (async () => {
   const [state, manual, budget, bd, hist, pz] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []), get("props.json", {})]);
@@ -292,11 +541,13 @@ function nba(pz, state) {
 
   const open = state.book.bets.filter(b => b.status === "open").reverse();
   $("openMeta").textContent = open.length ? open.length + " · " + money(open.reduce((s, b) => s + b.stake, 0)) + " riding" : "none";
+  $("openMeta").dataset.base = $("openMeta").textContent;
   $("openBets").innerHTML = open.map(betRow).join("") || '<div class="empty">Nothing riding right now.</div>';
   const done = state.book.bets.filter(b => b.status !== "open").reverse();
   $("resMeta").textContent = done.length + " settled";
   $("results").innerHTML = done.slice(0, 50).map(betRow).join("") || '<div class="empty">No results yet.</div>';
 
+  timeLog(state, manual);
   arms(state); brain(state); board(bd); nba(pz, state);
 
   const mb = manual.book.bets.slice().reverse();
@@ -309,6 +560,10 @@ function nba(pz, state) {
   $("runsMeta").textContent = runs.length ? runs.length + " finished" : "none yet";
   $("runs").innerHTML = runs.map(r => `<div class="bet"><div class="what"><span class="pill ${r.result === "won" ? "won" : "lost"}">${r.result.toUpperCase()}</span>${r.you ? "You" : "Agent"} · run #${r.run}</div>
     <div class="amt">${money(r.final)}</div><div class="sub">peak ${money(r.peak)} · ${r.bets} bets · ${when(r.started)} → ${when(r.ended)}</div></div>`).join("") || '<div class="empty">Every run ends at $1,000 or broke. None have finished yet.</div>';
+
+  const allOpen = state.book.bets.concat(manual.book.bets).filter(b => b.status === "open");
+  liveTick(allOpen); setInterval(() => liveTick(allOpen), 30000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) liveTick(allOpen); });
 
   const rem = budget.remaining ?? 0, mon = budget.monthly || 500;
   $("credMeta").textContent = budget.remaining != null ? rem + " / " + mon + " left" : "";
