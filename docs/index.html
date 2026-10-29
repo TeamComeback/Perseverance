@@ -589,7 +589,7 @@ async function liveTick(bets) {
   $("credMeta").textContent = budget.remaining != null ? rem + " / " + mon + " left" : "";
   $("credits").innerHTML = `<div class="meter"><i style="width:${Math.min(100, rem / mon * 100)}%"></i></div>
     <div class="row"><span>Left <b class="num">${rem}</b></span><span>Per scan <b class="num">${budget.allowance ?? "—"}</b></span>
-    <span>Floor <b class="num">${budget.reserve ?? 25}</b></span><span>Scans left this month <b class="num">${budget.runs_left ?? "—"}</b></span></div>
+    <span>Floor <b class="num">${budget.reserve ?? 25}</b></span><span>Scans left this month <b class="num">${budget.runs_left ?? "—"}</b></span>${budget.month_end_mode ? `<span><b>Month-end mode</b>: spending spare credits before the reset</span>` : ""}</div>
     <div class="desc" style="font-size:12px;color:var(--dim);margin-top:8px">The agent splits what's left evenly across the remaining scans and never spends below the floor, so the free tier can't run out before it resets.</div>`;
 })();
 </script>

@@ -139,7 +139,8 @@ def cycle():
 
     eq = bk.equity(state["book"])
     if scanned:
-        brain.note(state, "scan", f"Scanned {', '.join(scanned)} for {budget.spent_this_run} credits. "
+        brain.note(state, "scan", ("Month-end mode (credits reset on the 1st): " if budget.month_end else "")
+                   + f"Scanned {', '.join(scanned)} for {budget.spent_this_run} credits. "
                    + (f"Placed {len(placed)}: " + "; ".join(describe(b) for b in placed) if placed
                       else "Nothing cleared the bar.") + f" Equity ${eq:.2f}.")
     else:

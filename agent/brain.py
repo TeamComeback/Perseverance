@@ -126,7 +126,8 @@ def pick_sports(state, client, budget):
     for s in sports:
         key = s["key"]
         base = config.SPORT_PRIORITY.get(key, config.DEFAULT_PRIORITY)
-        if base < 0.45 and random.random() > 0.15:   # minor sports: occasional exploration
+        # minor sports: occasional exploration, or always in month-end mode when credits would expire unused
+        if base < 0.45 and not getattr(budget, "month_end", False) and random.random() > 0.15:
             continue
         try:
             evs = [e for e in client.events(key) if market.window_ok(e)]
