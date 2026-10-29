@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 68.0,
+  "cash": 63.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -525,10 +525,10 @@
       "price": 2.54,
       "book": "draftkings",
       "fair_p": 0.4076,
-      "close_p": 0.3847,
+      "close_p": 0.3924,
       "result": null,
-      "close_at": "2026-10-29T02:43:03Z",
-      "close_mins": 1286
+      "close_at": "2026-10-29T20:13:00Z",
+      "close_mins": 236
      }
     ],
     "dec": 2.54,
@@ -679,7 +679,11 @@
       "book": "fanduel",
       "fair_p": 0.2485,
       "close_p": null,
-      "result": null
+      "result": "loss",
+      "final": {
+       "home": 2.0,
+       "away": 0.0
+      }
      }
     ],
     "dec": 4.2,
@@ -687,6 +691,66 @@
     "ev": 0.0438,
     "p": 0.2485,
     "note": "4.4% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-29T20:12:48Z",
+    "review": {
+     "headline": "LOST: Tallon Griekspoor lost by 2",
+     "final": "Tallon Griekspoor 0 \u2013 Alexander Zverev 2",
+     "legs": [
+      {
+       "outcome": "Tallon Griekspoor",
+       "result": "loss",
+       "headline": "Tallon Griekspoor lost by 2",
+       "final": "Tallon Griekspoor 0 \u2013 Alexander Zverev 2",
+       "why": [
+        "Tallon Griekspoor lost by 2.",
+        "We priced it at 25% to hit vs 24% needed to break even at 4.2x (+4.4% expected edge).",
+        "Consensus fair probability when placed: 25% (no closing price captured)."
+       ],
+       "tags": [
+        "underdog-lost",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "near-miss",
+      "underdog-lost"
+     ]
+    }
+   },
+   {
+    "id": "bf134eb4",
+    "placed": "2026-10-29T20:13:00Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_fav",
+    "legs": [
+     {
+      "event_id": "44ee19d31b9288ad402868d6df737595",
+      "sport": "americanfootball_ncaaf",
+      "commence": "2026-10-30T23:30:00Z",
+      "home": "UCF Knights",
+      "away": "Baylor Bears",
+      "market": "h2h",
+      "outcome": "UCF Knights",
+      "point": null,
+      "price": 2.1,
+      "book": "fanduel",
+      "fair_p": 0.5,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 2.1,
+    "stake": 5.0,
+    "ev": 0.05,
+    "p": 0.5,
+    "note": "5.0% edge vs 2-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -725,9 +789,9 @@
    "clv_sum": 0.0
   },
   "value_dog": {
-   "bets": 6,
-   "staked": 30.0,
-   "profit": -19.1,
+   "bets": 7,
+   "staked": 35.0,
+   "profit": -24.1,
    "clv_n": 6,
    "clv_sum": -0.33995600000000004,
    "tags": {
@@ -742,11 +806,16 @@
      "lost": 3
     },
     "underdog-lost": {
-     "n": 3,
+     "n": 4,
      "won": 0,
-     "lost": 3
+     "lost": 4
     },
     "beat-closing-line": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "near-miss": {
      "n": 1,
      "won": 0,
      "lost": 1
@@ -825,25 +894,25 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-28T23:58:42Z",
+   "last_scanned": "2026-10-29T20:12:59Z",
    "bets": 5.0,
    "staked": 25.0,
    "profit": -12.9
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-29T02:43:03Z",
+   "last_scanned": "2026-10-29T20:12:59Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": 0.9000000000000004
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-29T20:12:59Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-29T20:12:59Z"
   },
   "soccer_italy_serie_a": {
    "last_scanned": "2026-10-29T02:43:03Z"
@@ -852,7 +921,10 @@
    "last_scanned": "2026-10-29T02:43:03Z"
   },
   "tennis_atp_vienna_open": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-29T02:43:03Z",
+   "bets": 1.0,
+   "staked": 5.0,
+   "profit": -5.0
   },
   "soccer_england_league1": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -877,6 +949,18 @@
   },
   "icehockey_sweden_hockey_league": {
    "last_scanned": "2026-10-29T02:43:03Z"
+  },
+  "mma_mixed_martial_arts": {
+   "last_scanned": "2026-10-29T20:13:00Z"
+  },
+  "soccer_spain_la_liga": {
+   "last_scanned": "2026-10-29T20:13:00Z"
+  },
+  "icehockey_ahl": {
+   "last_scanned": "2026-10-29T20:13:00Z"
+  },
+  "soccer_germany_bundesliga": {
+   "last_scanned": "2026-10-29T20:13:00Z"
   }
  },
  "journal": [
@@ -994,6 +1078,16 @@
    "ts": "2026-10-29T16:05:45Z",
    "kind": "daily",
    "text": "Day close \u2014 equity $78.00 (run #1), 2-7-0, ROI -48.9%, CLV -3.8%."
+  },
+  {
+   "ts": "2026-10-29T20:12:48Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Tallon Griekspoor @ +320 (fanduel) \u2014 LOST: Tallon Griekspoor lost by 2 [near-miss, underdog-lost]"
+  },
+  {
+   "ts": "2026-10-29T20:13:00Z",
+   "kind": "scan",
+   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (14), basketball_nba (13), americanfootball_ncaaf (5), americanfootball_nfl (1), mma_mixed_martial_arts (4), soccer_spain_la_liga (1), icehockey_ahl (8), soccer_germany_bundesliga (1) for 22 credits. Placed 1: UCF Knights @ +110 (fanduel) Equity $73.00."
   }
  ],
  "learned_ids": [
@@ -1005,28 +1099,29 @@
   "4ccde1de",
   "78582f01",
   "7c50e6a5",
-  "90a4c80b"
+  "90a4c80b",
+  "fb752fbe"
  ],
  "strategist": null,
- "updated": "2026-10-29T16:05:45Z",
+ "updated": "2026-10-29T20:13:00Z",
  "stats": {
-  "bets": 9,
+  "bets": 10,
   "won": 2,
-  "lost": 7,
+  "lost": 8,
   "push": 0,
-  "staked": 45.0,
-  "profit": -22.0,
-  "roi": -0.4889,
-  "clv": -0.0375,
+  "staked": 50.0,
+  "profit": -27.0,
+  "roi": -0.54,
+  "clv": -0.0353,
   "clv_n": 9,
-  "clv_no_close": 1,
+  "clv_no_close": 2,
   "close_mins_median": 177,
   "open": 2,
-  "equity": 78.0
+  "equity": 73.0
  },
  "weights": {
   "value_fav": 1.0,
-  "value_dog": 0.525,
+  "value_dog": 0.442,
   "longshot": 0.718,
   "arb": 1.0,
   "parlay_ev": 1.0,
