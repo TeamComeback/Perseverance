@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 45.0,
+  "cash": 68.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -130,9 +130,13 @@
       "book": "betrivers",
       "fair_p": 0.4726,
       "close_p": 0.4578,
-      "result": null,
+      "result": "win",
       "close_at": "2026-10-28T20:12:46Z",
-      "close_mins": 207
+      "close_mins": 207,
+      "final": {
+       "home": 5.0,
+       "away": 2.0
+      }
      }
     ],
     "dec": 2.18,
@@ -142,10 +146,33 @@
     "note": "3.0% edge vs 4-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 10.9,
+    "profit": 5.9,
+    "settled": "2026-10-29T16:05:45Z",
+    "review": {
+     "headline": "WON: Washington Capitals -1.5: covered by 1.5",
+     "final": "Philadelphia Flyers 2 \u2013 Washington Capitals 5",
+     "legs": [
+      {
+       "outcome": "Washington Capitals",
+       "result": "win",
+       "headline": "Washington Capitals -1.5: covered by 1.5",
+       "final": "Philadelphia Flyers 2 \u2013 Washington Capitals 5",
+       "why": [
+        "Washington Capitals won the game by 3 and needed to win by more than 1.5: covered by 1.5.",
+        "We priced it at 47% to hit vs 46% needed to break even at 2.18x (+3.0% expected edge).",
+        "Closing consensus 46% vs 46% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line"
+     ]
+    }
    },
    {
     "id": "7c50e6a5",
@@ -167,9 +194,13 @@
       "book": "fanduel",
       "fair_p": 0.208,
       "close_p": 0.1723,
-      "result": null,
+      "result": "loss",
       "close_at": "2026-10-28T23:58:42Z",
-      "close_mins": 31
+      "close_mins": 31,
+      "final": {
+       "home": 2.0,
+       "away": 2.0
+      }
      }
     ],
     "dec": 5.1,
@@ -179,10 +210,33 @@
     "note": "6.1% edge vs 9-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-29T16:05:45Z",
+    "review": {
+     "headline": "LOST: Orlando City SC tied by 0",
+     "final": "Orlando City SC 2 \u2013 Chicago Fire 2",
+     "legs": [
+      {
+       "outcome": "Orlando City SC",
+       "result": "loss",
+       "headline": "Orlando City SC tied by 0",
+       "final": "Orlando City SC 2 \u2013 Chicago Fire 2",
+       "why": [
+        "Orlando City SC tied by 0.",
+        "We priced it at 21% to hit vs 20% needed to break even at 5.1x (+6.1% expected edge).",
+        "Closing consensus 17% vs 20% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line"
+     ]
+    }
    },
    {
     "id": "90a4c80b",
@@ -204,9 +258,13 @@
       "book": "fanduel",
       "fair_p": 0.1589,
       "close_p": 0.1615,
-      "result": null,
+      "result": "loss",
       "close_at": "2026-10-28T23:58:42Z",
-      "close_mins": 151
+      "close_mins": 151,
+      "final": {
+       "home": 4.0,
+       "away": 1.0
+      }
      }
     ],
     "dec": 6.5,
@@ -216,10 +274,37 @@
     "note": "3.3% edge vs 9-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-29T16:05:45Z",
+    "review": {
+     "headline": "LOST: San Diego FC lost by 3",
+     "final": "San Diego FC 1 \u2013 Vancouver Whitecaps FC 4",
+     "legs": [
+      {
+       "outcome": "San Diego FC",
+       "result": "loss",
+       "headline": "San Diego FC lost by 3",
+       "final": "San Diego FC 1 \u2013 Vancouver Whitecaps FC 4",
+       "why": [
+        "San Diego FC lost by 3.",
+        "We priced it at 16% to hit vs 15% needed to break even at 6.5x (+3.3% expected edge).",
+        "Closing consensus 16% vs 15% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "blowout",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "blowout",
+      "underdog-lost"
+     ]
+    }
    },
    {
     "id": "85d9f868",
@@ -483,7 +568,7 @@
       "book": "fanduel",
       "fair_p": 0.3889,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 2.16,
        "base": 2.14,
@@ -514,6 +599,22 @@
          "txt": "LAC: defense #17, pace #28 \u00b7 LAL: offense #3, pace #24"
         }
        ]
+      },
+      "final": {
+       "home": 87.0,
+       "away": 103.0
+      },
+      "actual": 2.0,
+      "box": {
+       "min": 21.0,
+       "pts": 21.0,
+       "reb": 4.0,
+       "ast": 2.0,
+       "tpm": 4.0,
+       "tpa": 7.0,
+       "fga": 11.0,
+       "fta": 8.0,
+       "tov": 1.0
       }
      }
     ],
@@ -524,10 +625,39 @@
     "note": "Proj 2.2 vs line 2.5 (norm 2.1, 19 min). Model 65% vs market 39%. LAC gives shooting guards -0% assists vs their norm (#14 softest of 30) \u00b7 Players with his profile: +4% assists vs LAC (167 close comps) \u00b7 His history vs LAC: 3.0 assists/g in 2 games (+2%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 12.1,
+    "profit": 7.1,
+    "settled": "2026-10-29T16:05:44Z",
+    "review": {
+     "headline": "WON: 2 assists vs Under 2.5",
+     "final": "Los Angeles Lakers 103 \u2013 Los Angeles Clippers 87",
+     "legs": [
+      {
+       "outcome": "Collin Sexton Under",
+       "result": "win",
+       "headline": "2 assists vs Under 2.5",
+       "final": "Los Angeles Lakers 103 \u2013 Los Angeles Clippers 87",
+       "why": [
+        "Collin Sexton finished with 2 assists against a line of 2.5: under cleared by 0.5.",
+        "Minutes: played 21 vs 19.1 projected.",
+        "Box score: 2 ast, 1 TO.",
+        "Model projected 2.2 (2.1 norm \u00d7 1.01 matchup); actual was -0.2 off (-0.1 standard deviations).",
+        "Signal: LAC gives shooting guards -0% assists vs their norm (#14 softest of 30)",
+        "Signal: Players with his profile: +4% assists vs LAC (167 close comps)",
+        "Signal: His history vs LAC: 3.0 assists/g in 2 games (+2%)",
+        "We priced it at 49% to hit vs 41% needed to break even at 2.42x (+19.2% expected edge).",
+        "Consensus fair probability when placed: 39% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance"
+       ]
+      }
+     ],
+     "tags": [
+      "ordinary-variance"
+     ]
+    }
    },
    {
     "id": "fb752fbe",
@@ -595,11 +725,11 @@
    "clv_sum": 0.0
   },
   "value_dog": {
-   "bets": 4,
-   "staked": 20.0,
-   "profit": -20.0,
-   "clv_n": 4,
-   "clv_sum": -0.21669000000000005,
+   "bets": 6,
+   "staked": 30.0,
+   "profit": -19.1,
+   "clv_n": 6,
+   "clv_sum": -0.33995600000000004,
    "tags": {
     "blowout": {
      "n": 1,
@@ -607,9 +737,9 @@
      "lost": 1
     },
     "lost-closing-line": {
-     "n": 2,
-     "won": 0,
-     "lost": 2
+     "n": 4,
+     "won": 1,
+     "lost": 3
     },
     "underdog-lost": {
      "n": 3,
@@ -624,11 +754,11 @@
    }
   },
   "longshot": {
-   "bets": 1,
-   "staked": 5.0,
-   "profit": -5.0,
-   "clv_n": 1,
-   "clv_sum": -0.024375000000000036,
+   "bets": 2,
+   "staked": 10.0,
+   "profit": -10.0,
+   "clv_n": 2,
+   "clv_sum": 0.025374999999999925,
    "tags": {
     "lost-closing-line": {
      "n": 1,
@@ -641,6 +771,16 @@
      "lost": 1
     },
     "underdog-lost": {
+     "n": 2,
+     "won": 0,
+     "lost": 2
+    },
+    "beat-closing-line": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "blowout": {
      "n": 1,
      "won": 0,
      "lost": 1
@@ -669,25 +809,32 @@
    "clv_sum": 0.0
   },
   "matchup_under": {
-   "bets": 0,
-   "staked": 0.0,
-   "profit": 0.0,
+   "bets": 1,
+   "staked": 5.0,
+   "profit": 7.1,
    "clv_n": 0,
-   "clv_sum": 0.0
+   "clv_sum": 0.0,
+   "tags": {
+    "ordinary-variance": {
+     "n": 1,
+     "won": 1,
+     "lost": 0
+    }
+   }
   }
  },
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-10-28T23:58:42Z",
-   "bets": 4.0,
-   "staked": 20.0,
-   "profit": -20.0
+   "bets": 5.0,
+   "staked": 25.0,
+   "profit": -12.9
   },
   "icehockey_nhl": {
    "last_scanned": "2026-10-29T02:43:03Z",
-   "bets": 1.0,
-   "staked": 5.0,
-   "profit": -5.0
+   "bets": 2.0,
+   "staked": 10.0,
+   "profit": 0.9000000000000004
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-10-29T02:43:03Z"
@@ -711,7 +858,10 @@
    "last_scanned": "2026-10-26T22:33:11Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-10-28T23:58:41Z"
+   "last_scanned": "2026-10-28T23:58:41Z",
+   "bets": 2.0,
+   "staked": 10.0,
+   "profit": -10.0
   },
   "soccer_mexico_ligamx": {
    "last_scanned": "2026-10-27T23:40:48Z"
@@ -819,6 +969,31 @@
    "ts": "2026-10-29T02:43:03Z",
    "kind": "scan",
    "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (11), basketball_wnba (1), americanfootball_ncaaf (2), americanfootball_nfl (1), tennis_atp_vienna_open (6), boxing_boxing (4), tennis_atp_swiss_indoors (6), soccer_italy_serie_a (2), icehockey_sweden_hockey_league (7) for 26 credits. Placed 1: Tallon Griekspoor @ +320 (fanduel) Equity $75.00."
+  },
+  {
+   "ts": "2026-10-29T16:05:44Z",
+   "kind": "result",
+   "text": "WON +$7.10: Collin Sexton Under 2.5 @ +142 (fanduel) \u2014 WON: 2 assists vs Under 2.5 [ordinary-variance]"
+  },
+  {
+   "ts": "2026-10-29T16:05:45Z",
+   "kind": "result",
+   "text": "WON +$5.90: Washington Capitals -1.5 @ +118 (betrivers) \u2014 WON: Washington Capitals -1.5: covered by 1.5 [lost-closing-line]"
+  },
+  {
+   "ts": "2026-10-29T16:05:45Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Orlando City SC @ +410 (fanduel) \u2014 LOST: Orlando City SC tied by 0 [lost-closing-line]"
+  },
+  {
+   "ts": "2026-10-29T16:05:45Z",
+   "kind": "result",
+   "text": "LOST -$5.00: San Diego FC @ +550 (fanduel) \u2014 LOST: San Diego FC lost by 3 [beat-closing-line, blowout, underdog-lost]"
+  },
+  {
+   "ts": "2026-10-29T16:05:45Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $78.00 (run #1), 2-7-0, ROI -48.9%, CLV -3.8%."
   }
  ],
  "learned_ids": [
@@ -826,33 +1001,37 @@
   "dc24a15b",
   "85d9f868",
   "e7bfb631",
-  "4d82a0ba"
+  "4d82a0ba",
+  "4ccde1de",
+  "78582f01",
+  "7c50e6a5",
+  "90a4c80b"
  ],
  "strategist": null,
- "updated": "2026-10-29T02:43:03Z",
+ "updated": "2026-10-29T16:05:45Z",
  "stats": {
-  "bets": 5,
-  "won": 0,
-  "lost": 5,
+  "bets": 9,
+  "won": 2,
+  "lost": 7,
   "push": 0,
-  "staked": 25.0,
-  "profit": -25.0,
-  "roi": -1.0,
+  "staked": 45.0,
+  "profit": -22.0,
+  "roi": -0.4889,
   "clv": -0.0375,
   "clv_n": 9,
-  "clv_no_close": 0,
+  "clv_no_close": 1,
   "close_mins_median": 177,
-  "open": 6,
-  "equity": 75.0
+  "open": 2,
+  "equity": 78.0
  },
  "weights": {
   "value_fav": 1.0,
-  "value_dog": 0.467,
-  "longshot": 0.842,
+  "value_dog": 0.525,
+  "longshot": 0.718,
   "arb": 1.0,
   "parlay_ev": 1.0,
   "matchup_over": 1.0,
-  "matchup_under": 1.0
+  "matchup_under": 1.218
  },
  "paused": [],
  "dry_scans": 0
