@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 55.0,
+  "cash": 50.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -368,6 +368,77 @@
     "payout": null,
     "profit": null,
     "settled": null
+   },
+   {
+    "id": "4ccde1de",
+    "placed": "2026-10-29T01:44:36Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "6e8a41f3aeff105b0e10766515517d5e",
+      "sport": "basketball_nba",
+      "commence": "2026-10-29T02:40:00Z",
+      "home": "Los Angeles Clippers",
+      "away": "Los Angeles Lakers",
+      "market": "player_assists",
+      "outcome": "Collin Sexton Under",
+      "side": "Under",
+      "player": "Collin Sexton",
+      "player_id": "4277811",
+      "stat": "ast",
+      "espn_id": "401909892",
+      "point": 2.5,
+      "price": 2.42,
+      "book": "fanduel",
+      "fair_p": 0.3889,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 2.16,
+       "base": 2.14,
+       "minutes": 19.1,
+       "mult": 1.008,
+       "sd": 1.48,
+       "p_model": 0.6481,
+       "p_mkt": 0.3889,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.996,
+         "txt": "LAC gives shooting guards -0% assists vs their norm (#14 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.041,
+         "txt": "Players with his profile: +4% assists vs LAC (167 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.023,
+         "txt": "His history vs LAC: 3.0 assists/g in 2 games (+2%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "LAC: defense #17, pace #28 \u00b7 LAL: offense #3, pace #24"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.42,
+    "stake": 5.0,
+    "ev": 0.1921,
+    "p": 0.4926,
+    "note": "Proj 2.2 vs line 2.5 (norm 2.1, 19 min). Model 65% vs market 39%. LAC gives shooting guards -0% assists vs their norm (#14 softest of 30) \u00b7 Players with his profile: +4% assists vs LAC (167 close comps) \u00b7 His history vs LAC: 3.0 assists/g in 2 games (+2%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -571,6 +642,11 @@
    "ts": "2026-10-28T23:58:42Z",
    "kind": "scan",
    "text": "Scanned soccer_usa_mls (9), icehockey_nhl (14), soccer_italy_serie_a (2), basketball_nba (8), americanfootball_nfl (1), soccer_brazil_campeonato (5) for 15 credits. Nothing cleared the bar. Equity $90.00."
+  },
+  {
+   "ts": "2026-10-29T01:44:36Z",
+   "kind": "props",
+   "text": "NBA matchups: 1 games, strongest spots: Darius Garland reb -14% vs LAL; Kobe Sanders reb -9% vs LAL; Matisse Thybulle reb -8% vs LAC. Bought prop odds for LAL@LAC (reb, ast, pra) (3 credits). Placed 1: Collin Sexton Under 2.5 @ +142 (fanduel)"
   }
  ],
  "learned_ids": [
@@ -578,7 +654,7 @@
   "dc24a15b"
  ],
  "strategist": null,
- "updated": "2026-10-28T23:58:42Z",
+ "updated": "2026-10-29T01:44:36Z",
  "stats": {
   "bets": 2,
   "won": 0,
@@ -591,7 +667,7 @@
   "clv_n": 9,
   "clv_no_close": 0,
   "close_mins_median": 177,
-  "open": 7,
+  "open": 8,
   "equity": 90.0
  },
  "weights": {
