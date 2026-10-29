@@ -29,6 +29,7 @@ class Budget:
                       "monthly": config.MONTHLY_CREDITS, "reserve": config.RESERVE_CREDITS}
         self.spent_this_run = 0
         self.allowance = 0
+        self.month_end = False
 
     def start_run(self, units=1):
         """Each scan is 1 unit; the evening NBA props run is config.PROPS_UNITS units,
@@ -43,6 +44,13 @@ class Budget:
         rem = self.b["remaining"] if self.b["remaining"] is not None else config.MONTHLY_CREDITS
         spendable = max(0, rem - config.RESERVE_CREDITS)
         self.allowance = spendable * units // runs_left
+        # Month-end mode: credits reset on the 1st, so in the last 4 days any spare
+        # credits are worth more spent than saved. The reserve floor still holds.
+        days_left = last - n.day + 1
+        self.month_end = days_left <= 4 and spendable > 0
+        if self.month_end:
+            self.allowance = max(self.allowance, spendable * units // max(units, days_left * per_day // 2))
+        self.b["month_end_mode"] = self.month_end
         self.b["runs"] += 1
         self.b["runs_today"] += units
         self.b["runs_left"] = runs_left
