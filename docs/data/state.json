@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 50.0,
+  "cash": 45.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -241,9 +241,13 @@
       "book": "bovada",
       "fair_p": 0.2771,
       "close_p": 0.2572,
-      "result": null,
+      "result": "loss",
       "close_at": "2026-10-28T23:58:42Z",
-      "close_mins": 11
+      "close_mins": 11,
+      "final": {
+       "home": 100.0,
+       "away": 132.0
+      }
      }
     ],
     "dec": 3.8,
@@ -253,10 +257,37 @@
     "note": "5.3% edge vs 6-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-29T02:42:51Z",
+    "review": {
+     "headline": "LOST: Milwaukee Bucks lost by 32",
+     "final": "Houston Rockets 132 \u2013 Milwaukee Bucks 100",
+     "legs": [
+      {
+       "outcome": "Milwaukee Bucks",
+       "result": "loss",
+       "headline": "Milwaukee Bucks lost by 32",
+       "final": "Houston Rockets 132 \u2013 Milwaukee Bucks 100",
+       "why": [
+        "Milwaukee Bucks lost by 32.",
+        "We priced it at 28% to hit vs 26% needed to break even at 3.8x (+5.3% expected edge).",
+        "Closing consensus 26% vs 26% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "underdog-lost",
+        "blowout",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "lost-closing-line",
+      "underdog-lost"
+     ]
+    }
    },
    {
     "id": "e7bfb631",
@@ -278,9 +309,13 @@
       "book": "bovada",
       "fair_p": 0.2413,
       "close_p": 0.2344,
-      "result": null,
+      "result": "loss",
       "close_at": "2026-10-28T20:12:46Z",
-      "close_mins": 177
+      "close_mins": 177,
+      "final": {
+       "home": 121.0,
+       "away": 111.0
+      }
      }
     ],
     "dec": 4.3,
@@ -290,10 +325,35 @@
     "note": "3.8% edge vs 6-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-29T02:42:51Z",
+    "review": {
+     "headline": "LOST: Washington Wizards lost by 10",
+     "final": "Washington Wizards 111 \u2013 Cleveland Cavaliers 121",
+     "legs": [
+      {
+       "outcome": "Washington Wizards",
+       "result": "loss",
+       "headline": "Washington Wizards lost by 10",
+       "final": "Washington Wizards 111 \u2013 Cleveland Cavaliers 121",
+       "why": [
+        "Washington Wizards lost by 10.",
+        "We priced it at 24% to hit vs 23% needed to break even at 4.3x (+3.8% expected edge).",
+        "Closing consensus 23% vs 23% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "underdog-lost"
+     ]
+    }
    },
    {
     "id": "4d82a0ba",
@@ -315,9 +375,13 @@
       "book": "bovada",
       "fair_p": 0.3976,
       "close_p": 0.3023,
-      "result": null,
+      "result": "loss",
       "close_at": "2026-10-28T20:12:46Z",
-      "close_mins": 177
+      "close_mins": 177,
+      "final": {
+       "home": 109.0,
+       "away": 114.0
+      }
      }
     ],
     "dec": 2.6,
@@ -327,10 +391,35 @@
     "note": "3.4% edge vs 6-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-29T02:42:51Z",
+    "review": {
+     "headline": "LOST: Indiana Pacers lost by 5",
+     "final": "Philadelphia 76ers 114 \u2013 Indiana Pacers 109",
+     "legs": [
+      {
+       "outcome": "Indiana Pacers",
+       "result": "loss",
+       "headline": "Indiana Pacers lost by 5",
+       "final": "Philadelphia 76ers 114 \u2013 Indiana Pacers 109",
+       "why": [
+        "Indiana Pacers lost by 5.",
+        "We priced it at 40% to hit vs 38% needed to break even at 2.6x (+3.4% expected edge).",
+        "Closing consensus 30% vs 38% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "underdog-lost",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line",
+      "underdog-lost"
+     ]
+    }
    },
    {
     "id": "30595077",
@@ -351,10 +440,10 @@
       "price": 2.54,
       "book": "draftkings",
       "fair_p": 0.4076,
-      "close_p": 0.3812,
+      "close_p": 0.3847,
       "result": null,
-      "close_at": "2026-10-28T23:58:42Z",
-      "close_mins": 1451
+      "close_at": "2026-10-29T02:43:03Z",
+      "close_mins": 1286
      }
     ],
     "dec": 2.54,
@@ -439,6 +528,41 @@
     "payout": null,
     "profit": null,
     "settled": null
+   },
+   {
+    "id": "fb752fbe",
+    "placed": "2026-10-29T02:43:03Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "6822571863f93fa4654e76e114874060",
+      "sport": "tennis_atp_vienna_open",
+      "commence": "2026-10-29T16:30:00Z",
+      "home": "Alexander Zverev",
+      "away": "Tallon Griekspoor",
+      "market": "h2h",
+      "outcome": "Tallon Griekspoor",
+      "point": null,
+      "price": 4.2,
+      "book": "fanduel",
+      "fair_p": 0.2485,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 4.2,
+    "stake": 5.0,
+    "ev": 0.0438,
+    "p": 0.2485,
+    "note": "4.4% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -471,11 +595,33 @@
    "clv_sum": 0.0
   },
   "value_dog": {
-   "bets": 1,
-   "staked": 5.0,
-   "profit": -5.0,
-   "clv_n": 1,
-   "clv_sum": 0.012050000000000116
+   "bets": 4,
+   "staked": 20.0,
+   "profit": -20.0,
+   "clv_n": 4,
+   "clv_sum": -0.21669000000000005,
+   "tags": {
+    "blowout": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "lost-closing-line": {
+     "n": 2,
+     "won": 0,
+     "lost": 2
+    },
+    "underdog-lost": {
+     "n": 3,
+     "won": 0,
+     "lost": 3
+    },
+    "beat-closing-line": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    }
+   }
   },
   "longshot": {
    "bets": 1,
@@ -533,33 +679,33 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-10-28T23:58:42Z",
-   "bets": 1.0,
-   "staked": 5.0,
-   "profit": -5.0
+   "bets": 4.0,
+   "staked": 20.0,
+   "profit": -20.0
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-28T23:58:41Z",
+   "last_scanned": "2026-10-29T02:43:03Z",
    "bets": 1.0,
    "staked": 5.0,
    "profit": -5.0
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-28T23:58:42Z"
+   "last_scanned": "2026-10-29T02:43:03Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-28T20:12:46Z"
+   "last_scanned": "2026-10-29T02:43:03Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-28T23:58:42Z"
+   "last_scanned": "2026-10-29T02:43:03Z"
   },
   "basketball_wnba": {
-   "last_scanned": "2026-10-26T22:33:11Z"
+   "last_scanned": "2026-10-29T02:43:03Z"
   },
   "tennis_atp_vienna_open": {
-   "last_scanned": "2026-10-28T02:32:11Z"
+   "last_scanned": "2026-10-29T02:43:03Z"
   },
   "soccer_england_league1": {
    "last_scanned": "2026-10-26T22:33:11Z"
@@ -571,10 +717,16 @@
    "last_scanned": "2026-10-27T23:40:48Z"
   },
   "boxing_boxing": {
-   "last_scanned": "2026-10-28T02:32:11Z"
+   "last_scanned": "2026-10-29T02:43:03Z"
   },
   "soccer_brazil_campeonato": {
    "last_scanned": "2026-10-28T23:58:42Z"
+  },
+  "tennis_atp_swiss_indoors": {
+   "last_scanned": "2026-10-29T02:43:03Z"
+  },
+  "icehockey_sweden_hockey_league": {
+   "last_scanned": "2026-10-29T02:43:03Z"
   }
  },
  "journal": [
@@ -647,32 +799,55 @@
    "ts": "2026-10-29T01:44:36Z",
    "kind": "props",
    "text": "NBA matchups: 1 games, strongest spots: Darius Garland reb -14% vs LAL; Kobe Sanders reb -9% vs LAL; Matisse Thybulle reb -8% vs LAC. Bought prop odds for LAL@LAC (reb, ast, pra) (3 credits). Placed 1: Collin Sexton Under 2.5 @ +142 (fanduel)"
+  },
+  {
+   "ts": "2026-10-29T02:42:51Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Milwaukee Bucks @ +280 (bovada) \u2014 LOST: Milwaukee Bucks lost by 32 [blowout, lost-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-10-29T02:42:51Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Washington Wizards @ +330 (bovada) \u2014 LOST: Washington Wizards lost by 10 [beat-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-10-29T02:42:51Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Indiana Pacers @ +160 (bovada) \u2014 LOST: Indiana Pacers lost by 5 [lost-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-10-29T02:43:03Z",
+   "kind": "scan",
+   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (11), basketball_wnba (1), americanfootball_ncaaf (2), americanfootball_nfl (1), tennis_atp_vienna_open (6), boxing_boxing (4), tennis_atp_swiss_indoors (6), soccer_italy_serie_a (2), icehockey_sweden_hockey_league (7) for 26 credits. Placed 1: Tallon Griekspoor @ +320 (fanduel) Equity $75.00."
   }
  ],
  "learned_ids": [
   "c83a8adf",
-  "dc24a15b"
+  "dc24a15b",
+  "85d9f868",
+  "e7bfb631",
+  "4d82a0ba"
  ],
  "strategist": null,
- "updated": "2026-10-29T01:44:36Z",
+ "updated": "2026-10-29T02:43:03Z",
  "stats": {
-  "bets": 2,
+  "bets": 5,
   "won": 0,
-  "lost": 2,
+  "lost": 5,
   "push": 0,
-  "staked": 10.0,
-  "profit": -10.0,
+  "staked": 25.0,
+  "profit": -25.0,
   "roi": -1.0,
-  "clv": -0.0385,
+  "clv": -0.0375,
   "clv_n": 9,
   "clv_no_close": 0,
   "close_mins_median": 177,
-  "open": 8,
-  "equity": 90.0
+  "open": 6,
+  "equity": 75.0
  },
  "weights": {
   "value_fav": 1.0,
-  "value_dog": 0.848,
+  "value_dog": 0.467,
   "longshot": 0.842,
   "arb": 1.0,
   "parlay_ev": 1.0,
@@ -680,5 +855,5 @@
   "matchup_under": 1.0
  },
  "paused": [],
- "dry_scans": 1
+ "dry_scans": 0
 }
