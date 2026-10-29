@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 63.0,
+  "cash": 48.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -525,10 +525,10 @@
       "price": 2.54,
       "book": "draftkings",
       "fair_p": 0.4076,
-      "close_p": 0.3924,
+      "close_p": 0.3976,
       "result": null,
-      "close_at": "2026-10-29T20:13:00Z",
-      "close_mins": 236
+      "close_at": "2026-10-29T23:54:28Z",
+      "close_mins": 15
      }
     ],
     "dec": 2.54,
@@ -742,8 +742,10 @@
       "price": 2.1,
       "book": "fanduel",
       "fair_p": 0.5,
-      "close_p": null,
-      "result": null
+      "close_p": 0.465,
+      "result": null,
+      "close_at": "2026-10-29T23:54:28Z",
+      "close_mins": 1415
      }
     ],
     "dec": 2.1,
@@ -751,6 +753,111 @@
     "ev": 0.05,
     "p": 0.5,
     "note": "5.0% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "97c9077b",
+    "placed": "2026-10-29T23:54:28Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "cac1461f5983a88fac612685395aa897",
+      "sport": "basketball_nba",
+      "commence": "2026-10-31T00:10:00Z",
+      "home": "Minnesota Timberwolves",
+      "away": "Los Angeles Clippers",
+      "market": "h2h",
+      "outcome": "Los Angeles Clippers",
+      "point": null,
+      "price": 3.35,
+      "book": "fanduel",
+      "fair_p": 0.3249,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 3.35,
+    "stake": 5.0,
+    "ev": 0.0886,
+    "p": 0.3249,
+    "note": "8.9% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "26b87f9e",
+    "placed": "2026-10-29T23:54:28Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "c3a424e24d426af94a693e06a33e3037",
+      "sport": "basketball_nba",
+      "commence": "2026-10-31T00:10:00Z",
+      "home": "Miami Heat",
+      "away": "Indiana Pacers",
+      "market": "h2h",
+      "outcome": "Indiana Pacers",
+      "point": null,
+      "price": 3.35,
+      "book": "fanduel",
+      "fair_p": 0.3146,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 3.35,
+    "stake": 5.0,
+    "ev": 0.0539,
+    "p": 0.3146,
+    "note": "5.4% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "2cfe2a48",
+    "placed": "2026-10-29T23:54:28Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "b9778d0e3a26167eb49901dcae7eeb98",
+      "sport": "basketball_nba",
+      "commence": "2026-10-31T00:10:00Z",
+      "home": "Dallas Mavericks",
+      "away": "Houston Rockets",
+      "market": "h2h",
+      "outcome": "Dallas Mavericks",
+      "point": null,
+      "price": 2.8,
+      "book": "fanduel",
+      "fair_p": 0.3689,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 2.8,
+    "stake": 5.0,
+    "ev": 0.033,
+    "p": 0.3689,
+    "note": "3.3% edge vs 2-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -894,25 +1001,25 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-29T20:12:59Z",
+   "last_scanned": "2026-10-29T23:54:28Z",
    "bets": 5.0,
    "staked": 25.0,
    "profit": -12.9
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-29T20:12:59Z",
+   "last_scanned": "2026-10-29T23:54:28Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": 0.9000000000000004
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-29T20:12:59Z"
+   "last_scanned": "2026-10-29T23:54:28Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-29T20:12:59Z"
+   "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_italy_serie_a": {
    "last_scanned": "2026-10-29T02:43:03Z"
@@ -945,13 +1052,13 @@
    "last_scanned": "2026-10-28T23:58:42Z"
   },
   "tennis_atp_swiss_indoors": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-29T23:54:28Z"
   },
   "icehockey_sweden_hockey_league": {
    "last_scanned": "2026-10-29T02:43:03Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-10-29T20:13:00Z"
+   "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_spain_la_liga": {
    "last_scanned": "2026-10-29T20:13:00Z"
@@ -961,6 +1068,12 @@
   },
   "soccer_germany_bundesliga": {
    "last_scanned": "2026-10-29T20:13:00Z"
+  },
+  "basketball_euroleague": {
+   "last_scanned": "2026-10-29T23:54:28Z"
+  },
+  "soccer_league_of_ireland": {
+   "last_scanned": "2026-10-29T23:54:28Z"
   }
  },
  "journal": [
@@ -1088,6 +1201,11 @@
    "ts": "2026-10-29T20:13:00Z",
    "kind": "scan",
    "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (14), basketball_nba (13), americanfootball_ncaaf (5), americanfootball_nfl (1), mma_mixed_martial_arts (4), soccer_spain_la_liga (1), icehockey_ahl (8), soccer_germany_bundesliga (1) for 22 credits. Placed 1: UCF Knights @ +110 (fanduel) Equity $73.00."
+  },
+  {
+   "ts": "2026-10-29T23:54:28Z",
+   "kind": "scan",
+   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (10), basketball_nba (13), americanfootball_ncaaf (3), mma_mixed_martial_arts (9), americanfootball_nfl (1), basketball_euroleague (7), tennis_atp_swiss_indoors (3), soccer_league_of_ireland (5) for 21 credits. Placed 3: Los Angeles Clippers @ +235 (fanduel); Indiana Pacers @ +235 (fanduel); Dallas Mavericks @ +180 (fanduel) Equity $73.00."
   }
  ],
  "learned_ids": [
@@ -1103,7 +1221,7 @@
   "fb752fbe"
  ],
  "strategist": null,
- "updated": "2026-10-29T20:13:00Z",
+ "updated": "2026-10-29T23:54:28Z",
  "stats": {
   "bets": 10,
   "won": 2,
@@ -1112,11 +1230,11 @@
   "staked": 50.0,
   "profit": -27.0,
   "roi": -0.54,
-  "clv": -0.0353,
-  "clv_n": 9,
+  "clv": -0.0328,
+  "clv_n": 10,
   "clv_no_close": 2,
   "close_mins_median": 177,
-  "open": 2,
+  "open": 5,
   "equity": 73.0
  },
  "weights": {
