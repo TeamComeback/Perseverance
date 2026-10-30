@@ -526,9 +526,13 @@
       "book": "draftkings",
       "fair_p": 0.4076,
       "close_p": 0.3976,
-      "result": null,
+      "result": "loss",
       "close_at": "2026-10-29T23:54:28Z",
-      "close_mins": 15
+      "close_mins": 15,
+      "final": {
+       "home": 2.0,
+       "away": 5.0
+      }
      }
     ],
     "dec": 2.54,
@@ -538,10 +542,33 @@
     "note": "3.5% edge vs 2-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-10-30T15:53:46Z",
+    "review": {
+     "headline": "LOST: Dallas Stars -1.5: missed by 4.5",
+     "final": "Montr\u00e9al Canadiens 5 \u2013 Dallas Stars 2",
+     "legs": [
+      {
+       "outcome": "Dallas Stars",
+       "result": "loss",
+       "headline": "Dallas Stars -1.5: missed by 4.5",
+       "final": "Montr\u00e9al Canadiens 5 \u2013 Dallas Stars 2",
+       "why": [
+        "Dallas Stars lost the game by 3 and needed to win by more than 1.5: missed the spread by 4.5.",
+        "We priced it at 41% to hit vs 39% needed to break even at 2.54x (+3.5% expected edge).",
+        "Closing consensus 40% vs 39% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line"
+     ]
+    }
    },
    {
     "id": "4ccde1de",
@@ -902,11 +929,11 @@
    "clv_sum": 0.0
   },
   "value_dog": {
-   "bets": 7,
-   "staked": 35.0,
-   "profit": -24.1,
-   "clv_n": 6,
-   "clv_sum": -0.33995600000000004,
+   "bets": 8,
+   "staked": 40.0,
+   "profit": -29.1,
+   "clv_n": 7,
+   "clv_sum": -0.3300519999999999,
    "tags": {
     "blowout": {
      "n": 1,
@@ -924,9 +951,9 @@
      "lost": 4
     },
     "beat-closing-line": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     },
     "near-miss": {
      "n": 1,
@@ -1014,9 +1041,9 @@
   },
   "icehockey_nhl": {
    "last_scanned": "2026-10-30T02:50:32Z",
-   "bets": 2.0,
-   "staked": 10.0,
-   "profit": 0.9000000000000004
+   "bets": 3.0,
+   "staked": 15.0,
+   "profit": -4.1
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -1222,6 +1249,16 @@
    "ts": "2026-10-30T02:50:32Z",
    "kind": "scan",
    "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (3), basketball_nba (10), soccer_italy_serie_a (1) for 8 credits. Nothing cleared the bar. Equity $73.00."
+  },
+  {
+   "ts": "2026-10-30T15:53:46Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Dallas Stars -1.5 @ +154 (draftkings) \u2014 LOST: Dallas Stars -1.5: missed by 4.5 [beat-closing-line]"
+  },
+  {
+   "ts": "2026-10-30T15:53:46Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $68.00 (run #1), 2-9-0, ROI -58.2%, CLV -2.4%."
   }
  ],
  "learned_ids": [
@@ -1234,28 +1271,29 @@
   "78582f01",
   "7c50e6a5",
   "90a4c80b",
-  "fb752fbe"
+  "fb752fbe",
+  "30595077"
  ],
  "strategist": null,
- "updated": "2026-10-30T02:50:32Z",
+ "updated": "2026-10-30T15:53:46Z",
  "stats": {
-  "bets": 10,
+  "bets": 11,
   "won": 2,
-  "lost": 8,
+  "lost": 9,
   "push": 0,
-  "staked": 50.0,
-  "profit": -27.0,
-  "roi": -0.54,
+  "staked": 55.0,
+  "profit": -32.0,
+  "roi": -0.5818,
   "clv": -0.0236,
   "clv_n": 13,
   "clv_no_close": 2,
   "close_mins_median": 177,
-  "open": 5,
-  "equity": 73.0
+  "open": 4,
+  "equity": 68.0
  },
  "weights": {
   "value_fav": 1.0,
-  "value_dog": 0.442,
+  "value_dog": 0.368,
   "longshot": 0.718,
   "arb": 1.0,
   "parlay_ev": 1.0,
