@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 48.0,
+  "cash": 38.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -769,10 +769,10 @@
       "price": 2.1,
       "book": "fanduel",
       "fair_p": 0.5,
-      "close_p": 0.465,
+      "close_p": 0.4617,
       "result": null,
-      "close_at": "2026-10-29T23:54:28Z",
-      "close_mins": 1415
+      "close_at": "2026-10-30T19:55:09Z",
+      "close_mins": 214
      }
     ],
     "dec": 2.1,
@@ -806,10 +806,10 @@
       "price": 3.35,
       "book": "fanduel",
       "fair_p": 0.3249,
-      "close_p": 0.3072,
+      "close_p": 0.3096,
       "result": null,
-      "close_at": "2026-10-30T02:50:32Z",
-      "close_mins": 1279
+      "close_at": "2026-10-30T19:55:09Z",
+      "close_mins": 254
      }
     ],
     "dec": 3.35,
@@ -843,10 +843,10 @@
       "price": 3.35,
       "book": "fanduel",
       "fair_p": 0.3146,
-      "close_p": 0.3022,
+      "close_p": 0.2696,
       "result": null,
-      "close_at": "2026-10-30T02:50:32Z",
-      "close_mins": 1279
+      "close_at": "2026-10-30T19:55:09Z",
+      "close_mins": 254
      }
     ],
     "dec": 3.35,
@@ -880,10 +880,10 @@
       "price": 2.8,
       "book": "fanduel",
       "fair_p": 0.3689,
-      "close_p": 0.3499,
+      "close_p": 0.3276,
       "result": null,
-      "close_at": "2026-10-30T02:50:32Z",
-      "close_mins": 1279
+      "close_at": "2026-10-30T19:55:09Z",
+      "close_mins": 254
      }
     ],
     "dec": 2.8,
@@ -891,6 +891,76 @@
     "ev": 0.033,
     "p": 0.3689,
     "note": "3.3% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "e30c7f1a",
+    "placed": "2026-10-30T19:55:09Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "fc416b26c2c25018a05bc5cb0d80dbb6",
+      "sport": "americanfootball_ncaaf",
+      "commence": "2026-10-31T16:00:00Z",
+      "home": "Western Michigan Broncos",
+      "away": "Bowling Green Falcons",
+      "market": "h2h",
+      "outcome": "Bowling Green Falcons",
+      "point": null,
+      "price": 5.9,
+      "book": "fanduel",
+      "fair_p": 0.1879,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 5.9,
+    "stake": 5.0,
+    "ev": 0.1086,
+    "p": 0.1879,
+    "note": "10.9% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "e2afd4f7",
+    "placed": "2026-10-30T19:55:09Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "dea96094c29a9f24d7dc07a5d848afd7",
+      "sport": "americanfootball_ncaaf",
+      "commence": "2026-10-31T16:30:00Z",
+      "home": "Rutgers Scarlet Knights",
+      "away": "Michigan Wolverines",
+      "market": "h2h",
+      "outcome": "Rutgers Scarlet Knights",
+      "point": null,
+      "price": 6.9,
+      "book": "fanduel",
+      "fair_p": 0.1597,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 6.9,
+    "stake": 5.0,
+    "ev": 0.1017,
+    "p": 0.1597,
+    "note": "10.2% edge vs 2-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -1034,13 +1104,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-30T02:50:32Z",
+   "last_scanned": "2026-10-30T19:55:07Z",
    "bets": 5.0,
    "staked": 25.0,
    "profit": -12.9
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-30T02:50:32Z",
+   "last_scanned": "2026-10-30T19:55:07Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -1052,13 +1122,13 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-29T23:54:28Z"
+   "last_scanned": "2026-10-30T19:55:07Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-30T02:50:32Z"
+   "last_scanned": "2026-10-30T19:55:08Z"
   },
   "basketball_wnba": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-30T19:55:09Z"
   },
   "tennis_atp_vienna_open": {
    "last_scanned": "2026-10-29T02:43:03Z",
@@ -1070,7 +1140,7 @@
    "last_scanned": "2026-10-26T22:33:11Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-10-28T23:58:41Z",
+   "last_scanned": "2026-10-30T19:55:08Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
@@ -1079,7 +1149,7 @@
    "last_scanned": "2026-10-27T23:40:48Z"
   },
   "boxing_boxing": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-30T19:55:09Z"
   },
   "soccer_brazil_campeonato": {
    "last_scanned": "2026-10-28T23:58:42Z"
@@ -1088,25 +1158,28 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "icehockey_sweden_hockey_league": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-30T19:55:09Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-10-29T23:54:28Z"
+   "last_scanned": "2026-10-30T19:55:08Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-10-29T20:13:00Z"
+   "last_scanned": "2026-10-30T19:55:08Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-10-29T20:13:00Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-10-29T20:13:00Z"
+   "last_scanned": "2026-10-30T19:55:08Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_league_of_ireland": {
    "last_scanned": "2026-10-29T23:54:28Z"
+  },
+  "soccer_epl": {
+   "last_scanned": "2026-10-30T19:55:07Z"
   }
  },
  "journal": [
@@ -1259,6 +1332,11 @@
    "ts": "2026-10-30T15:53:46Z",
    "kind": "daily",
    "text": "Day close \u2014 equity $68.00 (run #1), 2-9-0, ROI -58.2%, CLV -2.4%."
+  },
+  {
+   "ts": "2026-10-30T19:55:09Z",
+   "kind": "scan",
+   "text": "Month-end mode (credits reset on the 1st): Scanned americanfootball_ncaaf (50), icehockey_nhl (13), basketball_nba (10), soccer_epl (8), soccer_germany_bundesliga (6), mma_mixed_martial_arts (24), soccer_spain_la_liga (5), soccer_italy_serie_a (3), soccer_usa_mls (9), basketball_wnba (1), icehockey_sweden_hockey_league (7), boxing_boxing (9) for 27 credits. Placed 2: Bowling Green Falcons @ +490 (fanduel); Rutgers Scarlet Knights @ +590 (fanduel) Equity $68.00."
   }
  ],
  "learned_ids": [
@@ -1275,7 +1353,7 @@
   "30595077"
  ],
  "strategist": null,
- "updated": "2026-10-30T15:53:46Z",
+ "updated": "2026-10-30T19:55:09Z",
  "stats": {
   "bets": 11,
   "won": 2,
@@ -1284,11 +1362,11 @@
   "staked": 55.0,
   "profit": -32.0,
   "roi": -0.5818,
-  "clv": -0.0236,
+  "clv": -0.0367,
   "clv_n": 13,
   "clv_no_close": 2,
   "close_mins_median": 177,
-  "open": 4,
+  "open": 6,
   "equity": 68.0
  },
  "weights": {
@@ -1301,5 +1379,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 1
+ "dry_scans": 0
 }
