@@ -779,8 +779,10 @@
       "price": 3.35,
       "book": "fanduel",
       "fair_p": 0.3249,
-      "close_p": null,
-      "result": null
+      "close_p": 0.3072,
+      "result": null,
+      "close_at": "2026-10-30T02:50:32Z",
+      "close_mins": 1279
      }
     ],
     "dec": 3.35,
@@ -814,8 +816,10 @@
       "price": 3.35,
       "book": "fanduel",
       "fair_p": 0.3146,
-      "close_p": null,
-      "result": null
+      "close_p": 0.3022,
+      "result": null,
+      "close_at": "2026-10-30T02:50:32Z",
+      "close_mins": 1279
      }
     ],
     "dec": 3.35,
@@ -849,8 +853,10 @@
       "price": 2.8,
       "book": "fanduel",
       "fair_p": 0.3689,
-      "close_p": null,
-      "result": null
+      "close_p": 0.3499,
+      "result": null,
+      "close_at": "2026-10-30T02:50:32Z",
+      "close_mins": 1279
      }
     ],
     "dec": 2.8,
@@ -1001,13 +1007,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-29T23:54:28Z",
+   "last_scanned": "2026-10-30T02:50:32Z",
    "bets": 5.0,
    "staked": 25.0,
    "profit": -12.9
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-29T23:54:28Z",
+   "last_scanned": "2026-10-30T02:50:32Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": 0.9000000000000004
@@ -1022,7 +1028,7 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-29T02:43:03Z"
+   "last_scanned": "2026-10-30T02:50:32Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-29T02:43:03Z"
@@ -1211,6 +1217,11 @@
    "ts": "2026-10-30T01:52:50Z",
    "kind": "props",
    "text": "No NBA games left to bet today."
+  },
+  {
+   "ts": "2026-10-30T02:50:32Z",
+   "kind": "scan",
+   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (3), basketball_nba (10), soccer_italy_serie_a (1) for 8 credits. Nothing cleared the bar. Equity $73.00."
   }
  ],
  "learned_ids": [
@@ -1226,7 +1237,7 @@
   "fb752fbe"
  ],
  "strategist": null,
- "updated": "2026-10-30T01:52:50Z",
+ "updated": "2026-10-30T02:50:32Z",
  "stats": {
   "bets": 10,
   "won": 2,
@@ -1235,8 +1246,8 @@
   "staked": 50.0,
   "profit": -27.0,
   "roi": -0.54,
-  "clv": -0.0328,
-  "clv_n": 10,
+  "clv": -0.0236,
+  "clv_n": 13,
   "clv_no_close": 2,
   "close_mins_median": 177,
   "open": 5,
@@ -1252,5 +1263,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 0
+ "dry_scans": 1
 }
