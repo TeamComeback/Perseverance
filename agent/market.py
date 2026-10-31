@@ -20,9 +20,24 @@ def kelly(p: float, dec: float) -> float:
     return max(0.0, (b * p - (1 - p)) / b) if b > 0 else 0.0
 
 
+def _okey(o):
+    """An outcome is its name, plus the team for team totals ('Over' for which team), plus the line."""
+    return (o["name"], o.get("description"), o.get("point"))
+
+
 def _signature(market_key, outcomes):
     """Books are only comparable when they offer the same lines."""
-    return (market_key, tuple(sorted((o["name"], o.get("point")) for o in outcomes)))
+    return (market_key, tuple(sorted(_okey(o) for o in outcomes)))
+
+
+def _split(mkey, outs):
+    """Team totals arrive as one market holding both teams; split them into one line per team."""
+    if mkey != "team_totals":
+        return [outs]
+    by = {}
+    for o in outs:
+        by.setdefault(o.get("description"), []).append(o)
+    return list(by.values())
 
 
 def analyse_event(ev):
@@ -30,14 +45,16 @@ def analyse_event(ev):
     [{market, outcomes:[{name, point, best, book, fair_p, n}], arb}]"""
     groups = {}
     for bk in ev.get("bookmakers", []):
-        if not config.book_ok(bk.get("key")):      # owner rule: three books only
+        if not config.book_ok(bk.get("key")):      # owner rule: allowed books only
             continue
         for m in bk.get("markets", []):
-            outs = m.get("outcomes", [])
-            if len(outs) < 2 or any(o.get("price", 0) <= 1 for o in outs):
-                continue
-            groups.setdefault(_signature(m["key"], outs), []).append(
-                (bk["key"], {(o["name"], o.get("point")): o["price"] for o in outs}))
+            for outs in _split(m["key"], m.get("outcomes", [])):
+                if len(outs) < 2 or any(o.get("price", 0) <= 1 for o in outs):
+                    continue
+                prices = {_okey(o): config.net_price(bk["key"], o["price"]) for o in outs}
+                if any(p <= 1 for p in prices.values()):
+                    continue
+                groups.setdefault(_signature(m["key"], outs), []).append((bk["key"], prices))
     lines = []
     for (mkey, sig), books in groups.items():
         if len(books) < config.MIN_BOOKS:
@@ -50,7 +67,7 @@ def analyse_event(ev):
         for k in sig:
             best_bk, best = max(((bk, pr[k]) for bk, pr in books), key=lambda x: x[1])
             others = [devig[bk][k] for bk, _ in books if bk != best_bk]
-            outs.append({"name": k[0], "point": k[1], "best": best, "book": best_bk,
+            outs.append({"name": k[0], "desc": k[1], "point": k[2], "best": best, "book": best_bk,
                          "fair_p": mean(others), "n": len(books),
                          "all_fair": mean(devig[bk][k] for bk, _ in books)})
         arb = 1 - sum(1 / o["best"] for o in outs)
@@ -65,10 +82,13 @@ def window_ok(ev, now=None):
 
 
 def leg_from(ev, line, o):
-    return {"event_id": ev["id"], "sport": ev["sport_key"], "commence": ev["commence_time"],
-            "home": ev["home_team"], "away": ev["away_team"], "market": line["market"],
-            "outcome": o["name"], "point": o["point"], "price": round(o["best"], 3),
-            "book": o["book"], "fair_p": round(o["fair_p"], 4), "close_p": None, "result": None}
+    leg = {"event_id": ev["id"], "sport": ev["sport_key"], "commence": ev["commence_time"],
+           "home": ev["home_team"], "away": ev["away_team"], "market": line["market"],
+           "outcome": o["name"], "point": o["point"], "price": round(o["best"], 3),
+           "book": o["book"], "fair_p": round(o["fair_p"], 4), "close_p": None, "result": None}
+    if o.get("desc"):
+        leg["team"] = o["desc"]
+    return leg
 
 
 def classify(p, dec):
@@ -110,7 +130,7 @@ def board_summary(events):
         lines = []
         for line in analyse_event(ev):
             lines.append({"market": line["market"], "outcomes": [
-                {"name": o["name"], "point": o["point"], "price": round(o["best"], 3),
+                {"name": o["name"], "team": o.get("desc"), "point": o["point"], "price": round(o["best"], 3),
                  "am": to_american(o["best"]), "book": o["book"],
                  "fair_p": round(o["fair_p"], 4),
                  "ev": round(o["fair_p"] * o["best"] - 1, 4)} for o in line["outcomes"]]})
@@ -132,7 +152,8 @@ def closing_update(open_bets, events):
                 if line["market"] != leg["market"]:
                     continue
                 for o in line["outcomes"]:
-                    if o["name"] == leg["outcome"] and o["point"] == leg["point"]:
+                    if o["name"] == leg["outcome"] and o["point"] == leg["point"] \
+                            and o.get("desc") == leg.get("team"):
                         leg["close_p"] = round(o["all_fair"], 4)
                         # When the "close" was taken: the last scan before the game. Minutes
                         # before start show how close to the real closing line it is.

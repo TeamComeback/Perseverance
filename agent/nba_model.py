@@ -18,14 +18,15 @@ from datetime import date
 
 from . import nba_data as nd
 
-STATS = {"pts": "points", "reb": "rebounds", "ast": "assists", "tpm": "threes", "pra": "pts+reb+ast"}
+STATS = {"pts": "points", "reb": "rebounds", "ast": "assists", "tpm": "threes", "pra": "pts+reb+ast",
+         "ra": "reb+ast"}
 ODDS_KEY = {"pts": "player_points", "reb": "player_rebounds", "ast": "player_assists",
-            "tpm": "player_threes", "pra": "player_points_rebounds_assists"}
-COUNT_STATS = {"reb", "ast", "tpm"}
+            "tpm": "player_threes", "pra": "player_points_rebounds_assists", "ra": "player_rebounds_assists"}
+COUNT_STATS = {"reb", "ast", "tpm", "ra"}
 ROLE_NAME = {"PG": "point guards", "SG": "shooting guards", "SF": "small forwards", "PF": "power forwards", "C": "centers"}
 PRIOR = {"dvp": 10.0, "sim": 8.0, "h2h": 5.0, "ha": 25.0}
 # How hard each stat leans on the matchup, calibrated walk-forward on 2025-26 (slope of actual vs predicted).
-STAT_CAL = {"pts": 0.70, "reb": 1.00, "ast": 0.70, "tpm": 0.55, "pra": 0.95}
+STAT_CAL = {"pts": 0.70, "reb": 1.00, "ast": 0.70, "tpm": 0.55, "pra": 0.95, "ra": 1.00}   # ra: slope 1.06 walk-forward (Oct 2026)
 
 
 def _val(p, s):
@@ -37,6 +38,8 @@ def _val(p, s):
         return p[nd.P_AST]
     if s == "tpm":
         return p[nd.P_TPM]
+    if s == "ra":
+        return p[nd.P_REB] + p[nd.P_AST]
     return p[nd.P_PTS] + p[nd.P_REB] + p[nd.P_AST]
 
 

@@ -6,13 +6,16 @@ on:
     - cron: "35 23 * * *"   # ~7:30pm ET — prime-time slate
     - cron: "10 9 * * *"    # ~5am ET   — overnight grading + strategist
     - cron: "5 22 * * *"    # ~6pm ET (5pm in winter) — NBA matchup props, after most injury news
+    - cron: "17 23 * * *"   # ~7:15pm ET — props backup: only runs if the 6pm run was delayed or dropped
+    - cron: "41 13 * * *"   # ~9:40am ET — free research refresh: box scores, lineups, projections, trends
+    - cron: "47 20 * * *"   # ~4:45pm ET — free research refresh with updated lineups
   workflow_dispatch:
     inputs:
       mode:
-        description: "cycle, props or nightly"
+        description: "cycle, props, research or nightly"
         default: cycle
         type: choice
-        options: [cycle, props, nightly]
+        options: [cycle, props, research, nightly]
 
 permissions:
   contents: write
@@ -41,6 +44,8 @@ jobs:
             case "${{ github.event.schedule }}" in
               "10 9 * * *") MODE=nightly ;;
               "5 22 * * *") MODE=props ;;
+              "17 23 * * *") MODE=props-backup ;;
+              "41 13 * * *"|"47 20 * * *") MODE=research ;;
               *) MODE=cycle ;;
             esac
           fi

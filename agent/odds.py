@@ -16,45 +16,53 @@ class OutOfBudget(Exception):
     pass
 
 
+def _et():
+    return store.et_now()
+
+
 class Budget:
-    """Tracks credits. Two rules: never drop below the reserve, and spread the
-    rest evenly across the scans left this month."""
+    """Tracks credits. Two rules: never drop below the reserve, and spread the rest evenly.
+
+    Even spread (owner request, Oct 30 2026): what's left above the reserve is divided by the
+    days left in the month to give today's budget, and each run gets its share of what's left
+    of today's budget for the runs still to come today. A skipped or cheap run leaves its credits
+    for later, so nothing piles up and nothing runs dry before the reset on the 1st."""
 
     def __init__(self):
         self.b = store.load("budget.json", {})
-        month = store.now().strftime("%Y-%m")
+        month = _et().strftime("%Y-%m")
         if self.b.get("month") != month:
-            self.b = {"month": month, "remaining": None, "used": None,
-                      "runs": 0, "runs_day": "", "runs_today": 0, "log": [],
+            self.b = {"month": month, "remaining": None, "used": None, "runs": 0, "log": [],
                       "monthly": config.MONTHLY_CREDITS, "reserve": config.RESERVE_CREDITS}
         self.spent_this_run = 0
         self.allowance = 0
         self.month_end = False
 
+    def _day(self):
+        n = _et()
+        today = n.strftime("%Y-%m-%d")
+        if self.b.get("day") != today:
+            rem = self.b["remaining"] if self.b.get("remaining") is not None else config.MONTHLY_CREDITS
+            days_left = calendar.monthrange(n.year, n.month)[1] - n.day + 1
+            spendable = max(0, rem - config.RESERVE_CREDITS)
+            self.b.update(day=today, days_left=days_left, day_budget=spendable // max(1, days_left),
+                          spent_today=0, units_today=0)
+        return self.b
+
     def start_run(self, units=1):
         """Each scan is 1 unit; the evening NBA props run is config.PROPS_UNITS units,
         so it gets a bigger share of the day's credits."""
-        today = store.now().strftime("%Y-%m-%d")
-        if self.b.get("runs_day") != today:
-            self.b["runs_day"], self.b["runs_today"] = today, 0
-        n = store.now()
-        last = calendar.monthrange(n.year, n.month)[1]
-        per_day = config.RUNS_PER_DAY + config.PROPS_UNITS
-        runs_left = max(units, (last - n.day + 1) * per_day - self.b["runs_today"])
-        rem = self.b["remaining"] if self.b["remaining"] is not None else config.MONTHLY_CREDITS
-        spendable = max(0, rem - config.RESERVE_CREDITS)
-        self.allowance = spendable * units // runs_left
-        # Month-end mode: credits reset on the 1st, so in the last 4 days any spare
-        # credits are worth more spent than saved. The reserve floor still holds.
-        days_left = last - n.day + 1
-        self.month_end = days_left <= 4 and spendable > 0
-        if self.month_end:
-            self.allowance = max(self.allowance, spendable * units // max(units, days_left * per_day // 2))
-        self.b["month_end_mode"] = self.month_end
-        self.b["runs"] += 1
-        self.b["runs_today"] += units
-        self.b["runs_left"] = runs_left
-        self.b["allowance"] = self.allowance
+        b = self._day()
+        left_today = max(0, b["day_budget"] - b["spent_today"])
+        units_left = max(units, config.UNITS_PER_DAY - b["units_today"])
+        self.allowance = left_today * units // units_left
+        rem = b["remaining"] if b.get("remaining") is not None else config.MONTHLY_CREDITS
+        self.allowance = min(self.allowance, max(0, rem - config.RESERVE_CREDITS))
+        b["runs"] = b.get("runs", 0) + 1
+        b["units_today"] += units
+        b["runs_left"] = max(0, b["days_left"] * config.UNITS_PER_DAY - b["units_today"])
+        b["allowance"] = self.allowance
+        b.pop("month_end_mode", None)
 
     def can(self, cost: int, essential=False) -> bool:
         rem = self.b["remaining"]
@@ -64,6 +72,7 @@ class Budget:
 
     def record(self, endpoint, cost, remaining, used):
         self.spent_this_run += cost
+        self._day()["spent_today"] += cost
         if remaining is not None:
             self.b["remaining"] = remaining
         if used is not None:
@@ -157,7 +166,7 @@ class OddsClient:
 
 # ---- Mock market for offline testing ----------------------------------------
 MOCK_SPORTS = ["basketball_nba", "icehockey_nhl", "soccer_epl"]
-BOOKS = ["draftkings", "fanduel", "williamhill_us", "betmgm", "betrivers", "bovada"]   # mock: extras prove the filter works
+BOOKS = ["draftkings", "fanduel", "betmgm", "betrivers", "kalshi", "bovada", "pinnacle"]   # mock: extras prove the filter works
 
 
 def _rng(*parts):

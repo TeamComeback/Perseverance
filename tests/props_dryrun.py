@@ -9,8 +9,10 @@ from agent.odds import Budget
 class FakeClient:
     def __init__(self, budget):
         self.budget = budget
-        self.m = nm.Model(nd.season_of(store.now().astimezone(nd.ET).date()))
-        self.slate = nd.slate(store.now().astimezone(nd.ET).date())
+        from agent import research
+        self.day = research.pick_date()[0]
+        self.m = nm.Model(nd.season_of(self.day))
+        self.slate = nd.slate(self.day)
     def sports(self): return []
     def events(self, sport):
         return [{"id": "fake-" + g["espn_id"], "home_team": g["home_name"], "away_team": g["away_name"],
@@ -23,6 +25,12 @@ class FakeClient:
         for bkey in ("draftkings", "fanduel", "williamhill_us", "betmgm"):
             mk = []
             for mkey in markets:
+                if mkey == "team_totals":          # fake team totals around each team's average
+                    tp = 112.5 + rng.choice([-3, 0, 3])
+                    mk.append({"key": mkey, "outcomes": [
+                        {"name": side, "description": t, "point": tp, "price": round(1.91 + rng.uniform(-0.06, 0.06), 3)}
+                        for t in (g["home_name"], g["away_name"]) for side in ("Over", "Under")]})
+                    continue
                 s = {v: k for k, v in nm.ODDS_KEY.items()}[mkey]
                 outs = []
                 for pid, pl in self.m.players.items():

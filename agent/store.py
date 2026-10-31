@@ -14,6 +14,19 @@ def now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def et_now() -> datetime:
+    """Current New York time (handles daylight saving: UTC-4 from the second Sunday of March to the
+    first Sunday of November, otherwise UTC-5)."""
+    import calendar
+    from datetime import timedelta
+    n = now()
+    y = n.year
+    mar = 8 + (6 - calendar.weekday(y, 3, 8)) % 7
+    nov = 1 + (6 - calendar.weekday(y, 11, 1)) % 7
+    dst = datetime(y, 3, mar, 7, tzinfo=timezone.utc) <= n < datetime(y, 11, nov, 6, tzinfo=timezone.utc)
+    return n.astimezone(timezone(timedelta(hours=-4 if dst else -5)))
+
+
 def iso(dt: datetime) -> str:
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -30,11 +43,14 @@ def load(name: str, default):
     return default
 
 
-def save(name: str, obj) -> None:
+def save(name: str, obj, compact=False) -> None:
     config.DATA.mkdir(parents=True, exist_ok=True)
     tmp = config.DATA / (name + ".tmp")
     with open(tmp, "w") as f:
-        json.dump(obj, f, indent=1, sort_keys=False)
+        if compact:
+            json.dump(obj, f, separators=(",", ":"))
+        else:
+            json.dump(obj, f, indent=1, sort_keys=False)
     os.replace(tmp, config.DATA / name)
 
 

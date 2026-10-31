@@ -43,6 +43,12 @@ def grade_leg(leg, game):
         return None
     hs, as_ = sc[leg["home"]], sc[leg["away"]]
     m, o, pt = leg["market"], leg["outcome"], leg["point"]
+    if m == "team_totals":
+        if leg.get("team") not in sc:
+            return None
+        tt = sc[leg["team"]]
+        diff = tt - pt if o == "Over" else pt - tt
+        return "win" if diff > 0 else "loss" if diff < 0 else "push"
     if m == "totals":
         tot = hs + as_
         diff = tot - pt if o == "Over" else pt - tot

@@ -6,7 +6,7 @@ model's projection at bet time, prices) so the review is honest and reproducible
 import math
 
 NEAR = {"basketball": 3.0, "americanfootball": 3.0, "icehockey": 1.0, "baseball": 1.0, "soccer": 1.0}
-STATNAME = {"pts": "points", "reb": "rebounds", "ast": "assists", "tpm": "threes", "pra": "pts+reb+ast"}
+STATNAME = {"pts": "points", "reb": "rebounds", "ast": "assists", "tpm": "threes", "pra": "pts+reb+ast", "ra": "reb+ast"}
 
 
 def _g(x):
@@ -49,7 +49,14 @@ def _game_leg(leg, bet):
         hs, as_ = f["home"], f["away"]
         m, o, pt = leg["market"], leg["outcome"], leg.get("point")
         margin_home = hs - as_
-        if m == "totals":
+        if m == "team_totals" and leg.get("team"):
+            tt = hs if leg["team"] == leg["home"] else as_
+            over = o == "Over"
+            diff = tt - pt if over else pt - tt
+            why.append(f"{leg['team']} scored {_g(tt)} against a team total of {_g(pt)}: {o.lower()} "
+                       + (f"cleared by {_g(abs(diff))}." if diff > 0 else f"missed by {_g(abs(diff))}." if diff < 0 else "landed on the number."))
+            head = f"{leg['team']} {_g(tt)} vs team total {o} {_g(pt)}"
+        elif m == "totals":
             tot = hs + as_
             over = o == "Over"
             diff = tot - pt if over else pt - tot
@@ -126,9 +133,9 @@ def _prop_leg(leg, bet):
         bits = []
         if stat in ("pts", "pra"):
             bits.append(f"{_g(box.get('pts', 0))} pts on {_g(box.get('fga', 0))} FGA / {_g(box.get('fta', 0))} FTA")
-        if stat in ("reb", "pra"):
+        if stat in ("reb", "pra", "ra"):
             bits.append(f"{_g(box.get('reb', 0))} reb")
-        if stat in ("ast", "pra"):
+        if stat in ("ast", "pra", "ra"):
             bits.append(f"{_g(box.get('ast', 0))} ast, {_g(box.get('tov', 0))} TO")
         if stat == "tpm":
             bits.append(f"{_g(box.get('tpm', 0))}-of-{_g(box.get('tpa', 0))} from three")

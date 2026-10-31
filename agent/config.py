@@ -20,23 +20,50 @@ MONTHLY_CREDITS = int(os.environ.get("ODDS_MONTHLY_CREDITS", "500"))
 RESERVE_CREDITS = 25       # never spend below this — the hard floor
 RUNS_PER_DAY = 3           # scheduled scans; used to spread credits across the month
 PROPS_UNITS = 3            # the evening NBA props run gets this many scans' worth of credits
+UNITS_PER_DAY = RUNS_PER_DAY + PROPS_UNITS
 REGIONS = "us"             # fallback only; requests name the books below instead
 
-# ---- OWNER RULE: sportsbooks (the owner set this; the agent and strategist must NOT change it) ----
-# The agent reads odds from, compares prices across, and places bets at only these three books.
-# Closing lines for CLV come from the same three. This is a plain constant, not a tunable
-# parameter, so the adaptation loop and the overnight strategist cannot reach it.
-# The Odds API key for Caesars is "williamhill_us". Up to 10 books count as one region for
-# billing, so three books cost the same credits as regions=us.
-ALLOWED_BOOKS = ("draftkings", "fanduel", "williamhill_us")
-BOOK_NAMES = {"draftkings": "DraftKings", "fanduel": "FanDuel", "williamhill_us": "Caesars"}
+# ---- OWNER RULE: books (the owner set this; the agent and strategist must NOT change it) ----
+# Updated by the owner on Oct 30 2026: the sportsbooks licensed in New York that The Odds API
+# covers, plus the Kalshi and Polymarket (US) exchanges. The agent reads odds from, compares prices
+# across, and places bets at only these books. Closing lines for CLV come from the same list.
+# This is a plain constant, not a tunable parameter, so the adaptation loop and the overnight
+# strategist cannot reach it.
+# Every group of 10 books bills as one region, so this list is capped at 10 to keep the cost of a
+# scan the same as before.
+#  - "williamhill_us" is Caesars; it and Fanatics only return odds on a PAID Odds API plan.
+#  - "espnbet" is theScore Bet (formerly ESPN Bet). bet365 and Bally Bet are licensed in NY but
+#    bet365 is not in The Odds API's US list, and Bally Bet was left out to stay at 10.
+#  - Kalshi and Polymarket are exchanges, not sportsbooks: prices carry a trading fee instead of
+#    vig (see EXCHANGE_FEE). Polymarket's US platform blocks New York residents and New York is
+#    suing Kalshi over sports contracts, so treat both as price references for paper betting.
+ALLOWED_BOOKS = ("draftkings", "fanduel", "williamhill_us", "betmgm", "betrivers", "fanatics",
+                 "espnbet", "hardrockbet", "kalshi", "polymarket_us")
+BOOK_NAMES = {"draftkings": "DraftKings", "fanduel": "FanDuel", "williamhill_us": "Caesars",
+              "betmgm": "BetMGM", "betrivers": "BetRivers", "fanatics": "Fanatics",
+              "espnbet": "theScore Bet", "hardrockbet": "Hard Rock Bet", "kalshi": "Kalshi",
+              "polymarket_us": "Polymarket"}
+EXCHANGES = {"kalshi", "polymarket_us"}
+PAID_ONLY = {"williamhill_us", "fanatics"}
 
 
 def book_ok(key):
     return key in ALLOWED_BOOKS
 
+
+def exchange_price(dec):
+    """Decimal odds after the exchange's trading fee. Kalshi charges 0.07 x p x (1-p) per $1
+    contract; the same fee is assumed for Polymarket to stay conservative."""
+    p = 1 / dec
+    return 1 / (p + 0.07 * p * (1 - p))
+
+
+def net_price(book, dec):
+    return exchange_price(dec) if book in EXCHANGES else dec
+
+
 # ---- Market reading ---------------------------------------------------------
-MIN_BOOKS = 2              # books needed for a consensus (only three books are allowed, see ALLOWED_BOOKS)
+MIN_BOOKS = 2              # books needed for a consensus
 MAX_EV = 0.20              # an "edge" bigger than this is a stale/bad line, skip it
 MAX_ARB = 0.05             # real arbs are small; a bigger one is almost always a bad line
 WINDOW_MIN_H = 0.25        # only bet games starting 15 min ...
@@ -52,6 +79,12 @@ SPORT_PRIORITY = {
     "mma_mixed_martial_arts": 0.5, "basketball_wnba": 0.6, "americanfootball_cfl": 0.4,
 }
 DEFAULT_PRIORITY = 0.3
+
+# NBA markets the owner wants considered (Oct 30 2026): R+A, assists, threes, PRA as player props,
+# plus moneylines, spreads, totals and team totals.
+PROP_STATS = ("ra", "ast", "tpm", "pra")
+TEAM_TOTALS = "team_totals"     # event-level market: bought per game in the evening NBA run
+
 
 def markets_for(sport_key: str) -> str:
     if sport_key.startswith("mma") or sport_key.startswith("boxing"):

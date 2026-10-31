@@ -42,6 +42,63 @@ def load(season):
     return {"season": season, "games": {}, "dates_done": []}
 
 
+SHOT_SEASON_MIN = 2027      # shot charts are kept for the current season only (file size)
+
+
+def load_shots(season):
+    """Shots live in one small file per game day (data/nba/shots/<season>/<date>.json) so the
+    nightly commit only adds new files instead of rewriting one big one."""
+    out = {"season": season, "games": {}, "dates": {}}
+    d = STORE / "shots" / str(season)
+    if d.exists():
+        for f in sorted(d.glob("*.json")):
+            day = json.load(open(f))
+            for gid, sh in day.items():
+                out["games"][gid] = sh
+                out["dates"][gid] = f.stem
+    return out
+
+
+def save_shots(sdb, games=None):
+    """Write each day's shots file. `games` gives the date of each game id (from the games db)."""
+    d = STORE / "shots" / str(sdb["season"])
+    d.mkdir(parents=True, exist_ok=True)
+    by_day = {}
+    for gid, sh in sdb["games"].items():
+        day = sdb["dates"].get(gid) or (games or {}).get(gid, {}).get("d")
+        if day:
+            by_day.setdefault(day, {})[gid] = sh
+    for day, items in by_day.items():
+        p = d / f"{day}.json"
+        new = json.dumps(items, separators=(",", ":"), sort_keys=True)
+        if not p.exists() or p.read_text() != new:
+            p.write_text(new)
+
+
+def refresh(season, workers=8, only_missing=True, log=print):
+    """Re-fetch stored games to add fields added later (linescores, pregame line, shots)."""
+    db = load(season)
+    sdb = load_shots(season) if season >= SHOT_SEASON_MIN else None
+    ids = [gid for gid, g in db["games"].items() if not only_missing or "ls" not in g
+           or (sdb is not None and gid not in sdb["games"])]
+    with ThreadPoolExecutor(workers) as ex:
+        res = list(ex.map(lambda gid: (gid, _safe(parse_summary, gid)), ids))
+    n = 0
+    for gid, g in res:
+        if not g:
+            continue
+        shots = g.pop("_shots", None)
+        db["games"][gid] = g
+        if sdb is not None and shots is not None:
+            sdb["games"][gid] = shots
+        n += 1
+    save(db)
+    if sdb is not None:
+        save_shots(sdb, db["games"])
+    log(f"[nba] refreshed {n}/{len(ids)} games in {season}")
+    return n
+
+
 def save(db):
     STORE.mkdir(parents=True, exist_ok=True)
     p = STORE / f"games-{db['season']}.json"
@@ -74,7 +131,15 @@ def parse_summary(eid):
                                          "name": c["team"]["displayName"], "nick": c["team"].get("name", "")}
              for c in comp["competitors"]}
     out = {"d": comp["date"][:10], "st": (d["header"].get("season") or {}).get("type", 2),
-           "teams": teams, "tstats": {}, "players": []}
+           "teams": teams, "tstats": {}, "players": [], "ls": {}, "ids": {}}
+    for c in comp["competitors"]:
+        ab = c["team"]["abbreviation"]
+        out["ids"][ab] = c["team"].get("id")
+        out["ls"][ab] = [_num(x.get("displayValue")) for x in (c.get("linescores") or [])]
+    line = _line(d, comp)
+    if line:
+        out["line"] = line
+    out["_shots"] = _shots(d)
     for t in d["boxscore"].get("teams", []):
         ab = t["team"]["abbreviation"]
         st = {x["label"]: x["displayValue"] for x in t.get("statistics", [])}
@@ -103,6 +168,44 @@ def parse_summary(eid):
                                        _num(s[idx["PTS"]]), _num(s[idx["REB"]]), _num(s[idx["AST"]]),
                                        tpm, tpa, fga, fta, _num(s[idx["TO"]]) if "TO" in idx else 0,
                                        1 if a.get("starter") else 0])
+    return out
+
+
+def _line(d, comp):
+    """Pregame line ESPN shows for the game (usually DraftKings): home spread, total, moneylines."""
+    try:
+        pc = (d.get("pickcenter") or [])[0]
+    except IndexError:
+        return None
+    if pc.get("overUnder") is None and pc.get("spread") is None:
+        return None
+    h = pc.get("homeTeamOdds") or {}
+    a = pc.get("awayTeamOdds") or {}
+    spread = pc.get("spread")
+    # ESPN's "spread" is from the home team's side when the home team is favored, otherwise check details
+    if spread is not None and h.get("favorite") is False and a.get("favorite") is True and spread < 0:
+        spread = -spread
+    return {"spread": spread, "total": pc.get("overUnder"), "ml_home": h.get("moneyLine"),
+            "ml_away": a.get("moneyLine"), "prov": (pc.get("provider") or {}).get("name", "")}
+
+
+def _shots(d):
+    """Every field-goal attempt with court coordinates: [athlete_id, x, y, made, is_three, period].
+    ESPN coordinates: x 0-50 across the court, y = feet out from the basket (basket at 25, 0)."""
+    out = []
+    for p in d.get("plays") or []:
+        if not p.get("shootingPlay") or "Free Throw" in ((p.get("type") or {}).get("text") or ""):
+            continue
+        c = p.get("coordinate") or {}
+        x, y = c.get("x"), c.get("y")
+        parts = p.get("participants") or []
+        if x is None or y is None or not (0 <= x <= 50 and 0 <= y <= 47) or not parts:
+            continue
+        aid = (parts[0].get("athlete") or {}).get("id")
+        if not aid:
+            continue
+        out.append([aid, x, y, 1 if p.get("scoringPlay") else 0, 1 if p.get("pointsAttempted") == 3 else 0,
+                    (p.get("period") or {}).get("number", 0)])
     return out
 
 
@@ -141,9 +244,14 @@ def ingest(start: date, end: date, workers=6, log=print):
     with ThreadPoolExecutor(workers) as ex:
         res = list(ex.map(lambda j: (j, _safe(parse_summary, j[1])), jobs))
     n = 0
+    shot_dbs = {}
     for (d, eid), g in res:
         if g:
-            dbs[season_of(d)]["games"][eid] = g
+            shots = g.pop("_shots", None)
+            season = season_of(d)
+            dbs[season]["games"][eid] = g
+            if shots is not None and season >= SHOT_SEASON_MIN:
+                shot_dbs.setdefault(season, load_shots(season))["games"][eid] = shots
             n += 1
         else:
             db = dbs[season_of(d)]
@@ -152,6 +260,8 @@ def ingest(start: date, end: date, workers=6, log=print):
     for db in dbs.values():
         db["dates_done"] = sorted(set(db["dates_done"]))
         save(db)
+    for season, sdb in shot_dbs.items():
+        save_shots(sdb, dbs[season]["games"])
     log(f"[nba] ingested {n} games across {len(todo)} days")
     return n
 
@@ -220,5 +330,8 @@ def slate(d: date):
 
 if __name__ == "__main__":
     import sys
-    a, b = date.fromisoformat(sys.argv[1]), date.fromisoformat(sys.argv[2])
-    ingest(a, b, workers=int(sys.argv[3]) if len(sys.argv) > 3 else 6)
+    if sys.argv[1] == "refresh":
+        refresh(int(sys.argv[2]), workers=int(sys.argv[3]) if len(sys.argv) > 3 else 8)
+    else:
+        a, b = date.fromisoformat(sys.argv[1]), date.fromisoformat(sys.argv[2])
+        ingest(a, b, workers=int(sys.argv[3]) if len(sys.argv) > 3 else 6)

@@ -238,8 +238,9 @@ picked by a matchup model (defense vs position w_dvp, similar-player history w_s
 overall dial matchup_strength; prop_model_weight blends the model with the market price).
 The strategy is yours to reshape freely. The only fixed rules: paper money, every bet is at least $5,
 a run ends at ${goal:.0f} or when it can't afford a $5 bet.
-OWNER RULE (never change, not tunable): the agent only uses DraftKings, FanDuel and Caesars. Do not propose
-anything that depends on other sportsbooks.
+OWNER RULE (never change, not tunable): the agent only uses the owner's book list: DraftKings, FanDuel, Caesars,
+BetMGM, BetRivers, Fanatics, theScore Bet, Hard Rock Bet, and the Kalshi and Polymarket exchanges (prices there are
+net of trading fees). Do not propose anything that depends on other books.
 
 Current params: {params}
 Hard bounds (anything outside is clipped): {bounds}

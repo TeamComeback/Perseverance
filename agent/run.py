@@ -7,6 +7,7 @@ import sys
 from . import book as bk
 from . import brain, config, market, store
 from . import props as nba_props
+from . import saved
 from .odds import Budget, OddsClient, OutOfBudget
 
 
@@ -49,17 +50,45 @@ def describe(bet):
     if len(bet["legs"]) > 1:
         return f"{len(bet['legs'])}-leg parlay @ {market.to_american(bet['dec']):+d}"
     pt = "" if l.get("point") is None else (f" {l['point']:+g}" if l["market"] == "spreads" else f" {l['point']:g}")
-    return f"{l['outcome']}{pt} @ {market.to_american(l['price']):+d} ({l.get('book') or 'manual'})"
+    team = f"{l['team']} team total " if l.get("team") else ""
+    return f"{team}{l['outcome']}{pt} @ {market.to_american(l['price']):+d} ({config.BOOK_NAMES.get(l.get('book'), l.get('book') or 'manual')})"
+
+
+def recaps(state, manual, fresh=(), limit=10):
+    """Game stories for settled bets (free ESPN play-by-play). New results first, then a few older
+    results that don't have one yet."""
+    from . import recap
+    todo = list(fresh)
+    for bkobj in (state["book"], manual["book"]):
+        for b in reversed(bkobj["bets"]):
+            if b["status"] in ("won", "lost", "push") and not (b.get("review") or {}).get("recaps") \
+                    and not b.get("recap_tried", 0) >= 3 and b not in todo:
+                todo.append(b)
+    n = 0
+    for b in todo[:limit]:
+        try:
+            if recap.attach(b):
+                n += 1
+            else:
+                b["recap_tried"] = b.get("recap_tried", 0) + 1
+        except Exception as e:
+            b["recap_tried"] = b.get("recap_tried", 0) + 1
+            print(f"[recap] {b['id']} failed: {e}")
+    return n
 
 
 def grade(state, manual, client):
+    settled = []
     try:
         done = nba_props.grade(state["book"])
+        settled += done
         brain.learn_from(state, done)
         for b in done:
             brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)} — {b['review']['headline']}"
                        + (f" [{', '.join(b['review']['tags'])}]" if b["review"].get("tags") else ""))
-        for b in nba_props.grade(manual["book"]):
+        mdone = nba_props.grade(manual["book"])
+        settled += mdone
+        for b in mdone:
             if b.get("issue"):
                 store.gh_comment(b["issue"], f"**{b['status'].upper()}** {signed(b['profit'])}. "
                                  f"Your bankroll: ${bk.equity(manual['book']):.2f}")
@@ -77,15 +106,26 @@ def grade(state, manual, client):
             brain.note(state, "error", f"Scores for {sport} failed: {e}")
             continue
         done = bk.apply_scores(state["book"], sport, games)
+        settled += done
         brain.learn_from(state, done)
         for b in done:
             brain.note(state, "result", f"{b['status'].upper()} {signed(b['profit'])}: {describe(b)} — {b['review']['headline']}"
                        + (f" [{', '.join(b['review']['tags'])}]" if b["review"].get("tags") else ""))
-        for b in bk.apply_scores(manual["book"], sport, games):
+        mdone = bk.apply_scores(manual["book"], sport, games)
+        settled += mdone
+        for b in mdone:
             if b.get("issue"):
                 store.gh_comment(b["issue"], f"**{b['status'].upper()}** {signed(b['profit'])}. "
                                  f"Your bankroll: ${bk.equity(manual['book']):.2f}")
                 store.gh_close(b["issue"])
+    try:
+        recaps(state, manual, settled)
+    except Exception as e:
+        brain.note(state, "error", f"Game recaps failed: {e}")
+    try:
+        saved.grade()
+    except Exception as e:
+        brain.note(state, "error", f"Saved-prop grading failed: {e}")
     for name, bkobj in (("Perseverance", state["book"]), ("Your book", manual["book"])):
         r = bk.check_race(bkobj, name)
         if r:
@@ -151,8 +191,37 @@ def cycle():
     print(state["journal"][-1]["text"])
 
 
-def props_run():
-    """Evening NBA matchup run (about 6pm ET, after most injury news)."""
+def research_run():
+    """Free daily refresh (morning and late afternoon): box scores, lineups, projections, trends."""
+    from . import research
+    state, manual = load_all()
+    try:
+        ctx = research.context()
+        research.write_all(ctx)
+        nba_props.write_board(ctx, {}, [], {}, [])
+        brain.note(state, "research", f"Research refresh for {ctx['day']:%a %b %-d}: {len(ctx['games'])} games, "
+                                      f"{len(ctx['entries'])} players projected, lineups for {len(ctx['rw_games'])} games.")
+    except Exception as e:
+        import traceback; traceback.print_exc()
+        brain.note(state, "error", f"Research refresh failed: {e}")
+    try:
+        saved.grade()
+        recaps(state, manual, limit=6)
+    except Exception as e:
+        print(f"[research] extras failed: {e}")
+    save_all(state, manual)
+    print(state["journal"][-1]["text"])
+
+
+def props_run(backup=False):
+    """Evening NBA matchup run (about 6pm ET, after most injury news). The backup run an hour later
+    only does anything if the first one didn't happen (GitHub sometimes delays or drops scheduled runs)."""
+    if backup:
+        pz = store.load("props.json", {})
+        from . import research
+        if pz.get("priced_date") == research.et_today().isoformat():
+            print("props already priced today; backup run skipped")
+            return
     budget = Budget()
     client = OddsClient(budget)
     state, manual = load_all()
@@ -165,7 +234,13 @@ def props_run():
     budget.start_run(units=config.PROPS_UNITS)
     grade(state, manual, client)
     try:
-        out = nba_props.run(state, manual, client, budget)
+        from . import research
+        ctx = research.context()
+        try:
+            research.write_all(ctx)          # fresh lineups and projections for the dashboard
+        except Exception as e:
+            brain.note(state, "error", f"Research files failed: {e}")
+        out = nba_props.run(state, manual, client, budget, ctx=ctx)
     except Exception as e:
         import traceback; traceback.print_exc()
         brain.note(state, "error", f"NBA props run failed: {e}")
@@ -213,7 +288,8 @@ def nightly():
 
 
 # ---- Manual bets through GitHub issues --------------------------------------
-FIELDS = {"sport key": "sport", "event id": "event_id", "market": "market", "selection": "selection",
+FIELDS = {"sport key": "sport", "event id": "event_id", "player": "player", "player id": "player_id",
+          "stat": "stat", "side": "side", "espn game id": "espn_id", "snapshot": "snapshot", "team (team totals)": "team", "market": "market", "selection": "selection",
           "line": "point", "odds (american)": "odds", "sportsbook": "book", "stake ($)": "stake",
           "notes": "notes"}
 
@@ -232,6 +308,9 @@ def manual_issue():
     ev = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
     issue = ev["issue"]
     num = issue["number"]
+    if issue.get("title", "").lower().startswith("save"):
+        saved.from_issue(ev)
+        return
     state, manual = load_all()
     book = manual["book"]
     existing = next((b for b in book["bets"] if b.get("issue") == num), None)
@@ -273,6 +352,11 @@ def manual_issue():
         if f.get("event_id"):
             board = store.load("board.json", {"events": []})
             evinfo = next((e for e in board["events"] if e["id"] == f["event_id"]), None)
+            if not evinfo:                       # team totals live on the NBA props board
+                tt = (store.load("props.json", {}).get("team_totals") or {}).get(f["event_id"])
+                if tt:
+                    evinfo = {"id": f["event_id"], "sport": "basketball_nba", "commence": tt["commence"],
+                              "home": tt["home"], "away": tt["away"]}
             if evinfo and store.parse(evinfo["commence"]) <= store.now():
                 store.gh_comment(num, "That game has already started, so it can't be bet. "
                                       "Pick something else from the board.")
@@ -308,6 +392,9 @@ def manual_issue():
                "market": f.get("market", "custom") if evinfo else "custom",
                "outcome": f.get("selection", issue["title"]), "point": point, "price": round(dec, 3),
                "book": f.get("book"), "fair_p": None, "close_p": None, "result": None}
+        if f.get("team") and evinfo:
+            leg["team"] = f["team"]
+            leg["outcome"] = "Under" if leg["outcome"].lower().endswith("under") else "Over"
         b = bk.place(book, [leg], stake, "manual", note=f.get("notes", ""), source="you", issue=num)
         if not b:
             store.gh_comment(num, f"Minimum bet is ${config.MIN_STAKE:.0f}."); return
@@ -319,4 +406,5 @@ def manual_issue():
 
 
 if __name__ == "__main__":
-    {"cycle": cycle, "nightly": nightly, "props": props_run, "manual-issue": manual_issue}[sys.argv[1]]()
+    {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
+     "research": research_run, "manual-issue": manual_issue}[sys.argv[1]]()

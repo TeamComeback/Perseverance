@@ -4,7 +4,9 @@ A paper sports-betting agent that races to turn **$100 into $1,000**, plus your 
 
 Named to sit next to Curiosity and Ingenuity.
 
-> **Owner rule (do not change):** the agent only uses **DraftKings, FanDuel and Caesars**. Odds are requested from those three books, prices are compared across them, bets are placed at them, and closing lines for CLV come from them. The list is `ALLOWED_BOOKS` in `agent/config.py`. It is a fixed constant, not a tunable setting, so neither the agent nor the overnight strategist may change it. Bets placed before this rule keep their original book and settle normally. The $5 minimum bet still applies.
+> **Owner rule (do not change):** the agent only uses the owner's book list: the New York-licensed sportsbooks The Odds API covers (**DraftKings, FanDuel, Caesars, BetMGM, BetRivers, Fanatics, theScore Bet, Hard Rock Bet**) plus the **Kalshi** and **Polymarket (US)** exchanges. Odds are requested from those books, prices are compared across them, bets are placed at them, and closing lines for CLV come from them. The list is `ALLOWED_BOOKS` in `agent/config.py`. It is a fixed constant, not a tunable setting, so neither the agent nor the overnight strategist may change it. The $5 minimum bet still applies.
+>
+> Notes on the list: ten books bill as one region, so a scan costs the same as before. Caesars and Fanatics only return odds on a **paid** Odds API plan. bet365 is licensed in NY but isn't in The Odds API's US list. Exchange prices are taken **net of trading fees** (Kalshi's 0.07 × p × (1 − p) per contract, assumed for Polymarket too). Polymarket's US platform blocks New York residents and New York is suing Kalshi over sports contracts, so treat both as price references for paper betting.
 
 ## How the agent bets
 
@@ -22,6 +24,35 @@ Named to sit next to Curiosity and Ingenuity.
    - It leans into playbooks that are working and benches the ones that aren't, but still gives benched ones the odd exploratory bet.
    - Every change is written to the journal with the reason.
 7. **Overnight strategist (optional).** With an `ANTHROPIC_API_KEY` secret set, Claude reviews the numbers each night and can retune the settings, including turning parlays on or off and shifting which sports it focuses on.
+
+## Markets
+
+NBA: **rebounds + assists, assists, threes, pts + reb + ast** player props, plus **moneylines, spreads, totals and team totals**. Moneylines, spreads and totals come from the regular scans. Props and team totals are bought per game in the evening run (team totals ride along when there's a credit for them) and bet against the multi-book consensus like the main board.
+
+## Daily research (free, ~9:40am and ~4:45pm ET)
+
+Every morning, and again before the evening run, the agent refreshes everything the dashboard reads, using only free sources:
+
+- **Box scores** from ESPN (three seasons kept in `data/nba/`, including linescores, ESPN's pregame line, and this season's shot locations).
+- **Projected and confirmed lineups from RotoWire** (starters, "may not play" list with injury status, profile links). RotoWire's projected minutes and stat projections are subscriber-only, so projections come from this model and each player card links to his RotoWire page.
+- **Projections** for every rotation player on the slate in every stat, with matchup signals.
+- **Defense vs position**, recomputed from every box score: how each team's opponents at each position do against their own per-minute norms.
+- **League trends**: hot and cold players, minutes risers, pace changes, over/under and ATS records, second-half teams, softest and toughest matchups, back-to-backs, and how teams trailing by 10+ at halftime do in the second half.
+
+The evening props run refreshes lineups again before pricing. If GitHub delays the 6pm run, a backup at ~7:15pm runs it instead (and does nothing if the first one happened).
+
+## Prop Lab and player cards
+
+The **Prop Lab** tab lists every projected player and stat, filterable by game, stat, over/under lean and priced lines, sortable by matchup, edge, projection or softest defense. Tap a player for the full card:
+
+- Set any line (or start from the market line) and see hit rates for **L5, L10, L15, this season, H2H and home/away**.
+- Filter the game log by window (L5 / L10 / L15 / this season / last season / all three seasons), **only vs tonight's opponent**, home/away, and **with or without** each of his top five teammates.
+- **Defense vs position** for tonight's opponent, **head-to-head** games over three seasons, **similar players** (closest per-36 profiles) and how they did against this opponent, a **shot chart** with zone breakdown, RotoWire **lineup status** and profile link.
+- **Save this prop**: opens a prefilled `Save:` issue with a snapshot of the card. Saved props grade themselves from the box score after the game, and the **Saved props** panel tallies the hit rate by stat. Comment `/remove` on the issue to delete one.
+
+## Game stories
+
+Every settled bet gets a game story from ESPN's free play-by-play, alongside the post-mortem: score by quarter, largest leads, lead changes, **scoring runs**, **momentum swings** (the biggest margin change inside any 8-minute stretch), the **closing stretch** (scoring plays in the last five minutes while within six), key players, and for props the player's line **quarter by quarter** (when he crossed the number, foul trouble, when his threes fell). Other sports get the line score, scoring plays, the go-ahead score that held, and leaders.
 
 ## NBA matchup props (evening run, ~6pm ET)
 
@@ -51,10 +82,10 @@ A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts auto
 
 ## Credit budget (free tier: 500/month)
 
-- Listing sports and games is free. Odds cost 1 credit per market (2 or 3 per sport). Scores cost 2 per sport.
-- Each scan gets an equal share of what's left for the rest of the month.
-- **The agent never spends below 25 credits**, so the limit can't be hit before the monthly reset.
-- In a typical month that's about 5 credits per scan, which covers 1 or 2 sports. A paid Odds API tier unlocks more sports per scan and player props.
+- Listing sports and games is free. Odds cost 1 credit per market (2 or 3 per sport). Scores cost 2 per sport. Props cost 1 per stat per game, team totals 1 per game.
+- **Even spread:** what's left above the floor is divided by the days left in the month to set today's budget (New York days), and each run takes its share of what's left of today's budget. A skipped or cheap run leaves its credits for later, so nothing piles up and nothing runs dry before the reset.
+- **The agent never spends below 25 credits.**
+- On the free tier that's roughly 15 credits a day: a couple of sports per scan and one or two NBA games' props a night. A paid Odds API plan unlocks Caesars and Fanatics prices and props for the whole slate.
 
 ## Setup (about 5 minutes, works from an iPhone browser)
 
@@ -75,9 +106,13 @@ A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts auto
 
 | Time | What runs |
 |---|---|
-| ~5am | Grading and the overnight strategist |
+| ~5am | Grading, box scores, and the overnight strategist |
+| ~9:40am | Research refresh (free) |
 | ~11am | Scan |
 | ~4pm | Scan |
+| ~4:45pm | Research refresh with updated lineups (free) |
+| ~6pm | NBA props + team totals (refreshes lineups first) |
+| ~7:15pm | Props backup (only if the 6pm run didn't happen) |
 | ~7:30pm | Scan |
 
 These times shift by an hour when daylight saving time changes.
@@ -90,6 +125,7 @@ python tests/simulate.py 30     # 30 simulated days on a fake market, no API key
 
 ## Files
 
-- `agent/`: the agent (Python standard library only)
-- `docs/`: the dashboard
-- `docs/data/`: the books (JSON)
+- `agent/`: the agent (Python standard library only). `research.py` daily research, `rotowire.py` lineups, `recap.py` game stories, `saved.py` saved props
+- `docs/`: the dashboard (tabs: Today, Prop Lab, Bets, Trends, Agent)
+- `docs/data/`: the books and research files (JSON); `docs/data/games/` holds one detail file per game on the slate
+- `data/nba/`: box scores (three seasons) and this season's shot locations, one file per day

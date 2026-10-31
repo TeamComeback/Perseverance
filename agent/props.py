@@ -84,12 +84,17 @@ def parse_props(ev_odds):
     """{(player_norm, market, point): {"name", "books": {book: {"Over": p, "Under": p}}}}"""
     out = {}
     for bkm in ev_odds.get("bookmakers", []):
-        if not config.book_ok(bkm.get("key")):     # owner rule: three books only
+        if not config.book_ok(bkm.get("key")):     # owner rule: allowed books only
             continue
         for m in bkm.get("markets", []):
+            if not m["key"].startswith("player_"):
+                continue
             for o in m.get("outcomes", []):
                 who, side, pt, price = o.get("description"), o.get("name"), o.get("point"), o.get("price")
                 if not who or side not in ("Over", "Under") or pt is None or not price or price <= 1:
+                    continue
+                price = config.net_price(bkm["key"], price)
+                if price <= 1:
                     continue
                 k = (norm(who), m["key"], float(pt))
                 e = out.setdefault(k, {"name": who, "books": {}})
@@ -117,50 +122,46 @@ def price_line(entry):
     return p_mkt, best, len(entry["books"])
 
 
-# ---------------- the run ----------------
-def run(state, manual, client, budget):
-    p = state["params"]
-    today = store.now().astimezone(nd.ET).date()
-    if not store.os.environ.get("PERSEVERANCE_NOW"):
-        nd.update(log=lambda m: None)
-    model = nm.Model(nd.season_of(today))
-    games = [g for g in nd.slate(today) if store.parse(g["start"]) > store.now() + timedelta(minutes=15)]
-    if not games:
-        return {"games": [], "spots": [], "note": "No NBA games left to bet today."}
-    inj = nd.injuries()
-    W = {k: p[k] for k in ("w_dvp", "w_sim", "w_h2h", "matchup_strength")}
+def only_market(ev, key):
+    """A copy of an event that keeps only one market (team totals go to the value engine)."""
+    return {**ev, "bookmakers": [{**b, "markets": [m for m in b.get("markets", []) if m["key"] == key]}
+                                 for b in ev.get("bookmakers", [])]}
 
-    # 1) project every rotation player on the slate (free)
-    roster = defaultdict(list)
-    for pid, pl in model.players.items():
-        roster[pl["team"]].append(pid)
+
+# ---------------- the run ----------------
+def run(state, manual, client, budget, ctx=None):
+    from . import research
+    p = state["params"]
+    ctx = ctx or research.context()
+    today, model = ctx["day"], ctx["model"]
+    games = [g for g in ctx["games"] if g["state"] == "pre" and store.parse(g["start"]) > store.now() + timedelta(minutes=15)]
+    if not games:
+        write_board(ctx, {}, [], {}, [])
+        return {"games": [], "spots": [], "note": "No NBA games left to bet today."}
+    live_ids = {g["espn_id"] for g in games}
+
+    # 1) every rotation player's projection on the slate (free), for the markets the owner wants
     spots, by_game = [], defaultdict(list)
-    for g in games:
-        for team, opp, home in ((g["home"], g["away"], True), (g["away"], g["home"], False)):
-            for pid in roster.get(team, []):
-                pl = model.players[pid]
-                if pl["games"] < 8 or inj.get(pid) in SKIP_STATUS:
-                    continue
-                if model.minutes(pid) < MIN_MINUTES:
-                    continue
-                last = model.by_player[pid][-1]["d"]
-                if (today - datetime.fromisoformat(last).date()).days > 25:
-                    continue                               # hasn't played lately
-                for s in nm.STATS:
-                    pr = model.project(pid, s, opp, home, W)
-                    if pr["base"] < (0.8 if s == "tpm" else 2.0):
-                        continue
-                    pr.update(game=g["espn_id"], status=inj.get(pid, ""), strength=abs(math.log(pr["mult"])))
-                    spots.append(pr)
-                    by_game[g["espn_id"]].append(pr)
+    for e in ctx["entries"]:
+        if e["game"] not in live_ids or e["out"] or e["minutes"] < MIN_MINUTES:
+            continue
+        if model.players[e["pid"]]["games"] < 8:
+            continue
+        for s in config.PROP_STATS:
+            pr = dict(e["proj"][s])
+            if pr["base"] < (0.8 if s == "tpm" else 2.0):
+                continue
+            pr.update(game=e["game"], status=e["status"], strength=abs(math.log(pr["mult"])))
+            spots.append(pr)
+            by_game[e["game"]].append(pr)
     spots.sort(key=lambda x: -x["strength"])
 
     # 2) map ESPN games to Odds API events (free) and choose which to price
     try:
         evs = client.events(SPORT)
-    except Exception as e:
+    except Exception as ex:
         evs = []
-        brain.note(state, "error", f"Couldn't list NBA events: {e}")
+        brain.note(state, "error", f"Couldn't list NBA events: {ex}")
     ev_by_pair = {frozenset((nick(e["home_team"]), nick(e["away_team"]))): e for e in evs}
     plan = []
     for g in games:
@@ -177,7 +178,7 @@ def run(state, manual, client, budget):
         plan.append({"g": g, "e": e, "score": sum(x["strength"] for x in top[:5]), "stats": stats[:3]})
     plan.sort(key=lambda x: -x["score"])
 
-    lines, bought = {}, []
+    lines, bought, tt_events = {}, [], []
     if p.get("props_enabled", True):
         for item in plan:
             left = budget.allowance - budget.spent_this_run
@@ -185,6 +186,8 @@ def run(state, manual, client, budget):
                 break
             stats = item["stats"][:max(1, min(len(item["stats"]), left))]
             markets = [nm.ODDS_KEY[s] for s in stats]
+            if left >= len(markets) + 1:
+                markets.append(config.TEAM_TOTALS)        # team totals ride along when there's a credit for them
             if not budget.can(len(markets)):
                 continue
             try:
@@ -195,7 +198,10 @@ def run(state, manual, client, budget):
                     break
                 continue
             lines[item["g"]["espn_id"]] = (item["e"], parse_props(od))
-            bought.append(f"{item['g']['away']}@{item['g']['home']} ({', '.join(stats)})")
+            if config.TEAM_TOTALS in markets:
+                tt_events.append(only_market({**item["e"], **od}, config.TEAM_TOTALS))
+            bought.append(f"{item['g']['away']}@{item['g']['home']} ({', '.join(stats)}"
+                          + (", team totals" if config.TEAM_TOTALS in markets else "") + ")")
 
     # 3) price every line we paid for
     key_stat = {v: k for k, v in nm.ODDS_KEY.items()}
@@ -229,7 +235,7 @@ def run(state, manual, client, budget):
         if len(placed) >= p["prop_max_bets"]:
             break
         pr = c["pr"]
-        need = p["prop_min_edge"] * (1.5 if pr["status"] == "Questionable" else 1)
+        need = p["prop_min_edge"] * (1.5 if "question" in (pr["status"] or "").lower() or pr["status"] == "GTD" else 1)
         if not c["agrees"] or c["ev"] < need or c["ev"] > config.MAX_EV or pr["pid"] in used:
             continue
         pb = "matchup_over" if c["side"] == "Over" else "matchup_under"
@@ -257,35 +263,69 @@ def run(state, manual, client, budget):
             placed.append(b)
             used.add(pr["pid"])
 
-    # 5) the matchup board for the dashboard
-    priced = {}
+    # 5) team totals: value against the multi-book consensus, like the main board
+    if tt_events:
+        placed += brain.bet_on_board(state, tt_events)
+        market.closing_update(bk.open_bets(state["book"]) + bk.open_bets(manual["book"]), tt_events)
+
+    write_board(ctx, lines, cands, {e["id"]: e for e in tt_events}, bought, plan=plan)
+    return {"games": games, "spots": spots, "bought": bought, "placed": placed, "cands": len(cands)}
+
+
+def write_board(ctx, lines, cands, tt_events, bought, plan=()):
+    """props.json: the matchup board for the dashboard. Lines priced earlier today are kept when the
+    morning or afternoon research run rebuilds the projections."""
+    prev = store.load("props.json", {})
+    same_day = prev.get("date") == ctx["day"].isoformat()
+    priced = dict(prev.get("priced") or {}) if same_day else {}
+    events_map = dict(prev.get("events") or {}) if same_day else {}
+    tt = dict(prev.get("team_totals") or {}) if same_day else {}
     for c in cands:
-        k = (c["pr"]["pid"], c["pr"]["stat"])
-        if k not in priced or c["ev"] > priced[k]["ev"]:
-            priced[k] = c
-    board = []
-    for pr in spots[:60]:
-        c = priced.get((pr["pid"], pr["stat"]))
-        g = next(x for x in games if x["espn_id"] == pr["game"])
-        item = {"pid": pr["pid"], "name": pr["name"], "team": pr["team"], "opp": pr["opp"], "home": pr["home"],
-                "role": pr["role"], "stat": pr["stat"], "stat_name": nm.STATS[pr["stat"]], "proj": pr["proj"],
-                "base": pr["base"], "mult": pr["mult"], "minutes": pr["minutes"], "status": pr["status"],
-                "signals": pr["signals"], "start": g["start"], "espn_id": g["espn_id"],
-                "lean": "Over" if pr["mult"] > 1 else "Under"}
-        if c:
-            item.update(line=c["point"], side=c["side"], price=round(c["price"], 3), am=market.to_american(c["price"]),
-                        book=c["book"], ev=round(c["ev"], 4), p_model=round(c["p_model"], 3),
-                        p_mkt=round(c["p_mkt"], 3), event_id=c["e"]["id"], market=c["market"])
-        board.append(item)
-    events_map = {}
+        k = f"{c['pr']['pid']}|{c['pr']['stat']}"
+        cur = {"line": c["point"], "side": c["side"], "price": round(c["price"], 3), "am": market.to_american(c["price"]),
+               "book": c["book"], "ev": round(c["ev"], 4), "p_model": round(c["p_model"], 3), "p_mkt": round(c["p_mkt"], 3),
+               "event_id": c["e"]["id"], "market": c["market"], "nbooks": c["nbooks"], "at": store.iso(store.now())}
+        if k not in priced or priced[k].get("at") != cur["at"] or cur["ev"] > priced[k]["ev"]:
+            priced[k] = cur          # newest pricing wins; within one run keep the best side
     for eid, (e, _) in lines.items():
         events_map[e["id"]] = {"espn_id": eid, "commence": e["commence_time"], "home": e["home_team"], "away": e["away_team"]}
     for item in plan:
         events_map.setdefault(item["e"]["id"], {"espn_id": item["g"]["espn_id"], "commence": item["e"]["commence_time"],
                                                 "home": item["e"]["home_team"], "away": item["e"]["away_team"]})
-    players = {norm(model.players[x["pid"]]["name"]): x["pid"] for x in spots}
-    store.save("props.json", {"updated": store.iso(store.now()), "date": today.isoformat(),
-                              "games": [{"home": g["home"], "away": g["away"], "start": g["start"]} for g in games],
-                              "spots": board, "events": events_map, "players": players,
-                              "bought": bought, "teams": model.teams})
-    return {"games": games, "spots": spots, "bought": bought, "placed": placed, "cands": len(cands)}
+    for eid, ev in tt_events.items():
+        rows = []
+        for line in market.analyse_event(ev):
+            if line["market"] != config.TEAM_TOTALS:
+                continue
+            rows.append({"team": line["outcomes"][0].get("desc"), "outcomes": [
+                {"name": o["name"], "point": o["point"], "price": round(o["best"], 3), "am": market.to_american(o["best"]),
+                 "book": o["book"], "fair_p": round(o["fair_p"], 4), "ev": round(o["fair_p"] * o["best"] - 1, 4)}
+                for o in line["outcomes"]]})
+        if rows:
+            tt[eid] = {"home": ev["home_team"], "away": ev["away_team"], "commence": ev["commence_time"], "lines": rows}
+    board = []
+    for e in ctx["entries"]:
+        if e["out"]:
+            continue
+        for s in config.PROP_STATS:
+            pr = e["proj"][s]
+            if pr["base"] < (0.8 if s == "tpm" else 2.0):
+                continue
+            item = {"pid": e["pid"], "name": e["name"], "team": e["team"], "opp": e["opp"], "home": e["home"],
+                    "role": e["role"], "stat": s, "stat_name": nm.STATS[s], "proj": pr["proj"], "base": pr["base"],
+                    "mult": pr["mult"], "minutes": e["minutes"], "status": e["status"], "start": e["start"],
+                    "espn_id": e["game"], "lean": "Over" if pr["mult"] > 1 else "Under",
+                    "strength": round(abs(math.log(pr["mult"])), 4),
+                    "starter": (e["rw"] or {}).get("starter"),
+                    "signals": [x for x in pr["signals"] if x["k"] != "ha"][:4]}
+            item.update(priced.get(f"{e['pid']}|{s}", {}))
+            board.append(item)
+    board.sort(key=lambda x: -x["strength"])
+    players = {norm(e["name"]): e["pid"] for e in ctx["entries"]}
+    store.save("props.json", {"updated": store.iso(store.now()), "date": ctx["day"].isoformat(),
+                              "priced_date": ctx["day"].isoformat() if cands else (prev.get("priced_date") if same_day else None),
+                              "games": [{"home": g["home"], "away": g["away"], "start": g["start"], "espn_id": g["espn_id"],
+                                         "state": g["state"]} for g in ctx["games"]],
+                              "spots": board[:160], "priced": priced, "events": events_map, "players": players,
+                              "team_totals": tt, "bought": bought or (prev.get("bought") if same_day else []),
+                              "teams": ctx["model"].teams})

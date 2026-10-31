@@ -1,0 +1,46 @@
+name: Save a prop for analysis
+description: No money. Tap "Save this prop" on a player card to prefill everything; it grades itself after the game.
+title: "Save: "
+body:
+  - type: input
+    id: player
+    attributes:
+      label: Player
+    validations:
+      required: true
+  - type: input
+    id: player_id
+    attributes:
+      label: Player ID
+      description: Filled by the dashboard (ESPN id)
+  - type: input
+    id: stat
+    attributes:
+      label: Stat
+      description: ra, ast, tpm, pra, pts or reb
+    validations:
+      required: true
+  - type: input
+    id: side
+    attributes:
+      label: Side
+      value: Over
+  - type: input
+    id: point
+    attributes:
+      label: Line
+    validations:
+      required: true
+  - type: input
+    id: espn_id
+    attributes:
+      label: ESPN game id
+  - type: textarea
+    id: snapshot
+    attributes:
+      label: Snapshot
+      description: Filled by the dashboard (projection, hit rates, matchup at the time you saved)
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
