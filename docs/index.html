@@ -575,7 +575,7 @@ function openLogBet(pref) {
   pref = pref || {};
   const games = ((D.players && D.players.games) || []).filter(g => Date.now() < new Date(g.start).getTime() + 4 * 3600e3);
   const st = {kind: games.length ? "prop" : "other", side: pref.side || "Over", game: pref.game || (games[0] && games[0].espn_id), stat: pref.stat || "ast"};
-  const lastBook = store.get("logbook", "DraftKings");
+  const lastBook = pref.book || store.get("logbook", "DraftKings");
   const draw = () => {
     const g = games.find(x => x.espn_id === st.game);
     const roster = Object.values((D.players && D.players.players) || {}).filter(p => games.some(x => x.espn_id === p.game)).sort((a, b) => a.name.localeCompare(b.name));
@@ -705,6 +705,7 @@ function renderCard() {
     </div>
     <div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap">
       <a class="btn" href="${sUrl}" target="_blank" rel="noopener">★ Save this prop</a>
+      <button class="btn mars" id="logbet" style="border:0;font:inherit;font-weight:700;cursor:pointer">+ Log this bet</button>
       ${bUrl ? `<a class="btn mars" href="${bUrl}" target="_blank" rel="noopener">Bet the market line</a>` : ""}
     </div>
     <div class="card" style="padding:0 14px">
@@ -720,6 +721,9 @@ function renderCard() {
     pc.stat = b.dataset.s; const pr2 = (D.pz.priced || {})[p.pid + "|" + pc.stat];
     pc.line = pr2 ? pr2.line : Math.max(0.5, Math.floor(p.proj[pc.stat].proj) + 0.5);
     pc.side = pr2 ? pr2.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under"); renderCard(); });
+  const lb = P.querySelector("#logbet");
+  if (lb) lb.onclick = () => openLogBet({kind: "prop", player: p.name, stat: s, side: pc.side, line: pc.line, game: p.game,
+    odds: priced ? amS(priced.am) : "", book: priced ? bookName(priced.book) : ""});
   P.querySelectorAll(".step").forEach(b => b.onclick = () => { pc.line = Math.max(0.5, pc.line + 0.5 * +b.dataset.d); renderCard(); });
   P.querySelectorAll("#side button").forEach(b => b.onclick = () => { pc.side = b.dataset.v; renderCard(); });
   P.querySelectorAll("#cwin button").forEach(b => b.onclick = () => { pc.win = b.dataset.w; renderCard(); });
