@@ -96,12 +96,16 @@ A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts auto
 4. **Actions** tab: enable workflows, open **Agent**, then **Run workflow** to start the first scan.
 5. Open `https://teamcomeback.github.io/Perseverance/`. On your phone, use Share → Add to Home Screen to save it like an app.
 
-## Your bets
+## Your bets (stored in the app)
 
-- **From the board:** tap any price on the dashboard to open a prefilled issue, then submit it. The bet is logged at that price and grades itself from the final score.
-- **Any NBA player prop:** tap **+ Log a bet** (the orange button on every screen, or in Your book), pick the player, stat, over/under, line, odds, stake and book. It opens a prefilled GitHub issue; tap Submit and it grades itself from the box score.
-- **Custom bets** (same-game parlays, anything else): use **+ Log a bet → Other bet**, then comment `/settle won`, `/settle lost` or `/settle push` on the issue when it's decided. `/cancel` refunds the stake.
-- Only you and other repo members can log or settle bets.
+Your $100 paper book and your saved props live **in the dashboard itself**, in your browser's storage on that device (the same approach as Ingenuity). No GitHub needed.
+
+- **Log a bet:** the orange **+ Log a bet** button (any NBA player prop on the slate, or any custom bet), **+ Log this bet** on a player card, or tap any price on the board or in Team totals.
+- **Grading:** props and game lines grade themselves in the app from ESPN box scores and final scores, every time you open it (and every two minutes while it's open). A player who doesn't play is voided. Custom bets get **Won / Lost / Push** buttons; any open bet can be cancelled for a refund. The $5 minimum and the $100 → $1,000 race rules apply.
+- **Saved props:** **★ Save this prop** on a player card keeps it with a snapshot of the card; it grades itself after the game and the Saved props panel shows your hit rate by stat.
+- **Backup:** Bets → **Your data · backup** → **Export backup**, and keep the file in iCloud Drive. iOS can clear website storage, so export now and then. **Restore from file** merges a backup back in (also how you move to a new phone). Each device keeps its own copy, so log from the same phone; Share → Add to Home Screen keeps it like an app.
+
+The old GitHub-issue logging still works in the background but the dashboard no longer uses it.
 
 ## Schedule (ET)
 

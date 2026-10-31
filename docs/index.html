@@ -226,6 +226,13 @@ a.opt .b{font-size:10px;color:var(--dim)}
 .seg button.on{color:var(--text);border-color:var(--mars);background:var(--panel2)}
 .fm .go{background:var(--mars);color:#0b0f17;border:0;border-radius:12px;padding:14px;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
 .fm .err{color:var(--loss);font-size:13px;min-height:18px}
+#toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;
+  background:var(--panel3);border:1px solid var(--line);color:var(--text);padding:10px 14px;border-radius:12px;font-size:13px;font-weight:600;z-index:80;transition:all .25s;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.acts{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.acts button{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.acts button.w{color:var(--win);border-color:#3ddc9766} .acts button.l{color:var(--loss);border-color:#ff5d7366}
+a.opt{cursor:pointer}
 </style>
 </head>
 <body>
@@ -284,8 +291,6 @@ const seasonLbl = s => (s - 1) + "-" + String(s).slice(2);
 
 const OWNER = location.hostname.endsWith("github.io") ? location.hostname.split(".")[0] : "TeamComeback";
 const REPO = location.hostname.endsWith("github.io") ? (location.pathname.split("/")[1] || "Perseverance") : "Perseverance";
-const issueUrl = f => "https://github.com/" + OWNER + "/" + REPO + "/issues/new?" + new URLSearchParams({template:"bet.yml", ...f});
-const saveUrl = f => "https://github.com/" + OWNER + "/" + REPO + "/issues/new?" + new URLSearchParams({template:"save.yml", ...f});
 
 const store = {get(k, d) { try { const v = localStorage.getItem("pz-" + k); return v == null ? d : JSON.parse(v); } catch(e) { return d; } },
                set(k, v) { try { localStorage.setItem("pz-" + k, JSON.stringify(v)); } catch(e) {} }};
@@ -299,12 +304,247 @@ function sub(id, title, meta, body, open=false) {
   const o = store.get("o-" + id, open);
   return `<details class="sub" data-id="${id}" ${o ? "open" : ""}><summary><span>${title}</span><span class="meta">${meta || ""}</span></summary><div class="sb">${body}</div></details>`;
 }
+// ===================================================== YOUR LEDGER (stored in this app, not GitHub)
+// Your bets and saved props live in this browser's storage (localStorage, mirrored to IndexedDB),
+// like Ingenuity. Bets grade themselves in the app from ESPN box scores. Export/Restore makes a
+// backup file you keep in iCloud Drive, because iOS can clear website storage.
+const LKEY = "pz-ledger-v1";
+const MIN_STAKE = 5, START = 100, GOAL = 1000;
+const newBook = (run = 1) => ({name: "Your book", run, cash: START, start: START, goal: GOAL, peak: START, status: "racing",
+  started: new Date().toISOString(), bets: [], runs: []});
+let L = null;
+const idb = (() => {
+  let p = null;
+  const open = () => p || (p = new Promise((res, rej) => {
+    try { const r = indexedDB.open("perseverance", 1); r.onupgradeneeded = () => r.result.createObjectStore("kv"); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }
+    catch (e) { rej(e); }
+  }));
+  return {
+    async get(k) { try { const db = await open(); return await new Promise(res => { const q = db.transaction("kv").objectStore("kv").get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(null); }); } catch (e) { return null; } },
+    async set(k, v) { try { const db = await open(); db.transaction("kv", "readwrite").objectStore("kv").put(v, k); } catch (e) {} }
+  };
+})();
+function saveL() {
+  L.updated = new Date().toISOString();
+  const s = JSON.stringify(L);
+  try { localStorage.setItem(LKEY, s); } catch (e) {}
+  idb.set(LKEY, s);
+}
+async function loadL(repoManual) {
+  let raw = null;
+  try { raw = localStorage.getItem(LKEY); } catch (e) {}
+  if (!raw) raw = await idb.get(LKEY);          // localStorage was cleared: fall back to the IndexedDB copy
+  try { L = raw ? JSON.parse(raw) : null; } catch (e) { L = null; }
+  if (!L) {
+    L = {v: 1, book: newBook(), saved: [], hist: []};
+    // one-time import of anything logged earlier through GitHub issues
+    const old = (repoManual && repoManual.book && repoManual.book.bets) || [];
+    if (old.length) { L.book = repoManual.book; }
+    const oldSaved = (D.repoSaved && D.repoSaved.items) || [];
+    L.saved = oldSaved.map(x => ({...x, id: x.id || "s" + (x.issue || Math.random().toString(36).slice(2, 8))}));
+    saveL();
+  }
+  try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
+  syncManual();
+}
+const lid = () => Math.random().toString(36).slice(2, 10);
+const equityOf = book => Math.round((book.cash + book.bets.filter(b => b.status === "open").reduce((s, b) => s + b.stake, 0)) * 100) / 100;
+function statsOf(book) {
+  const st = book.bets.filter(b => ["won", "lost", "push"].includes(b.status));
+  const staked = st.reduce((s, b) => s + b.stake, 0), profit = st.reduce((s, b) => s + b.profit, 0);
+  return {bets: st.length, won: st.filter(b => b.status === "won").length, lost: st.filter(b => b.status === "lost").length,
+    push: st.filter(b => b.status === "push").length, staked, profit: Math.round(profit * 100) / 100, roi: staked ? profit / staked : 0,
+    clv: null, open: book.bets.filter(b => b.status === "open").length, equity: equityOf(book)};
+}
+function syncManual() { D.manual = {book: L.book, stats: statsOf(L.book)}; }
+function histPoint() { L.hist.push({ts: new Date().toISOString(), eq: equityOf(L.book)}); L.hist = L.hist.slice(-2000); }
+
+function placeBet(legs, stake, note) {
+  const book = L.book;
+  stake = Math.round(Math.min(stake, book.cash) * 100) / 100;
+  if (stake < MIN_STAKE) return {err: book.cash < MIN_STAKE ? `Not enough fake cash: you have ${money(book.cash)}.` : "Minimum bet is $5."};
+  const dec = Math.round(legs.reduce((d, l) => d * l.price, 1) * 1000) / 1000;
+  const b = {id: lid(), placed: new Date().toISOString(), run: book.run, source: "you", playbook: "manual", legs, dec, stake,
+    ev: null, p: null, note: note || "", status: "open", payout: null, profit: null, settled: null};
+  book.cash = Math.round((book.cash - stake) * 100) / 100;
+  book.bets.push(b); histPoint(); saveL(); syncManual();
+  return {bet: b};
+}
+function settleBet(b, result) {
+  const book = L.book;
+  if (b.status !== "open") return;
+  let mult;
+  if (result === "cancel") { mult = 1; }
+  else if (result) { mult = {won: b.dec, lost: 0, push: 1}[result]; }
+  else {
+    const rs = b.legs.map(l => l.result);
+    if (rs.includes("loss")) { result = "lost"; mult = 0; }
+    else if (rs.includes(null) || rs.includes(undefined)) return false;
+    else { mult = b.legs.reduce((m, l) => m * (l.result === "win" ? l.price : 1), 1); result = rs.every(r => r === "push" || r === "void") ? "push" : "won"; }
+  }
+  const payout = Math.round(b.stake * mult * 100) / 100;
+  Object.assign(b, {status: result === "cancel" ? "cancelled" : result, payout, profit: Math.round((payout - b.stake) * 100) / 100, settled: new Date().toISOString()});
+  if (result !== "cancel") b.review = reviewLocal(b);
+  book.cash = Math.round((book.cash + payout) * 100) / 100;
+  book.peak = Math.max(book.peak, equityOf(book));
+  checkRace(); histPoint(); saveL(); syncManual();
+  return true;
+}
+function checkRace() {
+  const book = L.book, eq = equityOf(book), open = book.bets.some(b => b.status === "open");
+  const done = eq >= book.goal && !open ? "won" : book.cash < MIN_STAKE && !open ? "busted" : null;
+  if (!done) return;
+  book.runs.push({run: book.run, result: done, started: book.started, ended: new Date().toISOString(), final: eq, peak: book.peak,
+    bets: book.bets.filter(b => b.run === book.run).length});
+  Object.assign(book, {run: book.run + 1, cash: START, peak: START, status: "racing", started: new Date().toISOString()});
+  toast(done === "won" ? "You hit $1,000! New run started from $100." : "Run busted. New run started from $100.");
+}
+
+// ---- grading in the app (free ESPN data, same feed the live tracker uses) ----
+function gradeGameLeg(l, g) {
+  const hs = g.home.score, as = g.away.score;
+  if (l.market === "team_totals") {
+    const t = sameTeam(l.team, g.home) ? hs : sameTeam(l.team, g.away) ? as : null; if (t == null) return null;
+    const d = l.outcome === "Over" ? t - l.point : l.point - t; return d > 0 ? "win" : d < 0 ? "loss" : "push";
+  }
+  if (l.market === "totals") { const d = l.outcome === "Over" ? hs + as - l.point : l.point - hs - as; return d > 0 ? "win" : d < 0 ? "loss" : "push"; }
+  if (l.outcome === "Draw") return hs === as ? "win" : "loss";
+  const home = sameTeam(l.outcome, g.home), away = sameTeam(l.outcome, g.away);
+  if (!home && !away) return null;
+  const mine = home ? hs : as, theirs = home ? as : hs;
+  if (l.market === "h2h" && mine === theirs) return (l.sport || "").startsWith("soccer") ? "loss" : "push";
+  const d = mine + (l.market === "spreads" ? (l.point || 0) : 0) - theirs;
+  return d > 0 ? "win" : d < 0 ? "loss" : "push";
+}
+async function gradeLeg(l) {
+  if (l.result != null || l.market === "custom" || !l.sport || !l.commence) return false;
+  const start = new Date(l.commence).getTime();
+  if (Date.now() < start + 2.5 * 3600e3) return false;
+  const tooOld = Date.now() > start + 4 * 86400e3;
+  if (l.stat) {
+    const sm = l.espn_id ? await summary(l.sport, l.espn_id) : null;
+    if (!sm || sm.g.state !== "post") { if (tooOld) { l.result = "void"; return true; } return false; }
+    let row = sm.players[l.player_id];
+    if (!row) row = Object.values(sm.players).find(r => normName(r._n) === normName(l.player));
+    l.final = {home: sm.g.home.score, away: sm.g.away.score, ha: sm.g.home.abbr, aa: sm.g.away.abbr, ls: sm.ls};
+    if (!row || !(parseFloat(row.MIN) > 0)) { l.result = "void"; return true; }
+    const v = statVal(row, l.stat); l.actual = v;
+    l.box = {min: row.MIN, pts: row.PTS, reb: row.REB, ast: row.AST, tp: row["3PT"], fg: row.FG, pf: row.PF};
+    const d = l.side === "Over" ? v - l.point : l.point - v;
+    l.result = d > 0 ? "win" : d < 0 ? "loss" : "push";
+    return true;
+  }
+  const sb = await scoreboard(l.sport, etDate(l.commence));
+  const g = (sb || []).find(x => sameTeam(l.home, x.home) && sameTeam(l.away, x.away));
+  if (!g || g.state !== "post") { if (tooOld) { l.result = "void"; return true; } return false; }
+  l.final = {home: g.home.score, away: g.away.score, ha: g.home.abbr, aa: g.away.abbr, espn: g.id};
+  l.result = gradeGameLeg(l, g) || "void";
+  return true;
+}
+const normName = s => String(s || "").toLowerCase().replace(/[.'’\-]/g, "").replace(/\b(jr|sr|ii|iii|iv)\b/g, "").replace(/\s+/g, " ").trim();
+let _gradeBusy = false;
+async function gradeAll() {
+  if (_gradeBusy || !L) return 0; _gradeBusy = true;
+  let n = 0;
+  try {
+    for (const b of L.book.bets.filter(b => b.status === "open")) {
+      let ch = false;
+      for (const l of b.legs) { try { ch = (await gradeLeg(l)) || ch; } catch (e) {} }
+      if (ch) { if (settleBet(b)) n++; else saveL(); }
+    }
+    for (const s of L.saved.filter(x => x.result == null && x.espn_id)) {
+      const leg = {sport: "basketball_nba", espn_id: s.espn_id, commence: s.start || new Date(Date.now() - 5 * 3600e3).toISOString(),
+        stat: s.stat, side: s.side, point: s.line, player_id: s.pid, player: s.player, result: null};
+      if (await gradeLeg(leg)) { s.result = leg.result === "win" ? "hit" : leg.result === "loss" ? "miss" : leg.result === "void" ? "dnp" : "push"; s.actual = leg.actual; s.min = leg.box && leg.box.min; s.graded = new Date().toISOString(); saveL(); n++; }
+    }
+  } finally { _gradeBusy = false; }
+  if (n) { toast(n + " result" + (n > 1 ? "s" : "") + " graded"); const v = store.get("tab", "today"); if (RENDER[v] && !$("sheet").classList.contains("on")) RENDER[v](); }
+  return n;
+}
+function reviewLocal(b) {
+  const legs = b.legs.map(l => {
+    const why = [], f = l.final;
+    let head = (l.result || b.status || "").toUpperCase();
+    const fin = f ? `${f.aa || l.away} ${f.away} – ${f.ha || l.home} ${f.home}` : null;
+    if (l.stat && l.actual != null) {
+      const d = l.side === "Over" ? l.actual - l.point : l.point - l.actual;
+      head = `${f1(l.actual)} ${STATN[l.stat]} vs ${l.side} ${l.point}`;
+      why.push(`${l.player} finished with ${f1(l.actual)} ${STATL[l.stat].toLowerCase()} against a line of ${l.point}: ${l.side.toLowerCase()} ${d > 0 ? "cleared by " + f1(d) : d < 0 ? "missed by " + f1(-d) : "landed on the number"}.`);
+      if (l.box) why.push(`Box score: ${l.box.min} min, ${l.box.pts} pts, ${l.box.reb} reb, ${l.box.ast} ast, ${l.box.tp} 3PT, ${l.box.fg} FG, ${l.box.pf} fouls.`);
+      if (f && Math.abs(f.home - f.away) >= 18) why.push(`Game was a ${Math.abs(f.home - f.away)}-point blowout, which usually cuts starters' minutes.`);
+    } else if (l.stat) {
+      head = "Didn't play: voided"; why.push(`${l.player} wasn't in the box score, so the bet is voided and the stake returned.`);
+    } else if (f && l.point != null && (l.market === "totals" || l.market === "team_totals")) {
+      const t = l.market === "totals" ? f.home + f.away : (l.team === l.home ? f.home : f.away);
+      head = `${l.market === "totals" ? "Total" : l.team} ${t} vs ${l.outcome} ${l.point}`;
+      why.push(`${l.market === "totals" ? "Combined score" : l.team} finished at ${t} against ${l.point}.`);
+    } else if (f) {
+      const home = l.outcome === l.home, mine = home ? f.home : f.away, theirs = home ? f.away : f.home;
+      head = `${l.outcome} ${mine > theirs ? "won" : mine < theirs ? "lost" : "tied"} by ${Math.abs(mine - theirs)}`;
+      if (l.market === "spreads") { const m = mine - theirs + (l.point || 0); why.push(`Needed ${l.point > 0 ? "+" : ""}${l.point}: ${m > 0 ? "covered by " + f1(m) : m < 0 ? "missed by " + f1(-m) : "pushed"}.`); }
+    }
+    if (f && f.ls && f.ls.home && f.ls.home.length) why.push("By quarter: " + f.ls.away.map((a, i) => `Q${i + 1} ${a}-${f.ls.home[i]}`).join(", ") + ` (${f.aa}-${f.ha}).`);
+    return {outcome: l.outcome, result: l.result, headline: head, final: fin, why, tags: [],
+      link: l.espn_id || (f && f.espn) ? `https://www.espn.com/${(l.sport || "").includes("nba") ? "nba" : (l.sport || "").includes("nfl") ? "nfl" : (l.sport || "").includes("ncaaf") ? "college-football" : (l.sport || "").includes("nhl") ? "nhl" : "nba"}/game/_/gameId/${l.espn_id || f.espn}` : null};
+  });
+  return {headline: `${(b.status || "").toUpperCase()}: ${legs.map(x => x.headline).join("; ")}`, final: legs[0] && legs[0].final, legs, tags: []};
+}
+
+// ---- saved props ----
+function saveProp(x) {
+  const dup = L.saved.find(s => s.pid === x.pid && s.stat === x.stat && s.line === x.line && s.side === x.side && s.espn_id === x.espn_id);
+  if (dup) { toast("Already saved"); return; }
+  L.saved.push({id: lid(), saved: new Date().toISOString(), result: null, actual: null, ...x});
+  saveL(); toast("Prop saved");
+}
+function removeSaved(id) { L.saved = L.saved.filter(s => s.id !== id); saveL(); }
+
+// ---- backup ----
+function exportLedger() {
+  const blob = new Blob([JSON.stringify({app: "perseverance", exported: new Date().toISOString(), ledger: L}, null, 1)], {type: "application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = "perseverance-backup-" + new Date().toISOString().slice(0, 10) + ".json";
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  L.lastExport = new Date().toISOString(); saveL();
+  toast("Backup saved. Keep it in iCloud Drive (Files app).");
+}
+function restoreLedger(file) {
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const p = JSON.parse(r.result), led = p.ledger || p;
+      if (!led.book || !Array.isArray(led.book.bets)) throw new Error("not a Perseverance backup");
+      const have = new Set(L.book.bets.map(b => b.id)), haveS = new Set(L.saved.map(s => s.id));
+      const addB = led.book.bets.filter(b => !have.has(b.id)), addS = (led.saved || []).filter(s => !haveS.has(s.id));
+      if (!L.book.bets.length) { L.book = led.book; L.hist = led.hist || []; }       // empty app: take the backup as-is
+      else { L.book.bets.push(...addB); L.book.bets.sort((a, b) => a.placed.localeCompare(b.placed)); }
+      L.saved.push(...addS);
+      saveL(); syncManual();
+      toast(`Restored ${L.book.bets.length ? addB.length || L.book.bets.length : 0} bets and ${addS.length} saved props`);
+      RENDER[store.get("tab", "bets")]();
+    } catch (e) { toast("Couldn't read that file: " + e.message); }
+  };
+  r.readAsText(file);
+}
+function toast(msg) {
+  let t = $("toast"); if (!t) { t = document.createElement("div"); t.id = "toast"; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove("on"), 2600);
+}
+
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-set]"); if (!a) return;
+  const [res, id] = a.dataset.set.split("|"), b = L.book.bets.find(x => x.id === id); if (!b) return;
+  const msg = res === "cancel" ? "Cancel this bet and refund the stake?" : `Settle as ${res.toUpperCase()}?`;
+  if (a.dataset.ok !== "1") { a.dataset.ok = "1"; a.textContent = "Tap again to confirm"; setTimeout(() => { if (a.isConnected) { a.dataset.ok = ""; a.textContent = res === "cancel" ? "Cancel · refund" : res[0].toUpperCase() + res.slice(1); } }, 3000); return; }
+  settleBet(b, res); toast(res === "cancel" ? "Cancelled, stake refunded" : "Settled " + res.toUpperCase()); RENDER[store.get("tab", "bets")]();
+});
+document.addEventListener("click", e => { const a = e.target.closest("[data-leg]"); if (a && D._legs[a.dataset.leg]) { e.preventDefault(); openLogBet(D._legs[a.dataset.leg].pref); } });
 document.addEventListener("toggle", e => { const d = e.target; if (d.dataset && d.dataset.id) store.set("o-" + d.dataset.id, d.open); }, true);
 
 async function get(name, fallback) {
   try { const r = await fetch("data/" + name + "?t=" + Math.floor(Date.now() / 60000)); return r.ok ? await r.json() : fallback; } catch(e) { return fallback; }
 }
-const D = {};
+const D = {_legs: {}};
 
 // ===================================================== bets, reviews, recaps
 function legText(l) {
@@ -354,7 +594,7 @@ function recapHtml(rc, l) {
 function reviewHtml(b) {
   const r = b.review; if (!r || b.status === "open") return "";
   const legs = (r.legs || []).map((x, i) => `${r.legs.length > 1 ? `<div class="fin" style="margin-top:6px">${esc((x.result || "").toUpperCase())} · ${esc(x.outcome)}</div>` : ""}
-    ${x.why && x.why.length ? `<ul>${x.why.map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}${recapHtml((r.recaps || [])[i], b.legs[i])}`).join("");
+    ${x.why && x.why.length ? `<ul>${x.why.map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}${recapHtml((r.recaps || [])[i], b.legs[i])}${x.link ? `<div style="margin-top:4px"><a href="${x.link}" target="_blank" rel="noopener">Game story and box score on ESPN</a></div>` : ""}`).join("");
   const tags = (r.tags || []).map(t => { const [lbl, c] = TAGS[t] || [t, ""]; return `<span class="tg ${c}">${esc(lbl)}</span>`; }).join("");
   return `<div class="rv"><div class="fin">${r.final ? esc(r.final) + " · " : ""}${esc(r.headline)}</div>${legs}${tags ? `<div style="margin-top:7px">${tags}</div>` : ""}</div>`;
 }
@@ -376,7 +616,10 @@ function betRow(b) {
   return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div>` +
     (b.note ? `<div class="sub" style="grid-column:1/-1">${esc(b.note)}</div>` : "") +
     (time ? `<div class="sub" style="grid-column:1/-1">⏱ ${esc(time)}</div>` : "") +
-    reviewHtml(b) + (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") + `</div>`;
+    reviewHtml(b) + (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") +
+    (b.source === "you" && b.status === "open" && L && L.book.bets.includes(b) ? `<div class="acts">${b.legs.some(l => l.market === "custom") ?
+      `<button class="w" data-set="won|${b.id}">Won</button><button class="l" data-set="lost|${b.id}">Lost</button><button data-set="push|${b.id}">Push</button>` : ""}
+      <button data-set="cancel|${b.id}">Cancel · refund</button></div>` : "") + `</div>`;
 }
 
 function raceCard(name, book, stats, color, kind) {
@@ -432,8 +675,11 @@ function renderToday() {
       ${tops.length ? `<ul>${tops.map(x => `<li><b style="color:var(--text)">${esc(x.name)}</b> ${STATN[x.stat]} ${x.base.toFixed(1)} → ${x.proj.toFixed(1)} <span class="${cls(x.mult - 1)}">${pct(x.mult - 1, 0)}</span>${x.line != null ? ` · line ${x.line}` : ""}</li>`).join("")}</ul>` : ""}</div>`;
   }).join("");
   const day = players.date ? new Date(players.date + "T12:00:00").toLocaleDateString([], {weekday: "long", month: "short", day: "numeric"}) : "";
+  const youAt = ts => { let v = START; for (const h of L.hist) { if (h.ts <= ts) v = h.eq; else break; } return v; };
+  const hist2 = hist.map(h => ({...h, m: youAt(h.ts)}));
+  if (hist2.length) hist2.push({ts: new Date().toISOString(), a: state.stats.equity, m: equityOf(L.book)});
   $("v-today").innerHTML = `<div class="race">${raceCard("Agent", state.book, state.stats, "var(--mars)", "agent")}${raceCard("You", manual.book, manual.stats, "var(--you)", "you")}</div>
-    <div class="card chart" style="margin-top:10px"><div class="label">Equity · agent vs you</div>${chart(hist)}</div>
+    <div class="card chart" style="margin-top:10px"><div class="label">Equity · agent vs you</div>${chart(hist2)}</div>
     ${sec("t-open", "Open bets", (open.length + mOpen.length) + " open", (open.concat(mOpen).map(betRow).join("") || '<div class="empty">Nothing riding right now.</div>'), true)}
     ${sec("t-slate", "NBA slate · " + esc(day), games.length + " games · " + (players.updated ? "refreshed " + ago(players.updated) : ""),
       (games.length ? `<div class="games">${gameHtml}</div><div class="desc" style="margin-top:8px">Tap a game to open it in the Prop Lab. Model lines come from pace and efficiency ratings (display only).</div>` : '<div class="empty">No NBA games on the slate.</div>'), true)}
@@ -509,7 +755,8 @@ function renderProps() {
       (show.slice(0, 80).map(propRow).join("") || '<div class="empty">Nothing matches these filters.</div>') +
       `<div class="desc" style="margin-top:8px">Tap any player for the full card: hit rates against any line (L5/L10/L15, H2H, home/away, with or without teammates), defense vs position, similar players, shot chart and lineup status. Lines show where the agent bought prop odds.</div>`, true)}
     ${tt ? sec("p-tt", "Team totals", "", tt, false) : ""}
-    ${sec("p-saved", "Saved props", (D.saved.items || []).length + " saved", sv, false)}`;
+    ${sec("p-saved", "Saved props", L.saved.length + " saved", sv, false)}`;
+  bindSaved($("v-props"));
   const rer = () => renderProps();
   $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
   $("gch").querySelectorAll("button").forEach(b => b.onclick = () => { F.game = b.dataset.g; rer(); });
@@ -524,14 +771,15 @@ function teamTotalsHtml(pz) {
   if (!tt.length) return "";
   return tt.map(([id, g]) => `<div class="ev"><div class="h"><b>${esc(g.away)} @ ${esc(g.home)}</b><span>${when(g.commence)}</span></div>` +
     g.lines.map(l => `<div class="mk">${esc(l.team)}</div><div class="opts">` + l.outcomes.map(o => {
-      const url = issueUrl({title: `Bet: ${l.team} team total ${o.name} ${o.point}`, selection: o.name, odds: amS(o.am), stake: "5", book: o.book,
-        point: o.point, market: "team_totals", event_id: id, sport: "basketball_nba", team: l.team});
-      return `<a class="opt ${o.ev > 0 ? "plus" : ""}" href="${url}" target="_blank" rel="noopener"><div class="n">${o.name} ${o.point}</div><div class="o">${amS(o.am)}</div>
+      const k = id + "|tt|" + l.team + "|" + o.name + "|" + o.point;
+      D._legs[k] = {pref: {title: `${l.team} team total ${o.name} ${o.point}`, sub: g.away + " @ " + g.home + " · " + when(g.commence), odds: amS(o.am), book: bookName(o.book),
+        leg: {sport: "basketball_nba", event_id: id, commence: g.commence, home: g.home, away: g.away, market: "team_totals", team: l.team, outcome: o.name, point: o.point}}};
+      return `<a class="opt ${o.ev > 0 ? "plus" : ""}" data-leg="${esc(k)}"><div class="n">${o.name} ${o.point}</div><div class="o">${amS(o.am)}</div>
         <div class="b">${esc(bookName(o.book))}${o.ev > 0 ? ' · <span class="pos">' + pct(o.ev) + "</span>" : ""}</div></a>`;
     }).join("") + "</div>").join("") + "</div>").join("");
 }
 function savedHtml() {
-  const it = (D.saved.items || []).slice().reverse();
+  const it = L.saved.slice().reverse();
   if (!it.length) return '<div class="empty">Open a player card and tap "Save this prop" to keep it for analysis. Saved props grade themselves after the game.</div>';
   const done = it.filter(x => x.result === "hit" || x.result === "miss");
   const hits = done.filter(x => x.result === "hit").length;
@@ -541,8 +789,15 @@ function savedHtml() {
       ${Object.entries(byStat).map(([s, [h, n]]) => `<span>${STATN[s] || s} <b class="num">${h}/${n}</b></span>`).join("")}</div>` +
     it.map(x => `<div class="bet"><div class="what">${x.result ? `<span class="pill ${x.result}">${x.result.toUpperCase()}</span>` : '<span class="pill">PENDING</span>'}${esc(x.player)} ${x.side} ${x.line} ${STATN[x.stat] || x.stat}</div>
       <div class="amt">${x.actual != null ? "<b>" + f1(x.actual) + "</b>" : ""}</div>
-      <div class="sub">${[x.team && x.opp ? x.team + " vs " + x.opp : "", x.start ? when(x.start) : "", "saved " + ago(x.saved), x.min != null ? Math.round(x.min) + " min" : ""].filter(Boolean).map(esc).join(" · ")}</div>
-      ${x.snapshot ? `<div class="sub" style="grid-column:1/-1">${esc(x.snapshot)}</div>` : ""}${x.notes ? `<div class="sub" style="grid-column:1/-1">📝 ${esc(x.notes)}</div>` : ""}</div>`).join("");
+      <div class="sub">${[x.team && x.opp ? x.team + " vs " + x.opp : "", x.start ? when(x.start) : "", "saved " + ago(x.saved), x.min != null ? x.min + " min" : "",
+        x.priced ? "market " + x.priced.side + " " + x.priced.line + " " + amS(x.priced.am) + " " + bookName(x.priced.book) : ""].filter(Boolean).map(esc).join(" · ")}</div>
+      ${x.snapshot ? `<div class="sub" style="grid-column:1/-1">${esc(x.snapshot)}</div>` : ""}
+      <div class="acts">${x.result == null ? `<button data-sbet="${x.id}">+ Log as bet</button>` : ""}<button data-srm="${x.id}">Remove</button></div></div>`).join("");
+}
+function bindSaved(root) {
+  root.querySelectorAll("[data-srm]").forEach(b => b.onclick = e => { e.stopPropagation(); removeSaved(b.dataset.srm); renderProps(); });
+  root.querySelectorAll("[data-sbet]").forEach(b => b.onclick = e => { e.stopPropagation(); const x = L.saved.find(s => s.id === b.dataset.sbet); if (!x) return;
+    openLogBet({kind: "prop", player: x.player, stat: x.stat, side: x.side, line: x.line, game: x.espn_id, odds: x.priced ? amS(x.priced.am) : "", book: x.priced ? bookName(x.priced.book) : ""}); });
 }
 
 // ===================================================== PLAYER CARD
@@ -574,17 +829,18 @@ const LOG_BOOKS = ["DraftKings", "FanDuel", "Caesars", "BetMGM", "BetRivers", "F
 function openLogBet(pref) {
   pref = pref || {};
   const games = ((D.players && D.players.games) || []).filter(g => Date.now() < new Date(g.start).getTime() + 4 * 3600e3);
-  const st = {kind: games.length ? "prop" : "other", side: pref.side || "Over", game: pref.game || (games[0] && games[0].espn_id), stat: pref.stat || "ast"};
+  const st = {kind: pref.leg ? "line" : games.length ? "prop" : "other", side: pref.side || "Over", game: pref.game || (games[0] && games[0].espn_id), stat: pref.stat || "ast"};
   const lastBook = pref.book || store.get("logbook", "DraftKings");
   const draw = () => {
     const g = games.find(x => x.espn_id === st.game);
     const roster = Object.values((D.players && D.players.players) || {}).filter(p => games.some(x => x.espn_id === p.game)).sort((a, b) => a.name.localeCompare(b.name));
     const prop = st.kind === "prop";
     $("pane").innerHTML = `<div class="hd"><button class="x" onclick="history.back()">×</button><div class="name">Log a bet</div>
-      <div class="desc">Fake money. Opens GitHub with everything filled in; tap <b>Submit new issue</b> and it lands in Your book.</div></div>
+      <div class="desc">Fake money. Saved in this app on this device; no GitHub needed.</div></div>
       <div class="fm">
-        <div class="seg"><button data-k="prop" class="${prop ? "on" : ""}">NBA player prop</button><button data-k="other" class="${prop ? "" : "on"}">Other bet</button></div>
-        ${prop ? `
+        ${st.kind === "line" ? `<div class="card" style="padding:10px"><b>${esc(pref.title)}</b><div class="desc">${esc(pref.sub || "")}</div></div>` : `
+        <div class="seg"><button data-k="prop" class="${prop ? "on" : ""}">NBA player prop</button><button data-k="other" class="${prop ? "" : "on"}">Other bet</button></div>`}
+        ${st.kind === "line" ? "" : prop ? `
         <div><label>Game</label><select id="lg">${games.map(x => `<option value="${x.espn_id}" ${x.espn_id === st.game ? "selected" : ""}>${esc(x.away)} @ ${esc(x.home)} · ${when(x.start)}</option>`).join("")}</select></div>
         <div><label>Player (picks his game for you)</label><input id="lp" list="lpn" placeholder="Start typing a name" autocomplete="off" value="${esc(pref.player || "")}"><datalist id="lpn">${roster.map(p => `<option value="${esc(p.name)}" label="${esc(p.team + (p.home ? " vs " : " @ ") + p.opp)}">`).join("")}</datalist></div>
         <div class="two"><div><label>Stat</label><select id="ls">${ALL_STATS.map(k => `<option value="${k}" ${k === st.stat ? "selected" : ""}>${STATL[k]}</option>`).join("")}</select></div>
@@ -598,8 +854,8 @@ function openLogBet(pref) {
         <div><label>Sportsbook</label><select id="lb">${LOG_BOOKS.map(b => `<option ${b === lastBook ? "selected" : ""}>${b}</option>`).join("")}</select></div>
         <div><label>Notes (optional)</label><textarea id="ln" rows="2" placeholder="Why you like it"></textarea></div>
         <div class="err" id="lerr"></div>
-        <button class="go" id="lgo">Open bet on GitHub</button>
-        ${prop ? '<div class="desc">Graded automatically from the box score. A player who does not play is voided.</div>' : '<div class="desc">Custom bets settle when you comment <span class="num">/settle won</span>, <span class="num">/settle lost</span> or <span class="num">/settle push</span> on the issue.</div>'}
+        <button class="go" id="lgo">Place bet · ${money(L.book.cash)} available</button>
+        ${st.kind === "line" ? '<div class="desc">Grades itself from the final score.</div>' : prop ? '<div class="desc">Grades itself from the box score after the game. A player who does not play is voided.</div>' : '<div class="desc">Custom bets: tap Won, Lost or Push on the bet in Your book when it is decided.</div>'}
       </div>`;
     $("pane").querySelectorAll(".seg:not(#lside) button").forEach(b => b.onclick = () => { keep(); st.kind = b.dataset.k; draw(); });
     const sd = $("lside"); if (sd) sd.querySelectorAll("button").forEach(b => b.onclick = () => { st.side = b.dataset.s; sd.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); });
@@ -610,27 +866,38 @@ function openLogBet(pref) {
     const lg = $("lg"); if (lg) lg.onchange = () => { keep(); st.game = lg.value; draw(); };
     $("lgo").onclick = submit;
   };
-  const keep = () => { pref = {...pref, player: ($("lp") || {}).value || pref.player, line: ($("ll") || {}).value ?? pref.line, odds: ($("lo") || {}).value || pref.odds, stat: ($("ls") || {}).value || st.stat}; st.stat = pref.stat; };
+  const keep = () => { if (st.kind === "line") return; pref = {...pref, player: ($("lp") || {}).value || pref.player, line: ($("ll") || {}).value ?? pref.line, odds: ($("lo") || {}).value || pref.odds, stat: ($("ls") || {}).value || st.stat}; st.stat = pref.stat; };
   const submit = () => {
     const err = m => { $("lerr").textContent = m; };
-    const odds = ($("lo").value || "").trim().replace("−", "-"), stake = parseFloat($("lk").value), line = $("ll").value.trim();
+    const odds = ($("lo").value || "").trim().replace("−", "-"), stake = parseFloat($("lk").value), line = ($("ll") ? $("ll").value : "").trim();
     const book = $("lb").value, notes = $("ln").value.trim();
     if (!/^[+-]?\d{3,4}$/.test(odds)) return err("Odds look like -110 or +150.");
     if (!(stake >= 5)) return err("Minimum bet is $5.");
     store.set("logbook", book);
-    const o = odds.startsWith("-") || odds.startsWith("+") ? odds : "+" + odds;
-    let f;
-    if (st.kind === "prop") {
+    const am_ = parseInt(odds.startsWith("+") || odds.startsWith("-") ? odds : "+" + odds, 10);
+    const dec = am_ > 0 ? 1 + am_ / 100 : 1 + 100 / Math.abs(am_);
+    const bookKey = Object.keys(BOOKN).find(k => BOOKN[k] === book || (book === "Hard Rock" && k === "hardrockbet")) || book;
+    let leg, note = notes;
+    if (st.kind === "line") {
+      leg = {...pref.leg, price: Math.round(dec * 1000) / 1000, book: bookKey, result: null};
+    } else if (st.kind === "prop") {
       const who = $("lp").value.trim(), stat = $("ls").value, g = games.find(x => x.espn_id === $("lg").value);
       if (!who) return err("Pick a player.");
       if (line === "" || isNaN(+line)) return err("Enter the line, like 7.5.");
-      f = {title: `Bet: ${who} ${st.side} ${line} ${STATN[stat]} (${g.away} @ ${g.home})`, selection: who + " " + st.side, odds: o, stake: String(stake), book,
-           point: line, market: ODDS_KEY[stat], event_id: "espn:" + g.espn_id, sport: "basketball_nba", notes};
+      const pl_ = Object.values(D.players.players || {}).find(p => normName(p.name) === normName(who));
+      leg = {sport: "basketball_nba", espn_id: g.espn_id, commence: g.start, home: g.home_name || g.home, away: g.away_name || g.away,
+             market: ODDS_KEY[stat], outcome: who + " " + st.side, side: st.side, player: pl_ ? pl_.name : who, player_id: pl_ ? pl_.pid : null,
+             stat, point: +line, price: Math.round(dec * 1000) / 1000, book: bookKey, result: null};
+      if (new Date(g.start) <= Date.now()) note = (note + " [Logged after tip-off]").trim();
     } else {
       const d = $("ld").value.trim(); if (!d) return err("Describe the bet.");
-      f = {title: "Bet: " + d, selection: d, odds: o, stake: String(stake), book, point: line, notes};
+      leg = {market: "custom", outcome: d, point: line === "" ? null : +line, price: Math.round(dec * 1000) / 1000, book: bookKey, result: null};
     }
-    window.open(issueUrl(f), "_blank", "noopener");
+    const r = placeBet([leg], stake, note);
+    if (r.err) return err(r.err);
+    toast(`Logged ${money(r.bet.stake)} on ${leg.outcome}${leg.point != null && leg.market !== "h2h" ? " " + leg.point : ""}`);
+    history.back();
+    setTimeout(() => RENDER[store.get("tab", "today")](), 50);
   };
   st.kind = pref.kind || st.kind;
   draw();
@@ -674,9 +941,7 @@ function renderCard() {
     : (p.status ? `<span class="st q">${esc(p.status)}</span>` : `<span class="st">Not on RotoWire's lineup card</span>`);
   const mateChips = p.mates.map((m, i) => { const v = pc.mates[i]; return `<button data-m="${i}" class="${v === "with" ? "w" : v === "without" ? "wo" : ""}">${v === "with" ? "With " : v === "without" ? "Without " : ""}${esc(m.name.split(" ").slice(-1)[0])}</button>`; }).join("");
   const snapshot = `Proj ${pj.proj.toFixed(1)} (norm ${pj.base.toFixed(1)}, matchup ${pct(pj.mult - 1, 0)}); L5 ${hr(all.slice(-5), pc)}, L10 ${hr(all.slice(-10), pc)}, L15 ${hr(all.slice(-15), pc)}, H2H ${hr(all.filter(r => r[1] === p.opp), pc)}; ${p.opp} rank vs ${p.role} #${p.dvp[s][1]} (1 = softest)` + (priced ? `; line ${priced.side} ${priced.line} ${amS(priced.am)} ${bookName(priced.book)}` : "");
-  const sUrl = saveUrl({title: `Save: ${p.name} ${pc.side} ${pc.line} ${STATN[s]}`, player: p.name, player_id: p.pid, stat: s, side: pc.side, point: pc.line, espn_id: p.game, snapshot});
-  const bUrl = priced ? issueUrl({title: `Bet: ${p.name} ${priced.side} ${priced.line} ${STATN[s]} (${p.team} vs ${p.opp})`, selection: p.name + " " + priced.side,
-    odds: amS(priced.am), stake: "5", book: priced.book, point: priced.line, market: priced.market, event_id: priced.event_id, sport: "basketball_nba"}) : null;
+  pc.snapshot = snapshot;
 
   $("pane").innerHTML = `<div class="hd"><button class="x" onclick="history.back()">×</button>
       <div class="name">${esc(p.name)}</div>
@@ -704,9 +969,9 @@ function renderCard() {
       <div class="bars">${barChart(L, pc)}</div>
     </div>
     <div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap">
-      <a class="btn" href="${sUrl}" target="_blank" rel="noopener">★ Save this prop</a>
+      <button class="btn" id="saveprop" style="border:0">★ Save this prop</button>
       <button class="btn mars" id="logbet" style="border:0;font:inherit;font-weight:700;cursor:pointer">+ Log this bet</button>
-      ${bUrl ? `<a class="btn mars" href="${bUrl}" target="_blank" rel="noopener">Bet the market line</a>` : ""}
+
     </div>
     <div class="card" style="padding:0 14px">
       ${sub("c-sig", "Matchup read", pct(pj.mult - 1, 0), `<div class="desc">Norm ${pj.base.toFixed(1)} for ${p.minutes.toFixed(0)} minutes × matchup ${pj.mult.toFixed(2)} = <b style="color:var(--text)">${pj.proj.toFixed(1)}</b> (spread ±${pj.sd})</div><ul class="sig">${pj.signals.map(x => `<li>${esc(x.txt)}</li>`).join("")}</ul>`, true)}
@@ -721,6 +986,8 @@ function renderCard() {
     pc.stat = b.dataset.s; const pr2 = (D.pz.priced || {})[p.pid + "|" + pc.stat];
     pc.line = pr2 ? pr2.line : Math.max(0.5, Math.floor(p.proj[pc.stat].proj) + 0.5);
     pc.side = pr2 ? pr2.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under"); renderCard(); });
+  P.querySelector("#saveprop").onclick = () => saveProp({player: p.name, pid: p.pid, team: p.team, opp: p.opp, stat: s, side: pc.side, line: pc.line,
+    espn_id: p.game, start: p.start, snapshot: pc.snapshot, priced: priced ? {side: priced.side, line: priced.line, am: priced.am, book: priced.book} : null});
   const lb = P.querySelector("#logbet");
   if (lb) lb.onclick = () => openLogBet({kind: "prop", player: p.name, stat: s, side: pc.side, line: pc.line, game: p.game,
     odds: priced ? amS(priced.am) : "", book: priced ? bookName(priced.book) : ""});
@@ -824,13 +1091,23 @@ function renderBets() {
     sec("b-res", "Agent's results", done.length + " settled",
       `<div class="desc" style="margin-bottom:6px">Each result has a post-mortem; tap "Game story" for the quarter-by-quarter breakdown, runs, momentum swings, the closing stretch and key players.</div>` +
       (done.slice(0, 50).map(betRow).join("") || '<div class="empty">No results yet.</div>')) +
-    sec("b-you", "Your book", money(manual.stats.equity) + " · " + manual.stats.open + " open",
+    sec("b-you", "Your book", money(manual.stats.equity) + " · " + manual.stats.open + " open · cash " + money(L.book.cash),
       `<button class="btn" style="border:0;font:inherit;font-weight:700;cursor:pointer" onclick="openLogBet()">+ Log a bet</button>
-       <div class="desc" style="margin:6px 0">Board bets and player props grade themselves. For custom bets, comment <span class="num">/settle won</span>, <span class="num">/settle lost</span> or <span class="num">/settle push</span> on the issue.</div>` +
+       <div class="desc" style="margin:6px 0">Stored in this app on this device. Props and game lines grade themselves from ESPN after the game; custom bets get Won / Lost / Push buttons.</div>` +
       (mb.map(betRow).join("") || '<div class="empty">No bets yet. Pick one from the board.</div>')) +
     sec("b-board", "Board · bet it yourself", "", "", false) +
+    sec("b-data", "Your data · backup", L.lastExport ? "last backup " + ago(L.lastExport) : "no backup yet", backupHtml(), false) +
     sec("b-log", "Time log", "", "", false);
   board(bd); timeLog(state, manual);
+}
+function backupHtml() {
+  const n = L.book.bets.length, nS = L.saved.length;
+  return `<div class="desc">Your bets (${n}), saved props (${nS}) and your equity line live in this browser's storage on this device, like Ingenuity. iOS can clear website storage (low disk space, clearing Safari history), so export a backup now and then and keep the file in iCloud Drive. Restoring merges a backup back in without duplicating bets.</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+      <button class="btn" onclick="exportLedger()">Export backup</button>
+      <label class="btn ghost" style="cursor:pointer">Restore from file<input type="file" accept="application/json,.json" style="display:none" onchange="this.files[0] && restoreLedger(this.files[0])"></label>
+    </div>
+    <div class="desc" style="margin-top:8px">Each device keeps its own copy, so log your bets from the same phone (Share → Add to Home Screen keeps it like an app). To move to a new device, export here and restore there.</div>`;
 }
 function board(bd) {
   const evs = (bd.events || []).filter(e => new Date(e.commence) > Date.now());
@@ -843,9 +1120,10 @@ function board(bd) {
    show.map(e => `<div class="ev"><div class="h"><b>${esc(e.away)} @ ${esc(e.home)}</b><span>${SPORT(e.sport)} · ${when(e.commence)}</span></div>` +
     e.lines.map(l => `<div class="mk">${MK[l.market] || l.market}</div><div class="opts">` + l.outcomes.map(o => {
       const pt = o.point == null ? "" : l.market === "spreads" ? " " + (o.point > 0 ? "+" : "") + o.point : " " + o.point;
-      const url = issueUrl({title: "Bet: " + o.name + pt + " (" + e.away + " @ " + e.home + ")", selection: o.name, odds: amS(o.am),
-        stake: "5", book: o.book, point: o.point ?? "", market: l.market, event_id: e.id, sport: e.sport});
-      return `<a class="opt ${o.ev > 0 ? "plus" : ""}" href="${url}" target="_blank" rel="noopener"><div class="n">${esc(o.name)}${pt}</div>
+      const k = e.id + "|" + l.market + "|" + o.name + "|" + o.point;
+      D._legs[k] = {pref: {title: o.name + pt + " · " + (MK[l.market] || l.market), sub: e.away + " @ " + e.home + " · " + when(e.commence), odds: amS(o.am), book: bookName(o.book),
+        leg: {sport: e.sport, event_id: e.id, commence: e.commence, home: e.home, away: e.away, market: l.market, outcome: o.name, point: o.point}}};
+      return `<a class="opt ${o.ev > 0 ? "plus" : ""}" data-leg="${esc(k)}"><div class="n">${esc(o.name)}${pt}</div>
         <div class="o">${amS(o.am)}</div><div class="b">${esc(bookName(o.book))}${o.ev > 0 ? ' · <span class="pos">' + pct(o.ev) + "</span>" : ""}</div></a>`;
     }).join("") + "</div>").join("") + "</div>").join("") +
    '<div class="desc" style="margin-top:8px">Best price across your books (exchange prices are net of fees). Green = priced above the market\'s fair odds. Tap to open a prefilled bet, then submit it.</div>';
@@ -1010,9 +1288,11 @@ async function summary(sport, id) {
     const players = {};
     for (const t of (d.boxscore?.players || [])) for (const grp of (t.statistics || [])) {
       const L = grp.labels || [];
-      for (const a of (grp.athletes || [])) { const row = {}; L.forEach((k, i) => row[k] = a.stats?.[i]); players[a.athlete.id] = row; }
+      for (const a of (grp.athletes || [])) { const row = {_n: a.athlete.displayName}; L.forEach((k, i) => row[k] = a.stats?.[i]); if (a.didNotPlay) row.MIN = "0"; players[a.athlete.id] = row; }
     }
-    return {g, players};
+    const ls = {};
+    for (const c of (comp.competitors || [])) ls[c.homeAway] = (c.linescores || []).map(x => +(x.displayValue ?? x.value ?? 0));
+    return {g, players, ls};
   });
 }
 const clockStr = sec => { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); };
@@ -1141,12 +1421,15 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
     get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null)]);
+  D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
-  Object.assign(D, {state, manual, budget, bd, hist, pz, players, saved, dvp});
+  Object.assign(D, {state, budget, bd, hist, pz, players, dvp});
+  await loadL(manual);
   $("updated").textContent = "updated " + ago(state.updated);
   go((location.hash || "").slice(1) || store.get("tab", "today"));
   setInterval(liveTick, 30000);
-  document.addEventListener("visibilitychange", () => { if (!document.hidden) liveTick(); });
+  gradeAll(); setInterval(gradeAll, 120000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { liveTick(); gradeAll(); } });
 })();
 </script>
 </body>
