@@ -215,6 +215,17 @@ a.opt .b{font-size:10px;color:var(--dim)}
 .wbar{height:5px;background:var(--panel2);border-radius:99px;margin-top:6px;position:relative}
 .wbar i{position:absolute;inset:0 auto 0 0;border-radius:99px;background:var(--mars)}
 .wbar .mid{position:absolute;left:62.5%;top:-3px;width:1px;height:11px;background:var(--dim)}
+.fab{position:fixed;right:14px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:31;background:var(--mars);color:#0b0f17;font-weight:800;border:0;border-radius:99px;padding:12px 16px;font:inherit;font-weight:800;box-shadow:0 6px 20px #0008;display:flex;align-items:center;gap:6px;cursor:pointer}
+.fab:active{transform:scale(.97)}
+.fm{display:grid;gap:10px;margin-top:6px}
+.fm label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.fm input,.fm select,.fm textarea{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:11px 12px;font:inherit;font-size:16px}
+.fm .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--dim);border-radius:10px;padding:10px;font:inherit;font-weight:700;cursor:pointer}
+.seg button.on{color:var(--text);border-color:var(--mars);background:var(--panel2)}
+.fm .go{background:var(--mars);color:#0b0f17;border:0;border-radius:12px;padding:14px;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.fm .err{color:var(--loss);font-size:13px;min-height:18px}
 </style>
 </head>
 <body>
@@ -238,6 +249,8 @@ a.opt .b{font-size:10px;color:var(--dim)}
   <button data-v="trends"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Trends</button>
   <button data-v="agent"><svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/></svg>Agent</button>
 </div></nav>
+
+<button class="fab" id="fab" onclick="openLogBet()"><span style="font-size:20px;line-height:1">+</span> Log a bet</button>
 
 <div class="sheet" id="sheet"><div class="pane" id="pane"></div></div>
 
@@ -555,6 +568,76 @@ async function openPlayer(pid, stat) {
   pc.side = pr ? pr.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under");
   renderCard();
 }
+
+// ---------- log a bet ----------
+const LOG_BOOKS = ["DraftKings", "FanDuel", "Caesars", "BetMGM", "BetRivers", "Fanatics", "theScore Bet", "Hard Rock", "Other"];
+function openLogBet(pref) {
+  pref = pref || {};
+  const games = ((D.players && D.players.games) || []).filter(g => Date.now() < new Date(g.start).getTime() + 4 * 3600e3);
+  const st = {kind: games.length ? "prop" : "other", side: pref.side || "Over", game: pref.game || (games[0] && games[0].espn_id), stat: pref.stat || "ast"};
+  const lastBook = store.get("logbook", "DraftKings");
+  const draw = () => {
+    const g = games.find(x => x.espn_id === st.game);
+    const roster = Object.values((D.players && D.players.players) || {}).filter(p => games.some(x => x.espn_id === p.game)).sort((a, b) => a.name.localeCompare(b.name));
+    const prop = st.kind === "prop";
+    $("pane").innerHTML = `<div class="hd"><button class="x" onclick="history.back()">×</button><div class="name">Log a bet</div>
+      <div class="desc">Fake money. Opens GitHub with everything filled in; tap <b>Submit new issue</b> and it lands in Your book.</div></div>
+      <div class="fm">
+        <div class="seg"><button data-k="prop" class="${prop ? "on" : ""}">NBA player prop</button><button data-k="other" class="${prop ? "" : "on"}">Other bet</button></div>
+        ${prop ? `
+        <div><label>Game</label><select id="lg">${games.map(x => `<option value="${x.espn_id}" ${x.espn_id === st.game ? "selected" : ""}>${esc(x.away)} @ ${esc(x.home)} · ${when(x.start)}</option>`).join("")}</select></div>
+        <div><label>Player (picks his game for you)</label><input id="lp" list="lpn" placeholder="Start typing a name" autocomplete="off" value="${esc(pref.player || "")}"><datalist id="lpn">${roster.map(p => `<option value="${esc(p.name)}" label="${esc(p.team + (p.home ? " vs " : " @ ") + p.opp)}">`).join("")}</datalist></div>
+        <div class="two"><div><label>Stat</label><select id="ls">${ALL_STATS.map(k => `<option value="${k}" ${k === st.stat ? "selected" : ""}>${STATL[k]}</option>`).join("")}</select></div>
+          <div><label>Line</label><input id="ll" type="number" step="0.5" inputmode="decimal" placeholder="7.5" value="${pref.line ?? ""}"></div></div>
+        <div><label>Side</label><div class="seg" id="lside"><button data-s="Over" class="${st.side === "Over" ? "on" : ""}">Over</button><button data-s="Under" class="${st.side === "Under" ? "on" : ""}">Under</button></div></div>`
+        : `
+        <div><label>What did you bet?</label><input id="ld" placeholder="e.g. Chiefs ML + Kelce 60+ yds" autocomplete="off"></div>
+        <div><label>Line (optional)</label><input id="ll" type="number" step="0.5" inputmode="decimal"></div>`}
+        <div class="two"><div><label>Odds (American)</label><input id="lo" inputmode="text" placeholder="-110" value="${pref.odds || "-110"}"></div>
+          <div><label>Stake ($, min 5)</label><input id="lk" type="number" min="5" step="1" inputmode="decimal" value="5"></div></div>
+        <div><label>Sportsbook</label><select id="lb">${LOG_BOOKS.map(b => `<option ${b === lastBook ? "selected" : ""}>${b}</option>`).join("")}</select></div>
+        <div><label>Notes (optional)</label><textarea id="ln" rows="2" placeholder="Why you like it"></textarea></div>
+        <div class="err" id="lerr"></div>
+        <button class="go" id="lgo">Open bet on GitHub</button>
+        ${prop ? '<div class="desc">Graded automatically from the box score. A player who does not play is voided.</div>' : '<div class="desc">Custom bets settle when you comment <span class="num">/settle won</span>, <span class="num">/settle lost</span> or <span class="num">/settle push</span> on the issue.</div>'}
+      </div>`;
+    $("pane").querySelectorAll(".seg:not(#lside) button").forEach(b => b.onclick = () => { keep(); st.kind = b.dataset.k; draw(); });
+    const sd = $("lside"); if (sd) sd.querySelectorAll("button").forEach(b => b.onclick = () => { st.side = b.dataset.s; sd.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); });
+    const lp = $("lp"); if (lp) lp.addEventListener("input", () => {
+      const hit = roster.find(p => p.name.toLowerCase() === lp.value.trim().toLowerCase());
+      if (hit && hit.game !== st.game) { st.game = hit.game; $("lg").value = hit.game; }
+    });
+    const lg = $("lg"); if (lg) lg.onchange = () => { keep(); st.game = lg.value; draw(); };
+    $("lgo").onclick = submit;
+  };
+  const keep = () => { pref = {...pref, player: ($("lp") || {}).value || pref.player, line: ($("ll") || {}).value ?? pref.line, odds: ($("lo") || {}).value || pref.odds, stat: ($("ls") || {}).value || st.stat}; st.stat = pref.stat; };
+  const submit = () => {
+    const err = m => { $("lerr").textContent = m; };
+    const odds = ($("lo").value || "").trim().replace("−", "-"), stake = parseFloat($("lk").value), line = $("ll").value.trim();
+    const book = $("lb").value, notes = $("ln").value.trim();
+    if (!/^[+-]?\d{3,4}$/.test(odds)) return err("Odds look like -110 or +150.");
+    if (!(stake >= 5)) return err("Minimum bet is $5.");
+    store.set("logbook", book);
+    const o = odds.startsWith("-") || odds.startsWith("+") ? odds : "+" + odds;
+    let f;
+    if (st.kind === "prop") {
+      const who = $("lp").value.trim(), stat = $("ls").value, g = games.find(x => x.espn_id === $("lg").value);
+      if (!who) return err("Pick a player.");
+      if (line === "" || isNaN(+line)) return err("Enter the line, like 7.5.");
+      f = {title: `Bet: ${who} ${st.side} ${line} ${STATN[stat]} (${g.away} @ ${g.home})`, selection: who + " " + st.side, odds: o, stake: String(stake), book,
+           point: line, market: ODDS_KEY[stat], event_id: "espn:" + g.espn_id, sport: "basketball_nba", notes};
+    } else {
+      const d = $("ld").value.trim(); if (!d) return err("Describe the bet.");
+      f = {title: "Bet: " + d, selection: d, odds: o, stake: String(stake), book, point: line, notes};
+    }
+    window.open(issueUrl(f), "_blank", "noopener");
+  };
+  st.kind = pref.kind || st.kind;
+  draw();
+  $("sheet").classList.add("on"); document.body.style.overflow = "hidden";
+  history.pushState({sheet: 1}, "");
+}
+
 function closeSheet() { $("sheet").classList.remove("on"); document.body.style.overflow = ""; }
 window.addEventListener("popstate", () => { if ($("sheet").classList.contains("on")) closeSheet(); });
 $("sheet").addEventListener("click", e => { if (e.target === $("sheet")) history.back(); });
@@ -738,8 +821,8 @@ function renderBets() {
       `<div class="desc" style="margin-bottom:6px">Each result has a post-mortem; tap "Game story" for the quarter-by-quarter breakdown, runs, momentum swings, the closing stretch and key players.</div>` +
       (done.slice(0, 50).map(betRow).join("") || '<div class="empty">No results yet.</div>')) +
     sec("b-you", "Your book", money(manual.stats.equity) + " · " + manual.stats.open + " open",
-      `<a class="btn" href="${issueUrl({title: "Bet: "})}" target="_blank" rel="noopener">+ Log a custom bet</a>
-       <div class="desc" style="margin:6px 0">Board bets grade themselves. For custom bets, comment <span class="num">/settle won</span>, <span class="num">/settle lost</span> or <span class="num">/settle push</span> on the issue.</div>` +
+      `<button class="btn" style="border:0;font:inherit;font-weight:700;cursor:pointer" onclick="openLogBet()">+ Log a bet</button>
+       <div class="desc" style="margin:6px 0">Board bets and player props grade themselves. For custom bets, comment <span class="num">/settle won</span>, <span class="num">/settle lost</span> or <span class="num">/settle push</span> on the issue.</div>` +
       (mb.map(betRow).join("") || '<div class="empty">No bets yet. Pick one from the board.</div>')) +
     sec("b-board", "Board · bet it yourself", "", "", false) +
     sec("b-log", "Time log", "", "", false);

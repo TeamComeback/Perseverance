@@ -304,6 +304,52 @@ def parse_form(body):
     return out
 
 
+def _log_espn_prop(num, f, book, state, manual, stake, dec):
+    """A player prop logged from the dashboard's Log a bet form: any NBA game on today's slate.
+    It is graded from the ESPN box score like every other prop. Returns True if it handled the issue."""
+    from datetime import timedelta
+    nm_ = __import__("agent.nba_model", fromlist=["x"])
+    eid = f["event_id"].split(":", 1)[1]
+    pdx = store.load("players.json", {})
+    g = next((x for x in pdx.get("games", []) if x["espn_id"] == eid), None)
+    if not g:
+        g = next((x for x in store.load("props.json", {}).get("games", []) if x["espn_id"] == eid), None)
+    key_stat = {v: k for k, v in nm_.ODDS_KEY.items()}
+    sel = f.get("selection", "")
+    side = "Under" if sel.lower().rstrip().endswith("under") else "Over"
+    who = re.sub(r"\s+(over|under)\s*$", "", sel, flags=re.I).strip()
+    try:
+        point = float(f["point"])
+    except Exception:
+        point = None
+    if not g or point is None or f.get("market") not in key_stat or not who:
+        store.gh_comment(num, "Couldn't match that prop to a game on today's slate, or the line is missing. "
+                              "Use the Log a bet form on the dashboard, or comment `/settle won|lost|push` after a custom bet.")
+        return True
+    start = store.parse(g["start"])
+    if start + timedelta(hours=5) < store.now():
+        store.gh_comment(num, "That game is already over, so it can't be logged.")
+        store.gh_close(num)
+        return True
+    pl = next((p for p in (pdx.get("players") or {}).values() if nba_props.norm(p["name"]) == nba_props.norm(who)), None)
+    leg = {"event_id": f["event_id"], "sport": "basketball_nba", "commence": store.iso(start),
+           "home": g.get("home_name") or g["home"], "away": g.get("away_name") or g["away"],
+           "market": f["market"], "outcome": f"{who} {side}", "side": side, "player": (pl or {}).get("name", who),
+           "player_id": (pl or {}).get("pid"), "stat": key_stat[f["market"]], "espn_id": eid, "point": point,
+           "price": round(dec, 3), "book": f.get("book"), "fair_p": None, "close_p": None, "result": None}
+    late = start <= store.now()
+    note = (f.get("notes") or "") + (" [Logged after tip-off]" if late else "")
+    b = bk.place(book, [leg], stake, "manual", note=note.strip(), source="you", issue=num)
+    if not b:
+        store.gh_comment(num, f"Minimum bet is ${config.MIN_STAKE:.0f}.")
+        return True
+    warn = "" if pl else " I couldn't find that player on today's slate, so I'll match the name when grading."
+    store.gh_comment(num, f"Logged: ${stake:.2f} on {describe(b)}. I'll grade it from the box score; a player who "
+                          f"doesn't play is voided.{warn} Cash left: ${book['cash']:.2f}")
+    save_all(state, manual)
+    return True
+
+
 def manual_issue():
     ev = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
     issue = ev["issue"]
@@ -347,6 +393,9 @@ def manual_issue():
             return
         if stake > book["cash"]:
             store.gh_comment(num, f"Not enough fake cash: you have ${book['cash']:.2f}.")
+            return
+        if str(f.get("event_id", "")).startswith("espn:") and str(f.get("market", "")).startswith("player_"):
+            _log_espn_prop(num, f, book, state, manual, stake, dec)
             return
         evinfo = None
         if f.get("event_id"):

@@ -99,7 +99,8 @@ A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts auto
 ## Your bets
 
 - **From the board:** tap any price on the dashboard to open a prefilled issue, then submit it. The bet is logged at that price and grades itself from the final score.
-- **Custom bets** (props, same-game parlays, anything): use **+ Log a custom bet**, then comment `/settle won`, `/settle lost` or `/settle push` on the issue when it's decided. `/cancel` refunds the stake.
+- **Any NBA player prop:** tap **+ Log a bet** (the orange button on every screen, or in Your book), pick the player, stat, over/under, line, odds, stake and book. It opens a prefilled GitHub issue; tap Submit and it grades itself from the box score.
+- **Custom bets** (same-game parlays, anything else): use **+ Log a bet → Other bet**, then comment `/settle won`, `/settle lost` or `/settle push` on the issue when it's decided. `/cancel` refunds the stake.
 - Only you and other repo members can log or settle bets.
 
 ## Schedule (ET)
