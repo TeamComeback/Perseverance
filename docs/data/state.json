@@ -443,7 +443,7 @@
       "lost-closing-line"
      ]
     },
-    "recap_tried": 1
+    "recap_tried": 2
    },
    {
     "id": "90a4c80b",
@@ -512,7 +512,7 @@
       "underdog-lost"
      ]
     },
-    "recap_tried": 1
+    "recap_tried": 2
    },
    {
     "id": "85d9f868",
@@ -1086,7 +1086,7 @@
       "beat-closing-line"
      ]
     },
-    "recap_tried": 2
+    "recap_tried": 3
    },
    {
     "id": "4ccde1de",
@@ -1444,7 +1444,7 @@
       "underdog-lost"
      ]
     },
-    "recap_tried": 2
+    "recap_tried": 3
    },
    {
     "id": "bf134eb4",
@@ -1613,10 +1613,10 @@
       "price": 5.9,
       "book": "fanduel",
       "fair_p": 0.1879,
-      "close_p": 0.1706,
+      "close_p": 0.1745,
       "result": null,
-      "close_at": "2026-10-30T23:36:55Z",
-      "close_mins": 983
+      "close_at": "2026-10-31T01:48:40Z",
+      "close_mins": 851
      }
     ],
     "dec": 5.9,
@@ -1650,10 +1650,10 @@
       "price": 6.9,
       "book": "fanduel",
       "fair_p": 0.1597,
-      "close_p": 0.1491,
+      "close_p": 0.1514,
       "result": null,
-      "close_at": "2026-10-30T23:36:55Z",
-      "close_mins": 1013
+      "close_at": "2026-10-31T01:48:40Z",
+      "close_mins": 881
      }
     ],
     "dec": 6.9,
@@ -1672,7 +1672,7 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.03,
+  "min_edge": 0.035,
   "kelly_mult": 0.25,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -1804,13 +1804,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-30T23:36:54Z",
+   "last_scanned": "2026-10-31T01:48:39Z",
    "bets": 5.0,
    "staked": 25.0,
    "profit": -12.9
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-30T23:36:53Z",
+   "last_scanned": "2026-10-31T01:48:39Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -1822,10 +1822,10 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-30T23:36:53Z"
+   "last_scanned": "2026-10-31T01:48:39Z"
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-30T19:55:08Z"
+   "last_scanned": "2026-10-31T01:48:40Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -1861,7 +1861,7 @@
    "last_scanned": "2026-10-30T19:55:09Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-10-30T23:36:54Z"
+   "last_scanned": "2026-10-31T01:48:40Z"
   },
   "soccer_spain_la_liga": {
    "last_scanned": "2026-10-30T23:36:54Z"
@@ -1870,7 +1870,7 @@
    "last_scanned": "2026-10-30T23:36:54Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-10-30T23:36:54Z"
+   "last_scanned": "2026-10-31T01:48:39Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -1879,7 +1879,7 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-10-30T23:36:54Z"
+   "last_scanned": "2026-10-31T01:48:39Z"
   }
  },
  "journal": [
@@ -2052,6 +2052,16 @@
    "ts": "2026-10-31T01:31:54Z",
    "kind": "props",
    "text": "NBA matchups: 2 games, strongest spots: Sandro Mamukelashvili ast +8% vs GS; Devin Booker ast +8% vs DEN; Luke Kennard ra -6% vs DEN. Bought prop odds for DEN@PHX (ast, ra, team totals), LAL@GS (ast, ra, pra, team totals) (7 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-10-31T01:48:36Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.5% over 15 legs, so the market is beating my picks. Raising the minimum edge to 3.5%."
+  },
+  {
+   "ts": "2026-10-31T01:48:40Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (10), americanfootball_ncaaf (48), soccer_epl (8), basketball_nba (7), soccer_germany_bundesliga (6), soccer_italy_serie_a (4), mma_mixed_martial_arts (21) for 16 credits. Nothing cleared the bar. Equity $68.00."
   }
  ],
  "learned_ids": [
@@ -2068,7 +2078,7 @@
   "30595077"
  ],
  "strategist": null,
- "updated": "2026-10-31T01:31:54Z",
+ "updated": "2026-10-31T01:48:40Z",
  "stats": {
   "bets": 11,
   "won": 2,
@@ -2077,7 +2087,7 @@
   "staked": 55.0,
   "profit": -32.0,
   "roi": -0.5818,
-  "clv": -0.0254,
+  "clv": -0.0228,
   "clv_n": 15,
   "clv_no_close": 2,
   "close_mins_median": 151,
@@ -2094,5 +2104,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 1
+ "dry_scans": 2
 }
