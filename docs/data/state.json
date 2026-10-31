@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 52.0,
+  "cash": 34.37,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -2135,12 +2135,117 @@
     "payout": null,
     "profit": null,
     "settled": null
+   },
+   {
+    "id": "e928c04b",
+    "placed": "2026-10-31T19:13:50Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "746742d4bb94424d9e63d00701eef4ec",
+      "sport": "americanfootball_ncaaf",
+      "commence": "2026-10-31T19:30:00Z",
+      "home": "UL Monroe Warhawks",
+      "away": "Southern Mississippi Golden Eagles",
+      "market": "h2h",
+      "outcome": "Southern Mississippi Golden Eagles",
+      "point": null,
+      "price": 1.67,
+      "book": "hardrockbet",
+      "fair_p": 0.5987,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 1.67,
+    "stake": 7.63,
+    "ev": 0.009,
+    "p": 0.6043,
+    "note": "Arb: 0.90% locked across 2 books",
+    "group": "arb-746742d4bb",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "645f7eb5",
+    "placed": "2026-10-31T19:13:50Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "746742d4bb94424d9e63d00701eef4ec",
+      "sport": "americanfootball_ncaaf",
+      "commence": "2026-10-31T19:30:00Z",
+      "home": "UL Monroe Warhawks",
+      "away": "Southern Mississippi Golden Eagles",
+      "market": "h2h",
+      "outcome": "UL Monroe Warhawks",
+      "point": null,
+      "price": 2.55,
+      "book": "espnbet",
+      "fair_p": 0.4095,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 2.55,
+    "stake": 5.0,
+    "ev": 0.009,
+    "p": 0.3957,
+    "note": "Arb: 0.90% locked across 2 books",
+    "group": "arb-746742d4bb",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "f216356b",
+    "placed": "2026-10-31T19:13:50Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "b0f68c9265402a825cbbf7954b726339",
+      "sport": "americanfootball_ncaaf",
+      "commence": "2026-10-31T19:30:00Z",
+      "home": "BYU Cougars",
+      "away": "Arizona State Sun Devils",
+      "market": "h2h",
+      "outcome": "Arizona State Sun Devils",
+      "point": null,
+      "price": 8.0,
+      "book": "espnbet",
+      "fair_p": 0.1401,
+      "close_p": null,
+      "result": null
+     }
+    ],
+    "dec": 8.0,
+    "stake": 5.0,
+    "ev": 0.1211,
+    "p": 0.1401,
+    "note": "12.1% edge vs 7-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
  },
  "params": {
-  "min_edge": 0.0425,
+  "min_edge": 0.0475,
   "kelly_mult": 0.25,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -2295,19 +2400,19 @@
    "profit": -13.899999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-31T02:39:41Z",
+   "last_scanned": "2026-10-31T19:13:50Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-29T23:54:28Z"
+   "last_scanned": "2026-10-31T19:13:50Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-31T02:39:40Z",
+   "last_scanned": "2026-10-31T19:13:50Z",
    "bets": 1.0,
    "staked": 5.0,
    "profit": -5.0
@@ -2349,7 +2454,7 @@
    "last_scanned": "2026-10-30T19:55:09Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-10-31T01:48:40Z"
+   "last_scanned": "2026-10-31T19:13:50Z"
   },
   "soccer_spain_la_liga": {
    "last_scanned": "2026-10-30T23:36:54Z"
@@ -2603,6 +2708,16 @@
    "ts": "2026-10-31T17:55:40Z",
    "kind": "research",
    "text": "Research refresh for Sat Oct 31: 7 games, 159 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-10-31T19:13:47Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 4.8%."
+  },
+  {
+   "ts": "2026-10-31T19:13:50Z",
+   "kind": "scan",
+   "text": "Scanned americanfootball_nfl (12), icehockey_nhl (11), americanfootball_ncaaf (29), mma_mixed_martial_arts (12) for 10 credits. Placed 3: Southern Mississippi Golden Eagles @ -149 (Hard Rock Bet); UL Monroe Warhawks @ +155 (theScore Bet); Arizona State Sun Devils @ +700 (theScore Bet) Equity $62.00."
   }
  ],
  "learned_ids": [
@@ -2623,7 +2738,7 @@
   "2cfe2a48"
  ],
  "strategist": null,
- "updated": "2026-10-31T17:55:40Z",
+ "updated": "2026-10-31T19:13:50Z",
  "stats": {
   "bets": 15,
   "won": 3,
@@ -2636,7 +2751,7 @@
   "clv_n": 15,
   "clv_no_close": 2,
   "close_mins_median": 151,
-  "open": 2,
+  "open": 5,
   "equity": 62.0
  },
  "weights": {
