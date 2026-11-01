@@ -2607,8 +2607,8 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.0625,
-  "kelly_mult": 0.128,
+  "min_edge": 0.065,
+  "kelly_mult": 0.1024,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
   "max_bets_per_run": 6,
@@ -2841,7 +2841,7 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-11-01T02:29:41Z"
+   "last_scanned": "2026-11-01T19:32:11Z"
   },
   "basketball_ncaab": {
    "last_scanned": "2026-11-01T02:29:41Z"
@@ -3186,6 +3186,26 @@
    "ts": "2026-11-01T18:33:14Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 1: 4 games, 92 players projected, lineups for 4 games."
+  },
+  {
+   "ts": "2026-11-01T19:32:08Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 6.8%."
+  },
+  {
+   "ts": "2026-11-01T19:32:08Z",
+   "kind": "adapt",
+   "text": "Down 53% from the peak. Survival mode: Kelly fraction cut to 0.10."
+  },
+  {
+   "ts": "2026-11-01T19:32:11Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 6.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-01T19:32:11Z",
+   "kind": "scan",
+   "text": "Scanned soccer_epl (1) for 2 credits. Nothing cleared the bar. Equity $47.11."
   }
  ],
  "learned_ids": [
@@ -3211,7 +3231,7 @@
   "f216356b"
  ],
  "strategist": null,
- "updated": "2026-11-01T18:33:14Z",
+ "updated": "2026-11-01T19:32:11Z",
  "stats": {
   "bets": 20,
   "won": 4,
@@ -3237,5 +3257,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 2
+ "dry_scans": 0
 }
