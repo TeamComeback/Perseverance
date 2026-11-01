@@ -2515,7 +2515,11 @@
       "book": "espnbet",
       "fair_p": 0.1401,
       "close_p": null,
-      "result": null
+      "result": "loss",
+      "final": {
+       "home": 27.0,
+       "away": 20.0
+      }
      }
     ],
     "dec": 8.0,
@@ -2525,10 +2529,79 @@
     "note": "12.1% edge vs 7-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-01T01:00:30Z",
+    "review": {
+     "headline": "LOST: Arizona State Sun Devils lost by 7",
+     "final": "Arizona State Sun Devils 20 \u2013 BYU Cougars 27",
+     "legs": [
+      {
+       "outcome": "Arizona State Sun Devils",
+       "result": "loss",
+       "headline": "Arizona State Sun Devils lost by 7",
+       "final": "Arizona State Sun Devils 20 \u2013 BYU Cougars 27",
+       "why": [
+        "Arizona State Sun Devils lost by 7.",
+        "We priced it at 14% to hit vs 12% needed to break even at 8x (+12.1% expected edge).",
+        "Consensus fair probability when placed: 14% (no closing price captured)."
+       ],
+       "tags": [
+        "underdog-lost"
+       ]
+      }
+     ],
+     "tags": [
+      "underdog-lost"
+     ],
+     "recaps": [
+      {
+       "kind": "generic",
+       "final": "ASU 20 \u2013 BYU 27",
+       "periods": {
+        "away": [
+         "0",
+         "3",
+         "14",
+         "3"
+        ],
+        "home": [
+         "7",
+         "10",
+         "0",
+         "10"
+        ]
+       },
+       "scoring": [
+        "P1 10:47: Sione Moa 1 Yd Fumble Recovery (Matthias Dunn Kick) (ASU 0-7 BYU)",
+        "P2 14:06: Carson Smith 24 Yd Field Goal   (ASU 3-7 BYU)",
+        "P2 6:22: Matthias Dunn 28 Yd Field Goal   (ASU 3-10 BYU)",
+        "P2 1:55: Kyler Kasper 13 Yd pass from Bear Bachmeier (Matthias Dunn Kick) (ASU 3-17 BYU)",
+        "P3 6:30: Omarion Miller 20 Yd pass from Jake Fette (Carson Smith Kick) (ASU 10-17 BYU)",
+        "P3 1:15: Anthony Miller 1 Yd pass from Jake Fette (Carson Smith Kick) (ASU 17-17 BYU)",
+        "P4 12:08: Matthias Dunn 45 Yd Field Goal   (ASU 17-20 BYU)",
+        "P4 2:09: Sione Moa 1 Yd Run (Matthias Dunn Kick) (ASU 17-27 BYU)",
+        "P4 0:57: Carson Smith 44 Yd Field Goal   (ASU 20-27 BYU)"
+       ],
+       "leaders": [
+        "BYU Passing Yards: Bear Bachmeier 19/30, 236 YDS, 1 TD, 1 INT",
+        "BYU Rushing Yards: Sione Moa 8 CAR, 20 YDS, 2 TD",
+        "BYU Receiving Yards: Legend Glasker 4 REC, 87 YDS",
+        "ASU Passing Yards: Jake Fette 22/42, 166 YDS, 2 TD",
+        "ASU Rushing Yards: Cardae Mack 23 CAR, 123 YDS",
+        "ASU Receiving Yards: Derek Eusebio 7 REC, 48 YDS"
+       ],
+       "story": [
+        "By period: P1 0-7, P2 3-10, P3 14-0, P4 3-10 (ASU-BYU).",
+        "9 scores, 0 lead changes.",
+        "Go-ahead score that held: P1 10:47 \u2014 Sione Moa 1 Yd Fumble Recovery (Matthias Dunn Kick)"
+       ],
+       "espn_id": "401856843",
+       "link": "https://www.espn.com/college-football/game/_/gameId/401856843"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -2612,9 +2685,9 @@
    }
   },
   "longshot": {
-   "bets": 4,
-   "staked": 20.0,
-   "profit": -20.0,
+   "bets": 5,
+   "staked": 25.0,
+   "profit": -25.0,
    "clv_n": 4,
    "clv_sum": 0.09958500000000003,
    "tags": {
@@ -2629,9 +2702,9 @@
      "lost": 1
     },
     "underdog-lost": {
-     "n": 4,
+     "n": 5,
      "won": 0,
-     "lost": 4
+     "lost": 5
     },
     "beat-closing-line": {
      "n": 3,
@@ -2709,9 +2782,9 @@
   },
   "americanfootball_ncaaf": {
    "last_scanned": "2026-10-31T19:13:50Z",
-   "bets": 5.0,
-   "staked": 27.63,
-   "profit": -14.89
+   "bets": 6.0,
+   "staked": 32.629999999999995,
+   "profit": -19.89
   },
   "soccer_italy_serie_a": {
    "last_scanned": "2026-10-31T23:17:19Z"
@@ -3054,6 +3127,16 @@
    "ts": "2026-10-31T23:49:04Z",
    "kind": "research",
    "text": "Research refresh for Sat Oct 31: 7 games, 159 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-01T01:00:30Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Arizona State Sun Devils @ +700 (theScore Bet) \u2014 LOST: Arizona State Sun Devils lost by 7 [underdog-lost]"
+  },
+  {
+   "ts": "2026-11-01T01:00:33Z",
+   "kind": "props",
+   "text": "NBA matchups: 4 games, strongest spots: Immanuel Quickley ast +9% vs LAL; Day'Ron Sharpe ra +9% vs IND; Moritz Wagner pra +8% vs IND. No credits to price props this run (allowance 31). "
   }
  ],
  "learned_ids": [
@@ -3075,29 +3158,30 @@
   "e30c7f1a",
   "e2afd4f7",
   "e928c04b",
-  "645f7eb5"
+  "645f7eb5",
+  "f216356b"
  ],
  "strategist": null,
- "updated": "2026-10-31T23:49:04Z",
+ "updated": "2026-11-01T01:00:33Z",
  "stats": {
-  "bets": 19,
+  "bets": 20,
   "won": 4,
-  "lost": 15,
+  "lost": 16,
   "push": 0,
-  "staked": 97.63,
-  "profit": -47.89,
-  "roi": -0.4905,
+  "staked": 102.63,
+  "profit": -52.89,
+  "roi": -0.5153,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 4,
+  "clv_no_close": 5,
   "close_mins_median": 151,
-  "open": 1,
-  "equity": 52.11
+  "open": 0,
+  "equity": 47.11
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.415,
-  "longshot": 0.515,
+  "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.0,

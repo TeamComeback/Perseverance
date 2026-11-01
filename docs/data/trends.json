@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-31T23:49:04Z",
- "date": "2026-10-31",
+ "updated": "2026-11-01T01:00:32Z",
+ "date": "2026-11-01",
  "sections": [
   {
    "id": "hot",
@@ -85,12 +85,6 @@
    "title": "Cold players (last 5 vs their norm)",
    "items": [
     {
-     "txt": "Dean Wade (PHI): 3.0 reb+ast/g last 5 vs 5.8 expected for his minutes",
-     "val": "-48%",
-     "tone": "bad",
-     "stat": "ra"
-    },
-    {
      "txt": "Tristan da Silva (ORL): 3.4 reb+ast/g last 5 vs 6.2 expected for his minutes",
      "val": "-45%",
      "tone": "bad",
@@ -99,6 +93,12 @@
     {
      "txt": "Anthony Gill (WSH): 3.4 reb+ast/g last 5 vs 6.1 expected for his minutes",
      "val": "-45%",
+     "tone": "bad",
+     "stat": "ra"
+    },
+    {
+     "txt": "Mitchell Robinson (BOS): 5.2 reb+ast/g last 5 vs 9.2 expected for his minutes",
+     "val": "-43%",
      "tone": "bad",
      "stat": "ra"
     },
@@ -139,12 +139,6 @@
      "stat": "tpm"
     },
     {
-     "txt": "Dean Wade (PHI): 5.8 pts+reb+ast/g last 5 vs 11.8 expected for his minutes",
-     "val": "-51%",
-     "tone": "bad",
-     "stat": "pra"
-    },
-    {
      "txt": "Bub Carrington (WSH): 9.4 pts+reb+ast/g last 5 vs 14.4 expected for his minutes",
      "val": "-35%",
      "tone": "bad",
@@ -153,6 +147,12 @@
     {
      "txt": "Jalen Williams (OKC): 14.4 pts+reb+ast/g last 5 vs 21.7 expected for his minutes",
      "val": "-34%",
+     "tone": "bad",
+     "stat": "pra"
+    },
+    {
+     "txt": "Day'Ron Sharpe (BKN): 14.4 pts+reb+ast/g last 5 vs 21.6 expected for his minutes",
+     "val": "-33%",
      "tone": "bad",
      "stat": "pra"
     }
@@ -168,13 +168,13 @@
      "tone": "good"
     },
     {
-     "txt": "Paul Reed (DET): 29 min/g in his last 5 vs 15 in the 40 before",
+     "txt": "Dennis Schroder (CHA): 34 min/g in his last 5 vs 20 in the 40 before",
      "val": "+14",
      "tone": "good"
     },
     {
-     "txt": "Dennis Schroder (CHA): 31 min/g in his last 5 vs 20 in the 40 before",
-     "val": "+11",
+     "txt": "Paul Reed (DET): 29 min/g in his last 5 vs 15 in the 40 before",
+     "val": "+14",
      "tone": "good"
     },
     {
@@ -290,6 +290,11 @@
      "tone": "good"
     },
     {
+     "txt": "OKC: overs 1-4 this season, 1-4 last 10",
+     "val": "1-4",
+     "tone": "bad"
+    },
+    {
      "txt": "SA: overs 1-4 this season, 1-4 last 10",
      "val": "1-4",
      "tone": "bad"
@@ -300,18 +305,13 @@
      "tone": "bad"
     },
     {
-     "txt": "PHI: overs 1-5 this season, 1-5 last 10",
-     "val": "1-5",
-     "tone": "bad"
-    },
-    {
      "txt": "WSH: overs 1-5 this season, 1-5 last 10",
      "val": "1-5",
      "tone": "bad"
     },
     {
-     "txt": "CHA: overs 0-6 this season, 0-6 last 10",
-     "val": "0-6",
+     "txt": "CHA: overs 1-6 this season, 1-6 last 10",
+     "val": "1-6",
      "tone": "bad"
     }
    ]
@@ -382,13 +382,13 @@
      "tone": "good"
     },
     {
-     "txt": "PHI: +6.5 in second halves",
-     "val": "+6.5",
+     "txt": "DET: +6.3 in second halves",
+     "val": "+6.3",
      "tone": "good"
     },
     {
-     "txt": "DET: +6.3 in second halves",
-     "val": "+6.3",
+     "txt": "PHI: +5.9 in second halves",
+     "val": "+5.9",
      "tone": "good"
     },
     {
@@ -407,8 +407,8 @@
      "tone": "bad"
     },
     {
-     "txt": "CHA: -8.8 in second halves",
-     "val": "-8.8",
+     "txt": "CHA: -7.9 in second halves",
+     "val": "-7.9",
      "tone": "bad"
     },
     {
@@ -453,8 +453,8 @@
      "stat": "ast"
     },
     {
-     "txt": "WSH vs centers: +14% pts+reb+ast vs norm",
-     "val": "+14%",
+     "txt": "WSH vs centers: +15% pts+reb+ast vs norm",
+     "val": "+15%",
      "tone": "good",
      "stat": "pra"
     },
@@ -465,16 +465,16 @@
      "stat": "ast"
     },
     {
+     "txt": "WSH vs centers: +14% threes vs norm",
+     "val": "+14%",
+     "tone": "good",
+     "stat": "tpm"
+    },
+    {
      "txt": "WSH vs point guards: +14% assists vs norm",
      "val": "+14%",
      "tone": "good",
      "stat": "ast"
-    },
-    {
-     "txt": "WSH vs centers: +13% threes vs norm",
-     "val": "+13%",
-     "tone": "good",
-     "stat": "tpm"
     },
     {
      "txt": "WSH vs centers: +13% reb+ast vs norm",
@@ -525,12 +525,6 @@
      "stat": "ast"
     },
     {
-     "txt": "PHI vs power forwards: -12% threes vs norm",
-     "val": "-12%",
-     "tone": "bad",
-     "stat": "tpm"
-    },
-    {
      "txt": "HOU vs small forwards: -12% assists vs norm",
      "val": "-12%",
      "tone": "bad",
@@ -547,6 +541,12 @@
      "val": "-11%",
      "tone": "bad",
      "stat": "ra"
+    },
+    {
+     "txt": "DET vs shooting guards: -11% assists vs norm",
+     "val": "-11%",
+     "tone": "bad",
+     "stat": "ast"
     }
    ]
   },
@@ -576,24 +576,9 @@
    "title": "Rest: back-to-backs on the slate",
    "items": [
     {
-     "txt": "CHA on a back-to-back vs PHI (both teams)",
-     "val": "B2B",
-     "tone": "bad"
-    },
-    {
-     "txt": "PHI on a back-to-back vs CHA (both teams)",
-     "val": "B2B",
-     "tone": "bad"
-    },
-    {
-     "txt": "MIN on a back-to-back vs SA (opponent rested)",
-     "val": "B2B",
-     "tone": "bad"
-    },
-    {
-     "txt": "HOU on a back-to-back vs OKC (opponent rested)",
-     "val": "B2B",
-     "tone": "bad"
+     "txt": "No back-to-backs on this slate.",
+     "val": "",
+     "tone": "mid"
     }
    ]
   }
@@ -655,21 +640,21 @@
   },
   {
    "team": "CHA",
-   "gp": 6,
-   "ppg": 97.3,
-   "oppg": 106.0,
-   "ppg10": 97.3,
-   "oppg10": 106.0,
-   "pace10": 100.5,
-   "pace": 100.1,
+   "gp": 7,
+   "ppg": 98.3,
+   "oppg": 106.4,
+   "ppg10": 98.3,
+   "oppg10": 106.4,
+   "pace10": 99.3,
+   "pace": 99.9,
    "pace_rank": 27,
    "ortg_rank": 16,
-   "drtg_rank": 11,
-   "ats": "3-3",
-   "ou": "0-6",
-   "ou10": "0-6",
-   "lined": 6,
-   "h2_net": -8.8
+   "drtg_rank": 14,
+   "ats": "3-4",
+   "ou": "1-6",
+   "ou10": "1-6",
+   "lined": 7,
+   "h2_net": -7.9
   },
   {
    "team": "CHI",
@@ -700,7 +685,7 @@
    "pace": 102.9,
    "pace_rank": 13,
    "ortg_rank": 7,
-   "drtg_rank": 14,
+   "drtg_rank": 13,
    "ats": "1-4",
    "ou": "2-3",
    "ou10": "2-3",
@@ -988,7 +973,7 @@
    "pace": 103.0,
    "pace_rank": 12,
    "ortg_rank": 22,
-   "drtg_rank": 13,
+   "drtg_rank": 12,
    "ats": "2-3",
    "ou": "3-2",
    "ou10": "3-2",
@@ -997,21 +982,21 @@
   },
   {
    "team": "PHI",
-   "gp": 6,
+   "gp": 7,
    "ppg": 108.7,
-   "oppg": 105.0,
+   "oppg": 104.9,
    "ppg10": 108.7,
-   "oppg10": 105.0,
-   "pace10": 105.0,
-   "pace": 102.7,
-   "pace_rank": 14,
+   "oppg10": 104.9,
+   "pace10": 103.0,
+   "pace": 102.5,
+   "pace_rank": 16,
    "ortg_rank": 19,
-   "drtg_rank": 12,
-   "ats": "3-3",
-   "ou": "1-5",
-   "ou10": "1-5",
-   "lined": 6,
-   "h2_net": 6.5
+   "drtg_rank": 11,
+   "ats": "4-3",
+   "ou": "2-5",
+   "ou10": "2-5",
+   "lined": 7,
+   "h2_net": 5.9
   },
   {
    "team": "PHX",
@@ -1058,7 +1043,7 @@
    "oppg10": 110.0,
    "pace10": 105.3,
    "pace": 102.6,
-   "pace_rank": 15,
+   "pace_rank": 14,
    "ortg_rank": 6,
    "drtg_rank": 3,
    "ats": "2-3",
@@ -1076,7 +1061,7 @@
    "oppg10": 126.8,
    "pace10": 105.7,
    "pace": 102.6,
-   "pace_rank": 16,
+   "pace_rank": 15,
    "ortg_rank": 28,
    "drtg_rank": 29,
    "ats": "1-4",
