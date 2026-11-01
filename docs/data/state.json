@@ -2607,8 +2607,8 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.0525,
-  "kelly_mult": 0.2,
+  "min_edge": 0.0575,
+  "kelly_mult": 0.16,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
   "max_bets_per_run": 6,
@@ -2763,31 +2763,31 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-10-31T23:17:19Z",
+   "last_scanned": "2026-11-01T02:29:42Z",
    "bets": 8.0,
    "staked": 40.0,
    "profit": -13.899999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-10-31T19:13:50Z",
+   "last_scanned": "2026-11-01T02:29:41Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-10-31T23:17:19Z"
+   "last_scanned": "2026-11-01T02:29:41Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-10-31T19:13:50Z",
+   "last_scanned": "2026-11-01T02:29:42Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-10-31T23:17:19Z"
+   "last_scanned": "2026-11-01T02:29:42Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -2802,7 +2802,7 @@
    "last_scanned": "2026-10-30T23:36:54Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-10-30T19:55:08Z",
+   "last_scanned": "2026-11-01T02:29:42Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
@@ -2826,13 +2826,13 @@
    "last_scanned": "2026-10-31T19:13:50Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-10-30T23:36:54Z"
+   "last_scanned": "2026-11-01T02:29:41Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-10-30T23:36:54Z"
+   "last_scanned": "2026-11-01T02:29:42Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-10-31T01:48:39Z"
+   "last_scanned": "2026-11-01T02:29:42Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -2841,10 +2841,19 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-10-31T02:39:40Z"
+   "last_scanned": "2026-11-01T02:29:41Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-10-31T02:39:41Z"
+   "last_scanned": "2026-11-01T02:29:41Z"
+  },
+  "soccer_netherlands_eredivisie": {
+   "last_scanned": "2026-11-01T02:29:42Z"
+  },
+  "handball_germany_bundesliga": {
+   "last_scanned": "2026-11-01T02:29:42Z"
+  },
+  "baseball_kbo": {
+   "last_scanned": "2026-11-01T02:29:42Z"
   }
  },
  "journal": [
@@ -3142,6 +3151,21 @@
    "ts": "2026-11-01T02:14:54Z",
    "kind": "props",
    "text": "NBA matchups: 4 games, strongest spots: Immanuel Quickley ast +9% vs LAL; Day'Ron Sharpe ra +9% vs IND; Moritz Wagner pra +8% vs IND. Bought prop odds for BKN@IND (ra, pra, ast, team totals), TOR@LAL (ast, ra, tpm, team totals), BOS@ORL (pra, ra, team totals) (3 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-01T02:29:39Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 5.8%."
+  },
+  {
+   "ts": "2026-11-01T02:29:39Z",
+   "kind": "adapt",
+   "text": "Down 53% from the peak. Survival mode: Kelly fraction cut to 0.16."
+  },
+  {
+   "ts": "2026-11-01T02:29:42Z",
+   "kind": "scan",
+   "text": "Scanned americanfootball_nfl (12), basketball_ncaab (5), icehockey_nhl (5), soccer_spain_la_liga (4), soccer_epl (1), soccer_germany_bundesliga (2), icehockey_ahl (9), soccer_usa_mls (6), basketball_nba (3), soccer_italy_serie_a (5), americanfootball_ncaaf (2), soccer_netherlands_eredivisie (4), handball_germany_bundesliga (3), baseball_kbo (1) for 36 credits. Nothing cleared the bar. Equity $47.11."
   }
  ],
  "learned_ids": [
@@ -3167,7 +3191,7 @@
   "f216356b"
  ],
  "strategist": null,
- "updated": "2026-11-01T02:14:54Z",
+ "updated": "2026-11-01T02:29:42Z",
  "stats": {
   "bets": 20,
   "won": 4,
@@ -3193,5 +3217,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 1
+ "dry_scans": 2
 }
