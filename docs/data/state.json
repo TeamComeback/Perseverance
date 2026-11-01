@@ -2607,8 +2607,8 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.0575,
-  "kelly_mult": 0.16,
+  "min_edge": 0.0625,
+  "kelly_mult": 0.128,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
   "max_bets_per_run": 6,
@@ -3166,6 +3166,21 @@
    "ts": "2026-11-01T02:29:42Z",
    "kind": "scan",
    "text": "Scanned americanfootball_nfl (12), basketball_ncaab (5), icehockey_nhl (5), soccer_spain_la_liga (4), soccer_epl (1), soccer_germany_bundesliga (2), icehockey_ahl (9), soccer_usa_mls (6), basketball_nba (3), soccer_italy_serie_a (5), americanfootball_ncaaf (2), soccer_netherlands_eredivisie (4), handball_germany_bundesliga (3), baseball_kbo (1) for 36 credits. Nothing cleared the bar. Equity $47.11."
+  },
+  {
+   "ts": "2026-11-01T15:59:11Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 6.2%."
+  },
+  {
+   "ts": "2026-11-01T15:59:11Z",
+   "kind": "adapt",
+   "text": "Down 53% from the peak. Survival mode: Kelly fraction cut to 0.13."
+  },
+  {
+   "ts": "2026-11-01T15:59:11Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $47.11 (run #1), 4-16-0, ROI -51.5%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -3191,7 +3206,7 @@
   "f216356b"
  ],
  "strategist": null,
- "updated": "2026-11-01T02:29:42Z",
+ "updated": "2026-11-01T15:59:11Z",
  "stats": {
   "bets": 20,
   "won": 4,
