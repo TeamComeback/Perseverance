@@ -977,7 +977,7 @@ function renderCard() {
       ${sub("c-sig", "Matchup read", pct(pj.mult - 1, 0), `<div class="desc">Norm ${pj.base.toFixed(1)} for ${p.minutes.toFixed(0)} minutes × matchup ${pj.mult.toFixed(2)} = <b style="color:var(--text)">${pj.proj.toFixed(1)}</b> (spread ±${pj.sd})</div><ul class="sig">${pj.signals.map(x => `<li>${esc(x.txt)}</li>`).join("")}</ul>`, true)}
       ${sub("c-dvp", "Defense vs position", esc(p.opp) + " vs " + esc(p.pos), dvpCard(p))}
       ${sub("c-h2h", "Head to head vs " + esc(p.opp), all.filter(r => r[1] === p.opp).length + " games", logTable(all.filter(r => r[1] === p.opp).reverse(), pc, true))}
-      ${sub("c-comp", "Similar players vs " + esc(p.opp), p.comps.length + " comps", compTable(p, s))}
+      ${sub("c-comp", "Similar players vs " + esc(p.opp), p.comps.length + " comps", compTable(p, s, pc))}
       ${sub("c-shot", "Shot chart", pc.shots.length + " shots this season", shotChart(pc))}
       ${sub("c-log", "Game log", L.length + " games", logTable(L.slice().reverse(), pc, false))}
     </div>`;
@@ -988,6 +988,7 @@ function renderCard() {
     pc.side = pr2 ? pr2.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under"); renderCard(); });
   P.querySelector("#saveprop").onclick = () => saveProp({player: p.name, pid: p.pid, team: p.team, opp: p.opp, stat: s, side: pc.side, line: pc.line,
     espn_id: p.game, start: p.start, snapshot: pc.snapshot, priced: priced ? {side: priced.side, line: priced.line, am: priced.am, book: priced.book} : null});
+  P.querySelectorAll("#comptbl tr[data-c]").forEach(tr => tr.onclick = () => { pc.compOpen = pc.compOpen || {}; pc.compOpen[tr.dataset.c] = !pc.compOpen[tr.dataset.c]; renderCard(); });
   const lb = P.querySelector("#logbet");
   if (lb) lb.onclick = () => openLogBet({kind: "prop", player: p.name, stat: s, side: pc.side, line: pc.line, game: p.game,
     odds: priced ? amS(priced.am) : "", book: priced ? bookName(priced.book) : ""});
@@ -1039,12 +1040,32 @@ function dvpCard(p) {
     <table class="tbl"><tr><th>${esc(p.role)}</th><th>vs norm</th><th>Rank</th><th></th></tr>${rowsFor(p.role)}</table>
     ${T ? `<div class="desc" style="margin-top:8px">Other positions vs ${esc(p.opp)} (${STATN[D.pc.stat]}):</div><table class="tbl">${Object.keys(T).filter(r => r !== p.role).map(r => { const [f, rk] = T[r][D.pc.stat] || [1, 0]; return `<tr><td class="t">${r}</td><td class="${f > 1 ? "h" : "m"}">${pct(f - 1, 0)}</td><td>#${rk}</td></tr>`; }).join("")}</table>` : ""}`;
 }
-function compTable(p, s) {
+function compTable(p, s, pc) {
   if (!p.comps.length) return '<div class="empty">No close comparisons have played this opponent yet.</div>';
-  return `<div class="desc">Players whose per-36 profile is closest to his, and what they did against ${esc(p.opp)} over the last two seasons vs what they normally do in those minutes.</div>
-    <div class="scroll"><table class="tbl"><tr><th>Player</th><th>Sim</th><th>G</th><th>Min</th><th>${STATN[s]}</th><th>Norm</th><th>Diff</th></tr>
-    ${p.comps.map(c => { const [a, e] = c.stats[s] || [0, 0]; const d = e ? a / e - 1 : 0;
-      return `<tr><td class="t">${esc(c.name)} <span class="dim">${esc(c.team)} ${esc(c.role)}</span></td><td>${c.sim.toFixed(2)}</td><td>${c.n}</td><td>${c.min.toFixed(0)}</td><td>${f1(a)}</td><td class="dim">${f1(e)}</td><td class="${d > 0 ? "h" : "m"}">${pct(d, 0)}</td></tr>`; }).join("")}</table></div>`;
+  const line = pc ? pc.line : null, side = pc ? pc.side : "Over", pm = p.minutes || 30;
+  const open = pc ? (pc.compOpen = pc.compOpen || {}) : {};
+  const hasG = p.comps.some(c => c.games);
+  const scaled = (g) => g[1] > 0 ? g[2][s][0] / g[1] * pm : null;   // what he did, at THIS player's projected minutes
+  const hit = v => v == null || line == null ? null : (side === "Over" ? v > line : v < line);
+  let tot = 0, hits = 0;
+  const rows = p.comps.map((c, i) => {
+    const [a, e] = c.stats[s] || [0, 0]; const d = e ? a / e - 1 : 0;
+    const gs = (c.games || []).map(g => ({g, v: scaled(g)}));
+    const n = gs.length, ov = gs.filter(x => x.v != null && line != null && x.v > line).length;
+    gs.forEach(x => { if (x.v != null && line != null) { tot++; if (hit(x.v)) hits++; } });
+    const avgS = n ? gs.reduce((t, x) => t + (x.v || 0), 0) / n : null;
+    const isOpen = !!open[i];
+    let html = `<tr data-c="${i}" style="cursor:pointer"><td class="t">${isOpen ? "▾" : "▸"} ${esc(c.name)} <span class="dim">${esc(c.team)} · ${c.n}g</span></td><td>${c.min.toFixed(0)}</td>
+      <td class="dim">${f1(e)}</td><td>${f1(a)}</td><td class="${d > 0 ? "h" : "m"}">${pct(d, 0)}</td>
+      ${hasG && line != null ? `<td>${f1(avgS)}</td><td class="${avgS != null && hit(avgS) ? "h" : "m"}">${avgS == null ? "—" : (avgS - line > 0 ? "+" : "") + f1(avgS - line)}</td><td>${ov}/${n}</td>` : ""}</tr>`;
+    if (isOpen) html += gs.map(({g, v}) => `<tr class="dim" style="font-size:12px"><td class="t">&nbsp;&nbsp;${esc(g[0].slice(5).replace("-", "/"))}</td><td>${g[1]}</td><td>${f1(g[2][s][1])}</td><td>${f1(g[2][s][0])}</td>
+      <td class="${g[2][s][0] >= g[2][s][1] ? "h" : "m"}">${g[2][s][1] ? pct(g[2][s][0] / g[2][s][1] - 1, 0) : "—"}</td>${line != null ? `<td>${f1(v)}</td><td class="${hit(v) ? "h" : "m"}">${v == null ? "—" : (v - line > 0 ? "+" : "") + f1(v - line)}</td><td>${v != null && v > line ? "O" : "U"}</td>` : ""}</tr>`).join("");
+    return html;
+  }).join("");
+  const extra = hasG && line != null;
+  const summary = extra && tot ? `<div class="card" style="padding:9px 12px;margin:8px 0"><b>${side} ${f1(line)}</b> would have hit in <b>${hits} of ${tot}</b> comp games (${Math.round(hits / tot * 100)}%) once each is scaled to his ${pm.toFixed(0)} projected minutes.</div>` : "";
+  return `<div class="desc">Players whose per-36 profile is closest to his, and what they did against ${esc(p.opp)} over the last two seasons. <b>Exp</b> is what each normally does in those minutes (a stand-in for the line: past sportsbook lines aren't stored). Tap a player for game-by-game.${extra ? ` <b>@ his min</b> rescales their output to his ${pm.toFixed(0)} projected minutes, so it compares fairly with today's line of ${f1(line)}.` : ""}</div>${summary}
+    <div class="scroll"><table class="tbl" id="comptbl"><tr><th>Player</th><th>Min</th><th>Exp</th><th>${STATN[s]}</th><th>Diff</th>${extra ? `<th>@ his min</th><th>vs ${f1(line)}</th><th>Over</th>` : ""}</tr>${rows}</table></div>`;
 }
 function shotZone(x, y, three) {
   const dx = x - 25, d = Math.hypot(dx, y);

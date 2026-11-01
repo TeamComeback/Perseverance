@@ -236,8 +236,12 @@ def comps(model, pid, opp, k=6):
             act = sum(r[s] for r in rs) / len(rs)
             exp = sum(model.rate(p2, s, r["season"]) * r["min"] for r in rs) / len(rs)
             st[s] = [round(act, 1), round(exp, 1)]
+        # game by game, newest first: date, minutes, and per stat [actual, what he normally does in those minutes]
+        games = [[r["d"], round(r["min"]), {s: [round(r[s], 1), round(model.rate(p2, s, r["season"]) * r["min"], 1)]
+                                              for s in ALL_STATS}]
+                 for r in sorted(rs, key=lambda r: r["d"], reverse=True)[:8]]
         out.append({"name": model.players[p2]["name"], "team": model.players[p2]["team"], "role": model.players[p2]["role"],
-                    "sim": round(sm, 2), "n": len(rs), "min": round(mins / len(rs), 1), "stats": st})
+                    "sim": round(sm, 2), "n": len(rs), "min": round(mins / len(rs), 1), "stats": st, "games": games})
     return out
 
 
