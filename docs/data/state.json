@@ -2607,8 +2607,8 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.065,
-  "kelly_mult": 0.1024,
+  "min_edge": 0.07,
+  "kelly_mult": 0.0819,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
   "max_bets_per_run": 6,
@@ -2787,7 +2787,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-01T02:29:42Z"
+   "last_scanned": "2026-11-01T23:29:36Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -3206,6 +3206,21 @@
    "ts": "2026-11-01T19:32:11Z",
    "kind": "scan",
    "text": "Scanned soccer_epl (1) for 2 credits. Nothing cleared the bar. Equity $47.11."
+  },
+  {
+   "ts": "2026-11-01T23:29:33Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 7.0%."
+  },
+  {
+   "ts": "2026-11-01T23:29:33Z",
+   "kind": "adapt",
+   "text": "Down 53% from the peak. Survival mode: Kelly fraction cut to 0.08."
+  },
+  {
+   "ts": "2026-11-01T23:29:36Z",
+   "kind": "scan",
+   "text": "Scanned soccer_italy_serie_a (2) for 2 credits. Nothing cleared the bar. Equity $47.11."
   }
  ],
  "learned_ids": [
@@ -3231,7 +3246,7 @@
   "f216356b"
  ],
  "strategist": null,
- "updated": "2026-11-01T19:32:11Z",
+ "updated": "2026-11-01T23:29:36Z",
  "stats": {
   "bets": 20,
   "won": 4,
@@ -3257,5 +3272,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 0
+ "dry_scans": 1
 }
