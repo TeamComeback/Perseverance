@@ -813,7 +813,7 @@ async function openPlayer(pid, stat) {
   $("pane").innerHTML = `<div class="hd"><button class="x" onclick="closeSheet()">×</button><div class="name">${esc(idx.name)}</div><div class="desc">Loading…</div></div>`;
   $("sheet").classList.add("on"); document.body.style.overflow = "hidden";
   history.pushState({sheet: 1}, "");
-  const g = await gameFile(idx.game);
+  const [g] = await Promise.all([gameFile(idx.game), getLines()]);
   const p = g && g.players[pid];
   if (!p) { $("pane").querySelector(".desc").textContent = "No detail file for this game yet."; return; }
   const priced = (D.pz.priced || {});
@@ -977,6 +977,7 @@ function renderCard() {
       ${sub("c-sig", "Matchup read", pct(pj.mult - 1, 0), `<div class="desc">Norm ${pj.base.toFixed(1)} for ${p.minutes.toFixed(0)} minutes × matchup ${pj.mult.toFixed(2)} = <b style="color:var(--text)">${pj.proj.toFixed(1)}</b> (spread ±${pj.sd})</div><ul class="sig">${pj.signals.map(x => `<li>${esc(x.txt)}</li>`).join("")}</ul>`, true)}
       ${sub("c-dvp", "Defense vs position", esc(p.opp) + " vs " + esc(p.pos), dvpCard(p))}
       ${sub("c-h2h", "Head to head vs " + esc(p.opp), all.filter(r => r[1] === p.opp).length + " games", logTable(all.filter(r => r[1] === p.opp).reverse(), pc, true))}
+      ${sub("c-lines", "Line history", ((D.lines && D.lines.by[p.pid + "|" + s]) || []).length + " saved", linesCard(p, s))}
       ${sub("c-comp", "Similar players vs " + esc(p.opp), p.comps.length + " comps", compTable(p, s, pc))}
       ${sub("c-shot", "Shot chart", pc.shots.length + " shots this season", shotChart(pc))}
       ${sub("c-log", "Game log", L.length + " games", logTable(L.slice().reverse(), pc, false))}
@@ -1040,6 +1041,39 @@ function dvpCard(p) {
     <table class="tbl"><tr><th>${esc(p.role)}</th><th>vs norm</th><th>Rank</th><th></th></tr>${rowsFor(p.role)}</table>
     ${T ? `<div class="desc" style="margin-top:8px">Other positions vs ${esc(p.opp)} (${STATN[D.pc.stat]}):</div><table class="tbl">${Object.keys(T).filter(r => r !== p.role).map(r => { const [f, rk] = T[r][D.pc.stat] || [1, 0]; return `<tr><td class="t">${r}</td><td class="${f > 1 ? "h" : "m"}">${pct(f - 1, 0)}</td><td>#${rk}</td></tr>`; }).join("")}</table>` : ""}`;
 }
+
+// ---- sportsbook line history (the agent saves every line it prices; loaded only when a card opens) ----
+async function getLines() {
+  if (!D.lines) {
+    const db = await get("lines.json", {entries: {}});
+    const by = {};
+    Object.values(db.entries || {}).forEach(e => (by[e.pid + "|" + e.stat] = by[e.pid + "|" + e.stat] || []).push(e));
+    Object.values(by).forEach(a => a.sort((x, y) => y.date.localeCompare(x.date)));
+    D.lines = {by, n: Object.keys(db.entries || {}).length};
+  }
+  return D.lines;
+}
+// the line the books had on a player in a game near this date (comp rows use UTC dates, lines use the ET slate date)
+function bookLine(pid, stat, date, opp) {
+  const a = (D.lines && D.lines.by[pid + "|" + stat]) || [];
+  const t = new Date(date + "T12:00:00Z").getTime();
+  return a.find(e => (!opp || e.opp === opp) && Math.abs(new Date(e.date + "T12:00:00Z") - t) <= 36 * 3600e3) || null;
+}
+function linesCard(p, s) {
+  const rows = (D.lines && D.lines.by[p.pid + "|" + s]) || [];
+  if (!rows.length) return '<div class="empty">No lines saved for him yet. The agent saves each line it prices (the one closest to a coin flip, first seen and last before tip-off) and what he scored, so this fills in game by game.</div>';
+  const done = rows.filter(e => e.actual != null);
+  const ov = done.filter(e => e.result === "over").length;
+  const diff = done.length ? done.reduce((t, e) => t + (e.actual - e.line), 0) / done.length : null;
+  const sum = done.length ? `<div class="card" style="padding:9px 12px;margin:8px 0">Finished over the closing line in <b>${ov} of ${done.length}</b> games · average <b>${diff > 0 ? "+" : ""}${f1(diff)}</b> vs the line.</div>` : "";
+  return `<div class="desc">The line the books closed on (last scan before tip-off), what he scored, and which way it went.</div>${sum}
+    <div class="scroll"><table class="tbl"><tr><th>Date</th><th>Opp</th><th>Line</th><th>Over / Under</th><th>${STATN[s]}</th><th></th></tr>
+    ${rows.map(e => `<tr><td class="t">${esc(e.date.slice(5).replace("-", "/"))}</td><td>${esc(e.opp)}</td>
+      <td>${f1(e.line)}${e.first !== e.line ? ` <span class="dim">(opened ${f1(e.first)})</span>` : ""}</td>
+      <td class="dim">${e.over ? am(e.over) : "—"} / ${e.under ? am(e.under) : "—"}</td>
+      <td>${e.actual == null ? (e.result === "dnp" ? '<span class="dim">DNP</span>' : '<span class="dim">pending</span>') : f1(e.actual)}</td>
+      <td class="${e.result === "over" ? "h" : e.result === "under" ? "m" : "dim"}">${e.result === "over" ? "O" : e.result === "under" ? "U" : e.result === "push" ? "P" : ""}</td></tr>`).join("")}</table></div>`;
+}
 function compTable(p, s, pc) {
   if (!p.comps.length) return '<div class="empty">No close comparisons have played this opponent yet.</div>';
   const line = pc ? pc.line : null, side = pc ? pc.side : "Over", pm = p.minutes || 30;
@@ -1058,7 +1092,7 @@ function compTable(p, s, pc) {
     let html = `<tr data-c="${i}" style="cursor:pointer"><td class="t">${isOpen ? "▾" : "▸"} ${esc(c.name)} <span class="dim">${esc(c.team)} · ${c.n}g</span></td><td>${c.min.toFixed(0)}</td>
       <td class="dim">${f1(e)}</td><td>${f1(a)}</td><td class="${d > 0 ? "h" : "m"}">${pct(d, 0)}</td>
       ${hasG && line != null ? `<td>${f1(avgS)}</td><td class="${avgS != null && hit(avgS) ? "h" : "m"}">${avgS == null ? "—" : (avgS - line > 0 ? "+" : "") + f1(avgS - line)}</td><td>${ov}/${n}</td>` : ""}</tr>`;
-    if (isOpen) html += gs.map(({g, v}) => `<tr class="dim" style="font-size:12px"><td class="t">&nbsp;&nbsp;${esc(g[0].slice(5).replace("-", "/"))}</td><td>${g[1]}</td><td>${f1(g[2][s][1])}</td><td>${f1(g[2][s][0])}</td>
+    if (isOpen) html += gs.map(({g, v}) => `<tr class="dim" style="font-size:12px"><td class="t">&nbsp;&nbsp;${esc(g[0].slice(5).replace("-", "/"))}${(() => { const b = c.pid && bookLine(c.pid, s, g[0], p.opp); return b ? ` <span style="color:var(--gold)">line ${f1(b.line)}</span>` : ""; })()}</td><td>${g[1]}</td><td>${f1(g[2][s][1])}</td><td>${f1(g[2][s][0])}</td>
       <td class="${g[2][s][0] >= g[2][s][1] ? "h" : "m"}">${g[2][s][1] ? pct(g[2][s][0] / g[2][s][1] - 1, 0) : "—"}</td>${line != null ? `<td>${f1(v)}</td><td class="${hit(v) ? "h" : "m"}">${v == null ? "—" : (v - line > 0 ? "+" : "") + f1(v - line)}</td><td>${v != null && v > line ? "O" : "U"}</td>` : ""}</tr>`).join("");
     return html;
   }).join("");

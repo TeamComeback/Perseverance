@@ -78,6 +78,13 @@ def recaps(state, manual, fresh=(), limit=10):
 
 
 def grade(state, manual, client):
+    try:
+        from . import lines as linedb
+        ldb = linedb.load()
+        if linedb.grade(ldb):
+            store.save(linedb.FILE, ldb, compact=True)
+    except Exception as e:
+        brain.note(state, "error", f"Line history grading failed: {e}")
     settled = []
     try:
         done = nba_props.grade(state["book"])

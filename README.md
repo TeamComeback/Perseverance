@@ -78,6 +78,8 @@ The **NBA matchups** panel on the dashboard lists tonight's strongest spots with
 
 **Post-mortems:** every settled bet records the final score, the margin against the line, and why it won or lost. Props add the player's box-score line, minutes played vs projected, the model's projection and error in standard deviations, and whether the matchup read was right. Each review carries tags such as near miss, blowout, minutes short, ordinary variance, model miss and beat/lost closing line. The tags are tallied per playbook so patterns show up over time.
 
+**Line history:** every time the agent prices NBA props it saves the line closest to a coin flip for each player and stat (first seen, and the last one before tip-off), then fills in what he scored after the game (`docs/data/lines.json`, kept 90 days). It shows on each player card under Line history, and in the Similar players table when a comp has a saved line for that game. History builds from the first priced slate on.
+
 A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts automatically, and everything the agent has learned carries over.
 
 ## Credit budget (free tier: 500/month)

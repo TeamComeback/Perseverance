@@ -229,6 +229,29 @@ def run(state, manual, client, budget, ctx=None):
                               "agrees": agrees, "nbooks": nbooks, "market": mkey})
     cands.sort(key=lambda c: -c["ev"])
 
+    # keep a record of every line we saw, so line vs result history builds up
+    try:
+        from . import lines as linedb
+        ldb = linedb.load()
+        seen, infos = [], {}
+        for eid, (e, props) in lines.items():
+            g = next(x for x in games if x["espn_id"] == eid)
+            projs = {(norm(x["name"]), x["stat"]): x for x in by_game[eid]}
+            for (who, mkey, pt), entry in props.items():
+                s_ = key_stat.get(mkey)
+                pr = projs.get((who, s_))
+                if not pr:
+                    continue
+                p_mkt, best, nbooks = price_line(entry)
+                seen.append({"pid": pr["pid"], "stat": s_, "point": pt, "p_mkt": p_mkt, "over": best["Over"][0],
+                             "under": best["Under"][0], "over_book": best["Over"][1], "under_book": best["Under"][1], "n": nbooks})
+                infos[pr["pid"]] = {"name": pr["name"], "team": pr["team"], "opp": pr["opp"], "espn_id": eid, "start": g["start"]}
+        if seen:
+            linedb.record(ldb, ctx["day"].isoformat(), seen, infos)
+            store.save(linedb.FILE, ldb, compact=True)
+    except Exception as ex:
+        brain.note(state, "error", f"Line history failed: {ex}")
+
     # 4) bet: matchup must point the same way as the bet, edge must clear the bar
     placed, used = [], {l.get("player_id") for b in bk.open_bets(state["book"]) for l in b["legs"]}
     for c in cands:

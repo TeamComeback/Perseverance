@@ -240,7 +240,7 @@ def comps(model, pid, opp, k=6):
         games = [[r["d"], round(r["min"]), {s: [round(r[s], 1), round(model.rate(p2, s, r["season"]) * r["min"], 1)]
                                               for s in ALL_STATS}]
                  for r in sorted(rs, key=lambda r: r["d"], reverse=True)[:8]]
-        out.append({"name": model.players[p2]["name"], "team": model.players[p2]["team"], "role": model.players[p2]["role"],
+        out.append({"pid": p2, "name": model.players[p2]["name"], "team": model.players[p2]["team"], "role": model.players[p2]["role"],
                     "sim": round(sm, 2), "n": len(rs), "min": round(mins / len(rs), 1), "stats": st, "games": games})
     return out
 
