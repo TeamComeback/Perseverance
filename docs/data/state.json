@@ -2891,8 +2891,8 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.07,
-  "kelly_mult": 0.0819,
+  "min_edge": 0.075,
+  "kelly_mult": 0.0655,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
   "max_bets_per_run": 6,
@@ -3047,7 +3047,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-01T02:29:42Z",
+   "last_scanned": "2026-11-02T02:41:36Z",
    "bets": 8.0,
    "staked": 40.0,
    "profit": -13.899999999999999
@@ -3128,7 +3128,7 @@
    "last_scanned": "2026-11-01T19:32:11Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-01T02:29:41Z"
+   "last_scanned": "2026-11-02T02:41:36Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -3515,6 +3515,21 @@
    "ts": "2026-11-02T01:28:05Z",
    "kind": "props",
    "text": "NBA matchups: 1 games, strongest spots: Immanuel Quickley ast +9% vs LAL; Jamal Shead ast +7% vs LAL; Jake LaRavia ra -6% vs TOR. Bought prop odds for TOR@LAL (ast, ra, tpm, team totals) (4 credits). Placed 4: Jakob Poeltl Under 7.5 @ +105 (Hard Rock Bet); Collin Murray-Boyles Under 7.5 @ -123 (DraftKings); Matisse Thybulle Over 1.5 @ +133 (BetRivers); Jake LaRavia Under 5.5 @ +114 (DraftKings)"
+  },
+  {
+   "ts": "2026-11-02T02:41:34Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 7.5%."
+  },
+  {
+   "ts": "2026-11-02T02:41:34Z",
+   "kind": "adapt",
+   "text": "Down 53% from the peak. Survival mode: Kelly fraction cut to 0.07."
+  },
+  {
+   "ts": "2026-11-02T02:41:36Z",
+   "kind": "scan",
+   "text": "Scanned basketball_ncaab (120), basketball_nba (12) for 6 credits. Nothing cleared the bar. Equity $47.11."
   }
  ],
  "learned_ids": [
@@ -3540,7 +3555,7 @@
   "f216356b"
  ],
  "strategist": null,
- "updated": "2026-11-02T01:28:05Z",
+ "updated": "2026-11-02T02:41:36Z",
  "stats": {
   "bets": 20,
   "won": 4,
@@ -3566,5 +3581,5 @@
   "matchup_under": 1.218
  },
  "paused": [],
- "dry_scans": 1
+ "dry_scans": 2
 }
