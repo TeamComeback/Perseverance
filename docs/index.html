@@ -706,22 +706,38 @@ function onePerPlayer(rows, score) {
   rows.forEach(r => { const b = by[r.pid]; if (!b) by[r.pid] = {best: r, n: 1}; else { b.n++; if (score(r) > score(b.best)) b.best = r; } });
   return Object.values(by).map(x => ({...x.best, more: x.n - 1})).sort((a, b) => score(b) - score(a));
 }
-const dots = st => st >= 0.12 ? "●●●" : st >= 0.07 ? "●●○" : "●○○";
+// Conviction, 1-5. Built from things that have to line up for a matchup play to be trustworthy:
+//  matchup size (0-3: cutoffs sit near the top 3% / 12% / 35% of the slate), the separate signals agreeing (+1),
+//  a secure role (+1 starter or 26+ min, -1 if questionable), and the price when there is one (+1 edge >= 5%, -1 no edge).
+function rating(x) {
+  const st = x.strength;
+  let pts = st >= 0.08 ? 3 : st >= 0.055 ? 2 : st >= 0.035 ? 1 : 0;
+  const why = [st >= 0.055 ? "big matchup effect" : st >= 0.035 ? "moderate matchup" : "small matchup effect"];
+  const up = x.mult > 1, sig = (x.signals || []).filter(g => g.v != null && ["dvp", "sim", "h2h"].includes(g.k) && (g.k !== "h2h" || (g.n || 0) >= 2));
+  if (sig.length >= 2 && sig.every(g => Math.abs(g.v - 1) >= 0.02 && (g.v > 1) === up)) { pts++; why.push("signals agree"); }
+  const stt = (x.status || "").toLowerCase();
+  if (/quest|gtd|doubt|day-to-day|day to day/.test(stt)) { pts--; why.push("injury tag"); }
+  else if (x.starter || x.minutes >= 26) { pts++; why.push("secure minutes"); }
+  if (x.line != null) { if (x.ev >= 0.05) { pts++; why.push("priced edge"); } else if (!(x.ev > 0)) { pts--; why.push("no edge at this price"); } }
+  return {n: Math.max(1, Math.min(5, pts)), why};
+}
+const dots = n => "●".repeat(n) + "○".repeat(5 - n);
 const fresh = r => r.state !== "post" && new Date(r.start) > Date.now() - 3 * 3600e3;
 const upcoming = r => r.state ? r.state === "pre" : new Date(r.start) > Date.now();
 function cRow(x) {
   const priced = x.line != null;
   const rt = priced
-    ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]}</div><div class="b">${amS(x.am)} ${esc(bookName(x.book))}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}</div>`
-    : `<div class="a">${STATN[x.stat]} <span class="dots">${dots(x.strength)}</span></div><div class="b">expects <b style="color:var(--text)">${f1(x.proj)}</b> · usual ${f1(x.base)}</div>`;
+    ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div><div class="b">${amS(x.am)} ${esc(bookName(x.book))}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}</div>`
+    : `<div class="a">${STATN[x.stat]} <span class="dots" title="${esc(rating(x).why.join(", "))}">${dots(rating(x).n)}</span></div><div class="b">expects <b style="color:var(--text)">${f1(x.proj)}</b> · usual ${f1(x.base)}</div>`;
   const sig = (x.signals || []).find(g => g.k === "dvp") || (x.signals || [])[0];
   const why = sig ? sig.txt : (x.dvp ? `${x.opp} ranks #${x.dvp} of 30 vs ${x.role}s in ${STATL[x.stat].toLowerCase()} (1 = softest)` : "");
   return `<div class="cr" data-pid="${x.pid}" data-stat="${x.stat}"><div><span class="nm">${esc(x.name)}</span><span class="lean ${x.lean}">${x.lean.toUpperCase()}</span>${statusBadge(x)}
       <div class="gm">${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} · ${x.state === "in" ? '<span class="neg">live</span>' : tod(x.start)} · ${x.minutes.toFixed(0)} min</div></div>
     <div class="rt">${rt}</div>
+    <div class="why"><span class="gold">${rating(x).n}/5</span> · ${esc(rating(x).why.join(" · "))}</div>
     <div class="why">${esc(why)}${x.more ? ` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
 }
-const pickScore = r => (r.line != null && r.ev > 0 ? 1 + r.ev : 0) + r.strength;
+const pickScore = r => rating(r).n + (r.line != null && r.ev > 0 ? r.ev : 0) + r.strength;
 
 function renderToday() {
   const {state, manual, players, pz} = D;
@@ -789,7 +805,7 @@ function renderProps() {
     && (F.stat === "all" ? (F.tab === "priced" || PROP_STATS.includes(r.stat)) : r.stat === F.stat)
     && (F.lean === "all" || r.lean === F.lean)
     && (!q || r.name.toLowerCase().includes(q) || r.team.toLowerCase() === q || r.opp.toLowerCase() === q));
-  const list = onePerPlayer(base, F.tab === "priced" ? r => (r.ev ?? -1) : r => r.strength);
+  const list = onePerPlayer(base, F.tab === "priced" ? r => (r.ev ?? -1) : r => rating(r).n + r.strength);
   const lim = F.all || q || F.game !== "all" ? list.length : 10;
   const nP = onePerPlayer(pricedRows, r => r.ev ?? -1).length;
   const gameChips = [`<button data-g="all" class="${F.game === "all" ? "on" : ""}">All games</button>`]
@@ -805,7 +821,7 @@ function renderProps() {
     <div class="tabs2" id="ptab"><button data-t="priced" class="${F.tab === "priced" ? "on" : ""}">Priced · ${nP}</button><button data-t="research" class="${F.tab === "research" ? "on" : ""}">Research</button></div>
     <div class="chips" id="gch">${gameChips}</div>
     <div class="chips" id="sch">${statChips}</div>
-    <div class="desc" style="margin:2px 2px 6px">${F.tab === "priced" ? "Lines the agent bought, best edge first. One row per player (his best line)." : "Biggest matchup effects first. ●●● strong · ●●○ moderate · ●○○ slight. One row per player (his strongest stat)."}</div>
+    <div class="desc" style="margin:2px 2px 6px">${F.tab === "priced" ? "Lines the agent bought, best edge first. One row per player (his best line)." : "Highest conviction first. Conviction (1-5 dots) adds up matchup size, whether the separate signals agree, secure minutes, and the price when there is one. One row per player."}</div>
     <div class="card" style="padding:2px 12px">${list.slice(0, lim).map(cRow).join("") || empty}</div>
     ${list.length > lim ? `<button class="more" id="pall">Show all ${list.length} players</button>` : ""}
     ${tt ? sec("p-tt", "Team totals", "", tt, false) : ""}
