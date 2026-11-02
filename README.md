@@ -82,6 +82,16 @@ The **NBA matchups** panel on the dashboard lists tonight's strongest spots with
 
 A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts automatically, and everything the agent has learned carries over.
 
+## Analytics on the dashboard
+
+- **Conviction (1-5 dots)** on every play adds up: matchup size, whether the separate signals agree, secure minutes, rest (back-to-backs and 3-in-4 nights hurt overs), blowout risk (spreads of 11+ cut starters' minutes), the Vegas implied team total vs the model, usage bumps when a teammate is out, and for priced lines the edge and whether the line has moved toward or against the lean. The reasons are listed under each play.
+- **Conviction track record** (Trends): every night's leans are saved with their conviction and graded after the games, against each player's usual output and against the closing line for priced players. If 5s don't hit more than 3s, the rating gets retuned.
+- **Your CLV** (Bets): each bet you log is compared with the closing line (game lines from the agent's scans, props from line history).
+- **Injury opportunities** (Today): when a rotation player is out, the teammates who produced the most extra in the games he missed over two seasons.
+- **Vegas and rest** on each game card: implied team totals vs the model, blowout risk, back-to-backs.
+- **Alt-line ladder** on each player card: the model's probability and fair odds at nearby lines, so you can tell when an alt line at your book is worth it.
+- **Phone alerts**: the agent comments on a "Perseverance alerts" issue (GitHub's app turns that into a notification) when a 4-5 conviction play has a real edge, or when an injury opens up a big opportunity. For alerts without GitHub, install the free ntfy app, subscribe to a hard-to-guess topic name, and save that name as the repo secret `NTFY_TOPIC`.
+
 ## Credit budget (free tier: 500/month)
 
 - Listing sports and games is free. Odds cost 1 credit per market (2 or 3 per sport). Scores cost 2 per sport. Props cost 1 per stat per game, team totals 1 per game.

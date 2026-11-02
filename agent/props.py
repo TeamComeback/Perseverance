@@ -132,7 +132,9 @@ def only_market(ev, key):
 def run(state, manual, client, budget, ctx=None):
     from . import research
     p = state["params"]
-    ctx = ctx or research.context()
+    if ctx is None:
+        ctx = research.context()
+        research.build_players(ctx)          # sets conviction (ctx["cv"]) and slate flags
     today, model = ctx["day"], ctx["model"]
     games = [g for g in ctx["games"] if g["state"] == "pre" and store.parse(g["start"]) > store.now() + timedelta(minutes=15)]
     if not games:
@@ -245,10 +247,34 @@ def run(state, manual, client, budget, ctx=None):
                 p_mkt, best, nbooks = price_line(entry)
                 seen.append({"pid": pr["pid"], "stat": s_, "point": pt, "p_mkt": p_mkt, "over": best["Over"][0],
                              "under": best["Under"][0], "over_book": best["Over"][1], "under_book": best["Under"][1], "n": nbooks})
-                infos[pr["pid"]] = {"name": pr["name"], "team": pr["team"], "opp": pr["opp"], "espn_id": eid, "start": g["start"]}
+                infos[pr["pid"]] = {"name": pr["name"], "team": pr["team"], "opp": pr["opp"], "espn_id": eid, "start": g["start"],
+                                    "cv": (ctx.get("cv") or {}).get(pr["pid"], {}),
+                                    "lean": {**infos.get(pr["pid"], {}).get("lean", {}), s_: "Over" if pr["mult"] > 1 else "Under"}}
         if seen:
             linedb.record(ldb, ctx["day"].isoformat(), seen, infos)
             store.save(linedb.FILE, ldb, compact=True)
+        # phone alert: high-conviction priced plays (the lean, with a real edge at the best price)
+        from . import alerts, conviction as cvm
+        best = {}
+        for c in cands:
+            k = (c["pr"]["pid"], c["pr"]["stat"])
+            lean = "Over" if c["pr"]["mult"] > 1 else "Under"
+            if c["side"] == lean and (k not in best or c["ev"] > best[k]["ev"]):
+                best[k] = c
+        items = []
+        for (pid, st_), c in best.items():
+            cvb = (ctx.get("cv") or {}).get(pid, {}).get(st_)
+            if not cvb or c["ev"] < 0.04 or c["ev"] > config.MAX_EV:
+                continue
+            e0 = ldb["entries"].get(f"{ctx['day'].isoformat()}|{pid}|{st_}", {})
+            n, why = cvm.final(cvb[0], cvb[1].split(" · "), ev=c["ev"], open_line=e0.get("first"), line=e0.get("line"),
+                               lean_over=c["side"] == "Over")
+            if n >= 4:
+                items.append((f"play|{ctx['day']}|{pid}|{st_}|{c['side']}|{c['point']}",
+                              f"{n}/5 {c['pr']['name']} {c['side'].upper()} {c['point']:g} {cvm.STATNAME[st_]} "
+                              f"{market.to_american(c['price']):+d} {config.BOOK_NAMES.get(c['book'], c['book'])} "
+                              f"({c['ev'] * 100:.0f}% edge; {', '.join(why[:3])})"))
+        alerts.send(sorted(items, key=lambda x: x[1], reverse=True)[:6], "High-conviction plays")
     except Exception as ex:
         brain.note(state, "error", f"Line history failed: {ex}")
 
@@ -303,11 +329,15 @@ def write_board(ctx, lines, cands, tt_events, bought, plan=()):
     priced = dict(prev.get("priced") or {}) if same_day else {}
     events_map = dict(prev.get("events") or {}) if same_day else {}
     tt = dict(prev.get("team_totals") or {}) if same_day else {}
+    lhist = store.load("lines.json", {"entries": {}}).get("entries", {})
     for c in cands:
         k = f"{c['pr']['pid']}|{c['pr']['stat']}"
         cur = {"line": c["point"], "side": c["side"], "price": round(c["price"], 3), "am": market.to_american(c["price"]),
                "book": c["book"], "ev": round(c["ev"], 4), "p_model": round(c["p_model"], 3), "p_mkt": round(c["p_mkt"], 3),
                "event_id": c["e"]["id"], "market": c["market"], "nbooks": c["nbooks"], "at": store.iso(store.now())}
+        le = (lhist.get(f"{ctx['day'].isoformat()}|{k}") or {})
+        if le.get("first") is not None:
+            cur["open"] = le["first"]
         if k not in priced or priced[k].get("at") != cur["at"] or cur["ev"] > priced[k]["ev"]:
             priced[k] = cur          # newest pricing wins; within one run keep the best side
     for eid, (e, _) in lines.items():

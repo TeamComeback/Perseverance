@@ -21,6 +21,7 @@ from . import config, store
 from . import nba_data as nd
 from . import nba_model as nm
 from . import rotowire
+from . import conviction as cvm
 
 ALL_STATS = ("ra", "ast", "tpm", "pra", "pts", "reb")
 MIN_MINUTES = 10
@@ -135,6 +136,101 @@ def team_projection(model, home, away):
             "pace": round(pace, 1)}
 
 
+
+# ------------------------------------------------------------------ slate context: rest, Vegas, blowout risk
+def _nick(name):
+    return (name or "").split()[-1].lower()
+
+
+def market_lines():
+    """NBA spreads and totals from the agent's last board scan: {(home_nick, away_nick): {...}}."""
+    out = {}
+    for e in store.load("board.json", {"events": []}).get("events", []):
+        if e.get("sport") != "basketball_nba":
+            continue
+        sp = tot = None
+        for l in e.get("lines", []):
+            if l["market"] == "spreads":
+                sp = next((o["point"] for o in l["outcomes"] if o["name"] == e["home"]), None)
+            elif l["market"] == "totals":
+                tot = next((o["point"] for o in l["outcomes"] if o["name"] == "Over"), None)
+        if sp is not None or tot is not None:
+            out[(_nick(e["home"]), _nick(e["away"]))] = {"spread_home": sp, "total": tot}
+    return out
+
+
+def slate_flags(ctx, games_all):
+    """Per team on the slate: rest (back-to-back, 3 in 4), spread, Vegas implied points vs the model's."""
+    dates = defaultdict(list)
+    for s, gid, g in games_all:
+        if g.get("st", 2) in (2, 3):
+            for t in g["teams"]:
+                dates[t].append(g["d"])
+    mk = market_lines()
+    flags, cards = {}, {}
+    for g in ctx["games"]:
+        gd = datetime.fromisoformat(g["start"][:10]).date()
+        tp = team_projection(ctx["model"], g["home"], g["away"])
+        m = mk.get((_nick(g.get("home_name")), _nick(g.get("away_name")))) or {}
+        sp, tot = m.get("spread_home"), m.get("total")
+        imp = None
+        if sp is not None and tot is not None:
+            imp = {"home": round(tot / 2 - sp / 2, 1), "away": round(tot / 2 + sp / 2, 1)}
+        spread_abs = abs(sp) if sp is not None else (abs(tp["spread_home"]) if tp else None)
+        card = {"spread_home": sp, "total": tot, "implied": imp, "src": "market" if sp is not None else "model"}
+        for side in ("home", "away"):
+            t = g[side]
+            prev = sorted({d for d in dates.get(t, []) if datetime.fromisoformat(d).date() < gd})
+            pdates = [datetime.fromisoformat(d).date() for d in prev]
+            b2b = bool(pdates) and (gd - pdates[-1]).days == 1
+            three = sum(1 for d in pdates if 1 <= (gd - d).days <= 3) >= 2
+            vd = round(imp[side] - tp[side], 1) if imp and tp else None
+            flags[t] = {"b2b": b2b, "three_in_four": three and not b2b, "spread": spread_abs, "vegas_diff": vd,
+                        "rest_days": (gd - pdates[-1]).days - 1 if pdates else None}
+            card[side + "_rest"] = {"b2b": b2b, "three_in_four": three and not b2b}
+        cards[g["espn_id"]] = card
+    return flags, cards
+
+
+def usage_bumps(ctx, logs, played, on_team):
+    """When a rotation player is out, how much more each teammate produced in games he missed."""
+    model, entries = ctx["model"], ctx["entries"]
+    outs = [e for e in entries if e["out"] and model.minutes(e["pid"]) >= 20]
+    bumps, opps = defaultdict(dict), []
+    for o in outs:
+        seasons = {s for (t, s) in on_team.get(o["pid"], set()) if t == o["team"]}
+        for m in entries:
+            if m["team"] != o["team"] or m["out"] or m["pid"] == o["pid"]:
+                continue
+            rows = [r for r in logs.get(m["pid"], []) if r["team"] == o["team"] and r["s"] in seasons and r["min"] > 0]
+            wo = [r for r in rows if o["pid"] not in played.get(r["gid"], set())]
+            w = [r for r in rows if o["pid"] in played.get(r["gid"], set())]
+            if len(wo) < 3 or len(w) < 5:
+                continue
+            for s in ALL_STATS:
+                f = lambda r: (r["reb"] + r["ast"]) if s == "ra" else (r["pts"] + r["reb"] + r["ast"]) if s == "pra" else r[s]
+                aw, awo = sum(map(f, w)) / len(w), sum(map(f, wo)) / len(wo)
+                if aw <= 0:
+                    continue
+                d = awo / aw - 1
+                if d >= 0.12 and awo - aw >= 1.0:
+                    prev = bumps[m["pid"]].get(s)
+                    if not prev or d > prev["delta"]:
+                        bumps[m["pid"]][s] = {"delta": round(d, 3), "out": o["name"].split()[-1], "n": len(wo)}
+                    opps.append({"out": o["name"], "out_pid": o["pid"], "status": o["status"], "team": o["team"],
+                                 "pid": m["pid"], "name": m["name"], "game": m["game"], "stat": s,
+                                 "with": round(aw, 1), "without": round(awo, 1), "delta": round(d, 3), "n": len(wo),
+                                 "min_with": round(sum(r["min"] for r in w) / len(w), 1),
+                                 "min_without": round(sum(r["min"] for r in wo) / len(wo), 1)})
+    # one entry per teammate and stat (the absence that helped most), ranked by real extra production
+    best = {}
+    for x in opps:
+        k = (x["pid"], x["stat"])
+        if k not in best or x["without"] - x["with"] > best[k]["without"] - best[k]["with"]:
+            best[k] = x
+    opps = sorted(best.values(), key=lambda x: -(x["without"] - x["with"]) / (1.0 if x["stat"] != "tpm" else 0.4))
+    return bumps, opps
+
 # ------------------------------------------------------------------ players.json
 def _games_index(seasons):
     games = nd.all_games(seasons)
@@ -150,6 +246,7 @@ def build_players(ctx):
     games, played = _games_index(seasons)
     want = {e["pid"] for e in entries}
     logs = defaultdict(list)
+    on_team = defaultdict(set)
     team_min = defaultdict(lambda: defaultdict(float))       # cur season minutes per team per player
     for s, gid, g in games:
         if g.get("st", 2) not in (2, 3):
@@ -161,6 +258,7 @@ def build_players(ctx):
             if p[nd.P_MIN] <= 0:
                 continue
             t = p[nd.P_TEAM]
+            on_team[p[nd.P_ID]].add((t, s))
             o = ab[1] if t == ab[0] else ab[0]
             if s == ctx["season"]:
                 team_min[t][p[nd.P_ID]] += p[nd.P_MIN]
@@ -170,6 +268,9 @@ def build_players(ctx):
                                          "ast": p[nd.P_AST], "tpm": p[nd.P_TPM], "tpa": p[nd.P_TPA], "fga": p[nd.P_FGA],
                                          "start": p[nd.P_START], "s": s, "ts": g["teams"][t]["score"],
                                          "os": g["teams"][o]["score"], "team": t})
+    flags, cards = slate_flags(ctx, games)
+    bumps, opps = usage_bumps(ctx, logs, played, on_team)
+    ctx["slate_cards"], ctx["opps"] = cards, opps
     out = {}
     for e in entries:
         pid, team, opp = e["pid"], e["team"], e["opp"]
@@ -210,6 +311,16 @@ def build_players(ctx):
                     "espn": f"https://www.espn.com/nba/player/_/id/{pid}",
                     "mates": [{"pid": m, "name": model.players[m]["name"] if m in model.players else m} for m in mate_ids],
                     "logs": L, "proj": proj, "dvp": dvp, "comps": comps(model, pid, opp)}
+        fl = {**flags.get(team, {}), "status": e["status"], "minutes": e["minutes"],
+              "starter": (e["rw"] or {}).get("starter"), "bump": bumps.get(pid, {})}
+        cv = {}
+        for s_, pr in e["proj"].items():
+            pts, why = cvm.base(pr, s_, fl)
+            n, _ = cvm.final(pts, why)
+            cv[s_] = [pts, " · ".join(why), n]
+        out[pid]["cv"] = cv
+        out[pid]["flags"] = {k: fl.get(k) for k in ("b2b", "three_in_four", "spread", "vegas_diff", "rest_days")}
+    ctx["cv"] = {pid: v["cv"] for pid, v in out.items()}
     return out
 
 
@@ -444,7 +555,7 @@ def game_cards(ctx):
     for g in ctx["games"]:
         tp = team_projection(ctx["model"], g["home"], g["away"])
         out.append({**{k: g[k] for k in ("espn_id", "start", "state", "home", "away", "home_name", "away_name")},
-                    "model": tp})
+                    "model": tp, "vegas": (ctx.get("slate_cards") or {}).get(g["espn_id"])})
     return out
 
 
@@ -454,7 +565,9 @@ def _index_row(p):
             "start": p["start"], "state": p["state"], "role": p["role"], "minutes": p["minutes"], "status": p["status"],
             "out": p["out"], "starter": (p["rw"] or {}).get("starter"), "lineup": (p["rw"] or {}).get("status"),
             "proj": {s: [v["proj"], v["base"], v["mult"]] for s, v in p["proj"].items()},
-            "dvp": {s: v[1] for s, v in p["dvp"].items()}}
+            "dvp": {s: v[1] for s, v in p["dvp"].items()},
+            "cv": {s: v[:2] for s, v in (p.get("cv") or {}).items()},
+            "b2b": (p.get("flags") or {}).get("b2b") or None}
 
 
 def write_all(ctx, log=print):
@@ -464,6 +577,7 @@ def write_all(ctx, log=print):
     cards = game_cards(ctx)
     # light index for lists, one detail file per game for player cards (keeps phone downloads small)
     store.save("players.json", {**stamp, "games": cards, "players": {k: _index_row(v) for k, v in players.items()},
+                                "opps": ctx.get("opps", [])[:40],
                                 "stat_names": {s: nm.STATS[s] for s in ALL_STATS}}, compact=True)
     gdir = config.DATA / "games"
     gdir.mkdir(parents=True, exist_ok=True)
@@ -479,6 +593,27 @@ def write_all(ctx, log=print):
     store.save("dvp.json", {**stamp, **build_dvp(ctx["model"])}, compact=True)
     store.save("trends.json", {**stamp, **build_trends(ctx)})
     store.save("lineups.json", {**stamp, "games": ctx["rw_games"]})
+    # conviction track record: snapshot tonight's leans (graded after the games)
+    try:
+        from . import track
+        tdb = track.load()
+        track.snapshot(tdb, ctx["day"].isoformat(), players)
+        store.save(track.FILE, tdb, compact=True)
+    except Exception as e:
+        log(f"[research] track snapshot failed: {e}")
+    # phone alerts: big usage bumps when a rotation player is out
+    try:
+        from . import alerts
+        items = []
+        for o in ctx.get("opps", []):
+            gain = o["without"] - o["with"]
+            if o["delta"] >= 0.20 and o["min_without"] >= 22 and gain >= (1.0 if o["stat"] == "tpm" else 3.0 if o["stat"] in ("pts", "pra") else 2.0):
+                items.append((f"opp|{ctx['day']}|{o['out_pid']}|{o['pid']}|{o['stat']}",
+                              f"{o['out']} ({o['team']}) is {o['status'] or 'out'}: {o['name']} averages {o['without']:g} "
+                              f"{cvm.STATNAME[o['stat']]} without him vs {o['with']:g} with ({o['delta'] * 100:+.0f}%, {o['n']} games)"))
+        alerts.send(items[:6], "Injury opportunity")
+    except Exception as e:
+        log(f"[research] alerts failed: {e}")
     log(f"[research] {ctx['day']}: {len(ctx['games'])} games, {len(players)} players, "
         f"{sum(len(v) for v in shots.values())} shots, lineups for {len(ctx['rw_games'])} games")
     return players

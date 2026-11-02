@@ -77,6 +77,30 @@ def recaps(state, manual, fresh=(), limit=10):
     return n
 
 
+def _pt(p):
+    return "" if p is None else ("%g" % p)
+
+
+def save_closes(events):
+    """The consensus fair price on every line, refreshed each scan until tip-off. The last one before the
+    game is the closing line your logged bets are measured against (CLV)."""
+    from datetime import timedelta
+    cl = store.load("closes.json", {})
+    now = store.now()
+    for ev in events:
+        if store.parse(ev["commence_time"]) <= now:
+            continue
+        o = {}
+        for line in market.analyse_event(ev):
+            for x in line["outcomes"]:
+                o[f"{line['market']}|{x['name']}|{_pt(x['point'])}"] = round(x["all_fair"], 4)
+        if o:
+            cl[ev["id"]] = {"commence": ev["commence_time"], "at": store.iso(now), "o": o}
+    cut = now - timedelta(days=10)
+    cl = {k: v for k, v in cl.items() if store.parse(v["commence"]) > cut}
+    store.save("closes.json", cl, compact=True)
+
+
 def grade(state, manual, client):
     try:
         from . import lines as linedb
@@ -85,6 +109,13 @@ def grade(state, manual, client):
             store.save(linedb.FILE, ldb, compact=True)
     except Exception as e:
         brain.note(state, "error", f"Line history grading failed: {e}")
+    try:
+        from . import track
+        tdb = track.load()
+        if track.grade(tdb):
+            store.save(track.FILE, tdb, compact=True)
+    except Exception as e:
+        brain.note(state, "error", f"Track record grading failed: {e}")
     settled = []
     try:
         done = nba_props.grade(state["book"])
@@ -183,6 +214,7 @@ def cycle():
             if e["sport"] not in fresh_sports and market.window_ok({"commence_time": e["commence"]})]
     store.save("board.json", {"updated": store.iso(store.now()),
                               "events": sorted(fresh + keep, key=lambda e: e["commence"])})
+    save_closes(events)
 
     eq = bk.equity(state["book"])
     if scanned:

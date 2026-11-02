@@ -41,6 +41,11 @@ def record(db, day, priced_lines, infos):
         e.update(line=x["point"], over=round(x["over"], 3) if x["over"] else None,
                  under=round(x["under"], 3) if x["under"] else None, over_book=x["over_book"], under_book=x["under_book"],
                  p_over=round(x["p_mkt"], 4), books=x["n"], at=store.iso(now))
+        cvb = (info.get("cv") or {}).get(stat)
+        if cvb:
+            e["cv"] = cvb[2]
+        if (info.get("lean") or {}).get(stat):
+            e["lean"] = info["lean"][stat]
         db["entries"][key] = e
         n += 1
     cut = (now - timedelta(days=KEEP_DAYS)).date().isoformat()
