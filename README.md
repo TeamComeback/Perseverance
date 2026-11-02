@@ -111,18 +111,18 @@ The old GitHub-issue logging still works in the background but the dashboard no 
 
 ## Schedule (ET)
 
-| Time | What runs |
+| Time (EST, winter) | What runs |
 |---|---|
-| ~5am | Grading, box scores, and the overnight strategist |
-| ~9:40am | Research refresh (free) |
-| ~11am | Scan |
-| ~4pm | Scan |
-| ~4:45pm | Research refresh with updated lineups (free) |
-| ~2pm | NBA props + team totals (refreshes lineups first) |
+| ~4:10am | Grading, box scores, and the overnight strategist |
+| ~8:40am | Research refresh (free) |
+| ~10:05am | Scan |
+| ~2:05pm | NBA props + team totals (refreshes lineups first) |
+| ~3:05pm | Scan |
 | ~3:15pm | Props backup (only if the 2pm run didn't happen) |
-| ~7:30pm | Scan |
+| ~3:45pm | Research refresh with updated lineups (free) |
+| ~6:35pm | Scan |
 
-These times shift by an hour when daylight saving time changes.
+Add an hour from March to November (daylight saving time). GitHub can start runs 5-30 minutes late.
 
 ## Test offline
 
