@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 47.11,
+  "cash": 27.11,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -2602,6 +2602,290 @@
       }
      ]
     }
+   },
+   {
+    "id": "0d25a84d",
+    "placed": "2026-11-02T01:28:05Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "31fc89cbf3846e545e8e41a543a71d24",
+      "sport": "basketball_nba",
+      "commence": "2026-11-02T02:10:00Z",
+      "home": "Los Angeles Lakers",
+      "away": "Toronto Raptors",
+      "market": "player_rebounds_assists",
+      "outcome": "Jakob Poeltl Under",
+      "side": "Under",
+      "player": "Jakob Poeltl",
+      "player_id": "3134908",
+      "stat": "ra",
+      "espn_id": "401909906",
+      "point": 7.5,
+      "price": 2.05,
+      "book": "hardrockbet",
+      "fair_p": 0.4696,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 6.49,
+       "base": 6.76,
+       "minutes": 19.5,
+       "mult": 0.959,
+       "sd": 2.79,
+       "p_model": 0.6782,
+       "p_mkt": 0.4696,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.991,
+         "txt": "LAL gives centers -1% reb+ast vs their norm (#10 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.937,
+         "txt": "Players with his profile: -6% reb+ast vs LAL (121 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs LAL yet"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "LAL: defense #19, pace #24 \u00b7 TOR: offense #13, pace #21"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.05,
+    "stake": 5.0,
+    "ev": 0.1337,
+    "p": 0.553,
+    "note": "Proj 6.5 vs line 7.5 (norm 6.8, 20 min). Model 68% vs market 47%. LAL gives centers -1% reb+ast vs their norm (#10 toughest of 30) \u00b7 Players with his profile: -6% reb+ast vs LAL (121 close comps) \u00b7 No history vs LAL yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "0af11e44",
+    "placed": "2026-11-02T01:28:05Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "31fc89cbf3846e545e8e41a543a71d24",
+      "sport": "basketball_nba",
+      "commence": "2026-11-02T02:10:00Z",
+      "home": "Los Angeles Lakers",
+      "away": "Toronto Raptors",
+      "market": "player_rebounds_assists",
+      "outcome": "Collin Murray-Boyles Under",
+      "side": "Under",
+      "player": "Collin Murray-Boyles",
+      "player_id": "5093267",
+      "stat": "ra",
+      "espn_id": "401909906",
+      "point": 7.5,
+      "price": 1.81,
+      "book": "draftkings",
+      "fair_p": 0.5328,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 5.89,
+       "base": 6.25,
+       "minutes": 19.3,
+       "mult": 0.942,
+       "sd": 2.17,
+       "p_model": 0.752,
+       "p_mkt": 0.5328,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.909,
+         "txt": "LAL gives power forwards -9% reb+ast vs their norm (#2 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.934,
+         "txt": "Players with his profile: -7% reb+ast vs LAL (115 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.03,
+         "txt": "His history vs LAL: 8.5 reb+ast/g in 2 games (+3%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "LAL: defense #19, pace #24 \u00b7 TOR: offense #13, pace #21"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.81,
+    "stake": 5.0,
+    "ev": 0.123,
+    "p": 0.6204,
+    "note": "Proj 5.9 vs line 7.5 (norm 6.2, 19 min). Model 75% vs market 53%. LAL gives power forwards -9% reb+ast vs their norm (#2 toughest of 30) \u00b7 Players with his profile: -7% reb+ast vs LAL (115 close comps) \u00b7 His history vs LAL: 8.5 reb+ast/g in 2 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "6f285483",
+    "placed": "2026-11-02T01:28:05Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "31fc89cbf3846e545e8e41a543a71d24",
+      "sport": "basketball_nba",
+      "commence": "2026-11-02T02:10:00Z",
+      "home": "Los Angeles Lakers",
+      "away": "Toronto Raptors",
+      "market": "player_threes",
+      "outcome": "Matisse Thybulle Over",
+      "side": "Over",
+      "player": "Matisse Thybulle",
+      "player_id": "3907498",
+      "stat": "tpm",
+      "espn_id": "401909906",
+      "point": 1.5,
+      "price": 2.33,
+      "book": "betrivers",
+      "fair_p": 0.4162,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 1.99,
+       "base": 2.01,
+       "minutes": 26.0,
+       "mult": 0.992,
+       "sd": 1.16,
+       "p_model": 0.5465,
+       "p_mkt": 0.4162,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.999,
+         "txt": "TOR gives shooting guards -0% threes vs their norm (#13 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.95,
+         "txt": "Players with his profile: -5% threes vs TOR (176 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs TOR yet"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "TOR: defense #6, pace #21 \u00b7 LAL: offense #5, pace #24"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.33,
+    "stake": 5.0,
+    "ev": 0.0912,
+    "p": 0.4683,
+    "note": "Proj 2.0 vs line 1.5 (norm 2.0, 26 min). Model 55% vs market 42%. TOR gives shooting guards -0% threes vs their norm (#13 softest of 30) \u00b7 Players with his profile: -5% threes vs TOR (176 close comps) \u00b7 No history vs TOR yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "1e738d80",
+    "placed": "2026-11-02T01:28:05Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "31fc89cbf3846e545e8e41a543a71d24",
+      "sport": "basketball_nba",
+      "commence": "2026-11-02T02:10:00Z",
+      "home": "Los Angeles Lakers",
+      "away": "Toronto Raptors",
+      "market": "player_rebounds_assists",
+      "outcome": "Jake LaRavia Under",
+      "side": "Under",
+      "player": "Jake LaRavia",
+      "player_id": "4592691",
+      "stat": "ra",
+      "espn_id": "401909906",
+      "point": 5.5,
+      "price": 2.14,
+      "book": "draftkings",
+      "fair_p": 0.4383,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 5.11,
+       "base": 5.46,
+       "minutes": 25.2,
+       "mult": 0.937,
+       "sd": 2.36,
+       "p_model": 0.6158,
+       "p_mkt": 0.4383,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.929,
+         "txt": "TOR gives small forwards -7% reb+ast vs their norm (#4 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.932,
+         "txt": "Players with his profile: -7% reb+ast vs TOR (142 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.033,
+         "txt": "His history vs TOR: 7.0 reb+ast/g in 2 games (+3%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "TOR: defense #6, pace #21 \u00b7 LAL: offense #5, pace #24"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.14,
+    "stake": 5.0,
+    "ev": 0.09,
+    "p": 0.5093,
+    "note": "Proj 5.1 vs line 5.5 (norm 5.5, 25 min). Model 62% vs market 44%. TOR gives small forwards -7% reb+ast vs their norm (#4 toughest of 30) \u00b7 Players with his profile: -7% reb+ast vs TOR (142 close comps) \u00b7 His history vs TOR: 7.0 reb+ast/g in 2 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -3226,6 +3510,11 @@
    "ts": "2026-11-01T23:56:14Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 1: 4 games, 93 players projected, lineups for 4 games."
+  },
+  {
+   "ts": "2026-11-02T01:28:05Z",
+   "kind": "props",
+   "text": "NBA matchups: 1 games, strongest spots: Immanuel Quickley ast +9% vs LAL; Jamal Shead ast +7% vs LAL; Jake LaRavia ra -6% vs TOR. Bought prop odds for TOR@LAL (ast, ra, tpm, team totals) (4 credits). Placed 4: Jakob Poeltl Under 7.5 @ +105 (Hard Rock Bet); Collin Murray-Boyles Under 7.5 @ -123 (DraftKings); Matisse Thybulle Over 1.5 @ +133 (BetRivers); Jake LaRavia Under 5.5 @ +114 (DraftKings)"
   }
  ],
  "learned_ids": [
@@ -3251,7 +3540,7 @@
   "f216356b"
  ],
  "strategist": null,
- "updated": "2026-11-01T23:56:14Z",
+ "updated": "2026-11-02T01:28:05Z",
  "stats": {
   "bets": 20,
   "won": 4,
@@ -3264,7 +3553,7 @@
   "clv_n": 15,
   "clv_no_close": 5,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 4,
   "equity": 47.11
  },
  "weights": {
