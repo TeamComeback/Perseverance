@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 27.11,
+  "cash": 52.81,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -2628,7 +2628,7 @@
       "book": "hardrockbet",
       "fair_p": 0.4696,
       "close_p": null,
-      "result": null,
+      "result": "void",
       "model": {
        "proj": 6.49,
        "base": 6.76,
@@ -2659,6 +2659,10 @@
          "txt": "LAL: defense #19, pace #24 \u00b7 TOR: offense #13, pace #21"
         }
        ]
+      },
+      "final": {
+       "home": 131.0,
+       "away": 125.0
       }
      }
     ],
@@ -2669,10 +2673,149 @@
     "note": "Proj 6.5 vs line 7.5 (norm 6.8, 20 min). Model 68% vs market 47%. LAL gives centers -1% reb+ast vs their norm (#10 toughest of 30) \u00b7 Players with his profile: -6% reb+ast vs LAL (121 close comps) \u00b7 No history vs LAL yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "push",
+    "payout": 5.0,
+    "profit": 0.0,
+    "settled": "2026-11-02T19:27:30Z",
+    "review": {
+     "headline": "PUSH: Player did not play: voided",
+     "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+     "legs": [
+      {
+       "outcome": "Jakob Poeltl Under",
+       "result": "void",
+       "headline": "Player did not play: voided",
+       "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+       "why": [
+        "Jakob Poeltl was not in the box score (did not play), so the bet is voided and the stake returned.",
+        "We priced it at 55% to hit vs 49% needed to break even at 2.05x (+13.4% expected edge).",
+        "Consensus fair probability when placed: 47% (no closing price captured)."
+       ],
+       "tags": [
+        "dnp-void"
+       ]
+      }
+     ],
+     "tags": [
+      "dnp-void"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "LAL",
+        "away": "TOR"
+       },
+       "final": "TOR 125 \u2013 LAL 131",
+       "periods": {
+        "away": [
+         23,
+         31,
+         28,
+         43
+        ],
+        "home": [
+         36,
+         30,
+         38,
+         27
+        ]
+       },
+       "largest_lead": {
+        "TOR": 5,
+        "LAL": 26
+       },
+       "largest_lead_at": {
+        "TOR": "10:54 1st Q",
+        "LAL": "1:33 3rd Q"
+       },
+       "lead_changes": 1,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 10,
+         "from": "9:21 1st Q",
+         "to": "6:31 1st Q",
+         "score": "TOR 6-13 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 9,
+         "from": "2:51 2nd Q",
+         "to": "1:55 2nd Q",
+         "score": "TOR 46-60 LAL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "8:47 4th Q",
+         "to": "6:58 4th Q",
+         "score": "TOR 100-109 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 8,
+         "from": "3:06 1st Q",
+         "to": "2:13 1st Q",
+         "score": "TOR 14-31 LAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "LAL",
+         "swing": 20,
+         "from": "10:04 1st Q",
+         "to": "2:13 1st Q",
+         "mins": 7.8,
+         "from_score": "TOR 6-3 LAL",
+         "to_score": "TOR 14-31 LAL",
+         "pts_for": 28,
+         "pts_against": 8
+        },
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:33 3rd Q",
+         "to": "6:58 4th Q",
+         "mins": 6.6,
+         "from_score": "TOR 76-102 LAL",
+         "to_score": "TOR 100-109 LAL",
+         "pts_for": 24,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "43.7 4th Q: Jaden Bradley makes free throw 1 of 1 (TOR 120-125 LAL)",
+        "36.4 4th Q: Walker Kessler makes 1-foot dunk (Luka Doncic assists) (TOR 120-127 LAL)",
+        "6.9 4th Q: Luka Doncic makes free throw 1 of 2 (TOR 123-130 LAL)"
+       ],
+       "leaders": [
+        "Scottie Barnes (TOR): 29 pts, 6 reb, 5 ast, 0-3 3PT in 36 min",
+        "RJ Barrett (TOR): 22 pts, 10 reb, 5 ast, 4-9 3PT in 32 min",
+        "Luka Doncic (LAL): 45 pts, 15 reb, 6 ast, 8-12 3PT in 35 min",
+        "Walker Kessler (LAL): 16 pts, 15 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [],
+        "threes_at": [],
+        "box": null
+       },
+       "story": [
+        "Halftime: TOR 54-66 LAL, LAL up 12.",
+        "The 4th quarter decided the most: TOR won it 43-27.",
+        "Largest leads: TOR 5 (10:54 1st Q), LAL 26 (1:33 3rd Q). 1 lead changes, 1 ties.",
+        "Momentum swing: LAL outscored them 28-8 in 7.8 minutes (10:04 1st Q to 2:13 1st Q), moving it from TOR 6-3 LAL to TOR 14-31 LAL.",
+        "Momentum swing: TOR outscored them 24-7 in 6.6 minutes (1:33 3rd Q to 6:58 4th Q), moving it from TOR 76-102 LAL to TOR 100-109 LAL.",
+        "LAL went on a 10-0 run (9:21 1st Q to 6:31 1st Q), making it TOR 6-13 LAL.",
+        "LAL went on a 9-0 run (2:51 2nd Q to 1:55 2nd Q), making it TOR 46-60 LAL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six."
+       ],
+       "espn_id": "401909906",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909906"
+      }
+     ]
+    }
    },
    {
     "id": "0af11e44",
@@ -2699,7 +2842,7 @@
       "book": "draftkings",
       "fair_p": 0.5328,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 5.89,
        "base": 6.25,
@@ -2730,6 +2873,22 @@
          "txt": "LAL: defense #19, pace #24 \u00b7 TOR: offense #13, pace #21"
         }
        ]
+      },
+      "final": {
+       "home": 131.0,
+       "away": 125.0
+      },
+      "actual": 4.0,
+      "box": {
+       "min": 20.0,
+       "pts": 4.0,
+       "reb": 3.0,
+       "ast": 1.0,
+       "tpm": 0.0,
+       "tpa": 2.0,
+       "fga": 6.0,
+       "fta": 2.0,
+       "tov": 1.0
       }
      }
     ],
@@ -2740,10 +2899,217 @@
     "note": "Proj 5.9 vs line 7.5 (norm 6.2, 19 min). Model 75% vs market 53%. LAL gives power forwards -9% reb+ast vs their norm (#2 toughest of 30) \u00b7 Players with his profile: -7% reb+ast vs LAL (115 close comps) \u00b7 His history vs LAL: 8.5 reb+ast/g in 2 games (+3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.05,
+    "profit": 4.05,
+    "settled": "2026-11-02T19:27:30Z",
+    "review": {
+     "headline": "WON: 4 reb+ast vs Under 7.5",
+     "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+     "legs": [
+      {
+       "outcome": "Collin Murray-Boyles Under",
+       "result": "win",
+       "headline": "4 reb+ast vs Under 7.5",
+       "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+       "why": [
+        "Collin Murray-Boyles finished with 4 reb+ast against a line of 7.5: under cleared by 3.5.",
+        "Minutes: played 20 vs 19.3 projected.",
+        "Box score: 3 reb \u00b7 1 ast, 1 TO.",
+        "Model projected 5.9 (6.2 norm \u00d7 0.94 matchup); actual was -1.9 off (-0.9 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (6.5) in a matchup the model rated tough.",
+        "Signal: LAL gives power forwards -9% reb+ast vs their norm (#2 toughest of 30)",
+        "Signal: Players with his profile: -7% reb+ast vs LAL (115 close comps)",
+        "Signal: His history vs LAL: 8.5 reb+ast/g in 2 games (+3%)",
+        "We priced it at 62% to hit vs 55% needed to break even at 1.81x (+12.3% expected edge).",
+        "Consensus fair probability when placed: 53% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "LAL",
+        "away": "TOR"
+       },
+       "final": "TOR 125 \u2013 LAL 131",
+       "periods": {
+        "away": [
+         23,
+         31,
+         28,
+         43
+        ],
+        "home": [
+         36,
+         30,
+         38,
+         27
+        ]
+       },
+       "largest_lead": {
+        "TOR": 5,
+        "LAL": 26
+       },
+       "largest_lead_at": {
+        "TOR": "10:54 1st Q",
+        "LAL": "1:33 3rd Q"
+       },
+       "lead_changes": 1,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 10,
+         "from": "9:21 1st Q",
+         "to": "6:31 1st Q",
+         "score": "TOR 6-13 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 9,
+         "from": "2:51 2nd Q",
+         "to": "1:55 2nd Q",
+         "score": "TOR 46-60 LAL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "8:47 4th Q",
+         "to": "6:58 4th Q",
+         "score": "TOR 100-109 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 8,
+         "from": "3:06 1st Q",
+         "to": "2:13 1st Q",
+         "score": "TOR 14-31 LAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "LAL",
+         "swing": 20,
+         "from": "10:04 1st Q",
+         "to": "2:13 1st Q",
+         "mins": 7.8,
+         "from_score": "TOR 6-3 LAL",
+         "to_score": "TOR 14-31 LAL",
+         "pts_for": 28,
+         "pts_against": 8
+        },
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:33 3rd Q",
+         "to": "6:58 4th Q",
+         "mins": 6.6,
+         "from_score": "TOR 76-102 LAL",
+         "to_score": "TOR 100-109 LAL",
+         "pts_for": 24,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "43.7 4th Q: Jaden Bradley makes free throw 1 of 1 (TOR 120-125 LAL)",
+        "36.4 4th Q: Walker Kessler makes 1-foot dunk (Luka Doncic assists) (TOR 120-127 LAL)",
+        "6.9 4th Q: Luka Doncic makes free throw 1 of 2 (TOR 123-130 LAL)"
+       ],
+       "leaders": [
+        "Scottie Barnes (TOR): 29 pts, 6 reb, 5 ast, 0-3 3PT in 36 min",
+        "RJ Barrett (TOR): 22 pts, 10 reb, 5 ast, 4-9 3PT in 32 min",
+        "Luka Doncic (LAL): 45 pts, 15 reb, 6 ast, 8-12 3PT in 35 min",
+        "Walker Kessler (LAL): 16 pts, 15 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 4,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "5093267",
+         "name": "Collin Murray-Boyles",
+         "team": "TOR",
+         "min": "20",
+         "pts": 4,
+         "reb": 3,
+         "ast": 1,
+         "3pt": "0-2",
+         "fg": "1-6",
+         "pf": "3",
+         "starter": false
+        }
+       },
+       "story": [
+        "Halftime: TOR 54-66 LAL, LAL up 12.",
+        "The 4th quarter decided the most: TOR won it 43-27.",
+        "Largest leads: TOR 5 (10:54 1st Q), LAL 26 (1:33 3rd Q). 1 lead changes, 1 ties.",
+        "Momentum swing: LAL outscored them 28-8 in 7.8 minutes (10:04 1st Q to 2:13 1st Q), moving it from TOR 6-3 LAL to TOR 14-31 LAL.",
+        "Momentum swing: TOR outscored them 24-7 in 6.6 minutes (1:33 3rd Q to 6:58 4th Q), moving it from TOR 76-102 LAL to TOR 100-109 LAL.",
+        "LAL went on a 10-0 run (9:21 1st Q to 6:31 1st Q), making it TOR 6-13 LAL.",
+        "LAL went on a 9-0 run (2:51 2nd Q to 1:55 2nd Q), making it TOR 46-60 LAL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "Collin Murray-Boyles by period (REB+AST): Q1 1, Q2 0, Q3 3, Q4 0.",
+        "He never got past 7.5."
+       ],
+       "espn_id": "401909906",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909906"
+      }
+     ]
+    }
    },
    {
     "id": "6f285483",
@@ -2770,7 +3136,7 @@
       "book": "betrivers",
       "fair_p": 0.4162,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 1.99,
        "base": 2.01,
@@ -2801,6 +3167,22 @@
          "txt": "TOR: defense #6, pace #21 \u00b7 LAL: offense #5, pace #24"
         }
        ]
+      },
+      "final": {
+       "home": 131.0,
+       "away": 125.0
+      },
+      "actual": 2.0,
+      "box": {
+       "min": 25.0,
+       "pts": 6.0,
+       "reb": 2.0,
+       "ast": 3.0,
+       "tpm": 2.0,
+       "tpa": 4.0,
+       "fga": 6.0,
+       "fta": 0.0,
+       "tov": 1.0
       }
      }
     ],
@@ -2811,10 +3193,218 @@
     "note": "Proj 2.0 vs line 1.5 (norm 2.0, 26 min). Model 55% vs market 42%. TOR gives shooting guards -0% threes vs their norm (#13 softest of 30) \u00b7 Players with his profile: -5% threes vs TOR (176 close comps) \u00b7 No history vs TOR yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 11.65,
+    "profit": 6.65,
+    "settled": "2026-11-02T19:27:30Z",
+    "review": {
+     "headline": "WON: 2 threes vs Over 1.5",
+     "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+     "legs": [
+      {
+       "outcome": "Matisse Thybulle Over",
+       "result": "win",
+       "headline": "2 threes vs Over 1.5",
+       "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+       "why": [
+        "Matisse Thybulle finished with 2 threes against a line of 1.5: over cleared by 0.5.",
+        "Minutes: played 25 vs 26 projected.",
+        "Box score: 2-of-4 from three.",
+        "Model projected 2 (2 norm \u00d7 0.99 matchup); actual was +0.0 off (+0.0 standard deviations).",
+        "Signal: TOR gives shooting guards -0% threes vs their norm (#13 softest of 30)",
+        "Signal: Players with his profile: -5% threes vs TOR (176 close comps)",
+        "Signal: No history vs TOR yet",
+        "We priced it at 47% to hit vs 43% needed to break even at 2.33x (+9.1% expected edge).",
+        "Consensus fair probability when placed: 42% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance"
+       ]
+      }
+     ],
+     "tags": [
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "LAL",
+        "away": "TOR"
+       },
+       "final": "TOR 125 \u2013 LAL 131",
+       "periods": {
+        "away": [
+         23,
+         31,
+         28,
+         43
+        ],
+        "home": [
+         36,
+         30,
+         38,
+         27
+        ]
+       },
+       "largest_lead": {
+        "TOR": 5,
+        "LAL": 26
+       },
+       "largest_lead_at": {
+        "TOR": "10:54 1st Q",
+        "LAL": "1:33 3rd Q"
+       },
+       "lead_changes": 1,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 10,
+         "from": "9:21 1st Q",
+         "to": "6:31 1st Q",
+         "score": "TOR 6-13 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 9,
+         "from": "2:51 2nd Q",
+         "to": "1:55 2nd Q",
+         "score": "TOR 46-60 LAL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "8:47 4th Q",
+         "to": "6:58 4th Q",
+         "score": "TOR 100-109 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 8,
+         "from": "3:06 1st Q",
+         "to": "2:13 1st Q",
+         "score": "TOR 14-31 LAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "LAL",
+         "swing": 20,
+         "from": "10:04 1st Q",
+         "to": "2:13 1st Q",
+         "mins": 7.8,
+         "from_score": "TOR 6-3 LAL",
+         "to_score": "TOR 14-31 LAL",
+         "pts_for": 28,
+         "pts_against": 8
+        },
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:33 3rd Q",
+         "to": "6:58 4th Q",
+         "mins": 6.6,
+         "from_score": "TOR 76-102 LAL",
+         "to_score": "TOR 100-109 LAL",
+         "pts_for": 24,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "43.7 4th Q: Jaden Bradley makes free throw 1 of 1 (TOR 120-125 LAL)",
+        "36.4 4th Q: Walker Kessler makes 1-foot dunk (Luka Doncic assists) (TOR 120-127 LAL)",
+        "6.9 4th Q: Luka Doncic makes free throw 1 of 2 (TOR 123-130 LAL)"
+       ],
+       "leaders": [
+        "Scottie Barnes (TOR): 29 pts, 6 reb, 5 ast, 0-3 3PT in 36 min",
+        "RJ Barrett (TOR): 22 pts, 10 reb, 5 ast, 4-9 3PT in 32 min",
+        "Luka Doncic (LAL): 45 pts, 15 reb, 6 ast, 8-12 3PT in 35 min",
+        "Walker Kessler (LAL): 16 pts, 15 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 3,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 3,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "9:21 1st Q",
+         "9:00 3rd Q"
+        ],
+        "box": {
+         "id": "3907498",
+         "name": "Matisse Thybulle",
+         "team": "LAL",
+         "min": "25",
+         "pts": 6,
+         "reb": 2,
+         "ast": 3,
+         "3pt": "2-4",
+         "fg": "2-6",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: TOR 54-66 LAL, LAL up 12.",
+        "The 4th quarter decided the most: TOR won it 43-27.",
+        "Largest leads: TOR 5 (10:54 1st Q), LAL 26 (1:33 3rd Q). 1 lead changes, 1 ties.",
+        "Momentum swing: LAL outscored them 28-8 in 7.8 minutes (10:04 1st Q to 2:13 1st Q), moving it from TOR 6-3 LAL to TOR 14-31 LAL.",
+        "Momentum swing: TOR outscored them 24-7 in 6.6 minutes (1:33 3rd Q to 6:58 4th Q), moving it from TOR 76-102 LAL to TOR 100-109 LAL.",
+        "LAL went on a 10-0 run (9:21 1st Q to 6:31 1st Q), making it TOR 6-13 LAL.",
+        "LAL went on a 9-0 run (2:51 2nd Q to 1:55 2nd Q), making it TOR 46-60 LAL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "Matisse Thybulle by period (TPM): Q1 1, Q2 0, Q3 1, Q4 0.",
+        "He went over 1.5 in Q3.",
+        "Threes made at: 9:21 1st Q, 9:00 3rd Q."
+       ],
+       "espn_id": "401909906",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909906"
+      }
+     ]
+    }
    },
    {
     "id": "1e738d80",
@@ -2841,7 +3431,7 @@
       "book": "draftkings",
       "fair_p": 0.4383,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 5.11,
        "base": 5.46,
@@ -2872,6 +3462,22 @@
          "txt": "TOR: defense #6, pace #21 \u00b7 LAL: offense #5, pace #24"
         }
        ]
+      },
+      "final": {
+       "home": 131.0,
+       "away": 125.0
+      },
+      "actual": 6.0,
+      "box": {
+       "min": 25.0,
+       "pts": 8.0,
+       "reb": 2.0,
+       "ast": 4.0,
+       "tpm": 2.0,
+       "tpa": 3.0,
+       "fga": 6.0,
+       "fta": 0.0,
+       "tov": 2.0
       }
      }
     ],
@@ -2882,17 +3488,231 @@
     "note": "Proj 5.1 vs line 5.5 (norm 5.5, 25 min). Model 62% vs market 44%. TOR gives small forwards -7% reb+ast vs their norm (#4 toughest of 30) \u00b7 Players with his profile: -7% reb+ast vs TOR (142 close comps) \u00b7 His history vs TOR: 7.0 reb+ast/g in 2 games (+3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-02T19:27:30Z",
+    "review": {
+     "headline": "LOST: 6 reb+ast vs Under 5.5",
+     "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+     "legs": [
+      {
+       "outcome": "Jake LaRavia Under",
+       "result": "loss",
+       "headline": "6 reb+ast vs Under 5.5",
+       "final": "Toronto Raptors 125 \u2013 Los Angeles Lakers 131",
+       "why": [
+        "Jake LaRavia finished with 6 reb+ast against a line of 5.5: under missed by 0.5.",
+        "Minutes: played 25 vs 25.2 projected.",
+        "Box score: 2 reb \u00b7 4 ast, 2 TO.",
+        "Model projected 5.1 (5.5 norm \u00d7 0.94 matchup); actual was +0.9 off (+0.4 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (5.4) in a matchup the model rated tough.",
+        "Signal: TOR gives small forwards -7% reb+ast vs their norm (#4 toughest of 30)",
+        "Signal: Players with his profile: -7% reb+ast vs TOR (142 close comps)",
+        "Signal: His history vs TOR: 7.0 reb+ast/g in 2 games (+3%)",
+        "We priced it at 51% to hit vs 47% needed to break even at 2.14x (+9.0% expected edge).",
+        "Consensus fair probability when placed: 44% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "LAL",
+        "away": "TOR"
+       },
+       "final": "TOR 125 \u2013 LAL 131",
+       "periods": {
+        "away": [
+         23,
+         31,
+         28,
+         43
+        ],
+        "home": [
+         36,
+         30,
+         38,
+         27
+        ]
+       },
+       "largest_lead": {
+        "TOR": 5,
+        "LAL": 26
+       },
+       "largest_lead_at": {
+        "TOR": "10:54 1st Q",
+        "LAL": "1:33 3rd Q"
+       },
+       "lead_changes": 1,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 10,
+         "from": "9:21 1st Q",
+         "to": "6:31 1st Q",
+         "score": "TOR 6-13 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 9,
+         "from": "2:51 2nd Q",
+         "to": "1:55 2nd Q",
+         "score": "TOR 46-60 LAL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "8:47 4th Q",
+         "to": "6:58 4th Q",
+         "score": "TOR 100-109 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 8,
+         "from": "3:06 1st Q",
+         "to": "2:13 1st Q",
+         "score": "TOR 14-31 LAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "LAL",
+         "swing": 20,
+         "from": "10:04 1st Q",
+         "to": "2:13 1st Q",
+         "mins": 7.8,
+         "from_score": "TOR 6-3 LAL",
+         "to_score": "TOR 14-31 LAL",
+         "pts_for": 28,
+         "pts_against": 8
+        },
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:33 3rd Q",
+         "to": "6:58 4th Q",
+         "mins": 6.6,
+         "from_score": "TOR 76-102 LAL",
+         "to_score": "TOR 100-109 LAL",
+         "pts_for": 24,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "43.7 4th Q: Jaden Bradley makes free throw 1 of 1 (TOR 120-125 LAL)",
+        "36.4 4th Q: Walker Kessler makes 1-foot dunk (Luka Doncic assists) (TOR 120-127 LAL)",
+        "6.9 4th Q: Luka Doncic makes free throw 1 of 2 (TOR 123-130 LAL)"
+       ],
+       "leaders": [
+        "Scottie Barnes (TOR): 29 pts, 6 reb, 5 ast, 0-3 3PT in 36 min",
+        "RJ Barrett (TOR): 22 pts, 10 reb, 5 ast, 4-9 3PT in 32 min",
+        "Luka Doncic (LAL): 45 pts, 15 reb, 6 ast, 8-12 3PT in 35 min",
+        "Walker Kessler (LAL): 16 pts, 15 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 8,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 2,
+          "pf": 3,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "2:22 2nd Q",
+         "1:58 2nd Q"
+        ],
+        "box": {
+         "id": "4592691",
+         "name": "Jake LaRavia",
+         "team": "LAL",
+         "min": "25",
+         "pts": 8,
+         "reb": 2,
+         "ast": 4,
+         "3pt": "2-3",
+         "fg": "3-6",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: TOR 54-66 LAL, LAL up 12.",
+        "The 4th quarter decided the most: TOR won it 43-27.",
+        "Largest leads: TOR 5 (10:54 1st Q), LAL 26 (1:33 3rd Q). 1 lead changes, 1 ties.",
+        "Momentum swing: LAL outscored them 28-8 in 7.8 minutes (10:04 1st Q to 2:13 1st Q), moving it from TOR 6-3 LAL to TOR 14-31 LAL.",
+        "Momentum swing: TOR outscored them 24-7 in 6.6 minutes (1:33 3rd Q to 6:58 4th Q), moving it from TOR 76-102 LAL to TOR 100-109 LAL.",
+        "LAL went on a 10-0 run (9:21 1st Q to 6:31 1st Q), making it TOR 6-13 LAL.",
+        "LAL went on a 9-0 run (2:51 2nd Q to 1:55 2nd Q), making it TOR 46-60 LAL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "Jake LaRavia by period (REB+AST): Q1 0, Q2 2, Q3 3, Q4 1.",
+        "He went over 5.5 in Q4.",
+        "Foul trouble: 4 fouls by the end of Q2, which cuts minutes.",
+        "Threes made at: 2:22 2nd Q, 1:58 2nd Q."
+       ],
+       "espn_id": "401909906",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909906"
+      }
+     ]
+    }
    }
   ],
   "runs": []
  },
  "params": {
-  "min_edge": 0.075,
-  "kelly_mult": 0.0655,
+  "min_edge": 0.08,
+  "kelly_mult": 0.0524,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
   "max_bets_per_run": 6,
@@ -3024,16 +3844,9 @@
    "clv_sum": 0.0
   },
   "matchup_over": {
-   "bets": 0,
-   "staked": 0.0,
-   "profit": 0.0,
-   "clv_n": 0,
-   "clv_sum": 0.0
-  },
-  "matchup_under": {
    "bets": 1,
    "staked": 5.0,
-   "profit": 7.1,
+   "profit": 6.65,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -3043,14 +3856,48 @@
      "lost": 0
     }
    }
+  },
+  "matchup_under": {
+   "bets": 4,
+   "staked": 20.0,
+   "profit": 6.149999999999999,
+   "clv_n": 0,
+   "clv_sum": 0.0,
+   "tags": {
+    "ordinary-variance": {
+     "n": 3,
+     "won": 2,
+     "lost": 1
+    },
+    "dnp-void": {
+     "n": 1,
+     "won": 0,
+     "lost": 0
+    },
+    "matchup-read-right": {
+     "n": 1,
+     "won": 1,
+     "lost": 0
+    },
+    "matchup-read-wrong": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "near-miss": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    }
+   }
   }
  },
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 8.0,
-   "staked": 40.0,
-   "profit": -13.899999999999999
+   "bets": 12.0,
+   "staked": 60.0,
+   "profit": -8.199999999999998
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-01T02:29:41Z",
@@ -3530,6 +4377,41 @@
    "ts": "2026-11-02T02:41:36Z",
    "kind": "scan",
    "text": "Scanned basketball_ncaab (120), basketball_nba (12) for 6 credits. Nothing cleared the bar. Equity $47.11."
+  },
+  {
+   "ts": "2026-11-02T19:27:30Z",
+   "kind": "result",
+   "text": "PUSH $0.00: Jakob Poeltl Under 7.5 @ +105 (Hard Rock Bet) \u2014 PUSH: Player did not play: voided [dnp-void]"
+  },
+  {
+   "ts": "2026-11-02T19:27:30Z",
+   "kind": "result",
+   "text": "WON +$4.05: Collin Murray-Boyles Under 7.5 @ -123 (DraftKings) \u2014 WON: 4 reb+ast vs Under 7.5 [matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-02T19:27:30Z",
+   "kind": "result",
+   "text": "WON +$6.65: Matisse Thybulle Over 1.5 @ +133 (BetRivers) \u2014 WON: 2 threes vs Over 1.5 [ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-02T19:27:30Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Jake LaRavia Under 5.5 @ +114 (DraftKings) \u2014 LOST: 6 reb+ast vs Under 5.5 [matchup-read-wrong, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-02T19:27:31Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 8.0%."
+  },
+  {
+   "ts": "2026-11-02T19:27:31Z",
+   "kind": "adapt",
+   "text": "Down 47% from the peak. Survival mode: Kelly fraction cut to 0.05."
+  },
+  {
+   "ts": "2026-11-02T19:27:31Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $52.81 (run #1), 6-17-1, ROI -38.5%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -3552,24 +4434,28 @@
   "e2afd4f7",
   "e928c04b",
   "645f7eb5",
-  "f216356b"
+  "f216356b",
+  "0d25a84d",
+  "0af11e44",
+  "6f285483",
+  "1e738d80"
  ],
  "strategist": null,
- "updated": "2026-11-02T02:41:36Z",
+ "updated": "2026-11-02T19:27:31Z",
  "stats": {
-  "bets": 20,
-  "won": 4,
-  "lost": 16,
-  "push": 0,
-  "staked": 102.63,
-  "profit": -52.89,
-  "roi": -0.5153,
+  "bets": 24,
+  "won": 6,
+  "lost": 17,
+  "push": 1,
+  "staked": 122.63,
+  "profit": -47.19,
+  "roi": -0.3848,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 5,
+  "clv_no_close": 9,
   "close_mins_median": 151,
-  "open": 4,
-  "equity": 47.11
+  "open": 0,
+  "equity": 52.81
  },
  "weights": {
   "value_fav": 0.842,
@@ -3577,8 +4463,8 @@
   "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
-  "matchup_over": 1.0,
-  "matchup_under": 1.218
+  "matchup_over": 1.205,
+  "matchup_under": 1.154
  },
  "paused": [],
  "dry_scans": 2
