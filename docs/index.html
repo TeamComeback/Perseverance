@@ -797,7 +797,7 @@ function renderProps() {
   const statChips = ["all", ...ALL_STATS].map(k => `<button data-s="${k}" class="${F.stat === k ? "on" : ""}">${k === "all" ? "All stats" : STATN[k]}</button>`).join("")
     + '<span class="sep"></span>' + [["Over", "Overs"], ["Under", "Unders"]].map(([k, l]) => `<button data-l="${k}" class="${F.lean === k ? "on" : ""}">${l}</button>`).join("");
   const empty = F.tab === "priced"
-    ? '<div class="empty">No priced lines for these filters. The agent buys prop odds around 6pm ET; until then, use Research.</div>'
+    ? '<div class="empty">No priced lines for these filters. The agent buys prop odds around 2pm ET; until then, use Research.</div>'
     : '<div class="empty">Nothing matches these filters.</div>';
   const tt = teamTotalsHtml(pz);
   $("v-props").innerHTML = `

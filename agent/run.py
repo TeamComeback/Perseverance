@@ -221,7 +221,7 @@ def research_run():
 
 
 def props_run(backup=False):
-    """Evening NBA matchup run (about 6pm ET, after most injury news). The backup run an hour later
+    """Afternoon NBA matchup run (about 2pm ET in winter). The backup run an hour later
     only does anything if the first one didn't happen (GitHub sometimes delays or drops scheduled runs)."""
     if backup:
         pz = store.load("props.json", {})

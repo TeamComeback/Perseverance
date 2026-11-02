@@ -27,11 +27,11 @@ Named to sit next to Curiosity and Ingenuity.
 
 ## Markets
 
-NBA: **rebounds + assists, assists, threes, pts + reb + ast** player props, plus **moneylines, spreads, totals and team totals**. Moneylines, spreads and totals come from the regular scans. Props and team totals are bought per game in the evening run (team totals ride along when there's a credit for them) and bet against the multi-book consensus like the main board.
+NBA: **rebounds + assists, assists, threes, pts + reb + ast** player props, plus **moneylines, spreads, totals and team totals**. Moneylines, spreads and totals come from the regular scans. Props and team totals are bought per game in the afternoon props run (team totals ride along when there's a credit for them) and bet against the multi-book consensus like the main board.
 
 ## Daily research (free, ~9:40am and ~4:45pm ET)
 
-Every morning, and again before the evening run, the agent refreshes everything the dashboard reads, using only free sources:
+Every morning, and again before the afternoon props run, the agent refreshes everything the dashboard reads, using only free sources:
 
 - **Box scores** from ESPN (three seasons kept in `data/nba/`, including linescores, ESPN's pregame line, and this season's shot locations).
 - **Projected and confirmed lineups from RotoWire** (starters, "may not play" list with injury status, profile links). RotoWire's projected minutes and stat projections are subscriber-only, so projections come from this model and each player card links to his RotoWire page.
@@ -39,7 +39,7 @@ Every morning, and again before the evening run, the agent refreshes everything 
 - **Defense vs position**, recomputed from every box score: how each team's opponents at each position do against their own per-minute norms.
 - **League trends**: hot and cold players, minutes risers, pace changes, over/under and ATS records, second-half teams, softest and toughest matchups, back-to-backs, and how teams trailing by 10+ at halftime do in the second half.
 
-The evening props run refreshes lineups again before pricing. If GitHub delays the 6pm run, a backup at ~7:15pm runs it instead (and does nothing if the first one happened).
+The props run refreshes lineups again before pricing. If GitHub delays the ~2pm run, a backup at ~3:15pm runs it instead (and does nothing if the first one happened). Times are winter (EST); add an hour in summer.
 
 ## Prop Lab and player cards
 
@@ -54,7 +54,7 @@ The **Prop Lab** tab lists every projected player and stat, filterable by game, 
 
 Every settled bet gets a game story from ESPN's free play-by-play, alongside the post-mortem: score by quarter, largest leads, lead changes, **scoring runs**, **momentum swings** (the biggest margin change inside any 8-minute stretch), the **closing stretch** (scoring plays in the last five minutes while within six), key players, and for props the player's line **quarter by quarter** (when he crossed the number, foul trouble, when his threes fell). Other sports get the line score, scoring plays, the go-ahead score that held, and leaders.
 
-## NBA matchup props (evening run, ~6pm ET)
+## NBA matchup props (afternoon run, ~2pm ET)
 
 The agent hunts player props where the matchup moves a player away from his own norm: a sharpshooter against a team that leaks threes to his position (over), or a big against an elite interior defense (under).
 
@@ -65,7 +65,7 @@ The agent hunts player props where the matchup moves a player away from his own 
   - **His own history** against this opponent.
   - **Home/away split**, plus team defense, offense and pace ranks shown for context.
 - **Projection** = per-minute rate × projected minutes × matchup multiplier, turned into an over/under probability.
-- **Credits:** the model ranks the whole slate for free, then buys prop odds (1 credit per stat per game) only for the games holding the strongest spots. The evening run gets 3 scans' worth of the day's credits.
+- **Credits:** the model ranks the whole slate for free, then buys prop odds (1 credit per stat per game) only for the games holding the strongest spots. The props run gets 3 scans' worth of the day's credits.
 - **Betting:** model probability is blended with the market's no-vig price (`prop_model_weight`, starts at 40%); the bet must point the same way as the matchup and clear `prop_min_edge` (starts at 4%). Playbooks `matchup_over` and `matchup_under` are tracked separately so the agent learns which side works.
 - **Grading** comes from the ESPN box score; a player who doesn't play is voided, as books do.
 - The agent and the overnight strategist can retune every weight (`w_dvp`, `w_sim`, `w_h2h`, `matchup_strength`).
@@ -118,8 +118,8 @@ The old GitHub-issue logging still works in the background but the dashboard no 
 | ~11am | Scan |
 | ~4pm | Scan |
 | ~4:45pm | Research refresh with updated lineups (free) |
-| ~6pm | NBA props + team totals (refreshes lineups first) |
-| ~7:15pm | Props backup (only if the 6pm run didn't happen) |
+| ~2pm | NBA props + team totals (refreshes lineups first) |
+| ~3:15pm | Props backup (only if the 2pm run didn't happen) |
 | ~7:30pm | Scan |
 
 These times shift by an hour when daylight saving time changes.
