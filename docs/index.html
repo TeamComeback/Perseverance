@@ -688,10 +688,10 @@ function propRows() {
     if (p.out) continue;
     for (const s of ALL_STATS) {
       const pr = p.proj[s]; if (!pr) continue;
-      const [proj, base, mult] = pr;
+      const [proj, base, mult, sd] = pr;
       if (base < (s === "tpm" ? 0.6 : 1.5)) continue;
       const row = {pid: p.pid, name: p.name, team: p.team, opp: p.opp, home: p.home, role: p.role, start: p.start, minutes: p.minutes,
-        status: p.status, starter: p.starter, lineup: p.lineup, stat: s, proj, base, mult, lean: mult > 1 ? "Over" : "Under",
+        status: p.status, starter: p.starter, lineup: p.lineup, stat: s, proj, base, mult, sd, lean: mult > 1 ? "Over" : "Under",
         espn_id: p.game, state: p.state, strength: Math.abs(Math.log(mult)), dvp: p.dvp[s], cv: (p.cv || {})[s], b2b: p.b2b};
       const sp = spots[p.pid + "|" + s]; if (sp) row.signals = sp.signals;
       Object.assign(row, priced[p.pid + "|" + s] || {});
@@ -731,11 +731,28 @@ function rating(x) {
 const dots = n => "●".repeat(n) + "○".repeat(5 - n);
 const fresh = r => r.state !== "post" && new Date(r.start) > Date.now() - 3 * 3600e3;
 const upcoming = r => r.state ? r.state === "pre" : new Date(r.start) > Date.now();
+// The number to bet when no book line was bought today: the last saved book line for him (if recent),
+// otherwise an estimate at his usual output rounded to the nearest half (books anchor there).
+function estLine(x) {
+  const hist = (D.lines && D.lines.by[x.pid + "|" + x.stat]) || [];
+  const recent = hist.find(e => (Date.now() - new Date(e.date + "T12:00:00Z")) / 864e5 <= 10);
+  if (recent) return {line: recent.line, src: "last line " + recent.date.slice(5).replace("-", "/")};
+  return {line: Math.max(0.5, Math.floor(x.base) + 0.5), src: "est. line"};
+}
+function modelP(proj, sd, line, side) {
+  if (!sd) return null;
+  const z = (line - proj) / sd, t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2);
+  let c = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); c = z > 0 ? 1 - c : c;
+  const pOver = 0.5 + 0.88 * ((1 - c) - 0.5);
+  return side === "Over" ? pOver : 1 - pOver;
+}
 function cRow(x) {
   const priced = x.line != null;
   const rt = priced
     ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div><div class="b">${amS(x.am)} ${esc(bookName(x.book))}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}${x.open != null && x.open !== x.line ? ` · opened ${f1(x.open)}` : ""}</div>`
-    : `<div class="a">${STATN[x.stat]} <span class="dots" title="${esc(rating(x).why.join(", "))}">${dots(rating(x).n)}</span></div><div class="b">expects <b style="color:var(--text)">${f1(x.proj)}</b> · usual ${f1(x.base)}</div>`;
+    : (() => { const e = estLine(x), mp = modelP(x.proj, x.sd, e.line, x.lean);
+        return `<div class="a">${x.lean.toUpperCase()} ${f1(e.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div>
+          <div class="b">${esc(e.src)}${mp != null ? ` · model <b style="color:var(--text)">${Math.round(mp * 100)}%</b>` : ""} · exp ${f1(x.proj)}</div>`; })();
   const sig = (x.signals || []).find(g => g.k === "dvp") || (x.signals || [])[0];
   const why = sig ? sig.txt : (x.dvp ? `${x.opp} ranks #${x.dvp} of 30 vs ${x.role}s in ${STATL[x.stat].toLowerCase()} (1 = softest)` : "");
   return `<div class="cr" data-pid="${x.pid}" data-stat="${x.stat}"><div><span class="nm">${esc(x.name)}</span><span class="lean ${x.lean}">${x.lean.toUpperCase()}</span>${statusBadge(x)}
@@ -821,6 +838,7 @@ function bindPlayerLinks(root) {
   root.querySelectorAll("[data-pid]").forEach(el => el.onclick = e => { e.stopPropagation(); openPlayer(el.dataset.pid, el.dataset.stat); });
 }
 function renderProps() {
+  if (!D.lines) getLines().then(() => { if (store.get("tab") === "props") renderProps(); });
   const {players, pz} = D;
   const games = players.games || [];
   const F = D.pf || (D.pf = {tab: null, stat: "all", lean: "all", q: "", all: false, game: "all"});
@@ -917,7 +935,7 @@ async function openPlayer(pid, stat) {
   const priced = (D.pz.priced || {});
   const pc = D.pc = {p, shots: (g.shots || {})[pid] || [], stat: stat || "ra", side: null, line: null, win: "L10", loc: "all", opp: false, mates: {}, swin: "season"};
   const pr = priced[pid + "|" + pc.stat];
-  pc.line = pr ? pr.line : Math.max(0.5, Math.floor(p.proj[pc.stat].proj) + 0.5);
+  pc.line = pr ? pr.line : estLine({pid, stat: pc.stat, base: p.proj[pc.stat].base}).line;
   pc.side = pr ? pr.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under");
   renderCard();
 }
@@ -1052,7 +1070,7 @@ function renderCard() {
     <div class="chips" id="cst">${ALL_STATS.map(k => `<button data-s="${k}" class="${k === s ? "on" : ""}">${STATN[k]}</button>`).join("")}</div>
     <div class="lineset"><button class="step" data-d="-1">−</button><div class="val">${pc.line}</div><button class="step" data-d="1">+</button>
       <div class="seg" id="side"><button data-v="Over" class="${pc.side === "Over" ? "on" : ""}">Over</button><button data-v="Under" class="${pc.side === "Under" ? "on" : ""}">Under</button></div>
-      ${priced ? `<span class="desc">Market: <b style="color:var(--text)">${priced.side} ${priced.line}</b> ${amS(priced.am)} ${esc(bookName(priced.book))}${priced.ev > 0 ? ' <span class="pos">' + pct(priced.ev) + "</span>" : ""}</span>` : `<span class="desc">No priced line yet; set your own.</span>`}</div>
+      ${priced ? `<span class="desc">Market: <b style="color:var(--text)">${priced.side} ${priced.line}</b> ${amS(priced.am)} ${esc(bookName(priced.book))}${priced.ev > 0 ? ' <span class="pos">' + pct(priced.ev) + "</span>" : ""}</span>` : `<span class="desc">No book line bought today: starting at ${esc(estLine({pid: p.pid, stat: s, base: pj.base}).src)} ${f1(estLine({pid: p.pid, stat: s, base: pj.base}).line)}. Set it to your book's number.</span>`}</div>
     <div class="kv">
       <div><div class="k">Projection</div><div class="v">${pj.proj.toFixed(1)} <small>${pct(pj.mult - 1, 0)}</small></div></div>
       <div><div class="k">Conviction</div><div class="v"><span class="dots" style="font-size:12px">${dots(cardRating(p, s, priced).n)}</span></div></div>
@@ -1086,7 +1104,7 @@ function renderCard() {
   const P = $("pane");
   P.querySelectorAll("#cst button").forEach(b => b.onclick = () => {
     pc.stat = b.dataset.s; const pr2 = (D.pz.priced || {})[p.pid + "|" + pc.stat];
-    pc.line = pr2 ? pr2.line : Math.max(0.5, Math.floor(p.proj[pc.stat].proj) + 0.5);
+    pc.line = pr2 ? pr2.line : estLine({pid: p.pid, stat: pc.stat, base: p.proj[pc.stat].base}).line;
     pc.side = pr2 ? pr2.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under"); renderCard(); });
   P.querySelector("#saveprop").onclick = () => saveProp({player: p.name, pid: p.pid, team: p.team, opp: p.opp, stat: s, side: pc.side, line: pc.line,
     espn_id: p.game, start: p.start, snapshot: pc.snapshot, priced: priced ? {side: priced.side, line: priced.line, am: priced.am, book: priced.book} : null});

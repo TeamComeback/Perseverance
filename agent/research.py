@@ -564,7 +564,7 @@ def _index_row(p):
     return {"pid": p["pid"], "name": p["name"], "team": p["team"], "opp": p["opp"], "home": p["home"], "game": p["game"],
             "start": p["start"], "state": p["state"], "role": p["role"], "minutes": p["minutes"], "status": p["status"],
             "out": p["out"], "starter": (p["rw"] or {}).get("starter"), "lineup": (p["rw"] or {}).get("status"),
-            "proj": {s: [v["proj"], v["base"], v["mult"]] for s, v in p["proj"].items()},
+            "proj": {s: [v["proj"], v["base"], v["mult"], v.get("sd")] for s, v in p["proj"].items()},
             "dvp": {s: v[1] for s, v in p["dvp"].items()},
             "cv": {s: v[:2] for s, v in (p.get("cv") or {}).items()},
             "b2b": (p.get("flags") or {}).get("b2b") or None}
