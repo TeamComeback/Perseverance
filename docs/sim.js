@@ -201,7 +201,7 @@ function calibrate(P, rounds = 3, n = 220) {
 
 // ------------------------------------------------------------------ Monte Carlo
 const STATS = ["pts", "reb", "ast", "tpm", "pra", "ra"];
-function monteCarlo(P, N, onProgress) {
+function monteCarlo(P, N, onProgress, seedBase) {
   return new Promise(resolve => {
     const pids = [], who = {};
     for (const s of ["home", "away"]) P.teams[s].players.forEach(p => { pids.push(p.pid); who[p.pid] = {...p, side: s}; });
@@ -211,6 +211,7 @@ function monteCarlo(P, N, onProgress) {
     const chunk = () => {
       const end = Math.min(N, i + 250);
       for (; i < end; i++) {
+        if (seedBase != null) setSeed(seedBase + i);
         const r = simGame(P, false);
         team.home[i] = r.score.home; team.away[i] = r.score.away;
         for (const pid of pids) {
@@ -220,7 +221,7 @@ function monteCarlo(P, N, onProgress) {
         }
       }
       onProgress && onProgress(i / N);
-      if (i < N) setTimeout(chunk, 0); else resolve({N, out, team, who});
+      if (i < N) setTimeout(chunk, 0); else { if (seedBase != null) setSeed(null); resolve({N, out, team, who}); }
     };
     chunk();
   });
@@ -315,24 +316,70 @@ function stage() {
           <div class="court3d"><div class="tilt">${courtSvg()}</div></div>
           <div class="cap" id="simCap"><span class="pos" id="capT">TIP-OFF</span><span id="capX">Press play to simulate ${esc(g.away)} @ ${esc(g.home)}</span></div>
           <div class="ctl">
-            <button class="btn" id="simPlay">▶ Watch a sim</button>
+            <button class="btn" id="simPlay">▶ Watch the average game</button>
+            <button class="btn ghost" id="simRand">Random game</button>
             <div class="seg" id="simSpd">${[1, 4, 16].map(s => `<button data-s="${s}" class="${S.speed === s ? "on" : ""}">${s}×</button>`).join("")}</div>
             <button class="btn ghost" id="simSkip">Skip to final</button>
           </div>
+          <div class="ctl"><span class="desc">Box score:</span><div class="seg" id="simView">${[["live", "This game"], ["avg", "Average"], ["mode", "Most common"]].map(([k, l]) => `<button data-v="${k}" class="${(S.view || "live") === k ? "on" : ""}">${l}</button>`).join("")}</div></div>
         </div>
         <div class="bxs" id="bxH"></div>
       </div>
     </div>`;
-  $("simPlay").onclick = () => { if (S.playing) stop(); else play(); };
+  $("simPlay").onclick = () => { if (S.playing) stop(); else play("avg"); };
+  $("simRand").onclick = () => { stop(); S.kind = "random"; newGame("random"); S.view = "live"; syncView(); play("random", true); };
+  $("simView").querySelectorAll("button").forEach(b => b.onclick = async () => { S.view = b.dataset.v; syncView(); if (S.view !== "live") await ensureAvg(); boxes(S.i); });
   $("simSpd").querySelectorAll("button").forEach(b => b.onclick = () => { S.speed = +b.dataset.s; $("simSpd").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); });
-  $("simSkip").onclick = () => { if (!S.game) newGame(); stop(); S.i = S.game.events.length - 1; replayTo(S.i); };
-  newGame(); drawDots(S.game.events[0], false); boxes(0);
+  $("simSkip").onclick = async () => { if (!S.game || S.kind === "init") await loadAvgGame(); stop(); S.i = S.game.events.length - 1; replayTo(S.i); };
+  S.view = S.view || "live";
+  newGame("init"); drawDots(S.game.events[0], false); boxes(0);
+}
+function syncView() { const v = $("simView"); if (v) v.querySelectorAll("button").forEach(x => x.classList.toggle("on", x.dataset.v === S.view)); }
+
+// The "average game": run 2,000 seeded simulations, find the one closest to the averages (score and every
+// player's line), then replay exactly that simulation on the court. Its box score ends near the averages.
+async function ensureAvg() {
+  if (S.avgRun && S.avgRun.gid === S.gameId) return S.avgRun;
+  const P = S.P, N = 2000, seedBase = (parseInt(S.gameId, 10) % 1000003) * 7919;
+  const cap = $("capX"); if (cap) cap.textContent = "Running 2,000 simulations to find the average game…";
+  const M = await monteCarlo(P, N, f => { if (cap) cap.textContent = `Running 2,000 simulations to find the average game… ${Math.round(f * 100)}%`; }, seedBase);
+  const mean = a => { let t = 0; for (let i = 0; i < a.length; i++) t += a[i]; return t / a.length; };
+  const sd = a => { const m = mean(a); let v = 0; for (let i = 0; i < a.length; i++) v += (a[i] - m) ** 2; return Math.sqrt(v / a.length) || 1; };
+  const mode = a => { const c = new Map(); let best = 0, bv = 0; for (let i = 0; i < a.length; i++) { const v = Math.round(a[i]); const n = (c.get(v) || 0) + 1; c.set(v, n); if (n > best) { best = n; bv = v; } } return [bv, best / a.length]; };
+  const terms = [[M.team.home, 30], [M.team.away, 30]];
+  for (const pid in M.out) { const o = M.out[pid], wt = Math.min(1, mean(o.min) / 36); if (wt >= 0.2) ["pts", "reb", "ast"].forEach(k => terms.push([o[k], wt])); }
+  const tz = terms.map(([a, w]) => [a, w, mean(a), sd(a)]);
+  let bi = 0, bd = Infinity;
+  for (let i = 0; i < N; i++) { let d = 0; for (const [a, w, m, v] of tz) { const z = (a[i] - m) / v; d += w * z * z; if (d >= bd) break; } if (d < bd) { bd = d; bi = i; } }
+  const players = {};
+  for (const pid in M.out) {
+    const o = M.out[pid];
+    players[pid] = {avg: {min: mean(o.min), pts: mean(o.pts), reb: mean(o.reb), ast: mean(o.ast), tpm: mean(o.tpm)},
+                    mode: {min: mode(o.min)[0], pts: mode(o.pts), reb: mode(o.reb), ast: mode(o.ast), tpm: mode(o.tpm)}};
+  }
+  const tot = new Int16Array(N), mar = new Int16Array(N);
+  for (let i = 0; i < N; i++) { tot[i] = M.team.home[i] + M.team.away[i]; mar[i] = M.team.home[i] - M.team.away[i]; }
+  // prefer the overnight 10,000-sim averages when they exist for this game
+  // the stored 10,000-sim averages only when they were made from today's current inputs
+  const sg = D.sims && D.sims.games && D.sims.games[S.gameId];
+  const stored = sg && sg.at && D.players && sg.at >= (D.players.updated || "") ? sg : null;
+  if (stored) for (const pid in players) { const x = stored.players[pid]; if (x) Object.assign(players[pid].avg, {min: x.min, pts: x.s.pts[0], reb: x.s.reb[0], ast: x.s.ast[0], tpm: x.s.tpm[0]}); }
+  S.avgRun = {gid: S.gameId, N: stored ? D.sims.n : N, bi, seedBase, players, biScore: {home: M.team.home[bi], away: M.team.away[bi]},
+    score: stored ? stored.avg : {home: mean(M.team.home), away: mean(M.team.away)},
+    modeTot: mode(tot), modeMar: mode(mar), homeWin: Array.from(M.team.home).filter((h, i) => h > M.team.away[i]).length / N};
+  return S.avgRun;
+}
+async function loadAvgGame() {
+  const A = await ensureAvg();
+  setSeed(A.seedBase + A.bi); S.game = simGame(S.P, true); setSeed(null);
+  S.i = 0; S.kind = "avg-ready";
 }
 
-function newGame() { S.game = simGame(S.P, true); S.i = 0; S.cum = null; }
-function stop() { S.playing = false; clearTimeout(S.timer); const b = $("simPlay"); if (b) b.textContent = S.game && S.i >= S.game.events.length - 1 ? "↻ New sim" : "▶ Resume"; }
-function play() {
-  if (!S.game || S.i >= S.game.events.length - 1) { newGame(); boxes(0); }
+function newGame(kind) { setSeed(null); S.game = simGame(S.P, true); S.i = 0; S.cum = null; S.kind = kind || "random"; }
+function stop() { S.playing = false; clearTimeout(S.timer); const b = $("simPlay"); if (b) b.textContent = S.game && S.i >= S.game.events.length - 1 ? "▶ Watch the average game" : "▶ Resume"; }
+async function play(kind, fresh) {
+  if (kind === "avg" && (S.kind !== "avg-ready" || S.i >= S.game.events.length - 1)) { $("simPlay").textContent = "Finding…"; await loadAvgGame(); drawDots(S.game.events[0], false); boxes(0); }
+  else if (!S.game || (!fresh && S.i >= S.game.events.length - 1)) { newGame("random"); boxes(0); }
   S.playing = true; $("simPlay").textContent = "❚❚ Pause";
   const step = () => {
     if (!S.playing) return;
@@ -355,6 +402,7 @@ function winProb(e) {
 
 function show(e, animate) {
   const P = S.P;
+  if (S.view && S.view !== "live" && S.avgRun && S.avgRun.gid === S.gameId) { drawDots(e, animate); return aggBoxes(S.view); }
   $("scA").textContent = e.score.away; $("scH").textContent = e.score.home;
   $("simClk").textContent = e.kind === "final" ? "FINAL" + (e.period > 4 ? "/OT" : "") : fmtClock(e);
   const wp = winProb(e);
@@ -382,6 +430,7 @@ function boxAt(i) {
   return b;
 }
 function boxes(i) {
+  if (S.view && S.view !== "live" && S.avgRun && S.avgRun.gid === S.gameId) return aggBoxes(S.view);
   const P = S.P, b = boxAt(i), e = S.game.events[i];
   const hot = new Set([e.a, e.b].filter(Boolean));
   const tbl = s => {
@@ -393,7 +442,22 @@ function boxes(i) {
   $("bxA").innerHTML = tbl("away"); $("bxH").innerHTML = tbl("home");
 }
 
-function replayTo(i) { show(S.game.events[i], false); const b = $("simPlay"); if (b) b.textContent = "↻ New sim"; }
+function replayTo(i) { show(S.game.events[i], false); const b = $("simPlay"); if (b) b.textContent = "▶ Watch the average game"; }
+function aggBoxes(view) {
+  const P = S.P, A = S.avgRun, avg = view === "avg";
+  const sc = avg ? A.score : {home: (A.modeTot[0] + A.modeMar[0]) / 2, away: (A.modeTot[0] - A.modeMar[0]) / 2};
+  $("scA").textContent = avg ? f1(sc.away) : Math.round(sc.away); $("scH").textContent = avg ? f1(sc.home) : Math.round(sc.home);
+  $("simClk").textContent = avg ? `AVG OF ${A.N.toLocaleString()}` : "MOST COMMON";
+  $("wpBar").style.width = (100 - A.homeWin * 100).toFixed(1) + "%"; $("wpA").textContent = Math.round((1 - A.homeWin) * 100) + "%"; $("wpH").textContent = Math.round(A.homeWin * 100) + "%";
+  $("capT").textContent = avg ? "AVERAGE" : "MOST COMMON"; $("capT").className = "h";
+  $("capX").textContent = avg ? `Average box score across ${A.N.toLocaleString()} simulations.`
+    : `Most frequent result for each stat. Final margin ${A.modeMar[0] > 0 ? P.teams.home.ab + " by " + A.modeMar[0] : A.modeMar[0] < 0 ? P.teams.away.ab + " by " + (-A.modeMar[0]) : "tie"} (${Math.round(A.modeMar[1] * 100)}% of sims), total ${A.modeTot[0]} (${Math.round(A.modeTot[1] * 100)}%).`;
+  const cell = (x, k) => avg ? f1(x.avg[k]) : `${x.mode[k][0]}<span class="dim" style="font-size:9px"> ${Math.round(x.mode[k][1] * 100)}%</span>`;
+  const tbl = s => `<div class="bxh ${s === "home" ? "h" : "a"}">${esc(P.teams[s].name)}</div><table class="bxt"><tr><th></th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>3PM</th></tr>
+    ${P.teams[s].players.slice().sort((a, b) => ((A.players[b.pid] || {}).avg || {}).min - ((A.players[a.pid] || {}).avg || {}).min).map(p => { const x = A.players[p.pid]; if (!x) return "";
+      return `<tr class="on" data-pid="${p.pid}"><td class="t">${esc(p.last)}</td><td>${Math.round(x.avg.min)}</td><td><b>${cell(x, "pts")}</b></td><td>${cell(x, "reb")}</td><td>${cell(x, "ast")}</td><td>${cell(x, "tpm")}</td></tr>`; }).join("")}</table>`;
+  $("bxA").innerHTML = tbl("away"); $("bxH").innerHTML = tbl("home");
+}
 
 function drawDots(e, animate) {
   const P = S.P, layer = $("simDots"); if (!layer) return;
@@ -580,5 +644,5 @@ function showMC() {
 }
 
 RENDER.sim = renderSim;
-window.simEngine = {prep, calibrate, simGame, monteCarlo, setSeed};
+window.simEngine = {prep, calibrate, simGame, monteCarlo, setSeed, ensureAvg, loadAvgGame};
 })();

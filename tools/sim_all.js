@@ -50,7 +50,7 @@ const r1 = v => Math.round(v * 10) / 10;
     const avg = {home: r1(mean(M.team.home)), away: r1(mean(M.team.away))};
     // the single most typical simulated game: closest to the averages on the score and every player's line
     const sd = a => { const m = mean(a); let v = 0; for (let i = 0; i < a.length; i++) v += (a[i] - m) ** 2; return Math.sqrt(v / a.length) || 1; };
-    const terms = [[M.team.home, 3], [M.team.away, 3]];
+    const terms = [[M.team.home, 30], [M.team.away, 30]];
     for (const pid in M.out) { const o = M.out[pid], wt = Math.min(1, mean(o.min) / 36); if (wt < 0.2) continue; ["pts", "reb", "ast"].forEach(k => terms.push([o[k], wt])); }
     const stats_ = terms.map(([a, w]) => [a, w, mean(a), sd(a)]);
     let bi = 0, bd = Infinity;
@@ -60,7 +60,7 @@ const r1 = v => Math.round(v * 10) / 10;
     }
     const typical = {score: {home: M.team.home[bi], away: M.team.away[bi]},
       players: Object.fromEntries(Object.keys(M.out).map(pid => { const o = M.out[pid]; return [pid, [r1(o.min[bi]), o.pts[bi], o.reb[bi], o.ast[bi], o.tpm[bi]]]; }))};
-    out.games[g.espn_id] = {home: g.home, away: g.away, start: g.start, vegas: g.vegas || null, avg, win_home: r1(hw / N * 100) / 100,
+    out.games[g.espn_id] = {at: out.updated, home: g.home, away: g.away, start: g.start, vegas: g.vegas || null, avg, win_home: r1(hw / N * 100) / 100,
       total: [r1(mean(tot)), ...qs(tot)], margin: r1(mean(mar)), cover_home: sp != null ? r1(cover / N * 100) / 100 : null,
       over: vt ? r1(over / N * 100) / 100 : null, players, typical};
     run.games[g.espn_id] = {avg, win_home: out.games[g.espn_id].win_home, total: out.games[g.espn_id].total[0],
