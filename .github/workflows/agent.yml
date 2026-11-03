@@ -9,6 +9,7 @@ on:
     - cron: "17 20 * * *"   # ~3:15pm ET in winter — props backup: only runs if the 2pm run was delayed or dropped
     - cron: "41 13 * * *"   # ~9:40am ET — free research refresh: box scores, lineups, projections, trends
     - cron: "47 20 * * *"   # ~4:45pm ET — free research refresh with updated lineups
+    - cron: "13 23 * * *"   # ~6:15pm ET in winter — final pre-game refresh: late injuries, lineups, re-run all sims (free)
   workflow_dispatch:
     inputs:
       mode:
@@ -48,7 +49,7 @@ jobs:
               "10 9 * * *") MODE=nightly ;;
               "5 19 * * *") MODE=props ;;
               "17 20 * * *") MODE=props-backup ;;
-              "41 13 * * *"|"47 20 * * *") MODE=research ;;
+              "41 13 * * *"|"47 20 * * *"|"13 23 * * *") MODE=research ;;
               *) MODE=cycle ;;
             esac
           fi

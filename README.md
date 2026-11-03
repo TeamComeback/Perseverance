@@ -103,7 +103,7 @@ How it works: each possession picks the shooter by usage, the shot type, make or
 - **Model vs market** (Trends): every priced line saves the model's own over probability next to the market's no-vig closing probability. After the game all three (model, market, blend) are scored with log loss and Brier. Once 150 lines are graded, the nightly run moves `prop_model_weight` 30% of the way toward the blend that would have scored best, and writes why in the journal.
 - **Official injury report**: the NBA's own PDF (posted through the day) overrides ESPN's injury list. Needs `pypdf`, which the workflow installs.
 - **Minutes model**: tonight's minutes start from recent minutes, then adjust for teammates who are newly out (from each player's with/without history, capped at what the missing players actually played), a change in starting role (RotoWire lineups), back-to-backs and blowout risk. The reasons show on each player card. Projections and the sim both use these minutes.
-- **Nightly sims**: after every research and props run, `tools/sim_all.js` simulates every upcoming game 10,000 times with the dashboard's own engine and saves the averages and ranges (`sims.json`, shown instantly in the Sim tab). The next morning each game is graded against the real box score (`sims_log.json`): total, margin and winner against Vegas, and every player's minutes and stats against both the sim and the projection alone.
+- **Nightly sims**: after every research and props run (about 8:40am, 2:05pm, 3:45pm and 6:15pm ET in winter), `tools/sim_all.js` simulates every upcoming game 10,000 times with the dashboard's own engine and saves the averages and ranges (`sims.json`, shown instantly in the Sim tab). The next morning each game is graded against the real box score (`sims_log.json`): total, margin and winner against Vegas, and every player's minutes and stats against both the sim and the projection alone.
 
 ## The learning loop (nightly, after grading)
 
@@ -155,6 +155,7 @@ The old GitHub-issue logging still works in the background but the dashboard no 
 | ~3:05pm | Scan |
 | ~3:15pm | Props backup (only if the 2pm run didn't happen) |
 | ~3:45pm | Research refresh with updated lineups (free) |
+| ~6:15pm | Final pre-game refresh: late injuries and lineups, all sims re-run (free) |
 | ~6:35pm | Scan |
 
 Add an hour from March to November (daylight saving time). GitHub can start runs 5-30 minutes late.
