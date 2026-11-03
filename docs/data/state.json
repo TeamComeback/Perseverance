@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 52.81,
+  "cash": 32.81,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -3706,6 +3706,290 @@
       }
      ]
     }
+   },
+   {
+    "id": "132d899b",
+    "placed": "2026-11-03T00:04:47Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "fdf913d713fd5851d418c59872bdf265",
+      "sport": "basketball_nba",
+      "commence": "2026-11-03T00:40:00Z",
+      "home": "Charlotte Hornets",
+      "away": "Detroit Pistons",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Ausar Thompson Under",
+      "side": "Under",
+      "player": "Ausar Thompson",
+      "player_id": "4684742",
+      "stat": "pra",
+      "espn_id": "401909908",
+      "point": 21.5,
+      "price": 1.83,
+      "book": "draftkings",
+      "fair_p": 0.5162,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 18.2,
+       "base": 18.99,
+       "minutes": 26.3,
+       "mult": 0.958,
+       "sd": 4.59,
+       "p_model": 0.7636,
+       "p_mkt": 0.5162,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.937,
+         "txt": "CHA gives shooting guards -6% pts+reb+ast vs their norm (#3 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.942,
+         "txt": "Players with his profile: -6% pts+reb+ast vs CHA (68 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.029,
+         "txt": "His history vs CHA: 20.8 pts+reb+ast/g in 4 games (+3%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "CHA: defense #14, pace #27 \u00b7 DET: offense #12, pace #18"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.83,
+    "stake": 5.0,
+    "ev": 0.1258,
+    "p": 0.6152,
+    "note": "Proj 18.2 vs line 21.5 (norm 19.0, 26 min). Model 76% vs market 52%. CHA gives shooting guards -6% pts+reb+ast vs their norm (#3 toughest of 30) \u00b7 Players with his profile: -6% pts+reb+ast vs CHA (68 close comps) \u00b7 His history vs CHA: 20.8 pts+reb+ast/g in 4 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "640446dd",
+    "placed": "2026-11-03T00:04:47Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "fdf913d713fd5851d418c59872bdf265",
+      "sport": "basketball_nba",
+      "commence": "2026-11-03T00:40:00Z",
+      "home": "Charlotte Hornets",
+      "away": "Detroit Pistons",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Grayson Allen Over",
+      "side": "Over",
+      "player": "Grayson Allen",
+      "player_id": "3135045",
+      "stat": "pra",
+      "espn_id": "401909908",
+      "point": 17.5,
+      "price": 1.95,
+      "book": "espnbet",
+      "fair_p": 0.4872,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 21.44,
+       "base": 22.15,
+       "minutes": 27.4,
+       "mult": 0.968,
+       "sd": 6.09,
+       "p_model": 0.6927,
+       "p_mkt": 0.4872,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.921,
+         "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.97,
+         "txt": "Players with his profile: -3% pts+reb+ast vs DET (128 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "His history vs DET: 28.7 pts+reb+ast/g in 3 games (+0%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "DET: defense #2, pace #18 \u00b7 CHA: offense #15, pace #27"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.95,
+    "stake": 5.0,
+    "ev": 0.1103,
+    "p": 0.5694,
+    "note": "Proj 21.4 vs line 17.5 (norm 22.1, 27 min). Model 69% vs market 49%. DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -3% pts+reb+ast vs DET (128 close comps) \u00b7 His history vs DET: 28.7 pts+reb+ast/g in 3 games (+0%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "3368e33d",
+    "placed": "2026-11-03T00:04:47Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "fdf913d713fd5851d418c59872bdf265",
+      "sport": "basketball_nba",
+      "commence": "2026-11-03T00:40:00Z",
+      "home": "Charlotte Hornets",
+      "away": "Detroit Pistons",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Naz Reid Under",
+      "side": "Under",
+      "player": "Naz Reid",
+      "player_id": "4396971",
+      "stat": "pra",
+      "espn_id": "401909908",
+      "point": 26.5,
+      "price": 1.88,
+      "book": "fanduel",
+      "fair_p": 0.5101,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 23.75,
+       "base": 24.74,
+       "minutes": 29.5,
+       "mult": 0.96,
+       "sd": 5.22,
+       "p_model": 0.7044,
+       "p_mkt": 0.5101,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.914,
+         "txt": "DET gives centers -9% pts+reb+ast vs their norm (#2 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.985,
+         "txt": "Players with his profile: -2% pts+reb+ast vs DET (48 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.999,
+         "txt": "His history vs DET: 18.0 pts+reb+ast/g in 3 games (-0%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "DET: defense #2, pace #18 \u00b7 CHA: offense #15, pace #27"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.88,
+    "stake": 5.0,
+    "ev": 0.1052,
+    "p": 0.5879,
+    "note": "Proj 23.8 vs line 26.5 (norm 24.7, 30 min). Model 70% vs market 51%. DET gives centers -9% pts+reb+ast vs their norm (#2 toughest of 30) \u00b7 Players with his profile: -2% pts+reb+ast vs DET (48 close comps) \u00b7 His history vs DET: 18.0 pts+reb+ast/g in 3 games (-0%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "f6949a6d",
+    "placed": "2026-11-03T00:04:47Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "fdf913d713fd5851d418c59872bdf265",
+      "sport": "basketball_nba",
+      "commence": "2026-11-03T00:40:00Z",
+      "home": "Charlotte Hornets",
+      "away": "Detroit Pistons",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Cade Cunningham Under",
+      "side": "Under",
+      "player": "Cade Cunningham",
+      "player_id": "4432166",
+      "stat": "pra",
+      "espn_id": "401909908",
+      "point": 39.5,
+      "price": 1.83,
+      "book": "draftkings",
+      "fair_p": 0.5181,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 35.53,
+       "base": 34.77,
+       "minutes": 33.2,
+       "mult": 1.022,
+       "sd": 7.52,
+       "p_model": 0.7118,
+       "p_mkt": 0.5181,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.997,
+         "txt": "CHA gives point guards -0% pts+reb+ast vs their norm (#10 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.017,
+         "txt": "Players with his profile: +2% pts+reb+ast vs CHA (146 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.02,
+         "txt": "His history vs CHA: 39.0 pts+reb+ast/g in 4 games (+2%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "CHA: defense #14, pace #27 \u00b7 DET: offense #12, pace #18"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.83,
+    "stake": 5.0,
+    "ev": 0.0899,
+    "p": 0.5956,
+    "note": "Proj 35.5 vs line 39.5 (norm 34.8, 33 min). Model 71% vs market 52%. CHA gives point guards -0% pts+reb+ast vs their norm (#10 toughest of 30) \u00b7 Players with his profile: +2% pts+reb+ast vs CHA (146 close comps) \u00b7 His history vs CHA: 39.0 pts+reb+ast/g in 4 games (+2%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -4440,6 +4724,11 @@
    "ts": "2026-11-02T23:04:52Z",
    "kind": "scan",
    "text": "Scanned soccer_uefa_champs_league (9) for 2 credits. Nothing cleared the bar. Equity $52.81."
+  },
+  {
+   "ts": "2026-11-03T00:04:47Z",
+   "kind": "props",
+   "text": "NBA matchups: 14 games, strongest spots: Sion James ra -11% vs DET; Wendell Carter Jr. ra +12% vs WSH; Wendell Carter Jr. pra +12% vs WSH. Bought prop odds for DET@CHA (ra, ast, pra, team totals), UTAH@SA (ast, ra) (6 credits). Placed 4: Ausar Thompson Under 21.5 @ -120 (DraftKings); Grayson Allen Over 17.5 @ -105 (theScore Bet); Naz Reid Under 26.5 @ -114 (FanDuel); Cade Cunningham Under 39.5 @ -120 (DraftKings)"
   }
  ],
  "learned_ids": [
@@ -4469,7 +4758,7 @@
   "1e738d80"
  ],
  "strategist": null,
- "updated": "2026-11-02T23:04:52Z",
+ "updated": "2026-11-03T00:04:47Z",
  "stats": {
   "bets": 24,
   "won": 6,
@@ -4482,7 +4771,7 @@
   "clv_n": 15,
   "clv_no_close": 9,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 4,
   "equity": 52.81
  },
  "weights": {
