@@ -1359,24 +1359,56 @@ async function fillClv() {
 }
 function renderBets() {
   const {state, manual, bd} = D;
-  const open = state.book.bets.filter(b => b.status === "open").reverse();
-  const done = state.book.bets.filter(b => b.status !== "open").reverse();
-  const mb = manual.book.bets.slice().reverse();
-  $("v-bets").innerHTML = raceHtml() +
-    sec("b-open", "Agent's open bets", open.length ? open.length + " · " + money(open.reduce((s, b) => s + b.stake, 0)) + " riding" : "none",
-      open.map(betRow).join("") || '<div class="empty">Nothing riding right now.</div>', true) +
-    sec("b-res", "Agent's results", done.length + " settled",
-      `<div class="desc" style="margin-bottom:6px">Each result has a post-mortem; tap "Game story" for the quarter-by-quarter breakdown, runs, momentum swings, the closing stretch and key players.</div>` +
-      (done.slice(0, 50).map(betRow).join("") || '<div class="empty">No results yet.</div>')) +
+  $("v-bets").innerHTML =
+    `<div class="card" style="padding:10px 12px" id="betList"></div>` +
     sec("b-clv", "Your CLV · did you beat the closing line?", "", '<div class="empty">Loading…</div>', false) +
-    sec("b-you", "Your book", money(manual.stats.equity) + " · " + manual.stats.open + " open · cash " + money(L.book.cash),
-      `<button class="btn" style="border:0;font:inherit;font-weight:700;cursor:pointer" onclick="openLogBet()">+ Log a bet</button>
-       <div class="desc" style="margin:6px 0">Stored in this app on this device. Props and game lines grade themselves from ESPN after the game; custom bets get Won / Lost / Push buttons.</div>` +
-      (mb.map(betRow).join("") || '<div class="empty">No bets yet. Pick one from the board.</div>')) +
+    sec("b-race", "Bankroll race · agent vs you", money(state.stats.equity) + " vs " + money(manual.stats.equity), raceHtml(), false) +
     sec("b-board", "Board · bet it yourself", "", "", false) +
     sec("b-data", "Your data · backup", L.lastExport ? "last backup " + ago(L.lastExport) : "no backup yet", backupHtml(), false) +
     sec("b-log", "Time log", "", "", false);
+  betList();
   board(bd); timeLog(state, manual); fillClv();
+}
+// One list for every bet: filter by who and status, newest or oldest first, grouped by the day it was placed.
+function betList() {
+  const F = D.bf || (D.bf = store.get("bf", {who: "you", status: "all", newest: true}));
+  const save = () => store.set("bf", F);
+  const mine = D.manual.book.bets.map(b => ({b, who: "you"})), agent = D.state.book.bets.map(b => ({b, who: "agent"}));
+  let xs = (F.who === "you" ? mine : F.who === "agent" ? agent : mine.concat(agent))
+    .filter(({b}) => F.status === "all" || (F.status === "open" ? b.status === "open" : b.status !== "open"));
+  xs.sort((x, y) => (x.b.placed || "").localeCompare(y.b.placed || "") * (F.newest ? -1 : 1));
+  const dayKey = ts => new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York"}).format(new Date(ts));
+  const today = dayKey(new Date()), yest = dayKey(new Date(Date.now() - 864e5));
+  const dayName = k => k === today ? "Today" : k === yest ? "Yesterday" : new Date(k + "T12:00:00").toLocaleDateString([], {weekday: "short", month: "short", day: "numeric"});
+  const groups = [];
+  for (const x of xs) { const k = x.b.placed ? dayKey(x.b.placed) : "unknown"; let g = groups[groups.length - 1]; if (!g || g.k !== k) groups.push(g = {k, items: []}); g.items.push(x); }
+  const sum = items => {
+    const settled = items.filter(({b}) => b.status !== "open" && b.profit != null), open = items.filter(({b}) => b.status === "open");
+    const pnl = settled.reduce((t, {b}) => t + b.profit, 0);
+    return {n: items.length, open: open.length, riding: open.reduce((t, {b}) => t + b.stake, 0), pnl, settled: settled.length,
+            w: settled.filter(({b}) => b.status === "won").length, l: settled.filter(({b}) => b.status === "lost").length};
+  };
+  const all = sum(xs);
+  const openDays = D.bfOpen || (D.bfOpen = new Set(groups.slice(0, 2).map(g => g.k)));
+  const seg = (id, opts, cur) => `<div class="seg" id="${id}" style="display:flex;gap:4px">${opts.map(([k, l]) => `<button data-k="${k}" class="${String(cur) === String(k) ? "on" : ""}" style="flex:1">${l}</button>`).join("")}</div>`;
+  $("betList").innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
+      <b style="font-size:15px">Bets</b><button class="btn" style="border:0;font:inherit;font-weight:700;cursor:pointer;margin:0" onclick="openLogBet()">+ Log a bet</button></div>
+    ${seg("bfWho", [["you", "Mine"], ["agent", "Agent"], ["both", "Both"]], F.who)}
+    <div style="display:flex;gap:6px;margin-top:6px">${seg("bfSt", [["all", "All"], ["open", "Open"], ["settled", "Settled"]], F.status)}
+      <button class="btn ghost" id="bfSort" style="margin:0;white-space:nowrap">${F.newest ? "Newest ↓" : "Oldest ↑"}</button></div>
+    <div class="row" style="margin:8px 0 2px"><span><b class="num">${all.n}</b> bets</span>${all.open ? `<span><b class="num">${all.open}</b> open · ${money(all.riding)} riding</span>` : ""}
+      ${all.settled ? `<span>Record <b class="num">${all.w}-${all.l}</b></span><span>P&amp;L <b class="num ${cls(all.pnl)}">${money(all.pnl, true)}</b></span>` : ""}</div>
+    ${groups.length ? groups.map(g => { const t = sum(g.items);
+      return `<details class="sub bday" data-day="${g.k}" ${openDays.has(g.k) ? "open" : ""}><summary><span>${dayName(g.k)}</span><span class="meta">${t.n} bet${t.n > 1 ? "s" : ""}${t.open ? ` · ${t.open} open` : ""}${t.settled ? ` · <span class="${cls(t.pnl)}">${money(t.pnl, true)}</span>` : ""}</span></summary>
+        <div class="sb">${g.items.map(({b, who}) => (F.who === "both" ? `<div class="desc" style="margin:8px 0 -6px;font-size:10px;letter-spacing:.1em;color:${who === "you" ? "var(--gold)" : "var(--mars)"}">${who === "you" ? "YOU" : "AGENT"}</div>` : "") + betRow(b)).join("")}</div></details>`; }).join("")
+      : `<div class="empty">${F.who === "agent" ? "The agent has no bets for this filter." : "No bets for this filter yet. Tap + Log a bet, or Log this bet on any player card."}</div>`}`;
+  const L_ = $("betList");
+  L_.querySelectorAll("#bfWho button").forEach(b => b.onclick = () => { F.who = b.dataset.k; D.bfOpen = null; save(); betList(); liveTick(); });
+  L_.querySelectorAll("#bfSt button").forEach(b => b.onclick = () => { F.status = b.dataset.k; D.bfOpen = null; save(); betList(); liveTick(); });
+  $("bfSort").onclick = () => { F.newest = !F.newest; D.bfOpen = null; save(); betList(); liveTick(); };
+  L_.querySelectorAll("details.bday").forEach(d => d.addEventListener("toggle", () => { const s_ = D.bfOpen || new Set(); d.open ? s_.add(d.dataset.day) : s_.delete(d.dataset.day); D.bfOpen = s_; }));
+  if (typeof bindBetActs === "function") bindBetActs(L_);
 }
 function backupHtml() {
   const n = L.book.bets.length, nS = L.saved.length;
