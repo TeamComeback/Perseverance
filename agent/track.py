@@ -25,11 +25,12 @@ def snapshot(db, day, players):
         for s, v in p["proj"].items():
             if v["base"] < (0.6 if s == "tpm" else 1.5) or s not in (p.get("cv") or {}):
                 continue
-            g["rows"].append([p["pid"], s, 1 if v["mult"] > 1 else -1, v["base"], v["proj"], p["cv"][s][2]])
+            cvs = p["cv"][s]
+            g["rows"].append([p["pid"], s, 1 if v["mult"] > 1 else -1, v["base"], v["proj"], cvs[2], cvs[3] if len(cvs) > 3 else ""])
     day_db = db["pending"].setdefault(day, {})
     for gid, g in games.items():
         day_db[gid] = g
-    db["since"] = db["since"] or day
+    db["since"] = db.get("since") or day
 
 
 def grade(db):
@@ -50,7 +51,9 @@ def grade(db):
                     del db["pending"][day][gid]          # never finished (postponed): drop it
                 continue
             rows = {p[nd.P_ID]: p for p in box["players"]}
-            for pid, s, lean, base, proj, n in g["rows"]:
+            for row in g["rows"]:
+                pid, s, lean, base, proj, n = row[:6]
+                codes = row[6] if len(row) > 6 else ""
                 r = rows.get(pid)
                 if r is None:
                     continue                             # did not play
@@ -62,6 +65,11 @@ def grade(db):
                 a[0] += 1
                 a[1] += 1 if (v - base) * lean > 0 else 0
                 a[2] = round(a[2] + (v - base) * lean, 2)
+                hit = 1 if (v - base) * lean > 0 else 0
+                fa = db.setdefault("factors", {})
+                for c in (["_all"] + [x for x in codes.split(",") if x]):
+                    t = fa.setdefault(c, [0, 0])
+                    t[0] += 1; t[1] += hit
             del db["pending"][day][gid]
             db["graded_games"] += 1
             done += 1

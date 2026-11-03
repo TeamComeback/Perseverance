@@ -24,6 +24,7 @@ from . import rotowire
 from . import conviction as cvm
 
 ALL_STATS = ("ra", "ast", "tpm", "pra", "pts", "reb")
+TUNE = {}            # learned corrections (tuning.json), loaded each context build
 MIN_MINUTES = 10
 OUT_WORDS = ("out", "ofs", "susp", "doubtful", "inactive")
 
@@ -78,6 +79,7 @@ def context(log=print, refresh=True):
     day, games = pick_date()
     cur = nd.season_of(day)
     model = nm.Model(cur)
+    TUNE.clear(); TUNE.update(store.load("tuning.json", {}))
     inj = nd.injuries()
     try:
         from . import injury_report
@@ -125,6 +127,10 @@ def context(log=print, refresh=True):
                 proj = {}
                 for s in ALL_STATS:
                     pr = model.project(pid, s, opp, home, W, mins=mins if mins > 0 else None)
+                    fs = (TUNE.get("stat_factor") or {}).get(s)
+                    if fs and abs(fs - 1) >= 0.005:          # learned level correction (keeps the matchup lean)
+                        pr["proj"] = round(pr["proj"] * fs, 2); pr["base"] = round(pr["base"] * fs, 2)
+                        pr["var"] = (pr.get("var") or 0) * fs * fs
                     proj[s] = pr
                 entries.append({"pid": pid, "name": pl["name"], "team": team, "opp": opp, "home": home, "game": g["espn_id"],
                                 "start": g["start"], "state": g["state"], "role": pl["role"], "minutes": round(mins, 1),
@@ -314,6 +320,9 @@ def minutes_model(model, games, inj, rw, flags):
             if (f.get("spread") or 0) >= 10 and srate > 0.5:
                 cut = min(3.0, ((f.get("spread") or 0) - 8) * 0.3)
                 m -= cut; why.append(f"-{cut:.1f} min blowout risk")
+            md = (TUNE.get("min_delta") or {}).get("starter" if srate > 0.5 or (r_ and r_.get("starter")) else "bench", 0)
+            if abs(md) >= 0.3:
+                m += md; why.append(f"{md:+.1f} min learned correction")
             out[pid] = [max(0.0, min(42.0, m)), why]
     return out
 
@@ -402,9 +411,9 @@ def build_players(ctx):
               "starter": (e["rw"] or {}).get("starter"), "bump": bumps.get(pid, {})}
         cv = {}
         for s_, pr in e["proj"].items():
-            pts, why = cvm.base(pr, s_, fl)
+            pts, why, codes = cvm.base(pr, s_, fl, TUNE.get("factor_w"))
             n, _ = cvm.final(pts, why)
-            cv[s_] = [pts, " · ".join(why), n]
+            cv[s_] = [pts, " · ".join(why), n, ",".join(codes)]
         out[pid]["cv"] = cv
         out[pid]["flags"] = {k: fl.get(k) for k in ("b2b", "three_in_four", "spread", "vegas_diff", "rest_days")}
     ctx["cv"] = {pid: v["cv"] for pid, v in out.items()}
@@ -654,6 +663,7 @@ def _index_row(p):
             "proj": {s: [v["proj"], v["base"], v["mult"], v.get("sd")] for s, v in p["proj"].items()},
             "dvp": {s: v[1] for s, v in p["dvp"].items()},
             "cv": {s: v[:2] for s, v in (p.get("cv") or {}).items()},
+            "st": 1 if (p["rw"] or {}).get("starter") else 0,
             "b2b": (p.get("flags") or {}).get("b2b") or None}
 
 
@@ -665,6 +675,7 @@ def write_all(ctx, log=print):
     # light index for lists, one detail file per game for player cards (keeps phone downloads small)
     store.save("players.json", {**stamp, "games": cards, "players": {k: _index_row(v) for k, v in players.items()},
                                 "opps": ctx.get("opps", [])[:40], "injury_report": ctx.get("inj_report"),
+                                "tuning": {k: TUNE.get(k) for k in ("sim_anchor", "stat_factor", "min_delta", "factor_w", "updated")},
                                 "stat_names": {s: nm.STATS[s] for s in ALL_STATS}}, compact=True)
     gdir = config.DATA / "games"
     gdir.mkdir(parents=True, exist_ok=True)

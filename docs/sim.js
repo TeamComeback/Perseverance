@@ -65,7 +65,8 @@ function prep(g, gf) {
     // (player shares still come from the projections)
     const imp = g.vegas && g.vegas.implied && g.vegas.implied[side];
     const sumPts = rows.reduce((t, r) => t + r.tgt.pts, 0);
-    if (imp && sumPts > 0) { const f = clamp(Math.pow(imp / sumPts, 0.75), 0.85, 1.15); rows.forEach(r => r.tgt.pts *= f); }
+    const ak = (typeof D !== "undefined" && D.players && D.players.tuning && D.players.tuning.sim_anchor) || 0.75;   // learned nightly
+    if (imp && sumPts > 0) { const f = clamp(Math.pow(imp / sumPts, ak), 0.8, 1.2); rows.forEach(r => r.tgt.pts *= f); }
     P.teams[side] = {ab, name: g[side + "_name"] || ab, players: rows, eff: 1};
   }
   return P;

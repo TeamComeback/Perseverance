@@ -772,7 +772,7 @@ function rating(x) {
     if (x.ev >= 0.05) { pts++; why.push("priced edge"); } else if (!(x.ev > 0)) { pts--; why.push("no edge at this price"); }
     if (x.open != null && x.open !== x.line) { const tw = (x.line > x.open) === (x.mult > 1); pts += tw ? 1 : -1; why.push(tw ? "line moving his way" : "line moving against him"); }
   }
-  return {n: Math.max(1, Math.min(5, pts)), why};
+  return {n: Math.max(1, Math.min(5, Math.round(pts))), why};
 }
 const dots = n => "●".repeat(n) + "○".repeat(5 - n);
 const fresh = r => r.state !== "post" && new Date(r.start) > Date.now() - 3 * 3600e3;
@@ -1526,6 +1526,19 @@ function bindDvp() {
 }
 
 // ===================================================== AGENT
+async function fillLearn() {
+  if (!D.tuning) D.tuning = await get("tuning.json", {});
+  const T = D.tuning, el = $("b-a-learn"); if (!el) return;
+  const sf = T.stat_factor || {}, md = T.min_delta || {}, fw = T.factor_w || {}, hist = (T.history || []).slice().reverse();
+  const FN = {agree: "Signals agree", minutes: "Secure minutes", inj: "Injury tag", rest: "Rest (B2B, 3-in-4)", blowout: "Blowout risk", vegas: "Vegas team total", bump: "Usage bump"};
+  const chip = (l, v) => `<div class="param"><div class="label">${l}</div><div class="v">${v}</div></div>`;
+  el.innerHTML = `<div class="desc">Every night, after grading, the agent reads its own results and adjusts what it controls, in small steps with a minimum sample and hard limits. The next research run, projections and sims use the new settings.</div>
+    <div class="lbl">Projection level by stat</div><div class="params">${["pts", "reb", "ast", "tpm", "pra", "ra"].map(k => chip(STATN[k], "×" + (sf[k] || 1).toFixed(3))).join("")}</div>
+    <div class="lbl">Minutes correction</div><div class="params">${chip("Starters", (md.starter > 0 ? "+" : "") + (md.starter || 0).toFixed(1))}${chip("Bench", (md.bench > 0 ? "+" : "") + (md.bench || 0).toFixed(1))}${chip("Sim Vegas anchor", (T.sim_anchor || 0.75).toFixed(2))}${chip("Model vs market", pl(D.state.params.prop_model_weight ?? 0.4, 0))}</div>
+    <div class="lbl">Conviction factor weights</div><div class="params">${Object.keys(FN).map(k => chip(FN[k], "×" + (fw[k] ?? 1).toFixed(2))).join("")}</div>
+    <div class="lbl">Changes</div>${hist.length ? `<div class="log">${hist.slice(0, 15).map(h => `<div><time>${when(h.ts)}</time>${h.changes.map(esc).join("<br>")}</div>`).join("")}</div>`
+      : '<div class="empty">No changes yet. Each correction needs enough graded games first (about a week or two of slates), so early nights change nothing on purpose.</div>'}`;
+}
 function renderAgent() {
   const {state, manual, budget} = D;
   const p = state.params;
@@ -1546,6 +1559,7 @@ function renderAgent() {
     ["espnbet", "formerly ESPN Bet"], ["hardrockbet"], ["kalshi", "exchange · prices net of fees · NY is suing Kalshi over sports contracts"],
     ["polymarket_us", "exchange · prices net of fees · Polymarket US blocks NY residents"]];
   $("v-agent").innerHTML =
+    sec("a-learn", "What the agent has learned", "", '<div class="empty">Loading…</div>', true) +
     sec("a-brain", "Brain", "live strategy", `<div class="params">${items.map(([k, v]) => `<div class="param"><div class="label">${k}</div><div class="v">${v}</div></div>`).join("")}</div>${strat}`, true) +
     sec("a-journal", "Journal", state.journal.length + " entries", "", false) +
     sec("a-arms", "Playbooks", "what it leans on", armsH, false) +
@@ -1560,6 +1574,7 @@ function renderAgent() {
       runs.map(r => `<div class="bet"><div class="what"><span class="pill ${r.result === "won" ? "won" : "lost"}">${r.result.toUpperCase()}</span>${r.you ? "You" : "Agent"} · run #${r.run}</div>
         <div class="amt">${money(r.final)}</div><div class="sub">peak ${money(r.peak)} · ${r.bets} bets · ${when(r.started)} → ${when(r.ended)}</div></div>`).join("") || '<div class="empty">Every run ends at $1,000 or broke. None have finished yet.</div>', false);
   journal(state);
+  fillLearn();
 }
 function journal(state) {
   const kinds = ["all", "adapt", "scan", "props", "research", "result", "race", "daily", "error"];

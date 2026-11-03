@@ -105,6 +105,18 @@ How it works: each possession picks the shooter by usage, the shot type, make or
 - **Minutes model**: tonight's minutes start from recent minutes, then adjust for teammates who are newly out (from each player's with/without history, capped at what the missing players actually played), a change in starting role (RotoWire lineups), back-to-backs and blowout risk. The reasons show on each player card. Projections and the sim both use these minutes.
 - **Nightly sims**: after every research and props run, `tools/sim_all.js` simulates every upcoming game 10,000 times with the dashboard's own engine and saves the averages and ranges (`sims.json`, shown instantly in the Sim tab). The next morning each game is graded against the real box score (`sims_log.json`): total, margin and winner against Vegas, and every player's minutes and stats against both the sim and the projection alone.
 
+## The learning loop (nightly, after grading)
+
+The agent stores every graded result and reads it back each night to refine itself (`agent/learn.py`, saved in `docs/data/tuning.json`, shown in Agent → What the agent has learned):
+
+- **Projection level by stat**: if points (or any stat) projections run high or low against real box scores over the last 30 days, the level is nudged the other way.
+- **Minutes**: separate corrections for starters and bench players.
+- **Sim anchoring**: if Vegas totals beat the sim's totals, the sim leans harder on the Vegas team total (and less if the sim is doing better).
+- **Conviction factors**: each factor (signals agree, secure minutes, rest, blowout, Vegas, usage bump, injury tag) is re-weighted by how much it actually changed the hit rate in the conviction track record.
+- **Model vs market blend**: tuned from the scoreboard.
+
+Every change needs a minimum sample, moves in small steps, stays inside hard limits, and is written to the journal with the numbers behind it. A permanent monthly archive of every graded sim and line goes to `data/archive/`.
+
 ## Credit budget (free tier: 500/month)
 
 - Listing sports and games is free. Odds cost 1 credit per market (2 or 3 per sport). Scores cost 2 per sport. Props cost 1 per stat per game, team totals 1 per game.

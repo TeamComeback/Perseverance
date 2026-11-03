@@ -15,36 +15,48 @@ SCORING = {"pts", "pra", "ast", "tpm"}
 STATNAME = {"pts": "points", "reb": "rebounds", "ast": "assists", "tpm": "threes", "pra": "PRA", "ra": "R+A"}
 
 
-def base(pr, stat, f):
-    """pr: model projection (mult, signals); f: flags. Returns (points, reasons) before price and line movement."""
+# Factors the agent re-weights from its own track record (learn.py). 1.0 = as designed, 0 = ignored, up to 2.
+FACTORS = ("agree", "minutes", "inj", "rest", "blowout", "vegas", "bump")
+
+
+def base(pr, stat, f, W=None):
+    """pr: model projection (mult, signals); f: flags; W: learned factor weights.
+    Returns (points, reasons, codes) before price and line movement. codes are 'factor:+1' / 'factor:-1'."""
     import math
+    W = W or {}
+    w = lambda k: W.get(k, 1.0)
     st = abs(math.log(pr["mult"])) if pr.get("mult") else 0.0
     up = pr["mult"] > 1
     pts = 3 if st >= 0.08 else 2 if st >= 0.055 else 1 if st >= 0.035 else 0
     why = ["big matchup effect" if st >= 0.055 else "moderate matchup" if st >= 0.035 else "small matchup effect"]
+    codes = []
+
+    def add(code, sign, text):
+        nonlocal pts
+        pts += sign * w(code)
+        codes.append(f"{code}:{sign:+d}")
+        why.append(text)
     sig = [g for g in pr.get("signals", []) if g.get("v") is not None and g["k"] in ("dvp", "sim", "h2h")
            and (g["k"] != "h2h" or (g.get("n") or 0) >= 2)]
     if len(sig) >= 2 and all(abs(g["v"] - 1) >= 0.02 and (g["v"] > 1) == up for g in sig):
-        pts += 1; why.append("signals agree")
+        add("agree", 1, "signals agree")
     stt = (f.get("status") or "").lower()
-    if any(w in stt for w in ("quest", "gtd", "doubt", "day-to-day", "day to day")):
-        pts -= 1; why.append("injury tag")
+    if any(x in stt for x in ("quest", "gtd", "doubt", "day-to-day", "day to day")):
+        add("inj", -1, "injury tag")
     elif f.get("starter") or (f.get("minutes") or 0) >= 26:
-        pts += 1; why.append("secure minutes")
+        add("minutes", 1, "secure minutes")
     if up and (f.get("b2b") or f.get("three_in_four")):
-        pts -= 1; why.append("back-to-back" if f.get("b2b") else "3rd game in 4 nights")
+        add("rest", -1, "back-to-back" if f.get("b2b") else "3rd game in 4 nights")
     if up and (f.get("spread") or 0) >= 11 and (f.get("starter") or (f.get("minutes") or 0) >= 26):
-        pts -= 1; why.append(f"blowout risk ({f['spread']:g}-pt spread)")
+        add("blowout", -1, f"blowout risk ({f['spread']:g}-pt spread)")
     vd = f.get("vegas_diff")
     if vd is not None and stat in SCORING and abs(vd) >= 3:
         agree = (vd > 0) == up
-        pts += 1 if agree else -1
-        why.append(("" if agree else "against: ") + f"Vegas team total {vd:+.0f} vs model")
+        add("vegas", 1 if agree else -1, ("" if agree else "against: ") + f"Vegas team total {vd:+.0f} vs model")
     bump = (f.get("bump") or {}).get(stat)
     if bump and bump["delta"] >= 0.12:
-        pts += 1 if up else -1
-        why.append(("" if up else "against: ") + f"+{bump['delta'] * 100:.0f}% without {bump['out']}")
-    return pts, why
+        add("bump", 1 if up else -1, ("" if up else "against: ") + f"+{bump['delta'] * 100:.0f}% without {bump['out']}")
+    return round(pts, 2), why, codes
 
 
 def final(pts, why, ev=None, open_line=None, line=None, lean_over=True):
@@ -58,4 +70,4 @@ def final(pts, why, ev=None, open_line=None, line=None, lean_over=True):
         toward = (line > open_line) == lean_over
         pts += 1 if toward else -1
         why.append("line moving his way" if toward else "line moving against him")
-    return max(1, min(5, pts)), why
+    return max(1, min(5, int(round(pts)))), why

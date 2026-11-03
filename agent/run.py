@@ -348,6 +348,11 @@ def nightly():
         scoreboard.retune(state, sb, brain.note)
     except Exception as e:
         brain.note(state, "error", f"Model vs market scoreboard failed: {e}")
+    try:
+        from . import learn
+        learn.run(state, brain.note)
+    except Exception as e:
+        brain.note(state, "error", f"Learning loop failed: {e}")
     brain.strategist(state)
     s = bk.record_stats(state["book"])
     brain.note(state, "daily", f"Day close — equity ${s['equity']:.2f} (run #{state['book']['run']}), "

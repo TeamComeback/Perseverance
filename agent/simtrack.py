@@ -23,6 +23,14 @@ def _add(agg, k, *vals):
         a[i + 1] = round(a[i + 1] + v, 3)
 
 
+def _day(db, day, k, *vals):
+    """Daily sums the learning loop reads (learn.py uses the last 30 days)."""
+    a = db.setdefault("daily", {}).setdefault(day, {}).setdefault(k, [0] + [0.0] * len(vals))
+    a[0] += 1
+    for i, v in enumerate(vals):
+        a[i + 1] = round(a[i + 1] + v, 3)
+
+
 def grade(db):
     cut = store.now() - timedelta(hours=config.GRADE_AFTER_H)
     done = 0
@@ -52,6 +60,7 @@ def grade(db):
                 _add(agg, "winner", 1.0 if (g["win_home"] >= 0.5) == (ah > aa) else 0.0)
                 if v.get("total") is not None:
                     _add(agg, "total_vegas", abs(v["total"] - (ah + aa)))
+                    _day(db, day, "totals", abs((ph + pa) - (ah + aa)), abs(v["total"] - (ah + aa)))
                 if v.get("spread_home") is not None:
                     _add(agg, "margin_vegas", abs(-v["spread_home"] - (ah - aa)))
                     _add(agg, "winner_vegas", 1.0 if (v["spread_home"] < 0) == (ah > aa) else 0.0)
@@ -61,12 +70,14 @@ def grade(db):
                 if r is None:
                     continue                                   # didn't play
                 _add(agg, "min", abs(x["min"] - r[nd.P_MIN]), x["min"] - r[nd.P_MIN])
+                _day(db, day, "min_" + ("starter" if x.get("st") else "bench"), x["min"], r[nd.P_MIN])
                 for s in STATS:
                     act = nm._val(r, s)
                     _add(agg, s, abs(x[s] - act), x[s] - act)
                     pj = (x.get("proj") or {}).get(s)
                     if pj is not None:
-                        _add(agg, s + "_proj", abs(pj - act))
+                        _add(agg, s + "_proj", abs(pj - act), pj - act)
+                        _day(db, day, "proj_" + s, pj, act)
                     if s == "pra":
                         rec["misses"].append([r[nd.P_NAME], x[s], act, x["min"], r[nd.P_MIN]])
             rec["misses"] = sorted(rec["misses"], key=lambda m: -abs(m[1] - m[2]))[:5]
@@ -77,4 +88,6 @@ def grade(db):
             del db["pending"][day]
     keep = sorted(db["graded"])[-KEEP_DAYS:]
     db["graded"] = {d: db["graded"][d] for d in keep}
+    dk = sorted(db.get("daily", {}))[-60:]
+    db["daily"] = {d: db["daily"][d] for d in dk}
     return done
