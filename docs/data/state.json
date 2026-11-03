@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 32.81,
+  "cash": 42.21,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -3732,7 +3732,7 @@
       "book": "draftkings",
       "fair_p": 0.5162,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 18.2,
        "base": 18.99,
@@ -3763,6 +3763,22 @@
          "txt": "CHA: defense #14, pace #27 \u00b7 DET: offense #12, pace #18"
         }
        ]
+      },
+      "final": {
+       "home": 91.0,
+       "away": 124.0
+      },
+      "actual": 24.0,
+      "box": {
+       "min": 26.0,
+       "pts": 14.0,
+       "reb": 6.0,
+       "ast": 4.0,
+       "tpm": 0.0,
+       "tpa": 0.0,
+       "fga": 7.0,
+       "fta": 5.0,
+       "tov": 2.0
       }
      }
     ],
@@ -3773,10 +3789,204 @@
     "note": "Proj 18.2 vs line 21.5 (norm 19.0, 26 min). Model 76% vs market 52%. CHA gives shooting guards -6% pts+reb+ast vs their norm (#3 toughest of 30) \u00b7 Players with his profile: -6% pts+reb+ast vs CHA (68 close comps) \u00b7 His history vs CHA: 20.8 pts+reb+ast/g in 4 games (+3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-03T17:00:08Z",
+    "review": {
+     "headline": "LOST: 24 pts+reb+ast vs Under 21.5",
+     "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+     "legs": [
+      {
+       "outcome": "Ausar Thompson Under",
+       "result": "loss",
+       "headline": "24 pts+reb+ast vs Under 21.5",
+       "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+       "why": [
+        "Ausar Thompson finished with 24 pts+reb+ast against a line of 21.5: under missed by 2.5.",
+        "Minutes: played 26 vs 26.3 projected.",
+        "Game was a 33-point blowout, but his minutes held up.",
+        "Box score: 14 pts on 7 FGA / 5 FTA \u00b7 6 reb \u00b7 4 ast, 2 TO.",
+        "Model projected 18.2 (19 norm \u00d7 0.96 matchup); actual was +5.8 off (+1.3 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (18.8) in a matchup the model rated tough.",
+        "Signal: CHA gives shooting guards -6% pts+reb+ast vs their norm (#3 toughest of 30)",
+        "Signal: Players with his profile: -6% pts+reb+ast vs CHA (68 close comps)",
+        "Signal: His history vs CHA: 20.8 pts+reb+ast/g in 4 games (+3%)",
+        "We priced it at 62% to hit vs 55% needed to break even at 1.83x (+12.6% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-wrong",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CHA",
+        "away": "DET"
+       },
+       "final": "DET 124 \u2013 CHA 91",
+       "periods": {
+        "away": [
+         27,
+         38,
+         33,
+         26
+        ],
+        "home": [
+         24,
+         30,
+         21,
+         16
+        ]
+       },
+       "largest_lead": {
+        "DET": 33,
+        "CHA": 3
+       },
+       "largest_lead_at": {
+        "DET": "5:00 4th Q",
+        "CHA": "11:39 1st Q"
+       },
+       "lead_changes": 7,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 19,
+         "from": "4:39 3rd Q",
+         "to": "1:09 3rd Q",
+         "score": "DET 98-75 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5:30 1st Q",
+         "to": "3:03 1st Q",
+         "score": "DET 15-17 CHA"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "2:50 1st Q",
+         "to": "1:27 1st Q",
+         "score": "DET 23-17 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5.8 1st Q",
+         "to": "9:54 2nd Q",
+         "score": "DET 27-30 CHA"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 22,
+         "from": "4:58 3rd Q",
+         "to": "9:16 4th Q",
+         "mins": 7.7,
+         "from_score": "DET 79-75 CHA",
+         "to_score": "DET 103-77 CHA",
+         "pts_for": 24,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cade Cunningham (DET): 33 pts, 5 reb, 7 ast, 4-7 3PT in 27 min",
+        "Duncan Robinson (DET): 24 pts, 2 reb, 3 ast, 6-9 3PT in 32 min",
+        "Brandon Miller (CHA): 17 pts, 1 reb, 4 ast, 3-11 3PT in 31 min",
+        "Naz Reid (CHA): 13 pts, 6 reb, 2 ast, 2-6 3PT in 27 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 7,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 4,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "4684742",
+         "name": "Ausar Thompson",
+         "team": "DET",
+         "min": "26",
+         "pts": 14,
+         "reb": 6,
+         "ast": 4,
+         "3pt": "0-0",
+         "fg": "5-7",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 65-54 CHA, DET up 11.",
+        "The 3rd quarter decided the most: DET won it 33-21.",
+        "Largest leads: DET 33 (5:00 4th Q), CHA 3 (11:39 1st Q). 7 lead changes, 5 ties.",
+        "Momentum swing: DET outscored them 24-2 in 7.7 minutes (4:58 3rd Q to 9:16 4th Q), moving it from DET 79-75 CHA to DET 103-77 CHA.",
+        "DET went on a 19-0 run (4:39 3rd Q to 1:09 3rd Q), making it DET 98-75 CHA.",
+        "CHA went on a 8-0 run (5:30 1st Q to 3:03 1st Q), making it DET 15-17 CHA.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Ausar Thompson by period (PTS+REB+AST): Q1 6, Q2 10, Q3 2, Q4 6.",
+        "He went over 21.5 in Q4."
+       ],
+       "espn_id": "401909908",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909908"
+      }
+     ]
+    }
    },
    {
     "id": "640446dd",
@@ -3803,7 +4013,7 @@
       "book": "espnbet",
       "fair_p": 0.4872,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 21.44,
        "base": 22.15,
@@ -3834,6 +4044,22 @@
          "txt": "DET: defense #2, pace #18 \u00b7 CHA: offense #15, pace #27"
         }
        ]
+      },
+      "final": {
+       "home": 91.0,
+       "away": 124.0
+      },
+      "actual": 12.0,
+      "box": {
+       "min": 19.0,
+       "pts": 11.0,
+       "reb": 1.0,
+       "ast": 0.0,
+       "tpm": 3.0,
+       "tpa": 7.0,
+       "fga": 7.0,
+       "fta": 2.0,
+       "tov": 2.0
       }
      }
     ],
@@ -3844,10 +4070,209 @@
     "note": "Proj 21.4 vs line 17.5 (norm 22.1, 27 min). Model 69% vs market 49%. DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -3% pts+reb+ast vs DET (128 close comps) \u00b7 His history vs DET: 28.7 pts+reb+ast/g in 3 games (+0%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-03T17:00:08Z",
+    "review": {
+     "headline": "LOST: 12 pts+reb+ast vs Over 17.5",
+     "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+     "legs": [
+      {
+       "outcome": "Grayson Allen Over",
+       "result": "loss",
+       "headline": "12 pts+reb+ast vs Over 17.5",
+       "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+       "why": [
+        "Grayson Allen finished with 12 pts+reb+ast against a line of 17.5: over missed by 5.5.",
+        "Minutes: played 19 vs 27.4 projected.",
+        "Game was a 33-point blowout, which cuts starters' minutes.",
+        "Box score: 11 pts on 7 FGA / 2 FTA \u00b7 1 reb \u00b7 0 ast, 2 TO.",
+        "Model projected 21.4 (22.1 norm \u00d7 0.97 matchup); actual was -9.4 off (-1.6 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (15.4) in a matchup the model rated tough.",
+        "Signal: DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)",
+        "Signal: Players with his profile: -3% pts+reb+ast vs DET (128 close comps)",
+        "Signal: His history vs DET: 28.7 pts+reb+ast/g in 3 games (+0%)",
+        "We priced it at 57% to hit vs 51% needed to break even at 1.95x (+11.0% expected edge).",
+        "Consensus fair probability when placed: 49% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-short",
+        "blowout",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "minutes-short"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CHA",
+        "away": "DET"
+       },
+       "final": "DET 124 \u2013 CHA 91",
+       "periods": {
+        "away": [
+         27,
+         38,
+         33,
+         26
+        ],
+        "home": [
+         24,
+         30,
+         21,
+         16
+        ]
+       },
+       "largest_lead": {
+        "DET": 33,
+        "CHA": 3
+       },
+       "largest_lead_at": {
+        "DET": "5:00 4th Q",
+        "CHA": "11:39 1st Q"
+       },
+       "lead_changes": 7,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 19,
+         "from": "4:39 3rd Q",
+         "to": "1:09 3rd Q",
+         "score": "DET 98-75 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5:30 1st Q",
+         "to": "3:03 1st Q",
+         "score": "DET 15-17 CHA"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "2:50 1st Q",
+         "to": "1:27 1st Q",
+         "score": "DET 23-17 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5.8 1st Q",
+         "to": "9:54 2nd Q",
+         "score": "DET 27-30 CHA"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 22,
+         "from": "4:58 3rd Q",
+         "to": "9:16 4th Q",
+         "mins": 7.7,
+         "from_score": "DET 79-75 CHA",
+         "to_score": "DET 103-77 CHA",
+         "pts_for": 24,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cade Cunningham (DET): 33 pts, 5 reb, 7 ast, 4-7 3PT in 27 min",
+        "Duncan Robinson (DET): 24 pts, 2 reb, 3 ast, 6-9 3PT in 32 min",
+        "Brandon Miller (CHA): 17 pts, 1 reb, 4 ast, 3-11 3PT in 31 min",
+        "Naz Reid (CHA): 13 pts, 6 reb, 2 ast, 2-6 3PT in 27 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 8,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 2,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 3,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "5:30 1st Q",
+         "3:43 1st Q",
+         "1:52 2nd Q"
+        ],
+        "box": {
+         "id": "3135045",
+         "name": "Grayson Allen",
+         "team": "CHA",
+         "min": "19",
+         "pts": 11,
+         "reb": 1,
+         "ast": 0,
+         "3pt": "3-7",
+         "fg": "3-7",
+         "pf": "2",
+         "starter": false
+        }
+       },
+       "story": [
+        "Halftime: DET 65-54 CHA, DET up 11.",
+        "The 3rd quarter decided the most: DET won it 33-21.",
+        "Largest leads: DET 33 (5:00 4th Q), CHA 3 (11:39 1st Q). 7 lead changes, 5 ties.",
+        "Momentum swing: DET outscored them 24-2 in 7.7 minutes (4:58 3rd Q to 9:16 4th Q), moving it from DET 79-75 CHA to DET 103-77 CHA.",
+        "DET went on a 19-0 run (4:39 3rd Q to 1:09 3rd Q), making it DET 98-75 CHA.",
+        "CHA went on a 8-0 run (5:30 1st Q to 3:03 1st Q), making it DET 15-17 CHA.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Grayson Allen by period (PTS+REB+AST): Q1 8, Q2 3, Q3 1, Q4 0.",
+        "He never got past 17.5.",
+        "Threes made at: 5:30 1st Q, 3:43 1st Q, 1:52 2nd Q."
+       ],
+       "espn_id": "401909908",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909908"
+      }
+     ]
+    }
    },
    {
     "id": "3368e33d",
@@ -3874,7 +4299,7 @@
       "book": "fanduel",
       "fair_p": 0.5101,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 23.75,
        "base": 24.74,
@@ -3905,6 +4330,22 @@
          "txt": "DET: defense #2, pace #18 \u00b7 CHA: offense #15, pace #27"
         }
        ]
+      },
+      "final": {
+       "home": 91.0,
+       "away": 124.0
+      },
+      "actual": 21.0,
+      "box": {
+       "min": 27.0,
+       "pts": 13.0,
+       "reb": 6.0,
+       "ast": 2.0,
+       "tpm": 2.0,
+       "tpa": 6.0,
+       "fga": 11.0,
+       "fta": 6.0,
+       "tov": 1.0
       }
      }
     ],
@@ -3915,10 +4356,197 @@
     "note": "Proj 23.8 vs line 26.5 (norm 24.7, 30 min). Model 70% vs market 51%. DET gives centers -9% pts+reb+ast vs their norm (#2 toughest of 30) \u00b7 Players with his profile: -2% pts+reb+ast vs DET (48 close comps) \u00b7 His history vs DET: 18.0 pts+reb+ast/g in 3 games (-0%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.4,
+    "profit": 4.4,
+    "settled": "2026-11-03T17:00:08Z",
+    "review": {
+     "headline": "WON: 21 pts+reb+ast vs Under 26.5",
+     "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+     "legs": [
+      {
+       "outcome": "Naz Reid Under",
+       "result": "win",
+       "headline": "21 pts+reb+ast vs Under 26.5",
+       "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+       "why": [
+        "Naz Reid finished with 21 pts+reb+ast against a line of 26.5: under cleared by 5.5.",
+        "Minutes: played 27 vs 29.5 projected.",
+        "Game was a 33-point blowout, but his minutes held up.",
+        "Box score: 13 pts on 11 FGA / 6 FTA \u00b7 6 reb \u00b7 2 ast, 1 TO.",
+        "Model projected 23.8 (24.7 norm \u00d7 0.96 matchup); actual was -2.8 off (-0.5 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (22.6) in a matchup the model rated tough.",
+        "Signal: DET gives centers -9% pts+reb+ast vs their norm (#2 toughest of 30)",
+        "Signal: Players with his profile: -2% pts+reb+ast vs DET (48 close comps)",
+        "Signal: His history vs DET: 18.0 pts+reb+ast/g in 3 games (-0%)",
+        "We priced it at 59% to hit vs 53% needed to break even at 1.88x (+10.5% expected edge).",
+        "Consensus fair probability when placed: 51% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CHA",
+        "away": "DET"
+       },
+       "final": "DET 124 \u2013 CHA 91",
+       "periods": {
+        "away": [
+         27,
+         38,
+         33,
+         26
+        ],
+        "home": [
+         24,
+         30,
+         21,
+         16
+        ]
+       },
+       "largest_lead": {
+        "DET": 33,
+        "CHA": 3
+       },
+       "largest_lead_at": {
+        "DET": "5:00 4th Q",
+        "CHA": "11:39 1st Q"
+       },
+       "lead_changes": 7,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 19,
+         "from": "4:39 3rd Q",
+         "to": "1:09 3rd Q",
+         "score": "DET 98-75 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5:30 1st Q",
+         "to": "3:03 1st Q",
+         "score": "DET 15-17 CHA"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "2:50 1st Q",
+         "to": "1:27 1st Q",
+         "score": "DET 23-17 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5.8 1st Q",
+         "to": "9:54 2nd Q",
+         "score": "DET 27-30 CHA"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 22,
+         "from": "4:58 3rd Q",
+         "to": "9:16 4th Q",
+         "mins": 7.7,
+         "from_score": "DET 79-75 CHA",
+         "to_score": "DET 103-77 CHA",
+         "pts_for": 24,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cade Cunningham (DET): 33 pts, 5 reb, 7 ast, 4-7 3PT in 27 min",
+        "Duncan Robinson (DET): 24 pts, 2 reb, 3 ast, 6-9 3PT in 32 min",
+        "Brandon Miller (CHA): 17 pts, 1 reb, 4 ast, 3-11 3PT in 31 min",
+        "Naz Reid (CHA): 13 pts, 6 reb, 2 ast, 2-6 3PT in 27 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 5,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 8,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 2,
+          "pf": 1,
+          "fga": 5,
+          "fgm": 3
+         }
+        ],
+        "threes_at": [
+         "6:58 3rd Q",
+         "5:52 3rd Q"
+        ],
+        "box": {
+         "id": "4396971",
+         "name": "Naz Reid",
+         "team": "CHA",
+         "min": "27",
+         "pts": 13,
+         "reb": 6,
+         "ast": 2,
+         "3pt": "2-6",
+         "fg": "4-11",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 65-54 CHA, DET up 11.",
+        "The 3rd quarter decided the most: DET won it 33-21.",
+        "Largest leads: DET 33 (5:00 4th Q), CHA 3 (11:39 1st Q). 7 lead changes, 5 ties.",
+        "Momentum swing: DET outscored them 24-2 in 7.7 minutes (4:58 3rd Q to 9:16 4th Q), moving it from DET 79-75 CHA to DET 103-77 CHA.",
+        "DET went on a 19-0 run (4:39 3rd Q to 1:09 3rd Q), making it DET 98-75 CHA.",
+        "CHA went on a 8-0 run (5:30 1st Q to 3:03 1st Q), making it DET 15-17 CHA.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Naz Reid by period (PTS+REB+AST): Q1 6, Q2 7, Q3 8.",
+        "He never got past 26.5.",
+        "Threes made at: 6:58 3rd Q, 5:52 3rd Q."
+       ],
+       "espn_id": "401909908",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909908"
+      }
+     ]
+    }
    },
    {
     "id": "f6949a6d",
@@ -3945,7 +4573,7 @@
       "book": "draftkings",
       "fair_p": 0.5181,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 35.53,
        "base": 34.77,
@@ -3976,6 +4604,22 @@
          "txt": "CHA: defense #14, pace #27 \u00b7 DET: offense #12, pace #18"
         }
        ]
+      },
+      "final": {
+       "home": 91.0,
+       "away": 124.0
+      },
+      "actual": 45.0,
+      "box": {
+       "min": 27.0,
+       "pts": 33.0,
+       "reb": 5.0,
+       "ast": 7.0,
+       "tpm": 4.0,
+       "tpa": 7.0,
+       "fga": 20.0,
+       "fta": 4.0,
+       "tov": 3.0
       }
      }
     ],
@@ -3986,16 +4630,205 @@
     "note": "Proj 35.5 vs line 39.5 (norm 34.8, 33 min). Model 71% vs market 52%. CHA gives point guards -0% pts+reb+ast vs their norm (#10 toughest of 30) \u00b7 Players with his profile: +2% pts+reb+ast vs CHA (146 close comps) \u00b7 His history vs CHA: 39.0 pts+reb+ast/g in 4 games (+2%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-03T17:00:08Z",
+    "review": {
+     "headline": "LOST: 45 pts+reb+ast vs Under 39.5",
+     "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+     "legs": [
+      {
+       "outcome": "Cade Cunningham Under",
+       "result": "loss",
+       "headline": "45 pts+reb+ast vs Under 39.5",
+       "final": "Detroit Pistons 124 \u2013 Charlotte Hornets 91",
+       "why": [
+        "Cade Cunningham finished with 45 pts+reb+ast against a line of 39.5: under missed by 5.5.",
+        "Minutes: played 27 vs 33.2 projected.",
+        "Game was a 33-point blowout, which cuts starters' minutes.",
+        "Box score: 33 pts on 20 FGA / 4 FTA \u00b7 5 reb \u00b7 7 ast, 3 TO.",
+        "Model projected 35.5 (34.8 norm \u00d7 1.02 matchup); actual was +9.5 off (+1.3 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (28.3) in a matchup the model rated soft.",
+        "Signal: CHA gives point guards -0% pts+reb+ast vs their norm (#10 toughest of 30)",
+        "Signal: Players with his profile: +2% pts+reb+ast vs CHA (146 close comps)",
+        "Signal: His history vs CHA: 39.0 pts+reb+ast/g in 4 games (+2%)",
+        "We priced it at 60% to hit vs 55% needed to break even at 1.83x (+9.0% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CHA",
+        "away": "DET"
+       },
+       "final": "DET 124 \u2013 CHA 91",
+       "periods": {
+        "away": [
+         27,
+         38,
+         33,
+         26
+        ],
+        "home": [
+         24,
+         30,
+         21,
+         16
+        ]
+       },
+       "largest_lead": {
+        "DET": 33,
+        "CHA": 3
+       },
+       "largest_lead_at": {
+        "DET": "5:00 4th Q",
+        "CHA": "11:39 1st Q"
+       },
+       "lead_changes": 7,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 19,
+         "from": "4:39 3rd Q",
+         "to": "1:09 3rd Q",
+         "score": "DET 98-75 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5:30 1st Q",
+         "to": "3:03 1st Q",
+         "score": "DET 15-17 CHA"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "2:50 1st Q",
+         "to": "1:27 1st Q",
+         "score": "DET 23-17 CHA"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "5.8 1st Q",
+         "to": "9:54 2nd Q",
+         "score": "DET 27-30 CHA"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 22,
+         "from": "4:58 3rd Q",
+         "to": "9:16 4th Q",
+         "mins": 7.7,
+         "from_score": "DET 79-75 CHA",
+         "to_score": "DET 103-77 CHA",
+         "pts_for": 24,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cade Cunningham (DET): 33 pts, 5 reb, 7 ast, 4-7 3PT in 27 min",
+        "Duncan Robinson (DET): 24 pts, 2 reb, 3 ast, 6-9 3PT in 32 min",
+        "Brandon Miller (CHA): 17 pts, 1 reb, 4 ast, 3-11 3PT in 31 min",
+        "Naz Reid (CHA): 13 pts, 6 reb, 2 ast, 2-6 3PT in 27 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 11,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 2,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 3,
+          "ast": 4,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 17,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 11,
+          "fgm": 8
+         }
+        ],
+        "threes_at": [
+         "9:53 1st Q",
+         "7:32 1st Q",
+         "5:43 2nd Q",
+         "4:39 3rd Q"
+        ],
+        "box": {
+         "id": "4432166",
+         "name": "Cade Cunningham",
+         "team": "DET",
+         "min": "27",
+         "pts": 33,
+         "reb": 5,
+         "ast": 7,
+         "3pt": "4-7",
+         "fg": "13-20",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 65-54 CHA, DET up 11.",
+        "The 3rd quarter decided the most: DET won it 33-21.",
+        "Largest leads: DET 33 (5:00 4th Q), CHA 3 (11:39 1st Q). 7 lead changes, 5 ties.",
+        "Momentum swing: DET outscored them 24-2 in 7.7 minutes (4:58 3rd Q to 9:16 4th Q), moving it from DET 79-75 CHA to DET 103-77 CHA.",
+        "DET went on a 19-0 run (4:39 3rd Q to 1:09 3rd Q), making it DET 98-75 CHA.",
+        "CHA went on a 8-0 run (5:30 1st Q to 3:03 1st Q), making it DET 15-17 CHA.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Cade Cunningham by period (PTS+REB+AST): Q1 12, Q2 12, Q3 21.",
+        "He went over 39.5 in Q3.",
+        "Threes made at: 9:53 1st Q, 7:32 1st Q, 5:43 2nd Q, 4:39 3rd Q."
+       ],
+       "espn_id": "401909908",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909908"
+      }
+     ]
+    }
    }
   ],
   "runs": []
  },
  "params": {
-  "min_edge": 0.0925,
+  "min_edge": 0.0975,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -4128,9 +4961,9 @@
    "clv_sum": 0.0
   },
   "matchup_over": {
-   "bets": 1,
-   "staked": 5.0,
-   "profit": 6.65,
+   "bets": 2,
+   "staked": 10.0,
+   "profit": 1.6500000000000004,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -4138,19 +4971,34 @@
      "n": 1,
      "won": 1,
      "lost": 0
+    },
+    "blowout": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "matchup-read-right": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "minutes-short": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
     }
    }
   },
   "matchup_under": {
-   "bets": 4,
-   "staked": 20.0,
-   "profit": 6.149999999999999,
+   "bets": 7,
+   "staked": 35.0,
+   "profit": 0.5499999999999989,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 3,
-     "won": 2,
+     "n": 4,
+     "won": 3,
      "lost": 1
     },
     "dnp-void": {
@@ -4159,19 +5007,29 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 1,
-     "won": 1,
-     "lost": 0
+     "n": 3,
+     "won": 2,
+     "lost": 1
     },
     "matchup-read-wrong": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     },
     "near-miss": {
      "n": 1,
      "won": 0,
      "lost": 1
+    },
+    "blowout": {
+     "n": 3,
+     "won": 1,
+     "lost": 2
+    },
+    "model-miss": {
+     "n": 2,
+     "won": 0,
+     "lost": 2
     }
    }
   }
@@ -4179,9 +5037,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 12.0,
-   "staked": 60.0,
-   "profit": -8.199999999999998
+   "bets": 16.0,
+   "staked": 80.0,
+   "profit": -18.799999999999997
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-01T02:29:41Z",
@@ -4759,6 +5617,41 @@
    "ts": "2026-11-03T08:31:55Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 4: 14 games, 324 players projected, lineups for 0 games."
+  },
+  {
+   "ts": "2026-11-03T17:00:08Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Ausar Thompson Under 21.5 @ -120 (DraftKings) \u2014 LOST: 24 pts+reb+ast vs Under 21.5 [blowout, matchup-read-wrong, model-miss]"
+  },
+  {
+   "ts": "2026-11-03T17:00:08Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Grayson Allen Over 17.5 @ -105 (theScore Bet) \u2014 LOST: 12 pts+reb+ast vs Over 17.5 [blowout, matchup-read-right, minutes-short]"
+  },
+  {
+   "ts": "2026-11-03T17:00:08Z",
+   "kind": "result",
+   "text": "WON +$4.40: Naz Reid Under 26.5 @ -114 (FanDuel) \u2014 WON: 21 pts+reb+ast vs Under 26.5 [blowout, matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-03T17:00:08Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Cade Cunningham Under 39.5 @ -120 (DraftKings) \u2014 LOST: 45 pts+reb+ast vs Under 39.5 [blowout, matchup-read-right, model-miss]"
+  },
+  {
+   "ts": "2026-11-03T17:00:09Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 9.8%."
+  },
+  {
+   "ts": "2026-11-03T17:00:09Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +5.6% vs actual over 174 player-games: level x0.994; REB projections ran +5.1% vs actual over 174 player-games: level x0.995; AST projections ran +6.2% vs actual over 174 player-games: level x0.993; PRA projections ran +5.2% vs actual over 174 player-games: level x0.995; RA projections ran +5.0% vs actual over 174 player-games: level x0.995; conviction factor 'minutes' hurt by -5.3 pts of hit rate over 586 plays: weight 1.00 -> 0.74; conviction factor 'agree' helped by +1.8 pts of hit rate over 259 plays: weight 1.00 -> 1.06."
+  },
+  {
+   "ts": "2026-11-03T17:00:09Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $42.21 (run #1), 7-20-1, ROI -40.5%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -4785,24 +5678,28 @@
   "0d25a84d",
   "0af11e44",
   "6f285483",
-  "1e738d80"
+  "1e738d80",
+  "132d899b",
+  "640446dd",
+  "3368e33d",
+  "f6949a6d"
  ],
  "strategist": null,
- "updated": "2026-11-03T08:32:49Z",
+ "updated": "2026-11-03T17:00:09Z",
  "stats": {
-  "bets": 24,
-  "won": 6,
-  "lost": 17,
+  "bets": 28,
+  "won": 7,
+  "lost": 20,
   "push": 1,
-  "staked": 122.63,
-  "profit": -47.19,
-  "roi": -0.3848,
+  "staked": 142.63,
+  "profit": -57.79,
+  "roi": -0.4052,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 9,
+  "clv_no_close": 13,
   "close_mins_median": 151,
-  "open": 4,
-  "equity": 52.81
+  "open": 0,
+  "equity": 42.21
  },
  "weights": {
   "value_fav": 0.842,
@@ -4810,8 +5707,8 @@
   "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
-  "matchup_over": 1.205,
-  "matchup_under": 1.154
+  "matchup_over": 1.047,
+  "matchup_under": 1.012
  },
  "paused": [],
  "dry_scans": 2
