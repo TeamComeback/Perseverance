@@ -254,6 +254,50 @@ a.opt{cursor:pointer}
 .more{display:block;width:100%;margin-top:8px;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;font:inherit;font-weight:600;cursor:pointer}
 .chips .sep{flex:none;width:1px;background:var(--line);margin:4px 2px}
 .hint{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:13px;color:var(--dim)}
+/* ---- simulator ---- */
+.simwrap{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px;overflow:hidden}
+.sbx{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-bottom:8px}
+.sbx .tm{display:flex;align-items:center;gap:10px;font-weight:800}
+.sbx .tm.a{justify-content:flex-start} .sbx .tm.h{justify-content:flex-end}
+.sbx .tm .nm{font-size:14px;letter-spacing:.06em}
+.sbx .tm.a .nm{color:var(--gold)} .sbx .tm.h .nm{color:var(--mars)}
+.sbx .sc{font-family:var(--mono);font-size:30px;font-weight:800;min-width:48px;text-align:center;background:#0b0f17;border:1px solid var(--line);border-radius:8px;padding:0 6px}
+.sbx .mid{text-align:center}
+.sbx .clk{font-family:var(--mono);font-weight:700;font-size:13px}
+.sbx .wp{display:flex;align-items:center;gap:5px;font-size:10px;font-family:var(--mono);margin-top:3px}
+.sbx .wp span:first-child{color:var(--gold)} .sbx .wp span:last-child{color:var(--mars)}
+.sbx .wpb{width:70px;height:5px;border-radius:99px;background:var(--mars);overflow:hidden}
+.sbx .wpb i{display:block;height:100%;background:var(--gold);transition:width .5s}
+.sbx .wpl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.simgrid{display:grid;grid-template-columns:1fr;gap:8px}
+.simgrid .simc{order:-1}
+.court3d{perspective:900px;padding:4px 0 0}
+.court3d{overflow:hidden}
+.court3d .tilt{transform:rotateX(34deg) scale(.9);transform-origin:50% 55%;margin:-18px 0 -26px}
+.cv{width:100%;display:block;filter:drop-shadow(0 18px 18px #000a)}
+.pdot circle{stroke:#0b0f17;stroke-width:3}
+.pdot text{font:800 16px Inter,sans-serif;fill:#0b0f17}
+.pdot.home circle{fill:var(--mars)} .pdot.away circle{fill:var(--gold)}
+.pdot.act circle{stroke:#fff;stroke-width:4}
+.ptag rect{fill:#0b0f17;stroke-width:2} .ptag.home rect{stroke:var(--mars)} .ptag.away rect{stroke:var(--gold)}
+.ptag text{font:800 16px Inter,sans-serif;fill:#fff;letter-spacing:.04em}
+.cap{display:flex;gap:8px;align-items:center;background:#0b0f17;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:13px;min-height:38px}
+.cap span:first-child{font-weight:900;font-style:italic;font-size:12px;letter-spacing:.04em;white-space:nowrap}
+.cap span.h{color:var(--mars)} .cap span.a{color:var(--gold)}
+.ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.ctl .seg{display:flex;gap:4px} .ctl .seg button.on{color:var(--text);border-color:var(--mars);background:var(--mars-d)}
+.btn.ghost{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
+.bxh{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:2px 0 4px}
+.bxh.h{color:var(--mars)} .bxh.a{color:var(--gold)}
+.bxt{width:100%;border-collapse:collapse;font-size:11.5px;font-family:var(--mono)}
+.bxt th{font:600 9.5px Inter,sans-serif;color:var(--dim);text-align:right;padding:2px 3px}
+.bxt td{text-align:right;padding:2px 3px;border-top:1px solid var(--line);color:var(--dim)}
+.bxt td.t{text-align:left;font-family:Inter,sans-serif;white-space:nowrap;max-width:110px;overflow:hidden;text-overflow:ellipsis}
+.bxt tr.on td{color:var(--text)} .bxt tr.hot td{background:#ADD8E61f}
+@media (orientation:landscape) and (min-width:700px){
+  .simgrid{grid-template-columns:minmax(200px,1fr) 2.2fr minmax(200px,1fr);align-items:start}
+  .simgrid .simc{order:0}
+}
 </style>
 </head>
 <body>
@@ -264,6 +308,7 @@ a.opt{cursor:pointer}
   </header>
   <section class="view" id="v-today"></section>
   <section class="view" id="v-props"></section>
+  <section class="view" id="v-sim"></section>
   <section class="view" id="v-bets"></section>
   <section class="view" id="v-trends"></section>
   <section class="view" id="v-agent"></section>
@@ -273,6 +318,7 @@ a.opt{cursor:pointer}
 <nav class="tabs"><div class="in">
   <button data-v="today"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Today</button>
   <button data-v="props"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Prop Lab</button>
+  <button data-v="sim"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14"/><circle cx="12" cy="12" r="3"/><path d="M10 9.5l4 2.5-4 2.5z"/></svg>Sim</button>
   <button data-v="bets"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Bets</button>
   <button data-v="trends"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Trends</button>
   <button data-v="agent"><svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/></svg>Agent</button>
@@ -1687,5 +1733,6 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
   document.addEventListener("visibilitychange", () => { if (!document.hidden) { liveTick(); gradeAll(); } });
 })();
 </script>
+<script src="sim.js"></script>
 </body>
 </html>

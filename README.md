@@ -92,6 +92,12 @@ A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts auto
 - **Alt-line ladder** on each player card: the model's probability and fair odds at nearby lines, so you can tell when an alt line at your book is worth it.
 - **Phone alerts**: the agent comments on a "Perseverance alerts" issue (GitHub's app turns that into a notification) when a 4-5 conviction play has a real edge, or when an injury opens up a big opportunity. For alerts without GitHub, install the free ntfy app, subscribe to a hard-to-guess topic name, and save that name as the repo secret `NTFY_TOPIC`.
 
+## Sim tab
+
+Pick a game and **Watch a sim**: a possession-by-possession simulation on a tilted court with the score, clock, win probability, play-by-play and both box scores updating live (1×, 4×, 16×, or skip to the final). **Run 5,000 sims** plays the game thousands of times and shows each player's average, 10th to 90th percentile range, and how often he clears the line (the book's when priced, otherwise an estimate), plus win %, average total vs the Vegas total, and spread cover %.
+
+How it works: each possession picks the shooter by usage, the shot type, make or miss, assists, rebounds and turnovers from each player's own rates. Rotations follow projected minutes (starters sit in blowouts). Before running, the sim calibrates itself so the average simulated box score matches the matchup model's projections, with team scoring anchored most of the way to the Vegas implied totals. It runs on your phone and costs no credits.
+
 ## Credit budget (free tier: 500/month)
 
 - Listing sports and games is free. Odds cost 1 credit per market (2 or 3 per sport). Scores cost 2 per sport. Props cost 1 per stat per game, team totals 1 per game.
