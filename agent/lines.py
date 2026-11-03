@@ -41,6 +41,9 @@ def record(db, day, priced_lines, infos):
         e.update(line=x["point"], over=round(x["over"], 3) if x["over"] else None,
                  under=round(x["under"], 3) if x["under"] else None, over_book=x["over_book"], under_book=x["under_book"],
                  p_over=round(x["p_mkt"], 4), books=x["n"], at=store.iso(now))
+        if x.get("p_model") is not None:
+            e["p_model"] = round(x["p_model"], 4)          # the model's own over probability at this line
+            e["w"] = x.get("w")
         cvb = (info.get("cv") or {}).get(stat)
         if cvb:
             e["cv"] = cvb[2]

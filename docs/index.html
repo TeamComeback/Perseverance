@@ -1140,6 +1140,7 @@ function renderCard() {
       ${sub("c-sig", "Matchup read", pct(pj.mult - 1, 0), `<div class="desc">Norm ${pj.base.toFixed(1)} for ${p.minutes.toFixed(0)} minutes × matchup ${pj.mult.toFixed(2)} = <b style="color:var(--text)">${pj.proj.toFixed(1)}</b> (spread ±${pj.sd})</div><ul class="sig">${pj.signals.map(x => `<li>${esc(x.txt)}</li>`).join("")}</ul>`, true)}
       ${sub("c-dvp", "Defense vs position", esc(p.opp) + " vs " + esc(p.pos), dvpCard(p))}
       ${sub("c-h2h", "Head to head vs " + esc(p.opp), all.filter(r => r[1] === p.opp).length + " games", logTable(all.filter(r => r[1] === p.opp).reverse(), pc, true))}
+      ${p.min_why && p.min_why.length ? `<div class="desc" style="padding:8px 0 0">Minutes ${f1(p.minutes)} (usual ${f1(p.min_base)}): ${esc(p.min_why.join(" · "))}</div>` : ""}
       <div class="desc" style="padding:8px 0 0"><span class="gold">${cardRating(p, s, priced).n}/5</span> · ${esc(cardRating(p, s, priced).why.join(" · "))}</div>
       ${sub("c-alt", "Alt-line ladder", "model odds", altLadder(pj, pc.line), false)}
       ${sub("c-lines", "Line history", ((D.lines && D.lines.by[p.pid + "|" + s]) || []).length + " saved", linesCard(p, s))}
@@ -1432,14 +1433,45 @@ async function renderTrends() {
   if (!D.trends) { $("v-trends").innerHTML = '<div class="empty">Loading trends…</div>'; D.trends = await get("trends.json", {sections: [], teams: []}); }
   if (!D.dvp) D.dvp = await get("dvp.json", null);
   if (!D.track) D.track = await get("track.json", {agg: {}, graded_games: 0});
+  if (!D.sb) D.sb = await get("scoreboard.json", {});
+  if (!D.simlog) D.simlog = await get("sims_log.json", {agg: {}, graded: {}});
   await getLines();
   const T = D.trends;
   const secs = (T.sections || []).map((s, i) => sec("tr-" + s.id, esc(s.title), s.items.length + "",
     s.items.map(it => `<div class="ti"><span>${esc(it.txt)}</span><b class="${it.tone || ""}">${esc(it.val)}</b></div>`).join("") || '<div class="empty">Nothing yet.</div>', i < 1)).join("");
   $("v-trends").innerHTML = `<div class="desc" style="margin:0 2px 4px">League trends, refreshed every morning${T.updated ? " · " + ago(T.updated) : ""}. Records use ESPN's pregame lines where available.</div>` +
+    sec("tr-sb", "Model vs market", D.sb.all ? D.sb.all.n + " lines" : "", sbHtml(), true) +
+    sec("tr-sim", "Sims vs actual results", (() => { const a = D.simlog.agg.total; return a ? a[0] + " games graded" : ""; })(), simLogHtml(), true) +
     sec("tr-conv", "Conviction track record", (D.track.graded_games || 0) + " games graded", trackHtml(), true) +
     secs + sec("tr-teams", "Team table", (T.teams || []).length + " teams", teamTable(), false) + sec("tr-dvp", "Defense vs position explorer", "", dvpExplorer(), false);
   bindTeamSort(); bindDvp();
+}
+function sbHtml() {
+  const sb = D.sb || {}, a = sb.all;
+  if (!a) return '<div class="empty">Fills in as priced lines are graded. Each saved line keeps the model\'s own probability next to the market\'s closing no-vig probability; after 150 graded lines the agent starts moving the model\'s blend weight toward whatever would have scored best.</div>';
+  const row = (k, l) => `<tr><td class="t">${l}</td><td>${a[k].ll.toFixed(3)}</td><td>${a[k].brier.toFixed(3)}</td></tr>`;
+  const win = a.model.ll < a.market.ll;
+  return `<div class="desc">Every priced line is scored on what happened. <b>Log loss</b> and <b>Brier</b>: lower is better. The market is the sharpest benchmark there is; matching it is good, beating it is an edge.</div>
+    <div class="card" style="padding:9px 12px;margin:8px 0">${win ? '<span class="pos">The model is scoring better than the market</span>' : 'The market is still scoring better than the model'} on ${a.n} lines. Best blend: <b>${pl(a.best_w, 0)} model</b> (now ${pl(sb.w, 0)}).</div>
+    <div class="scroll"><table class="tbl"><tr><th>Source</th><th>Log loss</th><th>Brier</th></tr>${row("model", "Model")}${row("market", "Market (closing)")}${row("blend", "Blend at " + pl(sb.w, 0))}</table></div>
+    ${Object.keys(sb.by_stat || {}).length ? `<div class="lbl">By stat</div><div class="scroll"><table class="tbl"><tr><th>Stat</th><th>Lines</th><th>Model</th><th>Market</th><th>Best blend</th></tr>
+      ${Object.entries(sb.by_stat).map(([k, v]) => `<tr><td class="t">${STATN[k] || k}</td><td>${v.n}</td><td class="${v.model.ll < v.market.ll ? "h" : ""}">${v.model.ll.toFixed(3)}</td><td>${v.market.ll.toFixed(3)}</td><td>${pl(v.best_w, 0)}</td></tr>`).join("")}</table></div>` : ""}`;
+}
+function simLogHtml() {
+  const L = D.simlog || {}, A = L.agg || {};
+  const days = Object.keys(L.graded || {}).sort();
+  if (!A.total) return '<div class="empty">Every game is simulated 10,000 times before tip-off and the averages are saved. They\'re graded against the real box scores the next morning, starting tomorrow.</div>';
+  const mae = k => A[k] ? f1(A[k][1] / A[k][0]) : "—", bias = k => A[k] && A[k][2] != null ? ((A[k][2] / A[k][0]) > 0 ? "+" : "") + f1(A[k][2] / A[k][0]) : "—";
+  const pc = k => A[k] ? Math.round(A[k][1] / A[k][0] * 100) + "%" : "—";
+  const last = days.length ? L.graded[days[days.length - 1]] : null;
+  return `<div class="desc">Average miss (lower is better). Bias: + means the sim ran high. Projection = the matchup model alone, before simulating.</div>
+    <div class="scroll"><table class="tbl"><tr><th></th><th>Sim</th><th>Vegas</th></tr>
+      <tr><td class="t">Game total miss</td><td>${mae("total")}</td><td>${mae("total_vegas")}</td></tr>
+      <tr><td class="t">Margin miss</td><td>${mae("margin")}</td><td>${mae("margin_vegas")}</td></tr>
+      <tr><td class="t">Winner picked</td><td>${pc("winner")}</td><td>${pc("winner_vegas")}</td></tr></table></div>
+    <div class="scroll" style="margin-top:8px"><table class="tbl"><tr><th>Player stat</th><th>Sim miss</th><th>Projection miss</th><th>Sim bias</th></tr>
+      ${["min", "pts", "reb", "ast", "tpm", "pra", "ra"].map(k => `<tr><td class="t">${k === "min" ? "Minutes" : STATN[k]}</td><td>${mae(k)}</td><td>${k === "min" ? "—" : mae(k + "_proj")}</td><td>${bias(k)}</td></tr>`).join("")}</table></div>
+    ${last ? `<div class="lbl">Last night · ${esc(days[days.length - 1])}</div>` + Object.values(last).map(g => `<div class="ti"><span>${esc(g.away)} @ ${esc(g.home)} · sim ${f1(g.pred[0])}–${f1(g.pred[1])}${g.misses.length ? `<br><span class="dim" style="font-size:11.5px">Biggest PRA misses: ${g.misses.slice(0, 3).map(m => `${esc(m[0].split(" ").slice(-1)[0])} ${f1(m[1])}→${m[2]}${Math.abs(m[3] - m[4]) >= 6 ? ` (${Math.round(m[4])} min)` : ""}`).join(", ")}</span>` : ""}</span><b>${g.final[0]}–${g.final[1]}</b></div>`).join("") : ""}`;
 }
 function trackHtml() {
   const A = (D.track && D.track.agg) || {};

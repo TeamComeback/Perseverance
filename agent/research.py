@@ -80,6 +80,13 @@ def context(log=print, refresh=True):
     model = nm.Model(cur)
     inj = nd.injuries()
     try:
+        from . import injury_report
+        official, inj_time = injury_report.fetch(model.players, norm)
+        inj.update(official)                 # the league's own report wins over ESPN's
+    except Exception as e:
+        log(f"[research] official injury report failed: {e}")
+        official, inj_time = {}, None
+    try:
         rw_games = rotowire.fetch()
         rw = rotowire.by_player(rw_games, norm)
     except Exception as e:
@@ -93,6 +100,9 @@ def context(log=print, refresh=True):
     roster = defaultdict(list)
     for pid, pl in model.players.items():
         roster[pl["team"]].append(pid)
+    pre = {"games": games, "model": model}
+    flags, cards = slate_flags(pre, team_dates(model))
+    mins_model = minutes_model(model, games, inj, rw, flags)
     entries = []
     for g in games:
         for team, opp, home, nick in ((g["home"], g["away"], True, g["home_nick"]), (g["away"], g["home"], False, g["away_nick"])):
@@ -100,7 +110,7 @@ def context(log=print, refresh=True):
                 pl = model.players[pid]
                 if pl["games"] < 3:
                     continue
-                mins = model.minutes(pid)
+                mins, mwhy = mins_model.get(pid, [model.minutes(pid), []])
                 r = rw.get(norm(pl["name"]))
                 if r and r.get("nick") and r["nick"].lower() != nick.lower():
                     r = None
@@ -114,13 +124,15 @@ def context(log=print, refresh=True):
                     status = r["inj"]
                 proj = {}
                 for s in ALL_STATS:
-                    pr = model.project(pid, s, opp, home, W)
+                    pr = model.project(pid, s, opp, home, W, mins=mins if mins > 0 else None)
                     proj[s] = pr
                 entries.append({"pid": pid, "name": pl["name"], "team": team, "opp": opp, "home": home, "game": g["espn_id"],
                                 "start": g["start"], "state": g["state"], "role": pl["role"], "minutes": round(mins, 1),
-                                "status": status, "out": _status_out(status), "rw": r, "proj": proj})
+                                "status": status, "out": _status_out(status), "rw": r, "proj": proj,
+                                "min_base": round(model.minutes(pid), 1), "min_why": mwhy})
     return {"day": day, "games": games, "model": model, "inj": inj, "rw_games": rw_games, "rw": rw,
-            "entries": entries, "weights": W, "season": cur}
+            "entries": entries, "weights": W, "season": cur, "flags": flags, "slate_cards": cards,
+            "inj_report": inj_time, "inj_official": len(official)}
 
 
 # ------------------------------------------------------------------ team model (display only)
@@ -159,13 +171,15 @@ def market_lines():
     return out
 
 
-def slate_flags(ctx, games_all):
+def team_dates(model):
+    dates = defaultdict(set)
+    for r in model.rows:
+        dates[r["team"]].add(r["d"])
+    return dates
+
+
+def slate_flags(ctx, dates):
     """Per team on the slate: rest (back-to-back, 3 in 4), spread, Vegas implied points vs the model's."""
-    dates = defaultdict(list)
-    for s, gid, g in games_all:
-        if g.get("st", 2) in (2, 3):
-            for t in g["teams"]:
-                dates[t].append(g["d"])
     mk = market_lines()
     flags, cards = {}, {}
     for g in ctx["games"]:
@@ -231,6 +245,78 @@ def usage_bumps(ctx, logs, played, on_team):
     opps = sorted(best.values(), key=lambda x: -(x["without"] - x["with"]) / (1.0 if x["stat"] != "tpm" else 0.4))
     return bumps, opps
 
+
+# ------------------------------------------------------------------ minutes model
+def minutes_model(model, games, inj, rw, flags):
+    """Tonight's minutes for every rotation player: recent minutes, then adjusted for teammates who are
+    newly out (their with/without history), a change in starting role, back-to-backs and blowout risk.
+    Returns {pid: (minutes, [reasons])}."""
+    played = defaultdict(set)                     # (team, date) -> players who played
+    by_tm = defaultdict(list)
+    for r in model.rows:
+        played[(r["team"], r["d"])].add(r["pid"])
+    for (t, d) in played:
+        by_tm[t].append(d)
+    for t in by_tm:
+        by_tm[t].sort()
+    out = {}
+    teams = {g[k] for g in games for k in ("home", "away")}
+    for t in teams:
+        roster = [pid for pid, pl in model.players.items() if pl["team"] == t and model.by_player[pid]
+                  and (model.by_player[pid][-1]["d"] >= (by_tm[t][-12] if len(by_tm[t]) >= 12 else "0"))]
+        last2 = by_tm[t][-2:]
+        is_out = lambda pid: _status_out(inj.get(pid, ""))
+        fresh_outs = [o for o in roster if is_out(o) and model.minutes(o) >= 12
+                      and any(o in played[(t, d)] for d in last2)]
+        base = {pid: model.minutes(pid) for pid in roster}
+        active = [pid for pid in roster if not is_out(pid)]
+        f = flags.get(t, {})
+        tot_active = sum(base[p] for p in active) or 1
+        sname = lambda pid: re.sub(r"\s+(Jr\.?|Sr\.?|II|III|IV)$", "", model.players[pid]["name"]).split()[-1]
+        adds = {}
+        for pid in active:
+            rows = [r for r in model.by_player[pid] if r["team"] == t]
+            for o in fresh_outs:
+                seasons = {r["season"] for r in model.by_player[o] if r["team"] == t}
+                w = [r["min"] for r in rows if r["season"] in seasons and o in played[(t, r["d"])]]
+                wo = [r["min"] for r in rows if r["season"] in seasons and o not in played[(t, r["d"])]]
+                if len(wo) >= 3 and len(w) >= 5:
+                    d = sum(wo) / len(wo) - sum(w) / len(w)
+                else:
+                    d = model.minutes(o) * 0.8 * base[pid] / tot_active
+                d = max(-4, min(10, d))
+                if abs(d) >= 0.5:
+                    adds.setdefault(pid, []).append((d, o))
+        # the extra minutes can't exceed what the missing players actually played
+        pos = sum(d for v in adds.values() for d, _ in v if d > 0)
+        avail = sum(model.minutes(o) for o in fresh_outs)
+        k_add = min(1.0, avail / pos) if pos > 0 else 1.0
+        for pid in active:
+            m, why = base[pid], []
+            rows = [r for r in model.by_player[pid] if r["team"] == t]
+            for d, o in adds.get(pid, []):
+                d = d * k_add if d > 0 else d
+                if abs(d) >= 0.5:
+                    m += d; why.append(f"{d:+.1f} min with {sname(o)} out")
+            r_ = rw.get(norm(model.players[pid]["name"]))
+            recent = rows[-10:]
+            srate = sum(r["start"] for r in recent) / len(recent) if recent else 0
+            if r_ and r_.get("starter") and srate < 0.5:
+                st = [r["min"] for r in rows if r["start"]][-10:]
+                target = sum(st) / len(st) if len(st) >= 3 else m + 4
+                bump = max(0.0, min(6.0, (target - m) * 0.6))
+                if bump >= 0.5:
+                    m += bump; why.append(f"+{bump:.1f} min starting tonight")
+            elif r_ and r_.get("starter") is False and srate > 0.7 and r_.get("status"):
+                m -= 4; why.append("-4.0 min coming off the bench")
+            if f.get("b2b") and m >= 30:
+                m -= 1; why.append("-1.0 min back-to-back")
+            if (f.get("spread") or 0) >= 10 and srate > 0.5:
+                cut = min(3.0, ((f.get("spread") or 0) - 8) * 0.3)
+                m -= cut; why.append(f"-{cut:.1f} min blowout risk")
+            out[pid] = [max(0.0, min(42.0, m)), why]
+    return out
+
 # ------------------------------------------------------------------ players.json
 def _games_index(seasons):
     games = nd.all_games(seasons)
@@ -268,9 +354,9 @@ def build_players(ctx):
                                          "ast": p[nd.P_AST], "tpm": p[nd.P_TPM], "tpa": p[nd.P_TPA], "fga": p[nd.P_FGA],
                                          "start": p[nd.P_START], "s": s, "ts": g["teams"][t]["score"],
                                          "os": g["teams"][o]["score"], "team": t})
-    flags, cards = slate_flags(ctx, games)
+    flags = ctx.get("flags") or slate_flags(ctx, team_dates(model))[0]
     bumps, opps = usage_bumps(ctx, logs, played, on_team)
-    ctx["slate_cards"], ctx["opps"] = cards, opps
+    ctx["opps"] = opps
     out = {}
     for e in entries:
         pid, team, opp = e["pid"], e["team"], e["opp"]
@@ -306,7 +392,8 @@ def build_players(ctx):
             dvp[s] = [round(f, 3), model.dvp_rank.get((opp, e["role"], s), 0), round(n, 1)]
         out[pid] = {"pid": pid, "name": e["name"], "team": team, "opp": opp, "home": e["home"], "game": e["game"],
                     "start": e["start"], "state": e["state"], "role": e["role"], "pos": nm.ROLE_NAME.get(e["role"], ""),
-                    "minutes": e["minutes"], "status": e["status"], "out": e["out"],
+                    "minutes": e["minutes"], "min_base": e.get("min_base"), "min_why": e.get("min_why", []),
+                    "status": e["status"], "out": e["out"],
                     "rw": ({k: e["rw"].get(k) for k in ("starter", "pos", "status", "inj", "pct", "url", "note")} if e["rw"] else None),
                     "espn": f"https://www.espn.com/nba/player/_/id/{pid}",
                     "mates": [{"pid": m, "name": model.players[m]["name"] if m in model.players else m} for m in mate_ids],
@@ -577,7 +664,7 @@ def write_all(ctx, log=print):
     cards = game_cards(ctx)
     # light index for lists, one detail file per game for player cards (keeps phone downloads small)
     store.save("players.json", {**stamp, "games": cards, "players": {k: _index_row(v) for k, v in players.items()},
-                                "opps": ctx.get("opps", [])[:40],
+                                "opps": ctx.get("opps", [])[:40], "injury_report": ctx.get("inj_report"),
                                 "stat_names": {s: nm.STATS[s] for s in ALL_STATS}}, compact=True)
     gdir = config.DATA / "games"
     gdir.mkdir(parents=True, exist_ok=True)

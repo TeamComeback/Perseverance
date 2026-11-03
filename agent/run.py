@@ -110,6 +110,13 @@ def grade(state, manual, client):
     except Exception as e:
         brain.note(state, "error", f"Line history grading failed: {e}")
     try:
+        from . import simtrack
+        sdb = simtrack.load()
+        if simtrack.grade(sdb):
+            store.save(simtrack.FILE, sdb, compact=True)
+    except Exception as e:
+        brain.note(state, "error", f"Sim grading failed: {e}")
+    try:
         from . import track
         tdb = track.load()
         if track.grade(tdb):
@@ -230,6 +237,21 @@ def cycle():
     print(state["journal"][-1]["text"])
 
 
+def run_sims():
+    """Simulate every game on the slate 10,000 times (tools/sim_all.js, the dashboard's own engine)."""
+    import shutil
+    import subprocess
+    if not shutil.which("node"):
+        print("[sims] node not found; skipping")
+        return
+    try:
+        r = subprocess.run(["node", str(config.ROOT / "tools" / "sim_all.js")], capture_output=True, text=True, timeout=900,
+                           env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA)})
+        print(r.stdout[-2000:], r.stderr[-2000:])
+    except Exception as e:
+        print(f"[sims] failed: {e}")
+
+
 def research_run():
     """Free daily refresh (morning and late afternoon): box scores, lineups, projections, trends."""
     from . import research
@@ -248,6 +270,7 @@ def research_run():
         recaps(state, manual, limit=6)
     except Exception as e:
         print(f"[research] extras failed: {e}")
+    run_sims()
     save_all(state, manual)
     print(state["journal"][-1]["text"])
 
@@ -298,6 +321,7 @@ def props_run(backup=False):
                    + (f"Placed {len(placed)}: " + "; ".join(describe(b) for b in placed) if placed
                       else ("Nothing cleared the bar." if out.get("bought") else "")))
     history_point(state, manual)
+    run_sims()
     save_all(state, manual, budget)
     print(state["journal"][-1]["text"])
 
@@ -317,6 +341,13 @@ def nightly():
     except Exception as e:
         brain.note(state, "error", f"NBA box-score refresh failed: {e}")
     brain.adapt(state)
+    try:
+        from . import scoreboard, lines as linedb
+        sb = scoreboard.build(linedb.load()["entries"], state["params"].get("prop_model_weight", 0.4))
+        store.save("scoreboard.json", sb)
+        scoreboard.retune(state, sb, brain.note)
+    except Exception as e:
+        brain.note(state, "error", f"Model vs market scoreboard failed: {e}")
     brain.strategist(state)
     s = bk.record_stats(state["book"])
     brain.note(state, "daily", f"Day close — equity ${s['equity']:.2f} (run #{state['book']['run']}), "

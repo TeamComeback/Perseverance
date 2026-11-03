@@ -222,9 +222,9 @@ class Model:
         m = sum(w * r["min"] for w, r in zip(ws, rs))
         return sum(w * r[s] for w, r in zip(ws, rs)) / m if m else 0
 
-    def project(self, pid, s, opp, home, weights):
+    def project(self, pid, s, opp, home, weights, mins=None):
         p = self.players[pid]
-        mins = self.minutes(pid)
+        mins = self.minutes(pid) if mins is None else mins
         base = self.baseline_rate(pid, s) * mins
         dvp, n_dvp = self.dvp_tab.get((opp, p["role"], s), (1.0, 0))
         # similar players vs this opponent (not including him)

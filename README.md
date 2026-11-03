@@ -98,6 +98,13 @@ Pick a game and **Watch a sim**: a possession-by-possession simulation on a tilt
 
 How it works: each possession picks the shooter by usage, the shot type, make or miss, assists, rebounds and turnovers from each player's own rates. Rotations follow projected minutes (starters sit in blowouts). Before running, the sim calibrates itself so the average simulated box score matches the matchup model's projections, with team scoring anchored most of the way to the Vegas implied totals. It runs on your phone and costs no credits.
 
+## Measuring the model against the books
+
+- **Model vs market** (Trends): every priced line saves the model's own over probability next to the market's no-vig closing probability. After the game all three (model, market, blend) are scored with log loss and Brier. Once 150 lines are graded, the nightly run moves `prop_model_weight` 30% of the way toward the blend that would have scored best, and writes why in the journal.
+- **Official injury report**: the NBA's own PDF (posted through the day) overrides ESPN's injury list. Needs `pypdf`, which the workflow installs.
+- **Minutes model**: tonight's minutes start from recent minutes, then adjust for teammates who are newly out (from each player's with/without history, capped at what the missing players actually played), a change in starting role (RotoWire lineups), back-to-backs and blowout risk. The reasons show on each player card. Projections and the sim both use these minutes.
+- **Nightly sims**: after every research and props run, `tools/sim_all.js` simulates every upcoming game 10,000 times with the dashboard's own engine and saves the averages and ranges (`sims.json`, shown instantly in the Sim tab). The next morning each game is graded against the real box score (`sims_log.json`): total, margin and winner against Vegas, and every player's minutes and stats against both the sim and the projection alone.
+
 ## Credit budget (free tier: 500/month)
 
 - Listing sports and games is free. Odds cost 1 credit per market (2 or 3 per sport). Scores cost 2 per sport. Props cost 1 per stat per game, team totals 1 per game.
