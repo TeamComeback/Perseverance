@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 42.21,
+  "cash": 27.21,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -4823,6 +4823,219 @@
       }
      ]
     }
+   },
+   {
+    "id": "7d0692ba",
+    "placed": "2026-11-03T23:52:55Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "91df86557819598ca270ba35410cfcfa",
+      "sport": "basketball_nba",
+      "commence": "2026-11-05T00:00:00Z",
+      "home": "Detroit Pistons",
+      "away": "Philadelphia 76ers",
+      "market": "player_rebounds_assists",
+      "outcome": "Cade Cunningham Under",
+      "side": "Under",
+      "player": "Cade Cunningham",
+      "player_id": "4432166",
+      "stat": "ra",
+      "espn_id": "401909922",
+      "point": 13.5,
+      "price": 2.04,
+      "book": "fanduel",
+      "fair_p": 0.4691,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 12.32,
+       "base": 11.82,
+       "minutes": 30.6,
+       "mult": 1.043,
+       "sd": 5.14,
+       "p_model": 0.6447,
+       "p_mkt": 0.4691,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.026,
+         "txt": "PHI gives point guards +3% reb+ast vs their norm (#15 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.035,
+         "txt": "Players with his profile: +4% reb+ast vs PHI (164 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.06,
+         "txt": "His history vs PHI: 16.3 reb+ast/g in 3 games (+6%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "PHI: defense #10, pace #16 \u00b7 DET: offense #11, pace #19"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.04,
+    "stake": 5.0,
+    "ev": 0.1003,
+    "p": 0.5394,
+    "note": "Proj 12.3 vs line 13.5 (norm 11.8, 31 min). Model 64% vs market 47%. PHI gives point guards +3% reb+ast vs their norm (#15 toughest of 30) \u00b7 Players with his profile: +4% reb+ast vs PHI (164 close comps) \u00b7 His history vs PHI: 16.3 reb+ast/g in 3 games (+6%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "188a9eb2",
+    "placed": "2026-11-03T23:52:55Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "b2557f74f4d7675ed3b76a4a064e0bc9",
+      "sport": "basketball_nba",
+      "commence": "2026-11-05T01:30:00Z",
+      "home": "Houston Rockets",
+      "away": "Minnesota Timberwolves",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Amen Thompson Under",
+      "side": "Under",
+      "player": "Amen Thompson",
+      "player_id": "4684740",
+      "stat": "pra",
+      "espn_id": "401909930",
+      "point": 26.5,
+      "price": 1.83,
+      "book": "betmgm",
+      "fair_p": 0.5217,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 24.21,
+       "base": 24.68,
+       "minutes": 30.8,
+       "mult": 0.981,
+       "sd": 5.93,
+       "p_model": 0.6712,
+       "p_mkt": 0.5217,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.949,
+         "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.978,
+         "txt": "Players with his profile: -2% pts+reb+ast vs MIN (33 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.021,
+         "txt": "His history vs MIN: 37.3 pts+reb+ast/g in 3 games (+2%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "MIN: defense #6, pace #9 \u00b7 HOU: offense #8, pace #26"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.83,
+    "stake": 5.0,
+    "ev": 0.0642,
+    "p": 0.5815,
+    "note": "Proj 24.2 vs line 26.5 (norm 24.7, 31 min). Model 67% vs market 52%. MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30) \u00b7 Players with his profile: -2% pts+reb+ast vs MIN (33 close comps) \u00b7 His history vs MIN: 37.3 pts+reb+ast/g in 3 games (+2%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "44b5928e",
+    "placed": "2026-11-03T23:52:55Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "b2557f74f4d7675ed3b76a4a064e0bc9",
+      "sport": "basketball_nba",
+      "commence": "2026-11-05T01:30:00Z",
+      "home": "Houston Rockets",
+      "away": "Minnesota Timberwolves",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Rudy Gobert Under",
+      "side": "Under",
+      "player": "Rudy Gobert",
+      "player_id": "3032976",
+      "stat": "pra",
+      "espn_id": "401909930",
+      "point": 21.5,
+      "price": 1.87,
+      "book": "hardrockbet",
+      "fair_p": 0.5027,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 19.06,
+       "base": 20.35,
+       "minutes": 29.6,
+       "mult": 0.937,
+       "sd": 6.72,
+       "p_model": 0.6664,
+       "p_mkt": 0.5027,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.933,
+         "txt": "HOU gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.895,
+         "txt": "Players with his profile: -11% pts+reb+ast vs HOU (145 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.027,
+         "txt": "His history vs HOU: 26.5 pts+reb+ast/g in 2 games (+3%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "HOU: defense #5, pace #26 \u00b7 MIN: offense #12, pace #9"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.87,
+    "stake": 5.0,
+    "ev": 0.0625,
+    "p": 0.5682,
+    "note": "Proj 19.1 vs line 21.5 (norm 20.4, 30 min). Model 67% vs market 50%. HOU gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30) \u00b7 Players with his profile: -11% pts+reb+ast vs HOU (145 close comps) \u00b7 His history vs HOU: 26.5 pts+reb+ast/g in 2 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -5672,6 +5885,11 @@
    "ts": "2026-11-03T20:54:34Z",
    "kind": "scan",
    "text": "Scanned soccer_uefa_champs_league (9) for 2 credits. Nothing cleared the bar. Equity $42.21."
+  },
+  {
+   "ts": "2026-11-03T23:52:55Z",
+   "kind": "props",
+   "text": "NBA matchups: 14 games, strongest spots: Jalen Brunson ast +14% vs CHI; Jalen Brunson ra +11% vs CHI; Jalen Brunson pra +11% vs CHI. Bought prop odds for CHI@NY (ast, ra, pra, team totals), PHI@DET (ra, ast, team totals), MIN@HOU (ra, pra) (6 credits). Placed 3: Cade Cunningham Under 13.5 @ +104 (FanDuel); Amen Thompson Under 26.5 @ -120 (BetMGM); Rudy Gobert Under 21.5 @ -115 (Hard Rock Bet)"
   }
  ],
  "learned_ids": [
@@ -5705,7 +5923,7 @@
   "f6949a6d"
  ],
  "strategist": null,
- "updated": "2026-11-03T20:54:34Z",
+ "updated": "2026-11-03T23:54:23Z",
  "stats": {
   "bets": 28,
   "won": 7,
@@ -5718,7 +5936,7 @@
   "clv_n": 15,
   "clv_no_close": 13,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 3,
   "equity": 42.21
  },
  "weights": {
