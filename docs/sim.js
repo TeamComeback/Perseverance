@@ -33,6 +33,12 @@ const lastName = n => { const w = n.replace(SUF, "").trim().split(/\s+/); return
 function prep(g, gf) {
   const P = {pace: (g.model && g.model.pace) || 99, spreadHome: g.vegas && g.vegas.spread_home != null ? g.vegas.spread_home : (g.model ? g.model.spread_home : 0),
              total: g.vegas && g.vegas.total, g, teams: {}};
+  // A higher Vegas total than the model expects mostly means a faster game: about 60% of the gap goes to
+  // pace (more possessions, so more shots, rebounds and assists for everyone), the rest to efficiency.
+  const mt = g.model && g.model.total, vt = g.vegas && g.vegas.total;
+  const share = (typeof D !== "undefined" && D.players && D.players.tuning && D.players.tuning.pace_share) || 0.6;
+  P.paceK = mt && vt ? clamp(Math.pow(vt / mt, share), 0.92, 1.08) : 1;
+  P.modelPace = P.pace; P.pace = P.pace * P.paceK;
   for (const side of ["home", "away"]) {
     const ab = g[side];
     let ps = Object.values(gf.players || {}).filter(p => p.team === ab && !p.out && p.minutes > 0);
@@ -74,6 +80,8 @@ function prep(g, gf) {
     const sumPts = rows.reduce((t, r) => t + r.tgt.pts, 0);
     const ak = (typeof D !== "undefined" && D.players && D.players.tuning && D.players.tuning.sim_anchor) || 0.75;   // learned nightly
     if (imp && sumPts > 0) { const f = clamp(Math.pow(imp / sumPts, ak), 0.8, 1.2); rows.forEach(r => r.tgt.pts *= f); }
+    // counting stats follow the pace (points are already anchored to the implied team total)
+    if (P.paceK !== 1) rows.forEach(r => { r.tgt.reb *= P.paceK; r.tgt.ast *= P.paceK; r.tgt.tpm *= P.paceK; });
     P.teams[side] = {ab, name: g[side + "_name"] || ab, players: rows, eff: 1};
   }
   return P;
@@ -630,6 +638,7 @@ function showMC() {
       <div><div class="k">${esc(P.teams.home.ab)} win</div><div class="v">${Math.round(hw / N * 100)}%</div></div>
       <div><div class="k">Avg score</div><div class="v">${f1(avgA)}–${f1(avgH)}</div></div>
       <div><div class="k">Avg total</div><div class="v">${f1(avgT)}${vt ? ` <small>vs ${f1(vt)}</small>` : ""}</div></div>
+      <div><div class="k">Pace</div><div class="v">${f1(P.pace)}${P.paceK !== 1 ? ` <small>model ${f1(P.modelPace)}</small>` : ""}</div></div>
       ${overT != null ? `<div><div class="k">Over ${f1(vt)}</div><div class="v">${Math.round(overT * 100)}%</div></div>` : ""}
       ${P.spreadHome != null ? `<div><div class="k">${esc(P.teams.home.ab)} ${P.spreadHome > 0 ? "+" : ""}${f1(P.spreadHome)}</div><div class="v">${Math.round(cover / N * 100)}%</div></div>` : ""}
     </div>
