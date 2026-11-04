@@ -98,6 +98,10 @@ Pick a game and **Watch the average game**: the sim runs 2,000 seeded simulation
 
 How it works: each possession picks the shooter by usage, the shot type, make or miss, assists, rebounds and turnovers from each player's own rates. Rotations follow projected minutes (starters sit in blowouts). Before running, the sim calibrates itself so the average simulated box score matches the matchup model's projections, with team scoring anchored most of the way to the Vegas implied totals. When the Vegas total differs from the model's, about 60% of the gap is treated as pace (more or fewer possessions, so rebounds, assists and threes move with it) and the rest as shooting efficiency. It runs on your phone and costs no credits.
 
+## Sim vs DraftKings
+
+Every sim run also prices DraftKings' own lines: spreads, totals and moneylines from the agent's game-line scans, and player props from the afternoon props run (DraftKings' main line for each player and stat, kept in line history). The Sim tab shows, for each bet, the sim's chance of hitting, DraftKings' no-vig chance, the DraftKings price and the expected value if the sim is right. Game lines usually land close because the sim leans on the Vegas total and spread on purpose; props are where real gaps show up.
+
 ## Measuring the model against the books
 
 - **Model vs market** (Trends): every priced line saves the model's own over probability next to the market's no-vig closing probability. After the game all three (model, market, blend) are scored with log loss and Brier. Once 150 lines are graded, the nightly run moves `prop_model_weight` 30% of the way toward the blend that would have scored best, and writes why in the journal.

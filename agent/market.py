@@ -134,9 +134,16 @@ def board_summary(events):
                  "am": to_american(o["best"]), "book": o["book"],
                  "fair_p": round(o["fair_p"], 4),
                  "ev": round(o["fair_p"] * o["best"] - 1, 4)} for o in line["outcomes"]]})
+        # DraftKings' own numbers, kept separately so the sim can be compared with the book you bet at
+        dk = {}
+        for bk in ev.get("bookmakers", []):
+            if bk.get("key") == "draftkings":
+                for m in bk.get("markets", []):
+                    dk[m["key"]] = [{"name": o["name"], "point": o.get("point"), "price": o["price"], "am": to_american(o["price"])}
+                                    for o in m.get("outcomes", []) if o.get("price", 0) > 1]
         if lines:
             out.append({"id": ev["id"], "sport": ev["sport_key"], "commence": ev["commence_time"],
-                        "home": ev["home_team"], "away": ev["away_team"], "lines": lines})
+                        "home": ev["home_team"], "away": ev["away_team"], "lines": lines, **({"dk": dk} if dk else {})})
     return out
 
 

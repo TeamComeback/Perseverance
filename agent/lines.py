@@ -19,8 +19,15 @@ def load():
 def record(db, day, priced_lines, infos):
     """priced_lines: [{pid, stat, point, p_mkt, over, under, over_book, under_book, n}] for one scan;
     infos: {pid: {name, team, opp, espn_id, start}}. Keeps the line nearest a coin flip as 'the line'."""
-    best = {}
+    best, dkb = {}, {}
     for x in priced_lines:
+        d = x.get("dk") or {}
+        if d.get("Over") and d.get("Under"):          # DraftKings' main line: its own two prices closest to even
+            io, iu = 1 / d["Over"], 1 / d["Under"]
+            pdk = io / (io + iu)
+            k2 = (x["pid"], x["stat"])
+            if k2 not in dkb or abs(pdk - 0.5) < abs(dkb[k2]["p"] - 0.5):
+                dkb[k2] = {"line": x["point"], "over": round(d["Over"], 3), "under": round(d["Under"], 3), "p": round(pdk, 4)}
         k = (x["pid"], x["stat"])
         if k not in best or abs(x["p_mkt"] - 0.5) < abs(best[k]["p_mkt"] - 0.5):
             best[k] = x
@@ -44,6 +51,8 @@ def record(db, day, priced_lines, infos):
         if x.get("p_model") is not None:
             e["p_model"] = round(x["p_model"], 4)          # the model's own over probability at this line
             e["w"] = x.get("w")
+        if (pid, stat) in dkb:
+            e["dk"] = dkb[(pid, stat)]
         cvb = (info.get("cv") or {}).get(stat)
         if cvb:
             e["cv"] = cvb[2]

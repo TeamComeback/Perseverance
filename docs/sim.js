@@ -66,7 +66,16 @@ function prep(g, gf) {
     // proportion, starters capped at 38 and bench at 34, any remainder to the bench. Long: everyone shrinks.
     let tot = rows.reduce((t, r) => t + r.min, 0) || 1;
     const grow = (r, m) => { const k = m / r.min; r.min = m; for (const s in r.tgt) r.tgt[s] *= k; };
-    if (tot > 240) rows.forEach(r => grow(r, r.min * 240 / tot));
+    if (tot > 240) {
+      // too many minutes (deep roster all projected): the end of the bench gives them up first,
+      // then the rest of the bench, and starters only shrink if the bench is already empty
+      let extra = tot - 240;
+      for (const r of rows.filter(r => !r.starter).sort((a, b) => a.min - b.min)) {
+        if (extra <= 0) break;
+        const cut = Math.min(extra, r.min * 0.85); grow(r, r.min - cut); extra -= cut;
+      }
+      if (extra > 0) { const t2 = rows.reduce((t, r) => t + r.min, 0); rows.forEach(r => grow(r, r.min * 240 / t2)); }
+    }
     else {
       for (let pass = 0; pass < 4 && tot < 239.5; pass++) {
         const open = rows.filter(r => r.min < (r.starter ? 38 : 34)), ot = open.reduce((t, r) => t + r.min, 0) || 1, need = 240 - tot;
@@ -107,7 +116,7 @@ function simGame(P, log) {
     if (force === "start") order = ps.filter(p => p.starter);
     else if (period > 4) order = ps.slice().sort((a, b) => b.min - a.min);
     else order = ps.slice().sort((a, b) => {
-      const d = p => (p.min * 60) * (el / 2880) - secs[p.pid] + (garbage ? (p.starter ? -1e6 : 1e3) : 0) + (on[s].includes(p) ? 40 : 0);
+      const d = p => (p.min * (p.mk || 1) * 60) * (el / 2880) - secs[p.pid] + (garbage ? (p.starter ? -1e6 : 1e3) : 0) + (on[s].includes(p) ? 40 : 0);
       return d(b) - d(a);
     });
     on[s] = order.slice(0, 5);
@@ -181,12 +190,12 @@ function simGame(P, log) {
 function calibrate(P, rounds = 3, n = 220) {
   for (let it = 0; it < rounds; it++) {
     const acc = {};
-    for (const s of ["home", "away"]) P.teams[s].players.forEach(p => acc[p.pid] = {pts: 0, reb: 0, ast: 0, tpm: 0});
+    for (const s of ["home", "away"]) P.teams[s].players.forEach(p => acc[p.pid] = {pts: 0, reb: 0, ast: 0, tpm: 0, sec: 0});
     let np = 0;
     for (let i = 0; i < n; i++) {
       const r = simGame(P, false);
       np += (r.poss.home + r.poss.away) / 2 * (2880 / (2880 + Math.max(0, r.periods - 4) * 300));
-      for (const pid in acc) { const b = r.box[pid]; acc[pid].pts += b.pts; acc[pid].reb += b.reb; acc[pid].ast += b.ast; acc[pid].tpm += b.tpm; }
+      for (const pid in acc) { const b = r.box[pid]; acc[pid].pts += b.pts; acc[pid].reb += b.reb; acc[pid].ast += b.ast; acc[pid].tpm += b.tpm; acc[pid].sec += r.secs[pid]; }
     }
     P.lenK = clamp((P.lenK || 1) * Math.pow(np / n / P.pace, 1), 0.6, 1.6);     // possessions per team match the pace
     for (const s of ["home", "away"]) {
@@ -195,6 +204,7 @@ function calibrate(P, rounds = 3, n = 220) {
       Tm.players.forEach(p => {
         const m = {pts: acc[p.pid].pts / n, reb: acc[p.pid].reb / n, ast: acc[p.pid].ast / n, tpm: acc[p.pid].tpm / n};
         const ratio = (t, v, pow) => t > 0 && v > 0 ? Math.pow(t / v, pow) : 1;
+        p.mk = clamp((p.mk || 1) * ratio(p.min, acc[p.pid].sec / 60 / n, 1.0), 0.7, 1.5);   // rotation hits projected minutes
         p.u = clamp(p.u * ratio(p.tgt.pts, m.pts, 0.7), 0.01, 3);
         p.r3 = clamp(p.r3 * ratio(p.tgt.tpm, m.tpm, 0.6), 0.005, 0.92);
         p.rw = clamp(p.rw * ratio(p.tgt.reb, m.reb, 0.8), 0.005, 3);
@@ -290,6 +300,8 @@ async function renderSim() {
     <h2>Monte Carlo</h2>
     <div class="card" id="simMC"><div class="desc">Plays this game thousands of times with the same inputs, so every player gets a full range of outcomes and a hit rate for any line.</div>
       <button class="btn" id="simRun" style="margin-top:8px">Run 5,000 sims</button><div class="meter" id="simBar" style="display:none"><i style="width:0%"></i></div><div id="simRes"></div></div>
+    <h2>Sim vs DraftKings</h2>
+    <div class="card" id="simVs"><div class="empty">Loading…</div></div>
     <h2>Today's simulations</h2>
     <div class="card" id="simDay"><div class="empty">Loading…</div></div>
     <div class="desc" style="margin:10px 2px">How it works: each possession picks who shoots (usage), what kind of shot, makes and misses, assists, rebounds and turnovers from each player's own rates. Rotations follow projected minutes, starters sit in blowouts, and the box score is calibrated so the average sim matches the matchup projections. Pace and the spread come from the model and Vegas.</div>`;
@@ -306,7 +318,7 @@ async function renderSim() {
   $("simRun").onclick = runMC;
   if (S.mc) showMC(); else showStored();
   if (!D.simday) D.simday = await get("sims_day.json", {runs: []});
-  showDay();
+  showDay(); showVs();
 }
 
 function stage() {
@@ -591,6 +603,36 @@ function showDay() {
   bindPlayerLinks(el);
 }
 function showDay2(k) { const keep = S.stat; S.stat = k; showDay(); if (k === "min") S.stat = keep; }
+// The sim's probabilities at DraftKings' own lines, next to DraftKings' no-vig price and payout.
+function showVs() {
+  const el = $("simVs"); if (!el) return;
+  const G = D.sims && D.sims.games && D.sims.games[S.gameId], V = G && G.vs;
+  if (!V || (!V.game.length && !V.props.length)) {
+    el.innerHTML = '<div class="empty">DraftKings lines show up here after the agent\'s next scans: game lines around 10am, 3pm and 6:35pm ET, player props around 2pm. The sim then re-prices each one at the next run.</div>'; return;
+  }
+  const amS_ = a => (a > 0 ? "+" : "") + a, pc = p => p == null ? "—" : Math.round(p * 100) + "%";
+  const evc = ev => ev >= 0.05 ? "gold" : ev > 0 ? "h" : "dim";
+  const MKN = {spreads: "Spread", totals: "Total", h2h: "Moneyline"};
+  const gl = V.game.map(x => ({...x, ev: x.p_sim * x.price - 1, edge: x.p_sim - x.p_dk}));
+  const order = {spreads: 0, totals: 1, h2h: 2};
+  gl.sort((a, b) => order[a.market] - order[b.market]);
+  const props = V.props.map(x => {
+    const evO = x.p_over_sim * x.over - 1, evU = (1 - x.p_over_sim) * x.under - 1, over = evO >= evU;
+    return {...x, side: over ? "Over" : "Under", p_sim: over ? x.p_over_sim : 1 - x.p_over_sim, p_dk: over ? x.p_over_dk : 1 - x.p_over_dk,
+            price: over ? x.over : x.under, ev: over ? evO : evU};
+  }).sort((a, b) => b.ev - a.ev);
+  el.innerHTML = `<div class="desc">The sim's chance of each DraftKings bet hitting, next to DraftKings' own no-vig chance and the payout. <b>EV</b> is the expected return per $1 if the sim is right: <span class="gold">gold</span> = 5%+.</div>
+    ${gl.length ? `<div class="lbl">Game lines</div><div class="scroll"><table class="tbl"><tr><th>Bet</th><th>DK price</th><th>Sim</th><th>DK</th><th>EV</th></tr>
+      ${gl.map(x => `<tr><td class="t">${MKN[x.market]} · ${esc(x.market === "totals" ? x.name : (x.name.split(" ").slice(-1)[0]))}${x.point != null ? " " + (x.market === "spreads" && x.point > 0 ? "+" : "") + f1(x.point) : ""}</td>
+        <td>${amS_(x.am)}</td><td><b>${pc(x.p_sim)}</b></td><td class="dim">${pc(x.p_dk)}</td><td class="${evc(x.ev)}">${(x.ev > 0 ? "+" : "") + Math.round(x.ev * 100)}%</td></tr>`).join("")}</table></div>
+      <div class="desc" style="margin-top:4px">Game lines usually land close: the sim leans on the Vegas total and spread on purpose, so big gaps here are rare and worth a second look.</div>` : '<div class="desc">No DraftKings game lines for this game yet.</div>'}
+    ${props.length ? `<div class="lbl">Player props</div><div class="scroll"><table class="tbl"><tr><th>Player</th><th>Bet</th><th>Sim avg</th><th>Sim</th><th>DK</th><th>Price</th><th>EV</th></tr>
+      ${props.map(x => `<tr data-pid="${x.pid}" data-stat="${x.stat}" style="cursor:pointer"><td class="t">${esc(lastName(x.name))}</td><td>${x.side === "Over" ? "O" : "U"} ${f1(x.line)} ${STATN[x.stat]}</td><td>${f1(x.mean)}</td>
+        <td><b>${pc(x.p_sim)}</b></td><td class="dim">${pc(x.p_dk)}</td><td>${amS_(x.price >= 2 ? Math.round((x.price - 1) * 100) : -Math.round(100 / (x.price - 1)))}</td>
+        <td class="${evc(x.ev)}">${(x.ev > 0 ? "+" : "") + Math.round(x.ev * 100)}%</td></tr>`).join("")}</table></div>
+      <div class="desc" style="margin-top:4px">Each row shows the side the sim likes better at DraftKings' price. Tap a player for his card (conviction, hit rates, line history) before acting on a gap.</div>` : '<div class="desc" style="margin-top:6px">No DraftKings player props for this game yet (props are priced around 2pm ET for the strongest matchups).</div>'}`;
+  bindPlayerLinks(el);
+}
 function showStored() {
   const G = D.sims && D.sims.games && D.sims.games[S.gameId], P = S.P;
   if (!G) return;

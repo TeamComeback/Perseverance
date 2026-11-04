@@ -246,6 +246,7 @@ def run(state, manual, client, budget, ctx=None):
                     continue
                 p_mkt, best, nbooks = price_line(entry)
                 seen.append({"pid": pr["pid"], "stat": s_, "point": pt, "p_mkt": p_mkt, "p_model": nm.p_over(pr, pt),
+                             "dk": entry["books"].get("draftkings"),
                              "w": p["prop_model_weight"], "over": best["Over"][0],
                              "under": best["Under"][0], "over_book": best["Over"][1], "under_book": best["Under"][1], "n": nbooks})
                 infos[pr["pid"]] = {"name": pr["name"], "team": pr["team"], "opp": pr["opp"], "espn_id": eid, "start": g["start"],

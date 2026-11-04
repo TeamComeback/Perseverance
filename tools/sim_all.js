@@ -26,6 +26,11 @@ const r1 = v => Math.round(v * 10) / 10;
   if (day.date !== pj.date) { day.date = pj.date; day.runs = []; }
   const run = {ts: out.updated, games: {}};
   const log = read("sims_log.json", {pending: {}, graded: {}, agg: {}});
+  // today's market: game lines from the agent's last scan, prop lines it priced (line history)
+  const board = read("board.json", {events: []}), linesDb = read("lines.json", {entries: {}});
+  const nick = n => (n || "").split(" ").slice(-1)[0].toLowerCase();
+  const evFor = g => (board.events || []).find(e => e.sport === "basketball_nba" && nick(e.home) === nick(g.home_name) && nick(e.away) === nick(g.away_name));
+  const frac = (n, f) => { let w = 0, l = 0; for (let i = 0; i < n; i++) { const r = f(i); if (r > 0) w++; else if (r < 0) l++; } return w + l ? r1(w / (w + l) * 1000) / 1000 : null; };
   log.pending[pj.date] = log.pending[pj.date] || {};
   const t0 = Date.now();
   for (const g of games) {
@@ -63,6 +68,27 @@ const r1 = v => Math.round(v * 10) / 10;
     out.games[g.espn_id] = {at: out.updated, pace: r1(P.pace), model_pace: r1(P.modelPace || P.pace), home: g.home, away: g.away, start: g.start, vegas: g.vegas || null, avg, win_home: r1(hw / N * 100) / 100,
       total: [r1(mean(tot)), ...qs(tot)], margin: r1(mean(mar)), cover_home: sp != null ? r1(cover / N * 100) / 100 : null,
       over: vt ? r1(over / N * 100) / 100 : null, players, typical};
+    // the sim's own probability at DraftKings' lines (pushes excluded), next to DraftKings' no-vig price
+    const ev = evFor(g), vs = {book: "draftkings", game: [], props: []};
+    const dk = (ev && ev.dk) || {};
+    for (const [mk, outs] of Object.entries(dk)) {
+      const tot = outs.reduce((t, o) => t + 1 / o.price, 0);
+      for (const o of outs) {
+        let p = null;
+        const isHome = nick(o.name) === nick(g.home_name);
+        if (mk === "totals" && o.point != null) p = frac(N, i => (M.team.home[i] + M.team.away[i] - o.point) * (o.name === "Over" ? 1 : -1));
+        else if (mk === "spreads" && o.point != null) p = frac(N, i => isHome ? M.team.home[i] + o.point - M.team.away[i] : M.team.away[i] + o.point - M.team.home[i]);
+        else if (mk === "h2h") p = frac(N, i => isHome ? M.team.home[i] - M.team.away[i] : M.team.away[i] - M.team.home[i]);
+        if (p != null) vs.game.push({market: mk, name: o.name, point: o.point, p_sim: p, p_dk: r1(1 / o.price / tot * 1000) / 1000, price: o.price, am: o.am});
+      }
+    }
+    for (const e of Object.values(linesDb.entries || {})) {
+      if (e.espn_id !== g.espn_id || e.date !== pj.date || !e.dk || !M.out[e.pid] || !M.out[e.pid][e.stat]) continue;
+      const a = M.out[e.pid][e.stat];
+      vs.props.push({pid: e.pid, name: e.name, stat: e.stat, line: e.dk.line, mean: r1(mean(a)), p_over_sim: frac(N, i => a[i] - e.dk.line),
+                     p_over_dk: e.dk.p, over: e.dk.over, under: e.dk.under});
+    }
+    out.games[g.espn_id].vs = vs;
     run.games[g.espn_id] = {avg, win_home: out.games[g.espn_id].win_home, total: out.games[g.espn_id].total[0],
       players: Object.fromEntries(Object.entries(players).map(([pid, x]) => [pid, [x.min, ...STATS.map(k => x.s[k][0])]]))};
     // what gets graded tomorrow: averages plus the model's own projections for comparison
