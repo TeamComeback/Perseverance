@@ -841,10 +841,13 @@ async function pollLive() {
       fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=${gid}`).then(r => r.json())]);
     const item = (od.items || []).find(i => String((i.provider || {}).id) === "100");
     const comp = sb.header.competitions[0], st = comp.status, t = {}, side = {};
-    comp.competitors.forEach(c => { t[c.homeAway] = +c.score || 0; side[String(c.team ? c.team.id : c.id)] = c.homeAway; });
+    const ls = {}, tm = {};
+    comp.competitors.forEach(c => { t[c.homeAway] = +c.score || 0; side[String(c.team ? c.team.id : c.id)] = c.homeAway;
+      ls[c.homeAway] = (c.linescores || []).map(x => +(x.displayValue ?? x.value ?? 0));
+      tm[c.homeAway] = {ab: (c.team || {}).abbreviation, rec: ((c.record || []).find(r => r.type === "total") || (c.record || [])[0] || {}).summary || ""}; });
     const clk = String(st.displayClock || "0"), sec = clk.includes(":") ? +clk.split(":")[0] * 60 + +clk.split(":")[1] : +clk;
     S.now = {state: st.type.state, period: st.period, clock: sec, detail: st.type.shortDetail, score: [t.away || 0, t.home || 0],
-             line: item ? dkSnap(item, "current") : null, box: liveBox(sb, side), plays: livePlays(sb, side), at: new Date()};
+             line: item ? dkSnap(item, "current") : null, box: liveBox(sb, side), plays: livePlays(sb, side), ls, teams: tm, gid, at: new Date()};
   } catch (e) { S.now = S.now || null; }
   if (S.gameId !== gid) return;
   showLive();
@@ -942,6 +945,7 @@ function livePlaysHtml(n, A, H) {
     <div class="scroll"><table class="tbl">${ps.map(p => `<tr><td class="dim">Q${p.q} ${esc(p.clk || "")}</td><td class="t" style="white-space:normal">${p.sc ? "<b>" : ""}${esc(p.s === "home" ? H : p.s === "away" ? A : "")} ${esc(p.text)}${p.sc ? "</b>" : ""}</td><td>${p.score[0]}–${p.score[1]}</td></tr>`).join("")}</table></div></details>`;
 }
 function showLive() {
+  if (typeof window.gamesLiveHook === "function") window.gamesLiveHook();
   const el = $("simLive"); if (!el || !S.P) return;
   const G = (D.dkday && D.dkday.games || {})[S.gameId] || {}, P = S.P, H = P.teams.home.ab, A = P.teams.away.ab;
   const g = (D.players.games || []).find(x => x.espn_id === S.gameId) || {};
@@ -980,9 +984,9 @@ function showLive() {
   const pd = $("livePlayD"); if (pd) pd.ontoggle = () => { S.playsOpen = pd.open; };
 }
 // The sim's probabilities at DraftKings' own lines, next to DraftKings' no-vig price and payout.
-function showVs() {
-  const el = $("simVs"); if (!el) return;
-  const G = D.sims && D.sims.games && D.sims.games[S.gameId], V = G && G.vs;
+function showVs(elId, gid) {
+  const el = $(elId || "simVs"); if (!el) return;
+  const G = D.sims && D.sims.games && D.sims.games[gid || S.gameId], V = G && G.vs;
   if (!V || (!V.game.length && !V.props.length)) {
     el.innerHTML = '<div class="empty">DraftKings lines show up here after the agent\'s next scans: game lines around 10am, 3pm and 6:35pm ET, player props around 2pm. The sim then re-prices each one at the next run.</div>'; return;
   }
@@ -1072,4 +1076,5 @@ function showMC() {
 
 RENDER.sim = renderSim;
 window.simEngine = {prep, calibrate, simGame, monteCarlo, setSeed, ensureAvg, loadAvgGame};
+window.SL = {stop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName};
 })();

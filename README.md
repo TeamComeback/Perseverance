@@ -92,6 +92,19 @@ A run ends at $1,000 (won) or below $5 (busted). A new $100 run then starts auto
 - **Alt-line ladder** on each player card: the model's probability and fair odds at nearby lines, so you can tell when an alt line at your book is worth it.
 - **Phone alerts**: the agent comments on a "Perseverance alerts" issue (GitHub's app turns that into a notification) when a 4-5 conviction play has a real edge, or when an injury opens up a big opportunity. For alerts without GitHub, install the free ntfy app, subscribe to a hard-to-guess topic name, and save that name as the repo secret `NTFY_TOPIC`.
 
+## Games tab
+
+Tonight's NBA scoreboard, ESPN / The Real App style: each game shows the score and clock (refreshing every 30 seconds), DraftKings' spread and total, and the sim's projected score and win chance. Below it is the **Board · bet it yourself** (moved here from Bets): best prices across your books for every sport the agent scans, tap a price to log the bet.
+
+Tap a game for its own page: score, quarter-by-quarter linescore, records and DraftKings' live or closing line up top, then four tabs:
+
+- **Game**: before tip-off, the sim's projection (score, win %, total with its 80% range) next to DraftKings' open and current lines, rest notes, and the top plays in the game. While live, the **Live value** box and last plays. After the final, how the total and spread closed out and how far off the sim was.
+- **Box score**: the projected box (average of 10,000 sims) before the game, ESPN's live box score during it, and the final box after.
+- **Lines**: DraftKings open, close and live, the saved live snapshots, the best price at your books for this game, and Sim vs DraftKings.
+- **Props**: every projected player in the game, by team, with his strongest stat and conviction. Tap a player for his card.
+
+**Watch the sim of this game** opens the Sim tab on it. Game cards on Today open the game page too.
+
 ## Sim tab
 
 Pick a game and **Watch the average game**: the sim runs 2,000 seeded simulations, finds the one closest to the averages (final score first, then every player's line) and replays exactly that game, so it ends near the average result. **Random game** plays a fresh one. The box score can switch between **This game**, **Average** (every player's average across all simulations, using the overnight 10,000 when they match today's inputs) and **Most common** (each player's most frequent line, with how often it happened, plus the most common margin and total). Otherwise it's a possession-by-possession simulation on a tilted court with the score, clock, win probability, play-by-play and both box scores updating live (1×, 4×, 16×, or skip to the final). **Run 5,000 sims** plays the game thousands of times and shows each player's average, 10th to 90th percentile range, and how often he clears the line (the book's when priced, otherwise an estimate), plus win %, average total vs the Vegas total, and spread cover %.
@@ -181,6 +194,6 @@ python tests/simulate.py 30     # 30 simulated days on a fake market, no API key
 ## Files
 
 - `agent/`: the agent (Python standard library only). `research.py` daily research, `rotowire.py` lineups, `recap.py` game stories, `saved.py` saved props
-- `docs/`: the dashboard (tabs: Today, Prop Lab, Bets, Trends, Agent)
+- `docs/`: the dashboard (tabs: Today, Games, Prop Lab, Sim, Bets, Trends, Agent); `games.js` is the Games tab, `sim.js` the simulator and live panel
 - `docs/data/`: the books and research files (JSON); `docs/data/games/` holds one detail file per game on the slate
 - `data/nba/`: box scores (three seasons) and this season's shot locations, one file per day
