@@ -110,6 +110,11 @@ def grade(state, manual, client):
     except Exception as e:
         brain.note(state, "error", f"Line history grading failed: {e}")
     try:
+        from . import dk
+        dk.grade()
+    except Exception as e:
+        brain.note(state, "error", f"DraftKings grading failed: {e}")
+    try:
         from . import simtrack
         sdb = simtrack.load()
         if simtrack.grade(sdb):
@@ -250,6 +255,23 @@ def run_sims():
         print(r.stdout[-2000:], r.stderr[-2000:])
     except Exception as e:
         print(f"[sims] failed: {e}")
+
+
+def live_run():
+    """Every 15 minutes during games (free): DraftKings' live line, score and clock, then the sim from there."""
+    from . import dk
+    try:
+        days = dk.live_snapshot()
+        print(f"[live] snapshots for {days or 'no games in progress'}")
+    except Exception as e:
+        print(f"[live] snapshot failed: {e}")
+        return
+    if days:
+        import shutil, subprocess
+        if shutil.which("node"):
+            r = subprocess.run(["node", str(config.ROOT / "tools" / "live_sim.js")], capture_output=True, text=True, timeout=600,
+                               env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA)})
+            print(r.stdout[-1500:], r.stderr[-1500:])
 
 
 def research_run():
@@ -531,4 +553,4 @@ def manual_issue():
 
 if __name__ == "__main__":
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
-     "research": research_run, "manual-issue": manual_issue}[sys.argv[1]]()
+     "research": research_run, "live": live_run, "manual-issue": manual_issue}[sys.argv[1]]()

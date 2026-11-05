@@ -37,6 +37,11 @@ def score(rows, w):
 
 def build(entries, w):
     rows = graded(entries)
+    try:
+        from . import dk
+        rows += dk.scoreboard_rows()
+    except Exception as e:
+        print(f"[scoreboard] DraftKings rows failed: {e}")
     out = {"updated": store.iso(store.now()), "w": w, "all": score(rows, w), "by_stat": {}}
     for st in sorted({r[3] for r in rows}):
         out["by_stat"][st] = score([r for r in rows if r[3] == st], w)

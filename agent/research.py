@@ -691,6 +691,13 @@ def write_all(ctx, log=print):
     store.save("dvp.json", {**stamp, **build_dvp(ctx["model"])}, compact=True)
     store.save("trends.json", {**stamp, **build_trends(ctx)})
     store.save("lineups.json", {**stamp, "games": ctx["rw_games"]})
+    # DraftKings opening/closing lines for games and every projected prop (free, ESPN's odds feed)
+    try:
+        from . import dk
+        dk.refresh(ctx, players, log=log)
+        dk.recent_index(players)
+    except Exception as e:
+        log(f"[research] DraftKings lines failed: {e}")
     # conviction track record: snapshot tonight's leans (graded after the games)
     try:
         from . import track

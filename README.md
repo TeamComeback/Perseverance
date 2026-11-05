@@ -98,6 +98,12 @@ Pick a game and **Watch the average game**: the sim runs 2,000 seeded simulation
 
 How it works: each possession picks the shooter by usage, the shot type, make or miss, assists, rebounds and turnovers from each player's own rates. Rotations follow projected minutes (starters sit in blowouts). Before running, the sim calibrates itself so the average simulated box score matches the matchup model's projections, with team scoring anchored most of the way to the Vegas implied totals. When the Vegas total differs from the model's, about 60% of the gap is treated as pace (more or fewer possessions, so rebounds, assists and threes move with it) and the rest as shooting efficiency. It runs on your phone and costs no credits.
 
+## DraftKings lines and live tracking (free, from ESPN's odds feed)
+
+- **Opening and closing lines for everything**: every research run saves DraftKings' opening and closing spread, total and moneyline for each game, and DraftKings' opening and closing line for every player prop the model projects (points, rebounds, assists, threes, PRA, reb+ast), with the model's own probability at the closing line. Stored per day in `docs/data/dk/`. After the games, each prop is graded from the box score; these feed the model-vs-market scoreboard (model vs DraftKings' closing no-vig price), your CLV on props, and a DraftKings line history on every player card.
+- **Live lines**: every 15 minutes from about 7pm to 1am ET, the agent saves DraftKings' live spread, total and moneyline with the score and clock, then simulates the rest of the game from that exact spot (`tools/live_sim.js`) for the sim's chance of each live bet. While you have the Sim tab open on a live game it also checks every 30 seconds, and **Sim from here** compares the sim with DraftKings' live price (EV per bet).
+- **Would a live bet have paid?** The next morning every live snapshot is graded: did each live bet win, and did the sim see an edge? Results build up by situation in Trends (sim saw a 5%+ edge, team trailing by 10+, by checkpoint: after Q1, halftime, after Q3). The opening-to-closing move on each game is saved too.
+
 ## Sim vs DraftKings
 
 Every sim run also prices DraftKings' own lines: spreads, totals and moneylines from the agent's game-line scans, and player props from the afternoon props run (DraftKings' main line for each player and stat, kept in line history). The Sim tab shows, for each bet, the sim's chance of hitting, DraftKings' no-vig chance, the DraftKings price and the expected value if the sim is right. Game lines usually land close because the sim leans on the Vegas total and spread on purpose; props are where real gaps show up.
@@ -161,6 +167,7 @@ The old GitHub-issue logging still works in the background but the dashboard no 
 | ~3:45pm | Research refresh with updated lineups (free) |
 | ~6:15pm | Pre-game refresh: late injuries and lineups, all sims re-run (free) |
 | ~8:45pm | Late-game refresh for 10pm+ tips: only games not yet started (free) |
+| Every 15 min, ~7pm-1am | DraftKings live lines, score and clock, sim from the live score (free) |
 | ~6:35pm | Scan |
 
 Add an hour from March to November (daylight saving time). GitHub can start runs 5-30 minutes late.

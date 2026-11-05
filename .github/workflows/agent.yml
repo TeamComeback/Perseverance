@@ -11,13 +11,14 @@ on:
     - cron: "47 20 * * *"   # ~4:45pm ET — free research refresh with updated lineups
     - cron: "13 23 * * *"   # ~6:15pm ET in winter — pre-game refresh: late injuries, lineups, re-run all sims (free)
     - cron: "43 1 * * *"    # ~8:45pm ET in winter — late-game refresh for 10pm+ West Coast tips: only games not yet started (free)
+    - cron: "7,22,37,52 0-5 * * *"   # every 15 min, ~7pm-1am ET in winter — DraftKings live lines + sim from the live score (free)
   workflow_dispatch:
     inputs:
       mode:
         description: "cycle, props, research or nightly"
         default: cycle
         type: choice
-        options: [cycle, props, research, nightly]
+        options: [cycle, props, research, nightly, live]
 
 permissions:
   contents: write
@@ -51,6 +52,7 @@ jobs:
               "5 19 * * *") MODE=props ;;
               "17 20 * * *") MODE=props-backup ;;
               "41 13 * * *"|"47 20 * * *"|"13 23 * * *"|"43 1 * * *") MODE=research ;;
+              "7,22,37,52 0-5 * * *") MODE=live ;;
               *) MODE=cycle ;;
             esac
           fi

@@ -977,7 +977,7 @@ async function openPlayer(pid, stat) {
   $("pane").innerHTML = `<div class="hd"><button class="x" onclick="closeSheet()">×</button><div class="name">${esc(idx.name)}</div><div class="desc">Loading…</div></div>`;
   $("sheet").classList.add("on"); document.body.style.overflow = "hidden";
   history.pushState({sheet: 1}, "");
-  const [g] = await Promise.all([gameFile(idx.game), getLines()]);
+  const [g] = await Promise.all([gameFile(idx.game), getLines(), D.dkRecent ? null : get("dk_recent.json", {}).then(x => D.dkRecent = x)]);
   const p = g && g.players[pid];
   if (!p) { $("pane").querySelector(".desc").textContent = "No detail file for this game yet."; return; }
   const priced = (D.pz.priced || {});
@@ -1145,6 +1145,7 @@ function renderCard() {
       ${p.min_why && p.min_why.length ? `<div class="desc" style="padding:8px 0 0">Minutes ${f1(p.minutes)} (usual ${f1(p.min_base)}): ${esc(p.min_why.join(" · "))}</div>` : ""}
       <div class="desc" style="padding:8px 0 0"><span class="gold">${cardRating(p, s, priced).n}/5</span> · ${esc(cardRating(p, s, priced).why.join(" · "))}</div>
       ${sub("c-alt", "Alt-line ladder", "model odds", altLadder(pj, pc.line), false)}
+      ${sub("c-dk", "DraftKings line history", (((D.dkRecent || {})[p.pid + "|" + s]) || []).length + " games", dkHistHtml(p, s), false)}
       ${sub("c-lines", "Line history", ((D.lines && D.lines.by[p.pid + "|" + s]) || []).length + " saved", linesCard(p, s))}
       ${sub("c-comp", "Similar players vs " + esc(p.opp), p.comps.length + " comps", compTable(p, s, pc))}
       ${sub("c-shot", "Shot chart", pc.shots.length + " shots this season", shotChart(pc))}
@@ -1226,6 +1227,17 @@ function bookLine(pid, stat, date, opp) {
   const a = (D.lines && D.lines.by[pid + "|" + stat]) || [];
   const t = new Date(date + "T12:00:00Z").getTime();
   return a.find(e => (!opp || e.opp === opp) && Math.abs(new Date(e.date + "T12:00:00Z") - t) <= 36 * 3600e3) || null;
+}
+function dkHistHtml(p, s) {
+  const rows = (((D.dkRecent || {})[p.pid + "|" + s]) || []).slice().reverse();
+  if (!rows.length) return '<div class="empty">DraftKings lines for him are saved from today on: where each line opened, where it closed, and what he scored.</div>';
+  const done = rows.filter(r => r[6] === "over" || r[6] === "under"), ov = done.filter(r => r[6] === "over").length;
+  const am_ = d => !d ? "—" : d >= 2 ? "+" + Math.round((d - 1) * 100) : "−" + Math.round(100 / (d - 1));
+  return `${done.length ? `<div class="card" style="padding:9px 12px;margin:6px 0">Over DraftKings' closing line in <b>${ov} of ${done.length}</b> games.</div>` : ""}
+    <div class="scroll"><table class="tbl"><tr><th>Date</th><th>Opp</th><th>Open</th><th>Close</th><th>O / U</th><th>${STATN[s]}</th><th></th></tr>
+    ${rows.map(r => `<tr><td class="t">${esc(r[0].slice(5).replace("-", "/"))}</td><td>${esc(r[7] || "")}</td><td>${f1(r[1])}</td><td>${f1(r[2])}${r[2] !== r[1] ? ` <span class="${r[2] > r[1] ? "h" : "m"}">${r[2] > r[1] ? "↑" : "↓"}</span>` : ""}</td>
+      <td class="dim">${am_(r[3])} / ${am_(r[4])}</td><td>${r[5] == null ? (r[6] === "dnp" ? '<span class="dim">DNP</span>' : '<span class="dim">pending</span>') : f1(r[5])}</td>
+      <td class="${r[6] === "over" ? "h" : r[6] === "under" ? "m" : "dim"}">${r[6] === "over" ? "O" : r[6] === "under" ? "U" : r[6] === "push" ? "P" : ""}</td></tr>`).join("")}</table></div>`;
 }
 function linesCard(p, s) {
   const rows = (D.lines && D.lines.by[p.pid + "|" + s]) || [];
@@ -1332,7 +1344,13 @@ async function fillClv() {
     let close = null, ptsVal = null, src = "";
     if (l.stat && l.player_id) {
       const d = new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York"}).format(new Date(l.commence));
-      const e = ((D.lines.by[l.player_id + "|" + l.stat]) || []).find(x => x.date === d);
+      let e = ((D.lines.by[l.player_id + "|" + l.stat]) || []).find(x => x.date === d);
+      if (!e) {                                   // DraftKings' own closing line from ESPN's feed
+        D.dkDays = D.dkDays || {};
+        if (!(d in D.dkDays)) D.dkDays[d] = await get(`dk/${d}.json`, {props: {}});
+        const r = (D.dkDays[d].props || {})[l.player_id + "|" + l.stat];
+        if (r && r.c && r.c[1] && r.c[2]) { const io = 1 / r.c[1], iu = 1 / r.c[2]; e = {line: r.c[0], p_over: io / (io + iu)}; }
+      }
       if (e) {
         if (e.line === l.point && e.p_over != null) close = l.side === "Over" ? e.p_over : 1 - e.p_over;
         else ptsVal = l.side === "Over" ? e.line - l.point : l.point - e.line;
@@ -1469,16 +1487,32 @@ async function renderTrends() {
   if (!D.track) D.track = await get("track.json", {agg: {}, graded_games: 0});
   if (!D.sb) D.sb = await get("scoreboard.json", {});
   if (!D.simlog) D.simlog = await get("sims_log.json", {agg: {}, graded: {}});
+  if (!D.livetrack) D.livetrack = await get("live_track.json", {agg: {}});
   await getLines();
   const T = D.trends;
   const secs = (T.sections || []).map((s, i) => sec("tr-" + s.id, esc(s.title), s.items.length + "",
     s.items.map(it => `<div class="ti"><span>${esc(it.txt)}</span><b class="${it.tone || ""}">${esc(it.val)}</b></div>`).join("") || '<div class="empty">Nothing yet.</div>', i < 1)).join("");
   $("v-trends").innerHTML = `<div class="desc" style="margin:0 2px 4px">League trends, refreshed every morning${T.updated ? " · " + ago(T.updated) : ""}. Records use ESPN's pregame lines where available.</div>` +
     sec("tr-sb", "Model vs market", D.sb.all ? D.sb.all.n + " lines" : "", sbHtml(), true) +
+    sec("tr-live", "Live betting · would it have paid?", (() => { const n = Object.values(D.livetrack.agg || {}).reduce((t, a) => t + a[0], 0); return n ? n + " live bets graded" : ""; })(), liveTrackHtml(), true) +
     sec("tr-sim", "Sims vs actual results", (() => { const a = D.simlog.agg.total; return a ? a[0] + " games graded" : ""; })(), simLogHtml(), true) +
     sec("tr-conv", "Conviction track record", (D.track.graded_games || 0) + " games graded", trackHtml(), true) +
     secs + sec("tr-teams", "Team table", (T.teams || []).length + " teams", teamTable(), false) + sec("tr-dvp", "Defense vs position explorer", "", dvpExplorer(), false);
   bindTeamSort(); bindDvp();
+}
+function liveTrackHtml() {
+  const A = (D.livetrack && D.livetrack.agg) || {};
+  const keys = Object.keys(A);
+  if (!keys.length) return '<div class="empty">During games the agent saves DraftKings\' live lines about every 15 minutes, with the sim\'s chance of each bet from that score and clock. Each one is graded the next morning: would it have won, and did it have an edge? Results build up by situation here.</div>';
+  const CP = {q1: "After Q1", half: "Halftime", q3: "After Q3", q2: "During Q2", q4: "During Q4", q1x: "During Q1"};
+  const ST = {sim_edge: "Sim saw a 5%+ edge", trailing10: "Team trailing by 10+"};
+  const MK = {spread: "spread", ml: "moneyline", over: "over", under: "under"};
+  const rows = keys.map(k => { const [st, cp, mk] = k.split("|"), a = A[k]; return {st, cp, mk, a}; })
+    .sort((x, y) => (x.st + x.cp + x.mk).localeCompare(y.st + y.cp + y.mk));
+  return `<div class="desc">Flat $1 on each live bet that fit the situation. <b>ROI</b> = profit per $1 bet; <b>sim EV</b> = what the sim expected. These need hundreds of bets before they mean much.</div>
+    <div class="scroll"><table class="tbl"><tr><th>Situation</th><th>Bets</th><th>W-L-P</th><th>ROI</th><th>Sim EV</th></tr>
+    ${rows.map(r => { const [n, w, l, p, u, ev] = r.a, roi = n - p ? u / n : 0;
+      return `<tr><td class="t">${ST[r.st] || r.st} · ${CP[r.cp] || r.cp} · ${MK[r.mk] || r.mk}</td><td>${n}</td><td>${w}-${l}-${p}</td><td class="${roi > 0 ? "h" : roi < 0 ? "m" : ""}">${(roi > 0 ? "+" : "") + Math.round(roi * 100)}%</td><td class="dim">${(ev / n > 0 ? "+" : "") + Math.round(ev / n * 100)}%</td></tr>`; }).join("")}</table></div>`;
 }
 function sbHtml() {
   const sb = D.sb || {}, a = sb.all;
