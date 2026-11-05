@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 45.71,
+  "cash": 25.71,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -5669,6 +5669,290 @@
       }
      ]
     }
+   },
+   {
+    "id": "b5cfebcf",
+    "placed": "2026-11-05T23:57:27Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "2a76b31e02d1416de069a995589515fc",
+      "sport": "basketball_nba",
+      "commence": "2026-11-06T02:10:00Z",
+      "home": "Phoenix Suns",
+      "away": "Orlando Magic",
+      "market": "player_assists",
+      "outcome": "Anthony Black Under",
+      "side": "Under",
+      "player": "Anthony Black",
+      "player_id": "4712849",
+      "stat": "ast",
+      "espn_id": "401909936",
+      "point": 4.5,
+      "price": 1.78,
+      "book": "fanduel",
+      "fair_p": 0.5463,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 3.43,
+       "base": 3.41,
+       "minutes": 29.1,
+       "mult": 1.004,
+       "sd": 1.95,
+       "p_model": 0.7357,
+       "p_mkt": 0.5463,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.958,
+         "txt": "PHX gives shooting guards -4% assists vs their norm (#7 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.019,
+         "txt": "Players with his profile: +2% assists vs PHX (122 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.991,
+         "txt": "His history vs PHX: 4.0 assists/g in 1 games (-1%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "PHX: defense #18, pace #24 \u00b7 ORL: offense #22, pace #13"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.78,
+    "stake": 5.0,
+    "ev": 0.1072,
+    "p": 0.622,
+    "note": "Proj 3.4 vs line 4.5 (norm 3.4, 29 min). Model 74% vs market 55%. PHX gives shooting guards -4% assists vs their norm (#7 toughest of 30) \u00b7 Players with his profile: +2% assists vs PHX (122 close comps) \u00b7 His history vs PHX: 4.0 assists/g in 1 games (-1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "b7ae7a1a",
+    "placed": "2026-11-05T23:57:27Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "ac38449dd3dfbe1c9b48164b6a41aa83",
+      "sport": "basketball_nba",
+      "commence": "2026-11-06T03:10:00Z",
+      "home": "Golden State Warriors",
+      "away": "Miami Heat",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Brandin Podziemski Over",
+      "side": "Over",
+      "player": "Brandin Podziemski",
+      "player_id": "4709138",
+      "stat": "pra",
+      "espn_id": "401909937",
+      "point": 25.5,
+      "price": 1.85,
+      "book": "betrivers",
+      "fair_p": 0.5124,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 29.46,
+       "base": 27.6,
+       "minutes": 33.8,
+       "mult": 1.067,
+       "sd": 6.13,
+       "p_model": 0.6739,
+       "p_mkt": 0.5124,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.057,
+         "txt": "MIA gives shooting guards +6% pts+reb+ast vs their norm (#2 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.057,
+         "txt": "Players with his profile: +6% pts+reb+ast vs MIA (120 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.038,
+         "txt": "His history vs MIA: 32.0 pts+reb+ast/g in 2 games (+4%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "MIA: defense #15, pace #1 \u00b7 GS: offense #13, pace #17"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.85,
+    "stake": 5.0,
+    "ev": 0.0674,
+    "p": 0.577,
+    "note": "Proj 29.5 vs line 25.5 (norm 27.6, 34 min). Model 67% vs market 51%. MIA gives shooting guards +6% pts+reb+ast vs their norm (#2 softest of 30) \u00b7 Players with his profile: +6% pts+reb+ast vs MIA (120 close comps) \u00b7 His history vs MIA: 32.0 pts+reb+ast/g in 2 games (+4%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "e5492292",
+    "placed": "2026-11-05T23:57:27Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "ac38449dd3dfbe1c9b48164b6a41aa83",
+      "sport": "basketball_nba",
+      "commence": "2026-11-06T03:10:00Z",
+      "home": "Golden State Warriors",
+      "away": "Miami Heat",
+      "market": "player_rebounds_assists",
+      "outcome": "De'Anthony Melton Over",
+      "side": "Over",
+      "player": "De'Anthony Melton",
+      "player_id": "4066436",
+      "stat": "ra",
+      "espn_id": "401909937",
+      "point": 6.5,
+      "price": 2.18,
+      "book": "fanduel",
+      "fair_p": 0.4398,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 7.39,
+       "base": 6.89,
+       "minutes": 24.5,
+       "mult": 1.071,
+       "sd": 2.67,
+       "p_model": 0.554,
+       "p_mkt": 0.4398,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.083,
+         "txt": "MIA gives shooting guards +8% reb+ast vs their norm (#1 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.078,
+         "txt": "Players with his profile: +8% reb+ast vs MIA (128 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs MIA yet"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "MIA: defense #15, pace #1 \u00b7 GS: offense #13, pace #17"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.18,
+    "stake": 5.0,
+    "ev": 0.0584,
+    "p": 0.4855,
+    "note": "Proj 7.4 vs line 6.5 (norm 6.9, 24 min). Model 55% vs market 44%. MIA gives shooting guards +8% reb+ast vs their norm (#1 softest of 30) \u00b7 Players with his profile: +8% reb+ast vs MIA (128 close comps) \u00b7 No history vs MIA yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "fa8033f2",
+    "placed": "2026-11-05T23:57:27Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "ac38449dd3dfbe1c9b48164b6a41aa83",
+      "sport": "basketball_nba",
+      "commence": "2026-11-06T03:10:00Z",
+      "home": "Golden State Warriors",
+      "away": "Miami Heat",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Davion Mitchell Over",
+      "side": "Over",
+      "player": "Davion Mitchell",
+      "player_id": "4278053",
+      "stat": "pra",
+      "espn_id": "401909937",
+      "point": 21.5,
+      "price": 1.95,
+      "book": "betmgm",
+      "fair_p": 0.5013,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 23.72,
+       "base": 23.57,
+       "minutes": 34.6,
+       "mult": 1.006,
+       "sd": 5.92,
+       "p_model": 0.5952,
+       "p_mkt": 0.5013,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.019,
+         "txt": "GS gives point guards +2% pts+reb+ast vs their norm (#13 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.999,
+         "txt": "Players with his profile: -0% pts+reb+ast vs GS (60 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.992,
+         "txt": "His history vs GS: 14.0 pts+reb+ast/g in 2 games (-1%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "GS: defense #17, pace #17 \u00b7 MIA: offense #9, pace #1"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.95,
+    "stake": 5.0,
+    "ev": 0.0508,
+    "p": 0.5389,
+    "note": "Proj 23.7 vs line 21.5 (norm 23.6, 35 min). Model 60% vs market 50%. GS gives point guards +2% pts+reb+ast vs their norm (#13 softest of 30) \u00b7 Players with his profile: -0% pts+reb+ast vs GS (60 close comps) \u00b7 His history vs GS: 14.0 pts+reb+ast/g in 2 games (-1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -6694,6 +6978,11 @@
    "ts": "2026-11-05T21:27:26Z",
    "kind": "scan",
    "text": "Scanned soccer_italy_serie_a (1) for 2 credits. Nothing cleared the bar. Equity $45.71."
+  },
+  {
+   "ts": "2026-11-05T23:57:27Z",
+   "kind": "props",
+   "text": "NBA matchups: 2 games, strongest spots: Stephen Curry ast +10% vs MIA; Stephen Curry ra +9% vs MIA; Will Richard ra +7% vs MIA. Bought prop odds for MIA@GS (ast, ra, pra, team totals), ORL@PHX (ast, tpm) (6 credits). Placed 4: Anthony Black Under 4.5 @ -128 (FanDuel); Brandin Podziemski Over 25.5 @ -118 (BetRivers); De'Anthony Melton Over 6.5 @ +118 (FanDuel); Davion Mitchell Over 21.5 @ -105 (BetMGM)"
   }
  ],
  "learned_ids": [
@@ -6730,7 +7019,7 @@
   "44b5928e"
  ],
  "strategist": null,
- "updated": "2026-11-05T21:27:26Z",
+ "updated": "2026-11-05T23:57:37Z",
  "stats": {
   "bets": 31,
   "won": 9,
@@ -6743,7 +7032,7 @@
   "clv_n": 15,
   "clv_no_close": 16,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 4,
   "equity": 45.71
  },
  "weights": {
