@@ -4849,7 +4849,7 @@
       "book": "fanduel",
       "fair_p": 0.4691,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 12.32,
        "base": 11.82,
@@ -4880,6 +4880,22 @@
          "txt": "PHI: defense #10, pace #16 \u00b7 DET: offense #11, pace #19"
         }
        ]
+      },
+      "final": {
+       "home": 106.0,
+       "away": 112.0
+      },
+      "actual": 18.0,
+      "box": {
+       "min": 40.0,
+       "pts": 26.0,
+       "reb": 7.0,
+       "ast": 11.0,
+       "tpm": 1.0,
+       "tpa": 9.0,
+       "fga": 22.0,
+       "fta": 7.0,
+       "tov": 4.0
       }
      }
     ],
@@ -4890,10 +4906,215 @@
     "note": "Proj 12.3 vs line 13.5 (norm 11.8, 31 min). Model 64% vs market 47%. PHI gives point guards +3% reb+ast vs their norm (#15 toughest of 30) \u00b7 Players with his profile: +4% reb+ast vs PHI (164 close comps) \u00b7 His history vs PHI: 16.3 reb+ast/g in 3 games (+6%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-05T03:39:50Z",
+    "review": {
+     "headline": "LOST: 18 reb+ast vs Under 13.5",
+     "final": "Philadelphia 76ers 112 \u2013 Detroit Pistons 106",
+     "legs": [
+      {
+       "outcome": "Cade Cunningham Under",
+       "result": "loss",
+       "headline": "18 reb+ast vs Under 13.5",
+       "final": "Philadelphia 76ers 112 \u2013 Detroit Pistons 106",
+       "why": [
+        "Cade Cunningham finished with 18 reb+ast against a line of 13.5: under missed by 4.5.",
+        "Minutes: played 40 vs 30.6 projected.",
+        "Box score: 7 reb \u00b7 11 ast, 4 TO.",
+        "Model projected 12.3 (11.8 norm \u00d7 1.04 matchup); actual was +5.7 off (+1.1 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (15.5) in a matchup the model rated soft.",
+        "Signal: PHI gives point guards +3% reb+ast vs their norm (#15 toughest of 30)",
+        "Signal: Players with his profile: +4% reb+ast vs PHI (164 close comps)",
+        "Signal: His history vs PHI: 16.3 reb+ast/g in 3 games (+6%)",
+        "We priced it at 54% to hit vs 49% needed to break even at 2.04x (+10.0% expected edge).",
+        "Consensus fair probability when placed: 47% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "DET",
+        "away": "PHI"
+       },
+       "final": "PHI 112 \u2013 DET 106",
+       "periods": {
+        "away": [
+         29,
+         27,
+         35,
+         21
+        ],
+        "home": [
+         21,
+         21,
+         33,
+         31
+        ]
+       },
+       "largest_lead": {
+        "PHI": 18,
+        "DET": 6
+       },
+       "largest_lead_at": {
+        "PHI": "11:40 4th Q",
+        "DET": "6:15 1st Q"
+       },
+       "lead_changes": 5,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "PHI",
+         "pts": 11,
+         "from": "31.5 3rd Q",
+         "to": "11:05 4th Q",
+         "score": "PHI 93-75 DET"
+        },
+        {
+         "team": "PHI",
+         "pts": 10,
+         "from": "5:28 1st Q",
+         "to": "2:53 1st Q",
+         "score": "PHI 21-17 DET"
+        },
+        {
+         "team": "DET",
+         "pts": 9,
+         "from": "4:14 2nd Q",
+         "to": "2:26 2nd Q",
+         "score": "PHI 48-40 DET"
+        },
+        {
+         "team": "PHI",
+         "pts": 9,
+         "from": "3:46 3rd Q",
+         "to": "2:18 3rd Q",
+         "score": "PHI 84-68 DET"
+        }
+       ],
+       "swings": [
+        {
+         "team": "PHI",
+         "swing": 16,
+         "from": "6:15 1st Q",
+         "to": "10:34 2nd Q",
+         "mins": 7.7,
+         "from_score": "PHI 11-17 DET",
+         "to_score": "PHI 33-23 DET",
+         "pts_for": 22,
+         "pts_against": 6
+        }
+       ],
+       "clutch": [
+        "23.7 4th Q: Joel Embiid makes free throw 2 of 2 (PHI 108-102 DET)",
+        "21.8 4th Q: Duncan Robinson makes free throw 2 of 3 (PHI 108-103 DET)",
+        "21.8 4th Q: Duncan Robinson makes free throw 3 of 3 (PHI 108-104 DET)",
+        "20.2 4th Q: Tyrese Maxey makes free throw 1 of 2 (PHI 109-104 DET)",
+        "20.2 4th Q: Tyrese Maxey makes free throw 2 of 2 (PHI 110-104 DET)",
+        "13.3 4th Q: John Collins makes 2-foot dunk (Cade Cunningham assists) (PHI 110-106 DET)",
+        "12.5 4th Q: Tyrese Maxey makes free throw 1 of 2 (PHI 111-106 DET)",
+        "12.5 4th Q: Tyrese Maxey makes free throw 2 of 2 (PHI 112-106 DET)"
+       ],
+       "leaders": [
+        "Joel Embiid (PHI): 26 pts, 15 reb, 2 ast, 0-3 3PT in 33 min",
+        "Jaylen Brown (PHI): 30 pts, 7 reb, 1 ast, 3-5 3PT in 37 min",
+        "Cade Cunningham (DET): 26 pts, 7 reb, 11 ast, 1-9 3PT in 40 min",
+        "Duncan Robinson (DET): 27 pts, 1 reb, 2 ast, 7-11 3PT in 37 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 3,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 8,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 11,
+          "reb": 0,
+          "ast": 3,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 6,
+          "reb": 3,
+          "ast": 4,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 5,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "11:53 3rd Q"
+        ],
+        "box": {
+         "id": "4432166",
+         "name": "Cade Cunningham",
+         "team": "DET",
+         "min": "40",
+         "pts": 26,
+         "reb": 7,
+         "ast": 11,
+         "3pt": "1-9",
+         "fg": "9-22",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: PHI 56-42 DET, PHI up 14.",
+        "The 4th quarter decided the most: DET won it 31-21.",
+        "Largest leads: PHI 18 (11:40 4th Q), DET 6 (6:15 1st Q). 5 lead changes, 1 ties.",
+        "Momentum swing: PHI outscored them 22-6 in 7.7 minutes (6:15 1st Q to 10:34 2nd Q), moving it from PHI 11-17 DET to PHI 33-23 DET.",
+        "PHI went on a 11-0 run (31.5 3rd Q to 11:05 4th Q), making it PHI 93-75 DET.",
+        "PHI went on a 10-0 run (5:28 1st Q to 2:53 1st Q), making it PHI 21-17 DET.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Cade Cunningham by period (REB+AST): Q1 6, Q2 2, Q3 3, Q4 7.",
+        "He went over 13.5 in Q4.",
+        "Threes made at: 11:53 3rd Q."
+       ],
+       "espn_id": "401909922",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909922"
+      }
+     ]
+    }
    },
    {
     "id": "188a9eb2",
@@ -5041,7 +5262,7 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.1225,
+  "min_edge": 0.1275,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -5203,9 +5424,9 @@
    }
   },
   "matchup_under": {
-   "bets": 7,
-   "staked": 35.0,
-   "profit": 0.5499999999999989,
+   "bets": 8,
+   "staked": 40.0,
+   "profit": -4.450000000000001,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -5220,9 +5441,9 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 3,
+     "n": 4,
      "won": 2,
-     "lost": 1
+     "lost": 2
     },
     "matchup-read-wrong": {
      "n": 2,
@@ -5240,9 +5461,14 @@
      "lost": 2
     },
     "model-miss": {
-     "n": 2,
+     "n": 3,
      "won": 0,
-     "lost": 2
+     "lost": 3
+    },
+    "minutes-long": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
     }
    }
   }
@@ -5250,12 +5476,12 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 16.0,
-   "staked": 80.0,
-   "profit": -18.799999999999997
+   "bets": 17.0,
+   "staked": 85.0,
+   "profit": -23.799999999999997
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-01T02:29:41Z",
+   "last_scanned": "2026-11-05T03:39:54Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -5996,6 +6222,21 @@
    "ts": "2026-11-05T03:29:17Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 4: 14 games, 330 players projected, lineups for 14 games."
+  },
+  {
+   "ts": "2026-11-05T03:39:50Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Cade Cunningham Under 13.5 @ +104 (FanDuel) \u2014 LOST: 18 reb+ast vs Under 13.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-05T03:39:50Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 12.8%."
+  },
+  {
+   "ts": "2026-11-05T03:39:54Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (11) for 3 credits. Nothing cleared the bar. Equity $37.21."
   }
  ],
  "learned_ids": [
@@ -6026,24 +6267,25 @@
   "132d899b",
   "640446dd",
   "3368e33d",
-  "f6949a6d"
+  "f6949a6d",
+  "7d0692ba"
  ],
  "strategist": null,
- "updated": "2026-11-05T03:29:24Z",
+ "updated": "2026-11-05T03:39:54Z",
  "stats": {
-  "bets": 28,
+  "bets": 29,
   "won": 7,
-  "lost": 20,
+  "lost": 21,
   "push": 1,
-  "staked": 142.63,
-  "profit": -57.79,
-  "roi": -0.4052,
+  "staked": 147.63,
+  "profit": -62.79,
+  "roi": -0.4253,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 13,
+  "clv_no_close": 14,
   "close_mins_median": 151,
-  "open": 3,
-  "equity": 42.21
+  "open": 2,
+  "equity": 37.21
  },
  "weights": {
   "value_fav": 0.842,
@@ -6052,8 +6294,8 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.047,
-  "matchup_under": 1.012
+  "matchup_under": 0.911
  },
  "paused": [],
- "dry_scans": 0
+ "dry_scans": 1
 }
