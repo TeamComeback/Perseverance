@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 27.21,
+  "cash": 45.71,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -5141,7 +5141,7 @@
       "book": "betmgm",
       "fair_p": 0.5217,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 24.21,
        "base": 24.68,
@@ -5172,6 +5172,22 @@
          "txt": "MIN: defense #6, pace #9 \u00b7 HOU: offense #8, pace #26"
         }
        ]
+      },
+      "final": {
+       "home": 107.0,
+       "away": 117.0
+      },
+      "actual": 20.0,
+      "box": {
+       "min": 32.0,
+       "pts": 11.0,
+       "reb": 8.0,
+       "ast": 1.0,
+       "tpm": 0.0,
+       "tpa": 2.0,
+       "fga": 9.0,
+       "fta": 6.0,
+       "tov": 3.0
       }
      }
     ],
@@ -5182,10 +5198,200 @@
     "note": "Proj 24.2 vs line 26.5 (norm 24.7, 31 min). Model 67% vs market 52%. MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30) \u00b7 Players with his profile: -2% pts+reb+ast vs MIN (33 close comps) \u00b7 His history vs MIN: 37.3 pts+reb+ast/g in 3 games (+2%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.15,
+    "profit": 4.15,
+    "settled": "2026-11-05T17:22:06Z",
+    "review": {
+     "headline": "WON: 20 pts+reb+ast vs Under 26.5",
+     "final": "Minnesota Timberwolves 117 \u2013 Houston Rockets 107",
+     "legs": [
+      {
+       "outcome": "Amen Thompson Under",
+       "result": "win",
+       "headline": "20 pts+reb+ast vs Under 26.5",
+       "final": "Minnesota Timberwolves 117 \u2013 Houston Rockets 107",
+       "why": [
+        "Amen Thompson finished with 20 pts+reb+ast against a line of 26.5: under cleared by 6.5.",
+        "Minutes: played 32 vs 30.8 projected.",
+        "Box score: 11 pts on 9 FGA / 6 FTA \u00b7 8 reb \u00b7 1 ast, 3 TO.",
+        "Model projected 24.2 (24.7 norm \u00d7 0.98 matchup); actual was -4.2 off (-0.7 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (25.6) in a matchup the model rated tough.",
+        "Signal: MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)",
+        "Signal: Players with his profile: -2% pts+reb+ast vs MIN (33 close comps)",
+        "Signal: His history vs MIN: 37.3 pts+reb+ast/g in 3 games (+2%)",
+        "We priced it at 58% to hit vs 55% needed to break even at 1.83x (+6.4% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "HOU",
+        "away": "MIN"
+       },
+       "final": "MIN 117 \u2013 HOU 107",
+       "periods": {
+        "away": [
+         33,
+         24,
+         25,
+         35
+        ],
+        "home": [
+         30,
+         27,
+         27,
+         23
+        ]
+       },
+       "largest_lead": {
+        "MIN": 11,
+        "HOU": 5
+       },
+       "largest_lead_at": {
+        "MIN": "28.2 4th Q",
+        "HOU": "1:49 1st Q"
+       },
+       "lead_changes": 26,
+       "ties": 15,
+       "runs": [
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "3:05 1st Q",
+         "to": "1:49 1st Q",
+         "score": "MIN 23-28 HOU"
+        }
+       ],
+       "swings": [
+        {
+         "team": "MIN",
+         "swing": 14,
+         "from": "7:10 4th Q",
+         "to": "28.2 4th Q",
+         "mins": 6.7,
+         "from_score": "MIN 91-94 HOU",
+         "to_score": "MIN 117-106 HOU",
+         "pts_for": 26,
+         "pts_against": 12
+        },
+        {
+         "team": "HOU",
+         "swing": 10,
+         "from": "9:29 2nd Q",
+         "to": "2:32 2nd Q",
+         "mins": 7.0,
+         "from_score": "MIN 41-35 HOU",
+         "to_score": "MIN 49-53 HOU",
+         "pts_for": 18,
+         "pts_against": 8
+        }
+       ],
+       "clutch": [
+        "4:38 4th Q: Alperen Sengun makes free throw 1 of 2 (MIN 104-99 HOU)",
+        "3:46 4th Q: Fred VanVleet makes 27-foot three pointer (MIN 104-102 HOU)",
+        "3:27 4th Q: LaMelo Ball makes 7-foot two point shot (MIN 106-102 HOU)",
+        "2:58 4th Q: Fred VanVleet makes 14-foot fade away jump shot (MIN 106-104 HOU)",
+        "2:37 4th Q: Jonathan Kuminga makes 23-foot three point jumper (Ayo Dosunmu assists) (MIN 109-104 HOU)",
+        "1:51 4th Q: Jonathan Kuminga makes tip shot (MIN 111-104 HOU)",
+        "1:47 4th Q: Kevin Durant makes free throw 2 of 2 (MIN 111-106 HOU)",
+        "54.0 4th Q: Jonathan Kuminga makes 23-foot three point jumper (Rudy Gobert assists) (MIN 114-106 HOU)"
+       ],
+       "leaders": [
+        "Ayo Dosunmu (MIN): 21 pts, 1 reb, 6 ast, 0-3 3PT in 34 min",
+        "LaMelo Ball (MIN): 20 pts, 2 reb, 6 ast, 4-7 3PT in 31 min",
+        "Alperen Sengun (HOU): 17 pts, 12 reb, 10 ast, 0-1 3PT in 39 min",
+        "Kevin Durant (HOU): 21 pts, 5 reb, 2 ast, 2-5 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 6,
+          "reb": 4,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 1,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "4684740",
+         "name": "Amen Thompson",
+         "team": "HOU",
+         "min": "32",
+         "pts": 11,
+         "reb": 8,
+         "ast": 1,
+         "3pt": "0-2",
+         "fg": "3-9",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIN 57-57 HOU, tied.",
+        "The 4th quarter decided the most: MIN won it 35-23.",
+        "Largest leads: MIN 11 (28.2 4th Q), HOU 5 (1:49 1st Q). 26 lead changes, 15 ties.",
+        "Momentum swing: MIN outscored them 26-12 in 6.7 minutes (7:10 4th Q to 28.2 4th Q), moving it from MIN 91-94 HOU to MIN 117-106 HOU.",
+        "Momentum swing: HOU outscored them 18-8 in 7 minutes (9:29 2nd Q to 2:32 2nd Q), moving it from MIN 41-35 HOU to MIN 49-53 HOU.",
+        "HOU went on a 8-0 run (3:05 1st Q to 1:49 1st Q), making it MIN 23-28 HOU.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Amen Thompson by period (PTS+REB+AST): Q1 3, Q2 10, Q3 3, Q4 4.",
+        "He never got past 26.5."
+       ],
+       "espn_id": "401909930",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909930"
+      }
+     ]
+    }
    },
    {
     "id": "44b5928e",
@@ -5212,7 +5418,7 @@
       "book": "hardrockbet",
       "fair_p": 0.5027,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 19.06,
        "base": 20.35,
@@ -5243,6 +5449,22 @@
          "txt": "HOU: defense #5, pace #26 \u00b7 MIN: offense #12, pace #9"
         }
        ]
+      },
+      "final": {
+       "home": 107.0,
+       "away": 117.0
+      },
+      "actual": 21.0,
+      "box": {
+       "min": 33.0,
+       "pts": 8.0,
+       "reb": 11.0,
+       "ast": 2.0,
+       "tpm": 0.0,
+       "tpa": 0.0,
+       "fga": 7.0,
+       "fta": 6.0,
+       "tov": 0.0
       }
      }
     ],
@@ -5253,16 +5475,206 @@
     "note": "Proj 19.1 vs line 21.5 (norm 20.4, 30 min). Model 67% vs market 50%. HOU gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30) \u00b7 Players with his profile: -11% pts+reb+ast vs HOU (145 close comps) \u00b7 His history vs HOU: 26.5 pts+reb+ast/g in 2 games (+3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.35,
+    "profit": 4.35,
+    "settled": "2026-11-05T17:22:06Z",
+    "review": {
+     "headline": "WON: 21 pts+reb+ast vs Under 21.5",
+     "final": "Minnesota Timberwolves 117 \u2013 Houston Rockets 107",
+     "legs": [
+      {
+       "outcome": "Rudy Gobert Under",
+       "result": "win",
+       "headline": "21 pts+reb+ast vs Under 21.5",
+       "final": "Minnesota Timberwolves 117 \u2013 Houston Rockets 107",
+       "why": [
+        "Rudy Gobert finished with 21 pts+reb+ast against a line of 21.5: under cleared by 0.5.",
+        "Minutes: played 33 vs 29.6 projected.",
+        "Box score: 8 pts on 7 FGA / 6 FTA \u00b7 11 reb \u00b7 2 ast, 0 TO.",
+        "Model projected 19.1 (20.4 norm \u00d7 0.94 matchup); actual was +1.9 off (+0.3 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (22.7) in a matchup the model rated tough.",
+        "Signal: HOU gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)",
+        "Signal: Players with his profile: -11% pts+reb+ast vs HOU (145 close comps)",
+        "Signal: His history vs HOU: 26.5 pts+reb+ast/g in 2 games (+3%)",
+        "We priced it at 57% to hit vs 53% needed to break even at 1.87x (+6.2% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "HOU",
+        "away": "MIN"
+       },
+       "final": "MIN 117 \u2013 HOU 107",
+       "periods": {
+        "away": [
+         33,
+         24,
+         25,
+         35
+        ],
+        "home": [
+         30,
+         27,
+         27,
+         23
+        ]
+       },
+       "largest_lead": {
+        "MIN": 11,
+        "HOU": 5
+       },
+       "largest_lead_at": {
+        "MIN": "28.2 4th Q",
+        "HOU": "1:49 1st Q"
+       },
+       "lead_changes": 26,
+       "ties": 15,
+       "runs": [
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "3:05 1st Q",
+         "to": "1:49 1st Q",
+         "score": "MIN 23-28 HOU"
+        }
+       ],
+       "swings": [
+        {
+         "team": "MIN",
+         "swing": 14,
+         "from": "7:10 4th Q",
+         "to": "28.2 4th Q",
+         "mins": 6.7,
+         "from_score": "MIN 91-94 HOU",
+         "to_score": "MIN 117-106 HOU",
+         "pts_for": 26,
+         "pts_against": 12
+        },
+        {
+         "team": "HOU",
+         "swing": 10,
+         "from": "9:29 2nd Q",
+         "to": "2:32 2nd Q",
+         "mins": 7.0,
+         "from_score": "MIN 41-35 HOU",
+         "to_score": "MIN 49-53 HOU",
+         "pts_for": 18,
+         "pts_against": 8
+        }
+       ],
+       "clutch": [
+        "4:38 4th Q: Alperen Sengun makes free throw 1 of 2 (MIN 104-99 HOU)",
+        "3:46 4th Q: Fred VanVleet makes 27-foot three pointer (MIN 104-102 HOU)",
+        "3:27 4th Q: LaMelo Ball makes 7-foot two point shot (MIN 106-102 HOU)",
+        "2:58 4th Q: Fred VanVleet makes 14-foot fade away jump shot (MIN 106-104 HOU)",
+        "2:37 4th Q: Jonathan Kuminga makes 23-foot three point jumper (Ayo Dosunmu assists) (MIN 109-104 HOU)",
+        "1:51 4th Q: Jonathan Kuminga makes tip shot (MIN 111-104 HOU)",
+        "1:47 4th Q: Kevin Durant makes free throw 2 of 2 (MIN 111-106 HOU)",
+        "54.0 4th Q: Jonathan Kuminga makes 23-foot three point jumper (Rudy Gobert assists) (MIN 114-106 HOU)"
+       ],
+       "leaders": [
+        "Ayo Dosunmu (MIN): 21 pts, 1 reb, 6 ast, 0-3 3PT in 34 min",
+        "LaMelo Ball (MIN): 20 pts, 2 reb, 6 ast, 4-7 3PT in 31 min",
+        "Alperen Sengun (HOU): 17 pts, 12 reb, 10 ast, 0-1 3PT in 39 min",
+        "Kevin Durant (HOU): 21 pts, 5 reb, 2 ast, 2-5 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 3,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 1,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 5,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "3032976",
+         "name": "Rudy Gobert",
+         "team": "MIN",
+         "min": "33",
+         "pts": 8,
+         "reb": 11,
+         "ast": 2,
+         "3pt": "0-0",
+         "fg": "3-7",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIN 57-57 HOU, tied.",
+        "The 4th quarter decided the most: MIN won it 35-23.",
+        "Largest leads: MIN 11 (28.2 4th Q), HOU 5 (1:49 1st Q). 26 lead changes, 15 ties.",
+        "Momentum swing: MIN outscored them 26-12 in 6.7 minutes (7:10 4th Q to 28.2 4th Q), moving it from MIN 91-94 HOU to MIN 117-106 HOU.",
+        "Momentum swing: HOU outscored them 18-8 in 7 minutes (9:29 2nd Q to 2:32 2nd Q), moving it from MIN 41-35 HOU to MIN 49-53 HOU.",
+        "HOU went on a 8-0 run (3:05 1st Q to 1:49 1st Q), making it MIN 23-28 HOU.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Rudy Gobert by period (PTS+REB+AST): Q1 3, Q2 5, Q3 4, Q4 9.",
+        "He never got past 21.5."
+       ],
+       "espn_id": "401909930",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909930"
+      }
+     ]
+    }
    }
   ],
   "runs": []
  },
  "params": {
-  "min_edge": 0.1275,
+  "min_edge": 0.1325,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -5424,15 +5836,15 @@
    }
   },
   "matchup_under": {
-   "bets": 8,
-   "staked": 40.0,
-   "profit": -4.450000000000001,
+   "bets": 10,
+   "staked": 50.0,
+   "profit": 4.049999999999999,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 4,
-     "won": 3,
+     "n": 6,
+     "won": 5,
      "lost": 1
     },
     "dnp-void": {
@@ -5441,8 +5853,8 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 4,
-     "won": 2,
+     "n": 6,
+     "won": 4,
      "lost": 2
     },
     "matchup-read-wrong": {
@@ -5476,9 +5888,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 17.0,
-   "staked": 85.0,
-   "profit": -23.799999999999997
+   "bets": 19.0,
+   "staked": 95.0,
+   "profit": -15.299999999999999
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-05T03:39:54Z",
@@ -6242,6 +6654,31 @@
    "ts": "2026-11-05T08:29:21Z",
    "kind": "research",
    "text": "Research refresh for Thu Nov 5: 2 games, 45 players projected, lineups for 2 games."
+  },
+  {
+   "ts": "2026-11-05T17:22:06Z",
+   "kind": "result",
+   "text": "WON +$4.15: Amen Thompson Under 26.5 @ -120 (BetMGM) \u2014 WON: 20 pts+reb+ast vs Under 26.5 [matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-05T17:22:06Z",
+   "kind": "result",
+   "text": "WON +$4.35: Rudy Gobert Under 21.5 @ -115 (Hard Rock Bet) \u2014 WON: 21 pts+reb+ast vs Under 21.5 [matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-05T17:22:06Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 13.2%."
+  },
+  {
+   "ts": "2026-11-05T17:22:06Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +6.2% vs actual over 447 player-games: level x0.976; REB projections ran +2.7% vs actual over 447 player-games: level x0.984; AST projections ran +6.2% vs actual over 447 player-games: level x0.975; TPM projections ran +7.2% vs actual over 447 player-games: level x0.986; PRA projections ran +5.0% vs actual over 447 player-games: level x0.979; RA projections ran +3.5% vs actual over 447 player-games: level x0.982; starter minutes were off by -1.4 on average over 228 player-games: correction +0.3 min; bench minutes were off by +1.0 on average over 219 player-games: correction -0.2 min; conviction factor 'minutes' hurt by -1.7 pts of hit rate over 1442 plays: weight 0.74 -> 0.88; conviction factor 'agree' hurt by -0.9 pts of hit rate over 722 plays: weight 1.06 -> 0.95; conviction factor 'rest' helped by +9.2 pts of hit rate over 268 plays: weight 1.00 -> 1.28."
+  },
+  {
+   "ts": "2026-11-05T17:22:06Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $45.71 (run #1), 9-21-1, ROI -34.4%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -6273,24 +6710,26 @@
   "640446dd",
   "3368e33d",
   "f6949a6d",
-  "7d0692ba"
+  "7d0692ba",
+  "188a9eb2",
+  "44b5928e"
  ],
  "strategist": null,
- "updated": "2026-11-05T08:29:34Z",
+ "updated": "2026-11-05T17:22:06Z",
  "stats": {
-  "bets": 29,
-  "won": 7,
+  "bets": 31,
+  "won": 9,
   "lost": 21,
   "push": 1,
-  "staked": 147.63,
-  "profit": -62.79,
-  "roi": -0.4253,
+  "staked": 157.63,
+  "profit": -54.29,
+  "roi": -0.3444,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 14,
+  "clv_no_close": 16,
   "close_mins_median": 151,
-  "open": 2,
-  "equity": 37.21
+  "open": 0,
+  "equity": 45.71
  },
  "weights": {
   "value_fav": 0.842,
@@ -6299,7 +6738,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.047,
-  "matchup_under": 0.911
+  "matchup_under": 1.074
  },
  "paused": [],
  "dry_scans": 1
