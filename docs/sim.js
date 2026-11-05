@@ -254,14 +254,14 @@ const pOver = (a, line) => { let c = 0; for (let i = 0; i < a.length; i++) if (a
 // Court in feet: 94 x 50, drawn at 10 px per foot. Baskets at x = 5.25 and 88.75.
 const W = 940, H = 500, BX = [52.5, 887.5];
 function courtSvg() {
-  const line = 'stroke="#e9d9b8" stroke-opacity=".55" stroke-width="2" fill="none"';
+  const line = 'stroke="#f4ead8" stroke-opacity=".82" stroke-width="2.2" fill="none"';
   const half = side => {
     const b = BX[side], s = side ? -1 : 1, x0 = side ? W : 0;
-    return `<rect x="${side ? W - 190 : 0}" y="170" width="190" height="160" ${line} fill="#ADD8E6" fill-opacity=".07"/>
+    return `<rect x="${side ? W - 190 : 0}" y="170" width="190" height="160" ${line} fill="#000" fill-opacity=".2"/>
       <path d="M${x0} 30 L${x0 + s * 140} 30 A237.5 237.5 0 0 ${side ? 0 : 1} ${x0 + s * 140} 470 L${x0} 470" ${line}/>
       <circle cx="${x0 + s * 190}" cy="250" r="60" ${line}/>
       <path d="M${b - s * 0} 210 A40 40 0 0 ${side ? 0 : 1} ${b} 290" ${line}/>
-      <line x1="${x0 + s * 40}" x2="${x0 + s * 40}" y1="220" y2="280" stroke="#e9d9b8" stroke-width="3"/>
+      <line x1="${x0 + s * 40}" x2="${x0 + s * 40}" y1="220" y2="280" stroke="#f4ead8" stroke-width="3"/>
       <g class="hoop" id="hoop${side}" style="transform-origin:${b}px 250px">
         <circle class="burst" cx="${b}" cy="250" r="9"/>
         <circle class="net" cx="${b}" cy="250" r="5.6"/>
@@ -271,12 +271,12 @@ function courtSvg() {
   let planks = "";
   for (let y = 0; y < H; y += 25) planks += `<line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="#000" stroke-opacity=".08"/>`;
   return `<svg viewBox="-20 -20 ${W + 40} ${H + 40}" class="cv" id="simCourt">
-    <defs><radialGradient id="ballGrad" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#ffc07a"/><stop offset=".55" stop-color="#f08a2c"/><stop offset="1" stop-color="#b9561a"/></radialGradient><linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#6b4a2c"/><stop offset=".5" stop-color="#83603b"/><stop offset="1" stop-color="#6b4a2c"/></linearGradient></defs>
-    <rect x="-20" y="-20" width="${W + 40}" height="${H + 40}" rx="6" fill="#0e1422"/>
-    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#wood)"/>${planks}
+    <defs><radialGradient id="ballGrad" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#ffc07a"/><stop offset=".55" stop-color="#f08a2c"/><stop offset="1" stop-color="#b9561a"/></radialGradient><linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#3e2a1a"/><stop offset=".5" stop-color="#5c3f27"/><stop offset="1" stop-color="#3e2a1a"/></linearGradient><radialGradient id="spot" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+    <rect x="-20" y="-20" width="${W + 40}" height="${H + 40}" rx="6" fill="#2a1d13"/>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#wood)"/>${planks}<ellipse cx="${W / 2}" cy="250" rx="330" ry="210" fill="url(#spot)"/>
     <rect x="0" y="0" width="${W}" height="${H}" ${line}/>
     <line x1="${W / 2}" x2="${W / 2}" y1="0" y2="${H}" ${line}/><circle cx="${W / 2}" cy="250" r="60" ${line}/>
-    <circle cx="${W / 2}" cy="250" r="20" ${line}/>
+    <circle cx="${W / 2}" cy="250" r="20" ${line}/><circle cx="${W / 2}" cy="250" r="60" fill="#fff" fill-opacity=".04"/>
     ${half(0)}${half(1)}
     <g id="simDots"></g>
     <g id="simBallG" style="pointer-events:none">
@@ -338,43 +338,101 @@ async function renderSim() {
   showLive();
 }
 
+// Team colors (ESPN's primary / alternate). Panel color is the darker one; the accent is the other, or white/black for contrast.
+const TEAMC = {ATL: ["c8102e", "fdb927"], BOS: ["008348", "ffffff"], BKN: ["000000", "ffffff"], CHA: ["008ca8", "1d1060"], CHI: ["ce1141", "000000"], CLE: ["860038", "bc945c"], DAL: ["0064b1", "bbc4ca"], DEN: ["0e2240", "fec524"], DET: ["1d428a", "c8102e"], GS: ["fdb927", "1d428a"], HOU: ["ce0e2d", "000000"], IND: ["0c2340", "ffd520"], LAC: ["12173f", "c8102e"], LAL: ["552583", "fdb927"], MEM: ["5d76a9", "12173f"], MIA: ["98002e", "000000"], MIL: ["00471b", "eee1c6"], MIN: ["266092", "79bc43"], NO: ["0a2240", "b4975a"], NY: ["1d428a", "f58426"], OKC: ["007ac1", "ef3b24"], ORL: ["0150b5", "9ca0a3"], PHI: ["1d428a", "e01234"], PHX: ["29127a", "e56020"], POR: ["e03a3e", "000000"], SAC: ["5a2d81", "6a7a82"], SA: ["000000", "c4ced4"], TOR: ["d91244", "000000"], UTAH: ["4e008e", "79a3dc"], WSH: ["e31837", "002b5c"]};
+const hexRgb = h => [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16));
+const lum = h => { const [r, g, b] = hexRgb(h); return (0.299 * r + 0.587 * g + 0.114 * b) / 255; };
+const cdist = (a, b) => { const x = hexRgb(a), y = hexRgb(b); return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]); };
+const ink = h => lum(h) > 0.6 ? "#0b0f17" : "#fff";
+function teamCols(P) {
+  const one = ab => {
+    let [c, a] = TEAMC[ab] || ["3a4766", "ADD8E6"];
+    if (lum(c) > 0.55 && lum(a) < 0.55) [c, a] = [a, c];
+    if (lum(a) < 0.12 || cdist(a, c) < 70) a = lum(c) > 0.45 ? "0b0f17" : "ffffff";
+    if (lum(c) < 0.06) c = "26292f";
+    return {c, a};
+  };
+  const h = one(P.teams.home.ab), w = one(P.teams.away.ab);
+  if (cdist(h.c, w.c) < 90) {                       // similar colors: the away team switches to its alternate (or white)
+    const alt = (TEAMC[P.teams.away.ab] || [])[1];
+    if (alt && lum(alt) > 0.12 && cdist(alt, h.c) > 110) { w.c = alt; w.a = lum(alt) > 0.5 ? "0b0f17" : "ffffff"; }
+    else { w.c = "e7ecf5"; w.a = "0b0f17"; }
+  }
+  return {home: h, away: w};
+}
+const nickOf = s => { const g = S.P.g, n = g[s + "_name"] || S.P.teams[s].name || S.P.teams[s].ab; return n.split(" ").slice(-1)[0]; };
+// jersey numbers from ESPN's team rosters (free, cached for a day on this device)
+async function loadJerseys(P) {
+  P.jersey = P.jersey || {};
+  await Promise.all(["home", "away"].map(async s => {
+    const ab = P.teams[s].ab, key = "jer-" + ab;
+    let m = null;
+    try { const c = JSON.parse(localStorage.getItem(key) || "null"); if (c && Date.now() - c.t < 864e5) m = c.m; } catch (e) {}
+    if (!m) {
+      try {
+        const r = await fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${ab.toLowerCase()}/roster`).then(x => x.json());
+        m = {}; (r.athletes || []).forEach(a => { if (a.jersey != null) m[a.id] = String(a.jersey); });
+        try { localStorage.setItem(key, JSON.stringify({t: Date.now(), m})); } catch (e) {}
+      } catch (e) { m = {}; }
+    }
+    Object.assign(P.jersey, m);
+  }));
+  if (S.P === P) { document.querySelectorAll("#simDots .pdot").forEach(g => { const t = g.querySelector("text"), n = P.jersey[g.getAttribute("data-p")]; if (t && n) t.textContent = n; }); boxes(S.i); }
+}
+const jer = pid => (S.P && S.P.jersey && S.P.jersey[pid]) || "";
+
 function stage() {
-  const P = S.P, g = P.g;
+  const P = S.P, g = P.g, C = S.col = teamCols(P);
+  const vars = `--hc:#${C.home.c};--ha:#${C.home.a};--ht:${ink(C.home.c)};--ac:#${C.away.c};--aa:#${C.away.a};--at:${ink(C.away.c)}`;
+  S.boxSide = S.boxSide || "away";
   $("simStage").innerHTML = `
-    <div class="simwrap">
-      <div class="sbx">
-        <div class="tm a"><span class="nm">${esc(P.teams.away.ab)}</span><span class="sc" id="scA">0</span></div>
-        <div class="mid"><div class="clk" id="simClk">Q1 12:00</div><div class="wp"><span id="wpA">50%</span><div class="wpb"><i id="wpBar" style="width:50%"></i></div><span id="wpH">50%</span></div><div class="wpl">win probability</div></div>
-        <div class="tm h"><span class="sc" id="scH">0</span><span class="nm">${esc(P.teams.home.ab)}</span></div>
+    <div class="bc${S.theater ? " theater" : ""} side-${S.boxSide}" id="bcWrap" style="${vars}">
+      <div class="bc-sb">
+        <div class="bc-tm a"><div class="tx"><div class="nm">${esc(nickOf("away"))}</div><div class="sub" id="fgA">${esc(P.teams.away.ab)}</div></div><div class="sc" id="scA">0</div></div>
+        <div class="bc-clk"><div class="c" id="simClk">Q1 12:00</div><div class="shot">SHOT <b id="shotClk">24</b></div></div>
+        <div class="bc-tm h"><div class="sc" id="scH">0</div><div class="tx"><div class="nm">${esc(nickOf("home"))}</div><div class="sub" id="fgH">${esc(P.teams.home.ab)}</div></div></div>
+        <div class="bc-wp"><span class="a" id="wpA">50%</span><div class="trk"><svg viewBox="0 0 300 24" preserveAspectRatio="none"><line x1="0" x2="300" y1="12" y2="12"/><polyline id="wpPoly" points=""/></svg><i id="wpBar" style="left:0%;top:50%"></i><em>WIN PROBABILITY</em></div><span class="h" id="wpH">50%</span></div>
       </div>
-      <div class="simgrid">
-        <div class="bxs" id="bxA"></div>
-        <div class="simc">
-          <div class="court3d"><div class="tilt">${courtSvg()}</div></div>
-          <div class="cap" id="simCap"><span class="pos" id="capT">TIP-OFF</span><span id="capX">Press play to simulate ${esc(g.away)} @ ${esc(g.home)}</span></div>
-          <div class="ctl">
-            <button class="btn" id="simPlay">▶ Watch the average game</button>
-            <button class="btn ghost" id="simRand">Random game</button>
-            <div class="seg" id="simSpd">${[1, 4, 16].map(s => `<button data-s="${s}" class="${S.speed === s ? "on" : ""}">${s}×</button>`).join("")}</div>
-            <button class="btn ghost" id="simSkip">Skip to final</button>
-            <button class="btn ghost" id="simSnd" aria-pressed="${SND.on}">${SND.on ? "🔊 Sound on" : "🔈 Sound off"}</button>
-          </div>
-          <div class="desc" style="text-align:center">Tap the court to replay the last play.</div>
-          <div class="ctl"><span class="desc">Box score:</span><div class="seg" id="simView">${[["live", "This game"], ["avg", "Average"], ["mode", "Most common"]].map(([k, l]) => `<button data-v="${k}" class="${(S.view || "live") === k ? "on" : ""}">${l}</button>`).join("")}</div></div>
-        </div>
-        <div class="bxs" id="bxH"></div>
+      <div class="bc-main">
+        <div class="bc-box a" id="bxA"></div>
+        <div class="bc-court"><div class="court3d"><div class="tilt">${courtSvg()}</div></div></div>
+        <div class="bc-box h" id="bxH"></div>
       </div>
+      <div class="bc-tick" id="simCap"><div class="poss" id="capT"><b id="capP">TIP-OFF</b><span id="capS"></span></div><div class="txt" id="capX">Press play to simulate ${esc(g.away)} @ ${esc(g.home)}</div><span class="bdg" id="capB"></span></div>
+      <div class="bc-ctl">
+        <button class="bc-btn pri" id="simPlay">▶ Watch the average game</button>
+        <button class="bc-btn" id="simRand" title="Random game">🎲 Random</button>
+        <div class="seg bc-spd" id="simSpd">${[1, 4, 16].map(x => `<button data-s="${x}" class="${S.speed === x ? "on" : ""}">${x}×</button>`).join("")}</div>
+        <button class="bc-btn ic" id="simSkip" title="Skip to final" aria-label="Skip to final">⏭</button>
+        <button class="bc-btn ic" id="simSnd" title="Sound" aria-pressed="${SND.on}" aria-label="Sound">${SND.on ? "🔊" : "🔈"}</button>
+        <button class="bc-btn ic" id="simFull" title="Full screen" aria-label="Full screen">${S.theater ? "✕" : "⤢"}</button>
+      </div>
+      <div class="bc-under">
+        <div class="seg" id="simView">${[["live", "This game"], ["avg", "Average"], ["mode", "Most common"]].map(([k, l]) => `<button data-v="${k}" class="${(S.view || "live") === k ? "on" : ""}">${l}</button>`).join("")}</div>
+        <div class="seg bc-side" id="simSide">${["away", "home"].map(x => `<button data-s="${x}" class="${S.boxSide === x ? "on" : ""}">${esc(P.teams[x].ab)}</button>`).join("")}</div>
+      </div>
+      <div class="bc-note">Simulated game, not a prediction · tap the court to replay a play · ⤢ for full screen (turn your phone sideways)</div>
     </div>`;
   $("simPlay").onclick = () => { if (S.playing) stop(); else play("avg"); };
   $("simRand").onclick = () => { stop(); S.kind = "random"; newGame("random"); S.view = "live"; syncView(); play("random", true); };
-  $("simView").querySelectorAll("button").forEach(b => b.onclick = async () => { S.view = b.dataset.v; syncView(); if (S.view !== "live") await ensureAvg(); boxes(S.i); });
+  $("simView").querySelectorAll("button").forEach(b => b.onclick = async () => { S.view = b.dataset.v; syncView(); if (S.view !== "live") await ensureAvg(); boxes(S.i); if (S.view === "live" && S.game) show(S.game.events[S.i], false); });
+  $("simSide").querySelectorAll("button").forEach(b => b.onclick = () => { S.boxSide = b.dataset.s; const w = $("bcWrap"); w.classList.remove("side-away", "side-home"); w.classList.add("side-" + S.boxSide); $("simSide").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); });
   $("simSpd").querySelectorAll("button").forEach(b => b.onclick = () => { S.speed = +b.dataset.s; $("simSpd").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); });
   $("simSkip").onclick = async () => { if (!S.game || S.kind === "init") await loadAvgGame(); stop(); S.i = S.game.events.length - 1; replayTo(S.i); };
   $("simSnd").onclick = () => { SND.on = !SND.on; try { localStorage.setItem("sim_sound", SND.on ? "1" : "0"); } catch (e) {}
-    if (SND.on) { actx(); sfx("swish"); } $("simSnd").textContent = SND.on ? "🔊 Sound on" : "🔈 Sound off"; $("simSnd").setAttribute("aria-pressed", SND.on); };
+    if (SND.on) { actx(); sfx("swish"); } $("simSnd").textContent = SND.on ? "🔊" : "🔈"; $("simSnd").setAttribute("aria-pressed", SND.on); };
+  $("simFull").onclick = () => theater(!S.theater);
   $("simCourt").addEventListener("click", replayCurrent);
   S.view = S.view || "live";
   newGame("init"); ballSnap(W / 2, 250); drawDots(S.game.events[0], false); boxes(0);
+  if (!P.jersey) loadJerseys(P);
+}
+// Full-screen "theater": the sim covers the page (no tabs), and turning the phone sideways gives the broadcast layout.
+function theater(on) {
+  S.theater = on; const w = $("bcWrap"); if (w) w.classList.toggle("theater", on);
+  document.body.classList.toggle("theater", on);
+  const b = $("simFull"); if (b) { b.textContent = on ? "✕" : "⤢"; b.title = on ? "Exit full screen" : "Full screen"; }
+  try { if (on && screen.orientation && screen.orientation.lock) screen.orientation.lock("landscape").catch(() => {}); if (!on && screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch (e) {}
 }
 function syncView() { const v = $("simView"); if (v) v.querySelectorAll("button").forEach(x => x.classList.toggle("on", x.dataset.v === S.view)); }
 
@@ -448,17 +506,41 @@ function winProb(e) {
   return Phi((m + (-(P.spreadHome || 0)) * rem) / (12.5 * Math.sqrt(rem)));
 }
 
+function setWP(wp, i) {
+  $("wpA").textContent = Math.round((1 - wp) * 100) + "%"; $("wpH").textContent = Math.round(wp * 100) + "%";
+  const G = S.game, dot = $("wpBar"), poly = $("wpPoly"); if (!dot || !poly) return;
+  const x = ev => Math.min(1, ((Math.min(ev.period, 4) - 1) * 720 + (ev.period > 4 ? 720 : 720 - ev.clock)) / 2880);
+  if (i == null || !G) { poly.setAttribute("points", ""); dot.style.left = "100%"; dot.style.top = (100 - wp * 100) + "%"; return; }
+  if (!G.wp) G.wp = G.events.map(winProb);
+  const pts = []; for (let k = 0; k <= i; k += Math.max(1, Math.floor(i / 120))) pts.push(`${(x(G.events[k]) * 300).toFixed(1)},${(24 - G.wp[k] * 24).toFixed(1)}`);
+  pts.push(`${(x(G.events[i]) * 300).toFixed(1)},${(24 - G.wp[i] * 24).toFixed(1)}`);
+  poly.setAttribute("points", pts.join(" "));
+  dot.style.left = (x(G.events[i]) * 100) + "%"; dot.style.top = (100 - wp * 100) + "%";
+  dot.className = wp >= 0.5 ? "h" : "a";
+}
+// shot clock when the play happened: 24 from the start of the possession, 14 after an offensive rebound
+function shotClock(i) {
+  const G = S.game.events, e = G[i], p = G[i - 1];
+  if (!e || !p || ["tip", "period", "final"].includes(e.kind) || p.period !== e.period) return 24;
+  const base = (p.kind === "2miss" || p.kind === "3miss") && p.oreb ? 14 : 24;
+  return Math.max(1, Math.round(base - (p.clock - e.clock)));
+}
+function bump(id, v) { const el = $(id); if (!el) return; if (el.textContent !== String(v)) { el.textContent = v; el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop"); } }
 function show(e, animate) {
   const P = S.P;
   if (S.view && S.view !== "live" && S.avgRun && S.avgRun.gid === S.gameId) { drawDots(e, animate); return aggBoxes(S.view); }
-  $("scA").textContent = e.score.away; $("scH").textContent = e.score.home;
+  bump("scA", e.score.away); bump("scH", e.score.home);
   $("simClk").textContent = e.kind === "final" ? "FINAL" + (e.period > 4 ? "/OT" : "") : fmtClock(e);
-  const wp = winProb(e);
-  $("wpBar").style.width = (100 - wp * 100).toFixed(1) + "%"; $("wpA").textContent = Math.round((1 - wp) * 100) + "%"; $("wpH").textContent = Math.round(wp * 100) + "%";
-  const tm = P.teams[e.team] || P.teams.home;
-  $("capT").textContent = e.kind === "final" ? "FINAL" : e.kind === "period" ? "QUARTER" : tm.ab + " BALL";
-  $("capT").className = e.team === "home" ? "h" : "a";
+  $("shotClk").textContent = e.kind === "final" ? "–" : shotClock(S.i);
+  setWP(winProb(e), S.i);
+  const nx = S.game.events[S.i + 1], next = nx ? nx.team : null;
+  const made = e.kind === "2pm" || e.kind === "3pm", miss = e.kind === "2miss" || e.kind === "3miss";
+  $("capP").textContent = e.kind === "final" ? "FINAL" : e.kind === "period" ? (e.period > 4 ? "OVERTIME" : ["", "1ST", "2ND", "3RD", "4TH"][e.period] + " QTR") : e.kind === "tip" ? "TIP-OFF" : next ? nickOf(next).toUpperCase() + " BALL" : "";
+  $("capS").textContent = e.kind === "final" || e.kind === "period" || e.kind === "tip" ? "" : made || e.kind === "ft" ? "inbound" : miss && e.oreb ? "second chance" : miss ? "transition" : e.kind === "tov" ? "live ball" : "half court";
+  $("capT").className = "poss " + ((e.kind === "final" || e.kind === "period" || e.kind === "tip" ? e.team : next) === "home" ? "h" : "a");
   $("capX").textContent = e.text;
+  const bd = $("capB"), btxt = made ? "+" + e.pts : e.kind === "ft" ? (e.pts ? "+" + e.pts : "0/2") : e.kind === "tov" ? "TURNOVER" : miss && e.oreb ? "OFF REB" : "";
+  bd.textContent = btxt; bd.className = "bdg" + (btxt ? " on " + (e.team === "home" ? "h" : "a") : "") + (e.kind === "tov" ? " out" : "");
   drawDots(e, animate);
   boxes(S.i);
 }
@@ -466,28 +548,36 @@ function show(e, animate) {
 // box score up to event i (cumulative)
 function boxAt(i) {
   const G = S.game, P = S.P, b = {};
-  for (const s of ["home", "away"]) P.teams[s].players.forEach(p => b[p.pid] = {pts: 0, reb: 0, ast: 0, tpm: 0, fgm: 0, fga: 0, sec: 0});
+  for (const s of ["home", "away"]) P.teams[s].players.forEach(p => b[p.pid] = {pts: 0, reb: 0, ast: 0, tpm: 0, tpa: 0, fgm: 0, fga: 0, sec: 0});
   for (let k = 1; k <= i; k++) {
     const e = G.events[k], prev = G.events[k - 1];
     const dt = (prev.period === e.period ? prev.clock - e.clock : 0);
     if (dt > 0) for (const s of ["home", "away"]) prev.on[s].forEach(pid => b[pid].sec += dt);
-    if (e.kind === "2pm" || e.kind === "3pm") { b[e.a].pts += e.pts; b[e.a].fgm++; b[e.a].fga++; if (e.kind === "3pm") b[e.a].tpm++; if (e.b) b[e.b].ast++; }
-    else if (e.kind === "2miss" || e.kind === "3miss") { b[e.a].fga++; if (e.b) b[e.b].reb++; }
+    if (e.kind === "2pm" || e.kind === "3pm") { b[e.a].pts += e.pts; b[e.a].fgm++; b[e.a].fga++; if (e.kind === "3pm") { b[e.a].tpm++; b[e.a].tpa++; } if (e.b) b[e.b].ast++; }
+    else if (e.kind === "2miss" || e.kind === "3miss") { b[e.a].fga++; if (e.kind === "3miss") b[e.a].tpa++; if (e.b) b[e.b].reb++; }
     else if (e.kind === "ft") b[e.a].pts += e.pts;
   }
   return b;
+}
+// one team's box: starters, then bench; players on the floor are lit with the team color
+function boxTable(s, cols, rows, on, hot) {
+  const st = rows.filter(r => r.starter), bn = rows.filter(r => !r.starter);
+  const tr = r => `<tr class="${on.has(r.pid) ? "on" : ""} ${hot.has(r.pid) ? "hot" : ""}" data-pid="${r.pid}"><td class="t"><span class="no">${esc(jer(r.pid))}</span>${esc(r.last)}</td>${r.cells.map((c, k) => `<td${k === 1 ? ' class="b"' : ""}>${c}</td>`).join("")}</tr>`;
+  return `<div class="bh">${esc(S.P.teams[s].name || nickOf(s))}</div><table class="bt"><tr><th></th>${cols.map(c => `<th>${c}</th>`).join("")}</tr>
+    <tr class="sec"><td colspan="${cols.length + 1}">Starters</td></tr>${st.map(tr).join("")}
+    ${bn.length ? `<tr class="sec"><td colspan="${cols.length + 1}">Bench</td></tr>${bn.map(tr).join("")}` : ""}</table>`;
 }
 function boxes(i) {
   if (S.view && S.view !== "live" && S.avgRun && S.avgRun.gid === S.gameId) return aggBoxes(S.view);
   const P = S.P, b = boxAt(i), e = S.game.events[i];
   const hot = new Set([e.a, e.b].filter(Boolean));
-  const tbl = s => {
-    const on = new Set(e.on[s]);
-    return `<div class="bxh ${s === "home" ? "h" : "a"}">${esc(P.teams[s].name)}</div><table class="bxt"><tr><th></th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>3PM</th><th>FG</th></tr>
-      ${P.teams[s].players.map(p => { const x = b[p.pid]; return `<tr class="${on.has(p.pid) ? "on" : ""} ${hot.has(p.pid) ? "hot" : ""}" data-pid="${p.pid}">
-        <td class="t">${on.has(p.pid) ? "●" : ""} ${esc(p.last)}</td><td>${Math.floor(x.sec / 60)}</td><td><b>${x.pts}</b></td><td>${x.reb}</td><td>${x.ast}</td><td>${x.tpm}</td><td>${x.fgm}-${x.fga}</td></tr>`; }).join("")}</table>`;
-  };
-  $("bxA").innerHTML = tbl("away"); $("bxH").innerHTML = tbl("home");
+  for (const s of ["away", "home"]) {
+    const ps = P.teams[s].players, anyS = ps.some(p => p.starter);
+    const rows = ps.map((p, k) => { const x = b[p.pid]; return {pid: p.pid, last: p.last, starter: anyS ? p.starter : k < 5, cells: [Math.floor(x.sec / 60), x.pts, `${x.fgm}-${x.fga}`, x.reb, x.ast, x.tpm]}; });
+    $(s === "away" ? "bxA" : "bxH").innerHTML = boxTable(s, ["MIN", "PTS", "FG", "REB", "AST", "3PM"], rows, new Set(e.on[s]), hot);
+    const t = ps.reduce((a, p) => { const x = b[p.pid]; a[0] += x.fgm; a[1] += x.fga; a[2] += x.tpm; a[3] += x.tpa; return a; }, [0, 0, 0, 0]);
+    const fg = $(s === "away" ? "fgA" : "fgH"); if (fg) fg.textContent = i ? `FG ${t[0]}-${t[1]} · 3P ${t[2]}-${t[3]}` : P.teams[s].ab;
+  }
 }
 
 function replayTo(i) { show(S.game.events[i], false); const b = $("simPlay"); if (b) b.textContent = "▶ Watch the average game"; }
@@ -495,18 +585,41 @@ function aggBoxes(view) {
   const P = S.P, A = S.avgRun, avg = view === "avg";
   const sc = avg ? A.score : {home: (A.modeTot[0] + A.modeMar[0]) / 2, away: (A.modeTot[0] - A.modeMar[0]) / 2};
   $("scA").textContent = avg ? f1(sc.away) : Math.round(sc.away); $("scH").textContent = avg ? f1(sc.home) : Math.round(sc.home);
-  $("simClk").textContent = avg ? `AVG OF ${A.N.toLocaleString()}` : "MOST COMMON";
-  $("wpBar").style.width = (100 - A.homeWin * 100).toFixed(1) + "%"; $("wpA").textContent = Math.round((1 - A.homeWin) * 100) + "%"; $("wpH").textContent = Math.round(A.homeWin * 100) + "%";
-  $("capT").textContent = avg ? "AVERAGE" : "MOST COMMON"; $("capT").className = "h";
+  $("simClk").textContent = avg ? `AVG OF ${A.N.toLocaleString()}` : "MOST COMMON"; $("shotClk").textContent = "–";
+  setWP(A.homeWin, null);
+  $("capP").textContent = avg ? "AVERAGE" : "MOST COMMON"; $("capS").textContent = ""; $("capT").className = "poss h"; $("capB").className = "bdg";
   $("capX").textContent = avg ? `Average box score across ${A.N.toLocaleString()} simulations.`
     : `Most frequent result for each stat. Final margin ${A.modeMar[0] > 0 ? P.teams.home.ab + " by " + A.modeMar[0] : A.modeMar[0] < 0 ? P.teams.away.ab + " by " + (-A.modeMar[0]) : "tie"} (${Math.round(A.modeMar[1] * 100)}% of sims), total ${A.modeTot[0]} (${Math.round(A.modeTot[1] * 100)}%).`;
-  const cell = (x, k) => avg ? f1(x.avg[k]) : `${x.mode[k][0]}<span class="dim" style="font-size:9px"> ${Math.round(x.mode[k][1] * 100)}%</span>`;
-  const tbl = s => `<div class="bxh ${s === "home" ? "h" : "a"}">${esc(P.teams[s].name)}</div><table class="bxt"><tr><th></th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>3PM</th></tr>
-    ${P.teams[s].players.slice().sort((a, b) => ((A.players[b.pid] || {}).avg || {}).min - ((A.players[a.pid] || {}).avg || {}).min).map(p => { const x = A.players[p.pid]; if (!x) return "";
-      return `<tr class="on" data-pid="${p.pid}"><td class="t">${esc(p.last)}</td><td>${Math.round(x.avg.min)}</td><td><b>${cell(x, "pts")}</b></td><td>${cell(x, "reb")}</td><td>${cell(x, "ast")}</td><td>${cell(x, "tpm")}</td></tr>`; }).join("")}</table>`;
-  $("bxA").innerHTML = tbl("away"); $("bxH").innerHTML = tbl("home");
+  const cell = (x, k) => avg ? f1(x.avg[k]) : `${x.mode[k][0]}<span class="dim" style="font-size:8.5px"> ${Math.round(x.mode[k][1] * 100)}%</span>`;
+  for (const s of ["away", "home"]) {
+    const ps = P.teams[s].players.filter(p => A.players[p.pid]).sort((a, b) => A.players[b.pid].avg.min - A.players[a.pid].avg.min);
+    const rows = ps.map((p, k) => { const x = A.players[p.pid]; return {pid: p.pid, last: p.last, starter: k < 5, cells: [Math.round(x.avg.min), cell(x, "pts"), cell(x, "reb"), cell(x, "ast"), cell(x, "tpm")]}; });
+    $(s === "away" ? "bxA" : "bxH").innerHTML = boxTable(s, ["MIN", "PTS", "REB", "AST", "3PM"], rows, new Set(ps.map(p => p.pid)), new Set());
+    const fg = $(s === "away" ? "fgA" : "fgH"); if (fg) fg.textContent = P.teams[s].ab;
+  }
 }
 
+// where a shot is taken from, by the kind of shot in the play text (feet from the basket: toward half court, sideways)
+function shotSpot(e) {
+  const t = e.text || "", R = Math.random, sg = R() < .5 ? -1 : 1;
+  if (e.kind === "ft") return [15, 0];
+  if (e.kind[0] === "3") return /corner/.test(t) ? [2, 22 * sg] : /step-back|pull-up/.test(t) ? (R() < .5 ? [24.5, (R() - .5) * 6] : [22, 12 * sg]) : SHOT3[Math.floor(R() * SHOT3.length)];
+  if (/dunk|layup|putback/.test(t)) return [2.5, (R() - .5) * 4];
+  if (/floater/.test(t)) return [9, (R() - .5) * 8];
+  if (/hook/.test(t)) return [6, 5 * sg];
+  if (/mid-range/.test(t)) return [15, 9 * sg];
+  return SHOT2[Math.floor(R() * SHOT2.length)];
+}
+function actLabel(e) {
+  const t = e.text || "";
+  if (e.kind === "ft") return `FREE THROWS ${e.pts}/2`;
+  if (e.kind === "tov") return /foul/.test(t) ? "OFFENSIVE FOUL" : "TURNOVER";
+  if (e.kind === "3miss") return "MISSES THE 3";
+  if (e.kind === "2miss") return /dunk|layup/.test(t) ? "NO GOOD" : "MISSES";
+  const m = [[/pull-up three/, "PULL-UP 3"], [/catch-and-shoot/, "CATCH & SHOOT 3"], [/corner three/, "CORNER 3"], [/step-back/, "STEP-BACK 3"], [/dunk/, "SLAM DUNK"],
+             [/driving layup/, "DRIVING LAYUP"], [/floater/, "FLOATER"], [/mid-range/, "MID-RANGE"], [/hook/, "HOOK SHOT"], [/putback/, "PUTBACK"]].find(([r]) => r.test(t));
+  return (m ? m[1] : e.kind === "3pm" ? "THREE" : "BUCKET") + (streakOf(e.a) >= 3 ? " · ON FIRE" : "");
+}
 function drawDots(e, animate) {
   const P = S.P, layer = $("simDots"); if (!layer) return;
   // home attacks right in the 1st half, left in the 2nd (and overtime)
@@ -515,25 +628,25 @@ function drawDots(e, animate) {
   const off = e.team || "home", def = off === "home" ? "away" : "home";
   const pos = {};
   const offIds = e.on[off], defIds = e.on[def];
-  offIds.forEach((pid, k) => pos[pid] = spot(offRight, OFF[k][0] + (rnd() - .5) * 3, OFF[k][1] + (rnd() - .5) * 3));
+  const R = Math.random;                                         // visuals never touch the seeded sim stream
+  offIds.forEach((pid, k) => pos[pid] = spot(offRight, OFF[k][0] + (R() - .5) * 4, OFF[k][1] + (R() - .5) * 4));
   // the shooter moves to his shot
   let shotAt = null;
   if (e.a && ["2pm", "3pm", "2miss", "3miss", "ft"].includes(e.kind)) {
-    const L = e.kind[0] === "3" ? SHOT3 : e.kind === "ft" ? [[15, 0]] : SHOT2;
-    const s0 = L[Math.floor(rnd() * L.length)];
+    const s0 = shotSpot(e);
     shotAt = spot(offRight, s0[0], s0[1]);
     if (e.kind === "ft") { offIds.forEach((pid, k) => { if (pid !== e.a) pos[pid] = spot(offRight, [10, 10, 8, 8, 22][k], [-7, 7, -7, 7, 0][k]); }); }
     pos[e.a] = shotAt;
   }
   defIds.forEach((pid, k) => {
     const o = pos[offIds[k]] || spot(offRight, 10, 0), bx = offRight ? BX[1] : BX[0];
-    pos[pid] = [o[0] + (bx - o[0]) * 0.22 + (rnd() - .5) * 10, o[1] + (250 - o[1]) * 0.2 + (rnd() - .5) * 10];
+    pos[pid] = [o[0] + (bx - o[0]) * 0.2 + (R() - .5) * 8, o[1] + (250 - o[1]) * 0.18 + (R() - .5) * 8];
   });
   if (e.kind === "tip" || e.kind === "period") {
     const all = [...e.on.home, ...e.on.away];
     all.forEach((pid, k) => { const hm = k < 5, j = k % 5; pos[pid] = [W / 2 + (hm ? -1 : 1) * (j === 4 ? 12 : 60 + j * 35), 250 + [-120, 120, -60, 60, 0][j]]; });
   }
-  const dur = animate ? Math.min(900, 900 / S.speed) : 0;
+  const dur = animate ? Math.round(1000 / S.speed) : 0;
   const tmOf = pid => P.teams.home.players.some(p => p.pid === pid) ? "home" : "away";
   const ply = pid => P.teams[tmOf(pid)].players.find(p => p.pid === pid);
   const have = new Set();
@@ -543,12 +656,12 @@ function drawDots(e, animate) {
     const p = ply(pid), side = tmOf(pid);
     if (!g) {
       g = document.createElementNS("http://www.w3.org/2000/svg", "g"); g.setAttribute("data-p", pid); g.setAttribute("class", "pdot " + side);
-      g.innerHTML = `<circle r="20"/><text dy="6" text-anchor="middle">${esc(p ? p.ini : "")}</text>`;
+      g.innerHTML = `<g class="bob" style="animation-duration:${(2.4 + Math.random() * 1.8).toFixed(2)}s;animation-delay:-${(Math.random() * 3).toFixed(2)}s"><ellipse class="sh" cx="3" cy="10" rx="19" ry="9"/><circle class="rg" r="21"/><circle class="fl" r="17.5"/><text dy="6.5" text-anchor="middle">${esc(jer(pid) || (p ? p.ini : ""))}</text></g>`;
       g.style.transform = `translate(${W / 2}px,250px)`;
       layer.appendChild(g);
     }
     const isShooter = pid === e.a && shotAt;
-    g.style.transition = `transform ${isShooter && dur ? Math.round(460 / Math.max(1, S.speed)) : dur}ms ease-in-out`;
+    g.style.transition = `transform ${isShooter && dur ? Math.round(480 / Math.max(1, S.speed)) : dur}ms cubic-bezier(.45,.05,.3,1)`;
     const [x, y] = pos[pid] || [W / 2, 250];
     g.style.transform = `translate(${x}px,${y}px)`;
     g.classList.toggle("act", pid === e.a || pid === e.b);
@@ -615,11 +728,15 @@ function hoopFx(right, cls) {
   hp.classList.remove("swish", "clank", "slam"); void hp.getBoundingClientRect(); hp.classList.add(cls);
   later(() => hp.classList.remove(cls), 700);
 }
-function popTag(x, y, text, side, big) {
+// Broadcast-style callout over the player: [number][NAME][ACTION]. Stretched vertically to undo the court tilt.
+function popTag(x, y, c, side, big) {
   const pop = $("simPop"); if (!pop) return;
-  const w = Math.max(120, text.length * 11 + 30);
-  pop.innerHTML = `<g class="ptag ${side} ${big ? "big" : ""}" style="transform:translate(${x}px,${y - 38}px)"><rect x="${-w / 2}" y="-20" width="${w}" height="30" rx="7"/>
-    <text text-anchor="middle" dy="2">${esc(text)}</text></g>`;
+  const cw = 10.4, nW = c.num ? 34 : 0, mW = c.name.length * cw + 22, aW = c.act.length * (cw - .6) + 22, tot = nW + mW + aW;
+  let x0 = Math.max(-10, Math.min(W + 10 - tot, x - tot / 2));
+  pop.innerHTML = `<g class="ptag ${side} ${big ? "big" : ""}" style="transform:translate(${x0}px,${Math.max(30, y - 50)}px) scale(1,1.25)"><g class="in">
+    ${c.num ? `<rect class="n" x="0" y="-17" width="${nW}" height="30"/><text class="tn" x="${nW / 2}" dy="5" text-anchor="middle">${esc(c.num)}</text>` : ""}
+    <rect class="m" x="${nW}" y="-17" width="${mW}" height="30"/><text class="tm" x="${nW + mW / 2}" dy="5" text-anchor="middle">${esc(c.name)}</text>
+    <path class="a" d="M${nW + mW} -17 h${aW} l-8 30 h-${aW} z"/><text class="ta" x="${nW + mW + aW / 2 - 4}" dy="5" text-anchor="middle">${esc(c.act)}</text></g></g>`;
 }
 
 // ------------------------------------------------------------------ sound (Web Audio, off until switched on)
@@ -667,11 +784,7 @@ function animateEvent(e, pos, offRight, shotAt, animate, ply, tmOf) {
   const tag = () => {
     if (!e.a || !pos[e.a]) return;
     const [x, y] = pos[e.a], made = e.kind === "2pm" || e.kind === "3pm";
-    const style = /dunk/.test(e.text) ? "SLAM" : /layup|putback/.test(e.text) ? "LAYUP" : e.kind === "3pm" ? "SPLASH" : "BUCKET";
-    let t = e.kind === "3pm" ? `${nm} · +3 ${style}` : e.kind === "2pm" ? `${nm} · +2 ${style}` : e.kind === "ft" ? `${nm} · ${e.pts}/2 FT` :
-            e.kind === "tov" ? `${nm} · TURNOVER` : `${nm} · ${/dunk|layup/.test(e.text) ? "NO GOOD" : "CLANK"}`;
-    if (made && streakOf(e.a) >= 3) t += " 🔥";
-    popTag(x, y, t, side, made && (e.kind === "3pm" || BA.fire));
+    popTag(x, y, {num: jer(e.a), name: nm, act: actLabel(e)}, side, made && (e.kind === "3pm" || BA.fire));
   };
 
   // instant mode: put the ball where the play ends
