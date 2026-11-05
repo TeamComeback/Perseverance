@@ -672,7 +672,8 @@ function showLive() {
     const n = S.now, L = n.line, m = S.nowSim && S.nowSim.at === n.at ? S.nowSim : null;
     const bet = (label, p, price, other) => { const fair = nv(price, other), ev = p != null && price ? p * price - 1 : null;
       return `<tr><td class="t">${label}</td><td>${am_(price)}</td><td><b>${pc(p)}</b></td><td class="dim">${pc(fair)}</td><td class="${ev == null ? "dim" : ev >= 0.05 ? "gold" : ev > 0 ? "h" : "dim"}">${ev == null ? "—" : (ev > 0 ? "+" : "") + Math.round(ev * 100) + "%"}</td></tr>`; };
-    now = `<div class="lbl">Now · ${esc(n.detail)} · ${n.score[0]}–${n.score[1]} <span class="dim">(refreshes every 30s)</span></div>
+    const drift = (c && c.sp != null && L.sp != null) || (c && c.tot != null && L.tot != null) ? `<div class="desc" style="margin:2px 0 4px">vs the close: ${c && c.sp != null && L.sp != null ? `${esc(H)} ${sp(c.sp)} → <b style="color:var(--text)">${sp(L.sp)}</b>${L.sp !== c.sp ? ` <span class="gold">(moved ${f1(Math.abs(L.sp - c.sp))})</span>` : ""}` : ""}${c && c.tot != null && L.tot != null ? ` · total ${f1(c.tot)} → <b style="color:var(--text)">${f1(L.tot)}</b>${L.tot !== c.tot ? ` <span class="gold">(${L.tot > c.tot ? "+" : ""}${f1(L.tot - c.tot)})</span>` : ""}` : ""}</div>` : "";
+    now = `<div class="lbl">Now · ${esc(n.detail)} · ${esc(A)} ${n.score[0]}–${n.score[1]} ${esc(H)} <span class="dim">(refreshes every 30s)</span></div>${drift}
       <button class="btn" id="simHere" style="margin:4px 0 6px">Sim from here (2,000 from this score and clock)</button>
       <div class="scroll"><table class="tbl"><tr><th>Live bet</th><th>DK</th><th>Sim</th><th>DK %</th><th>EV</th></tr>
         ${bet(`${H} ${sp(L.sp)}`, m && m.p_home_cover, L.sp_h, L.sp_a)}${bet(`${A} ${sp(L.sp == null ? null : -L.sp)}`, m && m.p_home_cover != null ? 1 - m.p_home_cover : null, L.sp_a, L.sp_h)}
