@@ -262,12 +262,16 @@ function courtSvg() {
       <circle cx="${x0 + s * 190}" cy="250" r="60" ${line}/>
       <path d="M${b - s * 0} 210 A40 40 0 0 ${side ? 0 : 1} ${b} 290" ${line}/>
       <line x1="${x0 + s * 40}" x2="${x0 + s * 40}" y1="220" y2="280" stroke="#e9d9b8" stroke-width="3"/>
-      <circle cx="${b}" cy="250" r="7.5" stroke="#E5C158" stroke-width="2.5" fill="none"/>`;
+      <g class="hoop" id="hoop${side}" style="transform-origin:${b}px 250px">
+        <circle class="burst" cx="${b}" cy="250" r="9"/>
+        <circle class="net" cx="${b}" cy="250" r="5.6"/>
+        <circle class="rim" cx="${b}" cy="250" r="7.5"/>
+      </g>`;
   };
   let planks = "";
   for (let y = 0; y < H; y += 25) planks += `<line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="#000" stroke-opacity=".08"/>`;
   return `<svg viewBox="-20 -20 ${W + 40} ${H + 40}" class="cv" id="simCourt">
-    <defs><linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#6b4a2c"/><stop offset=".5" stop-color="#83603b"/><stop offset="1" stop-color="#6b4a2c"/></linearGradient></defs>
+    <defs><radialGradient id="ballGrad" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#ffc07a"/><stop offset=".55" stop-color="#f08a2c"/><stop offset="1" stop-color="#b9561a"/></radialGradient><linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#6b4a2c"/><stop offset=".5" stop-color="#83603b"/><stop offset="1" stop-color="#6b4a2c"/></linearGradient></defs>
     <rect x="-20" y="-20" width="${W + 40}" height="${H + 40}" rx="6" fill="#0e1422"/>
     <rect x="0" y="0" width="${W}" height="${H}" fill="url(#wood)"/>${planks}
     <rect x="0" y="0" width="${W}" height="${H}" ${line}/>
@@ -275,7 +279,12 @@ function courtSvg() {
     <circle cx="${W / 2}" cy="250" r="20" ${line}/>
     ${half(0)}${half(1)}
     <g id="simDots"></g>
-    <circle id="simBall" r="7" fill="#ff9a3c" stroke="#3a1d00" stroke-width="1.5" cx="${W / 2}" cy="250"/>
+    <g id="simBallG" style="pointer-events:none">
+      <ellipse id="simShadow" rx="8" ry="5" fill="#000" opacity=".38" cx="0" cy="0"/>
+      <g id="simTrail">${[0, 1, 2, 3, 4].map(k => `<circle r="${6 - k}" opacity="0"/>`).join("")}</g>
+      <g id="simBall"><circle r="9" fill="url(#ballGrad)" stroke="#3a1d00" stroke-width="1.4"/>
+        <g id="simSeams" stroke="#3a1d00" stroke-width="1.1" fill="none"><line x1="-8" x2="8" y1="0" y2="0"/><line x1="0" x2="0" y1="-8" y2="8"/><path d="M-5.5-5.8Q-1.5 0-5.5 5.8M5.5-5.8Q1.5 0 5.5 5.8"/></g></g>
+    </g>
     <g id="simPop"></g>
   </svg>`;
 }
@@ -346,7 +355,9 @@ function stage() {
             <button class="btn ghost" id="simRand">Random game</button>
             <div class="seg" id="simSpd">${[1, 4, 16].map(s => `<button data-s="${s}" class="${S.speed === s ? "on" : ""}">${s}×</button>`).join("")}</div>
             <button class="btn ghost" id="simSkip">Skip to final</button>
+            <button class="btn ghost" id="simSnd" aria-pressed="${SND.on}">${SND.on ? "🔊 Sound on" : "🔈 Sound off"}</button>
           </div>
+          <div class="desc" style="text-align:center">Tap the court to replay the last play.</div>
           <div class="ctl"><span class="desc">Box score:</span><div class="seg" id="simView">${[["live", "This game"], ["avg", "Average"], ["mode", "Most common"]].map(([k, l]) => `<button data-v="${k}" class="${(S.view || "live") === k ? "on" : ""}">${l}</button>`).join("")}</div></div>
         </div>
         <div class="bxs" id="bxH"></div>
@@ -357,8 +368,11 @@ function stage() {
   $("simView").querySelectorAll("button").forEach(b => b.onclick = async () => { S.view = b.dataset.v; syncView(); if (S.view !== "live") await ensureAvg(); boxes(S.i); });
   $("simSpd").querySelectorAll("button").forEach(b => b.onclick = () => { S.speed = +b.dataset.s; $("simSpd").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); });
   $("simSkip").onclick = async () => { if (!S.game || S.kind === "init") await loadAvgGame(); stop(); S.i = S.game.events.length - 1; replayTo(S.i); };
+  $("simSnd").onclick = () => { SND.on = !SND.on; try { localStorage.setItem("sim_sound", SND.on ? "1" : "0"); } catch (e) {}
+    if (SND.on) { actx(); sfx("swish"); } $("simSnd").textContent = SND.on ? "🔊 Sound on" : "🔈 Sound off"; $("simSnd").setAttribute("aria-pressed", SND.on); };
+  $("simCourt").addEventListener("click", replayCurrent);
   S.view = S.view || "live";
-  newGame("init"); drawDots(S.game.events[0], false); boxes(0);
+  newGame("init"); ballSnap(W / 2, 250); drawDots(S.game.events[0], false); boxes(0);
 }
 function syncView() { const v = $("simView"); if (v) v.querySelectorAll("button").forEach(x => x.classList.toggle("on", x.dataset.v === S.view)); }
 
@@ -398,11 +412,17 @@ async function ensureAvg() {
 async function loadAvgGame() {
   const A = await ensureAvg();
   setSeed(A.seedBase + A.bi); S.game = simGame(S.P, true); setSeed(null);
-  S.i = 0; S.kind = "avg-ready";
+  S.i = 0; S.kind = "avg-ready"; S.streak = {};
 }
 
-function newGame(kind) { setSeed(null); S.game = simGame(S.P, true); S.i = 0; S.cum = null; S.kind = kind || "random"; }
-function stop() { S.playing = false; clearTimeout(S.timer); const b = $("simPlay"); if (b) b.textContent = S.game && S.i >= S.game.events.length - 1 ? "▶ Watch the average game" : "▶ Resume"; }
+function newGame(kind) { setSeed(null); S.game = simGame(S.P, true); S.i = 0; S.cum = null; S.kind = kind || "random"; S.streak = {}; }
+function trackStreak(e) {
+  S.streak = S.streak || {};
+  if (!e || !e.a) return;
+  if (e.kind === "2pm" || e.kind === "3pm") S.streak[e.a] = (S.streak[e.a] || 0) + 1;
+  else if (e.kind === "2miss" || e.kind === "3miss") S.streak[e.a] = 0;
+}
+function stop() { S.playing = false; clearTimeout(S.timer); BA.timers.forEach(clearTimeout); const b = $("simPlay"); if (b) b.textContent = S.game && S.i >= S.game.events.length - 1 ? "▶ Watch the average game" : "▶ Resume"; }
 async function play(kind, fresh) {
   if (kind === "avg" && (S.kind !== "avg-ready" || S.i >= S.game.events.length - 1)) { $("simPlay").textContent = "Finding…"; await loadAvgGame(); drawDots(S.game.events[0], false); boxes(0); }
   else if (!S.game || (!fresh && S.i >= S.game.events.length - 1)) { newGame("random"); boxes(0); }
@@ -410,8 +430,8 @@ async function play(kind, fresh) {
   const step = () => {
     if (!S.playing) return;
     if (S.i >= S.game.events.length - 1) { stop(); return; }
-    S.i++; show(S.game.events[S.i], true);
-    S.timer = setTimeout(step, 1150 / S.speed);
+    S.i++; const ev = S.game.events[S.i]; trackStreak(ev); show(ev, true);
+    S.timer = setTimeout(step, (S.speed >= 16 ? 1150 : playMs(ev)) / S.speed);
   };
   step();
 }
@@ -525,34 +545,228 @@ function drawDots(e, animate) {
       g.style.transform = `translate(${W / 2}px,250px)`;
       layer.appendChild(g);
     }
-    g.style.transition = `transform ${dur}ms ease-in-out`;
+    const isShooter = pid === e.a && shotAt;
+    g.style.transition = `transform ${isShooter && dur ? Math.round(460 / Math.max(1, S.speed)) : dur}ms ease-in-out`;
     const [x, y] = pos[pid] || [W / 2, 250];
     g.style.transform = `translate(${x}px,${y}px)`;
     g.classList.toggle("act", pid === e.a || pid === e.b);
   }
   layer.querySelectorAll(".pdot").forEach(g => { if (!have.has(g.getAttribute("data-p"))) g.remove(); });
-  // ball: to the shooter, then the rim, then the rebounder
-  const ball = $("simBall"), bx = offRight ? BX[1] : BX[0];
-  const set = (x, y, d) => { ball.style.transition = `transform ${d}ms ease-out`; ball.style.transform = `translate(${x - W / 2}px,${y - 250}px)`; };
-  if (shotAt) {
-    set(shotAt[0], shotAt[1], dur * 0.5);
-    setTimeout(() => {
-      set(bx, 250, dur * 0.4);
-      if (e.kind === "2miss" || e.kind === "3miss") setTimeout(() => { const r = pos[e.b]; if (r) set(r[0], r[1], dur * 0.4); }, dur * 0.45);
-    }, dur * 0.55);
-  } else if (e.a && pos[e.a]) set(pos[e.a][0], pos[e.a][1], dur * 0.6);
-  else set(W / 2, 250, dur * 0.6);
-  // pop label: +2 / +3 / FT and a name tag
-  const pop = $("simPop");
-  if (pop) {
-    pop.innerHTML = "";
-    if (e.a && pos[e.a] && ["2pm", "3pm", "ft", "tov", "2miss", "3miss"].includes(e.kind)) {
-      const [x, y] = pos[e.a], p = ply(e.a), side = tmOf(e.a);
-      const tag = e.kind === "3pm" ? "+3" : e.kind === "2pm" ? "+2" : e.kind === "ft" ? (e.pts ? "+" + e.pts + " FT" : "FT") : e.kind === "tov" ? "TO" : "MISS";
-      pop.innerHTML = `<g class="ptag ${side}" style="transform:translate(${x}px,${y - 34}px)"><rect x="-90" y="-20" width="180" height="30" rx="7"/>
-        <text text-anchor="middle" dy="2">${esc(p ? p.last.toUpperCase() : "")} · ${tag}</text></g>`;
-    }
+  animateEvent(e, pos, offRight, shotAt, animate, ply, tmOf);
+}
+
+// ------------------------------------------------------------------ ball animation
+// The ball lives on the floor plane (x, y in court pixels) plus a height h in feet. Height lifts the ball
+// up the screen and grows it a little; the shadow stays on the floor. Visual randomness uses Math.random so
+// the seeded simulation stream is never touched.
+const HPX = 9;                                   // screen pixels per foot of height
+const RIM_H = 10, REL_H = 7.5;                   // rim height, typical release height
+const reduceMotion = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+const BA = {raf: 0, q: [], x: W / 2, y: 250, h: 0, spin: 0, trail: [], fire: false, timers: []};
+const lerp = (a, b, t) => a + (b - a) * t;
+const EASE = {lin: t => t, out: t => 1 - (1 - t) * (1 - t), inout: t => t < .5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t)};
+function ballDraw() {
+  const sh = $("simShadow"), bl = $("simBall"); if (!sh || !bl) return;
+  const sc = 1 + BA.h / 22;
+  sh.setAttribute("transform", `translate(${BA.x},${BA.y}) scale(${Math.max(.45, 1 - BA.h / 26)})`);
+  sh.setAttribute("opacity", (0.4 * Math.max(.3, 1 - BA.h / 20)).toFixed(2));
+  bl.setAttribute("transform", `translate(${BA.x},${BA.y - BA.h * HPX}) scale(${sc}) rotate(${BA.spin})`);
+  const tr = $("simTrail"); if (!tr) return;
+  const dots = tr.children;
+  for (let k = 0; k < dots.length; k++) {
+    const p = BA.trail[BA.trail.length - 1 - (k + 1) * 2];
+    if (!p || BA.h < 1.5) { dots[k].setAttribute("opacity", 0); continue; }
+    dots[k].setAttribute("cx", p[0]); dots[k].setAttribute("cy", p[1]);
+    dots[k].setAttribute("fill", BA.fire ? ["#ffef8a", "#ffb43c", "#ff7a1a", "#ff4d1a", "#c8200f"][k] : "#ffd9b0");
+    dots[k].setAttribute("r", (BA.fire ? 9 : 6) - k * (BA.fire ? 1.3 : 1));
+    dots[k].setAttribute("opacity", ((BA.fire ? .8 : .35) * (1 - k / 5)).toFixed(2));
   }
+}
+function ballStop() { cancelAnimationFrame(BA.raf); BA.raf = 0; BA.q = []; BA.timers.forEach(clearTimeout); BA.timers = []; BA.trail = []; }
+function ballSnap(x, y, h = 0) { ballStop(); BA.x = x; BA.y = y; BA.h = h; ballDraw(); }
+function later(fn, ms) { BA.timers.push(setTimeout(fn, ms)); }
+// segments: {to:[x,y], dur, h: t => feet, ease, spin, start(), end()}
+function ballRun(segs) {
+  ballStop(); BA.q = segs.filter(Boolean);
+  const tick = ts => {
+    const g = BA.q[0]; if (!g) { BA.raf = 0; return; }
+    if (g.t0 == null) { g.t0 = ts; g.from = [BA.x, BA.y]; if (g.start) g.start(); }
+    const t = g.dur > 0 ? Math.min(1, (ts - g.t0) / g.dur) : 1, k = (g.ease || EASE.lin)(t);
+    const to = g.to || g.from;
+    BA.x = lerp(g.from[0], to[0], k); BA.y = lerp(g.from[1], to[1], k); BA.h = g.h ? g.h(t) : 0;
+    BA.spin += (g.spin || 0);
+    BA.trail.push([BA.x, BA.y - BA.h * HPX]); if (BA.trail.length > 14) BA.trail.shift();
+    ballDraw();
+    if (t >= 1) { BA.q.shift(); if (g.end) g.end(); }
+    BA.raf = BA.q.length ? requestAnimationFrame(tick) : 0;
+  };
+  BA.raf = requestAnimationFrame(tick);
+}
+// height curves
+const dribbleH = n => t => 3.1 * Math.abs(Math.sin(Math.PI * n * t)) ** 0.8;
+const arcH = (h0, h1, apex) => t => lerp(h0, h1, t) + 4 * apex * t * (1 - t);
+const bounceH = peak => t => 4 * peak * t * (1 - t);
+
+// effects at the hoop
+function hoopFx(right, cls) {
+  const hp = $("hoop" + (right ? 1 : 0)); if (!hp) return;
+  hp.classList.remove("swish", "clank", "slam"); void hp.getBoundingClientRect(); hp.classList.add(cls);
+  later(() => hp.classList.remove(cls), 700);
+}
+function popTag(x, y, text, side, big) {
+  const pop = $("simPop"); if (!pop) return;
+  const w = Math.max(120, text.length * 11 + 30);
+  pop.innerHTML = `<g class="ptag ${side} ${big ? "big" : ""}" style="transform:translate(${x}px,${y - 38}px)"><rect x="${-w / 2}" y="-20" width="${w}" height="30" rx="7"/>
+    <text text-anchor="middle" dy="2">${esc(text)}</text></g>`;
+}
+
+// ------------------------------------------------------------------ sound (Web Audio, off until switched on)
+const SND = {on: false, ctx: null};
+try { SND.on = localStorage.getItem("sim_sound") === "1"; } catch (e) {}
+function actx() { if (!SND.ctx) { try { SND.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { SND.on = false; } } return SND.ctx; }
+function noise(c, dur) { const b = c.createBuffer(1, Math.floor(c.sampleRate * dur), c.sampleRate), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; const n = c.createBufferSource(); n.buffer = b; return n; }
+function sfx(kind) {
+  if (!SND.on) return; const c = actx(); if (!c) return; if (c.state === "suspended") c.resume();
+  const t = c.currentTime, g = c.createGain(); g.connect(c.destination);
+  if (kind === "bounce") {
+    const o = c.createOscillator(); o.type = "sine"; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(55, t + .12);
+    g.gain.setValueAtTime(.55, t); g.gain.exponentialRampToValueAtTime(.001, t + .16); o.connect(g); o.start(t); o.stop(t + .17);
+  } else if (kind === "swish") {
+    const n = noise(c, .35), f = c.createBiquadFilter(); f.type = "bandpass"; f.frequency.setValueAtTime(5200, t); f.frequency.exponentialRampToValueAtTime(1800, t + .3); f.Q.value = .8;
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.35, t + .04); g.gain.exponentialRampToValueAtTime(.001, t + .32); n.connect(f); f.connect(g); n.start(t);
+  } else if (kind === "clank") {
+    [520, 787, 1210].forEach((fq, i) => { const o = c.createOscillator(), gg = c.createGain(); o.type = i ? "triangle" : "square"; o.frequency.value = fq;
+      gg.gain.setValueAtTime(i ? .12 : .08, t); gg.gain.exponentialRampToValueAtTime(.001, t + .35 - i * .06); o.connect(gg); gg.connect(c.destination); o.start(t); o.stop(t + .36); });
+  } else if (kind === "cheer") {
+    const n = noise(c, 1.4), f = c.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = 1100; f.Q.value = .5;
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.22, t + .25); g.gain.exponentialRampToValueAtTime(.001, t + 1.35); n.connect(f); f.connect(g); n.start(t);
+  } else if (kind === "horn") {
+    [233, 277, 349].forEach(fq => { const o = c.createOscillator(), gg = c.createGain(); o.type = "sawtooth"; o.frequency.value = fq;
+      gg.gain.setValueAtTime(.0001, t); gg.gain.exponentialRampToValueAtTime(.07, t + .05); gg.gain.setValueAtTime(.07, t + .7); gg.gain.exponentialRampToValueAtTime(.001, t + .9); o.connect(gg); gg.connect(c.destination); o.start(t); o.stop(t + .95); });
+  } else if (kind === "whistle") {
+    const o = c.createOscillator(), m = c.createOscillator(), mg = c.createGain(); o.frequency.value = 2900; m.frequency.value = 38; mg.gain.value = 120; m.connect(mg); mg.connect(o.frequency);
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.09, t + .03); g.gain.setValueAtTime(.09, t + .3); g.gain.exponentialRampToValueAtTime(.001, t + .38); o.connect(g); o.start(t); m.start(t); o.stop(t + .4); m.stop(t + .4);
+  }
+}
+
+// ------------------------------------------------------------------ one play on the court
+// streaks: three straight makes puts a player "on fire" (flame trail on his shots)
+function streakOf(pid) { return (S.streak && S.streak[pid]) || 0; }
+function animateEvent(e, pos, offRight, shotAt, animate, ply, tmOf) {
+  const bx = offRight ? BX[1] : BX[0], dir = offRight ? 1 : -1;     // dir: +1 when attacking the right basket
+  const side = e.team || "home", p = e.a ? ply(e.a) : null, nm = p ? p.last.toUpperCase() : "";
+  const pop = $("simPop"); if (pop) pop.innerHTML = "";
+  const isShot = ["2pm", "3pm", "2miss", "3miss"].includes(e.kind);
+  const fast = !animate || S.speed >= 16 || reduceMotion;
+  const k = 1 / Math.max(1, S.speed);                               // time scale
+  BA.fire = !!(e.a && streakOf(e.a) >= 3 && isShot);
+  const rimFront = [bx - dir * 9, 250 + (Math.random() - .5) * 8];   // where a miss hits the rim
+  const floorBy = [bx - dir * 18, 250 + (Math.random() - .5) * 14];  // where a make lands under the net
+  const tag = () => {
+    if (!e.a || !pos[e.a]) return;
+    const [x, y] = pos[e.a], made = e.kind === "2pm" || e.kind === "3pm";
+    const style = /dunk/.test(e.text) ? "SLAM" : /layup|putback/.test(e.text) ? "LAYUP" : e.kind === "3pm" ? "SPLASH" : "BUCKET";
+    let t = e.kind === "3pm" ? `${nm} · +3 ${style}` : e.kind === "2pm" ? `${nm} · +2 ${style}` : e.kind === "ft" ? `${nm} · ${e.pts}/2 FT` :
+            e.kind === "tov" ? `${nm} · TURNOVER` : `${nm} · ${/dunk|layup/.test(e.text) ? "NO GOOD" : "CLANK"}`;
+    if (made && streakOf(e.a) >= 3) t += " 🔥";
+    popTag(x, y, t, side, made && (e.kind === "3pm" || BA.fire));
+  };
+
+  // instant mode: put the ball where the play ends
+  if (fast) {
+    ballStop();
+    if (isShot && (e.kind === "2miss" || e.kind === "3miss") && e.b && pos[e.b]) ballSnap(pos[e.b][0] + 12, pos[e.b][1] + 6);
+    else if (isShot || e.kind === "ft") ballSnap(floorBy[0], floorBy[1]);
+    else if (e.a && pos[e.a]) ballSnap(pos[e.a][0] + 12, pos[e.a][1] + 6);
+    else ballSnap(W / 2, 250);
+    if (animate) { if (e.kind === "2pm" || e.kind === "3pm") hoopFx(offRight, /dunk/.test(e.text) ? "slam" : "swish"); tag(); }
+    return;
+  }
+
+  const start = [BA.x, BA.y];
+  const carry = (to, dur) => { const d = Math.hypot(to[0] - BA.x, to[1] - BA.y); const n = Math.max(1, Math.round(d / 55));
+    for (let i = 1; i <= n; i++) later(() => sfx("bounce"), dur * (i - .5) / n);
+    return {to, dur, h: dribbleH(n), ease: EASE.inout, spin: 6}; };
+
+  if (e.kind === "tip" || e.kind === "period") {
+    sfx(e.kind === "tip" ? "whistle" : "horn");
+    const recv = pos[(e.on[side] || [])[0]] || [W / 2, 250];
+    ballRun([{to: [W / 2, 250], dur: 1, h: () => 0}, {to: [W / 2, 250], dur: 520 * k, h: arcH(4, 7, 9), ease: EASE.lin},
+             {to: [recv[0] + 12, recv[1] + 6], dur: 380 * k, h: arcH(8, 3, 1), ease: EASE.out}]);
+    return;
+  }
+  if (e.kind === "final") { sfx("horn"); ballRun([{to: [W / 2, 250], dur: 700 * k, h: dribbleH(3), ease: EASE.out}]); return; }
+
+  if (e.kind === "tov") {
+    const d = pos[(e.on[side === "home" ? "away" : "home"] || [])[Math.floor(Math.random() * 5)]] || [W / 2, 250];
+    const h = pos[e.a] || start;
+    ballRun([carry([h[0] + 12, h[1] + 6], 420 * k), {to: [d[0] + 12, d[1] + 6], dur: 320 * k, h: bounceH(1.2), ease: EASE.out, spin: -14, end: tag}]);
+    return;
+  }
+
+  if (e.kind === "ft") {
+    const line = shotAt || pos[e.a];
+    const one = (made, last) => [
+      {to: [line[0] + 4, line[1]], dur: 260 * k, h: dribbleH(2), start: () => { sfx("bounce"); later(() => sfx("bounce"), 130 * k); }},
+      {to: [bx, 250], dur: 560 * k, h: arcH(REL_H, RIM_H, 4.5), ease: EASE.lin, spin: -9},
+      made ? {to: [bx, 250], dur: 140 * k, h: t => lerp(RIM_H, 6, t), start: () => { hoopFx(offRight, "swish"); sfx("swish"); }}
+           : {to: rimFront, dur: 90 * k, h: () => RIM_H, start: () => { hoopFx(offRight, "clank"); sfx("clank"); }},
+      {to: made ? floorBy : [rimFront[0] - dir * 22, rimFront[1] + (Math.random() - .5) * 60], dur: 300 * k, h: made ? t => lerp(6, 0, t * t) : arcH(RIM_H, 0, 2), ease: EASE.lin,
+       end: () => { sfx("bounce"); if (last) tag(); }},
+      {to: last ? [line[0] + 12, line[1] + 6] : [line[0] + 4, line[1]], dur: 280 * k, h: bounceH(1.6), ease: EASE.out}];
+    const m = e.pts || 0;
+    ballRun([carry([line[0] + 12, line[1] + 6], 300 * k), ...one(m >= 1, false), ...one(m >= 2, true)]);
+    return;
+  }
+
+  if (isShot) {
+    const made = e.kind === "2pm" || e.kind === "3pm", three = e.kind[0] === "3";
+    const dunk = /dunk/.test(e.text), layup = /layup|putback|floater|hook/.test(e.text);
+    const from = shotAt || pos[e.a] || start;
+    const dist = Math.hypot(from[0] - bx, from[1] - 250) / 10;    // feet
+    const flight = (dunk ? 260 : layup ? 380 : 420 + dist * 9) * k;
+    const apex = dunk ? 1 : layup ? 3 : three ? 8.5 : 6;
+    const segs = [carry([from[0] + 12, from[1] + 6], 460 * k),
+      {to: from, dur: 120 * k, h: t => lerp(1, dunk ? 9.5 : REL_H, t), ease: EASE.out}];
+    if (made) {
+      segs.push({to: [bx, 250], dur: flight, h: arcH(dunk ? 9.5 : REL_H, RIM_H + .4, apex), ease: EASE.lin, spin: -10});
+      segs.push({to: [bx, 250], dur: 170 * k, h: t => lerp(RIM_H + .4, 6.5, t), start: () => {
+        hoopFx(offRight, dunk ? "slam" : "swish"); sfx("swish"); if (three || BA.fire) later(() => sfx("cheer"), 60); tag(); }});
+      segs.push({to: floorBy, dur: 260 * k, h: t => lerp(6.5, 0, t * t), ease: EASE.lin, end: () => sfx("bounce")});
+      segs.push({to: [floorBy[0] - dir * 16, floorBy[1] + (Math.random() - .5) * 20], dur: 300 * k, h: bounceH(2.2), ease: EASE.out, end: () => sfx("bounce")});
+      segs.push({to: [floorBy[0] - dir * 26, floorBy[1] + (Math.random() - .5) * 20], dur: 200 * k, h: bounceH(.7), ease: EASE.out});
+    } else {
+      segs.push({to: rimFront, dur: flight, h: arcH(dunk ? 9.5 : REL_H, RIM_H + .3, apex), ease: EASE.lin, spin: -10});
+      const rb = e.b && pos[e.b] ? [pos[e.b][0] + 12, pos[e.b][1] + 6] : [bx - dir * 60, 250 + (Math.random() - .5) * 200];
+      const mid = [lerp(rimFront[0], rb[0], .35), lerp(rimFront[1], rb[1], .35)];
+      segs.push({to: [rimFront[0] + dir * 6, rimFront[1] + (Math.random() - .5) * 10], dur: 110 * k, h: t => RIM_H + .3 + 1.6 * Math.sin(Math.PI * t), start: () => {
+        hoopFx(offRight, "clank"); sfx("clank"); tag(); }});
+      segs.push({to: mid, dur: 260 * k, h: arcH(RIM_H + .3, 5, 3), ease: EASE.out, spin: 14});
+      segs.push({to: rb, dur: 260 * k, h: e.b ? arcH(5, 6.5, 1.5) : arcH(5, 0, 1), ease: EASE.lin, spin: 8,
+                 end: () => { if (!e.b) sfx("bounce"); }});
+      if (e.b) segs.push({to: rb, dur: 160 * k, h: t => lerp(6.5, 3, t), ease: EASE.out});
+    }
+    ballRun(segs);
+    return;
+  }
+  // anything else: carry the ball to the player
+  if (e.a && pos[e.a]) ballRun([carry([pos[e.a][0] + 12, pos[e.a][1] + 6], 500 * k)]);
+}
+
+// how long a play takes on screen at 1× (ms)
+function playMs(e) {
+  if (e.kind === "ft") return 3300;
+  if (["2pm", "3pm", "2miss", "3miss"].includes(e.kind)) return 2050;
+  if (e.kind === "tip" || e.kind === "period") return 1500;
+  return 1150;
+}
+// replay the current play by tapping the court
+function replayCurrent() {
+  if (!S.game || S.playing) return;
+  const e = S.game.events[S.i]; if (!e) return;
+  const prev = S.game.events[S.i - 1];
+  if (prev) drawDots(prev, false);
+  setTimeout(() => drawDots(e, true), 60);
 }
 
 // ------------------------------------------------------------------ Monte Carlo view

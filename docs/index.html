@@ -283,6 +283,26 @@ a.opt{cursor:pointer}
 .pdot.act circle{stroke:#fff;stroke-width:4}
 .ptag rect{fill:#0b0f17;stroke-width:2} .ptag.home rect{stroke:var(--mars)} .ptag.away rect{stroke:var(--gold)}
 .ptag text{font:800 16px Inter,sans-serif;fill:#fff;letter-spacing:.04em}
+.ptag.big rect{fill:#E5C158;stroke:#fff} .ptag.big text{fill:#0b0f17}
+.ptag rect,.ptag text{transform-box:fill-box;transform-origin:center;animation:tagIn .28s cubic-bezier(.3,1.6,.5,1)}
+@keyframes tagIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.hoop .rim{stroke:#E5C158;stroke-width:2.5;fill:none}
+.hoop .net{stroke:#fff;stroke-opacity:.75;stroke-width:1.4;stroke-dasharray:1.6 1.6;fill:none}
+.hoop .burst{fill:none;stroke:#ffe08a;stroke-width:3;opacity:0}
+.hoop circle{transform-box:fill-box;transform-origin:center}
+.hoop.swish .net{animation:netSwish .5s ease-out}
+.hoop.swish .burst,.hoop.slam .burst{animation:burst .65s ease-out}
+.hoop.slam{animation:slam .45s ease-out}
+.hoop.slam .rim{animation:rimFlash .45s}
+.hoop.clank{animation:rimShake .38s linear}
+.hoop.clank .rim{animation:rimFlash .38s}
+@keyframes netSwish{0%{transform:scale(1);stroke-opacity:.75}35%{transform:scale(1.45,1.25);stroke-opacity:1;stroke:#ffe08a}100%{transform:scale(1)}}
+@keyframes burst{0%{transform:scale(1);opacity:.95}100%{transform:scale(4.2);opacity:0}}
+@keyframes slam{0%,100%{transform:scale(1)}30%{transform:scale(.82)}60%{transform:scale(1.08)}}
+@keyframes rimShake{0%,100%{transform:translate(0,0)}20%{transform:translate(3px,-2px)}40%{transform:translate(-3px,2px)}60%{transform:translate(2px,1px)}80%{transform:translate(-1px,-1px)}}
+@keyframes rimFlash{0%,100%{stroke:#E5C158}30%{stroke:#fff;stroke-width:4}}
+#simCourt{cursor:pointer}
+@media (prefers-reduced-motion:reduce){.hoop,.hoop *,.ptag rect,.ptag text{animation:none!important}}
 .cap{display:flex;gap:8px;align-items:center;background:#0b0f17;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:13px;min-height:38px}
 .cap span:first-child{font-weight:900;font-style:italic;font-size:12px;letter-spacing:.04em;white-space:nowrap}
 .cap span.h{color:var(--mars)} .cap span.a{color:var(--gold)}
