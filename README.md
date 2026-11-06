@@ -131,6 +131,14 @@ Every sim run also prices DraftKings' own lines: spreads, totals and moneylines 
 - **Minutes model**: tonight's minutes start from recent minutes, then adjust for teammates who are newly out (from each player's with/without history, capped at what the missing players actually played), a change in starting role (RotoWire lineups), back-to-backs and blowout risk. The reasons show on each player card. Projections and the sim both use these minutes.
 - **Nightly sims**: after every research and props run (about 8:40am, 2:05pm, 3:45pm, 6:15pm and 8:45pm ET in winter), `tools/sim_all.js` simulates every upcoming game 10,000 times with the dashboard's own engine and saves the averages and ranges (`sims.json`, shown instantly in the Sim tab). Each run is seeded, so identical inputs give identical results, and every run of the day is kept in `sims_day.json`: the Sim tab's **Today's simulations** report shows each run side by side, the average of the runs and how much each number moved, so you can see which projections hold steady as news comes in. Each game also saves the single most typical simulated game (the one closest to all the averages) as a full box score. The next morning each game is graded against the real box score (`sims_log.json`): total, margin and winner against Vegas, and every player's minutes and stats against both the sim and the projection alone.
 
+## Sharper inputs (Nov 6)
+
+- **Real free throws, turnovers and offensive rebounds in the sim.** Each player's free-throw attempts and turnovers come from his own box scores (they were estimated before), and each team's offensive rebound rate, turnovers per possession and free-throw rate come from this season and last, matched against tonight's opponent's defense and shrunk toward the league when the sample is small. They're in each game's `rates` in `players.json`.
+- **Recent games count more in the sim.** Each player's rates weight recent games more (0.96 per game back, like the projections) and last season less, with shooting percentages shrunk toward the league on small samples.
+- **Coach rotation habits.** The minutes model learns how many minutes each team's starters lose in blowouts and gain in close games compared with the league, and uses that team's own habit for blowout risk and tight spreads (the reason shows on the player card).
+- **Injury watch.** Every 30 minutes from about 1pm to 7pm ET, and with every 15-minute live run after that, the agent re-reads ESPN's injury list and the league's official report. If a rotation player (12+ projected minutes or a listed starter) in a game that hasn't tipped is ruled out or cleared, it sends an alert and re-prices the whole slate (projections, minutes, sims) right away.
+- **Minutes accuracy** (Trends, top): projected vs actual minutes over the last 7 and 30 days, how often within 4 minutes, starter and bench bias, players projected for 10+ minutes who didn't play, and last night's biggest misses.
+
 ## The learning loop (nightly, after grading)
 
 The agent stores every graded result and reads it back each night to refine itself (`agent/learn.py`, saved in `docs/data/tuning.json`, shown in Agent → What the agent has learned):
@@ -183,7 +191,8 @@ The old GitHub-issue logging still works in the background but the dashboard no 
 | ~3:45pm | Research refresh with updated lineups (free) |
 | ~6:15pm | Pre-game refresh: late injuries and lineups, all sims re-run (free) |
 | ~8:45pm | Late-game refresh for 10pm+ tips: only games not yet started (free) |
-| Every 15 min, ~7pm-1am | DraftKings live lines, score and clock, sim from the live score (free) |
+| Every 30 min, ~1pm-7pm | Injury watch: re-price right away when a rotation player is ruled out or cleared (free) |
+| Every 15 min, ~7pm-1am | DraftKings live lines, score and clock, sim from the live score, plus the injury watch for games not yet started (free) |
 | ~6:35pm | Scan |
 
 Add an hour from March to November (daylight saving time). GitHub can start runs 5-30 minutes late.

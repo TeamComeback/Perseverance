@@ -80,7 +80,8 @@ class Model:
                 rows.append({"pid": p[nd.P_ID], "name": p[nd.P_NAME], "team": t, "opp": o, "d": g["d"],
                              "season": season, "sw": sw, "home": g["teams"][t]["home"], "gpos": p[nd.P_GPOS],
                              "min": p[nd.P_MIN], "start": p[nd.P_START], "tpa": p[nd.P_TPA], "fga": p[nd.P_FGA],
-                             "fta": p[nd.P_FTA], **{s: _val(p, s) for s in STATS}})
+                             "fta": p[nd.P_FTA], "tov": p[nd.P_TOV],
+                             "mar": g["teams"][t]["score"] - g["teams"][o]["score"], **{s: _val(p, s) for s in STATS}})
         self.rows = rows
         self._players()
         self._teams(team_games)

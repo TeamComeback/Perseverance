@@ -1580,12 +1580,42 @@ async function renderTrends() {
   const secs = (T.sections || []).map((s, i) => sec("tr-" + s.id, esc(s.title), s.items.length + "",
     s.items.map(it => `<div class="ti"><span>${esc(it.txt)}</span><b class="${it.tone || ""}">${esc(it.val)}</b></div>`).join("") || '<div class="empty">Nothing yet.</div>', i < 1)).join("");
   $("v-trends").innerHTML = `<div class="desc" style="margin:0 2px 4px">League trends, refreshed every morning${T.updated ? " · " + ago(T.updated) : ""}. Records use ESPN's pregame lines where available.</div>` +
+    sec("tr-min", "Minutes accuracy · the biggest driver of prop misses", minMeta(), minutesHtml(), true) +
     sec("tr-sb", "Model vs market", D.sb.all ? D.sb.all.n + " lines" : "", sbHtml(), true) +
     sec("tr-live", "Live betting · would it have paid?", (() => { const n = Object.values(D.livetrack.agg || {}).reduce((t, a) => t + a[0], 0); return n ? n + " live bets graded" : ""; })(), liveTrackHtml(), true) +
     sec("tr-sim", "Sims vs actual results", (() => { const a = D.simlog.agg.total; return a ? a[0] + " games graded" : ""; })(), simLogHtml(), true) +
     sec("tr-conv", "Conviction track record", (D.track.graded_games || 0) + " games graded", trackHtml(), true) +
     secs + sec("tr-teams", "Team table", (T.teams || []).length + " teams", teamTable(), false) + sec("tr-dvp", "Defense vs position explorer", "", dvpExplorer(), false);
   bindTeamSort(); bindDvp();
+}
+// Minutes: projected (what the sim plays) vs actual, from the nightly grading. Most prop misses are minutes misses.
+function minDays(n) {
+  const daily = (D.simlog && D.simlog.daily) || {}, days = Object.keys(daily).sort().slice(-n);
+  const t = {n: 0, abs: 0, in4: 0, dnp: 0, st: [0, 0, 0], bn: [0, 0, 0]};
+  days.forEach(d => { const x = daily[d];
+    if (x.min_acc) { t.n += x.min_acc[0]; t.abs += x.min_acc[1]; t.in4 += x.min_acc[2]; }
+    if (x.min_dnp) t.dnp += x.min_dnp[0];
+    ["st", "bn"].forEach(k => { const v = x[k === "st" ? "min_starter" : "min_bench"]; if (v) { t[k][0] += v[0]; t[k][1] += v[1]; t[k][2] += v[2]; } }); });
+  return t;
+}
+function minMeta() { const t = minDays(7); return t.n ? `${f1(t.abs / t.n)} min avg miss · 7 days` : ""; }
+function minutesHtml() {
+  const L = D.simlog || {}, a7 = minDays(7), a30 = minDays(30);
+  const all = (L.agg || {}).min;
+  if (!a30.n && !a30.st[0] && !all) return '<div class="empty">Each morning every player\'s projected minutes are graded against what he actually played. The first results land after tonight\'s games.</div>';
+  const mae = t => t.n ? f1(t.abs / t.n) : "—", in4 = t => t.n ? Math.round(t.in4 / t.n * 100) + "%" : "—";
+  const bias = v => v[0] ? ((v[1] - v[2]) / v[0] > 0 ? "+" : "") + f1((v[1] - v[2]) / v[0]) : "—";
+  const days = Object.keys(L.graded || {}).sort(), last = days.length ? L.graded[days[days.length - 1]] : null;
+  const mm = last ? Object.values(last).flatMap(g => (g.min_misses || []).map(m => ({...{n: m[0], p: m[1], a: m[2], dnp: m[3]}, g: g.away + " @ " + g.home}))).sort((x, y) => Math.abs(y.p - y.a) - Math.abs(x.p - x.a)).slice(0, 6) : [];
+  return `<div class="desc">Projected minutes vs what each player actually played. Late scratches (projected, then didn't play) are what the injury watch is for: it checks the injury report every 15-30 minutes from about 1pm and re-prices the slate when a rotation player is ruled out or cleared. Bias: + means we projected too many minutes. DNP: projected 10+ minutes, didn't play.</div>
+    <div class="scroll"><table class="tbl"><tr><th></th><th>7 days</th><th>30 days</th></tr>
+      <tr><td class="t">Avg miss (min)</td><td><b>${mae(a7)}</b></td><td>${mae(a30)}</td></tr>
+      <tr><td class="t">Within 4 min</td><td>${in4(a7)}</td><td>${in4(a30)}</td></tr>
+      <tr><td class="t">Starters bias</td><td>${bias(a7.st)}</td><td>${bias(a30.st)}</td></tr>
+      <tr><td class="t">Bench bias</td><td>${bias(a7.bn)}</td><td>${bias(a30.bn)}</td></tr>
+      <tr><td class="t">Projected, DNP</td><td>${a7.dnp}</td><td>${a30.dnp}</td></tr></table></div>
+    ${all ? `<div class="desc" style="margin-top:4px">All time: ${f1(all[1] / all[0])} min average miss over ${all[0]} player-games.</div>` : ""}
+    ${mm.length ? `<div class="lbl">Biggest misses · ${esc(days[days.length - 1])}</div>` + mm.map(m => `<div class="ti"><span>${esc(m.n)} <span class="dim">· ${esc(m.g)}</span></span><b class="${m.dnp ? "neg" : m.a > m.p ? "pos" : "neg"}">${m.dnp ? `${f1(m.p)} → DNP` : `${f1(m.p)} → ${m.a}`}</b></div>`).join("") : ""}`;
 }
 function liveTrackHtml() {
   const A = (D.livetrack && D.livetrack.agg) || {};

@@ -95,7 +95,7 @@ const r1 = v => Math.round(v * 10) / 10;
     const idx = pj.players || {};
     log.pending[pj.date][g.espn_id] = {start: g.start, home: g.home, away: g.away, avg, win_home: out.games[g.espn_id].win_home,
       vegas: g.vegas ? {spread_home: g.vegas.spread_home, total: g.vegas.total} : null,
-      p: Object.fromEntries(Object.entries(players).map(([pid, x]) => [pid, {min: x.min, st: idx[pid] ? idx[pid].st || 0 : 0, ...Object.fromEntries(STATS.map(k => [k, x.s[k][0]])),
+      p: Object.fromEntries(Object.entries(players).map(([pid, x]) => [pid, {nm: x.name, min: x.min, st: idx[pid] ? idx[pid].st || 0 : 0, ...Object.fromEntries(STATS.map(k => [k, x.s[k][0]])),
         proj: idx[pid] ? Object.fromEntries(STATS.map(k => [k, idx[pid].proj[k] ? r1(idx[pid].proj[k][0]) : null])) : null}]))};
     console.log(`[sims] ${g.away} @ ${g.home}: ${avg.away}-${avg.home}, home win ${Math.round(hw / N * 100)}%`);
   }

@@ -45,18 +45,25 @@ function prep(g, gf) {
     ps.sort((a, b) => ((b.rw && b.rw.starter) ? 100 : 0) + b.minutes - (((a.rw && a.rw.starter) ? 100 : 0) + a.minutes));
     ps = ps.slice(0, 13);
     const rows = ps.map((p, i) => {
-      const L = (p.logs || []).filter(r => r[3] > 0).slice(-60);
-      const sum = k => L.reduce((t, r) => t + (r[k] || 0), 0);
+      // recent games count more (0.96 per game back, the same decay the projections use) and last season
+      // counts less, so early in a season the rates lean on last year without ignoring the hot start
+      const L = (p.logs || []).filter(r => r[3] > 0).slice(-80);
+      const cur = L.reduce((m, r) => Math.max(m, r[12] || 0), 0);
+      const wt = L.map((r, k) => Math.pow(0.96, L.length - 1 - k) * ((r[12] || cur) === cur ? 1 : 0.45));
+      const sum = k => L.reduce((t, r, j) => t + wt[j] * (r[k] || 0), 0);
+      const hasFt = L.some(r => r.length > 16);
       const mins = Math.max(1, sum(3)), pts = sum(4), reb = sum(5), ast = sum(6), tpm = sum(7), tpa = sum(8), fga = sum(9);
-      const fta = 0.2 * pts / 0.78;                                  // free throws aren't logged: ~20% of points
+      const fta = hasFt ? sum(16) : 0.2 * pts / 0.78;                  // real free-throw attempts (old files: ~20% of points)
+      const tov = hasFt ? sum(17) : 0;
       const p3 = (tpm + 0.36 * 15) / (tpa + 15);                     // shrunk toward league 36%
-      const twoA = Math.max(1, fga - tpa), twoM = Math.max(0, (0.8 * pts - 3 * tpm) / 2);
+      const twoA = Math.max(1, fga - tpa), twoM = Math.max(0, (pts - 0.78 * fta - 3 * tpm) / 2);
+      const p2 = (twoM + 0.53 * 20) / (twoA + 20);                   // shrunk toward league 53% on twos
       const pr = s => (p.proj[s] && p.proj[s].proj) || 0;
       return {pid: p.pid, name: p.name, ini: initials(p.name), last: lastName(p.name), starter: !!(p.rw && p.rw.starter), idx: i,
         min: p.minutes, tgt: {pts: pr("pts"), reb: pr("reb"), ast: pr("ast"), tpm: pr("tpm")},
         u: Math.max(0.05, (fga + 0.44 * fta) / mins), r3: fga > 0 ? clamp(tpa / fga, 0.01, 0.9) : 0.25, p3: clamp(p3, 0.2, 0.47),
-        p2: clamp(twoM / twoA, 0.38, 0.7), ft: clamp((fta / 2) / Math.max(1, fga + fta / 2), 0.03, 0.3),
-        rw: Math.max(0.02, reb / mins), aw: Math.max(0.01, ast / mins)};
+        p2: clamp(p2, 0.38, 0.7), ft: clamp((fta / 2) / Math.max(1, fga + fta / 2), 0.02, 0.35),
+        tw: tov > 0 ? tov / mins : 0, rw: Math.max(0.02, reb / mins), aw: Math.max(0.01, ast / mins)};
     });
     // starters: the five flagged (or top five by minutes)
     const flagged = rows.filter(r => r.starter);
@@ -91,7 +98,11 @@ function prep(g, gf) {
     if (imp && sumPts > 0) { const f = clamp(Math.pow(imp / sumPts, ak), 0.8, 1.2); rows.forEach(r => r.tgt.pts *= f); }
     // counting stats follow the pace (points are already anchored to the implied team total)
     if (P.paceK !== 1) rows.forEach(r => { r.tgt.reb *= P.paceK; r.tgt.ast *= P.paceK; r.tgt.tpm *= P.paceK; });
-    P.teams[side] = {ab, name: g[side + "_name"] || ab, players: rows, eff: 1};
+    // team habits vs this opponent (research.matchup_rates): offensive rebound rate, turnovers per possession,
+    // and how much more or less often they get to the line than usual. Defaults are league-typical.
+    const rt = (g.rates && g.rates[side]) || {};
+    P.teams[side] = {ab, name: g[side + "_name"] || ab, players: rows, eff: 1,
+      orb: clamp(rt.orb || 0.24, 0.15, 0.4), tovp: clamp(rt.tov || 0.132, 0.08, 0.22), ftk: clamp(rt.ftk || 1, 0.7, 1.4)};
   }
   return P;
 }
@@ -138,12 +149,12 @@ function simGame(P, log, start) {   // start: {period, clock (sec), home, away} 
       clock -= used;
       for (const s of sides) on[s].forEach(p => secs[p.pid] += used);
       if (clock <= 0) { ended = true; break; }
-      if (rnd() < (second ? 0.08 : 0.125)) {
-        const p = pick(on[off], x => x.u); box[p.pid].tov++;
+      if (rnd() < (second ? O.tovp * 0.55 : O.tovp * 0.95)) {
+        const p = pick(on[off], x => x.tw > 0 ? x.tw : 0.12 * x.u); box[p.pid].tov++;
         ev({kind: "tov", team: off, a: p.pid, text: `${p.last} turnover`}); break;
       }
       const sh = pick(on[off], x => x.u);
-      if (rnd() < sh.ft) {
+      if (rnd() < sh.ft * O.ftk) {
         let m = 0; for (let k = 0; k < 2; k++) if (rnd() < 0.78) m++;
         box[sh.pid].fta += 2; box[sh.pid].ftm += m; box[sh.pid].pts += m; score[off] += m;
         const fouler = pick(on[def], () => 1);
@@ -162,7 +173,7 @@ function simGame(P, log, start) {   // start: {period, clock (sec), home, away} 
                            : ["driving layup", "dunk", "floater", "mid-range jumper", "hook shot", "putback"][Math.floor(rnd() * (second ? 6 : 5))];
         ev({kind, team: off, a: sh.pid, b: as && as.pid, pts: v, text: `${sh.last} ${shot}${as ? ` (${as.last} assist)` : ""}`}); break;
       }
-      const oreb = rnd() < 0.24;
+      const oreb = rnd() < O.orb;
       const teamReb = rnd() < 0.06;                      // some misses are team rebounds (no player credit)
       const rb = oreb ? pick(on[off], x => x.rw * 0.7) : pick(on[def], x => x.rw);
       if (!teamReb) box[rb.pid].reb++;

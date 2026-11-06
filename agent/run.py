@@ -258,8 +258,10 @@ def run_sims():
 
 
 def live_run():
-    """Every 15 minutes during games (free): DraftKings' live line, score and clock, then the sim from there."""
+    """Every 15 minutes during games (free): DraftKings' live line, score and clock, then the sim from there.
+    Also watches the injury report for games that haven't tipped yet (late West Coast games)."""
     from . import dk
+    injwatch_run()
     try:
         days = dk.live_snapshot()
         print(f"[live] snapshots for {days or 'no games in progress'}")
@@ -272,6 +274,30 @@ def live_run():
             r = subprocess.run(["node", str(config.ROOT / "tools" / "live_sim.js")], capture_output=True, text=True, timeout=600,
                                env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA)})
             print(r.stdout[-1500:], r.stderr[-1500:])
+
+
+def injwatch_run(and_live=False):
+    """Every 20-30 minutes in the afternoon and evening (free): if a rotation player's status flips (ruled out,
+    or cleared to play) before tip-off, alert and re-price the whole slate right away instead of waiting
+    for the next scheduled refresh."""
+    from . import research, alerts
+    try:
+        ch = research.injury_watch()
+    except Exception as e:
+        print(f"[injwatch] failed: {e}")
+        return False
+    if not ch:
+        print("[injwatch] no status changes")
+        return False
+    txt = [(f"inj|{pid}|{new}", f"{name} ({team}) now {new.lower()} (was {old.lower()}), {mins:.0f} projected min. Projections and sims re-priced.")
+           for pid, name, team, old, new, mins in ch]
+    print("[injwatch] " + "; ".join(t for _, t in txt))
+    try:
+        alerts.send(txt, title="Injury news")
+    except Exception as e:
+        print(f"[injwatch] alert failed: {e}")
+    research_run()
+    return True
 
 
 def research_run():
@@ -553,4 +579,4 @@ def manual_issue():
 
 if __name__ == "__main__":
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
-     "research": research_run, "live": live_run, "manual-issue": manual_issue}[sys.argv[1]]()
+     "research": research_run, "live": live_run, "injwatch": injwatch_run, "manual-issue": manual_issue}[sys.argv[1]]()

@@ -65,11 +65,19 @@ def grade(db):
                     _add(agg, "margin_vegas", abs(-v["spread_home"] - (ah - aa)))
                     _add(agg, "winner_vegas", 1.0 if (v["spread_home"] < 0) == (ah > aa) else 0.0)
             rows = {p[nd.P_ID]: p for p in box["players"]}
+            mm = []
             for pid, x in g["p"].items():
                 r = rows.get(pid)
                 if r is None:
+                    if x["min"] >= 10:                         # projected for real minutes but didn't play: late news
+                        _day(db, day, "min_dnp", x["min"])
+                        mm.append([x.get("nm") or pid, round(x["min"], 1), 0, 1])
                     continue                                   # didn't play
                 _add(agg, "min", abs(x["min"] - r[nd.P_MIN]), x["min"] - r[nd.P_MIN])
+                miss = abs(x["min"] - r[nd.P_MIN])
+                _day(db, day, "min_acc", miss, 1.0 if miss <= 4 else 0.0)
+                if miss >= 6:
+                    mm.append([r[nd.P_NAME], round(x["min"], 1), round(r[nd.P_MIN]), 0])
                 _day(db, day, "min_" + ("starter" if x.get("st") else "bench"), x["min"], r[nd.P_MIN])
                 for s in STATS:
                     act = nm._val(r, s)
@@ -81,6 +89,7 @@ def grade(db):
                     if s == "pra":
                         rec["misses"].append([r[nd.P_NAME], x[s], act, x["min"], r[nd.P_MIN]])
             rec["misses"] = sorted(rec["misses"], key=lambda m: -abs(m[1] - m[2]))[:5]
+            rec["min_misses"] = sorted(mm, key=lambda m: -abs(m[1] - m[2]))[:5]
             db["graded"].setdefault(day, {})[gid] = rec
             del db["pending"][day][gid]
             done += 1
