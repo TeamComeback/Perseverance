@@ -5,7 +5,8 @@ import urllib.request
 
 CORE = "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba"
 SITE = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
-DK = "100"                                   # ESPN's provider id for DraftKings
+DK = "100"                                   # ESPN's provider id for DraftKings (pregame: open, close)
+DK_LIVE = "200"                              # "DraftKings - Live Odds": the in-game line (provider 100's "current" stays frozen at the close)
 PROP_TYPES = {"Total Points": "pts", "Total Rebounds": "reb", "Total Assists": "ast", "Total 3-Point Field Goals": "tpm",
               "Total Points, Rebounds, and Assists": "pra", "Total Assists and Rebounds": "ra"}
 
@@ -36,12 +37,18 @@ def _snap(item, state):
     return s if any(v is not None for v in s.values()) else None
 
 
-def game_odds(eid):
+def game_odds(eid, live=False):
+    """open / close / current DraftKings game lines. live=True takes "current" from the in-game provider."""
     d = _get(f"{CORE}/events/{eid}/competitions/{eid}/odds")
-    item = next((i for i in d.get("items", []) if str((i.get("provider") or {}).get("id")) == DK), None)
-    if not item:
+    items = {str((i.get("provider") or {}).get("id")): i for i in d.get("items", [])}
+    item, lv = items.get(DK), items.get(DK_LIVE)
+    if not item and not (lv and live):
         return None
-    return {k: _snap(item, k) for k in ("open", "close", "current")}
+    out = {k: _snap(item, k) for k in ("open", "close", "current")} if item else {"open": None, "close": None, "current": None}
+    cur = _snap(lv, "current") if lv and live else None
+    if cur:                                   # during a game the live provider has the real in-game number
+        out["current"] = cur
+    return out
 
 
 def props(eid):

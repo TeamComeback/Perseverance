@@ -115,7 +115,7 @@ def live_snapshot(log=print):
             if x["state"] != "in":
                 continue
             try:
-                o = eo.game_odds(eid)
+                o = eo.game_odds(eid, live=True)
             except Exception as e:
                 log(f"[dk] live odds {eid} failed: {e}")
                 continue

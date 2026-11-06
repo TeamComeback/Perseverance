@@ -952,7 +952,8 @@ async function pollLive() {
   try {
     const [od, sb] = await Promise.all([fetch(`${CORE}/events/${gid}/competitions/${gid}/odds`).then(r => r.json()).catch(() => ({})),
       fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=${gid}`).then(r => r.json())]);
-    const item = (od.items || []).find(i => String((i.provider || {}).id) === "100");
+    // provider 200 ("DraftKings - Live Odds") carries the in-game line; provider 100's "current" stays frozen at the close
+    const item = (od.items || []).find(i => String((i.provider || {}).id) === "200") || (od.items || []).find(i => String((i.provider || {}).id) === "100");
     const comp = sb.header.competitions[0], st = comp.status, t = {}, side = {};
     const ls = {}, tm = {};
     comp.competitors.forEach(c => { t[c.homeAway] = +c.score || 0; side[String(c.team ? c.team.id : c.id)] = c.homeAway;
