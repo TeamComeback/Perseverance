@@ -258,6 +258,13 @@ a.opt{cursor:pointer}
 .cr .rt .b{font-size:11.5px;color:var(--dim)}
 .cr .why{grid-column:1/-1;font-size:12px;color:var(--dim2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gold{color:var(--gold)} .dots{color:var(--gold);letter-spacing:1px}
+.cr.bb .rk{display:inline-block;min-width:18px;font-family:var(--mono);font-weight:800;color:var(--gold)}
+.cr.bb .bbn{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12px;color:var(--dim);margin-top:2px}
+.cr.bb .bbn b{color:var(--text)}
+.cr.bb .why{white-space:normal}
+.cr.bb .bbn .btn{margin-left:auto}
+.btn.sm{padding:4px 10px;font-size:12px}
+.bbl{margin-top:10px} .bbl summary{cursor:pointer;font-size:12px;color:var(--dim)} .bbl .desc{margin-top:6px;line-height:1.5}
 .more{display:block;width:100%;margin-top:8px;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;font:inherit;font-weight:600;cursor:pointer}
 .chips .sep{flex:none;width:1px;background:var(--line);margin:4px 2px}
 .hint{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:13px;color:var(--dim)}
@@ -934,15 +941,71 @@ function renderToday() {
       ${t ? `<div class="mdl">Top spot: ${esc(t.name)} ${STATN[t.stat]} ${t.lean.toLowerCase()}</div>` : ""}</div>`;
   }).join("");
   $("v-today").innerHTML = `<div class="mini2">${tile("Agent · run #" + state.book.run, "agent", state.stats.equity, state.stats)}${tile("You", "you", youEq, manual.stats)}</div>
+    ${bestHtml()}
     ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), true)
       : `<div class="hint"><span>No open bets</span><button class="btn" onclick="openLogBet()">+ Log a bet</button></div>`}
-    <h2>Top 5 tonight${day ? " · " + esc(day) : ""}</h2>
-    <div class="card" style="padding:2px 12px">${top.map(cRow).join("") || `<div class="empty">${games.length ? "Every game on tonight's slate has tipped off. Tomorrow's plays appear after the morning research run." : "The matchup board fills in with the morning research run."}</div>`}</div>
-    <button class="more" onclick="go('props')">See every play in Prop Lab →</button>
+    ${sec("t-top", "Top matchup spots" + (day ? " · " + esc(day) : ""), "by conviction", `<div style="padding:2px 0">${top.map(cRow).join("") || `<div class="empty">${games.length ? "Every game on tonight's slate has tipped off. Tomorrow's plays appear after the morning research run." : "The matchup board fills in with the morning research run."}</div>`}</div>
+    <button class="more" onclick="go('props')">See every play in Prop Lab →</button>`, false)}
     ${oppsHtml()}
     ${sec("t-slate", "Tonight's games", games.length + " games", games.length ? `<div class="games">${gameHtml}</div>` : '<div class="empty">No NBA games on the slate.</div>', false)}`;
   $("v-today").querySelectorAll(".gcard").forEach(el => el.onclick = () => openGame(el.dataset.game));
-  bindPlayerLinks($("v-today"));
+  bindPlayerLinks($("v-today")); bindBest($("v-today"));
+}
+// ------------------------------------------------------------------ best bets of the day (tools/sim_all.js -> best.json)
+function bestHtml() {
+  const B = D.best || {}, date = (D.players && D.players.date) || "", day = (B.days || {})[date];
+  const title = `<h2>Best bets today</h2>`;
+  if (!day || !((day.props || []).length + (day.games || []).length))
+    return title + `<div class="card"><div class="empty">Tonight's best bets appear after the sims run against DraftKings' lines (about 9:40am, 4:45pm and 6:15pm ET). Props need DraftKings' player lines, posted in the afternoon.</div></div>`;
+  const R = B.record || {}, rs = r => r && (r.w + r.l + r.p) ? `${r.w}-${r.l}${r.p ? "-" + r.p : ""} (${r.u >= 0 ? "+" : ""}${r.u.toFixed(1)}u)` : "no graded picks yet";
+  const L = day.learned || {};
+  const gOf = id => ((D.players && D.players.games) || []).find(g => g.espn_id === id);
+  const statusOf = x => {
+    if (x.res) return `<span class="pill ${x.res === "win" ? "won" : x.res === "loss" ? "lost" : ""}">${x.res === "win" ? "WON" : x.res === "loss" ? "LOST" : x.res.toUpperCase()}${x.actual != null ? " · " + x.actual : ""}</span>`;
+    const g = gOf(x.espn_id), st = g ? g.state : (new Date(x.start) <= Date.now() ? "in" : "pre");
+    return st === "in" ? '<span class="pill live">LIVE</span>' : st === "post" ? '<span class="pill fin">FINAL</span>' : "";
+  };
+  const evTag = x => x.plus ? `<span class="gold">${pct(x.ev, 1)} EV</span>` : `<span class="dim">no edge at this price</span>`;
+  const row = (x, i) => {
+    const isProp = x.kind === "prop";
+    const bet = isProp ? `${x.side.toUpperCase()} ${f1(x.point)} ${STATN[x.stat] || x.stat}`
+      : x.kind === "spread" ? `${esc(x.team)} ${x.point > 0 ? "+" : ""}${f1(x.point)}` : `${x.side.toUpperCase()} ${f1(x.point)}`;
+    const who = isProp ? esc(x.name) : x.kind === "spread" ? "Spread" : "Total";
+    const attrs = isProp ? `data-pid="${x.pid}" data-stat="${x.stat}"` : `data-bgame="${x.espn_id}"`;
+    return `<div class="cr bb" ${attrs}><div><span class="rk">${i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${statusOf(x)}
+        <div class="gm">${esc(x.game)} · ${tod(x.start)}${isProp && x.cv ? ` · <span class="dots">${dots(x.cv)}</span>` : ""}</div></div>
+      <div class="rt"><div class="a">${bet}</div><div class="b">${amS(x.am)} DraftKings · ${evTag(x)}</div></div>
+      <div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>needs ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>market ${Math.round(x.p_mkt * 100)}%</span>
+        ${!x.res && !(gOf(x.espn_id) && gOf(x.espn_id).state !== "pre") ? `<button class="btn ghost sm" data-blog="${esc(x.kind + "|" + (x.pid || x.espn_id) + "|" + (x.stat || "") + "|" + x.side)}">+ Log</button>` : ""}</div>
+      <div class="why">${esc(x.why)}</div></div>`;
+  };
+  const wp = L.w_props ? Object.entries(L.w_props).map(([k, v]) => `${STATN[k] || k} ${Math.round(v * 100)}%`).join(" · ") : "";
+  return title + `<div class="card" style="padding:4px 12px 10px" id="bestCard">
+      <div class="desc" style="margin-top:6px">Every DraftKings spread, total and prop on tonight's slate, priced from 10,000 simulations of each game and corrected by what the agent has learned. Ranked by expected value; picks lock at tip-off.</div>
+      <div class="lbl">Props · record ${rs(R.props)}</div>${(day.props || []).map(row).join("") || '<div class="empty">No props pass the checks yet (DraftKings posts player lines in the afternoon).</div>'}
+      <div class="lbl">Spreads & totals · record ${rs(R.games)}</div>${(day.games || []).map(row).join("") || '<div class="empty">No DraftKings game lines yet.</div>'}
+      <details class="bbl"><summary>What the model has learned</summary><div class="desc">
+        <b>Model vs market weight</b> (how much the model's own number counts against DraftKings' no-vig price, learned from ${L.props_scored || 0} graded props): ${esc(wp)}. Where the model hasn't beaten the market yet, the weight stays low and its picks lean on the price.<br>
+        <b>Game lines:</b> the sim counts ${Math.round((L.w_game || 0) * 100)}% against the market${!L.w_game_learned ? " (a starting value until 20+ sims are graded against Vegas)" : ", set by how its margin errors compare with Vegas'"}.<br>
+        <b>Sim corrections</b> from ${L.games_graded || 0} graded games: totals ${L.total_bias > 0 ? "-" : "+"}${Math.abs(L.total_bias || 0).toFixed(1)} pts${L.stat_bias ? " · players " + Object.entries(L.stat_bias).filter(([, v]) => Math.abs(v) >= 0.1).map(([k, v]) => `${STATN[k] || k} ${v > 0 ? "-" : "+"}${Math.abs(v).toFixed(1)}`).join(", ") : ""}.<br>
+        <b>Checks on props:</b> the player has to project for 18+ minutes, carry no injury tag, and the sim can't be far off both DraftKings' line and the matchup model (a big gap usually means news the inputs don't have yet).<br>
+        All-time record on picks priced +EV: ${rs(R.plus)}. EV assumes the blended probability is right; with small samples, treat it as a ranking, not a promise.</div></details>
+    </div>`;
+}
+function bindBest(root) {
+  const el = root.querySelector("#bestCard"); if (!el) return;
+  el.querySelectorAll("[data-bgame]").forEach(r => r.onclick = () => window.openGame && openGame(r.dataset.bgame));
+  el.querySelectorAll("[data-blog]").forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const [kind, id, stat, side] = b.dataset.blog.split("|"), day = D.best.days[D.players.date];
+    const x = [...day.props, ...day.games].find(y => y.kind === kind && (y.pid || y.espn_id) === id && (y.stat || "") === stat && y.side === side);
+    if (!x) return;
+    if (kind === "prop") return openLogBet({kind: "prop", player: x.name, stat: x.stat, side: x.side, line: x.point, game: x.espn_id, odds: amS(x.am), book: "DraftKings"});
+    const home = x.home_name || x.home, away = x.away_name || x.away;
+    const outcome = kind === "total" ? x.side : (x.side === "home" ? home : away);
+    openLogBet({title: kind === "total" ? `${x.side} ${x.point} · Total` : `${x.team} ${x.point > 0 ? "+" : ""}${x.point} · Spread`, sub: `${x.game} · ${tod(x.start)}`, odds: amS(x.am), book: "DraftKings",
+      leg: {sport: "basketball_nba", espn_id: x.espn_id, commence: x.start, home, away, market: kind === "total" ? "totals" : "spreads", outcome, point: x.point}});
+  });
 }
 function raceHtml() {
   const {state, manual, hist} = D;
@@ -1953,7 +2016,7 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
-    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null)]);
+    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});

@@ -103,7 +103,7 @@ def context(log=print, refresh=True):
     roster = defaultdict(list)
     for pid, pl in model.players.items():
         roster[pl["team"]].append(pid)
-    pre = {"games": games, "model": model}
+    pre = {"games": games, "model": model, "day": day}
     flags, cards = slate_flags(pre, team_dates(model))
     mins_model = minutes_model(model, games, inj, rw, flags)
     entries = []
@@ -161,8 +161,8 @@ def _nick(name):
     return (name or "").split()[-1].lower()
 
 
-def market_lines():
-    """NBA spreads and totals from the agent's last board scan: {(home_nick, away_nick): {...}}."""
+def market_lines(day=None):
+    """NBA spreads and totals from the agent's last board scan (or DraftKings' free line): {(home_nick, away_nick): {...}}."""
     out = {}
     for e in store.load("board.json", {"events": []}).get("events", []):
         if e.get("sport") != "basketball_nba":
@@ -175,6 +175,17 @@ def market_lines():
                 tot = next((o["point"] for o in l["outcomes"] if o["name"] == "Over"), None)
         if sp is not None or tot is not None:
             out[(_nick(e["home"]), _nick(e["away"]))] = {"spread_home": sp, "total": tot}
+    # Free fallback: DraftKings' own line from ESPN's odds feed (saved by dk.refresh on earlier runs today).
+    # The paid board only covers the games the agent spent credits on; without this the sims and the
+    # minutes model run with no market anchor for every other game.
+    if day is not None:
+        for d in (day, day + timedelta(days=1)):
+            for g in store.load(f"dk/{d.isoformat()}.json", {}).get("games", {}).values():
+                key = (_nick(g.get("home_name")), _nick(g.get("away_name")))
+                ln = g.get("close") or g.get("open") or {}
+                if key in out or ln.get("sp") is None or ln.get("tot") is None:
+                    continue
+                out[key] = {"spread_home": ln["sp"], "total": ln["tot"], "src": "draftkings"}
     return out
 
 
@@ -187,7 +198,7 @@ def team_dates(model):
 
 def slate_flags(ctx, dates):
     """Per team on the slate: rest (back-to-back, 3 in 4), spread, Vegas implied points vs the model's."""
-    mk = market_lines()
+    mk = market_lines(ctx.get("day"))
     flags, cards = {}, {}
     for g in ctx["games"]:
         gd = datetime.fromisoformat(g["start"][:10]).date()
@@ -198,7 +209,7 @@ def slate_flags(ctx, dates):
         if sp is not None and tot is not None:
             imp = {"home": round(tot / 2 - sp / 2, 1), "away": round(tot / 2 + sp / 2, 1)}
         spread_abs = abs(sp) if sp is not None else (abs(tp["spread_home"]) if tp else None)
-        card = {"spread_home": sp, "total": tot, "implied": imp, "src": "market" if sp is not None else "model"}
+        card = {"spread_home": sp, "total": tot, "implied": imp, "src": m.get("src", "market") if sp is not None else "model"}
         for side in ("home", "away"):
             t = g[side]
             prev = sorted({d for d in dates.get(t, []) if datetime.fromisoformat(d).date() < gd})
