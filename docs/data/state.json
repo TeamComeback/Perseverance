@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 25.71,
+  "cash": 46.36,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -5695,7 +5695,7 @@
       "book": "fanduel",
       "fair_p": 0.5463,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 3.43,
        "base": 3.41,
@@ -5726,6 +5726,22 @@
          "txt": "PHX: defense #18, pace #24 \u00b7 ORL: offense #22, pace #13"
         }
        ]
+      },
+      "final": {
+       "home": 117.0,
+       "away": 104.0
+      },
+      "actual": 6.0,
+      "box": {
+       "min": 31.0,
+       "pts": 10.0,
+       "reb": 7.0,
+       "ast": 6.0,
+       "tpm": 1.0,
+       "tpa": 3.0,
+       "fga": 8.0,
+       "fta": 4.0,
+       "tov": 5.0
       }
      }
     ],
@@ -5736,10 +5752,202 @@
     "note": "Proj 3.4 vs line 4.5 (norm 3.4, 29 min). Model 74% vs market 55%. PHX gives shooting guards -4% assists vs their norm (#7 toughest of 30) \u00b7 Players with his profile: +2% assists vs PHX (122 close comps) \u00b7 His history vs PHX: 4.0 assists/g in 1 games (-1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-06T16:44:03Z",
+    "review": {
+     "headline": "LOST: 6 assists vs Under 4.5",
+     "final": "Orlando Magic 104 \u2013 Phoenix Suns 117",
+     "legs": [
+      {
+       "outcome": "Anthony Black Under",
+       "result": "loss",
+       "headline": "6 assists vs Under 4.5",
+       "final": "Orlando Magic 104 \u2013 Phoenix Suns 117",
+       "why": [
+        "Anthony Black finished with 6 assists against a line of 4.5: under missed by 1.5.",
+        "Minutes: played 31 vs 29.1 projected.",
+        "Box score: 6 ast, 5 TO.",
+        "Model projected 3.4 (3.4 norm \u00d7 1.00 matchup); actual was +2.6 off (+1.3 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (3.6) in a matchup the model rated soft.",
+        "Signal: PHX gives shooting guards -4% assists vs their norm (#7 toughest of 30)",
+        "Signal: Players with his profile: +2% assists vs PHX (122 close comps)",
+        "Signal: His history vs PHX: 4.0 assists/g in 1 games (-1%)",
+        "We priced it at 62% to hit vs 56% needed to break even at 1.78x (+10.7% expected edge).",
+        "Consensus fair probability when placed: 55% (no closing price captured)."
+       ],
+       "tags": [
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "PHX",
+        "away": "ORL"
+       },
+       "final": "ORL 104 \u2013 PHX 117",
+       "periods": {
+        "away": [
+         26,
+         25,
+         22,
+         31
+        ],
+        "home": [
+         33,
+         30,
+         33,
+         21
+        ]
+       },
+       "largest_lead": {
+        "ORL": 6,
+        "PHX": 30
+       },
+       "largest_lead_at": {
+        "ORL": "8:06 1st Q",
+        "PHX": "9:23 4th Q"
+       },
+       "lead_changes": 5,
+       "ties": 2,
+       "runs": [
+        {
+         "team": "PHX",
+         "pts": 9,
+         "from": "6:21 3rd Q",
+         "to": "4:29 3rd Q",
+         "score": "ORL 62-87 PHX"
+        },
+        {
+         "team": "PHX",
+         "pts": 9,
+         "from": "10:53 4th Q",
+         "to": "9:23 4th Q",
+         "score": "ORL 75-105 PHX"
+        }
+       ],
+       "swings": [
+        {
+         "team": "PHX",
+         "swing": 17,
+         "from": "11:24 3rd Q",
+         "to": "4:29 3rd Q",
+         "mins": 6.9,
+         "from_score": "ORL 55-63 PHX",
+         "to_score": "ORL 62-87 PHX",
+         "pts_for": 24,
+         "pts_against": 7
+        },
+        {
+         "team": "ORL",
+         "swing": 16,
+         "from": "8:50 4th Q",
+         "to": "1:04 4th Q",
+         "mins": 7.8,
+         "from_score": "ORL 78-107 PHX",
+         "to_score": "ORL 104-117 PHX",
+         "pts_for": 26,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Wendell Carter Jr. (ORL): 27 pts, 13 reb, 2 ast, 2-2 3PT in 34 min",
+        "Franz Wagner (ORL): 15 pts, 8 reb, 15 ast, 0-1 3PT in 38 min",
+        "Devin Booker (PHX): 30 pts, 1 reb, 8 ast, 4-8 3PT in 34 min",
+        "Miles Bridges (PHX): 18 pts, 13 reb, 5 ast, 3-6 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 3,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 2,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "9:05 4th Q"
+        ],
+        "box": {
+         "id": "4712849",
+         "name": "Anthony Black",
+         "team": "ORL",
+         "min": "31",
+         "pts": 10,
+         "reb": 7,
+         "ast": 6,
+         "3pt": "1-3",
+         "fg": "3-8",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: ORL 51-63 PHX, PHX up 12.",
+        "The 3rd quarter decided the most: PHX won it 33-22.",
+        "Largest leads: ORL 6 (8:06 1st Q), PHX 30 (9:23 4th Q). 5 lead changes, 2 ties.",
+        "Momentum swing: PHX outscored them 24-7 in 6.9 minutes (11:24 3rd Q to 4:29 3rd Q), moving it from ORL 55-63 PHX to ORL 62-87 PHX.",
+        "Momentum swing: ORL outscored them 26-10 in 7.8 minutes (8:50 4th Q to 1:04 4th Q), moving it from ORL 78-107 PHX to ORL 104-117 PHX.",
+        "PHX went on a 9-0 run (6:21 3rd Q to 4:29 3rd Q), making it ORL 62-87 PHX.",
+        "PHX went on a 9-0 run (10:53 4th Q to 9:23 4th Q), making it ORL 75-105 PHX.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Anthony Black by period (AST): Q1 2, Q2 0, Q3 2, Q4 2.",
+        "He went over 4.5 in Q4.",
+        "Threes made at: 9:05 4th Q."
+       ],
+       "espn_id": "401909936",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909936"
+      }
+     ]
+    }
    },
    {
     "id": "b7ae7a1a",
@@ -5766,7 +5974,7 @@
       "book": "betrivers",
       "fair_p": 0.5124,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 29.46,
        "base": 27.6,
@@ -5797,6 +6005,22 @@
          "txt": "MIA: defense #15, pace #1 \u00b7 GS: offense #13, pace #17"
         }
        ]
+      },
+      "final": {
+       "home": 120.0,
+       "away": 100.0
+      },
+      "actual": 18.0,
+      "box": {
+       "min": 32.0,
+       "pts": 9.0,
+       "reb": 6.0,
+       "ast": 3.0,
+       "tpm": 2.0,
+       "tpa": 6.0,
+       "fga": 8.0,
+       "fta": 2.0,
+       "tov": 1.0
       }
      }
     ],
@@ -5807,10 +6031,213 @@
     "note": "Proj 29.5 vs line 25.5 (norm 27.6, 34 min). Model 67% vs market 51%. MIA gives shooting guards +6% pts+reb+ast vs their norm (#2 softest of 30) \u00b7 Players with his profile: +6% pts+reb+ast vs MIA (120 close comps) \u00b7 His history vs MIA: 32.0 pts+reb+ast/g in 2 games (+4%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-06T16:44:03Z",
+    "review": {
+     "headline": "LOST: 18 pts+reb+ast vs Over 25.5",
+     "final": "Miami Heat 100 \u2013 Golden State Warriors 120",
+     "legs": [
+      {
+       "outcome": "Brandin Podziemski Over",
+       "result": "loss",
+       "headline": "18 pts+reb+ast vs Over 25.5",
+       "final": "Miami Heat 100 \u2013 Golden State Warriors 120",
+       "why": [
+        "Brandin Podziemski finished with 18 pts+reb+ast against a line of 25.5: over missed by 7.5.",
+        "Minutes: played 32 vs 33.8 projected.",
+        "Game was a 20-point blowout, but his minutes held up.",
+        "Box score: 9 pts on 8 FGA / 2 FTA \u00b7 6 reb \u00b7 3 ast, 1 TO.",
+        "Model projected 29.5 (27.6 norm \u00d7 1.07 matchup); actual was -11.5 off (-1.9 standard deviations).",
+        "Matchup read was wrong: he fell short of his own norm for the minutes played (26.1) in a matchup the model rated soft.",
+        "Signal: MIA gives shooting guards +6% pts+reb+ast vs their norm (#2 softest of 30)",
+        "Signal: Players with his profile: +6% pts+reb+ast vs MIA (120 close comps)",
+        "Signal: His history vs MIA: 32.0 pts+reb+ast/g in 2 games (+4%)",
+        "We priced it at 58% to hit vs 54% needed to break even at 1.85x (+6.7% expected edge).",
+        "Consensus fair probability when placed: 51% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-wrong",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "GS",
+        "away": "MIA"
+       },
+       "final": "MIA 100 \u2013 GS 120",
+       "periods": {
+        "away": [
+         29,
+         24,
+         23,
+         24
+        ],
+        "home": [
+         26,
+         27,
+         38,
+         29
+        ]
+       },
+       "largest_lead": {
+        "MIA": 10,
+        "GS": 20
+       },
+       "largest_lead_at": {
+        "MIA": "8:07 1st Q",
+        "GS": "1:31 4th Q"
+       },
+       "lead_changes": 3,
+       "ties": 9,
+       "runs": [
+        {
+         "team": "GS",
+         "pts": 12,
+         "from": "7:28 3rd Q",
+         "to": "5:26 3rd Q",
+         "score": "MIA 64-76 GS"
+        },
+        {
+         "team": "GS",
+         "pts": 8,
+         "from": "3:14 2nd Q",
+         "to": "1:38 2nd Q",
+         "score": "MIA 51-53 GS"
+        },
+        {
+         "team": "MIA",
+         "pts": 8,
+         "from": "10:40 3rd Q",
+         "to": "9:54 3rd Q",
+         "score": "MIA 61-58 GS"
+        }
+       ],
+       "swings": [
+        {
+         "team": "GS",
+         "swing": 17,
+         "from": "9:54 3rd Q",
+         "to": "2:05 3rd Q",
+         "mins": 7.8,
+         "from_score": "MIA 61-58 GS",
+         "to_score": "MIA 70-84 GS",
+         "pts_for": 26,
+         "pts_against": 9
+        },
+        {
+         "team": "MIA",
+         "swing": 10,
+         "from": "11:29 1st Q",
+         "to": "8:07 1st Q",
+         "mins": 3.4,
+         "from_score": "MIA 2-2 GS",
+         "to_score": "MIA 14-4 GS",
+         "pts_for": 12,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Giannis Antetokounmpo (MIA): 20 pts, 14 reb, 4 ast, 1-5 3PT in 31 min",
+        "Davion Mitchell (MIA): 22 pts, 2 reb, 8 ast, 4-9 3PT in 38 min",
+        "Stephen Curry (GS): 29 pts, 1 reb, 4 ast, 6-12 3PT in 28 min",
+        "Yaxel Lendeborg (GS): 17 pts, 8 reb, 6 ast, 1-3 3PT in 30 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 3,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 3,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 1,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 2,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "2:34 1st Q",
+         "8:26 2nd Q"
+        ],
+        "box": {
+         "id": "4709138",
+         "name": "Brandin Podziemski",
+         "team": "GS",
+         "min": "32",
+         "pts": 9,
+         "reb": 6,
+         "ast": 3,
+         "3pt": "2-6",
+         "fg": "3-8",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIA 53-53 GS, tied.",
+        "The 3rd quarter decided the most: GS won it 38-23.",
+        "Largest leads: MIA 10 (8:07 1st Q), GS 20 (1:31 4th Q). 3 lead changes, 9 ties.",
+        "Momentum swing: GS outscored them 26-9 in 7.8 minutes (9:54 3rd Q to 2:05 3rd Q), moving it from MIA 61-58 GS to MIA 70-84 GS.",
+        "Momentum swing: MIA outscored them 12-2 in 3.4 minutes (11:29 1st Q to 8:07 1st Q), moving it from MIA 2-2 GS to MIA 14-4 GS.",
+        "GS went on a 12-0 run (7:28 3rd Q to 5:26 3rd Q), making it MIA 64-76 GS.",
+        "GS went on a 8-0 run (3:14 2nd Q to 1:38 2nd Q), making it MIA 51-53 GS.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Brandin Podziemski by period (PTS+REB+AST): Q1 6, Q2 5, Q3 4, Q4 3.",
+        "He never got past 25.5.",
+        "Threes made at: 2:34 1st Q, 8:26 2nd Q."
+       ],
+       "espn_id": "401909937",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909937"
+      }
+     ]
+    }
    },
    {
     "id": "e5492292",
@@ -5837,7 +6264,7 @@
       "book": "fanduel",
       "fair_p": 0.4398,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 7.39,
        "base": 6.89,
@@ -5868,6 +6295,22 @@
          "txt": "MIA: defense #15, pace #1 \u00b7 GS: offense #13, pace #17"
         }
        ]
+      },
+      "final": {
+       "home": 120.0,
+       "away": 100.0
+      },
+      "actual": 8.0,
+      "box": {
+       "min": 17.0,
+       "pts": 5.0,
+       "reb": 6.0,
+       "ast": 2.0,
+       "tpm": 0.0,
+       "tpa": 4.0,
+       "fga": 5.0,
+       "fta": 4.0,
+       "tov": 3.0
       }
      }
     ],
@@ -5878,10 +6321,209 @@
     "note": "Proj 7.4 vs line 6.5 (norm 6.9, 24 min). Model 55% vs market 44%. MIA gives shooting guards +8% reb+ast vs their norm (#1 softest of 30) \u00b7 Players with his profile: +8% reb+ast vs MIA (128 close comps) \u00b7 No history vs MIA yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 10.9,
+    "profit": 5.9,
+    "settled": "2026-11-06T16:44:03Z",
+    "review": {
+     "headline": "WON: 8 reb+ast vs Over 6.5",
+     "final": "Miami Heat 100 \u2013 Golden State Warriors 120",
+     "legs": [
+      {
+       "outcome": "De'Anthony Melton Over",
+       "result": "win",
+       "headline": "8 reb+ast vs Over 6.5",
+       "final": "Miami Heat 100 \u2013 Golden State Warriors 120",
+       "why": [
+        "De'Anthony Melton finished with 8 reb+ast against a line of 6.5: over cleared by 1.5.",
+        "Minutes: played 17 vs 24.5 projected.",
+        "Game was a 20-point blowout, which cuts starters' minutes.",
+        "Box score: 6 reb \u00b7 2 ast, 3 TO.",
+        "Model projected 7.4 (6.9 norm \u00d7 1.07 matchup); actual was +0.6 off (+0.2 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (4.8) in a matchup the model rated soft.",
+        "Signal: MIA gives shooting guards +8% reb+ast vs their norm (#1 softest of 30)",
+        "Signal: Players with his profile: +8% reb+ast vs MIA (128 close comps)",
+        "Signal: No history vs MIA yet",
+        "We priced it at 49% to hit vs 46% needed to break even at 2.18x (+5.8% expected edge).",
+        "Consensus fair probability when placed: 44% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-short",
+        "blowout",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "minutes-short"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "GS",
+        "away": "MIA"
+       },
+       "final": "MIA 100 \u2013 GS 120",
+       "periods": {
+        "away": [
+         29,
+         24,
+         23,
+         24
+        ],
+        "home": [
+         26,
+         27,
+         38,
+         29
+        ]
+       },
+       "largest_lead": {
+        "MIA": 10,
+        "GS": 20
+       },
+       "largest_lead_at": {
+        "MIA": "8:07 1st Q",
+        "GS": "1:31 4th Q"
+       },
+       "lead_changes": 3,
+       "ties": 9,
+       "runs": [
+        {
+         "team": "GS",
+         "pts": 12,
+         "from": "7:28 3rd Q",
+         "to": "5:26 3rd Q",
+         "score": "MIA 64-76 GS"
+        },
+        {
+         "team": "GS",
+         "pts": 8,
+         "from": "3:14 2nd Q",
+         "to": "1:38 2nd Q",
+         "score": "MIA 51-53 GS"
+        },
+        {
+         "team": "MIA",
+         "pts": 8,
+         "from": "10:40 3rd Q",
+         "to": "9:54 3rd Q",
+         "score": "MIA 61-58 GS"
+        }
+       ],
+       "swings": [
+        {
+         "team": "GS",
+         "swing": 17,
+         "from": "9:54 3rd Q",
+         "to": "2:05 3rd Q",
+         "mins": 7.8,
+         "from_score": "MIA 61-58 GS",
+         "to_score": "MIA 70-84 GS",
+         "pts_for": 26,
+         "pts_against": 9
+        },
+        {
+         "team": "MIA",
+         "swing": 10,
+         "from": "11:29 1st Q",
+         "to": "8:07 1st Q",
+         "mins": 3.4,
+         "from_score": "MIA 2-2 GS",
+         "to_score": "MIA 14-4 GS",
+         "pts_for": 12,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Giannis Antetokounmpo (MIA): 20 pts, 14 reb, 4 ast, 1-5 3PT in 31 min",
+        "Davion Mitchell (MIA): 22 pts, 2 reb, 8 ast, 4-9 3PT in 38 min",
+        "Stephen Curry (GS): 29 pts, 1 reb, 4 ast, 6-12 3PT in 28 min",
+        "Yaxel Lendeborg (GS): 17 pts, 8 reb, 6 ast, 1-3 3PT in 30 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 1,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 2,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "4066436",
+         "name": "De'Anthony Melton",
+         "team": "GS",
+         "min": "17",
+         "pts": 5,
+         "reb": 6,
+         "ast": 2,
+         "3pt": "0-4",
+         "fg": "1-5",
+         "pf": "1",
+         "starter": false
+        }
+       },
+       "story": [
+        "Halftime: MIA 53-53 GS, tied.",
+        "The 3rd quarter decided the most: GS won it 38-23.",
+        "Largest leads: MIA 10 (8:07 1st Q), GS 20 (1:31 4th Q). 3 lead changes, 9 ties.",
+        "Momentum swing: GS outscored them 26-9 in 7.8 minutes (9:54 3rd Q to 2:05 3rd Q), moving it from MIA 61-58 GS to MIA 70-84 GS.",
+        "Momentum swing: MIA outscored them 12-2 in 3.4 minutes (11:29 1st Q to 8:07 1st Q), moving it from MIA 2-2 GS to MIA 14-4 GS.",
+        "GS went on a 12-0 run (7:28 3rd Q to 5:26 3rd Q), making it MIA 64-76 GS.",
+        "GS went on a 8-0 run (3:14 2nd Q to 1:38 2nd Q), making it MIA 51-53 GS.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "De'Anthony Melton by period (REB+AST): Q1 4, Q2 0, Q3 2, Q4 2.",
+        "He went over 6.5 in Q4."
+       ],
+       "espn_id": "401909937",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909937"
+      }
+     ]
+    }
    },
    {
     "id": "fa8033f2",
@@ -5908,7 +6550,7 @@
       "book": "betmgm",
       "fair_p": 0.5013,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 23.72,
        "base": 23.57,
@@ -5939,6 +6581,22 @@
          "txt": "GS: defense #17, pace #17 \u00b7 MIA: offense #9, pace #1"
         }
        ]
+      },
+      "final": {
+       "home": 120.0,
+       "away": 100.0
+      },
+      "actual": 32.0,
+      "box": {
+       "min": 38.0,
+       "pts": 22.0,
+       "reb": 2.0,
+       "ast": 8.0,
+       "tpm": 4.0,
+       "tpa": 9.0,
+       "fga": 18.0,
+       "fta": 0.0,
+       "tov": 5.0
       }
      }
     ],
@@ -5949,16 +6607,222 @@
     "note": "Proj 23.7 vs line 21.5 (norm 23.6, 35 min). Model 60% vs market 50%. GS gives point guards +2% pts+reb+ast vs their norm (#13 softest of 30) \u00b7 Players with his profile: -0% pts+reb+ast vs GS (60 close comps) \u00b7 His history vs GS: 14.0 pts+reb+ast/g in 2 games (-1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.75,
+    "profit": 4.75,
+    "settled": "2026-11-06T16:44:03Z",
+    "review": {
+     "headline": "WON: 32 pts+reb+ast vs Over 21.5",
+     "final": "Miami Heat 100 \u2013 Golden State Warriors 120",
+     "legs": [
+      {
+       "outcome": "Davion Mitchell Over",
+       "result": "win",
+       "headline": "32 pts+reb+ast vs Over 21.5",
+       "final": "Miami Heat 100 \u2013 Golden State Warriors 120",
+       "why": [
+        "Davion Mitchell finished with 32 pts+reb+ast against a line of 21.5: over cleared by 10.5.",
+        "Minutes: played 38 vs 34.6 projected.",
+        "Game was a 20-point blowout, but his minutes held up.",
+        "Box score: 22 pts on 18 FGA / 0 FTA \u00b7 2 reb \u00b7 8 ast, 5 TO.",
+        "Model projected 23.7 (23.6 norm \u00d7 1.01 matchup); actual was +8.3 off (+1.4 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (25.9) in a matchup the model rated soft.",
+        "Signal: GS gives point guards +2% pts+reb+ast vs their norm (#13 softest of 30)",
+        "Signal: Players with his profile: -0% pts+reb+ast vs GS (60 close comps)",
+        "Signal: His history vs GS: 14.0 pts+reb+ast/g in 2 games (-1%)",
+        "We priced it at 54% to hit vs 51% needed to break even at 1.95x (+5.1% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "model-beat",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "model-beat"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "GS",
+        "away": "MIA"
+       },
+       "final": "MIA 100 \u2013 GS 120",
+       "periods": {
+        "away": [
+         29,
+         24,
+         23,
+         24
+        ],
+        "home": [
+         26,
+         27,
+         38,
+         29
+        ]
+       },
+       "largest_lead": {
+        "MIA": 10,
+        "GS": 20
+       },
+       "largest_lead_at": {
+        "MIA": "8:07 1st Q",
+        "GS": "1:31 4th Q"
+       },
+       "lead_changes": 3,
+       "ties": 9,
+       "runs": [
+        {
+         "team": "GS",
+         "pts": 12,
+         "from": "7:28 3rd Q",
+         "to": "5:26 3rd Q",
+         "score": "MIA 64-76 GS"
+        },
+        {
+         "team": "GS",
+         "pts": 8,
+         "from": "3:14 2nd Q",
+         "to": "1:38 2nd Q",
+         "score": "MIA 51-53 GS"
+        },
+        {
+         "team": "MIA",
+         "pts": 8,
+         "from": "10:40 3rd Q",
+         "to": "9:54 3rd Q",
+         "score": "MIA 61-58 GS"
+        }
+       ],
+       "swings": [
+        {
+         "team": "GS",
+         "swing": 17,
+         "from": "9:54 3rd Q",
+         "to": "2:05 3rd Q",
+         "mins": 7.8,
+         "from_score": "MIA 61-58 GS",
+         "to_score": "MIA 70-84 GS",
+         "pts_for": 26,
+         "pts_against": 9
+        },
+        {
+         "team": "MIA",
+         "swing": 10,
+         "from": "11:29 1st Q",
+         "to": "8:07 1st Q",
+         "mins": 3.4,
+         "from_score": "MIA 2-2 GS",
+         "to_score": "MIA 14-4 GS",
+         "pts_for": 12,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Giannis Antetokounmpo (MIA): 20 pts, 14 reb, 4 ast, 1-5 3PT in 31 min",
+        "Davion Mitchell (MIA): 22 pts, 2 reb, 8 ast, 4-9 3PT in 38 min",
+        "Stephen Curry (GS): 29 pts, 1 reb, 4 ast, 6-12 3PT in 28 min",
+        "Yaxel Lendeborg (GS): 17 pts, 8 reb, 6 ast, 1-3 3PT in 30 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 6,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 2,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 3,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 16,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 2,
+          "pf": 1,
+          "fga": 11,
+          "fgm": 7
+         }
+        ],
+        "threes_at": [
+         "8:07 1st Q",
+         "5:16 1st Q",
+         "10:56 4th Q",
+         "6:32 4th Q"
+        ],
+        "box": {
+         "id": "4278053",
+         "name": "Davion Mitchell",
+         "team": "MIA",
+         "min": "38",
+         "pts": 22,
+         "reb": 2,
+         "ast": 8,
+         "3pt": "4-9",
+         "fg": "9-18",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIA 53-53 GS, tied.",
+        "The 3rd quarter decided the most: GS won it 38-23.",
+        "Largest leads: MIA 10 (8:07 1st Q), GS 20 (1:31 4th Q). 3 lead changes, 9 ties.",
+        "Momentum swing: GS outscored them 26-9 in 7.8 minutes (9:54 3rd Q to 2:05 3rd Q), moving it from MIA 61-58 GS to MIA 70-84 GS.",
+        "Momentum swing: MIA outscored them 12-2 in 3.4 minutes (11:29 1st Q to 8:07 1st Q), moving it from MIA 2-2 GS to MIA 14-4 GS.",
+        "GS went on a 12-0 run (7:28 3rd Q to 5:26 3rd Q), making it MIA 64-76 GS.",
+        "GS went on a 8-0 run (3:14 2nd Q to 1:38 2nd Q), making it MIA 51-53 GS.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Davion Mitchell by period (PTS+REB+AST): Q1 8, Q2 3, Q3 4, Q4 17.",
+        "He went over 21.5 in Q4.",
+        "Foul trouble: 4 fouls by the end of Q3, which cuts minutes.",
+        "Threes made at: 8:07 1st Q, 5:16 1st Q, 10:56 4th Q, 6:32 4th Q."
+       ],
+       "espn_id": "401909937",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909937"
+      }
+     ]
+    }
    }
   ],
   "runs": []
  },
  "params": {
-  "min_edge": 0.145,
+  "min_edge": 0.15,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -5969,7 +6833,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.4,
+  "prop_model_weight": 0.28,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -6091,9 +6955,9 @@
    "clv_sum": 0.0
   },
   "matchup_over": {
-   "bets": 2,
-   "staked": 10.0,
-   "profit": 1.6500000000000004,
+   "bets": 5,
+   "staked": 25.0,
+   "profit": 7.300000000000001,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -6103,26 +6967,41 @@
      "lost": 0
     },
     "blowout": {
-     "n": 1,
-     "won": 0,
-     "lost": 1
+     "n": 4,
+     "won": 2,
+     "lost": 2
     },
     "matchup-read-right": {
-     "n": 1,
-     "won": 0,
+     "n": 3,
+     "won": 2,
      "lost": 1
     },
     "minutes-short": {
+     "n": 2,
+     "won": 1,
+     "lost": 1
+    },
+    "matchup-read-wrong": {
      "n": 1,
      "won": 0,
      "lost": 1
+    },
+    "model-miss": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "model-beat": {
+     "n": 1,
+     "won": 1,
+     "lost": 0
     }
    }
   },
   "matchup_under": {
-   "bets": 10,
-   "staked": 50.0,
-   "profit": 4.049999999999999,
+   "bets": 11,
+   "staked": 55.0,
+   "profit": -0.9500000000000011,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -6137,9 +7016,9 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 6,
+     "n": 7,
      "won": 4,
-     "lost": 2
+     "lost": 3
     },
     "matchup-read-wrong": {
      "n": 2,
@@ -6157,9 +7036,9 @@
      "lost": 2
     },
     "model-miss": {
-     "n": 3,
+     "n": 4,
      "won": 0,
-     "lost": 3
+     "lost": 4
     },
     "minutes-long": {
      "n": 1,
@@ -6172,9 +7051,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 19.0,
-   "staked": 95.0,
-   "profit": -15.299999999999999
+   "bets": 23.0,
+   "staked": 115.0,
+   "profit": -14.649999999999999
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-05T03:39:54Z",
@@ -7028,6 +7907,46 @@
    "ts": "2026-11-06T08:29:53Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 6: 9 games, 210 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-06T16:44:03Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Anthony Black Under 4.5 @ -128 (FanDuel) \u2014 LOST: 6 assists vs Under 4.5 [matchup-read-right, model-miss]"
+  },
+  {
+   "ts": "2026-11-06T16:44:03Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Brandin Podziemski Over 25.5 @ -118 (BetRivers) \u2014 LOST: 18 pts+reb+ast vs Over 25.5 [blowout, matchup-read-wrong, model-miss]"
+  },
+  {
+   "ts": "2026-11-06T16:44:03Z",
+   "kind": "result",
+   "text": "WON +$5.90: De'Anthony Melton Over 6.5 @ +118 (FanDuel) \u2014 WON: 8 reb+ast vs Over 6.5 [blowout, matchup-read-right, minutes-short]"
+  },
+  {
+   "ts": "2026-11-06T16:44:03Z",
+   "kind": "result",
+   "text": "WON +$4.75: Davion Mitchell Over 21.5 @ -105 (BetMGM) \u2014 WON: 32 pts+reb+ast vs Over 21.5 [blowout, matchup-read-right, model-beat]"
+  },
+  {
+   "ts": "2026-11-06T16:44:04Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 15.0%."
+  },
+  {
+   "ts": "2026-11-06T16:44:04Z",
+   "kind": "adapt",
+   "text": "Model vs market on 280 graded lines: the 0% model blend scored best (log loss model 0.717, market 0.681). Moving the model's weight from 40% to 28%."
+  },
+  {
+   "ts": "2026-11-06T16:44:04Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +6.7% vs actual over 487 player-games: level x0.962; REB projections ran +3.3% vs actual over 487 player-games: level x0.977; AST projections ran +5.0% vs actual over 487 player-games: level x0.964; TPM projections ran +6.5% vs actual over 487 player-games: level x0.972; PRA projections ran +5.4% vs actual over 487 player-games: level x0.968; RA projections ran +3.5% vs actual over 487 player-games: level x0.975; starter minutes were off by -1.1 on average over 248 player-games: correction +0.5 min; bench minutes were off by +1.0 on average over 239 player-games: correction -0.4 min."
+  },
+  {
+   "ts": "2026-11-06T16:44:04Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $46.36 (run #1), 11-23-1, ROI -30.2%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -7061,24 +7980,28 @@
   "f6949a6d",
   "7d0692ba",
   "188a9eb2",
-  "44b5928e"
+  "44b5928e",
+  "b5cfebcf",
+  "b7ae7a1a",
+  "e5492292",
+  "fa8033f2"
  ],
  "strategist": null,
- "updated": "2026-11-06T08:30:50Z",
+ "updated": "2026-11-06T16:44:04Z",
  "stats": {
-  "bets": 31,
-  "won": 9,
-  "lost": 21,
+  "bets": 35,
+  "won": 11,
+  "lost": 23,
   "push": 1,
-  "staked": 157.63,
-  "profit": -54.29,
-  "roi": -0.3444,
+  "staked": 177.63,
+  "profit": -53.64,
+  "roi": -0.302,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 16,
+  "clv_no_close": 20,
   "close_mins_median": 151,
-  "open": 4,
-  "equity": 45.71
+  "open": 0,
+  "equity": 46.36
  },
  "weights": {
   "value_fav": 0.842,
@@ -7086,8 +8009,8 @@
   "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
-  "matchup_over": 1.047,
-  "matchup_under": 1.074
+  "matchup_over": 1.172,
+  "matchup_under": 0.983
  },
  "paused": [],
  "dry_scans": 1
