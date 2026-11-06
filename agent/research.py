@@ -54,10 +54,11 @@ def slate_all(d):
 
 
 def pick_date():
-    """Today's slate while any game is still to tip; otherwise tomorrow's."""
+    """Today's slate while any game is still to tip or in progress (so tonight's live games stay on the dashboard);
+    once every game tonight is final, tomorrow's."""
     d = et_today()
     games = slate_all(d)
-    if games and any(g["state"] == "pre" for g in games):
+    if games and any(g["state"] in ("pre", "in") for g in games):
         return d, games
     nxt = d + timedelta(days=1)
     return nxt, slate_all(nxt)
