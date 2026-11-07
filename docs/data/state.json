@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 26.36,
+  "cash": 16.36,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -8005,6 +8005,148 @@
       }
      ]
     }
+   },
+   {
+    "id": "3160de36",
+    "placed": "2026-11-07T22:30:40Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "6faeaee3bdf2a167eb67f93c44d3ef37",
+      "sport": "basketball_nba",
+      "commence": "2026-11-08T01:10:00Z",
+      "home": "Oklahoma City Thunder",
+      "away": "Washington Wizards",
+      "market": "player_points_rebounds_assists",
+      "outcome": "Shai Gilgeous-Alexander Under",
+      "side": "Under",
+      "player": "Shai Gilgeous-Alexander",
+      "player_id": "4278073",
+      "stat": "pra",
+      "espn_id": "401909941",
+      "point": 41.5,
+      "price": 1.95,
+      "book": "draftkings",
+      "fair_p": 0.4966,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 36.91,
+       "base": 34.19,
+       "minutes": 31.3,
+       "mult": 1.08,
+       "sd": 6.38,
+       "p_model": 0.7546,
+       "p_mkt": 0.4966,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.07,
+         "txt": "WSH gives point guards +7% pts+reb+ast vs their norm (#5 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.09,
+         "txt": "Players with his profile: +9% pts+reb+ast vs WSH (141 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.033,
+         "txt": "His history vs WSH: 45.5 pts+reb+ast/g in 2 games (+3%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "WSH: defense #28, pace #8 \u00b7 OKC: offense #6, pace #18"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.95,
+    "stake": 5.0,
+    "ev": 0.067,
+    "p": 0.5472,
+    "note": "Proj 36.9 vs line 41.5 (norm 34.2, 31 min). Model 75% vs market 50%. WSH gives point guards +7% pts+reb+ast vs their norm (#5 softest of 30) \u00b7 Players with his profile: +9% pts+reb+ast vs WSH (141 close comps) \u00b7 His history vs WSH: 45.5 pts+reb+ast/g in 2 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "ab1cce4c",
+    "placed": "2026-11-07T22:30:40Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "6faeaee3bdf2a167eb67f93c44d3ef37",
+      "sport": "basketball_nba",
+      "commence": "2026-11-08T01:10:00Z",
+      "home": "Oklahoma City Thunder",
+      "away": "Washington Wizards",
+      "market": "player_assists",
+      "outcome": "Alex Caruso Over",
+      "side": "Over",
+      "player": "Alex Caruso",
+      "player_id": "2991350",
+      "stat": "ast",
+      "espn_id": "401909941",
+      "point": 2.5,
+      "price": 2.36,
+      "book": "fanduel",
+      "fair_p": 0.425,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 2.89,
+       "base": 2.63,
+       "minutes": 21.6,
+       "mult": 1.098,
+       "sd": 1.47,
+       "p_model": 0.5112,
+       "p_mkt": 0.425,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.107,
+         "txt": "WSH gives shooting guards +11% assists vs their norm (#1 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.136,
+         "txt": "Players with his profile: +14% assists vs WSH (120 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.053,
+         "txt": "His history vs WSH: 3.5 assists/g in 2 games (+5%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "WSH: defense #28, pace #8 \u00b7 OKC: offense #6, pace #18"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.36,
+    "stake": 5.0,
+    "ev": 0.0429,
+    "p": 0.4419,
+    "note": "Proj 2.9 vs line 2.5 (norm 2.6, 22 min). Model 51% vs market 42%. WSH gives shooting guards +11% assists vs their norm (#1 softest of 30) \u00b7 Players with his profile: +14% assists vs WSH (120 close comps) \u00b7 His history vs WSH: 3.5 assists/g in 2 games (+5%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -9250,6 +9392,11 @@
    "ts": "2026-11-07T21:39:26Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 7: 7 games, 164 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-07T22:30:40Z",
+   "kind": "props",
+   "text": "NBA matchups: 6 games, strongest spots: Isaiah Hartenstein ra +12% vs WSH; Isaiah Hartenstein pra +11% vs WSH; Dillon Brooks ra -9% vs HOU. Bought prop odds for WSH@OKC (ra, pra, ast, team totals), HOU@PHX (ra, pra) (6 credits). Placed 2: Shai Gilgeous-Alexander Under 41.5 @ -105 (DraftKings); Alex Caruso Over 2.5 @ +136 (FanDuel)"
   }
  ],
  "learned_ids": [
@@ -9294,7 +9441,7 @@
   "1eca85b9"
  ],
  "strategist": null,
- "updated": "2026-11-07T21:39:54Z",
+ "updated": "2026-11-07T22:31:19Z",
  "stats": {
   "bets": 39,
   "won": 11,
@@ -9307,7 +9454,7 @@
   "clv_n": 15,
   "clv_no_close": 24,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 2,
   "equity": 26.36
  },
  "weights": {
