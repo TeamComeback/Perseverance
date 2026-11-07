@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T00:25:55Z",
+ "updated": "2026-11-07T02:47:12Z",
  "date": "2026-11-06",
  "priced_date": "2026-11-06",
  "games": [
@@ -8,49 +8,49 @@
    "away": "WSH",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
-   "state": "in"
+   "state": "post"
   },
   {
    "home": "CHA",
    "away": "BOS",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909288",
-   "state": "in"
+   "state": "post"
   },
   {
    "home": "CLE",
    "away": "PHI",
    "start": "2026-11-07T00:30Z",
    "espn_id": "401909289",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "DAL",
    "away": "UTAH",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909290",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "MEM",
    "away": "OKC",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909291",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "MIL",
    "away": "TOR",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909292",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "NO",
    "away": "MIN",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909293",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "LAL",
@@ -69,51 +69,6 @@
  ],
  "spots": [
   {
-   "pid": "4277951",
-   "name": "Luka Garza",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 4.19,
-   "base": 4.68,
-   "mult": 0.897,
-   "minutes": 15.0,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.1087,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.9,
-     "n": 42.8,
-     "rank": 30,
-     "txt": "CHA gives centers -10% reb+ast vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.887,
-     "n": 71,
-     "txt": "Players with his profile: -11% reb+ast vs CHA (71 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.972,
-     "n": 2,
-     "txt": "His history vs CHA: 2.5 reb+ast/g in 2 games (-3%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
    "pid": "4869342",
    "name": "Dyson Daniels",
    "team": "ATL",
@@ -122,35 +77,35 @@
    "role": "PG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 13.26,
-   "base": 11.95,
-   "mult": 1.109,
-   "minutes": 30.9,
+   "proj": 14.66,
+   "base": 13.08,
+   "mult": 1.121,
+   "minutes": 32.4,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
    "lean": "Over",
-   "strength": 0.1035,
+   "strength": 0.1142,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.076,
-     "n": 51.7,
+     "v": 1.079,
+     "n": 53.3,
      "rank": 4,
      "txt": "WSH gives point guards +8% reb+ast vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.066,
-     "n": 25,
-     "txt": "Players with his profile: +7% reb+ast vs WSH (25 close comps)"
+     "v": 1.061,
+     "n": 26,
+     "txt": "Players with his profile: +6% reb+ast vs WSH (26 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.123,
-     "n": 5,
-     "txt": "His history vs WSH: 15.8 reb+ast/g in 5 games (+12%)"
+     "v": 1.159,
+     "n": 6,
+     "txt": "His history vs WSH: 16.7 reb+ast/g in 6 games (+16%)"
     },
     {
      "k": "env",
@@ -172,6 +127,109 @@
    "open": 13.5
   },
   {
+   "pid": "4869342",
+   "name": "Dyson Daniels",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 6.25,
+   "base": 5.59,
+   "mult": 1.118,
+   "minutes": 32.4,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.1115,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.161,
+     "n": 53.3,
+     "rank": 2,
+     "txt": "WSH gives point guards +16% assists vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.057,
+     "n": 26,
+     "txt": "Players with his profile: +6% assists vs WSH (26 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.193,
+     "n": 6,
+     "txt": "His history vs WSH: 8.0 assists/g in 6 games (+19%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ],
+   "line": 5.5,
+   "side": "Under",
+   "price": 2.15,
+   "am": 115,
+   "book": "betmgm",
+   "ev": 0.059,
+   "p_model": 0.583,
+   "p_mkt": 0.457,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_assists",
+   "nbooks": 5,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 5.5
+  },
+  {
+   "pid": "3032976",
+   "name": "Rudy Gobert",
+   "team": "MIN",
+   "opp": "NO",
+   "home": false,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 14.9,
+   "base": 13.49,
+   "mult": 1.105,
+   "minutes": 33.0,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909293",
+   "lean": "Over",
+   "strength": 0.0998,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.12,
+     "n": 42.6,
+     "rank": 2,
+     "txt": "NO gives centers +12% reb+ast vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.066,
+     "n": 125,
+     "txt": "Players with his profile: +7% reb+ast vs NO (125 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.049,
+     "n": 3,
+     "txt": "His history vs NO: 16.0 reb+ast/g in 3 games (+5%)"
+    },
+    {
+     "k": "env",
+     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
+    }
+   ]
+  },
+  {
    "pid": "4431680",
    "name": "Onyeka Okongwu",
    "team": "ATL",
@@ -180,35 +238,35 @@
    "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 11.91,
-   "base": 10.78,
-   "mult": 1.105,
-   "minutes": 30.9,
+   "proj": 12.22,
+   "base": 11.09,
+   "mult": 1.101,
+   "minutes": 31.9,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
    "lean": "Over",
-   "strength": 0.0998,
+   "strength": 0.0962,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
      "v": 1.092,
-     "n": 85.3,
+     "n": 86.2,
      "rank": 1,
      "txt": "WSH gives small forwards +9% reb+ast vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.059,
+     "v": 1.062,
      "n": 53,
      "txt": "Players with his profile: +6% reb+ast vs WSH (53 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.127,
-     "n": 5,
-     "txt": "His history vs WSH: 13.8 reb+ast/g in 5 games (+13%)"
+     "v": 1.107,
+     "n": 6,
+     "txt": "His history vs WSH: 13.3 reb+ast/g in 6 games (+11%)"
     },
     {
      "k": "env",
@@ -230,107 +288,49 @@
    "open": 12.5
   },
   {
-   "pid": "3032976",
-   "name": "Rudy Gobert",
-   "team": "MIN",
-   "opp": "NO",
+   "pid": "4277951",
+   "name": "Luka Garza",
+   "team": "BOS",
+   "opp": "CHA",
    "home": false,
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 14.03,
-   "base": 12.7,
-   "mult": 1.104,
-   "minutes": 31.1,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909293",
-   "lean": "Over",
-   "strength": 0.0989,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.12,
-     "n": 42.6,
-     "rank": 2,
-     "txt": "NO gives centers +12% reb+ast vs their norm (#2 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.065,
-     "n": 125,
-     "txt": "Players with his profile: +7% reb+ast vs NO (125 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.049,
-     "n": 3,
-     "txt": "His history vs NO: 16.0 reb+ast/g in 3 games (+5%)"
-    },
-    {
-     "k": "env",
-     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
-    }
-   ]
-  },
-  {
-   "pid": "4869342",
-   "name": "Dyson Daniels",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 5.34,
-   "base": 4.87,
-   "mult": 1.097,
-   "minutes": 30.9,
+   "proj": 5.01,
+   "base": 5.5,
+   "mult": 0.911,
+   "minutes": 16.2,
    "status": "",
    "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0926,
-   "starter": true,
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0932,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.151,
-     "n": 51.7,
-     "rank": 3,
-     "txt": "WSH gives point guards +15% assists vs their norm (#3 softest of 30)"
+     "v": 0.906,
+     "n": 44.2,
+     "rank": 30,
+     "txt": "CHA gives centers -9% reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.048,
-     "n": 25,
-     "txt": "Players with his profile: +5% assists vs WSH (25 close comps)"
+     "v": 0.888,
+     "n": 72,
+     "txt": "Players with his profile: -11% reb+ast vs CHA (72 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.123,
-     "n": 5,
-     "txt": "His history vs WSH: 7.2 assists/g in 5 games (+12%)"
+     "v": 1.018,
+     "n": 3,
+     "txt": "His history vs CHA: 5.3 reb+ast/g in 3 games (+2%)"
     },
     {
      "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
     }
-   ],
-   "line": 5.5,
-   "side": "Under",
-   "price": 2.15,
-   "am": 115,
-   "book": "betmgm",
-   "ev": 0.059,
-   "p_model": 0.583,
-   "p_mkt": 0.457,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_assists",
-   "nbooks": 5,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 5.5
+   ]
   },
   {
    "pid": "4845367",
@@ -354,7 +354,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.118,
+     "v": 1.117,
      "n": 47.3,
      "rank": 8,
      "txt": "SAC gives point guards +12% assists vs their norm (#8 softest of 30)"
@@ -406,9 +406,9 @@
     },
     {
      "k": "sim",
-     "v": 0.94,
-     "n": 138,
-     "txt": "Players with his profile: -6% threes vs MIN (138 close comps)"
+     "v": 0.941,
+     "n": 137,
+     "txt": "Players with his profile: -6% threes vs MIN (137 close comps)"
     },
     {
      "k": "h2h",
@@ -418,7 +418,97 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
+    }
+   ]
+  },
+  {
+   "pid": "4431680",
+   "name": "Onyeka Okongwu",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "SF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 26.86,
+   "base": 24.53,
+   "mult": 1.095,
+   "minutes": 31.9,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0908,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.092,
+     "n": 86.2,
+     "rank": 1,
+     "txt": "WSH gives small forwards +9% pts+reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.073,
+     "n": 53,
+     "txt": "Players with his profile: +7% pts+reb+ast vs WSH (53 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.116,
+     "n": 6,
+     "txt": "His history vs WSH: 29.5 pts+reb+ast/g in 6 games (+12%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ]
+  },
+  {
+   "pid": "4279318",
+   "name": "Daeqwon Plowden",
+   "team": "SAC",
+   "opp": "SA",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 8.11,
+   "base": 8.87,
+   "mult": 0.914,
+   "minutes": 17.5,
+   "status": "",
+   "start": "2026-11-07T03:00Z",
+   "espn_id": "401909295",
+   "lean": "Under",
+   "strength": 0.0899,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.951,
+     "n": 124.7,
+     "rank": 26,
+     "txt": "SA gives shooting guards -5% pts+reb+ast vs their norm (#5 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.918,
+     "n": 193,
+     "txt": "Players with his profile: -8% pts+reb+ast vs SA (193 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.894,
+     "n": 3,
+     "txt": "His history vs SA: 8.3 pts+reb+ast/g in 3 games (-11%)"
+    },
+    {
+     "k": "env",
+     "txt": "SA: defense #3, pace #14 \u00b7 SAC: offense #29, pace #15"
     }
    ]
   },
@@ -431,39 +521,39 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 8.41,
-   "base": 9.21,
-   "mult": 0.914,
-   "minutes": 25.0,
+   "proj": 7.46,
+   "base": 8.14,
+   "mult": 0.916,
+   "minutes": 22.4,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909288",
    "lean": "Under",
-   "strength": 0.0899,
+   "strength": 0.0877,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.9,
-     "n": 42.8,
+     "v": 0.906,
+     "n": 44.2,
      "rank": 30,
-     "txt": "CHA gives centers -10% reb+ast vs their norm (#1 toughest of 30)"
+     "txt": "CHA gives centers -9% reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.944,
-     "n": 115,
-     "txt": "Players with his profile: -6% reb+ast vs CHA (115 close comps)"
+     "v": 0.946,
+     "n": 116,
+     "txt": "Players with his profile: -5% reb+ast vs CHA (116 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.952,
-     "n": 3,
-     "txt": "His history vs CHA: 6.3 reb+ast/g in 3 games (-5%)"
+     "v": 0.948,
+     "n": 4,
+     "txt": "His history vs CHA: 5.8 reb+ast/g in 4 games (-5%)"
     },
     {
      "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
     }
    ]
   },
@@ -478,21 +568,21 @@
    "stat_name": "assists",
    "proj": 4.8,
    "base": 4.4,
-   "mult": 1.092,
+   "mult": 1.091,
    "minutes": 26.5,
    "status": "",
    "start": "2026-11-07T03:00Z",
    "espn_id": "401909294",
    "lean": "Over",
-   "strength": 0.088,
+   "strength": 0.0871,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
      "v": 1.157,
      "n": 52.7,
-     "rank": 2,
-     "txt": "LAL gives point guards +16% assists vs their norm (#2 softest of 30)"
+     "rank": 3,
+     "txt": "LAL gives point guards +16% assists vs their norm (#3 softest of 30)"
     },
     {
      "k": "sim",
@@ -508,7 +598,7 @@
     },
     {
      "k": "env",
-     "txt": "LAL: defense #17, pace #23 \u00b7 POR: offense #19, pace #11"
+     "txt": "LAL: defense #17, pace #23 \u00b7 POR: offense #18, pace #11"
     }
    ]
   },
@@ -523,18 +613,18 @@
    "stat_name": "assists",
    "proj": 5.43,
    "base": 4.98,
-   "mult": 1.092,
+   "mult": 1.091,
    "minutes": 27.5,
    "status": "",
    "start": "2026-11-07T03:00Z",
    "espn_id": "401909295",
    "lean": "Over",
-   "strength": 0.088,
+   "strength": 0.0871,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.118,
+     "v": 1.117,
      "n": 47.3,
      "rank": 8,
      "txt": "SAC gives point guards +12% assists vs their norm (#8 softest of 30)"
@@ -554,96 +644,6 @@
     {
      "k": "env",
      "txt": "SAC: defense #30, pace #15 \u00b7 SA: offense #5, pace #14"
-    }
-   ]
-  },
-  {
-   "pid": "4351852",
-   "name": "Mitchell Robinson",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 6.33,
-   "base": 6.89,
-   "mult": 0.918,
-   "minutes": 19.0,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0856,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.9,
-     "n": 42.8,
-     "rank": 30,
-     "txt": "CHA gives centers -10% reb+ast vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.944,
-     "n": 128,
-     "txt": "Players with his profile: -6% reb+ast vs CHA (128 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.964,
-     "n": 2,
-     "txt": "His history vs CHA: 6.5 reb+ast/g in 2 games (-4%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
-   "pid": "4431680",
-   "name": "Onyeka Okongwu",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 25.32,
-   "base": 23.27,
-   "mult": 1.088,
-   "minutes": 30.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0843,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.091,
-     "n": 85.3,
-     "rank": 1,
-     "txt": "WSH gives small forwards +9% pts+reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.07,
-     "n": 53,
-     "txt": "Players with his profile: +7% pts+reb+ast vs WSH (53 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.101,
-     "n": 5,
-     "txt": "His history vs WSH: 28.8 pts+reb+ast/g in 5 games (+10%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
    ]
   },
@@ -676,7 +676,7 @@
     },
     {
      "k": "sim",
-     "v": 1.092,
+     "v": 1.093,
      "n": 118,
      "txt": "Players with his profile: +9% pts+reb+ast vs POR (118 close comps)"
     },
@@ -693,49 +693,165 @@
    ]
   },
   {
-   "pid": "4351852",
-   "name": "Mitchell Robinson",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "C",
+   "pid": "4869342",
+   "name": "Dyson Daniels",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 11.75,
-   "base": 12.75,
-   "mult": 0.922,
-   "minutes": 19.0,
+   "proj": 25.57,
+   "base": 23.56,
+   "mult": 1.086,
+   "minutes": 32.4,
    "status": "",
    "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0812,
-   "starter": null,
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0825,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.928,
-     "n": 42.8,
-     "rank": 28,
-     "txt": "CHA gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
+     "v": 1.074,
+     "n": 53.3,
+     "rank": 3,
+     "txt": "WSH gives point guards +7% pts+reb+ast vs their norm (#3 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.937,
-     "n": 128,
-     "txt": "Players with his profile: -6% pts+reb+ast vs CHA (128 close comps)"
+     "v": 1.044,
+     "n": 26,
+     "txt": "Players with his profile: +4% pts+reb+ast vs WSH (26 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.943,
-     "n": 2,
-     "txt": "His history vs CHA: 8.5 pts+reb+ast/g in 2 games (-6%)"
+     "v": 1.091,
+     "n": 6,
+     "txt": "His history vs WSH: 27.2 pts+reb+ast/g in 6 games (+9%)"
     },
     {
      "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
    ]
+  },
+  {
+   "pid": "5149077",
+   "name": "Kingston Flemings",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 6.08,
+   "base": 5.6,
+   "mult": 1.086,
+   "minutes": 25.7,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0825,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.161,
+     "n": 53.3,
+     "rank": 2,
+     "txt": "WSH gives point guards +16% assists vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.119,
+     "n": 70,
+     "txt": "Players with his profile: +12% assists vs WSH (70 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.013,
+     "n": 2,
+     "txt": "His history vs WSH: 5.0 assists/g in 2 games (+1%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ],
+   "line": 5.5,
+   "side": "Over",
+   "price": 2.2,
+   "am": 120,
+   "book": "espnbet",
+   "ev": -0.0309,
+   "p_model": 0.468,
+   "p_mkt": 0.43,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_assists",
+   "nbooks": 5,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 5.5
+  },
+  {
+   "pid": "4397020",
+   "name": "Luguentz Dort",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 6.2,
+   "base": 5.72,
+   "mult": 1.083,
+   "minutes": 30.9,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0797,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.059,
+     "n": 100.0,
+     "rank": 4,
+     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.056,
+     "n": 179,
+     "txt": "Players with his profile: +6% reb+ast vs WSH (179 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.105,
+     "n": 3,
+     "txt": "His history vs WSH: 8.0 reb+ast/g in 3 games (+10%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ],
+   "line": 5.5,
+   "side": "Under",
+   "price": 1.67,
+   "am": -149,
+   "book": "espnbet",
+   "ev": -0.0577,
+   "p_model": 0.566,
+   "p_mkt": 0.564,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_rebounds_assists",
+   "nbooks": 2,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 5.5
   },
   {
    "pid": "6442",
@@ -761,8 +877,8 @@
      "k": "dvp",
      "v": 1.12,
      "n": 50.5,
-     "rank": 7,
-     "txt": "UTAH gives point guards +12% assists vs their norm (#7 softest of 30)"
+     "rank": 6,
+     "txt": "UTAH gives point guards +12% assists vs their norm (#6 softest of 30)"
     },
     {
      "k": "sim",
@@ -783,6 +899,96 @@
    ]
   },
   {
+   "pid": "3135045",
+   "name": "Grayson Allen",
+   "team": "CHA",
+   "opp": "BOS",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 24.01,
+   "base": 25.95,
+   "mult": 0.925,
+   "minutes": 34.4,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.078,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.928,
+     "n": 107.9,
+     "rank": 29,
+     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.935,
+     "n": 133,
+     "txt": "Players with his profile: -6% pts+reb+ast vs BOS (133 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.896,
+     "n": 3,
+     "txt": "His history vs BOS: 13.0 pts+reb+ast/g in 3 games (-10%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
+    }
+   ]
+  },
+  {
+   "pid": "4397424",
+   "name": "Neemias Queta",
+   "team": "BOS",
+   "opp": "CHA",
+   "home": false,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 16.01,
+   "base": 17.29,
+   "mult": 0.925,
+   "minutes": 22.4,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.078,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.93,
+     "n": 44.2,
+     "rank": 28,
+     "txt": "CHA gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.932,
+     "n": 116,
+     "txt": "Players with his profile: -7% pts+reb+ast vs CHA (116 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.962,
+     "n": 4,
+     "txt": "His history vs CHA: 14.5 pts+reb+ast/g in 4 games (-4%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
+    }
+   ]
+  },
+  {
    "pid": "4432241",
    "name": "Jamal Shead",
    "team": "TOR",
@@ -791,7 +997,7 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 20.39,
+   "proj": 20.38,
    "base": 18.86,
    "mult": 1.081,
    "minutes": 34.4,
@@ -804,7 +1010,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.104,
+     "v": 1.103,
      "n": 50.9,
      "rank": 1,
      "txt": "MIL gives point guards +10% pts+reb+ast vs their norm (#1 softest of 30)"
@@ -824,96 +1030,6 @@
     {
      "k": "env",
      "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
-    }
-   ]
-  },
-  {
-   "pid": "5106262",
-   "name": "Zuby Ejiofor",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 4.11,
-   "base": 3.8,
-   "mult": 1.08,
-   "minutes": 11.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.077,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.092,
-     "n": 85.3,
-     "rank": 1,
-     "txt": "WSH gives small forwards +9% reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.103,
-     "n": 79,
-     "txt": "Players with his profile: +10% reb+ast vs WSH (79 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.995,
-     "n": 1,
-     "txt": "His history vs WSH: 5.0 reb+ast/g in 1 games (-1%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ]
-  },
-  {
-   "pid": "5106262",
-   "name": "Zuby Ejiofor",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 9.08,
-   "base": 8.41,
-   "mult": 1.079,
-   "minutes": 11.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.076,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.091,
-     "n": 85.3,
-     "rank": 1,
-     "txt": "WSH gives small forwards +9% pts+reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.092,
-     "n": 79,
-     "txt": "Players with his profile: +9% pts+reb+ast vs WSH (79 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.023,
-     "n": 1,
-     "txt": "His history vs WSH: 16.0 pts+reb+ast/g in 1 games (+2%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
    ]
   },
@@ -939,7 +1055,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.06,
+     "v": 1.059,
      "n": 88.2,
      "rank": 4,
      "txt": "SAC gives shooting guards +6% assists vs their norm (#4 softest of 30)"
@@ -991,9 +1107,9 @@
     },
     {
      "k": "sim",
-     "v": 0.866,
-     "n": 217,
-     "txt": "Players with his profile: -13% threes vs MIN (217 close comps)"
+     "v": 0.867,
+     "n": 215,
+     "txt": "Players with his profile: -13% threes vs MIN (215 close comps)"
     },
     {
      "k": "h2h",
@@ -1003,142 +1119,155 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
     }
    ]
   },
   {
-   "pid": "4397424",
-   "name": "Neemias Queta",
+   "pid": "4351852",
+   "name": "Mitchell Robinson",
    "team": "BOS",
    "opp": "CHA",
    "home": false,
    "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 18.2,
-   "base": 19.62,
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 6.09,
+   "base": 6.57,
    "mult": 0.928,
-   "minutes": 25.0,
+   "minutes": 17.8,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909288",
    "lean": "Under",
    "strength": 0.0747,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.928,
-     "n": 42.8,
-     "rank": 28,
-     "txt": "CHA gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.929,
-     "n": 115,
-     "txt": "Players with his profile: -7% pts+reb+ast vs CHA (115 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.978,
-     "n": 3,
-     "txt": "His history vs CHA: 16.7 pts+reb+ast/g in 3 games (-2%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
-   "pid": "4845374",
-   "name": "Bub Carrington",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "PG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.51,
-   "base": 1.61,
-   "mult": 0.929,
-   "minutes": 21.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Under",
-   "strength": 0.0736,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.895,
-     "n": 54.4,
-     "rank": 29,
-     "txt": "ATL gives point guards -10% threes vs their norm (#2 toughest of 30)"
+     "v": 0.906,
+     "n": 44.2,
+     "rank": 30,
+     "txt": "CHA gives centers -9% reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.922,
-     "n": 91,
-     "txt": "Players with his profile: -8% threes vs ATL (91 close comps)"
+     "v": 0.939,
+     "n": 128,
+     "txt": "Players with his profile: -6% reb+ast vs CHA (128 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.882,
-     "n": 5,
-     "txt": "His history vs ATL: 1.2 threes/g in 5 games (-12%)"
+     "v": 0.995,
+     "n": 3,
+     "txt": "His history vs CHA: 6.7 reb+ast/g in 3 games (-0%)"
     },
     {
      "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
     }
    ]
   },
   {
-   "pid": "4432582",
-   "name": "Max Christie",
-   "team": "DAL",
-   "opp": "UTAH",
+   "pid": "2490149",
+   "name": "CJ McCollum",
+   "team": "ATL",
+   "opp": "WSH",
    "home": true,
    "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 10.97,
-   "base": 10.2,
-   "mult": 1.076,
-   "minutes": 19.9,
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 4.0,
+   "base": 3.71,
+   "mult": 1.077,
+   "minutes": 26.5,
    "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909290",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
    "lean": "Over",
-   "strength": 0.0733,
-   "starter": true,
+   "strength": 0.0742,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.093,
-     "n": 93.7,
+     "v": 1.107,
+     "n": 100.0,
      "rank": 1,
-     "txt": "UTAH gives shooting guards +9% pts+reb+ast vs their norm (#1 softest of 30)"
+     "txt": "WSH gives shooting guards +11% assists vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.062,
-     "n": 161,
-     "txt": "Players with his profile: +6% pts+reb+ast vs UTAH (161 close comps)"
+     "v": 1.116,
+     "n": 139,
+     "txt": "Players with his profile: +12% assists vs WSH (139 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.053,
-     "n": 3,
-     "txt": "His history vs UTAH: 22.7 pts+reb+ast/g in 3 games (+5%)"
+     "v": 1.062,
+     "n": 4,
+     "txt": "His history vs WSH: 3.5 assists/g in 4 games (+6%)"
     },
     {
      "k": "env",
-     "txt": "UTAH: defense #29, pace #3 \u00b7 DAL: offense #26, pace #5"
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ],
+   "line": 3.5,
+   "side": "Under",
+   "price": 2.2,
+   "am": 120,
+   "book": "betmgm",
+   "ev": 0.0131,
+   "p_model": 0.502,
+   "p_mkt": 0.444,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_assists",
+   "nbooks": 5,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 3.5
+  },
+  {
+   "pid": "5106262",
+   "name": "Zuby Ejiofor",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "PF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.68,
+   "base": 5.27,
+   "mult": 1.077,
+   "minutes": 12.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0742,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.067,
+     "n": 20.5,
+     "rank": 3,
+     "txt": "WSH gives power forwards +7% reb+ast vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.099,
+     "n": 8,
+     "txt": "Players with his profile: +10% reb+ast vs WSH (8 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.013,
+     "n": 2,
+     "txt": "His history vs WSH: 7.5 reb+ast/g in 2 games (+1%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
    ]
   },
@@ -1151,20 +1280,20 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 22.05,
-   "base": 20.49,
-   "mult": 1.076,
-   "minutes": 31.1,
+   "proj": 23.43,
+   "base": 21.76,
+   "mult": 1.077,
+   "minutes": 33.0,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909293",
    "lean": "Over",
-   "strength": 0.0733,
+   "strength": 0.0742,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.098,
+     "v": 1.099,
      "n": 42.6,
      "rank": 2,
      "txt": "NO gives centers +10% pts+reb+ast vs their norm (#2 softest of 30)"
@@ -1188,49 +1317,255 @@
    ]
   },
   {
-   "pid": "4869342",
-   "name": "Dyson Daniels",
+   "pid": "4351852",
+   "name": "Mitchell Robinson",
+   "team": "BOS",
+   "opp": "CHA",
+   "home": false,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 11.32,
+   "base": 12.18,
+   "mult": 0.929,
+   "minutes": 17.8,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0736,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.93,
+     "n": 44.2,
+     "rank": 28,
+     "txt": "CHA gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.934,
+     "n": 128,
+     "txt": "Players with his profile: -7% pts+reb+ast vs CHA (128 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.971,
+     "n": 3,
+     "txt": "His history vs CHA: 10.0 pts+reb+ast/g in 3 games (-3%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
+    }
+   ]
+  },
+  {
+   "pid": "2490149",
+   "name": "CJ McCollum",
    "team": "ATL",
    "opp": "WSH",
    "home": true,
-   "role": "PG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 23.49,
-   "base": 21.86,
-   "mult": 1.075,
-   "minutes": 30.9,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 7.18,
+   "base": 6.68,
+   "mult": 1.076,
+   "minutes": 26.5,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
    "lean": "Over",
-   "strength": 0.0723,
-   "starter": true,
+   "strength": 0.0733,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.071,
-     "n": 51.7,
-     "rank": 5,
-     "txt": "WSH gives point guards +7% pts+reb+ast vs their norm (#5 softest of 30)"
+     "v": 1.059,
+     "n": 100.0,
+     "rank": 4,
+     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.042,
-     "n": 25,
-     "txt": "Players with his profile: +4% pts+reb+ast vs WSH (25 close comps)"
+     "v": 1.067,
+     "n": 139,
+     "txt": "Players with his profile: +7% reb+ast vs WSH (139 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.063,
-     "n": 5,
-     "txt": "His history vs WSH: 25.8 pts+reb+ast/g in 5 games (+6%)"
+     "v": 1.079,
+     "n": 4,
+     "txt": "His history vs WSH: 7.5 reb+ast/g in 4 games (+8%)"
     },
     {
      "k": "env",
      "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
+   ],
+   "line": 7.5,
+   "side": "Under",
+   "price": 1.71,
+   "am": -141,
+   "book": "betmgm",
+   "ev": -0.0375,
+   "p_model": 0.588,
+   "p_mkt": 0.553,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 7.5
+  },
+  {
+   "pid": "4432582",
+   "name": "Max Christie",
+   "team": "DAL",
+   "opp": "UTAH",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 10.97,
+   "base": 10.2,
+   "mult": 1.076,
+   "minutes": 19.9,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909290",
+   "lean": "Over",
+   "strength": 0.0733,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.093,
+     "n": 93.7,
+     "rank": 1,
+     "txt": "UTAH gives shooting guards +9% pts+reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.063,
+     "n": 161,
+     "txt": "Players with his profile: +6% pts+reb+ast vs UTAH (161 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.053,
+     "n": 3,
+     "txt": "His history vs UTAH: 22.7 pts+reb+ast/g in 3 games (+5%)"
+    },
+    {
+     "k": "env",
+     "txt": "UTAH: defense #29, pace #3 \u00b7 DAL: offense #26, pace #5"
+    }
    ]
+  },
+  {
+   "pid": "4278129",
+   "name": "Deandre Ayton",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 8.31,
+   "base": 7.74,
+   "mult": 1.074,
+   "minutes": 22.1,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0714,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.074,
+     "n": 50.6,
+     "rank": 5,
+     "txt": "ATL gives centers +7% reb+ast vs their norm (#5 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.027,
+     "n": 130,
+     "txt": "Players with his profile: +3% reb+ast vs ATL (130 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.096,
+     "n": 4,
+     "txt": "His history vs ATL: 10.8 reb+ast/g in 4 games (+10%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
+    }
+   ]
+  },
+  {
+   "pid": "5160992",
+   "name": "Alex Sarr",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 10.63,
+   "base": 9.9,
+   "mult": 1.074,
+   "minutes": 29.6,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0714,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.074,
+     "n": 50.6,
+     "rank": 5,
+     "txt": "ATL gives centers +7% reb+ast vs their norm (#5 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.068,
+     "n": 59,
+     "txt": "Players with his profile: +7% reb+ast vs ATL (59 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.044,
+     "n": 3,
+     "txt": "His history vs ATL: 10.7 reb+ast/g in 3 games (+4%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
+    }
+   ],
+   "line": 10.5,
+   "side": "Under",
+   "price": 1.8,
+   "am": -125,
+   "book": "espnbet",
+   "ev": 0.0011,
+   "p_model": 0.607,
+   "p_mkt": 0.537,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_rebounds_assists",
+   "nbooks": 4,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 9.5
   },
   {
    "pid": "4432241",
@@ -1243,13 +1578,13 @@
    "stat_name": "reb+ast",
    "proj": 10.89,
    "base": 10.13,
-   "mult": 1.075,
+   "mult": 1.074,
    "minutes": 34.4,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909292",
    "lean": "Over",
-   "strength": 0.0723,
+   "strength": 0.0714,
    "starter": true,
    "signals": [
     {
@@ -1278,122 +1613,6 @@
    ]
   },
   {
-   "pid": "2490149",
-   "name": "CJ McCollum",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 7.33,
-   "base": 6.82,
-   "mult": 1.073,
-   "minutes": 27.5,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0705,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.057,
-     "n": 96.8,
-     "rank": 4,
-     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.073,
-     "n": 141,
-     "txt": "Players with his profile: +7% reb+ast vs WSH (141 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.067,
-     "n": 3,
-     "txt": "His history vs WSH: 7.7 reb+ast/g in 3 games (+7%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ],
-   "line": 7.5,
-   "side": "Under",
-   "price": 1.71,
-   "am": -141,
-   "book": "betmgm",
-   "ev": -0.0375,
-   "p_model": 0.588,
-   "p_mkt": 0.553,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_rebounds_assists",
-   "nbooks": 5,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 7.5
-  },
-  {
-   "pid": "5149077",
-   "name": "Kingston Flemings",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 5.69,
-   "base": 5.3,
-   "mult": 1.073,
-   "minutes": 24.6,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0705,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.151,
-     "n": 51.7,
-     "rank": 3,
-     "txt": "WSH gives point guards +15% assists vs their norm (#3 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.103,
-     "n": 61,
-     "txt": "Players with his profile: +10% assists vs WSH (61 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.991,
-     "n": 1,
-     "txt": "His history vs WSH: 4.0 assists/g in 1 games (-1%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ],
-   "line": 5.5,
-   "side": "Over",
-   "price": 2.2,
-   "am": 120,
-   "book": "espnbet",
-   "ev": -0.0309,
-   "p_model": 0.468,
-   "p_mkt": 0.43,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_assists",
-   "nbooks": 5,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 5.5
-  },
-  {
    "pid": "3138160",
    "name": "Caleb Martin",
    "team": "DAL",
@@ -1402,16 +1621,16 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 10.66,
-   "base": 9.94,
+   "proj": 12.87,
+   "base": 12.01,
    "mult": 1.072,
-   "minutes": 20.0,
+   "minutes": 24.2,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909290",
    "lean": "Over",
    "strength": 0.0695,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -1468,8 +1687,8 @@
     {
      "k": "sim",
      "v": 1.102,
-     "n": 170,
-     "txt": "Players with his profile: +10% assists vs MEM (170 close comps)"
+     "n": 171,
+     "txt": "Players with his profile: +10% assists vs MEM (171 close comps)"
     },
     {
      "k": "h2h",
@@ -1484,63 +1703,18 @@
    ]
   },
   {
-   "pid": "4432816",
-   "name": "LaMelo Ball",
-   "team": "MIN",
-   "opp": "NO",
-   "home": false,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 6.62,
-   "base": 6.18,
-   "mult": 1.072,
-   "minutes": 28.7,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909293",
-   "lean": "Over",
-   "strength": 0.0695,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.142,
-     "n": 51.1,
-     "rank": 4,
-     "txt": "NO gives point guards +14% assists vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.077,
-     "n": 83,
-     "txt": "Players with his profile: +8% assists vs NO (83 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.983,
-     "n": 1,
-     "txt": "His history vs NO: 5.0 assists/g in 1 games (-2%)"
-    },
-    {
-     "k": "env",
-     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
-    }
-   ]
-  },
-  {
-   "pid": "2490149",
-   "name": "CJ McCollum",
+   "pid": "5106262",
+   "name": "Zuby Ejiofor",
    "team": "ATL",
    "opp": "WSH",
    "home": true,
-   "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 4.08,
-   "base": 3.81,
+   "role": "PF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 11.93,
+   "base": 11.15,
    "mult": 1.071,
-   "minutes": 27.5,
+   "minutes": 12.5,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
@@ -1550,41 +1724,28 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.101,
-     "n": 96.8,
+     "v": 1.062,
+     "n": 20.5,
      "rank": 1,
-     "txt": "WSH gives shooting guards +10% assists vs their norm (#1 softest of 30)"
+     "txt": "WSH gives power forwards +6% pts+reb+ast vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.12,
-     "n": 141,
-     "txt": "Players with his profile: +12% assists vs WSH (141 close comps)"
+     "v": 1.084,
+     "n": 8,
+     "txt": "Players with his profile: +8% pts+reb+ast vs WSH (8 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.042,
-     "n": 3,
-     "txt": "His history vs WSH: 3.3 assists/g in 3 games (+4%)"
+     "v": 1.038,
+     "n": 2,
+     "txt": "His history vs WSH: 18.0 pts+reb+ast/g in 2 games (+4%)"
     },
     {
      "k": "env",
      "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
-   ],
-   "line": 3.5,
-   "side": "Under",
-   "price": 2.2,
-   "am": 120,
-   "book": "betmgm",
-   "ev": 0.0131,
-   "p_model": 0.502,
-   "p_mkt": 0.444,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_assists",
-   "nbooks": 5,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 3.5
+   ]
   },
   {
    "pid": "3908809",
@@ -1595,10 +1756,10 @@
    "role": "PG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 10.1,
-   "base": 9.43,
+   "proj": 10.42,
+   "base": 9.73,
    "mult": 1.071,
-   "minutes": 34.0,
+   "minutes": 35.0,
    "status": "",
    "start": "2026-11-07T00:30Z",
    "espn_id": "401909289",
@@ -1627,7 +1788,7 @@
     },
     {
      "k": "env",
-     "txt": "PHI: defense #10, pace #16 \u00b7 CLE: offense #7, pace #12"
+     "txt": "PHI: defense #9, pace #16 \u00b7 CLE: offense #7, pace #12"
     }
    ]
   },
@@ -1660,9 +1821,9 @@
     },
     {
      "k": "sim",
-     "v": 1.06,
-     "n": 170,
-     "txt": "Players with his profile: +6% reb+ast vs MEM (170 close comps)"
+     "v": 1.061,
+     "n": 171,
+     "txt": "Players with his profile: +6% reb+ast vs MEM (171 close comps)"
     },
     {
      "k": "h2h",
@@ -1673,6 +1834,154 @@
     {
      "k": "env",
      "txt": "MEM: defense #21, pace #7 \u00b7 OKC: offense #6, pace #18"
+    }
+   ]
+  },
+  {
+   "pid": "4432816",
+   "name": "LaMelo Ball",
+   "team": "MIN",
+   "opp": "NO",
+   "home": false,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 7.05,
+   "base": 6.58,
+   "mult": 1.071,
+   "minutes": 30.5,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909293",
+   "lean": "Over",
+   "strength": 0.0686,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.14,
+     "n": 51.1,
+     "rank": 4,
+     "txt": "NO gives point guards +14% assists vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.077,
+     "n": 83,
+     "txt": "Players with his profile: +8% assists vs NO (83 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.983,
+     "n": 1,
+     "txt": "His history vs NO: 5.0 assists/g in 1 games (-2%)"
+    },
+    {
+     "k": "env",
+     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
+    }
+   ]
+  },
+  {
+   "pid": "3134907",
+   "name": "Kyle Kuzma",
+   "team": "MIL",
+   "opp": "TOR",
+   "home": true,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 7.42,
+   "base": 7.94,
+   "mult": 0.934,
+   "minutes": 25.6,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909292",
+   "lean": "Under",
+   "strength": 0.0683,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.918,
+     "n": 83.6,
+     "rank": 29,
+     "txt": "TOR gives small forwards -8% reb+ast vs their norm (#2 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.97,
+     "n": 19,
+     "txt": "Players with his profile: -3% reb+ast vs TOR (19 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.947,
+     "n": 3,
+     "txt": "His history vs TOR: 3.7 reb+ast/g in 3 games (-5%)"
+    },
+    {
+     "k": "env",
+     "txt": "TOR: defense #8, pace #20 \u00b7 MIL: offense #24, pace #22"
+    }
+   ],
+   "line": 7.5,
+   "side": "Under",
+   "price": 1.74,
+   "am": -135,
+   "book": "betmgm",
+   "ev": -0.0358,
+   "p_model": 0.565,
+   "p_mkt": 0.55,
+   "event_id": "1c60a090180de530cfe273a5d6a381e6",
+   "market": "player_rebounds_assists",
+   "nbooks": 6,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 7.5
+  },
+  {
+   "pid": "5160992",
+   "name": "Alex Sarr",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 24.96,
+   "base": 23.33,
+   "mult": 1.07,
+   "minutes": 29.6,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0677,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.062,
+     "n": 50.6,
+     "rank": 6,
+     "txt": "ATL gives centers +6% pts+reb+ast vs their norm (#6 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.049,
+     "n": 59,
+     "txt": "Players with his profile: +5% pts+reb+ast vs ATL (59 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.054,
+     "n": 3,
+     "txt": "His history vs ATL: 27.7 pts+reb+ast/g in 3 games (+5%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
    ]
   },
@@ -1722,6 +2031,51 @@
    ]
   },
   {
+   "pid": "4845374",
+   "name": "Bub Carrington",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "PG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.39,
+   "base": 1.49,
+   "mult": 0.935,
+   "minutes": 19.9,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Under",
+   "strength": 0.0672,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.904,
+     "n": 55.9,
+     "rank": 28,
+     "txt": "ATL gives point guards -10% threes vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.926,
+     "n": 94,
+     "txt": "Players with his profile: -7% threes vs ATL (94 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.893,
+     "n": 6,
+     "txt": "His history vs ATL: 1.2 threes/g in 6 games (-11%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
+    }
+   ]
+  },
+  {
    "pid": "4397475",
    "name": "AJ Green",
    "team": "MIL",
@@ -1752,7 +2106,7 @@
      "k": "sim",
      "v": 0.965,
      "n": 148,
-     "txt": "Players with his profile: -4% reb+ast vs TOR (148 close comps)"
+     "txt": "Players with his profile: -3% reb+ast vs TOR (148 close comps)"
     },
     {
      "k": "h2h",
@@ -1778,154 +2132,6 @@
    "nbooks": 2,
    "at": "2026-11-06T23:40:16Z",
    "open": 3.5
-  },
-  {
-   "pid": "3134907",
-   "name": "Kyle Kuzma",
-   "team": "MIL",
-   "opp": "TOR",
-   "home": true,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 7.43,
-   "base": 7.94,
-   "mult": 0.935,
-   "minutes": 25.6,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909292",
-   "lean": "Under",
-   "strength": 0.0672,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.918,
-     "n": 83.6,
-     "rank": 29,
-     "txt": "TOR gives small forwards -8% reb+ast vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.971,
-     "n": 19,
-     "txt": "Players with his profile: -3% reb+ast vs TOR (19 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.947,
-     "n": 3,
-     "txt": "His history vs TOR: 3.7 reb+ast/g in 3 games (-5%)"
-    },
-    {
-     "k": "env",
-     "txt": "TOR: defense #8, pace #20 \u00b7 MIL: offense #24, pace #22"
-    }
-   ],
-   "line": 7.5,
-   "side": "Under",
-   "price": 1.74,
-   "am": -135,
-   "book": "betmgm",
-   "ev": -0.0358,
-   "p_model": 0.565,
-   "p_mkt": 0.55,
-   "event_id": "1c60a090180de530cfe273a5d6a381e6",
-   "market": "player_rebounds_assists",
-   "nbooks": 6,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 7.5
-  },
-  {
-   "pid": "4277951",
-   "name": "Luka Garza",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 12.2,
-   "base": 13.04,
-   "mult": 0.936,
-   "minutes": 15.0,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0661,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.928,
-     "n": 42.8,
-     "rank": 28,
-     "txt": "CHA gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.928,
-     "n": 71,
-     "txt": "Players with his profile: -7% pts+reb+ast vs CHA (71 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.979,
-     "n": 2,
-     "txt": "His history vs CHA: 8.0 pts+reb+ast/g in 2 games (-2%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
-   "pid": "5081727",
-   "name": "Sidy Cissoko",
-   "team": "POR",
-   "opp": "LAL",
-   "home": false,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.06,
-   "base": 5.4,
-   "mult": 0.936,
-   "minutes": 20.7,
-   "status": "",
-   "start": "2026-11-07T03:00Z",
-   "espn_id": "401909294",
-   "lean": "Under",
-   "strength": 0.0661,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.943,
-     "n": 113.0,
-     "rank": 26,
-     "txt": "LAL gives shooting guards -6% reb+ast vs their norm (#5 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.948,
-     "n": 166,
-     "txt": "Players with his profile: -5% reb+ast vs LAL (166 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.02,
-     "n": 4,
-     "txt": "His history vs LAL: 3.8 reb+ast/g in 4 games (+2%)"
-    },
-    {
-     "k": "env",
-     "txt": "LAL: defense #17, pace #23 \u00b7 POR: offense #19, pace #11"
-    }
-   ]
   },
   {
    "pid": "6442",
@@ -1994,7 +2200,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.11,
+     "v": 1.109,
      "n": 50.9,
      "rank": 9,
      "txt": "MIL gives point guards +11% assists vs their norm (#9 softest of 30)"
@@ -2031,6 +2237,154 @@
    "open": 8.5
   },
   {
+   "pid": "4277951",
+   "name": "Luka Garza",
+   "team": "BOS",
+   "opp": "CHA",
+   "home": false,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 13.25,
+   "base": 14.14,
+   "mult": 0.937,
+   "minutes": 16.2,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0651,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.93,
+     "n": 44.2,
+     "rank": 28,
+     "txt": "CHA gives centers -7% pts+reb+ast vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.93,
+     "n": 72,
+     "txt": "Players with his profile: -7% pts+reb+ast vs CHA (72 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.984,
+     "n": 3,
+     "txt": "His history vs CHA: 11.0 pts+reb+ast/g in 3 games (-2%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
+    }
+   ]
+  },
+  {
+   "pid": "3134907",
+   "name": "Kyle Kuzma",
+   "team": "MIL",
+   "opp": "TOR",
+   "home": true,
+   "role": "SF",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 2.78,
+   "base": 2.97,
+   "mult": 0.937,
+   "minutes": 25.6,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909292",
+   "lean": "Under",
+   "strength": 0.0651,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.886,
+     "n": 83.6,
+     "rank": 28,
+     "txt": "TOR gives small forwards -11% assists vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.98,
+     "n": 19,
+     "txt": "Players with his profile: -2% assists vs TOR (19 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.876,
+     "n": 3,
+     "txt": "His history vs TOR: 0.3 assists/g in 3 games (-12%)"
+    },
+    {
+     "k": "env",
+     "txt": "TOR: defense #8, pace #20 \u00b7 MIL: offense #24, pace #22"
+    }
+   ],
+   "line": 2.5,
+   "side": "Over",
+   "price": 2.23,
+   "am": 123,
+   "book": "betrivers",
+   "ev": 0.0034,
+   "p_model": 0.483,
+   "p_mkt": 0.437,
+   "event_id": "1c60a090180de530cfe273a5d6a381e6",
+   "market": "player_assists",
+   "nbooks": 6,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 2.5
+  },
+  {
+   "pid": "5081727",
+   "name": "Sidy Cissoko",
+   "team": "POR",
+   "opp": "LAL",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.06,
+   "base": 5.4,
+   "mult": 0.937,
+   "minutes": 20.7,
+   "status": "",
+   "start": "2026-11-07T03:00Z",
+   "espn_id": "401909294",
+   "lean": "Under",
+   "strength": 0.0651,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.943,
+     "n": 113.0,
+     "rank": 26,
+     "txt": "LAL gives shooting guards -6% reb+ast vs their norm (#5 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.949,
+     "n": 166,
+     "txt": "Players with his profile: -5% reb+ast vs LAL (166 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.02,
+     "n": 4,
+     "txt": "His history vs LAL: 3.8 reb+ast/g in 4 games (+2%)"
+    },
+    {
+     "k": "env",
+     "txt": "LAL: defense #17, pace #23 \u00b7 POR: offense #18, pace #11"
+    }
+   ]
+  },
+  {
    "pid": "4431678",
    "name": "Tyrese Maxey",
    "team": "PHI",
@@ -2052,10 +2406,10 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.086,
+     "v": 1.084,
      "n": 59.1,
      "rank": 13,
-     "txt": "CLE gives point guards +9% assists vs their norm (#13 softest of 30)"
+     "txt": "CLE gives point guards +8% assists vs their norm (#13 softest of 30)"
     },
     {
      "k": "sim",
@@ -2071,7 +2425,7 @@
     },
     {
      "k": "env",
-     "txt": "CLE: defense #12, pace #12 \u00b7 PHI: offense #20, pace #16"
+     "txt": "CLE: defense #12, pace #12 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -2105,8 +2459,8 @@
     {
      "k": "sim",
      "v": 1.075,
-     "n": 114,
-     "txt": "Players with his profile: +7% pts+reb+ast vs UTAH (114 close comps)"
+     "n": 115,
+     "txt": "Players with his profile: +8% pts+reb+ast vs UTAH (115 close comps)"
     },
     {
      "k": "h2h",
@@ -2121,62 +2475,62 @@
    ]
   },
   {
-   "pid": "3134907",
-   "name": "Kyle Kuzma",
-   "team": "MIL",
-   "opp": "TOR",
-   "home": true,
+   "pid": "5174563",
+   "name": "Kyshawn George",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
    "role": "SF",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 2.78,
-   "base": 2.97,
-   "mult": 0.938,
-   "minutes": 25.6,
+   "proj": 6.09,
+   "base": 5.72,
+   "mult": 1.066,
+   "minutes": 39.5,
    "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909292",
-   "lean": "Under",
-   "strength": 0.064,
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0639,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.887,
-     "n": 83.6,
-     "rank": 28,
-     "txt": "TOR gives small forwards -11% assists vs their norm (#3 toughest of 30)"
+     "v": 1.021,
+     "n": 94.4,
+     "rank": 13,
+     "txt": "ATL gives small forwards +2% assists vs their norm (#13 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.982,
-     "n": 19,
-     "txt": "Players with his profile: -2% assists vs TOR (19 close comps)"
+     "v": 1.063,
+     "n": 129,
+     "txt": "Players with his profile: +6% assists vs ATL (129 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.876,
-     "n": 3,
-     "txt": "His history vs TOR: 0.3 assists/g in 3 games (-12%)"
+     "v": 1.114,
+     "n": 4,
+     "txt": "His history vs ATL: 5.8 assists/g in 4 games (+11%)"
     },
     {
      "k": "env",
-     "txt": "TOR: defense #8, pace #20 \u00b7 MIL: offense #24, pace #22"
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
    ],
-   "line": 2.5,
+   "line": 4.5,
    "side": "Over",
-   "price": 2.23,
-   "am": 123,
-   "book": "betrivers",
-   "ev": 0.0034,
-   "p_model": 0.483,
-   "p_mkt": 0.437,
-   "event_id": "1c60a090180de530cfe273a5d6a381e6",
+   "price": 2.1,
+   "am": 110,
+   "book": "hardrockbet",
+   "ev": 0.0454,
+   "p_model": 0.611,
+   "p_mkt": 0.454,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
    "market": "player_assists",
    "nbooks": 6,
    "at": "2026-11-06T23:40:16Z",
-   "open": 2.5
+   "open": 4.5
   },
   {
    "pid": "4278073",
@@ -2208,8 +2562,8 @@
     {
      "k": "sim",
      "v": 1.023,
-     "n": 170,
-     "txt": "Players with his profile: +2% threes vs MEM (170 close comps)"
+     "n": 171,
+     "txt": "Players with his profile: +2% threes vs MEM (171 close comps)"
     },
     {
      "k": "h2h",
@@ -2269,199 +2623,6 @@
    ]
   },
   {
-   "pid": "4432241",
-   "name": "Jamal Shead",
-   "team": "TOR",
-   "opp": "MIL",
-   "home": false,
-   "role": "PG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.28,
-   "base": 1.21,
-   "mult": 1.065,
-   "minutes": 34.4,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909292",
-   "lean": "Over",
-   "strength": 0.063,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.089,
-     "n": 50.9,
-     "rank": 4,
-     "txt": "MIL gives point guards +9% threes vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.154,
-     "n": 70,
-     "txt": "Players with his profile: +15% threes vs MIL (70 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.032,
-     "n": 4,
-     "txt": "His history vs MIL: 1.0 threes/g in 4 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
-    }
-   ]
-  },
-  {
-   "pid": "4396971",
-   "name": "Naz Reid",
-   "team": "CHA",
-   "opp": "BOS",
-   "home": true,
-   "role": "C",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 2.22,
-   "base": 2.36,
-   "mult": 0.939,
-   "minutes": 39.6,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0629,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.906,
-     "n": 47.1,
-     "rank": 29,
-     "txt": "BOS gives centers -9% assists vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.938,
-     "n": 52,
-     "txt": "Players with his profile: -6% assists vs BOS (52 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.933,
-     "n": 2,
-     "txt": "His history vs BOS: 1.0 assists/g in 2 games (-7%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
-    }
-   ]
-  },
-  {
-   "pid": "5160992",
-   "name": "Alex Sarr",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 9.97,
-   "base": 9.38,
-   "mult": 1.064,
-   "minutes": 28.3,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.062,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.068,
-     "n": 49.1,
-     "rank": 5,
-     "txt": "ATL gives centers +7% reb+ast vs their norm (#5 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.066,
-     "n": 63,
-     "txt": "Players with his profile: +7% reb+ast vs ATL (63 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.026,
-     "n": 2,
-     "txt": "His history vs ATL: 10.5 reb+ast/g in 2 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
-    }
-   ],
-   "line": 10.5,
-   "side": "Under",
-   "price": 1.8,
-   "am": -125,
-   "book": "espnbet",
-   "ev": 0.0011,
-   "p_model": 0.607,
-   "p_mkt": 0.537,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_rebounds_assists",
-   "nbooks": 4,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 9.5
-  },
-  {
-   "pid": "5160992",
-   "name": "Alex Sarr",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 23.8,
-   "base": 22.37,
-   "mult": 1.064,
-   "minutes": 28.3,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.062,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.058,
-     "n": 49.1,
-     "rank": 6,
-     "txt": "ATL gives centers +6% pts+reb+ast vs their norm (#6 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.051,
-     "n": 63,
-     "txt": "Players with his profile: +5% pts+reb+ast vs ATL (63 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.04,
-     "n": 2,
-     "txt": "His history vs ATL: 29.5 pts+reb+ast/g in 2 games (+4%)"
-    },
-    {
-     "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
-    }
-   ]
-  },
-  {
    "pid": "6442",
    "name": "Kyrie Irving",
    "team": "DAL",
@@ -2507,6 +2668,51 @@
    ]
   },
   {
+   "pid": "4432241",
+   "name": "Jamal Shead",
+   "team": "TOR",
+   "opp": "MIL",
+   "home": false,
+   "role": "PG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.28,
+   "base": 1.21,
+   "mult": 1.064,
+   "minutes": 34.4,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909292",
+   "lean": "Over",
+   "strength": 0.062,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.085,
+     "n": 50.9,
+     "rank": 5,
+     "txt": "MIL gives point guards +9% threes vs their norm (#5 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.153,
+     "n": 70,
+     "txt": "Players with his profile: +15% threes vs MIL (70 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.032,
+     "n": 4,
+     "txt": "His history vs MIL: 1.0 threes/g in 4 games (+3%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
+    }
+   ]
+  },
+  {
    "pid": "5037871",
    "name": "Dylan Harper",
    "team": "SA",
@@ -2516,7 +2722,7 @@
    "stat": "ast",
    "stat_name": "assists",
    "proj": 3.97,
-   "base": 3.73,
+   "base": 3.74,
    "mult": 1.064,
    "minutes": 30.2,
    "status": "",
@@ -2528,7 +2734,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.06,
+     "v": 1.059,
      "n": 88.2,
      "rank": 4,
      "txt": "SAC gives shooting guards +6% assists vs their norm (#4 softest of 30)"
@@ -2573,14 +2779,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.086,
+     "v": 1.087,
      "n": 47.3,
-     "rank": 5,
-     "txt": "SAC gives point guards +9% threes vs their norm (#5 softest of 30)"
+     "rank": 4,
+     "txt": "SAC gives point guards +9% threes vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.063,
+     "v": 1.062,
      "n": 112,
      "txt": "Players with his profile: +6% threes vs SAC (112 close comps)"
     },
@@ -2597,6 +2803,51 @@
    ]
   },
   {
+   "pid": "4576060",
+   "name": "Ryan Kalkbrenner",
+   "team": "CHA",
+   "opp": "BOS",
+   "home": true,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 12.78,
+   "base": 13.61,
+   "mult": 0.94,
+   "minutes": 23.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0619,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.937,
+     "n": 48.4,
+     "rank": 25,
+     "txt": "BOS gives centers -6% pts+reb+ast vs their norm (#6 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.931,
+     "n": 133,
+     "txt": "Players with his profile: -7% pts+reb+ast vs BOS (133 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.962,
+     "n": 4,
+     "txt": "His history vs BOS: 7.8 pts+reb+ast/g in 4 games (-4%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
+    }
+   ]
+  },
+  {
    "pid": "4592691",
    "name": "Jake LaRavia",
    "team": "LAL",
@@ -2605,16 +2856,16 @@
    "role": "SF",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 0.9,
-   "base": 0.96,
+   "proj": 0.93,
+   "base": 1.0,
    "mult": 0.94,
-   "minutes": 23.8,
+   "minutes": 24.7,
    "status": "",
    "start": "2026-11-07T03:00Z",
    "espn_id": "401909294",
    "lean": "Under",
    "strength": 0.0619,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -2625,9 +2876,9 @@
     },
     {
      "k": "sim",
-     "v": 0.946,
-     "n": 173,
-     "txt": "Players with his profile: -5% threes vs POR (173 close comps)"
+     "v": 0.945,
+     "n": 170,
+     "txt": "Players with his profile: -5% threes vs POR (170 close comps)"
     },
     {
      "k": "h2h",
@@ -2640,64 +2891,6 @@
      "txt": "POR: defense #11, pace #11 \u00b7 LAL: offense #4, pace #23"
     }
    ]
-  },
-  {
-   "pid": "4397020",
-   "name": "Luguentz Dort",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.49,
-   "base": 5.17,
-   "mult": 1.063,
-   "minutes": 30.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0611,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.057,
-     "n": 96.8,
-     "rank": 4,
-     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.056,
-     "n": 177,
-     "txt": "Players with his profile: +6% reb+ast vs WSH (177 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.044,
-     "n": 2,
-     "txt": "His history vs WSH: 6.5 reb+ast/g in 2 games (+4%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ],
-   "line": 5.5,
-   "side": "Under",
-   "price": 1.67,
-   "am": -149,
-   "book": "espnbet",
-   "ev": -0.0577,
-   "p_model": 0.566,
-   "p_mkt": 0.564,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_rebounds_assists",
-   "nbooks": 2,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 5.5
   },
   {
    "pid": "4277919",
@@ -2877,8 +3070,8 @@
     {
      "k": "sim",
      "v": 0.962,
-     "n": 48,
-     "txt": "Players with his profile: -4% reb+ast vs TOR (48 close comps)"
+     "n": 49,
+     "txt": "Players with his profile: -4% reb+ast vs TOR (49 close comps)"
     },
     {
      "k": "h2h",
@@ -2934,7 +3127,7 @@
     },
     {
      "k": "sim",
-     "v": 0.948,
+     "v": 0.949,
      "n": 120,
      "txt": "Players with his profile: -5% threes vs MIN (120 close comps)"
     },
@@ -2946,7 +3139,155 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
+    }
+   ]
+  },
+  {
+   "pid": "4397183",
+   "name": "Aaron Wiggins",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.72,
+   "base": 5.39,
+   "mult": 1.062,
+   "minutes": 26.3,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0602,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.059,
+     "n": 100.0,
+     "rank": 4,
+     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.054,
+     "n": 117,
+     "txt": "Players with his profile: +5% reb+ast vs WSH (117 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.016,
+     "n": 4,
+     "txt": "His history vs WSH: 5.5 reb+ast/g in 4 games (+2%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ],
+   "line": 6.5,
+   "side": "Under",
+   "price": 1.8,
+   "am": -125,
+   "book": "hardrockbet",
+   "ev": 0.0382,
+   "p_model": 0.709,
+   "p_mkt": 0.525,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_rebounds_assists",
+   "nbooks": 2,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 6.5
+  },
+  {
+   "pid": "4280151",
+   "name": "Corey Kispert",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "SF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 8.54,
+   "base": 8.04,
+   "mult": 1.062,
+   "minutes": 10.9,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0602,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.092,
+     "n": 86.2,
+     "rank": 1,
+     "txt": "WSH gives small forwards +9% pts+reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.041,
+     "n": 93,
+     "txt": "Players with his profile: +4% pts+reb+ast vs WSH (93 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.072,
+     "n": 4,
+     "txt": "His history vs WSH: 19.2 pts+reb+ast/g in 4 games (+7%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ]
+  },
+  {
+   "pid": "3138160",
+   "name": "Caleb Martin",
+   "team": "DAL",
+   "opp": "UTAH",
+   "home": true,
+   "role": "SF",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.0,
+   "base": 0.94,
+   "mult": 1.062,
+   "minutes": 24.2,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909290",
+   "lean": "Over",
+   "strength": 0.0602,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.104,
+     "n": 86.6,
+     "rank": 1,
+     "txt": "UTAH gives small forwards +10% threes vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.048,
+     "n": 156,
+     "txt": "Players with his profile: +5% threes vs UTAH (156 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.025,
+     "n": 3,
+     "txt": "His history vs UTAH: 0.7 threes/g in 3 games (+3%)"
+    },
+    {
+     "k": "env",
+     "txt": "UTAH: defense #29, pace #3 \u00b7 DAL: offense #26, pace #5"
     }
    ]
   },
@@ -2959,10 +3300,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 2.64,
-   "base": 2.49,
+   "proj": 3.03,
+   "base": 2.85,
    "mult": 1.062,
-   "minutes": 14.3,
+   "minutes": 16.4,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909293",
@@ -2972,7 +3313,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.142,
+     "v": 1.14,
      "n": 51.1,
      "rank": 4,
      "txt": "NO gives point guards +14% assists vs their norm (#4 softest of 30)"
@@ -2994,109 +3335,6 @@
      "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
     }
    ]
-  },
-  {
-   "pid": "4065648",
-   "name": "Jayson Tatum",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 13.59,
-   "base": 14.43,
-   "mult": 0.942,
-   "minutes": 34.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0598,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.918,
-     "n": 85.5,
-     "rank": 28,
-     "txt": "CHA gives small forwards -8% reb+ast vs their norm (#3 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.98,
-     "n": 126,
-     "txt": "Players with his profile: -2% reb+ast vs CHA (126 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.948,
-     "n": 2,
-     "txt": "His history vs CHA: 11.0 reb+ast/g in 2 games (-5%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
-   "pid": "4431680",
-   "name": "Onyeka Okongwu",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 2.84,
-   "base": 2.68,
-   "mult": 1.061,
-   "minutes": 30.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0592,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.078,
-     "n": 85.3,
-     "rank": 2,
-     "txt": "WSH gives small forwards +8% assists vs their norm (#2 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.045,
-     "n": 53,
-     "txt": "Players with his profile: +4% assists vs WSH (53 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.11,
-     "n": 5,
-     "txt": "His history vs WSH: 4.0 assists/g in 5 games (+11%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ],
-   "line": 2.5,
-   "side": "Under",
-   "price": 2.35,
-   "am": 135,
-   "book": "hardrockbet",
-   "ev": 0.0357,
-   "p_model": 0.527,
-   "p_mkt": 0.407,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_assists",
-   "nbooks": 4,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 2.5
   },
   {
    "pid": "6442",
@@ -3127,7 +3365,7 @@
     },
     {
      "k": "sim",
-     "v": 1.075,
+     "v": 1.076,
      "n": 137,
      "txt": "Players with his profile: +8% reb+ast vs UTAH (137 close comps)"
     },
@@ -3165,14 +3403,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.07,
+     "v": 1.071,
      "n": 92.2,
      "rank": 2,
      "txt": "DAL gives shooting guards +7% reb+ast vs their norm (#2 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.078,
+     "v": 1.077,
      "n": 146,
      "txt": "Players with his profile: +8% reb+ast vs DAL (146 close comps)"
     },
@@ -3197,10 +3435,10 @@
    "role": "PG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 9.11,
-   "base": 8.61,
+   "proj": 9.2,
+   "base": 8.69,
    "mult": 1.059,
-   "minutes": 24.6,
+   "minutes": 25.7,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
@@ -3210,22 +3448,22 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.076,
-     "n": 51.7,
+     "v": 1.079,
+     "n": 53.3,
      "rank": 4,
      "txt": "WSH gives point guards +8% reb+ast vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.075,
-     "n": 61,
-     "txt": "Players with his profile: +7% reb+ast vs WSH (61 close comps)"
+     "v": 1.083,
+     "n": 70,
+     "txt": "Players with his profile: +8% reb+ast vs WSH (70 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.99,
-     "n": 1,
-     "txt": "His history vs WSH: 7.0 reb+ast/g in 1 games (-1%)"
+     "v": 0.978,
+     "n": 2,
+     "txt": "His history vs WSH: 7.0 reb+ast/g in 2 games (-2%)"
     },
     {
      "k": "env",
@@ -3245,51 +3483,6 @@
    "nbooks": 6,
    "at": "2026-11-06T23:40:16Z",
    "open": 8.5
-  },
-  {
-   "pid": "4278129",
-   "name": "Deandre Ayton",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 6.92,
-   "base": 6.53,
-   "mult": 1.059,
-   "minutes": 19.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0573,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.068,
-     "n": 49.1,
-     "rank": 5,
-     "txt": "ATL gives centers +7% reb+ast vs their norm (#5 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.026,
-     "n": 130,
-     "txt": "Players with his profile: +3% reb+ast vs ATL (130 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.054,
-     "n": 3,
-     "txt": "His history vs ATL: 9.7 reb+ast/g in 3 games (+5%)"
-    },
-    {
-     "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
-    }
-   ]
   },
   {
    "pid": "5041955",
@@ -3313,7 +3506,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.07,
+     "v": 1.071,
      "n": 92.2,
      "rank": 2,
      "txt": "DAL gives shooting guards +7% reb+ast vs their norm (#2 softest of 30)"
@@ -3321,8 +3514,8 @@
     {
      "k": "sim",
      "v": 1.052,
-     "n": 16,
-     "txt": "Players with his profile: +5% reb+ast vs DAL (16 close comps)"
+     "n": 12,
+     "txt": "Players with his profile: +5% reb+ast vs DAL (12 close comps)"
     },
     {
      "k": "h2h",
@@ -3365,9 +3558,9 @@
     },
     {
      "k": "sim",
-     "v": 1.037,
-     "n": 170,
-     "txt": "Players with his profile: +4% pts+reb+ast vs MEM (170 close comps)"
+     "v": 1.038,
+     "n": 171,
+     "txt": "Players with his profile: +4% pts+reb+ast vs MEM (171 close comps)"
     },
     {
      "k": "h2h",
@@ -3382,18 +3575,63 @@
    ]
   },
   {
-   "pid": "4278039",
-   "name": "Nickeil Alexander-Walker",
-   "team": "ATL",
-   "opp": "WSH",
+   "pid": "4396971",
+   "name": "Naz Reid",
+   "team": "CHA",
+   "opp": "BOS",
    "home": true,
-   "role": "SG",
+   "role": "C",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 2.84,
-   "base": 2.69,
+   "proj": 2.15,
+   "base": 2.28,
+   "mult": 0.945,
+   "minutes": 37.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0566,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.9,
+     "n": 48.4,
+     "rank": 30,
+     "txt": "BOS gives centers -10% assists vs their norm (#1 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.939,
+     "n": 46,
+     "txt": "Players with his profile: -6% assists vs BOS (46 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.97,
+     "n": 3,
+     "txt": "His history vs BOS: 1.3 assists/g in 3 games (-3%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
+    }
+   ]
+  },
+  {
+   "pid": "5142718",
+   "name": "AJ Dybantsa",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 9.81,
+   "base": 9.27,
    "mult": 1.058,
-   "minutes": 31.3,
+   "minutes": 36.3,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
@@ -3403,84 +3641,26 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.101,
-     "n": 96.8,
-     "rank": 1,
-     "txt": "WSH gives shooting guards +10% assists vs their norm (#1 softest of 30)"
+     "v": 1.031,
+     "n": 94.4,
+     "rank": 9,
+     "txt": "ATL gives small forwards +3% reb+ast vs their norm (#9 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.096,
-     "n": 126,
-     "txt": "Players with his profile: +10% assists vs WSH (126 close comps)"
+     "v": 1.075,
+     "n": 29,
+     "txt": "Players with his profile: +8% reb+ast vs ATL (29 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.047,
-     "n": 4,
-     "txt": "His history vs WSH: 3.8 assists/g in 4 games (+5%)"
+     "v": 1.067,
+     "n": 2,
+     "txt": "His history vs ATL: 10.5 reb+ast/g in 2 games (+7%)"
     },
     {
      "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ],
-   "line": 3.5,
-   "side": "Under",
-   "price": 1.91,
-   "am": -110,
-   "book": "espnbet",
-   "ev": 0.0784,
-   "p_model": 0.69,
-   "p_mkt": 0.516,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_assists",
-   "nbooks": 5,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 3.5
-  },
-  {
-   "pid": "4576060",
-   "name": "Ryan Kalkbrenner",
-   "team": "CHA",
-   "opp": "BOS",
-   "home": true,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 13.51,
-   "base": 14.28,
-   "mult": 0.946,
-   "minutes": 23.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0555,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.938,
-     "n": 47.1,
-     "rank": 25,
-     "txt": "BOS gives centers -6% pts+reb+ast vs their norm (#6 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.929,
-     "n": 132,
-     "txt": "Players with his profile: -7% pts+reb+ast vs BOS (132 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.986,
-     "n": 3,
-     "txt": "His history vs BOS: 7.3 pts+reb+ast/g in 3 games (-1%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
    ]
   },
@@ -3493,10 +3673,10 @@
    "role": "PF",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.6,
-   "base": 1.69,
+   "proj": 1.75,
+   "base": 1.86,
    "mult": 0.946,
-   "minutes": 22.4,
+   "minutes": 24.5,
    "status": "",
    "start": "2026-11-07T00:30Z",
    "espn_id": "401909289",
@@ -3513,7 +3693,7 @@
     },
     {
      "k": "sim",
-     "v": 0.958,
+     "v": 0.959,
      "n": 45,
      "txt": "Players with his profile: -4% threes vs PHI (45 close comps)"
     },
@@ -3525,7 +3705,7 @@
     },
     {
      "k": "env",
-     "txt": "PHI: defense #10, pace #16 \u00b7 CLE: offense #7, pace #12"
+     "txt": "PHI: defense #9, pace #16 \u00b7 CLE: offense #7, pace #12"
     }
    ]
   },
@@ -3558,9 +3738,9 @@
     },
     {
      "k": "sim",
-     "v": 0.916,
+     "v": 0.915,
      "n": 37,
-     "txt": "Players with his profile: -8% threes vs DAL (37 close comps)"
+     "txt": "Players with his profile: -9% threes vs DAL (37 close comps)"
     },
     {
      "k": "h2h",
@@ -3584,7 +3764,7 @@
    "stat": "pra",
    "stat_name": "pts+reb+ast",
    "proj": 24.2,
-   "base": 22.88,
+   "base": 22.89,
    "mult": 1.057,
    "minutes": 26.7,
    "status": "",
@@ -3620,63 +3800,18 @@
    ]
   },
   {
-   "pid": "2490149",
-   "name": "CJ McCollum",
+   "pid": "4278039",
+   "name": "Nickeil Alexander-Walker",
    "team": "ATL",
    "opp": "WSH",
    "home": true,
    "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 23.3,
-   "base": 22.07,
-   "mult": 1.056,
-   "minutes": 27.5,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0545,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.031,
-     "n": 96.8,
-     "rank": 7,
-     "txt": "WSH gives shooting guards +3% pts+reb+ast vs their norm (#7 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.081,
-     "n": 141,
-     "txt": "Players with his profile: +8% pts+reb+ast vs WSH (141 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.034,
-     "n": 3,
-     "txt": "His history vs WSH: 23.7 pts+reb+ast/g in 3 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ]
-  },
-  {
-   "pid": "5174563",
-   "name": "Kyshawn George",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "SF",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 5.69,
-   "base": 5.38,
+   "proj": 2.84,
+   "base": 2.69,
    "mult": 1.056,
-   "minutes": 38.0,
+   "minutes": 32.0,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
@@ -3686,41 +3821,41 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.011,
-     "n": 92.3,
-     "rank": 13,
-     "txt": "ATL gives small forwards +1% assists vs their norm (#13 softest of 30)"
+     "v": 1.107,
+     "n": 100.0,
+     "rank": 1,
+     "txt": "WSH gives shooting guards +11% assists vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.063,
-     "n": 114,
-     "txt": "Players with his profile: +6% assists vs ATL (114 close comps)"
+     "v": 1.097,
+     "n": 125,
+     "txt": "Players with his profile: +10% assists vs WSH (125 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.082,
-     "n": 3,
-     "txt": "His history vs ATL: 5.3 assists/g in 3 games (+8%)"
+     "v": 1.029,
+     "n": 5,
+     "txt": "His history vs WSH: 3.4 assists/g in 5 games (+3%)"
     },
     {
      "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
    ],
-   "line": 4.5,
-   "side": "Over",
-   "price": 2.1,
-   "am": 110,
-   "book": "hardrockbet",
-   "ev": 0.0454,
-   "p_model": 0.611,
-   "p_mkt": 0.454,
+   "line": 3.5,
+   "side": "Under",
+   "price": 1.91,
+   "am": -110,
+   "book": "espnbet",
+   "ev": 0.0784,
+   "p_model": 0.69,
+   "p_mkt": 0.516,
    "event_id": "9246c91f746732472c13e94bd8e7be85",
    "market": "player_assists",
-   "nbooks": 6,
+   "nbooks": 5,
    "at": "2026-11-06T23:40:16Z",
-   "open": 4.5
+   "open": 3.5
   },
   {
    "pid": "4278049",
@@ -3834,7 +3969,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.044,
+     "v": 1.043,
      "n": 86.9,
      "rank": 5,
      "txt": "MIL gives small forwards +4% reb+ast vs their norm (#5 softest of 30)"
@@ -3869,6 +4004,51 @@
    "nbooks": 3,
    "at": "2026-11-06T23:40:16Z",
    "open": 11.5
+  },
+  {
+   "pid": "4279318",
+   "name": "Daeqwon Plowden",
+   "team": "SAC",
+   "opp": "SA",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 2.48,
+   "base": 2.61,
+   "mult": 0.947,
+   "minutes": 17.5,
+   "status": "",
+   "start": "2026-11-07T03:00Z",
+   "espn_id": "401909295",
+   "lean": "Under",
+   "strength": 0.0545,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.974,
+     "n": 124.7,
+     "rank": 20,
+     "txt": "SA gives shooting guards -3% reb+ast vs their norm (#11 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.946,
+     "n": 193,
+     "txt": "Players with his profile: -5% reb+ast vs SA (193 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.953,
+     "n": 3,
+     "txt": "His history vs SA: 2.3 reb+ast/g in 3 games (-5%)"
+    },
+    {
+     "k": "env",
+     "txt": "SA: defense #3, pace #14 \u00b7 SAC: offense #29, pace #15"
+    }
+   ]
   },
   {
    "pid": "4683766",
@@ -3916,6 +4096,51 @@
    ]
   },
   {
+   "pid": "4433247",
+   "name": "Jonathan Kuminga",
+   "team": "MIN",
+   "opp": "NO",
+   "home": false,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 9.88,
+   "base": 9.38,
+   "mult": 1.055,
+   "minutes": 34.6,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909293",
+   "lean": "Over",
+   "strength": 0.0535,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.048,
+     "n": 88.2,
+     "rank": 4,
+     "txt": "NO gives small forwards +5% reb+ast vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.093,
+     "n": 69,
+     "txt": "Players with his profile: +9% reb+ast vs NO (69 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.976,
+     "n": 1,
+     "txt": "His history vs NO: 3.0 reb+ast/g in 1 games (-2%)"
+    },
+    {
+     "k": "env",
+     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
+    }
+   ]
+  },
+  {
    "pid": "4395625",
    "name": "RJ Barrett",
    "team": "TOR",
@@ -3926,18 +4151,18 @@
    "stat_name": "assists",
    "proj": 4.7,
    "base": 4.46,
-   "mult": 1.055,
+   "mult": 1.054,
    "minutes": 42.0,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909292",
    "lean": "Over",
-   "strength": 0.0535,
+   "strength": 0.0526,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.068,
+     "v": 1.067,
      "n": 86.9,
      "rank": 3,
      "txt": "MIL gives small forwards +7% assists vs their norm (#3 softest of 30)"
@@ -3984,27 +4209,27 @@
    "stat_name": "threes",
    "proj": 2.29,
    "base": 2.18,
-   "mult": 1.055,
+   "mult": 1.054,
    "minutes": 21.8,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909292",
    "lean": "Over",
-   "strength": 0.0535,
+   "strength": 0.0526,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.105,
+     "v": 1.103,
      "n": 86.9,
-     "rank": 1,
-     "txt": "MIL gives small forwards +10% threes vs their norm (#1 softest of 30)"
+     "rank": 2,
+     "txt": "MIL gives small forwards +10% threes vs their norm (#2 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.055,
+     "v": 1.054,
      "n": 124,
-     "txt": "Players with his profile: +6% threes vs MIL (124 close comps)"
+     "txt": "Players with his profile: +5% threes vs MIL (124 close comps)"
     },
     {
      "k": "h2h",
@@ -4019,197 +4244,49 @@
    ]
   },
   {
-   "pid": "4433247",
-   "name": "Jonathan Kuminga",
-   "team": "MIN",
-   "opp": "NO",
-   "home": false,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 9.3,
-   "base": 8.81,
-   "mult": 1.055,
-   "minutes": 32.5,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909293",
-   "lean": "Over",
-   "strength": 0.0535,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.048,
-     "n": 88.2,
-     "rank": 4,
-     "txt": "NO gives small forwards +5% reb+ast vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.093,
-     "n": 69,
-     "txt": "Players with his profile: +9% reb+ast vs NO (69 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.976,
-     "n": 1,
-     "txt": "His history vs NO: 3.0 reb+ast/g in 1 games (-2%)"
-    },
-    {
-     "k": "env",
-     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
-    }
-   ]
-  },
-  {
-   "pid": "4845374",
-   "name": "Bub Carrington",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 3.31,
-   "base": 3.14,
-   "mult": 1.054,
-   "minutes": 21.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0526,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.055,
-     "n": 54.4,
-     "rank": 16,
-     "txt": "ATL gives point guards +5% assists vs their norm (#15 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.004,
-     "n": 91,
-     "txt": "Players with his profile: +0% assists vs ATL (91 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.109,
-     "n": 5,
-     "txt": "His history vs ATL: 5.8 assists/g in 5 games (+11%)"
-    },
-    {
-     "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
-    }
-   ]
-  },
-  {
-   "pid": "5279133",
-   "name": "Joan Beringer",
-   "team": "MIN",
-   "opp": "NO",
-   "home": false,
-   "role": "PF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 7.47,
-   "base": 7.09,
-   "mult": 1.054,
-   "minutes": 17.7,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909293",
-   "lean": "Over",
-   "strength": 0.0526,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.042,
-     "n": 24.2,
-     "rank": 10,
-     "txt": "NO gives power forwards +4% reb+ast vs their norm (#10 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.084,
-     "n": 131,
-     "txt": "Players with his profile: +8% reb+ast vs NO (131 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.03,
-     "n": 2,
-     "txt": "His history vs NO: 8.5 reb+ast/g in 2 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
-    }
-   ]
-  },
-  {
-   "pid": "4397183",
-   "name": "Aaron Wiggins",
+   "pid": "5149077",
+   "name": "Kingston Flemings",
    "team": "ATL",
    "opp": "WSH",
    "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.36,
-   "base": 5.09,
+   "role": "PG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 19.78,
+   "base": 18.79,
    "mult": 1.053,
-   "minutes": 25.2,
+   "minutes": 25.7,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
    "lean": "Over",
    "strength": 0.0516,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.057,
-     "n": 96.8,
-     "rank": 4,
-     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
+     "v": 1.074,
+     "n": 53.3,
+     "rank": 3,
+     "txt": "WSH gives point guards +7% pts+reb+ast vs their norm (#3 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.051,
-     "n": 120,
-     "txt": "Players with his profile: +5% reb+ast vs WSH (120 close comps)"
+     "v": 1.04,
+     "n": 70,
+     "txt": "Players with his profile: +4% pts+reb+ast vs WSH (70 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.997,
-     "n": 3,
-     "txt": "His history vs WSH: 5.0 reb+ast/g in 3 games (-0%)"
+     "v": 1.027,
+     "n": 2,
+     "txt": "His history vs WSH: 19.5 pts+reb+ast/g in 2 games (+3%)"
     },
     {
      "k": "env",
      "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
-   ],
-   "line": 6.5,
-   "side": "Under",
-   "price": 1.8,
-   "am": -125,
-   "book": "hardrockbet",
-   "ev": 0.0382,
-   "p_model": 0.709,
-   "p_mkt": 0.525,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_rebounds_assists",
-   "nbooks": 2,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 6.5
+   ]
   },
   {
    "pid": "4433627",
@@ -4241,8 +4318,8 @@
     {
      "k": "sim",
      "v": 1.075,
-     "n": 154,
-     "txt": "Players with his profile: +8% assists vs DAL (154 close comps)"
+     "n": 153,
+     "txt": "Players with his profile: +7% assists vs DAL (153 close comps)"
     },
     {
      "k": "h2h",
@@ -4257,6 +4334,51 @@
    ]
   },
   {
+   "pid": "4683689",
+   "name": "Jordan Walsh",
+   "team": "BOS",
+   "opp": "CHA",
+   "home": false,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 7.75,
+   "base": 8.16,
+   "mult": 0.95,
+   "minutes": 16.1,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0513,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.941,
+     "n": 94.2,
+     "rank": 28,
+     "txt": "CHA gives shooting guards -6% pts+reb+ast vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.975,
+     "n": 138,
+     "txt": "Players with his profile: -3% pts+reb+ast vs CHA (138 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.964,
+     "n": 4,
+     "txt": "His history vs CHA: 10.8 pts+reb+ast/g in 4 games (-4%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
+    }
+   ]
+  },
+  {
    "pid": "4600663",
    "name": "Zach Edey",
    "team": "MEM",
@@ -4265,7 +4387,7 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 18.07,
+   "proj": 18.08,
    "base": 19.02,
    "mult": 0.95,
    "minutes": 22.2,
@@ -4280,8 +4402,8 @@
      "k": "dvp",
      "v": 0.935,
      "n": 43.9,
-     "rank": 27,
-     "txt": "OKC gives centers -6% pts+reb+ast vs their norm (#4 toughest of 30)"
+     "rank": 26,
+     "txt": "OKC gives centers -6% pts+reb+ast vs their norm (#5 toughest of 30)"
     },
     {
      "k": "sim",
@@ -4338,7 +4460,7 @@
      "k": "h2h",
      "v": 1.075,
      "n": 2,
-     "txt": "His history vs DAL: 16.0 reb+ast/g in 2 games (+7%)"
+     "txt": "His history vs DAL: 16.0 reb+ast/g in 2 games (+8%)"
     },
     {
      "k": "env",
@@ -4375,9 +4497,9 @@
     },
     {
      "k": "sim",
-     "v": 0.994,
-     "n": 153,
-     "txt": "Players with his profile: -1% threes vs MIN (153 close comps)"
+     "v": 0.995,
+     "n": 144,
+     "txt": "Players with his profile: -1% threes vs MIN (144 close comps)"
     },
     {
      "k": "h2h",
@@ -4387,7 +4509,52 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
+    }
+   ]
+  },
+  {
+   "pid": "5174563",
+   "name": "Kyshawn George",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "SF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 34.22,
+   "base": 32.58,
+   "mult": 1.051,
+   "minutes": 39.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0497,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.037,
+     "n": 94.4,
+     "rank": 5,
+     "txt": "ATL gives small forwards +4% pts+reb+ast vs their norm (#5 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.035,
+     "n": 129,
+     "txt": "Players with his profile: +3% pts+reb+ast vs ATL (129 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.076,
+     "n": 4,
+     "txt": "His history vs ATL: 30.8 pts+reb+ast/g in 4 games (+8%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
    ]
   },
@@ -4415,14 +4582,14 @@
      "k": "dvp",
      "v": 1.12,
      "n": 50.5,
-     "rank": 7,
-     "txt": "UTAH gives point guards +12% assists vs their norm (#7 softest of 30)"
+     "rank": 6,
+     "txt": "UTAH gives point guards +12% assists vs their norm (#6 softest of 30)"
     },
     {
      "k": "sim",
      "v": 1.07,
-     "n": 57,
-     "txt": "Players with his profile: +7% assists vs UTAH (57 close comps)"
+     "n": 53,
+     "txt": "Players with his profile: +7% assists vs UTAH (53 close comps)"
     },
     {
      "k": "h2h",
@@ -4499,7 +4666,7 @@
    "espn_id": "401909290",
    "lean": "Over",
    "strength": 0.0497,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -4510,7 +4677,7 @@
     },
     {
      "k": "sim",
-     "v": 1.108,
+     "v": 1.109,
      "n": 161,
      "txt": "Players with his profile: +11% threes vs UTAH (161 close comps)"
     },
@@ -4555,7 +4722,7 @@
     },
     {
      "k": "sim",
-     "v": 1.037,
+     "v": 1.038,
      "n": 112,
      "txt": "Players with his profile: +4% reb+ast vs SAC (112 close comps)"
     },
@@ -4572,47 +4739,47 @@
    ]
   },
   {
-   "pid": "5104155",
-   "name": "Bilal Coulibaly",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "SG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 0.87,
-   "base": 0.9,
+   "pid": "4396971",
+   "name": "Naz Reid",
+   "team": "CHA",
+   "opp": "BOS",
+   "home": true,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 29.62,
+   "base": 31.12,
    "mult": 0.952,
-   "minutes": 29.5,
+   "minutes": 37.5,
    "status": "",
    "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
+   "espn_id": "401909288",
    "lean": "Under",
    "strength": 0.0492,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.968,
-     "n": 103.4,
-     "rank": 20,
-     "txt": "ATL gives shooting guards -3% threes vs their norm (#11 toughest of 30)"
+     "v": 0.937,
+     "n": 48.4,
+     "rank": 25,
+     "txt": "BOS gives centers -6% pts+reb+ast vs their norm (#6 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.972,
-     "n": 20,
-     "txt": "Players with his profile: -3% threes vs ATL (20 close comps)"
+     "v": 0.948,
+     "n": 46,
+     "txt": "Players with his profile: -5% pts+reb+ast vs BOS (46 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.826,
-     "n": 4,
-     "txt": "His history vs ATL: 0.0 threes/g in 4 games (-17%)"
+     "v": 0.986,
+     "n": 3,
+     "txt": "His history vs BOS: 20.0 pts+reb+ast/g in 3 games (-1%)"
     },
     {
      "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
     }
    ]
   },
@@ -4646,8 +4813,8 @@
     {
      "k": "sim",
      "v": 0.944,
-     "n": 217,
-     "txt": "Players with his profile: -6% reb+ast vs MIN (217 close comps)"
+     "n": 215,
+     "txt": "Players with his profile: -6% reb+ast vs MIN (215 close comps)"
     },
     {
      "k": "h2h",
@@ -4657,54 +4824,157 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
     }
    ]
   },
   {
-   "pid": "4277813",
-   "name": "Herbert Jones",
-   "team": "NO",
-   "opp": "MIN",
+   "pid": "4278039",
+   "name": "Nickeil Alexander-Walker",
+   "team": "ATL",
+   "opp": "WSH",
    "home": true,
-   "role": "SF",
+   "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 12.69,
-   "base": 13.32,
-   "mult": 0.952,
-   "minutes": 28.5,
+   "proj": 27.86,
+   "base": 26.54,
+   "mult": 1.05,
+   "minutes": 32.0,
    "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909293",
-   "lean": "Under",
-   "strength": 0.0492,
-   "starter": null,
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0488,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.956,
-     "n": 93.2,
-     "rank": 25,
-     "txt": "MIN gives small forwards -4% pts+reb+ast vs their norm (#6 toughest of 30)"
+     "v": 1.035,
+     "n": 100.0,
+     "rank": 6,
+     "txt": "WSH gives shooting guards +3% pts+reb+ast vs their norm (#6 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.936,
-     "n": 217,
-     "txt": "Players with his profile: -6% pts+reb+ast vs MIN (217 close comps)"
+     "v": 1.082,
+     "n": 125,
+     "txt": "Players with his profile: +8% pts+reb+ast vs WSH (125 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.998,
-     "n": 1,
-     "txt": "His history vs MIN: 11.0 pts+reb+ast/g in 1 games (-0%)"
+     "v": 1.009,
+     "n": 5,
+     "txt": "His history vs WSH: 25.4 pts+reb+ast/g in 5 games (+1%)"
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
     }
    ]
+  },
+  {
+   "pid": "4278129",
+   "name": "Deandre Ayton",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 16.63,
+   "base": 15.84,
+   "mult": 1.05,
+   "minutes": 22.1,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0488,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.062,
+     "n": 50.6,
+     "rank": 6,
+     "txt": "ATL gives centers +6% pts+reb+ast vs their norm (#6 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.019,
+     "n": 130,
+     "txt": "Players with his profile: +2% pts+reb+ast vs ATL (130 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.073,
+     "n": 4,
+     "txt": "His history vs ATL: 21.0 pts+reb+ast/g in 4 games (+7%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
+    }
+   ]
+  },
+  {
+   "pid": "5174563",
+   "name": "Kyshawn George",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 11.63,
+   "base": 11.07,
+   "mult": 1.05,
+   "minutes": 39.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0488,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.031,
+     "n": 94.4,
+     "rank": 9,
+     "txt": "ATL gives small forwards +3% reb+ast vs their norm (#9 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.015,
+     "n": 129,
+     "txt": "Players with his profile: +2% reb+ast vs ATL (129 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.034,
+     "n": 4,
+     "txt": "His history vs ATL: 9.8 reb+ast/g in 4 games (+3%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
+    }
+   ],
+   "line": 8.5,
+   "side": "Over",
+   "price": 1.8,
+   "am": -125,
+   "book": "betmgm",
+   "ev": 0.0439,
+   "p_model": 0.694,
+   "p_mkt": 0.536,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_rebounds_assists",
+   "nbooks": 3,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 8.5
   },
   {
    "pid": "4433627",
@@ -4735,9 +5005,9 @@
     },
     {
      "k": "sim",
-     "v": 1.058,
-     "n": 154,
-     "txt": "Players with his profile: +6% pts+reb+ast vs DAL (154 close comps)"
+     "v": 1.059,
+     "n": 153,
+     "txt": "Players with his profile: +6% pts+reb+ast vs DAL (153 close comps)"
     },
     {
      "k": "h2h",
@@ -4773,7 +5043,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.07,
+     "v": 1.071,
      "n": 92.2,
      "rank": 2,
      "txt": "DAL gives shooting guards +7% reb+ast vs their norm (#2 softest of 30)"
@@ -4932,51 +5202,6 @@
    ]
   },
   {
-   "pid": "4396971",
-   "name": "Naz Reid",
-   "team": "CHA",
-   "opp": "BOS",
-   "home": true,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 31.26,
-   "base": 32.79,
-   "mult": 0.953,
-   "minutes": 39.6,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0481,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.938,
-     "n": 47.1,
-     "rank": 25,
-     "txt": "BOS gives centers -6% pts+reb+ast vs their norm (#6 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.951,
-     "n": 52,
-     "txt": "Players with his profile: -5% pts+reb+ast vs BOS (52 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.986,
-     "n": 2,
-     "txt": "His history vs BOS: 19.0 pts+reb+ast/g in 2 games (-1%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
-    }
-   ]
-  },
-  {
    "pid": "5060701",
    "name": "Christian Anderson",
    "team": "CHA",
@@ -4985,10 +5210,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 6.31,
-   "base": 6.62,
+   "proj": 8.59,
+   "base": 9.01,
    "mult": 0.953,
-   "minutes": 12.4,
+   "minutes": 17.5,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909288",
@@ -4998,71 +5223,116 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.929,
-     "n": 105.5,
+     "v": 0.928,
+     "n": 107.9,
      "rank": 29,
      "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.959,
-     "n": 71,
-     "txt": "Players with his profile: -4% pts+reb+ast vs BOS (71 close comps)"
+     "v": 0.963,
+     "n": 75,
+     "txt": "Players with his profile: -4% pts+reb+ast vs BOS (75 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs BOS yet"
+     "v": 0.997,
+     "n": 1,
+     "txt": "His history vs BOS: 12.0 pts+reb+ast/g in 1 games (-0%)"
     },
     {
      "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
     }
    ]
   },
   {
-   "pid": "5149077",
-   "name": "Kingston Flemings",
-   "team": "ATL",
-   "opp": "WSH",
+   "pid": "4277813",
+   "name": "Herbert Jones",
+   "team": "NO",
+   "opp": "MIN",
    "home": true,
-   "role": "PG",
+   "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 19.04,
-   "base": 18.15,
+   "proj": 12.69,
+   "base": 13.32,
+   "mult": 0.953,
+   "minutes": 28.5,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909293",
+   "lean": "Under",
+   "strength": 0.0481,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.956,
+     "n": 93.2,
+     "rank": 25,
+     "txt": "MIN gives small forwards -4% pts+reb+ast vs their norm (#6 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.936,
+     "n": 215,
+     "txt": "Players with his profile: -6% pts+reb+ast vs MIN (215 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.998,
+     "n": 1,
+     "txt": "His history vs MIN: 11.0 pts+reb+ast/g in 1 games (-0%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
+    }
+   ]
+  },
+  {
+   "pid": "4845374",
+   "name": "Bub Carrington",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 2.98,
+   "base": 2.84,
    "mult": 1.049,
-   "minutes": 24.6,
+   "minutes": 19.9,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
    "lean": "Over",
    "strength": 0.0478,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.071,
-     "n": 51.7,
-     "rank": 5,
-     "txt": "WSH gives point guards +7% pts+reb+ast vs their norm (#5 softest of 30)"
+     "v": 1.054,
+     "n": 55.9,
+     "rank": 16,
+     "txt": "ATL gives point guards +5% assists vs their norm (#15 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.034,
-     "n": 61,
-     "txt": "Players with his profile: +3% pts+reb+ast vs WSH (61 close comps)"
+     "v": 1.002,
+     "n": 94,
+     "txt": "Players with his profile: +0% assists vs ATL (94 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.028,
-     "n": 1,
-     "txt": "His history vs WSH: 21.0 pts+reb+ast/g in 1 games (+3%)"
+     "v": 1.089,
+     "n": 6,
+     "txt": "His history vs ATL: 5.0 assists/g in 6 games (+9%)"
     },
     {
      "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
    ]
   },
@@ -5090,14 +5360,14 @@
      "k": "dvp",
      "v": 1.104,
      "n": 86.6,
-     "rank": 2,
-     "txt": "UTAH gives small forwards +10% threes vs their norm (#2 softest of 30)"
+     "rank": 1,
+     "txt": "UTAH gives small forwards +10% threes vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
      "v": 1.084,
-     "n": 114,
-     "txt": "Players with his profile: +8% threes vs UTAH (114 close comps)"
+     "n": 115,
+     "txt": "Players with his profile: +8% threes vs UTAH (115 close comps)"
     },
     {
      "k": "h2h",
@@ -5141,8 +5411,8 @@
     {
      "k": "sim",
      "v": 1.067,
-     "n": 154,
-     "txt": "Players with his profile: +7% reb+ast vs DAL (154 close comps)"
+     "n": 153,
+     "txt": "Players with his profile: +7% reb+ast vs DAL (153 close comps)"
     },
     {
      "k": "h2h",
@@ -5185,7 +5455,7 @@
     },
     {
      "k": "sim",
-     "v": 1.107,
+     "v": 1.108,
      "n": 98,
      "txt": "Players with his profile: +11% assists vs MEM (98 close comps)"
     },
@@ -5210,10 +5480,10 @@
    "role": "SF",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 2.88,
-   "base": 2.75,
+   "proj": 3.07,
+   "base": 2.92,
    "mult": 1.049,
-   "minutes": 32.5,
+   "minutes": 34.6,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909293",
@@ -5255,10 +5525,10 @@
    "role": "SF",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 3.34,
-   "base": 3.18,
+   "proj": 3.68,
+   "base": 3.52,
    "mult": 1.049,
-   "minutes": 34.9,
+   "minutes": 38.6,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909293",
@@ -5275,7 +5545,7 @@
     },
     {
      "k": "sim",
-     "v": 1.037,
+     "v": 1.036,
      "n": 2,
      "txt": "Players with his profile: +4% assists vs NO (2 close comps)"
     },
@@ -5288,141 +5558,6 @@
     {
      "k": "env",
      "txt": "NO: defense #23, pace #4 \u00b7 MIN: offense #9, pace #9"
-    }
-   ]
-  },
-  {
-   "pid": "4602025",
-   "name": "Sion James",
-   "team": "CHA",
-   "opp": "BOS",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 14.2,
-   "base": 14.88,
-   "mult": 0.954,
-   "minutes": 31.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0471,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.929,
-     "n": 105.5,
-     "rank": 29,
-     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.952,
-     "n": 139,
-     "txt": "Players with his profile: -5% pts+reb+ast vs BOS (139 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.045,
-     "n": 3,
-     "txt": "His history vs BOS: 13.0 pts+reb+ast/g in 3 games (+4%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
-    }
-   ]
-  },
-  {
-   "pid": "4065804",
-   "name": "Sam Hauser",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 11.06,
-   "base": 11.59,
-   "mult": 0.954,
-   "minutes": 22.0,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0471,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.967,
-     "n": 85.5,
-     "rank": 22,
-     "txt": "CHA gives small forwards -3% pts+reb+ast vs their norm (#9 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.939,
-     "n": 145,
-     "txt": "Players with his profile: -6% pts+reb+ast vs CHA (145 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.958,
-     "n": 3,
-     "txt": "His history vs CHA: 11.3 pts+reb+ast/g in 3 games (-4%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
-   "pid": "4683689",
-   "name": "Jordan Walsh",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 7.16,
-   "base": 7.5,
-   "mult": 0.954,
-   "minutes": 14.4,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.0471,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.941,
-     "n": 92.5,
-     "rank": 28,
-     "txt": "CHA gives shooting guards -6% pts+reb+ast vs their norm (#3 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.97,
-     "n": 129,
-     "txt": "Players with his profile: -3% pts+reb+ast vs CHA (129 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.983,
-     "n": 3,
-     "txt": "His history vs CHA: 11.3 pts+reb+ast/g in 3 games (-2%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
     }
    ]
   },
@@ -5448,14 +5583,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.91,
+     "v": 0.909,
      "n": 48.7,
      "rank": 28,
      "txt": "TOR gives centers -9% assists vs their norm (#3 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.928,
+     "v": 0.927,
      "n": 63,
      "txt": "Players with his profile: -7% assists vs TOR (63 close comps)"
     },
@@ -5641,7 +5776,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.049,
+     "v": 1.048,
      "n": 92.2,
      "rank": 7,
      "txt": "DAL gives shooting guards +5% assists vs their norm (#7 softest of 30)"
@@ -5649,8 +5784,8 @@
     {
      "k": "sim",
      "v": 1.072,
-     "n": 16,
-     "txt": "Players with his profile: +7% assists vs DAL (16 close comps)"
+     "n": 12,
+     "txt": "Players with his profile: +7% assists vs DAL (12 close comps)"
     },
     {
      "k": "h2h",
@@ -5661,51 +5796,6 @@
     {
      "k": "env",
      "txt": "DAL: defense #20, pace #5 \u00b7 UTAH: offense #22, pace #3"
-    }
-   ]
-  },
-  {
-   "pid": "4684272",
-   "name": "Ja'Kobe Walter",
-   "team": "TOR",
-   "opp": "MIL",
-   "home": false,
-   "role": "SG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 3.45,
-   "base": 3.3,
-   "mult": 1.048,
-   "minutes": 42.0,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909292",
-   "lean": "Over",
-   "strength": 0.0469,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.106,
-     "n": 97.1,
-     "rank": 1,
-     "txt": "MIL gives shooting guards +11% threes vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.095,
-     "n": 152,
-     "txt": "Players with his profile: +10% threes vs MIL (152 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.986,
-     "n": 3,
-     "txt": "His history vs MIL: 1.3 threes/g in 3 games (-1%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
     }
    ]
   },
@@ -5776,14 +5866,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.086,
+     "v": 1.087,
      "n": 47.3,
-     "rank": 5,
-     "txt": "SAC gives point guards +9% threes vs their norm (#5 softest of 30)"
+     "rank": 4,
+     "txt": "SAC gives point guards +9% threes vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.086,
+     "v": 1.085,
      "n": 112,
      "txt": "Players with his profile: +9% threes vs SAC (112 close comps)"
     },
@@ -5796,6 +5886,51 @@
     {
      "k": "env",
      "txt": "SAC: defense #30, pace #15 \u00b7 SA: offense #5, pace #14"
+    }
+   ]
+  },
+  {
+   "pid": "5175647",
+   "name": "Hugo Gonzalez",
+   "team": "BOS",
+   "opp": "CHA",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 2.86,
+   "base": 2.98,
+   "mult": 0.955,
+   "minutes": 13.9,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.046,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.978,
+     "n": 94.2,
+     "rank": 17,
+     "txt": "CHA gives shooting guards -2% reb+ast vs their norm (#14 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.959,
+     "n": 145,
+     "txt": "Players with his profile: -4% reb+ast vs CHA (145 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.937,
+     "n": 3,
+     "txt": "His history vs CHA: 3.7 reb+ast/g in 3 games (-6%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
     }
    ]
   },
@@ -5841,6 +5976,96 @@
     {
      "k": "env",
      "txt": "POR: defense #11, pace #11 \u00b7 LAL: offense #4, pace #23"
+    }
+   ]
+  },
+  {
+   "pid": "2490149",
+   "name": "CJ McCollum",
+   "team": "ATL",
+   "opp": "WSH",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 21.68,
+   "base": 20.71,
+   "mult": 1.047,
+   "minutes": 26.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Over",
+   "strength": 0.0459,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.035,
+     "n": 100.0,
+     "rank": 6,
+     "txt": "WSH gives shooting guards +3% pts+reb+ast vs their norm (#6 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.081,
+     "n": 139,
+     "txt": "Players with his profile: +8% pts+reb+ast vs WSH (139 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.996,
+     "n": 4,
+     "txt": "His history vs WSH: 20.5 pts+reb+ast/g in 4 games (-0%)"
+    },
+    {
+     "k": "env",
+     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+    }
+   ]
+  },
+  {
+   "pid": "4065648",
+   "name": "Jayson Tatum",
+   "team": "BOS",
+   "opp": "CHA",
+   "home": false,
+   "role": "SF",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 2.4,
+   "base": 2.29,
+   "mult": 1.047,
+   "minutes": 32.8,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Over",
+   "strength": 0.0459,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.06,
+     "n": 87.2,
+     "rank": 3,
+     "txt": "CHA gives small forwards +6% threes vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.032,
+     "n": 128,
+     "txt": "Players with his profile: +3% threes vs CHA (128 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.191,
+     "n": 3,
+     "txt": "His history vs CHA: 4.3 threes/g in 3 games (+19%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHA: defense #15, pace #28 \u00b7 BOS: offense #2, pace #30"
     }
    ]
   },
@@ -5935,6 +6160,51 @@
    ]
   },
   {
+   "pid": "4684272",
+   "name": "Ja'Kobe Walter",
+   "team": "TOR",
+   "opp": "MIL",
+   "home": false,
+   "role": "SG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 3.45,
+   "base": 3.3,
+   "mult": 1.047,
+   "minutes": 42.0,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909292",
+   "lean": "Over",
+   "strength": 0.0459,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.104,
+     "n": 97.1,
+     "rank": 1,
+     "txt": "MIL gives shooting guards +10% threes vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.094,
+     "n": 152,
+     "txt": "Players with his profile: +9% threes vs MIL (152 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.986,
+     "n": 3,
+     "txt": "His history vs MIL: 1.3 threes/g in 3 games (-1%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
+    }
+   ]
+  },
+  {
    "pid": "4395723",
    "name": "Keldon Johnson",
    "team": "SA",
@@ -5980,18 +6250,18 @@
    ]
   },
   {
-   "pid": "4278039",
-   "name": "Nickeil Alexander-Walker",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 26.73,
-   "base": 25.56,
+   "pid": "4277905",
+   "name": "Trae Young",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 10.95,
+   "base": 10.48,
    "mult": 1.046,
-   "minutes": 31.3,
+   "minutes": 39.5,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
@@ -6001,118 +6271,41 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.031,
-     "n": 96.8,
-     "rank": 7,
-     "txt": "WSH gives shooting guards +3% pts+reb+ast vs their norm (#7 softest of 30)"
+     "v": 1.054,
+     "n": 55.9,
+     "rank": 16,
+     "txt": "ATL gives point guards +5% assists vs their norm (#15 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.085,
-     "n": 126,
-     "txt": "Players with his profile: +9% pts+reb+ast vs WSH (126 close comps)"
+     "v": 1.071,
+     "n": 95,
+     "txt": "Players with his profile: +7% assists vs ATL (95 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.997,
-     "n": 4,
-     "txt": "His history vs WSH: 23.8 pts+reb+ast/g in 4 games (-0%)"
-    },
-    {
-     "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
-    }
-   ]
-  },
-  {
-   "pid": "4433287",
-   "name": "Brandon Miller",
-   "team": "CHA",
-   "opp": "BOS",
-   "home": true,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 8.91,
-   "base": 9.31,
-   "mult": 0.956,
-   "minutes": 38.7,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.045,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.955,
-     "n": 92.7,
-     "rank": 23,
-     "txt": "BOS gives small forwards -4% reb+ast vs their norm (#8 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.965,
-     "n": 142,
-     "txt": "Players with his profile: -4% reb+ast vs BOS (142 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.929,
-     "n": 3,
-     "txt": "His history vs BOS: 6.3 reb+ast/g in 3 games (-7%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
-    }
-   ]
-  },
-  {
-   "pid": "3135045",
-   "name": "Grayson Allen",
-   "team": "CHA",
-   "opp": "BOS",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 27.18,
-   "base": 28.42,
-   "mult": 0.956,
-   "minutes": 35.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909288",
-   "lean": "Under",
-   "strength": 0.045,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.929,
-     "n": 105.5,
-     "rank": 29,
-     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.938,
-     "n": 136,
-     "txt": "Players with his profile: -6% pts+reb+ast vs BOS (136 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.997,
+     "v": 0.992,
      "n": 2,
-     "txt": "His history vs BOS: 17.0 pts+reb+ast/g in 2 games (-0%)"
+     "txt": "His history vs ATL: 8.0 assists/g in 2 games (-1%)"
     },
     {
      "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
-   ]
+   ],
+   "line": 8.5,
+   "side": "Over",
+   "price": 1.74,
+   "am": -135,
+   "book": "hardrockbet",
+   "ev": 0.0142,
+   "p_model": 0.664,
+   "p_mkt": 0.551,
+   "event_id": "9246c91f746732472c13e94bd8e7be85",
+   "market": "player_assists",
+   "nbooks": 5,
+   "at": "2026-11-06T23:40:16Z",
+   "open": 8.5
   },
   {
    "pid": "4683934",
@@ -6168,7 +6361,7 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 39.53,
+   "proj": 39.52,
    "base": 37.78,
    "mult": 1.046,
    "minutes": 42.0,
@@ -6181,10 +6374,10 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.026,
+     "v": 1.025,
      "n": 86.9,
-     "rank": 9,
-     "txt": "MIL gives small forwards +3% pts+reb+ast vs their norm (#9 softest of 30)"
+     "rank": 10,
+     "txt": "MIL gives small forwards +3% pts+reb+ast vs their norm (#10 softest of 30)"
     },
     {
      "k": "sim",
@@ -6218,18 +6411,63 @@
    "open": 38.5
   },
   {
-   "pid": "4065804",
-   "name": "Sam Hauser",
-   "team": "BOS",
-   "opp": "CHA",
-   "home": false,
+   "pid": "4433287",
+   "name": "Brandon Miller",
+   "team": "CHA",
+   "opp": "BOS",
+   "home": true,
    "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 3.92,
-   "base": 4.09,
+   "proj": 6.8,
+   "base": 7.11,
    "mult": 0.957,
-   "minutes": 22.0,
+   "minutes": 29.6,
+   "status": "Day-To-Day",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.044,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.956,
+     "n": 94.4,
+     "rank": 23,
+     "txt": "BOS gives small forwards -4% reb+ast vs their norm (#8 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.963,
+     "n": 142,
+     "txt": "Players with his profile: -4% reb+ast vs BOS (142 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.933,
+     "n": 4,
+     "txt": "His history vs BOS: 5.5 reb+ast/g in 4 games (-7%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
+    }
+   ]
+  },
+  {
+   "pid": "5239590",
+   "name": "Liam McNeeley",
+   "team": "CHA",
+   "opp": "BOS",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 7.46,
+   "base": 7.8,
+   "mult": 0.957,
+   "minutes": 12.7,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909288",
@@ -6239,71 +6477,26 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.918,
-     "n": 85.5,
-     "rank": 28,
-     "txt": "CHA gives small forwards -8% reb+ast vs their norm (#3 toughest of 30)"
+     "v": 0.928,
+     "n": 107.9,
+     "rank": 29,
+     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.955,
-     "n": 145,
-     "txt": "Players with his profile: -4% reb+ast vs CHA (145 close comps)"
+     "v": 0.95,
+     "n": 16,
+     "txt": "Players with his profile: -5% pts+reb+ast vs BOS (16 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.0,
-     "n": 3,
-     "txt": "His history vs CHA: 6.3 reb+ast/g in 3 games (-0%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHA: defense #14, pace #28 \u00b7 BOS: offense #2, pace #30"
-    }
-   ]
-  },
-  {
-   "pid": "5099752",
-   "name": "Rayan Rupert",
-   "team": "PHI",
-   "opp": "CLE",
-   "home": false,
-   "role": "SG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.07,
-   "base": 1.02,
-   "mult": 1.045,
-   "minutes": 24.2,
-   "status": "",
-   "start": "2026-11-07T00:30Z",
-   "espn_id": "401909289",
-   "lean": "Over",
-   "strength": 0.044,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.066,
-     "n": 112.4,
-     "rank": 4,
-     "txt": "CLE gives shooting guards +7% threes vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.089,
-     "n": 148,
-     "txt": "Players with his profile: +9% threes vs CLE (148 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.007,
+     "v": 1.035,
      "n": 2,
-     "txt": "His history vs CLE: 0.5 threes/g in 2 games (+1%)"
+     "txt": "His history vs BOS: 14.5 pts+reb+ast/g in 2 games (+3%)"
     },
     {
      "k": "env",
-     "txt": "CLE: defense #12, pace #12 \u00b7 PHI: offense #20, pace #16"
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
     }
    ]
   },
@@ -6329,7 +6522,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.075,
+     "v": 1.076,
      "n": 89.6,
      "rank": 2,
      "txt": "MEM gives small forwards +8% reb+ast vs their norm (#2 softest of 30)"
@@ -6376,14 +6569,14 @@
      "k": "dvp",
      "v": 0.988,
      "n": 48.7,
-     "rank": 25,
-     "txt": "TOR gives centers -1% threes vs their norm (#6 toughest of 30)"
+     "rank": 24,
+     "txt": "TOR gives centers -1% threes vs their norm (#7 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.876,
+     "v": 0.875,
      "n": 65,
-     "txt": "Players with his profile: -12% threes vs TOR (65 close comps)"
+     "txt": "Players with his profile: -13% threes vs TOR (65 close comps)"
     },
     {
      "k": "h2h",
@@ -6394,6 +6587,51 @@
     {
      "k": "env",
      "txt": "TOR: defense #8, pace #20 \u00b7 MIL: offense #24, pace #22"
+    }
+   ]
+  },
+  {
+   "pid": "4277813",
+   "name": "Herbert Jones",
+   "team": "NO",
+   "opp": "MIN",
+   "home": true,
+   "role": "SF",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 1.94,
+   "base": 2.03,
+   "mult": 0.957,
+   "minutes": 28.5,
+   "status": "",
+   "start": "2026-11-07T01:00Z",
+   "espn_id": "401909293",
+   "lean": "Under",
+   "strength": 0.044,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.95,
+     "n": 93.2,
+     "rank": 22,
+     "txt": "MIN gives small forwards -5% assists vs their norm (#9 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.948,
+     "n": 215,
+     "txt": "Players with his profile: -5% assists vs MIN (215 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.047,
+     "n": 1,
+     "txt": "His history vs MIN: 5.0 assists/g in 1 games (+5%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
     }
    ]
   },
@@ -6426,7 +6664,7 @@
     },
     {
      "k": "sim",
-     "v": 0.948,
+     "v": 0.949,
      "n": 108,
      "txt": "Players with his profile: -5% reb+ast vs MIN (108 close comps)"
     },
@@ -6438,7 +6676,7 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
     }
    ]
   },
@@ -6451,10 +6689,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 22.45,
-   "base": 23.46,
+   "proj": 23.3,
+   "base": 24.34,
    "mult": 0.957,
-   "minutes": 29.8,
+   "minutes": 30.9,
    "status": "",
    "start": "2026-11-07T03:00Z",
    "espn_id": "401909295",
@@ -6497,9 +6735,9 @@
    "stat": "pra",
    "stat_name": "pts+reb+ast",
    "proj": 37.41,
-   "base": 35.79,
+   "base": 35.8,
    "mult": 1.045,
-   "minutes": 28.2,
+   "minutes": 28.3,
    "status": "",
    "start": "2026-11-07T03:00Z",
    "espn_id": "401909295",
@@ -6533,18 +6771,18 @@
    ]
   },
   {
-   "pid": "5174563",
-   "name": "Kyshawn George",
+   "pid": "5142718",
+   "name": "AJ Dybantsa",
    "team": "WSH",
    "opp": "ATL",
    "home": false,
    "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 11.13,
-   "base": 10.66,
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 2.57,
+   "base": 2.46,
    "mult": 1.044,
-   "minutes": 38.0,
+   "minutes": 36.3,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909287",
@@ -6554,41 +6792,73 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.027,
-     "n": 92.3,
-     "rank": 10,
-     "txt": "ATL gives small forwards +3% reb+ast vs their norm (#10 softest of 30)"
+     "v": 1.021,
+     "n": 94.4,
+     "rank": 13,
+     "txt": "ATL gives small forwards +2% assists vs their norm (#13 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.014,
-     "n": 114,
-     "txt": "Players with his profile: +1% reb+ast vs ATL (114 close comps)"
+     "v": 1.053,
+     "n": 29,
+     "txt": "Players with his profile: +5% assists vs ATL (29 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.024,
-     "n": 3,
-     "txt": "His history vs ATL: 9.3 reb+ast/g in 3 games (+2%)"
+     "v": 1.099,
+     "n": 2,
+     "txt": "His history vs ATL: 3.0 assists/g in 2 games (+10%)"
     },
     {
      "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
-   ],
-   "line": 8.5,
-   "side": "Over",
-   "price": 1.8,
-   "am": -125,
-   "book": "betmgm",
-   "ev": 0.0439,
-   "p_model": 0.694,
-   "p_mkt": 0.536,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_rebounds_assists",
-   "nbooks": 3,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 8.5
+   ]
+  },
+  {
+   "pid": "5099752",
+   "name": "Rayan Rupert",
+   "team": "PHI",
+   "opp": "CLE",
+   "home": false,
+   "role": "SG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.07,
+   "base": 1.02,
+   "mult": 1.044,
+   "minutes": 24.2,
+   "status": "",
+   "start": "2026-11-07T00:30Z",
+   "espn_id": "401909289",
+   "lean": "Over",
+   "strength": 0.0431,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.065,
+     "n": 112.4,
+     "rank": 4,
+     "txt": "CLE gives shooting guards +7% threes vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.089,
+     "n": 145,
+     "txt": "Players with his profile: +9% threes vs CLE (145 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.007,
+     "n": 2,
+     "txt": "His history vs CLE: 0.5 threes/g in 2 games (+1%)"
+    },
+    {
+     "k": "env",
+     "txt": "CLE: defense #12, pace #12 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
   },
   {
    "pid": "4278078",
@@ -6664,9 +6934,9 @@
     },
     {
      "k": "sim",
-     "v": 1.04,
-     "n": 140,
-     "txt": "Players with his profile: +4% reb+ast vs MEM (140 close comps)"
+     "v": 1.041,
+     "n": 138,
+     "txt": "Players with his profile: +4% reb+ast vs MEM (138 close comps)"
     },
     {
      "k": "h2h",
@@ -6689,10 +6959,10 @@
    "role": "PG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.69,
-   "base": 1.62,
+   "proj": 1.93,
+   "base": 1.86,
    "mult": 1.044,
-   "minutes": 14.3,
+   "minutes": 16.4,
    "status": "",
    "start": "2026-11-07T01:00Z",
    "espn_id": "401909293",
@@ -6702,16 +6972,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.067,
+     "v": 1.068,
      "n": 51.1,
      "rank": 7,
      "txt": "NO gives point guards +7% threes vs their norm (#7 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.114,
+     "v": 1.116,
      "n": 67,
-     "txt": "Players with his profile: +11% threes vs NO (67 close comps)"
+     "txt": "Players with his profile: +12% threes vs NO (67 close comps)"
     },
     {
      "k": "h2h",
@@ -6726,152 +6996,49 @@
    ]
   },
   {
-   "pid": "5211176",
-   "name": "Tidjane Salaun",
+   "pid": "4576060",
+   "name": "Ryan Kalkbrenner",
    "team": "CHA",
    "opp": "BOS",
    "home": true,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 11.3,
-   "base": 11.8,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 6.85,
+   "base": 7.15,
    "mult": 0.958,
-   "minutes": 18.7,
+   "minutes": 23.5,
    "status": "",
    "start": "2026-11-07T00:00Z",
    "espn_id": "401909288",
    "lean": "Under",
    "strength": 0.0429,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.959,
-     "n": 92.7,
-     "rank": 24,
-     "txt": "BOS gives small forwards -4% pts+reb+ast vs their norm (#7 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.953,
-     "n": 73,
-     "txt": "Players with his profile: -5% pts+reb+ast vs BOS (73 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs BOS yet"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #6, pace #30 \u00b7 CHA: offense #17, pace #28"
-    }
-   ]
-  },
-  {
-   "pid": "4277813",
-   "name": "Herbert Jones",
-   "team": "NO",
-   "opp": "MIN",
-   "home": true,
-   "role": "SF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 1.94,
-   "base": 2.03,
-   "mult": 0.958,
-   "minutes": 28.5,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909293",
-   "lean": "Under",
-   "strength": 0.0429,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.95,
-     "n": 93.2,
-     "rank": 22,
-     "txt": "MIN gives small forwards -5% assists vs their norm (#9 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.948,
-     "n": 217,
-     "txt": "Players with his profile: -5% assists vs MIN (217 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.047,
-     "n": 1,
-     "txt": "His history vs MIN: 5.0 assists/g in 1 games (+5%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
-    }
-   ]
-  },
-  {
-   "pid": "4278039",
-   "name": "Nickeil Alexander-Walker",
-   "team": "ATL",
-   "opp": "WSH",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.94,
-   "base": 5.69,
-   "mult": 1.043,
-   "minutes": 31.3,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0421,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.057,
-     "n": 96.8,
-     "rank": 4,
-     "txt": "WSH gives shooting guards +6% reb+ast vs their norm (#4 softest of 30)"
+     "v": 0.957,
+     "n": 48.4,
+     "rank": 26,
+     "txt": "BOS gives centers -4% reb+ast vs their norm (#5 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.072,
-     "n": 126,
-     "txt": "Players with his profile: +7% reb+ast vs WSH (126 close comps)"
+     "v": 0.962,
+     "n": 133,
+     "txt": "Players with his profile: -4% reb+ast vs BOS (133 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.038,
+     "v": 0.967,
      "n": 4,
-     "txt": "His history vs WSH: 7.0 reb+ast/g in 4 games (+4%)"
+     "txt": "His history vs BOS: 3.8 reb+ast/g in 4 games (-3%)"
     },
     {
      "k": "env",
-     "txt": "WSH: defense #28, pace #8 \u00b7 ATL: offense #15, pace #6"
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
     }
-   ],
-   "line": 6.5,
-   "side": "Under",
-   "price": 2.16,
-   "am": 116,
-   "book": "fanduel",
-   "ev": 0.079,
-   "p_model": 0.632,
-   "p_mkt": 0.448,
-   "event_id": "9246c91f746732472c13e94bd8e7be85",
-   "market": "player_rebounds_assists",
-   "nbooks": 6,
-   "at": "2026-11-06T23:40:16Z",
-   "open": 6.5
+   ]
   },
   {
    "pid": "3908809",
@@ -6882,10 +7049,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 4.78,
-   "base": 4.58,
+   "proj": 4.93,
+   "base": 4.73,
    "mult": 1.043,
-   "minutes": 34.0,
+   "minutes": 35.0,
    "status": "",
    "start": "2026-11-07T00:30Z",
    "espn_id": "401909289",
@@ -6897,8 +7064,8 @@
      "k": "dvp",
      "v": 1.011,
      "n": 67.6,
-     "rank": 22,
-     "txt": "PHI gives point guards +1% assists vs their norm (#9 toughest of 30)"
+     "rank": 21,
+     "txt": "PHI gives point guards +1% assists vs their norm (#10 toughest of 30)"
     },
     {
      "k": "sim",
@@ -6914,7 +7081,7 @@
     },
     {
      "k": "env",
-     "txt": "PHI: defense #10, pace #16 \u00b7 CLE: offense #7, pace #12"
+     "txt": "PHI: defense #9, pace #16 \u00b7 CLE: offense #7, pace #12"
     }
    ]
   },
@@ -6942,8 +7109,8 @@
      "k": "dvp",
      "v": 1.025,
      "n": 91.4,
-     "rank": 10,
-     "txt": "DAL gives small forwards +3% pts+reb+ast vs their norm (#10 softest of 30)"
+     "rank": 9,
+     "txt": "DAL gives small forwards +3% pts+reb+ast vs their norm (#9 softest of 30)"
     },
     {
      "k": "sim",
@@ -6960,6 +7127,51 @@
     {
      "k": "env",
      "txt": "DAL: defense #20, pace #5 \u00b7 UTAH: offense #22, pace #3"
+    }
+   ]
+  },
+  {
+   "pid": "5238230",
+   "name": "Tre Johnson",
+   "team": "WSH",
+   "opp": "ATL",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 3.54,
+   "base": 3.68,
+   "mult": 0.959,
+   "minutes": 22.5,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909287",
+   "lean": "Under",
+   "strength": 0.0419,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.958,
+     "n": 105.1,
+     "rank": 24,
+     "txt": "ATL gives shooting guards -4% reb+ast vs their norm (#7 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.965,
+     "n": 99,
+     "txt": "Players with his profile: -3% reb+ast vs ATL (99 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.969,
+     "n": 4,
+     "txt": "His history vs ATL: 3.2 reb+ast/g in 4 games (-3%)"
+    },
+    {
+     "k": "env",
+     "txt": "ATL: defense #10, pace #6 \u00b7 WSH: offense #27, pace #8"
     }
    ]
   },
@@ -6987,12 +7199,12 @@
      "k": "dvp",
      "v": 0.974,
      "n": 112.4,
-     "rank": 19,
-     "txt": "CLE gives shooting guards -3% reb+ast vs their norm (#12 toughest of 30)"
+     "rank": 21,
+     "txt": "CLE gives shooting guards -3% reb+ast vs their norm (#10 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.97,
+     "v": 0.969,
      "n": 156,
      "txt": "Players with his profile: -3% reb+ast vs CLE (156 close comps)"
     },
@@ -7004,7 +7216,7 @@
     },
     {
      "k": "env",
-     "txt": "CLE: defense #12, pace #12 \u00b7 PHI: offense #20, pace #16"
+     "txt": "CLE: defense #12, pace #12 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -7037,9 +7249,9 @@
     },
     {
      "k": "sim",
-     "v": 0.924,
+     "v": 0.925,
      "n": 115,
-     "txt": "Players with his profile: -8% threes vs DAL (115 close comps)"
+     "txt": "Players with his profile: -7% threes vs DAL (115 close comps)"
     },
     {
      "k": "h2h",
@@ -7144,96 +7356,6 @@
    ]
   },
   {
-   "pid": "4065732",
-   "name": "De'Andre Hunter",
-   "team": "SAC",
-   "opp": "SA",
-   "home": true,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 19.12,
-   "base": 19.95,
-   "mult": 0.959,
-   "minutes": 32.0,
-   "status": "Questionable",
-   "start": "2026-11-07T03:00Z",
-   "espn_id": "401909295",
-   "lean": "Under",
-   "strength": 0.0419,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.952,
-     "n": 105.6,
-     "rank": 26,
-     "txt": "SA gives small forwards -5% pts+reb+ast vs their norm (#5 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.939,
-     "n": 108,
-     "txt": "Players with his profile: -6% pts+reb+ast vs SA (108 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.084,
-     "n": 3,
-     "txt": "His history vs SA: 22.7 pts+reb+ast/g in 3 games (+8%)"
-    },
-    {
-     "k": "env",
-     "txt": "SA: defense #3, pace #14 \u00b7 SAC: offense #29, pace #15"
-    }
-   ]
-  },
-  {
-   "pid": "5142718",
-   "name": "AJ Dybantsa",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 8.4,
-   "base": 8.06,
-   "mult": 1.042,
-   "minutes": 34.6,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0411,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.027,
-     "n": 92.3,
-     "rank": 10,
-     "txt": "ATL gives small forwards +3% reb+ast vs their norm (#10 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.068,
-     "n": 69,
-     "txt": "Players with his profile: +7% reb+ast vs ATL (69 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.036,
-     "n": 1,
-     "txt": "His history vs ATL: 9.0 reb+ast/g in 1 games (+4%)"
-    },
-    {
-     "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
-    }
-   ]
-  },
-  {
    "pid": "5041939",
    "name": "Cooper Flagg",
    "team": "DAL",
@@ -7324,51 +7446,6 @@
    ]
   },
   {
-   "pid": "5105839",
-   "name": "Brice Sensabaugh",
-   "team": "UTAH",
-   "opp": "DAL",
-   "home": false,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 3.37,
-   "base": 3.24,
-   "mult": 1.042,
-   "minutes": 14.2,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909290",
-   "lean": "Over",
-   "strength": 0.0411,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.024,
-     "n": 91.4,
-     "rank": 11,
-     "txt": "DAL gives small forwards +2% reb+ast vs their norm (#11 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.044,
-     "n": 115,
-     "txt": "Players with his profile: +4% reb+ast vs DAL (115 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.045,
-     "n": 4,
-     "txt": "His history vs DAL: 6.8 reb+ast/g in 4 games (+5%)"
-    },
-    {
-     "k": "env",
-     "txt": "DAL: defense #20, pace #5 \u00b7 UTAH: offense #22, pace #3"
-    }
-   ]
-  },
-  {
    "pid": "4395625",
    "name": "RJ Barrett",
    "team": "TOR",
@@ -7390,16 +7467,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.105,
+     "v": 1.103,
      "n": 86.9,
-     "rank": 1,
-     "txt": "MIL gives small forwards +10% threes vs their norm (#1 softest of 30)"
+     "rank": 2,
+     "txt": "MIL gives small forwards +10% threes vs their norm (#2 softest of 30)"
     },
     {
      "k": "sim",
      "v": 1.125,
      "n": 147,
-     "txt": "Players with his profile: +13% threes vs MIL (147 close comps)"
+     "txt": "Players with his profile: +12% threes vs MIL (147 close comps)"
     },
     {
      "k": "h2h",
@@ -7414,6 +7491,51 @@
    ]
   },
   {
+   "pid": "5281370",
+   "name": "Hannes Steinbach",
+   "team": "CHA",
+   "opp": "BOS",
+   "home": true,
+   "role": "PF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 10.78,
+   "base": 11.24,
+   "mult": 0.96,
+   "minutes": 18.3,
+   "status": "",
+   "start": "2026-11-07T00:00Z",
+   "espn_id": "401909288",
+   "lean": "Under",
+   "strength": 0.0408,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.957,
+     "n": 18.4,
+     "rank": 26,
+     "txt": "BOS gives power forwards -4% pts+reb+ast vs their norm (#5 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.94,
+     "n": 137,
+     "txt": "Players with his profile: -6% pts+reb+ast vs BOS (137 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.997,
+     "n": 1,
+     "txt": "His history vs BOS: 16.0 pts+reb+ast/g in 1 games (-0%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 CHA: offense #20, pace #28"
+    }
+   ]
+  },
+  {
    "pid": "4997538",
    "name": "Karlo Matkovic",
    "team": "NO",
@@ -7422,7 +7544,7 @@
    "role": "PF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 15.22,
+   "proj": 15.23,
    "base": 15.86,
    "mult": 0.96,
    "minutes": 22.3,
@@ -7442,9 +7564,9 @@
     },
     {
      "k": "sim",
-     "v": 0.925,
+     "v": 0.926,
      "n": 108,
-     "txt": "Players with his profile: -8% pts+reb+ast vs MIN (108 close comps)"
+     "txt": "Players with his profile: -7% pts+reb+ast vs MIN (108 close comps)"
     },
     {
      "k": "h2h",
@@ -7454,142 +7576,7 @@
     },
     {
      "k": "env",
-     "txt": "MIN: defense #5, pace #9 \u00b7 NO: offense #18, pace #4"
-    }
-   ]
-  },
-  {
-   "pid": "4278129",
-   "name": "Deandre Ayton",
-   "team": "WSH",
-   "opp": "ATL",
-   "home": false,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 14.4,
-   "base": 13.84,
-   "mult": 1.041,
-   "minutes": 19.9,
-   "status": "",
-   "start": "2026-11-07T00:00Z",
-   "espn_id": "401909287",
-   "lean": "Over",
-   "strength": 0.0402,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.058,
-     "n": 49.1,
-     "rank": 6,
-     "txt": "ATL gives centers +6% pts+reb+ast vs their norm (#6 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.019,
-     "n": 130,
-     "txt": "Players with his profile: +2% pts+reb+ast vs ATL (130 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.05,
-     "n": 3,
-     "txt": "His history vs ATL: 20.7 pts+reb+ast/g in 3 games (+5%)"
-    },
-    {
-     "k": "env",
-     "txt": "ATL: defense #9, pace #6 \u00b7 WSH: offense #28, pace #8"
-    }
-   ]
-  },
-  {
-   "pid": "4278594",
-   "name": "Naji Marshall",
-   "team": "DAL",
-   "opp": "UTAH",
-   "home": true,
-   "role": "SF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 0.87,
-   "base": 0.85,
-   "mult": 1.041,
-   "minutes": 26.3,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909290",
-   "lean": "Over",
-   "strength": 0.0402,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.104,
-     "n": 86.6,
-     "rank": 2,
-     "txt": "UTAH gives small forwards +10% threes vs their norm (#2 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.038,
-     "n": 91,
-     "txt": "Players with his profile: +4% threes vs UTAH (91 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.121,
-     "n": 4,
-     "txt": "His history vs UTAH: 1.5 threes/g in 4 games (+12%)"
-    },
-    {
-     "k": "env",
-     "txt": "UTAH: defense #29, pace #3 \u00b7 DAL: offense #26, pace #5"
-    }
-   ]
-  },
-  {
-   "pid": "4277919",
-   "name": "Mo Bamba",
-   "team": "UTAH",
-   "opp": "DAL",
-   "home": false,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 14.28,
-   "base": 13.72,
-   "mult": 1.041,
-   "minutes": 16.2,
-   "status": "",
-   "start": "2026-11-07T01:00Z",
-   "espn_id": "401909290",
-   "lean": "Over",
-   "strength": 0.0402,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.05,
-     "n": 43.2,
-     "rank": 7,
-     "txt": "DAL gives centers +5% pts+reb+ast vs their norm (#7 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.04,
-     "n": 109,
-     "txt": "Players with his profile: +4% pts+reb+ast vs DAL (109 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs DAL yet"
-    },
-    {
-     "k": "env",
-     "txt": "DAL: defense #20, pace #5 \u00b7 UTAH: offense #22, pace #3"
+     "txt": "MIN: defense #6, pace #9 \u00b7 NO: offense #17, pace #4"
     }
    ]
   }
@@ -8450,6 +8437,7 @@
   "nickeil alexanderwalker": "4278039",
   "jock landale": "3146557",
   "cj mccollum": "2490149",
+  "corey kispert": "4280151",
   "asa newell": "4873201",
   "kingston flemings": "5149077",
   "zuby ejiofor": "5106262",
@@ -8475,14 +8463,15 @@
   "grayson allen": "3135045",
   "royce oneale": "2583632",
   "naz reid": "4396971",
+  "liam mcneeley": "5239590",
   "coby white": "4395651",
   "christian anderson": "5060701",
+  "hannes steinbach": "5281370",
   "sam hauser": "4065804",
   "neemias queta": "4397424",
   "derrick white": "3078576",
   "payton pritchard": "4066354",
   "luka garza": "4277951",
-  "mike conley": "3195",
   "baylor scheierman": "4593841",
   "jordan walsh": "4683689",
   "hugo gonzalez": "5175647",
@@ -8635,14 +8624,17 @@
   "damian lillard": "6606",
   "jonathan mogbo": "5107897",
   "zach lavine": "3064440",
+  "nique clifford": "4702384",
   "dylan cardwell": "4433174",
   "malik monk": "4066262",
   "domantas sabonis": "3155942",
   "deandre hunter": "4065732",
   "precious achiuwa": "4431679",
+  "daeqwon plowden": "4279318",
   "keegan murray": "4594327",
   "leaky black": "4395650",
   "darius acuff": "5142620",
+  "alex karaban": "4917149",
   "emanuel sharp": "5106058",
   "harrison barnes": "6578",
   "julian champagnie": "4592479",
@@ -8745,7 +8737,7 @@
    "drtg": 112.03812035993107,
    "pace_rank": 17,
    "ortg_rank": 13,
-   "drtg_rank": 15
+   "drtg_rank": 14
   },
   "NY": {
    "pace": 99.69547240411599,
@@ -8764,12 +8756,12 @@
    "drtg_rank": 12
   },
   "CHA": {
-   "pace": 99.90259259259261,
-   "ortg": 111.64163809243782,
-   "drtg": 111.87880003819014,
+   "pace": 99.85776119402986,
+   "ortg": 111.03123954552963,
+   "drtg": 112.0774417836435,
    "pace_rank": 28,
-   "ortg_rank": 17,
-   "drtg_rank": 14
+   "ortg_rank": 20,
+   "drtg_rank": 15
   },
   "BKN": {
    "pace": 100.46385300668152,
@@ -8796,12 +8788,12 @@
    "drtg_rank": 16
   },
   "ATL": {
-   "pace": 104.37368312757202,
-   "ortg": 111.9776840504394,
-   "drtg": 110.81920215145912,
+   "pace": 104.41010080645161,
+   "ortg": 112.30879905265006,
+   "drtg": 111.15241937541904,
    "pace_rank": 6,
    "ortg_rank": 15,
-   "drtg_rank": 9
+   "drtg_rank": 10
   },
   "TOR": {
    "pace": 102.07417273673255,
@@ -8812,20 +8804,20 @@
    "drtg_rank": 8
   },
   "BOS": {
-   "pace": 98.34624349635796,
-   "ortg": 115.79708774903189,
-   "drtg": 109.23037350788064,
+   "pace": 98.33510703363915,
+   "ortg": 115.90830534234999,
+   "drtg": 108.67983171296558,
    "pace_rank": 30,
    "ortg_rank": 2,
-   "drtg_rank": 6
+   "drtg_rank": 5
   },
   "PHI": {
    "pace": 102.49341199606685,
    "ortg": 111.08038985276838,
    "drtg": 110.9969206934767,
    "pace_rank": 16,
-   "ortg_rank": 20,
-   "drtg_rank": 10
+   "ortg_rank": 19,
+   "drtg_rank": 9
   },
   "CHI": {
    "pace": 105.738574610245,
@@ -8856,7 +8848,7 @@
    "ortg": 111.38490116966008,
    "drtg": 114.49514636210064,
    "pace_rank": 4,
-   "ortg_rank": 18,
+   "ortg_rank": 17,
    "drtg_rank": 23
   },
   "MIL": {
@@ -8868,11 +8860,11 @@
    "drtg_rank": 27
   },
   "WSH": {
-   "pace": 103.84391982182628,
-   "ortg": 108.19968492327364,
-   "drtg": 117.34952813926047,
+   "pace": 103.89481481481482,
+   "ortg": 108.61886296384863,
+   "drtg": 117.58649481753064,
    "pace_rank": 8,
-   "ortg_rank": 28,
+   "ortg_rank": 27,
    "drtg_rank": 28
   },
   "UTAH": {
@@ -8928,7 +8920,7 @@
    "ortg": 111.25310793138254,
    "drtg": 111.37288476103295,
    "pace_rank": 11,
-   "ortg_rank": 19,
+   "ortg_rank": 18,
    "drtg_rank": 11
   },
   "MIN": {
@@ -8937,14 +8929,14 @@
    "drtg": 109.1133387766463,
    "pace_rank": 9,
    "ortg_rank": 9,
-   "drtg_rank": 5
+   "drtg_rank": 6
   },
   "IND": {
    "pace": 103.73795206971678,
    "ortg": 108.37219991220032,
    "drtg": 114.66821812718987,
    "pace_rank": 10,
-   "ortg_rank": 27,
+   "ortg_rank": 28,
    "drtg_rank": 24
   },
   "DEN": {
