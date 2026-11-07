@@ -1,21 +1,23 @@
 {
  "stat_factor": {
-  "pts": 0.9621,
-  "reb": 0.9767,
-  "ast": 0.9643,
-  "pra": 0.9678,
-  "ra": 0.9747,
-  "tpm": 0.972
+  "pts": 0.9473,
+  "reb": 0.9673,
+  "ast": 0.9525,
+  "pra": 0.9552,
+  "ra": 0.9652,
+  "tpm": 0.9575
  },
  "min_delta": {
   "starter": 0.48,
-  "bench": -0.37
+  "bench": -0.48
  },
  "sim_anchor": 0.75,
  "factor_w": {
   "minutes": 0.88,
   "agree": 0.95,
-  "rest": 1.28
+  "rest": 1.33,
+  "bump": 0.88,
+  "vegas": 1.11
  },
  "history": [
   {
@@ -68,7 +70,22 @@
     "starter minutes were off by -1.1 on average over 248 player-games: correction +0.5 min",
     "bench minutes were off by +1.0 on average over 239 player-games: correction -0.4 min"
    ]
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "changes": [
+    "PTS projections ran +6.2% vs actual over 659 player-games: level x0.947",
+    "REB projections ran +3.8% vs actual over 659 player-games: level x0.967",
+    "AST projections ran +4.9% vs actual over 659 player-games: level x0.953",
+    "TPM projections ran +6.0% vs actual over 659 player-games: level x0.958",
+    "PRA projections ran +5.2% vs actual over 659 player-games: level x0.955",
+    "RA projections ran +3.9% vs actual over 659 player-games: level x0.965",
+    "bench minutes were off by +0.5 on average over 321 player-games: correction -0.5 min",
+    "conviction factor 'bump' hurt by -3.1 pts of hit rate over 385 plays: weight 1.00 -> 0.88",
+    "conviction factor 'rest' helped by +9.6 pts of hit rate over 319 plays: weight 1.28 -> 1.33",
+    "conviction factor 'vegas' helped by +3.0 pts of hit rate over 366 plays: weight 1.00 -> 1.11"
+   ]
   }
  ],
- "updated": "2026-11-06T16:44:04Z"
+ "updated": "2026-11-07T15:38:28Z"
 }

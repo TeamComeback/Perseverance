@@ -6843,7 +6843,7 @@
       "book": "draftkings",
       "fair_p": 0.4734,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 5.0,
        "base": 4.68,
@@ -6874,6 +6874,22 @@
          "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
         }
        ]
+      },
+      "final": {
+       "home": 107.0,
+       "away": 121.0
+      },
+      "actual": 16.0,
+      "box": {
+       "min": 34.0,
+       "pts": 10.0,
+       "reb": 3.0,
+       "ast": 16.0,
+       "tpm": 1.0,
+       "tpa": 5.0,
+       "fga": 10.0,
+       "fta": 2.0,
+       "tov": 1.0
       }
      }
     ],
@@ -6884,10 +6900,222 @@
     "note": "Proj 5.0 vs line 8.5 (norm 4.7, 21 min). Model 90% vs market 47%. MIL gives point guards +11% assists vs their norm (#9 softest of 30) \u00b7 Players with his profile: +5% assists vs MIL (70 close comps) \u00b7 His history vs MIL: 7.2 assists/g in 4 games (+10%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-07T15:38:28Z",
+    "review": {
+     "headline": "LOST: 16 assists vs Under 8.5",
+     "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+     "legs": [
+      {
+       "outcome": "Jamal Shead Under",
+       "result": "loss",
+       "headline": "16 assists vs Under 8.5",
+       "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+       "why": [
+        "Jamal Shead finished with 16 assists against a line of 8.5: under missed by 7.5.",
+        "Minutes: played 34 vs 21.1 projected.",
+        "Box score: 16 ast, 1 TO.",
+        "Model projected 5 (4.7 norm \u00d7 1.07 matchup); actual was +11.0 off (+4.8 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (7.5) in a matchup the model rated soft.",
+        "Signal: MIL gives point guards +11% assists vs their norm (#9 softest of 30)",
+        "Signal: Players with his profile: +5% assists vs MIL (70 close comps)",
+        "Signal: His history vs MIL: 7.2 assists/g in 4 games (+10%)",
+        "We priced it at 59% to hit vs 51% needed to break even at 1.98x (+17.5% expected edge).",
+        "Consensus fair probability when placed: 47% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIL",
+        "away": "TOR"
+       },
+       "final": "TOR 121 \u2013 MIL 107",
+       "periods": {
+        "away": [
+         24,
+         27,
+         38,
+         32
+        ],
+        "home": [
+         29,
+         31,
+         27,
+         20
+        ]
+       },
+       "largest_lead": {
+        "TOR": 17,
+        "MIL": 15
+       },
+       "largest_lead_at": {
+        "TOR": "10.2 4th Q",
+        "MIL": "1:30 2nd Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "MIL",
+         "pts": 10,
+         "from": "9:07 1st Q",
+         "to": "6:15 1st Q",
+         "score": "TOR 4-17 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "3:59 1st Q",
+         "to": "2:07 1st Q",
+         "score": "TOR 21-24 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "41.9 2nd Q",
+         "to": "10:31 3rd Q",
+         "score": "TOR 55-60 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "3:40 3rd Q",
+         "to": "2:17 3rd Q",
+         "score": "TOR 82-79 MIL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:30 2nd Q",
+         "to": "5:41 3rd Q",
+         "mins": 7.8,
+         "from_score": "TOR 43-58 MIL",
+         "to_score": "TOR 71-69 MIL",
+         "pts_for": 28,
+         "pts_against": 11
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:26 1st Q",
+         "to": "4:59 1st Q",
+         "mins": 6.5,
+         "from_score": "TOR 0-2 MIL",
+         "to_score": "TOR 7-21 MIL",
+         "pts_for": 19,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "4:28 4th Q: Jakob Poeltl makes two point shot (TOR 105-99 MIL)",
+        "4:09 4th Q: RJ Barrett makes 10-foot two point shot (TOR 107-99 MIL)",
+        "2:50 4th Q: RJ Barrett makes driving layup (TOR 109-101 MIL)"
+       ],
+       "leaders": [
+        "RJ Barrett (TOR): 27 pts, 7 reb, 5 ast, 0-4 3PT in 37 min",
+        "Alijah Martin (TOR): 27 pts, 4 reb, 1 ast, 6-7 3PT in 31 min",
+        "Tyler Herro (MIL): 23 pts, 5 reb, 10 ast, 1-5 3PT in 35 min",
+        "Brayden Burries (MIL): 21 pts, 11 reb, 6 ast, 1-5 3PT in 38 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 1,
+          "ast": 6,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 3,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 7,
+          "reb": 0,
+          "ast": 6,
+          "tpm": 1,
+          "pf": 3,
+          "fga": 3,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 3,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "9:55 3rd Q"
+        ],
+        "box": {
+         "id": "4432241",
+         "name": "Jamal Shead",
+         "team": "TOR",
+         "min": "34",
+         "pts": 10,
+         "reb": 3,
+         "ast": 16,
+         "3pt": "1-5",
+         "fg": "4-10",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: TOR 51-60 MIL, MIL up 9.",
+        "The 4th quarter decided the most: TOR won it 32-20.",
+        "Largest leads: TOR 17 (10.2 4th Q), MIL 15 (1:30 2nd Q). 3 lead changes, 1 ties.",
+        "Momentum swing: TOR outscored them 28-11 in 7.8 minutes (1:30 2nd Q to 5:41 3rd Q), moving it from TOR 43-58 MIL to TOR 71-69 MIL.",
+        "Momentum swing: MIL outscored them 19-7 in 6.5 minutes (11:26 1st Q to 4:59 1st Q), moving it from TOR 0-2 MIL to TOR 7-21 MIL.",
+        "MIL went on a 10-0 run (9:07 1st Q to 6:15 1st Q), making it TOR 4-17 MIL.",
+        "TOR went on a 10-0 run (3:59 1st Q to 2:07 1st Q), making it TOR 21-24 MIL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "Jamal Shead by period (AST): Q1 6, Q2 3, Q3 6, Q4 1.",
+        "He went over 8.5 in Q2.",
+        "Threes made at: 9:55 3rd Q."
+       ],
+       "espn_id": "401909292",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909292"
+      }
+     ]
+    }
    },
    {
     "id": "837b72ad",
@@ -6914,7 +7142,7 @@
       "book": "fanduel",
       "fair_p": 0.5005,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 31.92,
        "base": 30.51,
@@ -6945,6 +7173,22 @@
          "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
         }
        ]
+      },
+      "final": {
+       "home": 107.0,
+       "away": 121.0
+      },
+      "actual": 39.0,
+      "box": {
+       "min": 37.0,
+       "pts": 27.0,
+       "reb": 7.0,
+       "ast": 5.0,
+       "tpm": 0.0,
+       "tpa": 4.0,
+       "fga": 21.0,
+       "fta": 11.0,
+       "tov": 4.0
       }
      }
     ],
@@ -6955,10 +7199,219 @@
     "note": "Proj 31.9 vs line 38.5 (norm 30.5, 34 min). Model 84% vs market 50%. MIL gives small forwards +3% pts+reb+ast vs their norm (#9 softest of 30) \u00b7 Players with his profile: +8% pts+reb+ast vs MIL (147 close comps) \u00b7 His history vs MIL: 26.3 pts+reb+ast/g in 3 games (-1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-07T15:38:28Z",
+    "review": {
+     "headline": "LOST: 39 pts+reb+ast vs Under 38.5",
+     "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+     "legs": [
+      {
+       "outcome": "RJ Barrett Under",
+       "result": "loss",
+       "headline": "39 pts+reb+ast vs Under 38.5",
+       "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+       "why": [
+        "RJ Barrett finished with 39 pts+reb+ast against a line of 38.5: under missed by 0.5.",
+        "Minutes: played 37 vs 33.9 projected.",
+        "Box score: 27 pts on 21 FGA / 11 FTA \u00b7 7 reb \u00b7 5 ast, 4 TO.",
+        "Model projected 31.9 (30.5 norm \u00d7 1.05 matchup); actual was +7.1 off (+1.1 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (33.3) in a matchup the model rated soft.",
+        "Signal: MIL gives small forwards +3% pts+reb+ast vs their norm (#9 softest of 30)",
+        "Signal: Players with his profile: +8% pts+reb+ast vs MIL (147 close comps)",
+        "Signal: His history vs MIL: 26.3 pts+reb+ast/g in 3 games (-1%)",
+        "We priced it at 60% to hit vs 51% needed to break even at 1.96x (+16.7% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "model-miss",
+        "matchup-read-right",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "model-miss",
+      "near-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIL",
+        "away": "TOR"
+       },
+       "final": "TOR 121 \u2013 MIL 107",
+       "periods": {
+        "away": [
+         24,
+         27,
+         38,
+         32
+        ],
+        "home": [
+         29,
+         31,
+         27,
+         20
+        ]
+       },
+       "largest_lead": {
+        "TOR": 17,
+        "MIL": 15
+       },
+       "largest_lead_at": {
+        "TOR": "10.2 4th Q",
+        "MIL": "1:30 2nd Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "MIL",
+         "pts": 10,
+         "from": "9:07 1st Q",
+         "to": "6:15 1st Q",
+         "score": "TOR 4-17 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "3:59 1st Q",
+         "to": "2:07 1st Q",
+         "score": "TOR 21-24 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "41.9 2nd Q",
+         "to": "10:31 3rd Q",
+         "score": "TOR 55-60 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "3:40 3rd Q",
+         "to": "2:17 3rd Q",
+         "score": "TOR 82-79 MIL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:30 2nd Q",
+         "to": "5:41 3rd Q",
+         "mins": 7.8,
+         "from_score": "TOR 43-58 MIL",
+         "to_score": "TOR 71-69 MIL",
+         "pts_for": 28,
+         "pts_against": 11
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:26 1st Q",
+         "to": "4:59 1st Q",
+         "mins": 6.5,
+         "from_score": "TOR 0-2 MIL",
+         "to_score": "TOR 7-21 MIL",
+         "pts_for": 19,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "4:28 4th Q: Jakob Poeltl makes two point shot (TOR 105-99 MIL)",
+        "4:09 4th Q: RJ Barrett makes 10-foot two point shot (TOR 107-99 MIL)",
+        "2:50 4th Q: RJ Barrett makes driving layup (TOR 109-101 MIL)"
+       ],
+       "leaders": [
+        "RJ Barrett (TOR): 27 pts, 7 reb, 5 ast, 0-4 3PT in 37 min",
+        "Alijah Martin (TOR): 27 pts, 4 reb, 1 ast, 6-7 3PT in 31 min",
+        "Tyler Herro (MIL): 23 pts, 5 reb, 10 ast, 1-5 3PT in 35 min",
+        "Brayden Burries (MIL): 21 pts, 11 reb, 6 ast, 1-5 3PT in 38 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 11,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 6,
+          "reb": 3,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 5,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 8,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 8,
+          "fgm": 3
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "4395625",
+         "name": "RJ Barrett",
+         "team": "TOR",
+         "min": "37",
+         "pts": 27,
+         "reb": 7,
+         "ast": 5,
+         "3pt": "0-4",
+         "fg": "9-21",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: TOR 51-60 MIL, MIL up 9.",
+        "The 4th quarter decided the most: TOR won it 32-20.",
+        "Largest leads: TOR 17 (10.2 4th Q), MIL 15 (1:30 2nd Q). 3 lead changes, 1 ties.",
+        "Momentum swing: TOR outscored them 28-11 in 7.8 minutes (1:30 2nd Q to 5:41 3rd Q), moving it from TOR 43-58 MIL to TOR 71-69 MIL.",
+        "Momentum swing: MIL outscored them 19-7 in 6.5 minutes (11:26 1st Q to 4:59 1st Q), moving it from TOR 0-2 MIL to TOR 7-21 MIL.",
+        "MIL went on a 10-0 run (9:07 1st Q to 6:15 1st Q), making it TOR 4-17 MIL.",
+        "TOR went on a 10-0 run (3:59 1st Q to 2:07 1st Q), making it TOR 21-24 MIL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "RJ Barrett by period (PTS+REB+AST): Q1 2, Q2 13, Q3 12, Q4 12.",
+        "He went over 38.5 in Q4."
+       ],
+       "espn_id": "401909292",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909292"
+      }
+     ]
+    }
    },
    {
     "id": "ff3f3e20",
@@ -6985,7 +7438,7 @@
       "book": "draftkings",
       "fair_p": 0.5113,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 16.47,
        "base": 16.35,
@@ -7016,6 +7469,22 @@
          "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
         }
        ]
+      },
+      "final": {
+       "home": 107.0,
+       "away": 121.0
+      },
+      "actual": 28.0,
+      "box": {
+       "min": 34.0,
+       "pts": 19.0,
+       "reb": 7.0,
+       "ast": 2.0,
+       "tpm": 0.0,
+       "tpa": 2.0,
+       "fga": 12.0,
+       "fta": 5.0,
+       "tov": 3.0
       }
      }
     ],
@@ -7026,10 +7495,220 @@
     "note": "Proj 16.5 vs line 22.5 (norm 16.4, 22 min). Model 88% vs market 51%. MIL gives power forwards +4% pts+reb+ast vs their norm (#7 softest of 30) \u00b7 Players with his profile: +1% pts+reb+ast vs MIL (111 close comps) \u00b7 His history vs MIL: 7.7 pts+reb+ast/g in 3 games (-5%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-07T15:38:28Z",
+    "review": {
+     "headline": "LOST: 28 pts+reb+ast vs Under 22.5",
+     "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+     "legs": [
+      {
+       "outcome": "Collin Murray-Boyles Under",
+       "result": "loss",
+       "headline": "28 pts+reb+ast vs Under 22.5",
+       "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+       "why": [
+        "Collin Murray-Boyles finished with 28 pts+reb+ast against a line of 22.5: under missed by 5.5.",
+        "Minutes: played 34 vs 21.9 projected.",
+        "Box score: 19 pts on 12 FGA / 5 FTA \u00b7 7 reb \u00b7 2 ast, 3 TO.",
+        "Model projected 16.5 (16.4 norm \u00d7 1.01 matchup); actual was +11.5 off (+2.3 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (25.4) in a matchup the model rated soft.",
+        "Signal: MIL gives power forwards +4% pts+reb+ast vs their norm (#7 softest of 30)",
+        "Signal: Players with his profile: +1% pts+reb+ast vs MIL (111 close comps)",
+        "Signal: His history vs MIL: 7.7 pts+reb+ast/g in 3 games (-5%)",
+        "We priced it at 61% to hit vs 55% needed to break even at 1.83x (+12.2% expected edge).",
+        "Consensus fair probability when placed: 51% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIL",
+        "away": "TOR"
+       },
+       "final": "TOR 121 \u2013 MIL 107",
+       "periods": {
+        "away": [
+         24,
+         27,
+         38,
+         32
+        ],
+        "home": [
+         29,
+         31,
+         27,
+         20
+        ]
+       },
+       "largest_lead": {
+        "TOR": 17,
+        "MIL": 15
+       },
+       "largest_lead_at": {
+        "TOR": "10.2 4th Q",
+        "MIL": "1:30 2nd Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "MIL",
+         "pts": 10,
+         "from": "9:07 1st Q",
+         "to": "6:15 1st Q",
+         "score": "TOR 4-17 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "3:59 1st Q",
+         "to": "2:07 1st Q",
+         "score": "TOR 21-24 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "41.9 2nd Q",
+         "to": "10:31 3rd Q",
+         "score": "TOR 55-60 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "3:40 3rd Q",
+         "to": "2:17 3rd Q",
+         "score": "TOR 82-79 MIL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:30 2nd Q",
+         "to": "5:41 3rd Q",
+         "mins": 7.8,
+         "from_score": "TOR 43-58 MIL",
+         "to_score": "TOR 71-69 MIL",
+         "pts_for": 28,
+         "pts_against": 11
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:26 1st Q",
+         "to": "4:59 1st Q",
+         "mins": 6.5,
+         "from_score": "TOR 0-2 MIL",
+         "to_score": "TOR 7-21 MIL",
+         "pts_for": 19,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "4:28 4th Q: Jakob Poeltl makes two point shot (TOR 105-99 MIL)",
+        "4:09 4th Q: RJ Barrett makes 10-foot two point shot (TOR 107-99 MIL)",
+        "2:50 4th Q: RJ Barrett makes driving layup (TOR 109-101 MIL)"
+       ],
+       "leaders": [
+        "RJ Barrett (TOR): 27 pts, 7 reb, 5 ast, 0-4 3PT in 37 min",
+        "Alijah Martin (TOR): 27 pts, 4 reb, 1 ast, 6-7 3PT in 31 min",
+        "Tyler Herro (MIL): 23 pts, 5 reb, 10 ast, 1-5 3PT in 35 min",
+        "Brayden Burries (MIL): 21 pts, 11 reb, 6 ast, 1-5 3PT in 38 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 6,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 4,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 7,
+          "reb": 3,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 4,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 3,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "5093267",
+         "name": "Collin Murray-Boyles",
+         "team": "TOR",
+         "min": "34",
+         "pts": 19,
+         "reb": 7,
+         "ast": 2,
+         "3pt": "0-2",
+         "fg": "7-12",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: TOR 51-60 MIL, MIL up 9.",
+        "The 4th quarter decided the most: TOR won it 32-20.",
+        "Largest leads: TOR 17 (10.2 4th Q), MIL 15 (1:30 2nd Q). 3 lead changes, 1 ties.",
+        "Momentum swing: TOR outscored them 28-11 in 7.8 minutes (1:30 2nd Q to 5:41 3rd Q), moving it from TOR 43-58 MIL to TOR 71-69 MIL.",
+        "Momentum swing: MIL outscored them 19-7 in 6.5 minutes (11:26 1st Q to 4:59 1st Q), moving it from TOR 0-2 MIL to TOR 7-21 MIL.",
+        "MIL went on a 10-0 run (9:07 1st Q to 6:15 1st Q), making it TOR 4-17 MIL.",
+        "TOR went on a 10-0 run (3:59 1st Q to 2:07 1st Q), making it TOR 21-24 MIL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "Collin Murray-Boyles by period (PTS+REB+AST): Q1 6, Q2 4, Q3 11, Q4 7.",
+        "He went over 22.5 in Q4.",
+        "Foul trouble: 4 fouls by the end of Q2, which cuts minutes."
+       ],
+       "espn_id": "401909292",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909292"
+      }
+     ]
+    }
    },
    {
     "id": "1eca85b9",
@@ -7056,7 +7735,7 @@
       "book": "espnbet",
       "fair_p": 0.52,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 13.56,
        "base": 13.68,
@@ -7087,6 +7766,22 @@
          "txt": "MIL: defense #27, pace #22 \u00b7 TOR: offense #14, pace #20"
         }
        ]
+      },
+      "final": {
+       "home": 107.0,
+       "away": 121.0
+      },
+      "actual": 31.0,
+      "box": {
+       "min": 31.0,
+       "pts": 19.0,
+       "reb": 11.0,
+       "ast": 1.0,
+       "tpm": 0.0,
+       "tpa": 0.0,
+       "fga": 14.0,
+       "fta": 1.0,
+       "tov": 2.0
       }
      }
     ],
@@ -7097,10 +7792,219 @@
     "note": "Proj 13.6 vs line 19.5 (norm 13.7, 20 min). Model 85% vs market 52%. MIL gives centers +1% pts+reb+ast vs their norm (#15 toughest of 30) \u00b7 Players with his profile: +0% pts+reb+ast vs MIL (124 close comps) \u00b7 His history vs MIL: 15.3 pts+reb+ast/g in 3 games (-3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-07T15:38:28Z",
+    "review": {
+     "headline": "LOST: 31 pts+reb+ast vs Under 19.5",
+     "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+     "legs": [
+      {
+       "outcome": "Jakob Poeltl Under",
+       "result": "loss",
+       "headline": "31 pts+reb+ast vs Under 19.5",
+       "final": "Toronto Raptors 121 \u2013 Milwaukee Bucks 107",
+       "why": [
+        "Jakob Poeltl finished with 31 pts+reb+ast against a line of 19.5: under missed by 11.5.",
+        "Minutes: played 31 vs 19.8 projected.",
+        "Box score: 19 pts on 14 FGA / 1 FTA \u00b7 11 reb \u00b7 1 ast, 2 TO.",
+        "Model projected 13.6 (13.7 norm \u00d7 0.99 matchup); actual was +17.4 off (+3.0 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (21.4) in a matchup the model rated tough.",
+        "Signal: MIL gives centers +1% pts+reb+ast vs their norm (#15 toughest of 30)",
+        "Signal: Players with his profile: +0% pts+reb+ast vs MIL (124 close comps)",
+        "Signal: His history vs MIL: 15.3 pts+reb+ast/g in 3 games (-3%)",
+        "We priced it at 61% to hit vs 56% needed to break even at 1.8x (+10.4% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIL",
+        "away": "TOR"
+       },
+       "final": "TOR 121 \u2013 MIL 107",
+       "periods": {
+        "away": [
+         24,
+         27,
+         38,
+         32
+        ],
+        "home": [
+         29,
+         31,
+         27,
+         20
+        ]
+       },
+       "largest_lead": {
+        "TOR": 17,
+        "MIL": 15
+       },
+       "largest_lead_at": {
+        "TOR": "10.2 4th Q",
+        "MIL": "1:30 2nd Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "MIL",
+         "pts": 10,
+         "from": "9:07 1st Q",
+         "to": "6:15 1st Q",
+         "score": "TOR 4-17 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "3:59 1st Q",
+         "to": "2:07 1st Q",
+         "score": "TOR 21-24 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 10,
+         "from": "41.9 2nd Q",
+         "to": "10:31 3rd Q",
+         "score": "TOR 55-60 MIL"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "3:40 3rd Q",
+         "to": "2:17 3rd Q",
+         "score": "TOR 82-79 MIL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "TOR",
+         "swing": 17,
+         "from": "1:30 2nd Q",
+         "to": "5:41 3rd Q",
+         "mins": 7.8,
+         "from_score": "TOR 43-58 MIL",
+         "to_score": "TOR 71-69 MIL",
+         "pts_for": 28,
+         "pts_against": 11
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:26 1st Q",
+         "to": "4:59 1st Q",
+         "mins": 6.5,
+         "from_score": "TOR 0-2 MIL",
+         "to_score": "TOR 7-21 MIL",
+         "pts_for": 19,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "4:28 4th Q: Jakob Poeltl makes two point shot (TOR 105-99 MIL)",
+        "4:09 4th Q: RJ Barrett makes 10-foot two point shot (TOR 107-99 MIL)",
+        "2:50 4th Q: RJ Barrett makes driving layup (TOR 109-101 MIL)"
+       ],
+       "leaders": [
+        "RJ Barrett (TOR): 27 pts, 7 reb, 5 ast, 0-4 3PT in 37 min",
+        "Alijah Martin (TOR): 27 pts, 4 reb, 1 ast, 6-7 3PT in 31 min",
+        "Tyler Herro (MIL): 23 pts, 5 reb, 10 ast, 1-5 3PT in 35 min",
+        "Brayden Burries (MIL): 21 pts, 11 reb, 6 ast, 1-5 3PT in 38 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 6,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 11,
+          "reb": 7,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 3,
+          "fga": 6,
+          "fgm": 5
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "3134908",
+         "name": "Jakob Poeltl",
+         "team": "TOR",
+         "min": "31",
+         "pts": 19,
+         "reb": 11,
+         "ast": 1,
+         "3pt": "0-0",
+         "fg": "9-14",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: TOR 51-60 MIL, MIL up 9.",
+        "The 4th quarter decided the most: TOR won it 32-20.",
+        "Largest leads: TOR 17 (10.2 4th Q), MIL 15 (1:30 2nd Q). 3 lead changes, 1 ties.",
+        "Momentum swing: TOR outscored them 28-11 in 7.8 minutes (1:30 2nd Q to 5:41 3rd Q), moving it from TOR 43-58 MIL to TOR 71-69 MIL.",
+        "Momentum swing: MIL outscored them 19-7 in 6.5 minutes (11:26 1st Q to 4:59 1st Q), moving it from TOR 0-2 MIL to TOR 7-21 MIL.",
+        "MIL went on a 10-0 run (9:07 1st Q to 6:15 1st Q), making it TOR 4-17 MIL.",
+        "TOR went on a 10-0 run (3:59 1st Q to 2:07 1st Q), making it TOR 21-24 MIL.",
+        "Close finish: 3 scoring plays in the last five minutes with the game within six.",
+        "Jakob Poeltl by period (PTS+REB+AST): Q1 4, Q2 1, Q3 7, Q4 19.",
+        "He went over 19.5 in Q4."
+       ],
+       "espn_id": "401909292",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909292"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -7117,7 +8021,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.28,
+  "prop_model_weight": 0.196,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -7283,9 +8187,9 @@
    }
   },
   "matchup_under": {
-   "bets": 11,
-   "staked": 55.0,
-   "profit": -0.9500000000000011,
+   "bets": 15,
+   "staked": 75.0,
+   "profit": -20.950000000000003,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -7300,19 +8204,19 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 7,
+     "n": 10,
      "won": 4,
-     "lost": 3
+     "lost": 6
     },
     "matchup-read-wrong": {
+     "n": 3,
+     "won": 0,
+     "lost": 3
+    },
+    "near-miss": {
      "n": 2,
      "won": 0,
      "lost": 2
-    },
-    "near-miss": {
-     "n": 1,
-     "won": 0,
-     "lost": 1
     },
     "blowout": {
      "n": 3,
@@ -7320,14 +8224,14 @@
      "lost": 2
     },
     "model-miss": {
+     "n": 8,
+     "won": 0,
+     "lost": 8
+    },
+    "minutes-long": {
      "n": 4,
      "won": 0,
      "lost": 4
-    },
-    "minutes-long": {
-     "n": 1,
-     "won": 0,
-     "lost": 1
     }
    }
   }
@@ -7335,9 +8239,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 23.0,
-   "staked": 115.0,
-   "profit": -14.649999999999999
+   "bets": 27.0,
+   "staked": 135.0,
+   "profit": -34.65
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-05T03:39:54Z",
@@ -8296,6 +9200,41 @@
    "ts": "2026-11-07T07:44:58Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 7: 7 games, 165 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Jamal Shead Under 8.5 @ -102 (DraftKings) \u2014 LOST: 16 assists vs Under 8.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "result",
+   "text": "LOST -$5.00: RJ Barrett Under 38.5 @ -104 (FanDuel) \u2014 LOST: 39 pts+reb+ast vs Under 38.5 [matchup-read-right, model-miss, near-miss]"
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Collin Murray-Boyles Under 22.5 @ -120 (DraftKings) \u2014 LOST: 28 pts+reb+ast vs Under 22.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Jakob Poeltl Under 19.5 @ -125 (theScore Bet) \u2014 LOST: 31 pts+reb+ast vs Under 19.5 [matchup-read-wrong, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "adapt",
+   "text": "Model vs market on 972 graded lines: the 0% model blend scored best (log loss model 0.720, market 0.686). Moving the model's weight from 28% to 20%."
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +6.2% vs actual over 659 player-games: level x0.947; REB projections ran +3.8% vs actual over 659 player-games: level x0.967; AST projections ran +4.9% vs actual over 659 player-games: level x0.953; TPM projections ran +6.0% vs actual over 659 player-games: level x0.958; PRA projections ran +5.2% vs actual over 659 player-games: level x0.955; RA projections ran +3.9% vs actual over 659 player-games: level x0.965; bench minutes were off by +0.5 on average over 321 player-games: correction -0.5 min; conviction factor 'bump' hurt by -3.1 pts of hit rate over 385 plays: weight 1.00 -> 0.88; conviction factor 'rest' helped by +9.6 pts of hit rate over 319 plays: weight 1.28 -> 1.33; conviction factor 'vegas' helped by +3.0 pts of hit rate over 366 plays: weight 1.00 -> 1.11."
+  },
+  {
+   "ts": "2026-11-07T15:38:28Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $26.36 (run #1), 11-27-1, ROI -37.3%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -8333,24 +9272,28 @@
   "b5cfebcf",
   "b7ae7a1a",
   "e5492292",
-  "fa8033f2"
+  "fa8033f2",
+  "3b045926",
+  "837b72ad",
+  "ff3f3e20",
+  "1eca85b9"
  ],
  "strategist": null,
- "updated": "2026-11-07T07:45:42Z",
+ "updated": "2026-11-07T15:38:28Z",
  "stats": {
-  "bets": 35,
+  "bets": 39,
   "won": 11,
-  "lost": 23,
+  "lost": 27,
   "push": 1,
-  "staked": 177.63,
-  "profit": -53.64,
-  "roi": -0.302,
+  "staked": 197.63,
+  "profit": -73.64,
+  "roi": -0.3726,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 20,
+  "clv_no_close": 24,
   "close_mins_median": 151,
-  "open": 4,
-  "equity": 46.36
+  "open": 0,
+  "equity": 26.36
  },
  "weights": {
   "value_fav": 0.842,
@@ -8359,7 +9302,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.172,
-  "matchup_under": 0.983
+  "matchup_under": 0.69
  },
  "paused": [],
  "dry_scans": 1
