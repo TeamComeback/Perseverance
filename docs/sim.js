@@ -961,10 +961,12 @@ function dkSnap(item, st) {
 async function pollLive() {
   const gid = S.gameId;
   try {
-    const [od, sb] = await Promise.all([fetch(`${CORE}/events/${gid}/competitions/${gid}/odds`).then(r => r.json()).catch(() => ({})),
+    const [od, o200, sb] = await Promise.all([fetch(`${CORE}/events/${gid}/competitions/${gid}/odds`).then(r => r.json()).catch(() => ({})),
+      fetch(`${CORE}/events/${gid}/competitions/${gid}/odds/200`).then(r => r.ok ? r.json() : null).catch(() => null),
       fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=${gid}`).then(r => r.json())]);
-    // provider 200 ("DraftKings - Live Odds") carries the in-game line; provider 100's "current" stays frozen at the close
-    const item = (od.items || []).find(i => String((i.provider || {}).id) === "200") || (od.items || []).find(i => String((i.provider || {}).id) === "100");
+    // provider 200 ("DraftKings - Live Odds") carries the in-game line; provider 100's "current" stays frozen at the close.
+    // ESPN refreshes it irregularly, so it can lag the real DraftKings line (see staleWhy).
+    const item = (o200 && o200.current ? o200 : null) || (od.items || []).find(i => String((i.provider || {}).id) === "200") || (od.items || []).find(i => String((i.provider || {}).id) === "100");
     const comp = sb.header.competitions[0], st = comp.status, t = {}, side = {};
     const ls = {}, tm = {};
     comp.competitors.forEach(c => { t[c.homeAway] = +c.score || 0; side[String(c.team ? c.team.id : c.id)] = c.homeAway;
@@ -975,9 +977,97 @@ async function pollLive() {
              line: item ? dkSnap(item, "current") : null, box: liveBox(sb, side), plays: livePlays(sb, side), ls, teams: tm, gid, at: new Date()};
   } catch (e) { S.now = S.now || null; }
   if (S.gameId !== gid) return;
+  const n0 = S.now;
+  if (n0 && n0.line) {                               // when did DraftKings' line on ESPN last change, and at what margin?
+    S.lineSeen = S.lineSeen || {}; const k = lineSig(n0.line), seen = S.lineSeen[gid];
+    if (!seen || seen.key !== k) S.lineSeen[gid] = {key: k, mar: n0.score[1] - n0.score[0], tot: n0.score[0] + n0.score[1], at: n0.detail};
+  }
   showLive();
   const n = S.now; if (n && n.state === "in" && (!S.nowSim || S.nowSim.key !== liveKey(n))) liveSimFromHere();
 }
+const lineSig = L => `${L.sp}|${L.tot}|${L.ml_h}|${L.ml_a}`;
+// Live sportsbooks keep spreads and totals close to 50/50. If the sim makes one side of DraftKings' live spread or total
+// a heavy favorite, or the line hasn't moved while the score swung, ESPN's copy of the line has almost surely fallen behind.
+function staleWhy(n, m, H) {
+  const L = n && n.line; if (!L) return null;
+  const why = [];
+  if (m && m.p_home_cover != null && (m.p_home_cover < 0.22 || m.p_home_cover > 0.78))
+    why.push(`the sim makes one side of the ${H} ${spS(L.sp)} spread ${pcS(Math.max(m.p_home_cover, 1 - m.p_home_cover))}`);
+  if (m && m.p_over != null && (m.p_over < 0.22 || m.p_over > 0.78))
+    why.push(`one side of the ${f1(L.tot)} total ${pcS(Math.max(m.p_over, 1 - m.p_over))}`);
+  const seen = S.lineSeen && S.lineSeen[S.gameId];
+  if (seen && seen.key === lineSig(L)) {
+    const dm = Math.abs((n.score[1] - n.score[0]) - seen.mar), dt = n.score[0] + n.score[1] - seen.tot;
+    if (dm >= 8 || dt >= 25) why.push(`the line hasn't changed since ${seen.at} while the margin moved ${dm} and ${dt} points were scored`);
+  }
+  return why.length ? why : null;
+}
+// Probability of a bet from the latest live sims, at any line (so you can price the number you see in your app).
+function pAt(m, kind, side, point) {
+  if (!m || !m.mg) return null;
+  const arr = kind === "tot" ? m.tt : m.mg; let w = 0, l = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const v = kind === "sp" ? (side === "home" ? arr[i] : -arr[i]) + point : kind === "tot" ? (side === "over" ? arr[i] - point : point - arr[i]) : (side === "home" ? arr[i] : -arr[i]);
+    if (v > 0) w++; else if (v < 0) l++;
+  }
+  return w + l ? w / (w + l) : null;
+}
+const decOf = am => { am = parseFloat(String(am).replace("−", "-").replace("+", "")); return !am || isNaN(am) ? null : am > 0 ? 1 + am / 100 : 1 + 100 / -am; };
+const amOf = d => d >= 2 ? Math.round((d - 1) * 100) : -Math.round(100 / (d - 1));
+// One-tap logging for game lines (spread, total, moneyline), live or pregame, into your book.
+S.lbets = S.lbets || {};
+function linePref(kind, side, point, dec, live) {
+  const g = (D.players.games || []).find(x => x.espn_id === S.gameId) || {}, Hn = g.home_name || g.home, An = g.away_name || g.away;
+  const am = amOf(dec), ab = side === "home" ? g.home : g.away;
+  const title = kind === "tot" ? `${side === "over" ? "Over" : "Under"} ${f1(point)} · Total` : kind === "ml" ? `${ab} · Moneyline` : `${ab} ${spS(point)} · Spread`;
+  const n = S.now;
+  return {title: title + (live ? " · Live" : ""), sub: `${g.away} @ ${g.home}` + (live && n ? ` · bet at ${n.detail}, ${g.away} ${n.score[0]}–${n.score[1]} ${g.home}` : ` · ${tod(g.start)}`),
+    odds: (am > 0 ? "+" : "") + am, book: "DraftKings",
+    leg: {sport: "basketball_nba", espn_id: g.espn_id, commence: g.start, home: Hn, away: An,
+          market: kind === "tot" ? "totals" : kind === "ml" ? "h2h" : "spreads", outcome: kind === "tot" ? (side === "over" ? "Over" : "Under") : (side === "home" ? Hn : An),
+          point: kind === "ml" ? null : point}};
+}
+function lbetKey(kind, side, point, dec, live) { const k = [kind, side, point, dec, live ? 1 : 0].join("|"); S.lbets[k] = () => linePref(kind, side, point, dec, live); return k; }
+// buttons for every DraftKings game line (L = a dkSnap: sp, sp_h, sp_a, tot, ov, un, ml_h, ml_a)
+function lineBtns(L, live) {
+  const g = (D.players.games || []).find(x => x.espn_id === S.gameId) || {}; if (!L) return "";
+  const b = (kind, side, point, dec, label) => dec ? `<button class="lbtn" data-lbet="${esc(lbetKey(kind, side, point, dec, live))}">${esc(label)} <b>${am_(dec)}</b></button>` : "";
+  return `<div class="lbtns">${[
+    L.sp != null ? b("sp", "away", -L.sp, L.sp_a, `${g.away} ${spS(-L.sp)}`) + b("sp", "home", L.sp, L.sp_h, `${g.home} ${spS(L.sp)}`) : "",
+    L.tot != null ? b("tot", "over", L.tot, L.ov, `O ${f1(L.tot)}`) + b("tot", "under", L.tot, L.un, `U ${f1(L.tot)}`) : "",
+    b("ml", "away", null, L.ml_a, `${g.away} ML`) + b("ml", "home", null, L.ml_h, `${g.home} ML`)].join("")}</div>`;
+}
+if (typeof document !== "undefined") document.addEventListener("click", e => {
+  const lb = e.target.closest && e.target.closest("[data-lbet]");
+  if (lb) { e.preventDefault(); e.stopPropagation(); const f = S.lbets[lb.dataset.lbet]; if (f && typeof openLogBet === "function") openLogBet(f()); return; }
+  const go = e.target.closest && e.target.closest("[data-plgo]");
+  if (go) { const f = go.closest(".plf"); S.pl = {k: f.querySelector(".plk").value, p: f.querySelector(".plp").value, o: f.querySelector(".plo").value}; priceIt(f); }
+}, true);
+// "Price the line you see": the sim's chance at your number and price
+function priceIt(f) { const out = f.querySelector(".plout"); if (out) out.innerHTML = priceHtml(); }
+function priceHtml() {
+  const m = S.nowSim, pl = S.pl || {}; if (!pl.k) return "";
+  const [kind, side] = pl.k.split("_"), point = parseFloat(pl.p), dec = decOf(pl.o);
+  if (!m || !m.mg) return '<div class="desc">Waiting for the live sim.</div>';
+  if (kind !== "ml" && isNaN(point)) return '<div class="desc">Enter the line, e.g. 5.5 or -5.5.</div>';
+  if (!dec) return '<div class="desc">Enter the price, e.g. -110 or +150.</div>';
+  const p = pAt(m, kind, side, point), ev = p * dec - 1, need = 1 / dec;
+  const g = (D.players.games || []).find(x => x.espn_id === S.gameId) || {};
+  const label = kind === "tot" ? `${side === "over" ? "Over" : "Under"} ${f1(point)}` : kind === "ml" ? `${side === "home" ? g.home : g.away} ML` : `${side === "home" ? g.home : g.away} ${spS(point)}`;
+  return `<div style="margin-top:6px;font-size:14px">${esc(label)} ${am_(dec)}: sim <b>${pcS(p)}</b> vs ${pcS(need)} needed · <b class="${ev >= 0.05 ? "gold" : ev > 0 ? "h" : "dim"}">${ev > 0 ? "+" : ""}${Math.round(ev * 100)}% EV</b> ${ev >= 0.05 ? '<b class="gold">Value</b>' : ev >= 0.02 ? '<span class="h">Lean</span>' : '<span class="dim">Pass</span>'}
+    <button class="lbtn" data-lbet="${esc(lbetKey(kind, side, kind === "ml" ? null : point, dec, true))}">+ Log it</button></div>`;
+}
+function priceForm(H, A) {
+  const pl = S.pl || {k: "sp_away", p: "", o: ""};
+  const opt = (v, l) => `<option value="${v}" ${pl.k === v ? "selected" : ""}>${esc(l)}</option>`;
+  return `<div class="plf"><div class="lbl">Price the line you see in your app</div>
+    <div class="plrow"><select class="plk">${opt("sp_away", A + " spread")}${opt("sp_home", H + " spread")}${opt("tot_over", "Over")}${opt("tot_under", "Under")}${opt("ml_away", A + " ML")}${opt("ml_home", H + " ML")}</select>
+      <input class="plp" type="number" step="0.5" inputmode="decimal" placeholder="Line" value="${esc(pl.p || "")}"><input class="plo" inputmode="text" placeholder="Odds" value="${esc(pl.o || "")}">
+      <button class="btn ghost" data-plgo="1" style="padding:6px 10px;font-size:13px">Price</button></div><div class="plout">${S.pl && S.pl.o ? priceHtml() : ""}</div>
+    <div class="desc">Uses the same live sims as the table, so the score and clock are the ones shown above. Re-prices on its own as the game moves.</div></div>`;
+}
+// don't redraw a panel while you're typing in it
+const editing = () => typeof document !== "undefined" && document.activeElement && !!document.activeElement.closest && !!document.activeElement.closest(".plf");
 const liveKey = n => `${n.period}|${n.clock}|${n.score}|${n.line ? n.line.sp + "/" + n.line.tot : ""}`;
 // ESPN's live box score, same feed the scoreboard uses (updates as plays are logged, usually within a minute of the play).
 function liveBox(sb, side) {
@@ -1006,15 +1096,16 @@ async function liveSimFromHere() {
   const n = S.now, P = S.P, gid = S.gameId; if (!n || !P || S.simBusy) return;
   S.simBusy = true; showLive();
   const L = n.line || {}, N = 1500; let cw = 0, cl = 0, ow = 0, ol = 0, hw = 0, tot = 0, mar = 0;
+  const mg = new Int16Array(N), tt = new Int16Array(N);
   setSeed(null);
   for (let i = 0; i < N; i++) {
     const r = simGame(P, false, {period: n.period, clock: n.clock, away: n.score[0], home: n.score[1]}), h = r.score.home, a = r.score.away;
     if (L.sp != null) { const m = h + L.sp - a; if (m > 0) cw++; else if (m < 0) cl++; }
     if (L.tot != null) { const d = h + a - L.tot; if (d > 0) ow++; else if (d < 0) ol++; }
-    if (h > a) hw++; tot += h + a; mar += h - a;
+    if (h > a) hw++; tot += h + a; mar += h - a; mg[i] = h - a; tt[i] = h + a;
     if (i % 300 === 299) await new Promise(r => setTimeout(r, 0));
   }
-  S.nowSim = {key: liveKey(n), p_home_cover: cw + cl ? cw / (cw + cl) : null, p_over: ow + ol ? ow / (ow + ol) : null, p_home_win: hw / N, avg_tot: tot / N, avg_mar: mar / N, n: N};
+  S.nowSim = {key: liveKey(n), p_home_cover: cw + cl ? cw / (cw + cl) : null, p_over: ow + ol ? ow / (ow + ol) : null, p_home_win: hw / N, avg_tot: tot / N, avg_mar: mar / N, n: N, mg, tt};
   S.simBusy = false;
   if (S.gameId === gid) showLive();
 }
@@ -1026,17 +1117,20 @@ function liveValueHtml(n, c, A, H) {
   const L = n.line || {}, m = S.nowSim && S.nowSim.key === liveKey(n) ? S.nowSim : null;
   const reg = n.period <= 4, el = reg ? (n.period - 1) * 720 + (720 - n.clock) : 2880;
   const pts = n.score[0] + n.score[1], pace = reg && el >= 180 ? pts / el * 2880 : null;
-  const rows = [], add = (label, vs, p, price) => { const need = price ? 1 / price : null, ev = p != null && price ? p * price - 1 : null; rows.push({label, vs, p, price, need, ev}); };
+  const rows = [], add = (label, vs, p, price, kind, side, point) => { const need = price ? 1 / price : null, ev = p != null && price ? p * price - 1 : null; rows.push({label, vs, p, price, need, ev, kind, side, point}); };
   const has = v => v != null && c && c[v] != null && L[v] != null;
-  add(`Over ${f1(L.tot)}`, has("tot") ? c.tot - L.tot : null, m && m.p_over, L.ov);
-  add(`Under ${f1(L.tot)}`, has("tot") ? L.tot - c.tot : null, m && m.p_over != null ? 1 - m.p_over : null, L.un);
-  add(`${H} ${spS(L.sp)}`, has("sp") ? L.sp - c.sp : null, m && m.p_home_cover, L.sp_h);
-  add(`${A} ${spS(L.sp == null ? null : -L.sp)}`, has("sp") ? c.sp - L.sp : null, m && m.p_home_cover != null ? 1 - m.p_home_cover : null, L.sp_a);
-  add(`${H} ML`, null, m && m.p_home_win, L.ml_h);
-  add(`${A} ML`, null, m && m.p_home_win != null ? 1 - m.p_home_win : null, L.ml_a);
+  add(`Over ${f1(L.tot)}`, has("tot") ? c.tot - L.tot : null, m && m.p_over, L.ov, "tot", "over", L.tot);
+  add(`Under ${f1(L.tot)}`, has("tot") ? L.tot - c.tot : null, m && m.p_over != null ? 1 - m.p_over : null, L.un, "tot", "under", L.tot);
+  add(`${H} ${spS(L.sp)}`, has("sp") ? L.sp - c.sp : null, m && m.p_home_cover, L.sp_h, "sp", "home", L.sp);
+  add(`${A} ${spS(L.sp == null ? null : -L.sp)}`, has("sp") ? c.sp - L.sp : null, m && m.p_home_cover != null ? 1 - m.p_home_cover : null, L.sp_a, "sp", "away", L.sp == null ? null : -L.sp);
+  add(`${H} ML`, null, m && m.p_home_win, L.ml_h, "ml", "home", null);
+  add(`${A} ML`, null, m && m.p_home_win != null ? 1 - m.p_home_win : null, L.ml_a, "ml", "away", null);
+  const stale = staleWhy(n, m, H);
+  if (stale) rows.forEach(r => { r.ev = null; });
   const verdict = ev => ev == null ? `<span class="dim">${S.simBusy ? "…" : "—"}</span>` : ev >= 0.05 ? '<b class="gold">Value</b>' : ev >= 0.02 ? '<span class="h">Lean</span>' : '<span class="dim">Pass</span>';
   const best = rows.filter(r => r.ev != null && r.price).sort((a, b) => b.ev - a.ev)[0];
-  const head = !L.tot && !L.sp ? '<div class="desc">DraftKings has no live line posted right now (often suspended during reviews and free throws).</div>'
+  const head = stale ? `<div class="stale">⚠ <b>DraftKings' live line on ESPN looks out of date</b>: ${esc(stale.join("; "))}. Live books keep spreads and totals near 50/50, so this almost always means ESPN's feed hasn't caught up. EV is hidden. Check the line in the DraftKings app and price it below.</div>`
+    : !L.tot && !L.sp ? '<div class="desc">DraftKings has no live line posted right now (often suspended during reviews and free throws).</div>'
     : !m ? `<div class="desc">${S.simBusy ? "Simulating the rest of the game from this score and clock…" : "Waiting for the sim."}</div>`
     : best && best.ev >= 0.02 ? `<div style="font-size:14px;margin:2px 0 4px">Best live number: <b class="gold">${esc(best.label)} ${am_(best.price)}</b>. Sim ${pcS(best.p)} vs ${pcS(best.need)} needed to break even (<b>${best.ev > 0 ? "+" : ""}${Math.round(best.ev * 100)}% EV</b>).</div>`
     : '<div style="font-size:14px;margin:2px 0 4px">Nothing clears +2% EV right now: <b>pass</b> and check back.</div>';
@@ -1047,10 +1141,11 @@ function liveValueHtml(n, c, A, H) {
     ${head}
     <div class="desc" style="display:flex;flex-wrap:wrap;gap:4px 12px;margin-bottom:4px">${lineRow("Total", c && c.tot, L.tot, f1)}${lineRow(H + " spread", c && c.sp, L.sp, spS)}</div>
     ${proj ? `<div class="desc" style="margin-bottom:4px">${proj}</div>` : ""}
-    <div class="scroll"><table class="tbl"><tr><th>Live bet</th><th>DK</th><th>CLV</th><th>Sim</th><th>Need</th><th>EV</th></tr>
+    <div class="scroll"><table class="tbl"><tr><th>Live bet${stale ? ' <span class="m">(stale)</span>' : ""}</th><th>DK</th><th>CLV</th><th>Sim</th><th>Need</th><th>EV</th><th></th></tr>
       ${rows.map(r => `<tr${r.ev != null && r.ev >= 0.05 ? ' class="hl"' : ""}><td class="t">${esc(r.label)}${r.ev != null && r.ev >= 0.02 ? " " + verdict(r.ev) : ""}</td><td>${am_(r.price)}</td><td class="${r.vs == null || r.vs === 0 ? "dim" : r.vs > 0 ? "h" : "m"}">${r.vs == null ? "—" : (r.vs > 0 ? "+" : "") + f1(r.vs)}</td>
-        <td><b>${pcS(r.p)}</b></td><td class="dim">${pcS(r.need)}</td><td class="${r.ev == null ? "dim" : r.ev >= 0.05 ? "gold" : r.ev > 0 ? "h" : "dim"}">${r.ev == null ? "—" : (r.ev > 0 ? "+" : "") + Math.round(r.ev * 100) + "%"}</td></tr>`).join("")}</table></div>
-    <div class="desc" style="margin-top:6px"><b>CLV</b>: points better (+) or worse (−) than the closing number for that side, your live CLV. A better number isn't value by itself, because the score changed too. <b>Value</b> means the sim's chance from this exact score and clock beats what DraftKings' price needs (5%+ EV; Lean is 2-5%). The sim knows the score, clock and each player's rates but not foul trouble or in-game injuries, so trust your read of the flow on those. Its live calls are graded every morning in Trends.</div>
+        <td><b>${pcS(r.p)}</b></td><td class="dim">${pcS(r.need)}</td><td class="${r.ev == null ? "dim" : r.ev >= 0.05 ? "gold" : r.ev > 0 ? "h" : "dim"}">${r.ev == null ? "—" : (r.ev > 0 ? "+" : "") + Math.round(r.ev * 100) + "%"}</td><td>${r.price ? `<button class="lbtn sm" data-lbet="${esc(lbetKey(r.kind, r.side, r.point, r.price, true))}" aria-label="Log this bet">+</button>` : ""}</td></tr>`).join("")}</table></div>
+    ${m && m.mg ? priceForm(H, A) : ""}
+    <div class="desc" style="margin-top:6px"><b>+</b> logs the bet in your book at DraftKings' live price. <b>CLV</b>: points better (+) or worse (−) than the closing number for that side, your live CLV. A better number isn't value by itself, because the score changed too. <b>Value</b> means the sim's chance from this exact score and clock beats what DraftKings' price needs (5%+ EV; Lean is 2-5%). The sim knows the score, clock and each player's rates but not foul trouble or in-game injuries, so trust your read of the flow on those. Its live calls are graded every morning in Trends.</div>
   </div>`;
 }
 function liveBoxHtml(n, A, H) {
@@ -1072,6 +1167,7 @@ function livePlaysHtml(n, A, H) {
 function showLive() {
   if (typeof window.gamesLiveHook === "function") window.gamesLiveHook();
   const el = $("simLive"); if (!el || !S.P) return;
+  if (editing() && el.contains(document.activeElement)) return;
   const G = (D.dkday && D.dkday.games || {})[S.gameId] || {}, P = S.P, H = P.teams.home.ab, A = P.teams.away.ab;
   const g = (D.players.games || []).find(x => x.espn_id === S.gameId) || {};
   const isLive = (S.now && S.now.state === "in") || g.state === "in" || (g.state === "pre" && g.start && new Date(g.start) < Date.now() && !(S.now && S.now.state === "post"));
@@ -1088,7 +1184,7 @@ function showLive() {
   const snaps = (G.live || []);
   const rows = snaps.map(s => { const L = s.line || {}, m = s.sim || {};
     return `<tr><td class="t">${qc(s)}</td><td>${s.score[0]}–${s.score[1]}</td><td>${spS(L.sp)}</td><td>${f1(L.tot)}</td><td>${am_(L.ml_h)}</td>
-      <td class="dim">${pcS(m.p_home_cover)} · ${pcS(m.p_over)} · ${pcS(m.p_home_win)}</td><td>${s.res ? `${s.res.spread_home === "won" ? H + " ✓" : s.res.spread_home === "lost" ? A + " ✓" : "push"}` : ""}</td></tr>`; }).join("");
+      <td class="dim">${pcS(m.p_home_cover)} · ${pcS(m.p_over)} · ${pcS(m.p_home_win)}</td><td>${s.res && s.res.stale ? '<span class="dim">stale</span>' : s.res ? `${s.res.spread_home === "won" ? H + " ✓" : s.res.spread_home === "lost" ? A + " ✓" : "push"}` : ""}</td></tr>`; }).join("");
   let now = "";
   if (S.now && S.now.state === "in") {
     const n = S.now, up = n.at ? n.at.toLocaleTimeString([], {hour: "numeric", minute: "2-digit", second: "2-digit"}).toLowerCase() : "";
@@ -1201,5 +1297,5 @@ function showMC() {
 
 RENDER.sim = renderSim;
 window.simEngine = {prep, calibrate, simGame, monteCarlo, setSeed, ensureAvg, loadAvgGame};
-window.SL = {stop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName};
+window.SL = {lineBtns, editing, stop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName};
 })();

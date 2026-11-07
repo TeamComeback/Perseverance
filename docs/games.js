@@ -1,7 +1,7 @@
 // Games tab: tonight's NBA scoreboard → one page per game (score, linescore, live value, box score, lines, props),
 // plus the multi-sport board. Live data comes from the same free ESPN feeds as the Sim tab (sim.js pollLive).
 (() => {
-const {stop: simStop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName} = window.SL;
+const {lineBtns, editing, stop: simStop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName} = window.SL;
 const GV = window.GAMESV = {view: null, sub: "game", timer: null, sb: null};
 const gOf = id => (D.players.games || []).find(x => x.espn_id === id);
 const sbOf = id => (GV.sb || []).find(x => x.id === id);
@@ -103,6 +103,7 @@ function fillGame(force) {
   const n = nowOf(id);
   $("gHead").innerHTML = headHtml(g, n);
   const b = $("gBody"); if (!b) return;
+  if (!force && editing() && b.contains(document.activeElement)) return;     // you're typing a line to price
   if (!force && (GV.sub === "props" || GV.sub === "lines" && !(n && n.state === "in"))) return;   // nothing live to redraw there
   b.innerHTML = GV.sub === "box" ? boxSub(g, n) : GV.sub === "lines" ? linesSub(g, n) : GV.sub === "props" ? propsSub(g) : gameSub(g, n);
   if (GV.sub === "lines") showVs("gVs", id);
@@ -166,6 +167,7 @@ function gameSub(g, n) {
         <tr><td class="t">${esc(H)} spread</td><td>${spS(dk.open && dk.open.sp)}</td><td>${spS(c && c.sp)}${mv(dk.open && dk.open.sp, dk.close && dk.close.sp)}</td>${sim ? `<td>${spS(-sim.margin)}</td>` : ""}</tr>
         <tr><td class="t">Total</td><td>${f1(dk.open && dk.open.tot)}</td><td>${f1(c && c.tot)}${mv(dk.open && dk.open.tot, dk.close && dk.close.tot)}</td>${sim ? `<td>${f1(T[0])}</td>` : ""}</tr>
         <tr><td class="t">${esc(H)} / ${esc(A)} ML</td><td>${am_(dk.open && dk.open.ml_h)} / ${am_(dk.open && dk.open.ml_a)}</td><td>${am_(c && c.ml_h)} / ${am_(c && c.ml_a)}</td>${sim ? `<td>${Math.round(sim.win_home * 100)}%</td>` : ""}</tr></table></div>` : ""}
+      ${c ? `<div class="lbl">Bet DraftKings' line</div>${lineBtns(c, false)}` : ""}
       ${vegasLine(g) ? `<div class="desc" style="margin-top:6px">${vegasLine(g).replace(/^<div class="mdl">|<\/div>$/g, "")}</div>` : ""}
       <div class="desc" style="margin-top:6px">Live tracking (score, box score, live value) starts at tip-off.</div></div>
     ${topProps(g, 3, true)}`;
@@ -204,7 +206,9 @@ function linesSub(g, n) {
   const snapT = snaps.length ? `<div class="lbl">Saved live snapshots</div><div class="scroll"><table class="tbl"><tr><th>When</th><th>${esc(A)}–${esc(H)}</th><th>${esc(H)} sprd</th><th>Total</th><th>Sim cover · over</th></tr>
       ${snaps.map(s => { const l = s.line || {}, m = s.sim || {}; return `<tr><td class="t">${qc(s)}</td><td>${s.score[0]}–${s.score[1]}</td><td>${spS(l.sp)}</td><td>${f1(l.tot)}</td><td class="dim">${pcS(m.p_home_cover)} · ${pcS(m.p_over)}</td></tr>`; }).join("")}</table></div>` : "";
   const evs = ((D.bd && D.bd.events) || []).filter(e => e.sport === "basketball_nba" && nk(e.home) === nk(g.home_name) && nk(e.away) === nk(g.away_name));
-  return `<div class="card"><div class="lbl" style="margin-top:0">DraftKings</div>${table}${snapT}</div>
+  const cur = L || c || o;
+  return `<div class="card"><div class="lbl" style="margin-top:0">DraftKings</div>${table}
+    ${cur ? `<div class="lbl">Log a bet at DraftKings' ${L ? "live" : dk.close ? "current" : "opening"} line</div>${lineBtns(cur, !!L)}` : ""}${snapT}</div>
     <h2>Best price at your books</h2><div class="card">${evs.length ? evs.map(evHtml).join("") + '<div class="desc" style="margin-top:6px">From the agent\'s latest scan. Tap a price to log the bet.</div>' : '<div class="empty">The agent hasn\'t scanned this game\'s lines yet (scans run around 10am, 3pm and 6:35pm ET).</div>'}</div>
     <h2>Sim vs DraftKings</h2><div class="card" id="gVs"></div>`;
 }

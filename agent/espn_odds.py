@@ -42,6 +42,13 @@ def game_odds(eid, live=False):
     d = _get(f"{CORE}/events/{eid}/competitions/{eid}/odds")
     items = {str((i.get("provider") or {}).get("id")): i for i in d.get("items", [])}
     item, lv = items.get(DK), items.get(DK_LIVE)
+    if live:
+        try:                                    # the provider's own endpoint is often fresher than the list
+            one = _get(f"{CORE}/events/{eid}/competitions/{eid}/odds/{DK_LIVE}")
+            if one.get("current"):
+                lv = one
+        except Exception:
+            pass
     if not item and not (lv and live):
         return None
     out = {k: _snap(item, k) for k in ("open", "close", "current")} if item else {"open": None, "close": None, "current": None}

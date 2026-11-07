@@ -179,6 +179,9 @@ def grade(log=print):
                              "tot": (G["close"].get("tot") or 0) - (G["open"].get("tot") or 0)}
             for s in G.get("live", []):
                 L, sim = s.get("line") or {}, s.get("sim") or {}
+                if sim.get("stale"):
+                    s["res"] = {"stale": True}                 # ESPN's line had fallen behind DraftKings': not a real price, not graded
+                    continue
                 a, h = s["score"]
                 cp = checkpoint(s)
                 trail = h - a                                   # + home leads

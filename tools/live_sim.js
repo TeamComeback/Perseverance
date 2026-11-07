@@ -36,6 +36,9 @@ const etDay = t => new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York
         }
         s.sim = {p_home_cover: cw + cl ? +(cw / (cw + cl)).toFixed(3) : null, p_over: ow + ol ? +(ow / (ow + ol)).toFixed(3) : null,
                  p_home_win: +(hw / N).toFixed(3), n: N};
+        // live books keep spreads and totals near 50/50: a line the sim makes 78/22 or worse means ESPN's copy is stale
+        const lop = p => p != null && (p < 0.22 || p > 0.78);
+        if (lop(s.sim.p_home_cover) || lop(s.sim.p_over)) s.sim.stale = true;
         changed = true;
       }
       console.log(`[live] ${G.away} @ ${G.home}: simmed ${todo.length} snapshot(s)`);
