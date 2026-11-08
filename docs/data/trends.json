@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T00:00:33Z",
+ "updated": "2026-11-08T02:29:27Z",
  "date": "2026-11-07",
  "sections": [
   {
@@ -109,13 +109,13 @@
      "stat": "ast"
     },
     {
-     "txt": "Michael Porter Jr. (BKN): 1.6 assists/g last 5 vs 3.1 expected for his minutes",
-     "val": "-48%",
+     "txt": "Quenton Jackson (IND): 1.8 assists/g last 5 vs 4.1 expected for his minutes",
+     "val": "-56%",
      "tone": "bad",
      "stat": "ast"
     },
     {
-     "txt": "Jalen Williams (OKC): 2.2 assists/g last 5 vs 4.2 expected for his minutes",
+     "txt": "Michael Porter Jr. (BKN): 1.6 assists/g last 5 vs 3.1 expected for his minutes",
      "val": "-48%",
      "tone": "bad",
      "stat": "ast"
@@ -239,8 +239,8 @@
      "tone": "good"
     },
     {
-     "txt": "DEN: 99.9 possessions/g last 10 vs 101.9 baseline",
-     "val": "-2.0",
+     "txt": "DEN: 100.0 possessions/g last 10 vs 101.9 baseline",
+     "val": "-1.9",
      "tone": "bad"
     },
     {
@@ -465,6 +465,12 @@
      "stat": "pra"
     },
     {
+     "txt": "IND vs point guards: +13% assists vs norm",
+     "val": "+13%",
+     "tone": "good",
+     "stat": "ast"
+    },
+    {
      "txt": "UTAH vs point guards: +13% assists vs norm",
      "val": "+13%",
      "tone": "good",
@@ -475,12 +481,6 @@
      "val": "+12%",
      "tone": "good",
      "stat": "ast"
-    },
-    {
-     "txt": "WSH vs centers: +12% reb+ast vs norm",
-     "val": "+12%",
-     "tone": "good",
-     "stat": "ra"
     }
    ]
   },
@@ -525,12 +525,6 @@
      "stat": "ast"
     },
     {
-     "txt": "TOR vs small forwards: -11% assists vs norm",
-     "val": "-11%",
-     "tone": "bad",
-     "stat": "ast"
-    },
-    {
      "txt": "DET vs shooting guards: -11% reb+ast vs norm",
      "val": "-11%",
      "tone": "bad",
@@ -543,7 +537,13 @@
      "stat": "ast"
     },
     {
-     "txt": "ORL vs centers: -11% threes vs norm",
+     "txt": "TOR vs small forwards: -11% assists vs norm",
+     "val": "-11%",
+     "tone": "bad",
+     "stat": "ast"
+    },
+    {
+     "txt": "BKN vs small forwards: -11% threes vs norm",
      "val": "-11%",
      "tone": "bad",
      "stat": "tpm"
@@ -555,8 +555,8 @@
    "title": "Trailing by 10+ at halftime (last two seasons)",
    "items": [
     {
-     "txt": "591 games: the trailing team won the second half 304 times (51%)",
-     "val": "51%",
+     "txt": "592 games: the trailing team won the second half 305 times (52%)",
+     "val": "52%",
      "tone": "good"
     },
     {
@@ -565,8 +565,8 @@
      "tone": "mid"
     },
     {
-     "txt": "The trailing team came back to win 68 times (12%)",
-     "val": "12%",
+     "txt": "The trailing team came back to win 68 times (11%)",
+     "val": "11%",
      "tone": "mid"
     }
    ]
@@ -737,21 +737,21 @@
   },
   {
    "team": "DEN",
-   "gp": 7,
-   "ppg": 115.4,
-   "oppg": 114.7,
-   "ppg10": 115.4,
-   "oppg10": 114.7,
-   "pace10": 99.9,
+   "gp": 8,
+   "ppg": 115.2,
+   "oppg": 113.1,
+   "ppg10": 115.2,
+   "oppg10": 113.1,
+   "pace10": 100.0,
    "pace": 101.9,
    "pace_rank": 21,
    "ortg_rank": 1,
-   "drtg_rank": 22,
-   "ats": "3-4",
-   "ou": "4-3",
-   "ou10": "4-3",
-   "lined": 7,
-   "h2_net": 0.0
+   "drtg_rank": 21,
+   "ats": "4-4",
+   "ou": "4-4",
+   "ou10": "4-4",
+   "lined": 8,
+   "h2_net": -1.4
   },
   {
    "team": "DET",
@@ -809,21 +809,21 @@
   },
   {
    "team": "IND",
-   "gp": 9,
-   "ppg": 111.2,
+   "gp": 10,
+   "ppg": 110.3,
    "oppg": 114.2,
-   "ppg10": 111.2,
+   "ppg10": 110.3,
    "oppg10": 114.2,
-   "pace10": 103.2,
+   "pace10": 102.8,
    "pace": 103.7,
-   "pace_rank": 9,
+   "pace_rank": 10,
    "ortg_rank": 28,
    "drtg_rank": 24,
-   "ats": "5-4",
-   "ou": "3-6",
-   "ou10": "3-6",
-   "lined": 9,
-   "h2_net": 3.0
+   "ats": "5-5",
+   "ou": "3-7",
+   "ou10": "3-7",
+   "lined": 10,
+   "h2_net": 3.8
   },
   {
    "team": "LAC",
@@ -872,7 +872,7 @@
    "pace": 104.4,
    "pace_rank": 7,
    "ortg_rank": 21,
-   "drtg_rank": 21,
+   "drtg_rank": 22,
    "ats": "6-3",
    "ou": "4-5",
    "ou10": "4-5",
@@ -924,7 +924,7 @@
    "oppg10": 107.7,
    "pace10": 103.8,
    "pace": 103.7,
-   "pace_rank": 10,
+   "pace_rank": 9,
    "ortg_rank": 9,
    "drtg_rank": 6,
    "ats": "9-1",
