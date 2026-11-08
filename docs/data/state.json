@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 16.36,
+  "cash": 37.91,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -8031,7 +8031,7 @@
       "book": "draftkings",
       "fair_p": 0.4966,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 36.91,
        "base": 34.19,
@@ -8062,6 +8062,22 @@
          "txt": "WSH: defense #28, pace #8 \u00b7 OKC: offense #6, pace #18"
         }
        ]
+      },
+      "final": {
+       "home": 114.0,
+       "away": 75.0
+      },
+      "actual": 41.0,
+      "box": {
+       "min": 29.0,
+       "pts": 30.0,
+       "reb": 2.0,
+       "ast": 9.0,
+       "tpm": 3.0,
+       "tpa": 5.0,
+       "fga": 20.0,
+       "fta": 6.0,
+       "tov": 2.0
       }
      }
     ],
@@ -8072,10 +8088,202 @@
     "note": "Proj 36.9 vs line 41.5 (norm 34.2, 31 min). Model 75% vs market 50%. WSH gives point guards +7% pts+reb+ast vs their norm (#5 softest of 30) \u00b7 Players with his profile: +9% pts+reb+ast vs WSH (141 close comps) \u00b7 His history vs WSH: 45.5 pts+reb+ast/g in 2 games (+3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.75,
+    "profit": 4.75,
+    "settled": "2026-11-08T15:56:53Z",
+    "review": {
+     "headline": "WON: 41 pts+reb+ast vs Under 41.5",
+     "final": "Washington Wizards 75 \u2013 Oklahoma City Thunder 114",
+     "legs": [
+      {
+       "outcome": "Shai Gilgeous-Alexander Under",
+       "result": "win",
+       "headline": "41 pts+reb+ast vs Under 41.5",
+       "final": "Washington Wizards 75 \u2013 Oklahoma City Thunder 114",
+       "why": [
+        "Shai Gilgeous-Alexander finished with 41 pts+reb+ast against a line of 41.5: under cleared by 0.5.",
+        "Minutes: played 29 vs 31.3 projected.",
+        "Game was a 39-point blowout, but his minutes held up.",
+        "Box score: 30 pts on 20 FGA / 6 FTA \u00b7 2 reb \u00b7 9 ast, 2 TO.",
+        "Model projected 36.9 (34.2 norm \u00d7 1.08 matchup); actual was +4.1 off (+0.6 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (31.7) in a matchup the model rated soft.",
+        "Signal: WSH gives point guards +7% pts+reb+ast vs their norm (#5 softest of 30)",
+        "Signal: Players with his profile: +9% pts+reb+ast vs WSH (141 close comps)",
+        "Signal: His history vs WSH: 45.5 pts+reb+ast/g in 2 games (+3%)",
+        "We priced it at 55% to hit vs 51% needed to break even at 1.95x (+6.7% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "OKC",
+        "away": "WSH"
+       },
+       "final": "WSH 75 \u2013 OKC 114",
+       "periods": {
+        "away": [
+         19,
+         17,
+         23,
+         16
+        ],
+        "home": [
+         25,
+         32,
+         33,
+         24
+        ]
+       },
+       "largest_lead": {
+        "WSH": 1,
+        "OKC": 43
+       },
+       "largest_lead_at": {
+        "WSH": "6:24 1st Q",
+        "OKC": "2:05 4th Q"
+       },
+       "lead_changes": 4,
+       "ties": 4,
+       "runs": [
+        {
+         "team": "OKC",
+         "pts": 11,
+         "from": "4:10 3rd Q",
+         "to": "2:34 3rd Q",
+         "score": "WSH 55-87 OKC"
+        },
+        {
+         "team": "OKC",
+         "pts": 9,
+         "from": "56.4 1st Q",
+         "to": "9:43 2nd Q",
+         "score": "WSH 19-30 OKC"
+        },
+        {
+         "team": "OKC",
+         "pts": 8,
+         "from": "7:37 2nd Q",
+         "to": "5:31 2nd Q",
+         "score": "WSH 23-41 OKC"
+        }
+       ],
+       "swings": [
+        {
+         "team": "OKC",
+         "swing": 18,
+         "from": "9:53 3rd Q",
+         "to": "2:34 3rd Q",
+         "mins": 7.3,
+         "from_score": "WSH 45-59 OKC",
+         "to_score": "WSH 55-87 OKC",
+         "pts_for": 28,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Alex Sarr (WSH): 15 pts, 14 reb, 1 ast, 1-9 3PT in 28 min",
+        "AJ Dybantsa (WSH): 19 pts, 6 reb, 3 ast, 1-5 3PT in 31 min",
+        "Shai Gilgeous-Alexander (OKC): 30 pts, 2 reb, 9 ast, 3-5 3PT in 29 min",
+        "Aday Mara (OKC): 18 pts, 8 reb, 3 ast, 1-1 3PT in 27 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 12,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 8,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 4,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 14,
+          "reb": 1,
+          "ast": 6,
+          "tpm": 3,
+          "pf": 0,
+          "fga": 8,
+          "fgm": 5
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "8:22 3rd Q",
+         "4:38 3rd Q",
+         "2:34 3rd Q"
+        ],
+        "box": {
+         "id": "4278073",
+         "name": "Shai Gilgeous-Alexander",
+         "team": "OKC",
+         "min": "29",
+         "pts": 30,
+         "reb": 2,
+         "ast": 9,
+         "3pt": "3-5",
+         "fg": "11-20",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: WSH 36-57 OKC, OKC up 21.",
+        "The 2nd quarter decided the most: OKC won it 32-17.",
+        "Largest leads: WSH 1 (6:24 1st Q), OKC 43 (2:05 4th Q). 4 lead changes, 4 ties.",
+        "Momentum swing: OKC outscored them 28-10 in 7.3 minutes (9:53 3rd Q to 2:34 3rd Q), moving it from WSH 45-59 OKC to WSH 55-87 OKC.",
+        "OKC went on a 11-0 run (4:10 3rd Q to 2:34 3rd Q), making it WSH 55-87 OKC.",
+        "OKC went on a 9-0 run (56.4 1st Q to 9:43 2nd Q), making it WSH 19-30 OKC.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Shai Gilgeous-Alexander by period (PTS+REB+AST): Q1 13, Q2 7, Q3 21, Q4 0.",
+        "He never got past 41.5.",
+        "Threes made at: 8:22 3rd Q, 4:38 3rd Q, 2:34 3rd Q."
+       ],
+       "espn_id": "401909941",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909941"
+      }
+     ]
+    }
    },
    {
     "id": "ab1cce4c",
@@ -8102,7 +8310,7 @@
       "book": "fanduel",
       "fair_p": 0.425,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 2.89,
        "base": 2.63,
@@ -8133,6 +8341,22 @@
          "txt": "WSH: defense #28, pace #8 \u00b7 OKC: offense #6, pace #18"
         }
        ]
+      },
+      "final": {
+       "home": 114.0,
+       "away": 75.0
+      },
+      "actual": 3.0,
+      "box": {
+       "min": 13.0,
+       "pts": 0.0,
+       "reb": 3.0,
+       "ast": 3.0,
+       "tpm": 0.0,
+       "tpa": 2.0,
+       "fga": 2.0,
+       "fta": 0.0,
+       "tov": 0.0
       }
      }
     ],
@@ -8143,10 +8367,186 @@
     "note": "Proj 2.9 vs line 2.5 (norm 2.6, 22 min). Model 51% vs market 42%. WSH gives shooting guards +11% assists vs their norm (#1 softest of 30) \u00b7 Players with his profile: +14% assists vs WSH (120 close comps) \u00b7 His history vs WSH: 3.5 assists/g in 2 games (+5%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 11.8,
+    "profit": 6.8,
+    "settled": "2026-11-08T15:56:53Z",
+    "review": {
+     "headline": "WON: 3 assists vs Over 2.5",
+     "final": "Washington Wizards 75 \u2013 Oklahoma City Thunder 114",
+     "legs": [
+      {
+       "outcome": "Alex Caruso Over",
+       "result": "win",
+       "headline": "3 assists vs Over 2.5",
+       "final": "Washington Wizards 75 \u2013 Oklahoma City Thunder 114",
+       "why": [
+        "Alex Caruso finished with 3 assists against a line of 2.5: over cleared by 0.5.",
+        "Minutes: played 13 vs 21.6 projected.",
+        "Game was a 39-point blowout, which cuts starters' minutes.",
+        "Box score: 3 ast, 0 TO.",
+        "Model projected 2.9 (2.6 norm \u00d7 1.10 matchup); actual was +0.1 off (+0.1 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (1.6) in a matchup the model rated soft.",
+        "Signal: WSH gives shooting guards +11% assists vs their norm (#1 softest of 30)",
+        "Signal: Players with his profile: +14% assists vs WSH (120 close comps)",
+        "Signal: His history vs WSH: 3.5 assists/g in 2 games (+5%)",
+        "We priced it at 44% to hit vs 42% needed to break even at 2.36x (+4.3% expected edge).",
+        "Consensus fair probability when placed: 42% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-short",
+        "blowout",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "minutes-short"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "OKC",
+        "away": "WSH"
+       },
+       "final": "WSH 75 \u2013 OKC 114",
+       "periods": {
+        "away": [
+         19,
+         17,
+         23,
+         16
+        ],
+        "home": [
+         25,
+         32,
+         33,
+         24
+        ]
+       },
+       "largest_lead": {
+        "WSH": 1,
+        "OKC": 43
+       },
+       "largest_lead_at": {
+        "WSH": "6:24 1st Q",
+        "OKC": "2:05 4th Q"
+       },
+       "lead_changes": 4,
+       "ties": 4,
+       "runs": [
+        {
+         "team": "OKC",
+         "pts": 11,
+         "from": "4:10 3rd Q",
+         "to": "2:34 3rd Q",
+         "score": "WSH 55-87 OKC"
+        },
+        {
+         "team": "OKC",
+         "pts": 9,
+         "from": "56.4 1st Q",
+         "to": "9:43 2nd Q",
+         "score": "WSH 19-30 OKC"
+        },
+        {
+         "team": "OKC",
+         "pts": 8,
+         "from": "7:37 2nd Q",
+         "to": "5:31 2nd Q",
+         "score": "WSH 23-41 OKC"
+        }
+       ],
+       "swings": [
+        {
+         "team": "OKC",
+         "swing": 18,
+         "from": "9:53 3rd Q",
+         "to": "2:34 3rd Q",
+         "mins": 7.3,
+         "from_score": "WSH 45-59 OKC",
+         "to_score": "WSH 55-87 OKC",
+         "pts_for": 28,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Alex Sarr (WSH): 15 pts, 14 reb, 1 ast, 1-9 3PT in 28 min",
+        "AJ Dybantsa (WSH): 19 pts, 6 reb, 3 ast, 1-5 3PT in 31 min",
+        "Shai Gilgeous-Alexander (OKC): 30 pts, 2 reb, 9 ast, 3-5 3PT in 29 min",
+        "Aday Mara (OKC): 18 pts, 8 reb, 3 ast, 1-1 3PT in 27 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "2991350",
+         "name": "Alex Caruso",
+         "team": "OKC",
+         "min": "13",
+         "pts": 0,
+         "reb": 3,
+         "ast": 3,
+         "3pt": "0-2",
+         "fg": "0-2",
+         "pf": "1",
+         "starter": false
+        }
+       },
+       "story": [
+        "Halftime: WSH 36-57 OKC, OKC up 21.",
+        "The 2nd quarter decided the most: OKC won it 32-17.",
+        "Largest leads: WSH 1 (6:24 1st Q), OKC 43 (2:05 4th Q). 4 lead changes, 4 ties.",
+        "Momentum swing: OKC outscored them 28-10 in 7.3 minutes (9:53 3rd Q to 2:34 3rd Q), moving it from WSH 45-59 OKC to WSH 55-87 OKC.",
+        "OKC went on a 11-0 run (4:10 3rd Q to 2:34 3rd Q), making it WSH 55-87 OKC.",
+        "OKC went on a 9-0 run (56.4 1st Q to 9:43 2nd Q), making it WSH 19-30 OKC.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Alex Caruso by period (AST): Q1 0, Q2 2, Q3 1.",
+        "He went over 2.5 in Q3."
+       ],
+       "espn_id": "401909941",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909941"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -8163,7 +8563,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.196,
+  "prop_model_weight": 0.137,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -8285,9 +8685,9 @@
    "clv_sum": 0.0
   },
   "matchup_over": {
-   "bets": 5,
-   "staked": 25.0,
-   "profit": 7.300000000000001,
+   "bets": 6,
+   "staked": 30.0,
+   "profit": 14.100000000000001,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -8297,18 +8697,18 @@
      "lost": 0
     },
     "blowout": {
-     "n": 4,
-     "won": 2,
+     "n": 5,
+     "won": 3,
      "lost": 2
     },
     "matchup-read-right": {
-     "n": 3,
-     "won": 2,
+     "n": 4,
+     "won": 3,
      "lost": 1
     },
     "minutes-short": {
-     "n": 2,
-     "won": 1,
+     "n": 3,
+     "won": 2,
      "lost": 1
     },
     "matchup-read-wrong": {
@@ -8329,15 +8729,15 @@
    }
   },
   "matchup_under": {
-   "bets": 15,
-   "staked": 75.0,
-   "profit": -20.950000000000003,
+   "bets": 16,
+   "staked": 80.0,
+   "profit": -16.200000000000003,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 6,
-     "won": 5,
+     "n": 7,
+     "won": 6,
      "lost": 1
     },
     "dnp-void": {
@@ -8346,8 +8746,8 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 10,
-     "won": 4,
+     "n": 11,
+     "won": 5,
      "lost": 6
     },
     "matchup-read-wrong": {
@@ -8361,8 +8761,8 @@
      "lost": 2
     },
     "blowout": {
-     "n": 3,
-     "won": 1,
+     "n": 4,
+     "won": 2,
      "lost": 2
     },
     "model-miss": {
@@ -8381,9 +8781,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 27.0,
-   "staked": 135.0,
-   "profit": -34.65
+   "bets": 29.0,
+   "staked": 145.0,
+   "profit": -23.099999999999998
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-05T03:39:54Z",
@@ -9432,6 +9832,31 @@
    "ts": "2026-11-08T07:56:19Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 8: 7 games, 163 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-08T15:56:53Z",
+   "kind": "result",
+   "text": "WON +$4.75: Shai Gilgeous-Alexander Under 41.5 @ -105 (DraftKings) \u2014 WON: 41 pts+reb+ast vs Under 41.5 [blowout, matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-08T15:56:53Z",
+   "kind": "result",
+   "text": "WON +$6.80: Alex Caruso Over 2.5 @ +136 (FanDuel) \u2014 WON: 3 assists vs Over 2.5 [blowout, matchup-read-right, minutes-short]"
+  },
+  {
+   "ts": "2026-11-08T15:56:54Z",
+   "kind": "adapt",
+   "text": "Model vs market on 1491 graded lines: the 0% model blend scored best (log loss model 0.715, market 0.687). Moving the model's weight from 20% to 14%."
+  },
+  {
+   "ts": "2026-11-08T15:56:54Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +6.4% vs actual over 790 player-games: level x0.931; REB projections ran +2.6% vs actual over 790 player-games: level x0.961; AST projections ran +4.9% vs actual over 790 player-games: level x0.940; TPM projections ran +6.1% vs actual over 790 player-games: level x0.942; PRA projections ran +5.0% vs actual over 790 player-games: level x0.942; RA projections ran +3.1% vs actual over 790 player-games: level x0.957; conviction factor 'minutes' hurt by -0.9 pts of hit rate over 2584 plays: weight 0.88 -> 0.93; conviction factor 'agree' helped by +0.2 pts of hit rate over 1270 plays: weight 0.95 -> 1.01; conviction factor 'vegas' helped by +5.0 pts of hit rate over 644 plays: weight 1.11 -> 1.26; conviction factor 'blowout' helped by +7.6 pts of hit rate over 213 plays: weight 1.00 -> 1.20."
+  },
+  {
+   "ts": "2026-11-08T15:56:54Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $37.91 (run #1), 13-27-1, ROI -29.9%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -9473,24 +9898,26 @@
   "3b045926",
   "837b72ad",
   "ff3f3e20",
-  "1eca85b9"
+  "1eca85b9",
+  "3160de36",
+  "ab1cce4c"
  ],
  "strategist": null,
- "updated": "2026-11-08T07:56:54Z",
+ "updated": "2026-11-08T15:56:54Z",
  "stats": {
-  "bets": 39,
-  "won": 11,
+  "bets": 41,
+  "won": 13,
   "lost": 27,
   "push": 1,
-  "staked": 197.63,
-  "profit": -73.64,
-  "roi": -0.3726,
+  "staked": 207.63,
+  "profit": -62.09,
+  "roi": -0.299,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 24,
+  "clv_no_close": 26,
   "close_mins_median": 151,
-  "open": 2,
-  "equity": 26.36
+  "open": 0,
+  "equity": 37.91
  },
  "weights": {
   "value_fav": 0.842,
@@ -9498,8 +9925,8 @@
   "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
-  "matchup_over": 1.172,
-  "matchup_under": 0.69
+  "matchup_over": 1.313,
+  "matchup_under": 0.769
  },
  "paused": [],
  "dry_scans": 1
