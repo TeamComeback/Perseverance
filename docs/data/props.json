@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T22:30:40Z",
+ "updated": "2026-11-08T00:00:36Z",
  "date": "2026-11-07",
  "priced_date": "2026-11-07",
  "games": [
@@ -1672,16 +1672,16 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 11.29,
-   "base": 12.08,
+   "proj": 14.6,
+   "base": 15.64,
    "mult": 0.934,
-   "minutes": 17.1,
+   "minutes": 22.1,
    "status": "",
    "start": "2026-11-08T01:00Z",
    "espn_id": "401909941",
    "lean": "Under",
    "strength": 0.0683,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -4566,10 +4566,10 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 30.13,
-   "base": 31.5,
+   "proj": 33.06,
+   "base": 34.58,
    "mult": 0.956,
-   "minutes": 34.4,
+   "minutes": 37.8,
    "status": "",
    "start": "2026-11-08T01:00Z",
    "espn_id": "401909941",
@@ -4624,10 +4624,10 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.57,
-   "base": 1.5,
+   "proj": 1.72,
+   "base": 1.65,
    "mult": 1.046,
-   "minutes": 20.4,
+   "minutes": 22.4,
    "status": "",
    "start": "2026-11-08T01:00Z",
    "espn_id": "401909941",
@@ -4673,7 +4673,7 @@
    "base": 5.15,
    "mult": 0.956,
    "minutes": 18.3,
-   "status": "Questionable",
+   "status": "Ques",
    "start": "2026-11-08T01:30Z",
    "espn_id": "401909942",
    "lean": "Under",
@@ -5722,6 +5722,51 @@
    ]
   },
   {
+   "pid": "5104155",
+   "name": "Bilal Coulibaly",
+   "team": "WSH",
+   "opp": "OKC",
+   "home": false,
+   "role": "SG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 0.89,
+   "base": 0.85,
+   "mult": 1.041,
+   "minutes": 27.6,
+   "status": "",
+   "start": "2026-11-08T01:00Z",
+   "espn_id": "401909941",
+   "lean": "Over",
+   "strength": 0.0402,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.094,
+     "n": 107.2,
+     "rank": 2,
+     "txt": "OKC gives shooting guards +9% threes vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.062,
+     "n": 25,
+     "txt": "Players with his profile: +6% threes vs OKC (25 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.092,
+     "n": 2,
+     "txt": "His history vs OKC: 2.5 threes/g in 2 games (+9%)"
+    },
+    {
+     "k": "env",
+     "txt": "OKC: defense #2, pace #18 \u00b7 WSH: offense #27, pace #8"
+    }
+   ]
+  },
+  {
    "pid": "3934723",
    "name": "Thomas Bryant",
    "team": "CLE",
@@ -5955,10 +6000,10 @@
    "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 9.93,
-   "base": 9.56,
+   "proj": 10.91,
+   "base": 10.49,
    "mult": 1.04,
-   "minutes": 34.4,
+   "minutes": 37.8,
    "status": "",
    "start": "2026-11-08T01:00Z",
    "espn_id": "401909941",
@@ -6868,10 +6913,10 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 10.13,
-   "base": 10.51,
+   "proj": 11.12,
+   "base": 11.53,
    "mult": 0.965,
-   "minutes": 18.0,
+   "minutes": 19.8,
    "status": "",
    "start": "2026-11-08T01:00Z",
    "espn_id": "401909941",
@@ -7183,10 +7228,10 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 6.99,
-   "base": 7.24,
+   "proj": 7.68,
+   "base": 7.95,
    "mult": 0.966,
-   "minutes": 12.7,
+   "minutes": 13.9,
    "status": "",
    "start": "2026-11-08T01:00Z",
    "espn_id": "401909941",
@@ -7232,7 +7277,7 @@
    "base": 6.06,
    "mult": 0.966,
    "minutes": 26.7,
-   "status": "Questionable",
+   "status": "Ques",
    "start": "2026-11-08T01:30Z",
    "espn_id": "401909942",
    "lean": "Under",
@@ -7277,7 +7322,7 @@
    "base": 0.8,
    "mult": 0.966,
    "minutes": 26.7,
-   "status": "Questionable",
+   "status": "Ques",
    "start": "2026-11-08T01:30Z",
    "espn_id": "401909942",
    "lean": "Under",
@@ -7531,51 +7576,6 @@
     {
      "k": "env",
      "txt": "BKN: defense #25, pace #25 \u00b7 ATL: offense #15, pace #6"
-    }
-   ]
-  },
-  {
-   "pid": "3136195",
-   "name": "Karl-Anthony Towns",
-   "team": "NY",
-   "opp": "CLE",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 16.41,
-   "base": 15.88,
-   "mult": 1.034,
-   "minutes": 31.3,
-   "status": "",
-   "start": "2026-11-08T01:00Z",
-   "espn_id": "401909940",
-   "lean": "Over",
-   "strength": 0.0334,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.046,
-     "n": 49.4,
-     "rank": 9,
-     "txt": "CLE gives centers +5% reb+ast vs their norm (#9 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.027,
-     "n": 80,
-     "txt": "Players with his profile: +3% reb+ast vs CLE (80 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.995,
-     "n": 6,
-     "txt": "His history vs CLE: 14.3 reb+ast/g in 6 games (-0%)"
-    },
-    {
-     "k": "env",
-     "txt": "CLE: defense #9, pace #12 \u00b7 NY: offense #4, pace #29"
     }
    ]
   }
