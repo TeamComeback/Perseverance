@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 37.91,
+  "cash": 32.91,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -8547,6 +8547,77 @@
       }
      ]
     }
+   },
+   {
+    "id": "b46f1cb0",
+    "placed": "2026-11-08T22:41:34Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "182e2b5349fa0ff4ad3c0e8359c1a9a0",
+      "sport": "basketball_nba",
+      "commence": "2026-11-08T23:10:00Z",
+      "home": "Detroit Pistons",
+      "away": "Los Angeles Lakers",
+      "market": "player_rebounds_assists",
+      "outcome": "Austin Reaves Under",
+      "side": "Under",
+      "player": "Austin Reaves",
+      "player_id": "4066457",
+      "stat": "ra",
+      "espn_id": "401909946",
+      "point": 10.5,
+      "price": 1.91,
+      "book": "draftkings",
+      "fair_p": 0.5008,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 6.96,
+       "base": 7.72,
+       "minutes": 34.5,
+       "mult": 0.901,
+       "sd": 2.42,
+       "p_model": 0.8756,
+       "p_mkt": 0.5008,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.891,
+         "txt": "DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.912,
+         "txt": "Players with his profile: -9% reb+ast vs DET (150 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.963,
+         "txt": "His history vs DET: 7.0 reb+ast/g in 1 games (-4%)"
+        },
+        {
+         "k": "env",
+         "v": null,
+         "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.91,
+    "stake": 5.0,
+    "ev": 0.0546,
+    "p": 0.5521,
+    "note": "Proj 7.0 vs line 10.5 (norm 7.7, 34 min). Model 88% vs market 50%. DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -9% reb+ast vs DET (150 close comps) \u00b7 His history vs DET: 7.0 reb+ast/g in 1 games (-4%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -9872,6 +9943,11 @@
    "ts": "2026-11-08T21:52:46Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 8: 7 games, 165 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-08T22:41:34Z",
+   "kind": "props",
+   "text": "NBA matchups: 6 games, strongest spots: Payton Pritchard ra +12% vs MIL; Payton Pritchard ast +11% vs MIL; Austin Reaves ra -10% vs DET. Bought prop odds for BOS@MIL (ra, ast, pra, team totals), LAL@DET (ra) (5 credits). Placed 1: Austin Reaves Under 10.5 @ -110 (DraftKings)"
   }
  ],
  "learned_ids": [
@@ -9918,7 +9994,7 @@
   "ab1cce4c"
  ],
  "strategist": null,
- "updated": "2026-11-08T21:53:24Z",
+ "updated": "2026-11-08T22:42:12Z",
  "stats": {
   "bets": 41,
   "won": 13,
@@ -9931,7 +10007,7 @@
   "clv_n": 15,
   "clv_no_close": 26,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 1,
   "equity": 37.91
  },
  "weights": {
