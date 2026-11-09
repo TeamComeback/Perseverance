@@ -86,6 +86,7 @@ class Model:
         self._players()
         self._teams(team_games)
         self._residuals()
+        self.env = None                        # built on first use (environment() is defined below)
 
     # ---------------- players ----------------
     def _players(self):
@@ -247,6 +248,13 @@ class Model:
         logm = (weights["w_dvp"] * math.log(dvp) + weights["w_sim"] * math.log(sim)
                 + weights["w_h2h"] * math.log(h2h) + 0.5 * math.log(ha))
         mult = math.exp(logm * STAT_CAL[s] * weights.get("matchup_strength", 1.0))
+        # chances: how many rebounds (missed shots, extra possessions) this opponent gives up compared with the league.
+        # A separate, team-level signal the position tables miss (tests/environment.py: +0.4 to +1.0 elasticity, every stat).
+        if self.env is None:
+            self.env = environment(self) or {}
+        ef = env_factors(self.env, p["team"], opp) if self.env else None
+        chances = max(0.9, min(1.1, ef["reb"])) if ef else 1.0
+        mult *= chances ** ENV_W[s]
         proj = base * mult
         # spread of outcomes, scaled to projected minutes
         rs = [r for r in self.by_player[pid] if r["min"] >= max(12, mins * 0.6)][-40:]
@@ -264,6 +272,8 @@ class Model:
             {"k": "h2h", "v": round(h2h, 3), "n": len(h2h_games),
              "txt": (f"His history vs {opp}: {_avg(h2h_games, s)} {STATS[s]}/g in {len(h2h_games)} games ({_pct(h2h)})"
                      if h2h_games else f"No history vs {opp} yet")},
+            {"k": "chances", "v": round(chances, 3),
+             "txt": f"{opp} games have {_pct(chances)} rebounds up for grabs vs the league (missed shots and extra possessions)"},
             {"k": "env", "txt": f"{opp}: defense #{To.get('drtg_rank', '-')}, pace #{To.get('pace_rank', '-')} · "
                                 f"{p['team']}: offense #{T.get('ortg_rank', '-')}, pace #{T.get('pace_rank', '-')}"},
             {"k": "ha", "v": round(ha, 3), "txt": f"{'Home' if home else 'Away'} split {_pct(ha)}"},
@@ -327,3 +337,44 @@ def _p_over_raw(proj, line):
 
 def season_now(d=None):
     return nd.season_of(d or date.today())
+
+
+# ---------------- game environment ----------------
+# Elasticities from tests/environment.py (three walk-forward cuts on 2025-26), cut roughly in half to be safe.
+ENV_W = {"pts": 0.3, "reb": 0.3, "ast": 0.5, "tpm": 0.25, "pra": 0.3, "ra": 0.35}
+
+
+def environment(model):
+    """Team tables for tonight's game environment: pace, scoring, and rebounds for and allowed per game
+    (recency-weighted like everything else in the model)."""
+    reb = defaultdict(lambda: defaultdict(float))            # (team, date) -> team rebounds
+    opp_of = {}
+    for r in model.rows:
+        reb[(r["team"], r["d"])]["v"] += r["reb"]
+        reb[(r["team"], r["d"])]["w"] = r["sw"]
+        opp_of[(r["team"], r["d"])] = r["opp"]
+    acc = defaultdict(lambda: [0.0, 0.0, 0.0])                 # team -> w, rebounds for, rebounds allowed
+    for (t, d), x in reb.items():
+        o = reb.get((opp_of[(t, d)], d))
+        if not o:
+            continue
+        a = acc[t]; a[0] += x["w"]; a[1] += x["w"] * x["v"]; a[2] += x["w"] * o["v"]
+    T = {t: {"reb_for": a[1] / a[0], "reb_alw": a[2] / a[0]} for t, a in acc.items() if a[0] > 0 and t in model.teams}
+    if not T:
+        return None
+    n = len(T)
+    lg = {"reb": sum(x["reb_for"] for x in T.values()) / n, "pace": sum(model.teams[t]["pace"] for t in T) / n,
+          "ortg": sum(model.teams[t]["ortg"] for t in T) / n}
+    return {"T": T, "lg": lg, "teams": model.teams}
+
+
+def env_factors(E, team, opp):
+    """Tonight vs this team's usual game: {pace, off, reb} ratios (1.0 = a normal night for them).
+    pace: possessions; off: points per possession against this defense; reb: team rebounds against this opponent."""
+    if not E or team not in E["T"] or opp not in E["T"]:
+        return None
+    Tm, lg, T = E["teams"], E["lg"], E["T"]
+    pace = (Tm[team]["pace"] + Tm[opp]["pace"] - lg["pace"]) / Tm[team]["pace"]
+    off = (Tm[team]["ortg"] + Tm[opp]["drtg"] - lg["ortg"]) / Tm[team]["ortg"]
+    reb = (T[team]["reb_for"] * T[opp]["reb_alw"] / lg["reb"]) / T[team]["reb_for"]
+    return {"pace": pace, "off": off, "reb": reb}

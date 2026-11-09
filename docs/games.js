@@ -170,7 +170,21 @@ function gameSub(g, n) {
       ${c ? `<div class="lbl">Bet DraftKings' line</div>${lineBtns(c, false)}` : ""}
       ${vegasLine(g) ? `<div class="desc" style="margin-top:6px">${vegasLine(g).replace(/^<div class="mdl">|<\/div>$/g, "")}</div>` : ""}
       <div class="desc" style="margin-top:6px">Live tracking (score, box score, live value) starts at tip-off.</div></div>
-    ${topProps(g, 3, true)}`;
+    ${spotsHtml(g)}${topProps(g, 3, true)}`;
+}
+// schedule spots (rest, travel, time zones, altitude) and tonight's referee crew
+function spotsHtml(g) {
+  const v = g.vegas || {}, sp = v.spots, rf = v.refs; if (!sp && !rf) return "";
+  const side = sd => { const x = sp[sd], ab = g[sd];
+    return `<div class="ti"><span><b style="color:var(--text)">${esc(ab)}</b> · ${x.why && x.why.length ? esc(x.why.map(w => w[1]).join(", ")) : "normal spot"}
+      <br><span class="dim" style="font-size:11.5px">${x.rest == null ? "" : x.rest === 0 ? "played last night · " : x.rest + " day" + (x.rest > 1 ? "s" : "") + " rest · "}${(x.miles7 || 0).toLocaleString()} miles in 7 days · ${x.games7 || 0} games in 7 days${x.road_trip >= 2 ? " · road game " + x.road_trip : ""}</span></span>
+      <b class="${x.pts < -0.05 ? "neg" : x.pts > 0.05 ? "pos" : "dim"}">${x.pts ? (x.pts > 0 ? "+" : "") + f1(x.pts) : "0"}</b></div>`; };
+  const net = sp ? sp.net_home : 0;
+  return `<h2>Schedule spot and referees</h2><div class="card">
+    ${sp ? `<div class="desc" style="margin-bottom:2px">Points of margin each team gains or loses from rest and travel (measured on 2,500 games: a back-to-back costs the most, flying east on short rest a little).</div>
+      ${side("away")}${side("home")}
+      <div class="desc" style="margin-top:6px">${Math.abs(net) >= 0.3 ? `Net: <b style="color:var(--text)">${esc(net > 0 ? g.home : g.away)} +${f1(Math.abs(net))}</b> from the schedule. It's already in the model's score for this game.` : "No real schedule edge either way."}</div>` : ""}
+    ${rf ? `<div class="lbl">Referees</div><div class="desc"><b style="color:var(--text)">${esc(rf.crew.join(", "))}</b>${rf.n ? `. Their games have run ${rf.fta > 0 ? "+" : ""}${f1(rf.fta)} free throws and ${rf.tot > 0 ? "+" : ""}${f1(rf.tot)} points vs average (about ${rf.n} games each).` : "."} Context only: in our data a referee's tendencies one season didn't carry into the next, so they don't move the projections.</div>` : ""}</div>`;
 }
 function topProps(g, k, link) {
   const rows = onePerPlayer(propRows().filter(r => r.espn_id === g.espn_id && ALL_STATS.includes(r.stat)), pickScore).slice(0, k);

@@ -577,6 +577,36 @@ def manual_issue():
     save_all(state, manual)
 
 
+def catch_up(mode):
+    """GitHub sometimes starts scheduled runs very late or skips them. Any light run (scan, live, injury watch)
+    checks whether the last full refresh is stale while games are still to come, and does it itself if so."""
+    if mode not in ("cycle", "live", "injwatch"):
+        return
+    try:
+        from . import research
+        pj = store.load("players.json", None)
+        now = store.now()
+        et = research.et_today()
+        hour = now.astimezone(nd_et()).hour
+        if not pj or not (9 <= hour <= 22):
+            return
+        age_h = (now - store.parse(pj["updated"])).total_seconds() / 3600
+        pre = [g for g in research.slate_all(et) if g["state"] == "pre"]
+        if (pj.get("date") != et.isoformat() and pre) or (age_h >= 4 and pre):
+            print(f"[catch-up] last refresh {age_h:.1f}h ago with {len(pre)} games still to tip: refreshing now")
+            research_run()
+    except Exception as e:
+        print(f"[catch-up] skipped: {e}")
+
+
+def nd_et():
+    from . import nba_data
+    return nba_data.ET
+
+
 if __name__ == "__main__":
+    _mode = sys.argv[1]
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
-     "research": research_run, "live": live_run, "injwatch": injwatch_run, "probe": lambda: __import__("agent.probe", fromlist=["run"]).run(), "manual-issue": manual_issue}[sys.argv[1]]()
+     "research": research_run, "live": live_run, "injwatch": injwatch_run, "manual-issue": manual_issue,
+     "probe": lambda: __import__("agent.probe", fromlist=["run"]).run()}[_mode]()
+    catch_up(_mode)

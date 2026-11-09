@@ -32,6 +32,8 @@ function bestBetsSetup(pj, simlog) {
   const wGlobal = (st.params && st.params.prop_model_weight != null) ? st.params.prop_model_weight : 0.4;
   const shrink = (n, k) => n / (n + k);
   const bias = k => { const a = agg[k]; return a && a[0] ? (a[2] / a[0]) * shrink(a[0], 60) : 0; };   // sim minus actual, per game
+  const focusOf = s => { const f = sb.focus && sb.focus[s]; if (f) return f.status; const b = sb.by_stat && sb.by_stat[s];
+    return !b || b.n < 150 ? "watch" : b.best_w >= 0.25 && b.market.ll - b.best_ll >= 0.001 ? "edge" : b.best_w <= 0.10 ? "skip" : "watch"; };
   const wStat = s => { const b = sb.by_stat && sb.by_stat[s]; if (!b || !b.n) return wGlobal; return (b.n * b.best_w + 100 * wGlobal) / (b.n + 100); };
   // game lines: weight the sim by how its errors compare with the market's (inverse squared error)
   const wGame = (() => {
@@ -46,7 +48,7 @@ function bestBetsSetup(pj, simlog) {
   const novig = (a, b) => (1 / a) / (1 / a + 1 / b);
   const cands = {props: [], games: []};
   const gLearned = !!(agg.margin && agg.margin_vegas && agg.margin[0] >= 20 && agg.margin_vegas[0] >= 20);
-  const learned = {w_props: {}, w_game: Math.round(wGame * 100) / 100, w_game_learned: gLearned, total_bias: r1(totBias), stat_bias: {},
+  const learned = {focus: Object.fromEntries(["pts", "reb", "ast", "tpm", "pra", "ra"].map(k => [k, focusOf(k)])), w_props: {}, w_game: Math.round(wGame * 100) / 100, w_game_learned: gLearned, total_bias: r1(totBias), stat_bias: {},
     games_graded: (agg.total || [0])[0], props_scored: (sb.all && sb.all.n) || 0};
   ["pts", "reb", "ast", "tpm", "pra", "ra"].forEach(k => { learned.w_props[k] = Math.round(wStat(k) * 100) / 100; learned.stat_bias[k] = Math.round(bias(k) * 100) / 100; });
   const startOf = {}, NSIM = +(process.env.SIM_N || 10000); (pj.games || []).forEach(g => startOf[g.espn_id] = g);
@@ -83,6 +85,7 @@ function bestBetsSetup(pj, simlog) {
       if (r.espn_id !== g.espn_id || !r.c || r.c[0] == null || !r.c[1] || !r.c[2]) continue;
       const a = M.out[r.pid] && M.out[r.pid][r.stat]; if (!a) continue;
       const L = r.c[0], b = bias(r.stat), w = wStat(r.stat);
+      if (focusOf(r.stat) === "skip") continue;                  // the market alone beats the model in this stat
       const pSim = frac(N, i => a[i] - b - L); if (pSim == null) continue;
       const pMkt = novig(r.c[1], r.c[2]), simAvg = mean(a) - b;
       // guards: only players with a real role tonight, and no line the market has clearly re-priced

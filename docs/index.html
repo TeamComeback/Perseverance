@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Perseverance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0b0f17; --panel:#121826; --panel2:#182033; --panel3:#1e2840; --line:#232c42; --text:#e7ecf5; --dim:#8a94ab; --dim2:#6b7590;
@@ -398,6 +398,57 @@ body.theater{overflow:hidden} body.theater nav.tabs,body.theater .fab{display:no
   .bc.theater .bc-tm .sc{font-size:28px} .bc.theater .bc-tm .nm{font-size:16px} .bc.theater .bc-btn{padding:5px 10px;font-size:12px}
   .bc.theater .court3d .tilt{margin:-20px 0 -30px}
 }
+
+/* ===== next-gen theme (same family as Team Comeback HQ: display type, command hero, glowing data) ===== */
+:root{--bg:#0A0E14;--panel:#121821;--panel2:#171F2B;--panel3:#1D2735;--line:#232C3A;--text:#E6EBF2;--dim:#8C98AA;--dim2:#6B7789;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;--f-body:"Instrument Sans",Inter,"Helvetica Neue",Arial,sans-serif}
+html,body{font-family:var(--f-body)}
+body{background:radial-gradient(900px 380px at 50% -140px,#ADD8E614,transparent 70%),radial-gradient(700px 300px at 100% 0,#E5C1580a,transparent 70%),var(--bg);background-attachment:fixed}
+h1{font-family:var(--f-display);font-weight:800;font-size:17px;letter-spacing:.16em}
+.dot{box-shadow:0 0 0 0 #ADD8E6aa;animation:ping 2.6s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 #ADD8E688}80%,100%{box-shadow:0 0 0 9px transparent}}
+h2{font-family:var(--f-display);font-size:12.5px;letter-spacing:.12em;font-weight:700;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:14px;height:2px;border-radius:2px;background:var(--mars);box-shadow:0 0 8px var(--mars);flex:none}
+.card,details.sec,.gcard,.hint{background:linear-gradient(180deg,#141B26,#10161F);border-color:var(--line);box-shadow:inset 0 1px 0 #ffffff08,0 10px 26px #00000055}
+.card,details.sec{border-radius:16px}
+details.sec>summary{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:-.005em}
+details.sec[open]>summary{border-bottom:1px solid var(--line)}
+.tag{background:#ffffff08;font-family:var(--mono);font-size:10.5px}
+.btn{border-radius:12px;box-shadow:0 0 0 1px #ffffff14 inset,0 6px 18px #E5C15822}
+.btn.ghost{box-shadow:none;background:#ffffff0a}
+.more{background:#ffffff08;border-radius:12px}
+.chips button,.seg button{background:#ffffff08;border-color:var(--line)}
+.chips button.on,.seg button.on{background:#ADD8E61c;border-color:#ADD8E666;color:var(--text);box-shadow:0 0 14px #ADD8E622}
+nav.tabs{background:#0A0E14d9;backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3)}
+nav.tabs button{font-family:var(--f-body);transition:color .15s,background .15s}
+nav.tabs button.on{background:#ADD8E614;box-shadow:inset 0 0 0 1px #ADD8E62e}
+nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
+.fab{box-shadow:0 0 0 1px #ffffff30 inset,0 10px 28px #ADD8E640;font-family:var(--f-display)}
+.tbl th{font-family:var(--f-body)} .lbl{font-family:var(--f-body);font-weight:700}
+.cr .nm,.pr .nm{font-family:var(--f-display);font-weight:700;letter-spacing:-.005em}
+/* command hero on Today */
+.hero{background:linear-gradient(160deg,#16202E 0%,#10161F 55%,#131A16 100%);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:inset 0 1px 0 #ffffff0a,0 14px 34px #00000066;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 160px at 12% 0,#ADD8E61f,transparent 70%),radial-gradient(360px 140px at 100% 0,#E5C15814,transparent 70%);pointer-events:none}
+.hero-top{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 14px 10px}
+.hero .label{font-size:10px;letter-spacing:.16em;color:var(--dim);font-weight:700}
+.hero .hname{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,7vw,32px);line-height:1.05;letter-spacing:-.01em}
+.hero .mission{font-family:var(--f-display);font-weight:600;color:var(--mars);font-size:13px;margin-top:2px}
+.runclock{min-width:142px;text-align:right}
+.rc-l{display:flex;justify-content:space-between;gap:10px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.rc-t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:24px;font-weight:700;letter-spacing:.06em;color:var(--mars);line-height:1.2;text-shadow:0 0 16px #ADD8E666}
+.rc-bar{height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:3px}
+.rc-bar i{display:block;height:100%;width:0;background:var(--mars);box-shadow:0 0 8px var(--mars);transition:width 1s linear}
+.rc-n{font-size:11px;color:var(--dim);margin-top:3px}
+.tiles4{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line)}
+@media(min-width:620px){.tiles4{grid-template-columns:repeat(4,1fr)}}
+.tl{background:#10161Fee;padding:10px 12px;cursor:pointer;min-width:0}
+.tl .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.tl .v{font-family:var(--mono);font-size:20px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl.agent .v{color:var(--mars);text-shadow:0 0 14px #ADD8E640} .tl.you .v{color:var(--gold);text-shadow:0 0 14px #E5C15840}
+.tl .r{font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fchip{display:inline-block;font:700 10px var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.fchip.edge{background:var(--win-d);color:var(--win)} .fchip.skip{background:var(--loss-d);color:var(--loss)} .fchip.watch{background:#ffffff10;color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
 </style>
 </head>
 <body>
@@ -906,10 +957,12 @@ function cRow(x) {
   return `<div class="cr" data-pid="${x.pid}" data-stat="${x.stat}"><div><span class="nm">${esc(x.name)}</span><span class="lean ${x.lean}">${x.lean.toUpperCase()}</span>${statusBadge(x)}
       <div class="gm">${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} · ${x.state === "in" ? '<span class="neg">live</span>' : tod(x.start)} · ${x.minutes.toFixed(0)} min</div></div>
     <div class="rt">${rt}</div>
-    <div class="why"><span class="gold">${rating(x).n}/5</span> · ${esc(rating(x).why.join(" · "))}</div>
+    <div class="why"><span class="gold">${rating(x).n}/5</span>${focusOf(x.stat) === "edge" ? ' · <span class="pos">model-edge stat</span>' : focusOf(x.stat) === "skip" ? ' · <span class="neg">market wins this stat</span>' : ""} · ${esc(rating(x).why.join(" · "))}</div>
     <div class="why">${esc(why)}${x.more ? ` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
 }
-const pickScore = r => rating(r).n + (r.line != null && r.ev > 0 ? r.ev : 0) + r.strength;
+// plays in stats where the model has beaten the market rank first; stats the market wins sink (see focusMap)
+const focusOf = st => { const f = (typeof focusMap === "function" && D.sb) ? focusMap()[st] : null; return f ? f.status : "watch"; };
+const pickScore = r => rating(r).n + (r.line != null && r.ev > 0 ? r.ev : 0) + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0);
 
 function vegasLine(g) {
   const v = g.vegas, m = g.model; if (!v) return "";
@@ -948,7 +1001,7 @@ function renderToday() {
       ${vegasLine(g)}
       ${t ? `<div class="mdl">Top spot: ${esc(t.name)} ${STATN[t.stat]} ${t.lean.toLowerCase()}</div>` : ""}</div>`;
   }).join("");
-  $("v-today").innerHTML = `<div class="mini2">${tile("Agent · run #" + state.book.run, "agent", state.stats.equity, state.stats)}${tile("You", "you", youEq, manual.stats)}</div>
+  $("v-today").innerHTML = `${heroHtml(youEq)}
     ${bestHtml()}
     ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), true)
       : `<div class="hint"><span>No open bets</span><button class="btn" onclick="openLogBet()">+ Log a bet</button></div>`}
@@ -1015,6 +1068,75 @@ function bindBest(root) {
       leg: {sport: "basketball_nba", espn_id: x.espn_id, commence: x.start, home, away, market: kind === "total" ? "totals" : "spreads", outcome, point: x.point}});
   });
 }
+// ------------------------------------------------------------------ command hero: next run, bankrolls, slate, model focus
+const SCHED = [[9, 10, "Grading + strategist"], [13, 41, "Morning refresh"], [15, 5, "Odds scan"], [19, 5, "NBA props"], [20, 5, "Odds scan"],
+  [20, 47, "Lineup refresh"], [23, 13, "Pre-game refresh"], [23, 35, "Odds scan"], [1, 43, "Late refresh"]];      // UTC, from the workflow
+function runTimes() {
+  const n = new Date(), out = [];
+  for (const dd of [-1, 0, 1]) {
+    const at = (h, m) => Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate() + dd, h, m);
+    SCHED.forEach(([h, m, name]) => out.push([at(h, m), name]));
+    for (let h = 18; h <= 23; h++) [3, 33].forEach(m => out.push([at(h, m), "Injury watch"]));
+    for (let h = 0; h <= 5; h++) [7, 22, 37, 52].forEach(m => out.push([at(h, m), "Live lines + injury watch"]));
+  }
+  return out.sort((a, b) => a[0] - b[0]);
+}
+function tickClock() {
+  const el = $("rcT"); if (!el) return;
+  const now = Date.now(), T = runTimes(), nx = T.find(t => t[0] > now), pv = [...T].reverse().find(t => t[0] <= now);
+  if (!nx) return;
+  const left = Math.max(0, Math.floor((nx[0] - now) / 1000)), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), sc = left % 60;
+  el.textContent = [h, m, sc].map(x => String(x).padStart(2, "0")).join(":");
+  $("rcWhen").textContent = new Date(nx[0]).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"});
+  $("rcName").textContent = nx[1];
+  if (pv) $("rcBar").style.width = Math.min(100, (now - pv[0]) / (nx[0] - pv[0]) * 100).toFixed(1) + "%";
+}
+setInterval(tickClock, 1000);
+function focusMap() {
+  const sb = D.sb || {}, by = sb.by_stat || {}, out = {};
+  for (const [k, v] of Object.entries(by)) {
+    if (!v) continue;
+    const gain = v.market.ll - v.best_ll;
+    out[k] = (sb.focus || {})[k] || {status: v.n < 150 ? "watch" : v.best_w >= 0.25 && gain >= 0.001 ? "edge" : v.best_w <= 0.10 ? "skip" : "watch", n: v.n, w: v.best_w, gain};
+  }
+  return out;
+}
+function heroHtml(youEq) {
+  const {state, manual, players} = D, games = players.games || [];
+  const live = games.filter(g => g.state === "in").length, pre = games.filter(g => g.state === "pre").length;
+  const F = focusMap(), edge = Object.keys(F).filter(k => F[k].status === "edge"), skip = Object.keys(F).filter(k => F[k].status === "skip");
+  const rec = st => `${st.won}-${st.lost}-${st.push} · <span class="${cls(st.profit)}">${money(st.profit, true)}</span>`;
+  if (!D.sb) get("scoreboard.json", {}).then(x => { D.sb = x; if (store.get("tab") === "today" && !$("sheet").classList.contains("on")) renderToday(); });
+  return `<div class="hero"><div class="hero-top">
+      <div><div class="label">Team Comeback · paper money</div><div class="hname">Perseverance</div><div class="mission">$100 → $1,000 · beat the closing line</div></div>
+      <div class="runclock"><div class="rc-l"><span>Next run</span><span id="rcWhen"></span></div><div class="rc-t" id="rcT">--:--:--</div><div class="rc-bar"><i id="rcBar"></i></div><div class="rc-n" id="rcName"></div></div></div>
+    <div class="tiles4">
+      <div class="tl agent" onclick="go('bets')"><div class="k">Agent · run #${state.book.run}</div><div class="v">${money(state.stats.equity)}</div><div class="r">${rec(state.stats)} · ${state.stats.open} open</div></div>
+      <div class="tl you" onclick="go('bets')"><div class="k">You</div><div class="v">${money(youEq)}</div><div class="r">${rec(manual.stats)} · ${manual.stats.open} open</div></div>
+      <div class="tl" onclick="go('games')"><div class="k">Tonight</div><div class="v">${games.length} game${games.length === 1 ? "" : "s"}</div><div class="r">${live ? `<span class="neg">${live} live</span> · ` : ""}${pre} to tip${games.length && !live && !pre ? " · all final" : ""}</div></div>
+      <div class="tl" onclick="go('trends')"><div class="k">Model edge</div><div class="v" style="font-size:16px;line-height:1.55">${edge.length ? edge.map(k => STATN[k]).join(" · ") : "Measuring"}</div><div class="r">${skip.length ? "skipping " + skip.map(k => STATN[k]).join(", ") : "vs the market's closing line"}</div></div>
+    </div></div>`;
+}
+function focusHtml() {
+  const F = focusMap(), ks = Object.keys(F).sort((a, b) => ({edge: 0, watch: 1, skip: 2}[F[a].status] - {edge: 0, watch: 1, skip: 2}[F[b].status]) || F[b].w - F[a].w);
+  if (!ks.length) return '<div class="empty">Fills in as priced lines are graded against the closing line.</div>';
+  const lab = {edge: "Bet", watch: "Watching", skip: "Skip"};
+  return `<div class="desc">Stat by stat: did the model's probabilities add anything to the market's own closing number on graded lines? <b>Model share</b> is how much weight on the model scored best. <b>Bet</b> = that share is 25%+ and the mix beats the market alone. <b>Skip</b> = with 150+ lines the market alone scores best, so the agent and the best bets leave that stat alone. <b>Watching</b> = not enough yet. It re-checks every night, so a stat can earn its way back.</div>
+    <div class="scroll"><table class="tbl"><tr><th>Stat</th><th>Lines</th><th>Model share</th><th>Gain</th><th></th></tr>
+    ${ks.map(k => { const f = F[k]; return `<tr><td class="t">${STATN[k] || k}</td><td>${f.n}</td><td><b>${Math.round(f.w * 100)}%</b></td><td class="${f.gain >= 0.001 ? "h" : "dim"}">${f.gain >= 0.0005 ? "+" + (f.gain * 100).toFixed(2) : "0"}</td><td class="t"><span class="fchip ${f.status}">${lab[f.status]}</span></td></tr>`; }).join("")}</table></div>
+    <div class="desc" style="margin-top:4px">Gain = how much lower the log loss is with the best mix than with the market alone (×100). Small numbers are normal: the closing line is hard to beat.</div>`;
+}
+function pbpHtml(b) {
+  const row = (t, v) => v == null ? "" : `<div class="ti"><span>${t}</span><b>${v}</b></div>`;
+  const pc = v => v == null ? null : Math.round(v * 100) + "%";
+  return `<div class="desc">From possession-by-possession lineup data this season (pbpstats). It's the free stand-in for NBA.com's tracking stats, which block the agent's servers.</div>` +
+    row("Usage (share of team plays he finishes while on the floor)", b.usage != null ? f1(b.usage) + "%" : null) +
+    row("Defensive rebound chances per 36 min", b.dreb_chances36 != null ? f1(b.dreb_chances36) : null) +
+    row("Share of those he grabs", pc(b.dreb_share)) + row("Offensive rebound share", pc(b.oreb_share)) +
+    row("His assists that lead to threes", pc(b.ast_three)) + row("His assists at the rim", pc(b.ast_rim)) +
+    row("Points created per assist", b.ast_pts != null ? b.ast_pts.toFixed(2) : null) +
+    row("Shot quality (expected eFG% of his shots)", b.shot_q != null ? (b.shot_q * 100).toFixed(1) + "%" : null);
+}
 function raceHtml() {
   const {state, manual, hist} = D;
   const youAt = ts => { let v = START; for (const h of L.hist) { if (h.ts <= ts) v = h.eq; else break; } return v; };
@@ -1055,7 +1177,7 @@ function renderProps() {
     && (F.stat === "all" ? (F.tab === "priced" || PROP_STATS.includes(r.stat)) : r.stat === F.stat)
     && (F.lean === "all" || r.lean === F.lean)
     && (!q || r.name.toLowerCase().includes(q) || r.team.toLowerCase() === q || r.opp.toLowerCase() === q));
-  const list = onePerPlayer(base, F.tab === "priced" ? r => (r.ev ?? -1) : r => rating(r).n + r.strength);
+  const list = onePerPlayer(base, F.tab === "priced" ? r => (r.ev ?? -1) : r => rating(r).n + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0));
   const lim = F.all || q || F.game !== "all" ? list.length : 10;
   const nP = onePerPlayer(pricedRows, r => r.ev ?? -1).length;
   const gameChips = [`<button data-g="all" class="${F.game === "all" ? "on" : ""}">All games</button>`]
@@ -1298,6 +1420,7 @@ function renderCard() {
       ${sub("c-sig", "Matchup read", pct(pj.mult - 1, 0), `<div class="desc">Norm ${pj.base.toFixed(1)} for ${p.minutes.toFixed(0)} minutes × matchup ${pj.mult.toFixed(2)} = <b style="color:var(--text)">${pj.proj.toFixed(1)}</b> (spread ±${pj.sd})</div><ul class="sig">${pj.signals.map(x => `<li>${esc(x.txt)}</li>`).join("")}</ul>`, true)}
       ${sub("c-dvp", "Defense vs position", esc(p.opp) + " vs " + esc(p.pos), dvpCard(p))}
       ${sub("c-h2h", "Head to head vs " + esc(p.opp), all.filter(r => r[1] === p.opp).length + " games", logTable(all.filter(r => r[1] === p.opp).reverse(), pc, true))}
+      ${p.pbp ? sub("c-pbp", "Opportunity profile · lineup data", p.pbp.usage ? Math.round(p.pbp.usage) + "% usage" : "", pbpHtml(p.pbp), false) : ""}
       ${p.min_why && p.min_why.length ? `<div class="desc" style="padding:8px 0 0">Minutes ${f1(p.minutes)} (usual ${f1(p.min_base)}): ${esc(p.min_why.join(" · "))}</div>` : ""}
       <div class="desc" style="padding:8px 0 0"><span class="gold">${cardRating(p, s, priced).n}/5</span> · ${esc(cardRating(p, s, priced).why.join(" · "))}</div>
       ${sub("c-alt", "Alt-line ladder", "model odds", altLadder(pj, pc.line), false)}
@@ -1652,6 +1775,7 @@ async function renderTrends() {
     s.items.map(it => `<div class="ti"><span>${esc(it.txt)}</span><b class="${it.tone || ""}">${esc(it.val)}</b></div>`).join("") || '<div class="empty">Nothing yet.</div>', i < 1)).join("");
   $("v-trends").innerHTML = `<div class="desc" style="margin:0 2px 4px">League trends, refreshed every morning${T.updated ? " · " + ago(T.updated) : ""}. Records use ESPN's pregame lines where available.</div>` +
     sec("tr-min", "Minutes accuracy · the biggest driver of prop misses", minMeta(), minutesHtml(), true) +
+    sec("tr-focus", "Where the model has an edge", (() => { const F = focusMap(), e = Object.keys(F).filter(k => F[k].status === "edge"); return e.length ? e.map(k => STATN[k]).join(" · ") : ""; })(), focusHtml(), true) +
     sec("tr-sb", "Model vs market", D.sb.all ? D.sb.all.n + " lines" : "", sbHtml(), true) +
     sec("tr-live", "Live betting · would it have paid?", (() => { const n = Object.values(D.livetrack.agg || {}).reduce((t, a) => t + a[0], 0); return n ? n + " live bets graded" : ""; })(), liveTrackHtml(), true) +
     sec("tr-sim", "Sims vs actual results", (() => { const a = D.simlog.agg.total; return a ? a[0] + " games graded" : ""; })(), simLogHtml(), true) +
@@ -2024,7 +2148,7 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
-    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x)]);
+    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("scoreboard.json", {}).then(x => D.sb = x)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});

@@ -13,7 +13,11 @@ from . import config
 
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
 STORE = config.ROOT / "data" / "nba"
-ET = timezone(timedelta(hours=-4))
+try:
+    from zoneinfo import ZoneInfo
+    ET = ZoneInfo("America/New_York")           # real Eastern time (a fixed UTC-4 was an hour off all winter)
+except Exception:
+    ET = timezone(timedelta(hours=-5))
 
 # player row layout inside a game
 P_ID, P_NAME, P_TEAM, P_GPOS, P_MIN, P_PTS, P_REB, P_AST, P_TPM, P_TPA, P_FGA, P_FTA, P_TOV, P_START = range(14)
@@ -247,6 +251,7 @@ def ingest(start: date, end: date, workers=6, log=print):
     shot_dbs = {}
     for (d, eid), g in res:
         if g:
+            g["d"] = d.isoformat()             # the ET game day (ESPN's own timestamp is UTC: late tips land on the next day)
             shots = g.pop("_shots", None)
             season = season_of(d)
             dbs[season]["games"][eid] = g
@@ -278,6 +283,10 @@ def update(log=print):
     """Catch up from the last stored day through today (cheap: a few requests a day)."""
     today = datetime.now(ET).date()
     cur = season_of(today)
+    try:
+        fix_dates([cur - 2, cur - 1, cur], log=log)        # one-time repair per season file (skips files already done)
+    except Exception as e:
+        log(f"[nba] fix_dates failed: {e}")
     db = load(cur)
     if db["dates_done"]:
         start = date.fromisoformat(db["dates_done"][-1]) + timedelta(1)
@@ -335,3 +344,29 @@ if __name__ == "__main__":
     else:
         a, b = date.fromisoformat(sys.argv[1]), date.fromisoformat(sys.argv[2])
         ingest(a, b, workers=int(sys.argv[3]) if len(sys.argv) > 3 else 6)
+
+
+def fix_dates(seasons, workers=8, log=print):
+    """One-time repair: stamp every stored game with its ET game day (from ESPN's daily scoreboards) instead of
+    the UTC date. Back-to-backs, rest days and line history all key off this date."""
+    n = 0
+    for season in seasons:
+        db = load(season)
+        if not db["games"] or db.get("et_dates"):
+            continue
+        ds = sorted(date.fromisoformat(g["d"]) for g in db["games"].values())
+        days = [ds[0] - timedelta(1) + timedelta(i) for i in range((ds[-1] - ds[0]).days + 2)]
+        with ThreadPoolExecutor(workers) as ex:
+            boards = list(zip(days, ex.map(lambda d: _safe(scoreboard, d), days)))
+        if any(b is None for _, b in boards):
+            log(f"[nba] fix_dates {season}: some days failed, will retry next run")
+            continue
+        for d, evs in boards:
+            for e in evs:
+                g = db["games"].get(e["id"])
+                if g and g["d"] != d.isoformat():
+                    g["d"] = d.isoformat(); n += 1
+        db["et_dates"] = True
+        save(db)
+    log(f"[nba] fix_dates: {n} games re-stamped")
+    return n

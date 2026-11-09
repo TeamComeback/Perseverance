@@ -105,7 +105,8 @@ def context(log=print, refresh=True):
         roster[pl["team"]].append(pid)
     pre = {"games": games, "model": model, "day": day}
     flags, cards = slate_flags(pre, team_dates(model))
-    mins_model = minutes_model(model, games, inj, rw, flags)
+    cleared = {pid: True for pid, st in official.items() if st == "" or "probable" in st.lower()}
+    mins_model = minutes_model(model, games, inj, rw, flags, cleared)
     entries = []
     for g in games:
         for team, opp, home, nick in ((g["home"], g["away"], True, g["home_nick"]), (g["away"], g["home"], False, g["away_nick"])):
@@ -113,7 +114,7 @@ def context(log=print, refresh=True):
                 pl = model.players[pid]
                 if pl["games"] < 3:
                     continue
-                mins, mwhy = mins_model.get(pid, [model.minutes(pid), []])
+                mins, mwhy, pplay = (list(mins_model.get(pid, [model.minutes(pid), []])) + [1.0])[:3]
                 r = rw.get(norm(pl["name"]))
                 if r and r.get("nick") and r["nick"].lower() != nick.lower():
                     r = None
@@ -136,14 +137,157 @@ def context(log=print, refresh=True):
                 entries.append({"pid": pid, "name": pl["name"], "team": team, "opp": opp, "home": home, "game": g["espn_id"],
                                 "start": g["start"], "state": g["state"], "role": pl["role"], "minutes": round(mins, 1),
                                 "status": status, "out": _status_out(status), "rw": r, "proj": proj,
-                                "min_base": round(model.minutes(pid), 1), "min_why": mwhy})
+                                "min_base": round(model.minutes(pid), 1), "min_why": mwhy, "pplay": pplay})
+    try:
+        onoff_adjust(model, entries, day, log)
+    except Exception as e:
+        log(f"[research] lineup on/off data unavailable: {e}")
+    try:
+        situations(model, games, cards, day, log)
+    except Exception as e:
+        log(f"[research] schedule/referee context failed: {e}")
     return {"day": day, "games": games, "model": model, "inj": inj, "rw_games": rw_games, "rw": rw,
             "entries": entries, "weights": W, "season": cur, "flags": flags, "slate_cards": cards,
             "inj_report": inj_time, "inj_official": len(official)}
 
 
+# ------------------------------------------------------------------ lineup data: who absorbs the work when a player sits
+def onoff_adjust(model, entries, day, log=print):
+    """For every rotation player who is out tonight, pull what each teammate does in the possessions he is off the
+    floor (pbpstats, this season and last) and move tonight's projections by the difference. A player who has
+    already missed the recent games is mostly in the baseline already, so the adjustment shrinks on its own."""
+    from . import pbp
+    today = day.isoformat()
+    cur = model.cur
+    P = {cur: pbp.players(cur, today, log), cur - 1: pbp.players(cur - 1, today, log)}
+    if not P[cur]:
+        return
+    ids = pbp.id_map(P[cur], model.players)
+    for pid, nid in pbp.id_map(P[cur - 1] or {}, model.players).items():
+        ids.setdefault(pid, nid)
+    by_team = defaultdict(list)
+    for e in entries:
+        by_team[e["team"]].append(e)
+        nid = ids.get(e["pid"])
+        prof = pbp.profile((P[cur]["p"] or {}).get(nid)) if nid else None
+        if prof:
+            e["pbp"] = prof
+    played_dates = defaultdict(set)
+    for r in model.rows:
+        played_dates[r["pid"]].add((r["team"], r["d"]))
+    n_adj = 0
+    for team, es in by_team.items():
+        outs = sorted((e for e in es if e["out"] and e["min_base"] >= 18 and ids.get(e["pid"])), key=lambda e: -e["min_base"])[:3]
+        for o in outs:
+            oid = ids[o["pid"]]
+            parts = []
+            for season, w in ((cur, 1.0), (cur - 1, 0.5)):
+                tid = ((P.get(season) or {}).get("teams") or {}).get(team)
+                if not tid:
+                    continue
+                allr = pbp.team_totals(tid, season, today, log)
+                if not allr or oid not in allr or (allr[oid].get("Minutes") or 0) < 150:
+                    continue                          # he wasn't a regular on this team that season
+                offr = pbp.wowy_off(tid, oid, season, today, log)
+                if offr:
+                    parts.append((w, allr, offr))
+            if not parts:
+                continue
+            A, O = pbp.combine(parts)
+            o_last = re.sub(r"\s+(Jr\.?|Sr\.?|II|III|IV)$", "", o["name"]).split()[-1]
+            for m in es:
+                if m["out"] or m["pid"] == o["pid"] or not ids.get(m["pid"]):
+                    continue
+                eff = pbp.off_effect(A, O, ids[m["pid"]])
+                if not eff or not eff["r"]:
+                    continue
+                # how much of his baseline was played next to the absent player
+                rows = model.by_player[m["pid"]][-40:]
+                ws = [r["sw"] * 0.96 ** i for i, r in enumerate(reversed(rows))][::-1]
+                wt = sum(ws) or 1
+                f_recent = sum(w for w, r in zip(ws, rows) if (r["team"], r["d"]) in played_dates[o["pid"]]) / wt
+                mine = [r for r in model.by_player[m["pid"]] if r["team"] == team]
+                g_frac = (sum(1 for r in mine if (team, r["d"]) in played_dates[o["pid"]]) / len(mine)) if mine else 1.0
+                on_when_playing = min(0.92, eff["share_on"] / g_frac) if g_frac > 0.05 else 0.0
+                p_on = on_when_playing * f_recent
+                # Out of sample (tests/onoff.py, 73 absences): the raw on/off ratio is right in direction but about three
+                # times too big, and everyone left on the floor gains a little per minute. Level and slope from that check,
+                # scaled by how much of his baseline was played next to the absent player and how big that player's role is.
+                role = min(1.0, o["min_base"] / 30.0)
+                mult = {}
+                for st, r in eff["r"].items():
+                    lvl, slope = ONOFF_CAL[st]
+                    k = math.exp(lvl * f_recent * role + slope * math.log(pbp.tonight_mult(r, p_on)))
+                    mult[st] = max(0.9, min(1.25, k))
+                if all(abs(v - 1) < 0.02 for v in mult.values()):
+                    continue
+                n_adj += 1
+                b = {st: m["proj"][st]["base"] for st in ("pts", "reb", "ast")}
+                mult["pra"] = sum(b[k] * mult.get(k, 1) for k in b) / (sum(b.values()) or 1)
+                mult["ra"] = (b["reb"] * mult.get("reb", 1) + b["ast"] * mult.get("ast", 1)) / ((b["reb"] + b["ast"]) or 1)
+                u = eff.get("usage")
+                for st, k in mult.items():
+                    pr = m["proj"].get(st)
+                    if not pr or abs(k - 1) < 0.02:
+                        continue
+                    pr["proj"] = round(pr["proj"] * k, 2); pr["base"] = round(pr["base"] * k, 2)
+                    pr["var"] = (pr.get("var") or 0) * k * k
+                    txt = (f"{o_last} out: {nm.STATS[st]} {_pct_s(k)} tonight. With him off the floor ({eff['poss']:,} possessions)"
+                           + (f" his usage goes {u[0]:.0f}% → {u[1]:.0f}%" if u else " his per-possession numbers change")
+                           + (f"; {f_recent * 100:.0f}% of his recent games were next to {o_last}" if f_recent < 0.9 else ""))
+                    pr["signals"].append({"k": "onoff", "v": round(k, 3), "n": eff["poss"], "txt": txt})
+                    m.setdefault("onoff", {})[st] = {"k": round(k, 3), "out": o_last, "poss": eff["poss"]}
+    log(f"[research] lineup on/off: {n_adj} teammate adjustments")
+
+
+ONOFF_CAL = {"pts": (0.055, 0.25), "ast": (0.045, 0.38), "reb": (0.012, 0.36), "tpm": (0.0, 0.15)}     # (level, slope)
+
+
+def _pct_s(m):
+    return f"{(m - 1) * 100:+.0f}%"
+
+
+# ------------------------------------------------------------------ schedule spots and referees
+def situations(model, games, cards, day, log=print):
+    """Per game: each team's schedule spot (rest, miles, time zones, altitude) with its estimated point value, and
+    tonight's referee crew with how its officials' games have run. Adds `spots` and `refs` to each game card."""
+    from . import travel, refs
+    site_hist = defaultdict(list)                       # team -> [(date, site team)]
+    seen = set()
+    for r in model.rows:
+        k = (r["team"], r["d"])
+        if k in seen:
+            continue
+        seen.add(k)
+        site_hist[r["team"]].append((r["d"], r["team"] if r["home"] else r["opp"]))
+    try:
+        all_g = nd.all_games([model.cur - 2, model.cur - 1, model.cur])
+        dates = {d for _, _, g in all_g if g.get("st", 2) == 2 for d in (g["d"],)}
+        db = refs.update(dates, today=day.isoformat(), log=log)
+        tend, _ = refs.tendencies(all_g, db)
+    except Exception as e:
+        log(f"[research] referee data failed: {e}")
+        db, tend = {}, {}
+    for g in games:
+        card = cards.setdefault(g["espn_id"], {})
+        gday = datetime.fromisoformat(g["start"].replace("Z", "+00:00")).astimezone(nd.ET).date()
+        spots = {}
+        for side in ("home", "away"):
+            t = g[side]
+            f = travel.features(t, g["home"], gday, site_hist.get(t, []))
+            pts, why = travel.margin_points(f)
+            spots[side] = {"pts": pts, "why": [[v, w] for v, w in why], "rest": f["rest"], "b2b": f["b2b"], "miles": f["miles"],
+                           "miles7": f["miles7"], "tz": f["tz"], "alt": f["alt"], "road_trip": f["road_trip"], "games7": f["games7"]}
+        spots["net_home"] = round(spots["home"]["pts"] - spots["away"]["pts"], 2)
+        card["spots"] = spots
+        cr = refs.crew(db, gday.isoformat(), g["home"], g["away"])
+        if cr:
+            ce = refs.crew_effect(tend, cr)
+            card["refs"] = {"crew": cr, **({"fta": ce["fta"], "tot": ce["tot"], "n": ce["n"]} if ce else {})}
+
+
 # ------------------------------------------------------------------ team model (display only)
-def team_projection(model, home, away):
+def team_projection(model, home, away, net_home=0.0):
     T = model.teams
     if home not in T or away not in T:
         return None
@@ -151,6 +295,8 @@ def team_projection(model, home, away):
     pace = (T[home]["pace"] + T[away]["pace"]) / 2
     hp = pace * (T[home]["ortg"] + T[away]["drtg"] - lg_o) / 100 + 1.4
     ap = pace * (T[away]["ortg"] + T[home]["drtg"] - lg_o) / 100 - 1.4
+    if net_home:                                    # schedule spots (back-to-back, eastward travel): half to each team's score
+        hp += net_home / 2; ap -= net_home / 2
     return {"home": round(hp, 1), "away": round(ap, 1), "total": round(hp + ap, 1), "spread_home": round(ap - hp, 1),
             "pace": round(pace, 1)}
 
@@ -303,7 +449,7 @@ def rotation_profile(model):
     return out
 
 
-def minutes_model(model, games, inj, rw, flags):
+def minutes_model(model, games, inj, rw, flags, official_ok=None):
     """Tonight's minutes for every rotation player: recent minutes, then adjusted for teammates who are
     newly out (their with/without history), a change in starting role, back-to-backs and blowout risk.
     Returns {pid: (minutes, [reasons])}."""
@@ -315,7 +461,7 @@ def minutes_model(model, games, inj, rw, flags):
         by_tm[t].append(d)
     for t in by_tm:
         by_tm[t].sort()
-    out = {}
+    out, meta = {}, {}
     teams = {g[k] for g in games for k in ("home", "away")}
     rot = rotation_profile(model)
     lg = rot["_league"]
@@ -381,11 +527,78 @@ def minutes_model(model, games, inj, rw, flags):
                 add = min(2.0, (rp["bump"] - lg["bump"]) * (1 - sp / 7))
                 if add >= 0.4:
                     m += add; why.append(f"+{add:.1f} min close game ({t} starters play +{rp['bump']:.1f} in close games)")
-            md = (TUNE.get("min_delta") or {}).get("starter" if srate > 0.5 or (r_ and r_.get("starter")) else "bench", 0)
+            is_st = bool(srate > 0.5 or (r_ and r_.get("starter")))
+            md = (TUNE.get("min_delta") or {}).get("starter" if is_st else "bench", 0)
             if abs(md) >= 0.3:
                 m += md; why.append(f"{md:+.1f} min learned correction")
             out[pid] = [max(0.0, min(42.0, m)), why]
+            meta[pid] = {"st": is_st, "pp": _play_prob(model, pid, t, by_tm[t], played, r_, official_ok and official_ok.get(pid))}
+        _fit_240(t, [p for p in active if p in out], out, meta)
+        for p in active:
+            if p in out:
+                out[p].append(round(min(1.0, max(0.0, meta[p]["pp"])), 2))
     return out
+
+
+PP_W = (0.35, 0.25, 0.18, 0.12, 0.10)            # last five team games, most recent first
+
+
+def _play_prob(model, pid, team, team_dates_, played, rw_row, cleared):
+    """How likely he is to play tonight, from the team's last five games: a healthy player the coach has stopped
+    using keeps a full projection otherwise (his average only counts games he played)."""
+    if rw_row and rw_row.get("starter"):
+        return 1.0
+    if cleared:                                   # on tonight's official report as available or probable: he is back
+        return 0.95
+    cur = [d for d in team_dates_ if d >= f"{model.cur - 1}-10-01"]
+    mine = [r["d"] for r in model.by_player[pid] if r["team"] == team and r["season"] == model.cur]
+    if len(cur) < 3:
+        return 1.0
+    if not mine:
+        return 0.0                                # hasn't played for this team this season
+    since = [d for d in cur if d >= mine[0]][-5:][::-1]
+    if len(since) < 2:
+        return 1.0
+    w = PP_W[:len(since)]
+    return sum(wi for wi, d in zip(w, since) if pid in played[(team, d)]) / sum(w)
+
+
+def _fit_240(team, pids, out, meta):
+    """A team has 240 minutes. Players the coach isn't using drop out; if the rest add up to more than 240 the
+    bench gives the extra back in proportion (a returning starter takes minutes from the players who covered for
+    him); if they fall well short, everyone grows a little."""
+    for pid in pids:
+        pp = meta[pid]["pp"]
+        if pp < 0.3 and not meta[pid]["st"]:
+            out[pid][1].append("out of the rotation lately" if pp > 0 else "hasn't played this season")
+            out[pid][0] = 0.0
+        elif pp < 0.75:
+            out[pid][1].append(f"played {pp * 100:.0f}% of recent games (recent ones count more)")
+    live = [p for p in pids if out[p][0] > 0]
+    exp = lambda p: out[p][0] * min(1.0, max(0.3, meta[p]["pp"]))      # minutes the team can count on
+    tot = sum(exp(p) for p in live)
+    if tot > 240.5:
+        extra = tot - 240
+        for group, cap in (([p for p in live if not meta[p]["st"]], 0.45), ([p for p in live if meta[p]["st"]], 0.25)):
+            g_tot = sum(exp(p) for p in group)
+            if extra <= 0.05 or g_tot <= 0:
+                continue
+            k = min(cap, extra / g_tot)
+            for p in group:
+                cut = out[p][0] * k
+                if cut >= 0.3:
+                    out[p][1].append(f"-{cut:.1f} min: the team's projections added up to {tot:.0f} of 240")
+                out[p][0] -= cut
+            extra -= g_tot * k
+    elif tot < 226:
+        need = 232 - tot                                               # leave a few minutes for the end of the bench
+        room = {p: (38 if meta[p]["st"] else 32) - out[p][0] for p in live}
+        r_tot = sum(max(0.0, v) for v in room.values()) or 1
+        for p in live:
+            add = min(max(0.0, room[p]), need * max(0.0, room[p]) / r_tot)
+            if add >= 0.3:
+                out[p][1].append(f"+{add:.1f} min: the team's projections only added up to {tot:.0f} of 240")
+            out[p][0] += add
 
 # ------------------------------------------------------------------ players.json
 def _games_index(seasons):
@@ -464,13 +677,18 @@ def build_players(ctx):
         out[pid] = {"pid": pid, "name": e["name"], "team": team, "opp": opp, "home": e["home"], "game": e["game"],
                     "start": e["start"], "state": e["state"], "role": e["role"], "pos": nm.ROLE_NAME.get(e["role"], ""),
                     "minutes": e["minutes"], "min_base": e.get("min_base"), "min_why": e.get("min_why", []),
+                    "pplay": e.get("pplay", 1.0), "pbp": e.get("pbp"), "onoff": e.get("onoff"),
                     "status": e["status"], "out": e["out"],
                     "rw": ({k: e["rw"].get(k) for k in ("starter", "pos", "status", "inj", "pct", "url", "note")} if e["rw"] else None),
                     "espn": f"https://www.espn.com/nba/player/_/id/{pid}",
                     "mates": [{"pid": m, "name": model.players[m]["name"] if m in model.players else m} for m in mate_ids],
                     "logs": L, "proj": proj, "dvp": dvp, "comps": comps(model, pid, opp)}
+        bump = dict(bumps.get(pid, {}))
+        for s_, v in (e.get("onoff") or {}).items():      # lineup data (possessions with him off the floor) beats whole-game splits
+            if v["k"] - 1 >= 0.10 and v["poss"] >= 150 and (s_ not in bump or v["k"] - 1 > bump[s_]["delta"]):
+                bump[s_] = {"delta": round(max(0.12, v["k"] - 1), 3), "out": v["out"], "n": v["poss"], "src": "lineups"}
         fl = {**flags.get(team, {}), "status": e["status"], "minutes": e["minutes"],
-              "starter": (e["rw"] or {}).get("starter"), "bump": bumps.get(pid, {})}
+              "starter": (e["rw"] or {}).get("starter"), "bump": bump}
         cv = {}
         for s_, pr in e["proj"].items():
             pts, why, codes = cvm.base(pr, s_, fl, TUNE.get("factor_w"))
@@ -782,9 +1000,11 @@ def matchup_rates(season, home, away):
 def game_cards(ctx):
     out = []
     for g in ctx["games"]:
-        tp = team_projection(ctx["model"], g["home"], g["away"])
+        card = (ctx.get("slate_cards") or {}).get(g["espn_id"]) or {}
+        tp = team_projection(ctx["model"], g["home"], g["away"], (card.get("spots") or {}).get("net_home") or 0.0)
         out.append({**{k: g[k] for k in ("espn_id", "start", "state", "home", "away", "home_name", "away_name")},
                     "model": tp, "vegas": (ctx.get("slate_cards") or {}).get(g["espn_id"]),
+                    "spots": card.get("spots"), "refs": card.get("refs"),
                     "rates": _safe_rates(ctx, g)})
     return out
 
@@ -798,7 +1018,8 @@ def _index_row(p):
             "dvp": {s: v[1] for s, v in p["dvp"].items()},
             "cv": {s: v[:2] for s, v in (p.get("cv") or {}).items()},
             "st": 1 if (p["rw"] or {}).get("starter") else 0,
-            "b2b": (p.get("flags") or {}).get("b2b") or None}
+            "b2b": (p.get("flags") or {}).get("b2b") or None, "pplay": p.get("pplay", 1.0),
+            "onoff": ({s: v["k"] for s, v in p["onoff"].items()} if p.get("onoff") else None)}
 
 
 def write_all(ctx, log=print):

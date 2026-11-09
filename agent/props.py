@@ -13,6 +13,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 from . import book as bk
+from . import scoreboard as sbm
 from . import brain, config, market, store
 from . import nba_data as nd
 from . import nba_model as nm
@@ -129,9 +130,15 @@ def only_market(ev, key):
 
 
 # ---------------- the run ----------------
+SB, FOCUS = {}, {}
+
+
 def run(state, manual, client, budget, ctx=None):
     from . import research
     p = state["params"]
+    global SB, FOCUS
+    SB = store.load("scoreboard.json", {}) or {}
+    FOCUS = SB.get("focus") or sbm.focus(SB.get("by_stat"))
     if ctx is None:
         ctx = research.context()
         research.build_players(ctx)          # sets conviction (ctx["cv"]) and slate flags
@@ -177,6 +184,10 @@ def run(state, manual, client, budget, ctx=None):
         for x in top:
             if x["stat"] not in stats:
                 stats.append(x["stat"])
+        # spend prop credits where the model has shown an edge on the market first; stats the market wins come last
+        rank = {"edge": 0, "watch": 1, "skip": 2}
+        edge_first = [st for st in nm.ODDS_KEY if FOCUS.get(st, {}).get("status") == "edge" and any(x["stat"] == st for x in by_game[g["espn_id"]])]
+        stats = sorted(dict.fromkeys(edge_first + stats), key=lambda st: rank.get(FOCUS.get(st, {}).get("status", "watch"), 1))
         plan.append({"g": g, "e": e, "score": sum(x["strength"] for x in top[:5]), "stats": stats[:3]})
     plan.sort(key=lambda x: -x["score"])
 
@@ -207,7 +218,7 @@ def run(state, manual, client, budget, ctx=None):
 
     # 3) price every line we paid for
     key_stat = {v: k for k, v in nm.ODDS_KEY.items()}
-    cands = []
+    cands, skipped = [], {}
     for eid, (e, props) in lines.items():
         g = next(x for x in games if x["espn_id"] == eid)
         projs = {(norm(x["name"]), x["stat"]): x for x in by_game[eid]}
@@ -218,7 +229,10 @@ def run(state, manual, client, budget, ctx=None):
                 continue
             p_model = nm.p_over(pr, pt)
             p_mkt, best, nbooks = price_line(entry)
-            w = p["prop_model_weight"]
+            if FOCUS.get(s, {}).get("status") == "skip":
+                skipped[s] = skipped.get(s, 0) + 1          # the market alone has beaten the model here: don't pay the vig
+                continue
+            w = sbm.stat_weight(SB, s, p["prop_model_weight"])
             p_fin = w * p_model + (1 - w) * p_mkt
             for side, pf, pm in (("Over", p_fin, p_model), ("Under", 1 - p_fin, 1 - p_model)):
                 price, bkey = best[side]
@@ -230,6 +244,10 @@ def run(state, manual, client, budget, ctx=None):
                               "p": pf, "p_model": pm, "p_mkt": p_mkt if side == "Over" else 1 - p_mkt, "ev": ev,
                               "agrees": agrees, "nbooks": nbooks, "market": mkey})
     cands.sort(key=lambda c: -c["ev"])
+    if skipped:
+        brain.note(state, "focus", "Skipped " + ", ".join(f"{n} {nm.STATS[k]} lines" for k, n in skipped.items())
+                   + ": on the graded record the market alone beats the model in those stats, so the agent only bets "
+                   + (", ".join(nm.STATS[k] for k, v in FOCUS.items() if v["status"] == "edge") or "stats still being measured") + ".")
 
     # keep a record of every line we saw, so line vs result history builds up
     try:

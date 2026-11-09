@@ -45,7 +45,34 @@ def build(entries, w):
     out = {"updated": store.iso(store.now()), "w": w, "all": score(rows, w), "by_stat": {}}
     for st in sorted({r[3] for r in rows}):
         out["by_stat"][st] = score([r for r in rows if r[3] == st], w)
+    out["focus"] = focus(out["by_stat"])
     return out
+
+
+FOCUS_N = 150        # graded lines in one stat before it can be switched on or off
+
+
+def focus(by_stat):
+    """Where the model has shown it adds something to the market's own number, stat by stat.
+    edge: the best blend leans on the model (25%+) and beats the market alone. skip: with a real sample the market
+    alone scores best, so betting that stat is paying the vig for nothing. watch: not enough graded lines yet."""
+    out = {}
+    for st, v in (by_stat or {}).items():
+        if not v:
+            continue
+        gain = v["market"]["ll"] - v["best_ll"]
+        status = "watch" if v["n"] < FOCUS_N else "edge" if v["best_w"] >= 0.25 and gain >= 0.001 else "skip" if v["best_w"] <= 0.10 else "watch"
+        out[st] = {"status": status, "n": v["n"], "w": v["best_w"], "gain": round(gain, 4),
+                   "model_ll": round(v["model"]["ll"], 4), "market_ll": round(v["market"]["ll"], 4)}
+    return out
+
+
+def stat_weight(sb, st, w_global):
+    """The model's weight for one stat: its own best blend, shrunk toward the overall weight until it has a sample."""
+    b = ((sb or {}).get("by_stat") or {}).get(st)
+    if not b or not b.get("n"):
+        return w_global
+    return (b["n"] * b["best_w"] + 100 * w_global) / (b["n"] + 100)
 
 
 def retune(state, sb, note):
