@@ -8857,7 +8857,7 @@
   "runs": []
  },
  "params": {
-  "min_edge": 0.1475,
+  "min_edge": 0.15,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -8868,7 +8868,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.137,
+  "prop_model_weight": 0.126,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -10222,6 +10222,26 @@
    "ts": "2026-11-09T08:38:58Z",
    "kind": "research",
    "text": "Research refresh for Mon Nov 9: 8 games, 200 players projected, lineups for 8 games."
+  },
+  {
+   "ts": "2026-11-09T19:45:35Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 15.0%."
+  },
+  {
+   "ts": "2026-11-09T19:45:35Z",
+   "kind": "adapt",
+   "text": "Model vs market on 2003 graded lines: the 10% model blend scored best (log loss model 0.708, market 0.686). Moving the model's weight from 14% to 13%."
+  },
+  {
+   "ts": "2026-11-09T19:45:35Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +5.2% vs actual over 931 player-games: level x0.917; REB projections ran +3.4% vs actual over 931 player-games: level x0.951; AST projections ran +4.1% vs actual over 931 player-games: level x0.929; TPM projections ran +4.9% vs actual over 931 player-games: level x0.928; PRA projections ran +4.4% vs actual over 931 player-games: level x0.930; RA projections ran +3.4% vs actual over 931 player-games: level x0.948; starter minutes were off by +0.4 on average over 476 player-games: correction +0.4 min; conviction factor 'agree' hurt by -0.6 pts of hit rate over 1494 plays: weight 1.01 -> 0.95; conviction factor 'bump' hurt by -4.0 pts of hit rate over 567 plays: weight 0.88 -> 0.81; conviction factor 'blowout' helped by +7.5 pts of hit rate over 340 plays: weight 1.20 -> 1.27."
+  },
+  {
+   "ts": "2026-11-09T19:45:35Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $42.46 (run #1), 14-27-1, ROI -27.1%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -10269,7 +10289,7 @@
   "b46f1cb0"
  ],
  "strategist": null,
- "updated": "2026-11-09T08:39:47Z",
+ "updated": "2026-11-09T19:45:35Z",
  "stats": {
   "bets": 42,
   "won": 14,
