@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T22:41:34Z",
+ "updated": "2026-11-09T00:07:45Z",
  "date": "2026-11-08",
  "priced_date": "2026-11-08",
  "games": [
@@ -8,14 +8,14 @@
    "away": "PHI",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
-   "state": "in"
+   "state": "post"
   },
   {
    "home": "DET",
    "away": "LAL",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "MIN",
@@ -63,39 +63,84 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 5.61,
-   "base": 4.97,
-   "mult": 1.13,
-   "minutes": 35.3,
+   "proj": 5.67,
+   "base": 4.98,
+   "mult": 1.139,
+   "minutes": 34.6,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
    "lean": "Over",
-   "strength": 0.1222,
+   "strength": 0.1302,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.186,
-     "n": 55.7,
+     "v": 1.19,
+     "n": 56.7,
      "rank": 1,
      "txt": "CHI gives point guards +19% assists vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.123,
-     "n": 162,
-     "txt": "Players with his profile: +12% assists vs CHI (162 close comps)"
+     "v": 1.124,
+     "n": 165,
+     "txt": "Players with his profile: +12% assists vs CHI (165 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.145,
-     "n": 3,
-     "txt": "His history vs CHI: 8.0 assists/g in 3 games (+14%)"
+     "v": 1.178,
+     "n": 4,
+     "txt": "His history vs CHI: 7.8 assists/g in 4 games (+18%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
+   "pid": "4431678",
+   "name": "Tyrese Maxey",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "PG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 9.57,
+   "base": 8.5,
+   "mult": 1.127,
+   "minutes": 34.6,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.1196,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.095,
+     "n": 56.7,
+     "rank": 2,
+     "txt": "CHI gives point guards +9% reb+ast vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.092,
+     "n": 165,
+     "txt": "Players with his profile: +9% reb+ast vs CHI (165 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.124,
+     "n": 4,
+     "txt": "His history vs CHI: 12.2 reb+ast/g in 4 games (+12%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -110,27 +155,27 @@
    "stat_name": "reb+ast",
    "proj": 6.9,
    "base": 6.16,
-   "mult": 1.12,
+   "mult": 1.119,
    "minutes": 24.4,
    "status": "",
    "start": "2026-11-09T01:00Z",
    "espn_id": "401909949",
    "lean": "Over",
-   "strength": 0.1133,
+   "strength": 0.1124,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
      "v": 1.095,
      "n": 52.4,
-     "rank": 2,
-     "txt": "MIL gives point guards +10% reb+ast vs their norm (#2 softest of 30)"
+     "rank": 3,
+     "txt": "MIL gives point guards +9% reb+ast vs their norm (#3 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.084,
-     "n": 84,
-     "txt": "Players with his profile: +8% reb+ast vs MIL (84 close comps)"
+     "v": 1.083,
+     "n": 83,
+     "txt": "Players with his profile: +8% reb+ast vs MIL (83 close comps)"
     },
     {
      "k": "h2h",
@@ -158,51 +203,6 @@
    "open": 6.5
   },
   {
-   "pid": "4431678",
-   "name": "Tyrese Maxey",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "PG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 9.54,
-   "base": 8.53,
-   "mult": 1.119,
-   "minutes": 35.3,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.1124,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.092,
-     "n": 55.7,
-     "rank": 3,
-     "txt": "CHI gives point guards +9% reb+ast vs their norm (#3 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.092,
-     "n": 162,
-     "txt": "Players with his profile: +9% reb+ast vs CHI (162 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.104,
-     "n": 3,
-     "txt": "His history vs CHI: 12.7 reb+ast/g in 3 games (+10%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
-    }
-   ]
-  },
-  {
    "pid": "4277811",
    "name": "Collin Sexton",
    "team": "LAL",
@@ -213,25 +213,25 @@
    "stat_name": "reb+ast",
    "proj": 3.3,
    "base": 3.68,
-   "mult": 0.898,
+   "mult": 0.896,
    "minutes": 16.6,
    "status": "",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
    "lean": "Under",
-   "strength": 0.1076,
+   "strength": 0.1098,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.891,
+     "v": 0.888,
      "n": 104.4,
      "rank": 30,
      "txt": "DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.893,
+     "v": 0.892,
      "n": 180,
      "txt": "Players with his profile: -11% reb+ast vs DET (180 close comps)"
     },
@@ -269,16 +269,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.12,
+     "v": 1.119,
      "n": 52.4,
      "rank": 8,
      "txt": "MIL gives point guards +12% assists vs their norm (#8 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.128,
-     "n": 84,
-     "txt": "Players with his profile: +13% assists vs MIL (84 close comps)"
+     "v": 1.127,
+     "n": 83,
+     "txt": "Players with his profile: +13% assists vs MIL (83 close comps)"
     },
     {
      "k": "h2h",
@@ -314,20 +314,20 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 6.96,
+   "proj": 6.95,
    "base": 7.72,
-   "mult": 0.901,
+   "mult": 0.9,
    "minutes": 34.5,
    "status": "",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
    "lean": "Under",
-   "strength": 0.1043,
+   "strength": 0.1054,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.891,
+     "v": 0.888,
      "n": 104.4,
      "rank": 30,
      "txt": "DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)"
@@ -374,25 +374,25 @@
    "stat_name": "assists",
    "proj": 4.36,
    "base": 3.95,
-   "mult": 1.105,
+   "mult": 1.104,
    "minutes": 28.9,
    "status": "",
    "start": "2026-11-09T01:00Z",
    "espn_id": "401909949",
    "lean": "Over",
-   "strength": 0.0998,
+   "strength": 0.0989,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.12,
+     "v": 1.119,
      "n": 52.4,
      "rank": 8,
      "txt": "MIL gives point guards +12% assists vs their norm (#8 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.133,
+     "v": 1.132,
      "n": 79,
      "txt": "Players with his profile: +13% assists vs MIL (79 close comps)"
     },
@@ -430,27 +430,27 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 3.24,
+   "proj": 3.23,
    "base": 3.57,
-   "mult": 0.909,
+   "mult": 0.908,
    "minutes": 26.8,
    "status": "",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
    "lean": "Under",
-   "strength": 0.0954,
+   "strength": 0.0965,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.891,
+     "v": 0.888,
      "n": 104.4,
      "rank": 30,
      "txt": "DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.94,
+     "v": 0.938,
      "n": 190,
      "txt": "Players with his profile: -6% reb+ast vs DET (190 close comps)"
     },
@@ -480,6 +480,51 @@
    "open": 4.5
   },
   {
+   "pid": "4431678",
+   "name": "Tyrese Maxey",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "PG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 34.28,
+   "base": 31.19,
+   "mult": 1.099,
+   "minutes": 34.6,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0944,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.071,
+     "n": 56.7,
+     "rank": 4,
+     "txt": "CHI gives point guards +7% pts+reb+ast vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.11,
+     "n": 165,
+     "txt": "Players with his profile: +11% pts+reb+ast vs CHI (165 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.062,
+     "n": 4,
+     "txt": "His history vs CHI: 42.0 pts+reb+ast/g in 4 games (+6%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
    "pid": "4066354",
    "name": "Payton Pritchard",
    "team": "BOS",
@@ -488,15 +533,15 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 19.06,
+   "proj": 19.05,
    "base": 17.33,
-   "mult": 1.1,
+   "mult": 1.099,
    "minutes": 24.4,
    "status": "",
    "start": "2026-11-09T01:00Z",
    "espn_id": "401909949",
    "lean": "Over",
-   "strength": 0.0953,
+   "strength": 0.0944,
    "starter": null,
    "signals": [
     {
@@ -509,8 +554,8 @@
     {
      "k": "sim",
      "v": 1.107,
-     "n": 84,
-     "txt": "Players with his profile: +11% pts+reb+ast vs MIL (84 close comps)"
+     "n": 83,
+     "txt": "Players with his profile: +11% pts+reb+ast vs MIL (83 close comps)"
     },
     {
      "k": "h2h",
@@ -583,18 +628,18 @@
    ]
   },
   {
-   "pid": "4431678",
-   "name": "Tyrese Maxey",
+   "pid": "3059318",
+   "name": "Joel Embiid",
    "team": "PHI",
    "opp": "CHI",
    "home": false,
-   "role": "PG",
+   "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 34.67,
-   "base": 31.66,
+   "proj": 33.9,
+   "base": 30.95,
    "mult": 1.095,
-   "minutes": 35.3,
+   "minutes": 30.3,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
@@ -604,26 +649,26 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.07,
-     "n": 55.7,
-     "rank": 4,
-     "txt": "CHI gives point guards +7% pts+reb+ast vs their norm (#4 softest of 30)"
+     "v": 1.094,
+     "n": 44.9,
+     "rank": 5,
+     "txt": "CHI gives centers +9% pts+reb+ast vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.108,
-     "n": 162,
-     "txt": "Players with his profile: +11% pts+reb+ast vs CHI (162 close comps)"
+     "v": 1.117,
+     "n": 131,
+     "txt": "Players with his profile: +12% pts+reb+ast vs CHI (131 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.054,
-     "n": 3,
-     "txt": "His history vs CHI: 43.3 pts+reb+ast/g in 3 games (+5%)"
+     "v": 1.047,
+     "n": 5,
+     "txt": "His history vs CHI: 34.4 pts+reb+ast/g in 5 games (+5%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -636,7 +681,7 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 20.19,
+   "proj": 20.18,
    "base": 18.48,
    "mult": 1.093,
    "minutes": 28.9,
@@ -656,7 +701,7 @@
     },
     {
      "k": "sim",
-     "v": 1.104,
+     "v": 1.103,
      "n": 79,
      "txt": "Players with his profile: +10% pts+reb+ast vs MIL (79 close comps)"
     },
@@ -696,18 +741,18 @@
    "stat_name": "reb+ast",
    "proj": 5.19,
    "base": 5.67,
-   "mult": 0.915,
+   "mult": 0.916,
    "minutes": 25.1,
    "status": "",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
    "lean": "Under",
-   "strength": 0.0888,
+   "strength": 0.0877,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.931,
+     "v": 0.932,
      "n": 86.4,
      "rank": 27,
      "txt": "DET gives small forwards -7% reb+ast vs their norm (#4 toughest of 30)"
@@ -752,10 +797,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 6.71,
-   "base": 6.16,
+   "proj": 6.8,
+   "base": 6.23,
    "mult": 1.09,
-   "minutes": 29.2,
+   "minutes": 29.5,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -834,51 +879,6 @@
    ]
   },
   {
-   "pid": "3059318",
-   "name": "Joel Embiid",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 34.31,
-   "base": 31.52,
-   "mult": 1.089,
-   "minutes": 30.9,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0853,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.092,
-     "n": 44.1,
-     "rank": 5,
-     "txt": "CHI gives centers +9% pts+reb+ast vs their norm (#5 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.114,
-     "n": 125,
-     "txt": "Players with his profile: +11% pts+reb+ast vs CHI (125 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.031,
-     "n": 4,
-     "txt": "His history vs CHI: 34.8 pts+reb+ast/g in 4 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
-    }
-   ]
-  },
-  {
    "pid": "5107199",
    "name": "Daniss Jenkins",
    "team": "DET",
@@ -924,6 +924,51 @@
    ]
   },
   {
+   "pid": "4278053",
+   "name": "Davion Mitchell",
+   "team": "MIA",
+   "opp": "SAC",
+   "home": false,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 8.3,
+   "base": 7.62,
+   "mult": 1.089,
+   "minutes": 36.8,
+   "status": "",
+   "start": "2026-11-09T02:00Z",
+   "espn_id": "401909951",
+   "lean": "Over",
+   "strength": 0.0853,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.125,
+     "n": 47.8,
+     "rank": 5,
+     "txt": "SAC gives point guards +13% assists vs their norm (#5 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.065,
+     "n": 64,
+     "txt": "Players with his profile: +6% assists vs SAC (64 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.027,
+     "n": 1,
+     "txt": "His history vs SAC: 7.0 assists/g in 1 games (+3%)"
+    },
+    {
+     "k": "env",
+     "txt": "SAC: defense #30, pace #15 \u00b7 MIA: offense #12, pace #1"
+    }
+   ]
+  },
+  {
    "pid": "3078576",
    "name": "Derrick White",
    "team": "BOS",
@@ -934,25 +979,25 @@
    "stat_name": "reb+ast",
    "proj": 7.77,
    "base": 7.14,
-   "mult": 1.089,
+   "mult": 1.088,
    "minutes": 28.9,
    "status": "",
    "start": "2026-11-09T01:00Z",
    "espn_id": "401909949",
    "lean": "Over",
-   "strength": 0.0853,
+   "strength": 0.0843,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
      "v": 1.095,
      "n": 52.4,
-     "rank": 2,
-     "txt": "MIL gives point guards +10% reb+ast vs their norm (#2 softest of 30)"
+     "rank": 3,
+     "txt": "MIL gives point guards +9% reb+ast vs their norm (#3 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.091,
+     "v": 1.09,
      "n": 79,
      "txt": "Players with his profile: +9% reb+ast vs MIL (79 close comps)"
     },
@@ -982,47 +1027,47 @@
    "open": 8.5
   },
   {
-   "pid": "4278053",
-   "name": "Davion Mitchell",
-   "team": "MIA",
-   "opp": "SAC",
+   "pid": "3917376",
+   "name": "Jaylen Brown",
+   "team": "PHI",
+   "opp": "CHI",
    "home": false,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 8.17,
-   "base": 7.5,
-   "mult": 1.089,
-   "minutes": 36.2,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 35.18,
+   "base": 32.42,
+   "mult": 1.085,
+   "minutes": 34.8,
    "status": "",
-   "start": "2026-11-09T02:00Z",
-   "espn_id": "401909951",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
    "lean": "Over",
-   "strength": 0.0853,
+   "strength": 0.0816,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.125,
-     "n": 47.8,
-     "rank": 6,
-     "txt": "SAC gives point guards +13% assists vs their norm (#6 softest of 30)"
+     "v": 1.036,
+     "n": 96.9,
+     "rank": 7,
+     "txt": "CHI gives shooting guards +4% pts+reb+ast vs their norm (#7 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.065,
-     "n": 64,
-     "txt": "Players with his profile: +6% assists vs SAC (64 close comps)"
+     "v": 1.117,
+     "n": 160,
+     "txt": "Players with his profile: +12% pts+reb+ast vs CHI (160 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.027,
-     "n": 1,
-     "txt": "His history vs SAC: 7.0 assists/g in 1 games (+3%)"
+     "v": 1.059,
+     "n": 5,
+     "txt": "His history vs CHI: 37.0 pts+reb+ast/g in 5 games (+6%)"
     },
     {
      "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -1033,12 +1078,57 @@
    "opp": "CHI",
    "home": false,
    "role": "SF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 31.02,
+   "base": 28.6,
+   "mult": 1.085,
+   "minutes": 32.1,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0816,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.079,
+     "n": 83.5,
+     "rank": 2,
+     "txt": "CHI gives small forwards +8% pts+reb+ast vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.104,
+     "n": 119,
+     "txt": "Players with his profile: +10% pts+reb+ast vs CHI (119 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.036,
+     "n": 4,
+     "txt": "His history vs CHI: 31.8 pts+reb+ast/g in 4 games (+4%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
+   "pid": "3917376",
+   "name": "Jaylen Brown",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 14.4,
-   "base": 13.3,
+   "proj": 11.01,
+   "base": 10.17,
    "mult": 1.082,
-   "minutes": 33.1,
+   "minutes": 34.8,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
@@ -1048,26 +1138,26 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.073,
-     "n": 82.1,
-     "rank": 3,
-     "txt": "CHI gives small forwards +7% reb+ast vs their norm (#3 softest of 30)"
+     "v": 1.039,
+     "n": 96.9,
+     "rank": 5,
+     "txt": "CHI gives shooting guards +4% reb+ast vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.111,
-     "n": 116,
-     "txt": "Players with his profile: +11% reb+ast vs CHI (116 close comps)"
+     "v": 1.093,
+     "n": 160,
+     "txt": "Players with his profile: +9% reb+ast vs CHI (160 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.016,
-     "n": 3,
-     "txt": "His history vs CHI: 12.7 reb+ast/g in 3 games (+2%)"
+     "v": 1.084,
+     "n": 5,
+     "txt": "His history vs CHI: 12.0 reb+ast/g in 5 games (+8%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -1080,7 +1170,7 @@
    "role": "SG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 4.03,
+   "proj": 4.02,
    "base": 4.35,
    "mult": 0.925,
    "minutes": 34.5,
@@ -1093,7 +1183,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.891,
+     "v": 0.889,
      "n": 104.4,
      "rank": 29,
      "txt": "DET gives shooting guards -11% assists vs their norm (#2 toughest of 30)"
@@ -1145,7 +1235,7 @@
     },
     {
      "k": "sim",
-     "v": 0.916,
+     "v": 0.917,
      "n": 169,
      "txt": "Players with his profile: -8% pts+reb+ast vs DET (169 close comps)"
     },
@@ -1170,10 +1260,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 8.4,
-   "base": 9.08,
+   "proj": 8.88,
+   "base": 9.6,
    "mult": 0.925,
-   "minutes": 20.9,
+   "minutes": 22.1,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -1191,8 +1281,8 @@
     {
      "k": "sim",
      "v": 0.944,
-     "n": 187,
-     "txt": "Players with his profile: -6% pts+reb+ast vs MIN (187 close comps)"
+     "n": 185,
+     "txt": "Players with his profile: -6% pts+reb+ast vs MIN (185 close comps)"
     },
     {
      "k": "h2h",
@@ -1203,51 +1293,6 @@
     {
      "k": "env",
      "txt": "MIN: defense #6, pace #9 \u00b7 UTAH: offense #23, pace #3"
-    }
-   ]
-  },
-  {
-   "pid": "1966",
-   "name": "LeBron James",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 31.81,
-   "base": 29.42,
-   "mult": 1.081,
-   "minutes": 33.1,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0779,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.084,
-     "n": 82.1,
-     "rank": 2,
-     "txt": "CHI gives small forwards +8% pts+reb+ast vs their norm (#2 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.101,
-     "n": 116,
-     "txt": "Players with his profile: +10% pts+reb+ast vs CHI (116 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.023,
-     "n": 3,
-     "txt": "His history vs CHI: 31.7 pts+reb+ast/g in 3 games (+2%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
     }
    ]
   },
@@ -1395,10 +1440,10 @@
    "role": "SG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 4.66,
-   "base": 4.33,
+   "proj": 4.71,
+   "base": 4.38,
    "mult": 1.076,
-   "minutes": 34.0,
+   "minutes": 34.3,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -1432,92 +1477,47 @@
    ]
   },
   {
-   "pid": "3917376",
-   "name": "Jaylen Brown",
-   "team": "PHI",
-   "opp": "CHI",
+   "pid": "4251",
+   "name": "Paul George",
+   "team": "BOS",
+   "opp": "MIL",
    "home": false,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 11.31,
-   "base": 10.52,
+   "role": "SF",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 2.84,
+   "base": 2.65,
    "mult": 1.075,
-   "minutes": 36.2,
+   "minutes": 28.6,
    "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
    "lean": "Over",
    "strength": 0.0723,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.031,
-     "n": 93.9,
-     "rank": 6,
-     "txt": "CHI gives shooting guards +3% reb+ast vs their norm (#6 softest of 30)"
+     "v": 1.084,
+     "n": 88.9,
+     "rank": 2,
+     "txt": "MIL gives small forwards +8% threes vs their norm (#2 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.091,
-     "n": 159,
-     "txt": "Players with his profile: +9% reb+ast vs CHI (159 close comps)"
+     "v": 1.115,
+     "n": 141,
+     "txt": "Players with his profile: +12% threes vs MIL (141 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.078,
-     "n": 4,
-     "txt": "His history vs CHI: 12.2 reb+ast/g in 4 games (+8%)"
+     "v": 1.15,
+     "n": 5,
+     "txt": "His history vs MIL: 4.2 threes/g in 5 games (+15%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
-    }
-   ]
-  },
-  {
-   "pid": "3917376",
-   "name": "Jaylen Brown",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 35.79,
-   "base": 33.3,
-   "mult": 1.075,
-   "minutes": 36.2,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0723,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.031,
-     "n": 93.9,
-     "rank": 8,
-     "txt": "CHI gives shooting guards +3% pts+reb+ast vs their norm (#8 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.116,
-     "n": 159,
-     "txt": "Players with his profile: +12% pts+reb+ast vs CHI (159 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.032,
-     "n": 4,
-     "txt": "His history vs CHI: 36.2 pts+reb+ast/g in 4 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
     }
    ]
   },
@@ -1575,10 +1575,10 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.54,
-   "base": 1.66,
+   "proj": 1.77,
+   "base": 1.9,
    "mult": 0.931,
-   "minutes": 31.2,
+   "minutes": 35.8,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -1620,10 +1620,10 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.51,
-   "base": 1.62,
+   "proj": 1.6,
+   "base": 1.72,
    "mult": 0.931,
-   "minutes": 30.3,
+   "minutes": 32.2,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -1657,47 +1657,92 @@
    ]
   },
   {
-   "pid": "4251",
-   "name": "Paul George",
-   "team": "BOS",
-   "opp": "MIL",
+   "pid": "3917376",
+   "name": "Jaylen Brown",
+   "team": "PHI",
+   "opp": "CHI",
    "home": false,
-   "role": "SF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 2.84,
-   "base": 2.65,
+   "role": "SG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 4.25,
+   "base": 3.96,
    "mult": 1.074,
-   "minutes": 28.6,
+   "minutes": 34.8,
    "status": "",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
    "lean": "Over",
    "strength": 0.0714,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.083,
-     "n": 88.9,
-     "rank": 2,
-     "txt": "MIL gives small forwards +8% threes vs their norm (#2 softest of 30)"
+     "v": 1.069,
+     "n": 96.9,
+     "rank": 4,
+     "txt": "CHI gives shooting guards +7% assists vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.115,
-     "n": 141,
-     "txt": "Players with his profile: +12% threes vs MIL (141 close comps)"
+     "v": 1.128,
+     "n": 160,
+     "txt": "Players with his profile: +13% assists vs CHI (160 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.15,
+     "v": 1.078,
      "n": 5,
-     "txt": "His history vs MIL: 4.2 threes/g in 5 games (+15%)"
+     "txt": "His history vs CHI: 4.4 assists/g in 5 games (+8%)"
     },
     {
      "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
+   "pid": "1966",
+   "name": "LeBron James",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 13.59,
+   "base": 12.67,
+   "mult": 1.073,
+   "minutes": 32.1,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0705,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.068,
+     "n": 83.5,
+     "rank": 3,
+     "txt": "CHI gives small forwards +7% reb+ast vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.114,
+     "n": 119,
+     "txt": "Players with his profile: +11% reb+ast vs CHI (119 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.99,
+     "n": 4,
+     "txt": "His history vs CHI: 12.0 reb+ast/g in 4 games (-1%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -1710,10 +1755,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 7.35,
-   "base": 6.85,
+   "proj": 7.48,
+   "base": 6.97,
    "mult": 1.073,
-   "minutes": 36.8,
+   "minutes": 37.4,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -1730,7 +1775,7 @@
     },
     {
      "k": "sim",
-     "v": 1.098,
+     "v": 1.097,
      "n": 162,
      "txt": "Players with his profile: +10% assists vs MIA (162 close comps)"
     },
@@ -1742,9 +1787,67 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
+  },
+  {
+   "pid": "4397014",
+   "name": "Quentin Grimes",
+   "team": "LAL",
+   "opp": "DET",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.36,
+   "base": 5.74,
+   "mult": 0.932,
+   "minutes": 29.4,
+   "status": "",
+   "start": "2026-11-08T23:00Z",
+   "espn_id": "401909946",
+   "lean": "Under",
+   "strength": 0.0704,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.888,
+     "n": 104.4,
+     "rank": 30,
+     "txt": "DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.965,
+     "n": 13,
+     "txt": "Players with his profile: -3% reb+ast vs DET (13 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.022,
+     "n": 4,
+     "txt": "His history vs DET: 6.8 reb+ast/g in 4 games (+2%)"
+    },
+    {
+     "k": "env",
+     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+    }
+   ],
+   "line": 6.5,
+   "side": "Under",
+   "price": 1.72,
+   "am": -139,
+   "book": "fanduel",
+   "ev": -0.0155,
+   "p_model": 0.706,
+   "p_mkt": 0.551,
+   "event_id": "182e2b5349fa0ff4ad3c0e8359c1a9a0",
+   "market": "player_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-08T22:41:34Z",
+   "open": 6.5
   },
   {
    "pid": "4596528",
@@ -1800,10 +1903,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 28.62,
-   "base": 26.7,
+   "proj": 28.91,
+   "base": 26.97,
    "mult": 1.072,
-   "minutes": 34.0,
+   "minutes": 34.3,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -1837,64 +1940,6 @@
    ]
   },
   {
-   "pid": "4397014",
-   "name": "Quentin Grimes",
-   "team": "LAL",
-   "opp": "DET",
-   "home": false,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.37,
-   "base": 5.74,
-   "mult": 0.934,
-   "minutes": 29.4,
-   "status": "",
-   "start": "2026-11-08T23:00Z",
-   "espn_id": "401909946",
-   "lean": "Under",
-   "strength": 0.0683,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.891,
-     "n": 104.4,
-     "rank": 30,
-     "txt": "DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.967,
-     "n": 13,
-     "txt": "Players with his profile: -3% reb+ast vs DET (13 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.022,
-     "n": 4,
-     "txt": "His history vs DET: 6.8 reb+ast/g in 4 games (+2%)"
-    },
-    {
-     "k": "env",
-     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
-    }
-   ],
-   "line": 6.5,
-   "side": "Under",
-   "price": 1.72,
-   "am": -139,
-   "book": "fanduel",
-   "ev": -0.0155,
-   "p_model": 0.706,
-   "p_mkt": 0.551,
-   "event_id": "182e2b5349fa0ff4ad3c0e8359c1a9a0",
-   "market": "player_rebounds_assists",
-   "nbooks": 5,
-   "at": "2026-11-08T22:41:34Z",
-   "open": 6.5
-  },
-  {
    "pid": "3907498",
    "name": "Matisse Thybulle",
    "team": "LAL",
@@ -1905,18 +1950,18 @@
    "stat_name": "pts+reb+ast",
    "proj": 10.43,
    "base": 11.17,
-   "mult": 0.935,
+   "mult": 0.934,
    "minutes": 26.8,
    "status": "",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
    "lean": "Under",
-   "strength": 0.0672,
+   "strength": 0.0683,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.919,
+     "v": 0.918,
      "n": 104.4,
      "rank": 30,
      "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
@@ -1940,6 +1985,51 @@
    ]
   },
   {
+   "pid": "4397014",
+   "name": "Quentin Grimes",
+   "team": "LAL",
+   "opp": "DET",
+   "home": false,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 14.2,
+   "base": 15.18,
+   "mult": 0.935,
+   "minutes": 29.4,
+   "status": "",
+   "start": "2026-11-08T23:00Z",
+   "espn_id": "401909946",
+   "lean": "Under",
+   "strength": 0.0672,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.918,
+     "n": 104.4,
+     "rank": 30,
+     "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.964,
+     "n": 13,
+     "txt": "Players with his profile: -4% pts+reb+ast vs DET (13 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.964,
+     "n": 4,
+     "txt": "His history vs DET: 15.8 pts+reb+ast/g in 4 games (-4%)"
+    },
+    {
+     "k": "env",
+     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+    }
+   ]
+  },
+  {
    "pid": "4065663",
    "name": "Josh Okogie",
    "team": "UTAH",
@@ -1948,10 +2038,10 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 4.35,
-   "base": 4.66,
+   "proj": 4.61,
+   "base": 4.93,
    "mult": 0.935,
-   "minutes": 20.9,
+   "minutes": 22.1,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -1968,9 +2058,9 @@
     },
     {
      "k": "sim",
-     "v": 0.949,
-     "n": 187,
-     "txt": "Players with his profile: -5% reb+ast vs MIN (187 close comps)"
+     "v": 0.95,
+     "n": 185,
+     "txt": "Players with his profile: -5% reb+ast vs MIN (185 close comps)"
     },
     {
      "k": "h2h",
@@ -1985,6 +2075,51 @@
    ]
   },
   {
+   "pid": "3059318",
+   "name": "Joel Embiid",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 12.71,
+   "base": 11.9,
+   "mult": 1.069,
+   "minutes": 30.3,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0667,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.057,
+     "n": 44.9,
+     "rank": 7,
+     "txt": "CHI gives centers +6% reb+ast vs their norm (#7 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.092,
+     "n": 131,
+     "txt": "Players with his profile: +9% reb+ast vs CHI (131 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.014,
+     "n": 5,
+     "txt": "His history vs CHI: 10.6 reb+ast/g in 5 games (+1%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
    "pid": "4432816",
    "name": "LaMelo Ball",
    "team": "MIN",
@@ -1993,10 +2128,10 @@
    "role": "PG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 10.81,
-   "base": 10.11,
+   "proj": 10.93,
+   "base": 10.23,
    "mult": 1.069,
-   "minutes": 29.2,
+   "minutes": 29.5,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -2059,8 +2194,8 @@
     {
      "k": "sim",
      "v": 0.948,
-     "n": 124,
-     "txt": "Players with his profile: -5% reb+ast vs LAL (124 close comps)"
+     "n": 125,
+     "txt": "Players with his profile: -5% reb+ast vs LAL (125 close comps)"
     },
     {
      "k": "h2h",
@@ -2075,49 +2210,62 @@
    ]
   },
   {
-   "pid": "4397014",
-   "name": "Quentin Grimes",
-   "team": "LAL",
-   "opp": "DET",
+   "pid": "4065648",
+   "name": "Jayson Tatum",
+   "team": "BOS",
+   "opp": "MIL",
    "home": false,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 14.21,
-   "base": 15.18,
-   "mult": 0.936,
-   "minutes": 29.4,
+   "role": "SF",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 6.77,
+   "base": 6.33,
+   "mult": 1.068,
+   "minutes": 32.1,
    "status": "",
-   "start": "2026-11-08T23:00Z",
-   "espn_id": "401909946",
-   "lean": "Under",
-   "strength": 0.0661,
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
+   "lean": "Over",
+   "strength": 0.0658,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.919,
-     "n": 104.4,
-     "rank": 30,
-     "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
+     "v": 1.061,
+     "n": 88.9,
+     "rank": 6,
+     "txt": "MIL gives small forwards +6% assists vs their norm (#6 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.965,
-     "n": 13,
-     "txt": "Players with his profile: -3% pts+reb+ast vs DET (13 close comps)"
+     "v": 1.09,
+     "n": 131,
+     "txt": "Players with his profile: +9% assists vs MIL (131 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.964,
-     "n": 4,
-     "txt": "His history vs DET: 15.8 pts+reb+ast/g in 4 games (-4%)"
+     "v": 1.047,
+     "n": 1,
+     "txt": "His history vs MIL: 9.0 assists/g in 1 games (+5%)"
     },
     {
      "k": "env",
-     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
     }
-   ]
+   ],
+   "line": 6.5,
+   "side": "Under",
+   "price": 2.0,
+   "am": 100,
+   "book": "draftkings",
+   "ev": -0.0365,
+   "p_model": 0.522,
+   "p_mkt": 0.475,
+   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
+   "market": "player_assists",
+   "nbooks": 6,
+   "at": "2026-11-08T22:41:34Z",
+   "open": 6.5
   },
   {
    "pid": "3064440",
@@ -2128,10 +2276,10 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 5.66,
-   "base": 5.3,
+   "proj": 5.77,
+   "base": 5.41,
    "mult": 1.068,
-   "minutes": 32.6,
+   "minutes": 33.2,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -2160,7 +2308,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -2173,10 +2321,10 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 0.96,
-   "base": 1.03,
+   "proj": 0.84,
+   "base": 0.89,
    "mult": 0.937,
-   "minutes": 14.9,
+   "minutes": 13.0,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -2210,51 +2358,6 @@
    ]
   },
   {
-   "pid": "3917376",
-   "name": "Jaylen Brown",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 4.4,
-   "base": 4.13,
-   "mult": 1.067,
-   "minutes": 36.2,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0649,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.061,
-     "n": 93.9,
-     "rank": 4,
-     "txt": "CHI gives shooting guards +6% assists vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.123,
-     "n": 159,
-     "txt": "Players with his profile: +12% assists vs CHI (159 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.064,
-     "n": 4,
-     "txt": "His history vs CHI: 4.5 assists/g in 4 games (+6%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
-    }
-   ]
-  },
-  {
    "pid": "4431671",
    "name": "Jaden McDaniels",
    "team": "MIN",
@@ -2263,10 +2366,10 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 26.6,
-   "base": 24.94,
+   "proj": 26.86,
+   "base": 25.18,
    "mult": 1.067,
-   "minutes": 35.1,
+   "minutes": 35.4,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -2300,107 +2403,49 @@
    ]
   },
   {
-   "pid": "4592492",
-   "name": "Bones Hyland",
-   "team": "MIN",
-   "opp": "UTAH",
+   "pid": "5106058",
+   "name": "Emanuel Sharp",
+   "team": "SAC",
+   "opp": "MIA",
    "home": true,
-   "role": "PG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.54,
-   "base": 1.43,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 2.45,
+   "base": 2.3,
    "mult": 1.067,
-   "minutes": 13.1,
+   "minutes": 20.3,
    "status": "",
-   "start": "2026-11-09T00:00Z",
-   "espn_id": "401909947",
+   "start": "2026-11-09T02:00Z",
+   "espn_id": "401909951",
    "lean": "Over",
    "strength": 0.0649,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.124,
-     "n": 50.6,
+     "v": 1.086,
+     "n": 99.3,
      "rank": 1,
-     "txt": "UTAH gives point guards +12% threes vs their norm (#1 softest of 30)"
+     "txt": "MIA gives shooting guards +9% reb+ast vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.126,
-     "n": 78,
-     "txt": "Players with his profile: +13% threes vs UTAH (78 close comps)"
+     "v": 1.053,
+     "n": 171,
+     "txt": "Players with his profile: +5% reb+ast vs MIA (171 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.037,
-     "n": 3,
-     "txt": "His history vs UTAH: 1.7 threes/g in 3 games (+4%)"
+     "v": 1.0,
+     "n": 0,
+     "txt": "No history vs MIA yet"
     },
     {
      "k": "env",
-     "txt": "UTAH: defense #29, pace #3 \u00b7 MIN: offense #9, pace #9"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
-  },
-  {
-   "pid": "4065648",
-   "name": "Jayson Tatum",
-   "team": "BOS",
-   "opp": "MIL",
-   "home": false,
-   "role": "SF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 6.77,
-   "base": 6.33,
-   "mult": 1.067,
-   "minutes": 32.1,
-   "status": "",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
-   "lean": "Over",
-   "strength": 0.0649,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.06,
-     "n": 88.9,
-     "rank": 6,
-     "txt": "MIL gives small forwards +6% assists vs their norm (#6 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.09,
-     "n": 132,
-     "txt": "Players with his profile: +9% assists vs MIL (132 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.047,
-     "n": 1,
-     "txt": "His history vs MIL: 9.0 assists/g in 1 games (+5%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
-    }
-   ],
-   "line": 6.5,
-   "side": "Under",
-   "price": 2.0,
-   "am": 100,
-   "book": "draftkings",
-   "ev": -0.0365,
-   "p_model": 0.522,
-   "p_mkt": 0.475,
-   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
-   "market": "player_assists",
-   "nbooks": 6,
-   "at": "2026-11-08T22:41:34Z",
-   "open": 6.5
   },
   {
    "pid": "4432816",
@@ -2411,10 +2456,10 @@
    "role": "PG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 3.89,
-   "base": 3.65,
+   "proj": 3.94,
+   "base": 3.69,
    "mult": 1.066,
-   "minutes": 29.2,
+   "minutes": 29.5,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -2456,10 +2501,10 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 10.05,
-   "base": 9.43,
+   "proj": 10.15,
+   "base": 9.51,
    "mult": 1.066,
-   "minutes": 34.0,
+   "minutes": 34.3,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -2476,7 +2521,7 @@
     },
     {
      "k": "sim",
-     "v": 1.054,
+     "v": 1.053,
      "n": 54,
      "txt": "Players with his profile: +5% reb+ast vs UTAH (54 close comps)"
     },
@@ -2485,6 +2530,51 @@
      "v": 1.054,
      "n": 3,
      "txt": "His history vs UTAH: 9.7 reb+ast/g in 3 games (+5%)"
+    },
+    {
+     "k": "env",
+     "txt": "UTAH: defense #29, pace #3 \u00b7 MIN: offense #9, pace #9"
+    }
+   ]
+  },
+  {
+   "pid": "4592492",
+   "name": "Bones Hyland",
+   "team": "MIN",
+   "opp": "UTAH",
+   "home": true,
+   "role": "PG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.54,
+   "base": 1.43,
+   "mult": 1.066,
+   "minutes": 13.1,
+   "status": "",
+   "start": "2026-11-09T00:00Z",
+   "espn_id": "401909947",
+   "lean": "Over",
+   "strength": 0.0639,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.124,
+     "n": 50.6,
+     "rank": 1,
+     "txt": "UTAH gives point guards +12% threes vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.126,
+     "n": 78,
+     "txt": "Players with his profile: +13% threes vs UTAH (78 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.037,
+     "n": 3,
+     "txt": "His history vs UTAH: 1.7 threes/g in 3 games (+4%)"
     },
     {
      "k": "env",
@@ -2534,51 +2624,6 @@
     {
      "k": "env",
      "txt": "NO: defense #23, pace #4 \u00b7 LAC: offense #11, pace #26"
-    }
-   ]
-  },
-  {
-   "pid": "5106058",
-   "name": "Emanuel Sharp",
-   "team": "SAC",
-   "opp": "MIA",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 2.45,
-   "base": 2.3,
-   "mult": 1.066,
-   "minutes": 20.3,
-   "status": "",
-   "start": "2026-11-09T02:00Z",
-   "espn_id": "401909951",
-   "lean": "Over",
-   "strength": 0.0639,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.086,
-     "n": 99.3,
-     "rank": 1,
-     "txt": "MIA gives shooting guards +9% reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.052,
-     "n": 171,
-     "txt": "Players with his profile: +5% reb+ast vs MIA (171 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs MIA yet"
-    },
-    {
-     "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
     }
    ]
   },
@@ -2636,16 +2681,16 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 0.75,
-   "base": 0.8,
+   "proj": 0.94,
+   "base": 1.0,
    "mult": 0.939,
-   "minutes": 18.2,
+   "minutes": 22.6,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
    "lean": "Under",
    "strength": 0.0629,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -2701,7 +2746,7 @@
     },
     {
      "k": "sim",
-     "v": 1.032,
+     "v": 1.033,
      "n": 132,
      "txt": "Players with his profile: +3% reb+ast vs UTAH (132 close comps)"
     },
@@ -2714,51 +2759,6 @@
     {
      "k": "env",
      "txt": "UTAH: defense #29, pace #3 \u00b7 MIN: offense #9, pace #9"
-    }
-   ]
-  },
-  {
-   "pid": "5095151",
-   "name": "Caleb Wilson",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 9.29,
-   "base": 8.75,
-   "mult": 1.062,
-   "minutes": 33.2,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0602,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.034,
-     "n": 91.1,
-     "rank": 8,
-     "txt": "PHI gives small forwards +3% reb+ast vs their norm (#8 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.063,
-     "n": 121,
-     "txt": "Players with his profile: +6% reb+ast vs PHI (121 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.038,
-     "n": 1,
-     "txt": "His history vs PHI: 11.0 reb+ast/g in 1 games (+4%)"
-    },
-    {
-     "k": "env",
-     "txt": "PHI: defense #9, pace #15 \u00b7 CHI: offense #25, pace #2"
     }
    ]
   },
@@ -2816,11 +2816,11 @@
    "role": "PF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 19.35,
-   "base": 18.22,
+   "proj": 19.72,
+   "base": 18.57,
    "mult": 1.062,
-   "minutes": 34.2,
-   "status": "",
+   "minutes": 34.8,
+   "status": "Questionable",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
    "lean": "Over",
@@ -2831,8 +2831,8 @@
      "k": "dvp",
      "v": 1.062,
      "n": 21.0,
-     "rank": 4,
-     "txt": "MIA gives power forwards +6% reb+ast vs their norm (#4 softest of 30)"
+     "rank": 5,
+     "txt": "MIA gives power forwards +6% reb+ast vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
@@ -2848,7 +2848,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -2977,14 +2977,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.952,
+     "v": 0.951,
      "n": 54.1,
      "rank": 28,
      "txt": "DET gives centers -5% reb+ast vs their norm (#3 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.913,
+     "v": 0.914,
      "n": 160,
      "txt": "Players with his profile: -9% reb+ast vs DET (160 close comps)"
     },
@@ -3009,16 +3009,16 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 5.57,
-   "base": 5.91,
+   "proj": 6.92,
+   "base": 7.34,
    "mult": 0.942,
-   "minutes": 18.2,
+   "minutes": 22.6,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
    "lean": "Under",
    "strength": 0.0598,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -3074,7 +3074,7 @@
     },
     {
      "k": "sim",
-     "v": 0.976,
+     "v": 0.975,
      "n": 143,
      "txt": "Players with his profile: -2% pts+reb+ast vs BOS (143 close comps)"
     },
@@ -3086,52 +3086,7 @@
     },
     {
      "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
-    }
-   ]
-  },
-  {
-   "pid": "1966",
-   "name": "LeBron James",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 6.96,
-   "base": 6.55,
-   "mult": 1.061,
-   "minutes": 33.1,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0592,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.039,
-     "n": 82.1,
-     "rank": 10,
-     "txt": "CHI gives small forwards +4% assists vs their norm (#10 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.147,
-     "n": 116,
-     "txt": "Players with his profile: +15% assists vs CHI (116 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.03,
-     "n": 3,
-     "txt": "His history vs CHI: 6.3 assists/g in 3 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
     }
    ]
   },
@@ -3144,10 +3099,10 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 30.68,
-   "base": 28.92,
+   "proj": 31.04,
+   "base": 29.25,
    "mult": 1.061,
-   "minutes": 29.2,
+   "minutes": 29.5,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -3166,7 +3121,7 @@
      "k": "sim",
      "v": 1.085,
      "n": 91,
-     "txt": "Players with his profile: +9% pts+reb+ast vs UTAH (91 close comps)"
+     "txt": "Players with his profile: +8% pts+reb+ast vs UTAH (91 close comps)"
     },
     {
      "k": "h2h",
@@ -3189,7 +3144,7 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 11.39,
+   "proj": 11.38,
    "base": 10.73,
    "mult": 1.061,
    "minutes": 13.1,
@@ -3224,64 +3179,6 @@
      "txt": "UTAH: defense #29, pace #3 \u00b7 MIN: offense #9, pace #9"
     }
    ]
-  },
-  {
-   "pid": "4251",
-   "name": "Paul George",
-   "team": "BOS",
-   "opp": "MIL",
-   "home": false,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 24.63,
-   "base": 23.22,
-   "mult": 1.061,
-   "minutes": 28.6,
-   "status": "",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
-   "lean": "Over",
-   "strength": 0.0592,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.021,
-     "n": 88.9,
-     "rank": 11,
-     "txt": "MIL gives small forwards +2% pts+reb+ast vs their norm (#11 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.076,
-     "n": 141,
-     "txt": "Players with his profile: +8% pts+reb+ast vs MIL (141 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.069,
-     "n": 5,
-     "txt": "His history vs MIL: 30.4 pts+reb+ast/g in 5 games (+7%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
-    }
-   ],
-   "line": 26.5,
-   "side": "Under",
-   "price": 1.87,
-   "am": -115,
-   "book": "hardrockbet",
-   "ev": -0.0225,
-   "p_model": 0.61,
-   "p_mkt": 0.509,
-   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
-   "market": "player_points_rebounds_assists",
-   "nbooks": 5,
-   "at": "2026-11-08T22:41:34Z",
-   "open": 26.5
   },
   {
    "pid": "4066262",
@@ -3324,7 +3221,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -3403,8 +3300,8 @@
     {
      "k": "sim",
      "v": 1.042,
-     "n": 83,
-     "txt": "Players with his profile: +4% reb+ast vs DAL (83 close comps)"
+     "n": 86,
+     "txt": "Players with his profile: +4% reb+ast vs DAL (86 close comps)"
     },
     {
      "k": "h2h",
@@ -3417,6 +3314,64 @@
      "txt": "DAL: defense #19, pace #5 \u00b7 BKN: offense #30, pace #24"
     }
    ]
+  },
+  {
+   "pid": "4251",
+   "name": "Paul George",
+   "team": "BOS",
+   "opp": "MIL",
+   "home": false,
+   "role": "SF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 24.62,
+   "base": 23.22,
+   "mult": 1.06,
+   "minutes": 28.6,
+   "status": "",
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
+   "lean": "Over",
+   "strength": 0.0583,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.02,
+     "n": 88.9,
+     "rank": 12,
+     "txt": "MIL gives small forwards +2% pts+reb+ast vs their norm (#12 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.076,
+     "n": 141,
+     "txt": "Players with his profile: +8% pts+reb+ast vs MIL (141 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.069,
+     "n": 5,
+     "txt": "His history vs MIL: 30.4 pts+reb+ast/g in 5 games (+7%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
+    }
+   ],
+   "line": 26.5,
+   "side": "Under",
+   "price": 1.87,
+   "am": -115,
+   "book": "hardrockbet",
+   "ev": -0.0225,
+   "p_model": 0.61,
+   "p_mkt": 0.509,
+   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
+   "market": "player_points_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-08T22:41:34Z",
+   "open": 26.5
   },
   {
    "pid": "3157465",
@@ -3477,18 +3432,18 @@
    "open": 4.5
   },
   {
-   "pid": "3059318",
-   "name": "Joel Embiid",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 12.62,
-   "base": 11.93,
+   "pid": "4871145",
+   "name": "Josh Giddey",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 9.74,
+   "base": 9.19,
    "mult": 1.059,
-   "minutes": 30.9,
+   "minutes": 32.1,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
@@ -3498,26 +3453,71 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.055,
-     "n": 44.1,
-     "rank": 7,
-     "txt": "CHI gives centers +5% reb+ast vs their norm (#7 softest of 30)"
+     "v": 1.022,
+     "n": 70.0,
+     "rank": 20,
+     "txt": "PHI gives point guards +2% assists vs their norm (#11 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.092,
-     "n": 125,
-     "txt": "Players with his profile: +9% reb+ast vs CHI (125 close comps)"
+     "v": 1.039,
+     "n": 58,
+     "txt": "Players with his profile: +4% assists vs PHI (58 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.988,
-     "n": 4,
-     "txt": "His history vs CHI: 9.5 reb+ast/g in 4 games (-1%)"
+     "v": 1.138,
+     "n": 5,
+     "txt": "His history vs PHI: 12.0 assists/g in 5 games (+14%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "PHI: defense #11, pace #16 \u00b7 CHI: offense #24, pace #2"
+    }
+   ]
+  },
+  {
+   "pid": "1966",
+   "name": "LeBron James",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SF",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 6.61,
+   "base": 6.24,
+   "mult": 1.059,
+   "minutes": 32.1,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0573,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.038,
+     "n": 83.5,
+     "rank": 10,
+     "txt": "CHI gives small forwards +4% assists vs their norm (#10 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.152,
+     "n": 119,
+     "txt": "Players with his profile: +15% assists vs CHI (119 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.015,
+     "n": 4,
+     "txt": "His history vs CHI: 6.0 assists/g in 4 games (+1%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -3530,10 +3530,10 @@
    "role": "PG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 11.14,
-   "base": 10.52,
+   "proj": 11.34,
+   "base": 10.71,
    "mult": 1.059,
-   "minutes": 36.8,
+   "minutes": 37.4,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -3562,7 +3562,97 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
+    }
+   ]
+  },
+  {
+   "pid": "4066457",
+   "name": "Austin Reaves",
+   "team": "LAL",
+   "opp": "DET",
+   "home": false,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 26.14,
+   "base": 27.65,
+   "mult": 0.945,
+   "minutes": 34.5,
+   "status": "",
+   "start": "2026-11-08T23:00Z",
+   "espn_id": "401909946",
+   "lean": "Under",
+   "strength": 0.0566,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.918,
+     "n": 104.4,
+     "rank": 30,
+     "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.975,
+     "n": 150,
+     "txt": "Players with his profile: -2% pts+reb+ast vs DET (150 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.987,
+     "n": 1,
+     "txt": "His history vs DET: 31.0 pts+reb+ast/g in 1 games (-1%)"
+    },
+    {
+     "k": "env",
+     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+    }
+   ]
+  },
+  {
+   "pid": "4351851",
+   "name": "Anfernee Simons",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 3.31,
+   "base": 3.13,
+   "mult": 1.058,
+   "minutes": 18.9,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0564,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.039,
+     "n": 96.9,
+     "rank": 5,
+     "txt": "CHI gives shooting guards +4% reb+ast vs their norm (#5 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.035,
+     "n": 109,
+     "txt": "Players with his profile: +4% reb+ast vs CHI (109 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.087,
+     "n": 4,
+     "txt": "His history vs CHI: 6.0 reb+ast/g in 4 games (+9%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -3575,10 +3665,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 25.91,
-   "base": 24.5,
+   "proj": 26.42,
+   "base": 24.98,
    "mult": 1.058,
-   "minutes": 32.6,
+   "minutes": 33.2,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -3607,52 +3697,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
-    }
-   ]
-  },
-  {
-   "pid": "4066457",
-   "name": "Austin Reaves",
-   "team": "LAL",
-   "opp": "DET",
-   "home": false,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 26.16,
-   "base": 27.65,
-   "mult": 0.946,
-   "minutes": 34.5,
-   "status": "",
-   "start": "2026-11-08T23:00Z",
-   "espn_id": "401909946",
-   "lean": "Under",
-   "strength": 0.0555,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.919,
-     "n": 104.4,
-     "rank": 30,
-     "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.976,
-     "n": 150,
-     "txt": "Players with his profile: -2% pts+reb+ast vs DET (150 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.987,
-     "n": 1,
-     "txt": "His history vs DET: 31.0 pts+reb+ast/g in 1 games (-1%)"
-    },
-    {
-     "k": "env",
-     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -3678,7 +3723,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.952,
+     "v": 0.951,
      "n": 54.1,
      "rank": 28,
      "txt": "DET gives centers -5% reb+ast vs their norm (#3 toughest of 30)"
@@ -3736,7 +3781,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.93,
+     "v": 0.929,
      "n": 51.6,
      "rank": 27,
      "txt": "BKN gives point guards -7% threes vs their norm (#4 toughest of 30)"
@@ -3850,6 +3895,109 @@
    ]
   },
   {
+   "pid": "4251",
+   "name": "Paul George",
+   "team": "BOS",
+   "opp": "MIL",
+   "home": false,
+   "role": "SF",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 3.56,
+   "base": 3.37,
+   "mult": 1.057,
+   "minutes": 28.6,
+   "status": "",
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
+   "lean": "Over",
+   "strength": 0.0554,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.061,
+     "n": 88.9,
+     "rank": 6,
+     "txt": "MIL gives small forwards +6% assists vs their norm (#6 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.088,
+     "n": 141,
+     "txt": "Players with his profile: +9% assists vs MIL (141 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.082,
+     "n": 5,
+     "txt": "His history vs MIL: 4.0 assists/g in 5 games (+8%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
+    }
+   ],
+   "line": 3.5,
+   "side": "Under",
+   "price": 2.08,
+   "am": 108,
+   "book": "betrivers",
+   "ev": 0.0056,
+   "p_model": 0.554,
+   "p_mkt": 0.472,
+   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
+   "market": "player_assists",
+   "nbooks": 6,
+   "at": "2026-11-08T22:41:34Z",
+   "open": 3.5
+  },
+  {
+   "pid": "4871145",
+   "name": "Josh Giddey",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "role": "PG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 16.47,
+   "base": 15.6,
+   "mult": 1.056,
+   "minutes": 32.1,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0545,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.032,
+     "n": 70.0,
+     "rank": 12,
+     "txt": "PHI gives point guards +3% reb+ast vs their norm (#12 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.022,
+     "n": 58,
+     "txt": "Players with his profile: +2% reb+ast vs PHI (58 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.079,
+     "n": 5,
+     "txt": "His history vs PHI: 20.2 reb+ast/g in 5 games (+8%)"
+    },
+    {
+     "k": "env",
+     "txt": "PHI: defense #11, pace #16 \u00b7 CHI: offense #24, pace #2"
+    }
+   ]
+  },
+  {
    "pid": "4432847",
    "name": "Terrence Shannon Jr.",
    "team": "MIN",
@@ -3893,64 +4041,6 @@
      "txt": "UTAH: defense #29, pace #3 \u00b7 MIN: offense #9, pace #9"
     }
    ]
-  },
-  {
-   "pid": "4251",
-   "name": "Paul George",
-   "team": "BOS",
-   "opp": "MIL",
-   "home": false,
-   "role": "SF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 3.56,
-   "base": 3.37,
-   "mult": 1.056,
-   "minutes": 28.6,
-   "status": "",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
-   "lean": "Over",
-   "strength": 0.0545,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.06,
-     "n": 88.9,
-     "rank": 6,
-     "txt": "MIL gives small forwards +6% assists vs their norm (#6 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.087,
-     "n": 141,
-     "txt": "Players with his profile: +9% assists vs MIL (141 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.082,
-     "n": 5,
-     "txt": "His history vs MIL: 4.0 assists/g in 5 games (+8%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
-    }
-   ],
-   "line": 3.5,
-   "side": "Under",
-   "price": 2.08,
-   "am": 108,
-   "book": "betrivers",
-   "ev": 0.0056,
-   "p_model": 0.554,
-   "p_mkt": 0.472,
-   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
-   "market": "player_assists",
-   "nbooks": 6,
-   "at": "2026-11-08T22:41:34Z",
-   "open": 3.5
   },
   {
    "pid": "5041939",
@@ -4027,8 +4117,8 @@
     {
      "k": "sim",
      "v": 1.069,
-     "n": 132,
-     "txt": "Players with his profile: +7% reb+ast vs MIL (132 close comps)"
+     "n": 131,
+     "txt": "Players with his profile: +7% reb+ast vs MIL (131 close comps)"
     },
     {
      "k": "h2h",
@@ -4064,10 +4154,10 @@
    "role": "PF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 7.41,
-   "base": 7.03,
+   "proj": 7.61,
+   "base": 7.22,
    "mult": 1.055,
-   "minutes": 24.1,
+   "minutes": 24.7,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -4079,8 +4169,8 @@
      "k": "dvp",
      "v": 1.062,
      "n": 21.0,
-     "rank": 4,
-     "txt": "MIA gives power forwards +6% reb+ast vs their norm (#4 softest of 30)"
+     "rank": 5,
+     "txt": "MIA gives power forwards +6% reb+ast vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
@@ -4096,7 +4186,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -4109,16 +4199,16 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 2.21,
-   "base": 2.33,
+   "proj": 2.75,
+   "base": 2.9,
    "mult": 0.948,
-   "minutes": 18.2,
+   "minutes": 22.6,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
    "lean": "Under",
    "strength": 0.0534,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -4167,14 +4257,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.931,
+     "v": 0.932,
      "n": 86.4,
      "rank": 27,
      "txt": "DET gives small forwards -7% reb+ast vs their norm (#4 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.004,
+     "v": 1.003,
      "n": 63,
      "txt": "Players with his profile: +0% reb+ast vs DET (63 close comps)"
     },
@@ -4244,10 +4334,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 7.11,
-   "base": 7.49,
+   "proj": 6.2,
+   "base": 6.53,
    "mult": 0.95,
-   "minutes": 14.9,
+   "minutes": 13.0,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -4264,7 +4354,7 @@
     },
     {
      "k": "sim",
-     "v": 0.945,
+     "v": 0.944,
      "n": 188,
      "txt": "Players with his profile: -6% pts+reb+ast vs MIN (188 close comps)"
     },
@@ -4366,7 +4456,7 @@
     },
     {
      "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
     }
    ],
    "line": 16.5,
@@ -4384,6 +4474,96 @@
    "open": 16.5
   },
   {
+   "pid": "4431678",
+   "name": "Tyrese Maxey",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "PG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 2.29,
+   "base": 2.18,
+   "mult": 1.051,
+   "minutes": 34.6,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0497,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.057,
+     "n": 56.7,
+     "rank": 8,
+     "txt": "CHI gives point guards +6% threes vs their norm (#8 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.089,
+     "n": 165,
+     "txt": "Players with his profile: +9% threes vs CHI (165 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.059,
+     "n": 4,
+     "txt": "His history vs CHI: 3.8 threes/g in 4 games (+6%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
+   "pid": "4432446",
+   "name": "Jabari Walker",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "PF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 4.52,
+   "base": 4.3,
+   "mult": 1.051,
+   "minutes": 12.8,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0497,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.072,
+     "n": 21.7,
+     "rank": 3,
+     "txt": "CHI gives power forwards +7% reb+ast vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.037,
+     "n": 125,
+     "txt": "Players with his profile: +4% reb+ast vs CHI (125 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.034,
+     "n": 5,
+     "txt": "His history vs CHI: 3.8 reb+ast/g in 5 games (+3%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
    "pid": "4397002",
    "name": "Ayo Dosunmu",
    "team": "MIN",
@@ -4392,15 +4572,15 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.84,
-   "base": 1.74,
-   "mult": 1.052,
-   "minutes": 34.0,
+   "proj": 1.85,
+   "base": 1.76,
+   "mult": 1.051,
+   "minutes": 34.3,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
    "lean": "Over",
-   "strength": 0.0507,
+   "strength": 0.0497,
    "starter": true,
    "signals": [
     {
@@ -4429,51 +4609,6 @@
    ]
   },
   {
-   "pid": "4711294",
-   "name": "Matas Buzelis",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 7.46,
-   "base": 7.1,
-   "mult": 1.051,
-   "minutes": 27.2,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0497,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.034,
-     "n": 91.1,
-     "rank": 8,
-     "txt": "PHI gives small forwards +3% reb+ast vs their norm (#8 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.062,
-     "n": 95,
-     "txt": "Players with his profile: +6% reb+ast vs PHI (95 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.014,
-     "n": 4,
-     "txt": "His history vs PHI: 7.2 reb+ast/g in 4 games (+1%)"
-    },
-    {
-     "k": "env",
-     "txt": "PHI: defense #9, pace #15 \u00b7 CHI: offense #25, pace #2"
-    }
-   ]
-  },
-  {
    "pid": "4431671",
    "name": "Jaden McDaniels",
    "team": "MIN",
@@ -4482,10 +4617,10 @@
    "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 9.33,
-   "base": 8.88,
+   "proj": 9.42,
+   "base": 8.97,
    "mult": 1.051,
-   "minutes": 35.1,
+   "minutes": 35.4,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -4519,47 +4654,92 @@
    ]
   },
   {
-   "pid": "4601025",
-   "name": "Pelle Larsson",
-   "team": "MIA",
-   "opp": "SAC",
+   "pid": "4277811",
+   "name": "Collin Sexton",
+   "team": "LAL",
+   "opp": "DET",
    "home": false,
    "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 3.62,
-   "base": 3.44,
-   "mult": 1.051,
-   "minutes": 30.2,
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 12.35,
+   "base": 12.98,
+   "mult": 0.952,
+   "minutes": 16.6,
    "status": "",
-   "start": "2026-11-09T02:00Z",
-   "espn_id": "401909951",
-   "lean": "Over",
-   "strength": 0.0497,
+   "start": "2026-11-08T23:00Z",
+   "espn_id": "401909946",
+   "lean": "Under",
+   "strength": 0.0492,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.061,
-     "n": 90.9,
-     "rank": 5,
-     "txt": "SAC gives shooting guards +6% assists vs their norm (#5 softest of 30)"
+     "v": 0.918,
+     "n": 104.4,
+     "rank": 30,
+     "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.058,
-     "n": 19,
-     "txt": "Players with his profile: +6% assists vs SAC (19 close comps)"
+     "v": 0.976,
+     "n": 180,
+     "txt": "Players with his profile: -2% pts+reb+ast vs DET (180 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.067,
+     "v": 0.969,
      "n": 1,
-     "txt": "His history vs SAC: 9.0 assists/g in 1 games (+7%)"
+     "txt": "His history vs DET: 5.0 pts+reb+ast/g in 1 games (-3%)"
     },
     {
      "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
+     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+    }
+   ]
+  },
+  {
+   "pid": "4873138",
+   "name": "Ace Bailey",
+   "team": "UTAH",
+   "opp": "MIN",
+   "home": false,
+   "role": "SG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 1.93,
+   "base": 2.02,
+   "mult": 0.952,
+   "minutes": 35.8,
+   "status": "",
+   "start": "2026-11-09T00:00Z",
+   "espn_id": "401909947",
+   "lean": "Under",
+   "strength": 0.0492,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.948,
+     "n": 107.3,
+     "rank": 26,
+     "txt": "MIN gives shooting guards -5% assists vs their norm (#5 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.94,
+     "n": 50,
+     "txt": "Players with his profile: -6% assists vs MIN (50 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.03,
+     "n": 4,
+     "txt": "His history vs MIN: 2.0 assists/g in 4 games (+3%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIN: defense #6, pace #9 \u00b7 UTAH: offense #23, pace #3"
     }
    ]
   },
@@ -4604,7 +4784,7 @@
     },
     {
      "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
     }
    ],
    "line": 28.5,
@@ -4620,6 +4800,51 @@
    "nbooks": 6,
    "at": "2026-11-08T22:41:34Z",
    "open": 28.5
+  },
+  {
+   "pid": "4351851",
+   "name": "Anfernee Simons",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 12.21,
+   "base": 11.63,
+   "mult": 1.05,
+   "minutes": 18.9,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0488,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.036,
+     "n": 96.9,
+     "rank": 7,
+     "txt": "CHI gives shooting guards +4% pts+reb+ast vs their norm (#7 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.057,
+     "n": 109,
+     "txt": "Players with his profile: +6% pts+reb+ast vs CHI (109 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.015,
+     "n": 4,
+     "txt": "His history vs CHI: 20.2 pts+reb+ast/g in 4 games (+2%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
   },
   {
    "pid": "3907497",
@@ -4651,8 +4876,8 @@
     {
      "k": "sim",
      "v": 1.029,
-     "n": 100,
-     "txt": "Players with his profile: +3% assists vs LAC (100 close comps)"
+     "n": 102,
+     "txt": "Players with his profile: +3% assists vs LAC (102 close comps)"
     },
     {
      "k": "h2h",
@@ -4667,47 +4892,47 @@
    ]
   },
   {
-   "pid": "4277811",
-   "name": "Collin Sexton",
-   "team": "LAL",
-   "opp": "DET",
+   "pid": "4601025",
+   "name": "Pelle Larsson",
+   "team": "MIA",
+   "opp": "SAC",
    "home": false,
    "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 12.37,
-   "base": 12.98,
-   "mult": 0.953,
-   "minutes": 16.6,
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 3.62,
+   "base": 3.44,
+   "mult": 1.05,
+   "minutes": 30.2,
    "status": "",
-   "start": "2026-11-08T23:00Z",
-   "espn_id": "401909946",
-   "lean": "Under",
-   "strength": 0.0481,
+   "start": "2026-11-09T02:00Z",
+   "espn_id": "401909951",
+   "lean": "Over",
+   "strength": 0.0488,
    "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.919,
-     "n": 104.4,
-     "rank": 30,
-     "txt": "DET gives shooting guards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
+     "v": 1.061,
+     "n": 90.9,
+     "rank": 5,
+     "txt": "SAC gives shooting guards +6% assists vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.976,
-     "n": 180,
-     "txt": "Players with his profile: -2% pts+reb+ast vs DET (180 close comps)"
+     "v": 1.057,
+     "n": 17,
+     "txt": "Players with his profile: +6% assists vs SAC (17 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.969,
+     "v": 1.067,
      "n": 1,
-     "txt": "His history vs DET: 5.0 pts+reb+ast/g in 1 games (-3%)"
+     "txt": "His history vs SAC: 9.0 assists/g in 1 games (+7%)"
     },
     {
      "k": "env",
-     "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
+     "txt": "SAC: defense #30, pace #15 \u00b7 MIA: offense #12, pace #1"
     }
    ]
   },
@@ -4757,6 +4982,51 @@
    ]
   },
   {
+   "pid": "5124612",
+   "name": "VJ Edgecombe",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 3.3,
+   "base": 3.15,
+   "mult": 1.049,
+   "minutes": 33.4,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0478,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.069,
+     "n": 96.9,
+     "rank": 4,
+     "txt": "CHI gives shooting guards +7% assists vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.045,
+     "n": 37,
+     "txt": "Players with his profile: +4% assists vs CHI (37 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.126,
+     "n": 5,
+     "txt": "His history vs CHI: 4.2 assists/g in 5 games (+13%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
    "pid": "4433247",
    "name": "Jonathan Kuminga",
    "team": "MIN",
@@ -4765,10 +5035,10 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 23.24,
-   "base": 22.15,
+   "proj": 23.49,
+   "base": 22.39,
    "mult": 1.049,
-   "minutes": 31.7,
+   "minutes": 32.0,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -4830,7 +5100,7 @@
     },
     {
      "k": "sim",
-     "v": 1.062,
+     "v": 1.061,
      "n": 123,
      "txt": "Players with his profile: +6% pts+reb+ast vs MIA (123 close comps)"
     },
@@ -4842,68 +5112,23 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
   {
-   "pid": "4871145",
-   "name": "Josh Giddey",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 8.71,
-   "base": 8.32,
-   "mult": 1.048,
-   "minutes": 30.3,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0469,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.019,
-     "n": 68.6,
-     "rank": 21,
-     "txt": "PHI gives point guards +2% assists vs their norm (#10 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.041,
-     "n": 58,
-     "txt": "Players with his profile: +4% assists vs PHI (58 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.092,
-     "n": 4,
-     "txt": "His history vs PHI: 11.2 assists/g in 4 games (+9%)"
-    },
-    {
-     "k": "env",
-     "txt": "PHI: defense #9, pace #15 \u00b7 CHI: offense #25, pace #2"
-    }
-   ]
-  },
-  {
-   "pid": "4351851",
-   "name": "Anfernee Simons",
+   "pid": "4433144",
+   "name": "Caleb Love",
    "team": "PHI",
    "opp": "CHI",
    "home": false,
    "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 13.5,
-   "base": 12.88,
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 3.0,
+   "base": 2.86,
    "mult": 1.048,
-   "minutes": 20.8,
+   "minutes": 13.7,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
@@ -4913,26 +5138,26 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.031,
-     "n": 93.9,
-     "rank": 8,
-     "txt": "CHI gives shooting guards +3% pts+reb+ast vs their norm (#8 softest of 30)"
+     "v": 1.039,
+     "n": 96.9,
+     "rank": 5,
+     "txt": "CHI gives shooting guards +4% reb+ast vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.058,
-     "n": 107,
-     "txt": "Players with his profile: +6% pts+reb+ast vs CHI (107 close comps)"
+     "v": 1.057,
+     "n": 106,
+     "txt": "Players with his profile: +6% reb+ast vs CHI (106 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.013,
-     "n": 3,
-     "txt": "His history vs CHI: 24.0 pts+reb+ast/g in 3 games (+1%)"
+     "v": 1.01,
+     "n": 1,
+     "txt": "His history vs CHI: 5.0 reb+ast/g in 1 games (+1%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -4965,7 +5190,7 @@
     },
     {
      "k": "sim",
-     "v": 1.056,
+     "v": 1.055,
      "n": 151,
      "txt": "Players with his profile: +6% pts+reb+ast vs UTAH (151 close comps)"
     },
@@ -5003,14 +5228,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.079,
+     "v": 1.08,
      "n": 52.4,
      "rank": 5,
      "txt": "MIL gives point guards +8% threes vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.123,
+     "v": 1.122,
      "n": 79,
      "txt": "Players with his profile: +12% threes vs MIL (79 close comps)"
     },
@@ -5101,8 +5326,8 @@
     {
      "k": "sim",
      "v": 1.024,
-     "n": 100,
-     "txt": "Players with his profile: +2% reb+ast vs LAC (100 close comps)"
+     "n": 102,
+     "txt": "Players with his profile: +2% reb+ast vs LAC (102 close comps)"
     },
     {
      "k": "h2h",
@@ -5113,6 +5338,96 @@
     {
      "k": "env",
      "txt": "LAC: defense #20, pace #26 \u00b7 NO: offense #17, pace #4"
+    }
+   ]
+  },
+  {
+   "pid": "4684793",
+   "name": "Kyle Filipowski",
+   "team": "UTAH",
+   "opp": "MIN",
+   "home": false,
+   "role": "PF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 4.5,
+   "base": 4.71,
+   "mult": 0.955,
+   "minutes": 11.7,
+   "status": "",
+   "start": "2026-11-09T00:00Z",
+   "espn_id": "401909947",
+   "lean": "Under",
+   "strength": 0.046,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.937,
+     "n": 27.7,
+     "rank": 27,
+     "txt": "MIN gives power forwards -6% reb+ast vs their norm (#4 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.977,
+     "n": 71,
+     "txt": "Players with his profile: -2% reb+ast vs MIN (71 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.976,
+     "n": 4,
+     "txt": "His history vs MIN: 9.2 reb+ast/g in 4 games (-2%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIN: defense #6, pace #9 \u00b7 UTAH: offense #23, pace #3"
+    }
+   ]
+  },
+  {
+   "pid": "4711294",
+   "name": "Matas Buzelis",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 7.73,
+   "base": 7.39,
+   "mult": 1.047,
+   "minutes": 28.8,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0459,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.033,
+     "n": 94.7,
+     "rank": 8,
+     "txt": "PHI gives small forwards +3% reb+ast vs their norm (#8 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.054,
+     "n": 100,
+     "txt": "Players with his profile: +5% reb+ast vs PHI (100 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.011,
+     "n": 5,
+     "txt": "His history vs PHI: 7.2 reb+ast/g in 5 games (+1%)"
+    },
+    {
+     "k": "env",
+     "txt": "PHI: defense #11, pace #16 \u00b7 CHI: offense #24, pace #2"
     }
    ]
   },
@@ -5228,10 +5543,10 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 2.52,
-   "base": 2.41,
+   "proj": 2.58,
+   "base": 2.46,
    "mult": 1.047,
-   "minutes": 32.6,
+   "minutes": 33.2,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -5248,7 +5563,7 @@
     },
     {
      "k": "sim",
-     "v": 1.082,
+     "v": 1.081,
      "n": 122,
      "txt": "Players with his profile: +8% threes vs MIA (122 close comps)"
     },
@@ -5260,7 +5575,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -5305,7 +5620,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -5339,8 +5654,8 @@
     {
      "k": "sim",
      "v": 0.931,
-     "n": 69,
-     "txt": "Players with his profile: -7% reb+ast vs LAL (69 close comps)"
+     "n": 67,
+     "txt": "Players with his profile: -7% reb+ast vs LAL (67 close comps)"
     },
     {
      "k": "h2h",
@@ -5363,10 +5678,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 20.68,
-   "base": 21.63,
+   "proj": 23.73,
+   "base": 24.83,
    "mult": 0.956,
-   "minutes": 31.2,
+   "minutes": 35.8,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -5429,8 +5744,8 @@
     {
      "k": "sim",
      "v": 1.039,
-     "n": 83,
-     "txt": "Players with his profile: +4% pts+reb+ast vs DAL (83 close comps)"
+     "n": 86,
+     "txt": "Players with his profile: +4% pts+reb+ast vs DAL (86 close comps)"
     },
     {
      "k": "h2h",
@@ -5485,7 +5800,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -5498,10 +5813,10 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 13.04,
-   "base": 12.46,
+   "proj": 13.27,
+   "base": 12.68,
    "mult": 1.046,
-   "minutes": 34.0,
+   "minutes": 34.6,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -5530,97 +5845,7 @@
     },
     {
      "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
-    }
-   ]
-  },
-  {
-   "pid": "4871145",
-   "name": "Josh Giddey",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "role": "PG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 15.03,
-   "base": 14.39,
-   "mult": 1.045,
-   "minutes": 30.3,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.044,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.032,
-     "n": 68.6,
-     "rank": 14,
-     "txt": "PHI gives point guards +3% reb+ast vs their norm (#14 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.025,
-     "n": 58,
-     "txt": "Players with his profile: +2% reb+ast vs PHI (58 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.045,
-     "n": 4,
-     "txt": "His history vs PHI: 19.8 reb+ast/g in 4 games (+4%)"
-    },
-    {
-     "k": "env",
-     "txt": "PHI: defense #9, pace #15 \u00b7 CHI: offense #25, pace #2"
-    }
-   ]
-  },
-  {
-   "pid": "5124612",
-   "name": "VJ Edgecombe",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 3.52,
-   "base": 3.37,
-   "mult": 1.045,
-   "minutes": 35.4,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.044,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.061,
-     "n": 93.9,
-     "rank": 4,
-     "txt": "CHI gives shooting guards +6% assists vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.045,
-     "n": 30,
-     "txt": "Players with his profile: +4% assists vs CHI (30 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.122,
-     "n": 4,
-     "txt": "His history vs CHI: 4.5 assists/g in 4 games (+12%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "SAC: defense #30, pace #15 \u00b7 MIA: offense #12, pace #1"
     }
    ]
   },
@@ -5768,10 +5993,10 @@
    "role": "PG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 35.78,
-   "base": 34.22,
+   "proj": 36.4,
+   "base": 34.82,
    "mult": 1.045,
-   "minutes": 36.8,
+   "minutes": 37.4,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -5800,7 +6025,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -5813,10 +6038,10 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 33.36,
-   "base": 31.92,
+   "proj": 33.96,
+   "base": 32.49,
    "mult": 1.045,
-   "minutes": 34.0,
+   "minutes": 34.6,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -5845,7 +6070,7 @@
     },
     {
      "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
+     "txt": "SAC: defense #30, pace #15 \u00b7 MIA: offense #12, pace #1"
     }
    ]
   },
@@ -5858,10 +6083,10 @@
    "role": "PG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 10.35,
-   "base": 9.91,
+   "proj": 10.52,
+   "base": 10.07,
    "mult": 1.045,
-   "minutes": 36.2,
+   "minutes": 36.8,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -5890,7 +6115,7 @@
     },
     {
      "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
+     "txt": "SAC: defense #30, pace #15 \u00b7 MIA: offense #12, pace #1"
     }
    ]
   },
@@ -5903,10 +6128,10 @@
    "role": "PF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 46.65,
-   "base": 44.66,
+   "proj": 47.49,
+   "base": 45.46,
    "mult": 1.045,
-   "minutes": 33.7,
+   "minutes": 34.3,
    "status": "",
    "start": "2026-11-09T02:00Z",
    "espn_id": "401909951",
@@ -5918,14 +6143,14 @@
      "k": "dvp",
      "v": 1.047,
      "n": 22.4,
-     "rank": 5,
-     "txt": "SAC gives power forwards +5% pts+reb+ast vs their norm (#5 softest of 30)"
+     "rank": 6,
+     "txt": "SAC gives power forwards +5% pts+reb+ast vs their norm (#6 softest of 30)"
     },
     {
      "k": "sim",
      "v": 1.065,
-     "n": 121,
-     "txt": "Players with his profile: +6% pts+reb+ast vs SAC (121 close comps)"
+     "n": 123,
+     "txt": "Players with his profile: +6% pts+reb+ast vs SAC (123 close comps)"
     },
     {
      "k": "h2h",
@@ -5935,7 +6160,7 @@
     },
     {
      "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
+     "txt": "SAC: defense #30, pace #15 \u00b7 MIA: offense #12, pace #1"
     }
    ]
   },
@@ -5968,7 +6193,7 @@
     },
     {
      "k": "sim",
-     "v": 1.07,
+     "v": 1.071,
      "n": 127,
      "txt": "Players with his profile: +7% threes vs LAL (127 close comps)"
     },
@@ -6006,16 +6231,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.083,
+     "v": 1.084,
      "n": 88.9,
      "rank": 2,
      "txt": "MIL gives small forwards +8% threes vs their norm (#2 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.081,
-     "n": 132,
-     "txt": "Players with his profile: +8% threes vs MIL (132 close comps)"
+     "v": 1.082,
+     "n": 131,
+     "txt": "Players with his profile: +8% threes vs MIL (131 close comps)"
     },
     {
      "k": "h2h",
@@ -6096,7 +6321,7 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 14.88,
+   "proj": 14.89,
    "base": 15.54,
    "mult": 0.958,
    "minutes": 25.8,
@@ -6129,51 +6354,6 @@
     {
      "k": "env",
      "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
-    }
-   ]
-  },
-  {
-   "pid": "4277843",
-   "name": "Gary Trent Jr.",
-   "team": "MIL",
-   "opp": "BOS",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 5.69,
-   "base": 5.94,
-   "mult": 0.958,
-   "minutes": 11.3,
-   "status": "Questionable",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
-   "lean": "Under",
-   "strength": 0.0429,
-   "starter": false,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.931,
-     "n": 108.3,
-     "rank": 29,
-     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.957,
-     "n": 144,
-     "txt": "Players with his profile: -4% pts+reb+ast vs BOS (144 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.005,
-     "n": 3,
-     "txt": "His history vs BOS: 9.3 pts+reb+ast/g in 3 games (+0%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
     }
    ]
   },
@@ -6223,51 +6403,6 @@
    ]
   },
   {
-   "pid": "4431678",
-   "name": "Tyrese Maxey",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "PG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 2.29,
-   "base": 2.19,
-   "mult": 1.043,
-   "minutes": 35.3,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0421,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.053,
-     "n": 55.7,
-     "rank": 9,
-     "txt": "CHI gives point guards +5% threes vs their norm (#9 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.086,
-     "n": 162,
-     "txt": "Players with his profile: +9% threes vs CHI (162 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.022,
-     "n": 3,
-     "txt": "His history vs CHI: 4.0 threes/g in 3 games (+2%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
-    }
-   ]
-  },
-  {
    "pid": "3136196",
    "name": "Trey Lyles",
    "team": "MIN",
@@ -6296,7 +6431,7 @@
     },
     {
      "k": "sim",
-     "v": 1.061,
+     "v": 1.06,
      "n": 97,
      "txt": "Players with his profile: +6% threes vs UTAH (97 close comps)"
     },
@@ -6334,16 +6469,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.079,
+     "v": 1.08,
      "n": 52.4,
      "rank": 5,
      "txt": "MIL gives point guards +8% threes vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.135,
-     "n": 84,
-     "txt": "Players with his profile: +13% threes vs MIL (84 close comps)"
+     "v": 1.134,
+     "n": 83,
+     "txt": "Players with his profile: +13% threes vs MIL (83 close comps)"
     },
     {
      "k": "h2h",
@@ -6379,16 +6514,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.115,
+     "v": 1.114,
      "n": 98.4,
      "rank": 1,
      "txt": "MIL gives shooting guards +11% threes vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.02,
-     "n": 150,
-     "txt": "Players with his profile: +2% threes vs MIL (150 close comps)"
+     "v": 1.022,
+     "n": 152,
+     "txt": "Players with his profile: +2% threes vs MIL (152 close comps)"
     },
     {
      "k": "h2h",
@@ -6411,7 +6546,7 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 14.38,
+   "proj": 14.37,
    "base": 14.99,
    "mult": 0.959,
    "minutes": 16.7,
@@ -6431,7 +6566,7 @@
     },
     {
      "k": "sim",
-     "v": 0.974,
+     "v": 0.973,
      "n": 71,
      "txt": "Players with his profile: -3% pts+reb+ast vs BOS (71 close comps)"
     },
@@ -6443,23 +6578,23 @@
     },
     {
      "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
     }
    ]
   },
   {
-   "pid": "4351851",
-   "name": "Anfernee Simons",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SG",
+   "pid": "5242496",
+   "name": "Noa Essengue",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 3.36,
-   "base": 3.23,
+   "proj": 4.1,
+   "base": 3.93,
    "mult": 1.042,
-   "minutes": 20.8,
+   "minutes": 14.7,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
@@ -6469,71 +6604,71 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.031,
-     "n": 93.9,
-     "rank": 6,
-     "txt": "CHI gives shooting guards +3% reb+ast vs their norm (#6 softest of 30)"
+     "v": 1.033,
+     "n": 94.7,
+     "rank": 8,
+     "txt": "PHI gives small forwards +3% reb+ast vs their norm (#8 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.036,
-     "n": 107,
-     "txt": "Players with his profile: +4% reb+ast vs CHI (107 close comps)"
+     "v": 1.005,
+     "n": 7,
+     "txt": "Players with his profile: +1% reb+ast vs PHI (7 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.039,
-     "n": 3,
-     "txt": "His history vs CHI: 6.0 reb+ast/g in 3 games (+4%)"
+     "v": 1.09,
+     "n": 2,
+     "txt": "His history vs PHI: 7.0 reb+ast/g in 2 games (+9%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "PHI: defense #11, pace #16 \u00b7 CHI: offense #24, pace #2"
     }
    ]
   },
   {
-   "pid": "4433144",
-   "name": "Caleb Love",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SG",
+   "pid": "5095151",
+   "name": "Caleb Wilson",
+   "team": "CHI",
+   "opp": "PHI",
+   "home": true,
+   "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 2.98,
-   "base": 2.86,
+   "proj": 8.65,
+   "base": 8.3,
    "mult": 1.042,
-   "minutes": 13.7,
+   "minutes": 33.4,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
    "lean": "Over",
    "strength": 0.0411,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.031,
-     "n": 93.9,
-     "rank": 6,
-     "txt": "CHI gives shooting guards +3% reb+ast vs their norm (#6 softest of 30)"
+     "v": 1.033,
+     "n": 94.7,
+     "rank": 8,
+     "txt": "PHI gives small forwards +3% reb+ast vs their norm (#8 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.05,
-     "n": 105,
-     "txt": "Players with his profile: +5% reb+ast vs CHI (105 close comps)"
+     "v": 1.06,
+     "n": 101,
+     "txt": "Players with his profile: +6% reb+ast vs PHI (101 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.01,
-     "n": 1,
-     "txt": "His history vs CHI: 5.0 reb+ast/g in 1 games (+1%)"
+     "v": 0.987,
+     "n": 2,
+     "txt": "His history vs PHI: 8.0 reb+ast/g in 2 games (-1%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "PHI: defense #11, pace #16 \u00b7 CHI: offense #24, pace #2"
     }
    ]
   },
@@ -6656,7 +6791,7 @@
     },
     {
      "k": "sim",
-     "v": 1.121,
+     "v": 1.122,
      "n": 59,
      "txt": "Players with his profile: +12% threes vs NO (59 close comps)"
     },
@@ -6696,8 +6831,8 @@
      "k": "dvp",
      "v": 1.019,
      "n": 41.5,
-     "rank": 17,
-     "txt": "MIA gives centers +2% reb+ast vs their norm (#14 toughest of 30)"
+     "rank": 16,
+     "txt": "MIA gives centers +2% reb+ast vs their norm (#15 toughest of 30)"
     },
     {
      "k": "sim",
@@ -6713,7 +6848,7 @@
     },
     {
      "k": "env",
-     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #16"
+     "txt": "MIA: defense #17, pace #1 \u00b7 SAC: offense #28, pace #15"
     }
    ]
   },
@@ -6776,6 +6911,109 @@
    "open": 6.5
   },
   {
+   "pid": "5082206",
+   "name": "Brayden Burries",
+   "team": "MIL",
+   "opp": "BOS",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 21.84,
+   "base": 22.73,
+   "mult": 0.961,
+   "minutes": 27.8,
+   "status": "",
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
+   "lean": "Under",
+   "strength": 0.0398,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.931,
+     "n": 108.3,
+     "rank": 29,
+     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.977,
+     "n": 50,
+     "txt": "Players with his profile: -2% pts+reb+ast vs BOS (50 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.994,
+     "n": 1,
+     "txt": "His history vs BOS: 17.0 pts+reb+ast/g in 1 games (-1%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
+    }
+   ],
+   "line": 18.5,
+   "side": "Over",
+   "price": 1.87,
+   "am": -115,
+   "book": "betmgm",
+   "ev": 0.0178,
+   "p_model": 0.737,
+   "p_mkt": 0.514,
+   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
+   "market": "player_points_rebounds_assists",
+   "nbooks": 4,
+   "at": "2026-11-08T22:41:34Z",
+   "open": 18.5
+  },
+  {
+   "pid": "3917376",
+   "name": "Jaylen Brown",
+   "team": "PHI",
+   "opp": "CHI",
+   "home": false,
+   "role": "SG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.94,
+   "base": 1.86,
+   "mult": 1.04,
+   "minutes": 34.8,
+   "status": "",
+   "start": "2026-11-08T20:30Z",
+   "espn_id": "401909945",
+   "lean": "Over",
+   "strength": 0.0392,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.982,
+     "n": 96.9,
+     "rank": 17,
+     "txt": "CHI gives shooting guards -2% threes vs their norm (#14 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.093,
+     "n": 160,
+     "txt": "Players with his profile: +9% threes vs CHI (160 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.123,
+     "n": 5,
+     "txt": "His history vs CHI: 2.2 threes/g in 5 games (+12%)"
+    },
+    {
+     "k": "env",
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
+    }
+   ]
+  },
+  {
    "pid": "4431671",
    "name": "Jaden McDaniels",
    "team": "MIN",
@@ -6784,10 +7022,10 @@
    "role": "SF",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.29,
-   "base": 1.23,
+   "proj": 1.3,
+   "base": 1.25,
    "mult": 1.04,
-   "minutes": 35.1,
+   "minutes": 35.4,
    "status": "",
    "start": "2026-11-09T00:00Z",
    "espn_id": "401909947",
@@ -6821,224 +7059,63 @@
    ]
   },
   {
-   "pid": "4065648",
-   "name": "Jayson Tatum",
-   "team": "BOS",
-   "opp": "MIL",
-   "home": false,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 37.66,
-   "base": 36.21,
-   "mult": 1.04,
-   "minutes": 32.1,
-   "status": "",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
-   "lean": "Over",
-   "strength": 0.0392,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.021,
-     "n": 88.9,
-     "rank": 11,
-     "txt": "MIL gives small forwards +2% pts+reb+ast vs their norm (#11 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.068,
-     "n": 132,
-     "txt": "Players with his profile: +7% pts+reb+ast vs MIL (132 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.018,
-     "n": 1,
-     "txt": "His history vs MIL: 43.0 pts+reb+ast/g in 1 games (+2%)"
-    },
-    {
-     "k": "env",
-     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
-    }
-   ],
-   "line": 40.5,
-   "side": "Under",
-   "price": 1.93,
-   "am": -108,
-   "book": "fanduel",
-   "ev": -0.0061,
-   "p_model": 0.668,
-   "p_mkt": 0.491,
-   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
-   "market": "player_points_rebounds_assists",
-   "nbooks": 5,
-   "at": "2026-11-08T22:41:34Z",
-   "open": 42.5
-  },
-  {
-   "pid": "4397189",
-   "name": "Jalen Smith",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "role": "PF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.36,
-   "base": 1.41,
-   "mult": 0.962,
-   "minutes": 22.7,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Under",
-   "strength": 0.0387,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.871,
-     "n": 21.6,
-     "rank": 30,
-     "txt": "PHI gives power forwards -13% threes vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.947,
-     "n": 54,
-     "txt": "Players with his profile: -5% threes vs PHI (54 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.01,
-     "n": 4,
-     "txt": "His history vs PHI: 1.5 threes/g in 4 games (+1%)"
-    },
-    {
-     "k": "env",
-     "txt": "PHI: defense #9, pace #15 \u00b7 CHI: offense #25, pace #2"
-    }
-   ]
-  },
-  {
-   "pid": "5082206",
-   "name": "Brayden Burries",
+   "pid": "5164559",
+   "name": "Nate Ament",
    "team": "MIL",
    "opp": "BOS",
    "home": true,
-   "role": "SG",
+   "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 21.86,
-   "base": 22.73,
+   "proj": 8.51,
+   "base": 8.85,
    "mult": 0.962,
-   "minutes": 27.8,
+   "minutes": 14.7,
    "status": "",
    "start": "2026-11-09T01:00Z",
    "espn_id": "401909949",
    "lean": "Under",
    "strength": 0.0387,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.931,
-     "n": 108.3,
-     "rank": 29,
-     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
+     "v": 0.962,
+     "n": 94.2,
+     "rank": 23,
+     "txt": "BOS gives small forwards -4% pts+reb+ast vs their norm (#8 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.979,
-     "n": 50,
-     "txt": "Players with his profile: -2% pts+reb+ast vs BOS (50 close comps)"
+     "v": 0.933,
+     "n": 43,
+     "txt": "Players with his profile: -7% pts+reb+ast vs BOS (43 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.994,
+     "v": 1.001,
      "n": 1,
-     "txt": "His history vs BOS: 17.0 pts+reb+ast/g in 1 games (-1%)"
+     "txt": "His history vs BOS: 11.0 pts+reb+ast/g in 1 games (+0%)"
     },
     {
      "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
-    }
-   ],
-   "line": 18.5,
-   "side": "Over",
-   "price": 1.87,
-   "am": -115,
-   "book": "betmgm",
-   "ev": 0.0178,
-   "p_model": 0.737,
-   "p_mkt": 0.514,
-   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
-   "market": "player_points_rebounds_assists",
-   "nbooks": 4,
-   "at": "2026-11-08T22:41:34Z",
-   "open": 18.5
-  },
-  {
-   "pid": "5095151",
-   "name": "Caleb Wilson",
-   "team": "CHI",
-   "opp": "PHI",
-   "home": true,
-   "role": "SF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 2.43,
-   "base": 2.34,
-   "mult": 1.039,
-   "minutes": 33.2,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0383,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.007,
-     "n": 91.1,
-     "rank": 14,
-     "txt": "PHI gives small forwards +1% assists vs their norm (#14 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.041,
-     "n": 121,
-     "txt": "Players with his profile: +4% assists vs PHI (121 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.093,
-     "n": 1,
-     "txt": "His history vs PHI: 4.0 assists/g in 1 games (+9%)"
-    },
-    {
-     "k": "env",
-     "txt": "PHI: defense #9, pace #15 \u00b7 CHI: offense #25, pace #2"
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
     }
    ]
   },
   {
-   "pid": "3912848",
-   "name": "Dean Wade",
+   "pid": "4432446",
+   "name": "Jabari Walker",
    "team": "PHI",
    "opp": "CHI",
    "home": false,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.3,
-   "base": 5.1,
+   "role": "PF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 10.11,
+   "base": 9.73,
    "mult": 1.039,
-   "minutes": 24.2,
+   "minutes": 12.8,
    "status": "",
    "start": "2026-11-08T20:30Z",
    "espn_id": "401909945",
@@ -7048,26 +7125,26 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.073,
-     "n": 82.1,
-     "rank": 3,
-     "txt": "CHI gives small forwards +7% reb+ast vs their norm (#3 softest of 30)"
+     "v": 1.048,
+     "n": 21.7,
+     "rank": 5,
+     "txt": "CHI gives power forwards +5% pts+reb+ast vs their norm (#5 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.036,
-     "n": 141,
-     "txt": "Players with his profile: +4% reb+ast vs CHI (141 close comps)"
+     "v": 1.043,
+     "n": 125,
+     "txt": "Players with his profile: +4% pts+reb+ast vs CHI (125 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.958,
+     "v": 1.006,
      "n": 5,
-     "txt": "His history vs CHI: 4.6 reb+ast/g in 5 games (-4%)"
+     "txt": "His history vs CHI: 6.8 pts+reb+ast/g in 5 games (+1%)"
     },
     {
      "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
+     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #19, pace #16"
     }
    ]
   },
@@ -7134,7 +7211,7 @@
    "espn_id": "401909948",
    "lean": "Over",
    "strength": 0.0383,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -7190,9 +7267,9 @@
     },
     {
      "k": "sim",
-     "v": 1.073,
-     "n": 101,
-     "txt": "Players with his profile: +7% reb+ast vs BKN (101 close comps)"
+     "v": 1.072,
+     "n": 103,
+     "txt": "Players with his profile: +7% reb+ast vs BKN (103 close comps)"
     },
     {
      "k": "h2h",
@@ -7205,6 +7282,109 @@
      "txt": "BKN: defense #25, pace #24 \u00b7 DAL: offense #26, pace #5"
     }
    ]
+  },
+  {
+   "pid": "4591725",
+   "name": "Ryan Rollins",
+   "team": "MIL",
+   "opp": "BOS",
+   "home": true,
+   "role": "PG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.43,
+   "base": 1.38,
+   "mult": 1.039,
+   "minutes": 19.9,
+   "status": "",
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
+   "lean": "Over",
+   "strength": 0.0383,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.092,
+     "n": 53.4,
+     "rank": 3,
+     "txt": "BOS gives point guards +9% threes vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.017,
+     "n": 94,
+     "txt": "Players with his profile: +2% threes vs BOS (94 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.053,
+     "n": 4,
+     "txt": "His history vs BOS: 2.0 threes/g in 4 games (+5%)"
+    },
+    {
+     "k": "env",
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
+    }
+   ]
+  },
+  {
+   "pid": "4065648",
+   "name": "Jayson Tatum",
+   "team": "BOS",
+   "opp": "MIL",
+   "home": false,
+   "role": "SF",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 37.63,
+   "base": 36.21,
+   "mult": 1.039,
+   "minutes": 32.1,
+   "status": "",
+   "start": "2026-11-09T01:00Z",
+   "espn_id": "401909949",
+   "lean": "Over",
+   "strength": 0.0383,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.02,
+     "n": 88.9,
+     "rank": 12,
+     "txt": "MIL gives small forwards +2% pts+reb+ast vs their norm (#12 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.067,
+     "n": 131,
+     "txt": "Players with his profile: +7% pts+reb+ast vs MIL (131 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.018,
+     "n": 1,
+     "txt": "His history vs MIL: 43.0 pts+reb+ast/g in 1 games (+2%)"
+    },
+    {
+     "k": "env",
+     "txt": "MIL: defense #27, pace #22 \u00b7 BOS: offense #2, pace #30"
+    }
+   ],
+   "line": 40.5,
+   "side": "Under",
+   "price": 1.93,
+   "am": -108,
+   "book": "fanduel",
+   "ev": -0.0061,
+   "p_model": 0.668,
+   "p_mkt": 0.491,
+   "event_id": "98eae523edadc7d4d42ab37222eb2c88",
+   "market": "player_points_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-08T22:41:34Z",
+   "open": 42.5
   },
   {
    "pid": "2596112",
@@ -7252,43 +7432,43 @@
    ]
   },
   {
-   "pid": "4278077",
-   "name": "Jarred Vanderbilt",
+   "pid": "4066457",
+   "name": "Austin Reaves",
    "team": "LAL",
    "opp": "DET",
    "home": false,
-   "role": "PF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 5.13,
-   "base": 5.33,
+   "role": "SG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.77,
+   "base": 1.85,
    "mult": 0.963,
-   "minutes": 10.3,
+   "minutes": 34.5,
    "status": "",
    "start": "2026-11-08T23:00Z",
    "espn_id": "401909946",
    "lean": "Under",
    "strength": 0.0377,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.022,
-     "n": 24.0,
-     "rank": 14,
-     "txt": "DET gives power forwards +2% pts+reb+ast vs their norm (#14 softest of 30)"
+     "v": 0.939,
+     "n": 104.4,
+     "rank": 27,
+     "txt": "DET gives shooting guards -6% threes vs their norm (#4 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.908,
-     "n": 173,
-     "txt": "Players with his profile: -9% pts+reb+ast vs DET (173 close comps)"
+     "v": 0.946,
+     "n": 150,
+     "txt": "Players with his profile: -5% threes vs DET (150 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.013,
-     "n": 2,
-     "txt": "His history vs DET: 13.5 pts+reb+ast/g in 2 games (+1%)"
+     "v": 0.997,
+     "n": 1,
+     "txt": "His history vs DET: 2.0 threes/g in 1 games (-0%)"
     },
     {
      "k": "env",
@@ -7318,14 +7498,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.98,
+     "v": 0.981,
      "n": 108.3,
      "rank": 16,
      "txt": "BOS gives shooting guards -2% reb+ast vs their norm (#15 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.975,
+     "v": 0.976,
      "n": 166,
      "txt": "Players with his profile: -2% reb+ast vs BOS (166 close comps)"
     },
@@ -7337,7 +7517,7 @@
     },
     {
      "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
+     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #25, pace #22"
     }
    ],
    "line": 8.5,
@@ -7353,51 +7533,6 @@
    "nbooks": 6,
    "at": "2026-11-08T22:41:34Z",
    "open": 8.5
-  },
-  {
-   "pid": "5164559",
-   "name": "Nate Ament",
-   "team": "MIL",
-   "opp": "BOS",
-   "home": true,
-   "role": "SF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 8.52,
-   "base": 8.85,
-   "mult": 0.963,
-   "minutes": 14.7,
-   "status": "",
-   "start": "2026-11-09T01:00Z",
-   "espn_id": "401909949",
-   "lean": "Under",
-   "strength": 0.0377,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.963,
-     "n": 94.2,
-     "rank": 23,
-     "txt": "BOS gives small forwards -4% pts+reb+ast vs their norm (#8 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.934,
-     "n": 43,
-     "txt": "Players with his profile: -7% pts+reb+ast vs BOS (43 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.001,
-     "n": 1,
-     "txt": "His history vs BOS: 11.0 pts+reb+ast/g in 1 games (+0%)"
-    },
-    {
-     "k": "env",
-     "txt": "BOS: defense #5, pace #30 \u00b7 MIL: offense #24, pace #22"
-    }
-   ]
   },
   {
    "pid": "4431675",
@@ -7441,141 +7576,6 @@
     {
      "k": "env",
      "txt": "LAC: defense #20, pace #26 \u00b7 NO: offense #17, pace #4"
-    }
-   ]
-  },
-  {
-   "pid": "3064482",
-   "name": "Bobby Portis",
-   "team": "MIA",
-   "opp": "SAC",
-   "home": false,
-   "role": "PF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.19,
-   "base": 1.23,
-   "mult": 0.963,
-   "minutes": 17.7,
-   "status": "",
-   "start": "2026-11-09T02:00Z",
-   "espn_id": "401909951",
-   "lean": "Under",
-   "strength": 0.0377,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.029,
-     "n": 22.4,
-     "rank": 14,
-     "txt": "SAC gives power forwards +3% threes vs their norm (#14 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.946,
-     "n": 27,
-     "txt": "Players with his profile: -5% threes vs SAC (27 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.97,
-     "n": 2,
-     "txt": "His history vs SAC: 1.0 threes/g in 2 games (-3%)"
-    },
-    {
-     "k": "env",
-     "txt": "SAC: defense #30, pace #16 \u00b7 MIA: offense #12, pace #1"
-    }
-   ]
-  },
-  {
-   "pid": "5124612",
-   "name": "VJ Edgecombe",
-   "team": "PHI",
-   "opp": "CHI",
-   "home": false,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 24.29,
-   "base": 23.4,
-   "mult": 1.038,
-   "minutes": 35.4,
-   "status": "",
-   "start": "2026-11-08T20:30Z",
-   "espn_id": "401909945",
-   "lean": "Over",
-   "strength": 0.0373,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.031,
-     "n": 93.9,
-     "rank": 8,
-     "txt": "CHI gives shooting guards +3% pts+reb+ast vs their norm (#8 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.02,
-     "n": 30,
-     "txt": "Players with his profile: +2% pts+reb+ast vs CHI (30 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.062,
-     "n": 4,
-     "txt": "His history vs CHI: 27.5 pts+reb+ast/g in 4 games (+6%)"
-    },
-    {
-     "k": "env",
-     "txt": "CHI: defense #26, pace #2 \u00b7 PHI: offense #20, pace #15"
-    }
-   ]
-  },
-  {
-   "pid": "3032976",
-   "name": "Rudy Gobert",
-   "team": "MIN",
-   "opp": "UTAH",
-   "home": true,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 18.69,
-   "base": 18.01,
-   "mult": 1.038,
-   "minutes": 27.9,
-   "status": "",
-   "start": "2026-11-09T00:00Z",
-   "espn_id": "401909947",
-   "lean": "Over",
-   "strength": 0.0373,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.027,
-     "n": 44.2,
-     "rank": 12,
-     "txt": "UTAH gives centers +3% pts+reb+ast vs their norm (#12 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.035,
-     "n": 132,
-     "txt": "Players with his profile: +4% pts+reb+ast vs UTAH (132 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.031,
-     "n": 4,
-     "txt": "His history vs UTAH: 25.0 pts+reb+ast/g in 4 games (+3%)"
-    },
-    {
-     "k": "env",
-     "txt": "UTAH: defense #29, pace #3 \u00b7 MIN: offense #9, pace #9"
     }
    ]
   }
@@ -8252,6 +8252,7 @@
  },
  "players": {
   "buddy hield": "2990984",
+  "nic claxton": "4278067",
   "norman powell": "2595516",
   "isaac okoro": "4432822",
   "matas buzelis": "4711294",
@@ -8314,6 +8315,7 @@
   "jaxson hayes": "4397077",
   "jaren jackson": "4277961",
   "lauri markkanen": "4066336",
+  "kyle filipowski": "4684793",
   "svi mykhailiuk": "3133602",
   "keyonte george": "4433627",
   "brice sensabaugh": "5105839",
@@ -8523,7 +8525,7 @@
    "drtg": 111.06635046250462,
    "pace_rank": 13,
    "ortg_rank": 7,
-   "drtg_rank": 10
+   "drtg_rank": 9
   },
   "CHA": {
    "pace": 99.85776119402986,
@@ -8563,7 +8565,7 @@
    "drtg": 111.15451411900057,
    "pace_rank": 6,
    "ortg_rank": 15,
-   "drtg_rank": 11
+   "drtg_rank": 10
   },
   "TOR": {
    "pace": 102.10976554536188,
@@ -8582,19 +8584,19 @@
    "drtg_rank": 5
   },
   "PHI": {
-   "pace": 102.51976856316298,
-   "ortg": 110.69903687583303,
-   "drtg": 111.06474014084242,
-   "pace_rank": 15,
-   "ortg_rank": 20,
-   "drtg_rank": 9
+   "pace": 102.48268684957426,
+   "ortg": 111.02075817611923,
+   "drtg": 111.20456549246155,
+   "pace_rank": 16,
+   "ortg_rank": 19,
+   "drtg_rank": 11
   },
   "CHI": {
-   "pace": 105.738574610245,
-   "ortg": 109.33646736492081,
-   "drtg": 116.14418473337622,
+   "pace": 105.62575163398692,
+   "ortg": 109.52939714395539,
+   "drtg": 116.39184057709976,
    "pace_rank": 2,
-   "ortg_rank": 25,
+   "ortg_rank": 24,
    "drtg_rank": 26
   },
   "DET": {
@@ -8626,7 +8628,7 @@
    "ortg": 109.46966359683447,
    "drtg": 116.50007751670915,
    "pace_rank": 22,
-   "ortg_rank": 24,
+   "ortg_rank": 25,
    "drtg_rank": 27
   },
   "WSH": {
@@ -8681,7 +8683,7 @@
    "pace": 102.49790849673204,
    "ortg": 108.15443880604008,
    "drtg": 118.27923225535704,
-   "pace_rank": 16,
+   "pace_rank": 15,
    "ortg_rank": 28,
    "drtg_rank": 30
   },
@@ -8690,7 +8692,7 @@
    "ortg": 111.01245644397555,
    "drtg": 111.71131159699814,
    "pace_rank": 11,
-   "ortg_rank": 19,
+   "ortg_rank": 20,
    "drtg_rank": 13
   },
   "MIN": {

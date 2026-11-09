@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T22:41:30Z",
+ "updated": "2026-11-09T00:07:42Z",
  "date": "2026-11-08",
  "sections": [
   {
@@ -127,14 +127,14 @@
      "stat": "tpm"
     },
     {
-     "txt": "Joel Embiid (PHI): 0.0 threes/g last 5 vs 1.2 expected for his minutes",
+     "txt": "Draymond Green (GS): 0.0 threes/g last 5 vs 1.5 expected for his minutes",
      "val": "-100%",
      "tone": "bad",
      "stat": "tpm"
     },
     {
-     "txt": "Draymond Green (GS): 0.0 threes/g last 5 vs 1.5 expected for his minutes",
-     "val": "-100%",
+     "txt": "Jalen Suggs (ORL): 0.4 threes/g last 5 vs 2.7 expected for his minutes",
+     "val": "-85%",
      "tone": "bad",
      "stat": "tpm"
     },
@@ -178,11 +178,6 @@
      "tone": "good"
     },
     {
-     "txt": "Patrick Williams (CHI): 31 min/g in his last 5 vs 20 in the 40 before",
-     "val": "+11",
-     "tone": "good"
-    },
-    {
      "txt": "Rayan Rupert (PHI): 30 min/g in his last 5 vs 19 in the 40 before",
      "val": "+11",
      "tone": "good"
@@ -209,6 +204,11 @@
     },
     {
      "txt": "Jeremiah Fears (NO): 34 min/g in his last 5 vs 25 in the 40 before",
+     "val": "+9",
+     "tone": "good"
+    },
+    {
+     "txt": "Patrick Williams (CHI): 29 min/g in his last 5 vs 21 in the 40 before",
      "val": "+9",
      "tone": "good"
     }
@@ -290,6 +290,11 @@
      "tone": "good"
     },
     {
+     "txt": "PHI: overs 3-8 this season, 3-7 last 10",
+     "val": "3-8",
+     "tone": "bad"
+    },
+    {
      "txt": "BOS: overs 2-7 this season, 2-7 last 10",
      "val": "2-7",
      "tone": "bad"
@@ -302,11 +307,6 @@
     {
      "txt": "NY: overs 2-7 this season, 2-7 last 10",
      "val": "2-7",
-     "tone": "bad"
-    },
-    {
-     "txt": "PHI: overs 2-8 this season, 2-8 last 10",
-     "val": "2-8",
      "tone": "bad"
     },
     {
@@ -397,8 +397,8 @@
      "tone": "good"
     },
     {
-     "txt": "CHI: -6.4 in second halves",
-     "val": "-6.4",
+     "txt": "SAC: -5.9 in second halves",
+     "val": "-5.9",
      "tone": "bad"
     },
     {
@@ -423,16 +423,16 @@
    "title": "Softest matchups (defense vs position)",
    "items": [
     {
-     "txt": "POR vs centers: +19% threes vs norm",
-     "val": "+19%",
-     "tone": "good",
-     "stat": "tpm"
-    },
-    {
      "txt": "CHI vs point guards: +19% assists vs norm",
      "val": "+19%",
      "tone": "good",
      "stat": "ast"
+    },
+    {
+     "txt": "POR vs centers: +19% threes vs norm",
+     "val": "+19%",
+     "tone": "good",
+     "stat": "tpm"
     },
     {
      "txt": "POR vs power forwards: +18% assists vs norm",
@@ -477,7 +477,7 @@
      "stat": "tpm"
     },
     {
-     "txt": "IND vs point guards: +13% assists vs norm",
+     "txt": "SAC vs point guards: +13% assists vs norm",
      "val": "+13%",
      "tone": "good",
      "stat": "ast"
@@ -501,19 +501,31 @@
      "stat": "ast"
     },
     {
-     "txt": "PHI vs power forwards: -13% threes vs norm",
+     "txt": "NY vs shooting guards: -13% assists vs norm",
      "val": "-13%",
-     "tone": "bad",
-     "stat": "tpm"
-    },
-    {
-     "txt": "NY vs shooting guards: -12% assists vs norm",
-     "val": "-12%",
      "tone": "bad",
      "stat": "ast"
     },
     {
+     "txt": "PHI vs power forwards: -12% threes vs norm",
+     "val": "-12%",
+     "tone": "bad",
+     "stat": "tpm"
+    },
+    {
      "txt": "HOU vs small forwards: -11% assists vs norm",
+     "val": "-11%",
+     "tone": "bad",
+     "stat": "ast"
+    },
+    {
+     "txt": "DET vs shooting guards: -11% reb+ast vs norm",
+     "val": "-11%",
+     "tone": "bad",
+     "stat": "ra"
+    },
+    {
+     "txt": "DET vs shooting guards: -11% assists vs norm",
      "val": "-11%",
      "tone": "bad",
      "stat": "ast"
@@ -525,22 +537,10 @@
      "stat": "ast"
     },
     {
-     "txt": "DET vs shooting guards: -11% assists vs norm",
-     "val": "-11%",
-     "tone": "bad",
-     "stat": "ast"
-    },
-    {
      "txt": "ORL vs centers: -11% threes vs norm",
      "val": "-11%",
      "tone": "bad",
      "stat": "tpm"
-    },
-    {
-     "txt": "DET vs shooting guards: -11% reb+ast vs norm",
-     "val": "-11%",
-     "tone": "bad",
-     "stat": "ra"
     },
     {
      "txt": "NY vs power forwards: -11% pts+reb+ast vs norm",
@@ -595,7 +595,7 @@
    "pace": 104.5,
    "pace_rank": 6,
    "ortg_rank": 15,
-   "drtg_rank": 11,
+   "drtg_rank": 10,
    "ats": "4-7",
    "ou": "6-5",
    "ou10": "5-5",
@@ -658,21 +658,21 @@
   },
   {
    "team": "CHI",
-   "gp": 8,
-   "ppg": 111.6,
-   "oppg": 129.6,
-   "ppg10": 111.6,
-   "oppg10": 129.6,
-   "pace10": 108.1,
-   "pace": 105.7,
+   "gp": 9,
+   "ppg": 112.7,
+   "oppg": 129.3,
+   "ppg10": 112.7,
+   "oppg10": 129.3,
+   "pace10": 107.4,
+   "pace": 105.6,
    "pace_rank": 2,
-   "ortg_rank": 25,
+   "ortg_rank": 24,
    "drtg_rank": 26,
-   "ats": "3-5",
-   "ou": "3-5",
-   "ou10": "3-5",
-   "lined": 8,
-   "h2_net": -6.4
+   "ats": "4-5",
+   "ou": "4-5",
+   "ou10": "4-5",
+   "lined": 9,
+   "h2_net": -5.6
   },
   {
    "team": "CLE",
@@ -685,7 +685,7 @@
    "pace": 102.8,
    "pace_rank": 13,
    "ortg_rank": 7,
-   "drtg_rank": 10,
+   "drtg_rank": 9,
    "ats": "3-7",
    "ou": "4-6",
    "ou10": "4-6",
@@ -882,7 +882,7 @@
    "pace10": 103.7,
    "pace": 101.0,
    "pace_rank": 22,
-   "ortg_rank": 24,
+   "ortg_rank": 25,
    "drtg_rank": 27,
    "ats": "3-6",
    "ou": "5-4",
@@ -982,21 +982,21 @@
   },
   {
    "team": "PHI",
-   "gp": 10,
-   "ppg": 109.4,
-   "oppg": 106.6,
-   "ppg10": 109.4,
-   "oppg10": 106.6,
-   "pace10": 103.2,
+   "gp": 11,
+   "ppg": 111.0,
+   "oppg": 107.9,
+   "ppg10": 111.5,
+   "oppg10": 108.7,
+   "pace10": 102.4,
    "pace": 102.5,
-   "pace_rank": 15,
-   "ortg_rank": 20,
-   "drtg_rank": 9,
-   "ats": "6-4",
-   "ou": "2-8",
-   "ou10": "2-8",
-   "lined": 10,
-   "h2_net": 3.1
+   "pace_rank": 16,
+   "ortg_rank": 19,
+   "drtg_rank": 11,
+   "ats": "6-5",
+   "ou": "3-8",
+   "ou10": "3-7",
+   "lined": 11,
+   "h2_net": 2.7
   },
   {
    "team": "PHX",
@@ -1026,7 +1026,7 @@
    "pace10": 103.7,
    "pace": 103.6,
    "pace_rank": 11,
-   "ortg_rank": 19,
+   "ortg_rank": 20,
    "drtg_rank": 13,
    "ats": "5-4",
    "ou": "4-5",
@@ -1061,7 +1061,7 @@
    "oppg10": 123.3,
    "pace10": 104.1,
    "pace": 102.5,
-   "pace_rank": 16,
+   "pace_rank": 15,
    "ortg_rank": 28,
    "drtg_rank": 30,
    "ats": "3-6",
