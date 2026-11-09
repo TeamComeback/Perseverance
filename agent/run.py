@@ -579,4 +579,4 @@ def manual_issue():
 
 if __name__ == "__main__":
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
-     "research": research_run, "live": live_run, "injwatch": injwatch_run, "manual-issue": manual_issue}[sys.argv[1]]()
+     "research": research_run, "live": live_run, "injwatch": injwatch_run, "probe": lambda: __import__("agent.probe", fromlist=["run"]).run(), "manual-issue": manual_issue}[sys.argv[1]]()
