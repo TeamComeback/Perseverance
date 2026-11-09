@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 32.91,
+  "cash": 42.46,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -8573,7 +8573,7 @@
       "book": "draftkings",
       "fair_p": 0.5008,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 6.96,
        "base": 7.72,
@@ -8604,6 +8604,22 @@
          "txt": "DET: defense #2, pace #20 \u00b7 LAL: offense #3, pace #23"
         }
        ]
+      },
+      "final": {
+       "home": 116.0,
+       "away": 121.0
+      },
+      "actual": 9.0,
+      "box": {
+       "min": 37.0,
+       "pts": 43.0,
+       "reb": 5.0,
+       "ast": 4.0,
+       "tpm": 4.0,
+       "tpa": 6.0,
+       "fga": 27.0,
+       "fta": 11.0,
+       "tov": 1.0
       }
      }
     ],
@@ -8614,16 +8630,234 @@
     "note": "Proj 7.0 vs line 10.5 (norm 7.7, 34 min). Model 88% vs market 50%. DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -9% reb+ast vs DET (150 close comps) \u00b7 His history vs DET: 7.0 reb+ast/g in 1 games (-4%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.55,
+    "profit": 4.55,
+    "settled": "2026-11-09T02:54:44Z",
+    "review": {
+     "headline": "WON: 9 reb+ast vs Under 10.5",
+     "final": "Los Angeles Lakers 121 \u2013 Detroit Pistons 116",
+     "legs": [
+      {
+       "outcome": "Austin Reaves Under",
+       "result": "win",
+       "headline": "9 reb+ast vs Under 10.5",
+       "final": "Los Angeles Lakers 121 \u2013 Detroit Pistons 116",
+       "why": [
+        "Austin Reaves finished with 9 reb+ast against a line of 10.5: under cleared by 1.5.",
+        "Minutes: played 37 vs 34.5 projected.",
+        "Box score: 5 reb \u00b7 4 ast, 1 TO.",
+        "Model projected 7 (7.7 norm \u00d7 0.90 matchup); actual was +2.0 off (+0.8 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (8.3) in a matchup the model rated tough.",
+        "Signal: DET gives shooting guards -11% reb+ast vs their norm (#1 toughest of 30)",
+        "Signal: Players with his profile: -9% reb+ast vs DET (150 close comps)",
+        "Signal: His history vs DET: 7.0 reb+ast/g in 1 games (-4%)",
+        "We priced it at 55% to hit vs 52% needed to break even at 1.91x (+5.5% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "DET",
+        "away": "LAL"
+       },
+       "final": "LAL 121 \u2013 DET 116",
+       "periods": {
+        "away": [
+         38,
+         23,
+         27,
+         33
+        ],
+        "home": [
+         14,
+         34,
+         33,
+         35
+        ]
+       },
+       "largest_lead": {
+        "LAL": 26,
+        "DET": 0
+       },
+       "largest_lead_at": {
+        "LAL": "11:21 2nd Q",
+        "DET": null
+       },
+       "lead_changes": 0,
+       "ties": 2,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 11,
+         "from": "4:47 1st Q",
+         "to": "2:46 1st Q",
+         "score": "LAL 29-9 DET"
+        },
+        {
+         "team": "DET",
+         "pts": 11,
+         "from": "2:30 3rd Q",
+         "to": "1:03 3rd Q",
+         "score": "LAL 84-81 DET"
+        },
+        {
+         "team": "LAL",
+         "pts": 10,
+         "from": "10:03 1st Q",
+         "to": "8:09 1st Q",
+         "score": "LAL 14-4 DET"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "3:30 2nd Q",
+         "to": "2:11 2nd Q",
+         "score": "LAL 53-42 DET"
+        }
+       ],
+       "swings": [
+        {
+         "team": "LAL",
+         "swing": 20,
+         "from": "10:20 1st Q",
+         "to": "2:46 1st Q",
+         "mins": 7.6,
+         "from_score": "LAL 4-4 DET",
+         "to_score": "LAL 29-9 DET",
+         "pts_for": 25,
+         "pts_against": 5
+        },
+        {
+         "team": "DET",
+         "swing": 15,
+         "from": "8:59 3rd Q",
+         "to": "1:03 3rd Q",
+         "mins": 7.9,
+         "from_score": "LAL 71-53 DET",
+         "to_score": "LAL 84-81 DET",
+         "pts_for": 28,
+         "pts_against": 13
+        }
+       ],
+       "clutch": [
+        "18.8 4th Q: Cade Cunningham makes driving layup (LAL 116-112 DET)",
+        "18.1 4th Q: Austin Reaves makes free throw 1 of 2 (LAL 117-112 DET)",
+        "18.1 4th Q: Austin Reaves makes free throw 2 of 2 (LAL 118-112 DET)",
+        "13.1 4th Q: Cade Cunningham makes 2-foot driving dunk (LAL 118-114 DET)",
+        "8.7 4th Q: Ziaire Williams makes free throw 1 of 2 (LAL 119-114 DET)",
+        "2.6 4th Q: Kevin Huerter makes driving layup (LAL 119-116 DET)",
+        "2.2 4th Q: Austin Reaves makes free throw 1 of 2 (LAL 120-116 DET)",
+        "2.2 4th Q: Austin Reaves makes free throw 2 of 2 (LAL 121-116 DET)"
+       ],
+       "leaders": [
+        "Austin Reaves (LAL): 43 pts, 5 reb, 4 ast, 4-6 3PT in 37 min",
+        "Walker Kessler (LAL): 12 pts, 16 reb, 4 ast, 0-0 3PT in 29 min",
+        "Daniss Jenkins (DET): 31 pts, 5 reb, 4 ast, 8-15 3PT in 32 min",
+        "Kevin Huerter (DET): 24 pts, 5 reb, 5 ast, 4-8 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 8,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 11,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 8,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 13,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 2,
+          "pf": 1,
+          "fga": 8,
+          "fgm": 5
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 11,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "29.1 2nd Q",
+         "11:39 3rd Q",
+         "6:41 3rd Q",
+         "45.6 4th Q"
+        ],
+        "box": {
+         "id": "4066457",
+         "name": "Austin Reaves",
+         "team": "LAL",
+         "min": "37",
+         "pts": 43,
+         "reb": 5,
+         "ast": 4,
+         "3pt": "4-6",
+         "fg": "14-27",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: LAL 61-48 DET, LAL up 13.",
+        "The 1st quarter decided the most: LAL won it 38-14.",
+        "Largest leads: LAL 26 (11:21 2nd Q), DET 0. 0 lead changes, 2 ties.",
+        "Momentum swing: LAL outscored them 25-5 in 7.6 minutes (10:20 1st Q to 2:46 1st Q), moving it from LAL 4-4 DET to LAL 29-9 DET.",
+        "Momentum swing: DET outscored them 28-13 in 7.9 minutes (8:59 3rd Q to 1:03 3rd Q), moving it from LAL 71-53 DET to LAL 84-81 DET.",
+        "LAL went on a 11-0 run (4:47 1st Q to 2:46 1st Q), making it LAL 29-9 DET.",
+        "DET went on a 11-0 run (2:30 3rd Q to 1:03 3rd Q), making it LAL 84-81 DET.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Austin Reaves by period (REB+AST): Q1 2, Q2 3, Q3 2, Q4 2.",
+        "He never got past 10.5.",
+        "Threes made at: 29.1 2nd Q, 11:39 3rd Q, 6:41 3rd Q, 45.6 4th Q."
+       ],
+       "espn_id": "401909946",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909946"
+      }
+     ]
+    }
    }
   ],
   "runs": []
  },
  "params": {
-  "min_edge": 0.15,
+  "min_edge": 0.1475,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -8800,15 +9034,15 @@
    }
   },
   "matchup_under": {
-   "bets": 16,
-   "staked": 80.0,
-   "profit": -16.200000000000003,
+   "bets": 17,
+   "staked": 85.0,
+   "profit": -11.650000000000002,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 7,
-     "won": 6,
+     "n": 8,
+     "won": 7,
      "lost": 1
     },
     "dnp-void": {
@@ -8822,8 +9056,8 @@
      "lost": 6
     },
     "matchup-read-wrong": {
-     "n": 3,
-     "won": 0,
+     "n": 4,
+     "won": 1,
      "lost": 3
     },
     "near-miss": {
@@ -8852,9 +9086,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-02T02:41:36Z",
-   "bets": 29.0,
-   "staked": 145.0,
-   "profit": -23.099999999999998
+   "bets": 30.0,
+   "staked": 150.0,
+   "profit": -18.549999999999997
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-05T03:39:54Z",
@@ -8932,7 +9166,7 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-03T03:59:18Z"
+   "last_scanned": "2026-11-09T02:54:47Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -9968,6 +10202,21 @@
    "ts": "2026-11-09T02:39:30Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 8: 7 games, 170 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-09T02:54:44Z",
+   "kind": "result",
+   "text": "WON +$4.55: Austin Reaves Under 10.5 @ -110 (DraftKings) \u2014 WON: 9 reb+ast vs Under 10.5 [matchup-read-wrong, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-09T02:54:47Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-09T02:54:47Z",
+   "kind": "scan",
+   "text": "Scanned basketball_ncaab (36) for 3 credits. Nothing cleared the bar. Equity $42.46."
   }
  ],
  "learned_ids": [
@@ -10011,24 +10260,25 @@
   "ff3f3e20",
   "1eca85b9",
   "3160de36",
-  "ab1cce4c"
+  "ab1cce4c",
+  "b46f1cb0"
  ],
  "strategist": null,
- "updated": "2026-11-09T02:39:30Z",
+ "updated": "2026-11-09T02:54:47Z",
  "stats": {
-  "bets": 41,
-  "won": 13,
+  "bets": 42,
+  "won": 14,
   "lost": 27,
   "push": 1,
-  "staked": 207.63,
-  "profit": -62.09,
-  "roi": -0.299,
+  "staked": 212.63,
+  "profit": -57.54,
+  "roi": -0.2706,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 26,
+  "clv_no_close": 27,
   "close_mins_median": 151,
-  "open": 1,
-  "equity": 37.91
+  "open": 0,
+  "equity": 42.46
  },
  "weights": {
   "value_fav": 0.842,
@@ -10037,8 +10287,8 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.313,
-  "matchup_under": 0.769
+  "matchup_under": 0.839
  },
  "paused": [],
- "dry_scans": 2
+ "dry_scans": 0
 }
