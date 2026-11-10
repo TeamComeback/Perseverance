@@ -41,8 +41,15 @@ function prep(g, gf) {
   P.modelPace = P.pace; P.pace = P.pace * P.paceK;
   for (const side of ["home", "away"]) {
     const ab = g[side];
-    let ps = Object.values(gf.players || {}).filter(p => p.team === ab && !p.out && p.minutes > 0);
-    ps.sort((a, b) => ((b.rw && b.rw.starter) ? 100 : 0) + b.minutes - (((a.rw && a.rw.starter) ? 100 : 0) + a.minutes));
+    // your lineup (Sim tab → Lineup) wins over the last refresh: players you rule out are dropped, players you clear
+    // come back at their usual minutes, and the five you mark as starters start
+    const ov = (typeof window !== "undefined" && typeof window.simOverride === "function") ? window.simOverride(g.espn_id) : null;
+    const isIn = p => ov && ov.in && ov.in.includes(p.pid), isOut = p => ov && ov.out && ov.out.includes(p.pid);
+    const stSet = ov && ov.st && ov.st[side] && ov.st[side].length ? ov.st[side] : null;
+    const minsOf = p => p.minutes > 0 ? p.minutes : isIn(p) ? Math.max(p.min_base || 0, 16) : 0;
+    const isSt = p => stSet ? stSet.includes(p.pid) : !!(p.rw && p.rw.starter);
+    let ps = Object.values(gf.players || {}).filter(p => p.team === ab && !isOut(p) && (!p.out || isIn(p)) && minsOf(p) > 0);
+    ps.sort((a, b) => (isSt(b) ? 100 : 0) + minsOf(b) - ((isSt(a) ? 100 : 0) + minsOf(a)));
     ps = ps.slice(0, 13);
     const rows = ps.map((p, i) => {
       // recent games count more (0.96 per game back, the same decay the projections use) and last season
@@ -59,11 +66,18 @@ function prep(g, gf) {
       const twoA = Math.max(1, fga - tpa), twoM = Math.max(0, (pts - 0.78 * fta - 3 * tpm) / 2);
       const p2 = (twoM + 0.53 * 20) / (twoA + 20);                   // shrunk toward league 53% on twos
       const pr = s => (p.proj[s] && p.proj[s].proj) || 0;
-      return {pid: p.pid, name: p.name, ini: initials(p.name), last: lastName(p.name), starter: !!(p.rw && p.rw.starter), idx: i,
-        min: p.minutes, tgt: {pts: pr("pts"), reb: pr("reb"), ast: pr("ast"), tpm: pr("tpm")},
+      return {pid: p.pid, name: p.name, ini: initials(p.name), last: lastName(p.name), starter: isSt(p), idx: i,
+        min: minsOf(p), tgt: {pts: pr("pts"), reb: pr("reb"), ast: pr("ast"), tpm: pr("tpm")},
         u: Math.max(0.05, (fga + 0.44 * fta) / mins), r3: fga > 0 ? clamp(tpa / fga, 0.01, 0.9) : 0.25, p3: clamp(p3, 0.2, 0.47),
         p2: clamp(p2, 0.38, 0.7), ft: clamp((fta / 2) / Math.max(1, fga + fta / 2), 0.02, 0.35),
         tw: tov > 0 ? tov / mins : 0, rw: Math.max(0.02, reb / mins), aw: Math.max(0.01, ast / mins)};
+    });
+    if (ov) rows.forEach(r => {
+      const p0 = ps.find(p => p.pid === r.pid), was = !!(p0.rw && p0.rw.starter) || (p0.logs || []).slice(-10).filter(x => x[10]).length >= 6;
+      let m = r.min;
+      if (r.starter && !was && m < 26) m = Math.min(30, Math.max(26, m + 6));        // moved into the starting five
+      else if (!r.starter && was && stSet) m = m * 0.8;                              // moved to the bench
+      if (m !== r.min) { const k = m / r.min; r.min = m; for (const st in r.tgt) r.tgt[st] *= k; }
     });
     // starters: the five flagged (or top five by minutes)
     const flagged = rows.filter(r => r.starter);
@@ -422,6 +436,7 @@ function stage() {
         <div class="seg" id="simView">${[["live", "This game"], ["avg", "Average"], ["mode", "Most common"]].map(([k, l]) => `<button data-v="${k}" class="${(S.view || "live") === k ? "on" : ""}">${l}</button>`).join("")}</div>
         <div class="seg bc-side" id="simSide">${["away", "home"].map(x => `<button data-s="${x}" class="${S.boxSide === x ? "on" : ""}">${esc(P.teams[x].ab)}</button>`).join("")}</div>
       </div>
+      <details class="lu-d" id="simLUd"${S.luOpen ? " open" : ""}><summary><span>👥 Lineup${hasOverride(S.gameId) ? ' <span class="fchip edge">your lineup</span>' : ""}</span><span class="dim" style="font-size:12px">${luSummary()}</span></summary><div id="simLU"><div class="empty">Loading…</div></div></details>
       <div class="bc-note">Simulated game, not a prediction · tap the court to replay a play · ⤢ for full screen (turn your phone sideways)</div>
     </div>`;
   $("simPlay").onclick = () => { if (S.playing) stop(); else play("avg"); };
@@ -437,7 +452,73 @@ function stage() {
   S.view = S.view || "live";
   newGame("init"); ballSnap(W / 2, 250); drawDots(S.game.events[0], false); boxes(0);
   if (!P.jersey) loadJerseys(P);
+  const d = $("simLUd");
+  if (d) { const fill = () => lineupHtml().then(h => { const x = $("simLU"); if (x) x.innerHTML = h; });
+    if (d.open) fill(); d.ontoggle = () => { S.luOpen = d.open; if (d.open) fill(); }; }
 }
+function luSummary() {
+  const o = LU(S.gameId); if (!o || !hasOverride(S.gameId)) return "set who plays and starts";
+  const nm = pid => { for (const sd of ["home", "away"]) { const p = S.P.teams[sd].players.find(x => x.pid === pid); if (p) return p.last; } return null; };
+  const parts = [];
+  if ((o.out || []).length) parts.push((o.out.length) + " ruled out");
+  if ((o.in || []).length) parts.push(o.in.map(nm).filter(Boolean).join(", ") + " back");
+  if (Object.values(o.st || {}).some(a => a && a.length)) parts.push("starters set");
+  return parts.join(" · ");
+}
+// ------------------------------------------------------------------ your lineup: rule players out or in, pick starters
+// Saved on this device per game, so a late scratch you hear about before the agent's next refresh is simulated right away.
+const LU = gid => { try { return JSON.parse(localStorage.getItem("pz-lu-" + gid) || "null"); } catch (e) { return null; } };
+const LUset = (gid, v) => { try { v ? localStorage.setItem("pz-lu-" + gid, JSON.stringify(v)) : localStorage.removeItem("pz-lu-" + gid); } catch (e) {} };
+function hasOverride(gid) { const o = LU(gid); return !!(o && ((o.out || []).length || (o.in || []).length || Object.values(o.st || {}).some(a => a && a.length))); }
+if (typeof window !== "undefined") window.simOverride = gid => hasOverride(gid) ? LU(gid) : null;
+async function lineupHtml() {
+  const g = S.P.g, gf = await gameFile(S.gameId); if (!gf) return "";
+  const o = LU(S.gameId) || {out: [], in: [], st: {}};
+  const side = sd => {
+    const ab = g[sd], inP = new Set(S.P.teams[sd].players.map(p => p.pid)), stP = new Set(S.P.teams[sd].players.filter(p => p.starter).map(p => p.pid));
+    const ps = Object.values(gf.players).filter(p => p.team === ab).sort((a, b) => (inP.has(b.pid) - inP.has(a.pid)) || (stP.has(b.pid) - stP.has(a.pid)) || (b.minutes || b.min_base || 0) - (a.minutes || a.min_base || 0));
+    const nSt = ps.filter(p => stP.has(p.pid)).length;
+    const oSt = (o.st && o.st[sd]) || [], picked = oSt.length;
+    return `<div class="lu-t"><div class="lu-h">${esc(nickOf(sd))} <span class="${picked && picked !== 5 ? "neg" : "dim"}">· ${picked ? picked + " starters picked" + (picked !== 5 ? " (pick 5; the sim starts the five with the most minutes)" : "") : nSt + " starters"}</span></div>
+      ${ps.map(p => { const on = inP.has(p.pid), st = stP.has(p.pid);
+        const sim = on ? S.P.teams[sd].players.find(x => x.pid === p.pid) : null;
+        return `<div class="lu-r${on ? "" : " off"}"><span class="lu-n">${esc(jer(p.pid) ? "#" + jer(p.pid) + " " : "")}${esc(p.name)}
+          <span class="dim">${on ? f1(sim.min) + " min" + ((o.in || []).includes(p.pid) ? ' · <span class="gold">cleared by you</span>' : "") : (o.out || []).includes(p.pid) ? '<span class="gold">ruled out by you</span>' : p.out ? esc((p.status || "out").toLowerCase()) : "not in the rotation"}</span></span>
+          <button class="lu-b${st ? " on" : ""}" data-lu="st|${sd}|${p.pid}" ${on ? "" : "disabled"}>Starter</button>
+          <button class="lu-b ${on ? "in" : "out"}" data-lu="io|${sd}|${p.pid}">${on ? "Playing" : "Out"}</button></div>`; }).join("")}</div>`;
+  };
+  return `<div class="desc">Heard about a scratch or a starting-lineup change before the agent's next refresh? Set it here and the sim re-runs with your lineup right away (minutes are re-shared to 240, and the team's scoring is redistributed to who's left). Saved on this device for this game only.</div>
+    <div class="lu">${side("away")}${side("home")}</div>
+    ${hasOverride(S.gameId) ? '<button class="btn ghost" data-lu="reset" style="margin-top:8px">Reset to the official lineup</button>' : ""}`;
+}
+async function applyLineup(act) {
+  const gid = S.gameId, o = LU(gid) || {out: [], in: [], st: {}};
+  o.out = o.out || []; o.in = o.in || []; o.st = o.st || {};
+  if (act === "reset") LUset(gid, null);
+  else {
+    const [kind, sd, pid] = act.split("|"), gf = await gameFile(gid), p = gf.players[pid];
+    if (kind === "io") {
+      const playing = S.P.teams[sd].players.some(x => x.pid === pid);
+      o.out = o.out.filter(x => x !== pid); o.in = o.in.filter(x => x !== pid);
+      if (playing) o.out.push(pid); else if (p.out || !(p.minutes > 0)) o.in.push(pid);
+      if (playing && o.st[sd]) o.st[sd] = o.st[sd].filter(x => x !== pid);
+    } else {
+      const cur = o.st[sd] && o.st[sd].length ? o.st[sd].slice() : S.P.teams[sd].players.filter(x => x.starter).map(x => x.pid);
+      o.st[sd] = cur.includes(pid) ? cur.filter(x => x !== pid) : cur.concat(pid);
+    }
+    LUset(gid, o);
+  }
+  const box = $("simLU"); if (box) box.innerHTML = '<div class="empty">Re-simulating with your lineup…</div>';
+  stop(); await new Promise(r => setTimeout(r, 30));
+  const g = (D.players.games || []).find(x => x.espn_id === gid), gf = await gameFile(gid);
+  const jersey = S.P && S.P.jersey;
+  S.P = calibrate(prep(g, gf)); S.P.jersey = jersey; S.avgRun = null; S.mc = null; S.game = null; S.nowSim = null;
+  S.luOpen = true; stage(); showStored(); if (S.now && S.now.state === "in") liveSimFromHere();
+}
+if (typeof document !== "undefined") document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-lu]"); if (!b || b.disabled) return;
+  e.preventDefault(); applyLineup(b.dataset.lu);
+});
 // Full-screen "theater": the sim covers the page (no tabs), and turning the phone sideways gives the broadcast layout.
 function theater(on) {
   S.theater = on; const w = $("bcWrap"); if (w) w.classList.toggle("theater", on);
@@ -473,7 +554,7 @@ async function ensureAvg() {
   // prefer the overnight 10,000-sim averages when they exist for this game
   // the stored 10,000-sim averages only when they were made from today's current inputs
   const sg = D.sims && D.sims.games && D.sims.games[S.gameId];
-  const stored = sg && sg.at && D.players && sg.at >= (D.players.updated || "") ? sg : null;
+  const stored = !hasOverride(S.gameId) && sg && sg.at && D.players && sg.at >= (D.players.updated || "") ? sg : null;
   if (stored) for (const pid in players) { const x = stored.players[pid]; if (x) Object.assign(players[pid].avg, {min: x.min, pts: x.s.pts[0], reb: x.s.reb[0], ast: x.s.ast[0], tpm: x.s.tpm[0]}); }
   S.avgRun = {gid: S.gameId, N: stored ? D.sims.n : N, bi, seedBase, players, biScore: {home: M.team.home[bi], away: M.team.away[bi]},
     score: stored ? stored.avg : {home: mean(M.team.home), away: mean(M.team.away)},
@@ -1237,6 +1318,7 @@ function showVs(elId, gid) {
 function showStored() {
   const G = D.sims && D.sims.games && D.sims.games[S.gameId], P = S.P;
   if (!G) return;
+  if (hasOverride(S.gameId)) { $("simRes").innerHTML = '<div class="desc" style="margin-top:10px">You set your own lineup for this game, so the overnight 10,000 sims (official lineup) are hidden. Tap <b>Run 5,000 sims</b> to simulate with yours.</div>'; return; }
   const st = S.stat, priced = (D.pz && D.pz.priced) || {};
   const rows = Object.entries(G.players).map(([pid, x]) => {
     const q = x.s[st], pr = priced[pid + "|" + st];
