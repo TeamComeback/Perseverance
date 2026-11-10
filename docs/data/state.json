@@ -8868,7 +8868,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.126,
+  "prop_model_weight": 0.148,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -10287,6 +10287,21 @@
    "ts": "2026-11-10T08:49:34Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 10: 6 games, 131 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-10T17:00:05Z",
+   "kind": "adapt",
+   "text": "Model vs market on 2532 graded lines: the 20% model blend scored best (log loss model 0.706, market 0.688). Moving the model's weight from 13% to 15%."
+  },
+  {
+   "ts": "2026-11-10T17:00:05Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +4.1% vs actual over 1079 player-games: level x0.905; REB projections ran +3.9% vs actual over 1079 player-games: level x0.940; AST projections ran +3.1% vs actual over 1079 player-games: level x0.920; TPM projections ran +2.6% vs actual over 1079 player-games: level x0.921; PRA projections ran +3.8% vs actual over 1079 player-games: level x0.919; RA projections ran +3.4% vs actual over 1079 player-games: level x0.938; starter minutes were off by +0.7 on average over 556 player-games: correction +0.1 min; conviction factor 'agree' helped by +0.2 pts of hit rate over 1723 plays: weight 0.95 -> 1.01; conviction factor 'bump' hurt by -5.1 pts of hit rate over 710 plays: weight 0.81 -> 0.72; conviction factor 'blowout' helped by +9.0 pts of hit rate over 393 plays: weight 1.27 -> 1.35."
+  },
+  {
+   "ts": "2026-11-10T17:00:05Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $42.46 (run #1), 14-27-1, ROI -27.1%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -10334,7 +10349,7 @@
   "b46f1cb0"
  ],
  "strategist": null,
- "updated": "2026-11-10T08:50:12Z",
+ "updated": "2026-11-10T17:00:05Z",
  "stats": {
   "bets": 42,
   "won": 14,
