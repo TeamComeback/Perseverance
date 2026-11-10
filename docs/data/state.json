@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 42.46,
+  "cash": 27.46,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -8852,6 +8852,219 @@
       }
      ]
     }
+   },
+   {
+    "id": "6d96909a",
+    "placed": "2026-11-10T20:50:58Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "3689d555c9a1c81e3d300375b4c80530",
+      "sport": "basketball_nba",
+      "commence": "2026-11-11T00:40:00Z",
+      "home": "New York Knicks",
+      "away": "Milwaukee Bucks",
+      "market": "player_assists",
+      "outcome": "Jalen Brunson Under",
+      "side": "Under",
+      "player": "Jalen Brunson",
+      "player_id": "3934672",
+      "stat": "ast",
+      "espn_id": "401909960",
+      "point": 6.5,
+      "price": 2.01,
+      "book": "draftkings",
+      "fair_p": 0.5049,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 5.64,
+       "base": 5.19,
+       "minutes": 31.5,
+       "mult": 1.086,
+       "sd": 2.32,
+       "p_model": 0.6721,
+       "p_mkt": 0.5049,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.122,
+         "txt": "MIL gives point guards +12% assists vs their norm (#7 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.109,
+         "txt": "Players with his profile: +11% assists vs MIL (157 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.921,
+         "txt": "His history vs MIL: 3.7 assists/g in 3 games (-8%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.032,
+         "txt": "MIL games have +3% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.01,
+    "stake": 5.0,
+    "ev": 0.1995,
+    "p": 0.5968,
+    "note": "Proj 5.6 vs line 6.5 (norm 5.2, 32 min). Model 67% vs market 50%. MIL gives point guards +12% assists vs their norm (#7 softest of 30) \u00b7 Players with his profile: +11% assists vs MIL (157 close comps) \u00b7 His history vs MIL: 3.7 assists/g in 3 games (-8%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "ef33253e",
+    "placed": "2026-11-10T20:50:58Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "3689d555c9a1c81e3d300375b4c80530",
+      "sport": "basketball_nba",
+      "commence": "2026-11-11T00:40:00Z",
+      "home": "New York Knicks",
+      "away": "Milwaukee Bucks",
+      "market": "player_assists",
+      "outcome": "Tyler Herro Under",
+      "side": "Under",
+      "player": "Tyler Herro",
+      "player_id": "4395725",
+      "stat": "ast",
+      "espn_id": "401909960",
+      "point": 3.5,
+      "price": 2.22,
+      "book": "fanduel",
+      "fair_p": 0.4308,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 3.38,
+       "base": 3.71,
+       "minutes": 28.7,
+       "mult": 0.913,
+       "sd": 2.04,
+       "p_model": 0.5872,
+       "p_mkt": 0.4308,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.875,
+         "txt": "NY gives shooting guards -13% assists vs their norm (#1 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.94,
+         "txt": "Players with his profile: -6% assists vs NY (190 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs NY yet"
+        },
+        {
+         "k": "chances",
+         "v": 0.92,
+         "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.22,
+    "stake": 5.0,
+    "ev": 0.1472,
+    "p": 0.5168,
+    "note": "Proj 3.4 vs line 3.5 (norm 3.7, 29 min). Model 59% vs market 43%. NY gives shooting guards -13% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -6% assists vs NY (190 close comps) \u00b7 No history vs NY yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "63e3addb",
+    "placed": "2026-11-10T20:50:58Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "3689d555c9a1c81e3d300375b4c80530",
+      "sport": "basketball_nba",
+      "commence": "2026-11-11T00:40:00Z",
+      "home": "New York Knicks",
+      "away": "Milwaukee Bucks",
+      "market": "player_assists",
+      "outcome": "Brayden Burries Under",
+      "side": "Under",
+      "player": "Brayden Burries",
+      "player_id": "5082206",
+      "stat": "ast",
+      "espn_id": "401909960",
+      "point": 3.5,
+      "price": 1.67,
+      "book": "betmgm",
+      "fair_p": 0.5773,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 2.46,
+       "base": 2.75,
+       "minutes": 28.0,
+       "mult": 0.895,
+       "sd": 1.27,
+       "p_model": 0.7622,
+       "p_mkt": 0.5773,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.875,
+         "txt": "NY gives shooting guards -13% assists vs their norm (#1 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.937,
+         "txt": "Players with his profile: -6% assists vs NY (57 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs NY yet"
+        },
+        {
+         "k": "chances",
+         "v": 0.92,
+         "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.67,
+    "stake": 5.0,
+    "ev": 0.1337,
+    "p": 0.6789,
+    "note": "Proj 2.5 vs line 3.5 (norm 2.8, 28 min). Model 76% vs market 58%. NY gives shooting guards -13% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -6% assists vs NY (57 close comps) \u00b7 No history vs NY yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -10307,6 +10520,11 @@
    "ts": "2026-11-10T20:36:20Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 10: 6 games, 131 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-10T20:50:58Z",
+   "kind": "props",
+   "text": "NBA matchups: 6 games, strongest spots: Brayden Burries ast -10% vs NY; Isaiah Collier ast +11% vs MIA; Klay Thompson pra +11% vs UTAH. Bought prop odds for MIL@NY (ast, tpm, ra, team totals) (4 credits). Placed 3: Jalen Brunson Under 6.5 @ +101 (DraftKings); Tyler Herro Under 3.5 @ +122 (FanDuel); Brayden Burries Under 3.5 @ -149 (BetMGM)"
   }
  ],
  "learned_ids": [
@@ -10354,7 +10572,7 @@
   "b46f1cb0"
  ],
  "strategist": null,
- "updated": "2026-11-10T20:36:49Z",
+ "updated": "2026-11-10T20:51:30Z",
  "stats": {
   "bets": 42,
   "won": 14,
@@ -10367,7 +10585,7 @@
   "clv_n": 15,
   "clv_no_close": 27,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 3,
   "equity": 42.46
  },
  "weights": {
