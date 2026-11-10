@@ -16,10 +16,10 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "cycle, props, research or nightly"
+        description: "cycle, props, research, nightly, live, injwatch, probe, or auto (for an outside timer: works out what is due)"
         default: cycle
         type: choice
-        options: [cycle, props, research, nightly, live, injwatch, probe]
+        options: [cycle, props, research, nightly, live, injwatch, probe, auto]
 
 permissions:
   contents: write

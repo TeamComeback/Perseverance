@@ -326,12 +326,14 @@ def research_run():
 def props_run(backup=False):
     """Afternoon NBA matchup run (about 2pm ET in winter). The backup run an hour later
     only does anything if the first one didn't happen (GitHub sometimes delays or drops scheduled runs)."""
+    from . import research
+    today = research.et_today().isoformat()
     if backup:
         pz = store.load("props.json", {})
-        from . import research
-        if pz.get("priced_date") == research.et_today().isoformat():
-            print("props already priced today; backup run skipped")
+        if pz.get("priced_date") == today or (store.load("props_ran.json", {}) or {}).get("date") == today:
+            print("props already ran today; backup run skipped")
             return
+    store.save("props_ran.json", {"date": today, "at": store.iso(store.now())})
     budget = Budget()
     client = OddsClient(budget)
     state, manual = load_all()
@@ -577,6 +579,49 @@ def manual_issue():
     save_all(state, manual)
 
 
+def auto_run():
+    """One entry point for an outside timer (every 15 minutes): it works out what is due, so a skipped GitHub
+    schedule can't leave the slate stale. Games in progress: live lines + injury watch. Games still to tip:
+    injury watch, the props run if today's hasn't happened by 2:30pm ET, and a refresh if the last one is old
+    (stricter in the last two hours before the first tip). Nothing to do: exits in a few seconds."""
+    from . import research
+    now = store.now()
+    hour = now.astimezone(nd_et()).hour + now.astimezone(nd_et()).minute / 60
+    try:
+        games = research.slate_all(research.et_today())
+    except Exception as e:
+        print(f"[auto] slate unavailable: {e}")
+        return
+    live = [g for g in games if g["state"] == "in"]
+    pre = [g for g in games if g["state"] == "pre"]
+    yday_live = False
+    if hour < 3:                                    # past midnight: last night's late games
+        from datetime import timedelta as _td
+        try:
+            yday_live = any(g["state"] == "in" for g in research.slate_all(research.et_today() - _td(days=1)))
+        except Exception:
+            pass
+    print(f"[auto] {hour:.2f}h ET: {len(live)} live, {len(pre)} to tip" + (", last night's games still on" if yday_live else ""))
+    if live or yday_live:
+        live_run()                                  # includes the injury watch for games not yet started
+    elif pre and 9 <= hour < 24:
+        if not injwatch_run():
+            pass
+    if pre and 14.5 <= hour < 23:
+        props_run(backup=True)                      # does nothing if today's props run already happened
+    if pre:
+        try:
+            pj = store.load("players.json", None) or {}
+            age_h = (now - store.parse(pj["updated"])).total_seconds() / 3600 if pj.get("updated") else 99
+            first = min(store.parse(g["start"]) for g in pre)
+            to_tip = (first - now).total_seconds() / 3600
+            if pj.get("date") != research.et_today().isoformat() or age_h >= (1.5 if to_tip <= 2 else 4):
+                print(f"[auto] last refresh {age_h:.1f}h ago, first tip in {to_tip:.1f}h: refreshing")
+                research_run()
+        except Exception as e:
+            print(f"[auto] refresh check failed: {e}")
+
+
 def catch_up(mode):
     """GitHub sometimes starts scheduled runs very late or skips them. Any light run (scan, live, injury watch)
     checks whether the last full refresh is stale while games are still to come, and does it itself if so."""
@@ -607,6 +652,6 @@ def nd_et():
 if __name__ == "__main__":
     _mode = sys.argv[1]
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
-     "research": research_run, "live": live_run, "injwatch": injwatch_run, "manual-issue": manual_issue,
+     "research": research_run, "live": live_run, "injwatch": injwatch_run, "auto": auto_run, "manual-issue": manual_issue,
      "probe": lambda: __import__("agent.probe", fromlist=["run"]).run()}[_mode]()
     catch_up(_mode)
