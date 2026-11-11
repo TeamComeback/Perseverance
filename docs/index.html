@@ -1122,7 +1122,7 @@ async function renderHealth() {
 
 // ===================================================== Tonight: status, what changed, best bets, live, watchlist
 function snapNow() {
-  const date = D.players.date, day = ((D.best || {}).days || {})[date] || {}, P = D.players.players || {}, w = WATCH();
+  const date = D.players.date, day = (typeof normPicks === "function" ? normPicks(((D.best || {}).days || {})[date]) : null) || {}, P = D.players.players || {}, w = WATCH();
   const snap = {ts: Date.now(), date, lines: {}, status: {}, picks: {}};
   for (const g of D.players.games || []) { const v = g.vegas || {}; snap.lines[g.espn_id] = [v.spread_home ?? null, v.total ?? null]; }
   for (const p of Object.values(P)) if ((p.minutes || 0) >= 15 || w.players.includes(String(p.pid)) || p.out) snap.status[p.pid] = p.out ? "out" : (p.status || "");
@@ -1254,8 +1254,12 @@ function cardCase(pc) {
   } catch (e) { console.log("case failed", e); return null; }
 }
 
+// level from the conviction score (picks saved before the Nov 11 rename carry old tier names); game lines top out at Consider
+function tierOf(x) { return x.conv == null ? x.tier : window.CASE ? CASE.convTier(x.kind === "prop" ? x.conv : Math.min(59, x.conv)) : x.tier; }
+function normPicks(d) { return d ? {...d, props: (d.props || []).map(x => ({...x, tier: tierOf(x)})), games: (d.games || []).map(x => ({...x, tier: tierOf(x)})), dropped: (d.dropped || []).map(x => ({...x, tier: tierOf(x)}))} : d; }
+window.normPicks = normPicks;
 function bestHtml() {
-  const B = D.best || {}, date = (D.players && D.players.date) || "", agentDay = (B.days || {})[date];
+  const B = D.best || {}, date = (D.players && D.players.date) || "", agentDay = normPicks((B.days || {})[date]);
   // a re-price done on this phone (docs/refresh.js) is shown when it's newer than the agent's picks and you chose it
   let local = null; try { local = JSON.parse(localStorage.getItem("pz-bestlocal") || "null"); } catch (e) {}
   if (local && (local.date !== date || !agentDay || local.base !== agentDay.updated)) local = null;

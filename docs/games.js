@@ -167,7 +167,7 @@ function gameSub(g, n) {
     if (sim) rows.push(["Projected", `<b>${esc(A)} ${f1(sim.avg.away)} – ${f1(sim.avg.home)} ${esc(H)}</b> · ${esc(sim.win_home >= 0.5 ? H : A)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%`]);
     if (tn && c && c.sp != null) { const d = tn.margin + c.sp; rows.push(["Vegas vs our model", Math.abs(d) < 1.5 ? "agree on the spread" : `our model has ${esc(d > 0 ? H : A)} ${f1(Math.abs(d))} better than DraftKings`]); }
     if (tn && tn.out && tn.out.length) rows.push(["Who's out", tn.out.map(o => `${esc(o.team)}: ${esc(o.names)} (${f1(o.pts)})`).join(" · ")]);
-    const day = ((D.best || {}).days || {})[D.players.date] || {}, picks = [...(day.props || []), ...(day.games || [])].filter(x => x.espn_id === id).slice(0, 2);
+    const day = (window.normPicks ? normPicks(((D.best || {}).days || {})[D.players.date]) : ((D.best || {}).days || {})[D.players.date]) || {}, picks = [...(day.props || []), ...(day.games || [])].filter(x => x.espn_id === id).slice(0, 2);
     if (picks.length) rows.push(["Best bets here", picks.map(x => `${x.kind === "prop" ? esc(lastName(x.name)) + " " + x.side.toLowerCase() + " " + x.point + " " + (STATN[x.stat] || x.stat) : x.kind === "spread" ? esc(x.team) + " " + (x.point > 0 ? "+" : "") + x.point : x.side + " " + x.point} <span class="cvb ${x.tier}">${x.tier || ""}</span>`).join(" · ")]);
     const risks = [];
     if (sim && sim.mh) { const n = Object.values(sim.mh).reduce((t, v) => t + v, 0); let b = 0; for (const [k, v] of Object.entries(sim.mh)) if (Math.abs(+k) >= 15) b += v; if (b / n >= 0.3) risks.push(`blowout in ${Math.round(b / n * 100)}% of sims (starters sit late)`); }

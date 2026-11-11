@@ -538,7 +538,8 @@ def refresh_issue(num):
     research_run()
     best = store.load("best.json", {}) or {}
     day = (best.get("days") or {}).get(pj.get("date") or "", {}) or (best.get("days") or {}).get(best.get("date") or "", {})
-    top = [f"{x.get('name') or x.get('team') or x['kind']} {x['side']} {x['point']} ({x.get('tier', '')})" for x in (day.get("props") or [])[:3]]
+    lvl = lambda c: "" if c is None else "Confident" if c >= 60 else "Consider" if c >= 45 else "Pass"
+    top = [f"{x.get('name') or x.get('team') or x['kind']} {x['side']} {x['point']} ({lvl(x.get('conv'))})" for x in (day.get("props") or [])[:3]]
     store.gh_comment(num, "Refreshed: new lineups, projections and 10,000 sims per game, picks re-ranked."
                      + (f" Top props now: {'; '.join(top)}." if top else "") + " Reload the dashboard.")
     store.gh_close(num)
