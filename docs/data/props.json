@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T22:00:46Z",
+ "updated": "2026-11-11T22:15:36Z",
  "date": "2026-11-11",
  "priced_date": "2026-11-11",
  "games": [
@@ -4906,10 +4906,10 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 16.58,
-   "base": 17.89,
+   "proj": 17.52,
+   "base": 18.92,
    "mult": 0.927,
-   "minutes": 25.0,
+   "minutes": 26.4,
    "status": "",
    "start": "2026-11-12T00:00Z",
    "espn_id": "401909968",
@@ -5655,10 +5655,10 @@
    "role": "PF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 17.35,
-   "base": 18.66,
+   "proj": 18.35,
+   "base": 19.71,
    "mult": 0.93,
-   "minutes": 25.6,
+   "minutes": 27.0,
    "status": "Day-To-Day",
    "start": "2026-11-12T00:00Z",
    "espn_id": "401909968",
@@ -6207,10 +6207,10 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 7.65,
-   "base": 8.2,
+   "proj": 8.08,
+   "base": 8.68,
    "mult": 0.932,
-   "minutes": 25.0,
+   "minutes": 26.4,
    "status": "",
    "start": "2026-11-12T00:00Z",
    "espn_id": "401909968",
@@ -6253,10 +6253,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 15.76,
-   "base": 16.92,
+   "proj": 16.65,
+   "base": 17.89,
    "mult": 0.932,
-   "minutes": 31.4,
+   "minutes": 33.1,
    "status": "",
    "start": "2026-11-12T00:00Z",
    "espn_id": "401909968",
@@ -6567,6 +6567,52 @@
    ]
   },
   {
+   "pid": "4684272",
+   "name": "Ja'Kobe Walter",
+   "team": "TOR",
+   "opp": "BOS",
+   "home": true,
+   "role": "SG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 1.91,
+   "base": 2.05,
+   "mult": 0.933,
+   "minutes": 33.1,
+   "status": "",
+   "start": "2026-11-12T00:00Z",
+   "espn_id": "401909968",
+   "lean": "Under",
+   "strength": 0.0694,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.976,
+     "n": 113.7,
+     "rank": 19,
+     "txt": "BOS gives shooting guards -2% assists vs their norm (#12 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.947,
+     "n": 194,
+     "txt": "Players with his profile: -5% assists vs BOS (194 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.95,
+     "n": 4,
+     "txt": "His history vs BOS: 0.8 assists/g in 4 games (-5%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.953,
+     "txt": "BOS games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "3134907",
    "name": "Kyle Kuzma",
    "team": "MIL",
@@ -6713,10 +6759,10 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 8.2,
-   "base": 8.77,
+   "proj": 8.95,
+   "base": 9.58,
    "mult": 0.934,
-   "minutes": 13.5,
+   "minutes": 14.7,
    "status": "",
    "start": "2026-11-12T00:00Z",
    "espn_id": "401909968",
@@ -7529,52 +7575,6 @@
      "k": "chances",
      "v": 1.023,
      "txt": "OKC games have +2% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "4397784",
-   "name": "Malachi Smith",
-   "team": "TOR",
-   "opp": "BOS",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 7.93,
-   "base": 8.46,
-   "mult": 0.938,
-   "minutes": 14.9,
-   "status": "",
-   "start": "2026-11-12T00:00Z",
-   "espn_id": "401909968",
-   "lean": "Under",
-   "strength": 0.064,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.928,
-     "n": 113.7,
-     "rank": 29,
-     "txt": "BOS gives shooting guards -7% pts+reb+ast vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.955,
-     "n": 95,
-     "txt": "Players with his profile: -4% pts+reb+ast vs BOS (95 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs BOS yet"
-    },
-    {
-     "k": "chances",
-     "v": 0.953,
-     "txt": "BOS games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   }
