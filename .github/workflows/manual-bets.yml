@@ -17,7 +17,7 @@ jobs:
   log:
     # Only bet and saved-prop issues, and only from people with access to the repo.
     if: >-
-      (startsWith(github.event.issue.title, 'Bet') || startsWith(github.event.issue.title, 'Save')) &&
+      (startsWith(github.event.issue.title, 'Bet') || startsWith(github.event.issue.title, 'Save') || startsWith(github.event.issue.title, 'Refresh')) &&
       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
         github.event.comment.author_association || github.event.issue.author_association)
     runs-on: ubuntu-latest
@@ -26,14 +26,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Record bet
+      - name: Install PDF reader (official injury report, refresh requests only)
+        if: startsWith(github.event.issue.title, 'Refresh')
+        run: pip install --quiet pypdf
+      - name: Record bet, saved prop, or refresh request
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python -m agent.run manual-issue
       - name: Save books
         run: |
           git config user.name "perseverance-bot"
           git config user.email "perseverance-bot@users.noreply.github.com"
-          git add docs/data
+          git add docs/data data/nba data/archive 2>/dev/null || git add docs/data
           git diff --cached --quiet || git commit -m "manual: #${{ github.event.issue.number }}"
           git pull --rebase -q && git push

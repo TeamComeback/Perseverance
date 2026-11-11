@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+from datetime import timedelta
 
 from . import book as bk
 from . import brain, config, market, store
@@ -515,10 +516,42 @@ def _log_espn_prop(num, f, book, state, manual, stake, dec):
     return True
 
 
+REFRESH_GAP_MIN = 10       # at most one asked-for refresh per 10 minutes
+
+
+def refresh_issue(num):
+    """You tapped "Full refresh" on Best Bets: the dashboard opened a "Refresh:" issue. Re-run research (lineups,
+    projections, 10,000 sims, re-ranked picks) unless one ran in the last few minutes, then answer and close."""
+    global SIM_REASON
+    mark = store.load("refresh_asked.json", {}) or {}
+    pj = store.load("players.json", None) or {}
+    now = store.now()
+    last = max([store.parse(t) for t in (mark.get("at"), pj.get("updated")) if t] or [now - timedelta(days=1)])
+    mins = (now - last).total_seconds() / 60
+    if mins < REFRESH_GAP_MIN:
+        store.gh_comment(num, f"The picks were refreshed {mins:.0f} minutes ago, so this one was skipped (one refresh per "
+                              f"{REFRESH_GAP_MIN} minutes). Reload the dashboard to see them.")
+        store.gh_close(num)
+        return
+    store.save("refresh_asked.json", {"at": store.iso(now), "issue": num})
+    SIM_REASON = "you asked for a refresh"
+    research_run()
+    best = store.load("best.json", {}) or {}
+    day = (best.get("days") or {}).get(pj.get("date") or "", {}) or (best.get("days") or {}).get(best.get("date") or "", {})
+    top = [f"{x.get('name') or x.get('team') or x['kind']} {x['side']} {x['point']} ({x.get('tier', '')})" for x in (day.get("props") or [])[:3]]
+    store.gh_comment(num, "Refreshed: new lineups, projections and 10,000 sims per game, picks re-ranked."
+                     + (f" Top props now: {'; '.join(top)}." if top else "") + " Reload the dashboard.")
+    store.gh_close(num)
+
+
 def manual_issue():
     ev = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
     issue = ev["issue"]
     num = issue["number"]
+    if issue.get("title", "").lower().startswith("refresh"):
+        if "comment" not in ev:
+            refresh_issue(num)
+        return
     if issue.get("title", "").lower().startswith("save"):
         saved.from_issue(ev)
         return
@@ -619,6 +652,18 @@ def manual_issue():
     save_all(state, manual)
 
 
+def run_checks():
+    try:
+        from . import checks
+        r = checks.run()
+        if r["status"] == "fail":
+            state, manual = load_all()
+            brain.note(state, "error", "Self-check failed: " + "; ".join(f"{c['name']} ({c['detail']})" for c in r["checks"] if c["status"] == "fail")[:400])
+            save_all(state, manual, None)
+    except Exception as e:
+        print(f"[checks] failed to run: {e}")
+
+
 def auto_run():
     """One entry point for an outside timer (every 15 minutes): it works out what is due, so a skipped GitHub
     schedule can't leave the slate stale. Games in progress: live lines + injury watch. Games still to tip:
@@ -703,3 +748,5 @@ if __name__ == "__main__":
      "research": research_run, "live": live_run, "injwatch": injwatch_run, "auto": auto_run, "manual-issue": manual_issue,
      "probe": lambda: __import__("agent.probe", fromlist=["run"]).run()}[_mode]()
     catch_up(_mode)
+    if _mode in ("research", "auto", "nightly", "injwatch", "props", "props-backup", "cycle", "manual-issue"):
+        run_checks()

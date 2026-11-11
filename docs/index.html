@@ -269,7 +269,7 @@ a.opt{cursor:pointer}
 tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-space:normal}
 .ownt{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:4px 0 6px;background:var(--panel2)}.ownt b{font-family:var(--mono);font-size:15px}
 .cvb{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-weight:800;font-size:12px;padding:2px 7px;border-radius:7px;border:1px solid var(--line);margin-left:6px}
-.cvb.Strong{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Solid{color:var(--gold);border-color:#E5C15855;background:#E5C15812}.cvb.Lean,.cvb.Pass{color:var(--dim)}
+.cvb.Confident{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Consider{color:var(--gold);border-color:#E5C15855;background:#E5C15812}.cvb.Pass{color:var(--dim)}
 .verd{grid-column:1/-1;font-size:12.5px;color:var(--text);margin-top:3px;line-height:1.4}
 .case{grid-column:1/-1;margin-top:4px}.case summary{cursor:pointer;font-size:12px;color:var(--dim);padding:4px 0;list-style:none}.case summary::-webkit-details-marker{display:none}.case summary:before{content:"▸ "}.case[open] summary:before{content:"▾ "}
 .case ul{margin:4px 0 8px;padding:0;list-style:none}.case li{font-size:12.5px;line-height:1.45;padding:3px 0 3px 18px;position:relative;color:var(--text)}
@@ -485,6 +485,26 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .lu-b.in{background:var(--win-d);border-color:#3ddc9755;color:var(--win)}
 .lu-b.out{background:var(--loss-d);border-color:#ff5d7355;color:var(--loss)}
 .lu-b:disabled{opacity:.35;cursor:default}
+
+/* ---- streamlined UI (Nov 11): filter bar, status strip, what changed, refresh, health ---- */
+.fbar{position:sticky;top:0;z-index:20;margin:0 -2px 8px;padding:6px 2px;background:linear-gradient(var(--bg) 70%,#0b0f1700)}
+.fbar .frow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.fbar .frow::-webkit-scrollbar{display:none}
+.fbar select,.fbar button{flex:none;background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:6px 10px;font:600 12px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
+.fbar select.on,.fbar button.on{color:var(--gold);border-color:#E5C15866;background:#E5C15814}
+.fbar .focus{margin-top:6px;font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}.fbar .focus b{color:var(--text)}.fbar .focus button{padding:2px 8px}
+.sstrip{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;font-size:12px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;cursor:pointer}
+.sstrip b{color:var(--text);font-family:var(--mono)}
+.hdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--dim2)}.hdot.ok{background:var(--win)}.hdot.warn{background:var(--gold)}.hdot.fail{background:var(--loss)}
+.chg .ti{cursor:pointer}.chg.quiet{font-size:12px;color:var(--dim);margin:0 2px 8px}
+.rfrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:-4px 0 8px}.rfrow .btn{text-decoration:none}
+.chgbox{font-size:12.5px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:8px 0;line-height:1.5}.chgbox .new{color:var(--win)}.chgbox .out{color:var(--loss)}.chgbox .moved{color:var(--gold)}
+.bbsw{margin-top:8px;display:flex}.bbsw button{flex:1}
+.cr.bb.drop{opacity:.6}.cr.bb .rt .b .btn{margin-left:6px;padding:3px 9px}
+.cr.bb details.case > summary{padding:4px 0}
+.star{background:none;border:0;color:var(--dim);font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}.star.on{color:var(--gold)}
+.gl{border-bottom:1px dotted var(--dim2);cursor:help}
+.mseg{display:flex;margin-bottom:10px}.mseg button{flex:1}
+.gsum{border:1px solid #E5C15855;background:#E5C1580a}.gsum .row2{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}.gsum .row2:first-of-type{border-top:0}.gsum .row2 span:first-child{color:var(--dim)}
 </style>
 </head>
 <body>
@@ -493,24 +513,22 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
     <div class="brand"><div class="dot"></div><h1>PERSEVERANCE</h1></div>
     <span class="tag" id="updated">loading…</span>
   </header>
+  <div id="fbar" class="fbar"></div>
   <section class="view" id="v-today"></section>
   <section class="view" id="v-props"></section>
   <section class="view" id="v-games"></section>
   <section class="view" id="v-sim"></section>
   <section class="view" id="v-bets"></section>
-  <section class="view" id="v-trends"></section>
-  <section class="view" id="v-agent"></section>
+  <section class="view" id="v-model"><div class="seg mseg" id="mSeg"></div><div class="mview" id="v-health"></div><div class="mview" id="v-trends"></div><div class="mview" id="v-agent"></div></section>
   <p class="note">Paper money only. A good paper run is not a reason to bet real money: small samples lie.</p>
 </div>
 
 <nav class="tabs"><div class="in">
-  <button data-v="today"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Today</button>
+  <button data-v="today"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Tonight</button>
   <button data-v="games"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6c3.2 2.4 3.2 10.4 0 12.8M18.4 5.6c-3.2 2.4-3.2 10.4 0 12.8"/></svg>Games</button>
-  <button data-v="props"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Prop Lab</button>
-  <button data-v="sim"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14"/><circle cx="12" cy="12" r="3"/><path d="M10 9.5l4 2.5-4 2.5z"/></svg>Sim</button>
-  <button data-v="bets"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Bets</button>
-  <button data-v="trends"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Trends</button>
-  <button data-v="agent"><svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/></svg>Agent</button>
+  <button data-v="props"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Players</button>
+  <button data-v="bets"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>My bets</button>
+  <button data-v="model"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Model</button>
 </div></nav>
 
 <button class="fab" id="fab" onclick="openLogBet()"><span style="font-size:20px;line-height:1">+</span> Log a bet</button>
@@ -1019,6 +1037,143 @@ function oppsHtml() {
       <div class="gm">${esc(o.out)} ${esc((o.status || "out").toLowerCase())} · ${o.n} games without him · ${f1(o.min_without)} min vs ${f1(o.min_with)}</div></div>
       <div class="rt"><div class="a">${STATN[o.stat]} ${f1(o.without)}</div><div class="b">vs ${f1(o.with)} with · <span class="gold">${pct(o.delta, 0)}</span></div></div></div>`).join(""), true);
 }
+
+// ===================================================== filters, watchlist, glossary (one set, every tab)
+const FLT0 = {game: "", stat: "", side: "", level: "", watch: false, signal: true};
+const FLT = () => Object.assign({}, FLT0, store.get("flt", {}));
+function setFltQuiet(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); }
+function setFlt(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); const t = store.get("tab", "today"); fbar(t); (RENDER[t] || renderToday)(); }
+const WATCH = () => Object.assign({players: [], games: []}, store.get("watch", {}));
+function isWatched(kind, id) { return WATCH()[kind].includes(String(id)); }
+function toggleWatch(kind, id) { const w = WATCH(), a = w[kind], i = a.indexOf(String(id)); if (i >= 0) a.splice(i, 1); else a.push(String(id)); store.set("watch", w); toast(i >= 0 ? "Removed from your watchlist" : "Added to your watchlist"); }
+const starBtn = (kind, id) => `<button class="star${isWatched(kind, id) ? " on" : ""}" data-star="${kind}|${id}" aria-label="Watchlist">${isWatched(kind, id) ? "★" : "☆"}</button>`;
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-star]"); if (!b) return; e.preventDefault(); e.stopPropagation();
+  const [k, id] = b.dataset.star.split("|"); toggleWatch(k, id); b.classList.toggle("on", isWatched(k, id)); b.textContent = isWatched(k, id) ? "★" : "☆"; });
+// does an item (a pick, a prop row, a game) pass the global filters?
+const LEVELS = {Confident: 2, Consider: 1, Pass: 0};
+function passF(x, opt = {}) {
+  const f = FLT(), w = WATCH();
+  if (f.game && x.espn_id && x.espn_id !== f.game) return false;
+  if (f.stat && x.stat && x.stat !== f.stat) return false;
+  if (f.stat && opt.props && !x.stat) return false;
+  if (f.side && x.side && ["Over", "Under"].includes(x.side) && x.side !== f.side) return false;
+  if (f.side && x.lean && !x.side && x.lean !== f.side) return false;
+  if (f.level && x.tier && (LEVELS[x.tier] || 0) < LEVELS[f.level]) return false;
+  if (f.watch && !(w.players.includes(String(x.pid)) || w.games.includes(String(x.espn_id)))) return false;
+  return true;
+}
+function fbar(tab) {
+  const el = $("fbar"); if (!el) return;
+  if (!["today", "games", "props", "sim"].includes(tab) || !D.players) { el.innerHTML = ""; el.style.display = "none"; return; }
+  el.style.display = "";
+  const f = FLT(), games = (D.players.games || []).filter(g => g.state !== "post" || g.espn_id === f.game);
+  const sel = (k, opts, lab) => `<select data-f="${k}" class="${f[k] ? "on" : ""}" aria-label="${lab}">${opts.map(([v, l]) => `<option value="${esc(v)}"${String(f[k]) === String(v) ? " selected" : ""}>${esc(l)}</option>`).join("")}</select>`;
+  const fg = f.game && (D.players.games || []).find(g => g.espn_id === f.game);
+  el.innerHTML = `<div class="frow">
+      ${sel("game", [["", "All games"], ...games.map(g => [g.espn_id, `${g.away} @ ${g.home}`])], "Game")}
+      ${sel("stat", [["", "All stats"], ...ALL_STATS.map(k => [k, STATN[k]])], "Stat")}
+      ${sel("side", [["", "Over + under"], ["Over", "Overs"], ["Under", "Unders"]], "Side")}
+      ${sel("level", [["", "Any level"], ["Consider", "Consider +"], ["Confident", "Confident"]], "Confidence")}
+      <button data-ft="watch" class="${f.watch ? "on" : ""}">★ Watchlist</button>
+      <button data-ft="signal" class="${f.signal ? "on" : ""}" title="Hide rows with nothing notable">Signal only</button>
+      ${Object.keys(FLT0).some(k => k !== "signal" && f[k]) ? '<button data-ft="clear">Clear</button>' : ""}</div>
+    ${fg ? `<div class="focus">Focus: <b>${esc(fg.away)} @ ${esc(fg.home)}</b> · every tab shows only this game <button data-ft="unfocus">×</button></div>` : ""}`;
+  el.querySelectorAll("select").forEach(x => x.onchange = () => setFlt(x.dataset.f, x.value));
+  el.querySelectorAll("button[data-ft]").forEach(b => b.onclick = () => {
+    const k = b.dataset.ft;
+    if (k === "clear") { store.set("flt", {signal: f.signal}); fbar(tab); (RENDER[tab] || renderToday)(); }
+    else if (k === "unfocus") setFlt("game", "");
+    else setFlt(k, !f[k]);
+  });
+}
+const GL = {EV: "Expected value: what the bet returns per $1 on average if the win chance is right. +5% EV = 5 cents per dollar.",
+  Need: "The win rate the price needs to break even. -110 needs 52.4%.", CLV: "Closing line value: how much better your number is than the line at tip-off. Beating the close is the best sign a bet was good.",
+  Confident: "The chance of winning sits 3+ points above what the price needs (conviction 60+).", Consider: "About 1-3 points above what the price needs (conviction 45-59). Worth a look, not a lock.",
+  Pass: "The price is about right, or better than the play. No bet.", Conviction: "0-100. How far the chance of winning sits above what the price needs, from the sim, the price and what has actually paid."};
+const gl = (t, label) => `<span class="gl" data-gl="${t}">${label || t}</span>`;
+document.addEventListener("click", e => { const g = e.target.closest && e.target.closest("[data-gl]"); if (g && GL[g.dataset.gl]) { e.stopPropagation(); toast(GL[g.dataset.gl]); } });
+
+// ===================================================== Model tab: health, trends, agent
+function renderModel() {
+  const sub = store.get("msub", "health");
+  $("mSeg").innerHTML = [["health", "Health"], ["trends", "Trends"], ["agent", "Agent"]].map(([k, l]) => `<button data-m="${k}" class="${k === sub ? "on" : ""}">${l}</button>`).join("");
+  $("mSeg").querySelectorAll("button").forEach(b => b.onclick = () => { store.set("msub", b.dataset.m); renderModel(); });
+  document.querySelectorAll("#v-model .mview").forEach(el => el.style.display = el.id === "v-" + sub ? "" : "none");
+  ({health: renderHealth, trends: renderTrends, agent: renderAgent})[sub]();
+}
+async function renderHealth() {
+  $("v-health").innerHTML = '<div class="empty">Checking…</div>';
+  const date = D.players.date;
+  const [ck, sims, team, dk, sb] = await Promise.all([get("checks.json", null), get("sims.json", {}), get("team_model.json", {}), get(`dk/${date}.json`, {}), D.sb ? D.sb : get("scoreboard.json", {})]);
+  const pre = (D.players.games || []).some(g => g.state === "pre");
+  const age = ts => ts ? (Date.now() - new Date(ts)) / 3600e3 : null;
+  const src = [["Research (lineups, projections)", D.players.updated, pre ? 4.5 : 30], ["Simulations", sims.updated, pre ? 4.5 : 30], ["DraftKings lines", dk.updated, pre ? 4.5 : 30],
+    ["Best bets", (D.best || {}).updated, pre ? 4.5 : 30], ["Team model", team.updated, 30], ["Model vs market scoreboard", sb.updated, 36], ["Agent run", D.state.updated, 2], ["Odds credits", D.budget.updated, 30]];
+  const dot = st => `<span class="hdot ${st}"></span>`;
+  const rows = src.map(([n, ts, lim]) => { const a = age(ts), st = a == null ? "fail" : a <= lim ? "ok" : a <= lim * 2 ? "warn" : "fail";
+    return `<div class="ti"><span>${dot(st)}${esc(n)}</span><b class="${st === "ok" ? "dim" : st === "warn" ? "gold" : "neg"}">${a == null ? "never" : ago(ts)}</b></div>`; }).join("");
+  const C = ck ? ck.checks : [];
+  $("v-health").innerHTML = `<h2>Data freshness</h2><div class="card">${rows}<div class="desc" style="margin-top:6px">Green within the normal refresh window (4.5 hours on game days), gold late, red missing or very late. The timer runs every 15 minutes, so red usually means a source failed.</div></div>
+    <h2>Self-checks ${ck ? `<span class="tag">${ago(ck.updated)}</span>` : ""}</h2><div class="card">${C.length ? C.map(c => `<div class="ti"><span>${dot(c.status)}<b style="color:var(--text)">${esc(c.name)}</b><br><span class="dim" style="font-size:12px">${esc(c.detail)}</span></span><b class="${c.status === "ok" ? "dim" : c.status === "warn" ? "gold" : "neg"}">${c.status.toUpperCase()}</b></div>`).join("")
+      : '<div class="empty">The first self-check runs with the next agent run.</div>'}
+      <div class="desc" style="margin-top:6px">Run after every refresh: minutes add up, every game is simulated, lines are fresh, picks still have their minutes, no test runs in the log, credits last the month. A failure is also written to the agent's journal.</div></div>
+    <h2>Glossary</h2><div class="card">${Object.entries(GL).map(([k, v]) => `<div class="ti"><span><b style="color:var(--text)">${k}</b> · ${esc(v)}</span></div>`).join("")}</div>`;
+}
+
+// ===================================================== Tonight: status, what changed, best bets, live, watchlist
+function snapNow() {
+  const date = D.players.date, day = ((D.best || {}).days || {})[date] || {}, P = D.players.players || {}, w = WATCH();
+  const snap = {ts: Date.now(), date, lines: {}, status: {}, picks: {}};
+  for (const g of D.players.games || []) { const v = g.vegas || {}; snap.lines[g.espn_id] = [v.spread_home ?? null, v.total ?? null]; }
+  for (const p of Object.values(P)) if ((p.minutes || 0) >= 15 || w.players.includes(String(p.pid)) || p.out) snap.status[p.pid] = p.out ? "out" : (p.status || "");
+  for (const x of [...(day.props || []), ...(day.games || [])]) snap.picks[window.BESTREFRESH ? BESTREFRESH.keyOf(x) : x.kind + x.espn_id + (x.pid || "") + x.side] = [x.tier || "", x.point];
+  return snap;
+}
+function changesHtml() {
+  if (!D.players || !D.players.date) return "";
+  if (!D._seen) { const prev = store.get("seen", null); D._seen = prev && prev.date === D.players.date ? prev : null; store.set("seen", snapNow()); }
+  const a = D._seen; if (!a) return "";
+  const b = snapNow(), out = [], P = D.players.players || {}, w = WATCH(), G = id => (D.players.games || []).find(g => g.espn_id === id) || {};
+  for (const [gid, [sp, tot]] of Object.entries(b.lines)) { const o = a.lines[gid]; if (!o) continue; const g = G(gid);
+    if (o[0] != null && sp != null && o[0] !== sp) out.push([w.games.includes(gid) ? 0 : 2, `${g.away} @ ${g.home}: ${g.home} spread ${o[0] > 0 ? "+" : ""}${o[0]} → ${sp > 0 ? "+" : ""}${sp}`, gid, null]);
+    if (o[1] != null && tot != null && o[1] !== tot) out.push([w.games.includes(gid) ? 0 : 2, `${g.away} @ ${g.home}: total ${o[1]} → ${tot}`, gid, null]); }
+  for (const [pid, st] of Object.entries(b.status)) { const o = a.status[pid]; if (o == null || o === st) continue; const p = P[pid] || {};
+    out.push([w.players.includes(String(pid)) ? 0 : 1, `${p.name} (${p.team}): ${o || "available"} → ${st || "available"}`, null, pid]); }
+  for (const [k, [t, pt]] of Object.entries(b.picks)) { const o = a.picks[k], [kind, , , stat, side] = k.split("|");
+    const nm = kind === "prop" ? `${(P[k.split("|")[2]] || {}).name || "Pick"} ${side.toLowerCase()} ${pt} ${STATN[stat] || ""}` : `${kind} ${side} ${pt}`;
+    if (!o) out.push([1, `New pick: ${nm} (${t})`, null, null]); else if (o[0] !== t) out.push([1, `${nm}: ${o[0] || "—"} → ${t}`, null, null]); }
+  for (const k of Object.keys(a.picks)) if (!b.picks[k]) out.push([1, `Pick dropped: ${k.split("|")[0] === "prop" ? (P[k.split("|")[2]] || {}).name || "a prop" : "a game line"} (see Dropped below)`, null, null]);
+  const since = new Date(a.ts).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"});
+  if (!out.length) return `<div class="chg quiet">Nothing has changed since you looked at ${since}.</div>`;
+  out.sort((x, y) => x[0] - y[0]);
+  return `<h2>What changed since ${since} <button class="btn ghost sm" id="seenAll" style="margin-left:6px">Mark seen</button></h2><div class="card chg">${out.slice(0, 12).map(x => `<div class="ti"${x[2] ? ` data-game="${x[2]}"` : x[3] ? ` data-pid="${x[3]}" data-stat="pts"` : ""}><span>${x[0] === 0 ? "★ " : ""}${esc(x[1])}</span></div>`).join("")}${out.length > 12 ? `<div class="desc">+${out.length - 12} more</div>` : ""}</div>`;
+}
+function statusStrip() {
+  const ck = D.checks, st = ck ? ck.status : null;
+  const fr = D.players.updated ? ago(D.players.updated) : "—";
+  return `<div class="sstrip" onclick="go('health')">
+    <span><i class="hdot ${st || "warn"}"></i>${st === "ok" ? "All checks pass" : st === "warn" ? "Check warnings" : st === "fail" ? "A check failed" : "Checks pending"}</span>
+    <span>Lineups ${fr}</span>
+    <span>Next run <b id="rcWhen"></b> <b id="rcT">--:--</b></span><span id="rcName" class="dim"></span><i id="rcBar" style="display:none"></i></div>`;
+}
+function liveNowHtml() {
+  const L = (D.players.games || []).filter(g => (g.state === "in" || (g.state === "pre" && new Date(g.start) < Date.now())) && passF(g));
+  if (!L.length) return "";
+  const sb = D.tonightSb || [], sc = id => sb.find(x => x.id === id);
+  return `<h2>Live now</h2><div class="card">${L.map(g => { const s = sc(g.espn_id);
+    return `<div class="ti" data-game="${g.espn_id}"><span><b style="color:var(--text)">${esc(g.away)} ${s ? s.away.score : ""} – ${s ? s.home.score : ""} ${esc(g.home)}</b> <span class="pill live">${esc(s ? s.detail : "Live")}</span></span><b class="gold">Live value →</b></div>`; }).join("")}
+    <div class="desc" style="margin-top:4px">Tap a game for the live line, our own live total and what's worth betting now.</div></div>`;
+}
+function watchHtml() {
+  const w = WATCH(); if (!w.players.length && !w.games.length) return "";
+  const P = D.players.players || {}, rows = [];
+  for (const pid of w.players) { const p = P[pid]; if (!p) continue;
+    const r = onePerPlayer(propRows().filter(x => x.pid === pid && ALL_STATS.includes(x.stat)), pickScore)[0];
+    rows.push(r ? cRow(r) : `<div class="cr" data-pid="${pid}" data-stat="pts"><div><span class="nm">${esc(p.name)}</span><div class="gm">${esc(p.team)} · no line yet</div></div></div>`); }
+  for (const gid of w.games) { const g = (D.players.games || []).find(x => x.espn_id === gid); if (g) rows.push(`<div class="ti" data-game="${gid}"><span>★ <b style="color:var(--text)">${esc(g.away)} @ ${esc(g.home)}</b> · ${g.state === "pre" ? tod(g.start) : g.state}</span>${vegasLine(g).replace(/<\/?div[^>]*>/g, "")}</div>`); }
+  return rows.length ? `<h2>Your watchlist</h2><div class="card" style="padding:2px 12px">${rows.join("")}</div>` : "";
+}
+
 function renderToday() {
   const {state, manual, players, pz} = D;
   const games = (players.games || []);
@@ -1037,15 +1192,24 @@ function renderToday() {
       ${vegasLine(g)}
       ${t ? `<div class="mdl">Top spot: ${esc(t.name)} ${STATN[t.stat]} ${t.lean.toLowerCase()}</div>` : ""}</div>`;
   }).join("");
-  $("v-today").innerHTML = `${heroHtml(youEq)}
+  if (!D.checks) get("checks.json", null).then(x => { D.checks = x || {status: null}; if (store.get("tab") === "today" && !$("sheet").classList.contains("on")) renderToday(); });
+  if ((games.some(g => g.state === "in" || (g.state === "pre" && new Date(g.start) < Date.now()))) && (!D.tonightSbAt || Date.now() - D.tonightSbAt > 60e3)) {
+    D.tonightSbAt = Date.now(); scoreboard("basketball_nba", D.players.date.replaceAll("-", "")).then(x => { if (x) { D.tonightSb = x; if (store.get("tab") === "today" && !$("sheet").classList.contains("on")) renderToday(); } });
+  }
+  $("v-today").innerHTML = `${statusStrip()}
+    ${changesHtml()}
     ${bestHtml()}
+    ${liveNowHtml()}
+    ${watchHtml()}
     ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), true)
       : `<div class="hint"><span>No open bets</span><button class="btn" onclick="openLogBet()">+ Log a bet</button></div>`}
-    ${sec("t-top", "Top matchup spots" + (day ? " · " + esc(day) : ""), "by conviction", `<div style="padding:2px 0">${top.map(cRow).join("") || `<div class="empty">${games.length ? "Every game on tonight's slate has tipped off. Tomorrow's plays appear after the morning research run." : "The matchup board fills in with the morning research run."}</div>`}</div>
-    <button class="more" onclick="go('props')">See every play in Prop Lab →</button>`, false)}
+    ${sec("t-bank", "Bankroll and model", money(youEq) + " you · " + money(state.stats.equity) + " agent", heroHtml(youEq), false)}
+    ${sec("t-top", "Top matchup spots" + (day ? " · " + esc(day) : ""), "by conviction", `<div style="padding:2px 0">${top.filter(r => passF(r)).map(cRow).join("") || `<div class="empty">${games.length ? "Nothing matches, or every game has tipped. Tomorrow's plays appear after the morning research run." : "The matchup board fills in with the morning research run."}</div>`}</div>
+    <button class="more" onclick="go('props')">See every player →</button>`, false)}
     ${oppsHtml()}
     ${sec("t-slate", "Tonight's games", games.length + " games", games.length ? `<div class="games">${gameHtml}</div>` : '<div class="empty">No NBA games on the slate.</div>', false)}`;
-  $("v-today").querySelectorAll(".gcard").forEach(el => el.onclick = () => openGame(el.dataset.game));
+  $("v-today").querySelectorAll(".gcard, [data-game]").forEach(el => el.onclick = () => openGame(el.dataset.game));
+  const sa = $("seenAll"); if (sa) sa.onclick = () => { D._seen = snapNow(); store.set("seen", D._seen); renderToday(); };
   bindPlayerLinks($("v-today")); bindBest($("v-today"));
 }
 // ------------------------------------------------------------------ best bets of the day (tools/sim_all.js -> best.json)
@@ -1091,10 +1255,16 @@ function cardCase(pc) {
 }
 
 function bestHtml() {
-  const B = D.best || {}, date = (D.players && D.players.date) || "", day = (B.days || {})[date];
-  const title = `<h2>Best bets today</h2>`;
+  const B = D.best || {}, date = (D.players && D.players.date) || "", agentDay = (B.days || {})[date];
+  // a re-price done on this phone (docs/refresh.js) is shown when it's newer than the agent's picks and you chose it
+  let local = null; try { local = JSON.parse(localStorage.getItem("pz-bestlocal") || "null"); } catch (e) {}
+  if (local && (local.date !== date || !agentDay || local.base !== agentDay.updated)) local = null;
+  const useLocal = local && store.get("bestview", "local") === "local";
+  const day = useLocal ? {...agentDay, props: local.props, games: local.games} : agentDay;
+  const title = `<h2>Best bets today${agentDay ? ` <span class="tag">${useLocal ? "re-priced " + ago(local.at) : "updated " + ago(agentDay.updated)}</span>` : ""}</h2>
+    <div class="rfrow"><button class="btn ghost sm" id="bbReprice">↻ Re-price now</button><a class="btn ghost sm" id="bbFull" href="#" target="_blank" rel="noopener">Full refresh ↗</a><span class="desc" id="bbMsg"></span></div>`;
   if (!day || !((day.props || []).length + (day.games || []).length))
-    return title + `<div class="card"><div class="empty">Tonight's best bets appear after the sims run against DraftKings' lines (about 9:40am, 4:45pm and 6:15pm ET). Props need DraftKings' player lines, posted in the afternoon.</div></div>`;
+    return `<h2>Best bets today</h2>` + `<div class="card"><div class="empty">Tonight's best bets appear after the sims run against DraftKings' lines (about 9:40am, 4:45pm and 6:15pm ET). Props need DraftKings' player lines, posted in the afternoon.</div></div>`;
   const R = B.record || {}, rs = r => r && (r.w + r.l + r.p) ? `${r.w}-${r.l}${r.p ? "-" + r.p : ""} (${r.u >= 0 ? "+" : ""}${r.u.toFixed(1)}u)` : "no graded picks yet";
   const L = day.learned || {};
   const gOf = id => ((D.players && D.players.games) || []).find(g => g.espn_id === id);
@@ -1110,26 +1280,36 @@ function bestHtml() {
       : x.kind === "spread" ? `${esc(x.team)} ${x.point > 0 ? "+" : ""}${f1(x.point)}` : `${x.side.toUpperCase()} ${f1(x.point)}`;
     const who = isProp ? esc(x.name) : x.kind === "spread" ? "Spread" : "Total";
     const attrs = isProp ? `data-pid="${x.pid}" data-stat="${x.stat}"` : `data-bgame="${x.espn_id}"`;
-    return `<div class="cr bb" ${attrs}><div><span class="rk">${i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${cvBadge(x)}${statusOf(x)}
-        <div class="gm">${esc(x.game)} · ${tod(x.start)}${isProp && x.cv ? ` · <span class="dots">${dots(x.cv)}</span>` : ""}</div></div>
-      <div class="rt"><div class="a">${bet}</div><div class="b">${amS(x.am)} DraftKings · ${evTag(x)}</div></div>
-      <div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>needs ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>market ${Math.round(x.p_mkt * 100)}%</span>
-        ${!x.res && !(gOf(x.espn_id) && gOf(x.espn_id).state !== "pre") ? `<button class="btn ghost sm" data-blog="${esc(x.kind + "|" + (x.pid || x.espn_id) + "|" + (x.stat || "") + "|" + x.side)}">+ Log</button>` : ""}</div>
-      ${x.verdict ? `<div class="verd">${esc(x.verdict)}</div>${caseHtml(x.case, x.ladder, x.point, x.side, false)}` : `<div class="why">${esc(x.why)}</div>`}</div>`;
+    // depth 1: the play, its level and one-line verdict; depth 2 (tap "The case"): the numbers, the reasons, the ladder
+    const nums = `<div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>${gl("Need", "needs")} ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>market ${Math.round(x.p_mkt * 100)}%</span><span>${evTag(x)}</span></div>`;
+    const logBtn = !x.res && !x.dropped && !(gOf(x.espn_id) && gOf(x.espn_id).state !== "pre") ? `<button class="btn ghost sm" data-blog="${esc(x.kind + "|" + (x.pid || x.espn_id) + "|" + (x.stat || "") + "|" + x.side)}">+ Log</button>` : "";
+    return `<div class="cr bb${x.dropped ? " drop" : ""}" ${attrs}><div><span class="rk">${x.dropped ? "–" : i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${cvBadge(x)}${statusOf(x)}
+        <div class="gm">${esc(x.game)} · ${tod(x.start)}</div></div>
+      <div class="rt"><div class="a">${bet}</div><div class="b">${amS(x.am)} DK ${logBtn}</div></div>
+      ${x.dropped ? `<div class="verd dim">Dropped ${tod(x.dropped)}: ${esc(x.drop_why || "")}. Still graded.</div>` : x.verdict ? `<div class="verd">${esc(x.verdict)}</div>` : ""}
+      ${x.dropped ? "" : `<details class="case"><summary>The case${x.case ? `: ${x.case.for.length} for, ${x.case.against.length} against` : ""}</summary>${nums}
+        ${x.case ? caseHtml(x.case, x.ladder, x.point, x.side, true).replace(/^<details class="case" open><summary>[^<]*<\/summary>/, "").replace(/<\/details>$/, "") : `<div class="why">${esc(x.why)}</div>`}</details>`}</div>`;
   };
+  const fp = (day.props || []).filter(x => passF(x)), fg = (day.games || []).filter(x => passF(x)), hidden = (day.props || []).length + (day.games || []).length - fp.length - fg.length;
+  const dropped = (agentDay.dropped || []).filter(x => passF(x));
+  const chg = useLocal && local.changes && local.changes.length ? `<div class="chgbox"><b>Your re-price at ${tod(local.at)} vs the agent's picks from ${tod(agentDay.updated)}:</b>${local.changes.slice(0, 10).map(c => `<div class="${c.t}">${c.t === "new" ? "＋" : c.t === "out" ? "−" : "↔"} ${esc(c.txt)}</div>`).join("")}</div>` : "";
+  const viewSw = local ? `<div class="seg bbsw"><button data-bv="local" class="${useLocal ? "on" : ""}">Re-priced ${tod(local.at)}</button><button data-bv="agent" class="${useLocal ? "" : "on"}">Agent's picks</button></div>` : "";
   const CMd = L.conviction, tr = t => CMd && CMd.tiers && CMd.tiers[t] && CMd.tiers[t].n ? `${Math.round(CMd.tiers[t].w / CMd.tiers[t].n * 100)}% of ${CMd.tiers[t].n}` : "—";
   const rt = R.tiers || {};
   const wp = L.w_props ? Object.entries(L.w_props).map(([k, v]) => `${STATN[k] || k} ${Math.round(v * 100)}%`).join(" · ") : "";
   return title + `<div class="card" style="padding:4px 12px 10px" id="bestCard">
-      <div class="desc" style="margin-top:6px">Ranked by conviction (0–100): how far the chance of winning sits above what the price needs. Each play shows its verdict; tap "The case" for why it works, why it won't hit, and his hit rate at this line and the next ones out. Picks lock at tip-off.</div>
-      <div class="lbl">Props · record ${rs(R.props)}</div>${(day.props || []).map(row).join("") || '<div class="empty">No props pass the checks yet (DraftKings posts player lines in the afternoon).</div>'}
-      <div class="lbl">Spreads & totals · record ${rs(R.games)}</div>${(day.games || []).map(row).join("") || '<div class="empty">No DraftKings game lines yet.</div>'}
+      ${viewSw}${chg}
+      <div class="desc" style="margin-top:6px">${gl("Confident")}, ${gl("Consider")} or ${gl("Pass")}, with ${gl("Conviction", "conviction")} 0–100. Tap "The case" for the numbers, why it works, why it won't hit, and his hit rate at this line and the next ones out. Picks lock at tip-off.${useLocal ? " <b>Re-priced on this phone: not recorded; the agent's picks are the graded ones.</b>" : ""}</div>
+      ${hidden > 0 ? `<div class="desc gold">${hidden} hidden by your filters.</div>` : ""}
+      <div class="lbl">Props · record ${rs(R.props)}</div>${fp.map(row).join("") || '<div class="empty">No props pass the checks (or your filters) yet. DraftKings posts player lines in the afternoon.</div>'}
+      <div class="lbl">Spreads & totals · record ${rs(R.games)}</div>${fg.map(row).join("") || '<div class="empty">No game lines for these filters.</div>'}
+      ${dropped.length ? `<details class="bbl"><summary>Dropped today · ${dropped.length} (still graded, record ${rs(R.dropped)})</summary>${dropped.map(row).join("")}</details>` : ""}
       <details class="bbl"><summary>What the model has learned</summary><div class="desc">
         <b>Conviction</b> averages two reads. One is the sim blended with DraftKings' price. The other is a model of what has actually paid: it starts from DraftKings' price and moves it for matchup conviction, unders, and whether his last-10 hit rate agrees${CMd ? `. Tested on days it hadn't seen (${CMd.n.toLocaleString()} graded props over ${CMd.days} days), its top calls won ${tr("70")}, the next tier ${tr("60")}, and it scored ${CMd.cv_ll.model} vs the market's ${CMd.cv_ll.market} (lower is better). That is a short window, so the record below is what counts` : " (it switches on after 400 graded props)"}.<br>
         <b>Hit rates alone don't beat the price</b>: books move the line with form, so a 7-of-10 streak is already in the number. Hit rates count only when they agree with the matchup read.<br>
         ${(pt => pt && pt.n >= 40 ? `<b>Which reasons have actually paid</b> (${pt.n} graded props since ${pt.from}; every priced prop is logged, not only the picks): ${Object.entries(pt.tags).map(([t, v]) => [t, v.f[0] + v.f[1], v.f[0] / Math.max(1, v.f[0] + v.f[1]), v.a[0] + v.a[1], v.a[0] / Math.max(1, v.a[0] + v.a[1])]).filter(x => x[1] >= 15 || x[3] >= 15).sort((a, b) => b[2] - a[2]).map(x => `${esc(x[0])} ${x[1] >= 15 ? "for " + Math.round(x[2] * 100) + "%" : ""}${x[1] >= 15 && x[3] >= 15 ? " / " : ""}${x[3] >= 15 ? "against " + Math.round(x[4] * 100) + "%" : ""}`).join(" · ")}. "For 60%" means plays with that reason on their side won 60%; "against 45%" means plays won 45% despite it.<br>
-        <b>All priced props by conviction:</b> ${["Strong", "Solid", "Lean", "Pass"].map(t => `${t} ${pt.conv[t][0]}-${pt.conv[t][1]}`).join(" · ")}.<br>` : `<b>Which reasons actually pay:</b> every priced prop's case is now logged and graded (not only the five picks). The table of which reasons win appears here after about 40 graded props.<br>`)(B.patterns)}
-        <b>Record by tier:</b> Strong ${rs(rt.Strong)} · Solid ${rs(rt.Solid)} · Lean ${rs(rt.Lean)}.<br>
+        <b>All priced props by conviction:</b> ${["Confident", "Consider", "Pass"].map(t => `${t} ${(pt.conv[t] || [0, 0])[0]}-${(pt.conv[t] || [0, 0])[1]}`).join(" · ")}.<br>` : `<b>Which reasons actually pay:</b> every priced prop's case is now logged and graded (not only the five picks). The table of which reasons win appears here after about 40 graded props.<br>`)(B.patterns)}
+        <b>Record by confidence:</b> Confident ${rs(rt.Confident)} · Consider ${rs(rt.Consider)} · Pass ${rs(rt.Pass)}${R.dropped && R.dropped.w + R.dropped.l ? ` · dropped picks ${rs(R.dropped)}` : ""}.<br>
         <b>Model vs market weight</b> (how much the model's own number counts against DraftKings' no-vig price, learned from ${L.props_scored || 0} graded props): ${esc(wp)}. Where the model hasn't beaten the market yet, the weight stays low and its picks lean on the price.<br>
         <b>Game lines:</b> the sim counts ${Math.round((L.w_game || 0) * 100)}% against the market${!L.w_game_learned ? " (a starting value until 20+ sims are graded against Vegas)" : ", set by how its margin errors compare with Vegas'"}.<br>
         <b>Sim corrections</b> from ${L.games_graded || 0} graded games: totals ${L.total_bias > 0 ? "-" : "+"}${Math.abs(L.total_bias || 0).toFixed(1)} pts${L.stat_bias ? " · players " + Object.entries(L.stat_bias).filter(([, v]) => Math.abs(v) >= 0.1).map(([k, v]) => `${STATN[k] || k} ${v > 0 ? "-" : "+"}${Math.abs(v).toFixed(1)}`).join(", ") : ""}.<br>
@@ -1138,13 +1318,22 @@ function bestHtml() {
     </div>`;
 }
 function bindBest(root) {
+  const rp = root.querySelector("#bbReprice"), fu = root.querySelector("#bbFull"), msg = root.querySelector("#bbMsg");
+  if (fu && window.BESTREFRESH) { fu.href = BESTREFRESH.fullRefreshUrl(); fu.onclick = () => { toast("GitHub opens with the refresh request. Tap Submit; new picks land in about two minutes."); }; }
+  if (rp && window.BESTREFRESH) rp.onclick = async () => {
+    rp.disabled = true;
+    try { await BESTREFRESH.reprice(t => { if (msg) msg.textContent = t; }); store.set("bestview", "local"); renderToday(); toast("Re-priced with DraftKings' current lines"); }
+    catch (e) { if (msg) msg.textContent = "Couldn't re-price: " + e.message; rp.disabled = false; }
+  };
+  root.querySelectorAll("[data-bv]").forEach(b => b.onclick = () => { store.set("bestview", b.dataset.bv); renderToday(); });
   const el = root.querySelector("#bestCard"); if (!el) return;
   el.querySelectorAll("[data-bgame]").forEach(r => r.onclick = () => window.openGame && openGame(r.dataset.bgame));
   el.querySelectorAll("details.case").forEach(d => d.onclick = e => e.stopPropagation());
   el.querySelectorAll("[data-blog]").forEach(b => b.onclick = e => {
     e.stopPropagation();
     const [kind, id, stat, side] = b.dataset.blog.split("|"), day = D.best.days[D.players.date];
-    const x = [...day.props, ...day.games].find(y => y.kind === kind && (y.pid || y.espn_id) === id && (y.stat || "") === stat && y.side === side);
+    let loc = null; try { loc = JSON.parse(localStorage.getItem("pz-bestlocal") || "null"); } catch (e2) {}
+    const x = [...day.props, ...day.games, ...(loc && loc.date === D.players.date ? [...loc.props, ...loc.games] : [])].find(y => y.kind === kind && (y.pid || y.espn_id) === id && (y.stat || "") === stat && y.side === side);
     if (!x) return;
     if (kind === "prop") return openLogBet({kind: "prop", player: x.name, stat: x.stat, side: x.side, line: x.point, game: x.espn_id, odds: amS(x.am), book: "DraftKings"});
     const home = x.home_name || x.home, away = x.away_name || x.away;
@@ -1163,6 +1352,7 @@ function runTimes() {
     SCHED.forEach(([h, m, name]) => out.push([at(h, m), name]));
     for (let h = 18; h <= 23; h++) [3, 33].forEach(m => out.push([at(h, m), "Injury watch"]));
     for (let h = 0; h <= 5; h++) [7, 22, 37, 52].forEach(m => out.push([at(h, m), "Live lines + injury watch"]));
+    for (let h = 0; h < 24; h++) [0, 15, 30, 45].forEach(m => out.push([at(h, m), "Auto check: lines, injuries, refresh if due"]));
   }
   return out.sort((a, b) => a[0] - b[0]);
 }
@@ -1172,9 +1362,9 @@ function tickClock() {
   if (!nx) return;
   const left = Math.max(0, Math.floor((nx[0] - now) / 1000)), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), sc = left % 60;
   el.textContent = [h, m, sc].map(x => String(x).padStart(2, "0")).join(":");
-  $("rcWhen").textContent = new Date(nx[0]).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"});
-  $("rcName").textContent = nx[1];
-  if (pv) $("rcBar").style.width = Math.min(100, (now - pv[0]) / (nx[0] - pv[0]) * 100).toFixed(1) + "%";
+  if ($("rcWhen")) $("rcWhen").textContent = new Date(nx[0]).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"});
+  if ($("rcName")) $("rcName").textContent = nx[1];
+  if (pv && $("rcBar")) $("rcBar").style.width = Math.min(100, (now - pv[0]) / (nx[0] - pv[0]) * 100).toFixed(1) + "%";
 }
 setInterval(tickClock, 1000);
 function focusMap() {
@@ -1194,7 +1384,7 @@ function heroHtml(youEq) {
   if (!D.sb) get("scoreboard.json", {}).then(x => { D.sb = x; if (store.get("tab") === "today" && !$("sheet").classList.contains("on")) renderToday(); });
   return `<div class="hero"><div class="hero-top">
       <div><div class="label">Team Comeback · paper money</div><div class="hname">Perseverance</div><div class="mission">$100 → $1,000 · beat the closing line</div></div>
-      <div class="runclock"><div class="rc-l"><span>Next run</span><span id="rcWhen"></span></div><div class="rc-t" id="rcT">--:--:--</div><div class="rc-bar"><i id="rcBar"></i></div><div class="rc-n" id="rcName"></div></div></div>
+      </div>
     <div class="tiles4">
       <div class="tl agent" onclick="go('bets')"><div class="k">Agent · run #${state.book.run}</div><div class="v">${money(state.stats.equity)}</div><div class="r">${rec(state.stats)} · ${state.stats.open} open</div></div>
       <div class="tl you" onclick="go('bets')"><div class="k">You</div><div class="v">${money(youEq)}</div><div class="r">${rec(manual.stats)} · ${manual.stats.open} open</div></div>
@@ -1253,7 +1443,8 @@ function renderProps() {
   const {players, pz} = D;
   const games = players.games || [];
   const F = D.pf || (D.pf = {tab: null, stat: "all", lean: "all", q: "", all: false, game: "all"});
-  if (D.propGame) { F.game = D.propGame; D.propGame = null; F.all = false; }
+  if (D.propGame) { setFltQuiet("game", D.propGame); D.propGame = null; F.all = false; }
+  const GF = FLT(); F.game = GF.game || "all"; F.stat = GF.stat || "all"; F.lean = GF.side || "all";
   const rows = propRows().filter(r => F.game === "all" ? upcoming(r) : fresh(r));
   const pricedRows = rows.filter(r => r.line != null);
   if (!F.tab) F.tab = pricedRows.length ? "priced" : "research";
@@ -1261,7 +1452,8 @@ function renderProps() {
   const base = (F.tab === "priced" ? pricedRows : rows).filter(r => (F.game === "all" || r.espn_id === F.game)
     && (F.stat === "all" ? (F.tab === "priced" || PROP_STATS.includes(r.stat)) : r.stat === F.stat)
     && (F.lean === "all" || r.lean === F.lean)
-    && (!q || r.name.toLowerCase().includes(q) || r.team.toLowerCase() === q || r.opp.toLowerCase() === q));
+    && (!q || r.name.toLowerCase().includes(q) || r.team.toLowerCase() === q || r.opp.toLowerCase() === q)
+    && (!GF.watch || WATCH().players.includes(String(r.pid))));
   const list = onePerPlayer(base, F.tab === "priced" ? r => (r.ev ?? -1) : r => rating(r).n + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0));
   const lim = F.all || q || F.game !== "all" ? list.length : 10;
   const nP = onePerPlayer(pricedRows, r => r.ev ?? -1).length;
@@ -1287,9 +1479,9 @@ function renderProps() {
   const rer = () => renderProps();
   $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
   $("ptab").querySelectorAll("button").forEach(b => b.onclick = () => { F.tab = b.dataset.t; F.all = false; rer(); });
-  $("gch").querySelectorAll("button").forEach(b => b.onclick = () => { F.game = b.dataset.g; rer(); });
-  $("sch").querySelectorAll("button[data-s]").forEach(b => b.onclick = () => { F.stat = b.dataset.s; rer(); });
-  $("sch").querySelectorAll("button[data-l]").forEach(b => b.onclick = () => { F.lean = F.lean === b.dataset.l ? "all" : b.dataset.l; rer(); });
+  $("gch").querySelectorAll("button").forEach(b => b.onclick = () => setFlt("game", b.dataset.g === "all" ? "" : b.dataset.g));
+  $("sch").querySelectorAll("button[data-s]").forEach(b => b.onclick = () => setFlt("stat", b.dataset.s === "all" ? "" : b.dataset.s));
+  $("sch").querySelectorAll("button[data-l]").forEach(b => b.onclick = () => setFlt("side", F.lean === b.dataset.l ? "" : b.dataset.l));
   const pa = $("pall"); if (pa) pa.onclick = () => { F.all = true; rer(); };
   bindPlayerLinks($("v-props"));
 }
@@ -1475,7 +1667,7 @@ function renderCard() {
   const cs = cardCase(pc);
 
   $("pane").innerHTML = `<div class="hd"><button class="x" onclick="history.back()">×</button>
-      <div class="name">${esc(p.name)}</div>
+      <div class="name">${esc(p.name)} ${starBtn("players", p.pid)}</div>
       <div class="desc">${esc(p.team)} ${p.home ? "vs" : "@"} ${esc(p.opp)} · ${when(p.start)} · ${esc(p.role)} · ${p.minutes.toFixed(0)} proj. min</div>
       <div style="margin-top:6px">${lineup}</div>
       <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
@@ -2222,11 +2414,13 @@ async function liveTick() {
 }
 
 // ===================================================== navigation + boot
-const RENDER = {today: renderToday, props: renderProps, bets: renderBets, trends: renderTrends, agent: renderAgent};
+const RENDER = {today: renderToday, props: renderProps, bets: renderBets, model: renderModel};
 function go(v) {
+  if (["trends", "agent", "health"].includes(v)) { store.set("msub", v); v = "model"; }
   if (!RENDER[v]) v = "today";
   document.querySelectorAll(".view").forEach(el => el.classList.toggle("on", el.id === "v-" + v));
-  document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
+  document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v || (v === "sim" && b.dataset.v === "games")));
+  fbar(v);
   store.set("tab", v);
   if (location.hash !== "#" + v) history.replaceState(null, "", "#" + v);
   RENDER[v]();
@@ -2234,7 +2428,7 @@ function go(v) {
   liveTick();
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go(b.dataset.v));
-window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (RENDER[v] && D.state) go(v); });
+window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if ((RENDER[v] || ["trends", "agent", "health"].includes(v)) && D.state) go(v); });
 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
@@ -2252,6 +2446,7 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
 })();
 </script>
 <script src="case.js"></script>
+<script src="refresh.js"></script>
 <script src="sim.js"></script>
 <script src="games.js"></script>
 </body>

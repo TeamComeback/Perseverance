@@ -160,12 +160,15 @@ function buildCase(x) {
 // conviction 0-100 from the probability edge over the price (0.44 break-even gap = 0, +10 points of edge = 100)
 // A play that wins less than half the time is never "strong", whatever the price.
 function convScore(p, dec) { const e = p - 1 / dec; return Math.max(5, Math.min(p < 0.5 ? 54 : p < 0.54 ? 74 : 99, Math.round(40 + e * 600))); }
-const convTier = s => s >= 75 ? "Strong" : s >= 55 ? "Solid" : s >= 40 ? "Lean" : "Pass";
+// Confidence levels: Confident (the chance of winning sits 3+ points above what the price needs),
+// Consider (about 1-3 points above), Pass (the price is about right or better than the play).
+const TIERS = ["Confident", "Consider", "Pass"];
+const convTier = s => s >= 60 ? "Confident" : s >= 45 ? "Consider" : "Pass";
 function verdict(c, score) {
   const f = c.for.slice(0, 2).map(b => b.tag), a = c.against[0];
   return `${convTier(score)}: ${f.length ? f.join(" and ") + (f.length > 1 ? " agree" : " carries it") : "the price is the case"}${a ? `; the main risk is ${a.tag}` : ""}.`;
 }
-const api = {buildCase, convProb, convScore, convTier, verdict, ladder, SV};
+const api = {TIERS, buildCase, convProb, convScore, convTier, verdict, ladder, SV};
 if (typeof window !== "undefined") window.CASE = api;
 if (typeof module !== "undefined") module.exports = api;
 })();

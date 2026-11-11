@@ -341,6 +341,7 @@ async function renderSim() {
   const gSel = games.find(g => g.espn_id === S.gameId) || {};
   const liveFirst = (S.now && S.now.state === "in") || gSel.state === "in" || (gSel.state === "pre" && gSel.start && new Date(gSel.start) < Date.now());
   $("v-sim").innerHTML = `
+    <button class="btn ghost" id="simBack" style="margin:0 0 8px;padding:6px 12px;font-size:13px">← Back to the game</button>
     <div class="chips" id="simg">${chips || '<span class="desc">No NBA games on the slate.</span>'}</div>
     ${liveFirst ? '<h2>Live · DraftKings</h2><div class="card" id="simLive"><div class="empty">Loading the live game…</div></div>' : ""}
     <div id="simStage"></div>
@@ -353,6 +354,7 @@ async function renderSim() {
     <h2>Today's simulations</h2>
     <div class="card" id="simDay"><div class="empty">Loading…</div></div>
     <div class="desc" style="margin:10px 2px">How it works: each possession picks who shoots (usage), what kind of shot, makes and misses, assists, rebounds and turnovers from each player's own rates. Rotations follow projected minutes, starters sit in blowouts, and the box score is calibrated so the average sim matches the matchup projections. Pace and the spread come from the model and Vegas.</div>`;
+  $("simBack") && ($("simBack").onclick = () => { if (window.openGame) openGame(S.gameId, "game"); });
   $("simg") && $("simg").querySelectorAll("button").forEach(b => b.onclick = () => { stop(); S.gameId = b.dataset.g; S.P = null; S.game = null; S.mc = null; S.now = null; S.nowSim = null; clearInterval(S.liveTimer); renderSim(); });
   if (!S.gameId) return;
   if (!S.P || S.P.g.espn_id !== S.gameId) {
@@ -1052,7 +1054,7 @@ function showDay() {
   el.innerHTML = `<div class="desc">${runs.length} run${runs.length > 1 ? "s" : ""} today, 10,000 simulations each. The sim is seeded, so the same inputs always give the same answer: any movement below comes from new information (injury report, lineups, minutes), not luck. <b>Avg of runs</b> is the steadiest single number; <b>moved</b> is the change since the first run.</div>
     <div class="scroll"><table class="tbl"><tr><th>Run</th><th>Score</th><th>${esc(G0 && P ? P.teams.home.ab : "Home")} win</th><th>Total</th></tr>
       ${runs.map((r, i) => { const g = r.games[S.gameId]; return `<tr><td class="t">${tm(r.ts)}</td><td>${f1(g.avg.away)}–${f1(g.avg.home)}</td><td>${Math.round(g.win_home * 100)}%</td><td>${f1(g.total)}</td></tr>
-        ${r.why || g.changes ? `<tr class="rwhy"><td colspan="4">${esc(r.why || "")}${g.changes ? ` · <span class="${g.changes[0] === "no change" ? "dim" : "gold"}">${esc(g.changes.join(", "))}</span>` : ""}</td></tr>` : ""}`; }).join("")}
+        ${(r.why || g.changes) && !(typeof FLT === "function" && FLT().signal && (!g.changes || g.changes[0] === "no change") && (!r.why || r.why === "scheduled refresh")) ? `<tr class="rwhy"><td colspan="4">${esc(r.why || "")}${g.changes ? ` · <span class="${g.changes[0] === "no change" ? "dim" : "gold"}">${esc(g.changes.join(", "))}</span>` : ""}</td></tr>` : ""}`; }).join("")}
       ${runs.length > 1 ? `<tr><td class="t"><b>Avg of runs</b></td><td><b>${f1(avgOf(scores.map(g => g.avg.away)))}–${f1(avgOf(scores.map(g => g.avg.home)))}</b></td><td><b>${Math.round(avgOf(scores.map(g => g.win_home)) * 100)}%</b></td><td><b>${f1(avgOf(scores.map(g => g.total)))}</b></td></tr>` : ""}</table></div>
     <div class="chips" id="dayS" style="margin-top:8px">${["min", "pts", "reb", "ast", "tpm", "pra", "ra"].map(k => `<button data-s="${k}" class="${k === st ? "on" : ""}">${k === "min" ? "MIN" : STATN[k]}</button>`).join("")}</div>
     <div class="scroll"><table class="tbl"><tr><th>Player</th>${runs.map(r => `<th>${tm(r.ts)}</th>`).join("")}<th>Avg of runs</th><th>Moved</th></tr>
@@ -1237,7 +1239,7 @@ function priceHtml() {
   const p = pAt(m, kind, side, point), ev = p * dec - 1, need = 1 / dec;
   const g = (D.players.games || []).find(x => x.espn_id === S.gameId) || {};
   const label = kind === "tot" ? `${side === "over" ? "Over" : "Under"} ${f1(point)}` : kind === "ml" ? `${side === "home" ? g.home : g.away} ML` : `${side === "home" ? g.home : g.away} ${spS(point)}`;
-  return `<div style="margin-top:6px;font-size:14px">${esc(label)} ${am_(dec)}: sim <b>${pcS(p)}</b> vs ${pcS(need)} needed · <b class="${ev >= 0.05 ? "gold" : ev > 0 ? "h" : "dim"}">${ev > 0 ? "+" : ""}${Math.round(ev * 100)}% EV</b> ${ev >= 0.05 ? '<b class="gold">Value</b>' : ev >= 0.02 ? '<span class="h">Lean</span>' : '<span class="dim">Pass</span>'}
+  return `<div style="margin-top:6px;font-size:14px">${esc(label)} ${am_(dec)}: sim <b>${pcS(p)}</b> vs ${pcS(need)} needed · <b class="${ev >= 0.05 ? "gold" : ev > 0 ? "h" : "dim"}">${ev > 0 ? "+" : ""}${Math.round(ev * 100)}% EV</b> ${ev >= 0.05 ? '<b class="gold">Confident</b>' : ev >= 0.02 ? '<span class="h">Consider</span>' : '<span class="dim">Pass</span>'}
     <button class="lbtn" data-lbet="${esc(lbetKey(kind, side, kind === "ml" ? null : point, dec, true))}">+ Log it</button></div>`;
 }
 function priceForm(H, A) {
@@ -1340,7 +1342,7 @@ function liveValueHtml(n, c, A, H) {
     : seen && seen.key === lineSig(L) ? `DraftKings via ESPN, unchanged since ${seen.at}${elN - seen.el >= 60 ? ` (${Math.floor((elN - seen.el) / 60)}:${String(Math.floor((elN - seen.el) % 60)).padStart(2, "0")} of game time)` : ""}` : "DraftKings via ESPN";
   const u = S.userLine[S.gameId];
   if (stale) rows.forEach(r => { r.ev = null; });
-  const verdict = ev => ev == null ? `<span class="dim">${S.simBusy ? "…" : "—"}</span>` : ev >= 0.05 ? '<b class="gold">Value</b>' : ev >= 0.02 ? '<span class="h">Lean</span>' : '<span class="dim">Pass</span>';
+  const verdict = ev => ev == null ? `<span class="dim">${S.simBusy ? "…" : "—"}</span>` : ev >= 0.05 ? '<b class="gold">Confident</b>' : ev >= 0.02 ? '<span class="h">Consider</span>' : '<span class="dim">Pass</span>';
   const best = rows.filter(r => r.ev != null && r.price).sort((a, b) => b.ev - a.ev)[0];
   const head = stale ? `<div class="stale">⚠ <b>DraftKings' live line on ESPN looks out of date</b>: ${esc(stale.join("; "))}. Live books keep spreads and totals near 50/50, so this almost always means ESPN's feed hasn't caught up. EV is hidden. Check the line in the DraftKings app and price it below.</div>`
     : !L.tot && !L.sp ? '<div class="desc">DraftKings has no live line posted right now (often suspended during reviews and free throws).</div>'
@@ -1363,7 +1365,7 @@ function liveValueHtml(n, c, A, H) {
         <td><b>${pcS(r.p)}</b></td><td class="dim">${pcS(r.need)}</td><td class="${r.ev == null ? "dim" : r.ev >= 0.05 ? "gold" : r.ev > 0 ? "h" : "dim"}">${r.ev == null ? "—" : (r.ev > 0 ? "+" : "") + Math.round(r.ev * 100) + "%"}</td><td>${r.price ? `<button class="lbtn sm" data-lbet="${esc(lbetKey(r.kind, r.side, r.point, r.price, true))}" aria-label="Log this bet">+</button>` : ""}</td></tr>`).join("")}</table></div>
     ${m && m.mg ? priceForm(H, A) : ""}
     ${useLineForm(H, A, L)}
-    <div class="desc" style="margin-top:6px"><b>+</b> logs the bet in your book at DraftKings' live price. <b>CLV</b>: points better (+) or worse (−) than the closing number for that side, your live CLV. A better number isn't value by itself, because the score changed too. <b>Value</b> means the sim's chance from this exact score and clock beats what DraftKings' price needs (5%+ EV; Lean is 2-5%). The sim knows the score, clock and each player's rates but not foul trouble or in-game injuries, so trust your read of the flow on those. Its live calls are graded every morning in Trends.</div>
+    <div class="desc" style="margin-top:6px"><b>+</b> logs the bet in your book at DraftKings' live price. <b>CLV</b>: points better (+) or worse (−) than the closing number for that side, your live CLV. A better number isn't value by itself, because the score changed too. <b>Confident</b> means the sim's chance from this exact score and clock beats what DraftKings' price needs by 5%+ EV; <b>Consider</b> is 2-5%; <b>Pass</b> is below that. The sim knows the score, clock and each player's rates but not foul trouble or in-game injuries, so trust your read of the flow on those. Its live calls are graded every morning in Trends.</div>
   </div>`;
 }
 function liveBoxHtml(n, A, H) {

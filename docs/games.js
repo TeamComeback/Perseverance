@@ -26,8 +26,9 @@ async function renderGames() {
 function renderScoreboard() {
   const games = D.players.games || [];
   const day = D.players.date ? new Date(D.players.date + "T12:00:00").toLocaleDateString([], {weekday: "long", month: "short", day: "numeric"}) : "";
+  const w = WATCH().games, shown = games.filter(g => passF({espn_id: g.espn_id})).sort((a, b) => (w.includes(b.espn_id) - w.includes(a.espn_id)));
   $("v-games").innerHTML = `<h2>NBA${day ? " · " + esc(day) : ""}</h2>
-    <div class="games" id="gList">${games.map(gCardHtml).join("") || '<div class="empty">No NBA games on the slate.</div>'}</div>
+    <div class="games" id="gList">${shown.map(gCardHtml).join("") || '<div class="empty">No NBA games on the slate (or none match your filters).</div>'}</div>
     <div class="desc" style="margin:6px 2px 4px">Scores refresh every 30 seconds while this tab is open. Tap a game for its box score, lines, live value, props and sim.</div>
     ${sec("b-board", "Board · bet it yourself", "", "", false)}`;
   bindCards();
@@ -40,7 +41,7 @@ async function refreshScores() {
   const sb = await scoreboard("basketball_nba", D.players.date.replaceAll("-", ""));
   if (sb) GV.sb = sb;
   const L = $("gList"); if (!L || GV.view) return;
-  const html = (D.players.games || []).map(gCardHtml).join("");
+  const w = WATCH().games, html = (D.players.games || []).filter(g => passF({espn_id: g.espn_id})).sort((a, b) => (w.includes(b.espn_id) - w.includes(a.espn_id))).map(gCardHtml).join("");
   if (html && L.innerHTML !== html) { L.innerHTML = html; bindCards(); }
 }
 function gCardHtml(g) {
@@ -52,7 +53,7 @@ function gCardHtml(g) {
   const status = st === "in" ? `<span class="pill live">${esc(n ? n.detail : s ? s.detail : "Live")}</span>` : st === "post" ? '<span class="pill fin">Final</span>' : `<span class="t">${tod(g.start)}</span>`;
   const lineTxt = ln ? `DK ${esc(g.home)} ${spS(ln.sp)} · O/U ${f1(ln.tot)}` : g.vegas && g.vegas.total ? `${esc(g.home)} ${spS(g.vegas.spread_home)} · O/U ${f1(g.vegas.total)}` : "";
   const simTxt = sim ? `Sim ${Math.round(sim.avg.away)}–${Math.round(sim.avg.home)} · ${esc(sim.win_home >= 0.5 ? g.home : g.away)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%` : "";
-  return `<div class="gcard gs" data-g="${g.espn_id}"><div class="gs-top">${status}</div>${row("away")}${row("home")}
+  return `<div class="gcard gs" data-g="${g.espn_id}"><div class="gs-top">${status}${isWatched("games", g.espn_id) ? '<span class="gold" style="margin-left:auto">★</span>' : ""}</div>${row("away")}${row("home")}
     ${lineTxt || simTxt ? `<div class="mdl">${[lineTxt, simTxt].filter(Boolean).join(" · ")}</div>` : ""}</div>`;
 }
 
@@ -69,14 +70,15 @@ function renderGamePage() {
     simStop();
     Object.assign(SIMV, {gameId: id, P: null, game: null, mc: null, now: null, nowSim: null}); clearInterval(SIMV.liveTimer);
   }
-  const subs = [["game", "Game"], ["match", "Matchup"], ["box", "Box score"], ["lines", "Lines"], ["props", "Props"]];
-  $("v-games").innerHTML = `<button class="btn ghost" id="gBack" style="margin:0 0 8px;padding:6px 12px;font-size:13px">← All games</button>
+  const subs = [["game", "Overview"], ["match", "Matchup"], ["props", "Players"], ["lines", "Lines"], ["box", "Box"], ["sim", "Sim ▶"]];
+  if (GV.sub === "sim") GV.sub = "game";
+  $("v-games").innerHTML = `<div style="display:flex;align-items:center;justify-content:space-between"><button class="btn ghost" id="gBack" style="margin:0 0 8px;padding:6px 12px;font-size:13px">← All games</button>${starBtn("games", id)}</div>
     <div class="card" id="gHead"></div>
     <div class="seg" id="gSubs" style="display:flex;gap:4px;margin:10px 0">${subs.map(([k, l]) => `<button data-k="${k}" class="${k === GV.sub ? "on" : ""}" style="flex:1;padding:7px 2px;font-size:12.5px">${l}</button>`).join("")}</div>
     <div id="gBody"></div>
     <button class="btn ghost" id="gSim" style="margin-top:12px;width:100%">▶ Watch the sim of this game</button>`;
   $("gBack").onclick = () => { GV.view = null; renderScoreboard(); window.scrollTo(0, 0); };
-  $("gSubs").querySelectorAll("button").forEach(b => b.onclick = () => { GV.sub = b.dataset.k; $("gSubs").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); fillGame(true); });
+  $("gSubs").querySelectorAll("button").forEach(b => b.onclick = () => { if (b.dataset.k === "sim") return go("sim"); GV.sub = b.dataset.k; $("gSubs").querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); fillGame(true); });
   $("gSim").onclick = () => go("sim");
   fillGame(true);
   pollGame();
@@ -158,10 +160,23 @@ function gameSub(g, n) {
       ${n ? uid(livePlaysHtml(n, A, H)) : ""}</div>
       <button class="more" data-gsub="box">Full box score →</button>`;
   }
-  // pre-game preview
+  // pre-game preview: one summary card first, the detail below
   const T = sim && sim.total, rng = T ? `${T[1]}–${T[9]}` : "";
+  const summary = (() => {
+    const rows = [], tn = D.tm && D.tm.tonight && D.tm.tonight[id];
+    if (sim) rows.push(["Projected", `<b>${esc(A)} ${f1(sim.avg.away)} – ${f1(sim.avg.home)} ${esc(H)}</b> · ${esc(sim.win_home >= 0.5 ? H : A)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%`]);
+    if (tn && c && c.sp != null) { const d = tn.margin + c.sp; rows.push(["Vegas vs our model", Math.abs(d) < 1.5 ? "agree on the spread" : `our model has ${esc(d > 0 ? H : A)} ${f1(Math.abs(d))} better than DraftKings`]); }
+    if (tn && tn.out && tn.out.length) rows.push(["Who's out", tn.out.map(o => `${esc(o.team)}: ${esc(o.names)} (${f1(o.pts)})`).join(" · ")]);
+    const day = ((D.best || {}).days || {})[D.players.date] || {}, picks = [...(day.props || []), ...(day.games || [])].filter(x => x.espn_id === id).slice(0, 2);
+    if (picks.length) rows.push(["Best bets here", picks.map(x => `${x.kind === "prop" ? esc(lastName(x.name)) + " " + x.side.toLowerCase() + " " + x.point + " " + (STATN[x.stat] || x.stat) : x.kind === "spread" ? esc(x.team) + " " + (x.point > 0 ? "+" : "") + x.point : x.side + " " + x.point} <span class="cvb ${x.tier}">${x.tier || ""}</span>`).join(" · ")]);
+    const risks = [];
+    if (sim && sim.mh) { const n = Object.values(sim.mh).reduce((t, v) => t + v, 0); let b = 0; for (const [k, v] of Object.entries(sim.mh)) if (Math.abs(+k) >= 15) b += v; if (b / n >= 0.3) risks.push(`blowout in ${Math.round(b / n * 100)}% of sims (starters sit late)`); }
+    const sp = (g.vegas || {}).spots || {}; ["away", "home"].forEach(sd => { if (sp[sd] && sp[sd].rest === 0) risks.push(`${g[sd]} on a back-to-back`); });
+    if (risks.length) rows.push(["Biggest risk", esc(risks.join("; "))]);
+    return rows.length ? `<div class="card gsum">${rows.map(([k, v]) => `<div class="row2"><span>${k}</span><span style="text-align:right">${v}</span></div>`).join("")}</div>` : "";
+  })();
   const mv = (x, y) => x == null || y == null || x === y ? "" : ` <span class="gold">(${y > x ? "+" : ""}${f1(y - x)})</span>`;
-  return `<div class="card">
+  return `${summary}<div class="card" style="margin-top:10px">
       ${sim ? `<div class="lbl" style="margin-top:0">Sim · 10,000 games</div>
         <div style="font-size:16px;font-weight:700">${esc(A)} ${f1(sim.avg.away)} – ${f1(sim.avg.home)} ${esc(H)}</div>
         <div class="desc">${esc(sim.win_home >= 0.5 ? H : A)} wins ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}% · total ${f1(T[0])} (80% of sims ${rng}) · ${esc(sim.margin >= 0 ? H : A)} by ${f1(Math.abs(sim.margin))}</div>` : '<div class="desc">The sim projection arrives with the next research run.</div>'}
@@ -280,7 +295,7 @@ function matchSub(g) {
   const ffRaw = (off, def) => { if (!off || !def) return null; let t = 0; for (const [k] of FF) { const v = ptsOf(k, off[k], def[k], L[k]); if (v != null) t += v; } return t; };
   const ffSum = (off, def) => { const t = ffRaw(off, def); return t == null ? null : t * KF; };
   const ffT = (off, def, ot, dt) => !off || !def ? '<div class="desc">No games in this window yet.</div>' : `<table class="tbl mff"><tr><th>${esc(ot)} off. vs ${esc(dt)} def.</th><th>${esc(ot)}</th><th>${esc(dt)} allows</th><th style="width:28%">Edge to</th></tr>
-    ${FF.map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}<div class="dim" style="font-size:10.5px">league ${pct ? pc1(L[k]) : f1(L[k])}</div></td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td>${bar(k, off[k], def[k], L[k], dir, ot, dt)}</tr>`).join("")}</table>
+    ${FF.filter(([k, , dir]) => !FLT().signal || dir === 0 ? !FLT().signal : Math.abs(dir * ((off[k] - L[k]) + (def[k] - L[k])) / Math.max(1e-6, Math.abs(L[k]))) >= 0.005).map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}<div class="dim" style="font-size:10.5px">league ${pct ? pc1(L[k]) : f1(L[k])}</div></td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td>${bar(k, off[k], def[k], L[k], dir, ot, dt)}</tr>`).join("")}</table>
     ${(t => t == null ? "" : `<div class="desc" style="margin-top:4px">${esc(ot)}'s offense vs ${esc(dt)}'s defense: ${Math.abs(t) < 0.3 ? "about even" : `${chip(t > 0 ? ot : dt)} <b style="color:var(--text)">≈ +${f1(Math.abs(t))} points</b> from shooting, turnovers, rebounding and free throws`}.</div>`)(ffSum(off, def, ot, dt))}`;
   const ffNum = v => v == null ? null : v;
   const fx = x => x && {efg: x.efg, tov: x.tov, orb: x.orb, ftr: ffNum(x.ftr), tpar: x.tpar, tpp: x.tpp};
@@ -319,7 +334,7 @@ function matchSub(g) {
       ${ffT(awayOff, homeDef, A, H)}<div style="height:10px"></div>${ffT(homeOff, awayDef, H, A)}
       ${(() => { const a = ffSum(awayOff, homeDef, A, H), h = ffSum(homeOff, awayDef, H, A); if (a == null || h == null) return "";
         const net = h - a; return `<div class="ffnet">Four factors overall: ${Math.abs(net) < 0.5 ? "<b>even</b>" : `${chip(net > 0 ? H : A)} <b>≈ +${f1(Math.abs(net))} points</b>`} <span class="dim">(team model margin: ${esc(pr.margin >= 0 ? H : A)} by ${f1(Math.abs(pr.margin))}; the rest is home court${tn ? ", lineups" : ""} and schedule)</span></div>`; })()}
-      <div class="desc">Each row's bar points toward the team that factor favors, in that team's color, with its value in points tonight (approximate, and on the Model view scaled so the factors add up to the team model's margin before home court). 3-point rate and 3-point % are already inside effective FG%, so they carry no points of their own. "Model" is opponent-adjusted; the other windows are raw this season${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
+      <div class="desc">Each row's bar points toward the team that factor favors, in that team's color, with its value in points tonight (approximate, and on the Model view scaled so the factors add up to the team model's margin before home court). 3-point rate and 3-point % are already inside effective FG%, so they carry no points of their own. "Model" is opponent-adjusted; the other windows are raw this season${FLT().signal ? ". Signal only is on, so factors that are about even (and the 3-point rate row) are hidden" : ""}${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
       ${lk.length ? `<div class="lbl">Three-point luck</div><div class="desc">${lk.join("<br>")}</div>` : ""}</div>
     ${zl ? `<h2>Shot zones</h2><div class="card">${zT(A, H)}<div style="height:10px"></div>${zT(H, A)}
       <div class="desc">Share of shots from each zone this season. Gold = above league; ★ = a zone the offense loves and the defense gives up. FG% allowed: green = defense is leaky there.</div></div>` : ""}

@@ -100,7 +100,7 @@ function bestBetsSetup(pj, simlog) {
         add(A, "model record", `Game lines are the hardest market to beat: in the backtest our team ratings went ${r.w}-${r.l} against DraftKings' ${kind === "spread" ? "spreads" : "totals"}. Treat this as a lean.`); }
       return {for: F.slice(0, 4), against: A.slice(0, 4)};
     };
-    const gFin = (c, kind, side, pt, ps, pm, dec, p) => { const cs = gameCase(kind, side, pt, ps, pm, dec), conv = Math.min(74, CASE.convScore(p, dec));
+    const gFin = (c, kind, side, pt, ps, pm, dec, p) => { const cs = gameCase(kind, side, pt, ps, pm, dec), conv = Math.min(59, CASE.convScore(p, dec));   // game lines top out at Consider until the team scoreboard shows an edge
       Object.assign(c, {conv, tier: CASE.convTier(conv), case: cs, verdict: CASE.verdict(cs, conv)}); return c; };
     if (line && line.sp != null && line.sp_h && line.sp_a) {
       const pSim = frac(N, i => M.team.home[i] + line.sp - M.team.away[i]);         // home covers
@@ -167,7 +167,7 @@ function bestBetsSetup(pj, simlog) {
 
   function gradeDay(date, day) {
     const dk = read(`dk/${date}.json`, null); if (!dk) return;
-    for (const b of [...(day.props || []), ...(day.games || [])]) {
+    for (const b of [...(day.props || []), ...(day.games || []), ...(day.dropped || [])]) {
       if (b.res) continue;
       let d = null, actual = null;
       if (b.kind === "prop") {
@@ -201,19 +201,35 @@ function bestBetsSetup(pj, simlog) {
       }
       return chosen.sort((a, b) => score(b) - score(a)).map(x => ({...x, plus: x.ev > 0}));
     };
-    const day = {updated: new Date().toISOString(), learned,
+    const day = {updated: new Date().toISOString(), why: process.env.SIM_REASON || "scheduled refresh", learned,
       props: pick(cands.props, old.props || [], 5, 2, true),
       games: pick(cands.games, old.games || [], 5, 1, false)};
+    // A pick is never erased silently: one that drops out before tip-off stays listed with the reason, and is graded
+    // like the rest (record.dropped), so refreshing can't flatter the record.
+    const keyOf = x => [x.kind, x.espn_id, x.pid || "", x.stat || "", x.side].join("|");
+    day.dropped = (old.dropped || []).slice();
+    const now_ = new Set([...day.props, ...day.games].map(keyOf)), seenD = new Set(day.dropped.map(keyOf));
+    for (const x of [...(old.props || []), ...(old.games || [])]) {
+      const k = keyOf(x); if (now_.has(k) || seenD.has(k)) continue;
+      const c = [...cands.props, ...cands.games].find(y => keyOf(y) === k);
+      const why = !c ? "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
+        : c.point !== x.point ? `line moved ${x.point} → ${c.point}` : c.conv < x.conv ? `confidence fell ${x.conv} → ${c.conv}` : "other plays ranked higher";
+      day.dropped.push({...x, dropped: day.updated, drop_why: why});
+    }
     BEST.days[date] = day;
     // grade earlier days, keep 60 days, and keep a running record by type
     for (const [d, x] of Object.entries(BEST.days)) if (d < date) gradeDay(d, x);
     const keep = Object.keys(BEST.days).sort().slice(-60);
     BEST.days = Object.fromEntries(keep.map(d => [d, BEST.days[d]]));
     const z = () => ({w: 0, l: 0, p: 0, u: 0});
-    const rec = {props: z(), games: z(), plus: z(), tiers: {Strong: z(), Solid: z(), Lean: z(), Pass: z()}};
+    const rec = {props: z(), games: z(), plus: z(), tiers: {Confident: z(), Consider: z(), Pass: z()}, dropped: z()};
+    for (const x of Object.values(BEST.days)) for (const b of x.dropped || []) {
+      if (!["win", "loss", "push"].includes(b.res)) continue;
+      const r = rec.dropped; r[b.res[0] === "w" ? "w" : b.res[0] === "l" ? "l" : "p"]++; r.u = r1((r.u + (b.units || 0)) * 100) / 100;
+    }
     for (const x of Object.values(BEST.days)) for (const k of ["props", "games"]) for (const b of x[k] || []) {
       if (!["win", "loss", "push"].includes(b.res)) continue;
-      for (const r of [rec[k], ...(b.plus ? [rec.plus] : []), ...(b.tier && rec.tiers[b.tier] ? [rec.tiers[b.tier]] : [])]) { r[b.res[0] === "w" ? "w" : b.res[0] === "l" ? "l" : "p"]++; r.u = r1((r.u + (b.units || 0)) * 100) / 100; }
+      for (const r of [rec[k], ...(b.plus ? [rec.plus] : []), ...(b.conv != null ? [rec.tiers[CASE.convTier(b.conv)]] : [])]) { r[b.res[0] === "w" ? "w" : b.res[0] === "l" ? "l" : "p"]++; r.u = r1((r.u + (b.units || 0)) * 100) / 100; }
     }
     // case log: keep tipped games' rows, replace the rest, grade earlier days, then count how each reason has done
     const prevRows = CLOG.days[date] || {};
@@ -231,7 +247,7 @@ function bestBetsSetup(pj, simlog) {
     }
     CLOG.days = Object.fromEntries(Object.keys(CLOG.days).sort().slice(-30).map(d => [d, CLOG.days[d]]));
     fs.writeFileSync(path.join(DATA, "case_log.json"), JSON.stringify(CLOG));
-    const pat = {n: 0, tags: {}, conv: {Strong: [0, 0], Solid: [0, 0], Lean: [0, 0], Pass: [0, 0]}, from: null};
+    const pat = {n: 0, tags: {}, conv: {Confident: [0, 0], Consider: [0, 0], Pass: [0, 0]}, from: null};
     for (const [d, rows] of Object.entries(CLOG.days)) for (const row of Object.values(rows)) {
       if (row[7] !== "w" && row[7] !== "l") continue;
       const win = row[7] === "w" ? 0 : 1; pat.n++; pat.from = pat.from || d;
@@ -297,6 +313,8 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
       const o = M.out[pid], w = M.who[pid];
       const s = {}; STATS.forEach(k => s[k] = [r1(mean(o[k])), ...qs(o[k])]);
       players[pid] = {name: w.name, team: P.teams[w.side].ab, min: r1(mean(o.min)), s};
+      // full count distributions for rotation players, so the phone can price any line exactly (Best Bets re-price)
+      if (mean(o.min) >= 15) { const h = {}; STATS.forEach(k => { const d = {}; const a = o[k]; for (let i = 0; i < N; i++) d[a[i]] = (d[a[i]] || 0) + 1; h[k] = d; }); players[pid].h = h; }
     }
     const avg = {home: r1(mean(M.team.home)), away: r1(mean(M.team.away))};
     // the single most typical simulated game: closest to the averages on the score and every player's line
