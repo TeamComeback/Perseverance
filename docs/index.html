@@ -1039,7 +1039,7 @@ function oppsHtml() {
 }
 
 // ===================================================== filters, watchlist, glossary (one set, every tab)
-const FLT0 = {game: "", stat: "", side: "", level: "", watch: false, signal: true};
+const FLT0 = {game: "", stat: "", side: "", watch: false};
 const FLT = () => Object.assign({}, FLT0, store.get("flt", {}));
 function setFltQuiet(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); }
 function setFlt(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); const t = store.get("tab", "today"); fbar(t); (RENDER[t] || renderToday)(); }
@@ -1064,7 +1064,7 @@ function passF(x, opt = {}) {
 }
 function fbar(tab) {
   const el = $("fbar"); if (!el) return;
-  if (!["today", "games", "props", "sim"].includes(tab) || !D.players) { el.innerHTML = ""; el.style.display = "none"; return; }
+  if (tab !== "props" || !D.players) { el.innerHTML = ""; el.style.display = "none"; return; }
   el.style.display = "";
   const f = FLT(), games = (D.players.games || []).filter(g => g.state !== "post" || g.espn_id === f.game);
   const sel = (k, opts, lab) => `<select data-f="${k}" class="${f[k] ? "on" : ""}" aria-label="${lab}">${opts.map(([v, l]) => `<option value="${esc(v)}"${String(f[k]) === String(v) ? " selected" : ""}>${esc(l)}</option>`).join("")}</select>`;
@@ -1073,15 +1073,13 @@ function fbar(tab) {
       ${sel("game", [["", "All games"], ...games.map(g => [g.espn_id, `${g.away} @ ${g.home}`])], "Game")}
       ${sel("stat", [["", "All stats"], ...ALL_STATS.map(k => [k, STATN[k]])], "Stat")}
       ${sel("side", [["", "Over + under"], ["Over", "Overs"], ["Under", "Unders"]], "Side")}
-      ${sel("level", [["", "Any level"], ["Consider", "Consider +"], ["Confident", "Confident"]], "Confidence")}
       <button data-ft="watch" class="${f.watch ? "on" : ""}">★ Watchlist</button>
-      <button data-ft="signal" class="${f.signal ? "on" : ""}" title="Hide rows with nothing notable">Signal only</button>
-      ${Object.keys(FLT0).some(k => k !== "signal" && f[k]) ? '<button data-ft="clear">Clear</button>' : ""}</div>
-    ${fg ? `<div class="focus">Focus: <b>${esc(fg.away)} @ ${esc(fg.home)}</b> · every tab shows only this game <button data-ft="unfocus">×</button></div>` : ""}`;
+      ${Object.keys(FLT0).some(k => f[k]) ? '<button data-ft="clear">Clear</button>' : ""}</div>
+    ${fg ? `<div class="focus">Showing <b>${esc(fg.away)} @ ${esc(fg.home)}</b> only <button data-ft="unfocus">×</button></div>` : ""}`;
   el.querySelectorAll("select").forEach(x => x.onchange = () => setFlt(x.dataset.f, x.value));
   el.querySelectorAll("button[data-ft]").forEach(b => b.onclick = () => {
     const k = b.dataset.ft;
-    if (k === "clear") { store.set("flt", {signal: f.signal}); fbar(tab); (RENDER[tab] || renderToday)(); }
+    if (k === "clear") { store.set("flt", {}); fbar(tab); (RENDER[tab] || renderToday)(); }
     else if (k === "unfocus") setFlt("game", "");
     else setFlt(k, !f[k]);
   });
@@ -1157,7 +1155,7 @@ function statusStrip() {
     <span>Next run <b id="rcWhen"></b> <b id="rcT">--:--</b></span><span id="rcName" class="dim"></span><i id="rcBar" style="display:none"></i></div>`;
 }
 function liveNowHtml() {
-  const L = (D.players.games || []).filter(g => (g.state === "in" || (g.state === "pre" && new Date(g.start) < Date.now())) && passF(g));
+  const L = (D.players.games || []).filter(g => g.state === "in" || (g.state === "pre" && new Date(g.start) < Date.now()));
   if (!L.length) return "";
   const sb = D.tonightSb || [], sc = id => sb.find(x => x.id === id);
   return `<h2>Live now</h2><div class="card">${L.map(g => { const s = sc(g.espn_id);
@@ -1204,7 +1202,7 @@ function renderToday() {
     ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), true)
       : `<div class="hint"><span>No open bets</span><button class="btn" onclick="openLogBet()">+ Log a bet</button></div>`}
     ${sec("t-bank", "Bankroll and model", money(youEq) + " you · " + money(state.stats.equity) + " agent", heroHtml(youEq), false)}
-    ${sec("t-top", "Top matchup spots" + (day ? " · " + esc(day) : ""), "by conviction", `<div style="padding:2px 0">${top.filter(r => passF(r)).map(cRow).join("") || `<div class="empty">${games.length ? "Nothing matches, or every game has tipped. Tomorrow's plays appear after the morning research run." : "The matchup board fills in with the morning research run."}</div>`}</div>
+    ${sec("t-top", "Top matchup spots" + (day ? " · " + esc(day) : ""), "by conviction", `<div style="padding:2px 0">${top.map(cRow).join("") || `<div class="empty">${games.length ? "Every game on tonight's slate has tipped off. Tomorrow's plays appear after the morning research run." : "The matchup board fills in with the morning research run."}</div>`}</div>
     <button class="more" onclick="go('props')">See every player →</button>`, false)}
     ${oppsHtml()}
     ${sec("t-slate", "Tonight's games", games.length + " games", games.length ? `<div class="games">${gameHtml}</div>` : '<div class="empty">No NBA games on the slate.</div>', false)}`;
@@ -1266,7 +1264,7 @@ function bestHtml() {
   const useLocal = local && store.get("bestview", "local") === "local";
   const day = useLocal ? {...agentDay, props: local.props, games: local.games} : agentDay;
   const title = `<h2>Best bets today${agentDay ? ` <span class="tag">${useLocal ? "re-priced " + ago(local.at) : "updated " + ago(agentDay.updated)}</span>` : ""}</h2>
-    <div class="rfrow"><button class="btn ghost sm" id="bbReprice">↻ Re-price now</button><a class="btn ghost sm" id="bbFull" href="#" target="_blank" rel="noopener">Full refresh ↗</a><span class="desc" id="bbMsg"></span></div>`;
+    <div class="rfrow"><button class="btn ghost sm" id="bbReprice">↻ Re-price now</button><span class="desc" id="bbMsg"></span></div>`;
   if (!day || !((day.props || []).length + (day.games || []).length))
     return `<h2>Best bets today</h2>` + `<div class="card"><div class="empty">Tonight's best bets appear after the sims run against DraftKings' lines (about 9:40am, 4:45pm and 6:15pm ET). Props need DraftKings' player lines, posted in the afternoon.</div></div>`;
   const R = B.record || {}, rs = r => r && (r.w + r.l + r.p) ? `${r.w}-${r.l}${r.p ? "-" + r.p : ""} (${r.u >= 0 ? "+" : ""}${r.u.toFixed(1)}u)` : "no graded picks yet";
@@ -1294,8 +1292,8 @@ function bestHtml() {
       ${x.dropped ? "" : `<details class="case"><summary>The case${x.case ? `: ${x.case.for.length} for, ${x.case.against.length} against` : ""}</summary>${nums}
         ${x.case ? caseHtml(x.case, x.ladder, x.point, x.side, true).replace(/^<details class="case" open><summary>[^<]*<\/summary>/, "").replace(/<\/details>$/, "") : `<div class="why">${esc(x.why)}</div>`}</details>`}</div>`;
   };
-  const fp = (day.props || []).filter(x => passF(x)), fg = (day.games || []).filter(x => passF(x)), hidden = (day.props || []).length + (day.games || []).length - fp.length - fg.length;
-  const dropped = (agentDay.dropped || []).filter(x => passF(x));
+  const fp = day.props || [], fg = day.games || [], hidden = 0;
+  const dropped = agentDay.dropped || [];
   const chg = useLocal && local.changes && local.changes.length ? `<div class="chgbox"><b>Your re-price at ${tod(local.at)} vs the agent's picks from ${tod(agentDay.updated)}:</b>${local.changes.slice(0, 10).map(c => `<div class="${c.t}">${c.t === "new" ? "＋" : c.t === "out" ? "−" : "↔"} ${esc(c.txt)}</div>`).join("")}</div>` : "";
   const viewSw = local ? `<div class="seg bbsw"><button data-bv="local" class="${useLocal ? "on" : ""}">Re-priced ${tod(local.at)}</button><button data-bv="agent" class="${useLocal ? "" : "on"}">Agent's picks</button></div>` : "";
   const CMd = L.conviction, tr = t => CMd && CMd.tiers && CMd.tiers[t] && CMd.tiers[t].n ? `${Math.round(CMd.tiers[t].w / CMd.tiers[t].n * 100)}% of ${CMd.tiers[t].n}` : "—";
@@ -1305,8 +1303,8 @@ function bestHtml() {
       ${viewSw}${chg}
       <div class="desc" style="margin-top:6px">${gl("Confident")}, ${gl("Consider")} or ${gl("Pass")}, with ${gl("Conviction", "conviction")} 0–100. Tap "The case" for the numbers, why it works, why it won't hit, and his hit rate at this line and the next ones out. Picks lock at tip-off.${useLocal ? " <b>Re-priced on this phone: not recorded; the agent's picks are the graded ones.</b>" : ""}</div>
       ${hidden > 0 ? `<div class="desc gold">${hidden} hidden by your filters.</div>` : ""}
-      <div class="lbl">Props · record ${rs(R.props)}</div>${fp.map(row).join("") || '<div class="empty">No props pass the checks (or your filters) yet. DraftKings posts player lines in the afternoon.</div>'}
-      <div class="lbl">Spreads & totals · record ${rs(R.games)}</div>${fg.map(row).join("") || '<div class="empty">No game lines for these filters.</div>'}
+      <div class="lbl">Props · record ${rs(R.props)}</div>${fp.map(row).join("") || '<div class="empty">No props pass the checks yet. DraftKings posts player lines in the afternoon.</div>'}
+      <div class="lbl">Spreads & totals · record ${rs(R.games)}</div>${fg.map(row).join("") || '<div class="empty">No DraftKings game lines yet.</div>'}
       ${dropped.length ? `<details class="bbl"><summary>Dropped today · ${dropped.length} (still graded, record ${rs(R.dropped)})</summary>${dropped.map(row).join("")}</details>` : ""}
       <details class="bbl"><summary>What the model has learned</summary><div class="desc">
         <b>Conviction</b> averages two reads. One is the sim blended with DraftKings' price. The other is a model of what has actually paid: it starts from DraftKings' price and moves it for matchup conviction, unders, and whether his last-10 hit rate agrees${CMd ? `. Tested on days it hadn't seen (${CMd.n.toLocaleString()} graded props over ${CMd.days} days), its top calls won ${tr("70")}, the next tier ${tr("60")}, and it scored ${CMd.cv_ll.model} vs the market's ${CMd.cv_ll.market} (lower is better). That is a short window, so the record below is what counts` : " (it switches on after 400 graded props)"}.<br>
@@ -1322,8 +1320,7 @@ function bestHtml() {
     </div>`;
 }
 function bindBest(root) {
-  const rp = root.querySelector("#bbReprice"), fu = root.querySelector("#bbFull"), msg = root.querySelector("#bbMsg");
-  if (fu && window.BESTREFRESH) { fu.href = BESTREFRESH.fullRefreshUrl(); fu.onclick = () => { toast("GitHub opens with the refresh request. Tap Submit; new picks land in about two minutes."); }; }
+  const rp = root.querySelector("#bbReprice"), msg = root.querySelector("#bbMsg");
   if (rp && window.BESTREFRESH) rp.onclick = async () => {
     rp.disabled = true;
     try { await BESTREFRESH.reprice(t => { if (msg) msg.textContent = t; }); store.set("bestview", "local"); renderToday(); toast("Re-priced with DraftKings' current lines"); }
@@ -1472,8 +1469,6 @@ function renderProps() {
   $("v-props").innerHTML = `
     <input class="search" id="pq" placeholder="Search a player or team (e.g. BOS)" value="${esc(F.q)}">
     <div class="tabs2" id="ptab"><button data-t="priced" class="${F.tab === "priced" ? "on" : ""}">Priced · ${nP}</button><button data-t="research" class="${F.tab === "research" ? "on" : ""}">Research</button></div>
-    <div class="chips" id="gch">${gameChips}</div>
-    <div class="chips" id="sch">${statChips}</div>
     <div class="desc" style="margin:2px 2px 6px">${F.tab === "priced" ? "Lines the agent bought, best edge first. One row per player (his best line)." : "Highest conviction first. Conviction (1-5 dots) adds up matchup size, whether the separate signals agree, secure minutes, and the price when there is one. One row per player."}</div>
     <div class="card" style="padding:2px 12px">${list.slice(0, lim).map(cRow).join("") || empty}</div>
     ${list.length > lim ? `<button class="more" id="pall">Show all ${list.length} players</button>` : ""}
@@ -1483,9 +1478,7 @@ function renderProps() {
   const rer = () => renderProps();
   $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
   $("ptab").querySelectorAll("button").forEach(b => b.onclick = () => { F.tab = b.dataset.t; F.all = false; rer(); });
-  $("gch").querySelectorAll("button").forEach(b => b.onclick = () => setFlt("game", b.dataset.g === "all" ? "" : b.dataset.g));
-  $("sch").querySelectorAll("button[data-s]").forEach(b => b.onclick = () => setFlt("stat", b.dataset.s === "all" ? "" : b.dataset.s));
-  $("sch").querySelectorAll("button[data-l]").forEach(b => b.onclick = () => setFlt("side", F.lean === b.dataset.l ? "" : b.dataset.l));
+
   const pa = $("pall"); if (pa) pa.onclick = () => { F.all = true; rer(); };
   bindPlayerLinks($("v-props"));
 }

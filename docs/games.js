@@ -26,9 +26,9 @@ async function renderGames() {
 function renderScoreboard() {
   const games = D.players.games || [];
   const day = D.players.date ? new Date(D.players.date + "T12:00:00").toLocaleDateString([], {weekday: "long", month: "short", day: "numeric"}) : "";
-  const w = WATCH().games, shown = games.filter(g => passF({espn_id: g.espn_id})).sort((a, b) => (w.includes(b.espn_id) - w.includes(a.espn_id)));
+  const w = WATCH().games, shown = games.slice().sort((a, b) => (w.includes(b.espn_id) - w.includes(a.espn_id)));
   $("v-games").innerHTML = `<h2>NBA${day ? " · " + esc(day) : ""}</h2>
-    <div class="games" id="gList">${shown.map(gCardHtml).join("") || '<div class="empty">No NBA games on the slate (or none match your filters).</div>'}</div>
+    <div class="games" id="gList">${shown.map(gCardHtml).join("") || '<div class="empty">No NBA games on the slate.</div>'}</div>
     <div class="desc" style="margin:6px 2px 4px">Scores refresh every 30 seconds while this tab is open. Tap a game for its box score, lines, live value, props and sim.</div>
     ${sec("b-board", "Board · bet it yourself", "", "", false)}`;
   bindCards();
@@ -41,7 +41,7 @@ async function refreshScores() {
   const sb = await scoreboard("basketball_nba", D.players.date.replaceAll("-", ""));
   if (sb) GV.sb = sb;
   const L = $("gList"); if (!L || GV.view) return;
-  const w = WATCH().games, html = (D.players.games || []).filter(g => passF({espn_id: g.espn_id})).sort((a, b) => (w.includes(b.espn_id) - w.includes(a.espn_id))).map(gCardHtml).join("");
+  const w = WATCH().games, html = (D.players.games || []).slice().sort((a, b) => (w.includes(b.espn_id) - w.includes(a.espn_id))).map(gCardHtml).join("");
   if (html && L.innerHTML !== html) { L.innerHTML = html; bindCards(); }
 }
 function gCardHtml(g) {
@@ -295,7 +295,7 @@ function matchSub(g) {
   const ffRaw = (off, def) => { if (!off || !def) return null; let t = 0; for (const [k] of FF) { const v = ptsOf(k, off[k], def[k], L[k]); if (v != null) t += v; } return t; };
   const ffSum = (off, def) => { const t = ffRaw(off, def); return t == null ? null : t * KF; };
   const ffT = (off, def, ot, dt) => !off || !def ? '<div class="desc">No games in this window yet.</div>' : `<table class="tbl mff"><tr><th>${esc(ot)} off. vs ${esc(dt)} def.</th><th>${esc(ot)}</th><th>${esc(dt)} allows</th><th style="width:28%">Edge to</th></tr>
-    ${FF.filter(([k, , dir]) => !FLT().signal || dir === 0 ? !FLT().signal : Math.abs(dir * ((off[k] - L[k]) + (def[k] - L[k])) / Math.max(1e-6, Math.abs(L[k]))) >= 0.005).map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}<div class="dim" style="font-size:10.5px">league ${pct ? pc1(L[k]) : f1(L[k])}</div></td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td>${bar(k, off[k], def[k], L[k], dir, ot, dt)}</tr>`).join("")}</table>
+    ${FF.map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}<div class="dim" style="font-size:10.5px">league ${pct ? pc1(L[k]) : f1(L[k])}</div></td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td>${bar(k, off[k], def[k], L[k], dir, ot, dt)}</tr>`).join("")}</table>
     ${(t => t == null ? "" : `<div class="desc" style="margin-top:4px">${esc(ot)}'s offense vs ${esc(dt)}'s defense: ${Math.abs(t) < 0.3 ? "about even" : `${chip(t > 0 ? ot : dt)} <b style="color:var(--text)">≈ +${f1(Math.abs(t))} points</b> from shooting, turnovers, rebounding and free throws`}.</div>`)(ffSum(off, def, ot, dt))}`;
   const ffNum = v => v == null ? null : v;
   const fx = x => x && {efg: x.efg, tov: x.tov, orb: x.orb, ftr: ffNum(x.ftr), tpar: x.tpar, tpp: x.tpp};
@@ -334,7 +334,7 @@ function matchSub(g) {
       ${ffT(awayOff, homeDef, A, H)}<div style="height:10px"></div>${ffT(homeOff, awayDef, H, A)}
       ${(() => { const a = ffSum(awayOff, homeDef, A, H), h = ffSum(homeOff, awayDef, H, A); if (a == null || h == null) return "";
         const net = h - a; return `<div class="ffnet">Four factors overall: ${Math.abs(net) < 0.5 ? "<b>even</b>" : `${chip(net > 0 ? H : A)} <b>≈ +${f1(Math.abs(net))} points</b>`} <span class="dim">(team model margin: ${esc(pr.margin >= 0 ? H : A)} by ${f1(Math.abs(pr.margin))}; the rest is home court${tn ? ", lineups" : ""} and schedule)</span></div>`; })()}
-      <div class="desc">Each row's bar points toward the team that factor favors, in that team's color, with its value in points tonight (approximate, and on the Model view scaled so the factors add up to the team model's margin before home court). 3-point rate and 3-point % are already inside effective FG%, so they carry no points of their own. "Model" is opponent-adjusted; the other windows are raw this season${FLT().signal ? ". Signal only is on, so factors that are about even (and the 3-point rate row) are hidden" : ""}${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
+      <div class="desc">Each row's bar points toward the team that factor favors, in that team's color, with its value in points tonight (approximate, and on the Model view scaled so the factors add up to the team model's margin before home court). 3-point rate and 3-point % are already inside effective FG%, so they carry no points of their own. "Model" is opponent-adjusted; the other windows are raw this season${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
       ${lk.length ? `<div class="lbl">Three-point luck</div><div class="desc">${lk.join("<br>")}</div>` : ""}</div>
     ${zl ? `<h2>Shot zones</h2><div class="card">${zT(A, H)}<div style="height:10px"></div>${zT(H, A)}
       <div class="desc">Share of shots from each zone this season. Gold = above league; ★ = a zone the offense loves and the defense gives up. FG% allowed: green = defense is leaky there.</div></div>` : ""}
