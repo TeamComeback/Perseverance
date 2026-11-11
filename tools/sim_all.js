@@ -311,7 +311,10 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
     }
     const typical = {score: {home: M.team.home[bi], away: M.team.away[bi]},
       players: Object.fromEntries(Object.keys(M.out).map(pid => { const o = M.out[pid]; return [pid, [r1(o.min[bi]), o.pts[bi], o.reb[bi], o.ast[bi], o.tpm[bi]]]; }))};
-    out.games[g.espn_id] = {at: out.updated, pace: r1(P.pace), model_pace: r1(P.modelPace || P.pace), home: g.home, away: g.away, start: g.start, vegas: g.vegas || null, avg, win_home: r1(hw / N * 100) / 100,
+    // full margin and total distributions, so the dashboard can show how often each side covers any line
+    const mh = {}, th = {};
+    for (let i = 0; i < N; i++) { mh[mar[i]] = (mh[mar[i]] || 0) + 1; th[tot[i]] = (th[tot[i]] || 0) + 1; }
+    out.games[g.espn_id] = {mh, th, at: out.updated, pace: r1(P.pace), model_pace: r1(P.modelPace || P.pace), home: g.home, away: g.away, start: g.start, vegas: g.vegas || null, avg, win_home: r1(hw / N * 100) / 100,
       total: [r1(mean(tot)), ...qs(tot)], margin: r1(mean(mar)), cover_home: sp != null ? r1(cover / N * 100) / 100 : null,
       over: vt ? r1(over / N * 100) / 100 : null, players, typical};
     // the sim's own probability at DraftKings' lines (pushes excluded), next to DraftKings' no-vig price

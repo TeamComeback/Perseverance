@@ -1452,6 +1452,32 @@ function showVs(elId, gid) {
       <div class="desc" style="margin-top:4px">Each row shows the side the sim likes better at DraftKings' price. Tap a player for his card (conviction, hit rates, line history) before acting on a gap.</div>` : '<div class="desc" style="margin-top:6px">No DraftKings player props for this game yet (props are priced around 2pm ET for the strongest matchups).</div>'}`;
   bindPlayerLinks(el);
 }
+// "Covers this many times": for the spread and total (and the lines either side), how many of the simulated games each
+// side wins, from the full distribution. mh/th = {value: count}. sp = home spread, tot = total, dk = DraftKings prices.
+function dkLine(gid) { const g = ((D.dkday || {}).games || {})[gid]; return g ? (g.close || g.open || null) : null; }
+function distFrom(arr) { const o = {}; for (let i = 0; i < arr.length; i++) o[arr[i]] = (o[arr[i]] || 0) + 1; return o; }
+function coverHtml(mh, th, sp, tot, H, A, dk) {
+  if (!mh) return "";
+  const N = Object.values(mh).reduce((t, v) => t + v, 0); if (!N) return "";
+  const cnt = (h, f) => { let w = 0, l = 0, p = 0; for (const [k, c] of Object.entries(h)) { const r = f(+k); if (r > 0) w += c; else if (r < 0) l += c; else p += c; } return [w, l, p]; };
+  const pc = (a, b) => b ? Math.round(a / b * 100) + "%" : "—";
+  const n0 = x => Math.round(x).toLocaleString();
+  const spLines = sp == null ? [] : [-3, -2, -1, 0, 1, 2, 3].map(d => sp + d);
+  const totLines = tot == null ? [] : [-6, -4, -2, 0, 2, 4, 6].map(d => tot + d);
+  const need = d => d ? Math.round(100 / d) + "%" : "";
+  const spRow = L => { const [w, l, p] = cnt(mh, m => m + L), cur = L === sp;   // home covers when margin + spread > 0
+    return `<tr class="${cur ? "cur" : ""}"><td class="t">${esc(H)} ${L > 0 ? "+" : ""}${f1(L)}${cur ? ' <span class="dim">DK</span>' : ""}</td><td><b>${n0(w)}</b> <span class="dim">${pc(w, w + l)}</span></td>
+      <td><b>${n0(l)}</b> <span class="dim">${pc(l, w + l)}</span></td><td class="dim">${p ? n0(p) : "—"}</td>${dk ? `<td class="dim">${cur && dk.sp_h ? need(dk.sp_h) + " / " + need(dk.sp_a) : ""}</td>` : ""}</tr>`; };
+  const toRow = L => { const [o, u, p] = cnt(th, t => t - L), cur = L === tot;
+    return `<tr class="${cur ? "cur" : ""}"><td class="t">${f1(L)}${cur ? ' <span class="dim">DK</span>' : ""}</td><td><b>${n0(o)}</b> <span class="dim">${pc(o, o + u)}</span></td>
+      <td><b>${n0(u)}</b> <span class="dim">${pc(u, o + u)}</span></td><td class="dim">${p ? n0(p) : "—"}</td>${dk ? `<td class="dim">${cur && dk.ov ? need(dk.ov) + " / " + need(dk.un) : ""}</td>` : ""}</tr>`; };
+  const ml = cnt(mh, m => m);
+  return `<div class="lbl">Covers · out of ${N.toLocaleString()} simulated games</div>
+    <div class="desc" style="margin-bottom:4px">${esc(H)} wins <b style="color:var(--text)">${n0(ml[0])}</b> times, ${esc(A)} <b style="color:var(--text)">${n0(ml[1])}</b>.${spLines.length ? ` Rows step through the alternate lines around DraftKings' number.` : ""}</div>
+    ${spLines.length ? `<div class="scroll"><table class="tbl lad cov"><tr><th>Spread</th><th>${esc(H)} covers</th><th>${esc(A)} covers</th><th>Push</th>${dk ? "<th>Need</th>" : ""}</tr>${spLines.map(spRow).join("")}</table></div>` : ""}
+    ${totLines.length ? `<div class="scroll" style="margin-top:6px"><table class="tbl lad cov"><tr><th>Total</th><th>Over</th><th>Under</th><th>Push</th>${dk ? "<th>Need</th>" : ""}</tr>${totLines.map(toRow).join("")}</table></div>` : ""}
+    <div class="desc">Times each side covered, with the share of decided games (pushes left out). "Need" is what DraftKings' price needs to break even at its line (${esc(H)} / ${esc(A)}, over / under).</div>`;
+}
 function showStored() {
   const G = D.sims && D.sims.games && D.sims.games[S.gameId], P = S.P;
   if (!G) return;
@@ -1476,6 +1502,7 @@ function showStored() {
     ${rows.map(r => `<tr data-pid="${r.pid}" data-stat="${st}" style="cursor:pointer"><td class="t">${esc(lastName(r.x.name))} <span class="dim">${esc(r.x.team)}</span></td><td>${f1(r.x.min)}</td><td><b>${f1(r.q[0])}</b></td>
       <td class="dim">${r.q[1]}–${r.q[9]}</td><td>${f1(r.line)} <span class="dim">${esc(r.src)}</span></td>
       <td class="${r.po >= 0.55 ? "h" : ""}">≈${Math.round(r.po * 100)}%</td><td class="${1 - r.po >= 0.55 ? "h" : ""}">≈${Math.round((1 - r.po) * 100)}%</td></tr>`).join("")}</table></div>
+    ${coverHtml(G.mh, G.th, sp, vt, G.home, G.away, dkLine(S.gameId))}
     ${G.typical ? `<button class="btn ghost" id="typBtn" style="margin-top:8px">${S.showTyp ? "Hide" : "Show"} the most typical simulated game</button>${S.showTyp ? typicalHtml(G) : ""}` : ""}`;
   $("mcs").querySelectorAll("button").forEach(b => b.onclick = () => { S.stat = b.dataset.s; showStored(); showDay(); });
   const tb = $("typBtn"); if (tb) tb.onclick = () => { S.showTyp = !S.showTyp; showStored(); };
@@ -1515,6 +1542,7 @@ function showMC() {
       ${overT != null ? `<div><div class="k">Over ${f1(vt)}</div><div class="v">${Math.round(overT * 100)}%</div></div>` : ""}
       ${P.spreadHome != null ? `<div><div class="k">${esc(P.teams.home.ab)} ${P.spreadHome > 0 ? "+" : ""}${f1(P.spreadHome)}</div><div class="v">${Math.round(cover / N * 100)}%</div></div>` : ""}
     </div>
+    ${coverHtml(distFrom(Array.from(M.team.home, (h, i) => h - M.team.away[i])), distFrom(Array.from(M.team.home, (h, i) => h + M.team.away[i])), P.spreadHome, vt, H, A, dkLine(S.gameId))}
     <div class="lbl">Game script · how the game goes changes what hits</div>
     <div class="chips" id="mcsc">${SCRIPTS.map(([k, l]) => `<button data-sc="${k}" class="${k === sc[0] ? "on" : ""}">${esc(l)}</button>`).join("")}</div>
     ${sc[0] !== "all" ? `<div class="desc" style="margin:2px 0 6px"><b style="color:var(--text)">${esc(sc[1])}</b> happens in <b style="color:var(--text)">${Math.round(idx.length / N * 100)}%</b> of sims (${idx.length.toLocaleString()} games). Over % below is inside those games; the change is vs all games.
@@ -1532,5 +1560,5 @@ function showMC() {
 
 RENDER.sim = renderSim;
 window.simEngine = {prep, calibrate, simGame, monteCarlo, setSeed, ensureAvg, loadAvgGame};
-window.SL = {lineBtns, editing, stop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName};
+window.SL = {coverHtml, lineBtns, editing, stop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName};
 })();

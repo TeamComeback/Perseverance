@@ -1,7 +1,7 @@
 // Games tab: tonight's NBA scoreboard → one page per game (score, linescore, live value, box score, lines, props),
 // plus the multi-sport board. Live data comes from the same free ESPN feeds as the Sim tab (sim.js pollLive).
 (() => {
-const {lineBtns, editing, stop: simStop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName} = window.SL;
+const {coverHtml, lineBtns, editing, stop: simStop, pollLive, liveSimFromHere, liveValueHtml, liveBoxHtml, livePlaysHtml, showVs, prep, calibrate, am_, spS, pcS, lastName} = window.SL;
 const GV = window.GAMESV = {view: null, sub: "game", timer: null, sb: null};
 const gOf = id => (D.players.games || []).find(x => x.espn_id === id);
 const sbOf = id => (GV.sb || []).find(x => x.id === id);
@@ -171,6 +171,7 @@ function gameSub(g, n) {
         <tr><td class="t">${esc(H)} / ${esc(A)} ML</td><td>${am_(dk.open && dk.open.ml_h)} / ${am_(dk.open && dk.open.ml_a)}</td><td>${am_(c && c.ml_h)} / ${am_(c && c.ml_a)}</td>${sim ? `<td>${Math.round(sim.win_home * 100)}%</td>` : ""}</tr></table></div>` : ""}
       ${c ? `<div class="lbl">Bet DraftKings' line</div>${lineBtns(c, false)}` : ""}
       ${vegasLine(g) ? `<div class="desc" style="margin-top:6px">${vegasLine(g).replace(/^<div class="mdl">|<\/div>$/g, "")}</div>` : ""}
+      ${sim && sim.mh ? coverHtml(sim.mh, sim.th, c && c.sp != null ? c.sp : sim.vegas && sim.vegas.spread_home, c && c.tot != null ? c.tot : sim.vegas && sim.vegas.total, H, A, c) : ""}
       <div class="desc" style="margin-top:6px">Live tracking (score, box score, live value) starts at tip-off.</div></div>
     ${spotsHtml(g)}${topProps(g, 3, true)}`;
 }
