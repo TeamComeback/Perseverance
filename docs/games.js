@@ -15,6 +15,7 @@ function gState(g) {
 
 async function renderGames() {
   if (!D.sims) D.sims = await get("sims.json", {games: {}});
+  if (D.tm === undefined) D.tm = await get("team_model.json", null);
   if (!D.dkday || D.dkday.date !== D.players.date) D.dkday = await get(`dk/${D.players.date}.json`, {date: D.players.date, games: {}});
   clearInterval(GV.timer);
   GV.timer = setInterval(() => { if (store.get("tab") !== "games" || document.hidden) return; GV.view ? pollGame() : refreshScores(); }, 30000);
@@ -68,7 +69,7 @@ function renderGamePage() {
     simStop();
     Object.assign(SIMV, {gameId: id, P: null, game: null, mc: null, now: null, nowSim: null}); clearInterval(SIMV.liveTimer);
   }
-  const subs = [["game", "Game"], ["box", "Box score"], ["lines", "Lines"], ["props", "Props"]];
+  const subs = [["game", "Game"], ["match", "Matchup"], ["box", "Box score"], ["lines", "Lines"], ["props", "Props"]];
   $("v-games").innerHTML = `<button class="btn ghost" id="gBack" style="margin:0 0 8px;padding:6px 12px;font-size:13px">← All games</button>
     <div class="card" id="gHead"></div>
     <div class="seg" id="gSubs" style="display:flex;gap:4px;margin:10px 0">${subs.map(([k, l]) => `<button data-k="${k}" class="${k === GV.sub ? "on" : ""}" style="flex:1;padding:7px 2px;font-size:12.5px">${l}</button>`).join("")}</div>
@@ -104,12 +105,13 @@ function fillGame(force) {
   $("gHead").innerHTML = headHtml(g, n);
   const b = $("gBody"); if (!b) return;
   if (!force && editing() && b.contains(document.activeElement)) return;     // you're typing a line to price
-  if (!force && (GV.sub === "props" || GV.sub === "lines" && !(n && n.state === "in"))) return;   // nothing live to redraw there
-  b.innerHTML = GV.sub === "box" ? boxSub(g, n) : GV.sub === "lines" ? linesSub(g, n) : GV.sub === "props" ? propsSub(g) : gameSub(g, n);
+  if (!force && (GV.sub === "props" || GV.sub === "match" || GV.sub === "lines" && !(n && n.state === "in"))) return;   // nothing live to redraw there
+  b.innerHTML = GV.sub === "match" ? matchSub(g) : GV.sub === "box" ? boxSub(g, n) : GV.sub === "lines" ? linesSub(g, n) : GV.sub === "props" ? propsSub(g) : gameSub(g, n);
   if (GV.sub === "lines") showVs("gVs", id);
   const bd = $("gBoxD"); if (bd) bd.ontoggle = () => { SIMV.boxOpen = bd.open; };
   const pd = $("gPlayD"); if (pd) pd.ontoggle = () => { SIMV.playsOpen = pd.open; };
   bindPlayerLinks(b);
+  b.querySelectorAll("[data-mw]").forEach(x => x.onclick = () => { GV.mw = x.dataset.mw; fillGame(true); });
   b.querySelectorAll("[data-gsub]").forEach(x => x.onclick = () => { GV.sub = x.dataset.gsub; renderGamePage(); });
 }
 const uid = h => h.replace('id="liveBoxD"', 'id="gBoxD"').replace('id="livePlayD"', 'id="gPlayD"');
@@ -190,6 +192,100 @@ function topProps(g, k, link) {
   const rows = onePerPlayer(propRows().filter(r => r.espn_id === g.espn_id && ALL_STATS.includes(r.stat)), pickScore).slice(0, k);
   if (!rows.length) return "";
   return `<h2>Top plays in this game</h2><div class="card" style="padding:2px 12px">${rows.map(cRow).join("")}</div>${link ? '<button class="more" data-gsub="props">Every player in this game →</button>' : ""}`;
+}
+
+// ------------------------------------------------------------------ Matchup Builder (team model, phase 1)
+const PHI = x => { const t = 1 / (1 + 0.2316419 * Math.abs(x)), d = 0.3989423 * Math.exp(-x * x / 2);
+  const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return x > 0 ? 1 - p : p; };
+function teamPredict(T, h, a, b2bH, b2bA) {
+  const e = T.eff, p = T.pace, P = T.params;
+  if (e.O[h] == null || e.O[a] == null) return null;
+  const pace = (2 * P.pace_mu + (p.O[h] || 0) + (p.D[a] || 0) + (p.O[a] || 0) + (p.D[h] || 0)) / 2 + P.pace_b2b * (b2bH + b2bA) / 2;
+  const hp = P.mu + e.O[h] + (e.D[a] || 0) + P.home * 0.5 + P.b2b_off * b2bH + P.b2b_def * b2bA;
+  const ap = P.mu + e.O[a] + (e.D[h] || 0) - P.home * 0.5 + P.b2b_off * b2bA + P.b2b_def * b2bH;
+  const H = pace * hp / 100, A = pace * ap / 100;
+  return {home: H, away: A, margin: H - A, total: H + A, pace, win: PHI((H - A) / P.sd_margin)};
+}
+const FF = [["efg", "Effective FG%", 1, true], ["tov", "Turnovers per poss", -1, true], ["orb", "Off. rebound %", 1, true],
+  ["ftr", "Free throws per shot", 1, true], ["tpar", "3-point attempt rate", 0, true], ["tpp", "3-point %", 1, true]];
+const ZN = [["rim", "Rim"], ["paint", "Paint"], ["mid", "Mid-range"], ["corner3", "Corner 3"], ["above3", "Above-break 3"]];
+const pc1 = v => v == null ? "—" : (v * 100).toFixed(1) + "%";
+function matchSub(g) {
+  const T = D.tm, H = g.home, A = g.away;
+  if (!T || !T.teams || !T.teams[H] || !T.teams[A]) return '<div class="empty">The team model arrives with the next research run.</div>';
+  const sp = (g.vegas || {}).spots || {}, b2b = sd => sp[sd] && sp[sd].rest === 0 ? 1 : 0;
+  const pr = teamPredict(T, H, A, b2b("home"), b2b("away")), P = T.params, L = T.league, th = T.teams[H], ta = T.teams[A];
+  const dk = dkOf(g.espn_id), c = dk.close || dk.open || (g.vegas && g.vegas.total ? {sp: g.vegas.spread_home, tot: g.vegas.total} : null);
+  const z = 1.2816, bt = (T.backtest || {}).all;
+  // model vs market, with how the model has done at that size of disagreement
+  let vs = "";
+  if (c && c.sp != null && c.tot != null) {
+    const dS = pr.margin + c.sp, dT = pr.total - c.tot;
+    const bucket = (obj, d, cuts) => { const k = cuts.filter(x => Math.abs(d) >= x).pop(); const r = obj && obj[String(k)]; return r && r.w + r.l ? `${r.w}-${r.l} (${Math.round(r.pct * 100)}%) ${k ? `when it disagreed by ${k}+` : "on every game"}` : ""; };
+    vs = `<div class="lbl">Model vs DraftKings</div><table class="tbl">
+      <tr><td class="t">${esc(H)} spread</td><td>DK ${spS(c.sp)}</td><td>Model ${spS(-pr.margin)}</td><td class="${Math.abs(dS) >= 2 ? "gold" : "dim"}">${Math.abs(dS) < 0.5 ? "agrees" : esc(dS > 0 ? H : A) + " +" + f1(Math.abs(dS))}</td></tr>
+      <tr><td class="t">Total</td><td>DK ${f1(c.tot)}</td><td>Model ${f1(pr.total)}</td><td class="${Math.abs(dT) >= 3 ? "gold" : "dim"}">${Math.abs(dT) < 0.5 ? "agrees" : (dT > 0 ? "Over " : "Under ") + f1(Math.abs(dT))}</td></tr></table>
+      ${bt ? `<div class="desc">Backtest: sides ${bucket(bt.ats, dS, [0, 2, 4, 6]) || "—"} · totals ${bucket(bt.ou, dT, [0, 3, 6, 9]) || "—"}. Break-even at -110 is 52.4%. Tracked only: the agent doesn't bet game lines from this model until its scoreboard shows an edge.</div>` : ""}`;
+  }
+  // filters: model (opponent-adjusted) or raw splits
+  const W = GV.mw || "model", spl = T.splits || {};
+  const side = (t, k) => W === "model" ? {off: T.teams[t].off, def: T.teams[t].def} : spl[t] && spl[t][k] ? spl[t][k] : null;
+  const wkA = W === "home" ? "road" : W, wkH = W === "road" ? "home" : W;    // "Home/Road" shows each team in tonight's venue
+  const kA = W === "venue" ? "road" : wkA, kH = W === "venue" ? "home" : wkH;
+  const sA = side(A, kA), sH = side(H, kH);
+  const chips = [["model", "Model"], ["l5", "Last 5"], ["l10", "Last 10"], ["venue", "Tonight's venue"]]
+    .map(([k, l]) => `<button data-mw="${k}" class="${W === k ? "on" : ""}">${l}</button>`).join("");
+  const bar = (o, d, lg, dir) => {   // offense value vs the defense's allowed value, both vs league
+    if (o == null || d == null || lg == null) return "";
+    const edge = dir === 0 ? 0 : dir * ((o - lg) + (d - lg)) / Math.max(1e-6, Math.abs(lg));
+    const w = Math.min(50, Math.abs(edge) * 400);
+    return `<div class="mbar"><span style="${edge >= 0 ? "left:50%" : "right:50%"};width:${w}%" class="${edge >= 0.005 ? "up" : edge <= -0.005 ? "dn" : ""}"></span></div>`;
+  };
+  const ffT = (off, def, ot, dt) => !off || !def ? '<div class="desc">No games in this window yet.</div>' : `<table class="tbl mff"><tr><th>${esc(ot)} offense</th><th>${esc(ot)}</th><th>${esc(dt)} D allows</th><th>Lg</th><th style="width:30%">Edge</th></tr>
+    ${FF.map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}</td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td><td class="dim">${pct ? pc1(L[k]) : f1(L[k])}</td><td>${bar(off[k], def[k], L[k], dir)}</td></tr>`).join("")}</table>`;
+  const ffNum = v => v == null ? null : v;
+  const fx = x => x && {efg: x.efg, tov: x.tov, orb: x.orb, ftr: ffNum(x.ftr), tpar: x.tpar, tpp: x.tpp};
+  const awayOff = sA && fx(sA.off), homeDef = sH && fx(sH.def), homeOff = sH && fx(sH.off), awayDef = sA && fx(sA.def);
+  // shooting luck: what opponents have hit from three vs the league
+  const luck = t => { const r = T.teams[t].raw; if (!r || r.opp3 == null) return "";
+    const d = (r.opp3 - P.lg3) * 100; return Math.abs(d) < 1.2 ? "" : `<b style="color:var(--text)">${esc(t)}</b> opponents are hitting ${pc1(r.opp3)} from three (league ${pc1(P.lg3)}). Most of that is luck, so the model expects it to ${d > 0 ? "come down" : "go up"}${d > 0 ? ": their defense is better than its raw rating" : ": their defense is worse than its raw rating"}.`; };
+  const lk = [luck(A), luck(H)].filter(Boolean);
+  // shot zones
+  const Z = T.zones || {}, zl = Z._league;
+  const zT = (ot, dt) => !Z[ot] || !Z[dt] || !zl ? "" : `<div class="scroll"><table class="tbl"><tr><th>${esc(ot)} shots</th><th>${esc(ot)} takes</th><th>${esc(dt)} allows</th><th>Lg</th><th>${esc(dt)} FG% allowed</th></tr>
+    ${ZN.map(([k, lab]) => { const o = Z[ot].off[k], d = Z[dt].def[k], l = zl[k]; const hot = o[0] > l[0] * 1.1 && d[0] > l[0] * 1.05;
+      return `<tr><td class="t">${lab}</td><td class="${o[0] > l[0] * 1.1 ? "gold" : ""}">${pc1(o[0])}</td><td class="${d[0] > l[0] * 1.05 ? "gold" : ""}">${pc1(d[0])}</td><td class="dim">${pc1(l[0])}</td><td class="${d[1] != null && l[1] != null ? (d[1] > l[1] + 0.02 ? "pos" : d[1] < l[1] - 0.02 ? "neg" : "") : ""}">${pc1(d[1])}${hot ? " ★" : ""}</td></tr>`; }).join("")}</table></div>`;
+  // what it means for props
+  const blow = 1 - (PHI((15 - pr.margin) / P.sd_margin) - PHI((-15 - pr.margin) / P.sd_margin));
+  const paceD = pr.pace - P.pace_mu;
+  const rk = (t, k) => T.teams[t].rank ? T.teams[t].rank[k] : "";
+  const row = (lab, k, fmt, rkey) => `<tr><td class="t">${lab}</td><td>${fmt(ta[k])} <span class="dim">#${rk(A, rkey || k)}</span></td><td>${fmt(th[k])} <span class="dim">#${rk(H, rkey || k)}</span></td></tr>`;
+  return `<div class="card"><div class="lbl" style="margin-top:0">Team model · projected score</div>
+      <div style="font-size:18px;font-weight:700">${esc(A)} ${f1(pr.away)} – ${f1(pr.home)} ${esc(H)}</div>
+      <div class="desc">${esc(pr.margin >= 0 ? H : A)} by ${f1(Math.abs(pr.margin))} · wins ${Math.round(Math.max(pr.win, 1 - pr.win) * 100)}% · total ${f1(pr.total)} · ${f1(pr.pace)} possessions<br>
+      80% range: total ${Math.round(pr.total - z * P.sd_total)}–${Math.round(pr.total + z * P.sd_total)}, margin ${esc(H)} ${f1(pr.margin - z * P.sd_margin)} to ${f1(pr.margin + z * P.sd_margin)}${b2b("home") || b2b("away") ? ` · back-to-back included (${[b2b("away") ? A : "", b2b("home") ? H : ""].filter(Boolean).join(", ")})` : ""}</div>
+      ${vs}
+      <div class="lbl">Ratings · per 100 possessions, opponent-adjusted</div>
+      <table class="tbl"><tr><th></th><th>${esc(A)}</th><th>${esc(H)}</th></tr>
+      ${row("Net rating", "net", v => (v > 0 ? "+" : "") + f1(v))}${row("Offense", "ortg", f1)}${row("Defense", "drtg", f1)}${row("Pace", "pace", f1)}
+      <tr><td class="t">Last 10 net (raw)</td><td>${ta.net10 == null ? "—" : (ta.net10 > 0 ? "+" : "") + f1(ta.net10)}</td><td>${th.net10 == null ? "—" : (th.net10 > 0 ? "+" : "") + f1(th.net10)}</td></tr></table>
+      <div class="desc">Points are luck-adjusted: each team's threes are re-scored at its long-run 3P%, so defenses are judged on the threes they allow, not on how many fell. Recent games count more.</div></div>
+    <h2>Four factors</h2><div class="card"><div class="chips" style="margin-bottom:8px">${chips}</div>
+      ${ffT(awayOff, homeDef, A, H)}<div style="height:10px"></div>${ffT(homeOff, awayDef, H, A)}
+      <div class="desc">Edge bar: green helps the offense, red helps the defense. "Model" is opponent-adjusted; the other windows are raw this season${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
+      ${lk.length ? `<div class="lbl">Three-point luck</div><div class="desc">${lk.join("<br>")}</div>` : ""}</div>
+    ${zl ? `<h2>Shot zones</h2><div class="card">${zT(A, H)}<div style="height:10px"></div>${zT(H, A)}
+      <div class="desc">Share of shots from each zone this season. Gold = above league; ★ = a zone the offense loves and the defense gives up. FG% allowed: green = defense is leaky there.</div></div>` : ""}
+    <h2>What it means for props</h2><div class="card"><div class="desc" style="line-height:1.6">
+      Pace: <b style="color:var(--text)">${f1(pr.pace)}</b> possessions, ${Math.abs(paceD) < 0.7 ? "about league average" : `${paceD > 0 ? "+" : ""}${f1(paceD)} vs average (${paceD > 0 ? "more" : "fewer"} chances for every counting stat, about ${Math.abs(Math.round(paceD / P.pace_mu * 100))}%)`}.<br>
+      Blowout risk (15+ point margin): <b style="color:var(--text)">${Math.round(blow * 100)}%</b>${blow > 0.35 ? ". Starters' minutes are at risk" : ""}.<br>
+      Team totals: ${esc(A)} ${f1(pr.away)}, ${esc(H)} ${f1(pr.home)}.</div></div>
+    ${bt ? `<details class="sec"><summary>How the team model has done</summary><div style="padding:0 14px 12px"><table class="tbl">
+      <tr><th></th><th>Model</th><th>DK line</th></tr>
+      <tr><td class="t">Avg miss, margin</td><td>${f1(bt.margin_mae.model)}</td><td>${f1(bt.margin_mae.line)}</td></tr>
+      <tr><td class="t">Avg miss, total</td><td>${f1(bt.total_mae.model)}</td><td>${f1(bt.total_mae.line)}</td></tr>
+      ${bt.win_ll ? `<tr><td class="t">Win prob. log loss</td><td>${bt.win_ll.model}</td><td>${bt.win_ll.line}</td></tr>` : ""}</table>
+      <div class="desc">Walk-forward over ${bt.n.toLocaleString()} games with ESPN's pregame DraftKings line (the model only ever saw games before each date). Best blend weight on the model: ${bt.margin_best_w} for spreads, ${bt.total_best_w} for totals (0 = the line alone is best). Lower is better for every row.</div></div></details>` : ""}`;
 }
 
 function boxSub(g, n) {

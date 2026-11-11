@@ -307,6 +307,11 @@ def research_run():
     try:
         ctx = research.context()
         research.write_all(ctx)
+        try:
+            from . import team_model
+            team_model.build(log=lambda m: None)                       # ratings only; the backtest runs nightly
+        except Exception as e:
+            print(f"[team] {e}")
         nba_props.write_board(ctx, {}, [], {}, [])
         brain.note(state, "research", f"Research refresh for {ctx['day']:%a %b %-d}: {len(ctx['games'])} games, "
                                       f"{len(ctx['entries'])} players projected, lineups for {len(ctx['rw_games'])} games.")
@@ -390,6 +395,11 @@ def nightly():
         nba_data.update(log=lambda m: None)
     except Exception as e:
         brain.note(state, "error", f"NBA box-score refresh failed: {e}")
+    try:
+        from . import team_model
+        team_model.build(with_backtest=True, log=lambda m: None)      # ratings + walk-forward backtest vs DK lines
+    except Exception as e:
+        brain.note(state, "error", f"Team model failed: {e}")
     brain.adapt(state)
     try:
         from . import scoreboard, lines as linedb

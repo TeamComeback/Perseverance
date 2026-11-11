@@ -240,3 +240,10 @@ python tests/simulate.py 30     # 30 simulated days on a fake market, no API key
 - `docs/`: the dashboard (tabs: Today, Games, Prop Lab, Sim, Bets, Trends, Agent); `games.js` is the Games tab, `sim.js` the simulator and live panel
 - `docs/data/`: the books and research files (JSON); `docs/data/games/` holds one detail file per game on the slate
 - `data/nba/`: box scores (three seasons) and this season's shot locations, one file per day
+
+## Team model and Matchup Builder (Nov 10)
+- `agent/team_model.py`: opponent-adjusted team ratings (ridge regression over every team at once, recent games weighted more, half-life 60 days), points luck-adjusted for three-point shooting, back-to-backs and home court fitted. Pace is rated the same way.
+- Walk-forward backtest against ESPN's pregame DraftKings line (2025-26 plus this season, 1,213 games): the model misses the margin by 11.75 points on average vs the line's 11.17, and the total by 15.2 vs 14.5. The best blend weight is 0, so the line already knows everything this model does. It is **tracked only**: the agent never bets game lines from it.
+- Runs: ratings with every research refresh; the backtest nightly. Output `docs/data/team_model.json`.
+- Games tab → any game → **Matchup**: projected score with an 80% range, model vs DraftKings with the backtest record at that size of disagreement, net/offense/defense/pace with ranks, four factors offense vs defense (filters: Model, Last 5, Last 10, Tonight's venue), three-point luck notes, shot zones (current season's shot charts), and what it means for props (pace, blowout risk, team totals).
+- Next (phase 2): who's playing (player impact × projected minutes), Sim model mode, team scoreboard. That is where a team model can add information the box score alone can't.
