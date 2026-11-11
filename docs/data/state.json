@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 27.46,
+  "cash": 50.86,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -8878,7 +8878,7 @@
       "book": "draftkings",
       "fair_p": 0.5049,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 5.64,
        "base": 5.19,
@@ -8909,6 +8909,22 @@
          "txt": "MIL games have +3% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 117.0,
+       "away": 85.0
+      },
+      "actual": 2.0,
+      "box": {
+       "min": 28.0,
+       "pts": 23.0,
+       "reb": 4.0,
+       "ast": 2.0,
+       "tpm": 1.0,
+       "tpa": 3.0,
+       "fga": 18.0,
+       "fta": 8.0,
+       "tov": 1.0
       }
      }
     ],
@@ -8919,10 +8935,219 @@
     "note": "Proj 5.6 vs line 6.5 (norm 5.2, 32 min). Model 67% vs market 50%. MIL gives point guards +12% assists vs their norm (#7 softest of 30) \u00b7 Players with his profile: +11% assists vs MIL (157 close comps) \u00b7 His history vs MIL: 3.7 assists/g in 3 games (-8%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 10.05,
+    "profit": 5.05,
+    "settled": "2026-11-11T17:04:54Z",
+    "review": {
+     "headline": "WON: 2 assists vs Under 6.5",
+     "final": "Milwaukee Bucks 85 \u2013 New York Knicks 117",
+     "legs": [
+      {
+       "outcome": "Jalen Brunson Under",
+       "result": "win",
+       "headline": "2 assists vs Under 6.5",
+       "final": "Milwaukee Bucks 85 \u2013 New York Knicks 117",
+       "why": [
+        "Jalen Brunson finished with 2 assists against a line of 6.5: under cleared by 4.5.",
+        "Minutes: played 28 vs 31.5 projected.",
+        "Game was a 32-point blowout, which cuts starters' minutes.",
+        "Box score: 2 ast, 1 TO.",
+        "Model projected 5.6 (5.2 norm \u00d7 1.09 matchup); actual was -3.6 off (-1.6 standard deviations).",
+        "Matchup read was wrong: he fell short of his own norm for the minutes played (4.6) in a matchup the model rated soft.",
+        "Signal: MIL gives point guards +12% assists vs their norm (#7 softest of 30)",
+        "Signal: Players with his profile: +11% assists vs MIL (157 close comps)",
+        "Signal: His history vs MIL: 3.7 assists/g in 3 games (-8%)",
+        "We priced it at 60% to hit vs 50% needed to break even at 2.01x (+20.0% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "model-beat",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-wrong",
+      "model-beat"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NY",
+        "away": "MIL"
+       },
+       "final": "MIL 85 \u2013 NY 117",
+       "periods": {
+        "away": [
+         21,
+         13,
+         38,
+         13
+        ],
+        "home": [
+         26,
+         32,
+         27,
+         32
+        ]
+       },
+       "largest_lead": {
+        "MIL": 3,
+        "NY": 32
+       },
+       "largest_lead_at": {
+        "MIL": "10:59 1st Q",
+        "NY": "1:15 4th Q"
+       },
+       "lead_changes": 7,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 10,
+         "from": "11:07 2nd Q",
+         "to": "8:22 2nd Q",
+         "score": "MIL 23-36 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 10,
+         "from": "7:12 2nd Q",
+         "to": "4:57 2nd Q",
+         "score": "MIL 26-46 NY"
+        },
+        {
+         "team": "MIL",
+         "pts": 9,
+         "from": "10:01 3rd Q",
+         "to": "7:51 3rd Q",
+         "score": "MIL 49-63 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 8,
+         "from": "3:31 1st Q",
+         "to": "2:29 1st Q",
+         "score": "MIL 16-23 NY"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 17,
+         "from": "11:30 2nd Q",
+         "to": "4:57 2nd Q",
+         "mins": 6.5,
+         "from_score": "MIL 23-26 NY",
+         "to_score": "MIL 26-46 NY",
+         "pts_for": 20,
+         "pts_against": 3
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:47 3rd Q",
+         "to": "7:51 3rd Q",
+         "mins": 3.9,
+         "from_score": "MIL 34-60 NY",
+         "to_score": "MIL 49-63 NY",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Jaime Jaquez Jr. (MIL): 16 pts, 5 reb, 3 ast, 2-5 3PT in 25 min",
+        "Ryan Rollins (MIL): 14 pts, 5 reb, 2 ast, 4-6 3PT in 24 min",
+        "Karl-Anthony Towns (NY): 21 pts, 16 reb, 3 ast, 2-9 3PT in 27 min",
+        "Jalen Brunson (NY): 23 pts, 4 reb, 2 ast, 1-3 3PT in 28 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 6,
+          "reb": 3,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 13,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 8,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "1:16 2nd Q"
+        ],
+        "box": {
+         "id": "3934672",
+         "name": "Jalen Brunson",
+         "team": "NY",
+         "min": "28",
+         "pts": 23,
+         "reb": 4,
+         "ast": 2,
+         "3pt": "1-3",
+         "fg": "7-18",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIL 34-58 NY, NY up 24.",
+        "The 2nd quarter decided the most: NY won it 32-13.",
+        "Largest leads: MIL 3 (10:59 1st Q), NY 32 (1:15 4th Q). 7 lead changes, 3 ties.",
+        "Momentum swing: NY outscored them 20-3 in 6.5 minutes (11:30 2nd Q to 4:57 2nd Q), moving it from MIL 23-26 NY to MIL 26-46 NY.",
+        "Momentum swing: MIL outscored them 15-3 in 3.9 minutes (11:47 3rd Q to 7:51 3rd Q), moving it from MIL 34-60 NY to MIL 49-63 NY.",
+        "NY went on a 10-0 run (11:07 2nd Q to 8:22 2nd Q), making it MIL 23-36 NY.",
+        "NY went on a 10-0 run (7:12 2nd Q to 4:57 2nd Q), making it MIL 26-46 NY.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Jalen Brunson by period (AST): Q1 0, Q2 1, Q3 1, Q4 0.",
+        "He never got past 6.5.",
+        "Threes made at: 1:16 2nd Q."
+       ],
+       "espn_id": "401909960",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909960"
+      }
+     ]
+    }
    },
    {
     "id": "ef33253e",
@@ -8949,7 +9174,7 @@
       "book": "fanduel",
       "fair_p": 0.4308,
       "close_p": null,
-      "result": null,
+      "result": "void",
       "model": {
        "proj": 3.38,
        "base": 3.71,
@@ -8980,6 +9205,10 @@
          "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 117.0,
+       "away": 85.0
       }
      }
     ],
@@ -8990,10 +9219,145 @@
     "note": "Proj 3.4 vs line 3.5 (norm 3.7, 29 min). Model 59% vs market 43%. NY gives shooting guards -13% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -6% assists vs NY (190 close comps) \u00b7 No history vs NY yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "push",
+    "payout": 5.0,
+    "profit": 0.0,
+    "settled": "2026-11-11T17:04:54Z",
+    "review": {
+     "headline": "PUSH: Player did not play: voided",
+     "final": "Milwaukee Bucks 85 \u2013 New York Knicks 117",
+     "legs": [
+      {
+       "outcome": "Tyler Herro Under",
+       "result": "void",
+       "headline": "Player did not play: voided",
+       "final": "Milwaukee Bucks 85 \u2013 New York Knicks 117",
+       "why": [
+        "Tyler Herro was not in the box score (did not play), so the bet is voided and the stake returned.",
+        "We priced it at 52% to hit vs 45% needed to break even at 2.22x (+14.7% expected edge).",
+        "Consensus fair probability when placed: 43% (no closing price captured)."
+       ],
+       "tags": [
+        "dnp-void"
+       ]
+      }
+     ],
+     "tags": [
+      "dnp-void"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NY",
+        "away": "MIL"
+       },
+       "final": "MIL 85 \u2013 NY 117",
+       "periods": {
+        "away": [
+         21,
+         13,
+         38,
+         13
+        ],
+        "home": [
+         26,
+         32,
+         27,
+         32
+        ]
+       },
+       "largest_lead": {
+        "MIL": 3,
+        "NY": 32
+       },
+       "largest_lead_at": {
+        "MIL": "10:59 1st Q",
+        "NY": "1:15 4th Q"
+       },
+       "lead_changes": 7,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 10,
+         "from": "11:07 2nd Q",
+         "to": "8:22 2nd Q",
+         "score": "MIL 23-36 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 10,
+         "from": "7:12 2nd Q",
+         "to": "4:57 2nd Q",
+         "score": "MIL 26-46 NY"
+        },
+        {
+         "team": "MIL",
+         "pts": 9,
+         "from": "10:01 3rd Q",
+         "to": "7:51 3rd Q",
+         "score": "MIL 49-63 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 8,
+         "from": "3:31 1st Q",
+         "to": "2:29 1st Q",
+         "score": "MIL 16-23 NY"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 17,
+         "from": "11:30 2nd Q",
+         "to": "4:57 2nd Q",
+         "mins": 6.5,
+         "from_score": "MIL 23-26 NY",
+         "to_score": "MIL 26-46 NY",
+         "pts_for": 20,
+         "pts_against": 3
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:47 3rd Q",
+         "to": "7:51 3rd Q",
+         "mins": 3.9,
+         "from_score": "MIL 34-60 NY",
+         "to_score": "MIL 49-63 NY",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Jaime Jaquez Jr. (MIL): 16 pts, 5 reb, 3 ast, 2-5 3PT in 25 min",
+        "Ryan Rollins (MIL): 14 pts, 5 reb, 2 ast, 4-6 3PT in 24 min",
+        "Karl-Anthony Towns (NY): 21 pts, 16 reb, 3 ast, 2-9 3PT in 27 min",
+        "Jalen Brunson (NY): 23 pts, 4 reb, 2 ast, 1-3 3PT in 28 min"
+       ],
+       "player": {
+        "by_period": [],
+        "threes_at": [],
+        "box": null
+       },
+       "story": [
+        "Halftime: MIL 34-58 NY, NY up 24.",
+        "The 2nd quarter decided the most: NY won it 32-13.",
+        "Largest leads: MIL 3 (10:59 1st Q), NY 32 (1:15 4th Q). 7 lead changes, 3 ties.",
+        "Momentum swing: NY outscored them 20-3 in 6.5 minutes (11:30 2nd Q to 4:57 2nd Q), moving it from MIL 23-26 NY to MIL 26-46 NY.",
+        "Momentum swing: MIL outscored them 15-3 in 3.9 minutes (11:47 3rd Q to 7:51 3rd Q), moving it from MIL 34-60 NY to MIL 49-63 NY.",
+        "NY went on a 10-0 run (11:07 2nd Q to 8:22 2nd Q), making it MIL 23-36 NY.",
+        "NY went on a 10-0 run (7:12 2nd Q to 4:57 2nd Q), making it MIL 26-46 NY.",
+        "No real closing drama: the game was decided before the last five minutes."
+       ],
+       "espn_id": "401909960",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909960"
+      }
+     ]
+    }
    },
    {
     "id": "63e3addb",
@@ -9020,7 +9384,7 @@
       "book": "betmgm",
       "fair_p": 0.5773,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 2.46,
        "base": 2.75,
@@ -9051,6 +9415,22 @@
          "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 117.0,
+       "away": 85.0
+      },
+      "actual": 3.0,
+      "box": {
+       "min": 26.0,
+       "pts": 3.0,
+       "reb": 3.0,
+       "ast": 3.0,
+       "tpm": 1.0,
+       "tpa": 4.0,
+       "fga": 6.0,
+       "fta": 0.0,
+       "tov": 0.0
       }
      }
     ],
@@ -9061,10 +9441,216 @@
     "note": "Proj 2.5 vs line 3.5 (norm 2.8, 28 min). Model 76% vs market 58%. NY gives shooting guards -13% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -6% assists vs NY (57 close comps) \u00b7 No history vs NY yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 8.35,
+    "profit": 3.35,
+    "settled": "2026-11-11T17:04:54Z",
+    "review": {
+     "headline": "WON: 3 assists vs Under 3.5",
+     "final": "Milwaukee Bucks 85 \u2013 New York Knicks 117",
+     "legs": [
+      {
+       "outcome": "Brayden Burries Under",
+       "result": "win",
+       "headline": "3 assists vs Under 3.5",
+       "final": "Milwaukee Bucks 85 \u2013 New York Knicks 117",
+       "why": [
+        "Brayden Burries finished with 3 assists against a line of 3.5: under cleared by 0.5.",
+        "Minutes: played 26 vs 28 projected.",
+        "Game was a 32-point blowout, but his minutes held up.",
+        "Box score: 3 ast, 0 TO.",
+        "Model projected 2.5 (2.8 norm \u00d7 0.90 matchup); actual was +0.5 off (+0.4 standard deviations).",
+        "Signal: NY gives shooting guards -13% assists vs their norm (#1 toughest of 30)",
+        "Signal: Players with his profile: -6% assists vs NY (57 close comps)",
+        "Signal: No history vs NY yet",
+        "We priced it at 68% to hit vs 60% needed to break even at 1.67x (+13.4% expected edge).",
+        "Consensus fair probability when placed: 58% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "ordinary-variance"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NY",
+        "away": "MIL"
+       },
+       "final": "MIL 85 \u2013 NY 117",
+       "periods": {
+        "away": [
+         21,
+         13,
+         38,
+         13
+        ],
+        "home": [
+         26,
+         32,
+         27,
+         32
+        ]
+       },
+       "largest_lead": {
+        "MIL": 3,
+        "NY": 32
+       },
+       "largest_lead_at": {
+        "MIL": "10:59 1st Q",
+        "NY": "1:15 4th Q"
+       },
+       "lead_changes": 7,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 10,
+         "from": "11:07 2nd Q",
+         "to": "8:22 2nd Q",
+         "score": "MIL 23-36 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 10,
+         "from": "7:12 2nd Q",
+         "to": "4:57 2nd Q",
+         "score": "MIL 26-46 NY"
+        },
+        {
+         "team": "MIL",
+         "pts": 9,
+         "from": "10:01 3rd Q",
+         "to": "7:51 3rd Q",
+         "score": "MIL 49-63 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 8,
+         "from": "3:31 1st Q",
+         "to": "2:29 1st Q",
+         "score": "MIL 16-23 NY"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 17,
+         "from": "11:30 2nd Q",
+         "to": "4:57 2nd Q",
+         "mins": 6.5,
+         "from_score": "MIL 23-26 NY",
+         "to_score": "MIL 26-46 NY",
+         "pts_for": 20,
+         "pts_against": 3
+        },
+        {
+         "team": "MIL",
+         "swing": 12,
+         "from": "11:47 3rd Q",
+         "to": "7:51 3rd Q",
+         "mins": 3.9,
+         "from_score": "MIL 34-60 NY",
+         "to_score": "MIL 49-63 NY",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Jaime Jaquez Jr. (MIL): 16 pts, 5 reb, 3 ast, 2-5 3PT in 25 min",
+        "Ryan Rollins (MIL): 14 pts, 5 reb, 2 ast, 4-6 3PT in 24 min",
+        "Karl-Anthony Towns (NY): 21 pts, 16 reb, 3 ast, 2-9 3PT in 27 min",
+        "Jalen Brunson (NY): 23 pts, 4 reb, 2 ast, 1-3 3PT in 28 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 3,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "4:31 1st Q"
+        ],
+        "box": {
+         "id": "5082206",
+         "name": "Brayden Burries",
+         "team": "MIL",
+         "min": "26",
+         "pts": 3,
+         "reb": 3,
+         "ast": 3,
+         "3pt": "1-4",
+         "fg": "1-6",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIL 34-58 NY, NY up 24.",
+        "The 2nd quarter decided the most: NY won it 32-13.",
+        "Largest leads: MIL 3 (10:59 1st Q), NY 32 (1:15 4th Q). 7 lead changes, 3 ties.",
+        "Momentum swing: NY outscored them 20-3 in 6.5 minutes (11:30 2nd Q to 4:57 2nd Q), moving it from MIL 23-26 NY to MIL 26-46 NY.",
+        "Momentum swing: MIL outscored them 15-3 in 3.9 minutes (11:47 3rd Q to 7:51 3rd Q), moving it from MIL 34-60 NY to MIL 49-63 NY.",
+        "NY went on a 10-0 run (11:07 2nd Q to 8:22 2nd Q), making it MIL 23-36 NY.",
+        "NY went on a 10-0 run (7:12 2nd Q to 4:57 2nd Q), making it MIL 26-46 NY.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Brayden Burries by period (AST): Q1 0, Q2 2, Q3 1, Q4 0.",
+        "He never got past 3.5.",
+        "Threes made at: 4:31 1st Q."
+       ],
+       "espn_id": "401909960",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909960"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -9081,7 +9667,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.148,
+  "prop_model_weight": 0.209,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -9247,19 +9833,19 @@
    }
   },
   "matchup_under": {
-   "bets": 17,
-   "staked": 85.0,
-   "profit": -11.650000000000002,
+   "bets": 20,
+   "staked": 100.0,
+   "profit": -3.250000000000002,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 8,
-     "won": 7,
+     "n": 9,
+     "won": 8,
      "lost": 1
     },
     "dnp-void": {
-     "n": 1,
+     "n": 2,
      "won": 0,
      "lost": 0
     },
@@ -9269,8 +9855,8 @@
      "lost": 6
     },
     "matchup-read-wrong": {
-     "n": 4,
-     "won": 1,
+     "n": 5,
+     "won": 2,
      "lost": 3
     },
     "near-miss": {
@@ -9279,8 +9865,8 @@
      "lost": 2
     },
     "blowout": {
-     "n": 4,
-     "won": 2,
+     "n": 6,
+     "won": 4,
      "lost": 2
     },
     "model-miss": {
@@ -9292,6 +9878,11 @@
      "n": 4,
      "won": 0,
      "lost": 4
+    },
+    "model-beat": {
+     "n": 1,
+     "won": 1,
+     "lost": 0
     }
    }
   }
@@ -9299,9 +9890,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 30.0,
-   "staked": 150.0,
-   "profit": -18.549999999999997
+   "bets": 33.0,
+   "staked": 165.0,
+   "profit": -10.149999999999997
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -10615,6 +11206,36 @@
    "ts": "2026-11-11T16:45:36Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 11: 10 games, 234 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-11T17:04:54Z",
+   "kind": "result",
+   "text": "WON +$5.05: Jalen Brunson Under 6.5 @ +101 (DraftKings) \u2014 WON: 2 assists vs Under 6.5 [blowout, matchup-read-wrong, model-beat]"
+  },
+  {
+   "ts": "2026-11-11T17:04:54Z",
+   "kind": "result",
+   "text": "PUSH $0.00: Tyler Herro Under 3.5 @ +122 (FanDuel) \u2014 PUSH: Player did not play: voided [dnp-void]"
+  },
+  {
+   "ts": "2026-11-11T17:04:54Z",
+   "kind": "result",
+   "text": "WON +$3.35: Brayden Burries Under 3.5 @ -149 (BetMGM) \u2014 WON: 3 assists vs Under 3.5 [blowout, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-11T17:07:06Z",
+   "kind": "adapt",
+   "text": "Model vs market on 3000 graded lines: the 35% model blend scored best (log loss model 0.699, market 0.688). Moving the model's weight from 15% to 21%."
+  },
+  {
+   "ts": "2026-11-11T17:07:06Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +3.8% vs actual over 1192 player-games: level x0.894; REB projections ran +3.9% vs actual over 1192 player-games: level x0.928; AST projections ran +3.0% vs actual over 1192 player-games: level x0.911; PRA projections ran +3.6% vs actual over 1192 player-games: level x0.909; RA projections ran +3.4% vs actual over 1192 player-games: level x0.927; starter minutes were off by +1.1 on average over 616 player-games: correction -0.2 min; conviction factor 'vegas' helped by +4.9 pts of hit rate over 1311 plays: weight 1.26 -> 1.34."
+  },
+  {
+   "ts": "2026-11-11T17:07:06Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $50.86 (run #1), 16-27-2, ROI -21.6%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -10659,24 +11280,27 @@
   "1eca85b9",
   "3160de36",
   "ab1cce4c",
-  "b46f1cb0"
+  "b46f1cb0",
+  "6d96909a",
+  "ef33253e",
+  "63e3addb"
  ],
  "strategist": null,
- "updated": "2026-11-11T16:46:39Z",
+ "updated": "2026-11-11T17:07:06Z",
  "stats": {
-  "bets": 42,
-  "won": 14,
+  "bets": 45,
+  "won": 16,
   "lost": 27,
-  "push": 1,
-  "staked": 212.63,
-  "profit": -57.54,
-  "roi": -0.2706,
+  "push": 2,
+  "staked": 227.63,
+  "profit": -49.14,
+  "roi": -0.2159,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 27,
+  "clv_no_close": 30,
   "close_mins_median": 151,
-  "open": 3,
-  "equity": 42.46
+  "open": 0,
+  "equity": 50.86
  },
  "weights": {
   "value_fav": 0.842,
@@ -10685,7 +11309,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.313,
-  "matchup_under": 0.839
+  "matchup_under": 0.959
  },
  "paused": [],
  "dry_scans": 2
