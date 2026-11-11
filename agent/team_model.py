@@ -213,7 +213,7 @@ def _devig(mh, ma):
 
 
 # ------------------------------------------------------------------ walk-forward backtest
-def backtest(rows, seasons, log=print):
+def backtest(rows, seasons, log=print, adj=None):
     """Refit before each game day; compare to ESPN's pregame line. Returns per-game records."""
     games = {}
     for r in rows:
@@ -244,8 +244,12 @@ def backtest(rows, seasons, log=print):
             if not pr:
                 continue
             L = lines[r["gid"]]
-            recs.append({"d": d, "s": r["s"], "gid": r["gid"], "home": r["t"], "away": r["o"],
-                         "pm": pr["margin"], "pt": pr["total"], "am": r["pts"] - a["pts"], "at": r["pts"] + a["pts"],
+            rx = 0.0
+            if adj and r["gid"] in adj:                      # who actually played vs the team the ratings saw
+                from . import roster
+                rx = roster.points(adj[r["gid"]].get(r["t"], 0)) - roster.points(adj[r["gid"]].get(r["o"], 0))
+            recs.append({"d": d, "s": r["s"], "gid": r["gid"], "home": r["t"], "away": r["o"], "rx": rx, "pm0": pr["margin"],
+                         "pm": pr["margin"] + rx, "pt": pr["total"], "am": r["pts"] - a["pts"], "at": r["pts"] + a["pts"],
                          "lm": -L["spread"], "lt": L["total"], "pml": _devig(L.get("ml_home"), L.get("ml_away"))})
         if i % 40 == 0:
             log(f"[team] backtest {d}: {len(recs)} games")
@@ -257,7 +261,8 @@ def summarize(recs, sd_m=None, sd_t=None):
         return None
     n = len(recs)
     mae = lambda xs: round(sum(abs(x) for x in xs) / len(xs), 2)
-    out = {"n": n, "margin_mae": {"model": mae([r["pm"] - r["am"] for r in recs]), "line": mae([r["lm"] - r["am"] for r in recs])},
+    out = {"n": n, "margin_mae": {"model": mae([r["pm"] - r["am"] for r in recs]), "line": mae([r["lm"] - r["am"] for r in recs]),
+                                  "ratings_only": mae([r.get("pm0", r["pm"]) - r["am"] for r in recs])},
            "total_mae": {"model": mae([r["pt"] - r["at"] for r in recs]), "line": mae([r["lt"] - r["at"] for r in recs])}}
     # best blend weight on the model (0 = line only)
     for k, pm, lm, am in (("margin", "pm", "lm", "am"), ("total", "pt", "lt", "at")):
@@ -389,8 +394,15 @@ def build(today=None, with_backtest=False, log=print):
     today = today or store.now().astimezone(nd.ET).date()
     season = nd.season_of(today)
     seasons = [season - 2, season - 1, season]
-    rows = rows_from_games(nd.all_games(seasons))
+    games = nd.all_games(seasons)
+    rows = rows_from_games(games)
     m = fit(rows, today + timedelta(days=1), season, factors=True)
+    from . import roster
+    adj, RS = {}, None
+    try:
+        adj, RS = roster.history_pass(games)
+    except Exception as ex:
+        log(f"[team] roster pass failed: {ex}")
     if not m:
         log("[team] not enough games to fit")
         return None
@@ -401,8 +413,9 @@ def build(today=None, with_backtest=False, log=print):
         pass
     bt = old.get("backtest")
     if with_backtest or not bt:
-        recs = backtest(rows, [season - 1, season], log=log)
-        bt = {"all": summarize(recs), "by_season": {str(s): summarize([r for r in recs if r["s"] == s]) for s in (season - 1, season)},
+        recs = backtest(rows, [season - 1, season], log=log, adj=adj)
+        big = [r for r in recs if abs(r.get("rx", 0)) >= 3]
+        bt = {"big_roster": summarize(big) if len(big) >= 30 else None, "all": summarize(recs), "by_season": {str(s): summarize([r for r in recs if r["s"] == s]) for s in (season - 1, season)},
               "updated": today.isoformat()}
     sd_m = (bt.get("all") or {}).get("sd_margin") or SD_MARGIN
     sd_t = (bt.get("all") or {}).get("sd_total") or SD_TOTAL
@@ -424,8 +437,130 @@ def build(today=None, with_backtest=False, log=print):
         out["zones"] = zones(season)
     except Exception as ex:
         log(f"[team] zones failed: {ex}")
+    try:
+        out["tonight"] = tonight(m, RS, today, log)
+    except Exception as ex:
+        log(f"[team] tonight failed: {ex}")
+    try:
+        out["live"] = track(out.get("tonight") or {}, today, log)
+    except Exception as ex:
+        log(f"[team] tracking failed: {ex}")
     OUT.write_text(json.dumps(out, separators=(",", ":")))
     log(f"[team] ratings for {len(out['teams'])} teams written")
+    return out
+
+
+def tonight(m, RS, today, log=print):
+    """Tonight's games priced by the ratings plus who is playing (from the latest research run)."""
+    from . import roster
+    pj = json.loads((config.ROOT / "docs" / "data" / "players.json").read_text())
+    if pj.get("date") != today.isoformat():
+        return {}
+    by_team = defaultdict(dict)
+    for pid, r in (pj.get("players") or {}).items():
+        by_team[r["team"]][str(pid)] = r
+    out = {}
+    for g in pj.get("games") or []:
+        h, a = g["home"], g["away"]
+        sp = (g.get("vegas") or {}).get("spots") or g.get("spots") or {}
+        b2b = lambda side: 1.0 if (sp.get(side) or {}).get("rest") == 0 else 0.0
+        pr = predict(m, h, a, b2b("home"), b2b("away"))
+        if not pr:
+            continue
+        rh = roster.tonight(RS, h, by_team.get(h, {})) if RS else {"pts": 0, "out": [], "back": []}
+        ra = roster.tonight(RS, a, by_team.get(a, {})) if RS else {"pts": 0, "out": [], "back": []}
+        rx = rh["pts"] - ra["pts"]
+        outs = [{"team": t, "names": ", ".join(n for n, _ in r["out"][:3]), "pts": round(-sum(v for _, v in r["out"]), 1)}
+                for t, r in ((h, rh), (a, ra)) if r["out"]]
+        out[g["espn_id"]] = {"home": h, "away": a, "start": g.get("start"), "base_margin": round(pr["margin"], 1), "margin": round(pr["margin"] + rx, 1),
+                             "total": round(pr["total"], 1), "pace": round(pr["pace"], 1),
+                             "home_pts": round(pr["home"] + rx / 2, 1), "away_pts": round(pr["away"] - rx / 2, 1),
+                             "roster": bool(RS), "adj": {"home": rh, "away": ra}, "out": outs}
+    return out
+
+
+TRACK = config.ROOT / "docs" / "data" / "team_track.json"
+GATE_N = 150
+
+
+def track(ton, today, log=print):
+    """Team scoreboard: log tonight's model number next to DraftKings' line at that moment, grade earlier days
+    against the final score and the closing line. Returns the summary shown on the dashboard."""
+    try:
+        db = json.loads(TRACK.read_text())
+    except Exception:
+        db = {"days": {}}
+    dkdir = config.ROOT / "docs" / "data" / "dk"
+    def dk(day):
+        try:
+            return json.loads((dkdir / f"{day}.json").read_text()).get("games") or {}
+        except Exception:
+            return {}
+    D = dk(today.isoformat())
+    day = db["days"].setdefault(today.isoformat(), {})
+    for gid, t in ton.items():
+        g = D.get(gid) or {}
+        ln = g.get("close") or g.get("open")
+        if g.get("final") or not ln or ln.get("sp") is None:
+            continue
+        e = day.setdefault(gid, {"home": t["home"], "away": t["away"], "first": None})
+        snap = {"m": t["margin"], "t": t["total"], "sp": ln["sp"], "tot": ln.get("tot")}
+        if not e["first"]:
+            e["first"] = snap                               # the first read of the day: used for line-move credit
+        e["last"] = snap
+    for d, games in db["days"].items():
+        if d >= today.isoformat():
+            continue
+        G = None
+        for gid, e in games.items():
+            if e.get("final"):
+                continue
+            G = G or dk(d)
+            g = G.get(gid) or {}
+            if g.get("final") and (g.get("close") or g.get("open")):
+                c = g.get("close") or g["open"]
+                e["final"] = g["final"]; e["close"] = {"sp": c.get("sp"), "tot": c.get("tot")}
+    keep = sorted(db["days"])[-120:]
+    db["days"] = {d: db["days"][d] for d in keep}
+    TRACK.write_text(json.dumps(db, separators=(",", ":")))
+    # summary
+    R = [e for games in db["days"].values() for e in games.values() if e.get("final") and e.get("last") and e["close"].get("sp") is not None]
+    out = {"n": len(R), "gate": GATE_N, "status": "watch"}
+    if not R:
+        return out
+    am = lambda e: e["final"][0] - e["final"][1]
+    mae = lambda f: round(sum(abs(f(e)) for e in R) / len(R), 2)
+    out["margin_mae"] = {"model": mae(lambda e: e["last"]["m"] - am(e)), "close": mae(lambda e: -e["close"]["sp"] - am(e))}
+    T = [e for e in R if e["close"].get("tot")]
+    if T:
+        out["total_mae"] = {"model": round(sum(abs(e["last"]["t"] - sum(e["final"])) for e in T) / len(T), 2),
+                            "close": round(sum(abs(e["close"]["tot"] - sum(e["final"])) for e in T) / len(T), 2)}
+    def rec(cut):
+        w = l = 0
+        for e in R:
+            d = e["last"]["m"] + e["last"]["sp"]                # model margin minus the line's
+            res = am(e) + e["last"]["sp"]
+            if abs(d) < cut or res == 0:
+                continue
+            w, l = (w + 1, l) if (d > 0) == (res > 0) else (w, l + 1)
+        return {"w": w, "l": l}
+    out["ats"] = {str(c): rec(c) for c in (0, 2, 4)}
+    # closing line value: when the model disagreed with the first line of the day by 2+, did the line move its way?
+    tw = ag = 0; pts = 0.0
+    for e in R:
+        f = e["first"]
+        if not f or f.get("sp") is None:
+            continue
+        d = f["m"] + f["sp"]
+        mv = f["sp"] - e["close"]["sp"]                         # + = line moved toward the home team
+        if abs(d) < 2 or mv == 0:
+            continue
+        tw += 1 if (d > 0) == (mv > 0) else 0; ag += 1; pts += mv if d > 0 else -mv
+    out["clv"] = {"n": ag, "toward": tw, "avg_pts": round(pts / ag, 2) if ag else None}
+    a2 = out["ats"]["2"]
+    if len(R) >= GATE_N and a2["w"] + a2["l"] >= 60:
+        pct = a2["w"] / (a2["w"] + a2["l"])
+        out["status"] = "edge" if pct >= 0.55 else "skip" if pct <= 0.5 else "watch"
     return out
 
 

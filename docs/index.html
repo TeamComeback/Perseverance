@@ -265,6 +265,15 @@ a.opt{cursor:pointer}
 .cr.bb .why{white-space:normal}
 .cr.bb .bbn .btn{margin-left:auto}
 .btn.sm{padding:4px 10px;font-size:12px}
+.cvb{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-weight:800;font-size:12px;padding:2px 7px;border-radius:7px;border:1px solid var(--line);margin-left:6px}
+.cvb.Strong{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Solid{color:var(--gold);border-color:#E5C15855;background:#E5C15812}.cvb.Lean,.cvb.Pass{color:var(--dim)}
+.verd{grid-column:1/-1;font-size:12.5px;color:var(--text);margin-top:3px;line-height:1.4}
+.case{grid-column:1/-1;margin-top:4px}.case summary{cursor:pointer;font-size:12px;color:var(--dim);padding:4px 0;list-style:none}.case summary::-webkit-details-marker{display:none}.case summary:before{content:"▸ "}.case[open] summary:before{content:"▾ "}
+.case ul{margin:4px 0 8px;padding:0;list-style:none}.case li{font-size:12.5px;line-height:1.45;padding:3px 0 3px 18px;position:relative;color:var(--text)}
+.case li:before{position:absolute;left:0;top:3px;font-weight:800}.case ul.f li:before{content:"+";color:var(--win)}.case ul.a li:before{content:"–";color:var(--loss)}
+.case li i{font-style:normal;color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-right:5px}
+.case .ch{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}.case .ch.f{color:var(--win)}.case .ch.a{color:var(--loss)}
+.lad td,.lad th{font-size:11.5px;padding:4px 5px}.lad tr.cur td{background:var(--panel2);font-weight:700}.lad td.hi{color:var(--win)}.lad td.lo{color:var(--loss)}
 .bbl{margin-top:10px} .bbl summary{cursor:pointer;font-size:12px;color:var(--dim)} .bbl .desc{margin-top:6px;line-height:1.5}
 .more{display:block;width:100%;margin-top:8px;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;font:inherit;font-weight:600;cursor:pointer}
 .chips .sep{flex:none;width:1px;background:var(--line);margin:4px 2px}
@@ -1032,6 +1041,47 @@ function renderToday() {
   bindPlayerLinks($("v-today")); bindBest($("v-today"));
 }
 // ------------------------------------------------------------------ best bets of the day (tools/sim_all.js -> best.json)
+// The case for and against a play (docs/case.js builds it): strongest points first, then the hit-rate ladder.
+function ladderHtml(lad, line, side) {
+  if (!lad || !lad.lines) return "";
+  const over = side !== "Under";
+  const cell = c => { if (!c || !c[1]) return '<td class="dim">—</td>'; const h = over ? c[0] : c[1] - c[0], r = h / c[1]; return `<td class="${c[1] >= 4 && r >= 0.65 ? "hi" : c[1] >= 4 && r <= 0.35 ? "lo" : ""}">${h}/${c[1]}</td>`; };
+  return `<div class="ch" style="color:var(--dim)">${over ? "Over" : "Under"} hit rate at this line and the next ones out</div>
+    <div class="scroll"><table class="tbl lad"><tr><th>Line</th>${lad.cols.map(c => `<th>${esc(c)}</th>`).join("")}</tr>
+    ${lad.lines.map(L => `<tr class="${L === line ? "cur" : ""}"><td class="t">${over ? "O" : "U"} ${f1(L)}</td>${lad.cols.map(c => cell(lad.rows[L][c])).join("")}</tr>`).join("")}</table></div>`;
+}
+function caseHtml(c, lad, line, side, open) {
+  if (!c || !(c.for.length + c.against.length)) return "";
+  const li = b => `<li><i>${esc(b.tag)}</i>${esc(b.t)}</li>`;
+  return `<details class="case"${open ? " open" : ""}><summary>The case: ${c.for.length} for, ${c.against.length} against</summary>
+    ${c.for.length ? `<div class="ch f">Why it works</div><ul class="f">${c.for.map(li).join("")}</ul>` : ""}
+    ${c.against.length ? `<div class="ch a">Why it won't hit</div><ul class="a">${c.against.map(li).join("")}</ul>` : ""}
+    ${ladderHtml(lad, line, side)}</details>`;
+}
+const cvBadge = x => x.conv != null ? `<span class="cvb ${x.tier}">${x.conv}<small style="font-weight:600">${x.tier}</small></span>` : "";
+// the sim's chance of clearing a line, read off its saved deciles
+function simPOver(pid, game, stat, line) {
+  const sp = D.sims && D.sims.games && D.sims.games[game] && D.sims.games[game].players[pid]; if (!sp || !sp.s[stat]) return null;
+  const q = sp.s[stat].slice(1); let below = 0;
+  for (let i = 0; i < q.length; i++) if (q[i] < line) below = (i + 1) / 10; else if (q[i] === line && i < q.length - 1) below = Math.max(below, (i + 0.5) / 10);
+  return {p: Math.min(0.95, Math.max(0.05, 1 - below - 0.05)), avg: sp.s[stat][0]};
+}
+function cardCase(pc) {
+  if (!window.CASE) return null;
+  const p = pc.p, s = pc.stat, dk = ((D.dkday || {}).props || {})[p.pid + "|" + s], at = dk && dk.c && dk.c[0] === pc.line;
+  const over = pc.side === "Over", nv = at ? (1 / dk.c[1]) / (1 / dk.c[1] + 1 / dk.c[2]) : null, sim = simPOver(p.pid, p.game, s, pc.line);
+  const hist = ((D.dkRecent || {})[p.pid + "|" + s]) || [], tend = [hist.filter(r => r[6] === "over").length, hist.filter(r => r[6] === "under").length];
+  const cm = D.sb && D.sb.conviction, sg = D.sims && D.sims.games && D.sims.games[p.game];
+  try {
+    const c = CASE.buildCase({p, players: pc.players, stat: s, side: pc.side, line: pc.line, dec: at ? (over ? dk.c[1] : dk.c[2]) : null, pMkt: nv == null ? null : over ? nv : 1 - nv,
+      pSim: sim ? (over ? sim.p : 1 - sim.p) : null, simAvg: sim ? sim.avg : null, open: at && dk.o ? dk.o[0] : null, focus: focusOf(s), tend,
+      underRate: cm && cm.unders, convModel: cm, pModel: at && dk.pm != null ? (over ? dk.pm : 1 - dk.pm) : null});
+    if (at && c.p_conv != null) { const dec = over ? dk.c[1] : dk.c[2]; c.conv = CASE.convScore(c.p_conv, dec); c.tier = CASE.convTier(c.conv); c.verdict = CASE.verdict(c, c.conv); }
+    else { const sc = Math.max(5, Math.min(95, Math.round(50 + c.balance * 6))); c.conv = null; c.verdict = (c.balance >= 2 ? "The case leans " : c.balance <= -2 ? "The case leans against the " : "Balanced case on the ") + pc.side.toLowerCase() + (c.against[0] ? `; the main risk is ${c.against[0].tag}.` : "."); }
+    return c;
+  } catch (e) { console.log("case failed", e); return null; }
+}
+
 function bestHtml() {
   const B = D.best || {}, date = (D.players && D.players.date) || "", day = (B.days || {})[date];
   const title = `<h2>Best bets today</h2>`;
@@ -1052,19 +1102,26 @@ function bestHtml() {
       : x.kind === "spread" ? `${esc(x.team)} ${x.point > 0 ? "+" : ""}${f1(x.point)}` : `${x.side.toUpperCase()} ${f1(x.point)}`;
     const who = isProp ? esc(x.name) : x.kind === "spread" ? "Spread" : "Total";
     const attrs = isProp ? `data-pid="${x.pid}" data-stat="${x.stat}"` : `data-bgame="${x.espn_id}"`;
-    return `<div class="cr bb" ${attrs}><div><span class="rk">${i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${statusOf(x)}
+    return `<div class="cr bb" ${attrs}><div><span class="rk">${i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${cvBadge(x)}${statusOf(x)}
         <div class="gm">${esc(x.game)} · ${tod(x.start)}${isProp && x.cv ? ` · <span class="dots">${dots(x.cv)}</span>` : ""}</div></div>
       <div class="rt"><div class="a">${bet}</div><div class="b">${amS(x.am)} DraftKings · ${evTag(x)}</div></div>
       <div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>needs ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>market ${Math.round(x.p_mkt * 100)}%</span>
         ${!x.res && !(gOf(x.espn_id) && gOf(x.espn_id).state !== "pre") ? `<button class="btn ghost sm" data-blog="${esc(x.kind + "|" + (x.pid || x.espn_id) + "|" + (x.stat || "") + "|" + x.side)}">+ Log</button>` : ""}</div>
-      <div class="why">${esc(x.why)}</div></div>`;
+      ${x.verdict ? `<div class="verd">${esc(x.verdict)}</div>${caseHtml(x.case, x.ladder, x.point, x.side, false)}` : `<div class="why">${esc(x.why)}</div>`}</div>`;
   };
+  const CMd = L.conviction, tr = t => CMd && CMd.tiers && CMd.tiers[t] && CMd.tiers[t].n ? `${Math.round(CMd.tiers[t].w / CMd.tiers[t].n * 100)}% of ${CMd.tiers[t].n}` : "—";
+  const rt = R.tiers || {};
   const wp = L.w_props ? Object.entries(L.w_props).map(([k, v]) => `${STATN[k] || k} ${Math.round(v * 100)}%`).join(" · ") : "";
   return title + `<div class="card" style="padding:4px 12px 10px" id="bestCard">
-      <div class="desc" style="margin-top:6px">Every DraftKings spread, total and prop on tonight's slate, priced from 10,000 simulations of each game and corrected by what the agent has learned. Ranked by expected value; picks lock at tip-off.</div>
+      <div class="desc" style="margin-top:6px">Ranked by conviction (0–100): how far the chance of winning sits above what the price needs. Each play shows its verdict; tap "The case" for why it works, why it won't hit, and his hit rate at this line and the next ones out. Picks lock at tip-off.</div>
       <div class="lbl">Props · record ${rs(R.props)}</div>${(day.props || []).map(row).join("") || '<div class="empty">No props pass the checks yet (DraftKings posts player lines in the afternoon).</div>'}
       <div class="lbl">Spreads & totals · record ${rs(R.games)}</div>${(day.games || []).map(row).join("") || '<div class="empty">No DraftKings game lines yet.</div>'}
       <details class="bbl"><summary>What the model has learned</summary><div class="desc">
+        <b>Conviction</b> averages two reads. One is the sim blended with DraftKings' price. The other is a model of what has actually paid: it starts from DraftKings' price and moves it for matchup conviction, unders, and whether his last-10 hit rate agrees${CMd ? `. Tested on days it hadn't seen (${CMd.n.toLocaleString()} graded props over ${CMd.days} days), its top calls won ${tr("70")}, the next tier ${tr("60")}, and it scored ${CMd.cv_ll.model} vs the market's ${CMd.cv_ll.market} (lower is better). That is a short window, so the record below is what counts` : " (it switches on after 400 graded props)"}.<br>
+        <b>Hit rates alone don't beat the price</b>: books move the line with form, so a 7-of-10 streak is already in the number. Hit rates count only when they agree with the matchup read.<br>
+        ${(pt => pt && pt.n >= 40 ? `<b>Which reasons have actually paid</b> (${pt.n} graded props since ${pt.from}; every priced prop is logged, not only the picks): ${Object.entries(pt.tags).map(([t, v]) => [t, v.f[0] + v.f[1], v.f[0] / Math.max(1, v.f[0] + v.f[1]), v.a[0] + v.a[1], v.a[0] / Math.max(1, v.a[0] + v.a[1])]).filter(x => x[1] >= 15 || x[3] >= 15).sort((a, b) => b[2] - a[2]).map(x => `${esc(x[0])} ${x[1] >= 15 ? "for " + Math.round(x[2] * 100) + "%" : ""}${x[1] >= 15 && x[3] >= 15 ? " / " : ""}${x[3] >= 15 ? "against " + Math.round(x[4] * 100) + "%" : ""}`).join(" · ")}. "For 60%" means plays with that reason on their side won 60%; "against 45%" means plays won 45% despite it.<br>
+        <b>All priced props by conviction:</b> ${["Strong", "Solid", "Lean", "Pass"].map(t => `${t} ${pt.conv[t][0]}-${pt.conv[t][1]}`).join(" · ")}.<br>` : `<b>Which reasons actually pay:</b> every priced prop's case is now logged and graded (not only the five picks). The table of which reasons win appears here after about 40 graded props.<br>`)(B.patterns)}
+        <b>Record by tier:</b> Strong ${rs(rt.Strong)} · Solid ${rs(rt.Solid)} · Lean ${rs(rt.Lean)}.<br>
         <b>Model vs market weight</b> (how much the model's own number counts against DraftKings' no-vig price, learned from ${L.props_scored || 0} graded props): ${esc(wp)}. Where the model hasn't beaten the market yet, the weight stays low and its picks lean on the price.<br>
         <b>Game lines:</b> the sim counts ${Math.round((L.w_game || 0) * 100)}% against the market${!L.w_game_learned ? " (a starting value until 20+ sims are graded against Vegas)" : ", set by how its margin errors compare with Vegas'"}.<br>
         <b>Sim corrections</b> from ${L.games_graded || 0} graded games: totals ${L.total_bias > 0 ? "-" : "+"}${Math.abs(L.total_bias || 0).toFixed(1)} pts${L.stat_bias ? " · players " + Object.entries(L.stat_bias).filter(([, v]) => Math.abs(v) >= 0.1).map(([k, v]) => `${STATN[k] || k} ${v > 0 ? "-" : "+"}${Math.abs(v).toFixed(1)}`).join(", ") : ""}.<br>
@@ -1075,6 +1132,7 @@ function bestHtml() {
 function bindBest(root) {
   const el = root.querySelector("#bestCard"); if (!el) return;
   el.querySelectorAll("[data-bgame]").forEach(r => r.onclick = () => window.openGame && openGame(r.dataset.bgame));
+  el.querySelectorAll("details.case").forEach(d => d.onclick = e => e.stopPropagation());
   el.querySelectorAll("[data-blog]").forEach(b => b.onclick = e => {
     e.stopPropagation();
     const [kind, id, stat, side] = b.dataset.blog.split("|"), day = D.best.days[D.players.date];
@@ -1278,7 +1336,10 @@ async function openPlayer(pid, stat) {
   const p = g && g.players[pid];
   if (!p) { $("pane").querySelector(".desc").textContent = "No detail file for this game yet."; return; }
   const priced = (D.pz.priced || {});
-  const pc = D.pc = {p, shots: (g.shots || {})[pid] || [], stat: stat || "ra", side: null, line: null, win: "L10", loc: "all", opp: false, mates: {}, swin: "season"};
+  if (!D.sims) D.sims = await get("sims.json", {games: {}});
+  if (!D.sb) D.sb = await get("scoreboard.json", {});
+  if (!D.dkday || D.dkday.date !== D.players.date) D.dkday = await get(`dk/${D.players.date}.json`, {date: D.players.date, games: {}});
+  const pc = D.pc = {p, players: g.players, shots: (g.shots || {})[pid] || [], stat: stat || "ra", side: null, line: null, win: "L10", loc: "all", opp: false, mates: {}, swin: "season"};
   const pr = priced[pid + "|" + pc.stat];
   pc.line = pr ? pr.line : estLine({pid, stat: pc.stat, base: p.proj[pc.stat].base}).line;
   pc.side = pr ? pr.side : (p.proj[pc.stat].mult >= 1 ? "Over" : "Under");
@@ -1403,6 +1464,7 @@ function renderCard() {
   const mateChips = p.mates.map((m, i) => { const v = pc.mates[i]; return `<button data-m="${i}" class="${v === "with" ? "w" : v === "without" ? "wo" : ""}">${v === "with" ? "With " : v === "without" ? "Without " : ""}${esc(m.name.split(" ").slice(-1)[0])}</button>`; }).join("");
   const snapshot = `Proj ${pj.proj.toFixed(1)} (norm ${pj.base.toFixed(1)}, matchup ${pct(pj.mult - 1, 0)}); L5 ${hr(all.slice(-5), pc)}, L10 ${hr(all.slice(-10), pc)}, L15 ${hr(all.slice(-15), pc)}, H2H ${hr(all.filter(r => r[1] === p.opp), pc)}; ${p.opp} rank vs ${p.role} #${p.dvp[s][1]} (1 = softest)` + (priced ? `; line ${priced.side} ${priced.line} ${amS(priced.am)} ${bookName(priced.book)}` : "");
   pc.snapshot = snapshot;
+  const cs = cardCase(pc);
 
   $("pane").innerHTML = `<div class="hd"><button class="x" onclick="history.back()">×</button>
       <div class="name">${esc(p.name)}</div>
@@ -1422,6 +1484,8 @@ function renderCard() {
       ${quick.map(([k, xs]) => `<div><div class="k">${k}</div><div class="v">${hr(xs, pc)} <small>${hrPct(xs, pc)}</small></div></div>`).join("")}
       <div><div class="k">${esc(p.opp)} vs ${esc(p.role)}</div><div class="v">#${p.dvp[s][1]} <small>${pct(p.dvp[s][0] - 1, 0)}</small></div></div>
     </div>
+    ${cs ? `<div class="card" style="padding:10px 12px;margin-top:8px"><div class="lbl" style="margin-top:0">${esc(pc.side)} ${pc.line} · the short version ${cs.conv != null ? cvBadge(cs) : ""}</div>
+      <div class="verd" style="margin-top:2px">${esc(cs.verdict)}</div>${caseHtml(cs, cs.ladder, pc.line, pc.side, true)}</div>` : ""}
     <div class="lbl">Filter games</div>
     <div class="chips" id="cwin">${[["L5", "L5"], ["L10", "L10"], ["L15", "L15"], ["season", "This season"], ["last", "Last season"], ["all", "All 3 seasons"]].map(([k, l]) => `<button data-w="${k}" class="${pc.win === k ? "on" : ""}">${l}</button>`).join("")}</div>
     <div class="chips" id="cloc"><button data-o="1" class="${pc.opp ? "on" : ""}">Only vs ${esc(p.opp)}</button>${[["all", "Home + away"], ["home", "Home"], ["away", "Away"]].map(([k, l]) => `<button data-l="${k}" class="${pc.loc === k ? "on" : ""}">${l}</button>`).join("")}</div>
@@ -2179,6 +2243,7 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
   document.addEventListener("visibilitychange", () => { if (!document.hidden) { liveTick(); gradeAll(); } });
 })();
 </script>
+<script src="case.js"></script>
 <script src="sim.js"></script>
 <script src="games.js"></script>
 </body>

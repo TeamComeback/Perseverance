@@ -46,6 +46,11 @@ def build(entries, w):
     for st in sorted({r[3] for r in rows}):
         out["by_stat"][st] = score([r for r in rows if r[3] == st], w)
     out["focus"] = focus(out["by_stat"])
+    try:
+        from . import convmodel
+        out["conviction"] = convmodel.build(entries, log=lambda m: None)
+    except Exception as e:
+        print(f"[scoreboard] conviction model failed: {e}")
     return out
 
 

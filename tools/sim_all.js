@@ -8,6 +8,7 @@ const N = +(process.env.SIM_N || 10000);
 global.window = global; global.RENDER = {}; global.D = {};
 eval(fs.readFileSync(path.join(ROOT, "docs", "sim.js"), "utf8"));
 const E = window.simEngine;
+const CASE = require(path.join(ROOT, "docs", "case.js"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8")); } catch (e) { return d; } };
 const STATS = ["pts", "reb", "ast", "tpm", "pra", "ra"];
 const mean = a => { let t = 0; for (let i = 0; i < a.length; i++) t += a[i]; return t / a.length; };
@@ -47,17 +48,60 @@ function bestBetsSetup(pj, simlog) {
   const frac = (n, f) => { let w = 0, l = 0; for (let i = 0; i < n; i++) { const r = f(i); if (r > 0) w++; else if (r < 0) l++; } return w + l ? w / (w + l) : null; };
   const novig = (a, b) => (1 / a) / (1 / a + 1 / b);
   const cands = {props: [], games: []};
+  // every priced prop's case is logged (not just the five picks) so the agent can learn which reasons actually pay
+  const CLOG = read("case_log.json", {days: {}}), clogDay = {};
   const gLearned = !!(agg.margin && agg.margin_vegas && agg.margin[0] >= 20 && agg.margin_vegas[0] >= 20);
   const learned = {focus: Object.fromEntries(["pts", "reb", "ast", "tpm", "pra", "ra"].map(k => [k, focusOf(k)])), w_props: {}, w_game: Math.round(wGame * 100) / 100, w_game_learned: gLearned, total_bias: r1(totBias), stat_bias: {},
     games_graded: (agg.total || [0])[0], props_scored: (sb.all && sb.all.n) || 0};
   ["pts", "reb", "ast", "tpm", "pra", "ra"].forEach(k => { learned.w_props[k] = Math.round(wStat(k) * 100) / 100; learned.stat_bias[k] = Math.round(bias(k) * 100) / 100; });
   const startOf = {}, NSIM = +(process.env.SIM_N || 10000); (pj.games || []).forEach(g => startOf[g.espn_id] = g);
+  // conviction model (agent/convmodel.py), each player's record against his posted lines, and the league's under rate
+  const CM = sb.conviction && sb.conviction.ready ? sb.conviction : null;
+  const dkRecent = read("dk_recent.json", {}), linesAll = read("lines.json", {entries: {}}).entries || {};
+  const tendOf = (pid, stat) => {
+    const seen = {}; let o = 0, u = 0;
+    for (const r of dkRecent[pid + "|" + stat] || []) if (r[6] === "over" || r[6] === "under") seen[r[0]] = r[6];
+    for (const e of Object.values(linesAll)) if (e.pid === pid && e.stat === stat && (e.result === "over" || e.result === "under") && !seen[e.date]) seen[e.date] = e.result;
+    for (const v of Object.values(seen)) v === "over" ? o++ : u++;
+    return [o, u];
+  };
+  const TM = read("team_model.json", null);
+  learned.conviction = CM ? {n: CM.n, days: CM.days, cv_ll: CM.cv_ll, tiers: CM.tiers, by_cv: CM.by_cv, unders: CM.unders} : null;
 
-  function price(g, M, dkg, dkProps) {
+  function price(g, M, dkg, dkProps, gf) {
     const N = M.team.home.length, line = dkg && (dkg.close || dkg.open);
     const game = `${g.away} @ ${g.home}`, base = {espn_id: g.espn_id, game, start: g.start, home: g.home, away: g.away,
       home_name: g.home_name, away_name: g.away_name};
     const avgH = mean(M.team.home), avgA = mean(M.team.away);
+    let blowN = 0; for (let i = 0; i < N; i++) if (Math.abs(M.team.home[i] - M.team.away[i]) >= 15) blowN++;
+    const blow = blowN / N, tm = (TM && TM.tonight && TM.tonight[g.espn_id]) || null, opn = dkg && dkg.open, spots = (g.vegas && g.vegas.spots) || g.spots || null;
+    const tmRec = TM && TM.backtest && TM.backtest.all;
+    // the case for a spread or total: the sim, the team model (ratings + who is playing), the schedule spot, the line move
+    const gameCase = (kind, side, pt, ps, pm, dec) => {
+      const F = [], A = [], add = (arr, tag, t) => arr.push({tag, t});
+      const home = side === "home", over = side === "Over";
+      if (ps >= 0.55) add(F, "simulation", `${kind === "spread" ? "Covers" : "Goes " + side.toLowerCase()} in ${Math.round(ps * 100)}% of 10,000 simulated games.`);
+      else if (ps < 0.5) add(A, "simulation", `The simulation leans the other way (${Math.round(ps * 100)}%).`);
+      if (tm) {
+        if (kind === "spread") { const d = (tm.margin + (home ? pt : -pt)) * (home ? 1 : -1);      // points of cover the team model sees
+          if (Math.abs(d) >= 1.5) add(d > 0 ? F : A, "team model", `Team ratings${tm.roster ? " with tonight's lineups" : ""} make it ${tm.margin >= 0 ? g.home : g.away} by ${f1(Math.abs(tm.margin))}, ${f1(Math.abs(d))} ${d > 0 ? "better" : "worse"} than this number.`); }
+        else { const d = (tm.total - pt) * (over ? 1 : -1);
+          if (Math.abs(d) >= 2.5) add(d > 0 ? F : A, "team model", `Team ratings project ${f1(tm.total)} points, ${f1(Math.abs(d))} ${d > 0 ? "on your side of" : "the wrong side of"} ${pt}.`); }
+        for (const o of tm.out || []) if (Math.abs(o.pts) >= 1) { const hurts = (o.team === g.home) !== home; if (kind === "spread") add(hurts ? F : A, "who's out", `${o.team} without ${o.names}: worth about ${f1(Math.abs(o.pts))} points.`); }
+      }
+      if (kind === "spread" && spots && Math.abs(spots.net_home || 0) >= 0.8) { const good = (spots.net_home > 0) === home;
+        add(good ? F : A, "schedule", `Schedule spot favors ${spots.net_home > 0 ? g.home : g.away} by ${f1(Math.abs(spots.net_home))} (rest and travel).`); }
+      if (opn) { const o = kind === "spread" ? opn.sp : opn.tot, c = kind === "spread" ? line.sp : line.tot;
+        if (o != null && c != null && o !== c) { const toward = kind === "spread" ? ((c < o) === home) : ((c > o) === over);
+          add(toward ? F : A, "line move", toward ? `The line has moved this way since it opened (${o} to ${c}): you're with the money, at a worse number.` : `The line has moved against this side since it opened (${o} to ${c}).`); } }
+      if (pm <= 0.47) add(A, "market", `DraftKings prices this side at ${Math.round(pm * 100)}%.`);
+      if (kind === "total" && over && blow >= 0.4) add(A, "blowout", `${Math.round(blow * 100)}% of sims are blowouts, and benches slow the scoring late.`);
+      if (tmRec) { const r = kind === "spread" ? tmRec.ats["0"] : tmRec.ou["0"];
+        add(A, "model record", `Game lines are the hardest market to beat: in the backtest our team ratings went ${r.w}-${r.l} against DraftKings' ${kind === "spread" ? "spreads" : "totals"}. Treat this as a lean.`); }
+      return {for: F.slice(0, 4), against: A.slice(0, 4)};
+    };
+    const gFin = (c, kind, side, pt, ps, pm, dec, p) => { const cs = gameCase(kind, side, pt, ps, pm, dec), conv = Math.min(74, CASE.convScore(p, dec));
+      Object.assign(c, {conv, tier: CASE.convTier(conv), case: cs, verdict: CASE.verdict(cs, conv)}); return c; };
     if (line && line.sp != null && line.sp_h && line.sp_a) {
       const pSim = frac(N, i => M.team.home[i] + line.sp - M.team.away[i]);         // home covers
       const pMkt = novig(line.sp_h, line.sp_a);
@@ -65,9 +109,9 @@ function bestBetsSetup(pj, simlog) {
         const ps = side === "home" ? pSim : 1 - pSim, pm = side === "home" ? pMkt : 1 - pMkt, dec = side === "home" ? line.sp_h : line.sp_a;
         const p = wGame * ps + (1 - wGame) * pm, pt = side === "home" ? line.sp : -line.sp;
         const team = side === "home" ? g.home : g.away;
-        cands.games.push({...base, kind: "spread", side, team, team_name: side === "home" ? g.home_name : g.away_name, point: pt, dec, am: am(dec),
+        cands.games.push(gFin({...base, kind: "spread", side, team, team_name: side === "home" ? g.home_name : g.away_name, point: pt, dec, am: am(dec),
           p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, ev: r1((p * dec - 1) * 1000) / 1000,
-          why: `Sim: ${Math.abs(avgH - avgA) < 0.5 ? "dead even" : `${(avgH - avgA) >= 0 ? g.home : g.away} by ${f1(Math.abs(avgH - avgA))}`} on average (${g.away} ${f1(avgA)}, ${g.home} ${f1(avgH)}) · ${team} ${pt > 0 ? "+" : ""}${pt} covers in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings`});
+          why: `Sim: ${Math.abs(avgH - avgA) < 0.5 ? "dead even" : `${(avgH - avgA) >= 0 ? g.home : g.away} by ${f1(Math.abs(avgH - avgA))}`} on average (${g.away} ${f1(avgA)}, ${g.home} ${f1(avgH)}) · ${team} ${pt > 0 ? "+" : ""}${pt} covers in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings`}, "spread", side, pt, ps, pm, dec, p));
       }
     }
     if (line && line.tot != null && line.ov && line.un) {
@@ -76,16 +120,18 @@ function bestBetsSetup(pj, simlog) {
       if (pSim != null) for (const side of ["Over", "Under"]) {
         const ps = side === "Over" ? pSim : 1 - pSim, pm = side === "Over" ? pMkt : 1 - pMkt, dec = side === "Over" ? line.ov : line.un;
         const p = wGame * ps + (1 - wGame) * pm;
-        cands.games.push({...base, kind: "total", side, point: line.tot, dec, am: am(dec),
+        cands.games.push(gFin({...base, kind: "total", side, point: line.tot, dec, am: am(dec),
           p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, ev: r1((p * dec - 1) * 1000) / 1000,
-          why: `Sim total ${f1(avgH + avgA - totBias)}${Math.abs(totBias) >= 0.5 ? ` (after a learned ${totBias > 0 ? "-" : "+"}${f1(Math.abs(totBias))} correction)` : ""} vs ${line.tot} · ${side.toLowerCase()} in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings`});
+          why: `Sim total ${f1(avgH + avgA - totBias)}${Math.abs(totBias) >= 0.5 ? ` (after a learned ${totBias > 0 ? "-" : "+"}${f1(Math.abs(totBias))} correction)` : ""} vs ${line.tot} · ${side.toLowerCase()} in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings`}, "total", side, line.tot, ps, pm, dec, p));
       }
     }
     for (const r of Object.values(dkProps)) {
       if (r.espn_id !== g.espn_id || !r.c || r.c[0] == null || !r.c[1] || !r.c[2]) continue;
       const a = M.out[r.pid] && M.out[r.pid][r.stat]; if (!a) continue;
       const L = r.c[0], b = bias(r.stat), w = wStat(r.stat);
-      if (focusOf(r.stat) === "skip") continue;                  // the market alone beats the model in this stat
+      const foc = focusOf(r.stat);
+      if (foc === "skip" && !(CM && (r.cv || 0) >= 3)) continue;   // the market beats the model in this stat: only strong conviction gets through
+      const gp = gf && gf.players && gf.players[r.pid];
       const pSim = frac(N, i => a[i] - b - L); if (pSim == null) continue;
       const pMkt = novig(r.c[1], r.c[2]), simAvg = mean(a) - b;
       // guards: only players with a real role tonight, and no line the market has clearly re-priced
@@ -97,12 +143,25 @@ function bestBetsSetup(pj, simlog) {
       if (r.proj != null && Math.abs(simAvg - r.proj) > Math.max(2, 0.25 * r.proj)) continue;
       for (const side of ["Over", "Under"]) {
         const ps = side === "Over" ? pSim : 1 - pSim, pm = side === "Over" ? pMkt : 1 - pMkt, dec = side === "Over" ? r.c[1] : r.c[2];
-        const p = w * ps + (1 - w) * pm;
-        cands.props.push({...base, kind: "prop", pid: r.pid, name: r.name, team: r.team, opp: r.opp, stat: r.stat, side, point: L, dec, am: am(dec),
+        const pb = w * ps + (1 - w) * pm;
+        // the case: form at this line and the next ones out, tonight's context, how the misses happen, matchup, sim, price
+        let cs = null;
+        if (gp && gp.logs) try {
+          cs = CASE.buildCase({p: gp, players: gf.players, stat: r.stat, side, line: L, dec, pMkt: pm, pSim: ps, simAvg, open: r.o ? r.o[0] : null,
+            focus: foc, blow, tend: tendOf(r.pid, r.stat), underRate: CM && CM.unders, convModel: CM, pModel: r.pm == null ? null : (side === "Over" ? r.pm : 1 - r.pm)});
+        } catch (e) { console.log("[best] case failed for " + r.name + ": " + e.message); }
+        // two independent reads, averaged: the conviction model (what has actually paid) and the sim blended with the price
+        const p = cs && cs.p_conv != null ? (cs.p_conv + pb) / 2 : pb;
+        const conv = CASE.convScore(p, dec);
+        cands.props.push({...base, kind: "prop", conv, tier: CASE.convTier(conv), p_conv: cs && cs.p_conv != null ? r1(cs.p_conv * 1000) / 1000 : null,
+          case: cs ? {for: cs.for, against: cs.against} : null, ladder: cs ? cs.ladder : null, verdict: cs ? CASE.verdict(cs, conv) : null, avg10: cs ? cs.avg10 : null, pid: r.pid, name: r.name, team: r.team, opp: r.opp, stat: r.stat, side, point: L, dec, am: am(dec),
           p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, ev: r1((p * dec - 1) * 1000) / 1000,
           cv: r.cv || null, lean: r.lean || null, proj: r.proj != null ? r1(r.proj) : null, sim: r1(simAvg), open: r.o ? r.o[0] : null,
           why: `Sim avg ${f1(simAvg)} vs ${L} · ${side.toLowerCase()} in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings · model counts ${Math.round(w * 100)}% (learned)`});
       }
+      const two = cands.props.slice(-2).filter(x => x.pid === r.pid && x.stat === r.stat && x.case);
+      if (two.length === 2) { const b = two[0].conv >= two[1].conv ? two[0] : two[1];
+        clogDay[r.pid + "|" + r.stat] = [g.espn_id, b.side, L, b.dec, b.conv, b.case.for.map(x => x.tag), b.case.against.map(x => x.tag), null]; }
     }
   }
 
@@ -132,7 +191,7 @@ function bestBetsSetup(pj, simlog) {
       const locked = lockedOld.filter(tipped);
       const chosen = [...locked], usedGame = {}, usedPlayer = new Set();
       chosen.forEach(x => { usedGame[x.espn_id] = (usedGame[x.espn_id] || 0) + 1; if (x.pid) usedPlayer.add(x.pid); });
-      const score = x => x.ev + (x.cv ? 0.004 * x.cv : 0);
+      const score = x => x.conv != null ? x.conv + x.ev : 100 * x.ev;          // conviction first; expected value breaks ties
       for (const x of list.filter(x => !tipped(x)).sort((a, b) => score(b) - score(a))) {
         if (chosen.length >= nMax) break;
         if ((usedGame[x.espn_id] || 0) >= perGame) continue;
@@ -140,7 +199,7 @@ function bestBetsSetup(pj, simlog) {
         if (chosen.some(c => c.espn_id === x.espn_id && c.kind === x.kind && (c.pid || "") === (x.pid || "") && (c.stat || "") === (x.stat || ""))) continue;
         chosen.push(x); usedGame[x.espn_id] = (usedGame[x.espn_id] || 0) + 1; if (x.pid) usedPlayer.add(x.pid);
       }
-      return chosen.sort((a, b) => b.ev - a.ev).map(x => ({...x, plus: x.ev > 0}));
+      return chosen.sort((a, b) => score(b) - score(a)).map(x => ({...x, plus: x.ev > 0}));
     };
     const day = {updated: new Date().toISOString(), learned,
       props: pick(cands.props, old.props || [], 5, 2, true),
@@ -150,11 +209,37 @@ function bestBetsSetup(pj, simlog) {
     for (const [d, x] of Object.entries(BEST.days)) if (d < date) gradeDay(d, x);
     const keep = Object.keys(BEST.days).sort().slice(-60);
     BEST.days = Object.fromEntries(keep.map(d => [d, BEST.days[d]]));
-    const rec = {props: {w: 0, l: 0, p: 0, u: 0}, games: {w: 0, l: 0, p: 0, u: 0}, plus: {w: 0, l: 0, p: 0, u: 0}};
+    const z = () => ({w: 0, l: 0, p: 0, u: 0});
+    const rec = {props: z(), games: z(), plus: z(), tiers: {Strong: z(), Solid: z(), Lean: z(), Pass: z()}};
     for (const x of Object.values(BEST.days)) for (const k of ["props", "games"]) for (const b of x[k] || []) {
       if (!["win", "loss", "push"].includes(b.res)) continue;
-      for (const r of [rec[k], ...(b.plus ? [rec.plus] : [])]) { r[b.res[0] === "w" ? "w" : b.res[0] === "l" ? "l" : "p"]++; r.u = r1((r.u + (b.units || 0)) * 100) / 100; }
+      for (const r of [rec[k], ...(b.plus ? [rec.plus] : []), ...(b.tier && rec.tiers[b.tier] ? [rec.tiers[b.tier]] : [])]) { r[b.res[0] === "w" ? "w" : b.res[0] === "l" ? "l" : "p"]++; r.u = r1((r.u + (b.units || 0)) * 100) / 100; }
     }
+    // case log: keep tipped games' rows, replace the rest, grade earlier days, then count how each reason has done
+    const prevRows = CLOG.days[date] || {};
+    for (const [k, row] of Object.entries(prevRows)) { const g = startOf[row[0]]; if (!(k in clogDay) && g && g.state !== "pre") clogDay[k] = row; }
+    CLOG.days[date] = clogDay;
+    for (const [d, rows] of Object.entries(CLOG.days)) {
+      if (d >= date) continue;
+      let dk = null;
+      for (const [k, row] of Object.entries(rows)) {
+        if (row[7]) continue;
+        dk = dk || read(`dk/${d}.json`, {props: {}});
+        const r = (dk.props || {})[k]; if (!r || r.actual == null) continue;
+        row[7] = r.actual === row[2] ? "p" : (r.actual > row[2]) === (row[1] === "Over") ? "w" : "l";
+      }
+    }
+    CLOG.days = Object.fromEntries(Object.keys(CLOG.days).sort().slice(-30).map(d => [d, CLOG.days[d]]));
+    fs.writeFileSync(path.join(DATA, "case_log.json"), JSON.stringify(CLOG));
+    const pat = {n: 0, tags: {}, conv: {Strong: [0, 0], Solid: [0, 0], Lean: [0, 0], Pass: [0, 0]}, from: null};
+    for (const [d, rows] of Object.entries(CLOG.days)) for (const row of Object.values(rows)) {
+      if (row[7] !== "w" && row[7] !== "l") continue;
+      const win = row[7] === "w" ? 0 : 1; pat.n++; pat.from = pat.from || d;
+      pat.conv[CASE.convTier(row[4])][win]++;
+      for (const t of row[5]) { (pat.tags[t] = pat.tags[t] || {f: [0, 0], a: [0, 0]}).f[win]++; }
+      for (const t of row[6]) { (pat.tags[t] = pat.tags[t] || {f: [0, 0], a: [0, 0]}).a[win]++; }
+    }
+    BEST.patterns = pat;
     BEST.record = rec; BEST.updated = day.updated; BEST.date = date;
     fs.writeFileSync(path.join(DATA, "best.json"), JSON.stringify(BEST));
     console.log(`[best] ${day.props.length} props + ${day.games.length} game lines (${[...day.props, ...day.games].filter(x => x.plus).length} priced +EV); weights: props ${JSON.stringify(learned.w_props)}, games ${learned.w_game}, total bias ${learned.total_bias}`);
@@ -247,7 +332,7 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
                      p_over_dk: e.dk.p, over: e.dk.over, under: e.dk.under});
     }
     out.games[g.espn_id].vs = vs;
-    BB.price(g, M, dkg, dkDay.props || {});
+    BB.price(g, M, dkg, dkDay.props || {}, gf);
     run.games[g.espn_id] = {avg, win_home: out.games[g.espn_id].win_home, total: out.games[g.espn_id].total[0],
       players: Object.fromEntries(Object.entries(players).map(([pid, x]) => [pid, [x.min, ...STATS.map(k => x.s[k][0])]]))};
     // what gets graded tomorrow: averages plus the model's own projections for comparison

@@ -30,7 +30,13 @@ const lastName = n => { const w = n.replace(SUF, "").trim().split(/\s+/); return
 
 // ------------------------------------------------------------------ inputs
 // Per player: projected minutes and stat targets from the matchup model, shooting shape from his logs.
+// Sim anchor: "market" pulls team scoring to Vegas' implied points (best for props); "model" uses the team model
+// (ratings plus who's playing) and no market input, so it can disagree with the line. Saved on this device.
+const simMode = () => { try { return typeof localStorage !== "undefined" && localStorage.getItem("pz-simmode") === "model" ? "model" : "market"; } catch (e) { return "market"; } };
+const tmFor = g => simMode() === "model" && typeof D !== "undefined" && D.tm && D.tm.tonight ? D.tm.tonight[g.espn_id] : null;
 function prep(g, gf) {
+  const tmN = tmFor(g);
+  if (tmN) g = {...g, vegas: {...(g.vegas || {}), spread_home: -tmN.margin, total: tmN.total, implied: {home: tmN.home_pts, away: tmN.away_pts}, src: "team model"}};
   const P = {pace: (g.model && g.model.pace) || 99, spreadHome: g.vegas && g.vegas.spread_home != null ? g.vegas.spread_home : (g.model ? g.model.spread_home : 0),
              total: g.vegas && g.vegas.total, g, teams: {}};
   // A higher Vegas total than the model expects mostly means a faster game: about 60% of the gap goes to
@@ -108,7 +114,7 @@ function prep(g, gf) {
     // (player shares still come from the projections)
     const imp = g.vegas && g.vegas.implied && g.vegas.implied[side];
     const sumPts = rows.reduce((t, r) => t + r.tgt.pts, 0);
-    const ak = (typeof D !== "undefined" && D.players && D.players.tuning && D.players.tuning.sim_anchor) || 0.75;   // learned nightly
+    const ak = tmN ? 1 : (typeof D !== "undefined" && D.players && D.players.tuning && D.players.tuning.sim_anchor) || 0.75;   // learned nightly
     if (imp && sumPts > 0) { const f = clamp(Math.pow(imp / sumPts, ak), 0.8, 1.2); rows.forEach(r => r.tgt.pts *= f); }
     // counting stats follow the pace (points are already anchored to the implied team total)
     if (P.paceK !== 1) rows.forEach(r => { r.tgt.reb *= P.paceK; r.tgt.ast *= P.paceK; r.tgt.tpm *= P.paceK; });
@@ -327,6 +333,7 @@ const S = window.SIMV = {gameId: null, P: null, game: null, i: 0, timer: null, s
 
 async function renderSim() {
   if (!D.sims) D.sims = await get("sims.json", {games: {}});
+  if (D.tm === undefined) D.tm = await get("team_model.json", null);
   const games = (D.players.games || []);
   if (!S.gameId || !games.some(g => g.espn_id === S.gameId)) S.gameId = (games.find(g => g.state === "pre") || games[0] || {}).espn_id;
   const chips = games.map(g => `<button data-g="${g.espn_id}" class="${g.espn_id === S.gameId ? "on" : ""}">${esc(g.away)} @ ${esc(g.home)} ${g.state === "pre" ? tod(g.start) : g.state === "in" ? "· live" : "· final"}</button>`).join("");
@@ -436,6 +443,9 @@ function stage() {
         <div class="seg" id="simView">${[["live", "This game"], ["avg", "Average"], ["mode", "Most common"]].map(([k, l]) => `<button data-v="${k}" class="${(S.view || "live") === k ? "on" : ""}">${l}</button>`).join("")}</div>
         <div class="seg bc-side" id="simSide">${["away", "home"].map(x => `<button data-s="${x}" class="${S.boxSide === x ? "on" : ""}">${esc(P.teams[x].ab)}</button>`).join("")}</div>
       </div>
+      ${D.tm && D.tm.tonight && D.tm.tonight[S.gameId] ? `<div style="display:flex;align-items:center;gap:8px;margin:8px 0 2px;flex-wrap:wrap"><span class="desc">Team scoring from</span>
+        <div class="seg" id="simMode">${[["market", "Vegas line"], ["model", "Team model"]].map(([k, l]) => `<button data-simmode="${k}" class="${simMode() === k ? "on" : ""}">${l}</button>`).join("")}</div>
+        ${simMode() === "model" ? `<span class="desc">${(t => `${esc(t.margin >= 0 ? t.home : t.away)} by ${Math.abs(t.margin).toFixed(1)}, total ${t.total.toFixed(1)}`)(D.tm.tonight[S.gameId])} · no market input</span>` : ""}</div>` : ""}
       <details class="lu-d" id="simLUd"${S.luOpen ? " open" : ""}><summary><span>👥 Lineup${hasOverride(S.gameId) ? ' <span class="fchip edge">your lineup</span>' : ""}</span><span class="dim" style="font-size:12px">${luSummary()}</span></summary><div id="simLU"><div class="empty">Loading…</div></div></details>
       <div class="bc-note">Simulated game, not a prediction · tap the court to replay a play · ⤢ for full screen (turn your phone sideways)</div>
     </div>`;
@@ -495,6 +505,7 @@ async function applyLineup(act) {
   const gid = S.gameId, o = LU(gid) || {out: [], in: [], st: {}};
   o.out = o.out || []; o.in = o.in || []; o.st = o.st || {};
   if (act === "reset") LUset(gid, null);
+  else if (act === "mode") { /* anchor switched: just re-run below */ }
   else {
     const [kind, sd, pid] = act.split("|"), gf = await gameFile(gid), p = gf.players[pid];
     if (kind === "io") {
@@ -508,14 +519,17 @@ async function applyLineup(act) {
     }
     LUset(gid, o);
   }
-  const box = $("simLU"); if (box) box.innerHTML = '<div class="empty">Re-simulating with your lineup…</div>';
+  const box = $("simLU"); if (box) box.innerHTML = '<div class="empty">Re-simulating…</div>';
+  const keepOpen = act === "mode" ? S.luOpen : true;
   stop(); await new Promise(r => setTimeout(r, 30));
   const g = (D.players.games || []).find(x => x.espn_id === gid), gf = await gameFile(gid);
   const jersey = S.P && S.P.jersey;
   S.P = calibrate(prep(g, gf)); S.P.jersey = jersey; S.avgRun = null; S.mc = null; S.game = null; S.nowSim = null;
-  S.luOpen = true; stage(); showStored(); if (S.now && S.now.state === "in") liveSimFromHere();
+  S.luOpen = keepOpen; stage(); showStored(); if (S.now && S.now.state === "in") liveSimFromHere();
 }
 if (typeof document !== "undefined") document.addEventListener("click", e => {
+  const m = e.target.closest && e.target.closest("[data-simmode]");
+  if (m) { e.preventDefault(); try { localStorage.setItem("pz-simmode", m.dataset.simmode); } catch (x) {} applyLineup("mode"); return; }
   const b = e.target.closest && e.target.closest("[data-lu]"); if (!b || b.disabled) return;
   e.preventDefault(); applyLineup(b.dataset.lu);
 });
@@ -554,7 +568,7 @@ async function ensureAvg() {
   // prefer the overnight 10,000-sim averages when they exist for this game
   // the stored 10,000-sim averages only when they were made from today's current inputs
   const sg = D.sims && D.sims.games && D.sims.games[S.gameId];
-  const stored = !hasOverride(S.gameId) && sg && sg.at && D.players && sg.at >= (D.players.updated || "") ? sg : null;
+  const stored = !hasOverride(S.gameId) && simMode() !== "model" && sg && sg.at && D.players && sg.at >= (D.players.updated || "") ? sg : null;
   if (stored) for (const pid in players) { const x = stored.players[pid]; if (x) Object.assign(players[pid].avg, {min: x.min, pts: x.s.pts[0], reb: x.s.reb[0], ast: x.s.ast[0], tpm: x.s.tpm[0]}); }
   S.avgRun = {gid: S.gameId, N: stored ? D.sims.n : N, bi, seedBase, players, biScore: {home: M.team.home[bi], away: M.team.away[bi]},
     score: stored ? stored.avg : {home: mean(M.team.home), away: mean(M.team.away)},
@@ -1318,7 +1332,7 @@ function showVs(elId, gid) {
 function showStored() {
   const G = D.sims && D.sims.games && D.sims.games[S.gameId], P = S.P;
   if (!G) return;
-  if (hasOverride(S.gameId)) { $("simRes").innerHTML = '<div class="desc" style="margin-top:10px">You set your own lineup for this game, so the overnight 10,000 sims (official lineup) are hidden. Tap <b>Run 5,000 sims</b> to simulate with yours.</div>'; return; }
+  if (hasOverride(S.gameId) || simMode() === "model") { $("simRes").innerHTML = `<div class="desc" style="margin-top:10px">${simMode() === "model" ? "Team-model mode: scores come from our ratings and tonight's lineups, with no Vegas input" : "You set your own lineup for this game"}, so the overnight 10,000 sims (Vegas line, official lineup) are hidden. Tap <b>Run 5,000 sims</b> to simulate this version.</div>`; return; }
   const st = S.stat, priced = (D.pz && D.pz.priced) || {};
   const rows = Object.entries(G.players).map(([pid, x]) => {
     const q = x.s[st], pr = priced[pid + "|" + st];

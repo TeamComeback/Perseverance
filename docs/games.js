@@ -214,7 +214,16 @@ function matchSub(g) {
   const T = D.tm, H = g.home, A = g.away;
   if (!T || !T.teams || !T.teams[H] || !T.teams[A]) return '<div class="empty">The team model arrives with the next research run.</div>';
   const sp = (g.vegas || {}).spots || {}, b2b = sd => sp[sd] && sp[sd].rest === 0 ? 1 : 0;
-  const pr = teamPredict(T, H, A, b2b("home"), b2b("away")), P = T.params, L = T.league, th = T.teams[H], ta = T.teams[A];
+  const P = T.params, L = T.league, th = T.teams[H], ta = T.teams[A];
+  let pr = teamPredict(T, H, A, b2b("home"), b2b("away"));
+  const tn = (T.tonight || {})[g.espn_id];           // ratings plus who's playing tonight (agent/roster.py)
+  if (tn) pr = {...pr, home: tn.home_pts, away: tn.away_pts, margin: tn.margin, total: tn.total, pace: tn.pace, win: PHI(tn.margin / P.sd_margin)};
+  const who = sd => { const r = tn && tn.adj && tn.adj[sd]; if (!r || !(r.out.length + r.back.length)) return `<div class="ti"><span><b style="color:var(--text)">${esc(g[sd])}</b> · the usual rotation</span><b class="dim">0</b></div>`;
+    return `<div class="ti"><span><b style="color:var(--text)">${esc(g[sd])}</b>${r.out.length ? " · out: " + r.out.map(x => `${esc(x[0])} (${f1(-x[1])})`).join(", ") : ""}${r.back.length ? " · back: " + r.back.map(x => `${esc(x[0])} (+${f1(x[1])})`).join(", ") : ""}</span><b class="${r.pts < -0.05 ? "neg" : r.pts > 0.05 ? "pos" : "dim"}">${r.pts > 0 ? "+" : ""}${f1(r.pts)}</b></div>`; };
+  const LV = T.live || {}, btB = (T.backtest || {}).big_roster;
+  const whoCard = tn && tn.roster ? `<h2>Who's playing</h2><div class="card"><div class="desc" style="margin-bottom:2px">Points of margin from tonight's lineup compared with the team the ratings have seen lately. A player who has already missed most recent games counts for less, because the ratings have adjusted.</div>
+      ${who("away")}${who("home")}
+      <div class="desc" style="margin-top:6px">Ratings alone: ${esc(tn.base_margin >= 0 ? H : A)} by ${f1(Math.abs(tn.base_margin))}. With lineups: <b style="color:var(--text)">${esc(tn.margin >= 0 ? H : A)} by ${f1(Math.abs(tn.margin))}</b>.${btB ? ` In past games with 3+ points of lineup news the model missed by ${f1(btB.margin_mae.model)} (ratings alone ${f1(btB.margin_mae.ratings_only)}, DraftKings ${f1(btB.margin_mae.line)}).` : ""}</div></div>` : "";
   const dk = dkOf(g.espn_id), c = dk.close || dk.open || (g.vegas && g.vegas.total ? {sp: g.vegas.spread_home, tot: g.vegas.total} : null);
   const z = 1.2816, bt = (T.backtest || {}).all;
   // model vs market, with how the model has done at that size of disagreement
@@ -270,6 +279,7 @@ function matchSub(g) {
       ${row("Net rating", "net", v => (v > 0 ? "+" : "") + f1(v))}${row("Offense", "ortg", f1)}${row("Defense", "drtg", f1)}${row("Pace", "pace", f1)}
       <tr><td class="t">Last 10 net (raw)</td><td>${ta.net10 == null ? "—" : (ta.net10 > 0 ? "+" : "") + f1(ta.net10)}</td><td>${th.net10 == null ? "—" : (th.net10 > 0 ? "+" : "") + f1(th.net10)}</td></tr></table>
       <div class="desc">Points are luck-adjusted: each team's threes are re-scored at its long-run 3P%, so defenses are judged on the threes they allow, not on how many fell. Recent games count more.</div></div>
+    ${whoCard}
     <h2>Four factors</h2><div class="card"><div class="chips" style="margin-bottom:8px">${chips}</div>
       ${ffT(awayOff, homeDef, A, H)}<div style="height:10px"></div>${ffT(homeOff, awayDef, H, A)}
       <div class="desc">Edge bar: green helps the offense, red helps the defense. "Model" is opponent-adjusted; the other windows are raw this season${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
@@ -282,10 +292,12 @@ function matchSub(g) {
       Team totals: ${esc(A)} ${f1(pr.away)}, ${esc(H)} ${f1(pr.home)}.</div></div>
     ${bt ? `<details class="sec"><summary>How the team model has done</summary><div style="padding:0 14px 12px"><table class="tbl">
       <tr><th></th><th>Model</th><th>DK line</th></tr>
-      <tr><td class="t">Avg miss, margin</td><td>${f1(bt.margin_mae.model)}</td><td>${f1(bt.margin_mae.line)}</td></tr>
+      <tr><td class="t">Avg miss, margin</td><td>${bt.margin_mae.model.toFixed(2)}</td><td>${bt.margin_mae.line.toFixed(2)}</td></tr>
+      ${bt.margin_mae.ratings_only ? `<tr><td class="t dim">  ratings without lineups</td><td class="dim">${bt.margin_mae.ratings_only.toFixed(2)}</td><td></td></tr>` : ""}
       <tr><td class="t">Avg miss, total</td><td>${f1(bt.total_mae.model)}</td><td>${f1(bt.total_mae.line)}</td></tr>
       ${bt.win_ll ? `<tr><td class="t">Win prob. log loss</td><td>${bt.win_ll.model}</td><td>${bt.win_ll.line}</td></tr>` : ""}</table>
-      <div class="desc">Walk-forward over ${bt.n.toLocaleString()} games with ESPN's pregame DraftKings line (the model only ever saw games before each date). Best blend weight on the model: ${bt.margin_best_w} for spreads, ${bt.total_best_w} for totals (0 = the line alone is best). Lower is better for every row.</div></div></details>` : ""}`;
+      <div class="desc">Walk-forward over ${bt.n.toLocaleString()} games with ESPN's pregame DraftKings line (the model only ever saw games before each date). Best blend weight on the model: ${bt.margin_best_w} for spreads, ${bt.total_best_w} for totals (0 = the line alone is best). Lower is better for every row.</div>
+      <div class="lbl">Live scoreboard · since Nov 11</div><div class="desc">${LV.n ? `${LV.n} games graded. Margin miss: model ${LV.margin_mae.model}, closing line ${LV.margin_mae.close}. Against the spread when it disagreed by 2+: ${LV.ats["2"].w}-${LV.ats["2"].l}.${LV.clv && LV.clv.n ? ` The line moved the model's way in ${LV.clv.toward} of ${LV.clv.n} disagreements (${LV.clv.avg_pts > 0 ? "+" : ""}${LV.clv.avg_pts} points on average).` : ""}` : "No games graded yet."} Status: <b style="color:var(--text)">${LV.status === "edge" ? "edge: may bet" : LV.status === "skip" ? "skip" : "tracked only"}</b> (needs ${LV.gate || 150} graded games and 55%+ against the spread before the agent may bet game lines from it).</div></div></details>` : ""}`;
 }
 
 function boxSub(g, n) {
