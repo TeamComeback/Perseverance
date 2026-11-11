@@ -333,6 +333,7 @@ const S = window.SIMV = {gameId: null, P: null, game: null, i: 0, timer: null, s
 
 async function renderSim() {
   if (!D.sims) D.sims = await get("sims.json", {games: {}});
+  if (D.players && (!D.dkday || D.dkday.date !== D.players.date)) D.dkday = await get(`dk/${D.players.date}.json`, {date: D.players.date, games: {}});
   if (D.tm === undefined) D.tm = await get("team_model.json", null);
   const games = (D.players.games || []);
   if (!S.gameId || !games.some(g => g.espn_id === S.gameId)) S.gameId = (games.find(g => g.state === "pre") || games[0] || {}).espn_id;
@@ -376,6 +377,12 @@ const hexRgb = h => [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16));
 const lum = h => { const [r, g, b] = hexRgb(h); return (0.299 * r + 0.587 * g + 0.114 * b) / 255; };
 const cdist = (a, b) => { const x = hexRgb(a), y = hexRgb(b); return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]); };
 const ink = h => lum(h) > 0.6 ? "#0b0f17" : "#fff";
+// a readable color for a team's name on the dark theme
+function teamInk(ab) {
+  const [c, a] = TEAMC[ab] || ["8a94ab", "8a94ab"], ok = h => lum(h) > 0.28 && lum(h) < 0.92;
+  return "#" + (ok(c) ? c : ok(a) ? a : lum(c) <= 0.28 ? "c9d3e6" : "8a94ab");
+}
+if (typeof window !== "undefined") window.teamInk = teamInk;
 function teamCols(P) {
   const one = ab => {
     let [c, a] = TEAMC[ab] || ["3a4766", "ADD8E6"];
@@ -423,7 +430,10 @@ function stage() {
         <div class="bc-tm a"><div class="tx"><div class="nm">${esc(nickOf("away"))}</div><div class="sub" id="fgA">${esc(P.teams.away.ab)}</div></div><div class="sc" id="scA">0</div></div>
         <div class="bc-clk"><div class="c" id="simClk">Q1 12:00</div><div class="shot">SHOT <b id="shotClk">24</b></div></div>
         <div class="bc-tm h"><div class="sc" id="scH">0</div><div class="tx"><div class="nm">${esc(nickOf("home"))}</div><div class="sub" id="fgH">${esc(P.teams.home.ab)}</div></div></div>
-        <div class="bc-wp"><span class="a" id="wpA">50%</span><div class="trk"><svg viewBox="0 0 300 24" preserveAspectRatio="none"><line x1="0" x2="300" y1="12" y2="12"/><polyline id="wpPoly" points=""/></svg><i id="wpBar" style="left:0%;top:50%"></i><em>WIN PROBABILITY</em></div><span class="h" id="wpH">50%</span></div>
+        <div class="bc-wp"><span class="a"><small>${esc(P.teams.away.ab)}</small><b id="wpA">50%</b></span><div class="trk"><div class="half h"></div><div class="half a"></div>
+          <svg viewBox="0 0 300 24" preserveAspectRatio="none"><line x1="0" x2="300" y1="12" y2="12"/><polyline id="wpPoly" points=""/></svg>
+          <u class="lab top">▲ ${esc(P.teams.home.ab)} winning</u><u class="lab mid">50-50</u><u class="lab bot">▼ ${esc(P.teams.away.ab)} winning</u>
+          <i id="wpBar" style="left:0%;top:50%"></i><s id="wpTag"></s><em>WIN PROBABILITY</em></div><span class="h"><small>${esc(P.teams.home.ab)}</small><b id="wpH">50%</b></span></div>
       </div>
       <div class="bc-main">
         <div class="bc-box a" id="bxA"></div>
@@ -445,7 +455,11 @@ function stage() {
       </div>
       ${D.tm && D.tm.tonight && D.tm.tonight[S.gameId] ? `<div style="display:flex;align-items:center;gap:8px;margin:8px 0 2px;flex-wrap:wrap"><span class="desc">Team scoring from</span>
         <div class="seg" id="simMode">${[["market", "Vegas line"], ["model", "Team model"]].map(([k, l]) => `<button data-simmode="${k}" class="${simMode() === k ? "on" : ""}">${l}</button>`).join("")}</div>
-        ${simMode() === "model" ? `<span class="desc">${(t => `${esc(t.margin >= 0 ? t.home : t.away)} by ${Math.abs(t.margin).toFixed(1)}, total ${t.total.toFixed(1)}`)(D.tm.tonight[S.gameId])} · no market input</span>` : ""}</div>` : ""}
+        ${simMode() === "model" ? `<span class="desc">${(t => `${esc(t.margin >= 0 ? t.home : t.away)} by ${Math.abs(t.margin).toFixed(1)}, total ${t.total.toFixed(1)}`)(D.tm.tonight[S.gameId])} · no market input</span>` : ""}</div>
+        <details class="mode-x"><summary>What's the difference?</summary><div class="desc">
+          <b style="color:var(--text)">Vegas line</b> plays the game the betting market expects: team scoring is pulled to DraftKings' total and spread, and players split it by their projections. The market's game forecast is the most accurate one available, so this is the mode for <b style="color:var(--text)">player props</b>, and it's what the nightly 10,000 sims and Best Bets use.<br>
+          <b style="color:var(--text)">Team model</b> plays the game our own numbers expect: opponent-adjusted team ratings plus tonight's lineups, with no market input. It is the only way to have an opinion on a <b style="color:var(--text)">spread or total</b>, because a sim anchored to the line can never disagree with it.<br>
+          <b style="color:var(--text)">Why compare them:</b> where they agree, there's nothing to bet on the game line. Where they split, the gap is the opinion, and it moves the players too: if our model has a team scoring 4 fewer points, that team's overs get weaker. Games → Matchup → "Vegas vs our model" lays it out side by side, with how often past gaps were right.</div></details>` : ""}
       <details class="lu-d" id="simLUd"${S.luOpen ? " open" : ""}><summary><span>👥 Lineup${hasOverride(S.gameId) ? ' <span class="fchip edge">your lineup</span>' : ""}</span><span class="dim" style="font-size:12px">${luSummary()}</span></summary><div id="simLU"><div class="empty">Loading…</div></div></details>
       <div class="bc-note">Simulated game, not a prediction · tap the court to replay a play · ⤢ for full screen (turn your phone sideways)</div>
     </div>`;
@@ -623,6 +637,9 @@ function setWP(wp, i) {
   poly.setAttribute("points", pts.join(" "));
   dot.style.left = (x(G.events[i]) * 100) + "%"; dot.style.top = (100 - wp * 100) + "%";
   dot.className = wp >= 0.5 ? "h" : "a";
+  const tag = $("wpTag"), P = S.P;
+  if (tag && P) { const lead = wp >= 0.5 ? P.teams.home.ab : P.teams.away.ab; tag.textContent = `${lead} ${Math.round(Math.max(wp, 1 - wp) * 100)}%`;
+    tag.className = wp >= 0.5 ? "h" : "a"; tag.style.left = Math.min(82, Math.max(0, x(G.events[i]) * 100 - 9)) + "%"; tag.style.top = wp >= 0.5 ? "auto" : "-1px"; tag.style.bottom = wp >= 0.5 ? "-1px" : "auto"; }
 }
 // shot clock when the play happened: 24 from the start of the possession, 14 after an offensive rebound
 function shotClock(i) {
@@ -1020,7 +1037,7 @@ function typicalHtml(G) {
 function showDay() {
   const el = $("simDay"); if (!el) return;
   const runs = ((D.simday && D.simday.runs) || []).filter(r => r.games[S.gameId]).sort((a, b) => a.ts.localeCompare(b.ts));
-  if (!runs.length) { el.innerHTML = '<div class="empty">Each run today (about 8:40am, 2pm, 3:45pm, 6:15pm and 8:45pm ET) is saved here so you can see which numbers hold steady and which move.</div>'; return; }
+  if (!runs.length) { el.innerHTML = '<div class="empty">Each run today is saved here with why it ran and what changed, so you can see which numbers hold steady and which move. Runs happen when the last refresh is 4 hours old (1.5 hours close to tip-off), when a rotation player is ruled in or out, and when DraftKings moves a spread or total by a point or more.</div>'; return; }
   const st = S.stat, si = {min: 0, pts: 1, reb: 2, ast: 3, tpm: 4, pra: 5, ra: 6}[st];
   const tm = ts => new Date(ts).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"}).replace(" ", "").toLowerCase();
   const G0 = runs[runs.length - 1].games[S.gameId], P = S.P;
@@ -1034,7 +1051,8 @@ function showDay() {
   }).filter(r => r.mean >= (st === "tpm" ? 0.3 : 1)).sort((a, b) => b.mean - a.mean);
   el.innerHTML = `<div class="desc">${runs.length} run${runs.length > 1 ? "s" : ""} today, 10,000 simulations each. The sim is seeded, so the same inputs always give the same answer: any movement below comes from new information (injury report, lineups, minutes), not luck. <b>Avg of runs</b> is the steadiest single number; <b>moved</b> is the change since the first run.</div>
     <div class="scroll"><table class="tbl"><tr><th>Run</th><th>Score</th><th>${esc(G0 && P ? P.teams.home.ab : "Home")} win</th><th>Total</th></tr>
-      ${runs.map((r, i) => { const g = r.games[S.gameId]; return `<tr><td class="t">${tm(r.ts)}</td><td>${f1(g.avg.away)}–${f1(g.avg.home)}</td><td>${Math.round(g.win_home * 100)}%</td><td>${f1(g.total)}</td></tr>`; }).join("")}
+      ${runs.map((r, i) => { const g = r.games[S.gameId]; return `<tr><td class="t">${tm(r.ts)}</td><td>${f1(g.avg.away)}–${f1(g.avg.home)}</td><td>${Math.round(g.win_home * 100)}%</td><td>${f1(g.total)}</td></tr>
+        ${r.why || g.changes ? `<tr class="rwhy"><td colspan="4">${esc(r.why || "")}${g.changes ? ` · <span class="${g.changes[0] === "no change" ? "dim" : "gold"}">${esc(g.changes.join(", "))}</span>` : ""}</td></tr>` : ""}`; }).join("")}
       ${runs.length > 1 ? `<tr><td class="t"><b>Avg of runs</b></td><td><b>${f1(avgOf(scores.map(g => g.avg.away)))}–${f1(avgOf(scores.map(g => g.avg.home)))}</b></td><td><b>${Math.round(avgOf(scores.map(g => g.win_home)) * 100)}%</b></td><td><b>${f1(avgOf(scores.map(g => g.total)))}</b></td></tr>` : ""}</table></div>
     <div class="chips" id="dayS" style="margin-top:8px">${["min", "pts", "reb", "ast", "tpm", "pra", "ra"].map(k => `<button data-s="${k}" class="${k === st ? "on" : ""}">${k === "min" ? "MIN" : STATN[k]}</button>`).join("")}</div>
     <div class="scroll"><table class="tbl"><tr><th>Player</th>${runs.map(r => `<th>${tm(r.ts)}</th>`).join("")}<th>Avg of runs</th><th>Moved</th></tr>
@@ -1056,45 +1074,115 @@ function dkSnap(item, st) {
 async function pollLive() {
   const gid = S.gameId;
   try {
-    const [od, o200, sb] = await Promise.all([fetch(`${CORE}/events/${gid}/competitions/${gid}/odds`).then(r => r.json()).catch(() => ({})),
-      fetch(`${CORE}/events/${gid}/competitions/${gid}/odds/200`).then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=${gid}`).then(r => r.json())]);
+    const bust = `_=${Date.now()}`, nc = {cache: "no-store"};       // never accept a cached copy of a live line
+    const [od, o200, sb] = await Promise.all([fetch(`${CORE}/events/${gid}/competitions/${gid}/odds?${bust}`, nc).then(r => r.json()).catch(() => ({})),
+      fetch(`${CORE}/events/${gid}/competitions/${gid}/odds/200?${bust}`, nc).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=${gid}&${bust}`, nc).then(r => r.json())]);
     // provider 200 ("DraftKings - Live Odds") carries the in-game line; provider 100's "current" stays frozen at the close.
     // ESPN refreshes it irregularly, so it can lag the real DraftKings line (see staleWhy).
-    const item = (o200 && o200.current ? o200 : null) || (od.items || []).find(i => String((i.provider || {}).id) === "200") || (od.items || []).find(i => String((i.provider || {}).id) === "100");
     const comp = sb.header.competitions[0], st = comp.status, t = {}, side = {};
+    // once the game is live, only the live provider counts: provider 100's "current" is the pregame close
+    const item = (o200 && o200.current ? o200 : null) || (od.items || []).find(i => String((i.provider || {}).id) === "200")
+      || (st.type.state === "pre" ? (od.items || []).find(i => String((i.provider || {}).id) === "100") : null);
     const ls = {}, tm = {};
     comp.competitors.forEach(c => { t[c.homeAway] = +c.score || 0; side[String(c.team ? c.team.id : c.id)] = c.homeAway;
       ls[c.homeAway] = (c.linescores || []).map(x => +(x.displayValue ?? x.value ?? 0));
       tm[c.homeAway] = {ab: (c.team || {}).abbreviation, rec: ((c.record || []).find(r => r.type === "total") || (c.record || [])[0] || {}).summary || ""}; });
     const clk = String(st.displayClock || "0"), sec = clk.includes(":") ? +clk.split(":")[0] * 60 + +clk.split(":")[1] : +clk;
     S.now = {state: st.type.state, period: st.period, clock: sec, detail: st.type.shortDetail, score: [t.away || 0, t.home || 0],
-             line: item ? dkSnap(item, "current") : null, box: liveBox(sb, side), plays: livePlays(sb, side), ls, teams: tm, gid, at: new Date()};
-  } catch (e) { S.now = S.now || null; }
+             line: item ? dkSnap(item, "current") : null, lineSrc: "espn", box: liveBox(sb, side), plays: livePlays(sb, side), ls, teams: tm, ts: teamStats(sb, side), gid, at: new Date()};
+  } catch (e) { console.warn("[live] refresh failed: " + e.message); S.now = S.now || null; }
   if (S.gameId !== gid) return;
   const n0 = S.now;
-  if (n0 && n0.line) {                               // when did DraftKings' line on ESPN last change, and at what margin?
+  if (n0 && n0.line) {                               // when did DraftKings' line on ESPN last change, and at what margin and game time?
     S.lineSeen = S.lineSeen || {}; const k = lineSig(n0.line), seen = S.lineSeen[gid];
-    if (!seen || seen.key !== k) S.lineSeen[gid] = {key: k, mar: n0.score[1] - n0.score[0], tot: n0.score[0] + n0.score[1], at: n0.detail};
+    if (!seen || seen.key !== k) S.lineSeen[gid] = {key: k, mar: n0.score[1] - n0.score[0], tot: n0.score[0] + n0.score[1], at: n0.detail, el: gameEl(n0), period: n0.period};
   }
+  if (n0 && n0.state === "in") await crossCheck(n0, gid);
+  if (n0 && n0.state === "in") applyUserLine(n0, gid);
   showLive();
   const n = S.now; if (n && n.state === "in" && (!S.nowSim || S.nowSim.key !== liveKey(n))) liveSimFromHere();
 }
 const lineSig = L => `${L.sp}|${L.tot}|${L.ml_h}|${L.ml_a}`;
+// game seconds elapsed (regulation 2880, then 300 per overtime)
+const gameEl = n => n.period <= 4 ? (n.period - 1) * 720 + (720 - n.clock) : 2880 + (n.period - 5) * 300 + (300 - n.clock);
+const elLabel = el => { const p = el < 2880 ? Math.floor(el / 720) + 1 : 5 + Math.floor((el - 2880) / 300), rem = el < 2880 ? 720 - el % 720 : 300 - (el - 2880) % 300;
+  return `${p <= 4 ? "Q" + p : "OT" + (p - 4 > 1 ? p - 4 : "")} ${Math.floor(rem / 60)}:${String(Math.floor(rem % 60)).padStart(2, "0")}`; };
+// team box (shots, free throws, offensive rebounds, turnovers) for possessions and our own live total
+function teamStats(sb, side) {
+  const out = {};
+  for (const t of ((sb.boxscore || {}).teams || [])) {
+    const s = side[String(t.team && t.team.id)]; if (!s) continue;
+    const v = nm => { const x = (t.statistics || []).find(z => z.name === nm); return x ? x.displayValue : null; };
+    const ma = nm => { const x = v(nm); if (!x || !x.includes("-")) return [0, 0]; const [a, b] = x.split("-").map(Number); return [a || 0, b || 0]; };
+    const [fgm, fga] = ma("fieldGoalsMade-fieldGoalsAttempted"), [tpm, tpa] = ma("threePointFieldGoalsMade-threePointFieldGoalsAttempted"), [ftm, fta] = ma("freeThrowsMade-freeThrowsAttempted");
+    out[s] = {fgm, fga, tpm, tpa, ftm, fta, oreb: +v("offensiveRebounds") || 0, tov: +(v("totalTurnovers") || v("turnovers")) || 0, fouls: +v("fouls") || 0};
+  }
+  return out.home && out.away ? out : null;
+}
+// The agent saves DraftKings' live line from GitHub every 15 minutes. If that copy is from later in the game than the moment
+// this phone first saw its current line, and the two differ, the phone's copy is the stale one: use the agent's.
+async function crossCheck(n, gid) {
+  try {
+    const day = D.players && D.players.date; if (!day) return;
+    S.dkLive = S.dkLive || {};
+    if (!S.dkLive.at || Date.now() - S.dkLive.at > 120e3 || S.dkLive.day !== day) {
+      const r = await fetch(`data/dk/${day}.json?_=${Date.now()}`, {cache: "no-store"}); S.dkLive = {at: Date.now(), day, d: r.ok ? await r.json() : null};
+    }
+    const snaps = (((S.dkLive.d || {}).games || {})[gid] || {}).live || [];
+    const last = snaps.filter(x => x.line && (x.line.sp != null || x.line.tot != null)).slice(-1)[0]; if (!last) return;
+    const lel = gameEl({period: last.period, clock: +last.clock || 0}), seen = S.lineSeen && S.lineSeen[gid];
+    if (!n.line || (seen && lel > seen.el + 30 && lineSig(last.line) !== lineSig(n.line))) {
+      n.line = last.line; n.lineSrc = "agent"; n.lineAt = lel;
+    }
+  } catch (e) {}
+}
+// "Use this as the live line": the number in your DraftKings app beats any feed. Expires after 3 minutes of game time or a new quarter.
+S.userLine = S.userLine || {};
+function applyUserLine(n, gid) {
+  const u = S.userLine[gid]; if (!u) return;
+  const el = gameEl(n);
+  if (el - u.el > 180 || n.period !== u.period) { u.expired = true; return; }
+  n.line = {...(n.line || {}), ...u.line}; n.lineSrc = "you"; n.lineAt = u.el;
+}
+// Our own fair live total, from the box score alone: possessions so far and the pace they imply, blended with the pregame
+// expectation; points per possession with three-point and free-throw luck taken out, also blended with pregame.
+// The live sim runs on pregame player rates; this one reacts to how the game is actually being played.
+function fairTotal(n, P) {
+  const T = n.ts; if (!T || !P) return null;
+  const el = gameEl(n); if (el < 120) return null;
+  const poss = s => T[s].fga + 0.44 * T[s].fta - T[s].oreb + T[s].tov, pz = (poss("home") + poss("away")) / 2;
+  const prePace = P.pace || 99, preTot = P.total || (P.g && P.g.model && P.g.model.total) || 2.2 * prePace, pppPre = preTot / (2 * prePace);
+  const livePace = pz / el * 2880, w = el / (el + 1440);
+  const pace = (1 - w) * prePace + w * livePace;
+  const pts = n.score[0] + n.score[1];
+  const t3 = T.home.tpm + T.away.tpm, a3 = T.home.tpa + T.away.tpa, fm = T.home.ftm + T.away.ftm, fa = T.home.fta + T.away.fta;
+  const luck = 3 * (t3 - a3 * 0.36) + (fm - fa * 0.78), pppObs = (pts - luck) / Math.max(1, 2 * pz), ppp = (1 - w) * pppPre + w * pppObs;
+  const rem = el < 2880 ? 2880 - el : 300 - (el - 2880) % 300;
+  const fair = pts + 2 * pace * rem / 2880 * ppp;
+  return {fair, pace, livePace, prePace, ppp: ppp * 100, pppObs: pppObs * 100, pppPre: pppPre * 100, p3: a3 ? t3 / a3 : null, luck, el};
+}
 // Live sportsbooks keep spreads and totals close to 50/50. If the sim makes one side of DraftKings' live spread or total
 // a heavy favorite, or the line hasn't moved while the score swung, ESPN's copy of the line has almost surely fallen behind.
-function staleWhy(n, m, H) {
+function staleWhy(n, m, H, c) {
   const L = n && n.line; if (!L) return null;
-  const why = [];
-  if (m && m.p_home_cover != null && (m.p_home_cover < 0.22 || m.p_home_cover > 0.78))
+  if (n.lineSrc === "you") return null;                         // your own number is never stale
+  const why = [], el = gameEl(n), seen = S.lineSeen && S.lineSeen[S.gameId];
+  const sameSince = n.lineSrc === "agent" ? el - (n.lineAt || el) : seen && seen.key === lineSig(L) ? el - seen.el : 0;
+  const cut = sameSince >= 120 ? 0.70 : 0.78;                   // an unchanged line gets less benefit of the doubt
+  if (m && m.p_home_cover != null && (m.p_home_cover < 1 - cut || m.p_home_cover > cut))
     why.push(`the sim makes one side of the ${H} ${spS(L.sp)} spread ${pcS(Math.max(m.p_home_cover, 1 - m.p_home_cover))}`);
-  if (m && m.p_over != null && (m.p_over < 0.22 || m.p_over > 0.78))
+  if (m && m.p_over != null && (m.p_over < 1 - cut || m.p_over > cut))
     why.push(`one side of the ${f1(L.tot)} total ${pcS(Math.max(m.p_over, 1 - m.p_over))}`);
-  const seen = S.lineSeen && S.lineSeen[S.gameId];
-  if (seen && seen.key === lineSig(L)) {
+  if (c && el >= 240 && c.tot != null && L.tot === c.tot && L.sp === c.sp)
+    why.push(`it's still the pregame closing line at ${elLabel(el)}`);
+  if (seen && seen.key === lineSig(L) && n.lineSrc !== "agent") {
     const dm = Math.abs((n.score[1] - n.score[0]) - seen.mar), dt = n.score[0] + n.score[1] - seen.tot;
-    if (dm >= 8 || dt >= 25) why.push(`the line hasn't changed since ${seen.at} while the margin moved ${dm} and ${dt} points were scored`);
+    if (dm >= 8 || dt >= 25 || (sameSince >= 300 && dt >= 12)) why.push(`it hasn't changed since ${seen.at} while the margin moved ${dm} and ${dt} points were scored`);
   }
+  const ft = fairTotal(n, S.P);
+  if (ft && L.tot != null && sameSince >= 120 && Math.abs(ft.fair - L.tot) >= 6)
+    why.push(`our own live total from the box score is ${f1(ft.fair)}, ${f1(Math.abs(ft.fair - L.tot))} points away`);
   return why.length ? why : null;
 }
 // Probability of a bet from the latest live sims, at any line (so you can price the number you see in your app).
@@ -1161,6 +1249,33 @@ function priceForm(H, A) {
       <button class="btn ghost" data-plgo="1" style="padding:6px 10px;font-size:13px">Price</button></div><div class="plout">${S.pl && S.pl.o ? priceHtml() : ""}</div>
     <div class="desc">Uses the same live sims as the table, so the score and clock are the ones shown above. Re-prices on its own as the game moves.</div></div>`;
 }
+// Enter the spread and total you see in DraftKings: the whole table, the stale check and the EV re-price from your numbers.
+function useLineForm(H, A, L) {
+  const u = S.userLine[S.gameId], v = u && !u.expired ? u.line : {};
+  return `<div class="plf ulf"><div class="lbl">Use the line in your app as the live line</div>
+    <div class="plrow"><span class="desc" style="align-self:center">${esc(H)}</span><input class="ulsp" type="text" inputmode="decimal" placeholder="Spread e.g. +3.5" value="${v.sp != null ? v.sp : ""}">
+      <input class="ultot" type="text" inputmode="decimal" placeholder="Total e.g. 222.5" value="${v.tot != null ? v.tot : ""}">
+      <button class="btn ghost" data-ulgo="1" style="padding:6px 10px;font-size:13px">Use</button>${u ? '<button class="btn ghost" data-ulgo="clear" style="padding:6px 10px;font-size:13px">Clear</button>' : ""}</div>
+    <div class="desc">${esc(H)}'s spread as DraftKings shows it (${esc(H)} −3.5 means ${esc(H)} favored). Prices are assumed −110 unless the feed's price is close; good for 3 minutes of game time.</div></div>`;
+}
+if (typeof document !== "undefined") document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-ulgo]"); if (!b) return;
+  e.preventDefault();
+  const f = b.closest(".ulf"), gid = S.gameId, n = S.now;
+  if (b.dataset.ulgo === "clear" || !n) { delete S.userLine[gid]; }
+  else {
+    const num = x => parseFloat(String(x).replace("−", "-").replace("+", "").trim());
+    const sp = num(f.querySelector(".ulsp").value), tot = num(f.querySelector(".ultot").value), feed = n.line || {};
+    if (isNaN(sp) && isNaN(tot)) return;
+    const d = 1.909, line = {};
+    if (!isNaN(sp)) Object.assign(line, {sp, sp_h: feed.sp === sp ? feed.sp_h : d, sp_a: feed.sp === sp ? feed.sp_a : d});
+    if (!isNaN(tot)) Object.assign(line, {tot, ov: feed.tot === tot ? feed.ov : d, un: feed.tot === tot ? feed.un : d});
+    S.userLine[gid] = {line, el: gameEl(n), period: n.period};
+    applyUserLine(n, gid);
+  }
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  S.nowSim = null; showLive(); if (window.gamesLiveHook) window.gamesLiveHook(); liveSimFromHere();
+});
 // don't redraw a panel while you're typing in it
 const editing = () => typeof document !== "undefined" && document.activeElement && !!document.activeElement.closest && !!document.activeElement.closest(".plf");
 const liveKey = n => `${n.period}|${n.clock}|${n.score}|${n.line ? n.line.sp + "/" + n.line.tot : ""}`;
@@ -1220,13 +1335,17 @@ function liveValueHtml(n, c, A, H) {
   add(`${A} ${spS(L.sp == null ? null : -L.sp)}`, has("sp") ? c.sp - L.sp : null, m && m.p_home_cover != null ? 1 - m.p_home_cover : null, L.sp_a, "sp", "away", L.sp == null ? null : -L.sp);
   add(`${H} ML`, null, m && m.p_home_win, L.ml_h, "ml", "home", null);
   add(`${A} ML`, null, m && m.p_home_win != null ? 1 - m.p_home_win : null, L.ml_a, "ml", "away", null);
-  const stale = staleWhy(n, m, H);
+  const stale = staleWhy(n, m, H, c), ft = fairTotal(n, S.P), elN = gameEl(n), seen = S.lineSeen && S.lineSeen[S.gameId];
+  const asOf = n.lineSrc === "you" ? `your line, entered at ${elLabel(n.lineAt)}` : n.lineSrc === "agent" ? `the agent's DraftKings copy from ${elLabel(n.lineAt)} (this phone's feed was older)`
+    : seen && seen.key === lineSig(L) ? `DraftKings via ESPN, unchanged since ${seen.at}${elN - seen.el >= 60 ? ` (${Math.floor((elN - seen.el) / 60)}:${String(Math.floor((elN - seen.el) % 60)).padStart(2, "0")} of game time)` : ""}` : "DraftKings via ESPN";
+  const u = S.userLine[S.gameId];
   if (stale) rows.forEach(r => { r.ev = null; });
   const verdict = ev => ev == null ? `<span class="dim">${S.simBusy ? "…" : "—"}</span>` : ev >= 0.05 ? '<b class="gold">Value</b>' : ev >= 0.02 ? '<span class="h">Lean</span>' : '<span class="dim">Pass</span>';
   const best = rows.filter(r => r.ev != null && r.price).sort((a, b) => b.ev - a.ev)[0];
   const head = stale ? `<div class="stale">⚠ <b>DraftKings' live line on ESPN looks out of date</b>: ${esc(stale.join("; "))}. Live books keep spreads and totals near 50/50, so this almost always means ESPN's feed hasn't caught up. EV is hidden. Check the line in the DraftKings app and price it below.</div>`
     : !L.tot && !L.sp ? '<div class="desc">DraftKings has no live line posted right now (often suspended during reviews and free throws).</div>'
     : !m ? `<div class="desc">${S.simBusy ? "Simulating the rest of the game from this score and clock…" : "Waiting for the sim."}</div>`
+    : best && best.ev >= 0.02 && n.lineSrc === "you" && best.p >= 0.85 ? `<div class="stale">⚠ The sim gives <b>${esc(best.label)}</b> ${pcS(best.p)} at your line. Live books rarely leave a number that lopsided, so check the score, clock and line you entered before trusting the EV.</div>`
     : best && best.ev >= 0.02 ? `<div style="font-size:14px;margin:2px 0 4px">Best live number: <b class="gold">${esc(best.label)} ${am_(best.price)}</b>. Sim ${pcS(best.p)} vs ${pcS(best.need)} needed to break even (<b>${best.ev > 0 ? "+" : ""}${Math.round(best.ev * 100)}% EV</b>).</div>`
     : '<div style="font-size:14px;margin:2px 0 4px">Nothing clears +2% EV right now: <b>pass</b> and check back.</div>';
   const lineRow = (lab, cv, lv, fmt) => cv == null || lv == null ? "" : `<span>${lab} ${fmt(cv)} → <b style="color:var(--text)">${fmt(lv)}</b>${lv !== cv ? ` <span class="gold">(${lv > cv ? "+" : ""}${f1(lv - cv)})</span>` : ""}</span>`;
@@ -1234,12 +1353,16 @@ function liveValueHtml(n, c, A, H) {
   return `<div style="border:1px solid var(--gold);border-radius:12px;padding:10px;margin:6px 0 8px;background:#E5C1580d">
     <div class="lbl" style="margin-top:0;color:var(--gold)">Live value · is the live number worth it?</div>
     ${head}
-    <div class="desc" style="display:flex;flex-wrap:wrap;gap:4px 12px;margin-bottom:4px">${lineRow("Total", c && c.tot, L.tot, f1)}${lineRow(H + " spread", c && c.sp, L.sp, spS)}</div>
+    <div class="desc" style="display:flex;flex-wrap:wrap;gap:4px 12px;margin-bottom:2px">${lineRow("Total", c && c.tot, L.tot, f1)}${lineRow(H + " spread", c && c.sp, L.sp, spS)}</div>
+    <div class="desc" style="margin-bottom:4px">Line source: <b style="color:var(--text)">${esc(asOf)}</b>${u && u.expired ? ' · <span class="m">your entered line expired (3+ minutes of game time), enter the current one</span>' : ""}</div>
     ${proj ? `<div class="desc" style="margin-bottom:4px">${proj}</div>` : ""}
+    ${ft ? `<div class="ownt"><div><span class="lbl" style="margin:0">Our live total</span> <b>${f1(ft.fair)}</b>${L.tot != null ? ` <span class="${Math.abs(ft.fair - L.tot) >= 3 ? "gold" : "dim"}">(${ft.fair > L.tot ? "+" : ""}${f1(ft.fair - L.tot)} vs DK ${f1(L.tot)})</span>` : ""}</div>
+      <div class="desc">From the box score alone, no feed: ${f1(ft.livePace)} possessions per 48 so far vs ${f1(ft.prePace)} expected (blended to ${f1(ft.pace)}); ${f1(ft.pppObs)} points per 100 after taking out shooting luck vs ${f1(ft.pppPre)} expected${ft.p3 != null ? `; threes falling at ${Math.round(ft.p3 * 100)}%${Math.abs(ft.luck) >= 4 ? `, worth ${ft.luck > 0 ? "+" : ""}${Math.round(ft.luck)} points of luck the model doesn't expect to repeat` : ""}` : ""}. The further into the game, the more it trusts what it has seen. It doesn't know about late-game fouling.</div></div>` : ""}
     <div class="scroll"><table class="tbl"><tr><th>Live bet${stale ? ' <span class="m">(stale)</span>' : ""}</th><th>DK</th><th>CLV</th><th>Sim</th><th>Need</th><th>EV</th><th></th></tr>
       ${rows.map(r => `<tr${r.ev != null && r.ev >= 0.05 ? ' class="hl"' : ""}><td class="t">${esc(r.label)}${r.ev != null && r.ev >= 0.02 ? " " + verdict(r.ev) : ""}</td><td>${am_(r.price)}</td><td class="${r.vs == null || r.vs === 0 ? "dim" : r.vs > 0 ? "h" : "m"}">${r.vs == null ? "—" : (r.vs > 0 ? "+" : "") + f1(r.vs)}</td>
         <td><b>${pcS(r.p)}</b></td><td class="dim">${pcS(r.need)}</td><td class="${r.ev == null ? "dim" : r.ev >= 0.05 ? "gold" : r.ev > 0 ? "h" : "dim"}">${r.ev == null ? "—" : (r.ev > 0 ? "+" : "") + Math.round(r.ev * 100) + "%"}</td><td>${r.price ? `<button class="lbtn sm" data-lbet="${esc(lbetKey(r.kind, r.side, r.point, r.price, true))}" aria-label="Log this bet">+</button>` : ""}</td></tr>`).join("")}</table></div>
     ${m && m.mg ? priceForm(H, A) : ""}
+    ${useLineForm(H, A, L)}
     <div class="desc" style="margin-top:6px"><b>+</b> logs the bet in your book at DraftKings' live price. <b>CLV</b>: points better (+) or worse (−) than the closing number for that side, your live CLV. A better number isn't value by itself, because the score changed too. <b>Value</b> means the sim's chance from this exact score and clock beats what DraftKings' price needs (5%+ EV; Lean is 2-5%). The sim knows the score, clock and each player's rates but not foul trouble or in-game injuries, so trust your read of the flow on those. Its live calls are graded every morning in Trends.</div>
   </div>`;
 }
@@ -1367,11 +1490,22 @@ function showMC() {
   const vt = g.vegas && g.vegas.total, overT = vt ? tot.filter(t => t > vt).length / N : null;
   const st = S.stat;
   const priced = (D.pz && D.pz.priced) || {};
+  // Game-script explorer: the sims are whole games, so slicing them by how the game goes shows what each prop needs.
+  const H = P.teams.home.ab, A = P.teams.away.ab, dkp = ((D.dkday || {}).props) || {};
+  const SCRIPTS = [["all", "All games", () => true], ["h10", `${H} by 10+`, i => M.team.home[i] - M.team.away[i] >= 10], ["a10", `${A} by 10+`, i => M.team.away[i] - M.team.home[i] >= 10],
+    ["close", "Within 5", i => Math.abs(M.team.home[i] - M.team.away[i]) <= 5], ["blow", "Blowout 15+", i => Math.abs(M.team.home[i] - M.team.away[i]) >= 15],
+    ...(vt ? [["ov", `Over ${f1(vt)}`, i => M.team.home[i] + M.team.away[i] > vt], ["un", `Under ${f1(vt)}`, i => M.team.home[i] + M.team.away[i] < vt]] : [])];
+  const sc = SCRIPTS.find(x => x[0] === S.script) || SCRIPTS[0], idx = [];
+  for (let i = 0; i < N; i++) if (sc[2](i)) idx.push(i);
+  const sub = a => { const o = new Float32Array(idx.length); for (let j = 0; j < idx.length; j++) o[j] = a[idx[j]]; return o; };
+  const lineOf = (pid, a) => { const d = dkp[pid + "|" + st], pr = priced[pid + "|" + st];
+    return d && d.c && d.c[0] != null ? [d.c[0], "DK"] : pr ? [pr.line, bookName(pr.book)] : [estLine({pid, stat: st, base: mean(a)}).line, "est."]; };
   const rows = Object.keys(M.out).map(pid => {
-    const a = M.out[pid][st], w = M.who[pid], pr = priced[pid + "|" + st];
-    const line = pr ? pr.line : estLine({pid, stat: st, base: mean(a)}).line;
-    return {pid, w, a, mean: mean(a), p10: quant(a, 0.1), p90: quant(a, 0.9), line, src: pr ? bookName(pr.book) : "est.", po: pOver(a, line), min: mean(M.out[pid].min)};
+    const all = M.out[pid][st], a = sc[0] === "all" ? all : sub(all), w = M.who[pid];
+    const [line, src] = lineOf(pid, all), poAll = pOver(all, line);
+    return {pid, w, a, mean: mean(a), p10: quant(a, 0.1), p90: quant(a, 0.9), line, src, po: pOver(a, line), poAll, min: mean(sc[0] === "all" ? M.out[pid].min : sub(M.out[pid].min))};
   }).filter(r => r.mean >= (st === "tpm" ? 0.3 : 1)).sort((x, y) => y.mean - x.mean);
+  const tied = sc[0] === "all" ? [] : rows.filter(r => r.min >= 15).map(r => ({...r, d: r.po - r.poAll})).sort((x, y) => Math.abs(y.d) - Math.abs(x.d)).slice(0, 4);
   $("simRes").innerHTML = `
     <div class="kv" style="margin-top:10px">
       <div><div class="k">${esc(P.teams.home.ab)} win</div><div class="v">${Math.round(hw / N * 100)}%</div></div>
@@ -1381,13 +1515,18 @@ function showMC() {
       ${overT != null ? `<div><div class="k">Over ${f1(vt)}</div><div class="v">${Math.round(overT * 100)}%</div></div>` : ""}
       ${P.spreadHome != null ? `<div><div class="k">${esc(P.teams.home.ab)} ${P.spreadHome > 0 ? "+" : ""}${f1(P.spreadHome)}</div><div class="v">${Math.round(cover / N * 100)}%</div></div>` : ""}
     </div>
+    <div class="lbl">Game script · how the game goes changes what hits</div>
+    <div class="chips" id="mcsc">${SCRIPTS.map(([k, l]) => `<button data-sc="${k}" class="${k === sc[0] ? "on" : ""}">${esc(l)}</button>`).join("")}</div>
+    ${sc[0] !== "all" ? `<div class="desc" style="margin:2px 0 6px"><b style="color:var(--text)">${esc(sc[1])}</b> happens in <b style="color:var(--text)">${Math.round(idx.length / N * 100)}%</b> of sims (${idx.length.toLocaleString()} games). Over % below is inside those games; the change is vs all games.
+      ${tied.length ? `<br>Most tied to this script: ${tied.map(r => `<b style="color:var(--text)">${esc(r.w.last)}</b> ${r.d > 0 ? "over" : "under"} ${f1(r.line)} <span class="h">+${Math.abs(Math.round(r.d * 100))} pts</span>`).join(" · ")}. Bets that move together like this belong in the same parlay, or shouldn't be stacked if you're already on the script.` : ""}</div>` : ""}
     <div class="chips" id="mcs">${STATS.map(k => `<button data-s="${k}" class="${k === st ? "on" : ""}">${STATN[k]}</button>`).join("")}</div>
-    <div class="scroll"><table class="tbl"><tr><th>Player</th><th>Min</th><th>Avg</th><th>10–90%</th><th>Line</th><th>Over</th><th>Under</th></tr>
+    <div class="scroll"><table class="tbl"><tr><th>Player</th><th>Min</th><th>Avg</th><th>10–90%</th><th>Line</th><th>Over</th>${sc[0] !== "all" ? "<th>vs all</th>" : "<th>Under</th>"}</tr>
     ${rows.map(r => `<tr data-pid="${r.pid}" data-stat="${st}" style="cursor:pointer"><td class="t">${esc(r.w.last)} <span class="dim">${esc(P.teams[r.w.side].ab)}</span></td><td>${f1(r.min)}</td><td><b>${f1(r.mean)}</b></td>
       <td class="dim">${r.p10}–${r.p90}</td><td>${f1(r.line)} <span class="dim">${esc(r.src)}</span></td>
-      <td class="${r.po >= 0.55 ? "h" : ""}">${Math.round(r.po * 100)}%</td><td class="${1 - r.po >= 0.55 ? "h" : ""}">${Math.round((1 - r.po) * 100)}%</td></tr>`).join("")}</table></div>
-    <div class="desc" style="margin-top:6px">${N.toLocaleString()} simulated games. Lines are the book's when the agent priced one today, otherwise an estimate at his usual. Over/Under = share of sims that cleared the line. Tap a player for his card.</div>`;
+      <td class="${r.po >= 0.55 ? "h" : ""}">${Math.round(r.po * 100)}%</td>${sc[0] !== "all" ? `<td class="${Math.abs(r.po - r.poAll) >= 0.08 ? (r.po > r.poAll ? "h" : "m") : "dim"}">${r.po - r.poAll > 0 ? "+" : ""}${Math.round((r.po - r.poAll) * 100)}</td>` : `<td class="${1 - r.po >= 0.55 ? "h" : ""}">${Math.round((1 - r.po) * 100)}%</td>`}</tr>`).join("")}</table></div>
+    <div class="desc" style="margin-top:6px">${N.toLocaleString()} simulated games. Lines are DraftKings' when posted, the agent's priced line otherwise, else an estimate at his usual. Over = share of sims that cleared the line. Tap a player for his card.</div>`;
   $("mcs").querySelectorAll("button").forEach(b => b.onclick = () => { S.stat = b.dataset.s; showMC(); });
+  $("mcsc").querySelectorAll("button").forEach(b => b.onclick = () => { S.script = b.dataset.sc; showMC(); });
   bindPlayerLinks($("simRes"));
 }
 

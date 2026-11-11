@@ -242,6 +242,9 @@ def cycle():
     print(state["journal"][-1]["text"])
 
 
+SIM_REASON = None      # why the next sims run (shown in the dashboard's run log)
+
+
 def run_sims():
     """Simulate every game on the slate 10,000 times (tools/sim_all.js, the dashboard's own engine)."""
     import shutil
@@ -251,7 +254,7 @@ def run_sims():
         return
     try:
         r = subprocess.run(["node", str(config.ROOT / "tools" / "sim_all.js")], capture_output=True, text=True, timeout=900,
-                           env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA)})
+                           env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA), "SIM_REASON": SIM_REASON or os.environ.get("SIM_REASON", "scheduled refresh")})
         print(r.stdout[-2000:], r.stderr[-2000:])
     except Exception as e:
         print(f"[sims] failed: {e}")
@@ -272,7 +275,7 @@ def live_run():
         import shutil, subprocess
         if shutil.which("node"):
             r = subprocess.run(["node", str(config.ROOT / "tools" / "live_sim.js")], capture_output=True, text=True, timeout=600,
-                               env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA)})
+                               env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA), "SIM_REASON": SIM_REASON or os.environ.get("SIM_REASON", "scheduled refresh")})
             print(r.stdout[-1500:], r.stderr[-1500:])
 
 
@@ -296,8 +299,35 @@ def injwatch_run(and_live=False):
         alerts.send(txt, title="Injury news")
     except Exception as e:
         print(f"[injwatch] alert failed: {e}")
+    global SIM_REASON
+    SIM_REASON = "injury news: " + "; ".join(f"{name} {new.lower()}" for pid, name, team, old, new, mins in ch)[:160]
     research_run()
     return True
+
+
+def line_moves(log=print):
+    """Free: compare DraftKings' current pregame line (ESPN) for each game still to tip with the line the last sims used.
+    Returns a list of 'BOS@TOR total 223.5 → 225' for any spread moved 1+ point or total moved 1.5+."""
+    from . import espn_odds as eo
+    sims = store.load("sims.json", None) or {}
+    pj = store.load("players.json", None) or {}
+    if sims.get("date") != pj.get("date"):
+        return []
+    out = []
+    for g in pj.get("games") or []:
+        if g.get("state") != "pre":
+            continue
+        sv = ((sims.get("games") or {}).get(g["espn_id"]) or {}).get("vegas") or {}
+        try:
+            o = eo.game_odds(g["espn_id"])
+        except Exception:
+            continue
+        cur = (o or {}).get("current") or {}
+        if sv.get("spread_home") is not None and cur.get("sp") is not None and abs(cur["sp"] - sv["spread_home"]) >= 1:
+            out.append(f"{g['away']}@{g['home']} spread {sv['spread_home']:+g} → {cur['sp']:+g}")
+        if sv.get("total") and cur.get("tot") and abs(cur["tot"] - sv["total"]) >= 1.5:
+            out.append(f"{g['away']}@{g['home']} total {sv['total']:g} → {cur['tot']:g}")
+    return out
 
 
 def research_run():
@@ -625,9 +655,17 @@ def auto_run():
             age_h = (now - store.parse(pj["updated"])).total_seconds() / 3600 if pj.get("updated") else 99
             first = min(store.parse(g["start"]) for g in pre)
             to_tip = (first - now).total_seconds() / 3600
+            global SIM_REASON
             if pj.get("date") != research.et_today().isoformat() or age_h >= (1.5 if to_tip <= 2 else 4):
                 print(f"[auto] last refresh {age_h:.1f}h ago, first tip in {to_tip:.1f}h: refreshing")
+                SIM_REASON = SIM_REASON or (f"refresh: last one {age_h:.1f}h old" + (f", first tip in {to_tip:.1f}h" if to_tip <= 2 else ""))
                 research_run()
+            elif 9 <= hour < 24 and age_h >= 0.4:              # event-driven: DraftKings moved a line since the last sims
+                moves = line_moves()
+                if moves:
+                    print("[auto] line moves: " + "; ".join(moves))
+                    SIM_REASON = "line moved: " + "; ".join(moves)[:160]
+                    research_run()
         except Exception as e:
             print(f"[auto] refresh check failed: {e}")
 

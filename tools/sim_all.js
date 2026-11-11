@@ -258,7 +258,10 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
   const out = {updated: new Date().toISOString(), date: pj.date, n: N, games: prev.date === pj.date ? (prev.games || {}) : {}};
   const day = read("sims_day.json", {});
   if (day.date !== pj.date) { day.date = pj.date; day.runs = []; }
-  const run = {ts: out.updated, games: {}};
+  // why this run happened (set by the agent), and SIM_TEST=1 keeps test runs out of the day's log
+  const TEST = !!process.env.SIM_TEST;
+  const run = {ts: out.updated, why: process.env.SIM_REASON || "scheduled refresh", games: {}};
+  const lastRun = (day.runs || []).slice(-1)[0] || null;
   const log = read("sims_log.json", {pending: {}, graded: {}, agg: {}});
   // today's market: game lines from the agent's last scan, prop lines it priced (line history)
   const board = read("board.json", {events: []}), linesDb = read("lines.json", {entries: {}});
@@ -334,6 +337,7 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
     out.games[g.espn_id].vs = vs;
     BB.price(g, M, dkg, dkDay.props || {}, gf);
     run.games[g.espn_id] = {avg, win_home: out.games[g.espn_id].win_home, total: out.games[g.espn_id].total[0],
+      vegas: g.vegas ? {sp: g.vegas.spread_home, tot: g.vegas.total} : null,
       players: Object.fromEntries(Object.entries(players).map(([pid, x]) => [pid, [x.min, ...STATS.map(k => x.s[k][0])]]))};
     // what gets graded tomorrow: averages plus the model's own projections for comparison
     const idx = pj.players || {};
@@ -346,6 +350,26 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
   if (!Object.keys(run.games).length) { console.log("[sims] no upcoming games to simulate"); return; }
   fs.writeFileSync(path.join(DATA, "sims.json"), JSON.stringify(out));
   try { BB.finish(); } catch (e) { console.log("[best] failed: " + e.message); }
+  // what changed since the last run, per game: the line, who's playing (minutes), the projected score
+  for (const [gid, gr] of Object.entries(run.games)) {
+    const pg = lastRun && lastRun.games && lastRun.games[gid]; if (!pg) { gr.changes = ["first run of the day"]; continue; }
+    const ch = [];
+    if (gr.vegas && pg.vegas) {
+      if (gr.vegas.sp != null && pg.vegas.sp != null && gr.vegas.sp !== pg.vegas.sp) ch.push(`spread ${pg.vegas.sp > 0 ? "+" : ""}${pg.vegas.sp} → ${gr.vegas.sp > 0 ? "+" : ""}${gr.vegas.sp}`);
+      if (gr.vegas.tot != null && pg.vegas.tot != null && gr.vegas.tot !== pg.vegas.tot) ch.push(`total ${pg.vegas.tot} → ${gr.vegas.tot}`);
+    }
+    const mv = [];
+    for (const pid of new Set([...Object.keys(gr.players), ...Object.keys(pg.players || {})])) {
+      const a = (pg.players[pid] || [0])[0], b = (gr.players[pid] || [0])[0], nm = ((out.games[gid] || {}).players[pid] || {}).name || pid;
+      if (a >= 10 && b < 3) mv.push([99, `${nm.split(" ").slice(-1)[0]} out`]);
+      else if (b >= 10 && a < 3) mv.push([98, `${nm.split(" ").slice(-1)[0]} in`]);
+      else if (Math.abs(b - a) >= 4) mv.push([Math.abs(b - a), `${nm.split(" ").slice(-1)[0]} ${b > a ? "+" : ""}${r1(b - a)} min`]);
+    }
+    mv.sort((x, y) => y[0] - x[0]).slice(0, 3).forEach(x => ch.push(x[1]));
+    const dt = gr.total - pg.total; if (Math.abs(dt) >= 1) ch.push(`sim total ${dt > 0 ? "+" : ""}${r1(dt)}`);
+    gr.changes = ch.length ? ch : ["no change"];
+  }
+  if (TEST) { console.log("[sims] test run: day log and grading queue left alone"); return; }
   day.runs = (day.runs || []).concat([run]).slice(-10);
   fs.writeFileSync(path.join(DATA, "sims_day.json"), JSON.stringify(day));
   fs.writeFileSync(path.join(DATA, "sims_log.json"), JSON.stringify(log));

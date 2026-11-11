@@ -226,15 +226,34 @@ function matchSub(g) {
       <div class="desc" style="margin-top:6px">Ratings alone: ${esc(tn.base_margin >= 0 ? H : A)} by ${f1(Math.abs(tn.base_margin))}. With lineups: <b style="color:var(--text)">${esc(tn.margin >= 0 ? H : A)} by ${f1(Math.abs(tn.margin))}</b>.${btB ? ` In past games with 3+ points of lineup news the model missed by ${f1(btB.margin_mae.model)} (ratings alone ${f1(btB.margin_mae.ratings_only)}, DraftKings ${f1(btB.margin_mae.line)}).` : ""}</div></div>` : "";
   const dk = dkOf(g.espn_id), c = dk.close || dk.open || (g.vegas && g.vegas.total ? {sp: g.vegas.spread_home, tot: g.vegas.total} : null);
   const z = 1.2816, bt = (T.backtest || {}).all;
-  // model vs market, with how the model has done at that size of disagreement
+  // Vegas vs our model: the game each one expects, where they split, which players that moves, and how past splits have done
   let vs = "";
   if (c && c.sp != null && c.tot != null) {
     const dS = pr.margin + c.sp, dT = pr.total - c.tot;
+    const vh = c.tot / 2 - c.sp / 2, va = c.tot / 2 + c.sp / 2;           // Vegas' implied team points
     const bucket = (obj, d, cuts) => { const k = cuts.filter(x => Math.abs(d) >= x).pop(); const r = obj && obj[String(k)]; return r && r.w + r.l ? `${r.w}-${r.l} (${Math.round(r.pct * 100)}%) ${k ? `when it disagreed by ${k}+` : "on every game"}` : ""; };
-    vs = `<div class="lbl">Model vs DraftKings</div><table class="tbl">
-      <tr><td class="t">${esc(H)} spread</td><td>DK ${spS(c.sp)}</td><td>Model ${spS(-pr.margin)}</td><td class="${Math.abs(dS) >= 2 ? "gold" : "dim"}">${Math.abs(dS) < 0.5 ? "agrees" : esc(dS > 0 ? H : A) + " +" + f1(Math.abs(dS))}</td></tr>
-      <tr><td class="t">Total</td><td>DK ${f1(c.tot)}</td><td>Model ${f1(pr.total)}</td><td class="${Math.abs(dT) >= 3 ? "gold" : "dim"}">${Math.abs(dT) < 0.5 ? "agrees" : (dT > 0 ? "Over " : "Under ") + f1(Math.abs(dT))}</td></tr></table>
-      ${bt ? `<div class="desc">Backtest: sides ${bucket(bt.ats, dS, [0, 2, 4, 6]) || "—"} · totals ${bucket(bt.ou, dT, [0, 3, 6, 9]) || "—"}. Break-even at -110 is 52.4%. Tracked only: the agent doesn't bet game lines from this model until its scoreboard shows an edge.</div>` : ""}`;
+    const gap = (v, cut, f) => Math.abs(v) < 0.5 ? '<span class="dim">agree</span>' : `<span class="${Math.abs(v) >= cut ? "gold" : "dim"}">${f(v)}</span>`;
+    // players: the nightly sims are on the Vegas line; under our model, points follow the team's points and every counting stat follows the pace
+    const sg = (D.sims && D.sims.games || {})[g.espn_id], movers = [];
+    if (sg && sg.players) {
+      const vPace = sg.pace || pr.pace, kP = pr.pace / vPace;
+      for (const [pid, x] of Object.entries(sg.players)) {
+        if (x.min < 20) continue;
+        const kT = x.team === H ? pr.home / vh : pr.away / va;
+        const pts = x.s.pts[0], d = pts * kT - pts, dr = x.s.reb[0] * (kP - 1), da = x.s.ast[0] * (kP - 1);
+        movers.push({pid, name: x.name, team: x.team, pts, d, dra: d + dr + da});
+      }
+      movers.sort((a, b) => Math.abs(b.dra) - Math.abs(a.dra));
+    }
+    const LVs = T.live || {};
+    vs = `<div class="lbl">Vegas vs our model</div>
+      <div class="scroll"><table class="tbl"><tr><th></th><th>DraftKings</th><th>Our model</th><th>Gap</th></tr>
+      <tr><td class="t">${esc(H)} spread</td><td>${spS(c.sp)}</td><td>${spS(-pr.margin)}</td><td>${gap(dS, 2, v => `${esc(v > 0 ? H : A)} +${f1(Math.abs(v))}`)}</td></tr>
+      <tr><td class="t">Total</td><td>${f1(c.tot)}</td><td>${f1(pr.total)}</td><td>${gap(dT, 3, v => (v > 0 ? "Over " : "Under ") + f1(Math.abs(v)))}</td></tr>
+      <tr><td class="t">${esc(A)} points</td><td>${f1(va)}</td><td>${f1(pr.away)}</td><td>${gap(pr.away - va, 2, v => (v > 0 ? "+" : "") + f1(v))}</td></tr>
+      <tr><td class="t">${esc(H)} points</td><td>${f1(vh)}</td><td>${f1(pr.home)}</td><td>${gap(pr.home - vh, 2, v => (v > 0 ? "+" : "") + f1(v))}</td></tr></table></div>
+      ${movers.length && movers[0] && Math.abs(movers[0].dra) >= 0.3 ? `<div class="desc" style="margin-top:6px"><b style="color:var(--text)">Players this moves</b> (PRA under our model vs the Vegas-line sims): ${movers.slice(0, 5).map(m => `<a class="plink" data-pid="${m.pid}" data-stat="pra">${esc(lastName(m.name))}</a> <span class="${m.dra > 0 ? "pos" : "neg"}">${m.dra > 0 ? "+" : ""}${f1(m.dra)}</span>`).join(" · ")}. Our model thinks ${Math.abs(pr.home - vh) >= Math.abs(pr.away - va) ? esc(H) : esc(A)}'s players are ${(Math.abs(pr.home - vh) >= Math.abs(pr.away - va) ? pr.home - vh : pr.away - va) > 0 ? "underpriced" : "overpriced"} by the game script, before any player matchup.</div>` : ""}
+      ${bt ? `<div class="desc">How past gaps did, in the backtest: sides ${bucket(bt.ats, dS, [0, 2, 4, 6]) || "—"} · totals ${bucket(bt.ou, dT, [0, 3, 6, 9]) || "—"}. Break-even at -110 is 52.4%.${LVs.n ? ` Since tracking started: ${LVs.ats["2"].w}-${LVs.ats["2"].l} on sides at 2+ points${LVs.clv && LVs.clv.n ? `, and the line moved toward our model in ${LVs.clv.toward} of ${LVs.clv.n} splits` : ""}.` : ""} Tracked only: the agent doesn't bet game lines from this until the scoreboard shows an edge.</div>` : ""}`;
   }
   // filters: model (opponent-adjusted) or raw splits
   const W = GV.mw || "model", spl = T.splits || {};
@@ -244,17 +263,32 @@ function matchSub(g) {
   const sA = side(A, kA), sH = side(H, kH);
   const chips = [["model", "Model"], ["l5", "Last 5"], ["l10", "Last 10"], ["venue", "Tonight's venue"]]
     .map(([k, l]) => `<button data-mw="${k}" class="${W === k ? "on" : ""}">${l}</button>`).join("");
-  const bar = (o, d, lg, dir) => {   // offense value vs the defense's allowed value, both vs league
-    if (o == null || d == null || lg == null) return "";
-    const edge = dir === 0 ? 0 : dir * ((o - lg) + (d - lg)) / Math.max(1e-6, Math.abs(lg));
-    const w = Math.min(50, Math.abs(edge) * 400);
-    return `<div class="mbar"><span style="${edge >= 0 ? "left:50%" : "right:50%"};width:${w}%" class="${edge >= 0.005 ? "up" : edge <= -0.005 ? "dn" : ""}"></span></div>`;
+  // Each factor's edge in points per game for the offense (≈, from how many possessions it touches tonight), and who it favors.
+  const PPP = (P.mu || 111) / 100;
+  const ptsOf = (k, o, d, lg) => { if (o == null || d == null || lg == null) return null; const x = o + d - 2 * lg, pc = pr.pace;
+    return k === "efg" ? pc * 0.88 * 2 * x : k === "tov" ? -pc * x * PPP : k === "orb" ? pc * 0.47 * x * PPP : k === "ftr" ? pc * 0.88 * x * 0.78 * 0.55 : null; };
+  const ink = t => (window.teamInk ? window.teamInk(t) : "var(--text)");
+  const chip = t => `<b class="tchip" style="color:${ink(t)};border-color:${ink(t)}55">${esc(t)}</b>`;
+  const bar = (k, o, d, lg, dir, ot, dt) => {   // offense value vs the defense's allowed value, both vs league
+    if (o == null || d == null || lg == null) return "<td></td>";
+    const pts0 = ptsOf(k, o, d, lg), pts = pts0 == null ? null : pts0 * KF, edge = dir === 0 ? 0 : dir * ((o - lg) + (d - lg)) / Math.max(1e-6, Math.abs(lg));
+    const fav = Math.abs(edge) < 0.005 ? null : edge > 0 ? ot : dt, w = Math.min(46, Math.abs(edge) * 380);
+    return `<td><div class="mbar2">${fav ? `<span style="${edge > 0 ? "left:50%" : "right:50%"};width:${w}%;background:${ink(fav)}"></span>` : ""}</div>
+      <div class="mfav">${fav ? chip(fav) + (pts != null && Math.abs(pts) >= 0.1 ? ` <span class="dim">+${f1(Math.abs(pts))}</span>` : "") : '<span class="dim">even</span>'}</div></td>`;
   };
-  const ffT = (off, def, ot, dt) => !off || !def ? '<div class="desc">No games in this window yet.</div>' : `<table class="tbl mff"><tr><th>${esc(ot)} offense</th><th>${esc(ot)}</th><th>${esc(dt)} D allows</th><th>Lg</th><th style="width:30%">Edge</th></tr>
-    ${FF.map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}</td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td><td class="dim">${pct ? pc1(L[k]) : f1(L[k])}</td><td>${bar(off[k], def[k], L[k], dir)}</td></tr>`).join("")}</table>`;
+  const ffRaw = (off, def) => { if (!off || !def) return null; let t = 0; for (const [k] of FF) { const v = ptsOf(k, off[k], def[k], L[k]); if (v != null) t += v; } return t; };
+  const ffSum = (off, def) => { const t = ffRaw(off, def); return t == null ? null : t * KF; };
+  const ffT = (off, def, ot, dt) => !off || !def ? '<div class="desc">No games in this window yet.</div>' : `<table class="tbl mff"><tr><th>${esc(ot)} off. vs ${esc(dt)} def.</th><th>${esc(ot)}</th><th>${esc(dt)} allows</th><th style="width:28%">Edge to</th></tr>
+    ${FF.map(([k, lab, dir, pct]) => `<tr><td class="t">${lab}<div class="dim" style="font-size:10.5px">league ${pct ? pc1(L[k]) : f1(L[k])}</div></td><td>${pct ? pc1(off[k]) : f1(off[k])}</td><td>${pct ? pc1(def[k]) : f1(def[k])}</td>${bar(k, off[k], def[k], L[k], dir, ot, dt)}</tr>`).join("")}</table>
+    ${(t => t == null ? "" : `<div class="desc" style="margin-top:4px">${esc(ot)}'s offense vs ${esc(dt)}'s defense: ${Math.abs(t) < 0.3 ? "about even" : `${chip(t > 0 ? ot : dt)} <b style="color:var(--text)">≈ +${f1(Math.abs(t))} points</b> from shooting, turnovers, rebounding and free throws`}.</div>`)(ffSum(off, def, ot, dt))}`;
   const ffNum = v => v == null ? null : v;
   const fx = x => x && {efg: x.efg, tov: x.tov, orb: x.orb, ftr: ffNum(x.ftr), tpar: x.tpar, tpp: x.tpp};
   const awayOff = sA && fx(sA.off), homeDef = sH && fx(sH.def), homeOff = sH && fx(sH.off), awayDef = sA && fx(sA.def);
+  // the factor ratings are fitted one at a time, so their raw sum overshoots; scale the points so both ends add up to the
+  // team model's margin before home court (shown as "≈")
+  const rawNet = W === "model" && homeOff && awayDef && awayOff && homeDef ? ffRaw(homeOff, awayDef) - ffRaw(awayOff, homeDef) : null;
+  const target = pr.margin - (P.home || 0) * pr.pace / 100;
+  const KF = rawNet && Math.abs(rawNet) >= 2 && Math.sign(rawNet) === Math.sign(target) ? Math.max(0.3, Math.min(1.5, target / rawNet)) : 1;
   // shooting luck: what opponents have hit from three vs the league
   const luck = t => { const r = T.teams[t].raw; if (!r || r.opp3 == null) return "";
     const d = (r.opp3 - P.lg3) * 100; return Math.abs(d) < 1.2 ? "" : `<b style="color:var(--text)">${esc(t)}</b> opponents are hitting ${pc1(r.opp3)} from three (league ${pc1(P.lg3)}). Most of that is luck, so the model expects it to ${d > 0 ? "come down" : "go up"}${d > 0 ? ": their defense is better than its raw rating" : ": their defense is worse than its raw rating"}.`; };
@@ -282,7 +316,9 @@ function matchSub(g) {
     ${whoCard}
     <h2>Four factors</h2><div class="card"><div class="chips" style="margin-bottom:8px">${chips}</div>
       ${ffT(awayOff, homeDef, A, H)}<div style="height:10px"></div>${ffT(homeOff, awayDef, H, A)}
-      <div class="desc">Edge bar: green helps the offense, red helps the defense. "Model" is opponent-adjusted; the other windows are raw this season${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
+      ${(() => { const a = ffSum(awayOff, homeDef, A, H), h = ffSum(homeOff, awayDef, H, A); if (a == null || h == null) return "";
+        const net = h - a; return `<div class="ffnet">Four factors overall: ${Math.abs(net) < 0.5 ? "<b>even</b>" : `${chip(net > 0 ? H : A)} <b>≈ +${f1(Math.abs(net))} points</b>`} <span class="dim">(team model margin: ${esc(pr.margin >= 0 ? H : A)} by ${f1(Math.abs(pr.margin))}; the rest is home court${tn ? ", lineups" : ""} and schedule)</span></div>`; })()}
+      <div class="desc">Each row's bar points toward the team that factor favors, in that team's color, with its value in points tonight (approximate, and on the Model view scaled so the factors add up to the team model's margin before home court). 3-point rate and 3-point % are already inside effective FG%, so they carry no points of their own. "Model" is opponent-adjusted; the other windows are raw this season${W === "venue" ? `, with ${esc(A)} on the road and ${esc(H)} at home` : ""}.</div>
       ${lk.length ? `<div class="lbl">Three-point luck</div><div class="desc">${lk.join("<br>")}</div>` : ""}</div>
     ${zl ? `<h2>Shot zones</h2><div class="card">${zT(A, H)}<div style="height:10px"></div>${zT(H, A)}
       <div class="desc">Share of shots from each zone this season. Gold = above league; ★ = a zone the offense loves and the defense gives up. FG% allowed: green = defense is leaky there.</div></div>` : ""}
