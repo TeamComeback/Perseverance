@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 50.86,
+  "cash": 35.86,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -9651,6 +9651,219 @@
       }
      ]
     }
+   },
+   {
+    "id": "7cb2f86b",
+    "placed": "2026-11-11T19:30:38Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "e9545a3084389f5f3429e19fea891124",
+      "sport": "basketball_nba",
+      "commence": "2026-11-12T00:10:00Z",
+      "home": "Indiana Pacers",
+      "away": "Washington Wizards",
+      "market": "player_assists",
+      "outcome": "Andrew Nembhard Over",
+      "side": "Over",
+      "player": "Andrew Nembhard",
+      "player_id": "4395712",
+      "stat": "ast",
+      "espn_id": "401909966",
+      "point": 7.5,
+      "price": 2.14,
+      "book": "fanduel",
+      "fair_p": 0.4453,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 8.81,
+       "base": 7.69,
+       "minutes": 33.6,
+       "mult": 1.146,
+       "sd": 3.03,
+       "p_model": 0.5918,
+       "p_mkt": 0.4453,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.173,
+         "txt": "WSH gives point guards +17% assists vs their norm (#2 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.117,
+         "txt": "Players with his profile: +12% assists vs WSH (98 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.991,
+         "txt": "His history vs WSH: 5.0 assists/g in 2 games (-1%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.094,
+         "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.14,
+    "stake": 5.0,
+    "ev": 0.1842,
+    "p": 0.5534,
+    "note": "Proj 8.8 vs line 7.5 (norm 7.7, 34 min). Model 59% vs market 45%. WSH gives point guards +17% assists vs their norm (#2 softest of 30) \u00b7 Players with his profile: +12% assists vs WSH (98 close comps) \u00b7 His history vs WSH: 5.0 assists/g in 2 games (-1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "ff1913de",
+    "placed": "2026-11-11T19:30:38Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "e9545a3084389f5f3429e19fea891124",
+      "sport": "basketball_nba",
+      "commence": "2026-11-12T00:10:00Z",
+      "home": "Indiana Pacers",
+      "away": "Washington Wizards",
+      "market": "player_rebounds_assists",
+      "outcome": "Ivica Zubac Under",
+      "side": "Under",
+      "player": "Ivica Zubac",
+      "player_id": "4017837",
+      "stat": "ra",
+      "espn_id": "401909966",
+      "point": 12.5,
+      "price": 1.83,
+      "book": "draftkings",
+      "fair_p": 0.521,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 9.98,
+       "base": 8.6,
+       "minutes": 21.8,
+       "mult": 1.161,
+       "sd": 2.88,
+       "p_model": 0.7759,
+       "p_mkt": 0.521,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.127,
+         "txt": "WSH gives centers +13% reb+ast vs their norm (#2 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.126,
+         "txt": "Players with his profile: +13% reb+ast vs WSH (113 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.007,
+         "txt": "His history vs WSH: 13.0 reb+ast/g in 1 games (+1%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.094,
+         "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.83,
+    "stake": 5.0,
+    "ev": 0.1456,
+    "p": 0.626,
+    "note": "Proj 10.0 vs line 12.5 (norm 8.6, 22 min). Model 78% vs market 52%. WSH gives centers +13% reb+ast vs their norm (#2 softest of 30) \u00b7 Players with his profile: +13% reb+ast vs WSH (113 close comps) \u00b7 His history vs WSH: 13.0 reb+ast/g in 1 games (+1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "b69a692b",
+    "placed": "2026-11-11T19:30:38Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "e9545a3084389f5f3429e19fea891124",
+      "sport": "basketball_nba",
+      "commence": "2026-11-12T00:10:00Z",
+      "home": "Indiana Pacers",
+      "away": "Washington Wizards",
+      "market": "player_assists",
+      "outcome": "Anthony Davis Under",
+      "side": "Under",
+      "player": "Anthony Davis",
+      "player_id": "6583",
+      "stat": "ast",
+      "espn_id": "401909966",
+      "point": 2.5,
+      "price": 1.69,
+      "book": "espnbet",
+      "fair_p": 0.5807,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 2.17,
+       "base": 2.08,
+       "minutes": 33.1,
+       "mult": 1.045,
+       "sd": 1.68,
+       "p_model": 0.6458,
+       "p_mkt": 0.5807,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.025,
+         "txt": "IND gives power forwards +2% assists vs their norm (#9 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.02,
+         "txt": "Players with his profile: +2% assists vs IND (77 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.989,
+         "txt": "His history vs IND: 0.0 assists/g in 1 games (-1%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.072,
+         "txt": "IND games have +7% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.69,
+    "stake": 5.0,
+    "ev": 0.0625,
+    "p": 0.6287,
+    "note": "Proj 2.2 vs line 2.5 (norm 2.1, 33 min). Model 65% vs market 58%. IND gives power forwards +2% assists vs their norm (#9 softest of 30) \u00b7 Players with his profile: +2% assists vs IND (77 close comps) \u00b7 His history vs IND: 0.0 assists/g in 1 games (-1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -11266,6 +11479,11 @@
    "ts": "2026-11-11T19:00:46Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 11: 10 games, 234 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-11T19:30:38Z",
+   "kind": "props",
+   "text": "NBA matchups: 10 games, strongest spots: Stephon Castle ast +17% vs CHI; Ivica Zubac ra +16% vs WSH; De'Aaron Fox ast +15% vs CHI. Bought prop odds for WSH@IND (ast, tpm, ra, team totals) (4 credits). Placed 3: Andrew Nembhard Over 7.5 @ +114 (FanDuel); Ivica Zubac Under 12.5 @ -120 (DraftKings); Anthony Davis Under 2.5 @ -145 (theScore Bet)"
   }
  ],
  "learned_ids": [
@@ -11316,7 +11534,7 @@
   "63e3addb"
  ],
  "strategist": null,
- "updated": "2026-11-11T19:01:25Z",
+ "updated": "2026-11-11T19:31:41Z",
  "stats": {
   "bets": 45,
   "won": 16,
@@ -11329,7 +11547,7 @@
   "clv_n": 15,
   "clv_no_close": 30,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 3,
   "equity": 50.86
  },
  "weights": {
