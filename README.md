@@ -294,3 +294,13 @@ DraftKings' line for points, rebounds, assists and threes props. Games in progre
   price history (2,079 props: Kalshi log loss 0.6851 vs DraftKings 0.6877; at a split of 4+ points the result went Kalshi's way 179 of 309 times).
 - **Model → Health:** a "Kalshi lines" self-check (fresh, every game covered, close to DraftKings).
 - The phone can't call Kalshi directly (no cross-site access), so the dashboard uses the agent's latest save.
+
+## Our line (the sim's own book)
+
+Every game and rotation-player prop now shows **our line**: the half-point number closest to 50/50 across tonight's 10,000
+sims (after the agent's learned bias corrections), priced fair on both sides with no juice. It's worked out on the phone from `sims.json` (`mh`/`th`/`h`
+counts) by `ourGame`/`ourProp` in `docs/index.html`.
+- Games list: "Ours PHI −7.5 · O/U 219.5 · PHI 68%" under DraftKings' line.
+- Game Overview and Lines: "Our line vs the books" table (Ours / DraftKings / Kalshi for spread, total, moneyline), with the
+  gaps in gold, e.g. "Total: ours is 4 lower → lean under (over 223.5 in 40% of sims)".
+- Players rows, player card and Best Bets: "Our line 6.5 o−118 / u+118 · ours is 2 higher → lean over".

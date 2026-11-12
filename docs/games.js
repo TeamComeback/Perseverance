@@ -52,9 +52,11 @@ function gCardHtml(g) {
   const row = side => `<div class="gs-r${lead === side ? " w" : ""}${lead && lead !== side ? " l" : ""}"><span class="ab">${esc(g[side])}</span><span class="nm">${esc((g[side + "_name"] || "").split(" ").slice(-1)[0])}</span><span class="sc">${sc ? sc[side] : ""}</span></div>`;
   const status = st === "in" ? `<span class="pill live">${esc(n ? n.detail : s ? s.detail : "Live")}</span>` : st === "post" ? '<span class="pill fin">Final</span>' : `<span class="t">${tod(g.start)}</span>`;
   const lineTxt = ln ? `DK ${esc(g.home)} ${spS(ln.sp)} · O/U ${f1(ln.tot)}` : g.vegas && g.vegas.total ? `${esc(g.home)} ${spS(g.vegas.spread_home)} · O/U ${f1(g.vegas.total)}` : "";
-  const simTxt = sim ? `Sim ${Math.round(sim.avg.away)}–${Math.round(sim.avg.home)} · ${esc(sim.win_home >= 0.5 ? g.home : g.away)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%` : "";
+  const og = window.ourGame ? ourGame(g.espn_id) : null;
+  const simTxt = og ? `Ours ${esc(g.home)} ${spS(og.sp)} · O/U ${f1(og.tot)} · ${esc(og.win >= 0.5 ? g.home : g.away)} ${Math.round(Math.max(og.win, 1 - og.win) * 100)}%`
+    : sim ? `Sim ${Math.round(sim.avg.away)}–${Math.round(sim.avg.home)} · ${esc(sim.win_home >= 0.5 ? g.home : g.away)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%` : "";
   return `<div class="gcard gs" data-g="${g.espn_id}"><div class="gs-top">${status}${isWatched("games", g.espn_id) ? '<span class="gold" style="margin-left:auto">★</span>' : ""}</div>${row("away")}${row("home")}
-    ${lineTxt || simTxt ? `<div class="mdl">${[lineTxt, simTxt].filter(Boolean).join(" · ")}</div>` : ""}</div>`;
+    ${lineTxt ? `<div class="mdl">${lineTxt}</div>` : ""}${simTxt ? `<div class="mdl"${og ? ' style="color:var(--text)"' : ""}>${simTxt}</div>` : ""}</div>`;
 }
 
 // ------------------------------------------------------------------ game page
@@ -166,7 +168,6 @@ function gameSub(g, n) {
     const rows = [], tn = D.tm && D.tm.tonight && D.tm.tonight[id];
     if (sim) rows.push(["Projected", `<b>${esc(A)} ${f1(sim.avg.away)} – ${f1(sim.avg.home)} ${esc(H)}</b> · ${esc(sim.win_home >= 0.5 ? H : A)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%`]);
     if (tn && c && c.sp != null) { const d = tn.margin + c.sp; rows.push(["Vegas vs our model", Math.abs(d) < 1.5 ? "agree on the spread" : `our model has ${esc(d > 0 ? H : A)} ${f1(Math.abs(d))} better than DraftKings`]); }
-    { const ks = kalshiSays(id, c, H); if (ks) rows.push(["Kalshi", ks]); }
     if (tn && tn.out && tn.out.length) rows.push(["Who's out", tn.out.map(o => `${esc(o.team)}: ${esc(o.names)} (${f1(o.pts)})`).join(" · ")]);
     const day = (window.normPicks ? normPicks(((D.best || {}).days || {})[D.players.date]) : ((D.best || {}).days || {})[D.players.date]) || {}, picks = [...(day.props || []), ...(day.games || [])].filter(x => x.espn_id === id).slice(0, 2);
     if (picks.length) rows.push(["Best bets here", picks.map(x => `${x.kind === "prop" ? esc(lastName(x.name)) + " " + x.side.toLowerCase() + " " + x.point + " " + (STATN[x.stat] || x.stat) : x.kind === "spread" ? esc(x.team) + " " + (x.point > 0 ? "+" : "") + x.point : x.side + " " + x.point} <span class="cvb ${x.tier}">${x.tier || ""}</span>`).join(" · ")]);
@@ -177,14 +178,14 @@ function gameSub(g, n) {
     return rows.length ? `<div class="card gsum">${rows.map(([k, v]) => `<div class="row2"><span>${k}</span><span style="text-align:right">${v}</span></div>`).join("")}</div>` : "";
   })();
   const mv = (x, y) => x == null || y == null || x === y ? "" : ` <span class="gold">(${y > x ? "+" : ""}${f1(y - x)})</span>`;
-  return `${summary}<div class="card" style="margin-top:10px">
+  return `${summary}${ourVsBooks(g, c)}<div class="card" style="margin-top:10px">
       ${sim ? `<div class="lbl" style="margin-top:0">Sim · 10,000 games</div>
         <div style="font-size:16px;font-weight:700">${esc(A)} ${f1(sim.avg.away)} – ${f1(sim.avg.home)} ${esc(H)}</div>
         <div class="desc">${esc(sim.win_home >= 0.5 ? H : A)} wins ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}% · total ${f1(T[0])} (80% of sims ${rng}) · ${esc(sim.margin >= 0 ? H : A)} by ${f1(Math.abs(sim.margin))}</div>` : '<div class="desc">The sim projection arrives with the next research run.</div>'}
-      ${dk.open || dk.close ? `<div class="lbl">DraftKings</div><div class="scroll"><table class="tbl"><tr><th></th><th>Open</th><th>Now / close</th>${sim ? "<th>Sim</th>" : ""}</tr>
-        <tr><td class="t">${esc(H)} spread</td><td>${spS(dk.open && dk.open.sp)}</td><td>${spS(c && c.sp)}${mv(dk.open && dk.open.sp, dk.close && dk.close.sp)}</td>${sim ? `<td>${spS(-sim.margin)}</td>` : ""}</tr>
-        <tr><td class="t">Total</td><td>${f1(dk.open && dk.open.tot)}</td><td>${f1(c && c.tot)}${mv(dk.open && dk.open.tot, dk.close && dk.close.tot)}</td>${sim ? `<td>${f1(T[0])}</td>` : ""}</tr>
-        <tr><td class="t">${esc(H)} / ${esc(A)} ML</td><td>${am_(dk.open && dk.open.ml_h)} / ${am_(dk.open && dk.open.ml_a)}</td><td>${am_(c && c.ml_h)} / ${am_(c && c.ml_a)}</td>${sim ? `<td>${Math.round(sim.win_home * 100)}%</td>` : ""}</tr></table></div>` : ""}
+      ${dk.open || dk.close ? `<div class="lbl">DraftKings</div><div class="scroll"><table class="tbl"><tr><th></th><th>Open</th><th>Now / close</th>${sim ? "<th>Our line</th>" : ""}</tr>
+        <tr><td class="t">${esc(H)} spread</td><td>${spS(dk.open && dk.open.sp)}</td><td>${spS(c && c.sp)}${mv(dk.open && dk.open.sp, dk.close && dk.close.sp)}</td>${sim ? `<td>${spS(window.ourGame && ourGame(id) ? ourGame(id).sp : -sim.margin)}</td>` : ""}</tr>
+        <tr><td class="t">Total</td><td>${f1(dk.open && dk.open.tot)}</td><td>${f1(c && c.tot)}${mv(dk.open && dk.open.tot, dk.close && dk.close.tot)}</td>${sim ? `<td>${f1(window.ourGame && ourGame(id) && ourGame(id).tot != null ? ourGame(id).tot : T[0])}</td>` : ""}</tr>
+        <tr><td class="t">${esc(H)} / ${esc(A)} ML</td><td>${am_(dk.open && dk.open.ml_h)} / ${am_(dk.open && dk.open.ml_a)}</td><td>${am_(c && c.ml_h)} / ${am_(c && c.ml_a)}</td>${sim ? `<td>${window.ourGame && ourGame(id) ? `${amT(ourGame(id).ml_h)} / ${amT(ourGame(id).ml_a)}` : Math.round(sim.win_home * 100) + "%"}</td>` : ""}</tr></table></div>` : ""}
       ${c ? `<div class="lbl">Bet DraftKings' line</div>${lineBtns(c, false)}` : ""}
       ${vegasLine(g) ? `<div class="desc" style="margin-top:6px">${vegasLine(g).replace(/^<div class="mdl">|<\/div>$/g, "")}</div>` : ""}
       ${sim && sim.mh ? coverHtml(sim.mh, sim.th, c && c.sp != null ? c.sp : sim.vegas && sim.vegas.spread_home, c && c.tot != null ? c.tot : sim.vegas && sim.vegas.total, H, A, c) : ""}
@@ -368,6 +369,24 @@ function boxSub(g, n) {
     <div class="desc">Becomes the live box score at tip-off. Tap a player for his card.</div></div>`;
 }
 
+// Our line vs the books: the line we'd post from tonight's sims (no vig) next to DraftKings and Kalshi, with where we split
+function ourVsBooks(g, c, title) {
+  const id = g.espn_id, A = g.away, H = g.home, o = window.ourGame ? ourGame(id) : null; if (!o) return "";
+  const K = kOf(id), k = K && K.pre;
+  const row = (lbl, ours, sub, dk, ka) => `<tr><td class="t">${lbl}</td><td><b>${ours}</b>${sub ? `<div class="dim" style="font-size:11px">${sub}</div>` : ""}</td><td>${dk}</td><td>${ka}</td></tr>`;
+  const gaps = [];
+  if (c && c.sp != null) { const t = vsBookSp(o.sp, c.sp, H, A); if (t && !/same/.test(t)) gaps.push(`Spread: ${t} (${esc(H)} ${spS(c.sp)} covers in ${Math.round(o.coverAt(c.sp) * 100)}% of sims)`); }
+  if (c && c.tot != null && o.tot != null) { const t = vsBookOU(o.tot, c.tot); if (t && !/same/.test(t)) gaps.push(`Total: ${t} (over ${f1(c.tot)} in ${Math.round(o.overAt(c.tot) * 100)}% of sims)`); }
+  const w = c && c.ml_h && c.ml_a ? (1 / c.ml_h) / (1 / c.ml_h + 1 / c.ml_a) : null;
+  if (w != null && Math.abs(o.win - w) >= 0.04) gaps.push(`Moneyline: we give ${esc(o.win > w ? H : A)} ${Math.round(Math.abs(o.win - w) * 100)} points more win chance than DraftKings`);
+  return `<div class="card ourc"><div class="lbl" style="margin-top:0">${title || "Our line vs the books"}</div><div class="scroll"><table class="tbl"><tr><th></th><th>Our line</th><th>DraftKings</th><th>Kalshi</th></tr>
+    ${row(`${esc(H)} spread`, spS(o.sp), `${amT(o.sp_h)} / ${amT(o.sp_a)}`, c && c.sp != null ? spS(c.sp) : "–", k && k.sp != null ? spS(k.sp) : "–")}
+    ${row("Total", f1(o.tot), `o${amT(o.ov)} / u${amT(o.un)}`, c && c.tot != null ? f1(c.tot) : "–", k && k.tot != null ? f1(k.tot) : "–")}
+    ${row(`${esc(H)} / ${esc(A)} ML`, `${amT(o.ml_h)} / ${amT(o.ml_a)}`, `${esc(H)} ${Math.round(o.win * 100)}%`, c && c.ml_h ? `${am_(c.ml_h)} / ${am_(c.ml_a)}` : "–", k && k.win != null ? `${esc(H)} ${Math.round(k.win * 100)}%` : "–")}</table></div>
+    <div class="desc" style="margin-top:4px">${gaps.length ? gaps.map(x => `<div class="gold">${x}</div>`).join("") : "Our line matches DraftKings on all three: no gap to bet into."}
+    <div>Our line is the half-point number closest to 50/50 across 10,000 sims (after learned corrections), priced with no juice. Where it differs from the book's number is where the sim sees value.</div></div></div>`;
+}
+
 // Kalshi (second market, saved by the agent every run): its own spread/total/win chance, worked out from its price ladders
 function kOf(id) { return D.kalshi && D.kalshi.date === (D.players || {}).date ? ((D.kalshi.games || {})[id] || null) : null; }
 const kAge = at => { if (!at) return ""; const m = Math.round((Date.now() - new Date(at)) / 6e4); return m < 60 ? `${m} min ago` : `${Math.floor(m / 60)}h ${m % 60}m ago`; };
@@ -427,7 +446,7 @@ function linesSub(g, n) {
       ${snaps.map(s => { const l = s.line || {}, m = s.sim || {}; return `<tr><td class="t">${qc(s)}</td><td>${s.score[0]}–${s.score[1]}</td><td>${spS(l.sp)}</td><td>${f1(l.tot)}</td><td class="dim">${pcS(m.p_home_cover)} · ${pcS(m.p_over)}</td></tr>`; }).join("")}</table></div>` : "";
   const evs = ((D.bd && D.bd.events) || []).filter(e => e.sport === "basketball_nba" && nk(e.home) === nk(g.home_name) && nk(e.away) === nk(g.away_name));
   const cur = L || c || o;
-  return `<div class="card"><div class="lbl" style="margin-top:0">DraftKings</div>${table}
+  return `${ourVsBooks(g, c)}<div class="card" style="margin-top:10px"><div class="lbl" style="margin-top:0">DraftKings</div>${table}
     ${cur ? `<div class="lbl">Log a bet at DraftKings' ${L ? "live" : dk.close ? "current" : "opening"} line</div>${lineBtns(cur, !!L)}` : ""}${snapT}</div>
     <h2>Best price at your books</h2><div class="card">${evs.length ? evs.map(evHtml).join("") + '<div class="desc" style="margin-top:6px">From the agent\'s latest scan. Tap a price to log the bet.</div>' : '<div class="empty">The agent hasn\'t scanned this game\'s lines yet (scans run around 10am, 3pm and 6:35pm ET).</div>'}</div>
     ${kalshiCard(g, n, c)}

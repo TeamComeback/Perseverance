@@ -506,6 +506,8 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .gl{border-bottom:1px dotted var(--dim2);cursor:help}
 .mseg{display:flex;margin-bottom:10px}.mseg button{flex:1}
 .gsum{border:1px solid #E5C15855;background:#E5C1580a}.gsum .row2{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}.gsum .row2:first-of-type{border-top:0}.gsum .row2 span:first-child{color:var(--dim)}
+.ourl{font-size:12.5px;margin:8px 0 2px;padding:7px 10px;border:1px solid var(--line);border-radius:10px}.ourl .k{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.cr .ol{color:var(--dim)}.cr .rt{max-width:64vw}.cr .rt .b{white-space:normal}
 </style>
 </head>
 <body>
@@ -956,6 +958,52 @@ function statusBadge(p) {
 // No line bought by the agent: use DraftKings' own line for today, from the latest phone re-price if it is newer than the
 // agent's saved copy (docs/data/dk/<date>.json, refreshed with every research run). Win chance blends the model with
 // DraftKings' no-vig price using the agent's learned weight for that stat, the same way Best Bets does.
+// ---------- our line: the book we would post from tonight's sims (no vig) ----------
+// Each game and rotation player has a saved count of 10,000 sim outcomes (sims.json mh/th/h), after the agent's learned
+// bias corrections. Our line is the half-point number closest to 50/50, priced fair on both sides.
+const amF = p => { p = Math.min(0.98, Math.max(0.02, p)); return p >= 0.5 ? -Math.round(100 * p / (1 - p)) : Math.round(100 * (1 - p) / p); };
+const amT = a => a == null ? "–" : (a > 0 ? "+" : "") + a;
+function learnedToday() { return ((((D.best || {}).days || {})[(D.players || {}).date]) || {}).learned || {}; }
+function ourOU(h, shift, neg) {
+  const a = Object.entries(h || {}).map(([k, v]) => [+k - (shift || 0), v]).sort((x, y) => x[0] - y[0]), n = a.reduce((t, x) => t + x[1], 0);
+  if (!n) return null;
+  let c = 0, med = a[a.length - 1][0];
+  for (const [x, v] of a) { c += v; if (c >= n / 2) { med = x; break; } }
+  const pO = L => a.reduce((t, x) => t + (x[0] > L ? x[1] : 0), 0) / n;
+  let best = null;
+  for (let L = Math.floor(med) - 1.5; L <= Math.floor(med) + 1.5; L += 1) {
+    if (!neg && L < 0) continue;
+    const p = pO(L); if (!best || Math.abs(p - 0.5) < Math.abs(best.pOver - 0.5)) best = {line: L, pOver: p};
+  }
+  if (!best) return null;
+  best.over = amF(best.pOver); best.under = amF(1 - best.pOver); best.median = med; best.pAt = L => pO(L);
+  return best;
+}
+function ourGame(id) {
+  const g = D.sims && D.sims.games && D.sims.games[id]; if (!g || !g.mh) return null;
+  const lr = learnedToday(), m = ourOU(g.mh, 0, true), t = g.th ? ourOU(g.th, lr.total_bias || 0) : null;
+  if (!m) return null;
+  return {sp: -m.line, sp_h: m.over, sp_a: m.under, pCover: m.pOver, coverAt: sp => m.pAt(-sp),
+          tot: t && t.line, ov: t && t.over, un: t && t.under, overAt: L => t ? t.pAt(L) : null,
+          win: g.win_home, ml_h: amF(g.win_home), ml_a: amF(1 - g.win_home)};
+}
+function ourProp(gid, pid, stat) {
+  const sp = D.sims && D.sims.games && D.sims.games[gid] && D.sims.games[gid].players[pid];
+  if (!sp || !sp.h || !sp.h[stat]) return null;
+  return ourOU(sp.h[stat], (learnedToday().stat_bias || {})[stat] || 0);
+}
+// how our number compares with the book's: over/under lines and home spreads
+function vsBookOU(ours, book) {
+  if (ours == null || book == null) return "";
+  const d = ours - book;
+  return Math.abs(d) < 0.5 ? "same as the book" : `ours is ${f1(Math.abs(d))} ${d > 0 ? "higher → lean over" : "lower → lean under"}`;
+}
+function vsBookSp(ours, book, H, A) {
+  if (ours == null || book == null) return "";
+  const d = ours - book;               // more negative = we like the home team more
+  return Math.abs(d) < 0.5 ? "same as the book" : `we have ${d < 0 ? H : A} ${f1(Math.abs(d))} better → lean ${d < 0 ? H : A}`;
+}
+Object.assign(window, {ourGame, ourProp, vsBookOU, vsBookSp, amT});
 // Kalshi (second market): the agent saves its prices every run in kalshi/<date>.json (the phone can't reach Kalshi directly)
 function kalshiP(pid, stat, line, side) { const k = D.kalshi && D.kalshi.date === (D.players || {}).date ? (D.kalshi.props || {})[pid + "|" + stat] : null;
   if (!k || k.p == null || k.line !== line) return null; return side === "Over" ? k.p : 1 - k.p; }
@@ -1055,11 +1103,13 @@ function cRow(x) {
     : (() => { const e = estLine(x), mp = modelP(x.proj, x.sd, e.line, x.lean);
         return `<div class="a">${x.lean.toUpperCase()} ${f1(e.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div>
           <div class="b">${esc(e.src)}${mp != null ? ` · model <b style="color:var(--text)">${Math.round(mp * 100)}%</b>` : ""} · exp ${f1(x.proj)}</div>`; })();
+  const ol = ourProp(x.espn_id, x.pid, x.stat), bl = priced ? x.line : null;
+  const olHtml = ol ? `<div class="why ol">Our line <b style="color:var(--text)">${f1(ol.line)}</b> <span class="dim">o${amT(ol.over)} / u${amT(ol.under)}</span>${bl != null ? ` · <span class="${Math.abs(ol.line - bl) >= 0.5 ? "gold" : "dim"}">${esc(vsBookOU(ol.line, bl))}</span>` : ""}</div>` : "";
   const sig = (x.signals || []).find(g => g.k === "dvp") || (x.signals || [])[0];
   const why = sig ? sig.txt : (x.dvp ? `${x.opp} ranks #${x.dvp} of 30 vs ${x.role}s in ${STATL[x.stat].toLowerCase()} (1 = softest)` : "");
   return `<div class="cr" data-pid="${x.pid}" data-stat="${x.stat}"><div><span class="nm">${esc(x.name)}</span><span class="lean ${x.lean}">${x.lean.toUpperCase()}</span>${statusBadge(x)}
       <div class="gm">${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} · ${x.state === "in" ? '<span class="neg">live</span>' : tod(x.start)} · ${x.minutes.toFixed(0)} min</div></div>
-    <div class="rt">${rt}</div>
+    <div class="rt">${rt}</div>${olHtml}
     <div class="why"><span class="gold">${rating(x).n}/5</span>${focusOf(x.stat) === "edge" ? ' · <span class="pos">model-edge stat</span>' : focusOf(x.stat) === "skip" ? ' · <span class="neg">market wins this stat</span>' : ""} · ${esc(rating(x).why.join(" · "))}</div>
     <div class="why">${esc(why)}${x.more ? ` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
 }
@@ -1332,7 +1382,8 @@ function bestHtml() {
     const who = isProp ? esc(x.name) : x.kind === "spread" ? "Spread" : "Total";
     const attrs = isProp ? `data-pid="${x.pid}" data-stat="${x.stat}"` : `data-bgame="${x.espn_id}"`;
     // depth 1: the play, its level and one-line verdict; depth 2 (tap "The case"): the numbers, the reasons, the ladder
-    const nums = `<div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>${gl("Need", "needs")} ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>DK ${Math.round(x.p_mkt * 100)}%</span>${x.p_kalshi != null ? `<span>Kalshi ${Math.round(x.p_kalshi * 100)}%</span>` : ""}<span>${evTag(x)}</span></div>`;
+    const olB = x.kind === "prop" ? ourProp(x.espn_id, x.pid, x.stat) : x.kind === "total" ? (o => o && {line: o.tot})(ourGame(x.espn_id)) : x.kind === "spread" ? (o => o && {line: x.side === "home" ? o.sp : -o.sp})(ourGame(x.espn_id)) : null;
+    const nums = `<div class="bbn">${olB && olB.line != null ? `<span>Our line <b>${x.kind === "spread" ? (olB.line > 0 ? "+" : "") + f1(olB.line) : f1(olB.line)}</b></span>` : ""}<span>Win <b>${Math.round(x.p * 100)}%</b></span><span>${gl("Need", "needs")} ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>DK ${Math.round(x.p_mkt * 100)}%</span>${x.p_kalshi != null ? `<span>Kalshi ${Math.round(x.p_kalshi * 100)}%</span>` : ""}<span>${evTag(x)}</span></div>`;
     const logBtn = !x.res && !x.dropped && !(gOf(x.espn_id) && gOf(x.espn_id).state !== "pre") ? `<button class="btn ghost sm" data-blog="${esc(x.kind + "|" + (x.pid || x.espn_id) + "|" + (x.stat || "") + "|" + x.side)}">+ Log</button>` : "";
     return `<div class="cr bb${x.dropped ? " drop" : ""}" ${attrs}><div><span class="rk">${x.dropped ? "–" : i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${cvBadge(x)}${statusOf(x)}
         <div class="gm">${esc(x.game)} · ${tod(x.start)}</div></div>
@@ -1725,6 +1776,9 @@ function renderCard() {
     <div class="lineset"><button class="step" data-d="-1">−</button><div class="val">${pc.line}</div><button class="step" data-d="1">+</button>
       <div class="seg" id="side"><button data-v="Over" class="${pc.side === "Over" ? "on" : ""}">Over</button><button data-v="Under" class="${pc.side === "Under" ? "on" : ""}">Under</button></div>
       ${priced ? `<span class="desc">Market: <b style="color:var(--text)">${priced.side} ${priced.line}</b> ${amS(priced.am)} ${esc(bookName(priced.book))}${priced.ev > 0 ? ' <span class="pos">' + pct(priced.ev) + "</span>" : ""}</span>` : (e => /^DraftKings/.test(e.src) ? `<span class="desc">${esc(e.src)}: <b style="color:var(--text)">${f1(e.line)}</b>. Change it to your book's number if it differs.</span>` : `<span class="desc">No line posted yet: starting at ${esc(e.src)} ${f1(e.line)}. Set it to your book's number.</span>`)(estLine({pid: p.pid, stat: s, base: pj.base}))}</div>
+    ${(() => { const ol = ourProp(p.game, p.pid, s); if (!ol) return "";
+      const bl = priced ? priced.line : (e => /^DraftKings/.test(e.src) ? e.line : null)(estLine({pid: p.pid, stat: s, base: pj.base}));
+      return `<div class="ourl"><span class="k">Our line</span> <b>${f1(ol.line)}</b> <span class="dim">over ${amT(ol.over)} · under ${amT(ol.under)}</span>${bl != null ? `<span class="k" style="margin-left:10px">Book</span> <b>${f1(bl)}</b> <span class="${Math.abs(ol.line - bl) >= 0.5 ? "gold" : "dim"}">${esc(vsBookOU(ol.line, bl))}</span>` : ""}</div>`; })()}
     <div class="kv">
       <div><div class="k">Projection</div><div class="v">${pj.proj.toFixed(1)} <small>${pct(pj.mult - 1, 0)}</small></div></div>
       <div><div class="k">Conviction</div><div class="v"><span class="dots" style="font-size:12px">${dots(cardRating(p, s, priced).n)}</span></div></div>
