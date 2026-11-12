@@ -953,6 +953,24 @@ function statusBadge(p) {
   if (s) b += `<span class="st ${/out|doubt|susp/.test(s) ? "o" : "q"}">${esc(p.status)}</span>`;
   return b;
 }
+// No line bought by the agent: use DraftKings' own line for today, from the latest phone re-price if it is newer than the
+// agent's saved copy (docs/data/dk/<date>.json, refreshed with every research run). Win chance blends the model with
+// DraftKings' no-vig price using the agent's learned weight for that stat, the same way Best Bets does.
+function dkLiveProps() { try { const x = JSON.parse(localStorage.getItem("pz-dklive") || "null"); return x && x.date === (D.players || {}).date ? x : null; } catch (e) { return null; } }
+function dkFill(row) {
+  const live = dkLiveProps(), k = row.pid + "|" + row.stat, saved = D.dkday && D.dkday.date === D.players.date ? (D.dkday.props || {})[k] : null;
+  const savedAt = D.dkday && D.dkday.updated ? new Date(D.dkday.updated) : null;
+  let c = null, src = null;
+  if (live && live.props[k] && (!savedAt || new Date(live.at) >= savedAt)) { c = live.props[k]; src = "DraftKings " + tod(live.at); }
+  else if (saved && saved.c && saved.c[0] != null && saved.c[1] && saved.c[2]) { c = saved.c; src = "DraftKings " + (savedAt ? tod(savedAt) : "today"); }
+  if (!c) return;
+  const [line, ov, un] = c, side = row.lean, dec = side === "Over" ? ov : un;
+  const nv = (1 / ov) / (1 / ov + 1 / un), pm = side === "Over" ? nv : 1 - nv, mp = modelP(row.proj, row.sd, line, side);
+  const day = ((D.best || {}).days || {})[D.players.date] || {}, w = (((day.learned || {}).w_props) || {})[row.stat] ?? 0.3;
+  const p = mp == null ? pm : w * mp + (1 - w) * pm;
+  Object.assign(row, {line, side, am: dec >= 2 ? Math.round((dec - 1) * 100) : -Math.round(100 / (dec - 1)), book: "draftkings", dkSrc: src, ev: p * dec - 1, p_win: p,
+    open: saved && saved.o ? saved.o[0] : null});
+}
 function propRows() {
   const {players, pz} = D, idx = players.players || {}, priced = pz.priced || {};
   const spots = {}; (pz.spots || []).forEach(x => spots[x.pid + "|" + x.stat] = x);
@@ -968,6 +986,7 @@ function propRows() {
         espn_id: p.game, state: p.state, strength: Math.abs(Math.log(mult)), dvp: p.dvp[s], cv: (p.cv || {})[s], b2b: p.b2b};
       const sp = spots[p.pid + "|" + s]; if (sp) row.signals = sp.signals;
       Object.assign(row, priced[p.pid + "|" + s] || {});
+      if (row.line == null) dkFill(row);
       rows.push(row);
     }
   }
@@ -1006,7 +1025,12 @@ const fresh = r => r.state !== "post" && new Date(r.start) > Date.now() - 3 * 36
 const upcoming = r => r.state ? r.state === "pre" : new Date(r.start) > Date.now();
 // The number to bet when no book line was bought today: the last saved book line for him (if recent),
 // otherwise an estimate at his usual output rounded to the nearest half (books anchor there).
+function dkLineOf(pid, stat) {
+  const r = {pid, stat, lean: "Over", proj: 0, sd: 0}; dkFill(r);
+  return r.line != null ? {line: r.line, src: r.dkSrc} : null;
+}
 function estLine(x) {
+  const dk = D.players && dkLineOf(x.pid, x.stat); if (dk) return dk;          // today's DraftKings line beats any older one
   const hist = (D.lines && D.lines.by[x.pid + "|" + x.stat]) || [];
   const recent = hist.find(e => (Date.now() - new Date(e.date + "T12:00:00Z")) / 864e5 <= 10);
   if (recent) return {line: recent.line, src: "last line " + recent.date.slice(5).replace("-", "/")};
@@ -1022,7 +1046,7 @@ function modelP(proj, sd, line, side) {
 function cRow(x) {
   const priced = x.line != null;
   const rt = priced
-    ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div><div class="b">${amS(x.am)} ${esc(bookName(x.book))}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}${x.open != null && x.open !== x.line ? ` · opened ${f1(x.open)}` : ""}</div>`
+    ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div><div class="b">${amS(x.am)} ${esc(x.dkSrc || bookName(x.book))}${x.p_win != null ? ` · win <b style="color:var(--text)">${Math.round(x.p_win * 100)}%</b>` : ""}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}${x.open != null && x.open !== x.line ? ` · opened ${f1(x.open)}` : ""}</div>`
     : (() => { const e = estLine(x), mp = modelP(x.proj, x.sd, e.line, x.lean);
         return `<div class="a">${x.lean.toUpperCase()} ${f1(e.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div>
           <div class="b">${esc(e.src)}${mp != null ? ` · model <b style="color:var(--text)">${Math.round(mp * 100)}%</b>` : ""} · exp ${f1(x.proj)}</div>`; })();
@@ -1343,7 +1367,7 @@ function bindBest(root) {
   const rp = root.querySelector("#bbReprice"), msg = root.querySelector("#bbMsg");
   if (rp && window.BESTREFRESH) rp.onclick = async () => {
     rp.disabled = true;
-    try { await BESTREFRESH.reprice(t => { if (msg) msg.textContent = t; }); store.set("bestview", "local"); renderToday(); toast("Re-priced with DraftKings' current lines"); }
+    try { await BESTREFRESH.reprice(t => { if (msg) msg.textContent = t; }); store.set("bestview", "local"); renderToday(); toast("Re-priced with DraftKings' current lines (Best Bets and every player's line)"); }
     catch (e) { if (msg) msg.textContent = "Couldn't re-price: " + e.message; rp.disabled = false; }
   };
   root.querySelectorAll("[data-bv]").forEach(b => b.onclick = () => { store.set("bestview", b.dataset.bv); renderToday(); });
@@ -1694,7 +1718,7 @@ function renderCard() {
     <div class="chips" id="cst">${ALL_STATS.map(k => `<button data-s="${k}" class="${k === s ? "on" : ""}">${STATN[k]}</button>`).join("")}</div>
     <div class="lineset"><button class="step" data-d="-1">−</button><div class="val">${pc.line}</div><button class="step" data-d="1">+</button>
       <div class="seg" id="side"><button data-v="Over" class="${pc.side === "Over" ? "on" : ""}">Over</button><button data-v="Under" class="${pc.side === "Under" ? "on" : ""}">Under</button></div>
-      ${priced ? `<span class="desc">Market: <b style="color:var(--text)">${priced.side} ${priced.line}</b> ${amS(priced.am)} ${esc(bookName(priced.book))}${priced.ev > 0 ? ' <span class="pos">' + pct(priced.ev) + "</span>" : ""}</span>` : `<span class="desc">No book line bought today: starting at ${esc(estLine({pid: p.pid, stat: s, base: pj.base}).src)} ${f1(estLine({pid: p.pid, stat: s, base: pj.base}).line)}. Set it to your book's number.</span>`}</div>
+      ${priced ? `<span class="desc">Market: <b style="color:var(--text)">${priced.side} ${priced.line}</b> ${amS(priced.am)} ${esc(bookName(priced.book))}${priced.ev > 0 ? ' <span class="pos">' + pct(priced.ev) + "</span>" : ""}</span>` : (e => /^DraftKings/.test(e.src) ? `<span class="desc">${esc(e.src)}: <b style="color:var(--text)">${f1(e.line)}</b>. Change it to your book's number if it differs.</span>` : `<span class="desc">No line posted yet: starting at ${esc(e.src)} ${f1(e.line)}. Set it to your book's number.</span>`)(estLine({pid: p.pid, stat: s, base: pj.base}))}</div>
     <div class="kv">
       <div><div class="k">Projection</div><div class="v">${pj.proj.toFixed(1)} <small>${pct(pj.mult - 1, 0)}</small></div></div>
       <div><div class="k">Conviction</div><div class="v"><span class="dots" style="font-size:12px">${dots(cardRating(p, s, priced).n)}</span></div></div>
@@ -2476,7 +2500,7 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
-    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("scoreboard.json", {}).then(x => D.sb = x)]);
+    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});

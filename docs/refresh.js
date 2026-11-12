@@ -52,13 +52,14 @@ async function reprice(onStep) {
   if (!sims || sims.date !== date) throw new Error("The saved sims are from another day");
   const games = (D.players.games || []).filter(g => g.state === "pre" && new Date(g.start) > Date.now() && sims.games[g.espn_id]);
   const dkFile = (await J(`data/dk/${date}.json`)) || {props: {}};
-  const cands = {props: [], games: []}, lines = {};
+  const cands = {props: [], games: []}, lines = {}, allProps = {};
   const wG = L.w_game != null ? L.w_game : 0.35, totBias = L.total_bias || 0;
   for (const [n, g] of games.entries()) {
     step(`DraftKings lines ${n + 1}/${games.length}: ${g.away} @ ${g.home}`);
     const G = sims.games[g.espn_id], base = {espn_id: g.espn_id, game: `${g.away} @ ${g.home}`, start: g.start, home: g.home, away: g.away, home_name: g.home_name, away_name: g.away_name};
     const [ln, props] = await Promise.all([dkGame(g.espn_id), dkProps(g.espn_id)]);
     lines[g.espn_id] = ln;
+    Object.assign(allProps, props);
     // game lines, from the saved margin and total distributions
     if (ln && G.mh && ln.sp != null && ln.sp_h && ln.sp_a) {
       const ps = pFrom(G.mh, m => m + ln.sp), pm = novig(ln.sp_h, ln.sp_a);
@@ -133,6 +134,8 @@ async function reprice(onStep) {
   };
   const out = {at: new Date().toISOString(), date, base: day.updated, props: pick(cands.props, day.props || [], 5, 2, true), games: pick(cands.games, day.games || [], 5, 1, false), learned: L};
   out.changes = diff(day, out, cands);
+  // every prop line DraftKings had just now, so the Players tab and player cards show today's numbers too
+  try { localStorage.setItem("pz-dklive", JSON.stringify({date, at: out.at, props: allProps})); } catch (e) {}
   try { localStorage.setItem("pz-bestlocal", JSON.stringify(out)); } catch (e) {}
   return out;
 }
