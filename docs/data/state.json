@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 50.01,
+  "cash": 59.16,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -10553,7 +10553,7 @@
       "book": "hardrockbet",
       "fair_p": 0.5167,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 3.75,
        "base": 4.06,
@@ -10584,6 +10584,22 @@
          "txt": "HOU games have -9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 115.0,
+       "away": 108.0
+      },
+      "actual": 0.0,
+      "box": {
+       "min": 6.0,
+       "pts": 3.0,
+       "reb": 0.0,
+       "ast": 0.0,
+       "tpm": 1.0,
+       "tpa": 2.0,
+       "fga": 3.0,
+       "fta": 0.0,
+       "tov": 1.0
       }
      }
     ],
@@ -10594,10 +10610,175 @@
     "note": "Proj 3.8 vs line 4.5 (norm 4.1, 28 min). Model 69% vs market 52%. HOU gives shooting guards -2% assists vs their norm (#13 toughest of 30) \u00b7 Players with his profile: -6% assists vs HOU (162 close comps) \u00b7 His history vs HOU: 4.5 assists/g in 2 games (+2%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.15,
+    "profit": 4.15,
+    "settled": "2026-11-12T17:33:27Z",
+    "review": {
+     "headline": "WON: 0 assists vs Under 4.5",
+     "final": "Golden State Warriors 108 \u2013 Houston Rockets 115",
+     "legs": [
+      {
+       "outcome": "Stephen Curry Under",
+       "result": "win",
+       "headline": "0 assists vs Under 4.5",
+       "final": "Golden State Warriors 108 \u2013 Houston Rockets 115",
+       "why": [
+        "Stephen Curry finished with 0 assists against a line of 4.5: under cleared by 4.5.",
+        "Minutes: played 6 vs 28.4 projected.",
+        "Box score: 0 ast, 1 TO.",
+        "Model projected 3.8 (4.1 norm \u00d7 0.92 matchup); actual was -3.8 off (-1.7 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (0.9) in a matchup the model rated tough.",
+        "Signal: HOU gives shooting guards -2% assists vs their norm (#13 toughest of 30)",
+        "Signal: Players with his profile: -6% assists vs HOU (162 close comps)",
+        "Signal: His history vs HOU: 4.5 assists/g in 2 games (+2%)",
+        "We priced it at 64% to hit vs 55% needed to break even at 1.83x (+17.3% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-short",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-short"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "HOU",
+        "away": "GS"
+       },
+       "final": "GS 108 \u2013 HOU 115",
+       "periods": {
+        "away": [
+         20,
+         31,
+         28,
+         29
+        ],
+        "home": [
+         35,
+         21,
+         29,
+         30
+        ]
+       },
+       "largest_lead": {
+        "GS": 0,
+        "HOU": 18
+       },
+       "largest_lead_at": {
+        "GS": null,
+        "HOU": "3:32 4th Q"
+       },
+       "lead_changes": 0,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "HOU",
+         "pts": 9,
+         "from": "6:00 4th Q",
+         "to": "3:32 4th Q",
+         "score": "GS 93-111 HOU"
+        },
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "29.3 2nd Q",
+         "to": "10:47 3rd Q",
+         "score": "GS 51-60 HOU"
+        },
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "9:47 4th Q",
+         "to": "8:43 4th Q",
+         "score": "GS 85-96 HOU"
+        }
+       ],
+       "swings": [
+        {
+         "team": "HOU",
+         "swing": 15,
+         "from": "10:10 4th Q",
+         "to": "3:32 4th Q",
+         "mins": 6.6,
+         "from_score": "GS 85-88 HOU",
+         "to_score": "GS 93-111 HOU",
+         "pts_for": 23,
+         "pts_against": 8
+        },
+        {
+         "team": "GS",
+         "swing": 14,
+         "from": "0.6 1st Q",
+         "to": "4:01 2nd Q",
+         "mins": 8.0,
+         "from_score": "GS 20-35 HOU",
+         "to_score": "GS 46-47 HOU",
+         "pts_for": 26,
+         "pts_against": 12
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Yaxel Lendeborg (GS): 25 pts, 10 reb, 0 ast, 2-7 3PT in 36 min",
+        "Brandin Podziemski (GS): 22 pts, 6 reb, 4 ast, 4-11 3PT in 37 min",
+        "Alperen Sengun (HOU): 19 pts, 13 reb, 9 ast, 1-2 3PT in 37 min",
+        "Amen Thompson (HOU): 19 pts, 7 reb, 4 ast, 0-1 3PT in 29 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 3,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "7:22 1st Q"
+        ],
+        "box": {
+         "id": "3975",
+         "name": "Stephen Curry",
+         "team": "GS",
+         "min": "6",
+         "pts": 3,
+         "reb": 0,
+         "ast": 0,
+         "3pt": "1-2",
+         "fg": "1-3",
+         "pf": "0",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: GS 51-56 HOU, HOU up 5.",
+        "The 1st quarter decided the most: HOU won it 35-20.",
+        "Largest leads: GS 0, HOU 18 (3:32 4th Q). 0 lead changes, 3 ties.",
+        "Momentum swing: HOU outscored them 23-8 in 6.6 minutes (10:10 4th Q to 3:32 4th Q), moving it from GS 85-88 HOU to GS 93-111 HOU.",
+        "Momentum swing: GS outscored them 26-12 in 8 minutes (0.6 1st Q to 4:01 2nd Q), moving it from GS 20-35 HOU to GS 46-47 HOU.",
+        "HOU went on a 9-0 run (6:00 4th Q to 3:32 4th Q), making it GS 93-111 HOU.",
+        "HOU went on a 8-0 run (29.3 2nd Q to 10:47 3rd Q), making it GS 51-60 HOU.",
+        "Stephen Curry by period (AST): Q1 0.",
+        "He never got past 4.5.",
+        "Threes made at: 7:22 1st Q."
+       ],
+       "espn_id": "401909974",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909974"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -10614,7 +10795,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.209,
+  "prop_model_weight": 0.236,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -10780,9 +10961,9 @@
    }
   },
   "matchup_under": {
-   "bets": 22,
-   "staked": 110.0,
-   "profit": -4.800000000000002,
+   "bets": 23,
+   "staked": 115.0,
+   "profit": -0.6500000000000012,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -10797,8 +10978,8 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 12,
-     "won": 5,
+     "n": 13,
+     "won": 6,
      "lost": 7
     },
     "matchup-read-wrong": {
@@ -10830,6 +11011,11 @@
      "n": 2,
      "won": 2,
      "lost": 0
+    },
+    "minutes-short": {
+     "n": 1,
+     "won": 1,
+     "lost": 0
     }
    }
   }
@@ -10837,9 +11023,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 36.0,
-   "staked": 180.0,
-   "profit": -5.999999999999996
+   "bets": 37.0,
+   "staked": 185.0,
+   "profit": -1.8499999999999952
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -10939,31 +11125,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-10-29T20:12:48Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Tallon Griekspoor @ +320 (fanduel) \u2014 LOST: Tallon Griekspoor lost by 2 [near-miss, underdog-lost]"
-  },
-  {
-   "ts": "2026-10-29T20:13:00Z",
-   "kind": "scan",
-   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (14), basketball_nba (13), americanfootball_ncaaf (5), americanfootball_nfl (1), mma_mixed_martial_arts (4), soccer_spain_la_liga (1), icehockey_ahl (8), soccer_germany_bundesliga (1) for 22 credits. Placed 1: UCF Knights @ +110 (fanduel) Equity $73.00."
-  },
-  {
-   "ts": "2026-10-29T23:54:28Z",
-   "kind": "scan",
-   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (10), basketball_nba (13), americanfootball_ncaaf (3), mma_mixed_martial_arts (9), americanfootball_nfl (1), basketball_euroleague (7), tennis_atp_swiss_indoors (3), soccer_league_of_ireland (5) for 21 credits. Placed 3: Los Angeles Clippers @ +235 (fanduel); Indiana Pacers @ +235 (fanduel); Dallas Mavericks @ +180 (fanduel) Equity $73.00."
-  },
-  {
-   "ts": "2026-10-30T01:52:50Z",
-   "kind": "props",
-   "text": "No NBA games left to bet today."
-  },
-  {
-   "ts": "2026-10-30T02:50:32Z",
-   "kind": "scan",
-   "text": "Month-end mode (credits reset on the 1st): Scanned icehockey_nhl (3), basketball_nba (10), soccer_italy_serie_a (1) for 8 credits. Nothing cleared the bar. Equity $73.00."
-  },
   {
    "ts": "2026-10-30T15:53:46Z",
    "kind": "result",
@@ -12438,6 +12599,31 @@
    "ts": "2026-11-12T17:30:31Z",
    "kind": "error",
    "text": "Self-check failed: Team minutes \u2248 240 (8 teams checked; outside 220-250: CHA 204)"
+  },
+  {
+   "ts": "2026-11-12T17:33:27Z",
+   "kind": "result",
+   "text": "WON +$4.15: Stephen Curry Under 4.5 @ -120 (Hard Rock Bet) \u2014 WON: 0 assists vs Under 4.5 [matchup-read-right, minutes-short]"
+  },
+  {
+   "ts": "2026-11-12T17:34:59Z",
+   "kind": "adapt",
+   "text": "Model vs market on 3761 graded lines: the 30% model blend scored best (log loss model 0.703, market 0.689). Moving the model's weight from 21% to 24%."
+  },
+  {
+   "ts": "2026-11-12T17:34:59Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +2.0% vs actual over 1386 player-games: level x0.888; REB projections ran +3.8% vs actual over 1386 player-games: level x0.916; AST projections ran +2.2% vs actual over 1386 player-games: level x0.904; TPM projections ran -2.1% vs actual over 1386 player-games: level x0.928; PRA projections ran +2.3% vs actual over 1386 player-games: level x0.902; RA projections ran +3.0% vs actual over 1386 player-games: level x0.918; starter minutes were off by +1.1 on average over 716 player-games: correction -0.5 min; conviction factor 'minutes' hurt by -0.1 pts of hit rate over 4400 plays: weight 0.93 -> 0.99; conviction factor 'vegas' helped by +3.4 pts of hit rate over 1732 plays: weight 1.34 -> 1.25; conviction factor 'blowout' helped by +6.2 pts of hit rate over 490 plays: weight 1.35 -> 1.28."
+  },
+  {
+   "ts": "2026-11-12T17:34:59Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $59.16 (run #1), 19-28-2, ROI -16.5%, CLV -2.3%."
+  },
+  {
+   "ts": "2026-11-12T17:34:59Z",
+   "kind": "error",
+   "text": "Self-check failed: Team minutes \u2248 240 (8 teams checked; outside 220-250: CHA 204)"
   }
  ],
  "learned_ids": [
@@ -12488,24 +12674,25 @@
   "63e3addb",
   "7cb2f86b",
   "ff1913de",
-  "b69a692b"
+  "b69a692b",
+  "21c5a5b2"
  ],
  "strategist": null,
- "updated": "2026-11-12T17:30:31Z",
+ "updated": "2026-11-12T17:34:59Z",
  "stats": {
-  "bets": 48,
-  "won": 18,
+  "bets": 49,
+  "won": 19,
   "lost": 28,
   "push": 2,
-  "staked": 242.63,
-  "profit": -44.99,
-  "roi": -0.1854,
+  "staked": 247.63,
+  "profit": -40.84,
+  "roi": -0.1649,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 33,
+  "clv_no_close": 34,
   "close_mins_median": 151,
-  "open": 1,
-  "equity": 55.01
+  "open": 0,
+  "equity": 59.16
  },
  "weights": {
   "value_fav": 0.842,
@@ -12514,7 +12701,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.417,
-  "matchup_under": 0.944
+  "matchup_under": 0.993
  },
  "paused": [],
  "dry_scans": 0
