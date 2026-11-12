@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 30.86,
+  "cash": 50.01,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -9677,7 +9677,7 @@
       "book": "fanduel",
       "fair_p": 0.4453,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 8.81,
        "base": 7.69,
@@ -9708,6 +9708,22 @@
          "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 114.0,
+       "away": 101.0
+      },
+      "actual": 10.0,
+      "box": {
+       "min": 34.0,
+       "pts": 17.0,
+       "reb": 2.0,
+       "ast": 10.0,
+       "tpm": 3.0,
+       "tpa": 5.0,
+       "fga": 11.0,
+       "fta": 2.0,
+       "tov": 1.0
       }
      }
     ],
@@ -9718,10 +9734,217 @@
     "note": "Proj 8.8 vs line 7.5 (norm 7.7, 34 min). Model 59% vs market 45%. WSH gives point guards +17% assists vs their norm (#2 softest of 30) \u00b7 Players with his profile: +12% assists vs WSH (98 close comps) \u00b7 His history vs WSH: 5.0 assists/g in 2 games (-1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 10.7,
+    "profit": 5.7,
+    "settled": "2026-11-12T04:03:51Z",
+    "review": {
+     "headline": "WON: 10 assists vs Over 7.5",
+     "final": "Washington Wizards 101 \u2013 Indiana Pacers 114",
+     "legs": [
+      {
+       "outcome": "Andrew Nembhard Over",
+       "result": "win",
+       "headline": "10 assists vs Over 7.5",
+       "final": "Washington Wizards 101 \u2013 Indiana Pacers 114",
+       "why": [
+        "Andrew Nembhard finished with 10 assists against a line of 7.5: over cleared by 2.5.",
+        "Minutes: played 34 vs 33.6 projected.",
+        "Box score: 10 ast, 1 TO.",
+        "Model projected 8.8 (7.7 norm \u00d7 1.15 matchup); actual was +1.2 off (+0.4 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (7.8) in a matchup the model rated soft.",
+        "Signal: WSH gives point guards +17% assists vs their norm (#2 softest of 30)",
+        "Signal: Players with his profile: +12% assists vs WSH (98 close comps)",
+        "Signal: His history vs WSH: 5.0 assists/g in 2 games (-1%)",
+        "We priced it at 55% to hit vs 47% needed to break even at 2.14x (+18.4% expected edge).",
+        "Consensus fair probability when placed: 45% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "IND",
+        "away": "WSH"
+       },
+       "final": "WSH 101 \u2013 IND 114",
+       "periods": {
+        "away": [
+         25,
+         25,
+         27,
+         24
+        ],
+        "home": [
+         26,
+         29,
+         22,
+         37
+        ]
+       },
+       "largest_lead": {
+        "WSH": 8,
+        "IND": 16
+       },
+       "largest_lead_at": {
+        "WSH": "6:05 2nd Q",
+        "IND": "6:06 4th Q"
+       },
+       "lead_changes": 12,
+       "ties": 10,
+       "runs": [
+        {
+         "team": "IND",
+         "pts": 15,
+         "from": "36.3 3rd Q",
+         "to": "9:01 4th Q",
+         "score": "WSH 77-91 IND"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "5:13 1st Q",
+         "to": "2:21 1st Q",
+         "score": "WSH 22-18 IND"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "6:06 3rd Q",
+         "to": "4:28 3rd Q",
+         "score": "WSH 68-69 IND"
+        },
+        {
+         "team": "IND",
+         "pts": 8,
+         "from": "3:05 2nd Q",
+         "to": "1:42 2nd Q",
+         "score": "WSH 47-50 IND"
+        }
+       ],
+       "swings": [
+        {
+         "team": "IND",
+         "swing": 17,
+         "from": "1:22 3rd Q",
+         "to": "6:06 4th Q",
+         "mins": 7.3,
+         "from_score": "WSH 77-76 IND",
+         "to_score": "WSH 84-100 IND",
+         "pts_for": 24,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 11,
+         "from": "7:11 3rd Q",
+         "to": "1:22 3rd Q",
+         "mins": 5.8,
+         "from_score": "WSH 56-66 IND",
+         "to_score": "WSH 77-76 IND",
+         "pts_for": 21,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Kyshawn George (WSH): 25 pts, 9 reb, 3 ast, 5-8 3PT in 39 min",
+        "Anthony Davis (WSH): 21 pts, 13 reb, 0 ast, 0-3 3PT in 34 min",
+        "Pascal Siakam (IND): 28 pts, 8 reb, 5 ast, 2-7 3PT in 32 min",
+        "Ivica Zubac (IND): 20 pts, 12 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 0,
+          "ast": 5,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 4,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 11,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 3,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 4
+         }
+        ],
+        "threes_at": [
+         "11:44 4th Q",
+         "7:50 4th Q",
+         "4:07 4th Q"
+        ],
+        "box": {
+         "id": "4395712",
+         "name": "Andrew Nembhard",
+         "team": "IND",
+         "min": "34",
+         "pts": 17,
+         "reb": 2,
+         "ast": 10,
+         "3pt": "3-5",
+         "fg": "6-11",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: WSH 50-55 IND, IND up 5.",
+        "The 4th quarter decided the most: IND won it 37-24.",
+        "Largest leads: WSH 8 (6:05 2nd Q), IND 16 (6:06 4th Q). 12 lead changes, 10 ties.",
+        "Momentum swing: IND outscored them 24-7 in 7.3 minutes (1:22 3rd Q to 6:06 4th Q), moving it from WSH 77-76 IND to WSH 84-100 IND.",
+        "Momentum swing: WSH outscored them 21-10 in 5.8 minutes (7:11 3rd Q to 1:22 3rd Q), moving it from WSH 56-66 IND to WSH 77-76 IND.",
+        "IND went on a 15-0 run (36.3 3rd Q to 9:01 4th Q), making it WSH 77-91 IND.",
+        "WSH went on a 9-0 run (5:13 1st Q to 2:21 1st Q), making it WSH 22-18 IND.",
+        "Andrew Nembhard by period (AST): Q1 5, Q2 2, Q3 0, Q4 3.",
+        "He went over 7.5 in Q4.",
+        "Threes made at: 11:44 4th Q, 7:50 4th Q, 4:07 4th Q."
+       ],
+       "espn_id": "401909966",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909966"
+      }
+     ]
+    }
    },
    {
     "id": "ff1913de",
@@ -9748,7 +9971,7 @@
       "book": "draftkings",
       "fair_p": 0.521,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 9.98,
        "base": 8.6,
@@ -9779,6 +10002,22 @@
          "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 114.0,
+       "away": 101.0
+      },
+      "actual": 13.0,
+      "box": {
+       "min": 31.0,
+       "pts": 20.0,
+       "reb": 12.0,
+       "ast": 1.0,
+       "tpm": 0.0,
+       "tpa": 0.0,
+       "fga": 15.0,
+       "fta": 2.0,
+       "tov": 2.0
       }
      }
     ],
@@ -9789,10 +10028,216 @@
     "note": "Proj 10.0 vs line 12.5 (norm 8.6, 22 min). Model 78% vs market 52%. WSH gives centers +13% reb+ast vs their norm (#2 softest of 30) \u00b7 Players with his profile: +13% reb+ast vs WSH (113 close comps) \u00b7 His history vs WSH: 13.0 reb+ast/g in 1 games (+1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-12T04:03:51Z",
+    "review": {
+     "headline": "LOST: 13 reb+ast vs Under 12.5",
+     "final": "Washington Wizards 101 \u2013 Indiana Pacers 114",
+     "legs": [
+      {
+       "outcome": "Ivica Zubac Under",
+       "result": "loss",
+       "headline": "13 reb+ast vs Under 12.5",
+       "final": "Washington Wizards 101 \u2013 Indiana Pacers 114",
+       "why": [
+        "Ivica Zubac finished with 13 reb+ast against a line of 12.5: under missed by 0.5.",
+        "Minutes: played 31 vs 21.8 projected.",
+        "Box score: 12 reb \u00b7 1 ast, 2 TO.",
+        "Model projected 10 (8.6 norm \u00d7 1.16 matchup); actual was +3.0 off (+1.0 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (12.2) in a matchup the model rated soft.",
+        "Signal: WSH gives centers +13% reb+ast vs their norm (#2 softest of 30)",
+        "Signal: Players with his profile: +13% reb+ast vs WSH (113 close comps)",
+        "Signal: His history vs WSH: 13.0 reb+ast/g in 1 games (+1%)",
+        "We priced it at 63% to hit vs 55% needed to break even at 1.83x (+14.6% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss",
+      "near-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "IND",
+        "away": "WSH"
+       },
+       "final": "WSH 101 \u2013 IND 114",
+       "periods": {
+        "away": [
+         25,
+         25,
+         27,
+         24
+        ],
+        "home": [
+         26,
+         29,
+         22,
+         37
+        ]
+       },
+       "largest_lead": {
+        "WSH": 8,
+        "IND": 16
+       },
+       "largest_lead_at": {
+        "WSH": "6:05 2nd Q",
+        "IND": "6:06 4th Q"
+       },
+       "lead_changes": 12,
+       "ties": 10,
+       "runs": [
+        {
+         "team": "IND",
+         "pts": 15,
+         "from": "36.3 3rd Q",
+         "to": "9:01 4th Q",
+         "score": "WSH 77-91 IND"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "5:13 1st Q",
+         "to": "2:21 1st Q",
+         "score": "WSH 22-18 IND"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "6:06 3rd Q",
+         "to": "4:28 3rd Q",
+         "score": "WSH 68-69 IND"
+        },
+        {
+         "team": "IND",
+         "pts": 8,
+         "from": "3:05 2nd Q",
+         "to": "1:42 2nd Q",
+         "score": "WSH 47-50 IND"
+        }
+       ],
+       "swings": [
+        {
+         "team": "IND",
+         "swing": 17,
+         "from": "1:22 3rd Q",
+         "to": "6:06 4th Q",
+         "mins": 7.3,
+         "from_score": "WSH 77-76 IND",
+         "to_score": "WSH 84-100 IND",
+         "pts_for": 24,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 11,
+         "from": "7:11 3rd Q",
+         "to": "1:22 3rd Q",
+         "mins": 5.8,
+         "from_score": "WSH 56-66 IND",
+         "to_score": "WSH 77-76 IND",
+         "pts_for": 21,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Kyshawn George (WSH): 25 pts, 9 reb, 3 ast, 5-8 3PT in 39 min",
+        "Anthony Davis (WSH): 21 pts, 13 reb, 0 ast, 0-3 3PT in 34 min",
+        "Pascal Siakam (IND): 28 pts, 8 reb, 5 ast, 2-7 3PT in 32 min",
+        "Ivica Zubac (IND): 20 pts, 12 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 8,
+          "reb": 6,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 8,
+          "fgm": 4
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 2,
+          "reb": 4,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 6,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "4017837",
+         "name": "Ivica Zubac",
+         "team": "IND",
+         "min": "31",
+         "pts": 20,
+         "reb": 12,
+         "ast": 1,
+         "3pt": "0-0",
+         "fg": "9-15",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: WSH 50-55 IND, IND up 5.",
+        "The 4th quarter decided the most: IND won it 37-24.",
+        "Largest leads: WSH 8 (6:05 2nd Q), IND 16 (6:06 4th Q). 12 lead changes, 10 ties.",
+        "Momentum swing: IND outscored them 24-7 in 7.3 minutes (1:22 3rd Q to 6:06 4th Q), moving it from WSH 77-76 IND to WSH 84-100 IND.",
+        "Momentum swing: WSH outscored them 21-10 in 5.8 minutes (7:11 3rd Q to 1:22 3rd Q), moving it from WSH 56-66 IND to WSH 77-76 IND.",
+        "IND went on a 15-0 run (36.3 3rd Q to 9:01 4th Q), making it WSH 77-91 IND.",
+        "WSH went on a 9-0 run (5:13 1st Q to 2:21 1st Q), making it WSH 22-18 IND.",
+        "Ivica Zubac by period (REB+AST): Q1 1, Q2 6, Q3 5, Q4 1.",
+        "He went over 12.5 in Q4."
+       ],
+       "espn_id": "401909966",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909966"
+      }
+     ]
+    }
    },
    {
     "id": "b69a692b",
@@ -9819,7 +10264,7 @@
       "book": "espnbet",
       "fair_p": 0.5807,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 2.17,
        "base": 2.08,
@@ -9850,6 +10295,22 @@
          "txt": "IND games have +7% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 114.0,
+       "away": 101.0
+      },
+      "actual": 0.0,
+      "box": {
+       "min": 34.0,
+       "pts": 21.0,
+       "reb": 13.0,
+       "ast": 0.0,
+       "tpm": 0.0,
+       "tpa": 3.0,
+       "fga": 20.0,
+       "fta": 9.0,
+       "tov": 1.0
       }
      }
     ],
@@ -9860,10 +10321,212 @@
     "note": "Proj 2.2 vs line 2.5 (norm 2.1, 33 min). Model 65% vs market 58%. IND gives power forwards +2% assists vs their norm (#9 softest of 30) \u00b7 Players with his profile: +2% assists vs IND (77 close comps) \u00b7 His history vs IND: 0.0 assists/g in 1 games (-1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 8.45,
+    "profit": 3.45,
+    "settled": "2026-11-12T04:03:51Z",
+    "review": {
+     "headline": "WON: 0 assists vs Under 2.5",
+     "final": "Washington Wizards 101 \u2013 Indiana Pacers 114",
+     "legs": [
+      {
+       "outcome": "Anthony Davis Under",
+       "result": "win",
+       "headline": "0 assists vs Under 2.5",
+       "final": "Washington Wizards 101 \u2013 Indiana Pacers 114",
+       "why": [
+        "Anthony Davis finished with 0 assists against a line of 2.5: under cleared by 2.5.",
+        "Minutes: played 34 vs 33.1 projected.",
+        "Box score: 0 ast, 1 TO.",
+        "Model projected 2.2 (2.1 norm \u00d7 1.04 matchup); actual was -2.2 off (-1.3 standard deviations).",
+        "Matchup read was wrong: he fell short of his own norm for the minutes played (2.1) in a matchup the model rated soft.",
+        "Signal: IND gives power forwards +2% assists vs their norm (#9 softest of 30)",
+        "Signal: Players with his profile: +2% assists vs IND (77 close comps)",
+        "Signal: His history vs IND: 0.0 assists/g in 1 games (-1%)",
+        "We priced it at 63% to hit vs 59% needed to break even at 1.69x (+6.2% expected edge).",
+        "Consensus fair probability when placed: 58% (no closing price captured)."
+       ],
+       "tags": [
+        "model-beat",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "model-beat"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "IND",
+        "away": "WSH"
+       },
+       "final": "WSH 101 \u2013 IND 114",
+       "periods": {
+        "away": [
+         25,
+         25,
+         27,
+         24
+        ],
+        "home": [
+         26,
+         29,
+         22,
+         37
+        ]
+       },
+       "largest_lead": {
+        "WSH": 8,
+        "IND": 16
+       },
+       "largest_lead_at": {
+        "WSH": "6:05 2nd Q",
+        "IND": "6:06 4th Q"
+       },
+       "lead_changes": 12,
+       "ties": 10,
+       "runs": [
+        {
+         "team": "IND",
+         "pts": 15,
+         "from": "36.3 3rd Q",
+         "to": "9:01 4th Q",
+         "score": "WSH 77-91 IND"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "5:13 1st Q",
+         "to": "2:21 1st Q",
+         "score": "WSH 22-18 IND"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "6:06 3rd Q",
+         "to": "4:28 3rd Q",
+         "score": "WSH 68-69 IND"
+        },
+        {
+         "team": "IND",
+         "pts": 8,
+         "from": "3:05 2nd Q",
+         "to": "1:42 2nd Q",
+         "score": "WSH 47-50 IND"
+        }
+       ],
+       "swings": [
+        {
+         "team": "IND",
+         "swing": 17,
+         "from": "1:22 3rd Q",
+         "to": "6:06 4th Q",
+         "mins": 7.3,
+         "from_score": "WSH 77-76 IND",
+         "to_score": "WSH 84-100 IND",
+         "pts_for": 24,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 11,
+         "from": "7:11 3rd Q",
+         "to": "1:22 3rd Q",
+         "mins": 5.8,
+         "from_score": "WSH 56-66 IND",
+         "to_score": "WSH 77-76 IND",
+         "pts_for": 21,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Kyshawn George (WSH): 25 pts, 9 reb, 3 ast, 5-8 3PT in 39 min",
+        "Anthony Davis (WSH): 21 pts, 13 reb, 0 ast, 0-3 3PT in 34 min",
+        "Pascal Siakam (IND): 28 pts, 8 reb, 5 ast, 2-7 3PT in 32 min",
+        "Ivica Zubac (IND): 20 pts, 12 reb, 1 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 6,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 9,
+          "reb": 6,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 8,
+          "fgm": 4
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 6,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "6583",
+         "name": "Anthony Davis",
+         "team": "WSH",
+         "min": "34",
+         "pts": 21,
+         "reb": 13,
+         "ast": 0,
+         "3pt": "0-3",
+         "fg": "7-20",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: WSH 50-55 IND, IND up 5.",
+        "The 4th quarter decided the most: IND won it 37-24.",
+        "Largest leads: WSH 8 (6:05 2nd Q), IND 16 (6:06 4th Q). 12 lead changes, 10 ties.",
+        "Momentum swing: IND outscored them 24-7 in 7.3 minutes (1:22 3rd Q to 6:06 4th Q), moving it from WSH 77-76 IND to WSH 84-100 IND.",
+        "Momentum swing: WSH outscored them 21-10 in 5.8 minutes (7:11 3rd Q to 1:22 3rd Q), moving it from WSH 56-66 IND to WSH 77-76 IND.",
+        "IND went on a 15-0 run (36.3 3rd Q to 9:01 4th Q), making it WSH 77-91 IND.",
+        "WSH went on a 9-0 run (5:13 1st Q to 2:21 1st Q), making it WSH 22-18 IND.",
+        "Anthony Davis by period (AST): Q1 0, Q2 0, Q3 0, Q4 0.",
+        "He never got past 2.5."
+       ],
+       "espn_id": "401909966",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909966"
+      }
+     ]
+    }
    },
    {
     "id": "21c5a5b2",
@@ -10073,15 +10736,15 @@
    "clv_sum": 0.0
   },
   "matchup_over": {
-   "bets": 6,
-   "staked": 30.0,
-   "profit": 14.100000000000001,
+   "bets": 7,
+   "staked": 35.0,
+   "profit": 19.8,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 1,
-     "won": 1,
+     "n": 2,
+     "won": 2,
      "lost": 0
     },
     "blowout": {
@@ -10090,8 +10753,8 @@
      "lost": 2
     },
     "matchup-read-right": {
-     "n": 4,
-     "won": 3,
+     "n": 5,
+     "won": 4,
      "lost": 1
     },
     "minutes-short": {
@@ -10117,9 +10780,9 @@
    }
   },
   "matchup_under": {
-   "bets": 20,
-   "staked": 100.0,
-   "profit": -3.250000000000002,
+   "bets": 22,
+   "staked": 110.0,
+   "profit": -4.800000000000002,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -10134,19 +10797,19 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 11,
+     "n": 12,
      "won": 5,
-     "lost": 6
+     "lost": 7
     },
     "matchup-read-wrong": {
-     "n": 5,
-     "won": 2,
+     "n": 6,
+     "won": 3,
      "lost": 3
     },
     "near-miss": {
-     "n": 2,
+     "n": 3,
      "won": 0,
-     "lost": 2
+     "lost": 3
     },
     "blowout": {
      "n": 6,
@@ -10154,18 +10817,18 @@
      "lost": 2
     },
     "model-miss": {
-     "n": 8,
+     "n": 9,
      "won": 0,
-     "lost": 8
+     "lost": 9
     },
     "minutes-long": {
-     "n": 4,
+     "n": 5,
      "won": 0,
-     "lost": 4
+     "lost": 5
     },
     "model-beat": {
-     "n": 1,
-     "won": 1,
+     "n": 2,
+     "won": 2,
      "lost": 0
     }
    }
@@ -10174,9 +10837,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 33.0,
-   "staked": 165.0,
-   "profit": -10.149999999999997
+   "bets": 36.0,
+   "staked": 180.0,
+   "profit": -5.999999999999996
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -11655,6 +12318,26 @@
    "ts": "2026-11-12T03:48:32Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 11: 10 games, 241 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-12T04:03:51Z",
+   "kind": "result",
+   "text": "WON +$5.70: Andrew Nembhard Over 7.5 @ +114 (FanDuel) \u2014 WON: 10 assists vs Over 7.5 [matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-12T04:03:51Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Ivica Zubac Under 12.5 @ -120 (DraftKings) \u2014 LOST: 13 reb+ast vs Under 12.5 [matchup-read-right, minutes-long, model-miss, near-miss]"
+  },
+  {
+   "ts": "2026-11-12T04:03:51Z",
+   "kind": "result",
+   "text": "WON +$3.45: Anthony Davis Under 2.5 @ -145 (theScore Bet) \u2014 WON: 0 assists vs Under 2.5 [matchup-read-wrong, model-beat]"
+  },
+  {
+   "ts": "2026-11-12T04:03:55Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 165 left this month)."
   }
  ],
  "learned_ids": [
@@ -11702,24 +12385,27 @@
   "b46f1cb0",
   "6d96909a",
   "ef33253e",
-  "63e3addb"
+  "63e3addb",
+  "7cb2f86b",
+  "ff1913de",
+  "b69a692b"
  ],
  "strategist": null,
- "updated": "2026-11-12T03:48:34Z",
+ "updated": "2026-11-12T04:03:55Z",
  "stats": {
-  "bets": 45,
-  "won": 16,
-  "lost": 27,
+  "bets": 48,
+  "won": 18,
+  "lost": 28,
   "push": 2,
-  "staked": 227.63,
-  "profit": -49.14,
-  "roi": -0.2159,
+  "staked": 242.63,
+  "profit": -44.99,
+  "roi": -0.1854,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 30,
+  "clv_no_close": 33,
   "close_mins_median": 151,
-  "open": 4,
-  "equity": 50.86
+  "open": 1,
+  "equity": 55.01
  },
  "weights": {
   "value_fav": 0.842,
@@ -11727,8 +12413,8 @@
   "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
-  "matchup_over": 1.313,
-  "matchup_under": 0.959
+  "matchup_over": 1.417,
+  "matchup_under": 0.944
  },
  "paused": [],
  "dry_scans": 0
