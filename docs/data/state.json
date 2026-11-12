@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 35.86,
+  "cash": 30.86,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -9864,6 +9864,77 @@
     "payout": null,
     "profit": null,
     "settled": null
+   },
+   {
+    "id": "21c5a5b2",
+    "placed": "2026-11-12T01:20:45Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "f41d186dc7a7dcf01adab32579a82ca3",
+      "sport": "basketball_nba",
+      "commence": "2026-11-12T02:40:00Z",
+      "home": "Houston Rockets",
+      "away": "Golden State Warriors",
+      "market": "player_assists",
+      "outcome": "Stephen Curry Under",
+      "side": "Under",
+      "player": "Stephen Curry",
+      "player_id": "3975",
+      "stat": "ast",
+      "espn_id": "401909974",
+      "point": 4.5,
+      "price": 1.83,
+      "book": "hardrockbet",
+      "fair_p": 0.5167,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 3.75,
+       "base": 4.06,
+       "minutes": 28.4,
+       "mult": 0.923,
+       "sd": 2.19,
+       "p_model": 0.685,
+       "p_mkt": 0.5167,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.983,
+         "txt": "HOU gives shooting guards -2% assists vs their norm (#13 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.944,
+         "txt": "Players with his profile: -6% assists vs HOU (162 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.019,
+         "txt": "His history vs HOU: 4.5 assists/g in 2 games (+2%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.908,
+         "txt": "HOU games have -9% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.83,
+    "stake": 5.0,
+    "ev": 0.1728,
+    "p": 0.6409,
+    "note": "Proj 3.8 vs line 4.5 (norm 4.1, 28 min). Model 69% vs market 52%. HOU gives shooting guards -2% assists vs their norm (#13 toughest of 30) \u00b7 Players with his profile: -6% assists vs HOU (162 close comps) \u00b7 His history vs HOU: 4.5 assists/g in 2 games (+2%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -11549,6 +11620,11 @@
    "ts": "2026-11-12T01:15:48Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 11: 10 games, 236 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-12T01:20:45Z",
+   "kind": "props",
+   "text": "NBA matchups: 3 games, strongest spots: Yaxel Lendeborg ra -11% vs HOU; Georges Niang ra -11% vs HOU; Yaxel Lendeborg ast -10% vs HOU. Bought prop odds for GS@HOU (ast, tpm, ra) (3 credits). Placed 1: Stephen Curry Under 4.5 @ -120 (Hard Rock Bet)"
   }
  ],
  "learned_ids": [
@@ -11599,7 +11675,7 @@
   "63e3addb"
  ],
  "strategist": null,
- "updated": "2026-11-12T01:16:07Z",
+ "updated": "2026-11-12T01:21:04Z",
  "stats": {
   "bets": 45,
   "won": 16,
@@ -11612,7 +11688,7 @@
   "clv_n": 15,
   "clv_no_close": 30,
   "close_mins_median": 151,
-  "open": 3,
+  "open": 4,
   "equity": 50.86
  },
  "weights": {
