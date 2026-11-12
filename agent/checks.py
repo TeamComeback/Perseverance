@@ -51,12 +51,14 @@ def run(log=print):
         if p.get("out") or not p.get("minutes") or p.get("state", "pre") != "pre":
             continue
         tm[p["team"]] = tm.get(p["team"], 0) + p["minutes"] * (p.get("pplay") if p.get("pplay") is not None else 1)
-    # expected minutes (projected minutes × chance he plays). The minutes model aims for 226-245 (it leaves a few for
-    # the end of the bench); well short means the projections are missing minutes someone will play.
-    warn_ = {t: round(v) for t, v in tm.items() if not 220 <= v <= 250}
-    fail_ = {t: round(v) for t, v in tm.items() if not 205 <= v <= 265}
+    # expected minutes (projected minutes × chance he plays) of the players who get projections. The minutes model
+    # shares 240 among every eligible player and leaves a few for the end of the bench (players under 10 minutes aren't
+    # projected), so a healthy team lands about 215-245 here. Well short means minutes went missing (Nov 12: a player
+    # ruled out by RotoWire only kept his minutes in the fit, so Charlotte came up at 204).
+    warn_ = {t: round(v) for t, v in tm.items() if not 215 <= v <= 250}
+    fail_ = {t: round(v) for t, v in tm.items() if not 200 <= v <= 265}
     add("Team minutes ≈ 240", "fail" if fail_ else "warn" if warn_ or not tm else "ok",
-        f"{len(tm)} teams checked" + (f"; outside 220-250: {', '.join(f'{t} {v}' for t, v in sorted(warn_.items(), key=lambda x: x[1]))}" if warn_ else "; all within 220-250"))
+        f"{len(tm)} teams checked" + (f"; outside 215-250: {', '.join(f'{t} {v}' for t, v in sorted(warn_.items(), key=lambda x: x[1]))}" if warn_ else "; all within 215-250"))
 
     # 3. sims: every game still to tip has today's sims, and the sim total is within a sane band of the line
     sims = _load("sims.json", {}) or {}

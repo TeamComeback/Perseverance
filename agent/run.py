@@ -656,10 +656,17 @@ def manual_issue():
 def run_checks():
     try:
         from . import checks
+        prev = store.load("checks.json", {}) or {}
+        prev_fail = sorted(c["name"] for c in prev.get("checks") or [] if c["status"] == "fail")
         r = checks.run()
-        if r["status"] == "fail":
+        fails = [c for c in r["checks"] if c["status"] == "fail"]
+        # write to the journal only when a check starts failing (or recovers), not on every 15-minute run
+        if sorted(c["name"] for c in fails) != prev_fail:
             state, manual = load_all()
-            brain.note(state, "error", "Self-check failed: " + "; ".join(f"{c['name']} ({c['detail']})" for c in r["checks"] if c["status"] == "fail")[:400])
+            if fails:
+                brain.note(state, "error", "Self-check failed: " + "; ".join(f"{c['name']} ({c['detail']})" for c in fails)[:400])
+            else:
+                brain.note(state, "research", "Self-checks pass again: " + ", ".join(prev_fail) + " recovered.")
             save_all(state, manual, None)
     except Exception as e:
         print(f"[checks] failed to run: {e}")

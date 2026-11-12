@@ -7,6 +7,7 @@
 
 The next morning the live snapshots are graded: would each live bet have won, and did it have an edge?
 Results by situation go to live_track.json. Props feed the model-vs-market scoreboard."""
+import json
 from datetime import timedelta
 from zoneinfo import ZoneInfo
 
@@ -149,6 +150,60 @@ def _settle(margin_or_diff):
     return "won" if margin_or_diff > 0 else "lost" if margin_or_diff < 0 else "push"
 
 
+def _clock_lbl(s):
+    p, c = s.get("period") or 0, int(float(s.get("clock") or 0))
+    return f"{'Q' + str(p) if p <= 4 else 'OT' + (str(p - 4) if p > 5 else '')} {c // 60}:{c % 60:02d}"
+
+
+def recent_live_bets(days=KEEP_DAYS, keep=400):
+    """Every graded live bet that fit a tracked situation (sim saw a 5%+ edge, or a team trailing by 10+), one row each,
+    newest first: when it was taken (time and game clock), the score, the line and price, the sim's chance, the result."""
+    root = config.DATA / DIR
+    out = []
+    if not root.exists():
+        return out
+    for f in sorted(root.glob("*.json"), reverse=True)[:days]:
+        try:
+            db = json.loads(f.read_text())
+        except Exception:
+            continue
+        for eid, G in (db.get("games") or {}).items():
+            if not G.get("final"):
+                continue
+            fa, fh = G["final"]
+            for s in G.get("live", []):
+                L, sim, res = s.get("line") or {}, s.get("sim") or {}, s.get("res") or {}
+                if not res or res.get("stale"):
+                    continue
+                a, h = s["score"]
+                trail = h - a
+                sp = L.get("sp") or 0
+                cand = [("spread_home", f"{G['home']} {sp:+g}", L.get("sp_h"), sim.get("p_home_cover")),
+                        ("spread_away", f"{G['away']} {-sp:+g}", L.get("sp_a"), None if sim.get("p_home_cover") is None else 1 - sim["p_home_cover"]),
+                        ("over", f"Over {L.get('tot')}", L.get("ov"), sim.get("p_over")),
+                        ("under", f"Under {L.get('tot')}", L.get("un"), None if sim.get("p_over") is None else 1 - sim["p_over"]),
+                        ("ml_home", f"{G['home']} ML", L.get("ml_h"), sim.get("p_home_win")),
+                        ("ml_away", f"{G['away']} ML", L.get("ml_a"), None if sim.get("p_home_win") is None else 1 - sim["p_home_win"])]
+                for name, label, price, pr in cand:
+                    if name not in res or not price:
+                        continue
+                    ev = pr * price - 1 if pr is not None else None
+                    sits = []
+                    if ev is not None and ev >= 0.05:
+                        sits.append("sim_edge")
+                    trailer = (name.endswith("home") and trail < 0) or (name.endswith("away") and trail > 0)
+                    if abs(trail) >= 10 and trailer and name.startswith(("spread", "ml")):
+                        sits.append("trailing10")
+                    if not sits:
+                        continue
+                    out.append({"day": f.stem, "ts": s.get("ts"), "clock": _clock_lbl(s), "cp": checkpoint(s),
+                                "game": f"{G['away']} @ {G['home']}", "score": [a, h], "bet": label, "mk": name.split("_")[0],
+                                "dec": price, "p": round(pr, 3) if pr is not None else None, "ev": round(ev, 3) if ev is not None else None,
+                                "res": res[name], "sits": sits, "final": [fa, fh]})
+    out.sort(key=lambda r: (r["day"], r["ts"] or ""), reverse=True)
+    return out[:keep]
+
+
 def grade(log=print):
     """After the games: grade props (box scores) and every live snapshot. Returns games graded."""
     lt = store.load("live_track.json", {"agg": {}, "graded": []})
@@ -230,6 +285,10 @@ def grade(log=print):
         if all_done:
             db["graded"] = True
         save(day, db)
+    try:
+        lt["bets"] = recent_live_bets()
+    except Exception as e:
+        log(f"[dk] live bet list failed: {e}")
     lt["updated"] = store.iso(store.now())
     store.save("live_track.json", lt)
     prune()

@@ -267,6 +267,7 @@ a.opt{cursor:pointer}
 .btn.sm{padding:4px 10px;font-size:12px}
 .mode-x{margin:2px 0 6px}.mode-x summary{cursor:pointer;font-size:12px;color:var(--dim)}.mode-x .desc{line-height:1.5;margin-top:4px}
 tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-space:normal}
+.lbt td{vertical-align:top;font-size:12px;white-space:normal}.lbt td .dim{font-size:11px}
 .ownt{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:4px 0 6px;background:var(--panel2)}.ownt b{font-family:var(--mono);font-size:15px}
 .cvb{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-weight:800;font-size:12px;padding:2px 7px;border-radius:7px;border:1px solid var(--line);margin-left:6px}
 .cvb.Confident{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Consider{color:var(--gold);border-color:#E5C15855;background:#E5C15812}.cvb.Pass{color:var(--dim)}
@@ -620,6 +621,25 @@ async function loadL(repoManual) {
   }
   try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
   syncManual();
+}
+// Bets you took at a sportsbook and asked Claude to add (docs/data/manual_import.json). Each is added once per device,
+// already settled, with the stake and odds you took; "placed" stays unknown when you didn't note the time.
+function importBets(imp) {
+  const items = (imp && imp.items) || []; if (!items.length || !L) return 0;
+  L.imported = L.imported || []; let n = 0;
+  for (const it of items) {
+    if (L.imported.includes(it.id)) continue;
+    const r = placeBet([{...it.leg}], it.stake || MIN_STAKE, it.note || "Logged afterwards");
+    if (r.err) continue;
+    const b = r.bet;
+    b.placed = it.placed || it.leg.commence; b.placed_unknown = !it.placed; b.imported = it.id;
+    b.legs[0].result = it.result === "won" ? "win" : it.result === "lost" ? "loss" : it.result === "push" ? "push" : null;
+    if (it.actual != null) b.legs[0].actual = it.actual;
+    if (it.result) { settleBet(b, it.result); if (it.settled) b.settled = it.settled; }
+    L.imported.push(it.id); n++;
+  }
+  if (n) { saveL(); syncManual(); }
+  return n;
 }
 const lid = () => Math.random().toString(36).slice(2, 10);
 const equityOf = book => Math.round((book.cash + book.bets.filter(b => b.status === "open").reduce((s, b) => s + b.stake, 0)) * 100) / 100;
@@ -1891,6 +1911,15 @@ function shotChart(pc) {
 }
 
 // ===================================================== BETS
+// when a bet was taken, and how long before tip-off (or which point of the game, if it was a live bet)
+function takenAt(b, l) {
+  if (b.placed_unknown) return "taken before tip-off · time not recorded";
+  const t = new Date(b.placed), c = l && l.commence ? new Date(l.commence) : null;
+  const when_ = t.toLocaleString([], {weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit"});
+  if (!c) return "taken " + when_;
+  const m = Math.round((c - t) / 60000);
+  return `taken ${when_} · ${m > 0 ? (m >= 120 ? Math.round(m / 60) + " h" : m + " min") + " before tip" : m > -1 ? "at tip" : "live, " + (-m >= 120 ? Math.round(-m / 60) + " h" : -m + " min") + " after tip"}`;
+}
 async function fillClv() {
   if (!D.closes) D.closes = await get("closes.json", {});
   await getLines();
@@ -1931,7 +1960,8 @@ async function fillClv() {
   el.innerHTML = rows.length ? `<div class="card" style="padding:9px 12px;margin-bottom:8px">You beat the closing line on <b>${beat} of ${rows.length}</b> bets${avg != null ? ` · average CLV <b class="${cls(avg)}">${pct(avg)}</b>` : ""}. Consistently beating the close is the earliest real sign of an edge, long before wins and losses mean much.</div>` +
     rows.slice(0, 40).map(r => `<div class="bet"><div class="what">${esc(r.l.outcome)}${r.l.point != null && r.l.market !== "h2h" && !r.l.stat ? " " + r.l.point : r.l.stat ? " " + r.l.point + " " + STATN[r.l.stat] : ""}</div>
       <div class="amt ${r.clv != null ? cls(r.clv) : cls(r.ptsVal)}">${r.clv != null ? pct(r.clv) : (r.ptsVal > 0 ? "+" : "") + f1(r.ptsVal) + " pts"}</div>
-      <div class="sub">you ${am(r.l.price)}${r.close != null ? " · close fair " + am(1 / r.close) : ""}${r.src ? " · " + esc(r.src) : ""}${r.pre ? " · still moving (game not started)" : ""}</div></div>`).join("")
+      <div class="sub">you ${am(r.l.price)}${r.close != null ? " · close fair " + am(1 / r.close) : ""}${r.src ? " · " + esc(r.src) : ""}${r.pre ? " · still moving (game not started)" : ""}</div>
+      <div class="sub dim">${takenAt(r.b, r.l)}</div></div>`).join("")
     : '<div class="empty">Shows up once you have bets on lines the agent tracks: board game lines it scans, or props it priced that day.</div>';
 }
 function renderBets() {
@@ -2104,7 +2134,23 @@ function liveTrackHtml() {
   return `<div class="desc">Flat $1 on each live bet that fit the situation. <b>ROI</b> = profit per $1 bet; <b>sim EV</b> = what the sim expected. These need hundreds of bets before they mean much.</div>
     <div class="scroll"><table class="tbl"><tr><th>Situation</th><th>Bets</th><th>W-L-P</th><th>ROI</th><th>Sim EV</th></tr>
     ${rows.map(r => { const [n, w, l, p, u, ev] = r.a, roi = n - p ? u / n : 0;
-      return `<tr><td class="t">${ST[r.st] || r.st} · ${CP[r.cp] || r.cp} · ${MK[r.mk] || r.mk}</td><td>${n}</td><td>${w}-${l}-${p}</td><td class="${roi > 0 ? "h" : roi < 0 ? "m" : ""}">${(roi > 0 ? "+" : "") + Math.round(roi * 100)}%</td><td class="dim">${(ev / n > 0 ? "+" : "") + Math.round(ev / n * 100)}%</td></tr>`; }).join("")}</table></div>`;
+      return `<tr><td class="t">${ST[r.st] || r.st} · ${CP[r.cp] || r.cp} · ${MK[r.mk] || r.mk}</td><td>${n}</td><td>${w}-${l}-${p}</td><td class="${roi > 0 ? "h" : roi < 0 ? "m" : ""}">${(roi > 0 ? "+" : "") + Math.round(roi * 100)}%</td><td class="dim">${(ev / n > 0 ? "+" : "") + Math.round(ev / n * 100)}%</td></tr>`; }).join("")}</table></div>
+    ${liveBetsHtml()}`;
+}
+// every graded live bet, newest first: when it was taken (time, game clock, score), the line, the sim's chance, the result
+function liveBetsHtml() {
+  const B = (D.livetrack && D.livetrack.bets) || []; if (!B.length) return "";
+  const ST = {sim_edge: "sim edge", trailing10: "trailing 10+"}, lim = D.lbAll ? B.length : 25;
+  const tm = ts => ts ? new Date(ts).toLocaleString([], {weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit"}) : "";
+  return `<div class="lbl">Each live bet · newest first</div>
+    <div class="scroll"><table class="tbl lbt"><tr><th>Taken</th><th>Game · score</th><th>Bet</th><th>Sim</th><th></th></tr>
+    ${B.slice(0, lim).map(b => `<tr><td class="t">${esc(tm(b.ts))}<div class="dim">${esc(b.clock)}</div></td>
+      <td class="t">${esc(b.game)}<div class="dim">${b.score[0]}–${b.score[1]} then · final ${b.final[0]}–${b.final[1]}</div></td>
+      <td class="t">${esc(b.bet)} <span class="dim">${am(b.dec)}</span><div class="dim">${b.sits.map(x => ST[x] || x).join(", ")}</div></td>
+      <td>${b.p != null ? Math.round(b.p * 100) + "%" : "—"}${b.ev != null ? `<div class="dim">${b.ev > 0 ? "+" : ""}${Math.round(b.ev * 100)}% EV</div>` : ""}</td>
+      <td><span class="pill ${b.res === "won" ? "won" : b.res === "lost" ? "lost" : ""}">${b.res === "won" ? "W" : b.res === "lost" ? "L" : "P"}</span></td></tr>`).join("")}</table></div>
+    ${B.length > lim ? `<button class="more" onclick="D.lbAll=true;renderTrends()">Show all ${B.length}</button>` : ""}
+    <div class="desc">Times are when the agent saved DraftKings' live line (every 15 minutes during games), in your time zone; the game clock is where the game stood.</div>`;
 }
 function sbHtml() {
   const sb = D.sb || {}, a = sb.all;
@@ -2435,6 +2481,7 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});
   await loadL(manual);
+  try { const k = importBets(await get("manual_import.json", null)); if (k) setTimeout(() => toast(`Added ${k} bet${k > 1 ? "s" : ""} you took at the sportsbook`), 1200); } catch (e) {}
   $("updated").textContent = "updated " + ago(state.updated);
   go((location.hash || "").slice(1) || store.get("tab", "today"));
   setInterval(liveTick, 30000);

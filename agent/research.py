@@ -106,7 +106,23 @@ def context(log=print, refresh=True):
     pre = {"games": games, "model": model, "day": day}
     flags, cards = slate_flags(pre, team_dates(model))
     cleared = {pid: True for pid, st in official.items() if st == "" or "probable" in st.lower()}
-    mins_model = minutes_model(model, games, inj, rw, flags, cleared)
+    # One status per player for the minutes model AND the projections: ESPN / the league's report first, RotoWire's
+    # injury tag when they have nothing. (Before Nov 12 the minutes model saw only the first, so a player RotoWire had
+    # ruled out kept his minutes in the 240 fit and his teammates were cut, then he was dropped: teams came up short.)
+    nick_of = {}
+    for g in games:
+        nick_of[g["home"]], nick_of[g["away"]] = g.get("home_nick", ""), g.get("away_nick", "")
+    inj_all = dict(inj)
+    for pid, pl in model.players.items():
+        if inj_all.get(pid):
+            continue
+        r = rw.get(norm(pl["name"]))
+        if r and r.get("inj") and (not r.get("nick") or r["nick"].lower() == (nick_of.get(pl["team"]) or "").lower()):
+            inj_all[pid] = r["inj"]
+    # and the 240 is shared only among players who can actually get a projection below (3+ games, played in the last 30 days)
+    eligible = {pid for pid, pl in model.players.items() if pl["games"] >= 3 and model.by_player[pid]
+                and (day - datetime.fromisoformat(model.by_player[pid][-1]["d"]).date()).days <= 30}
+    mins_model = minutes_model(model, games, inj_all, rw, flags, cleared, eligible)
     entries = []
     for g in games:
         for team, opp, home, nick in ((g["home"], g["away"], True, g["home_nick"]), (g["away"], g["home"], False, g["away_nick"])):
@@ -449,7 +465,7 @@ def rotation_profile(model):
     return out
 
 
-def minutes_model(model, games, inj, rw, flags, official_ok=None):
+def minutes_model(model, games, inj, rw, flags, official_ok=None, eligible=None):
     """Tonight's minutes for every rotation player: recent minutes, then adjusted for teammates who are
     newly out (their with/without history), a change in starting role, back-to-backs and blowout risk.
     Returns {pid: (minutes, [reasons])}."""
@@ -474,7 +490,7 @@ def minutes_model(model, games, inj, rw, flags, official_ok=None):
         fresh_outs = [o for o in roster if is_out(o) and model.minutes(o) >= 12
                       and any(o in played[(t, d)] for d in last2)]
         base = {pid: model.minutes(pid) for pid in roster}
-        active = [pid for pid in roster if not is_out(pid)]
+        active = [pid for pid in roster if not is_out(pid) and (eligible is None or pid in eligible)]
         f = flags.get(t, {})
         tot_active = sum(base[p] for p in active) or 1
         sname = lambda pid: re.sub(r"\s+(Jr\.?|Sr\.?|II|III|IV)$", "", model.players[pid]["name"]).split()[-1]
