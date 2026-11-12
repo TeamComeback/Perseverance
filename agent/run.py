@@ -116,6 +116,11 @@ def grade(state, manual, client):
     except Exception as e:
         brain.note(state, "error", f"DraftKings grading failed: {e}")
     try:
+        from . import kalshi
+        kalshi.grade()
+    except Exception as e:
+        brain.note(state, "error", f"Kalshi grading failed: {e}")
+    try:
         from . import simtrack
         sdb = simtrack.load()
         if simtrack.grade(sdb):
@@ -695,6 +700,20 @@ def auto_run():
         except Exception:
             pass
     print(f"[auto] {hour:.2f}h ET: {len(live)} live, {len(pre)} to tip" + (", last night's games still on" if yday_live else ""))
+    if live or pre:                                 # Kalshi: a second market's lines, free, a look every run
+        try:
+            from . import kalshi
+            kalshi.refresh(games)
+        except Exception as e:
+            print(f"[kalshi] failed: {e}")
+    if yday_live:
+        try:
+            from . import kalshi
+            from datetime import timedelta as _td
+            d0 = research.et_today() - _td(days=1)
+            kalshi.refresh(research.slate_all(d0), day=d0)
+        except Exception as e:
+            print(f"[kalshi] last night failed: {e}")
     if live or yday_live:
         live_run()                                  # includes the injury watch for games not yet started
     elif pre and 9 <= hour < 24:

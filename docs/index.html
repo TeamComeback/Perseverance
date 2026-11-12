@@ -956,6 +956,11 @@ function statusBadge(p) {
 // No line bought by the agent: use DraftKings' own line for today, from the latest phone re-price if it is newer than the
 // agent's saved copy (docs/data/dk/<date>.json, refreshed with every research run). Win chance blends the model with
 // DraftKings' no-vig price using the agent's learned weight for that stat, the same way Best Bets does.
+// Kalshi (second market): the agent saves its prices every run in kalshi/<date>.json (the phone can't reach Kalshi directly)
+function kalshiP(pid, stat, line, side) { const k = D.kalshi && D.kalshi.date === (D.players || {}).date ? (D.kalshi.props || {})[pid + "|" + stat] : null;
+  if (!k || k.p == null || k.line !== line) return null; return side === "Over" ? k.p : 1 - k.p; }
+function kalshiTrack() { return D.kt && D.kt.props && D.kt.props.all ? D.kt.props.all.disagree : null; }
+window.kalshiP = kalshiP; window.kalshiTrack = kalshiTrack;
 function dkLiveProps() { try { const x = JSON.parse(localStorage.getItem("pz-dklive") || "null"); return x && x.date === (D.players || {}).date ? x : null; } catch (e) { return null; } }
 function dkFill(row) {
   const live = dkLiveProps(), k = row.pid + "|" + row.stat, saved = D.dkday && D.dkday.date === D.players.date ? (D.dkday.props || {})[k] : null;
@@ -968,7 +973,7 @@ function dkFill(row) {
   const nv = (1 / ov) / (1 / ov + 1 / un), pm = side === "Over" ? nv : 1 - nv, mp = modelP(row.proj, row.sd, line, side);
   const day = ((D.best || {}).days || {})[D.players.date] || {}, w = (((day.learned || {}).w_props) || {})[row.stat] ?? 0.3;
   const p = mp == null ? pm : w * mp + (1 - w) * pm;
-  Object.assign(row, {line, side, am: dec >= 2 ? Math.round((dec - 1) * 100) : -Math.round(100 / (dec - 1)), book: "draftkings", dkSrc: src, ev: p * dec - 1, p_win: p,
+  Object.assign(row, {line, side, am: dec >= 2 ? Math.round((dec - 1) * 100) : -Math.round(100 / (dec - 1)), book: "draftkings", dkSrc: src, ev: p * dec - 1, p_win: p, p_k: kalshiP(row.pid, row.stat, line, side),
     open: saved && saved.o ? saved.o[0] : null});
 }
 function propRows() {
@@ -1046,7 +1051,7 @@ function modelP(proj, sd, line, side) {
 function cRow(x) {
   const priced = x.line != null;
   const rt = priced
-    ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div><div class="b">${amS(x.am)} ${esc(x.dkSrc || bookName(x.book))}${x.p_win != null ? ` · win <b style="color:var(--text)">${Math.round(x.p_win * 100)}%</b>` : ""}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}${x.open != null && x.open !== x.line ? ` · opened ${f1(x.open)}` : ""}</div>`
+    ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div><div class="b">${amS(x.am)} ${esc(x.dkSrc || bookName(x.book))}${x.p_win != null ? ` · win <b style="color:var(--text)">${Math.round(x.p_win * 100)}%</b>` : ""}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}${x.p_k != null ? ` · Kalshi ${Math.round(x.p_k * 100)}%` : ""}${x.open != null && x.open !== x.line ? ` · opened ${f1(x.open)}` : ""}</div>`
     : (() => { const e = estLine(x), mp = modelP(x.proj, x.sd, e.line, x.lean);
         return `<div class="a">${x.lean.toUpperCase()} ${f1(e.line)} ${STATN[x.stat]} <span class="dots">${dots(rating(x).n)}</span></div>
           <div class="b">${esc(e.src)}${mp != null ? ` · model <b style="color:var(--text)">${Math.round(mp * 100)}%</b>` : ""} · exp ${f1(x.proj)}</div>`; })();
@@ -1289,7 +1294,7 @@ function cardCase(pc) {
   try {
     const c = CASE.buildCase({p, players: pc.players, stat: s, side: pc.side, line: pc.line, dec: at ? (over ? dk.c[1] : dk.c[2]) : null, pMkt: nv == null ? null : over ? nv : 1 - nv,
       pSim: sim ? (over ? sim.p : 1 - sim.p) : null, simAvg: sim ? sim.avg : null, open: at && dk.o ? dk.o[0] : null, focus: focusOf(s), tend,
-      underRate: cm && cm.unders, convModel: cm, pModel: at && dk.pm != null ? (over ? dk.pm : 1 - dk.pm) : null});
+      underRate: cm && cm.unders, convModel: cm, pKalshi: at ? kalshiP(p.pid, s, pc.line, pc.side) : null, kalshiTrack: kalshiTrack(), pModel: at && dk.pm != null ? (over ? dk.pm : 1 - dk.pm) : null});
     if (at && c.p_conv != null) { const dec = over ? dk.c[1] : dk.c[2]; c.conv = CASE.convScore(c.p_conv, dec); c.tier = CASE.convTier(c.conv); c.verdict = CASE.verdict(c, c.conv); }
     else { const sc = Math.max(5, Math.min(95, Math.round(50 + c.balance * 6))); c.conv = null; c.verdict = (c.balance >= 2 ? "The case leans " : c.balance <= -2 ? "The case leans against the " : "Balanced case on the ") + pc.side.toLowerCase() + (c.against[0] ? `; the main risk is ${c.against[0].tag}.` : "."); }
     return c;
@@ -1327,7 +1332,7 @@ function bestHtml() {
     const who = isProp ? esc(x.name) : x.kind === "spread" ? "Spread" : "Total";
     const attrs = isProp ? `data-pid="${x.pid}" data-stat="${x.stat}"` : `data-bgame="${x.espn_id}"`;
     // depth 1: the play, its level and one-line verdict; depth 2 (tap "The case"): the numbers, the reasons, the ladder
-    const nums = `<div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>${gl("Need", "needs")} ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>market ${Math.round(x.p_mkt * 100)}%</span><span>${evTag(x)}</span></div>`;
+    const nums = `<div class="bbn"><span>Win <b>${Math.round(x.p * 100)}%</b></span><span>${gl("Need", "needs")} ${Math.round(100 / x.dec)}%</span><span>sim ${Math.round(x.p_sim * 100)}%</span><span>DK ${Math.round(x.p_mkt * 100)}%</span>${x.p_kalshi != null ? `<span>Kalshi ${Math.round(x.p_kalshi * 100)}%</span>` : ""}<span>${evTag(x)}</span></div>`;
     const logBtn = !x.res && !x.dropped && !(gOf(x.espn_id) && gOf(x.espn_id).state !== "pre") ? `<button class="btn ghost sm" data-blog="${esc(x.kind + "|" + (x.pid || x.espn_id) + "|" + (x.stat || "") + "|" + x.side)}">+ Log</button>` : "";
     return `<div class="cr bb${x.dropped ? " drop" : ""}" ${attrs}><div><span class="rk">${x.dropped ? "–" : i + 1}</span><span class="nm">${who}</span>${isProp ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : ""}${cvBadge(x)}${statusOf(x)}
         <div class="gm">${esc(x.game)} · ${tod(x.start)}</div></div>
@@ -1580,6 +1585,7 @@ async function openPlayer(pid, stat) {
   if (!D.sims) D.sims = await get("sims.json", {games: {}});
   if (!D.sb) D.sb = await get("scoreboard.json", {});
   if (!D.dkday || D.dkday.date !== D.players.date) D.dkday = await get(`dk/${D.players.date}.json`, {date: D.players.date, games: {}});
+  if (!D.kalshi || D.kalshi.date !== D.players.date) { const k = await get(`kalshi/${D.players.date}.json`, null); D.kalshi = k ? {date: D.players.date, ...k} : {date: D.players.date, games: {}, props: {}}; }
   const pc = D.pc = {p, players: g.players, shots: (g.shots || {})[pid] || [], stat: stat || "ra", side: null, line: null, win: "L10", loc: "all", opp: false, mates: {}, swin: "season"};
   const pr = priced[pid + "|" + pc.stat];
   pc.line = pr ? pr.line : estLine({pid, stat: pc.stat, base: p.proj[pc.stat].base}).line;
@@ -2103,6 +2109,7 @@ async function renderTrends() {
   if (!D.sb) D.sb = await get("scoreboard.json", {});
   if (!D.simlog) D.simlog = await get("sims_log.json", {agg: {}, graded: {}});
   if (!D.livetrack) D.livetrack = await get("live_track.json", {agg: {}});
+  if (!D.kt) D.kt = await get("kalshi_track.json", null);
   await getLines();
   const T = D.trends;
   const secs = (T.sections || []).map((s, i) => sec("tr-" + s.id, esc(s.title), s.items.length + "",
@@ -2111,11 +2118,26 @@ async function renderTrends() {
     sec("tr-min", "Minutes accuracy · the biggest driver of prop misses", minMeta(), minutesHtml(), true) +
     sec("tr-focus", "Where the model has an edge", (() => { const F = focusMap(), e = Object.keys(F).filter(k => F[k].status === "edge"); return e.length ? e.map(k => STATN[k]).join(" · ") : ""; })(), focusHtml(), true) +
     sec("tr-sb", "Model vs market", D.sb.all ? D.sb.all.n + " lines" : "", sbHtml(), true) +
+    sec("tr-kalshi", "DraftKings vs Kalshi · which market is closer", D.kt && D.kt.props && D.kt.props.all ? D.kt.props.all.n + " props" : "", kalshiTrackHtml(), true) +
     sec("tr-live", "Live betting · would it have paid?", (() => { const n = Object.values(D.livetrack.agg || {}).reduce((t, a) => t + a[0], 0); return n ? n + " live bets graded" : ""; })(), liveTrackHtml(), true) +
     sec("tr-sim", "Sims vs actual results", (() => { const a = D.simlog.agg.total; return a ? a[0] + " games graded" : ""; })(), simLogHtml(), true) +
     sec("tr-conv", "Conviction track record", (D.track.graded_games || 0) + " games graded", trackHtml(), true) +
     secs + sec("tr-teams", "Team table", (T.teams || []).length + " teams", teamTable(), false) + sec("tr-dvp", "Defense vs position explorer", "", dvpExplorer(), false);
   bindTeamSort(); bindDvp();
+}
+// Kalshi vs DraftKings, graded nightly (agent/kalshi.py grade): log loss per market (lower = closer to what happened),
+// and when the two disagreed by 4+ points of probability, how often the result went Kalshi's way.
+function kalshiTrackHtml() {
+  const t = D.kt; if (!t || !(t.props || t.games)) return '<div class="empty">Nothing graded yet. The first comparison lands the morning after the agent starts saving Kalshi prices.</div>';
+  const nm = {all: "All", pts: "Points", reb: "Rebounds", ast: "Assists", tpm: "Threes", spread: "Spreads", total: "Totals", win: "Moneyline"};
+  const rows = (o, keys) => keys.filter(k => o && o[k]).map(k => { const r = o[k], d = r.disagree || {}, kb = r.ll_kalshi < r.ll_dk;
+    return `<tr><td class="t">${nm[k]}</td><td>${r.n}</td><td>${r.ll_dk.toFixed(3)}</td><td class="${kb ? "pos" : ""}">${r.ll_kalshi.toFixed(3)}</td><td>${d.n ? `${d.kalshi_right} of ${d.n} (${Math.round(d.kalshi_right / d.n * 100)}%)` : "–"}</td></tr>`; }).join("");
+  const a = (t.props || {}).all, d = a && a.disagree;
+  const say = a ? (a.ll_kalshi < a.ll_dk ? `So far Kalshi has been a little closer than DraftKings on props${d && d.n ? `, and when they split by 4+ points the result went Kalshi's way ${Math.round(d.kalshi_right / d.n * 100)}% of the time` : ""}.` : "So far DraftKings has been at least as close as Kalshi on props.") : "";
+  return `<div class="desc" style="margin-bottom:6px">${say} It shows up as a "second market" reason on a pick when the two disagree. It is tracked, not a betting rule yet: it needs a few weeks of games, and the first week was rebuilt from Kalshi's hourly price history (its last price before tip, which can be later than our saved DraftKings line).</div>
+    <div class="scroll"><table class="tbl"><tr><th></th><th>Bets</th><th>DK loss</th><th>Kalshi loss</th><th>Split 4+: went Kalshi's way</th></tr>
+    ${rows(t.props, ["all", "pts", "reb", "ast", "tpm"])}${rows(t.games, ["spread", "total", "win"])}</table></div>
+    <div class="desc">Log loss: lower means the market's chances were closer to what happened. ${t.updated ? "Updated " + ago(t.updated) + "." : ""}</div>`;
 }
 // Minutes: projected (what the sim plays) vs actual, from the nightly grading. Most prop misses are minutes misses.
 function minDays(n) {
@@ -2500,7 +2522,8 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
-    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x)]);
+    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x), get("kalshi_track.json", null).then(x => D.kt = x),
+      get("players.json", null).then(pj => pj && pj.date ? get(`kalshi/${pj.date}.json`, null).then(x => { if (x) D.kalshi = {date: pj.date, ...x}; }) : null)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});

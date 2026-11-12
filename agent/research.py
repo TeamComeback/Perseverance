@@ -1072,6 +1072,11 @@ def write_all(ctx, log=print):
         dk.recent_index(players)
     except Exception as e:
         log(f"[research] DraftKings lines failed: {e}")
+    try:
+        from . import kalshi                                   # second market (free): Kalshi's lines next to DraftKings'
+        kalshi.refresh(ctx["games"], day=ctx["day"], log=log)
+    except Exception as e:
+        log(f"[research] Kalshi lines failed: {e}")
     # conviction track record: snapshot tonight's leans (graded after the games)
     try:
         from . import track

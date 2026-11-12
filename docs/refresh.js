@@ -109,10 +109,11 @@ async function reprice(onStep) {
       if (mine.includes(x) && gf && gf.players && gf.players[x.pid]) try {
         const hist = ((D.dkRecent || {})[x.pid + "|" + x.stat]) || [];
         cs = CASE.buildCase({p: gf.players[x.pid], players: gf.players, stat: x.stat, side: x.side, line: x.point, dec: x.dec, pMkt: x.p_mkt, pSim: x.p_sim, simAvg: x.sim,
-          open: x.open, focus: x.foc, tend: [hist.filter(r => r[6] === "over").length, hist.filter(r => r[6] === "under").length], underRate: CM && CM.unders, convModel: CM});
+          open: x.open, focus: x.foc, tend: [hist.filter(r => r[6] === "over").length, hist.filter(r => r[6] === "under").length], underRate: CM && CM.unders, convModel: CM,
+          pKalshi: window.kalshiP ? kalshiP(x.pid, x.stat, x.point, x.side) : null, kalshiTrack: window.kalshiTrack ? kalshiTrack() : null});
       } catch (e) {}
       const p = cs && cs.p_conv != null ? (cs.p_conv + x.pb) / 2 : x.pb, conv = CASE.convScore(p, x.dec);
-      Object.assign(x, {p: r3(p), ev: r3(p * x.dec - 1), conv, tier: CASE.convTier(conv), p_conv: cs && cs.p_conv != null ? r3(cs.p_conv) : null,
+      Object.assign(x, {p_kalshi: window.kalshiP ? kalshiP(x.pid, x.stat, x.point, x.side) : null, p: r3(p), ev: r3(p * x.dec - 1), conv, tier: CASE.convTier(conv), p_conv: cs && cs.p_conv != null ? r3(cs.p_conv) : null,
         case: cs ? {for: cs.for, against: cs.against} : null, ladder: cs ? cs.ladder : null, verdict: cs ? CASE.verdict(cs, conv) : null});
       delete x.pb; delete x.foc;
     }

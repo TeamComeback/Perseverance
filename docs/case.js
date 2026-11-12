@@ -120,6 +120,12 @@ function buildCase(x) {
     if (x.pMkt <= 0.44) add(A, 1.4, "market", `You're betting against the market: DraftKings' price says this happens ${pc(x.pMkt)} of the time.`);
     if (x.dec && x.dec < 1.62) add(A, 1.2, "price", `Heavy price: it has to win ${pc(1 / x.dec)} of the time just to break even.`);
   }
+  // second market: Kalshi's chance at the same line (an exchange, a different crowd from DraftKings' traders)
+  if (x.pKalshi != null && x.pMkt != null) {
+    const g = x.pKalshi - x.pMkt, kt = x.kalshiTrack, rec = kt && kt.n >= 50 ? ` When the two have split by 4+ points, the result went Kalshi's way ${kt.kalshi_right} of ${kt.n} times.` : "";
+    if (g >= 0.04) add(F, 1.4 + Math.min(1, g * 10), "second market", `Kalshi likes it more: ${pc(x.pKalshi)} there vs ${pc(x.pMkt)} at DraftKings.${rec}`);
+    else if (g <= -0.04) add(A, 1.4 + Math.min(1, -g * 10), "second market", `Kalshi likes it less: ${pc(x.pKalshi)} there vs ${pc(x.pMkt)} at DraftKings.${rec}`);
+  }
   if (x.open != null && x.open !== line) {
     const toward = (line > x.open) === over;     // line rising = money on the over
     add(toward ? F : A, 1, "line move", toward ? `The line moved his way (${x.open} to ${line}): money has been on the ${word}.` : `The line moved against it (${x.open} to ${line}), though you now get a ${over ? "lower" : "higher"} number than the opener's would have been.`);

@@ -166,6 +166,7 @@ function gameSub(g, n) {
     const rows = [], tn = D.tm && D.tm.tonight && D.tm.tonight[id];
     if (sim) rows.push(["Projected", `<b>${esc(A)} ${f1(sim.avg.away)} – ${f1(sim.avg.home)} ${esc(H)}</b> · ${esc(sim.win_home >= 0.5 ? H : A)} ${Math.round(Math.max(sim.win_home, 1 - sim.win_home) * 100)}%`]);
     if (tn && c && c.sp != null) { const d = tn.margin + c.sp; rows.push(["Vegas vs our model", Math.abs(d) < 1.5 ? "agree on the spread" : `our model has ${esc(d > 0 ? H : A)} ${f1(Math.abs(d))} better than DraftKings`]); }
+    { const ks = kalshiSays(id, c, H); if (ks) rows.push(["Kalshi", ks]); }
     if (tn && tn.out && tn.out.length) rows.push(["Who's out", tn.out.map(o => `${esc(o.team)}: ${esc(o.names)} (${f1(o.pts)})`).join(" · ")]);
     const day = (window.normPicks ? normPicks(((D.best || {}).days || {})[D.players.date]) : ((D.best || {}).days || {})[D.players.date]) || {}, picks = [...(day.props || []), ...(day.games || [])].filter(x => x.espn_id === id).slice(0, 2);
     if (picks.length) rows.push(["Best bets here", picks.map(x => `${x.kind === "prop" ? esc(lastName(x.name)) + " " + x.side.toLowerCase() + " " + x.point + " " + (STATN[x.stat] || x.stat) : x.kind === "spread" ? esc(x.team) + " " + (x.point > 0 ? "+" : "") + x.point : x.side + " " + x.point} <span class="cvb ${x.tier}">${x.tier || ""}</span>`).join(" · ")]);
@@ -367,6 +368,51 @@ function boxSub(g, n) {
     <div class="desc">Becomes the live box score at tip-off. Tap a player for his card.</div></div>`;
 }
 
+// Kalshi (second market, saved by the agent every run): its own spread/total/win chance, worked out from its price ladders
+function kOf(id) { return D.kalshi && D.kalshi.date === (D.players || {}).date ? ((D.kalshi.games || {})[id] || null) : null; }
+const kAge = at => { if (!at) return ""; const m = Math.round((Date.now() - new Date(at)) / 6e4); return m < 60 ? `${m} min ago` : `${Math.floor(m / 60)}h ${m % 60}m ago`; };
+const nvH = c => c && c.ml_h && c.ml_a ? (1 / c.ml_h) / (1 / c.ml_h + 1 / c.ml_a) : null;
+function kSplit(k, c) {        // where Kalshi and DraftKings disagree enough to matter
+  const out = [];
+  if (!k || !c) return out;
+  if (k.sp != null && c.sp != null && Math.abs(k.sp - c.sp) >= 1.5) out.push(`spread ${f1(Math.abs(k.sp - c.sp))} apart`);
+  if (k.tot != null && c.tot != null && Math.abs(k.tot - c.tot) >= 2.5) out.push(`total ${f1(Math.abs(k.tot - c.tot))} apart`);
+  const w = nvH(c); if (k.win != null && w != null && Math.abs(k.win - w) >= 0.04) out.push(`win chance ${Math.round(Math.abs(k.win - w) * 100)} points apart`);
+  return out;
+}
+function kalshiSays(id, c, H) {
+  const K = kOf(id), k = K && K.pre; if (!k) return "";
+  const sp = kSplit(k, c);
+  return `${esc(H)} ${spS(k.sp)} · total ${f1(k.tot)} · ${esc(H)} ${pcS(k.win)} ` + (sp.length ? `<span class="gold">differs from DraftKings: ${esc(sp.join(", "))}</span>` : `<span class="dim">agrees with DraftKings</span>`);
+}
+function kalshiCard(g, n, c) {
+  const id = g.espn_id, A = g.away, H = g.home, K = kOf(id);
+  if (!K || (!K.pre && !(K.live || []).length)) return `<h2>Kalshi · second market</h2><div class="card"><div class="empty">No Kalshi prices saved for this game yet. The agent saves them every run while games are on the slate.</div></div>`;
+  const k = K.pre || {}, o = K.open || {}, lv = (K.live || []).slice(-1)[0], L = n && n.state === "in" ? n.line : null, w = nvH(c);
+  const cell = v => v == null ? "–" : v;
+  const tbl = `<div class="scroll"><table class="tbl"><tr><th></th><th>Kalshi</th><th>DraftKings</th>${lv ? "<th>Kalshi live</th>" : ""}</tr>
+    <tr><td class="t">${esc(H)} spread</td><td><b>${spS(k.sp)}</b></td><td>${spS(c && c.sp)}</td>${lv ? `<td>${spS(lv.sp)}</td>` : ""}</tr>
+    <tr><td class="t">Total</td><td><b>${f1(k.tot)}</b></td><td>${f1(c && c.tot)}</td>${lv ? `<td>${f1(lv.tot)}</td>` : ""}</tr>
+    <tr><td class="t">${esc(H)} wins</td><td><b>${pcS(k.win)}</b></td><td>${cell(w == null ? null : pcS(w))}</td>${lv ? `<td>${pcS(lv.win)}</td>` : ""}</tr></table></div>`;
+  const at = [];
+  if (c && c.sp != null && k.p_cover != null) at.push(`${esc(H)} ${spS(c.sp)} covers ${pcS(k.p_cover)}`);
+  if (c && c.tot != null && k.p_over != null) at.push(`over ${f1(c.tot)} ${pcS(k.p_over)}`);
+  const sp = kSplit(k, c), mv = o.sp != null && k.sp != null && (Math.abs(o.sp - k.sp) >= 1 || Math.abs((o.tot || 0) - (k.tot || 0)) >= 1.5) ? `Moved since our first look: spread ${spS(o.sp)} → ${spS(k.sp)}, total ${f1(o.tot)} → ${f1(k.tot)}.` : "";
+  let liveNote = "";
+  if (lv && L) {
+    const age = (Date.now() - new Date(lv.at)) / 6e4, d = [];
+    if (age <= 20 && lv.tot != null && L.tot != null && Math.abs(lv.tot - L.tot) >= 4) d.push(`total ${f1(L.tot)} vs Kalshi ${f1(lv.tot)}`);
+    if (age <= 20 && lv.sp != null && L.sp != null && Math.abs(lv.sp - L.sp) >= 3) d.push(`spread ${spS(L.sp)} vs Kalshi ${spS(lv.sp)}`);
+    liveNote = `<div class="desc">Kalshi live look ${kAge(lv.at)} (saved every 15 minutes, so it can trail the game).${d.length ? ` <span class="gold">The live line on this page is far from Kalshi's (${esc(d.join("; "))}): check your app before betting.</span>` : ""}</div>`;
+  }
+  const tr = D.kt && D.kt.games && D.kt.games.all;
+  return `<h2>Kalshi · second market</h2><div class="card">${tbl}
+    ${at.length ? `<div class="desc" style="margin-top:6px">Kalshi's chance at DraftKings' line: ${at.join(" · ")}</div>` : ""}
+    <div class="desc">${sp.length ? `<span class="gold">The two markets differ: ${esc(sp.join(", "))}.</span> One of them is likely slow to move, or one crowd knows something.` : "The two markets agree."} ${mv}</div>
+    ${liveNote}
+    <div class="desc">Pregame look ${kAge(k.at)} · ${(k.vol || 0).toLocaleString()} contracts traded. Kalshi is an exchange where people trade against each other, so it's a separate crowd from DraftKings' traders; spreads and totals are read off its price ladders (the line where it's 50/50).${tr && tr.n ? ` Graded so far on ${tr.n} game bets: log loss DraftKings ${tr.ll_dk} vs Kalshi ${tr.ll_kalshi} (lower is closer).` : ""}</div></div>`;
+}
+
 function linesSub(g, n) {
   const id = g.espn_id, A = g.away, H = g.home, dk = dkOf(id), o = dk.open, c = dk.close, L = n && n.state === "in" ? n.line : null;
   const qc = s => s.detail && /half/i.test(s.detail) ? "Half" : `Q${Math.min(s.period, 4)}${s.period > 4 ? " OT" : ""} ${Math.floor(s.clock / 60)}:${String(Math.floor(s.clock % 60)).padStart(2, "0")}`;
@@ -384,6 +430,7 @@ function linesSub(g, n) {
   return `<div class="card"><div class="lbl" style="margin-top:0">DraftKings</div>${table}
     ${cur ? `<div class="lbl">Log a bet at DraftKings' ${L ? "live" : dk.close ? "current" : "opening"} line</div>${lineBtns(cur, !!L)}` : ""}${snapT}</div>
     <h2>Best price at your books</h2><div class="card">${evs.length ? evs.map(evHtml).join("") + '<div class="desc" style="margin-top:6px">From the agent\'s latest scan. Tap a price to log the bet.</div>' : '<div class="empty">The agent hasn\'t scanned this game\'s lines yet (scans run around 10am, 3pm and 6:35pm ET).</div>'}</div>
+    ${kalshiCard(g, n, c)}
     <h2>Sim vs DraftKings</h2><div class="card" id="gVs"></div>`;
 }
 

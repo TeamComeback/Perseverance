@@ -57,6 +57,8 @@ function bestBetsSetup(pj, simlog) {
   const startOf = {}, NSIM = +(process.env.SIM_N || 10000); (pj.games || []).forEach(g => startOf[g.espn_id] = g);
   // conviction model (agent/convmodel.py), each player's record against his posted lines, and the league's under rate
   const CM = sb.conviction && sb.conviction.ready ? sb.conviction : null;
+  const KD = read(`kalshi/${pj.date}.json`, {props: {}, games: {}}), KT = ((read("kalshi_track.json", {}).props || {}).all || {}).disagree || null;
+  const kalshiP = (pid, stat, line, side) => { const k = (KD.props || {})[pid + "|" + stat]; return k && k.p != null && k.line === line ? Math.round((side === "Over" ? k.p : 1 - k.p) * 1000) / 1000 : null; };
   const dkRecent = read("dk_recent.json", {}), linesAll = read("lines.json", {entries: {}}).entries || {};
   const tendOf = (pid, stat) => {
     const seen = {}; let o = 0, u = 0;
@@ -148,14 +150,14 @@ function bestBetsSetup(pj, simlog) {
         let cs = null;
         if (gp && gp.logs) try {
           cs = CASE.buildCase({p: gp, players: gf.players, stat: r.stat, side, line: L, dec, pMkt: pm, pSim: ps, simAvg, open: r.o ? r.o[0] : null,
-            focus: foc, blow, tend: tendOf(r.pid, r.stat), underRate: CM && CM.unders, convModel: CM, pModel: r.pm == null ? null : (side === "Over" ? r.pm : 1 - r.pm)});
+            focus: foc, blow, tend: tendOf(r.pid, r.stat), underRate: CM && CM.unders, convModel: CM, pKalshi: kalshiP(r.pid, r.stat, L, side), kalshiTrack: KT, pModel: r.pm == null ? null : (side === "Over" ? r.pm : 1 - r.pm)});
         } catch (e) { console.log("[best] case failed for " + r.name + ": " + e.message); }
         // two independent reads, averaged: the conviction model (what has actually paid) and the sim blended with the price
         const p = cs && cs.p_conv != null ? (cs.p_conv + pb) / 2 : pb;
         const conv = CASE.convScore(p, dec);
         cands.props.push({...base, kind: "prop", conv, tier: CASE.convTier(conv), p_conv: cs && cs.p_conv != null ? r1(cs.p_conv * 1000) / 1000 : null,
           case: cs ? {for: cs.for, against: cs.against} : null, ladder: cs ? cs.ladder : null, verdict: cs ? CASE.verdict(cs, conv) : null, avg10: cs ? cs.avg10 : null, pid: r.pid, name: r.name, team: r.team, opp: r.opp, stat: r.stat, side, point: L, dec, am: am(dec),
-          p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, ev: r1((p * dec - 1) * 1000) / 1000,
+          p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, p_kalshi: kalshiP(r.pid, r.stat, L, side), ev: r1((p * dec - 1) * 1000) / 1000,
           cv: r.cv || null, lean: r.lean || null, proj: r.proj != null ? r1(r.proj) : null, sim: r1(simAvg), open: r.o ? r.o[0] : null,
           why: `Sim avg ${f1(simAvg)} vs ${L} · ${side.toLowerCase()} in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings · model counts ${Math.round(w * 100)}% (learned)`});
       }

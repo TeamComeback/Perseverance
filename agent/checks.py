@@ -85,6 +85,28 @@ def run(log=print):
             add("DraftKings lines", "ok" if (a is not None and a <= 4.5 and not nol) else "warn",
                 (f"saved {a:.1f}h ago" if a is not None else "no save time") + (f"; no line yet: {', '.join(nol)}" if nol else ""))
 
+    # 4b. Kalshi (second market): today's file is fresh and its lines roughly agree with DraftKings'
+    kd = _load(f"kalshi/{today}.json", None)
+    if pre:
+        if not kd:
+            add("Kalshi lines", "warn", f"no kalshi/{today}.json yet")
+        else:
+            a = _age_h(kd.get("updated"))
+            dkg = (dk or {}).get("games") or {}
+            far, have = [], 0
+            for g in pre:
+                k = ((kd.get("games") or {}).get(g["espn_id"]) or {}).get("pre") or {}
+                c = (dkg.get(g["espn_id"]) or {}).get("close") or {}
+                if k:
+                    have += 1
+                if k.get("sp") is not None and c.get("sp") is not None and abs(k["sp"] - c["sp"]) >= 2:
+                    far.append(f"{g['away']}@{g['home']} spread DK {c['sp']:+g} vs Kalshi {k['sp']:+g}")
+                if k.get("tot") and c.get("tot") and abs(k["tot"] - c["tot"]) >= 3:
+                    far.append(f"{g['away']}@{g['home']} total DK {c['tot']:g} vs Kalshi {k['tot']:g}")
+            add("Kalshi lines", "ok" if (a is not None and a <= 1 and have == len(pre) and not far) else "warn",
+                (f"saved {a:.1f}h ago, {have} of {len(pre)} games" if a is not None else "no save time")
+                + (f"; far from DraftKings: {'; '.join(far)}" if far else "; agrees with DraftKings"))
+
     # 5. best bets: today's picks exist, every prop pick has minutes and no injury tag
     best = _load("best.json", {}) or {}
     day = (best.get("days") or {}).get(today)

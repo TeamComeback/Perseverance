@@ -277,3 +277,20 @@ python tests/simulate.py 30     # 30 simulated days on a fake market, no API key
 - **Full refresh button removed from the dashboard** (Nov 11): the 15-minute timer already re-runs everything on injury news, line moves and every 1.5 hours before tip-off. The handler stays in place: a "Refresh:" GitHub issue still works; `manual-bets.yml` runs `agent.run manual-issue` → `refresh_issue`: a full research run (one per 10 minutes), then comments with the new top props and closes the issue.
 - **Self-checks** (`agent/checks.py` → `checks.json`, Model → Health): research freshness, team minutes, sims for every game, sim totals near the line, DraftKings lines, best-bet players still available, run-log bursts, credits, nightly pieces. A failure is noted in the journal.
 - **Pre-push check:** `node tools/check.js --ui` (scripts parse, data shapes, a 300-sim engine test, every tab and game sub-page rendered headless at phone width).
+
+## Kalshi: a second market for lines (free)
+
+`agent/kalshi.py` saves Kalshi's NBA prices on every auto run (every 15 minutes) and every research run, in
+`docs/data/kalshi/<date>.json`. That's public market data, so no key and no Odds API credits are needed. From Kalshi's
+yes/no price ladders it works out Kalshi's own spread, total and win chance for each game, plus the chance of over at
+DraftKings' line for points, rebounds, assists and threes props. Games in progress get a live look each run.
+
+- **Game page → Lines:** a Kalshi card next to DraftKings, flagged when the two differ (spread 1.5+, total 2.5+, win 4+
+  points). Live games: a warning when the live line on the page is far from Kalshi's latest look. The Overview shows a one-line summary.
+- **Players / player card / Best Bets:** "Kalshi 59%" beside DraftKings' price, and a "second market" reason in the case when
+  the two split by 4+ points. Conviction and picks are unchanged: it's tracked, not a rule.
+- **Model → Trends → DraftKings vs Kalshi:** graded nightly (`kalshi_track.json`), with log loss per market and, when they split
+  by 4+ points, how often the result went Kalshi's way. `tools/kalshi_backfill.py` rebuilt Nov 5–11 from Kalshi's hourly
+  price history (2,079 props: Kalshi log loss 0.6851 vs DraftKings 0.6877; at a split of 4+ points the result went Kalshi's way 179 of 309 times).
+- **Model → Health:** a "Kalshi lines" self-check (fresh, every game covered, close to DraftKings).
+- The phone can't call Kalshi directly (no cross-site access), so the dashboard uses the agent's latest save.
