@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 39.16,
+  "cash": 34.16,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -11063,6 +11063,77 @@
     "payout": null,
     "profit": null,
     "settled": null
+   },
+   {
+    "id": "8f0f4866",
+    "placed": "2026-11-12T23:59:18Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "f3f429e773bfb2340ba2bb90f2b9dd1e",
+      "sport": "basketball_nba",
+      "commence": "2026-11-13T02:10:00Z",
+      "home": "Phoenix Suns",
+      "away": "Charlotte Hornets",
+      "market": "player_assists",
+      "outcome": "Devin Booker Under",
+      "side": "Under",
+      "player": "Devin Booker",
+      "player_id": "3136193",
+      "stat": "ast",
+      "espn_id": "401909979",
+      "point": 4.5,
+      "price": 2.24,
+      "book": "fanduel",
+      "fair_p": 0.4449,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 4.36,
+       "base": 4.35,
+       "minutes": 32.1,
+       "mult": 1.002,
+       "sd": 1.95,
+       "p_model": 0.584,
+       "p_mkt": 0.4449,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.031,
+         "txt": "CHA gives point guards +3% assists vs their norm (#13 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.033,
+         "txt": "Players with his profile: +3% assists vs CHA (156 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.054,
+         "txt": "His history vs CHA: 8.0 assists/g in 2 games (+5%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.905,
+         "txt": "CHA games have -9% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.24,
+    "stake": 5.0,
+    "ev": 0.1937,
+    "p": 0.5329,
+    "note": "Proj 4.4 vs line 4.5 (norm 4.3, 32 min). Model 58% vs market 44%. CHA gives point guards +3% assists vs their norm (#13 toughest of 30) \u00b7 Players with his profile: +3% assists vs CHA (156 close comps) \u00b7 His history vs CHA: 8.0 assists/g in 2 games (+5%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -12783,6 +12854,11 @@
    "ts": "2026-11-12T23:30:32Z",
    "kind": "research",
    "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
+  },
+  {
+   "ts": "2026-11-12T23:59:18Z",
+   "kind": "props",
+   "text": "NBA matchups: 2 games, strongest spots: Khaman Maluach ra -9% vs CHA; LaMelo Ball ast +10% vs DAL; Dillon Brooks ra -8% vs CHA. Bought prop odds for CHA@PHX (ast, ra, pra) (3 credits). Placed 1: Devin Booker Under 4.5 @ +124 (FanDuel)"
   }
  ],
  "learned_ids": [
@@ -12837,7 +12913,7 @@
   "21c5a5b2"
  ],
  "strategist": null,
- "updated": "2026-11-12T23:30:47Z",
+ "updated": "2026-11-12T23:59:44Z",
  "stats": {
   "bets": 49,
   "won": 19,
@@ -12850,7 +12926,7 @@
   "clv_n": 15,
   "clv_no_close": 34,
   "close_mins_median": 151,
-  "open": 4,
+  "open": 5,
   "equity": 59.16
  },
  "weights": {
