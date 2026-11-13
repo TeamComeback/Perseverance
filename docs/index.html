@@ -507,6 +507,8 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .mseg{display:flex;margin-bottom:10px}.mseg button{flex:1}
 .gsum{border:1px solid #E5C15855;background:#E5C1580a}.gsum .row2{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}.gsum .row2:first-of-type{border-top:0}.gsum .row2 span:first-child{color:var(--dim)}
 .ourl{font-size:12.5px;margin:8px 0 2px;padding:7px 10px;border:1px solid var(--line);border-radius:10px}.ourl .k{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+#v-book .row2{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:4px 0;border-top:1px solid var(--line)}#v-book .row2 span:first-child{color:var(--dim)}#v-book .row2 b{color:var(--text)}
+.pbar{height:3px;background:var(--line);border-radius:2px;margin-top:3px;min-width:50px}.pbar i{display:block;height:100%;background:var(--gold, #d6b34a);border-radius:2px}
 .cr .ol{color:var(--dim)}.cr .rt{max-width:64vw}.cr .rt .b{white-space:normal}
 </style>
 </head>
@@ -522,7 +524,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
   <section class="view" id="v-games"></section>
   <section class="view" id="v-sim"></section>
   <section class="view" id="v-bets"></section>
-  <section class="view" id="v-model"><div class="seg mseg" id="mSeg"></div><div class="mview" id="v-health"></div><div class="mview" id="v-trends"></div><div class="mview" id="v-agent"></div></section>
+  <section class="view" id="v-model"><div class="seg mseg" id="mSeg"></div><div class="mview" id="v-health"></div><div class="mview" id="v-book"></div><div class="mview" id="v-trends"></div><div class="mview" id="v-agent"></div></section>
   <p class="note">Paper money only. A good paper run is not a reason to bet real money: small samples lie.</p>
 </div>
 
@@ -1193,10 +1195,96 @@ document.addEventListener("click", e => { const g = e.target.closest && e.target
 // ===================================================== Model tab: health, trends, agent
 function renderModel() {
   const sub = store.get("msub", "health");
-  $("mSeg").innerHTML = [["health", "Health"], ["trends", "Trends"], ["agent", "Agent"]].map(([k, l]) => `<button data-m="${k}" class="${k === sub ? "on" : ""}">${l}</button>`).join("");
+  $("mSeg").innerHTML = [["health", "Health"], ["book", "Our book"], ["trends", "Trends"], ["agent", "Agent"]].map(([k, l]) => `<button data-m="${k}" class="${k === sub ? "on" : ""}">${l}</button>`).join("");
   $("mSeg").querySelectorAll("button").forEach(b => b.onclick = () => { store.set("msub", b.dataset.m); renderModel(); });
   document.querySelectorAll("#v-model .mview").forEach(el => el.style.display = el.id === "v-" + sub ? "" : "none");
-  ({health: renderHealth, trends: renderTrends, agent: renderAgent})[sub]();
+  ({health: renderHealth, book: renderBook, trends: renderTrends, agent: renderAgent})[sub]();
+}
+// ---------- Our Book: the lines we post ourselves, frozen at 9am, noon, 3pm, 6pm and each tip, graded nightly ----------
+const OB_ORDER = ["9am", "noon", "3pm", "6pm", "tip"], OB_LBL = {"9am": "9 AM", noon: "Noon", "3pm": "3 PM", "6pm": "6 PM", tip: "Tip"};
+const obLatest = f => { for (const k of [...OB_ORDER].reverse()) if (f && f[k]) return [k, f[k]]; return [null, null]; };
+const obFirst = f => { for (const k of OB_ORDER) if (f && f[k]) return [k, f[k]]; return [null, null]; };
+const spB = v => v == null ? "–" : (v > 0 ? "+" : "") + f1(v);
+const pctN = (a, b) => b ? Math.round(a / b * 100) + "%" : "–";
+async function renderBook() {
+  const el = $("v-book"); el.innerHTML = '<div class="empty">Loading our book…</div>';
+  const date = D.players.date;
+  const [ob, tr, fl] = await Promise.all([get(`ourbook/${date}.json`, null), get("ourbook_track.json", null), get("book_flags.json", null)]);
+  if (!D.dkday || D.dkday.date !== date) D.dkday = await get(`dk/${date}.json`, {date, games: {}, props: {}});
+  const games = (D.players.games || []);
+  const head = (() => {
+    const cuts = Object.entries((tr && tr.cuts) || {}).filter(([k]) => k.startsWith("ind|"));
+    const n = cuts.reduce((t, [, v]) => t + v.n, 0), w = cuts.reduce((t, [, v]) => t + v.toward, 0), stage = cuts.reduce((m, [, v]) => Math.max(m, v.stage || 0), 0);
+    const fz = ob ? ob.freezes.filter(x => x.id !== "tip").map(x => OB_LBL[x.id] || x.id) : [];
+    return `<div class="card"><div class="lbl" style="margin-top:0">Independent book · learning</div>
+      <div class="row2"><span>Lines graded against DraftKings' moves</span><span><b>${n}</b> ${n ? `· moved our way <b class="${n >= 300 && w / n >= 0.55 ? "pos" : ""}">${pctN(w, n)}</b>` : ""}</span></div>
+      <div class="row2"><span>Stage</span><span><b>${["Label only", "Tracked", "Counts in picks", "Ready for paper bets (needs your OK)"][stage] || "Label only"}</b></span></div>
+      <div class="row2"><span>Today's freezes</span><span>${fz.length ? fz.join(" · ") : "none yet (9 AM, noon, 3 PM, 6 PM, and each tip)"}${ob ? ` · ${Object.values(ob.games).filter(G => G.f.tip).length} tips` : ""}</span></div>
+      <div class="desc" style="margin-top:6px">The independent book prices every game and player from our ratings, tonight's roster and the player model, with <b>no market input</b>. Its numbers are frozen at each time and never changed, then graded: did DraftKings move toward us, and were we closer to what happened? It only learns from its own graded results. It needs 300 moved lines with 55%+ going our way before it counts in any pick.</div></div>`;
+  })();
+  // tonight: independent vs DraftKings vs the informed book, and how our number moved since the first freeze
+  const tonight = !ob ? '<div class="empty">No freeze yet today. The first one lands at 9 AM.</div>' : (() => {
+    const rows = games.filter(g => ob.games[g.espn_id]).map(g => {
+      const G = ob.games[g.espn_id], [lk, L] = obLatest(G.f), [fk, F] = obFirst(G.f), i = (L || {}).ind || {}, inf = (L || {}).inf || {};
+      const dkg = (D.dkday.games || {})[g.espn_id] || {}, c = dkg.close || dkg.open || {};
+      const mv = (a, b) => a == null || b == null || a === b ? "" : ` <span class="dim">(${fk === lk ? "" : OB_LBL[fk] + " "}${b > a ? "+" : ""}${f1(b - a)})</span>`;
+      const fi = (F || {}).ind || {};
+      const spG = i.sp != null && c.sp != null ? i.sp - c.sp : null, toG = i.tot != null && c.tot != null ? i.tot - c.tot : null;
+      return `<tr><td class="t">${esc(g.away)} @ ${esc(g.home)}<div class="dim" style="font-size:11px">${OB_LBL[lk] || ""}</div></td>
+        <td><b>${spB(i.sp)}</b>${mv(fi.sp, i.sp)}<div class="dim" style="font-size:11px">DK ${spB(c.sp)}<br>inf ${spB(inf.sp)}</div>${spG != null && Math.abs(spG) >= 1.5 ? `<div class="gold" style="font-size:11px">${esc(spG < 0 ? g.home : g.away)} ${f1(Math.abs(spG))} better</div>` : ""}</td>
+        <td><b>${f1(i.tot)}</b>${mv(fi.tot, i.tot)}<div class="dim" style="font-size:11px">DK ${f1(c.tot)}<br>inf ${f1(inf.tot)}</div>${toG != null && Math.abs(toG) >= 2.5 ? `<div class="gold" style="font-size:11px">${toG > 0 ? "higher" : "lower"} by ${f1(Math.abs(toG))}</div>` : ""}</td>
+        <td>${i.win != null ? esc(g.home) + " " + Math.round(i.win / 10) + "%" : "–"}</td></tr>`;
+    }).join("");
+    // biggest prop gaps between the independent book and DraftKings right now
+    const gaps = [];
+    for (const [k, pr] of Object.entries(ob.props || {})) {
+      const [lk, L] = obLatest(pr.f); if (!L || !L.ind) continue;
+      const d = (D.dkday.props || {})[k]; if (!d || !d.c || d.c[0] == null) continue;
+      const gp = L.ind[0] - d.c[0]; if (Math.abs(gp) >= 1.5) gaps.push({pr, k, gp, ours: L.ind[0], dk: d.c[0], st: k.split("|")[1]});
+    }
+    gaps.sort((a, b) => Math.abs(b.gp) / Math.max(1, b.dk) - Math.abs(a.gp) / Math.max(1, a.dk));
+    const gp = gaps.slice(0, 8).map(x => `<div class="row2"><span>${esc(x.pr.name)} <span class="dim">${STATN[x.st] || x.st}</span></span><span>ours <b>${f1(x.ours)}</b> · DK ${f1(x.dk)} <span class="gold">${x.gp > 0 ? "over" : "under"}</span></span></div>`).join("");
+    return `<div class="scroll"><table class="tbl"><tr><th></th><th>Home spread</th><th>Total</th><th>Win</th></tr>${rows}</table></div>
+      <div class="desc">Bold: independent book (latest freeze). Grey: DraftKings now and our informed book (the sim anchored to DraftKings). Brackets: how far our number moved since the first freeze today.</div>
+      ${gp ? `<div class="lbl">Biggest prop gaps (independent vs DraftKings)</div>${gp}<div class="desc">Shown for watching only until the book passes its gates.</div>` : ""}`;
+  })();
+  const gates = !tr || !tr.cuts || !Object.keys(tr.cuts).length ? '<div class="empty">Grading starts the morning after the first freeze.</div>' : (() => {
+    const nm = k => { const [b, m, w] = k.split("|"); return `${b === "ind" ? "Indep." : "Informed"} ${m === "props" ? "props" : m === "spread" ? "spreads" : "totals"}<div class="dim" style="font-size:11px">${w === "early" ? "9 AM, noon" : "3 PM, 6 PM, tip"}</div>`; };
+    const chip = st => `<span class="cvb ${st === "signal" ? "Confident" : st === "watch" ? "Consider" : "Pass"}">${st === "collecting" ? "building" : st}</span>`;
+    return `<div class="scroll"><table class="tbl"><tr><th></th><th>Lines</th><th>Our way</th><th>Status</th></tr>
+      ${Object.entries(tr.cuts).sort().map(([k, v]) => `<tr><td class="t">${nm(k)}</td><td>${v.n}<div class="pbar"><i style="width:${Math.round(v.progress * 100)}%"></i></div></td><td>${v.rate != null ? Math.round(v.rate * 100) + "%" : "–"}<div class="dim" style="font-size:11px">${v.clv != null ? (v.clv > 0 ? "+" : "") + v.clv + " pts" : ""}</div></td><td>${chip(v.status)}<div class="dim" style="font-size:11px">stage ${v.stage}${v.n >= 300 && v.last && v.last.rate != null ? ` · last 300: ${Math.round(v.last.rate * 100)}%` : ""}</div></td></tr>`).join("")}</table></div>
+      <div class="desc">Each group needs 300 lines where DraftKings moved after our freeze. 55%+ moving our way = signal (stage 2: a reason and a small conviction nudge on picks). Stage 3 needs 4 weeks at signal and positive paper results, then your OK before the agent bets it. A signal that falls under 50% over its last 300 switches itself off. Lines where someone's injury status changed after the freeze are left out (that's news, not skill).</div>`;
+  })();
+  const accuracy = !tr || !tr.accuracy ? "" : (() => {
+    const A = tr.accuracy, nm = {all_props: "All props", all_games: "All game lines", pts: "Points", reb: "Rebounds", ast: "Assists", tpm: "Threes", pra: "P+R+A", ra: "R+A", spread: "Spreads", total: "Totals"};
+    const row = (b, m) => { const x = A[`${b}|${m}`]; if (!x) return ""; const kb = x.ll_ours < x.ll_dk;
+      return `<tr><td class="t">${nm[m]}<div class="dim" style="font-size:11px">${x.n} bets</div></td><td class="${kb ? "pos" : ""}">${x.ll_ours.toFixed(3)}</td><td>${x.ll_dk.toFixed(3)}</td><td>${x.kalshi ? x.kalshi.ll_k.toFixed(3) : "–"}</td><td>${x.blend && x.blend.best_w ? Math.round(x.blend.best_w * 100) + "%" + (x.blend.ready ? " ✓" : "") : "0%"}</td></tr>`; };
+    const tbl = (b, ms) => `<div class="scroll"><table class="tbl"><tr><th></th><th>Ours</th><th>DK</th><th>Kalshi</th><th>Blend</th></tr>${ms.map(m => row(b, m)).join("")}</table></div>`;
+    const per = ["pts", "reb", "ast", "tpm", "pra", "ra"];
+    return `<div class="lbl" style="margin-top:0">Independent book</div>${tbl("ind", ["all_props", "spread", "total"])}${sub("ob-acc-ind", "By stat", "", tbl("ind", per))}
+      <div class="lbl">Informed book</div>${tbl("inf", ["all_props", "spread", "total"])}${sub("ob-acc-inf", "By stat", "", tbl("inf", per))}
+      <div class="desc">Log loss at DraftKings' closing line, from our tip freeze (lower = closer to what happened). Blend: how much of our number, mixed into DraftKings', helps most; ✓ = it held up on days it wasn't fit on, with enough bets, so Best Bets now uses it.</div>`;
+  })();
+  const learning = !tr ? "" : (() => {
+    const B = tr.ind_bias || {}, Bn = tr.ind_bias_n || {}, nm = {total: "Game total", pts: "Points", reb: "Rebounds", ast: "Assists", tpm: "Threes", pra: "P+R+A", ra: "R+A"};
+    const bias = Object.keys(nm).filter(k => B[k] != null).map(k => `<div class="row2"><span>${nm[k]}</span><span>${B[k] > 0 ? "runs high by " : B[k] < 0 ? "runs low by " : "on target "}${B[k] ? f1(Math.abs(B[k])) : ""} <span class="dim">(${Bn[k]} graded)</span></span></div>`).join("");
+    const days = Object.entries(tr.daily || {}).slice(-10).reverse();
+    const dt = days.length ? `<div class="scroll"><table class="tbl"><tr><th>Day</th><th>Margin miss</th><th>Total miss</th><th>Prop miss</th></tr>${days.map(([d, x]) =>
+      `<tr><td class="t">${d.slice(5).replace("-", "/")}</td><td>${f1(x.ind_mar)} <span class="dim">DK ${f1(x.dk_mar)}</span></td><td>${f1(x.ind_tot)} <span class="dim">DK ${f1(x.dk_tot)}</span></td><td>${f1(x.ind_prop)} <span class="dim">inf ${f1(x.inf_prop)}</span></td></tr>`).join("")}</table></div>` : "";
+    return `${bias ? `<div class="lbl" style="margin-top:0">Corrections it has learned (applied to the next freezes)</div>${bias}` : ""}${dt ? `<div class="lbl">Average miss by day</div>${dt}<div class="desc">How far the independent book's tip-time number was from the final, next to DraftKings' close (props: next to the informed book). Smaller is better.</div>` : ""}
+      ${tr.preopen && tr.preopen.ind && tr.preopen.ind.n ? `<div class="lbl">Before DraftKings posts</div><div class="desc">Props we froze before DraftKings had a line: our number was closer to DraftKings' eventual close than its own opener ${tr.preopen.ind.beat} of ${tr.preopen.ind.n} times (${Math.round(tr.preopen.ind.rate * 100)}%).</div>` : ""}`;
+  })();
+  const flags = (() => {
+    const xs = ((fl && fl.date === date && fl.flags) || []);
+    const rec = (tr && tr.flags_record) || null, rs = rec ? Object.entries(rec).filter(([, v]) => v[0] + v[1]).map(([k, v]) => `${k === "pra" ? "P+R+A" : "R+A"} ${v[0]}-${v[1]}`).join(" · ") : "";
+    return xs.length ? xs.map(x => `<div class="ti"><span>${esc(x.txt)}</span></div>`).join("") + (rs ? `<div class="desc">Record when flagged: ${rs}.</div>` : "") : '<div class="empty">DraftKings\' lines agree with each other tonight.</div>';
+  })();
+  el.innerHTML = head + sec("ob-tonight", "Tonight · independent book", ob ? Object.keys(ob.games).length + " games" : "", tonight, true)
+    + sec("ob-gates", "Gates · is it earning trust?", tr && tr.moves && tr.moves.clean ? tr.moves.clean.n + " lines" : "", gates, true)
+    + (accuracy ? sec("ob-acc", "Accuracy vs DraftKings and Kalshi", "", accuracy, false) : "")
+    + (learning ? sec("ob-learn", "How it's learning", "", learning, false) : "")
+    + sec("ob-flags", "DraftKings vs itself", ((fl && fl.date === date && fl.flags) || []).length + " flags", flags, false)
+    + `<div class="desc" style="margin:8px 2px">${tr && tr.updated ? "Graded " + ago(tr.updated) + ". " : ""}${ob && ob.updated ? "Last freeze " + ago(ob.updated) + "." : ""}</div>`;
 }
 async function renderHealth() {
   $("v-health").innerHTML = '<div class="empty">Checking…</div>';
@@ -1778,7 +1866,9 @@ function renderCard() {
       ${priced ? `<span class="desc">Market: <b style="color:var(--text)">${priced.side} ${priced.line}</b> ${amS(priced.am)} ${esc(bookName(priced.book))}${priced.ev > 0 ? ' <span class="pos">' + pct(priced.ev) + "</span>" : ""}</span>` : (e => /^DraftKings/.test(e.src) ? `<span class="desc">${esc(e.src)}: <b style="color:var(--text)">${f1(e.line)}</b>. Change it to your book's number if it differs.</span>` : `<span class="desc">No line posted yet: starting at ${esc(e.src)} ${f1(e.line)}. Set it to your book's number.</span>`)(estLine({pid: p.pid, stat: s, base: pj.base}))}</div>
     ${(() => { const ol = ourProp(p.game, p.pid, s); if (!ol) return "";
       const bl = priced ? priced.line : (e => /^DraftKings/.test(e.src) ? e.line : null)(estLine({pid: p.pid, stat: s, base: pj.base}));
-      return `<div class="ourl"><span class="k">Our line</span> <b>${f1(ol.line)}</b> <span class="dim">over ${amT(ol.over)} · under ${amT(ol.under)}</span>${bl != null ? `<span class="k" style="margin-left:10px">Book</span> <b>${f1(bl)}</b> <span class="${Math.abs(ol.line - bl) >= 0.5 ? "gold" : "dim"}">${esc(vsBookOU(ol.line, bl))}</span>` : ""}</div>`; })()}
+      const alt = [-2, -1, 0, 1, 2].map(j => ol.line + j).filter(L => L > 0).map(L => `<span class="${L === bl ? "gold" : ""}">${f1(L)} <b>${Math.round(ol.pAt(L) * 100)}%</b></span>`).join(" · ");
+      return `<div class="ourl"><span class="k">Our line</span> <b>${f1(ol.line)}</b> <span class="dim">over ${amT(ol.over)} · under ${amT(ol.under)}</span>${bl != null ? `<span class="k" style="margin-left:10px">Book</span> <b>${f1(bl)}</b> <span class="${Math.abs(ol.line - bl) >= 0.5 ? "gold" : "dim"}">${esc(vsBookOU(ol.line, bl))}</span>` : ""}
+        <div class="dim" style="margin-top:3px">Our alt lines, chance of over: ${alt}</div></div>`; })()}
     <div class="kv">
       <div><div class="k">Projection</div><div class="v">${pj.proj.toFixed(1)} <small>${pct(pj.mult - 1, 0)}</small></div></div>
       <div><div class="k">Conviction</div><div class="v"><span class="dots" style="font-size:12px">${dots(cardRating(p, s, priced).n)}</span></div></div>
@@ -2172,6 +2262,7 @@ async function renderTrends() {
     sec("tr-min", "Minutes accuracy · the biggest driver of prop misses", minMeta(), minutesHtml(), true) +
     sec("tr-focus", "Where the model has an edge", (() => { const F = focusMap(), e = Object.keys(F).filter(k => F[k].status === "edge"); return e.length ? e.map(k => STATN[k]).join(" · ") : ""; })(), focusHtml(), true) +
     sec("tr-sb", "Model vs market", D.sb.all ? D.sb.all.n + " lines" : "", sbHtml(), true) +
+    sec("tr-book", "Our book vs the market", "", `<div class="desc">Our own lines, frozen five times a day and graded against where DraftKings closed. <button class="more" onclick="store.set('msub','book');renderModel()">Open Our book →</button></div>`, false) +
     sec("tr-kalshi", "DraftKings vs Kalshi · which market is closer", D.kt && D.kt.props && D.kt.props.all ? D.kt.props.all.n + " props" : "", kalshiTrackHtml(), true) +
     sec("tr-live", "Live betting · would it have paid?", (() => { const n = Object.values(D.livetrack.agg || {}).reduce((t, a) => t + a[0], 0); return n ? n + " live bets graded" : ""; })(), liveTrackHtml(), true) +
     sec("tr-sim", "Sims vs actual results", (() => { const a = D.simlog.agg.total; return a ? a[0] + " games graded" : ""; })(), simLogHtml(), true) +
@@ -2559,7 +2650,7 @@ async function liveTick() {
 // ===================================================== navigation + boot
 const RENDER = {today: renderToday, props: renderProps, bets: renderBets, model: renderModel};
 function go(v) {
-  if (["trends", "agent", "health"].includes(v)) { store.set("msub", v); v = "model"; }
+  if (["trends", "agent", "health", "book"].includes(v)) { store.set("msub", v); v = "model"; }
   if (!RENDER[v]) v = "today";
   document.querySelectorAll(".view").forEach(el => el.classList.toggle("on", el.id === "v-" + v));
   document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.v === v || (v === "sim" && b.dataset.v === "games")));
@@ -2571,12 +2662,12 @@ function go(v) {
   liveTick();
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go(b.dataset.v));
-window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if ((RENDER[v] || ["trends", "agent", "health"].includes(v)) && D.state) go(v); });
+window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if ((RENDER[v] || ["trends", "agent", "health", "book"].includes(v)) && D.state) go(v); });
 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
-    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x), get("kalshi_track.json", null).then(x => D.kt = x),
+    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x), get("kalshi_track.json", null).then(x => D.kt = x), get("book_flags.json", null).then(x => D.bf = x),
       get("players.json", null).then(pj => pj && pj.date ? get(`kalshi/${pj.date}.json`, null).then(x => { if (x) D.kalshi = {date: pj.date, ...x}; }) : null)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }

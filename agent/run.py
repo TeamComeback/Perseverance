@@ -121,6 +121,12 @@ def grade(state, manual, client):
     except Exception as e:
         brain.note(state, "error", f"Kalshi grading failed: {e}")
     try:
+        from . import ourbook
+        ourbook.grade()
+        ourbook.prune()
+    except Exception as e:
+        brain.note(state, "error", f"Our Book grading failed: {e}")
+    try:
         from . import simtrack
         sdb = simtrack.load()
         if simtrack.grade(sdb):
@@ -320,6 +326,9 @@ def line_moves(log=print):
     if sims.get("date") != pj.get("date"):
         return []
     out = []
+    watch = store.load("line_watch.json", {}) or {}
+    if watch.get("date") != pj.get("date"):
+        watch = {"date": pj.get("date"), "games": {}}
     for g in pj.get("games") or []:
         if g.get("state") != "pre":
             continue
@@ -329,10 +338,17 @@ def line_moves(log=print):
         except Exception:
             continue
         cur = (o or {}).get("current") or {}
+        # hold rule: DraftKings flips a line back and forth (TOR@PHI went -6.5/-7.5 five times on Nov 12, each one a
+        # re-sim); a move only counts once the new number has shown on two checks in a row
+        prev = watch["games"].get(g["espn_id"]) or {}
+        watch["games"][g["espn_id"]] = {"sp": cur.get("sp"), "tot": cur.get("tot")}
+        if prev.get("sp") != cur.get("sp") or prev.get("tot") != cur.get("tot"):
+            continue
         if sv.get("spread_home") is not None and cur.get("sp") is not None and abs(cur["sp"] - sv["spread_home"]) >= 1:
             out.append(f"{g['away']}@{g['home']} spread {sv['spread_home']:+g} → {cur['sp']:+g}")
         if sv.get("total") and cur.get("tot") and abs(cur["tot"] - sv["total"]) >= 1.5:
             out.append(f"{g['away']}@{g['home']} total {sv['total']:g} → {cur['tot']:g}")
+    store.save("line_watch.json", watch, compact=True)
     return out
 
 
@@ -740,6 +756,14 @@ def auto_run():
                     research_run()
         except Exception as e:
             print(f"[auto] refresh check failed: {e}")
+        # Our Book: freeze our lines at 9am, noon, 3pm, 6pm ET and right before each tip (after any refresh above)
+        try:
+            from . import ourbook
+            for kind, ids in ourbook.due(games, now.astimezone(nd_et()), research.et_today().isoformat()):
+                print(f"[auto] freezing our book: {kind}" + (f" ({len(ids)} games)" if ids else ""))
+                ourbook.freeze(kind, ids)
+        except Exception as e:
+            print(f"[ourbook] freeze failed: {e}")
 
 
 def catch_up(mode):

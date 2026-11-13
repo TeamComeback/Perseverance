@@ -449,6 +449,8 @@ function linesSub(g, n) {
   return `${ourVsBooks(g, c)}<div class="card" style="margin-top:10px"><div class="lbl" style="margin-top:0">DraftKings</div>${table}
     ${cur ? `<div class="lbl">Log a bet at DraftKings' ${L ? "live" : dk.close ? "current" : "opening"} line</div>${lineBtns(cur, !!L)}` : ""}${snapT}</div>
     <h2>Best price at your books</h2><div class="card">${evs.length ? evs.map(evHtml).join("") + '<div class="desc" style="margin-top:6px">From the agent\'s latest scan. Tap a price to log the bet.</div>' : '<div class="empty">The agent hasn\'t scanned this game\'s lines yet (scans run around 10am, 3pm and 6:35pm ET).</div>'}</div>
+    ${(() => { const xs = ((D.bf && D.bf.date === (D.players || {}).date && D.bf.flags) || []).filter(x => x.espn_id === g.espn_id);
+      return xs.length ? `<h2>DraftKings vs itself</h2><div class="card">${xs.map(x => `<div class="desc" style="margin:3px 0">${esc(x.txt)}</div>`).join("")}<div class="desc dim">Combo lines out of step with the separate lines DraftKings posted for the same player, or a team's player lines far from its own total. Graded nightly under Model → Our book.</div></div>` : ""; })()}
     ${kalshiCard(g, n, c)}
     <h2>Sim vs DraftKings</h2><div class="card" id="gVs"></div>`;
 }

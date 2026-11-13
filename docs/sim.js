@@ -33,7 +33,8 @@ const lastName = n => { const w = n.replace(SUF, "").trim().split(/\s+/); return
 // Sim anchor: "market" pulls team scoring to Vegas' implied points (best for props); "model" uses the team model
 // (ratings plus who's playing) and no market input, so it can disagree with the line. Saved on this device.
 const simMode = () => { try { return typeof localStorage !== "undefined" && localStorage.getItem("pz-simmode") === "model" ? "model" : "market"; } catch (e) { return "market"; } };
-const tmFor = g => simMode() === "model" && typeof D !== "undefined" && D.tm && D.tm.tonight ? D.tm.tonight[g.espn_id] : null;
+// the agent's independent book (tools/ourbook.js) forces team-model mode with globalThis.PZ_SIM_MODE = "model"
+const tmFor = g => ((typeof globalThis !== "undefined" && globalThis.PZ_SIM_MODE === "model") || simMode() === "model") && typeof D !== "undefined" && D.tm && D.tm.tonight ? D.tm.tonight[g.espn_id] : null;
 function prep(g, gf) {
   const tmN = tmFor(g);
   if (tmN) g = {...g, vegas: {...(g.vegas || {}), spread_home: -tmN.margin, total: tmN.total, implied: {home: tmN.home_pts, away: tmN.away_pts}, src: "team model"}};

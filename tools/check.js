@@ -46,7 +46,7 @@ try {
       const errs = []; p.on("pageerror", e => errs.push(e.message));
       await p.route(/espn\.com|cdn\.|github\.com/, r => r.fulfill({status: 200, contentType: "application/json", headers: {"access-control-allow-origin": "*"}, body: "{}"}));
       await p.goto("http://localhost:8899/index.html"); await p.waitForTimeout(2500);
-      for (const t of ["today", "games", "props", "bets", "health", "trends", "agent", "sim"]) {
+      for (const t of ["today", "games", "props", "bets", "health", "book", "trends", "agent", "sim"]) {
         const n = errs.length; await p.evaluate(v => go(v), t); await p.waitForTimeout(1200);
         const txt = await p.evaluate(() => [...document.querySelectorAll(".view.on")].map(v => v.innerText.length).join(","));
         errs.length === n && +txt > 50 ? ok(`${t} (${txt} chars)`) : bad(`${t}: ${errs.slice(n).join(" | ") || "renders nearly empty"}`);

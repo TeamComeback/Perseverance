@@ -1077,6 +1077,11 @@ def write_all(ctx, log=print):
         kalshi.refresh(ctx["games"], day=ctx["day"], log=log)
     except Exception as e:
         log(f"[research] Kalshi lines failed: {e}")
+    try:
+        from . import ourbook                                  # DraftKings disagreeing with itself (combo vs parts)
+        ourbook.flags(ctx["day"], log=log)
+    except Exception as e:
+        log(f"[research] book flags failed: {e}")
     # conviction track record: snapshot tonight's leans (graded after the games)
     try:
         from . import track

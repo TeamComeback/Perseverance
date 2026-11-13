@@ -64,6 +64,8 @@ def refresh(ctx, players, log=print):
             log(f"[dk] odds {eid} failed: {e}")
             o = None
         if o:
+            if o.get("open") and not G.get("open"):
+                G["open_at"] = store.iso(store.now())            # when we first saw DraftKings' line (for Our Book grading)
             G["open"] = o.get("open") or G.get("open")
             if o.get("current"):
                 G["close"], G["close_at"] = o["current"], store.iso(store.now())
@@ -81,6 +83,7 @@ def refresh(ctx, players, log=print):
             cv = ((players.get(pid) or {}).get("cv") or {}).get(st)
             rec = db["props"].setdefault(f"{pid}|{st}", {"pid": pid, "name": e["name"], "team": e["team"], "opp": e["opp"],
                                                         "espn_id": eid, "stat": st, "actual": None, "res": None})
+            rec.setdefault("o_at", store.iso(store.now()))      # first time we saw this prop posted
             rec.update(o=v["open"], c=v["cur"], pm=round(nm.p_over(proj, line), 4), lean="Over" if proj["mult"] > 1 else "Under",
                        cv=cv[2] if cv else None, proj=round(proj["proj"], 1))
             n_props += 1

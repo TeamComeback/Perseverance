@@ -35,7 +35,9 @@ function bestBetsSetup(pj, simlog) {
   const bias = k => { const a = agg[k]; return a && a[0] ? (a[2] / a[0]) * shrink(a[0], 60) : 0; };   // sim minus actual, per game
   const focusOf = s => { const f = sb.focus && sb.focus[s]; if (f) return f.status; const b = sb.by_stat && sb.by_stat[s];
     return !b || b.n < 150 ? "watch" : b.best_w >= 0.25 && b.market.ll - b.best_ll >= 0.001 ? "edge" : b.best_w <= 0.10 ? "skip" : "watch"; };
-  const wStat = s => { const b = sb.by_stat && sb.by_stat[s]; if (!b || !b.n) return wGlobal; return (b.n * b.best_w + 100 * wGlobal) / (b.n + 100); };
+  const OBA = (read("ourbook_track.json", {}).accuracy) || {};
+  const wStat = s => { const ob = OBA[`inf|${s}`]; if (ob && ob.blend && ob.blend.ready) return ob.blend.best_w;     // measured on frozen lines, leave-one-day-out
+    const b = sb.by_stat && sb.by_stat[s]; if (!b || !b.n) return wGlobal; return (b.n * b.best_w + 100 * wGlobal) / (b.n + 100); };
   // game lines: weight the sim by how its errors compare with the market's (inverse squared error)
   const wGame = (() => {
     const s_ = agg.margin, v_ = agg.margin_vegas;
@@ -59,6 +61,12 @@ function bestBetsSetup(pj, simlog) {
   const CM = sb.conviction && sb.conviction.ready ? sb.conviction : null;
   const KD = read(`kalshi/${pj.date}.json`, {props: {}, games: {}}), KT = ((read("kalshi_track.json", {}).props || {}).all || {}).disagree || null;
   const kalshiP = (pid, stat, line, side) => { const k = (KD.props || {})[pid + "|" + stat]; return k && k.p != null && k.line === line ? Math.round((side === "Over" ? k.p : 1 - k.p) * 1000) / 1000 : null; };
+  const OB = read(`ourbook/${pj.date}.json`, null), OBT = read("ourbook_track.json", {});
+  const OB_ORDER = ["tip", "6pm", "3pm", "noon", "9am"];
+  const obInd = (pid, stat) => { const pr = OB && OB.props && OB.props[pid + "|" + stat]; if (!pr) return null;
+    for (const f of OB_ORDER) if (pr.f[f] && pr.f[f].ind) return {line: pr.f[f].ind[0], at: f}; return null; };
+  const obStage = ["early", "late"].reduce((m, w) => Math.max(m, (((OBT.cuts || {})[`ind|props|${w}`]) || {}).stage || 0), 0);
+  const obRate = (() => { const c = Object.entries(OBT.cuts || {}).filter(([k]) => k.startsWith("ind|props")).map(([, v]) => v); const n = c.reduce((t, x) => t + x.n, 0), w = c.reduce((t, x) => t + x.toward, 0); return n ? {n, rate: w / n} : null; })();
   const dkRecent = read("dk_recent.json", {}), linesAll = read("lines.json", {entries: {}}).entries || {};
   const tendOf = (pid, stat) => {
     const seen = {}; let o = 0, u = 0;
@@ -154,8 +162,11 @@ function bestBetsSetup(pj, simlog) {
         } catch (e) { console.log("[best] case failed for " + r.name + ": " + e.message); }
         // two independent reads, averaged: the conviction model (what has actually paid) and the sim blended with the price
         const p = cs && cs.p_conv != null ? (cs.p_conv + pb) / 2 : pb;
-        const conv = CASE.convScore(p, dec);
-        cands.props.push({...base, kind: "prop", conv, tier: CASE.convTier(conv), p_conv: cs && cs.p_conv != null ? r1(cs.p_conv * 1000) / 1000 : null,
+        // Our Book (stage 1: tracked on every pick; stage 2, once the independent book passes its gates: a reason and a nudge)
+        const ob = obInd(r.pid, r.stat), obGap = ob ? ob.line - L : null, obFor = obGap != null && Math.abs(obGap) >= 1 ? (obGap > 0) === (side === "Over") : null;
+        if (cs && obStage >= 2 && obFor != null) (obFor ? cs.for : cs.against).unshift({tag: "our book", t: `Our independent book (no market input) posts ${ob.line}, ${f1(Math.abs(obGap))} ${obGap > 0 ? "above" : "below"} DraftKings${obRate ? `; when it disagrees, DraftKings' line has moved its way ${Math.round(obRate.rate * 100)}% of the time (${obRate.n} lines)` : ""}.`});
+        const conv = Math.max(1, Math.min(99, CASE.convScore(p, dec) + (obStage >= 2 && obFor != null ? (obFor ? 3 : -3) : 0)));
+        cands.props.push({...base, kind: "prop", conv, ob_ind: ob ? ob.line : null, ob_gap: obGap != null ? r1(obGap) : null, ob_stage: obStage, tier: CASE.convTier(conv), p_conv: cs && cs.p_conv != null ? r1(cs.p_conv * 1000) / 1000 : null,
           case: cs ? {for: cs.for, against: cs.against} : null, ladder: cs ? cs.ladder : null, verdict: cs ? CASE.verdict(cs, conv) : null, avg10: cs ? cs.avg10 : null, pid: r.pid, name: r.name, team: r.team, opp: r.opp, stat: r.stat, side, point: L, dec, am: am(dec),
           p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, p_kalshi: kalshiP(r.pid, r.stat, L, side), ev: r1((p * dec - 1) * 1000) / 1000,
           cv: r.cv || null, lean: r.lean || null, proj: r.proj != null ? r1(r.proj) : null, sim: r1(simAvg), open: r.o ? r.o[0] : null,
@@ -265,6 +276,24 @@ function bestBetsSetup(pj, simlog) {
   return {price, finish};
 }
 const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
+// How tonight's outcomes move together, for pricing combos and same-game parlays later (Our Book step 4, not used yet):
+// correlations between the game margin, the total, and points / rebounds / assists of each team's top 4 players by minutes.
+// Saved as labels + the upper triangle (row by row), two decimals. ~3 KB a game.
+function corrTable(M, mar, tot, n) {
+  const cols = [["margin", mar], ["total", tot]];
+  for (const side of ["home", "away"]) {
+    const ids = Object.keys(M.out).filter(pid => M.who[pid].side === side).map(pid => [pid, mean(M.out[pid].min)]).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    for (const [pid] of ids) for (const k of ["pts", "reb", "ast"]) cols.push([pid + "|" + k, M.out[pid][k]]);
+  }
+  const st = cols.map(([, a]) => { const m = mean(a); let v = 0; for (let i = 0; i < n; i++) v += (a[i] - m) ** 2; return [m, Math.sqrt(v / n) || 1]; });
+  const tri = [];
+  for (let i = 0; i < cols.length; i++) for (let j = i + 1; j < cols.length; j++) {
+    const a = cols[i][1], b = cols[j][1], [ma, sa] = st[i], [mb, sb] = st[j]; let c = 0;
+    for (let k = 0; k < n; k++) c += (a[k] - ma) * (b[k] - mb);
+    tri.push(Math.round(c / n / sa / sb * 100) / 100);
+  }
+  return {cols: cols.map(c => c[0]), tri};
+}
 
 (async () => {
   const pj = read("players.json", null);
@@ -336,7 +365,7 @@ const f1 = v => (Math.round(v * 10) / 10).toFixed(1);
     for (let i = 0; i < N; i++) { mh[mar[i]] = (mh[mar[i]] || 0) + 1; th[tot[i]] = (th[tot[i]] || 0) + 1; }
     out.games[g.espn_id] = {mh, th, at: out.updated, pace: r1(P.pace), model_pace: r1(P.modelPace || P.pace), home: g.home, away: g.away, start: g.start, vegas: g.vegas || null, avg, win_home: r1(hw / N * 100) / 100,
       total: [r1(mean(tot)), ...qs(tot)], margin: r1(mean(mar)), cover_home: sp != null ? r1(cover / N * 100) / 100 : null,
-      over: vt ? r1(over / N * 100) / 100 : null, players, typical};
+      over: vt ? r1(over / N * 100) / 100 : null, players, typical, corr: corrTable(M, mar, tot, N)};
     // the sim's own probability at DraftKings' lines (pushes excluded), next to DraftKings' no-vig price
     const ev = evFor(g), vs = {book: "draftkings", game: [], props: []};
     const dk = (ev && ev.dk) || {};

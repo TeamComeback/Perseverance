@@ -304,3 +304,32 @@ counts) by `ourGame`/`ourProp` in `docs/index.html`.
 - Game Overview and Lines: "Our line vs the books" table (Ours / DraftKings / Kalshi for spread, total, moneyline), with the
   gaps in gold, e.g. "Total: ours is 4 lower → lean under (over 223.5 in 40% of sims)".
 - Players rows, player card and Best Bets: "Our line 6.5 o−118 / u+118 · ours is 2 higher → lean over".
+
+## Our Book (our own lines, frozen and graded)
+
+Framework: `perseverance-our-book-framework.md` in the project. Built Nov 12.
+
+- **Freezes** (`tools/ourbook.js`, scheduled by `agent/ourbook.due` in every auto run): 9am, noon, 3pm, 6pm ET, and a
+  "tip" freeze for each game in the last run before it starts (within 25 minutes). Saved to `docs/data/ourbook/<date>.json`
+  and never edited. Two books per freeze:
+  - **Independent:** the sim in team-model mode (ratings + roster + player model), with no Vegas spread, total, implied team
+    totals or Kalshi. It learns only from its own graded results (`ind_bias`).
+  - **Informed:** tonight's `sims.json` (DraftKings-anchored, learned corrections), i.e. "Our line" on the dashboard.
+  - Each freeze also saves DraftKings' and Kalshi's numbers at that moment, plus the inputs behind ours (who's out or
+    questionable, projected minutes, the team model's number). 9am and tip keep full alt-line ladders; midday freezes keep line + chance.
+- **Nightly grading** (`agent/ourbook.grade` → `ourbook_track.json`): closing-line test (did DraftKings move toward our frozen
+  number; closing line value in points), with lines that had injury news after the freeze kept apart; pre-open test for props frozen
+  before DraftKings posted; accuracy at tip vs DraftKings and Kalshi (log loss, calibration); a blend test with
+  leave-one-day-out scoring; and the independent book's own bias corrections.
+- **Gates and stages**, per book × market × early/late freeze: building (under 300 moved lines) → signal (55%+ moved our way
+  over the last 300) / watch (52-55%) / no edge; a signal that drops under 50% switches itself off. Stage 1 = tracked on every
+  pick (`ob_ind`, `ob_gap` in best.json); stage 2 (signal + the blend test helps) = a "our book" reason and a ±3 conviction nudge;
+  stage 3 (4 weeks at signal + positive paper results) = eligible for paper bets, waiting on the owner's OK. A blend weight that
+  passes its gate (1,000 props / 150 game lines, better on days it wasn't fit on) replaces the hand-set weight in Best Bets.
+- **DraftKings vs itself** (`agent/ourbook.flags` → `book_flags.json`, each research run): combo lines out of step with the
+  separate lines (P+R+A normally 0 to +1 above its parts, R+A within 0.5), and team player-points lines far from the team total. Graded nightly.
+- **Foundations:** `sims.json` games carry a correlation table (`corr`) for later combo/same-game pricing; `dk/<date>.json` now
+  stamps when we first saw each line (`open_at`, `o_at`); DraftKings line moves only trigger a re-sim after holding for two checks.
+- **Dashboard:** Model → Our book (tonight's independent book, gates, accuracy, what it's learned, DraftKings vs itself);
+  game page → Lines shows that game's flags; the player card shows our alt lines.
+- **Not yet:** first-half and quarter lines wait until game lines pass their gates.
