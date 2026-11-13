@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 34.16,
+  "cash": 43.16,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -10805,7 +10805,7 @@
       "book": "betmgm",
       "fair_p": 0.4973,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 7.73,
        "base": 6.66,
@@ -10836,6 +10836,22 @@
          "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 140.0,
+       "away": 144.0
+      },
+      "actual": 11.0,
+      "box": {
+       "min": 48.0,
+       "pts": 52.0,
+       "reb": 5.0,
+       "ast": 11.0,
+       "tpm": 3.0,
+       "tpa": 5.0,
+       "fga": 25.0,
+       "fta": 18.0,
+       "tov": 0.0
       }
      }
     ],
@@ -10846,10 +10862,255 @@
     "note": "Proj 7.7 vs line 8.5 (norm 6.7, 31 min). Model 64% vs market 50%. WSH gives point guards +18% assists vs their norm (#2 softest of 30) \u00b7 Players with his profile: +13% assists vs WSH (151 close comps) \u00b7 His history vs WSH: 6.5 assists/g in 4 games (+3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-13T17:10:15Z",
+    "review": {
+     "headline": "LOST: 11 assists vs Under 8.5",
+     "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+     "legs": [
+      {
+       "outcome": "Cade Cunningham Under",
+       "result": "loss",
+       "headline": "11 assists vs Under 8.5",
+       "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+       "why": [
+        "Cade Cunningham finished with 11 assists against a line of 8.5: under missed by 2.5.",
+        "Minutes: played 48 vs 31.4 projected.",
+        "Box score: 11 ast, 0 TO.",
+        "Model projected 7.7 (6.7 norm \u00d7 1.16 matchup); actual was +3.3 off (+0.9 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (10.2) in a matchup the model rated soft.",
+        "Signal: WSH gives point guards +18% assists vs their norm (#2 softest of 30)",
+        "Signal: Players with his profile: +13% assists vs WSH (151 close comps)",
+        "Signal: His history vs WSH: 6.5 assists/g in 4 games (+3%)",
+        "We priced it at 59% to hit vs 52% needed to break even at 1.91x (+12.3% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "WSH",
+        "away": "DET"
+       },
+       "final": "DET 144 \u2013 WSH 140 (OT)",
+       "periods": {
+        "away": [
+         33,
+         31,
+         30,
+         27,
+         11,
+         12
+        ],
+        "home": [
+         32,
+         29,
+         29,
+         31,
+         11,
+         8
+        ]
+       },
+       "largest_lead": {
+        "DET": 11,
+        "WSH": 10
+       },
+       "largest_lead_at": {
+        "DET": "9:43 3rd Q",
+        "WSH": "3:51 1st Q"
+       },
+       "lead_changes": 38,
+       "ties": 18,
+       "runs": [
+        {
+         "team": "WSH",
+         "pts": 10,
+         "from": "1.1 4th Q",
+         "to": "3:20 OT",
+         "score": "DET 121-128 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "10:28 1st Q",
+         "to": "9:52 1st Q",
+         "score": "DET 5-11 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "8:25 2nd Q",
+         "to": "6:35 2nd Q",
+         "score": "DET 44-48 WSH"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "3:28 1st Q",
+         "to": "1:14 1st Q",
+         "score": "DET 30-32 WSH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 15,
+         "from": "3:51 1st Q",
+         "to": "8:43 2nd Q",
+         "mins": 7.1,
+         "from_score": "DET 22-32 WSH",
+         "to_score": "DET 44-39 WSH",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 13,
+         "from": "10:49 1st Q",
+         "to": "3:51 1st Q",
+         "mins": 7.0,
+         "from_score": "DET 5-2 WSH",
+         "to_score": "DET 22-32 WSH",
+         "pts_for": 30,
+         "pts_against": 17
+        }
+       ],
+       "clutch": [
+        "2:05 2OT: Alex Sarr makes 5-foot two point shot (DET 139-136 WSH)",
+        "1:50 2OT: Paul Reed makes free throw 1 of 2 (DET 140-136 WSH)",
+        "1:14 2OT: Bilal Coulibaly makes 2-foot dunk (Trae Young assists) (DET 140-138 WSH)",
+        "25.3 2OT: Cade Cunningham makes 12-foot fade away jump shot (DET 142-138 WSH)",
+        "15.7 2OT: Trae Young makes free throw 1 of 2 (DET 142-139 WSH)",
+        "15.7 2OT: Trae Young makes free throw 2 of 2 (DET 142-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 1 of 2 (DET 143-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 2 of 2 (DET 144-140 WSH)"
+       ],
+       "leaders": [
+        "Cade Cunningham (DET): 52 pts, 5 reb, 11 ast, 3-5 3PT in 48 min",
+        "Ausar Thompson (DET): 17 pts, 11 reb, 11 ast, 0-1 3PT in 43 min",
+        "Trae Young (WSH): 37 pts, 2 reb, 14 ast, 4-8 3PT in 45 min",
+        "Anthony Davis (WSH): 30 pts, 15 reb, 4 ast, 0-1 3PT in 44 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 7,
+          "reb": 0,
+          "ast": 5,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 3
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 8,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 7,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 18,
+          "reb": 3,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 7,
+          "fgm": 5
+         },
+         {
+          "per": 5,
+          "label": "OT",
+          "pts": 7,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 2
+         },
+         {
+          "per": 6,
+          "label": "OT",
+          "pts": 5,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 3,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "7:11 1st Q",
+         "33.1 OT",
+         "4:21 2OT"
+        ],
+        "box": {
+         "id": "4432166",
+         "name": "Cade Cunningham",
+         "team": "DET",
+         "min": "48",
+         "pts": 52,
+         "reb": 5,
+         "ast": 11,
+         "3pt": "3-5",
+         "fg": "16-25",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 64-61 WSH, DET up 3.",
+        "The 4th quarter decided the most: WSH won it 31-27.",
+        "Largest leads: DET 11 (9:43 3rd Q), WSH 10 (3:51 1st Q). 38 lead changes, 18 ties.",
+        "Momentum swing: DET outscored them 22-7 in 7.1 minutes (3:51 1st Q to 8:43 2nd Q), moving it from DET 22-32 WSH to DET 44-39 WSH.",
+        "Momentum swing: WSH outscored them 30-17 in 7 minutes (10:49 1st Q to 3:51 1st Q), moving it from DET 5-2 WSH to DET 22-32 WSH.",
+        "WSH went on a 10-0 run (1.1 4th Q to 3:20 OT), making it DET 121-128 WSH.",
+        "WSH went on a 9-0 run (10:28 1st Q to 9:52 1st Q), making it DET 5-11 WSH.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Cade Cunningham by period (AST): Q1 5, Q2 1, Q3 2, Q4 2, OT 1, OT 0.",
+        "He went over 8.5 in Q4.",
+        "Threes made at: 7:11 1st Q, 33.1 OT, 4:21 2OT."
+       ],
+       "espn_id": "401909977",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909977"
+      }
+     ]
+    }
    },
    {
     "id": "ba16d508",
@@ -10876,7 +11137,7 @@
       "book": "betmgm",
       "fair_p": 0.4798,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 7.79,
        "base": 8.13,
@@ -10907,6 +11168,22 @@
          "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 140.0,
+       "away": 144.0
+      },
+      "actual": 11.0,
+      "box": {
+       "min": 44.0,
+       "pts": 30.0,
+       "reb": 9.0,
+       "ast": 2.0,
+       "tpm": 4.0,
+       "tpa": 6.0,
+       "fga": 14.0,
+       "fta": 4.0,
+       "tov": 2.0
       }
      }
     ],
@@ -10917,10 +11194,256 @@
     "note": "Proj 7.8 vs line 8.5 (norm 8.1, 25 min). Model 64% vs market 48%. DET gives centers -4% reb+ast vs their norm (#5 toughest of 30) \u00b7 Players with his profile: -2% reb+ast vs DET (44 close comps) \u00b7 His history vs DET: 9.2 reb+ast/g in 4 games (+1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-13T17:10:15Z",
+    "review": {
+     "headline": "LOST: 11 reb+ast vs Under 8.5",
+     "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+     "legs": [
+      {
+       "outcome": "Alex Sarr Under",
+       "result": "loss",
+       "headline": "11 reb+ast vs Under 8.5",
+       "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+       "why": [
+        "Alex Sarr finished with 11 reb+ast against a line of 8.5: under missed by 2.5.",
+        "Minutes: played 44 vs 25.1 projected.",
+        "Box score: 9 reb \u00b7 2 ast, 2 TO.",
+        "Model projected 7.8 (8.1 norm \u00d7 0.96 matchup); actual was +3.2 off (+1.1 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (14.3) in a matchup the model rated tough.",
+        "Signal: DET gives centers -4% reb+ast vs their norm (#5 toughest of 30)",
+        "Signal: Players with his profile: -2% reb+ast vs DET (44 close comps)",
+        "Signal: His history vs DET: 9.2 reb+ast/g in 4 games (+1%)",
+        "We priced it at 55% to hit vs 49% needed to break even at 2.05x (+11.9% expected edge).",
+        "Consensus fair probability when placed: 48% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "WSH",
+        "away": "DET"
+       },
+       "final": "DET 144 \u2013 WSH 140 (OT)",
+       "periods": {
+        "away": [
+         33,
+         31,
+         30,
+         27,
+         11,
+         12
+        ],
+        "home": [
+         32,
+         29,
+         29,
+         31,
+         11,
+         8
+        ]
+       },
+       "largest_lead": {
+        "DET": 11,
+        "WSH": 10
+       },
+       "largest_lead_at": {
+        "DET": "9:43 3rd Q",
+        "WSH": "3:51 1st Q"
+       },
+       "lead_changes": 38,
+       "ties": 18,
+       "runs": [
+        {
+         "team": "WSH",
+         "pts": 10,
+         "from": "1.1 4th Q",
+         "to": "3:20 OT",
+         "score": "DET 121-128 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "10:28 1st Q",
+         "to": "9:52 1st Q",
+         "score": "DET 5-11 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "8:25 2nd Q",
+         "to": "6:35 2nd Q",
+         "score": "DET 44-48 WSH"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "3:28 1st Q",
+         "to": "1:14 1st Q",
+         "score": "DET 30-32 WSH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 15,
+         "from": "3:51 1st Q",
+         "to": "8:43 2nd Q",
+         "mins": 7.1,
+         "from_score": "DET 22-32 WSH",
+         "to_score": "DET 44-39 WSH",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 13,
+         "from": "10:49 1st Q",
+         "to": "3:51 1st Q",
+         "mins": 7.0,
+         "from_score": "DET 5-2 WSH",
+         "to_score": "DET 22-32 WSH",
+         "pts_for": 30,
+         "pts_against": 17
+        }
+       ],
+       "clutch": [
+        "2:05 2OT: Alex Sarr makes 5-foot two point shot (DET 139-136 WSH)",
+        "1:50 2OT: Paul Reed makes free throw 1 of 2 (DET 140-136 WSH)",
+        "1:14 2OT: Bilal Coulibaly makes 2-foot dunk (Trae Young assists) (DET 140-138 WSH)",
+        "25.3 2OT: Cade Cunningham makes 12-foot fade away jump shot (DET 142-138 WSH)",
+        "15.7 2OT: Trae Young makes free throw 1 of 2 (DET 142-139 WSH)",
+        "15.7 2OT: Trae Young makes free throw 2 of 2 (DET 142-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 1 of 2 (DET 143-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 2 of 2 (DET 144-140 WSH)"
+       ],
+       "leaders": [
+        "Cade Cunningham (DET): 52 pts, 5 reb, 11 ast, 3-5 3PT in 48 min",
+        "Ausar Thompson (DET): 17 pts, 11 reb, 11 ast, 0-1 3PT in 43 min",
+        "Trae Young (WSH): 37 pts, 2 reb, 14 ast, 4-8 3PT in 45 min",
+        "Anthony Davis (WSH): 30 pts, 15 reb, 4 ast, 0-1 3PT in 44 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 10,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 2,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 4,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 7,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 5,
+          "reb": 3,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 1
+         },
+         {
+          "per": 5,
+          "label": "OT",
+          "pts": 2,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 6,
+          "label": "OT",
+          "pts": 2,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "10:28 1st Q",
+         "7:53 1st Q",
+         "6:54 3rd Q",
+         "2:23 4th Q"
+        ],
+        "box": {
+         "id": "5160992",
+         "name": "Alex Sarr",
+         "team": "WSH",
+         "min": "44",
+         "pts": 30,
+         "reb": 9,
+         "ast": 2,
+         "3pt": "4-6",
+         "fg": "12-14",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 64-61 WSH, DET up 3.",
+        "The 4th quarter decided the most: WSH won it 31-27.",
+        "Largest leads: DET 11 (9:43 3rd Q), WSH 10 (3:51 1st Q). 38 lead changes, 18 ties.",
+        "Momentum swing: DET outscored them 22-7 in 7.1 minutes (3:51 1st Q to 8:43 2nd Q), moving it from DET 22-32 WSH to DET 44-39 WSH.",
+        "Momentum swing: WSH outscored them 30-17 in 7 minutes (10:49 1st Q to 3:51 1st Q), moving it from DET 5-2 WSH to DET 22-32 WSH.",
+        "WSH went on a 10-0 run (1.1 4th Q to 3:20 OT), making it DET 121-128 WSH.",
+        "WSH went on a 9-0 run (10:28 1st Q to 9:52 1st Q), making it DET 5-11 WSH.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Alex Sarr by period (REB+AST): Q1 1, Q2 2, Q3 2, Q4 4, OT 0, OT 2.",
+        "He went over 8.5 in Q4.",
+        "Threes made at: 10:28 1st Q, 7:53 1st Q, 6:54 3rd Q, 2:23 4th Q."
+       ],
+       "espn_id": "401909977",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909977"
+      }
+     ]
+    }
    },
    {
     "id": "263219b5",
@@ -10947,7 +11470,7 @@
       "book": "fanduel",
       "fair_p": 0.461,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 6.95,
        "base": 7.48,
@@ -10978,6 +11501,22 @@
          "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 140.0,
+       "away": 144.0
+      },
+      "actual": 12.0,
+      "box": {
+       "min": 44.0,
+       "pts": 5.0,
+       "reb": 8.0,
+       "ast": 4.0,
+       "tpm": 1.0,
+       "tpa": 4.0,
+       "fga": 10.0,
+       "fta": 0.0,
+       "tov": 4.0
       }
      }
     ],
@@ -10988,10 +11527,253 @@
     "note": "Proj 7.0 vs line 7.5 (norm 7.5, 33 min). Model 62% vs market 46%. DET gives small forwards -8% reb+ast vs their norm (#3 toughest of 30) \u00b7 Players with his profile: -7% reb+ast vs DET (39 close comps) \u00b7 His history vs DET: 9.0 reb+ast/g in 1 games (+1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-13T17:10:15Z",
+    "review": {
+     "headline": "LOST: 12 reb+ast vs Under 7.5",
+     "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+     "legs": [
+      {
+       "outcome": "AJ Dybantsa Under",
+       "result": "loss",
+       "headline": "12 reb+ast vs Under 7.5",
+       "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+       "why": [
+        "AJ Dybantsa finished with 12 reb+ast against a line of 7.5: under missed by 4.5.",
+        "Minutes: played 44 vs 32.6 projected.",
+        "Box score: 8 reb \u00b7 4 ast, 4 TO.",
+        "Model projected 7 (7.5 norm \u00d7 0.93 matchup); actual was +5.0 off (+2.6 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (10.1) in a matchup the model rated tough.",
+        "Signal: DET gives small forwards -8% reb+ast vs their norm (#3 toughest of 30)",
+        "Signal: Players with his profile: -7% reb+ast vs DET (39 close comps)",
+        "Signal: His history vs DET: 9.0 reb+ast/g in 1 games (+1%)",
+        "We priced it at 53% to hit vs 48% needed to break even at 2.08x (+10.1% expected edge).",
+        "Consensus fair probability when placed: 46% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "WSH",
+        "away": "DET"
+       },
+       "final": "DET 144 \u2013 WSH 140 (OT)",
+       "periods": {
+        "away": [
+         33,
+         31,
+         30,
+         27,
+         11,
+         12
+        ],
+        "home": [
+         32,
+         29,
+         29,
+         31,
+         11,
+         8
+        ]
+       },
+       "largest_lead": {
+        "DET": 11,
+        "WSH": 10
+       },
+       "largest_lead_at": {
+        "DET": "9:43 3rd Q",
+        "WSH": "3:51 1st Q"
+       },
+       "lead_changes": 38,
+       "ties": 18,
+       "runs": [
+        {
+         "team": "WSH",
+         "pts": 10,
+         "from": "1.1 4th Q",
+         "to": "3:20 OT",
+         "score": "DET 121-128 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "10:28 1st Q",
+         "to": "9:52 1st Q",
+         "score": "DET 5-11 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "8:25 2nd Q",
+         "to": "6:35 2nd Q",
+         "score": "DET 44-48 WSH"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "3:28 1st Q",
+         "to": "1:14 1st Q",
+         "score": "DET 30-32 WSH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 15,
+         "from": "3:51 1st Q",
+         "to": "8:43 2nd Q",
+         "mins": 7.1,
+         "from_score": "DET 22-32 WSH",
+         "to_score": "DET 44-39 WSH",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 13,
+         "from": "10:49 1st Q",
+         "to": "3:51 1st Q",
+         "mins": 7.0,
+         "from_score": "DET 5-2 WSH",
+         "to_score": "DET 22-32 WSH",
+         "pts_for": 30,
+         "pts_against": 17
+        }
+       ],
+       "clutch": [
+        "2:05 2OT: Alex Sarr makes 5-foot two point shot (DET 139-136 WSH)",
+        "1:50 2OT: Paul Reed makes free throw 1 of 2 (DET 140-136 WSH)",
+        "1:14 2OT: Bilal Coulibaly makes 2-foot dunk (Trae Young assists) (DET 140-138 WSH)",
+        "25.3 2OT: Cade Cunningham makes 12-foot fade away jump shot (DET 142-138 WSH)",
+        "15.7 2OT: Trae Young makes free throw 1 of 2 (DET 142-139 WSH)",
+        "15.7 2OT: Trae Young makes free throw 2 of 2 (DET 142-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 1 of 2 (DET 143-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 2 of 2 (DET 144-140 WSH)"
+       ],
+       "leaders": [
+        "Cade Cunningham (DET): 52 pts, 5 reb, 11 ast, 3-5 3PT in 48 min",
+        "Ausar Thompson (DET): 17 pts, 11 reb, 11 ast, 0-1 3PT in 43 min",
+        "Trae Young (WSH): 37 pts, 2 reb, 14 ast, 4-8 3PT in 45 min",
+        "Anthony Davis (WSH): 30 pts, 15 reb, 4 ast, 0-1 3PT in 44 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 3,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 5,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 5,
+          "label": "OT",
+          "pts": 2,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 6,
+          "label": "OT",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "11:27 3rd Q"
+        ],
+        "box": {
+         "id": "5142718",
+         "name": "AJ Dybantsa",
+         "team": "WSH",
+         "min": "44",
+         "pts": 5,
+         "reb": 8,
+         "ast": 4,
+         "3pt": "1-4",
+         "fg": "2-10",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 64-61 WSH, DET up 3.",
+        "The 4th quarter decided the most: WSH won it 31-27.",
+        "Largest leads: DET 11 (9:43 3rd Q), WSH 10 (3:51 1st Q). 38 lead changes, 18 ties.",
+        "Momentum swing: DET outscored them 22-7 in 7.1 minutes (3:51 1st Q to 8:43 2nd Q), moving it from DET 22-32 WSH to DET 44-39 WSH.",
+        "Momentum swing: WSH outscored them 30-17 in 7 minutes (10:49 1st Q to 3:51 1st Q), moving it from DET 5-2 WSH to DET 22-32 WSH.",
+        "WSH went on a 10-0 run (1.1 4th Q to 3:20 OT), making it DET 121-128 WSH.",
+        "WSH went on a 9-0 run (10:28 1st Q to 9:52 1st Q), making it DET 5-11 WSH.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "AJ Dybantsa by period (REB+AST): Q1 0, Q2 4, Q3 3, Q4 2, OT 3, OT 0.",
+        "He went over 7.5 in Q4.",
+        "Threes made at: 11:27 3rd Q."
+       ],
+       "espn_id": "401909977",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909977"
+      }
+     ]
+    }
    },
    {
     "id": "457614ce",
@@ -11018,7 +11800,7 @@
       "book": "fanduel",
       "fair_p": 0.5213,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "model": {
        "proj": 6.89,
        "base": 6.17,
@@ -11049,6 +11831,22 @@
          "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 140.0,
+       "away": 144.0
+      },
+      "actual": 4.0,
+      "box": {
+       "min": 25.0,
+       "pts": 10.0,
+       "reb": 4.0,
+       "ast": 0.0,
+       "tpm": 2.0,
+       "tpa": 3.0,
+       "fga": 8.0,
+       "fta": 2.0,
+       "tov": 3.0
       }
      }
     ],
@@ -11059,10 +11857,253 @@
     "note": "Proj 6.9 vs line 8.5 (norm 6.2, 25 min). Model 73% vs market 52%. WSH gives small forwards +10% reb+ast vs their norm (#1 softest of 30) \u00b7 Players with his profile: +7% reb+ast vs WSH (44 close comps) \u00b7 His history vs WSH: 8.5 reb+ast/g in 2 games (+6%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "won",
+    "payout": 9.0,
+    "profit": 4.0,
+    "settled": "2026-11-13T17:10:15Z",
+    "review": {
+     "headline": "WON: 4 reb+ast vs Under 8.5",
+     "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+     "legs": [
+      {
+       "outcome": "John Collins Under",
+       "result": "win",
+       "headline": "4 reb+ast vs Under 8.5",
+       "final": "Detroit Pistons 144 \u2013 Washington Wizards 140",
+       "why": [
+        "John Collins finished with 4 reb+ast against a line of 8.5: under cleared by 4.5.",
+        "Minutes: played 25 vs 25.4 projected.",
+        "Box score: 4 reb \u00b7 0 ast, 3 TO.",
+        "Model projected 6.9 (6.2 norm \u00d7 1.12 matchup); actual was -2.9 off (-1.0 standard deviations).",
+        "Matchup read was wrong: he fell short of his own norm for the minutes played (6.1) in a matchup the model rated soft.",
+        "Signal: WSH gives small forwards +10% reb+ast vs their norm (#1 softest of 30)",
+        "Signal: Players with his profile: +7% reb+ast vs WSH (44 close comps)",
+        "Signal: His history vs WSH: 8.5 reb+ast/g in 2 games (+6%)",
+        "We priced it at 61% to hit vs 56% needed to break even at 1.8x (+10.0% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "model-beat",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "model-beat"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "WSH",
+        "away": "DET"
+       },
+       "final": "DET 144 \u2013 WSH 140 (OT)",
+       "periods": {
+        "away": [
+         33,
+         31,
+         30,
+         27,
+         11,
+         12
+        ],
+        "home": [
+         32,
+         29,
+         29,
+         31,
+         11,
+         8
+        ]
+       },
+       "largest_lead": {
+        "DET": 11,
+        "WSH": 10
+       },
+       "largest_lead_at": {
+        "DET": "9:43 3rd Q",
+        "WSH": "3:51 1st Q"
+       },
+       "lead_changes": 38,
+       "ties": 18,
+       "runs": [
+        {
+         "team": "WSH",
+         "pts": 10,
+         "from": "1.1 4th Q",
+         "to": "3:20 OT",
+         "score": "DET 121-128 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "10:28 1st Q",
+         "to": "9:52 1st Q",
+         "score": "DET 5-11 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "8:25 2nd Q",
+         "to": "6:35 2nd Q",
+         "score": "DET 44-48 WSH"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "3:28 1st Q",
+         "to": "1:14 1st Q",
+         "score": "DET 30-32 WSH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 15,
+         "from": "3:51 1st Q",
+         "to": "8:43 2nd Q",
+         "mins": 7.1,
+         "from_score": "DET 22-32 WSH",
+         "to_score": "DET 44-39 WSH",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "WSH",
+         "swing": 13,
+         "from": "10:49 1st Q",
+         "to": "3:51 1st Q",
+         "mins": 7.0,
+         "from_score": "DET 5-2 WSH",
+         "to_score": "DET 22-32 WSH",
+         "pts_for": 30,
+         "pts_against": 17
+        }
+       ],
+       "clutch": [
+        "2:05 2OT: Alex Sarr makes 5-foot two point shot (DET 139-136 WSH)",
+        "1:50 2OT: Paul Reed makes free throw 1 of 2 (DET 140-136 WSH)",
+        "1:14 2OT: Bilal Coulibaly makes 2-foot dunk (Trae Young assists) (DET 140-138 WSH)",
+        "25.3 2OT: Cade Cunningham makes 12-foot fade away jump shot (DET 142-138 WSH)",
+        "15.7 2OT: Trae Young makes free throw 1 of 2 (DET 142-139 WSH)",
+        "15.7 2OT: Trae Young makes free throw 2 of 2 (DET 142-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 1 of 2 (DET 143-140 WSH)",
+        "11.4 2OT: Kevin Huerter makes free throw 2 of 2 (DET 144-140 WSH)"
+       ],
+       "leaders": [
+        "Cade Cunningham (DET): 52 pts, 5 reb, 11 ast, 3-5 3PT in 48 min",
+        "Ausar Thompson (DET): 17 pts, 11 reb, 11 ast, 0-1 3PT in 43 min",
+        "Trae Young (WSH): 37 pts, 2 reb, 14 ast, 4-8 3PT in 45 min",
+        "Anthony Davis (WSH): 30 pts, 15 reb, 4 ast, 0-1 3PT in 44 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 5,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 3,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 5,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 5,
+          "label": "OT",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 6,
+          "label": "OT",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "9:39 1st Q",
+         "4:33 3rd Q"
+        ],
+        "box": {
+         "id": "3908845",
+         "name": "John Collins",
+         "team": "DET",
+         "min": "25",
+         "pts": 10,
+         "reb": 4,
+         "ast": 0,
+         "3pt": "2-3",
+         "fg": "3-8",
+         "pf": "5",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 64-61 WSH, DET up 3.",
+        "The 4th quarter decided the most: WSH won it 31-27.",
+        "Largest leads: DET 11 (9:43 3rd Q), WSH 10 (3:51 1st Q). 38 lead changes, 18 ties.",
+        "Momentum swing: DET outscored them 22-7 in 7.1 minutes (3:51 1st Q to 8:43 2nd Q), moving it from DET 22-32 WSH to DET 44-39 WSH.",
+        "Momentum swing: WSH outscored them 30-17 in 7 minutes (10:49 1st Q to 3:51 1st Q), moving it from DET 5-2 WSH to DET 22-32 WSH.",
+        "WSH went on a 10-0 run (1.1 4th Q to 3:20 OT), making it DET 121-128 WSH.",
+        "WSH went on a 9-0 run (10:28 1st Q to 9:52 1st Q), making it DET 5-11 WSH.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "John Collins by period (REB+AST): Q1 1, Q2 0, Q3 1, Q4 2, OT 0, OT 0.",
+        "He never got past 8.5.",
+        "Foul trouble: 3 fouls by the end of Q1, which cuts minutes.",
+        "Threes made at: 9:39 1st Q, 4:33 3rd Q."
+       ],
+       "espn_id": "401909977",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909977"
+      }
+     ]
+    }
    },
    {
     "id": "8f0f4866",
@@ -11089,7 +12130,7 @@
       "book": "fanduel",
       "fair_p": 0.4449,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 4.36,
        "base": 4.35,
@@ -11120,6 +12161,22 @@
          "txt": "CHA games have -9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 101.0,
+       "away": 96.0
+      },
+      "actual": 7.0,
+      "box": {
+       "min": 35.0,
+       "pts": 30.0,
+       "reb": 1.0,
+       "ast": 7.0,
+       "tpm": 4.0,
+       "tpa": 8.0,
+       "fga": 20.0,
+       "fta": 2.0,
+       "tov": 2.0
       }
      }
     ],
@@ -11130,10 +12187,206 @@
     "note": "Proj 4.4 vs line 4.5 (norm 4.3, 32 min). Model 58% vs market 44%. CHA gives point guards +3% assists vs their norm (#13 toughest of 30) \u00b7 Players with his profile: +3% assists vs CHA (156 close comps) \u00b7 His history vs CHA: 8.0 assists/g in 2 games (+5%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-13T17:10:15Z",
+    "review": {
+     "headline": "LOST: 7 assists vs Under 4.5",
+     "final": "Charlotte Hornets 96 \u2013 Phoenix Suns 101",
+     "legs": [
+      {
+       "outcome": "Devin Booker Under",
+       "result": "loss",
+       "headline": "7 assists vs Under 4.5",
+       "final": "Charlotte Hornets 96 \u2013 Phoenix Suns 101",
+       "why": [
+        "Devin Booker finished with 7 assists against a line of 4.5: under missed by 2.5.",
+        "Minutes: played 35 vs 32.1 projected.",
+        "Box score: 7 ast, 2 TO.",
+        "Model projected 4.4 (4.3 norm \u00d7 1.00 matchup); actual was +2.6 off (+1.4 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (4.7) in a matchup the model rated soft.",
+        "Signal: CHA gives point guards +3% assists vs their norm (#13 toughest of 30)",
+        "Signal: Players with his profile: +3% assists vs CHA (156 close comps)",
+        "Signal: His history vs CHA: 8.0 assists/g in 2 games (+5%)",
+        "We priced it at 53% to hit vs 45% needed to break even at 2.24x (+19.4% expected edge).",
+        "Consensus fair probability when placed: 44% (no closing price captured)."
+       ],
+       "tags": [
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "PHX",
+        "away": "CHA"
+       },
+       "final": "CHA 96 \u2013 PHX 101",
+       "periods": {
+        "away": [
+         22,
+         28,
+         26,
+         20
+        ],
+        "home": [
+         28,
+         27,
+         17,
+         29
+        ]
+       },
+       "largest_lead": {
+        "CHA": 5,
+        "PHX": 17
+       },
+       "largest_lead_at": {
+        "CHA": "6:55 1st Q",
+        "PHX": "6:20 2nd Q"
+       },
+       "lead_changes": 18,
+       "ties": 6,
+       "runs": [
+        {
+         "team": "PHX",
+         "pts": 8,
+         "from": "4:12 1st Q",
+         "to": "2:59 1st Q",
+         "score": "CHA 18-25 PHX"
+        }
+       ],
+       "swings": [
+        {
+         "team": "CHA",
+         "swing": 16,
+         "from": "6:20 2nd Q",
+         "to": "11:02 3rd Q",
+         "mins": 7.3,
+         "from_score": "CHA 31-48 PHX",
+         "to_score": "CHA 54-55 PHX",
+         "pts_for": 23,
+         "pts_against": 7
+        },
+        {
+         "team": "PHX",
+         "swing": 14,
+         "from": "6:55 1st Q",
+         "to": "11:46 2nd Q",
+         "mins": 7.2,
+         "from_score": "CHA 15-10 PHX",
+         "to_score": "CHA 22-31 PHX",
+         "pts_for": 21,
+         "pts_against": 7
+        }
+       ],
+       "clutch": [
+        "23.8 4th Q: Devin Booker makes 28-foot three point step back jumpshot (CHA 91-97 PHX)",
+        "21.2 4th Q: Royce O'Neale makes 28-foot three point jumper (Sion James assists) (CHA 94-97 PHX)",
+        "21.2 4th Q: Royce O'Neale makes free throw 1 of 1 (CHA 95-97 PHX)",
+        "18.4 4th Q: Miles Bridges makes free throw 1 of 2 (CHA 95-98 PHX)",
+        "18.4 4th Q: Miles Bridges makes free throw 2 of 2 (CHA 95-99 PHX)",
+        "11.1 4th Q: Devin Booker makes free throw 1 of 2 (CHA 95-100 PHX)",
+        "11.1 4th Q: Devin Booker makes free throw 2 of 2 (CHA 95-101 PHX)",
+        "2.6 4th Q: Moussa Diabate makes free throw 1 of 2 (CHA 96-101 PHX)"
+       ],
+       "leaders": [
+        "Coby White (CHA): 21 pts, 3 reb, 3 ast, 2-7 3PT in 20 min",
+        "Naz Reid (CHA): 16 pts, 8 reb, 3 ast, 1-5 3PT in 34 min",
+        "Devin Booker (PHX): 30 pts, 1 reb, 7 ast, 4-8 3PT in 35 min",
+        "Dillon Brooks (PHX): 15 pts, 3 reb, 1 ast, 3-6 3PT in 30 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 13,
+          "reb": 1,
+          "ast": 4,
+          "tpm": 3,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 5
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 6,
+          "reb": 0,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 7,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 9,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 3
+         }
+        ],
+        "threes_at": [
+         "10:17 1st Q",
+         "4:12 1st Q",
+         "1:11 1st Q",
+         "23.8 4th Q"
+        ],
+        "box": {
+         "id": "3136193",
+         "name": "Devin Booker",
+         "team": "PHX",
+         "min": "35",
+         "pts": 30,
+         "reb": 1,
+         "ast": 7,
+         "3pt": "4-8",
+         "fg": "12-20",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: CHA 50-55 PHX, PHX up 5.",
+        "The 3rd quarter decided the most: CHA won it 26-17.",
+        "Largest leads: CHA 5 (6:55 1st Q), PHX 17 (6:20 2nd Q). 18 lead changes, 6 ties.",
+        "Momentum swing: CHA outscored them 23-7 in 7.3 minutes (6:20 2nd Q to 11:02 3rd Q), moving it from CHA 31-48 PHX to CHA 54-55 PHX.",
+        "Momentum swing: PHX outscored them 21-7 in 7.2 minutes (6:55 1st Q to 11:46 2nd Q), moving it from CHA 15-10 PHX to CHA 22-31 PHX.",
+        "PHX went on a 8-0 run (4:12 1st Q to 2:59 1st Q), making it CHA 18-25 PHX.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Devin Booker by period (AST): Q1 4, Q2 1, Q3 2, Q4 0.",
+        "He went over 4.5 in Q2.",
+        "Threes made at: 10:17 1st Q, 4:12 1st Q, 1:11 1st Q, 23.8 4th Q."
+       ],
+       "espn_id": "401909979",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909979"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -11150,7 +12403,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.236,
+  "prop_model_weight": 0.255,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -11316,16 +12569,16 @@
    }
   },
   "matchup_under": {
-   "bets": 23,
-   "staked": 115.0,
-   "profit": -0.6500000000000012,
+   "bets": 28,
+   "staked": 140.0,
+   "profit": -16.650000000000002,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 9,
+     "n": 10,
      "won": 8,
-     "lost": 1
+     "lost": 2
     },
     "dnp-void": {
      "n": 2,
@@ -11333,14 +12586,14 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 13,
+     "n": 16,
      "won": 6,
-     "lost": 7
+     "lost": 10
     },
     "matchup-read-wrong": {
-     "n": 6,
-     "won": 3,
-     "lost": 3
+     "n": 8,
+     "won": 4,
+     "lost": 4
     },
     "near-miss": {
      "n": 3,
@@ -11353,18 +12606,18 @@
      "lost": 2
     },
     "model-miss": {
-     "n": 9,
+     "n": 12,
      "won": 0,
-     "lost": 9
+     "lost": 12
     },
     "minutes-long": {
-     "n": 5,
+     "n": 8,
      "won": 0,
-     "lost": 5
+     "lost": 8
     },
     "model-beat": {
-     "n": 2,
-     "won": 2,
+     "n": 3,
+     "won": 3,
      "lost": 0
     },
     "minutes-short": {
@@ -11378,9 +12631,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 37.0,
-   "staked": 185.0,
-   "profit": -1.8499999999999952
+   "bets": 42.0,
+   "staked": 210.0,
+   "profit": -17.849999999999994
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -12924,6 +14177,46 @@
    "ts": "2026-11-13T17:00:41Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 13: 9 games, 214 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-13T17:10:15Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Cade Cunningham Under 8.5 @ -110 (BetMGM) \u2014 LOST: 11 assists vs Under 8.5 [matchup-read-right, minutes-long, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-13T17:10:15Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Alex Sarr Under 8.5 @ +105 (BetMGM) \u2014 LOST: 11 reb+ast vs Under 8.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-13T17:10:15Z",
+   "kind": "result",
+   "text": "LOST -$5.00: AJ Dybantsa Under 7.5 @ +108 (FanDuel) \u2014 LOST: 12 reb+ast vs Under 7.5 [matchup-read-wrong, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-13T17:10:15Z",
+   "kind": "result",
+   "text": "WON +$4.00: John Collins Under 8.5 @ -125 (FanDuel) \u2014 WON: 4 reb+ast vs Under 8.5 [matchup-read-wrong, model-beat]"
+  },
+  {
+   "ts": "2026-11-13T17:10:15Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Devin Booker Under 4.5 @ +124 (FanDuel) \u2014 LOST: 7 assists vs Under 4.5 [matchup-read-right, model-miss]"
+  },
+  {
+   "ts": "2026-11-13T17:13:10Z",
+   "kind": "adapt",
+   "text": "Model vs market on 4128 graded lines: the 30% model blend scored best (log loss model 0.703, market 0.688). Moving the model's weight from 24% to 26%."
+  },
+  {
+   "ts": "2026-11-13T17:13:10Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran +1.1% vs actual over 1462 player-games: level x0.885; REB projections ran +3.2% vs actual over 1462 player-games: level x0.906; AST projections ran +1.1% vs actual over 1462 player-games: level x0.900; TPM projections ran -2.6% vs actual over 1462 player-games: level x0.936; PRA projections ran +1.5% vs actual over 1462 player-games: level x0.897; RA projections ran +2.3% vs actual over 1462 player-games: level x0.911; starter minutes were off by +1.0 on average over 756 player-games: correction -0.8 min."
+  },
+  {
+   "ts": "2026-11-13T17:13:10Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $43.16 (run #1), 20-32-2, ROI -20.8%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -12975,24 +14268,29 @@
   "7cb2f86b",
   "ff1913de",
   "b69a692b",
-  "21c5a5b2"
+  "21c5a5b2",
+  "118497b2",
+  "ba16d508",
+  "263219b5",
+  "457614ce",
+  "8f0f4866"
  ],
  "strategist": null,
- "updated": "2026-11-13T17:01:17Z",
+ "updated": "2026-11-13T17:13:10Z",
  "stats": {
-  "bets": 49,
-  "won": 19,
-  "lost": 28,
+  "bets": 54,
+  "won": 20,
+  "lost": 32,
   "push": 2,
-  "staked": 247.63,
-  "profit": -40.84,
-  "roi": -0.1649,
+  "staked": 272.63,
+  "profit": -56.84,
+  "roi": -0.2085,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 34,
+  "clv_no_close": 39,
   "close_mins_median": 151,
-  "open": 5,
-  "equity": 59.16
+  "open": 0,
+  "equity": 43.16
  },
  "weights": {
   "value_fav": 0.842,
@@ -13001,7 +14299,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.417,
-  "matchup_under": 0.993
+  "matchup_under": 0.834
  },
  "paused": [],
  "dry_scans": 1
