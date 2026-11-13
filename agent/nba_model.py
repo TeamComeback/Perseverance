@@ -224,6 +224,50 @@ class Model:
         m = sum(w * r["min"] for w, r in zip(ws, rs))
         return sum(w * r[s] for w, r in zip(ws, rs)) / m if m else 0
 
+    # ---------------- schedule strength (display + tracking only until tests/backtest_schedule.py passes) ----------------
+    SOS_CAP = 0.08
+
+    def schedule(self, pid, s, opp, weights=None, n=40):
+        """How tough his recent opponents were for his position in this stat (1.00 = league average, below 1 = tougher),
+        weighted like his baseline (last 40 games, recent ones and minutes count more); tonight's opponent on the same
+        scale; and `adj`, the factor the projection would divide by if his baseline were first put on a neutral
+        schedule, using the same strength the model gives a matchup and capped at +-8%. Nothing here feeds project()."""
+        p = self.players[pid]
+        rs = self.by_player[pid][-n:]
+        ws = [r["sw"] * 0.96 ** i for i, r in enumerate(reversed(rs))][::-1]
+        tw = lw = 0.0
+        for w, r in zip(ws, rs):
+            f = self.dvp_tab.get((r["opp"], p["role"], s), (1.0, 0))[0]
+            tw += w * r["min"]
+            lw += w * r["min"] * math.log(f)
+        sched = math.exp(lw / tw) if tw else 1.0
+        tonight = self.dvp_tab.get((opp, p["role"], s), (1.0, 0))[0]
+        W = weights or {}
+        k = W.get("w_dvp", 0.45) * STAT_CAL[s] * W.get("matchup_strength", 1.0)
+        adj = max(1 - self.SOS_CAP, min(1 + self.SOS_CAP, sched ** k))
+        return {"sched": sched, "tonight": tonight, "k": k, "adj": adj, "n": len(rs), "rank": self.sched_rank(pid, s, sched)}
+
+    def sched_rank(self, pid, s, sched):
+        """Where his schedule sits among players at his position with 5+ games this season: (rank, of), 1 = toughest."""
+        role = self.players[pid]["role"]
+        key = (role, s)
+        if not hasattr(self, "_sched_tab"):
+            self._sched_tab = {}
+        if key not in self._sched_tab:
+            vals = []
+            for q, pl in self.players.items():
+                if pl["role"] != role or pl.get("cur_games", 0) < 5:
+                    continue
+                rs = self.by_player[q][-40:]
+                ws = [r["sw"] * 0.96 ** i for i, r in enumerate(reversed(rs))][::-1]
+                tw = sum(w * r["min"] for w, r in zip(ws, rs))
+                if tw:
+                    vals.append(math.exp(sum(w * r["min"] * math.log(self.dvp_tab.get((r["opp"], role, s), (1.0, 0))[0])
+                                             for w, r in zip(ws, rs)) / tw))
+            self._sched_tab[key] = sorted(vals)
+        vals = self._sched_tab[key]
+        return (min(len(vals), sum(1 for v in vals if v < sched - 1e-9) + 1), len(vals)) if vals else (0, 0)
+
     def project(self, pid, s, opp, home, weights, mins=None):
         p = self.players[pid]
         mins = self.minutes(pid) if mins is None else mins

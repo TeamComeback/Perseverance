@@ -178,6 +178,75 @@ function bestBetsSetup(pj, simlog) {
     }
   }
 
+  // ------------------------------------------------------------------ ranked board (ranked.json, ranked_log.json)
+  // Every priced line, not just the five picks: one side per player-stat (and per game line), conviction first, the
+  // raw sim win rate breaks ties. Prices shorter than -200 stay in the file but get no rank: they win often, so they
+  // would crowd the top and flatter the board's record. Each night's order is logged and graded, so we can check
+  // whether the top of the board actually beats the bottom.
+  const FLOOR_DEC = 1.5;   // -200
+  const RANK_BUCKETS = [[1, 10], [11, 30], [31, 1e9]];
+  function rankedBoard(date, updated) {
+    const prev = read("ranked.json", {}), LOG = read("ranked_log.json", {days: {}});
+    const better = (x, b) => !b || x.conv > b.conv || (x.conv === b.conv && x.p_sim > b.p_sim);
+    const bestOf = (list, keyF) => { const by = {}; for (const x of list) { const k = keyF(x); if (better(x, by[k])) by[k] = x; } return Object.values(by); };
+    const r3 = v => v == null ? null : Math.round(v * 1000) / 1000;
+    const slim = x => ({k: x.kind === "prop" ? x.pid + "|" + x.stat : "g|" + x.espn_id + "|" + x.kind, kind: x.kind, espn_id: x.espn_id,
+      ...(x.kind === "prop" ? {pid: x.pid, name: x.name, team: x.team, opp: x.opp, stat: x.stat, sim: x.sim, ob_ind: x.ob_ind} : {game: x.game, team: x.team || null}),
+      side: x.side, point: x.point, dec: x.dec, am: x.am, conv: x.conv, tier: x.tier, p: r3(x.p), p_sim: r3(x.p_sim), p_mkt: r3(x.p_mkt), p_kalshi: r3(x.p_kalshi), ev: r3(x.ev)});
+    const tipped = id => { const g = startOf[id]; return g && g.state !== "pre"; };
+    const build = (list, keyF, old) => {
+      const rows = bestOf(list.filter(x => !tipped(x.espn_id)), keyF).map(slim), have = new Set(rows.map(r => r.k));
+      if (prev.date === date) for (const r of old || []) if (tipped(r.espn_id) && !have.has(r.k)) rows.push(r);   // tipped games keep their last rank
+      rows.sort((a, b) => (b.conv - a.conv) || (b.p_sim - a.p_sim));
+      let i = 0; rows.forEach(r => { r.rank = r.dec >= FLOOR_DEC ? ++i : null; });
+      return rows;
+    };
+    const props = build(cands.props, x => x.pid + "|" + x.stat, prev.props), games = build(cands.games, x => x.espn_id + "|" + x.kind, prev.games);
+    // the night's order, for grading: [side, point, dec, conv, p_sim, p, rank, result]
+    const today = {};
+    for (const r of [...props, ...games]) today[r.k] = [r.side, r.point, r.dec, r.conv, r.p_sim, r.p, r.rank, null];
+    LOG.days[date] = today;
+    for (const [d, rows] of Object.entries(LOG.days)) {
+      if (d >= date) continue;
+      let dk = null;
+      for (const [k, row] of Object.entries(rows)) {
+        if (row[7]) continue;
+        dk = dk || read(`dk/${d}.json`, {props: {}, games: {}});
+        let diff = null;
+        if (k.startsWith("g|")) {
+          const [, gid, kind] = k.split("|"), g = (dk.games || {})[gid]; if (!g || !g.final) continue;
+          const [h, a] = g.final;
+          diff = kind === "total" ? (row[0] === "Over" ? h + a - row[1] : row[1] - h - a) : (row[0] === "home" ? h + row[1] - a : a + row[1] - h);
+        } else {
+          const r = (dk.props || {})[k]; if (!r) continue;
+          if (r.res === "void") { row[7] = "v"; continue; }
+          if (r.actual == null) continue;
+          diff = row[0] === "Over" ? r.actual - row[1] : row[1] - r.actual;
+        }
+        row[7] = diff > 0 ? "w" : diff < 0 ? "l" : "p";
+      }
+    }
+    LOG.days = Object.fromEntries(Object.keys(LOG.days).sort().slice(-45).map(d => [d, LOG.days[d]]));
+    fs.writeFileSync(path.join(DATA, "ranked_log.json"), JSON.stringify(LOG));
+    // how each slice of the board has done: wins, losses, units at 1u flat
+    const perf = {props: {}, games: {}, days: 0, from: null, unranked: {w: 0, l: 0}};
+    for (const [lo, hi] of RANK_BUCKETS) for (const k of ["props", "games"]) perf[k][hi > 1e8 ? `${lo}+` : `${lo}-${hi}`] = {w: 0, l: 0, u: 0};
+    for (const [d, rows] of Object.entries(LOG.days)) {
+      let any = false;
+      for (const [k, row] of Object.entries(rows)) {
+        if (row[7] !== "w" && row[7] !== "l") continue;
+        any = true;
+        if (row[6] == null) { perf.unranked[row[7]]++; continue; }
+        const [lo, hi] = RANK_BUCKETS.find(([a, b]) => row[6] >= a && row[6] <= b);
+        const s = perf[k.startsWith("g|") ? "games" : "props"][hi > 1e8 ? `${lo}+` : `${lo}-${hi}`];
+        s[row[7]]++; s.u = Math.round((s.u + (row[7] === "w" ? row[2] - 1 : -1)) * 100) / 100;
+      }
+      if (any) { perf.days++; perf.from = perf.from && perf.from < d ? perf.from : d; }
+    }
+    fs.writeFileSync(path.join(DATA, "ranked.json"), JSON.stringify({date, updated, floor_am: -200, props, games, perf}));
+    console.log(`[ranked] ${props.filter(r => r.rank).length} props + ${games.filter(r => r.rank).length} game lines ranked (${props.filter(r => !r.rank).length + games.filter(r => !r.rank).length} shorter than -200 left unranked)`);
+  }
+
   function gradeDay(date, day) {
     const dk = read(`dk/${date}.json`, null); if (!dk) return;
     for (const b of [...(day.props || []), ...(day.games || []), ...(day.dropped || [])]) {
@@ -269,6 +338,7 @@ function bestBetsSetup(pj, simlog) {
       for (const t of row[6]) { (pat.tags[t] = pat.tags[t] || {f: [0, 0], a: [0, 0]}).a[win]++; }
     }
     BEST.patterns = pat;
+    try { rankedBoard(date, day.updated); } catch (e) { console.log("[ranked] failed: " + e.message); }
     BEST.record = rec; BEST.updated = day.updated; BEST.date = date;
     fs.writeFileSync(path.join(DATA, "best.json"), JSON.stringify(BEST));
     console.log(`[best] ${day.props.length} props + ${day.games.length} game lines (${[...day.props, ...day.games].filter(x => x.plus).length} priced +EV); weights: props ${JSON.stringify(learned.w_props)}, games ${learned.w_game}, total bias ${learned.total_bias}`);

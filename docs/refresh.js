@@ -135,6 +135,15 @@ async function reprice(onStep) {
   };
   const out = {at: new Date().toISOString(), date, base: day.updated, props: pick(cands.props, day.props || [], 5, 2, true), games: pick(cands.games, day.games || [], 5, 1, false), learned: L};
   out.changes = diff(day, out, cands);
+  // the full ranked board, same rules as the agent's ranked.json (tools/sim_all.js): one side per line, conviction
+  // first, sim win rate breaks ties, nothing shorter than -200 gets a rank. Rows the phone didn't build a full case for
+  // carry the quick conviction (sim blended with the price), so they can sit a few points off the agent's.
+  const bestOf = (list, keyF) => { const by = {}; for (const x of list) { const k = keyF(x), b = by[k]; if (!b || x.conv > b.conv || (x.conv === b.conv && x.p_sim > b.p_sim)) by[k] = x; } return Object.values(by); };
+  const slim = x => ({k: x.kind === "prop" ? x.pid + "|" + x.stat : "g|" + x.espn_id + "|" + x.kind, kind: x.kind, espn_id: x.espn_id,
+    ...(x.kind === "prop" ? {pid: x.pid, name: x.name, team: x.team, opp: x.opp, stat: x.stat, sim: x.sim} : {game: x.game, team: x.team || null}),
+    side: x.side, point: x.point, dec: x.dec, am: x.am, conv: x.conv, tier: x.tier, p: x.p, p_sim: x.p_sim, p_mkt: x.p_mkt, p_kalshi: x.p_kalshi != null ? r3(x.p_kalshi) : null, ev: x.ev, quick: x.p_conv == null && x.kind === "prop" ? 1 : undefined});
+  const rankB = rows => { rows.sort((a, b) => (b.conv - a.conv) || (b.p_sim - a.p_sim)); let i = 0; rows.forEach(r => { r.rank = r.dec >= 1.5 ? ++i : null; }); return rows; };
+  out.board = {props: rankB(bestOf(cands.props, x => x.pid + "|" + x.stat).map(slim)), games: rankB(bestOf(cands.games, x => x.espn_id + "|" + x.kind).map(slim))};
   // every prop line DraftKings had just now, so the Players tab and player cards show today's numbers too
   try { localStorage.setItem("pz-dklive", JSON.stringify({date, at: out.at, props: allProps})); } catch (e) {}
   try { localStorage.setItem("pz-bestlocal", JSON.stringify(out)); } catch (e) {}

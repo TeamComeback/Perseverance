@@ -510,13 +510,21 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 #v-book .row2{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:4px 0;border-top:1px solid var(--line)}#v-book .row2 span:first-child{color:var(--dim)}#v-book .row2 b{color:var(--text)}
 .pbar{height:3px;background:var(--line);border-radius:2px;margin-top:3px;min-width:50px}.pbar i{display:block;height:100%;background:var(--gold, #d6b34a);border-radius:2px}
 .cr .ol{color:var(--dim)}.cr .rt{max-width:64vw}.cr .rt .b{white-space:normal}
+.hdr-r{display:flex;align-items:center;gap:8px}.hsearch{background:var(--panel2);border:1px solid var(--line);border-radius:10px;width:34px;height:30px;display:grid;place-items:center;cursor:pointer;padding:0}
+.hsearch svg{width:16px;height:16px;fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round}
+.sbox{position:relative}.sbox .search{padding-right:38px}.sbox .sx{position:absolute;right:6px;top:5px;background:none;border:0;color:var(--dim);font-size:22px;line-height:1;width:30px;height:30px;cursor:pointer}
+.sblock{margin-bottom:10px}.sblock .sbh{padding-bottom:6px}.srow .rt .a{font-size:15px}
+.cr.rbrow .rk{margin-right:6px}.cr.rbrow.sub{padding-left:14px}.cr.rbrow.sub .rk{color:var(--dim2)}
+details.rbmore>summary{font-size:12px;color:var(--dim);padding:4px 0 8px 22px;cursor:pointer;list-style:none}details.rbmore>summary::-webkit-details-marker{display:none}
+.chips .sep{flex:0 0 1px;background:var(--line);margin:4px 2px}
+.sched{border-top:1px solid var(--line);margin-top:8px}.sched .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="brand"><div class="dot"></div><h1>PERSEVERANCE</h1></div>
-    <span class="tag" id="updated">loading…</span>
+    <div class="hdr-r"><button class="hsearch" id="hsearch" aria-label="Search players"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button><span class="tag" id="updated">loading…</span></div>
   </header>
   <div id="fbar" class="fbar"></div>
   <section class="view" id="v-today"></section>
@@ -1038,7 +1046,7 @@ function propRows() {
       if (base < (s === "tpm" ? 0.6 : 1.5)) continue;
       const row = {pid: p.pid, name: p.name, team: p.team, opp: p.opp, home: p.home, role: p.role, start: p.start, minutes: p.minutes,
         status: p.status, starter: p.starter, lineup: p.lineup, stat: s, proj, base, mult, sd, lean: mult > 1 ? "Over" : "Under",
-        espn_id: p.game, state: p.state, strength: Math.abs(Math.log(mult)), dvp: p.dvp[s], cv: (p.cv || {})[s], b2b: p.b2b};
+        espn_id: p.game, state: p.state, strength: Math.abs(Math.log(mult)), dvp: p.dvp[s], cv: (p.cv || {})[s], b2b: p.b2b, sos: p.sos};
       const sp = spots[p.pid + "|" + s]; if (sp) row.signals = sp.signals;
       Object.assign(row, priced[p.pid + "|" + s] || {});
       if (row.line == null) dkFill(row);
@@ -1113,6 +1121,7 @@ function cRow(x) {
       <div class="gm">${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} · ${x.state === "in" ? '<span class="neg">live</span>' : tod(x.start)} · ${x.minutes.toFixed(0)} min</div></div>
     <div class="rt">${rt}</div>${olHtml}
     <div class="why"><span class="gold">${rating(x).n}/5</span>${focusOf(x.stat) === "edge" ? ' · <span class="pos">model-edge stat</span>' : focusOf(x.stat) === "skip" ? ' · <span class="neg">market wins this stat</span>' : ""} · ${esc(rating(x).why.join(" · "))}</div>
+    ${schedNote(x) ? `<div class="why ol">${esc(schedNote(x))}</div>` : ""}
     <div class="why">${esc(why)}${x.more ? ` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
 }
 // plays in stats where the model has beaten the market rank first; stats the market wins sink (see focusMap)
@@ -1384,6 +1393,7 @@ function renderToday() {
   $("v-today").innerHTML = `${statusStrip()}
     ${changesHtml()}
     ${bestHtml()}
+    ${boardHtml()}
     ${liveNowHtml()}
     ${watchHtml()}
     ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), true)
@@ -1395,7 +1405,7 @@ function renderToday() {
     ${sec("t-slate", "Tonight's games", games.length + " games", games.length ? `<div class="games">${gameHtml}</div>` : '<div class="empty">No NBA games on the slate.</div>', false)}`;
   $("v-today").querySelectorAll(".gcard, [data-game]").forEach(el => el.onclick = () => openGame(el.dataset.game));
   const sa = $("seenAll"); if (sa) sa.onclick = () => { D._seen = snapNow(); store.set("seen", D._seen); renderToday(); };
-  bindPlayerLinks($("v-today")); bindBest($("v-today"));
+  bindPlayerLinks($("v-today")); bindBest($("v-today")); bindBoard($("v-today"));
 }
 // ------------------------------------------------------------------ best bets of the day (tools/sim_all.js -> best.json)
 // The case for and against a play (docs/case.js builds it): strongest points first, then the hit-rate ladder.
@@ -1531,6 +1541,143 @@ function bindBest(root) {
       leg: {sport: "basketball_nba", espn_id: x.espn_id, commence: x.start, home, away, market: kind === "total" ? "totals" : "spreads", outcome, point: x.point}});
   });
 }
+// ------------------------------------------------------------------ ranked board (tools/sim_all.js -> ranked.json; phone re-price -> pz-bestlocal.board)
+// Every priced line at the current DraftKings price, top to bottom: conviction first, the raw sim win rate breaks ties.
+// The raw sim rate runs hot, so the blended rate (sim + price, what conviction is built on) sits beside it, with the
+// break-even rate for the price. Lines shorter than -200 get no rank: they win often and would bury the board.
+function rankBoard() {
+  const date = (D.players || {}).date, agent = D.rank && D.rank.date === date ? D.rank : null;
+  const day = ((D.best || {}).days || {})[date];
+  let loc = null; try { loc = JSON.parse(localStorage.getItem("pz-bestlocal") || "null"); } catch (e) {}
+  const useLocal = loc && loc.board && loc.date === date && (!day || loc.base === day.updated) && store.get("bestview", "local") === "local";
+  if (!useLocal) return agent ? {props: agent.props || [], games: agent.games || [], at: agent.updated, local: false, perf: agent.perf} : null;
+  // the phone only re-prices games still to tip; the agent's rows cover the rest
+  const live = new Set([...loc.board.props, ...loc.board.games].map(r => r.espn_id));
+  const rest = k => ((agent || {})[k] || []).filter(r => !live.has(r.espn_id)).map(r => ({...r, rank: null, old: 1}));
+  return {props: loc.board.props.concat(rest("props")), games: loc.board.games.concat(rest("games")), at: loc.at, local: true, perf: agent && agent.perf};
+}
+function boardMap() { const b = rankBoard(), m = {}; if (b) b.props.forEach(r => m[r.k] = r); return m; }
+const BF0 = {kind: "props", tier: "all", side: "", stat: "", n: 15};
+function boardHtml() {
+  const B = rankBoard(); if (!B || !(B.props.length + B.games.length)) return "";
+  const F = Object.assign({}, BF0, store.get("bf", {}), {n: (D._bfn || 15)});
+  const gOf = id => ((D.players && D.players.games) || []).find(g => g.espn_id === id);
+  const pre = r => { const g = gOf(r.espn_id); return g ? g.state === "pre" && new Date(g.start) > Date.now() : false; };
+  const all = (F.kind === "games" ? B.games : B.props);
+  const short = all.filter(r => pre(r) && r.rank == null && !r.old).length;
+  const rows = all.filter(r => pre(r) && r.rank != null
+    && (F.tier === "all" || (F.tier === "Confident" ? r.tier === "Confident" : r.tier !== "Pass"))
+    && (!F.side || (F.kind === "props" ? r.side === F.side : true))
+    && (!F.stat || F.kind !== "props" || r.stat === F.stat));
+  // one group per player: his best line leads, his other lines sit under it
+  const groups = [];
+  if (F.kind === "props") { const at = {}; for (const r of rows) { if (at[r.pid] == null) { at[r.pid] = groups.length; groups.push([r]); } else groups[at[r.pid]].push(r); } }
+  else rows.forEach(r => groups.push([r]));
+  const live = dkLiveProps();
+  const line = r => {
+    if (r.kind === "prop") return `${r.side.toUpperCase()} ${f1(r.point)} ${STATN[r.stat]}`;
+    const g = gOf(r.espn_id); if (r.kind === "total") return `${r.side.toUpperCase()} ${f1(r.point)}`;
+    const t = r.side === "home" ? (g ? g.home : "Home") : (g ? g.away : "Away"); return `${esc(t)} ${r.point > 0 ? "+" : ""}${f1(r.point)}`;
+  };
+  const nums = r => {
+    const ol = r.kind === "prop" ? ourProp(r.espn_id, r.pid, r.stat) : null, lv = r.kind === "prop" && live && !B.local ? live.props[r.k] : null;
+    return `<div class="bbn"><span>sim <b>${Math.round(r.p_sim * 100)}%</b></span><span>blended <b>${Math.round(r.p * 100)}%</b></span><span>${gl("Need", "needs")} ${Math.round(100 / r.dec)}%</span><span>DK ${Math.round(r.p_mkt * 100)}%</span>${r.p_kalshi != null ? `<span>Kalshi ${Math.round(r.p_kalshi * 100)}%</span>` : ""}${ol ? `<span>our line ${f1(ol.line)}</span>` : ""}${r.ev > 0 ? `<span class="gold">${pct(r.ev, 0)} EV</span>` : ""}${lv && lv[0] !== r.point ? `<span class="neg">line now ${f1(lv[0])}: re-price</span>` : ""}${r.quick ? '<span class="dim">quick conviction</span>' : ""}</div>`;
+  };
+  const one = (r, sub_) => {
+    const g = gOf(r.espn_id), who = r.kind === "prop" ? esc(r.name) : g ? `${esc(g.away)} @ ${esc(g.home)}` : "";
+    const attrs = r.kind === "prop" ? `data-pid="${r.pid}" data-stat="${r.stat}"` : `data-bgame="${r.espn_id}"`;
+    return `<div class="cr bb rbrow${sub_ ? " sub" : ""}" ${attrs}><div><span class="rk">${r.rank}</span>${sub_ ? `<span class="dim">${STATL[r.stat]}</span>` : `<span class="nm">${who}</span>`}${r.kind === "prop" && !sub_ ? `<span class="lean ${r.side}">${r.side.toUpperCase()}</span>` : ""}${cvBadge(r)}
+        ${sub_ ? "" : `<div class="gm">${r.kind === "prop" ? `${esc(r.team)} vs ${esc(r.opp)} · ` : r.kind === "spread" ? "Spread · " : "Total · "}${g ? tod(g.start) : ""}</div>`}</div>
+      <div class="rt"><div class="a">${line(r)}</div><div class="b">${amS(r.am)} DK</div></div>${nums(r)}</div>`;
+  };
+  const shown = groups.slice(0, F.n);
+  const body = shown.map(gp => one(gp[0]) + (gp.length > 1 ? `<details class="rbmore"><summary>+${gp.length - 1} more for ${esc(gp[0].name)}</summary>${gp.slice(1).map(r => one(r, true)).join("")}</details>` : "")).join("");
+  const P = B.perf, rec = x => x && x.w + x.l ? `${x.w}-${x.l} (${x.u >= 0 ? "+" : ""}${x.u.toFixed(1)}u)` : "–";
+  const perfLine = P && P.days ? `<div class="desc" style="margin-top:6px"><b>Record by rank</b> (${P.days} night${P.days > 1 ? "s" : ""} since ${md(P.from)}, every ranked line at 1 unit): ${Object.entries(P[F.kind]).map(([k, v]) => `#${k} ${rec(v)}`).join(" · ")}. If the top doesn't beat the bottom over a few weeks, the ranking isn't working.</div>`
+    : `<div class="desc" style="margin-top:6px">Each night's order is saved and graded. A record by rank (#1–10, #11–30, #31+) appears here after the first night is graded.</div>`;
+  const chip = (k, v, l) => `<button data-bf="${k}|${v}" class="${String(F[k]) === String(v) ? "on" : ""}">${l}</button>`;
+  const ctl = `<div class="chips">${chip("kind", "props", "Props")}${chip("kind", "games", "Game lines")}<span class="sep"></span>${chip("tier", "all", "All")}${chip("tier", "Consider", "Consider +")}${chip("tier", "Confident", "Confident")}</div>
+    ${F.kind === "props" ? `<div class="chips">${chip("side", "", "Both sides")}${chip("side", "Over", "Overs")}${chip("side", "Under", "Unders")}<span class="sep"></span>${chip("stat", "", "All stats")}${ALL_STATS.map(k => chip("stat", k, STATN[k])).join("")}</div>` : ""}`;
+  const meta = `${rows.length} line${rows.length === 1 ? "" : "s"} · ${B.local ? "re-priced " : ""}${ago(B.at)}`;
+  return sec("t-board", "Every priced line, ranked", meta, `<div id="rboard">${ctl}
+    <div class="desc">Conviction first; the sim's raw win rate breaks ties. The raw sim rate runs high, so the blended rate (sim plus DraftKings' price, which conviction is built on) and the break-even rate are beside it.${short ? ` ${short} line${short > 1 ? "s" : ""} shorter than −200 hidden: they hit often and would crowd the top.` : ""}${F.kind === "props" ? " One block per player: his best line, then his others." : ""}</div>
+    ${body || '<div class="empty">Nothing matches these filters.</div>'}
+    ${groups.length > F.n ? `<button class="more" id="rbMore">Show ${Math.min(25, groups.length - F.n)} more (${groups.length - F.n} left)</button>` : ""}
+    ${perfLine}</div>`, true);
+}
+function bindBoard(root) {
+  const el = root.querySelector("#rboard"); if (!el) return;
+  el.querySelectorAll("[data-bf]").forEach(b => b.onclick = e => { e.stopPropagation(); const [k, v] = b.dataset.bf.split("|"), f = Object.assign({}, BF0, store.get("bf", {}));
+    f[k] = v; if (k === "kind") { f.stat = ""; f.side = ""; } store.set("bf", f); D._bfn = 15; renderToday(); });
+  const m = el.querySelector("#rbMore"); if (m) m.onclick = e => { e.stopPropagation(); D._bfn = (D._bfn || 15) + 25; renderToday(); };
+  el.querySelectorAll("[data-bgame]").forEach(r => r.onclick = () => window.openGame && openGame(r.dataset.bgame));
+  el.querySelectorAll("details.rbmore").forEach(d => d.onclick = e => e.stopPropagation());
+}
+
+// ------------------------------------------------------------------ player search (Players tab)
+// Two or more letters switch the tab to search: every filter is paused and each matching player gets a block with
+// every stat he has tonight, priced or not. Accents and one-letter typos are forgiven; a team code lists the roster.
+const fold = x => String(x || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[.'’\-]/g, "").replace(/\s+/g, " ").trim();
+function near1(a, b) {                       // edit distance at most 1
+  if (a === b) return true; if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, e = 0;
+  while (i < a.length && j < b.length) { if (a[i] === b[j]) { i++; j++; continue; } if (++e > 1) return false; if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; } }
+  return e + (a.length - i) + (b.length - j) <= 1;
+}
+function nameScore(name, q) {               // 3 = every word starts a name word, 1 = with a typo, 0 = no match
+  const nt = fold(name).split(" "), qt = fold(q).split(" ").filter(Boolean); if (!qt.length) return 0;
+  let sc = 3;
+  for (const t of qt) {
+    if (nt.some(n => n.startsWith(t))) continue;
+    if (t.length >= 4 && nt.some(n => near1(n, t) || near1(n.slice(0, t.length), t))) { sc = 1; continue; }
+    if (t.length >= 3 && fold(name).replace(/ /g, "").includes(t)) { sc = Math.min(sc, 2); continue; }
+    return 0;
+  }
+  return sc;
+}
+const idx_name = pid => (((D.players || {}).players || {})[pid] || {}).name || "";
+function dkPair(pid, stat) {                 // [line, over dec, under dec] at DraftKings now (phone re-price beats the agent's copy)
+  const live = dkLiveProps(), k = pid + "|" + stat, saved = D.dkday && D.dkday.date === D.players.date ? (D.dkday.props || {})[k] : null;
+  const savedAt = D.dkday && D.dkday.updated ? new Date(D.dkday.updated) : null;
+  if (live && live.props[k] && (!savedAt || new Date(live.at) >= savedAt)) return live.props[k];
+  return saved && saved.c && saved.c[0] != null && saved.c[1] && saved.c[2] ? saved.c : null;
+}
+function searchHtml(q) {
+  const idx = (D.players && D.players.players) || {}, games = (D.players && D.players.games) || [];
+  const Q = q.trim(), up = Q.toUpperCase();
+  const teamHit = games.some(g => g.home === up || g.away === up) ? up
+    : (games.flatMap(g => [[g.home, g.home_name], [g.away, g.away_name]]).find(([, n]) => n && fold(n).split(" ").some(w => w.startsWith(fold(Q)) && fold(Q).length >= 4)) || [])[0];
+  let hits = Object.values(idx).map(p => [nameScore(p.name, Q), p]).filter(x => x[0] > 0).sort((a, b) => b[0] - a[0] || b[1].minutes - a[1].minutes);
+  if (hits.some(x => x[0] === 3)) hits = hits.filter(x => x[0] === 3);
+  const note = `<div class="desc" style="margin:2px 2px 8px">Searching tonight's slate. Filters are paused while you search; clear the box to get them back.</div>`;
+  if (!hits.length && teamHit) {
+    const roster = Object.values(idx).filter(p => p.team === teamHit).sort((a, b) => b.minutes - a.minutes);
+    return note + `<div class="card" style="padding:2px 12px"><div class="lbl">${esc(teamHit)} · ${roster.length} players</div>${roster.map(p => `<div class="cr srow" data-sp="${p.pid}"><div><span class="nm">${esc(p.name)}</span>${statusBadge(p)}<div class="gm">${esc(p.team)} ${p.home ? "vs" : "@"} ${esc(p.opp)} · ${p.minutes.toFixed(0)} min</div></div><div class="rt"><div class="b">tap for every prop</div></div></div>`).join("")}</div>`;
+  }
+  if (!hits.length) return note + `<div class="card"><div class="empty">No one on tonight's slate matches “${esc(Q)}”. Only players in tonight's games are in today's data, so a player who isn't playing won't show.</div></div>`;
+  const bm = boardMap(), more = hits.length > 5 ? `<div class="desc">${hits.length - 5} more match; keep typing to narrow it.</div>` : "";
+  return note + hits.slice(0, 5).map(([, p]) => playerBlock(p, bm)).join("") + more;
+}
+function playerBlock(p, bm) {
+  const g = ((D.players && D.players.games) || []).find(x => x.espn_id === p.game) || {};
+  const st = g.state === "in" ? '<span class="pill live">LIVE</span>' : g.state === "post" ? '<span class="pill fin">FINAL</span>' : "";
+  const rows = ALL_STATS.filter(s => p.proj[s]).map(s => {
+    const [proj, , mult, sd] = p.proj[s], c = dkPair(p.pid, s), b = bm[p.pid + "|" + s], ol = ourProp(p.game, p.pid, s);
+    const lean = mult >= 1 ? "Over" : "Under";
+    let read_;
+    if (b && c && b.point === c[0]) read_ = `<b class="${b.side === "Over" ? "pos" : "neg"}">${b.side}</b> · sim ${Math.round(b.p_sim * 100)}% · blended ${Math.round(b.p * 100)}% · ${b.conv} ${b.tier}${b.rank ? ` · #${b.rank}` : " · shorter than −200"}`;
+    else if (c) { const mp = modelP(proj, sd, c[0], lean); read_ = `<b class="${lean === "Over" ? "pos" : "neg"}">${lean}</b>${mp != null ? ` · model ${Math.round(mp * 100)}%` : ""} · not simmed at this line`; }
+    else read_ = `leans <b class="${lean === "Over" ? "pos" : "neg"}">${lean.toLowerCase()}</b> · no line yet`;
+    return `<div class="cr srow" data-pid="${p.pid}" data-stat="${s}"><div><span class="nm" style="font-weight:600">${STATL[s]}</span><div class="gm">proj ${f1(proj)}${ol ? ` · our line ${f1(ol.line)}` : ""}</div></div>
+      <div class="rt"><div class="a">${c ? f1(c[0]) : "–"}</div><div class="b">${c ? `o ${amS(Math.round(c[1] >= 2 ? (c[1] - 1) * 100 : -100 / (c[1] - 1)))} / u ${amS(Math.round(c[2] >= 2 ? (c[2] - 1) * 100 : -100 / (c[2] - 1)))}` : "DraftKings"}</div></div>
+      <div class="why" style="white-space:normal">${read_}</div></div>`;
+  }).join("");
+  return `<div class="card sblock" style="padding:8px 12px 4px"><div class="sbh"><span class="nm" style="font-size:16px;font-weight:800">${esc(p.name)}</span> ${statusBadge(p)} ${st}
+      <div class="gm">${esc(p.team)} ${p.home ? "vs" : "@"} ${esc(p.opp)} · ${tod(p.start)} · ${p.minutes.toFixed(0)} min${p.starter ? " · starter" : ""}${p.out ? ' · <span class="neg">out tonight</span>' : ""}</div></div>
+    ${rows || '<div class="empty">No projections for him tonight.</div>'}
+    <div class="desc" style="margin:6px 0 4px">Tap a stat for his card: hit rates, alternate lines, the full case.</div></div>`;
+}
+
 // ------------------------------------------------------------------ command hero: next run, bankrolls, slate, model focus
 const SCHED = [[9, 10, "Grading + strategist"], [13, 41, "Morning refresh"], [15, 5, "Odds scan"], [19, 5, "NBA props"], [20, 5, "Odds scan"],
   [20, 47, "Lineup refresh"], [23, 13, "Pre-game refresh"], [23, 35, "Odds scan"], [1, 43, "Late refresh"]];      // UTC, from the workflow
@@ -1638,6 +1785,15 @@ function renderProps() {
   const pricedRows = rows.filter(r => r.line != null);
   if (!F.tab) F.tab = pricedRows.length ? "priced" : "research";
   const q = F.q.trim().toLowerCase();
+  if (q.length >= 2) {                          // search mode: every filter paused, every prop for the players found
+    $("v-props").innerHTML = `<div class="sbox"><input class="search" id="pq" placeholder="Search a player or team (e.g. BOS)" value="${esc(F.q)}"><button class="sx" id="pqx" aria-label="Clear">×</button></div>${searchHtml(F.q)}`;
+    const rer_ = () => renderProps();
+    $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer_(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
+    $("pqx").onclick = () => { F.q = ""; rer_(); };
+    $("v-props").querySelectorAll("[data-sp]").forEach(el => el.onclick = () => { F.q = idx_name(el.dataset.sp); rer_(); window.scrollTo(0, 0); });
+    bindPlayerLinks($("v-props"));
+    return;
+  }
   const base = (F.tab === "priced" ? pricedRows : rows).filter(r => (F.game === "all" || r.espn_id === F.game)
     && (F.stat === "all" ? (F.tab === "priced" || PROP_STATS.includes(r.stat)) : r.stat === F.stat)
     && (F.lean === "all" || r.lean === F.lean)
@@ -1884,6 +2040,7 @@ function renderCard() {
     <div class="card" style="padding:10px">
       <div class="row" style="margin:0 0 6px"><span>${L.length} games</span><span>Hit <b class="num">${hr(L, pc)}</b> ${hrPct(L, pc)}</span><span>Avg <b class="num">${f1(avg)}</b></span><span>Median <b class="num">${f1(med)}</b></span></div>
       <div class="bars">${barChart(L, pc)}</div>
+      ${schedHtml(L, pc)}
     </div>
     <div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap">
       <button class="btn" id="saveprop" style="border:0">★ Save this prop</button>
@@ -1949,6 +2106,30 @@ function logTable(L, pc, withSeason) {
       return `<tr><td class="t">${md(r[0])}${withSeason ? ` <span class="dim">${seasonLbl(r[12])}</span>` : ""}</td><td class="t">${r[2] ? "vs" : "@"} ${esc(r[1])}</td><td>${r[3]}</td><td>${f1(r[4])}</td><td>${f1(r[5])}</td><td>${f1(r[6])}</td><td>${f1(r[7])}-${f1(r[8])}</td>
         <td class="${h ? "h" : "m"}"><b>${f1(v)}</b></td><td class="dim">${r[13] > r[14] ? "W" : "L"} ${f1(r[13])}-${f1(r[14])}</td></tr>`; }).join("")}</table></div>`;
 }
+// Schedule-adjusted numbers (display only; agent/nba_model.py schedule(), tests/backtest_schedule.py, sos_track.json).
+// Each past game is put on a neutral schedule: what he did ÷ how that opponent treats his position in this stat
+// (dvp.json, 1.00 = league average). "Tonight vs his schedule" compares tonight's opponent with the ones in these games.
+function dvpF(team, role, s) { const t = D.dvp && D.dvp.tab && D.dvp.tab[team]; const v = t && t[role] && t[role][s]; return v ? v[0] : 1; }
+function schedHtml(L, pc) {
+  const p = pc.p, s = pc.stat; if (!L.length || !D.dvp || !D.dvp.tab) return "";
+  const fs = L.map(r => dvpF(r[1], p.role, s)), adj = L.map((r, i) => SV[s](r) / fs[i]);
+  const sched = Math.exp(fs.reduce((t, f) => t + Math.log(f), 0) / fs.length), tonight = dvpF(p.opp, p.role, s), rel = tonight / sched - 1;
+  const raw = L.reduce((t, r) => t + SV[s](r), 0) / L.length, aAvg = adj.reduce((a, b) => a + b, 0) / adj.length;
+  const aHit = adj.filter(v => pc.side === "Over" ? v > pc.line : v < pc.line).length;
+  const so = (p.sos || {})[s], role = esc(p.pos || p.role), st = STATL[s].toLowerCase();
+  const easy = rel >= 0.03 ? `<b class="pos">${Math.round(rel * 100)}% easier</b>` : rel <= -0.03 ? `<b class="neg">${Math.round(-rel * 100)}% tougher</b>` : "<b>about the same</b>";
+  return `<div class="sched"><div class="row" style="margin:8px 0 4px"><span class="k">Schedule-adjusted</span><span>Avg <b class="num">${f1(aAvg)}</b> <small class="dim">raw ${f1(raw)}</small></span><span>Hit <b class="num">${aHit}/${L.length}</b> <small class="dim">raw ${hr(L, pc)}</small></span></div>
+    <div class="desc">The opponents in these ${L.length} games allowed ${role} ${pct(sched - 1, 0)} ${st} vs the league; ${esc(p.opp)} allows ${pct(tonight - 1, 0)}. Tonight is ${easy} than his schedule.${so && so[4] ? ` Over his last 40 games he has faced the <b>${so[3] <= so[4] / 2 ? ordinal(so[3]) + " toughest" : ordinal(so[4] - so[3] + 1) + " softest"}</b> schedule of ${so[4]} ${role} in ${st}.` : ""}
+    Adjusted = what he did ÷ how that defense treats his position, so each game counts as if against an average defense. Shown for reading only: projections don't use it yet.</div></div>`;
+}
+const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th");
+// one line for list rows when tonight's opponent is far from the ones he's been facing (index row `sos`)
+function schedNote(x) {
+  const v = x.sos && x.sos[x.stat]; if (!v || !v[0]) return "";
+  const rel = v[1] / v[0] - 1; if (Math.abs(rel) < 0.08) return "";
+  return `Schedule: tonight ${Math.round(Math.abs(rel) * 100)}% ${rel > 0 ? "easier" : "tougher"} than his last 40 opponents`;
+}
+
 function dvpCard(p) {
   const T = (D.dvp && D.dvp.tab && D.dvp.tab[p.opp]) || null;
   const n = (D.dvp && D.dvp.n_teams) || 30;
@@ -2662,12 +2843,13 @@ function go(v) {
   liveTick();
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go(b.dataset.v));
+$("hsearch").onclick = () => { go("props"); setTimeout(() => { const el = $("pq"); if (el) { el.focus(); el.select(); } }, 50); };
 window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if ((RENDER[v] || ["trends", "agent", "health", "book"].includes(v)) && D.state) go(v); });
 
 (async () => {
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
-    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x), get("kalshi_track.json", null).then(x => D.kt = x), get("book_flags.json", null).then(x => D.bf = x),
+    get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("ranked.json", null).then(x => D.rank = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x), get("kalshi_track.json", null).then(x => D.kt = x), get("book_flags.json", null).then(x => D.bf = x),
       get("players.json", null).then(pj => pj && pj.date ? get(`kalshi/${pj.date}.json`, null).then(x => { if (x) D.kalshi = {date: pj.date, ...x}; }) : null)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }

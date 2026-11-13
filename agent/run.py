@@ -127,6 +127,11 @@ def grade(state, manual, client):
     except Exception as e:
         brain.note(state, "error", f"Our Book grading failed: {e}")
     try:
+        from . import sostrack
+        sostrack.grade()
+    except Exception as e:
+        brain.note(state, "error", f"Schedule tracking grade failed: {e}")
+    try:
         from . import simtrack
         sdb = simtrack.load()
         if simtrack.grade(sdb):

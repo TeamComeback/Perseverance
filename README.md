@@ -333,3 +333,20 @@ Framework: `perseverance-our-book-framework.md` in the project. Built Nov 12.
 - **Dashboard:** Model → Our book (tonight's independent book, gates, accuracy, what it's learned, DraftKings vs itself);
   game page → Lines shows that game's flags; the player card shows our alt lines.
 - **Not yet:** first-half and quarter lines wait until game lines pass their gates.
+
+## Ranked board, player search, schedule-adjusted numbers (Nov 13)
+
+- **Ranked board** (Tonight tab, under Best Bets): every priced DraftKings line, one side per player-stat and per game
+  line, conviction first with the raw sim win rate as tie-breaker. Raw sim rate, blended rate and break-even rate sit
+  side by side. Lines shorter than -200 are kept but not ranked. `tools/sim_all.js` writes `ranked.json` (today) and
+  `ranked_log.json` (45 days, graded nightly into a record by rank: #1-10, #11-30, #31+). The phone re-price builds
+  the same board.
+- **Player search** (Players tab, or the magnifier in the header): two or more letters pause every filter and list
+  each matching player's every stat: DraftKings line and both prices, our line, side, sim and blended rate,
+  conviction, rank. Accents and one-letter typos are forgiven; a team code lists the roster.
+- **Schedule-adjusted numbers** (display and tracking only): `Model.schedule()` measures how tough a player's last 40
+  opponents were for his position and stat. The player card shows schedule-adjusted average and hit rate for the
+  selected games, and tonight vs his schedule; list rows flag gaps of 8%+. `agent/sostrack.py` saves the projection on
+  a neutral schedule next to the real one and grades both nightly (`sos_track.json`). `tests/backtest_schedule.py`:
+  the adjusted projection had a lower average miss on 5 of 6 stats (Feb 2026 cut) and 6 of 6 (Nov 2025 cut), by
+  0.1-0.5%. It does not feed projections or picks until the owner switches it on.

@@ -686,6 +686,15 @@ def build_players(ctx):
                        "sd": round(math.sqrt(max(pr.get("var") or 0, 0)), 2),
                        "signals": [{"k": sg["k"], "v": sg.get("v"), "txt": sg["txt"], **({"rank": sg["rank"]} if "rank" in sg else {})}
                                    for sg in pr["signals"]]}
+        # schedule strength (display + tracking only): [his schedule, tonight, adj, rank, of, projection on a neutral schedule]
+        sos = {}
+        for s, pr in e["proj"].items():
+            try:
+                x = model.schedule(pid, s, opp, ctx.get("weights"))
+                sos[s] = [round(x["sched"], 3), round(x["tonight"], 3), round(x["adj"], 3), x["rank"][0], x["rank"][1],
+                          round(pr["proj"] / x["adj"], 2)]
+            except Exception:
+                pass
         dvp = {}
         for s in ALL_STATS:
             f, n = model.dvp_tab.get((opp, e["role"], s), (1.0, 0))
@@ -698,7 +707,7 @@ def build_players(ctx):
                     "rw": ({k: e["rw"].get(k) for k in ("starter", "pos", "status", "inj", "pct", "url", "note")} if e["rw"] else None),
                     "espn": f"https://www.espn.com/nba/player/_/id/{pid}",
                     "mates": [{"pid": m, "name": model.players[m]["name"] if m in model.players else m} for m in mate_ids],
-                    "logs": L, "proj": proj, "dvp": dvp, "comps": comps(model, pid, opp)}
+                    "logs": L, "proj": proj, "dvp": dvp, "sos": sos, "comps": comps(model, pid, opp)}
         bump = dict(bumps.get(pid, {}))
         for s_, v in (e.get("onoff") or {}).items():      # lineup data (possessions with him off the floor) beats whole-game splits
             if v["k"] - 1 >= 0.10 and v["poss"] >= 150 and (s_ not in bump or v["k"] - 1 > bump[s_]["delta"]):
@@ -1032,6 +1041,7 @@ def _index_row(p):
             "out": p["out"], "starter": (p["rw"] or {}).get("starter"), "lineup": (p["rw"] or {}).get("status"),
             "proj": {s: [v["proj"], v["base"], v["mult"], v.get("sd")] for s, v in p["proj"].items()},
             "dvp": {s: v[1] for s, v in p["dvp"].items()},
+            "sos": p.get("sos") or None,
             "cv": {s: v[:2] for s, v in (p.get("cv") or {}).items()},
             "st": 1 if (p["rw"] or {}).get("starter") else 0,
             "b2b": (p.get("flags") or {}).get("b2b") or None, "pplay": p.get("pplay", 1.0),
@@ -1063,6 +1073,11 @@ def write_all(ctx, log=print):
         if f.name not in live:
             f.unlink()
     store.save("dvp.json", {**stamp, **build_dvp(ctx["model"])}, compact=True)
+    try:
+        from . import sostrack
+        sostrack.record(ctx["day"].isoformat(), players)
+    except Exception as e:
+        log(f"[research] schedule tracking failed: {e}")
     store.save("trends.json", {**stamp, **build_trends(ctx)})
     store.save("lineups.json", {**stamp, "games": ctx["rw_games"]})
     # DraftKings opening/closing lines for games and every projected prop (free, ESPN's odds feed)
