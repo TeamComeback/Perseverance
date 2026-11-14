@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 28.16,
+  "cash": 18.16,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -13283,6 +13283,148 @@
       }
      ]
     }
+   },
+   {
+    "id": "7f5e4e11",
+    "placed": "2026-11-14T19:30:44Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "cb06267ae037a883ae6f71078d6e2aaa",
+      "sport": "basketball_nba",
+      "commence": "2026-11-15T01:10:00Z",
+      "home": "Miami Heat",
+      "away": "Detroit Pistons",
+      "market": "player_assists",
+      "outcome": "Giannis Antetokounmpo Under",
+      "side": "Under",
+      "player": "Giannis Antetokounmpo",
+      "player_id": "3032977",
+      "stat": "ast",
+      "espn_id": "401909982",
+      "point": 5.5,
+      "price": 1.83,
+      "book": "draftkings",
+      "fair_p": 0.524,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 4.75,
+       "base": 4.91,
+       "minutes": 34.4,
+       "mult": 0.967,
+       "sd": 2.99,
+       "p_model": 0.6656,
+       "p_mkt": 0.524,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.014,
+         "txt": "DET gives power forwards +1% assists vs their norm (#12 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.908,
+         "txt": "Players with his profile: -9% assists vs DET (121 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.024,
+         "txt": "His history vs DET: 3.0 assists/g in 2 games (+2%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.951,
+         "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.83,
+    "stake": 5.0,
+    "ev": 0.0693,
+    "p": 0.5843,
+    "note": "Proj 4.8 vs line 5.5 (norm 4.9, 34 min). Model 67% vs market 52%. DET gives power forwards +1% assists vs their norm (#12 softest of 30) \u00b7 Players with his profile: -9% assists vs DET (121 close comps) \u00b7 His history vs DET: 3.0 assists/g in 2 games (+2%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
+   },
+   {
+    "id": "e56fcf07",
+    "placed": "2026-11-14T19:30:44Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "cb06267ae037a883ae6f71078d6e2aaa",
+      "sport": "basketball_nba",
+      "commence": "2026-11-15T01:10:00Z",
+      "home": "Miami Heat",
+      "away": "Detroit Pistons",
+      "market": "player_assists",
+      "outcome": "Davion Mitchell Under",
+      "side": "Under",
+      "player": "Davion Mitchell",
+      "player_id": "4278053",
+      "stat": "ast",
+      "espn_id": "401909982",
+      "point": 8.5,
+      "price": 1.85,
+      "book": "betrivers",
+      "fair_p": 0.5462,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 8.03,
+       "base": 8.6,
+       "minutes": 38.0,
+       "mult": 0.935,
+       "sd": 2.87,
+       "p_model": 0.6081,
+       "p_mkt": 0.5462,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.922,
+         "txt": "DET gives point guards -8% assists vs their norm (#1 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.937,
+         "txt": "Players with his profile: -6% assists vs DET (80 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.007,
+         "txt": "His history vs DET: 7.5 assists/g in 4 games (+1%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.951,
+         "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.85,
+    "stake": 5.0,
+    "ev": 0.0593,
+    "p": 0.5726,
+    "note": "Proj 8.0 vs line 8.5 (norm 8.6, 38 min). Model 61% vs market 55%. DET gives point guards -8% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -6% assists vs DET (80 close comps) \u00b7 His history vs DET: 7.5 assists/g in 4 games (+1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -13637,16 +13779,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-01T18:33:14Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 1: 4 games, 92 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-01T19:32:08Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 6.8%."
-  },
   {
    "ts": "2026-11-01T19:32:08Z",
    "kind": "adapt",
@@ -15136,6 +15268,16 @@
    "ts": "2026-11-14T19:15:28Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 14: 5 games, 123 players projected, lineups for 5 games."
+  },
+  {
+   "ts": "2026-11-14T19:30:43Z",
+   "kind": "focus",
+   "text": "Skipped 16 pts+reb+ast lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, reb+ast, rebounds."
+  },
+  {
+   "ts": "2026-11-14T19:30:44Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: LaMelo Ball ast +15% vs CHI; Cade Cunningham ast +12% vs MIA; James Harden ast +12% vs DAL. Bought prop odds for DET@MIA (ast, ra, pra) (3 credits). Placed 2: Giannis Antetokounmpo Under 5.5 @ -120 (DraftKings); Davion Mitchell Under 8.5 @ -118 (BetRivers)"
   }
  ],
  "learned_ids": [
@@ -15198,7 +15340,7 @@
   "7c117c18"
  ],
  "strategist": null,
- "updated": "2026-11-14T19:16:01Z",
+ "updated": "2026-11-14T19:31:19Z",
  "stats": {
   "bets": 57,
   "won": 20,
@@ -15211,7 +15353,7 @@
   "clv_n": 15,
   "clv_no_close": 42,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 2,
   "equity": 28.16
  },
  "weights": {
