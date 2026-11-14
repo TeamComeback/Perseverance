@@ -33,7 +33,12 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      # Scheduled runs are pinned to the commit that was current when they were queued. Two runs queued together
+      # (GitHub's cron plus the outside timer) then made the second start from stale data and hit a merge conflict
+      # when it saved (Nov 13 01:30Z and 03:32Z, Nov 14 03:29Z). `ref: main` starts every run from the current tip.
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -65,4 +70,10 @@ jobs:
           git config user.email "perseverance-bot@users.noreply.github.com"
           git add docs/data data/nba data/archive
           git diff --cached --quiet || git commit -m "agent: $(date -u +%FT%RZ)"
-          git pull --rebase -q && git push
+          # a concurrent push shouldn't lose this run: replay on the newest main (this run's files win a conflict), retry
+          for i in 1 2 3 4; do
+            if git pull --rebase -q -X theirs && git push -q; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((i * 4))
+          done
+          echo "could not push after 4 tries"; exit 1
