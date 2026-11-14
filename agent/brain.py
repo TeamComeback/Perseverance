@@ -31,7 +31,15 @@ def arm_weight(a):
     return max(0.3, min(1.6, w))
 
 
+def clv_avg(a):
+    return a["clv_sum"] / a["clv_n"] if a.get("clv_n") else None
+
+
 def benched(a):
+    if a.get("clv_gate"):
+        avg = clv_avg(a)
+        if avg is None or a["clv_n"] < config.CLV_GATE_MIN or avg <= 0:
+            return True
     return a.get("paused") or (a["bets"] >= 25 and arm_weight(a) <= 0.35)
 
 
@@ -97,8 +105,12 @@ def adapt(state):
     for name, a in state["arms"].items():
         if benched(a) and not a.get("bench_noted"):
             a["bench_noted"] = True
-            note(state, "adapt", f"Benching the {name} playbook after {a['bets']} bets "
-                                 f"(${a['profit']:+.2f}). It still gets the odd exploratory bet.")
+            why = (f"its closing-line value is {clv_avg(a):+.1%} over {a['clv_n']} legs and it returns once that turns positive"
+                   if a.get("clv_gate") else f"{a['bets']} bets (${a['profit']:+.2f})")
+            note(state, "adapt", f"Benching the {name} playbook: {why}. It still gets the odd exploratory bet.")
+        elif not benched(a) and a.get("bench_noted"):
+            a["bench_noted"] = False
+            note(state, "adapt", f"Bringing back the {name} playbook.")
 
 
 def drought(state, scanned, placed):

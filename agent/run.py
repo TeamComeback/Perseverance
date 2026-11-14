@@ -18,6 +18,8 @@ def load_all():
         state["params"].setdefault(k, v)
     for k in config.PLAYBOOKS:
         state["arms"].setdefault(k, brain._blank())
+    for k, a in state["arms"].items():
+        a["clv_gate"] = k in config.CLV_GATED
     manual = store.load("manual.json", None) or {"book": bk.new_book("Your book")}
     return state, manual
 
