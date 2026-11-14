@@ -12641,7 +12641,8 @@
      "won": 0,
      "lost": 1
     }
-   }
+   },
+   "clv_gate": false
   },
   "value_dog": {
    "bets": 11,
@@ -12680,7 +12681,8 @@
      "won": 1,
      "lost": 0
     }
-   }
+   },
+   "clv_gate": true
   },
   "longshot": {
    "bets": 5,
@@ -12714,7 +12716,8 @@
      "won": 0,
      "lost": 1
     }
-   }
+   },
+   "clv_gate": false
   },
   "arb": {
    "bets": 2,
@@ -12728,14 +12731,16 @@
      "won": 0,
      "lost": 1
     }
-   }
+   },
+   "clv_gate": false
   },
   "parlay_ev": {
    "bets": 0,
    "staked": 0.0,
    "profit": 0.0,
    "clv_n": 0,
-   "clv_sum": 0.0
+   "clv_sum": 0.0,
+   "clv_gate": false
   },
   "matchup_over": {
    "bets": 7,
@@ -12779,7 +12784,8 @@
      "won": 1,
      "lost": 0
     }
-   }
+   },
+   "clv_gate": false
   },
   "matchup_under": {
    "bets": 28,
@@ -12838,7 +12844,8 @@
      "won": 1,
      "lost": 0
     }
-   }
+   },
+   "clv_gate": false
   }
  },
  "sports": {
@@ -12946,11 +12953,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-10-31T15:17:34Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 4.2%."
-  },
   {
    "ts": "2026-10-31T15:17:34Z",
    "kind": "daily",
@@ -14445,6 +14447,11 @@
    "ts": "2026-11-14T01:05:27Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 13: 9 games, 216 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-14T02:30:44Z",
+   "kind": "research",
+   "text": "Research refresh for Fri Nov 13: 9 games, 216 players projected, lineups for 9 games."
   }
  ],
  "learned_ids": [
@@ -14504,7 +14511,7 @@
   "8f0f4866"
  ],
  "strategist": null,
- "updated": "2026-11-14T01:06:13Z",
+ "updated": "2026-11-14T02:31:06Z",
  "stats": {
   "bets": 54,
   "won": 20,
@@ -14529,6 +14536,8 @@
   "matchup_over": 1.417,
   "matchup_under": 0.834
  },
- "paused": [],
+ "paused": [
+  "value_dog"
+ ],
  "dry_scans": 2
 }
