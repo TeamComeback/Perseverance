@@ -124,6 +124,12 @@ BOUNDS = {
     "w_dvp": (0.0, 1.5), "w_sim": (0.0, 1.5), "w_h2h": (0.0, 1.0), "matchup_strength": (0.0, 2.5),
 }
 
+# Playbooks benched until they beat the closing line on average (owner-approved in the HQ, Nov 13 2026).
+# A benched playbook still places the odd exploratory bet, so its closing-line value keeps updating and it
+# returns on its own once the average turns positive over at least CLV_GATE_MIN legs.
+CLV_GATED = {"value_dog"}
+CLV_GATE_MIN = 5
+
 PLAYBOOKS = {
     "value_fav": "Favorite priced above the market's fair odds",
     "value_dog": "Underdog priced above the market's fair odds",
