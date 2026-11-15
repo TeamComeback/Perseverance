@@ -13309,7 +13309,7 @@
       "book": "draftkings",
       "fair_p": 0.524,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 4.75,
        "base": 4.91,
@@ -13340,6 +13340,22 @@
          "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 137.0,
+       "away": 117.0
+      },
+      "actual": 8.0,
+      "box": {
+       "min": 31.0,
+       "pts": 34.0,
+       "reb": 14.0,
+       "ast": 8.0,
+       "tpm": 1.0,
+       "tpa": 2.0,
+       "fga": 17.0,
+       "fta": 9.0,
+       "tov": 3.0
       }
      }
     ],
@@ -13350,10 +13366,205 @@
     "note": "Proj 4.8 vs line 5.5 (norm 4.9, 34 min). Model 67% vs market 52%. DET gives power forwards +1% assists vs their norm (#12 softest of 30) \u00b7 Players with his profile: -9% assists vs DET (121 close comps) \u00b7 His history vs DET: 3.0 assists/g in 2 games (+2%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-15T16:18:09Z",
+    "review": {
+     "headline": "LOST: 8 assists vs Under 5.5",
+     "final": "Detroit Pistons 117 \u2013 Miami Heat 137",
+     "legs": [
+      {
+       "outcome": "Giannis Antetokounmpo Under",
+       "result": "loss",
+       "headline": "8 assists vs Under 5.5",
+       "final": "Detroit Pistons 117 \u2013 Miami Heat 137",
+       "why": [
+        "Giannis Antetokounmpo finished with 8 assists against a line of 5.5: under missed by 2.5.",
+        "Minutes: played 31 vs 34.4 projected.",
+        "Game was a 20-point blowout, but his minutes held up.",
+        "Box score: 8 ast, 3 TO.",
+        "Model projected 4.8 (4.9 norm \u00d7 0.97 matchup); actual was +3.2 off (+1.1 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (4.4) in a matchup the model rated tough.",
+        "Signal: DET gives power forwards +1% assists vs their norm (#12 softest of 30)",
+        "Signal: Players with his profile: -9% assists vs DET (121 close comps)",
+        "Signal: His history vs DET: 3.0 assists/g in 2 games (+2%)",
+        "We priced it at 58% to hit vs 55% needed to break even at 1.83x (+6.9% expected edge).",
+        "Consensus fair probability when placed: 52% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-wrong",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIA",
+        "away": "DET"
+       },
+       "final": "DET 117 \u2013 MIA 137",
+       "periods": {
+        "away": [
+         39,
+         21,
+         26,
+         31
+        ],
+        "home": [
+         37,
+         31,
+         35,
+         34
+        ]
+       },
+       "largest_lead": {
+        "DET": 4,
+        "MIA": 20
+       },
+       "largest_lead_at": {
+        "DET": "11:37 2nd Q",
+        "MIA": "1:27 4th Q"
+       },
+       "lead_changes": 9,
+       "ties": 4,
+       "runs": [
+        {
+         "team": "MIA",
+         "pts": 9,
+         "from": "10:17 1st Q",
+         "to": "9:05 1st Q",
+         "score": "DET 7-14 MIA"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "9:29 3rd Q",
+         "to": "8:45 3rd Q",
+         "score": "DET 74-77 MIA"
+        }
+       ],
+       "swings": [
+        {
+         "team": "MIA",
+         "swing": 14,
+         "from": "8:45 3rd Q",
+         "to": "1:45 3rd Q",
+         "mins": 7.0,
+         "from_score": "DET 74-77 MIA",
+         "to_score": "DET 82-99 MIA",
+         "pts_for": 22,
+         "pts_against": 8
+        },
+        {
+         "team": "DET",
+         "swing": 11,
+         "from": "6:23 1st Q",
+         "to": "11:37 2nd Q",
+         "mins": 6.8,
+         "from_score": "DET 14-21 MIA",
+         "to_score": "DET 41-37 MIA",
+         "pts_for": 27,
+         "pts_against": 16
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cade Cunningham (DET): 33 pts, 5 reb, 8 ast, 3-8 3PT in 36 min",
+        "Kevin Huerter (DET): 20 pts, 4 reb, 7 ast, 2-6 3PT in 38 min",
+        "Giannis Antetokounmpo (MIA): 34 pts, 14 reb, 8 ast, 1-2 3PT in 31 min",
+        "Klay Thompson (MIA): 26 pts, 1 reb, 4 ast, 6-11 3PT in 20 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 9,
+          "reb": 4,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 10,
+          "reb": 4,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 4
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 9,
+          "reb": 5,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 6,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 3,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "4:57 4th Q"
+        ],
+        "box": {
+         "id": "3032977",
+         "name": "Giannis Antetokounmpo",
+         "team": "MIA",
+         "min": "31",
+         "pts": 34,
+         "reb": 14,
+         "ast": 8,
+         "3pt": "1-2",
+         "fg": "13-17",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 60-68 MIA, MIA up 8.",
+        "The 2nd quarter decided the most: MIA won it 31-21.",
+        "Largest leads: DET 4 (11:37 2nd Q), MIA 20 (1:27 4th Q). 9 lead changes, 4 ties.",
+        "Momentum swing: MIA outscored them 22-8 in 7 minutes (8:45 3rd Q to 1:45 3rd Q), moving it from DET 74-77 MIA to DET 82-99 MIA.",
+        "Momentum swing: DET outscored them 27-16 in 6.8 minutes (6:23 1st Q to 11:37 2nd Q), moving it from DET 14-21 MIA to DET 41-37 MIA.",
+        "MIA went on a 9-0 run (10:17 1st Q to 9:05 1st Q), making it DET 7-14 MIA.",
+        "DET went on a 8-0 run (9:29 3rd Q to 8:45 3rd Q), making it DET 74-77 MIA.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Giannis Antetokounmpo by period (AST): Q1 2, Q2 3, Q3 1, Q4 2.",
+        "He went over 5.5 in Q3.",
+        "Threes made at: 4:57 4th Q."
+       ],
+       "espn_id": "401909982",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909982"
+      }
+     ]
+    }
    },
    {
     "id": "e56fcf07",
@@ -13380,7 +13591,7 @@
       "book": "betrivers",
       "fair_p": 0.5462,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 8.03,
        "base": 8.6,
@@ -13411,6 +13622,22 @@
          "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 137.0,
+       "away": 117.0
+      },
+      "actual": 9.0,
+      "box": {
+       "min": 32.0,
+       "pts": 15.0,
+       "reb": 4.0,
+       "ast": 9.0,
+       "tpm": 3.0,
+       "tpa": 5.0,
+       "fga": 7.0,
+       "fta": 4.0,
+       "tov": 4.0
       }
      }
     ],
@@ -13421,10 +13648,209 @@
     "note": "Proj 8.0 vs line 8.5 (norm 8.6, 38 min). Model 61% vs market 55%. DET gives point guards -8% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -6% assists vs DET (80 close comps) \u00b7 His history vs DET: 7.5 assists/g in 4 games (+1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-15T16:18:09Z",
+    "review": {
+     "headline": "LOST: 9 assists vs Under 8.5",
+     "final": "Detroit Pistons 117 \u2013 Miami Heat 137",
+     "legs": [
+      {
+       "outcome": "Davion Mitchell Under",
+       "result": "loss",
+       "headline": "9 assists vs Under 8.5",
+       "final": "Detroit Pistons 117 \u2013 Miami Heat 137",
+       "why": [
+        "Davion Mitchell finished with 9 assists against a line of 8.5: under missed by 0.5.",
+        "Minutes: played 32 vs 38 projected.",
+        "Game was a 20-point blowout, which cuts starters' minutes.",
+        "Box score: 9 ast, 4 TO.",
+        "Model projected 8 (8.6 norm \u00d7 0.94 matchup); actual was +1.0 off (+0.3 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (7.2) in a matchup the model rated tough.",
+        "Signal: DET gives point guards -8% assists vs their norm (#1 toughest of 30)",
+        "Signal: Players with his profile: -6% assists vs DET (80 close comps)",
+        "Signal: His history vs DET: 7.5 assists/g in 4 games (+1%)",
+        "We priced it at 57% to hit vs 54% needed to break even at 1.85x (+5.9% expected edge).",
+        "Consensus fair probability when placed: 55% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout",
+        "ordinary-variance",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-wrong",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIA",
+        "away": "DET"
+       },
+       "final": "DET 117 \u2013 MIA 137",
+       "periods": {
+        "away": [
+         39,
+         21,
+         26,
+         31
+        ],
+        "home": [
+         37,
+         31,
+         35,
+         34
+        ]
+       },
+       "largest_lead": {
+        "DET": 4,
+        "MIA": 20
+       },
+       "largest_lead_at": {
+        "DET": "11:37 2nd Q",
+        "MIA": "1:27 4th Q"
+       },
+       "lead_changes": 9,
+       "ties": 4,
+       "runs": [
+        {
+         "team": "MIA",
+         "pts": 9,
+         "from": "10:17 1st Q",
+         "to": "9:05 1st Q",
+         "score": "DET 7-14 MIA"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "9:29 3rd Q",
+         "to": "8:45 3rd Q",
+         "score": "DET 74-77 MIA"
+        }
+       ],
+       "swings": [
+        {
+         "team": "MIA",
+         "swing": 14,
+         "from": "8:45 3rd Q",
+         "to": "1:45 3rd Q",
+         "mins": 7.0,
+         "from_score": "DET 74-77 MIA",
+         "to_score": "DET 82-99 MIA",
+         "pts_for": 22,
+         "pts_against": 8
+        },
+        {
+         "team": "DET",
+         "swing": 11,
+         "from": "6:23 1st Q",
+         "to": "11:37 2nd Q",
+         "mins": 6.8,
+         "from_score": "DET 14-21 MIA",
+         "to_score": "DET 41-37 MIA",
+         "pts_for": 27,
+         "pts_against": 16
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cade Cunningham (DET): 33 pts, 5 reb, 8 ast, 3-8 3PT in 36 min",
+        "Kevin Huerter (DET): 20 pts, 4 reb, 7 ast, 2-6 3PT in 38 min",
+        "Giannis Antetokounmpo (MIA): 34 pts, 14 reb, 8 ast, 1-2 3PT in 31 min",
+        "Klay Thompson (MIA): 26 pts, 1 reb, 4 ast, 6-11 3PT in 20 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 1,
+          "ast": 4,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 6,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 2,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 5,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "6:49 3rd Q",
+         "2:11 3rd Q",
+         "4:00 4th Q"
+        ],
+        "box": {
+         "id": "4278053",
+         "name": "Davion Mitchell",
+         "team": "MIA",
+         "min": "32",
+         "pts": 15,
+         "reb": 4,
+         "ast": 9,
+         "3pt": "3-5",
+         "fg": "4-7",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: DET 60-68 MIA, MIA up 8.",
+        "The 2nd quarter decided the most: MIA won it 31-21.",
+        "Largest leads: DET 4 (11:37 2nd Q), MIA 20 (1:27 4th Q). 9 lead changes, 4 ties.",
+        "Momentum swing: MIA outscored them 22-8 in 7 minutes (8:45 3rd Q to 1:45 3rd Q), moving it from DET 74-77 MIA to DET 82-99 MIA.",
+        "Momentum swing: DET outscored them 27-16 in 6.8 minutes (6:23 1st Q to 11:37 2nd Q), moving it from DET 14-21 MIA to DET 41-37 MIA.",
+        "MIA went on a 9-0 run (10:17 1st Q to 9:05 1st Q), making it DET 7-14 MIA.",
+        "DET went on a 8-0 run (9:29 3rd Q to 8:45 3rd Q), making it DET 74-77 MIA.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Davion Mitchell by period (AST): Q1 1, Q2 4, Q3 2, Q4 2.",
+        "He went over 8.5 in Q4.",
+        "Threes made at: 6:49 3rd Q, 2:11 3rd Q, 4:00 4th Q."
+       ],
+       "espn_id": "401909982",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909982"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -13441,7 +13867,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.239,
+  "prop_model_weight": 0.227,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -13614,16 +14040,16 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 31,
-   "staked": 155.0,
-   "profit": -31.650000000000002,
+   "bets": 33,
+   "staked": 165.0,
+   "profit": -41.650000000000006,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
     "ordinary-variance": {
-     "n": 10,
+     "n": 11,
      "won": 8,
-     "lost": 2
+     "lost": 3
     },
     "dnp-void": {
      "n": 2,
@@ -13636,24 +14062,24 @@
      "lost": 11
     },
     "matchup-read-wrong": {
-     "n": 10,
+     "n": 12,
      "won": 4,
-     "lost": 6
+     "lost": 8
     },
     "near-miss": {
-     "n": 4,
+     "n": 5,
      "won": 0,
-     "lost": 4
+     "lost": 5
     },
     "blowout": {
-     "n": 6,
+     "n": 8,
      "won": 4,
-     "lost": 2
+     "lost": 4
     },
     "model-miss": {
-     "n": 15,
+     "n": 16,
      "won": 0,
-     "lost": 15
+     "lost": 16
     },
     "minutes-long": {
      "n": 10,
@@ -13677,9 +14103,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 45.0,
-   "staked": 225.0,
-   "profit": -32.849999999999994
+   "bets": 47.0,
+   "staked": 235.0,
+   "profit": -42.849999999999994
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -13779,31 +14205,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-03T02:11:11Z",
-   "kind": "scan",
-   "text": "Scanned soccer_uefa_champs_league (9) for 2 credits. Nothing cleared the bar. Equity $52.81."
-  },
-  {
-   "ts": "2026-11-03T02:40:34Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 2: 15 games, 354 players projected, lineups for 15 games."
-  },
-  {
-   "ts": "2026-11-03T03:59:16Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 9.2%."
-  },
-  {
-   "ts": "2026-11-03T03:59:18Z",
-   "kind": "scan",
-   "text": "Scanned basketball_ncaab (11) for 3 credits. Nothing cleared the bar. Equity $52.81."
-  },
-  {
-   "ts": "2026-11-03T08:31:55Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 4: 14 games, 324 players projected, lineups for 0 games."
-  },
   {
    "ts": "2026-11-03T17:00:08Z",
    "kind": "result",
@@ -15278,6 +15679,31 @@
    "ts": "2026-11-15T15:45:38Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 15: 9 games, 209 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-15T16:18:09Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Giannis Antetokounmpo Under 5.5 @ -120 (DraftKings) \u2014 LOST: 8 assists vs Under 5.5 [blowout, matchup-read-wrong, model-miss]"
+  },
+  {
+   "ts": "2026-11-15T16:18:09Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Davion Mitchell Under 8.5 @ -118 (BetRivers) \u2014 LOST: 9 assists vs Under 8.5 [blowout, matchup-read-wrong, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-15T16:20:31Z",
+   "kind": "adapt",
+   "text": "Model vs market on 5267 graded lines: the 20% model blend scored best (log loss model 0.714, market 0.689). Moving the model's weight from 24% to 23%."
+  },
+  {
+   "ts": "2026-11-15T16:20:31Z",
+   "kind": "adapt",
+   "text": "Learning loop: REB projections ran +1.2% vs actual over 1729 player-games: level x0.897; AST projections ran -0.9% vs actual over 1729 player-games: level x0.903; TPM projections ran -3.2% vs actual over 1729 player-games: level x0.961; starter minutes were off by +0.8 on average over 896 player-games: correction -1.4 min; conviction factor 'bump' hurt by -3.0 pts of hit rate over 1382 plays: weight 0.72 -> 0.79; conviction factor 'vegas' helped by +2.5 pts of hit rate over 2269 plays: weight 1.25 -> 1.19; conviction factor 'blowout' helped by +2.8 pts of hit rate over 626 plays: weight 1.28 -> 1.14."
+  },
+  {
+   "ts": "2026-11-15T16:20:31Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $18.16 (run #1), 20-37-2, ROI -27.5%, CLV -2.3%."
   }
  ],
  "learned_ids": [
@@ -15337,24 +15763,26 @@
   "8f0f4866",
   "22159bb0",
   "1772e909",
-  "7c117c18"
+  "7c117c18",
+  "7f5e4e11",
+  "e56fcf07"
  ],
  "strategist": null,
- "updated": "2026-11-15T15:46:32Z",
+ "updated": "2026-11-15T16:20:31Z",
  "stats": {
-  "bets": 57,
+  "bets": 59,
   "won": 20,
-  "lost": 35,
+  "lost": 37,
   "push": 2,
-  "staked": 287.63,
-  "profit": -71.84,
-  "roi": -0.2498,
+  "staked": 297.63,
+  "profit": -81.84,
+  "roi": -0.275,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 42,
+  "clv_no_close": 44,
   "close_mins_median": 151,
-  "open": 2,
-  "equity": 28.16
+  "open": 0,
+  "equity": 18.16
  },
  "weights": {
   "value_fav": 0.842,
@@ -15363,7 +15791,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.417,
-  "matchup_under": 0.706
+  "matchup_under": 0.63
  },
  "paused": [
   "value_dog"

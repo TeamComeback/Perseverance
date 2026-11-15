@@ -1,14 +1,14 @@
 {
  "stat_factor": {
   "pts": 0.885,
-  "reb": 0.9006,
-  "ast": 0.9004,
+  "reb": 0.8968,
+  "ast": 0.9034,
   "pra": 0.8969,
   "ra": 0.9109,
-  "tpm": 0.9489
+  "tpm": 0.9606
  },
  "min_delta": {
-  "starter": -1.15,
+  "starter": -1.43,
   "bench": -0.48
  },
  "sim_anchor": 0.75,
@@ -16,9 +16,9 @@
   "minutes": 0.99,
   "agree": 1.01,
   "rest": 1.33,
-  "bump": 0.72,
-  "vegas": 1.25,
-  "blowout": 1.28
+  "bump": 0.79,
+  "vegas": 1.19,
+  "blowout": 1.14
  },
  "history": [
   {
@@ -178,7 +178,19 @@
     "TPM projections ran -3.5% vs actual over 1633 player-games: level x0.949",
     "starter minutes were off by +0.9 on average over 846 player-games: correction -1.1 min"
    ]
+  },
+  {
+   "ts": "2026-11-15T16:20:31Z",
+   "changes": [
+    "REB projections ran +1.2% vs actual over 1729 player-games: level x0.897",
+    "AST projections ran -0.9% vs actual over 1729 player-games: level x0.903",
+    "TPM projections ran -3.2% vs actual over 1729 player-games: level x0.961",
+    "starter minutes were off by +0.8 on average over 896 player-games: correction -1.4 min",
+    "conviction factor 'bump' hurt by -3.0 pts of hit rate over 1382 plays: weight 0.72 -> 0.79",
+    "conviction factor 'vegas' helped by +2.5 pts of hit rate over 2269 plays: weight 1.25 -> 1.19",
+    "conviction factor 'blowout' helped by +2.8 pts of hit rate over 626 plays: weight 1.28 -> 1.14"
+   ]
   }
  ],
- "updated": "2026-11-14T15:48:57Z"
+ "updated": "2026-11-15T16:20:31Z"
 }
