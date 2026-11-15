@@ -11,9 +11,13 @@ const mean = a => a.length ? a.reduce((t, v) => t + v, 0) / a.length : null;
 const sig = x => 1 / (1 + Math.exp(-x)), logit = p => { p = Math.min(0.97, Math.max(0.03, p)); return Math.log(p / (1 - p)); };
 
 // conviction model (agent/convmodel.py): the market's price for the lean side, moved by what has actually paid
-function convProb(M, pMktSide, cv, under, agree, edge) {
+function convProb(M, pMktSide, cv, under, agree, edge, ma) {
   if (!M || !M.ready || !M.coef || pMktSide == null) return null;
   const c = M.coef, a = Math.abs(cv || 0);
+  // line-side model (switched on by the owner, agent/convswitch.py): the dots count only when the matchup agrees
+  if (M.mode === "line") { const b = ma ? a : 0;
+    return sig(logit(pMktSide) + c.b0 + (b >= 2 ? c.cv2a : 0) + (b >= 3 ? c.cv3a : 0) + (b >= 4 ? c.cv4a : 0) + (ma ? 0 : c.split) + (under ? c.under : 0)
+      + (agree ? c.agree : 0) + c.edge * Math.max(-0.25, Math.min(0.25, edge || 0))); }
   return sig(logit(pMktSide) + c.b0 + (a >= 2 ? c.cv2 : 0) + (a >= 3 ? c.cv3 : 0) + (a >= 4 ? c.cv4 : 0) + (under ? c.under : 0)
     + (agree ? c.agree : 0) + c.edge * Math.max(-0.25, Math.min(0.25, edge || 0)));
 }
@@ -91,7 +95,8 @@ function buildCase(x) {
   }
 
   // ---- matchup signals and conviction
-  const pj = (p.proj || {})[stat] || {}, lean = pj.proj != null ? (pj.proj > line ? "Over" : "Under") : null;
+  const pj = (p.proj || {})[stat] || {}, lean = pj.proj != null ? (pj.proj > line ? "Over" : "Under") : null,
+    mlean = pj.mult != null ? (pj.mult > 1 ? "Over" : "Under") : null;   // matchup direction (what cv and the conviction model call "lean")
   if (pj.proj != null && Math.abs(pj.proj - line) / Math.max(line, 1) >= 0.05)
     add((pj.proj > line) === over ? F : A, 1.5, "projection", `Model projects ${f1(pj.proj)} ${nm} against a line of ${line}.`);
   for (const s of pj.signals || []) {
@@ -103,13 +108,15 @@ function buildCase(x) {
   if (cv && cv[1]) for (const part of cv[1].split(" · ")) {
     const ag = /^against: /.test(part), t = part.replace(/^against: /, "");
     if (/matchup effect|signals agree|priced edge|no edge/.test(t)) continue;
-    const forLean = !ag, same = lean === side;
+    const forLean = !ag, same = mlean === side;          // cv's reasons were written for the matchup direction
     const m = /Vegas team total/.test(t) ? "Vegas" : /without/.test(t) ? "usage" : /minutes/.test(t) ? "role" : /back-to-back|3rd game/.test(t) ? "rest" : /blowout/.test(t) ? "blowout" : /injury/.test(t) ? "injury" : "context";
     if (m === "role" && !over) continue;                       // secure minutes argue for overs only
     if (m === "rest" || m === "blowout" || m === "injury") { add(over ? A : F, 1.3, m, t[0].toUpperCase() + t.slice(1) + "."); continue; }
     add(forLean === same ? F : A, 1.1, m, t[0].toUpperCase() + t.slice(1) + ".");
   }
-  if (cv && cv[2] >= 4 && lean === side) add(F, 1.8, "conviction", `Matchup conviction ${cv[2]} of 5: the checks that have to line up do.`);
+  // the matchup dots only count for a side the matchup actually points to (Nov 15: they were credited to the line side)
+  if (cv && cv[2] >= 4 && mlean === side) add(F, 1.8, "matchup strength", `Matchup strength ${cv[2]} of 5, and the matchup points ${word}.`);
+  else if (cv && cv[2] >= 4 && mlean) add(A, 1.2, "matchup strength", `The matchup (strength ${cv[2]} of 5) points ${mlean.toLowerCase()}: his projection is ${mlean === "Over" ? "up" : "down"} vs his norm, just not past this line.`);
 
   // ---- sim, price and market
   if (x.pSim != null) {
@@ -155,7 +162,7 @@ function buildCase(x) {
   let p_conv = null;
   if (x.pMkt != null && cv && lean) {
     const pl = convProb(x.convModel, lean === side ? x.pMkt : 1 - x.pMkt, cv[2], lean === "Under",
-      lean === side ? agree : (r10 != null && r10 < 0.5), lean === side ? (x.pModel != null ? x.pModel - x.pMkt : 0) : (x.pModel != null ? x.pMkt - x.pModel : 0));
+      lean === side ? agree : (r10 != null && r10 < 0.5), lean === side ? (x.pModel != null ? x.pModel - x.pMkt : 0) : (x.pModel != null ? x.pMkt - x.pModel : 0), mlean === lean);
     if (pl != null) p_conv = lean === side ? pl : 1 - pl;
   }
   const wf = Fu.reduce((t, b) => t + b.w, 0), wa = Au.reduce((t, b) => t + b.w, 0);

@@ -133,7 +133,8 @@ async function reprice(onStep) {
     }
     return chosen.sort((a, b) => score(b) - score(a)).map(x => ({...x, plus: x.ev > 0}));
   };
-  const out = {at: new Date().toISOString(), date, base: day.updated, props: pick(cands.props, day.props || [], 5, 2, true), games: pick(cands.games, day.games || [], 5, 1, false), learned: L};
+  const oneSide = (list, keyF) => { const by = {}; for (const x of list) { const k = keyF(x), b = by[k]; if (!b || x.conv > b.conv || (x.conv === b.conv && x.p_sim > b.p_sim)) by[k] = x; } return list.filter(x => by[keyF(x)] === x); };
+  const out = {at: new Date().toISOString(), date, base: day.updated, props: pick(oneSide(cands.props, x => x.pid + "|" + x.stat), day.props || [], 5, 2, true), games: pick(oneSide(cands.games, x => x.espn_id + "|" + x.kind), day.games || [], 5, 1, false), learned: L};
   out.changes = diff(day, out, cands);
   // the full ranked board, same rules as the agent's ranked.json (tools/sim_all.js): one side per line, conviction
   // first, sim win rate breaks ties, nothing shorter than -200 gets a rank. Rows the phone didn't build a full case for

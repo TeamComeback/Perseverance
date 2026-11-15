@@ -1036,7 +1036,8 @@ def game_cards(ctx):
 
 def _index_row(p):
     """The light version of a player for lists: no logs, no signals."""
-    return {"pid": p["pid"], "name": p["name"], "team": p["team"], "opp": p["opp"], "home": p["home"], "game": p["game"],
+    return {**({"frozen_at": p["frozen_at"]} if p.get("frozen_at") else {}),
+            "pid": p["pid"], "name": p["name"], "team": p["team"], "opp": p["opp"], "home": p["home"], "game": p["game"],
             "start": p["start"], "state": p["state"], "role": p["role"], "minutes": p["minutes"], "status": p["status"],
             "out": p["out"], "starter": (p["rw"] or {}).get("starter"), "lineup": (p["rw"] or {}).get("status"),
             "proj": {s: [v["proj"], v["base"], v["mult"], v.get("sd")] for s, v in p["proj"].items()},
@@ -1048,11 +1049,43 @@ def _index_row(p):
             "onoff": ({s: v["k"] for s, v in p["onoff"].items()} if p.get("onoff") else None)}
 
 
+def _freeze_started(ctx, players, cards, log=print):
+    """Freeze at tip (framework Nov 15, part C): once a game has started, a refresh keeps that game's pre-game player
+    numbers (projections, minutes, case inputs) and game card exactly as they were at the last refresh before tip,
+    updating only its live state. Nothing about a game in progress is re-projected; what gets graded is what we had
+    at tip-off."""
+    day = ctx["day"].isoformat()
+    prev = store.load("players.json", {}) or {}
+    if prev.get("date") != day:
+        return set()
+    state = {g["espn_id"]: g.get("state") for g in ctx["games"]}
+    frozen = set()
+    for gid, st in state.items():
+        if st == "pre":
+            continue
+        old = store.load(f"games/{gid}.json", None)
+        if not old or old.get("date") != day or not old.get("players"):
+            continue
+        at = old.get("frozen_at") or old.get("updated")
+        for k in [k for k, v in players.items() if v["game"] == gid]:
+            del players[k]
+        for k, v in old["players"].items():
+            players[k] = {**v, "state": st, "frozen_at": at}
+        for i, c in enumerate(cards):
+            if c["espn_id"] == gid:
+                cards[i] = {**(old.get("game") or c), "state": st, "frozen_at": at}
+        frozen.add(gid)
+    if frozen:
+        log(f"[research] {len(frozen)} started game(s) kept as they were at tip-off")
+    return frozen
+
+
 def write_all(ctx, log=print):
     players = build_players(ctx)
+    cards = game_cards(ctx)
+    frozen = _freeze_started(ctx, players, cards, log)
     shots = build_shots(ctx, players.keys())
     stamp = {"updated": store.iso(store.now()), "date": ctx["day"].isoformat()}
-    cards = game_cards(ctx)
     # light index for lists, one detail file per game for player cards (keeps phone downloads small)
     store.save("players.json", {**stamp, "games": cards, "players": {k: _index_row(v) for k, v in players.items()},
                                 "opps": ctx.get("opps", [])[:40], "injury_report": ctx.get("inj_report"),
@@ -1067,6 +1100,7 @@ def write_all(ctx, log=print):
     for g in cards:
         ps = {k: v for k, v in players.items() if v["game"] == g["espn_id"]}
         store.save(f"games/{g['espn_id']}.json", {**stamp, "game": g, "players": ps,
+                                                   **({"frozen_at": g.get("frozen_at")} if g["espn_id"] in frozen else {}),
                                                    "shots": {k: shots.get(k, []) for k in ps}}, compact=True)
         live.add(f"{g['espn_id']}.json")
     for f in gdir.glob("*.json"):

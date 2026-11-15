@@ -207,7 +207,7 @@ function spotsHtml(g) {
     ${rf ? `<div class="lbl">Referees</div><div class="desc"><b style="color:var(--text)">${esc(rf.crew.join(", "))}</b>${rf.n ? `. Their games have run ${rf.fta > 0 ? "+" : ""}${f1(rf.fta)} free throws and ${rf.tot > 0 ? "+" : ""}${f1(rf.tot)} points vs average (about ${rf.n} games each).` : "."} Context only: in our data a referee's tendencies one season didn't carry into the next, so they don't move the projections.</div>` : ""}</div>`;
 }
 function topProps(g, k, link) {
-  const rows = onePerPlayer(propRows().filter(r => r.espn_id === g.espn_id && ALL_STATS.includes(r.stat)), pickScore).slice(0, k);
+  const rows = onePerPlayer(propRows().filter(r => r.espn_id === g.espn_id && ALL_STATS.includes(r.stat)), playScore).slice(0, k);
   if (!rows.length) return "";
   return `<h2>Top plays in this game</h2><div class="card" style="padding:2px 12px">${rows.map(cRow).join("")}</div>${link ? '<button class="more" data-gsub="props">Every player in this game →</button>' : ""}`;
 }

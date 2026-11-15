@@ -191,7 +191,7 @@ function bestBetsSetup(pj, simlog) {
     const bestOf = (list, keyF) => { const by = {}; for (const x of list) { const k = keyF(x); if (better(x, by[k])) by[k] = x; } return Object.values(by); };
     const r3 = v => v == null ? null : Math.round(v * 1000) / 1000;
     const slim = x => ({k: x.kind === "prop" ? x.pid + "|" + x.stat : "g|" + x.espn_id + "|" + x.kind, kind: x.kind, espn_id: x.espn_id,
-      ...(x.kind === "prop" ? {pid: x.pid, name: x.name, team: x.team, opp: x.opp, stat: x.stat, sim: x.sim, ob_ind: x.ob_ind} : {game: x.game, team: x.team || null}),
+      ...(x.kind === "prop" ? {pid: x.pid, name: x.name, team: x.team, opp: x.opp, stat: x.stat, sim: x.sim, ob_ind: x.ob_ind, ma: x.lean ? (x.lean === x.side ? 1 : 0) : null} : {game: x.game, team: x.team || null}),
       side: x.side, point: x.point, dec: x.dec, am: x.am, conv: x.conv, tier: x.tier, p: r3(x.p), p_sim: r3(x.p_sim), p_mkt: r3(x.p_mkt), p_kalshi: r3(x.p_kalshi), ev: r3(x.ev)});
     const tipped = id => { const g = startOf[id]; return g && g.state !== "pre"; };
     const build = (list, keyF, old) => {
@@ -202,9 +202,9 @@ function bestBetsSetup(pj, simlog) {
       return rows;
     };
     const props = build(cands.props, x => x.pid + "|" + x.stat, prev.props), games = build(cands.games, x => x.espn_id + "|" + x.kind, prev.games);
-    // the night's order, for grading: [side, point, dec, conv, p_sim, p, rank, result]
+    // the night's order, for grading: [side, point, dec, conv, p_sim, p, rank, result, matchup agrees (1/0/null)]
     const today = {};
-    for (const r of [...props, ...games]) today[r.k] = [r.side, r.point, r.dec, r.conv, r.p_sim, r.p, r.rank, null];
+    for (const r of [...props, ...games]) today[r.k] = [r.side, r.point, r.dec, r.conv, r.p_sim, r.p, r.rank, null, r.ma ?? null];
     LOG.days[date] = today;
     for (const [d, rows] of Object.entries(LOG.days)) {
       if (d >= date) continue;
@@ -229,7 +229,7 @@ function bestBetsSetup(pj, simlog) {
     LOG.days = Object.fromEntries(Object.keys(LOG.days).sort().slice(-45).map(d => [d, LOG.days[d]]));
     fs.writeFileSync(path.join(DATA, "ranked_log.json"), JSON.stringify(LOG));
     // how each slice of the board has done: wins, losses, units at 1u flat
-    const perf = {props: {}, games: {}, days: 0, from: null, unranked: {w: 0, l: 0}};
+    const perf = {props: {}, games: {}, days: 0, from: null, unranked: {w: 0, l: 0}, matchup: {agrees: {w: 0, l: 0}, splits: {w: 0, l: 0}}};
     for (const [lo, hi] of RANK_BUCKETS) for (const k of ["props", "games"]) perf[k][hi > 1e8 ? `${lo}+` : `${lo}-${hi}`] = {w: 0, l: 0, u: 0};
     for (const [d, rows] of Object.entries(LOG.days)) {
       let any = false;
@@ -237,6 +237,7 @@ function bestBetsSetup(pj, simlog) {
         if (row[7] !== "w" && row[7] !== "l") continue;
         any = true;
         if (row[6] == null) { perf.unranked[row[7]]++; continue; }
+        if (row[8] === 1 || row[8] === 0) perf.matchup[row[8] ? "agrees" : "splits"][row[7]]++;
         const [lo, hi] = RANK_BUCKETS.find(([a, b]) => row[6] >= a && row[6] <= b);
         const s = perf[k.startsWith("g|") ? "games" : "props"][hi > 1e8 ? `${lo}+` : `${lo}-${hi}`];
         s[row[7]]++; s.u = Math.round((s.u + (row[7] === "w" ? row[2] - 1 : -1)) * 100) / 100;
@@ -283,9 +284,11 @@ function bestBetsSetup(pj, simlog) {
       }
       return chosen.sort((a, b) => score(b) - score(a)).map(x => ({...x, plus: x.ev > 0}));
     };
+    // one side per line: Best Bets can only pick the side the ranked board shows (higher conviction, then sim win rate)
+    const oneSide = (list, keyF) => { const by = {}; for (const x of list) { const k = keyF(x), b = by[k]; if (!b || x.conv > b.conv || (x.conv === b.conv && x.p_sim > b.p_sim)) by[k] = x; } return list.filter(x => by[keyF(x)] === x); };
     const day = {updated: new Date().toISOString(), why: process.env.SIM_REASON || "scheduled refresh", learned,
-      props: pick(cands.props, old.props || [], 5, 2, true),
-      games: pick(cands.games, old.games || [], 5, 1, false)};
+      props: pick(oneSide(cands.props, x => x.pid + "|" + x.stat), old.props || [], 5, 2, true),
+      games: pick(oneSide(cands.games, x => x.espn_id + "|" + x.kind), old.games || [], 5, 1, false)};
     // A pick is never erased silently: one that drops out before tip-off stays listed with the reason, and is graded
     // like the rest (record.dropped), so refreshing can't flatter the record.
     const keyOf = x => [x.kind, x.espn_id, x.pid || "", x.stat || "", x.side].join("|");

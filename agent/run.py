@@ -581,6 +581,11 @@ def manual_issue():
         if "comment" not in ev:
             refresh_issue(num)
         return
+    if issue.get("title", "").lower().startswith("switch"):
+        if "comment" not in ev:
+            from . import convswitch
+            convswitch.apply_issue(num, issue.get("title", ""))
+        return
     if issue.get("title", "").lower().startswith("save"):
         saved.from_issue(ev)
         return

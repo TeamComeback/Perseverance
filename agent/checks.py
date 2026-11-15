@@ -107,6 +107,21 @@ def run(log=print):
                 (f"saved {a:.1f}h ago, {have} of {len(pre)} games" if a is not None else "no save time")
                 + (f"; far from DraftKings: {'; '.join(far)}" if far else "; agrees with DraftKings"))
 
+    # 4b. one side per prop: Best Bets and the ranked board must never show opposite sides of the same line
+    rk = _load("ranked.json", {}) or {}
+    if rk.get("date") == today:
+        side = {r["k"]: (r["side"], r["point"]) for r in (rk.get("props") or []) + (rk.get("games") or [])}
+        bd = (_load("best.json", {}) or {}).get("days", {}).get(today) or {}
+        clash = []
+        for x in (bd.get("props") or []) + (bd.get("games") or []):
+            if x.get("res"):
+                continue
+            k = f"{x['pid']}|{x['stat']}" if x.get("kind") == "prop" else f"g|{x['espn_id']}|{x['kind']}"
+            if k in side and side[k][1] == x.get("point") and side[k][0] != x.get("side"):
+                clash.append(f"{x.get('name') or x.get('game')} {x.get('stat') or x['kind']}: pick {x.get('side')}, board {side[k][0]}")
+        add("One side per prop", "ok" if not clash else "fail",
+            f"Best Bets and the ranked board agree on all {len(side)} lines" if not clash else "; ".join(clash[:5]))
+
     # 5. best bets: today's picks exist, every prop pick has minutes and no injury tag
     best = _load("best.json", {}) or {}
     day = (best.get("days") or {}).get(today)

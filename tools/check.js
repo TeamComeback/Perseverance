@@ -51,6 +51,18 @@ try {
         const txt = await p.evaluate(() => [...document.querySelectorAll(".view.on")].map(v => v.innerText.length).join(","));
         errs.length === n && +txt > 50 ? ok(`${t} (${txt} chars)`) : bad(`${t}: ${errs.slice(n).join(" | ") || "renders nearly empty"}`);
       }
+      // one side per prop: every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
+      console.log("5. one side per prop on every screen");
+      const seen = {};
+      const grab = () => p.evaluate(() => [...document.querySelectorAll(".view.on [data-pid][data-stat]")].map(el => {
+        const t = el.querySelector(":scope > div > .lean, :scope .lean"); return t ? [el.dataset.pid + "|" + el.dataset.stat, t.textContent.trim()] : null; }).filter(Boolean));
+      for (const t of ["today", "props"]) { await p.evaluate(v => go(v), t); await p.waitForTimeout(900);
+        if (t === "props") { await p.evaluate(() => { D.pf.all = true; renderProps(); }); await p.waitForTimeout(600); }
+        for (const [k, v] of await grab()) (seen[k] = seen[k] || new Set()).add(v); }
+      const gl = await p.evaluate(() => D.players.games.filter(g => g.state === "pre").map(g => g.espn_id));
+      for (const g of gl) { await p.evaluate(x => { go("games"); openGame(x, "props"); }, g); await p.waitForTimeout(500); for (const [k, v] of await grab()) (seen[k] = seen[k] || new Set()).add(v); }
+      const two = Object.entries(seen).filter(([, v]) => v.size > 1);
+      two.length ? bad(`${two.length} prop(s) shown with both sides: ${two.slice(0, 4).map(([k, v]) => k + " " + [...v].join("/")).join("; ")}`) : ok(`${Object.keys(seen).length} props tagged, one side each`);
       const gid = await p.evaluate(() => (D.players.games[0] || {}).espn_id);
       if (gid) for (const sub of ["game", "match", "props", "lines", "box"]) { const n = errs.length; await p.evaluate(([g, s]) => { go("games"); openGame(g, s); }, [gid, sub]); await p.waitForTimeout(800);
         errs.length === n ? ok(`game page · ${sub}`) : bad(`game page ${sub}: ${errs.slice(n).join(" | ")}`); }

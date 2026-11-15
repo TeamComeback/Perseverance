@@ -47,8 +47,14 @@ def build(entries, w):
         out["by_stat"][st] = score([r for r in rows if r[3] == st], w)
     out["focus"] = focus(out["by_stat"])
     try:
-        from . import convmodel
-        out["conviction"] = convmodel.build(entries, log=lambda m: None)
+        from . import convmodel, convswitch
+        mode = convswitch.mode()
+        out["conviction"] = (convmodel.build_line if mode == "line" else convmodel.build)(entries, log=lambda m: None)
+        out["conviction"]["mode"] = mode
+        try:
+            convswitch.nightly(entries)          # the line-side model's test against the current one, every night
+        except Exception as e:
+            print(f"[scoreboard] conviction comparison failed: {e}")
     except Exception as e:
         print(f"[scoreboard] conviction model failed: {e}")
     return out
