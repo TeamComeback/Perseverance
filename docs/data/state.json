@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 18.16,
+  "cash": 13.16,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -13851,6 +13851,77 @@
       }
      ]
     }
+   },
+   {
+    "id": "83bedb64",
+    "placed": "2026-11-15T19:30:37Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "488c2bc1e099361f06015cf126f95fd6",
+      "sport": "basketball_nba",
+      "commence": "2026-11-16T00:10:00Z",
+      "home": "Washington Wizards",
+      "away": "Houston Rockets",
+      "market": "player_rebounds_assists",
+      "outcome": "Alperen Sengun Over",
+      "side": "Over",
+      "player": "Alperen Sengun",
+      "player_id": "4871144",
+      "stat": "ra",
+      "espn_id": "401909991",
+      "point": 16.5,
+      "price": 2.0,
+      "book": "fanduel",
+      "fair_p": 0.4885,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 19.65,
+       "base": 17.45,
+       "minutes": 39.4,
+       "mult": 1.126,
+       "sd": 4.74,
+       "p_model": 0.6638,
+       "p_mkt": 0.4885,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.128,
+         "txt": "WSH gives centers +13% reb+ast vs their norm (#1 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.082,
+         "txt": "Players with his profile: +8% reb+ast vs WSH (87 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.026,
+         "txt": "His history vs WSH: 17.0 reb+ast/g in 2 games (+3%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.093,
+         "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.0,
+    "stake": 5.0,
+    "ev": 0.0639,
+    "p": 0.532,
+    "note": "Proj 19.6 vs line 16.5 (norm 17.4, 39 min). Model 66% vs market 49%. WSH gives centers +13% reb+ast vs their norm (#1 softest of 30) \u00b7 Players with his profile: +8% reb+ast vs WSH (87 close comps) \u00b7 His history vs WSH: 17.0 reb+ast/g in 2 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null
    }
   ],
   "runs": []
@@ -14205,11 +14276,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-03T20:16:19Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 4: 14 games, 324 players projected, lineups for 0 games."
-  },
   {
    "ts": "2026-11-03T20:54:31Z",
    "kind": "adapt",
@@ -15704,6 +15770,11 @@
    "ts": "2026-11-15T19:27:54Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 15: 9 games, 211 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-15T19:30:37Z",
+   "kind": "props",
+   "text": "NBA matchups: 8 games, strongest spots: Ja'Kobe Walter ra -12% vs NY; Steven Adams ra +14% vs WSH; Alperen Sengun pra +14% vs WSH. Bought prop odds for HOU@WSH (ast, ra) (2 credits). Placed 1: Alperen Sengun Over 16.5 @ +100 (FanDuel)"
   }
  ],
  "learned_ids": [
@@ -15768,7 +15839,7 @@
   "e56fcf07"
  ],
  "strategist": null,
- "updated": "2026-11-15T19:28:34Z",
+ "updated": "2026-11-15T19:31:08Z",
  "stats": {
   "bets": 59,
   "won": 20,
@@ -15781,7 +15852,7 @@
   "clv_n": 15,
   "clv_no_close": 44,
   "close_mins_median": 151,
-  "open": 0,
+  "open": 1,
   "equity": 18.16
  },
  "weights": {
