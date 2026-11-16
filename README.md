@@ -237,7 +237,7 @@ python tests/simulate.py 30     # 30 simulated days on a fake market, no API key
 ## Files
 
 - `agent/`: the agent (Python standard library only). `research.py` daily research, `rotowire.py` lineups, `recap.py` game stories, `saved.py` saved props
-- `docs/`: the dashboard (tabs: Today, Games, Prop Lab, Sim, Bets, Trends, Agent); `games.js` is the Games tab, `sim.js` the simulator and live panel
+- `docs/`: the dashboard (tabs: Today, Games, Prop Lab, Sim, Bets, Trends, Agent); `games.js` is the Games tab, `sim.js` the simulator and live panel; `city.html` + `city.js` Perseverance City, `city/` its cast and generated map
 - `docs/data/`: the books and research files (JSON); `docs/data/games/` holds one detail file per game on the slate
 - `data/nba/`: box scores (three seasons) and this season's shot locations, one file per day
 
@@ -350,3 +350,20 @@ Framework: `perseverance-our-book-framework.md` in the project. Built Nov 12.
   a neutral schedule next to the real one and grades both nightly (`sos_track.json`). `tests/backtest_schedule.py`:
   the adjusted projection had a lower average miss on 5 of 6 stats (Feb 2026 cut) and 6 of 6 (Nov 2025 cut), by
   0.1-0.5%. It does not feed projections or picks until the owner switches it on.
+
+## Perseverance City (Nov 16)
+
+`docs/city.html` (the atom button in the dashboard header) draws the whole model as a night city: 10 companies, 50
+desks (one per module or key function), 50 documents passed between them on 49 routes, the outside data sources as
+portals, and the Chairman's Spire holding the bylaws, the clock (every schedule and the next chime) and the bulletin.
+Views: **Live** (which desks worked in the last 3 hours or today, which routes carry fresh documents), **Trace a bet**
+(every Best Bets pick for 14 days, every agent bet and every slip you logged, replayed desk by desk as a qubit that
+collapses to won or lost at the Settlement Clerk) and **Coherence** (self-checks, records, the understudy audition,
+probation and vacant desks, overdue documents, and drift between the map and the code). Growth, Replay the day and a
+3D city come later.
+
+`tools/orgmap.js` builds it after every agent run from `docs/city/cast.json` (titles, jobs, which documents each desk
+reads and writes) plus everything it can measure: code size, the Actions schedule, git history, document freshness and
+the bet ledgers. It writes `docs/city/org.json`, `docs/data/city_live.json` and `docs/data/city_trace.json`. A module
+without a desk shows up as a new hire, and `node tools/check.js` fails until it gets one. Team Comeback HQ may edit the
+cast; `docs/city/HQ.md` says how.

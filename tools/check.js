@@ -2,14 +2,15 @@
 //  1. every script parses (docs/*.js and the inline script in index.html)
 //  2. the data files the dashboard needs exist and have the shapes it reads
 //  3. the sim engine runs: one game, 300 sims, sane scores
-//  4. --ui: every tab renders headless at phone width with no page errors (needs Playwright; serves docs/ on :8899)
+//  4. the city map: docs/city/cast.json is valid and every module has a desk (tools/orgmap.js --check)
+//  5. --ui: every tab renders headless at phone width with no page errors (needs Playwright; serves docs/ on :8899)
 const fs = require("fs"), path = require("path");
 const ROOT = path.resolve(__dirname, ".."), DOCS = path.join(ROOT, "docs"), DATA = path.join(DOCS, "data");
 let fails = 0; const ok = m => console.log("  ok   " + m), bad = m => { fails++; console.log("  FAIL " + m); };
 const read = f => JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8"));
 
 console.log("1. scripts parse");
-for (const f of ["case.js", "refresh.js", "sim.js", "games.js"]) { try { new Function(fs.readFileSync(path.join(DOCS, f), "utf8")); ok(f); } catch (e) { bad(`${f}: ${e.message}`); } }
+for (const f of ["case.js", "refresh.js", "sim.js", "games.js", "city.js"]) { try { new Function(fs.readFileSync(path.join(DOCS, f), "utf8")); ok(f); } catch (e) { bad(`${f}: ${e.message}`); } }
 const html = fs.readFileSync(path.join(DOCS, "index.html"), "utf8");
 try { new Function(html.slice(html.indexOf("<script>\nconst $") + 8, html.indexOf("</script>\n<script src="))); ok("index.html inline script"); } catch (e) { bad("index.html inline script: " + e.message); }
 
@@ -35,9 +36,13 @@ try {
   }
 } catch (e) { bad("sim engine: " + e.message); }
 
+console.log("4. city map");
+try { const out = require("child_process").execFileSync(process.execPath, [path.join(ROOT, "tools", "orgmap.js"), "--check"], {encoding: "utf8", stdio: ["ignore", "pipe", "pipe"]}); ok(out.trim().replace("[city] ", "")); }
+catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().replace(/\n\s*/g, "; ")); }
+
 (async () => {
   if (process.argv.includes("--ui")) {
-    console.log("4. every tab renders (phone width)");
+    console.log("5. every tab renders (phone width)");
     const http = require("http"), mime = {".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".css": "text/css"};
     const srv = http.createServer((q, r) => { const f = path.join(DOCS, decodeURIComponent(q.url.split("?")[0]).replace(/\/$/, "/index.html"));
       fs.readFile(f, (e, b) => { if (e) { r.writeHead(404); return r.end(); } r.writeHead(200, {"content-type": mime[path.extname(f)] || "application/octet-stream"}); r.end(b); }); }).listen(8899);
@@ -52,7 +57,7 @@ try {
         errs.length === n && +txt > 50 ? ok(`${t} (${txt} chars)`) : bad(`${t}: ${errs.slice(n).join(" | ") || "renders nearly empty"}`);
       }
       // one side per prop: every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
-      console.log("5. one side per prop on every screen");
+      console.log("6. one side per prop on every screen");
       const seen = {};
       const grab = () => p.evaluate(() => [...document.querySelectorAll(".view.on [data-pid][data-stat]")].map(el => {
         const t = el.querySelector(":scope > div > .lean, :scope .lean"); return t ? [el.dataset.pid + "|" + el.dataset.stat, t.textContent.trim()] : null; }).filter(Boolean));
@@ -66,6 +71,16 @@ try {
       const gid = await p.evaluate(() => (D.players.games[0] || {}).espn_id);
       if (gid) for (const sub of ["game", "match", "props", "lines", "box"]) { const n = errs.length; await p.evaluate(([g, s]) => { go("games"); openGame(g, s); }, [gid, sub]); await p.waitForTimeout(800);
         errs.length === n ? ok(`game page · ${sub}`) : bad(`game page ${sub}: ${errs.slice(n).join(" | ")}`); }
+      // the city: draws, opens a building, traces a bet to its end
+      { const n = errs.length; await p.goto("http://localhost:8899/city.html"); await p.waitForTimeout(1500);
+        const blds = await p.evaluate(() => document.querySelectorAll("#city .bld[data-co]").length);
+        await p.evaluate(() => document.querySelector("#seg [data-v=trace]").click()); await p.waitForTimeout(800);
+        const bets = await p.evaluate(() => document.querySelectorAll("#pane .bet").length);
+        if (bets) { await p.evaluate(() => document.querySelector("#pane .bet").click()); await p.waitForTimeout(400);
+          for (let i = 0; i < 40; i++) await p.evaluate(() => { const b = document.querySelector('#pane [data-act="next"]'); b && b.click(); }); }
+        const end = await p.evaluate(() => (document.querySelector("#pane .ctl span") || {}).textContent || "");
+        await p.evaluate(() => document.querySelector("#seg [data-v=coh]").click()); await p.waitForTimeout(500);
+        errs.length === n && blds >= 10 && bets ? ok(`city: ${blds} buildings, ${bets} bets listed, trace reached ${end}, coherence opens`) : bad(`city: ${errs.slice(n).join(" | ") || `${blds} buildings, ${bets} bets`}`); }
       await b.close();
     } catch (e) { bad("ui: " + e.message); }
     srv.close();
