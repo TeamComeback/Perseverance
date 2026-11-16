@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 1,
-  "cash": 13.16,
+  "cash": 8.16,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -13877,7 +13877,7 @@
       "book": "fanduel",
       "fair_p": 0.4885,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 19.65,
        "base": 17.45,
@@ -13908,6 +13908,22 @@
          "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 119.0,
+       "away": 147.0
+      },
+      "actual": 16.0,
+      "box": {
+       "min": 28.0,
+       "pts": 19.0,
+       "reb": 8.0,
+       "ast": 8.0,
+       "tpm": 1.0,
+       "tpa": 2.0,
+       "fga": 8.0,
+       "fta": 9.0,
+       "tov": 1.0
       }
      }
     ],
@@ -13916,6 +13932,276 @@
     "ev": 0.0639,
     "p": 0.532,
     "note": "Proj 19.6 vs line 16.5 (norm 17.4, 39 min). Model 66% vs market 49%. WSH gives centers +13% reb+ast vs their norm (#1 softest of 30) \u00b7 Players with his profile: +8% reb+ast vs WSH (87 close comps) \u00b7 His history vs WSH: 17.0 reb+ast/g in 2 games (+3%)",
+    "group": null,
+    "issue": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-16T19:30:36Z",
+    "review": {
+     "headline": "LOST: 16 reb+ast vs Over 16.5",
+     "final": "Houston Rockets 147 \u2013 Washington Wizards 119",
+     "legs": [
+      {
+       "outcome": "Alperen Sengun Over",
+       "result": "loss",
+       "headline": "16 reb+ast vs Over 16.5",
+       "final": "Houston Rockets 147 \u2013 Washington Wizards 119",
+       "why": [
+        "Alperen Sengun finished with 16 reb+ast against a line of 16.5: over missed by 0.5.",
+        "Minutes: played 28 vs 39.4 projected.",
+        "Game was a 28-point blowout, which cuts starters' minutes.",
+        "Box score: 8 reb \u00b7 8 ast, 1 TO.",
+        "Model projected 19.6 (17.4 norm \u00d7 1.13 matchup); actual was -3.6 off (-0.8 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (12.4) in a matchup the model rated soft.",
+        "Signal: WSH gives centers +13% reb+ast vs their norm (#1 softest of 30)",
+        "Signal: Players with his profile: +8% reb+ast vs WSH (87 close comps)",
+        "Signal: His history vs WSH: 17.0 reb+ast/g in 2 games (+3%)",
+        "We priced it at 53% to hit vs 50% needed to break even at 2x (+6.4% expected edge).",
+        "Consensus fair probability when placed: 49% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-short",
+        "blowout",
+        "matchup-read-right",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "matchup-read-right",
+      "minutes-short",
+      "near-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "WSH",
+        "away": "HOU"
+       },
+       "final": "HOU 147 \u2013 WSH 119",
+       "periods": {
+        "away": [
+         36,
+         37,
+         46,
+         28
+        ],
+        "home": [
+         31,
+         23,
+         34,
+         31
+        ]
+       },
+       "largest_lead": {
+        "HOU": 37,
+        "WSH": 4
+       },
+       "largest_lead_at": {
+        "HOU": "2:03 4th Q",
+        "WSH": "8:05 1st Q"
+       },
+       "lead_changes": 12,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "HOU",
+         "pts": 11,
+         "from": "29.0 1st Q",
+         "to": "10:52 2nd Q",
+         "score": "HOU 43-31 WSH"
+        },
+        {
+         "team": "HOU",
+         "pts": 9,
+         "from": "8:17 2nd Q",
+         "to": "6:29 2nd Q",
+         "score": "HOU 57-40 WSH"
+        },
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "2:57 1st Q",
+         "to": "2:01 1st Q",
+         "score": "HOU 29-23 WSH"
+        },
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "9:47 3rd Q",
+         "to": "8:35 3rd Q",
+         "score": "HOU 88-58 WSH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "HOU",
+         "swing": 18,
+         "from": "1:17 1st Q",
+         "to": "5:57 2nd Q",
+         "mins": 7.3,
+         "from_score": "HOU 29-29 WSH",
+         "to_score": "HOU 59-41 WSH",
+         "pts_for": 30,
+         "pts_against": 12
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Amen Thompson (HOU): 26 pts, 7 reb, 7 ast, 3-3 3PT in 29 min",
+        "Kevin Durant (HOU): 25 pts, 4 reb, 5 ast, 2-3 3PT in 30 min",
+        "Alex Sarr (WSH): 25 pts, 9 reb, 2 ast, 3-6 3PT in 27 min",
+        "Anthony Davis (WSH): 14 pts, 8 reb, 5 ast, 0-0 3PT in 31 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 9,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 3,
+          "fgm": 3
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 10,
+          "reb": 5,
+          "ast": 4,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "7:07 1st Q"
+        ],
+        "box": {
+         "id": "4871144",
+         "name": "Alperen Sengun",
+         "team": "HOU",
+         "min": "28",
+         "pts": 19,
+         "reb": 8,
+         "ast": 8,
+         "3pt": "1-2",
+         "fg": "5-8",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: HOU 73-54 WSH, HOU up 19.",
+        "The 2nd quarter decided the most: HOU won it 37-23.",
+        "Largest leads: HOU 37 (2:03 4th Q), WSH 4 (8:05 1st Q). 12 lead changes, 5 ties.",
+        "Momentum swing: HOU outscored them 30-12 in 7.3 minutes (1:17 1st Q to 5:57 2nd Q), moving it from HOU 29-29 WSH to HOU 59-41 WSH.",
+        "HOU went on a 11-0 run (29.0 1st Q to 10:52 2nd Q), making it HOU 43-31 WSH.",
+        "HOU went on a 9-0 run (8:17 2nd Q to 6:29 2nd Q), making it HOU 57-40 WSH.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Alperen Sengun by period (REB+AST): Q1 3, Q2 4, Q3 9, Q4 0.",
+        "He never got past 16.5.",
+        "Threes made at: 7:07 1st Q."
+       ],
+       "espn_id": "401909991",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909991"
+      }
+     ]
+    }
+   },
+   {
+    "id": "02383dc5",
+    "placed": "2026-11-16T19:30:42Z",
+    "run": 1,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "a613d212acef6f86d71b6ef99049fb7b",
+      "sport": "basketball_nba",
+      "commence": "2026-11-17T00:10:00Z",
+      "home": "Washington Wizards",
+      "away": "Memphis Grizzlies",
+      "market": "player_assists",
+      "outcome": "Cam Spencer Under",
+      "side": "Under",
+      "player": "Cam Spencer",
+      "player_id": "4433083",
+      "stat": "ast",
+      "espn_id": "401909996",
+      "point": 7.5,
+      "price": 1.95,
+      "book": "espnbet",
+      "fair_p": 0.5021,
+      "close_p": null,
+      "result": null,
+      "model": {
+       "proj": 6.11,
+       "base": 5.38,
+       "minutes": 24.6,
+       "mult": 1.136,
+       "sd": 2.8,
+       "p_model": 0.7163,
+       "p_mkt": 0.5021,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.16,
+         "txt": "WSH gives point guards +16% assists vs their norm (#1 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.09,
+         "txt": "Players with his profile: +9% assists vs WSH (87 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.046,
+         "txt": "His history vs WSH: 9.0 assists/g in 2 games (+5%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.096,
+         "txt": "WSH games have +10% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.95,
+    "stake": 5.0,
+    "ev": 0.1571,
+    "p": 0.5934,
+    "note": "Proj 6.1 vs line 7.5 (norm 5.4, 25 min). Model 72% vs market 50%. WSH gives point guards +16% assists vs their norm (#1 softest of 30) \u00b7 Players with his profile: +9% assists vs WSH (87 close comps) \u00b7 His history vs WSH: 9.0 assists/g in 2 games (+5%)",
     "group": null,
     "issue": null,
     "status": "open",
@@ -14066,9 +14352,9 @@
    "clv_gate": false
   },
   "matchup_over": {
-   "bets": 7,
-   "staked": 35.0,
-   "profit": 19.8,
+   "bets": 8,
+   "staked": 40.0,
+   "profit": 14.8,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -14078,19 +14364,19 @@
      "lost": 0
     },
     "blowout": {
-     "n": 5,
+     "n": 6,
      "won": 3,
-     "lost": 2
+     "lost": 3
     },
     "matchup-read-right": {
-     "n": 5,
+     "n": 6,
      "won": 4,
-     "lost": 1
+     "lost": 2
     },
     "minutes-short": {
-     "n": 3,
+     "n": 4,
      "won": 2,
-     "lost": 1
+     "lost": 2
     },
     "matchup-read-wrong": {
      "n": 1,
@@ -14106,6 +14392,11 @@
      "n": 1,
      "won": 1,
      "lost": 0
+    },
+    "near-miss": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
     }
    },
    "clv_gate": false
@@ -14174,9 +14465,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 47.0,
-   "staked": 235.0,
-   "profit": -42.849999999999994
+   "bets": 48.0,
+   "staked": 240.0,
+   "profit": -47.849999999999994
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -14276,16 +14567,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-05T17:22:06Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 13.2%."
-  },
-  {
-   "ts": "2026-11-05T17:22:06Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran +6.2% vs actual over 447 player-games: level x0.976; REB projections ran +2.7% vs actual over 447 player-games: level x0.984; AST projections ran +6.2% vs actual over 447 player-games: level x0.975; TPM projections ran +7.2% vs actual over 447 player-games: level x0.986; PRA projections ran +5.0% vs actual over 447 player-games: level x0.979; RA projections ran +3.5% vs actual over 447 player-games: level x0.982; starter minutes were off by -1.4 on average over 228 player-games: correction +0.3 min; bench minutes were off by +1.0 on average over 219 player-games: correction -0.2 min; conviction factor 'minutes' hurt by -1.7 pts of hit rate over 1442 plays: weight 0.74 -> 0.88; conviction factor 'agree' hurt by -0.9 pts of hit rate over 722 plays: weight 1.06 -> 0.95; conviction factor 'rest' helped by +9.2 pts of hit rate over 268 plays: weight 1.00 -> 1.28."
-  },
   {
    "ts": "2026-11-05T17:22:06Z",
    "kind": "daily",
@@ -15775,6 +16056,16 @@
    "ts": "2026-11-16T19:00:49Z",
    "kind": "research",
    "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
+  },
+  {
+   "ts": "2026-11-16T19:30:36Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Alperen Sengun Over 16.5 @ +100 (FanDuel) \u2014 LOST: 16 reb+ast vs Over 16.5 [blowout, matchup-read-right, minutes-short, near-miss]"
+  },
+  {
+   "ts": "2026-11-16T19:30:42Z",
+   "kind": "props",
+   "text": "NBA matchups: 8 games, strongest spots: Zach Edey ra +16% vs WSH; James Harden ast +14% vs CHI; Zach Edey pra +14% vs WSH. Bought prop odds for MEM@WSH (ast, ra) (2 credits). Placed 1: Cam Spencer Under 7.5 @ -105 (theScore Bet)"
   }
  ],
  "learned_ids": [
@@ -15836,24 +16127,25 @@
   "1772e909",
   "7c117c18",
   "7f5e4e11",
-  "e56fcf07"
+  "e56fcf07",
+  "83bedb64"
  ],
  "strategist": null,
- "updated": "2026-11-16T19:01:39Z",
+ "updated": "2026-11-16T19:31:20Z",
  "stats": {
-  "bets": 59,
+  "bets": 60,
   "won": 20,
-  "lost": 37,
+  "lost": 38,
   "push": 2,
-  "staked": 297.63,
-  "profit": -81.84,
-  "roi": -0.275,
+  "staked": 302.63,
+  "profit": -86.84,
+  "roi": -0.287,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 44,
+  "clv_no_close": 45,
   "close_mins_median": 151,
   "open": 1,
-  "equity": 18.16
+  "equity": 13.16
  },
  "weights": {
   "value_fav": 0.842,
@@ -15861,7 +16153,7 @@
   "longshot": 0.427,
   "arb": 1.003,
   "parlay_ev": 1.0,
-  "matchup_over": 1.417,
+  "matchup_over": 1.296,
   "matchup_under": 0.63
  },
  "paused": [
