@@ -270,8 +270,17 @@ function bestBetsSetup(pj, simlog) {
     const date = pj.date, now = Date.now();
     const old = BEST.days[date] || {props: [], games: []};
     const tipped = x => { const g = startOf[x.espn_id]; return g ? g.state !== "pre" : new Date(x.start).getTime() <= now; };
-    const pick = (list, lockedOld, nMax, perGame, perPlayer) => {
+    // Sticky props (stage 0 study, Nov 16): plays dropped because their conviction dipped or others ranked higher went
+    // 30-27 and 12-7 afterwards, so reshuffling avoided no losses. A prop pick now stays until a kill condition: it no
+    // longer passes the checks (injury, minutes), its side flips on the ranked board, or it stops being +EV at tonight's
+    // line. It is carried at tonight's line and price.
+    const pick = (list, lockedOld, nMax, perGame, perPlayer, sticky) => {
       const locked = lockedOld.filter(tipped);
+      if (sticky) for (const o of lockedOld) {
+        if (tipped(o)) continue;
+        const c = list.find(x => x.espn_id === o.espn_id && x.pid === o.pid && x.stat === o.stat && x.side === o.side);
+        if (c && c.ev > 0 && locked.length < nMax) locked.push({...c, held_since: o.held_since || o.first_at || null});
+      }
       const chosen = [...locked], usedGame = {}, usedPlayer = new Set();
       chosen.forEach(x => { usedGame[x.espn_id] = (usedGame[x.espn_id] || 0) + 1; if (x.pid) usedPlayer.add(x.pid); });
       const score = x => x.conv != null ? x.conv + x.ev : 100 * x.ev;          // conviction first; expected value breaks ties
@@ -287,7 +296,7 @@ function bestBetsSetup(pj, simlog) {
     // one side per line: Best Bets can only pick the side the ranked board shows (higher conviction, then sim win rate)
     const oneSide = (list, keyF) => { const by = {}; for (const x of list) { const k = keyF(x), b = by[k]; if (!b || x.conv > b.conv || (x.conv === b.conv && x.p_sim > b.p_sim)) by[k] = x; } return list.filter(x => by[keyF(x)] === x); };
     const day = {updated: new Date().toISOString(), why: process.env.SIM_REASON || "scheduled refresh", learned,
-      props: pick(oneSide(cands.props, x => x.pid + "|" + x.stat), old.props || [], 5, 2, true),
+      props: pick(oneSide(cands.props, x => x.pid + "|" + x.stat), old.props || [], 5, 2, true, true),
       games: pick(oneSide(cands.games, x => x.espn_id + "|" + x.kind), old.games || [], 5, 1, false)};
     // A pick is never erased silently: one that drops out before tip-off stays listed with the reason, and is graded
     // like the rest (record.dropped), so refreshing can't flatter the record.
@@ -297,7 +306,12 @@ function bestBetsSetup(pj, simlog) {
     for (const x of [...(old.props || []), ...(old.games || [])]) {
       const k = keyOf(x); if (now_.has(k) || seenD.has(k)) continue;
       const c = [...cands.props, ...cands.games].find(y => keyOf(y) === k);
-      const why = !c ? "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
+      const sides = x.kind === "prop" ? cands.props.filter(y => y.pid === x.pid && y.stat === x.stat && y.espn_id === x.espn_id) : [];
+      const top = sides.reduce((b, y) => !b || y.conv > b.conv || (y.conv === b.conv && y.p_sim > b.p_sim) ? y : b, null);
+      const flip = !!(top && top.side !== x.side);
+      const why = flip ? "the ranked board's side flipped"
+        : !c ? "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
+        : x.kind === "prop" && !(c.ev > 0) ? `no longer +EV at tonight's line (${c.point} at ${c.am > 0 ? "+" : ""}${c.am})`
         : c.point !== x.point ? `line moved ${x.point} → ${c.point}` : c.conv < x.conv ? `confidence fell ${x.conv} → ${c.conv}` : "other plays ranked higher";
       day.dropped.push({...x, dropped: day.updated, drop_why: why});
     }

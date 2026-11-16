@@ -367,3 +367,25 @@ reads and writes) plus everything it can measure: code size, the Actions schedul
 the bet ledgers. It writes `docs/city/org.json`, `docs/data/city_live.json` and `docs/data/city_trace.json`. A module
 without a desk shows up as a new hire, and `node tools/check.js` fails until it gets one. Team Comeback HQ may edit the
 cast; `docs/city/HQ.md` says how.
+
+## Daily Briefing (Nov 16; first edition Nov 17)
+
+One report a day at the top of the Tonight tab (`agent/briefing.py`, `docs/data/briefing/YYYY-MM-DD.json`).
+- **Morning edition, about 7am ET:** a 6:57am run (mode `briefing`, also triggered by the outside timer's auto run)
+  refreshes research if it is stale and publishes tonight's Best Bets props and game-line leans. One phone alert.
+- **All day:** every agent run updates the file: line and price moves, conviction changes, injury and minutes changes for
+  the player and the rotation players around him, picks added or removed. Phone alerts only when a pick is added,
+  removed or passes its play-to line (6 a day at most).
+- **Each card:** the bet, a play-to line (break-even at tonight's line, and the worst line still +EV at −115, read off
+  the simulation's own distribution), conviction, sim, DraftKings, Kalshi and our sealed line, the case for and against
+  with each reason's record, what would kill it, who to watch, and when and where it was published.
+- **Written editions (7:22am, 2:41pm, 6:33pm):** a scheduled Claude session follows `agent/BRIEFING_WRITER.md`, reads
+  `python -m agent.briefing brief`, checks the news, and saves with `python -m agent.briefing narrate FILE`, which
+  rejects any number that is not in the facts. It may flag or demote a pick with a source, never add one; flags are graded.
+- **Record (`briefing_track.json`):** morning picks graded at the line they were published at (the headline record),
+  picks at tip, picks added later, removed picks, leans, closing-line direction on morning picks, writer flags.
+- Game lines are shown first as **leans** with their record (8-16 since Nov 11) and never count as best bets.
+
+**Sticky Best Bets props (stage 0 study):** plays dropped because their conviction dipped went 30-27 afterwards, so a
+prop pick now stays until a kill condition: it fails the checks (injury, minutes), the ranked board's side flips, or it
+is no longer +EV at tonight's line. It is carried at tonight's line and price.

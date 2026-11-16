@@ -153,6 +153,28 @@ def run(log=print):
         a = _age_h((_load(f, {}) or {}).get("updated"))
         add(name, "ok" if a is not None and a <= 36 else "warn", f"updated {a:.0f}h ago" if a is not None else "never updated")
 
+    # 9. Daily Briefing: the morning edition is out by 8am on a game day, its open picks match Best Bets' side,
+    #    and a written edition followed (the scheduled Claude writer)
+    try:
+        from . import briefing
+        h = briefing.et_hour()
+        bf = _load(f"briefing/{today}.json", None)
+        if pj.get("date") == today and games and h >= 8:
+            if not bf or not any(e["id"] == "morning" for e in bf.get("editions") or []):
+                add("Daily Briefing", "warn", "no morning edition yet")
+            else:
+                side = {f"p|{x['pid']}|{x['stat']}": x["side"] for x in (day or {}).get("props") or []}
+                clash = [c["label"] for c in bf["picks"].values() if not c.get("removed") and not c.get("started")
+                         and c["key"].rsplit("|", 1)[0] in side and side[c["key"].rsplit("|", 1)[0]] != c["side"]]
+                wrote = [n["edition"] for n in bf.get("narratives") or []]
+                late = h >= 9 and "morning" not in wrote
+                add("Daily Briefing", "fail" if clash else "warn" if late else "ok",
+                    (f"sides disagree with Best Bets: {', '.join(clash)}" if clash else
+                     f"{len(bf['picks'])} props, {len(bf['leans'])} leans, {len(bf['changes'])} changes; written: {', '.join(wrote) or 'none yet'}"
+                     + ("; the 7:22am written edition is missing" if late else "")))
+    except Exception as e:
+        add("Daily Briefing", "warn", f"check could not run: {e}")
+
     worst = "fail" if any(c["status"] == "fail" for c in out) else "warn" if any(c["status"] == "warn" for c in out) else "ok"
     res = {"updated": store.iso(store.now()), "status": worst, "checks": out}
     (DATA / "checks.json").write_text(json.dumps(res, ensure_ascii=False, separators=(",", ":")))

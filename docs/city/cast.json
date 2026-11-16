@@ -17,13 +17,18 @@
  "bulletin": [
   {
    "at": "2026-11-16",
-   "by": "Chairman",
-   "text": "City opened. Trace a bet is live; Growth and the 3D city come later."
+   "by": "Newsroom",
+   "text": "Staff Writer hired: the Daily Briefing publishes at 7am from Nov 17, with written editions at 7:22am, 2:41pm and 6:33pm."
   },
   {
    "at": "2026-11-16",
    "by": "Newsroom",
-   "text": "Vacancy: Staff Writer for the 7am Daily Briefing (framework approved, build pending)."
+   "text": "Best Bets props are now sticky: a pick leaves only on a kill condition (injury, side flip, no longer +EV)."
+  },
+  {
+   "at": "2026-11-16",
+   "by": "Chairman",
+   "text": "City opened. Trace a bet is live; Growth and the 3D city come later."
   }
  ],
  "companies": [
@@ -389,6 +394,14 @@
   },
   "city_trace.json": {
    "name": "Bet traces",
+   "fresh_h": 30
+  },
+  "briefing/*": {
+   "name": "Daily Briefing",
+   "fresh_h": 30
+  },
+  "briefing_track.json": {
+   "name": "Briefing report card",
    "fresh_h": 30
   }
  },
@@ -891,8 +904,26 @@
    "id": "writer",
    "company": "news",
    "title": "Staff Writer",
-   "status": "vacant",
-   "job": "Will write the 7am Daily Briefing and update it through the day. Framework written Nov 16; not yet built."
+   "status": "active",
+   "job": "Publishes the Daily Briefing at 7am and keeps it current all day: play-to lines, statuses, what changed, the report's own record. A scheduled Claude session writes the three editions, using only numbers from the facts.",
+   "code": [
+    "agent/briefing.py",
+    "agent/run.py#briefing_run"
+   ],
+   "sources": [
+    "github"
+   ],
+   "reads": [
+    "best.json",
+    "players.json",
+    "sims.json",
+    "dk/*"
+   ],
+   "writes": [
+    "briefing/*",
+    "briefing_track.json",
+    "alerts.json"
+   ]
   },
   {
    "id": "trader",
@@ -1074,7 +1105,8 @@
     "best.json",
     "budget.json",
     "scoreboard.json",
-    "team_model.json"
+    "team_model.json",
+    "briefing/*"
    ],
    "writes": [
     "checks.json"
@@ -1170,7 +1202,8 @@
     "dk/*",
     "manual_import.json",
     "ourbook_track.json",
-    "ranked.json"
+    "ranked.json",
+    "briefing/*"
    ],
    "writes": [
     "city_live.json",
@@ -1217,7 +1250,9 @@
     "team_model.json",
     "track.json",
     "trends.json",
-    "tuning.json"
+    "tuning.json",
+    "briefing/*",
+    "briefing_track.json"
    ]
   },
   {
@@ -1383,6 +1418,11 @@
    "file": "team_model.json",
    "count": "teams",
    "label": "teams rated"
+  },
+  "writer": {
+   "file": "briefing_track.json",
+   "record": "total.morning",
+   "label": "morning picks"
   }
  },
  "check_desks": {
@@ -1397,6 +1437,7 @@
   "Sim run log": "simgrader",
   "Odds API credits": "buyer",
   "Model vs market scoreboard": "audit_score",
-  "Team model": "team"
+  "Team model": "team",
+  "Daily Briefing": "writer"
  }
 }

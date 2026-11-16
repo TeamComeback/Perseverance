@@ -7,6 +7,7 @@ on:
     - cron: "10 9 * * *"    # ~5am ET   — overnight grading + strategist
     - cron: "5 19 * * *"    # ~2pm ET in winter (3pm in summer) — NBA matchup props, early so plays are ready in the afternoon
     - cron: "17 20 * * *"   # ~3:15pm ET in winter — props backup: only runs if the 2pm run was delayed or dropped
+    - cron: "57 11 * * *"   # ~6:57am ET in winter — Daily Briefing morning edition (refreshes research first if stale)
     - cron: "41 13 * * *"   # ~9:40am ET — free research refresh: box scores, lineups, projections, trends
     - cron: "47 20 * * *"   # ~4:45pm ET — free research refresh with updated lineups
     - cron: "13 23 * * *"   # ~6:15pm ET in winter — pre-game refresh: late injuries, lineups, re-run all sims (free)
@@ -16,10 +17,10 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "cycle, props, research, nightly, live, injwatch, probe, or auto (for an outside timer: works out what is due)"
+        description: "cycle, props, research, nightly, live, injwatch, probe, briefing, or auto (for an outside timer: works out what is due)"
         default: cycle
         type: choice
-        options: [cycle, props, research, nightly, live, injwatch, probe, auto]
+        options: [cycle, props, research, nightly, live, injwatch, probe, briefing, auto]
 
 permissions:
   contents: write
@@ -55,6 +56,7 @@ jobs:
           if [ -z "$MODE" ]; then
             case "${{ github.event.schedule }}" in
               "10 9 * * *") MODE=nightly ;;
+              "57 11 * * *") MODE=briefing ;;
               "5 19 * * *") MODE=props ;;
               "17 20 * * *") MODE=props-backup ;;
               "41 13 * * *"|"47 20 * * *"|"13 23 * * *"|"43 1 * * *") MODE=research ;;

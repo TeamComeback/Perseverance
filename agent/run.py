@@ -728,6 +728,8 @@ def auto_run():
         except Exception:
             pass
     print(f"[auto] {hour:.2f}h ET: {len(live)} live, {len(pre)} to tip" + (", last night's games still on" if yday_live else ""))
+    if pre:
+        _briefing_due_refresh()
     if live or pre:                                 # Kalshi: a second market's lines, free, a look every run
         try:
             from . import kalshi
@@ -778,6 +780,37 @@ def auto_run():
             print(f"[ourbook] freeze failed: {e}")
 
 
+def briefing_run():
+    """The 7am Daily Briefing (scheduled 6:57am ET): make sure today's research and sims exist and are recent, then
+    publish the morning edition. The outside timer's auto runs also publish it if this schedule is dropped."""
+    from . import briefing, research
+    pj = store.load("players.json", None) or {}
+    age_h = (store.now() - store.parse(pj["updated"])).total_seconds() / 3600 if pj.get("updated") else 99
+    global SIM_REASON
+    if pj.get("date") != research.et_today().isoformat() or age_h >= 3:
+        SIM_REASON = SIM_REASON or "morning briefing: fresh research before the 7am edition"
+        research_run()
+    briefing.tick()
+
+
+def _briefing_due_refresh():
+    """For auto runs: on a game day between 6:45am and noon ET with no morning edition yet, refresh first if stale."""
+    from . import briefing, research
+    try:
+        h = briefing.et_hour()
+        if not (briefing.PUBLISH_FROM <= h < 12) or briefing.has_morning():
+            return
+        pj = store.load("players.json", None) or {}
+        age_h = (store.now() - store.parse(pj["updated"])).total_seconds() / 3600 if pj.get("updated") else 99
+        if pj.get("date") != research.et_today().isoformat() or age_h >= 3:
+            global SIM_REASON
+            SIM_REASON = SIM_REASON or "morning briefing due: refreshing first"
+            print("[auto] morning briefing due and research is stale: refreshing")
+            research_run()
+    except Exception as e:
+        print(f"[auto] briefing check failed: {e}")
+
+
 def catch_up(mode):
     """GitHub sometimes starts scheduled runs very late or skips them. Any light run (scan, live, injury watch)
     checks whether the last full refresh is stale while games are still to come, and does it itself if so."""
@@ -809,7 +842,14 @@ if __name__ == "__main__":
     _mode = sys.argv[1]
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
      "research": research_run, "live": live_run, "injwatch": injwatch_run, "auto": auto_run, "manual-issue": manual_issue,
+     "briefing": briefing_run,
      "probe": lambda: __import__("agent.probe", fromlist=["run"]).run()}[_mode]()
     catch_up(_mode)
-    if _mode in ("research", "auto", "nightly", "injwatch", "props", "props-backup", "cycle", "manual-issue"):
+    if _mode not in ("manual-issue", "probe", "briefing"):
+        try:                                        # Daily Briefing: publish when due, keep current, grade (local files only)
+            from . import briefing
+            briefing.tick()
+        except Exception as e:
+            print(f"[briefing] failed: {e}")
+    if _mode in ("research", "auto", "nightly", "injwatch", "props", "props-backup", "cycle", "manual-issue", "briefing"):
         run_checks()

@@ -523,6 +523,38 @@ details.rbmore>summary{font-size:12px;color:var(--dim);padding:4px 0 8px 22px;cu
 .seas,.live1{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:9px 12px;margin:10px 0 2px}.live1{border-color:#ff5d7355}
 .seas .k,.live1 .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2);margin-bottom:4px}
 .seas .sl,.live1 .sl{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--dim)}.seas .sl b,.live1 .sl b{color:var(--text);font-family:var(--mono)}
+/* Daily Briefing (agent/briefing.py -> briefing/YYYY-MM-DD.json) */
+.brf .bhd{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--dim);margin:2px 0 8px}
+.brf .nar{border-left:2px solid var(--mars);padding:2px 0 2px 12px;margin:4px 0 12px}
+.brf .nar h4{margin:0 0 4px;font-size:15.5px;line-height:1.3}
+.brf .nar p{margin:0;font-size:14px;line-height:1.5}
+.brf .nar .by{font-size:11px;color:var(--dim2);margin-top:6px}
+.brf .stale{display:inline-block;font-size:11px;color:var(--gold);background:var(--gold-d);border-radius:99px;padding:1px 8px;margin-left:6px}
+.brf .k2{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2);margin:12px 0 6px;display:flex;justify-content:space-between}
+.brf .chg{font-size:13px;padding:5px 0;border-bottom:1px solid var(--line);display:flex;gap:8px}
+.brf .chg time{color:var(--dim2);font-family:var(--mono);font-size:11.5px;flex:none;width:52px}
+.brf .lean{display:none}
+.brf .lrow{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:10px;margin-bottom:4px;background:var(--panel)}
+.brf .lrow span:last-child{color:var(--dim);white-space:nowrap}
+.brf .bc{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:11px 12px;margin-bottom:8px}
+.brf .bc.off{opacity:.6}
+.brf .bc .t{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.brf .bc .t b{font-size:15px;line-height:1.25}
+.brf .bst{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:2px 8px;white-space:nowrap;background:var(--panel2);color:var(--dim)}
+.brf .bst.Won{background:var(--win-d);color:var(--win)}.brf .bst.Lost{background:var(--loss-d);color:var(--loss)}
+.brf .bst.New,.brf .bst.Upgraded{background:var(--mars-d);color:var(--mars)}.brf .bst.Downgraded,.brf .bst.Past{background:var(--gold-d);color:var(--gold)}
+.brf .nums{font-size:12.5px;color:var(--dim);margin:5px 0 0;font-family:var(--mono)}
+.brf .pt{font-size:13px;margin:6px 0 0}.brf .pt b{color:var(--gold)}
+.brf .why{font-size:13.5px;margin:8px 0 0;line-height:1.45}
+.brf details{margin-top:8px}.brf details summary{font-size:12.5px;color:var(--mars);cursor:pointer}
+.brf ul{margin:6px 0 0;padding-left:16px;font-size:13px}.brf li{margin-bottom:4px}
+.brf li i{font-style:normal;font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-right:5px}
+.brf li em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--dim2);margin-left:4px}
+.brf .kill{font-size:12.5px;color:var(--dim);margin-top:6px}
+.brf .pub{font-size:11.5px;color:var(--dim2);margin-top:6px;font-family:var(--mono)}
+.brf .rec{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px}
+.brf .rec div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 9px}
+.brf .rec b{display:block;font-family:var(--mono);font-size:13.5px}.brf .rec span{font-size:10.5px;color:var(--dim)}
 .allctl{display:flex;justify-content:flex-end;gap:6px;margin:8px 0 -2px}.allctl button{background:none;border:0;color:var(--dim);font:inherit;font-size:12px;cursor:pointer;padding:2px 4px;text-decoration:underline;text-underline-offset:3px}.sched .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2)}
 </style>
 </head>
@@ -1439,6 +1471,56 @@ function watchHtml() {
   return rows.length ? `<h2>Your watchlist</h2><div class="card" style="padding:2px 12px">${rows.join("")}</div>` : "";
 }
 
+// ------------------------------------------------------------------ Daily Briefing (agent/briefing.py)
+// Published as the morning edition at about 7am ET, kept current after every run; the written editions (7:22am,
+// 2:41pm, 6:33pm) come from a scheduled Claude session and can only use numbers that are in the facts.
+const BED = {morning: "Morning edition", midday: "Afternoon edition", final: "Final edition"};
+const bAm = d => d ? am(d) : "";
+const p100 = v => v == null ? "–" : Math.round(v * 100) + "%";
+function bRec(r) { return r && (r.w + r.l + (r.p || 0)) ? `${r.w}-${r.l}${r.p ? "-" + r.p : ""} <span class="${cls(r.u)}">${r.u > 0 ? "+" : ""}${(+r.u).toFixed(2)}u</span>` : "–"; }
+function briefHtml() {
+  const f = D.brief; if (!f || !f.editions || !f.editions.length) return "";
+  const N = (f.narratives || []).slice(-1)[0], s = f.slate || {}, T = (D.btrack || {}).total;
+  const since = N ? f.changes.length - (N.changes_at_write || 0) : 0;
+  const t = iso => { try { return new Date(iso).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"}).replace(" ", "").toLowerCase(); } catch (e) { return ""; } };
+  const picks = Object.values(f.picks || {}).sort((a, b) => (!!a.removed - !!b.removed) || (b.conv || 0) - (a.conv || 0));
+  const leans = Object.values(f.leans || {});
+  const notes = (N && N.cards) || {};
+  const card = c => {
+    const pt = c.play_to, live = !c.removed && !c.started && !c.result, st = (c.status || "").split(" ")[0];
+    const rl = r => `<li><i>${esc(r.tag)}</i>${esc(r.t)}${r.rec ? `<em>${r.rec[0]}-${r.rec[1]}</em>` : ""}</li>`;
+    return `<div class="bc${c.removed ? " off" : ""}"${live && c.pid ? ` data-pid="${c.pid}" data-stat="${c.stat}"` : ""}>
+      <div class="t"><b>${esc(c.label)} <span class="dim" style="font-weight:500">${bAm(c.dec)}</span></b><span class="bst ${st}">${esc(c.status)}</span></div>
+      <div class="nums">conv ${c.conv ?? "–"} ${esc(c.tier || "")} · sim ${p100(c.p_sim)} · DK ${p100(c.p_mkt)}${c.p_kalshi ? " · Kalshi " + p100(c.p_kalshi) : ""}${c.ob_ind != null ? " · our line " + f1(c.ob_ind) : ""}</div>
+      ${pt ? `<div class="pt">Play-to: <b>good at ${f1(c.point)} down to ${pt.floor_am > 0 ? "+" : "−"}${Math.abs(pt.floor_am)}</b>${pt.line != null && pt.line !== c.point ? ` · still a bet at ${f1(pt.line)} near −115` : ""}${pt.next != null ? ` · not at ${f1(pt.next)}` : ""}</div>` : ""}
+      ${notes[c.key] ? `<p class="why">${esc(notes[c.key])}</p>` : ""}
+      ${c.removed ? `<div class="kill">Removed ${t(c.removed.at)}: ${esc(c.removed.why)}</div>` : ""}
+      ${(c.for || []).length + (c.against || []).length ? `<details><summary>The case: ${(c.for || []).length} for, ${(c.against || []).length} against</summary>
+        ${(c.for || []).length ? `<ul>${c.for.map(rl).join("")}</ul>` : ""}${(c.against || []).length ? `<div class="kill" style="margin-top:8px">Against</div><ul>${c.against.map(rl).join("")}</ul>` : ""}</details>` : ""}
+      ${live && (c.kill || []).length ? `<div class="kill">Kills it: ${esc(c.kill.join(" · "))}</div>` : ""}
+      ${(c.watch || []).length ? `<div class="kill">${c.watch.filter(w => w.status === "Out").length ? "Out tonight: " + esc(c.watch.filter(w => w.status === "Out").map(w => w.name).join(", ")) : ""}${c.watch.some(w => w.status !== "Out") ? (c.watch.some(w => w.status === "Out") ? " · " : "") + "Watch: " + esc(c.watch.filter(w => w.status !== "Out").map(w => w.name + " (" + w.status.toLowerCase() + ")").join(", ")) : ""}</div>` : ""}
+      <div class="pub">Published ${t(c.published.at)} (${esc(c.published.edition)}) at ${f1(c.published.point)} ${bAm(c.published.dec)}${c.market && c.market.open != null && c.market.open !== c.point ? ` · opened ${f1(c.market.open)}` : ""}${c.result ? ` · ${c.result.res === "win" ? "won" : c.result.res === "loss" ? "lost" : c.result.res}${c.result.actual != null ? " with " + c.result.actual : ""}` : ""}</div></div>`;
+  };
+  const chg = f.changes.slice().reverse();
+  const yd = D.btrack && D.btrack.days ? Object.keys(D.btrack.days).filter(d => d < f.date).sort().pop() : null, Y = yd && D.btrack.days[yd];
+  const meta = (N ? BED[N.edition] : "Morning edition") + " · " + (chg.length ? chg.length + " change" + (chg.length > 1 ? "s" : "") : "no changes");
+  const body = `<div class="brf">
+    <div class="bhd"><span>${s.games || 0} games${s.first ? " · first tip " + t(s.first) : ""}${(s.questionable || []).length ? " · " + s.questionable.length + " questionable" : ""}</span><span>updated ${ago(f.updated)}</span></div>
+    ${N ? `<div class="nar"><h4>${esc(N.headline)}</h4><p>${esc(N.briefing)}</p><div class="by">${BED[N.edition]}, written ${t(N.at)}${since > 0 ? `<span class="stale">${since} change${since > 1 ? "s" : ""} since</span>` : ""}${(N.sources || []).length ? " · " + N.sources.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title || "source")}</a>`).join(", ") : ""}</div></div>`
+      : `<div class="nar"><p class="dim">The numbers below are live. The written briefing arrives about 20 minutes after the morning edition is published.</p></div>`}
+    ${chg.length ? `<div class="k2"><span>What changed</span><span>${chg.length}</span></div>${chg.slice(0, 6).map(x => `<div class="chg"><time>${t(x.at)}</time><span>${esc(x.text)}</span></div>`).join("")}${chg.length > 6 ? `<details><summary>${chg.length - 6} earlier</summary>${chg.slice(6).map(x => `<div class="chg"><time>${t(x.at)}</time><span>${esc(x.text)}</span></div>`).join("")}</details>` : ""}` : ""}
+    ${leans.length ? `<div class="k2"><span>Leans · game lines</span><span>${f.leans_record ? `${f.leans_record.w}-${f.leans_record.l} since Nov 11` : ""}</span></div>
+      ${leans.map(c => `<div class="lrow"><span>${esc(c.label)} ${bAm(c.dec)}</span><span>${esc(c.status)}</span></div>`).join("")}
+      ${N && N.leans_note ? `<p class="why">${esc(N.leans_note)}</p>` : ""}` : ""}
+    <div class="k2"><span>Props</span><span>${picks.filter(c => !c.removed).length} active</span></div>
+    ${picks.length ? picks.map(card).join("") : `<div class="empty">No props clear the bar ${f.slate && f.slate.games ? "this morning" : "today: no games"}.</div>`}
+    ${T ? `<div class="k2"><span>The report's record</span><span>graded at the published line</span></div><div class="rec">
+      <div><b>${bRec(T.morning)}</b><span>Morning picks</span></div><div><b>${bRec(T.final)}</b><span>At tip</span></div><div><b>${bRec(T.leans)}</b><span>Leans</span></div>
+      <div><b>${bRec(T.removed)}</b><span>Removed picks</span></div><div><b>${T.clv.toward}/${T.clv.against}</b><span>Line moved our way / against</span></div><div><b>${T.overrides.right}/${T.overrides.wrong}</b><span>Writer flags right / wrong</span></div></div>` : ""}
+    ${Y ? `<div class="pub" style="margin-top:10px">Yesterday: morning picks ${Y.morning.w}-${Y.morning.l}${Y.morning.p ? "-" + Y.morning.p : ""} (${Y.morning.u > 0 ? "+" : ""}${Y.morning.u}u), leans ${Y.leans.w}-${Y.leans.l}</div>` : ""}
+  </div>`;
+  return sec("t-brief", "Daily Briefing", meta, body, true);
+}
 function renderToday() {
   const {state, manual, players, pz} = D;
   const games = (players.games || []);
@@ -1462,6 +1544,7 @@ function renderToday() {
     D.tonightSbAt = Date.now(); scoreboard("basketball_nba", D.players.date.replaceAll("-", "")).then(x => { if (x) { D.tonightSb = x; if (store.get("tab") === "today" && !$("sheet").classList.contains("on")) renderToday(); } });
   }
   $("v-today").innerHTML = `${statusStrip()}
+    ${briefHtml()}
     ${changesHtml()}
     ${allCtl("today")}
     ${bestHtml()}
@@ -3012,7 +3095,8 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
   const [state, manual, budget, bd, hist, pz, players, saved, dvp] = await Promise.all([
     get("state.json", null), get("manual.json", null), get("budget.json", {}), get("board.json", {events: []}), get("history.json", []),
     get("props.json", {}), get("players.json", {games: [], players: {}}), get("saved.json", {items: []}), get("dvp.json", null), get("best.json", {days: {}}).then(x => D.best = x), get("ranked.json", null).then(x => D.rank = x), get("conv_switch.json", null).then(x => D.convsw = x), get("players.json", null).then(pj => pj && pj.date ? get(`dk/${pj.date}.json`, null).then(x => { if (x) D.dkday = {date: pj.date, ...x}; }) : null), get("scoreboard.json", {}).then(x => D.sb = x), get("kalshi_track.json", null).then(x => D.kt = x), get("book_flags.json", null).then(x => D.bf = x),
-      get("players.json", null).then(pj => pj && pj.date ? get(`kalshi/${pj.date}.json`, null).then(x => { if (x) D.kalshi = {date: pj.date, ...x}; }) : null)]);
+      get("players.json", null).then(pj => pj && pj.date ? get(`kalshi/${pj.date}.json`, null).then(x => { if (x) D.kalshi = {date: pj.date, ...x}; }) : null),
+      get("players.json", null).then(pj => pj && pj.date ? get(`briefing/${pj.date}.json`, null).then(x => { D.brief = x; }) : null), get("briefing_track.json", null).then(x => D.btrack = x)]);
   D.repoSaved = saved;
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});

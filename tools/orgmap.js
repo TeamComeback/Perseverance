@@ -276,6 +276,7 @@ function sortSteps(steps) {
 const rlog = dataJ("ranked_log.json", {days: {}}).days || {}, clog = dataJ("case_log.json", {days: {}}).days || {};
 const rankOf = (day, key) => { const L = rlog[day]; if (!L || !L[key]) return null; return {rank: L[key][6], of: Object.keys(L).length}; };
 const traces = [];
+const briefCache = {}, briefOf = d => d in briefCache ? briefCache[d] : (briefCache[d] = dataJ(`briefing/${d}.json`, null));
 
 // 1. Best Bets picks, the last 14 days
 const bdays = Object.keys(best.days || {}).sort().slice(-14);
@@ -303,6 +304,9 @@ for (const day of bdays) {
     steps.push({desk: "editor", t: rk ? `Ranked #${rk.rank} of ${rk.of} lines that night.` : `Placed on the ranked board, one side only.`});
     if (x.verdict) steps.push({desk: "casebuilder", t: x.verdict});
     steps.push({desk: "picker", t: `Chosen as a ${x.tier || "best"} bet for ${day}.`});
+    const BF = briefOf(day), bk = prop ? `p|${x.pid}|${x.stat}|${x.side}` : `g|${x.espn_id}|${x.kind}|${x.side}`, bc = BF && ((BF.picks || {})[bk] || (BF.leans || {})[bk]);
+    if (bc) steps.push({desk: "writer", t: `In the Daily Briefing (${bc.published.edition} edition) at ${bc.published.point} ${am(bc.published.dec)}` +
+      (bc.play_to && bc.play_to.floor_am != null ? `, good down to ${bc.play_to.floor_am > 0 ? "+" : ""}${bc.play_to.floor_am}` : "") + `${prop ? "" : " (a lean)"}.`});
     const res = x.res === "win" ? "won" : x.res === "loss" ? "lost" : x.res === "push" ? "push" : "open";
     steps.push({desk: "settle", last: true, t: res === "open" ? "Not graded yet: the outcome is still in superposition." :
       `${prop && x.actual != null ? `Final: ${x.actual} ${sname(x.stat, x.actual)}. ` : ""}${res === "won" ? "Won" : res === "lost" ? "Lost" : "Push"}${x.units != null ? ` (${x.units > 0 ? "+" : ""}${x.units}u)` : ""}.`});
