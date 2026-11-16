@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T00:30:40Z",
+ "updated": "2026-11-16T01:00:46Z",
  "date": "2026-11-15",
  "priced_date": "2026-11-15",
  "games": [
@@ -4149,10 +4149,10 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 3.11,
-   "base": 3.36,
+   "proj": 2.96,
+   "base": 3.21,
    "mult": 0.923,
-   "minutes": 20.7,
+   "minutes": 19.7,
    "status": "",
    "start": "2026-11-16T01:00Z",
    "espn_id": "401909992",
@@ -4195,10 +4195,10 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 7.78,
-   "base": 7.18,
+   "proj": 7.4,
+   "base": 6.83,
    "mult": 1.083,
-   "minutes": 19.1,
+   "minutes": 18.2,
    "status": "",
    "start": "2026-11-16T01:00Z",
    "espn_id": "401909992",
@@ -5417,10 +5417,10 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 16.72,
-   "base": 15.62,
+   "proj": 15.91,
+   "base": 14.85,
    "mult": 1.071,
-   "minutes": 19.1,
+   "minutes": 18.2,
    "status": "",
    "start": "2026-11-16T01:00Z",
    "espn_id": "401909992",
@@ -5886,7 +5886,7 @@
    "espn_id": "401909992",
    "lean": "Over",
    "strength": 0.0667,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -6157,7 +6157,7 @@
    "base": 3.09,
    "mult": 1.067,
    "minutes": 25.4,
-   "status": "Questionable",
+   "status": "Ques",
    "start": "2026-11-16T02:00Z",
    "espn_id": "401909993",
    "lean": "Over",
@@ -7036,7 +7036,7 @@
    "espn_id": "401909992",
    "lean": "Over",
    "strength": 0.0592,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -7199,52 +7199,6 @@
      "k": "chances",
      "v": 1.093,
      "txt": "WSH games have +9% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "5214640",
-   "name": "Kasparas Jakucionis",
-   "team": "MIL",
-   "opp": "ATL",
-   "home": true,
-   "role": "PG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 2.2,
-   "base": 2.08,
-   "mult": 1.06,
-   "minutes": 13.7,
-   "status": "",
-   "start": "2026-11-16T01:00Z",
-   "espn_id": "401909992",
-   "lean": "Over",
-   "strength": 0.0583,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.076,
-     "n": 60.0,
-     "rank": 14,
-     "txt": "ATL gives point guards +8% assists vs their norm (#14 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.018,
-     "n": 55,
-     "txt": "Players with his profile: +2% assists vs ATL (55 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.023,
-     "n": 4,
-     "txt": "His history vs ATL: 2.8 assists/g in 4 games (+2%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.039,
-     "txt": "ATL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   },
@@ -7588,7 +7542,7 @@
    "espn_id": "401909992",
    "lean": "Over",
    "strength": 0.0564,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -7659,6 +7613,52 @@
      "k": "chances",
      "v": 1.041,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "5159925",
+   "name": "Nikola Topic",
+   "team": "OKC",
+   "opp": "SAC",
+   "home": false,
+   "role": "PG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 2.39,
+   "base": 2.26,
+   "mult": 1.058,
+   "minutes": 10.4,
+   "status": "",
+   "start": "2026-11-16T02:00Z",
+   "espn_id": "401909993",
+   "lean": "Over",
+   "strength": 0.0564,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.123,
+     "n": 48.6,
+     "rank": 6,
+     "txt": "SAC gives point guards +12% assists vs their norm (#6 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.07,
+     "n": 60,
+     "txt": "Players with his profile: +7% assists vs SAC (60 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.0,
+     "n": 0,
+     "txt": "No history vs SAC yet"
+    },
+    {
+     "k": "chances",
+     "v": 1.004,
+     "txt": "SAC games have +0% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   }
@@ -8210,6 +8210,7 @@
   "domantas sabonis": "3155942",
   "deandre hunter": "4065732",
   "precious achiuwa": "4431679",
+  "daeqwon plowden": "4279318",
   "keegan murray": "4594327",
   "leaky black": "4395650",
   "darius acuff": "5142620",
