@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-16T02:43:39Z",
- "date": "2026-11-15",
+ "updated": "2026-11-16T05:01:16Z",
+ "date": "2026-11-16",
  "sections": [
   {
    "id": "hot",
@@ -31,8 +31,8 @@
      "stat": "ast"
     },
     {
-     "txt": "Isaiah Hartenstein (OKC): 6.0 assists/g last 5 vs 3.4 expected for his minutes",
-     "val": "+76%",
+     "txt": "Isaiah Hartenstein (OKC): 5.0 assists/g last 5 vs 3.3 expected for his minutes",
+     "val": "+53%",
      "tone": "good",
      "stat": "ast"
     },
@@ -43,12 +43,6 @@
      "stat": "ast"
     },
     {
-     "txt": "Aaron Wiggins (ATL): 3.2 threes/g last 5 vs 1.7 expected for his minutes",
-     "val": "+92%",
-     "tone": "good",
-     "stat": "tpm"
-    },
-    {
      "txt": "Daniss Jenkins (DET): 3.0 threes/g last 5 vs 1.6 expected for his minutes",
      "val": "+88%",
      "tone": "good",
@@ -57,6 +51,12 @@
     {
      "txt": "Desmond Bane (ORL): 4.8 threes/g last 5 vs 2.6 expected for his minutes",
      "val": "+81%",
+     "tone": "good",
+     "stat": "tpm"
+    },
+    {
+     "txt": "Lauri Markkanen (UTAH): 3.8 threes/g last 5 vs 2.1 expected for his minutes",
+     "val": "+78%",
      "tone": "good",
      "stat": "tpm"
     },
@@ -73,8 +73,8 @@
      "stat": "pra"
     },
     {
-     "txt": "Brook Lopez (LAC): 25.4 pts+reb+ast/g last 5 vs 18.7 expected for his minutes",
-     "val": "+36%",
+     "txt": "Luguentz Dort (ATL): 14.2 pts+reb+ast/g last 5 vs 10.1 expected for his minutes",
+     "val": "+41%",
      "tone": "good",
      "stat": "pra"
     }
@@ -109,8 +109,8 @@
      "stat": "ast"
     },
     {
-     "txt": "Kyle Kuzma (MIL): 1.8 assists/g last 5 vs 3.5 expected for his minutes",
-     "val": "-48%",
+     "txt": "Kyle Kuzma (MIL): 1.6 assists/g last 5 vs 3.2 expected for his minutes",
+     "val": "-50%",
      "tone": "bad",
      "stat": "ast"
     },
@@ -121,14 +121,14 @@
      "stat": "ast"
     },
     {
-     "txt": "Jalen Suggs (ORL): 0.4 threes/g last 5 vs 2.4 expected for his minutes",
-     "val": "-83%",
+     "txt": "Jalen Johnson (ATL): 0.2 threes/g last 5 vs 1.7 expected for his minutes",
+     "val": "-88%",
      "tone": "bad",
      "stat": "tpm"
     },
     {
-     "txt": "Jalen Johnson (ATL): 0.6 threes/g last 5 vs 1.6 expected for his minutes",
-     "val": "-63%",
+     "txt": "Jalen Suggs (ORL): 0.4 threes/g last 5 vs 2.4 expected for his minutes",
+     "val": "-83%",
      "tone": "bad",
      "stat": "tpm"
     },
@@ -198,17 +198,17 @@
      "tone": "good"
     },
     {
-     "txt": "Aaron Wiggins (ATL): 27 min/g in his last 5 vs 16 in the 40 before",
-     "val": "+10",
-     "tone": "good"
-    },
-    {
      "txt": "Sidy Cissoko (POR): 25 min/g in his last 5 vs 15 in the 40 before",
      "val": "+10",
      "tone": "good"
     },
     {
      "txt": "Sion James (CHA): 30 min/g in his last 5 vs 20 in the 40 before",
+     "val": "+10",
+     "tone": "good"
+    },
+    {
+     "txt": "Jared McCain (OKC): 29 min/g in his last 5 vs 20 in the 40 before",
      "val": "+10",
      "tone": "good"
     }
@@ -219,8 +219,8 @@
    "title": "Pace changes (last 10 vs baseline)",
    "items": [
     {
-     "txt": "ATL: 107.7 possessions/g last 10 vs 104.8 baseline",
-     "val": "+2.9",
+     "txt": "ATL: 107.5 possessions/g last 10 vs 104.8 baseline",
+     "val": "+2.7",
      "tone": "good"
     },
     {
@@ -346,18 +346,18 @@
      "tone": "good"
     },
     {
-     "txt": "ATL: 4-9 ATS",
-     "val": "4-9",
-     "tone": "bad"
-    },
-    {
-     "txt": "MIA: 4-9 ATS",
-     "val": "4-9",
-     "tone": "bad"
-    },
-    {
      "txt": "NY: 4-9 ATS",
      "val": "4-9",
+     "tone": "bad"
+    },
+    {
+     "txt": "SAC: 4-9 ATS",
+     "val": "4-9",
+     "tone": "bad"
+    },
+    {
+     "txt": "ATL: 4-10 ATS",
+     "val": "4-10",
      "tone": "bad"
     },
     {
@@ -555,7 +555,7 @@
    "title": "Trailing by 10+ at halftime (last two seasons)",
    "items": [
     {
-     "txt": "627 games: the trailing team won the second half 320 times (51%)",
+     "txt": "628 games: the trailing team won the second half 320 times (51%)",
      "val": "51%",
      "tone": "good"
     },
@@ -576,7 +576,27 @@
    "title": "Rest: back-to-backs on the slate",
    "items": [
     {
-     "txt": "DAL on a back-to-back vs BOS (opponent rested)",
+     "txt": "BOS on a back-to-back vs ORL (opponent rested)",
+     "val": "B2B",
+     "tone": "bad"
+    },
+    {
+     "txt": "WSH on a back-to-back vs MEM (opponent rested)",
+     "val": "B2B",
+     "tone": "bad"
+    },
+    {
+     "txt": "PHI on a back-to-back vs BKN (opponent rested)",
+     "val": "B2B",
+     "tone": "bad"
+    },
+    {
+     "txt": "HOU on a back-to-back vs MIA (opponent rested)",
+     "val": "B2B",
+     "tone": "bad"
+    },
+    {
+     "txt": "PHX on a back-to-back vs DEN (opponent rested)",
      "val": "B2B",
      "tone": "bad"
     }
@@ -586,21 +606,21 @@
  "teams": [
   {
    "team": "ATL",
-   "gp": 13,
-   "ppg": 118.2,
-   "oppg": 116.8,
-   "ppg10": 116.2,
-   "oppg10": 119.2,
-   "pace10": 107.7,
+   "gp": 14,
+   "ppg": 117.8,
+   "oppg": 116.1,
+   "ppg10": 116.5,
+   "oppg10": 117.8,
+   "pace10": 107.5,
    "pace": 104.8,
    "pace_rank": 4,
    "ortg_rank": 15,
-   "drtg_rank": 10,
-   "ats": "4-9",
-   "ou": "7-6",
-   "ou10": "5-5",
-   "lined": 13,
-   "h2_net": 0.9
+   "drtg_rank": 9,
+   "ats": "4-10",
+   "ou": "7-7",
+   "ou10": "4-6",
+   "lined": 14,
+   "h2_net": 1.2
   },
   {
    "team": "BKN",
@@ -611,7 +631,7 @@
    "oppg10": 116.2,
    "pace10": 101.6,
    "pace": 100.7,
-   "pace_rank": 24,
+   "pace_rank": 25,
    "ortg_rank": 30,
    "drtg_rank": 24,
    "ats": "7-5",
@@ -702,7 +722,7 @@
    "pace10": 101.3,
    "pace": 104.3,
    "pace_rank": 6,
-   "ortg_rank": 26,
+   "ortg_rank": 25,
    "drtg_rank": 20,
    "ats": "7-7",
    "ou": "6-8",
@@ -737,7 +757,7 @@
    "oppg10": 109.9,
    "pace10": 101.3,
    "pace": 102.4,
-   "pace_rank": 14,
+   "pace_rank": 15,
    "ortg_rank": 11,
    "drtg_rank": 2,
    "ats": "7-5",
@@ -874,21 +894,21 @@
   },
   {
    "team": "MIL",
-   "gp": 13,
-   "ppg": 106.2,
-   "oppg": 120.2,
-   "ppg10": 102.3,
-   "oppg10": 117.6,
-   "pace10": 99.1,
-   "pace": 100.6,
-   "pace_rank": 25,
-   "ortg_rank": 25,
+   "gp": 14,
+   "ppg": 106.1,
+   "oppg": 119.7,
+   "ppg10": 101.9,
+   "oppg10": 118.7,
+   "pace10": 99.7,
+   "pace": 100.7,
+   "pace_rank": 23,
+   "ortg_rank": 26,
    "drtg_rank": 27,
-   "ats": "5-8",
-   "ou": "6-7",
+   "ats": "6-8",
+   "ou": "6-8",
    "ou10": "3-7",
-   "lined": 13,
-   "h2_net": -3.8
+   "lined": 14,
+   "h2_net": -3.9
   },
   {
    "team": "MIN",
@@ -946,21 +966,21 @@
   },
   {
    "team": "OKC",
-   "gp": 13,
-   "ppg": 111.2,
-   "oppg": 107.4,
+   "gp": 14,
+   "ppg": 112.1,
+   "oppg": 107.1,
    "ppg10": 112.5,
-   "oppg10": 110.7,
-   "pace10": 101.9,
+   "oppg10": 109.6,
+   "pace10": 101.7,
    "pace": 102.1,
    "pace_rank": 19,
    "ortg_rank": 8,
    "drtg_rank": 1,
-   "ats": "7-6",
-   "ou": "5-8",
+   "ats": "8-6",
+   "ou": "6-8",
    "ou10": "5-5",
-   "lined": 13,
-   "h2_net": -1.0
+   "lined": 14,
+   "h2_net": -0.2
   },
   {
    "team": "ORL",
@@ -973,7 +993,7 @@
    "pace": 102.7,
    "pace_rank": 12,
    "ortg_rank": 22,
-   "drtg_rank": 9,
+   "drtg_rank": 10,
    "ats": "5-7",
    "ou": "5-7",
    "ou10": "4-6",
@@ -1007,7 +1027,7 @@
    "oppg10": 116.2,
    "pace10": 101.3,
    "pace": 100.7,
-   "pace_rank": 23,
+   "pace_rank": 24,
    "ortg_rank": 16,
    "drtg_rank": 17,
    "ats": "3-9",
@@ -1054,21 +1074,21 @@
   },
   {
    "team": "SAC",
-   "gp": 12,
-   "ppg": 108.2,
-   "oppg": 120.9,
-   "ppg10": 108.2,
-   "oppg10": 120.2,
-   "pace10": 103.0,
+   "gp": 13,
+   "ppg": 107.8,
+   "oppg": 121.2,
+   "ppg10": 107.3,
+   "oppg10": 120.4,
+   "pace10": 103.2,
    "pace": 102.4,
-   "pace_rank": 15,
+   "pace_rank": 14,
    "ortg_rank": 29,
    "drtg_rank": 29,
-   "ats": "4-8",
-   "ou": "6-6",
+   "ats": "4-9",
+   "ou": "7-6",
    "ou10": "5-5",
-   "lined": 12,
-   "h2_net": -4.5
+   "lined": 13,
+   "h2_net": -4.9
   },
   {
    "team": "TOR",
