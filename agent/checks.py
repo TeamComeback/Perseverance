@@ -159,7 +159,7 @@ def run(log=print):
         from . import briefing
         h = briefing.et_hour()
         bf = _load(f"briefing/{today}.json", None)
-        if pj.get("date") == today and games and h >= 8:
+        if pj.get("date") == today and games and h >= 8 and today >= briefing.FIRST_DAY:
             if not bf or not any(e["id"] == "morning" for e in bf.get("editions") or []):
                 add("Daily Briefing", "warn", "no morning edition yet")
             else:
