@@ -4,6 +4,7 @@ import hashlib
 import json
 import math
 import random
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -21,32 +22,58 @@ def _et():
 
 
 class Budget:
-    """Tracks credits. Two rules: never drop below the reserve, and spread the rest evenly.
+    """Tracks credits. Rules: never drop below the reserve, leave room for the other apps on the key, spread the rest evenly.
 
-    Even spread (owner request, Oct 30 2026): what's left above the reserve is divided by the
-    days left in the month to give today's budget, and each run gets its share of what's left
-    of today's budget for the runs still to come today. A skipped or cheap run leaves its credits
-    for later, so nothing piles up and nothing runs dry before the reset on the 1st."""
+    Even spread (owner request, Oct 30 2026): what's left above the reserve is divided by the days left in the month
+    to give today's budget, and each run gets its share of what's left of today's budget for the runs still to come.
+
+    Shared key (Nov 17 2026): the same ODDS_API_KEY was also used by the 2H-Comeback halftime bot, which spent about
+    half of November's credits where this budget could not see it. Every balance the API reports is now compared with
+    the last one minus what this agent spent in between; the difference is another app's use (`external`). The daily
+    budget first sets aside the recent nightly rate of that use (only while it is still happening, and never more than
+    the other apps can take above their own floor, config.OTHER_APPS_FLOOR) before dividing the rest.
+
+    The month follows the API's reset: midnight UTC on the 1st (8pm ET the night before), not the ET calendar, so the
+    last evening of a month can't spend the new month's credits as if they were the old month's leftovers (Oct 31)."""
 
     def __init__(self):
         self.b = store.load("budget.json", {})
-        month = _et().strftime("%Y-%m")
+        month = store.now().strftime("%Y-%m")                      # the API resets at 00:00 UTC on the 1st
         if self.b.get("month") != month:
-            self.b = {"month": month, "remaining": None, "used": None, "runs": 0, "log": [],
-                      "monthly": config.MONTHLY_CREDITS, "reserve": config.RESERVE_CREDITS}
+            carry = {k: self.b[k] for k in ("ext_days",) if k in self.b}
+            self.b = {"month": month, "remaining": None, "used": None, "runs": 0, "log": [], "paid": [], "ext": [],
+                      "own_month": 0, "external_month": 0, "monthly": config.MONTHLY_CREDITS, "reserve": config.RESERVE_CREDITS, **carry}
+        for k, v in (("paid", []), ("ext", []), ("own_month", 0), ("external_month", 0), ("ext_days", {})):
+            self.b.setdefault(k, v)
         self.spent_this_run = 0
         self.allowance = 0
         self.month_end = False
+        self.unconfirmed = False                                    # the last balance check failed: keep the last known number
+
+    def ext_rate(self):
+        """Credits a day the other apps on this key are using lately: the average over the last 7 ET days, or 0 if
+        they have used nothing in the last 48 hours (they moved to their own key or stopped)."""
+        days = self.b.get("ext_days") or {}
+        last = (self.b.get("ext") or [{}])[-1].get("ts")
+        if not last or (store.now() - store.parse(last)).total_seconds() > 48 * 3600:
+            return 0.0
+        today = _et().date()
+        win = [(today - timedelta(days=i)).isoformat() for i in range(7)]
+        return sum(days.get(d, 0) for d in win) / 7
 
     def _day(self):
         n = _et()
         today = n.strftime("%Y-%m-%d")
         if self.b.get("day") != today:
             rem = self.b["remaining"] if self.b.get("remaining") is not None else config.MONTHLY_CREDITS
-            days_left = calendar.monthrange(n.year, n.month)[1] - n.day + 1
-            spendable = max(0, rem - config.RESERVE_CREDITS)
+            u = store.now()
+            days_left = calendar.monthrange(u.year, u.month)[1] - u.day + 1
+            rate = self.ext_rate()
+            # what the other apps are likely to take before the reset, but they stop at their own floor
+            others = min(round(rate * days_left), max(0, rem - config.OTHER_APPS_FLOOR)) if rate else 0
+            spendable = max(0, rem - config.RESERVE_CREDITS - others)
             self.b.update(day=today, days_left=days_left, day_budget=spendable // max(1, days_left),
-                          spent_today=0, units_today=0)
+                          spent_today=0, units_today=0, set_aside=others, ext_rate=round(rate, 1))
         return self.b
 
     def start_run(self, units=1):
@@ -71,14 +98,31 @@ class Budget:
         return essential or self.spent_this_run + cost <= self.allowance
 
     def record(self, endpoint, cost, remaining, used):
+        b = self.b
         self.spent_this_run += cost
         self._day()["spent_today"] += cost
+        b["own_month"] = b.get("own_month", 0) + cost
+        now = store.iso(store.now())
         if remaining is not None:
-            self.b["remaining"] = remaining
+            prev = b.get("remaining")
+            if prev is not None and remaining > prev + 50:
+                # the API reset the month under us: start the day's numbers over from the fresh balance
+                b["remaining"] = remaining; b.pop("day", None); self._day()
+            elif prev is not None and not b.get("unconfirmed"):
+                gap = prev - cost - remaining                       # credits that went somewhere other than this agent
+                if gap > 0:
+                    b["external_month"] = b.get("external_month", 0) + gap
+                    d = _et().strftime("%Y-%m-%d"); b["ext_days"][d] = b["ext_days"].get(d, 0) + gap
+                    b["ext_days"] = dict(sorted(b["ext_days"].items())[-21:])
+                    b["ext"] = (b["ext"] + [{"ts": now, "credits": gap, "rem": remaining}])[-200:]
+            b["remaining"] = remaining
+            b.pop("unconfirmed", None); self.unconfirmed = False
         if used is not None:
-            self.b["used"] = used
-        self.b["log"] = (self.b["log"] + [{"ts": store.iso(store.now()), "ep": endpoint,
-                                           "cost": cost, "rem": self.b["remaining"]}])[-60:]
+            b["used"] = used
+        entry = {"ts": now, "ep": endpoint, "cost": cost, "rem": b["remaining"]}
+        b["log"] = (b["log"] + [entry])[-60:]
+        if cost:                                                    # paid calls are kept for the whole month
+            b["paid"] = (b["paid"] + [entry])[-400:]
 
     def save(self):
         self.b["updated"] = store.iso(store.now())
@@ -99,7 +143,7 @@ class OddsClient:
         self.budget = budget
 
     # -- transport --------------------------------------------------------
-    def _get(self, path, params, cost_est, essential=False):
+    def _get(self, path, params, cost_est, essential=False, retry=False):
         if cost_est and not self.budget.can(cost_est, essential):
             raise OutOfBudget(path)
         if config.MOCK:
@@ -117,9 +161,23 @@ class OddsClient:
                 h = r.headers
                 data = json.loads(r.read())
         except urllib.error.HTTPError as e:
+            # 429 is "too many requests at once", not "out of credits" (it zeroed the balance on Nov 15 and 17):
+            # wait and try once more, and if it still says no, stop this run's spending but keep the last known balance.
+            body = ""
+            try:
+                body = e.read().decode("utf-8", "ignore")[:300]
+            except Exception:
+                pass
+            if e.code == 429 and not retry:
+                import time
+                time.sleep(2.5)
+                return self._get(path, params, 0, essential, retry=True)
+            if e.code == 401 and re.search(r"quota|usage|limit", body, re.I):
+                self.budget.b["remaining"] = 0                     # the API says the month's credits are gone
+                raise OutOfBudget(f"{path}: HTTP 401 ({body[:80]})")
             if e.code in (401, 429):
-                self.budget.b["remaining"] = 0
-                raise OutOfBudget(f"{path}: HTTP {e.code}")
+                self.budget.b["unconfirmed"] = True; self.budget.unconfirmed = True
+                raise OutOfBudget(f"{path}: HTTP {e.code} ({body[:80] or 'no detail'}); balance kept at its last reading")
             raise
         num = lambda k: int(float(h[k])) if h.get(k) not in (None, "") else None
         self.budget.record(path, num("x-requests-last") or 0, num("x-requests-remaining"),

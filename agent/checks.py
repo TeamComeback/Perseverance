@@ -145,8 +145,13 @@ def run(log=print):
     b = _load("budget.json", {}) or {}
     rem, dl = b.get("remaining"), b.get("days_left")
     if rem is not None and dl:
-        per = (rem - config.RESERVE_CREDITS) / max(1, dl)
-        add("Odds API credits", "ok" if per >= 5 else "warn" if per >= 2 else "fail", f"{rem} left, {dl} days to go: {per:.1f} a day after the reserve")
+        aside = b.get("set_aside") or 0
+        per = (rem - config.RESERVE_CREDITS - aside) / max(1, dl)
+        ext = b.get("external_month") or 0
+        add("Odds API credits", "ok" if per >= 5 else "warn" if per >= 2 else "fail",
+            f"{rem} left{' (last reading)' if b.get('unconfirmed') else ''}, {dl} days to go: {per:.1f} a day after the reserve"
+            + (f" and {aside} set aside for other apps" if aside else "")
+            + (f"; other apps on this key used {ext} this month" if ext else ""))
 
     # 8. nightly pieces ran in the last day and a half
     for name, f in (("Model vs market scoreboard", "scoreboard.json"), ("Team model", "team_model.json")):

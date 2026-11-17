@@ -189,6 +189,20 @@ Every change needs a minimum sample, moves in small steps, stays inside hard lim
 - **The agent never spends below 25 credits.**
 - On the free tier that's roughly 15 credits a day: a couple of sports per scan and one or two NBA games' props a night. A paid Odds API plan unlocks Caesars and Fanatics prices and props for the whole slate.
 
+### Shared key (Nov 17)
+The same Odds API key was also used by the 2H-Comeback halftime bot, which spent about half of November's credits
+(4 per halftime lookup) where this budget could not see them. Now:
+- every balance the API reports is compared with the last one minus this agent's own spend; the difference is
+  another app's use, kept by day (`external_month`, `ext_days`, `ext` in `budget.json`) and shown on the credits card;
+- the daily budget sets aside the other apps' recent pace (7-day average, only while they used credits in the last
+  48 hours, and only down to their floor of 60) before dividing what's left;
+- the month follows the API's reset (midnight UTC on the 1st), so the last evening of a month can't spend the new
+  month's credits as leftovers (Oct 31 night cost ~41 credits);
+- HTTP 429 (too many requests) retries once and keeps the last real balance instead of writing 0 (Nov 15 and 17);
+  only a 401 saying the quota is used up sets 0;
+- paid calls are kept for the whole month (`paid`), not just the last 60 calls.
+2H-Comeback now buys only 2nd-half lines (2 credits), reads its own `ODDS_API_KEY_2H` first, and stops at 60 credits on the shared key.
+
 ## Setup (about 5 minutes, works from an iPhone browser)
 
 1. Create the repo `TeamComeback/Perseverance` and upload these files.

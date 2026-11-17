@@ -18,6 +18,7 @@ API_KEY = os.environ.get("ODDS_API_KEY", "")
 MOCK = os.environ.get("ODDS_MOCK") == "1"
 MONTHLY_CREDITS = int(os.environ.get("ODDS_MONTHLY_CREDITS", "500"))
 RESERVE_CREDITS = 25       # never spend below this — the hard floor
+OTHER_APPS_FLOOR = 60      # other apps on the same key (2H-Comeback) stop buying odds below this balance
 RUNS_PER_DAY = 3           # scheduled scans; used to spread credits across the month
 PROPS_UNITS = 3            # the evening NBA props run gets this many scans' worth of credits
 UNITS_PER_DAY = RUNS_PER_DAY + PROPS_UNITS
