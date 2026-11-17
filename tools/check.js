@@ -74,6 +74,14 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
       // the city: draws, opens a building, traces a bet to its end
       { const n = errs.length; await p.goto("http://localhost:8899/city.html"); await p.waitForTimeout(1500);
         const blds = await p.evaluate(() => document.querySelectorAll("#city .bld[data-co]").length);
+        // inside a building: every desk is a room with a worker and a chart; walk to the next building and back out
+        await p.evaluate(() => document.querySelector("#b-lab polygon").dispatchEvent(new MouseEvent("click", {bubbles: true}))); await p.waitForTimeout(1200);
+        const rooms = await p.evaluate(() => [document.querySelectorAll("#inroom .room").length, document.querySelectorAll("#inroom .room .holo").length, document.querySelectorAll("#inroom .room .wk").length]);
+        await p.evaluate(() => document.querySelector("#inroom .nextb").click()); await p.waitForTimeout(500);
+        const next = await p.evaluate(() => document.querySelectorAll("#inroom .room").length);
+        await p.evaluate(() => document.querySelector('#inroom [data-in="back"]').click()); await p.waitForTimeout(700);
+        const out = await p.evaluate(() => !document.querySelector("#inroom") && document.querySelector("#city").style.display !== "none");
+        rooms[0] >= 5 && rooms[1] === rooms[0] && rooms[2] === rooms[0] && next >= 2 && out ? ok(`city inside: ${rooms[0]} rooms, each with a worker and a chart; next building ${next} rooms; back to the city`) : bad(`city inside: rooms ${rooms}, next ${next}, back ${out}`);
         await p.evaluate(() => document.querySelector("#seg [data-v=trace]").click()); await p.waitForTimeout(800);
         const bets = await p.evaluate(() => document.querySelectorAll("#pane .bet").length);
         if (bets) { await p.evaluate(() => document.querySelector("#pane .bet").click()); await p.waitForTimeout(400);

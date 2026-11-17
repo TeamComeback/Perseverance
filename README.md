@@ -389,3 +389,11 @@ One report a day at the top of the Tonight tab (`agent/briefing.py`, `docs/data/
 **Sticky Best Bets props (stage 0 study):** plays dropped because their conviction dipped went 30-27 afterwards, so a
 prop pick now stays until a kill condition: it fails the checks (injury, minutes), the ranked board's side flips, or it
 is no longer +EV at tonight's line. It is carried at tonight's line and price.
+
+**Inside the buildings (Nov 16).** Every window in the city shows its worker (typing if the desk worked in the last 3
+hours). Tapping a building in the Live view opens it floor by floor: each desk is a room with an inbox (documents
+coloured by the company that wrote them), the worker, a hologram with a small animated chart of that desk's real
+numbers (10,000-world histograms, matchup effects, the injury report, log loss, bankroll, checks), an outbox, and a line
+that cycles through what the desk did last. "Documents arrive from / leave for" chips and "Follow the work" walk the
+pipeline building to building. `tools/orgmap.js` writes each desk's activity lines and chart data into
+`city_live.json` (`desks[id].work`) after every run; a "now" strip above the city cycles through them.

@@ -360,6 +360,185 @@ for (const it of (dataJ("manual_import.json", {items: []}).items || [])) {
 }
 traces.sort((a, b) => (b.day || "").localeCompare(a.day || "") || (b.at || "").localeCompare(a.at || ""));
 
+// ------------------------------------------------------------------ at work: what each desk is doing, with a small chart
+// For the city's inside view. Every line and number comes from the data files; a desk whose data is missing gets nothing.
+const WORK = {};
+{
+  const put = (id, act, viz) => { WORK[id] = {act: (act || []).filter(Boolean).map(s => String(s).slice(0, 110)).slice(0, 5), viz: viz || null}; };
+  const tryIt = (id, fn) => { try { fn(); } catch (e) { if (!WORK[id]) WORK[id] = {act: [], viz: null}; } };
+  const pj = dataJ("players.json", {}), P = Object.values(pj.players || {}), G = pj.games || [], day = pj.date || TODAY;
+  const sims = dataJ("sims.json", {}), SG = sims.date === day ? sims.games || {} : {};
+  const dkd = dataJ(`dk/${day}.json`, {props: {}, games: {}}), DKP = Object.values(dkd.props || {});
+  const yday = new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York"}).format(new Date(new Date(day + "T12:00:00Z") - 864e5));
+  const dky = dataJ(`dk/${yday}.json`, {props: {}, games: {}});
+  const BD = (best.days || {})[day] || {props: [], games: []}, BY = (best.days || {})[yday] || {props: [], games: []};
+  const tm = dataJ("team_model.json", {}), sb = dataJ("scoreboard.json", {}), kt = dataJ("kalshi_track.json", {}), bud = dataJ("budget.json", {});
+  const last = n => (n || "").split(" ").slice(1).join(" ") || n;
+  const gn = g => `${g.away} @ ${g.home}`, pc = v => Math.round(v * 100) + "%", sg = v => (v > 0 ? "+" : "") + v;
+  const agoS = iso => { const h = ageH(iso); return h == null ? "" : h < 1 ? Math.max(1, Math.round(h * 60)) + "m ago" : h < 36 ? Math.round(h) + "h ago" : Math.round(h / 24) + "d ago"; };
+  const etH = iso => { const p = new Intl.DateTimeFormat("en-US", {timeZone: "America/New_York", hour: "numeric", minute: "numeric", hourCycle: "h23"}).formatToParts(new Date(iso)); return +p.find(x => x.type === "hour").value + +p.find(x => x.type === "minute").value / 60; };
+  const rot = P.filter(p => (p.minutes || 0) >= 20 && !p.out);
+  const journal = k => (state.journal || []).filter(j => j.kind === k).slice(-1)[0];
+  const binned = (h, step) => { const ks = Object.keys(h).map(Number), lo = Math.floor(Math.min(...ks) / step) * step, hi = Math.max(...ks), n = Math.floor((hi - lo) / step) + 1, b = Array(n).fill(0);
+    for (const [k, c] of Object.entries(h)) b[Math.floor((+k - lo) / step)] += c; return {bins: b, lo, hi, step}; };
+  const pre = G.filter(g => g.state === "pre"), showG = (pre[0] || G[0]);
+
+  // ---- The Wire
+  tryIt("boxscore", () => { const fin = Object.values(dky.games || {}).filter(g => g.final);
+    put("boxscore", [`Filed ${fin.length} final box scores from last night`, `${P.length} players on file for tonight's ${G.length} games`, fin[0] && `${fin[0].away} ${fin[0].final[1]}, ${fin[0].home} ${fin[0].final[0]}`],
+      {type: "rows", title: "Last night's finals", rows: fin.slice(0, 5).map(g => [`${g.away} @ ${g.home}`, `${g.final[1]}–${g.final[0]}`])}); });
+  tryIt("film", () => { const top = rot.filter(p => p.proj && p.proj.reb).sort((a, b) => b.proj.reb[0] - a.proj.reb[0]).slice(0, 5);
+    put("film", [`Usage and rebound share read for ${rot.length} rotation players`, top[0] && `${top[0].name}: most rebounds expected tonight (${top[0].proj.reb[0]})`],
+      {type: "bars", title: "Rebounds expected tonight", fmt: "num", items: top.map(p => ({l: last(p.name), v: p.proj.reb[0]}))}); });
+  tryIt("doctor", () => { const tag = P.filter(p => p.status && (p.minutes || 0) >= 15).sort((a, b) => b.minutes - a.minutes), out = tag.filter(p => p.status === "Out").length;
+    put("doctor", [`${out} rotation players out, ${tag.length - out} with a question mark`, pj.injury_report && `Official report read ${agoS(pj.injury_report)}`, ...tag.filter(p => p.status !== "Out").slice(0, 2).map(p => `${p.name} (${p.team}): ${p.status.toLowerCase()}`)],
+      {type: "checks", title: "Injury report", rows: tag.slice(0, 5).map(p => [`${p.name} · ${p.team}`, p.status === "Out" ? "fail" : "warn", p.status])}); });
+  tryIt("lineup", () => { const lu = dataJ("lineups.json", {games: []}).games || [], sides = lu.flatMap(g => [g.visit, g.home]).filter(Boolean), conf = sides.filter(s => /confirmed/i.test(s.status || "")).length;
+    put("lineup", [`${conf} of ${sides.length} starting lineups confirmed`, `Starters collected for ${lu.length} games`],
+      {type: "checks", title: "Starting lineups", rows: lu.slice(0, 5).map(g => [`${g.visit.abbr} @ ${g.home.abbr}`, /confirmed/i.test(g.visit.status || "") && /confirmed/i.test(g.home.status || "") ? "ok" : "warn", /confirmed/i.test(g.visit.status || "") && /confirmed/i.test(g.home.status || "") ? "confirmed" : "projected"])}); });
+  tryIt("refs", () => put("refs", [`Crews logged for ${G.length} games tonight`, "Assignments post about 9am ET on game days"],
+    {type: "rows", title: "Tonight's tips", rows: G.slice(0, 5).map(g => [gn(g), etTime(g.start).split(", ").pop()])}));
+  tryIt("travel", () => { const t = G.flatMap(g => ["home", "away"].map(s => ({team: g[s], ...(((g.vegas || {}).spots || {})[s] || {})}))).filter(x => x.miles7 != null).sort((a, b) => b.miles7 - a.miles7);
+    put("travel", [...t.filter(x => x.b2b).slice(0, 2).map(x => `${x.team}: second night of a back-to-back`), t[0] && `${t[0].team} has flown ${Number(t[0].miles7).toLocaleString("en-US")} miles in 7 days`],
+      {type: "bars", title: "Miles flown, last 7 days", fmt: "num", items: t.slice(0, 5).map(x => ({l: x.team, v: x.miles7}))}); });
+  tryIt("probe", () => put("probe", ["Tests every outside feed from GitHub's servers when asked"], {type: "rows", title: "Feeds it tests", rows: (cast.sources || []).slice(0, 5).map(s => [s.name, "portal"])}));
+
+  // ---- The Exchange
+  tryIt("dk", () => { const mv = DKP.filter(r => r.o && r.c && r.o[0] !== r.c[0]), big = mv.sort((a, b) => Math.abs(b.c[0] - b.o[0]) - Math.abs(a.c[0] - a.o[0]))[0];
+    const hrs = {}; for (const r of DKP) if (r.o_at) { const h = Math.floor(etH(r.o_at)); hrs[h] = (hrs[h] || 0) + 1; }
+    put("dk", [`${DKP.length} prop lines collected today, ${mv.length} moved since they opened`, big && `${big.name} ${STAT[big.stat] || big.stat}: ${big.o[0]} → ${big.c[0]}`, `${Object.keys(dkd.games || {}).length} games with spread, total and moneyline`],
+      {type: "bars", title: "Lines first seen, by hour (ET)", fmt: "num", items: Object.entries(hrs).sort((a, b) => a[0] - b[0]).slice(-7).map(([h, n]) => ({l: (h % 12 || 12) + (h < 12 ? "a" : "p"), v: n}))}); });
+  tryIt("kalshi", () => { const a = (kt.props || {}).all || {}, d = a.disagree || {};
+    put("kalshi", [d.n && `When the two markets split by 4+ points, Kalshi was right ${d.kalshi_right} of ${d.n}`, a.n && `${a.n.toLocaleString("en-US")} props graded: Kalshi ${a.ll_kalshi} vs DraftKings ${a.ll_dk} log loss`],
+      d.n ? {type: "gauge", title: "Kalshi right when they split", v: d.kalshi_right / d.n, label: `${d.kalshi_right} of ${d.n}`} : null); });
+  tryIt("buyer", () => put("buyer", [`${bud.remaining} credits left with ${bud.days_left} days to go`, `Allowance: ${bud.day_budget} a day; the free feeds do the rest`],
+    {type: "gauge", title: "Odds API credits left", v: bud.remaining / (bud.monthly || 500), label: `${bud.remaining} of ${bud.monthly || 500}`}));
+  tryIt("fair", () => put("fair", [`Margin removed on ${(ranked.props || []).length} lines so every chance adds to 100%`, BD.props[0] && `${BD.props[0].name}: DraftKings' fair chance ${pc(BD.props[0].p_mkt)}`],
+    {type: "bars", title: "Fair chance, tonight's picks", fmt: "pct", max: 1, items: BD.props.slice(0, 5).map(x => ({l: last(x.name), v: x.p_mkt}))}));
+  tryIt("historian", () => { const up = DKP.filter(r => r.o && r.c && r.c[0] > r.o[0]).length, dn = DKP.filter(r => r.o && r.c && r.c[0] < r.o[0]).length, same = DKP.filter(r => r.o && r.c).length - up - dn;
+    put("historian", [`${Object.keys(dataJ("closes.json", {})).length} closing lines on file`, `Today: ${up} lines up, ${dn} down, ${same} unchanged since opening`],
+      {type: "bars", title: "Line moves since opening", fmt: "num", items: [{l: "Up", v: up}, {l: "Down", v: dn}, {l: "Same", v: same}]}); });
+
+  // ---- The Lab
+  tryIt("research", () => { const j = journal("research");
+    put("research", [j && j.text, pj.updated && `Dossiers rebuilt ${agoS(pj.updated)}`],
+      {type: "rows", title: "Dossiers by game", rows: G.slice(0, 5).map(g => [gn(g), P.filter(p => p.game === g.espn_id).length + " players"])}); });
+  tryIt("matchup", () => { const rows = []; for (const p of rot) for (const [s, v] of Object.entries(p.proj || {})) if (["pts", "reb", "ast"].includes(s) && v && v[2]) rows.push({p, s, m: v[2] - 1});
+    rows.sort((a, b) => Math.abs(b.m) - Math.abs(a.m)); const top = []; const seen = new Set(); for (const r of rows) { if (seen.has(r.p.pid)) continue; seen.add(r.p.pid); top.push(r); if (top.length === 5) break; }
+    put("matchup", top.slice(0, 3).map(r => `${r.p.name} vs ${r.p.opp}: ${sg(Math.round(r.m * 100))}% ${STAT[r.s]}`), {type: "bars", title: "Biggest matchup effects tonight", fmt: "+pct", div: true, items: top.map(r => ({l: `${last(r.p.name)} ${r.s}`, v: r.m}))}); });
+  tryIt("schedule", () => { const rows = []; for (const p of rot) for (const [s, v] of Object.entries(p.sos || {})) if (["pts", "reb", "ast"].includes(s) && v && v[0]) rows.push({p, s, m: v[0] - 1});
+    rows.sort((a, b) => Math.abs(b.m) - Math.abs(a.m)); const st = dataJ("sos_track.json", {days: {}});
+    put("schedule", [`On probation: ${Object.keys(st.days || {}).length} days tracked, shown but not used`, rows[0] && `${rows[0].p.name}: schedule so far worth ${sg(Math.round(rows[0].m * 100))}% ${STAT[rows[0].s]}`],
+      {type: "bars", title: "Schedule strength so far", fmt: "+pct", div: true, items: rows.slice(0, 5).map(r => ({l: `${last(r.p.name)} ${r.s}`, v: r.m}))}); });
+  tryIt("team", () => { const T = Object.values(tm.tonight || {});
+    put("team", T.slice(0, 3).map(t => `${t.margin >= 0 ? t.home : t.away} by ${Math.abs(t.margin).toFixed(1)} over ${t.margin >= 0 ? t.away : t.home}, total ${t.total}`),
+      {type: "bars", title: "Home margin, team model", fmt: "+num", div: true, items: T.slice(0, 6).map(t => ({l: `${t.away}@${t.home}`, v: t.margin}))}); });
+  tryIt("roster", () => { const outs = Object.values(tm.tonight || {}).flatMap(t => t.out || []).sort((a, b) => Math.abs(b.pts) - Math.abs(a.pts));
+    put("roster", [`${outs.length} absences priced into tonight's ratings`, outs[0] && `${outs[0].team} without ${outs[0].names}: ${sg(outs[0].pts)} points`],
+      {type: "bars", title: "Points lost to absences", fmt: "+num", div: true, items: outs.slice(0, 5).map(o => ({l: o.team, v: o.pts}))}); });
+  tryIt("conviction", () => { const c = sb.conviction || {};
+    put("conviction", [c.n && `Trained on ${c.n.toLocaleString("en-US")} graded leans over ${c.days} days`, BD.props[0] && `${BD.props[0].name}: conviction ${BD.props[0].conv} of 99`],
+      {type: "bars", title: "Conviction, tonight's picks", fmt: "num", max: 99, items: BD.props.slice(0, 5).map(x => ({l: last(x.name), v: x.conv}))}); });
+  tryIt("understudy", () => { const u = conv.latest || {}, ll = u.ll || {};
+    put("understudy", [`Audition: ${conv.streak || 0} of 3 nights passed`, u.n && `Tested on ${u.n.toLocaleString("en-US")} props over ${u.days} days`, "Takes the job only after three passes and the chairman's approval"],
+      {type: "rows", title: "Log loss (lower is better)", rows: [["Market alone", ll.market], ["Conviction Officer", ll.current], ["Understudy", ll.line]].filter(r => r[1] != null)}); });
+
+  // ---- Simulation Floor
+  const simG = showG && SG[showG.espn_id];
+  tryIt("foreman", () => { const acts = G.filter(g => SG[g.espn_id]).slice(0, 4).map(g => { const s = SG[g.espn_id]; return `${gn(g)}: ${s.avg.away}–${s.avg.home}, ${g.home} wins ${pc(s.win_home)} of ${(sims.n || 10000).toLocaleString("en-US")} worlds`; });
+    const b = simG && binned(simG.th, 4);
+    put("foreman", [`${Object.keys(SG).length} games simulated ${agoS(sims.updated)}`, ...acts],
+      b ? {type: "hist", title: `${gn(showG)} total points, ${(sims.n || 10000).toLocaleString("en-US")} worlds`, bins: b.bins, lo: b.lo, hi: b.hi, mark: simG.vegas && simG.vegas.total != null ? (simG.vegas.total - b.lo) / (b.hi - b.lo + b.step) : null, markLabel: simG.vegas && simG.vegas.total != null ? "DK " + simG.vegas.total : ""} : null); });
+  tryIt("engine", () => { const b = simG && binned(simG.mh, 3);
+    put("engine", [simG && `${gn(showG)}: pace ${simG.pace}, ${showG.home} by ${simG.margin} on average`, "Every possession, substitution, foul and blowout is played out"],
+      b ? {type: "hist", title: `${showG.home} margin in every world`, bins: b.bins, lo: b.lo, hi: b.hi, mark: (0 - b.lo) / (b.hi - b.lo + b.step), markLabel: "tie"} : null); });
+  tryIt("liveop", () => { const lg = Object.values(dkd.games || {}).filter(g => (g.live || []).length && !g.final).sort((a, b) => b.live.length - a.live.length)[0];
+    if (!lg) return put("liveop", ["No games in progress: standing by for tip-off"], {type: "rows", title: "Next tips", rows: pre.slice(0, 4).map(g => [gn(g), etTime(g.start).split(", ").pop()])});
+    const L = lg.live, z = L[L.length - 1];
+    put("liveop", [`${lg.away} @ ${lg.home}, ${z.detail}: ${z.score[1]}–${z.score[0]}`, z.sim && `${lg.home} wins ${pc(z.sim.p_home_win)} of ${z.sim.n.toLocaleString("en-US")} worlds from here`],
+      {type: "line", title: `${lg.home} win chance, live`, pts: L.filter(x => x.sim).map(x => x.sim.p_home_win), lo: 0, hi: 1, fmt: "pct"}); });
+  tryIt("simgrader", () => { const a = dataJ("sims_log.json", {}).agg || {};
+    put("simgrader", [a.winner && `Called ${a.winner[1]} of ${a.winner[0]} winners`, a.total && `Totals missed by ${(a.total[1] / a.total[0]).toFixed(1)} points on average`, a.winner_vegas && `DraftKings' favourite won ${a.winner_vegas[1]} of ${a.winner_vegas[0]}`],
+      a.winner ? {type: "gauge", title: "Winners called right", v: a.winner[1] / a.winner[0], label: `${a.winner[1]} of ${a.winner[0]}`} : null); });
+
+  // ---- Our Book
+  tryIt("setter", () => { const ob = dataJ(`ourbook/${day}.json`, {freezes: []}), fr = (ob.freezes || []).map(f => f.id), its = BD.props.filter(x => x.ob_ind != null).slice(0, 5);
+    put("setter", [fr.length ? `Lines sealed today at ${[...new Set(fr)].join(", ")}` : "First seal of the day is 9am ET", its[0] && `${its[0].name}: we make it ${its[0].ob_ind}, DraftKings ${its[0].point}`],
+      {type: "bars", title: "Our line minus DraftKings'", fmt: "+num", div: true, items: its.map(x => ({l: `${last(x.name)} ${x.stat}`, v: Math.round((x.ob_ind - x.point) * 10) / 10}))}); });
+  tryIt("gatekeeper", () => { const m = (obt.moves || {}).all || {}, c = (obt.moves || {}).clean || {};
+    put("gatekeeper", [m.n && `${pc(m.rate)} of ${m.n.toLocaleString("en-US")} line moves went toward our sealed line`, c.n && `Without news, ${pc(c.rate)} of ${c.n} did`],
+      m.n ? {type: "gauge", title: "Moves toward our line", v: m.rate, label: pc(m.rate)} : null); });
+
+  // ---- The Newsroom
+  tryIt("editor", () => { const R = (ranked.props || []).filter(x => x.rank).slice(0, 5);
+    put("editor", [`${(ranked.props || []).length} lines ranked, one side each`, R[0] && `#1 tonight: ${R[0].name} ${R[0].side.toLowerCase()} ${R[0].point} ${STAT[R[0].stat]}`],
+      {type: "rows", title: "Top of the ranked board", rows: R.map(x => [`#${x.rank} ${last(x.name)} ${x.side[0]}${x.point} ${x.stat}`, x.conv])}); });
+  tryIt("casebuilder", () => { const x = BD.props[0]; if (!x) return put("casebuilder", ["No case to build until tonight's lines are priced"]);
+    put("casebuilder", [x.verdict, `${x.case.for.length} reasons for, ${x.case.against.length} against on ${x.name}`],
+      {type: "checks", title: `The case: ${last(x.name)} ${x.side.toLowerCase()} ${x.point}`, rows: [...x.case.for.slice(0, 3).map(r => [r.tag, "ok", "for"]), ...x.case.against.slice(0, 2).map(r => [r.tag, "fail", "against"])]}); });
+  tryIt("picker", () => { const r = (best.record || {}).props || {};
+    put("picker", [`${BD.props.length} props and ${BD.games.length} leans chosen for ${day}`, r.w != null && `Props record ${r.w}-${r.l} (${sg(r.u)}u)`, "Props are sticky: a pick leaves only on a kill condition"],
+      {type: "rows", title: "Tonight's picks", rows: BD.props.slice(0, 5).map(x => [`${last(x.name)} ${x.side[0]}${x.point} ${x.stat}`, x.tier || ""])}); });
+  tryIt("writer", () => { const bf = dataJ(`briefing/${TODAY}.json`, null), N = bf && (bf.narratives || []).slice(-1)[0];
+    put("writer", [N ? N.headline : bf ? "Morning edition is out; the written edition follows" : "Morning edition publishes at 7am ET", bf && `${Object.keys(bf.picks).length} props, ${Object.keys(bf.leans).length} leans, ${bf.changes.length} changes logged today`],
+      bf && bf.changes.length ? {type: "rows", title: "What changed today", rows: bf.changes.slice(-4).reverse().map(c => [c.text.slice(0, 46), ""])} : {type: "rows", title: "Editions (ET)", rows: [["Morning facts", "7:00am"], ["Morning, written", "7:22am"], ["Afternoon", "2:41pm"], ["Final", "6:33pm"]]}); });
+
+  // ---- The Trading Desk
+  tryIt("trader", () => { const s = state.stats || {}, j = journal("strategist") || journal("daily");
+    put("trader", [`Agent bankroll $${(s.equity || 0).toFixed(2)} after ${s.bets} bets`, j && j.text, (state.paused || []).length ? `Benched: ${state.paused.join(", ")}` : null],
+      {type: "bars", title: "Profit by playbook ($)", fmt: "+num", div: true, items: Object.entries(crew).map(([k, c]) => ({l: k.replace("matchup_", "m. ").replace("_", " "), v: c.profit}))}); });
+  tryIt("props", () => { const bets = ((state.book || {}).bets || []).filter(b => b.legs[0].player).slice(-5).reverse();
+    put("props", [bets[0] && `Latest: ${bets[0].legs[0].player} ${bets[0].legs[0].side.toLowerCase()} ${bets[0].legs[0].point} ${STAT[bets[0].legs[0].stat] || ""}, $${bets[0].stake.toFixed(2)}`, "Buys odds only for the spots that matter"],
+      {type: "checks", title: "Latest prop bets", rows: bets.map(b => [`${last(b.legs[0].player)} ${b.legs[0].side[0]}${b.legs[0].point} ${b.legs[0].stat}`, b.status === "won" ? "ok" : b.status === "lost" ? "fail" : "warn", b.status])}); });
+  tryIt("bookkeeper", () => { const h = dataJ("history.json", []), pts = h.map(x => x.a).filter(v => v != null), n = Math.max(1, Math.floor(pts.length / 40));
+    put("bookkeeper", [`${((state.book || {}).bets || []).length} bets on the books, every dollar accounted for`, `Cash $${((state.book || {}).cash || 0).toFixed(2)}, paper money only`],
+      {type: "line", title: "Agent bankroll ($)", pts: pts.filter((_, i) => i % n === 0 || i === pts.length - 1), fmt: "num"}); });
+  tryIt("compliance", () => put("compliance", ["Every bet is checked against the bylaws before it is placed"],
+    {type: "checks", title: "Bylaws in force", rows: [["Paper money only", "ok", "on"], ["$5 minimum bet", "ok", "on"], ["Ten approved books", "ok", "on"], ["Credit budget", "ok", "on"]]}));
+  tryIt("messenger", () => { const a = dataJ("alerts.json", {sent: {}}), ks = Object.entries(a.sent || {}).sort((x, y) => y[1].localeCompare(x[1]));
+    put("messenger", [`${ks.length} phone alerts sent in the last 14 days`, ks[0] && `Last alert ${agoS(ks[0][1])}`], {type: "gauge", title: "Briefing alerts used today", v: Math.min(1, ((dataJ(`briefing/${TODAY}.json`, {}) || {}).alerts || 0) / 6), label: `${(dataJ(`briefing/${TODAY}.json`, {}) || {}).alerts || 0} of 6`}); });
+
+  // ---- Audit & Night School
+  tryIt("settle", () => { const all = [...BY.props, ...BY.games].filter(x => x.res), w = all.filter(x => x.res === "win").length, l = all.filter(x => x.res === "loss").length;
+    put("settle", [all.length ? `Last night's picks collapsed: ${w} won, ${l} lost` : "Waiting for last night's games to be graded", ...BY.props.filter(x => x.res).slice(0, 2).map(x => `${x.name} ${x.side.toLowerCase()} ${x.point}: ${x.actual} → ${x.res === "win" ? "won" : "lost"}`)],
+      {type: "checks", title: "Last night, collapsed", rows: BY.props.filter(x => x.res).slice(0, 5).map(x => [`${last(x.name)} ${x.side[0]}${x.point} ${x.stat}`, x.res === "win" ? "ok" : "fail", x.res === "win" ? "won" : "lost"])}); });
+  const reviews = ((state.book || {}).bets || []).filter(b => b.review).slice(-3).reverse();
+  tryIt("coroner", () => put("coroner", reviews.map(b => b.review.headline), {type: "rows", title: "Latest post-mortems", rows: reviews.map(b => [(b.review.headline || "").slice(0, 44), ""])}));
+  tryIt("sportswriter", () => { const w = reviews[0] && reviews[0].review.legs && reviews[0].review.legs[0].why || [];
+    put("sportswriter", w.slice(0, 3), {type: "rows", title: "The story of the last bet", rows: w.slice(0, 4).map(t => [t.slice(0, 48), ""])}); });
+  tryIt("audit_score", () => { const a = sb.all || {};
+    put("audit_score", [a.n && `${a.n.toLocaleString("en-US")} lines scored against the closing price`, a.blend && `Model + market blend ${a.blend.ll.toFixed(4)} vs market alone ${a.market.ll.toFixed(4)}`],
+      {type: "rows", title: "Log loss (lower is better)", rows: [["Model alone", a.model && a.model.ll.toFixed(4)], ["Market alone", a.market && a.market.ll.toFixed(4)], ["Blend", a.blend && a.blend.ll.toFixed(4)]].filter(r => r[1])}); });
+  tryIt("teacher", () => { const le = BD.learned || {}, w = le.w_props || {}, edge = Object.entries(le.focus || {}).filter(([, v]) => v === "edge").map(([k]) => STAT[k]);
+    put("teacher", [edge.length ? `Where the model has an edge: ${edge.join(", ")}` : null, le.total_bias != null && `Totals corrected by ${sg(le.total_bias)} points`, "Reads the record every night and adjusts the weights"],
+      {type: "bars", title: "How much the model's view counts", fmt: "pct", max: 1, items: Object.entries(w).map(([k, v]) => ({l: k, v}))}); });
+  tryIt("inspector", () => { const c = checks.checks || [], bad = c.filter(x => x.status !== "ok");
+    put("inspector", [`${c.length} checks run ${agoS(checks.updated)}: ${c.length - bad.length} pass`, ...bad.slice(0, 2).map(x => `${x.name}: ${x.detail}`)],
+      {type: "checks", title: "Inspection", rows: [...bad, ...c.filter(x => x.status === "ok")].slice(0, 5).map(x => [x.name, x.status, x.status])}); });
+  tryIt("range", () => { const t = fs.readdirSync(path.join(ROOT, "tests")).filter(f => f.endsWith(".py"));
+    put("range", [`${t.length} backtests on the range`, "Nothing reaches a bet before it passes here"], {type: "rows", title: "Backtests", rows: t.slice(0, 5).map(f => [f.replace(".py", "").replace(/_/g, " "), ""])}); });
+
+  // ---- Dispatch
+  tryIt("dispatcher", () => { const sd = dataJ("sims_day.json", {runs: []}), runs = sd.date === day ? sd.runs || [] : [], z = runs[runs.length - 1];
+    put("dispatcher", [`${runs.length} simulation runs today`, z && `Last run ${agoS(z.ts)}: ${z.why}`], {type: "ticks", title: "Runs today (ET)", at: runs.map(r => etH(r.ts))}); });
+  tryIt("clock", () => put("clock", [`${org.schedule.length} schedules on GitHub plus the 15-minute outside timer`], {type: "clock", title: "Next chimes"}));
+  tryIt("archivist", () => { const ds = Object.entries(liveDocs).filter(([, v]) => v.kb != null).sort((a, b) => b[1].kb - a[1].kb), tot = ds.reduce((t, [, v]) => t + v.kb, 0);
+    put("archivist", [`${ds.length} documents on file, ${(tot / 1024).toFixed(1)} MB`, "Every save is written whole, then swapped in"], {type: "bars", title: "Largest documents (KB)", fmt: "num", items: ds.slice(0, 5).map(([k, v]) => ({l: (DOCS[k] || {}).name || k, v: v.kb}))}); });
+  tryIt("mailroom", () => { const mi = dataJ("manual_import.json", {items: []}).items || [], sv = dataJ("saved.json", {items: []}).items || [];
+    put("mailroom", [`${mi.length} of the chairman's sportsbook slips logged`, "Opens requests the moment an issue is filed"], {type: "rows", title: "On file", rows: [["Sportsbook slips", mi.length], ["Saved props", sv.length], ["Switch requests", conv.switched ? 1 : 0]]}); });
+  tryIt("planner", () => put("planner", [`Drew ${desks.length} desks, ${docs.length} documents and ${org.routes.length} routes from the code`, newHires.length ? `New hires waiting for a desk: ${newHires.length}` : "Every module has a desk"],
+    {type: "rows", title: "The map", rows: [["Lines of code", totalLines.toLocaleString("en-US")], ["Desks", desks.length], ["Documents", docs.length], ["Routes", org.routes.length]]}));
+
+  // ---- The Storefront
+  tryIt("frontdesk", () => put("frontdesk", ["Open now: you are looking at it", `Tonight: ${G.length} games, ${BD.props.length} picks`], {type: "rows", title: "Dashboard tabs", rows: [["Tonight", "briefing, best bets"], ["Games", "live pages"], ["Players", "prop builder"], ["My bets", "your book"], ["Model", "health, records"]]}));
+  tryIt("gameshost", () => put("gameshost", [`${G.filter(g => g.state === "in").length} live, ${pre.length} to tip, ${G.filter(g => g.state === "post").length} final`],
+    {type: "checks", title: "Tonight's games", rows: G.slice(0, 5).map(g => [gn(g), g.state === "in" ? "fail" : g.state === "post" ? "ok" : "warn", g.state === "in" ? "live" : g.state === "post" ? "final" : "pre"])}));
+  tryIt("clerk", () => { const mi = (dataJ("manual_import.json", {items: []}).items || []).slice(-5).reverse(), w = mi.filter(x => x.result === "won").length;
+    put("clerk", [`The chairman's last ${mi.length} slips: ${w} won`], {type: "checks", title: "The chairman's slips", rows: mi.map(x => [`${x.leg.player ? last(x.leg.player) + " " + x.leg.side[0] + x.leg.point + " " + x.leg.stat : x.leg.outcome.split(" ").pop() + " " + x.leg.point}`, x.result === "won" ? "ok" : "fail", x.result])}); });
+  tryIt("observatory", () => put("observatory", ["Showing the city, tracing bets, reporting coherence", `${traces.length} bets ready to trace`], {type: "rows", title: "Views", rows: [["Live", "now"], ["Inside", "tap a building"], ["Trace a bet", traces.length], ["Coherence", "health"]]}));
+  for (const d of desks) if (deskLive[d.id]) deskLive[d.id].work = WORK[d.id] || null;
+}
+
 fs.mkdirSync(CITY, {recursive: true});
 fs.writeFileSync(path.join(CITY, "org.json"), JSON.stringify(org));
 fs.writeFileSync(path.join(DATA, "city_live.json"), JSON.stringify(live));
