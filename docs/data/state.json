@@ -14660,15 +14660,15 @@
       "price": 1.69,
       "book": "williamhill_us",
       "fair_p": 0.6058,
-      "close_p": 0.6076,
+      "close_p": 0.572,
       "result": null,
       "shop": {
        "median": 1.58,
        "gain": 0.0696,
        "n": 10
       },
-      "close_at": "2026-11-17T22:45:26Z",
-      "close_mins": 114
+      "close_at": "2026-11-17T22:50:55Z",
+      "close_mins": 109
      }
     ],
     "dec": 1.69,
@@ -14703,15 +14703,15 @@
       "price": 2.55,
       "book": "espnbet",
       "fair_p": 0.4004,
-      "close_p": 0.3924,
+      "close_p": 0.428,
       "result": null,
       "shop": {
        "median": 2.428,
        "gain": 0.0504,
        "n": 10
       },
-      "close_at": "2026-11-17T22:45:26Z",
-      "close_mins": 114
+      "close_at": "2026-11-17T22:50:55Z",
+      "close_mins": 109
      }
     ],
     "dec": 2.55,
@@ -14742,7 +14742,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1375,
+  "min_edge": 0.1425,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -14993,13 +14993,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-17T22:45:26Z",
+   "last_scanned": "2026-11-17T22:50:55Z",
    "bets": 49.0,
    "staked": 245.0,
    "profit": -52.849999999999994
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-17T22:30:38Z",
+   "last_scanned": "2026-11-17T22:50:55Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -15011,7 +15011,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-17T22:30:39Z",
+   "last_scanned": "2026-11-17T22:50:55Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -15074,7 +15074,7 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-17T22:30:39Z"
+   "last_scanned": "2026-11-17T22:50:55Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -15101,7 +15101,7 @@
    "last_scanned": "2026-11-17T22:00:29Z"
   },
   "basketball_nbl": {
-   "last_scanned": "2026-11-17T22:00:29Z"
+   "last_scanned": "2026-11-17T22:50:55Z"
   },
   "icehockey_sweden_allsvenskan": {
    "last_scanned": "2026-11-17T18:00:39Z"
@@ -15119,20 +15119,10 @@
    "last_scanned": "2026-11-17T19:01:11Z"
   },
   "icehockey_liiga": {
-   "last_scanned": "2026-11-17T22:00:29Z"
+   "last_scanned": "2026-11-17T22:50:55Z"
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-08T02:39:06Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 15.0%."
-  },
-  {
-   "ts": "2026-11-08T02:39:08Z",
-   "kind": "scan",
-   "text": "Scanned soccer_italy_serie_a (5) for 2 credits. Nothing cleared the bar. Equity $26.36."
-  },
   {
    "ts": "2026-11-08T07:56:19Z",
    "kind": "research",
@@ -16622,6 +16612,16 @@
    "ts": "2026-11-17T22:30:39Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 13.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-17T22:50:53Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -1.5% over 58 legs, so the market is beating my picks. Raising the minimum edge to 14.2%."
+  },
+  {
+   "ts": "2026-11-17T22:50:56Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (14), basketball_ncaab (79), basketball_nba (5), americanfootball_ncaaf (5), icehockey_liiga (6), basketball_nbl (2) for 18 credits. Nothing cleared the bar. Equity $100.00."
   }
  ],
  "learned_ids": [
@@ -16688,7 +16688,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T22:45:26Z",
+ "updated": "2026-11-17T22:50:56Z",
  "stats": {
   "bets": 61,
   "won": 20,
@@ -16699,7 +16699,7 @@
   "staked": 307.63,
   "profit": -91.84,
   "roi": -0.2985,
-  "clv": -0.0152,
+  "clv": -0.0147,
   "clv_n": 58,
   "clv_no_close": 7,
   "close_mins_median": 4,
@@ -16718,5 +16718,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 1
+ "dry_scans": 2
 }
