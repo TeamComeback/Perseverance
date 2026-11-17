@@ -1,4 +1,4 @@
-"""The Odds API client with a hard credit budget so the free tier never runs dry."""
+"""The Odds API client with a hard credit budget: the paid plan is spread over its billing cycle and never runs dry."""
 import calendar
 import hashlib
 import json
@@ -21,34 +21,60 @@ def _et():
     return store.et_now()
 
 
+def cycle_bounds(now=None):
+    """The billing cycle: the paid plan renews on config.RESET_DAY at 00:00 UTC each month (Nov 17 2026 purchase)."""
+    from datetime import datetime, timezone
+    n = now or store.now()
+
+    def at(y, m):
+        return datetime(y, m, min(config.RESET_DAY, calendar.monthrange(y, m)[1]), tzinfo=timezone.utc)
+    start = at(n.year, n.month)
+    if n < start:
+        start = at(n.year - 1, 12) if n.month == 1 else at(n.year, n.month - 1)
+    end = at(start.year + 1, 1) if start.month == 12 else at(start.year, start.month + 1)
+    return start, end
+
+
 class Budget:
-    """Tracks credits. Rules: never drop below the reserve, leave room for the other apps on the key, spread the rest evenly.
+    """Tracks credits. Rules: never drop below the reserve, never touch the old free key, spread the rest evenly.
 
-    Even spread (owner request, Oct 30 2026): what's left above the reserve is divided by the days left in the month
-    to give today's budget, and each run gets its share of what's left of today's budget for the runs still to come.
+    Paid plan (Nov 17 2026): 20,000 credits a billing cycle, renewing on the billing date (config.RESET_DAY), not the
+    1st. What's left above the reserve and the Backtester's untouched allotment is divided by the days left in the
+    cycle to give today's budget. Within the day a scan may be at most a little ahead of an even pace from 9am to 1am
+    ET (config.PACE_HEADROOM), so the morning can't eat the evening; prop and closing-line runs are only held to the
+    day's budget. Every run is capped at config.RUN_CAP credits as a runaway guard.
 
-    Shared key (Nov 17 2026): the same ODDS_API_KEY was also used by the 2H-Comeback halftime bot, which spent about
-    half of November's credits where this budget could not see it. Every balance the API reports is now compared with
-    the last one minus what this agent spent in between; the difference is another app's use (`external`). The daily
-    budget first sets aside the recent nightly rate of that use (only while it is still happening, and never more than
-    the other apps can take above their own floor, config.OTHER_APPS_FLOOR) before dividing the rest.
+    Old free key: the API reports used + remaining on every call, which is the key's plan size. If that is under
+    config.PAID_MIN_PLAN, the secret still holds the old free key, whose balance now belongs to the 2H-Comeback bot
+    (owner, Nov 17), so nothing is spent until the paid key is in place.
 
-    The month follows the API's reset: midnight UTC on the 1st (8pm ET the night before), not the ET calendar, so the
-    last evening of a month can't spend the new month's credits as if they were the old month's leftovers (Oct 31)."""
+    Shared key (Nov 17 2026): every balance the API reports is still compared with the last one minus what this agent
+    spent; any difference is another app's use (`external`) and is set aside, as before."""
 
     def __init__(self):
         self.b = store.load("budget.json", {})
-        month = store.now().strftime("%Y-%m")                      # the API resets at 00:00 UTC on the 1st
-        if self.b.get("month") != month:
-            carry = {k: self.b[k] for k in ("ext_days",) if k in self.b}
-            self.b = {"month": month, "remaining": None, "used": None, "runs": 0, "log": [], "paid": [], "ext": [],
-                      "own_month": 0, "external_month": 0, "monthly": config.MONTHLY_CREDITS, "reserve": config.RESERVE_CREDITS, **carry}
-        for k, v in (("paid", []), ("ext", []), ("own_month", 0), ("external_month", 0), ("ext_days", {})):
+        c0, c1 = cycle_bounds()
+        cyc = c0.strftime("%Y-%m-%d")
+        if self.b.get("month") != cyc:
+            carry = {k: self.b[k] for k in ("ext_days", "plan") if k in self.b}
+            self.b = {"month": cyc, "remaining": None, "used": None, "runs": 0, "log": [], "paid": [], "ext": [],
+                      "own_month": 0, "external_month": 0, "monthly": config.MONTHLY_CREDITS,
+                      "reserve": config.RESERVE_CREDITS, "jobs_cycle": {}, "backtest_used": 0, **carry}
+        self.b.update(cycle_start=store.iso(c0), cycle_end=store.iso(c1), monthly=config.MONTHLY_CREDITS,
+                      reserve=config.RESERVE_CREDITS, backtest_cap=config.BACKTEST_MONTHLY)
+        for k, v in (("paid", []), ("ext", []), ("own_month", 0), ("external_month", 0), ("ext_days", {}),
+                     ("jobs_cycle", {}), ("jobs_day", {}), ("backtest_used", 0)):
             self.b.setdefault(k, v)
         self.spent_this_run = 0
         self.allowance = 0
+        self.job = "scan"
         self.month_end = False
         self.unconfirmed = False                                    # the last balance check failed: keep the last known number
+
+    def locked(self):
+        """True while the secret still holds the old free key (its balance is the 2H bot's now)."""
+        plan = self.b.get("plan")
+        return bool(plan) and plan < config.PAID_MIN_PLAN and not config.MOCK
 
     def ext_rate(self):
         """Credits a day the other apps on this key are using lately: the average over the last 7 ET days, or 0 if
@@ -61,53 +87,85 @@ class Budget:
         win = [(today - timedelta(days=i)).isoformat() for i in range(7)]
         return sum(days.get(d, 0) for d in win) / 7
 
+    def backtest_left(self):
+        return max(0, config.BACKTEST_MONTHLY - self.b.get("backtest_used", 0))
+
     def _day(self):
         n = _et()
         today = n.strftime("%Y-%m-%d")
         if self.b.get("day") != today:
             rem = self.b["remaining"] if self.b.get("remaining") is not None else config.MONTHLY_CREDITS
-            u = store.now()
-            days_left = calendar.monthrange(u.year, u.month)[1] - u.day + 1
+            end = store.parse(self.b["cycle_end"])
+            days_left = max(1, math.ceil((end - store.now()).total_seconds() / 86400))
             rate = self.ext_rate()
             # what the other apps are likely to take before the reset, but they stop at their own floor
             others = min(round(rate * days_left), max(0, rem - config.OTHER_APPS_FLOOR)) if rate else 0
-            spendable = max(0, rem - config.RESERVE_CREDITS - others)
-            self.b.update(day=today, days_left=days_left, day_budget=spendable // max(1, days_left),
-                          spent_today=0, units_today=0, set_aside=others, ext_rate=round(rate, 1))
+            spendable = max(0, rem - config.RESERVE_CREDITS - others - self.backtest_left())
+            self.b.update(day=today, days_left=days_left, day_budget=spendable // days_left,
+                          spent_today=0, units_today=0, set_aside=others, ext_rate=round(rate, 1), jobs_day={})
         return self.b
 
-    def start_run(self, units=1):
-        """Each scan is 1 unit; the evening NBA props run is config.PROPS_UNITS units,
-        so it gets a bigger share of the day's credits."""
+    def pace(self):
+        """Share of the betting day (9am-1am ET) that has gone by."""
+        n = _et()
+        h = n.hour + n.minute / 60
+        if h < 3:
+            h += 24
+        return min(1.0, max(0.0, (h - config.DAY_START_ET) / (config.DAY_END_ET - config.DAY_START_ET)))
+
+    def start_run(self, units=1, job=None):
+        """Set this run's allowance. job: scan (paced through the day), props, closer or backtest."""
         b = self._day()
+        self.job = job or ("props" if units > 1 else "scan")
         left_today = max(0, b["day_budget"] - b["spent_today"])
-        units_left = max(units, config.UNITS_PER_DAY - b["units_today"])
-        self.allowance = left_today * units // units_left
+        if self.locked():
+            self.allowance = 0
+        elif self.job == "backtest":
+            self.allowance = min(self.backtest_left(), config.RUN_CAP * 10)
+        elif self.job == "scan":
+            ahead = b["day_budget"] * min(1.0, self.pace() + config.PACE_HEADROOM) - b["spent_today"]
+            self.allowance = int(max(0, min(config.RUN_CAP, left_today, ahead)))
+        else:
+            self.allowance = int(min(config.RUN_CAP, left_today))
         rem = b["remaining"] if b.get("remaining") is not None else config.MONTHLY_CREDITS
         self.allowance = min(self.allowance, max(0, rem - config.RESERVE_CREDITS))
         b["runs"] = b.get("runs", 0) + 1
         b["units_today"] += units
-        b["runs_left"] = max(0, b["days_left"] * config.UNITS_PER_DAY - b["units_today"])
         b["allowance"] = self.allowance
+        b["locked"] = self.locked()
         b.pop("month_end_mode", None)
 
     def can(self, cost: int, essential=False) -> bool:
+        if self.locked():
+            return False
         rem = self.b["remaining"]
         if rem is not None and rem - cost < config.RESERVE_CREDITS:
+            return False
+        if self.job != "backtest" and self.spent_this_run + cost > config.RUN_CAP:
+            return False
+        if self.job == "backtest" and self.spent_this_run + cost > self.backtest_left():
             return False
         return essential or self.spent_this_run + cost <= self.allowance
 
     def record(self, endpoint, cost, remaining, used):
         b = self.b
         self.spent_this_run += cost
-        self._day()["spent_today"] += cost
+        if self.job == "backtest":
+            b["backtest_used"] = b.get("backtest_used", 0) + cost
+        else:
+            self._day()["spent_today"] += cost
+        if cost:
+            b["jobs_day"][self.job] = b["jobs_day"].get(self.job, 0) + cost
+            b["jobs_cycle"][self.job] = b["jobs_cycle"].get(self.job, 0) + cost
         b["own_month"] = b.get("own_month", 0) + cost
         now = store.iso(store.now())
+        if remaining is not None and used is not None:
+            b["plan"] = remaining + used                            # the key's plan size: 500 = the old free key
         if remaining is not None:
             prev = b.get("remaining")
             if prev is not None and remaining > prev + 50:
-                # the API reset the month under us: start the day's numbers over from the fresh balance
-                b["remaining"] = remaining; b.pop("day", None); self._day()
+                # the API reset the cycle under us (or the paid key arrived): start the day over from the fresh balance
+                b["remaining"] = remaining; b.pop("day", None); b["ext"] = []; self._day()
             elif prev is not None and not b.get("unconfirmed"):
                 gap = prev - cost - remaining                       # credits that went somewhere other than this agent
                 if gap > 0:
@@ -119,10 +177,10 @@ class Budget:
             b.pop("unconfirmed", None); self.unconfirmed = False
         if used is not None:
             b["used"] = used
-        entry = {"ts": now, "ep": endpoint, "cost": cost, "rem": b["remaining"]}
+        entry = {"ts": now, "ep": endpoint, "cost": cost, "rem": b["remaining"], "job": self.job}
         b["log"] = (b["log"] + [entry])[-60:]
-        if cost:                                                    # paid calls are kept for the whole month
-            b["paid"] = (b["paid"] + [entry])[-400:]
+        if cost:                                                    # paid calls are kept for the whole cycle
+            b["paid"] = (b["paid"] + [entry])[-1500:]
 
     def save(self):
         self.b["updated"] = store.iso(store.now())

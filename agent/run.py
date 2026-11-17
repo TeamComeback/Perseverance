@@ -205,26 +205,14 @@ def grade(state, manual, client):
                                       + ("New run started from $100; lessons carry over." if config.AUTO_RESTART else ""))
 
 
-def cycle():
-    budget = Budget()
-    client = OddsClient(budget)
-    state, manual = load_all()
-    try:
-        client.sports()                      # free: refreshes the credit count
-    except Exception as e:
-        brain.note(state, "error", f"Odds API unreachable: {e}")
-        save_all(state, manual, budget)
-        return
-    budget.start_run()                       # this run's share of the remaining credits
-
-    grade(state, manual, client)
-    brain.adapt(state)
-    citynow.mark("buyer", "Choosing which boards are worth the credits and buying the odds")
-
+def _scan(state, manual, client, budget, want=None):
+    """Buy boards for the sports worth the credits now, bet what clears the bar, keep the board and closing lines.
+    want(sport) -> False (skip), True (scan if the allowance allows) or "close" (closing line: essential)."""
     events, scanned = [], []
-    for score, sport, n in brain.pick_sports(state, client, budget):
+    for score, sport, n in brain.pick_sports(state, client, budget, want=want):
         cost = len(config.markets_for(sport).split(","))
-        if not budget.can(cost):
+        essential = bool(want) and want(sport) == "close"
+        if not budget.can(cost, essential):
             continue
         try:
             evs = client.odds(sport)
@@ -243,27 +231,124 @@ def cycle():
     citynow.mark("bookkeeper", f"Placed {len(placed)} paper bets; updating the books" if placed else "Nothing cleared the bar; updating the books")
     brain.drought(state, scanned, placed)
 
-    board = store.load("board.json", {"events": []})
-    fresh = market.board_summary(events)
-    fresh_sports = {e["sport_key"] for e in events}
-    keep = [e for e in board.get("events", [])
-            if e["sport"] not in fresh_sports and market.window_ok({"commence_time": e["commence"]})]
-    store.save("board.json", {"updated": store.iso(store.now()),
-                              "events": sorted(fresh + keep, key=lambda e: e["commence"])})
-    save_closes(events)
+    if events:
+        board = store.load("board.json", {"events": []})
+        fresh = market.board_summary(events)
+        fresh_sports = {e["sport_key"] for e in events}
+        keep = [e for e in board.get("events", [])
+                if e["sport"] not in fresh_sports and market.window_ok({"commence_time": e["commence"]})]
+        store.save("board.json", {"updated": store.iso(store.now()),
+                                  "events": sorted(fresh + keep, key=lambda e: e["commence"])})
+        save_closes(events)
+    return events, scanned, placed
+
+
+def cycle():
+    budget = Budget()
+    client = OddsClient(budget)
+    state, manual = load_all()
+    try:
+        client.sports()                      # free: refreshes the credit count
+    except Exception as e:
+        brain.note(state, "error", f"Odds API unreachable: {e}")
+        save_all(state, manual, budget)
+        return
+    budget.start_run()                       # this run's share of the remaining credits
+
+    grade(state, manual, client)
+    brain.adapt(state)
+    citynow.mark("buyer", "Choosing which boards are worth the credits and buying the odds")
+    events, scanned, placed = _scan(state, manual, client, budget)
 
     eq = bk.equity(state["book"])
     if scanned:
-        brain.note(state, "scan", ("Month-end mode (credits reset on the 1st): " if budget.month_end else "")
-                   + f"Scanned {', '.join(scanned)} for {budget.spent_this_run} credits. "
+        brain.note(state, "scan", f"Scanned {', '.join(scanned)} for {budget.spent_this_run} credits. "
                    + (f"Placed {len(placed)}: " + "; ".join(describe(b) for b in placed) if placed
                       else "Nothing cleared the bar.") + f" Equity ${eq:.2f}.")
+    elif budget.locked():
+        brain.note(state, "budget", "No scan: the odds secret still holds the old free key, whose credits belong to the "
+                                    "2H-Comeback bot now. Waiting for the paid key.")
     else:
         brain.note(state, "scan", f"No scan this run (allowance {budget.allowance} credits, "
-                                  f"{budget.b.get('remaining')} left this month).")
+                                  f"{budget.b.get('remaining')} left this cycle).")
     history_point(state, manual)
     save_all(state, manual, budget)
     print(state["journal"][-1]["text"])
+
+
+def _mins_to(ts, now):
+    return (store.parse(ts) - now).total_seconds() / 60
+
+
+def scout_run(games):
+    """Scout + Closer (every 15 minutes from the outside timer). NBA boards every run in the last few hours before
+    the first tip, every other board at most hourly; any sport with an open bet about to tip gets a closing-line
+    scan, and open player props about to tip get their closing price bought too. Paced by the day's budget."""
+    budget = Budget()
+    client = OddsClient(budget)
+    state, manual = load_all()
+    try:
+        client.sports()
+    except Exception as e:
+        print(f"[scout] Odds API unreachable: {e}")
+        return
+    if budget.locked():
+        print("[scout] the odds secret still holds the old free key (2H-Comeback's now): nothing bought")
+        budget.save()
+        return
+    budget.start_run(job="scan")
+    now = store.now()
+    nba_pre = [g for g in games if g["state"] == "pre"]
+    first = min((store.parse(g["start"]) for g in nba_pre), default=None)
+    nba_hot = first is not None and (first - now).total_seconds() / 3600 <= config.SCOUT_PRE_H
+    legs = [l for b in bk.open_bets(state["book"]) + bk.open_bets(manual["book"]) for l in b["legs"]
+            if l.get("result") is None and l.get("commence") and 0 < _mins_to(l["commence"], now) <= config.CLOSER_MIN]
+    closing = {l["sport"] for l in legs if not str(l.get("market", "")).startswith("player_")}
+
+    def want(sport):
+        last = state["sports"].get(sport, {}).get("last_scanned")
+        mins = (now - store.parse(last)).total_seconds() / 60 if last else 1e9
+        if sport in closing and mins >= 8:
+            return "close"
+        if sport == "basketball_nba" and nba_hot:
+            return mins >= 10
+        return mins >= config.SCOUT_EVERY_MIN
+
+    citynow.mark("buyer", "Scout: buying the boards that are due" + (" (NBA every run before tip)" if nba_hot else ""))
+    events, scanned, placed = _scan(state, manual, client, budget, want=want)
+    budget.job = "closer"
+    closed = 0
+    try:
+        closed = nba_props.close_props(state, manual, client, budget, [l for l in legs if str(l.get("market", "")).startswith("player_")])
+    except Exception as e:
+        print(f"[closer] prop closing lines failed: {e}")
+    if closing or closed:
+        citynow.mark("closer", f"Closer: closing prices for {len(closing)} board(s) and {closed} prop(s) about to tip")
+    msg = (f"Scout: {', '.join(scanned) or 'nothing due'} for {budget.spent_this_run} credits"
+           + (f"; closing lines for {', '.join(sorted(closing))}" if closing else "")
+           + (f"; {closed} prop closing price(s)" if closed else ""))
+    print("[scout] " + msg)
+    if placed:
+        brain.note(state, "scan", msg + f". Placed {len(placed)}: " + "; ".join(describe(b) for b in placed)
+                   + f". Equity ${bk.equity(state['book']):.2f}.")
+        history_point(state, manual)
+    save_all(state, manual, budget)
+
+
+def prop_slot_due(games, now):
+    """Prop Pricer: 11am, 2pm, 5pm ET and about an hour before the first tip. Returns the slot due now, or None."""
+    from . import research
+    et = now.astimezone(nd_et())
+    h = et.hour + et.minute / 60
+    pre = [g for g in games if g["state"] == "pre" and store.parse(g["start"]) > now + timedelta(minutes=30)]
+    if not pre:
+        return None
+    first = min(store.parse(g["start"]) for g in pre).astimezone(nd_et())
+    slots = list(config.PROP_REFRESH_ET) + [round(first.hour + first.minute / 60 - config.PROP_PRE_TIP_H, 2)]
+    ran = store.load("props_ran.json", {}) or {}
+    done = ran.get("slots", []) if ran.get("date") == research.et_today().isoformat() else []
+    due = [x for x in slots if x <= h < x + 2.5 and x not in done]
+    return max(due) if due else None
 
 
 SIM_REASON = None      # why the next sims run (shown in the dashboard's run log)
@@ -405,7 +490,7 @@ def research_run():
     print(state["journal"][-1]["text"])
 
 
-def props_run(backup=False):
+def props_run(backup=False, slot=None):
     """Afternoon NBA matchup run (about 2pm ET in winter). The backup run an hour later
     only does anything if the first one didn't happen (GitHub sometimes delays or drops scheduled runs)."""
     from . import research
@@ -415,7 +500,15 @@ def props_run(backup=False):
         if pz.get("priced_date") == today or (store.load("props_ran.json", {}) or {}).get("date") == today:
             print("props already ran today; backup run skipped")
             return
-    store.save("props_ran.json", {"date": today, "at": store.iso(store.now())})
+    # Prop Pricer slots (11am, 2pm, 5pm ET, ~1h before first tip): this run covers every slot whose time has come
+    ran = store.load("props_ran.json", {}) or {}
+    slots = ran.get("slots", []) if ran.get("date") == today else []
+    et = store.now().astimezone(nd_et())
+    h = et.hour + et.minute / 60
+    if slot is not None:
+        slots.append(slot)
+    slots += [x for x in config.PROP_REFRESH_ET if x <= h and x not in slots]
+    store.save("props_ran.json", {"date": today, "at": store.iso(store.now()), "slots": sorted(set(slots))})
     budget = Budget()
     client = OddsClient(budget)
     state, manual = load_all()
@@ -425,7 +518,7 @@ def props_run(backup=False):
         brain.note(state, "error", f"Odds API unreachable: {e}")
         save_all(state, manual, budget)
         return
-    budget.start_run(units=config.PROPS_UNITS)
+    budget.start_run(units=config.PROPS_UNITS, job="props")
     grade(state, manual, client)
     citynow.mark("research", "Gathering lineups and projections for the props run")
     try:
@@ -781,6 +874,20 @@ def auto_run():
             pass
     if pre and 14.5 <= hour < 23:
         props_run(backup=True)                      # does nothing if today's props run already happened
+    if True:                                        # Scout + Closer: the boards that are due, closing prices at tip
+        try:
+            scout_run(games)
+        except Exception as e:
+            print(f"[scout] failed: {e}")
+    if pre:                                         # Prop Pricer: 11am, 2pm, 5pm and ~1h before the first tip
+        try:
+            slot = prop_slot_due(games, now)
+            if slot is not None:
+                print(f"[auto] prop refresh due (slot {slot:g}h ET)")
+                citynow.mark("props", f"Prop Pricer: refresh for the {slot:g}h ET slot")
+                props_run(slot=slot)
+        except Exception as e:
+            print(f"[props] refresh failed: {e}")
     if pre:
         try:
             pj = store.load("players.json", None) or {}

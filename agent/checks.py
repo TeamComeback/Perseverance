@@ -141,16 +141,19 @@ def run(log=print):
     burst = sum(1 for a_, b_ in zip(runs, runs[1:]) if (store.parse(b_.replace(".000Z", "Z")) - store.parse(a_.replace(".000Z", "Z"))).total_seconds() < 180)
     add("Sim run log", "ok" if not burst else "warn", f"{len(runs)} runs today" + (f"; {burst} within 3 minutes of another (test runs?)" if burst else ""))
 
-    # 7. odds credits will last the month
+    # 7. odds credits will last the billing cycle
     b = _load("budget.json", {}) or {}
     rem, dl = b.get("remaining"), b.get("days_left")
-    if rem is not None and dl:
-        aside = b.get("set_aside") or 0
+    if b.get("locked"):
+        add("Odds API credits", "warn", "the odds secret still holds the old free key (the 2H tracker's now): "
+            "no odds bought until ODDS_API_KEY holds the paid key")
+    elif rem is not None and dl:
+        aside = (b.get("set_aside") or 0) + max(0, (b.get("backtest_cap") or 0) - (b.get("backtest_used") or 0))
         per = (rem - config.RESERVE_CREDITS - aside) / max(1, dl)
         ext = b.get("external_month") or 0
-        add("Odds API credits", "ok" if per >= 5 else "warn" if per >= 2 else "fail",
+        add("Odds API credits", "ok" if per >= 150 else "warn" if per >= 50 else "fail",
             f"{rem} left{' (last reading)' if b.get('unconfirmed') else ''}, {dl} days to go: {per:.1f} a day after the reserve"
-            + (f" and {aside} set aside for other apps" if aside else "")
+            + (f" and {aside} set aside (Backtester / other apps)" if aside else "")
             + (f"; other apps on this key used {ext} this month" if ext else ""))
 
     # 8. nightly pieces ran in the last day and a half

@@ -127,8 +127,9 @@ def drought(state, scanned, placed):
 
 
 # ---- Choosing what to scan --------------------------------------------------
-def pick_sports(state, client, budget):
-    """Free calls decide where to spend paid ones: which sports have games soon."""
+def pick_sports(state, client, budget, want=None):
+    """Free calls decide where to spend paid ones: which sports have games soon.
+    want(sport): the Scout's cadence filter (False = not due; "close" = a closing-line scan, never skipped)."""
     try:
         sports = [s for s in client.sports() if s.get("active") and not s.get("has_outrights")]
     except Exception as e:
@@ -137,12 +138,16 @@ def pick_sports(state, client, budget):
     scored = []
     for s in sports:
         key = s["key"]
+        w = want(key) if want else True
+        if not w:
+            continue
         base = config.SPORT_PRIORITY.get(key, config.DEFAULT_PRIORITY)
         # minor sports: occasional exploration, or always in month-end mode when credits would expire unused
-        if base < 0.45 and not getattr(budget, "month_end", False) and random.random() > 0.15:
+        if base < 0.45 and w != "close" and not getattr(budget, "month_end", False) and random.random() > 0.15:
             continue
         try:
-            evs = [e for e in client.events(key) if market.window_ok(e)]
+            evs = [e for e in client.events(key)
+                   if market.window_ok(e) or (w == "close" and store.parse(e["commence_time"]) > store.now())]
         except Exception:
             continue
         if not evs:

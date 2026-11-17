@@ -155,7 +155,9 @@ def record_stats(book):
     settled_legs = [l for b in settled for l in b["legs"]]
     no_close = sum(1 for l in settled_legs if not l.get("close_p"))
     mins = [l["close_mins"] for b in book["bets"] for l in b["legs"] if l.get("close_mins") is not None]
+    shops = [l["shop"]["gain"] for b in book["bets"] for l in b["legs"] if (l.get("shop") or {}).get("gain") is not None]
     return {"bets": len(settled), "won": won, "lost": lost,
+            "shop_n": len(shops), "shop_avg": round(sum(shops) / len(shops), 4) if shops else None,
             "push": len(settled) - won - lost, "staked": round(staked, 2),
             "profit": round(profit, 2), "roi": round(profit / staked, 4) if staked else 0,
             "clv": round(sum(clvs) / len(clvs), 4) if clvs else None, "clv_n": len(clvs),

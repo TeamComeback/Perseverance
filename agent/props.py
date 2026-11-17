@@ -188,7 +188,7 @@ def run(state, manual, client, budget, ctx=None):
         rank = {"edge": 0, "watch": 1, "skip": 2}
         edge_first = [st for st in nm.ODDS_KEY if FOCUS.get(st, {}).get("status") == "edge" and any(x["stat"] == st for x in by_game[g["espn_id"]])]
         stats = sorted(dict.fromkeys(edge_first + stats), key=lambda st: rank.get(FOCUS.get(st, {}).get("status", "watch"), 1))
-        plan.append({"g": g, "e": e, "score": sum(x["strength"] for x in top[:5]), "stats": stats[:3]})
+        plan.append({"g": g, "e": e, "score": sum(x["strength"] for x in top[:5]), "stats": stats[:config.PROP_STATS_PER_GAME]})
     plan.sort(key=lambda x: -x["score"])
 
     lines, bought, tt_events = {}, [], []
@@ -240,7 +240,10 @@ def run(state, manual, client, budget, ctx=None):
                     continue
                 ev = pf * price - 1
                 agrees = (pr["proj"] > pt) if side == "Over" else (pr["proj"] < pt)
+                sp = sorted(v[side] for v in entry["books"].values() if side in v)
+                med = sp[len(sp) // 2] if len(sp) % 2 else (sp[len(sp) // 2 - 1] + sp[len(sp) // 2]) / 2
                 cands.append({"pr": pr, "g": g, "e": e, "side": side, "point": pt, "price": price, "book": bkey,
+                              "shop": {"median": round(med, 3), "gain": round(price / med - 1, 4), "n": len(sp)},
                               "p": pf, "p_model": pm, "p_mkt": p_mkt if side == "Over" else 1 - p_mkt, "ev": ev,
                               "agrees": agrees, "nbooks": nbooks, "market": mkey})
     cands.sort(key=lambda c: -c["ev"])
@@ -319,7 +322,7 @@ def run(state, manual, client, budget, ctx=None):
                "outcome": f"{pr['name']} {c['side']}", "side": c["side"], "player": pr["name"],
                "player_id": pr["pid"], "stat": pr["stat"], "espn_id": c["g"]["espn_id"], "point": c["point"],
                "price": round(c["price"], 3), "book": c["book"], "fair_p": round(c["p_mkt"], 4),
-               "close_p": None, "result": None,
+               "close_p": None, "result": None, "shop": c.get("shop"),
                "model": {"proj": pr["proj"], "base": pr["base"], "minutes": pr["minutes"], "mult": pr["mult"],
                          "sd": round(math.sqrt(max(pr.get("var") or 0, 0)), 2), "p_model": round(c["p_model"], 4),
                          "p_mkt": round(c["p_mkt"], 4),
@@ -402,3 +405,46 @@ def write_board(ctx, lines, cands, tt_events, bought, plan=()):
                               "spots": board[:160], "priced": priced, "events": events_map, "players": players,
                               "team_totals": tt, "bought": bought or (prev.get("bought") if same_day else []),
                               "teams": ctx["model"].teams})
+
+
+# ---------------- Closer: closing prices for open props (multi-agent framework, Nov 17) ----------------
+def close_props(state, manual, client, budget, legs):
+    """Buy the closing price for open player props about to tip (only their markets, one call per game), so every
+    prop bet gets a closing-line value. If the book moved the line off our number, the new number is kept as
+    close_line instead. Returns how many legs got a closing price."""
+    now = store.now()
+    todo = {}
+    for l in legs:
+        eid = l.get("event_id") or ""
+        if not eid or ":" in eid:                      # logged from ESPN (no Odds API id): nothing to buy
+            continue
+        if l.get("close_at") and (now - store.parse(l["close_at"])).total_seconds() < 480:
+            continue
+        todo.setdefault(eid, set()).add(l["market"])
+    n = 0
+    for eid, mk in todo.items():
+        mk = sorted(mk)
+        if not budget.can(len(mk), essential=True):
+            break
+        try:
+            od = client.event_odds(SPORT, eid, mk)
+        except Exception as e:
+            print(f"[closer] {eid}: {e}")
+            continue
+        props = parse_props(od)
+        for l in legs:
+            if l.get("event_id") != eid:
+                continue
+            who = norm(l.get("player") or l.get("outcome", "").rsplit(" ", 1)[0])
+            entry = props.get((who, l["market"], float(l["point"])))
+            if not entry:
+                alts = [pt for (w, m, pt) in props if w == who and m == l["market"]]
+                if alts:
+                    l["close_line"] = min(alts, key=lambda x: abs(x - l["point"]))
+                continue
+            p_over, _best, _n = price_line(entry)
+            l["close_p"] = round(p_over if l.get("side") == "Over" else 1 - p_over, 4)
+            l["close_at"] = store.iso(now)
+            l["close_mins"] = int((store.parse(l["commence"]) - now).total_seconds() // 60)
+            n += 1
+    return n

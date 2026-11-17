@@ -67,8 +67,10 @@ def analyse_event(ev):
         for k in sig:
             best_bk, best = max(((bk, pr[k]) for bk, pr in books), key=lambda x: x[1])
             others = [devig[bk][k] for bk, _ in books if bk != best_bk]
+            ps = sorted(pr[k] for _, pr in books)
+            med = ps[len(ps) // 2] if len(ps) % 2 else (ps[len(ps) // 2 - 1] + ps[len(ps) // 2]) / 2
             outs.append({"name": k[0], "desc": k[1], "point": k[2], "best": best, "book": best_bk,
-                         "fair_p": mean(others), "n": len(books),
+                         "fair_p": mean(others), "n": len(books), "median": med,
                          "all_fair": mean(devig[bk][k] for bk, _ in books)})
         arb = 1 - sum(1 / o["best"] for o in outs)
         lines.append({"market": mkey, "outcomes": outs, "arb": arb})
@@ -86,6 +88,8 @@ def leg_from(ev, line, o):
            "home": ev["home_team"], "away": ev["away_team"], "market": line["market"],
            "outcome": o["name"], "point": o["point"], "price": round(o["best"], 3),
            "book": o["book"], "fair_p": round(o["fair_p"], 4), "close_p": None, "result": None}
+    if o.get("median"):                    # Shopper: what taking the best of the ten books gained over the typical book
+        leg["shop"] = {"median": round(o["median"], 3), "gain": round(o["best"] / o["median"] - 1, 4), "n": o["n"]}
     if o.get("desc"):
         leg["team"] = o["desc"]
     return leg

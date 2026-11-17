@@ -12,15 +12,29 @@ GOAL = 1000.0
 BUST_LINE = 5.0           # cash below this with nothing open = run over
 AUTO_RESTART = True        # after a bust or a win, start a new run (lessons carry over)
 
-# ---- The Odds API budget (free tier) ---------------------------------------
+# ---- The Odds API budget (paid 20K plan from Nov 17 2026) ----------------------
 API_BASE = "https://api.the-odds-api.com/v4"
 API_KEY = os.environ.get("ODDS_API_KEY", "")
 MOCK = os.environ.get("ODDS_MOCK") == "1"
-MONTHLY_CREDITS = int(os.environ.get("ODDS_MONTHLY_CREDITS", "500"))
-RESERVE_CREDITS = 25       # never spend below this — the hard floor
-OTHER_APPS_FLOOR = 60      # other apps on the same key (2H-Comeback) stop buying odds below this balance
-RUNS_PER_DAY = 3           # scheduled scans; used to spread credits across the month
-PROPS_UNITS = 3            # the evening NBA props run gets this many scans' worth of credits
+MONTHLY_CREDITS = int(os.environ.get("ODDS_MONTHLY_CREDITS", "20000"))
+RESET_DAY = int(os.environ.get("ODDS_RESET_DAY", "17"))   # the paid plan renews on the billing date (UTC), not the 1st
+PAID_MIN_PLAN = 1000       # a key whose plan (used + remaining) is smaller is the old free key: that balance now
+                           # belongs to the 2H-Comeback bot (owner, Nov 17), so the agent spends nothing on it
+RESERVE_CREDITS = 300      # never spend below this — the hard floor
+OTHER_APPS_FLOOR = 60      # other apps on the same key stop buying odds below this balance (none share the paid key)
+RUN_CAP = 150              # most credits one run may spend: a runaway guard
+BACKTEST_MONTHLY = 5000    # credits per billing cycle the Backtester may spend on historical odds (its own ledger)
+PACE_HEADROOM = 0.15       # a run may be this far ahead of the day's even pace
+DAY_START_ET, DAY_END_ET = 9, 25   # the betting day the pace is spread over (9am to 1am ET)
+# Cadence (multi-agent framework, Nov 17): the in-program agents ride the 15-minute outside timer
+SCOUT_PRE_H = 4            # Scout: NBA every run when the first tip is this close, otherwise hourly
+SCOUT_EVERY_MIN = 55       # Scout: any other board at most this often
+CLOSER_MIN = 20            # Closer: buy a closing price for open bets tipping within this many minutes
+PROP_REFRESH_ET = (11.0, 14.0, 17.0)   # Prop Pricer slots (ET hours), plus one about an hour before the first tip
+PROP_PRE_TIP_H = 1.0
+PROP_STATS_PER_GAME = 5      # Prop Pricer: stat markets bought per game (was 3 on the free key)
+RUNS_PER_DAY = 3           # (legacy unit pacing, kept for old budget files)
+PROPS_UNITS = 3
 UNITS_PER_DAY = RUNS_PER_DAY + PROPS_UNITS
 REGIONS = "us"             # fallback only; requests name the books below instead
 
