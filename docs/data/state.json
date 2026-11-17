@@ -1,13 +1,13 @@
 {
  "book": {
   "name": "Perseverance",
-  "run": 1,
-  "cash": 8.16,
+  "run": 2,
+  "cash": 100.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
   "status": "racing",
-  "started": "2026-10-26T22:18:47Z",
+  "started": "2026-11-17T13:05:45Z",
   "bets": [
    {
     "id": "c83a8adf",
@@ -14434,7 +14434,18 @@
     }
    }
   ],
-  "runs": []
+  "runs": [
+   {
+    "run": 1,
+    "result": "busted",
+    "started": "2026-10-26T22:18:47Z",
+    "ended": "2026-11-17T13:05:45Z",
+    "final": 8.16,
+    "peak": 100.0,
+    "bets": 61,
+    "note": "Ended by the owner at $8.16; run 1 counted as lost. Bets and record kept."
+   }
+  ]
  },
  "params": {
   "min_edge": 0.15,
@@ -14791,11 +14802,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-06T20:17:53Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 6: 9 games, 210 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-06T20:49:43Z",
    "kind": "scan",
@@ -16290,6 +16296,11 @@
    "ts": "2026-11-17T12:15:20Z",
    "kind": "research",
    "text": "Self-checks pass again: Odds API credits recovered."
+  },
+  {
+   "ts": "2026-11-17T13:05:45Z",
+   "kind": "race",
+   "text": "Perseverance run #1 LOST at $8.16 (peak $100.00, 61 bets). Owner reset the bankroll: run #2 starts from $100; record and lessons carry over."
   }
  ],
  "learned_ids": [
@@ -16370,7 +16381,7 @@
   "clv_no_close": 46,
   "close_mins_median": 151,
   "open": 0,
-  "equity": 8.16
+  "equity": 100.0
  },
  "weights": {
   "value_fav": 0.842,
