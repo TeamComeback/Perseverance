@@ -22,6 +22,13 @@ def load_all():
     for k, a in state["arms"].items():
         a["clv_gate"] = k in config.CLV_GATED
     manual = store.load("manual.json", None) or {"book": bk.new_book("Your book")}
+    try:                                    # Backtester: closing prices bought from historical odds for past bets
+        from . import backtest
+        n = backtest.merge_backfill([state["book"], manual["book"]], state)
+        if n:
+            brain.note(state, "research", f"Backtester: {n} past bet(s) got their closing price from historical odds.")
+    except Exception as e:
+        print(f"[backtest] merge failed: {e}")
     return state, manual
 
 
@@ -553,6 +560,29 @@ def props_run(backup=False, slot=None):
     print(state["journal"][-1]["text"])
 
 
+def backtest_run():
+    """Backtester (weekly, Sunday ~3:20am ET, or on demand): historical closing lines, inside its own allotment."""
+    from . import backtest
+    budget = Budget()
+    client = OddsClient(budget)
+    state, manual = load_all()
+    try:
+        client.sports()
+    except Exception as e:
+        brain.note(state, "error", f"Odds API unreachable: {e}")
+        save_all(state, manual, budget)
+        return
+    if budget.locked():
+        print("[backtest] the odds secret still holds the old free key: nothing bought")
+        save_all(state, manual, budget)
+        return
+    budget.start_run(job="backtest")
+    citynow.mark("backtester", "Backtester: buying historical closing lines")
+    rep = backtest.run(client, budget, state, manual)
+    brain.note(state, "research", f"Backtester ({budget.spent_this_run} credits): " + " ".join(rep["verdict"]))
+    save_all(state, manual, budget)
+
+
 def nightly():
     budget = Budget()                       # no scan allowance: only essential grading
     client = OddsClient(budget)
@@ -981,7 +1011,7 @@ if __name__ == "__main__":
     _mode = sys.argv[1]
     citynow.start(_mode)
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
-     "research": research_run, "live": live_run, "injwatch": injwatch_run, "auto": auto_run, "manual-issue": manual_issue,
+     "research": research_run, "live": live_run, "injwatch": injwatch_run, "auto": auto_run, "manual-issue": manual_issue, "backtest": backtest_run,
      "briefing": briefing_run,
      "probe": lambda: __import__("agent.probe", fromlist=["run"]).run()}[_mode]()
     catch_up(_mode)
@@ -992,6 +1022,6 @@ if __name__ == "__main__":
             briefing.tick()
         except Exception as e:
             print(f"[briefing] failed: {e}")
-    if _mode in ("research", "auto", "nightly", "injwatch", "props", "props-backup", "cycle", "manual-issue", "briefing"):
+    if _mode in ("research", "auto", "nightly", "injwatch", "props", "props-backup", "cycle", "manual-issue", "briefing", "backtest"):
         run_checks()
     citynow.finish()

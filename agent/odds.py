@@ -65,6 +65,9 @@ class Budget:
         for k, v in (("paid", []), ("ext", []), ("own_month", 0), ("external_month", 0), ("ext_days", {}),
                      ("jobs_cycle", {}), ("jobs_day", {}), ("backtest_used", 0)):
             self.b.setdefault(k, v)
+        # the Backtester's ledger lives in backtest.json (it can run outside the agent's own runs)
+        self.bt_before = ((store.load("backtest.json", {}) or {}).get("credits") or {}).get(cyc, 0)
+        self.b["backtest_used"] = self.bt_before
         self.spent_this_run = 0
         self.allowance = 0
         self.job = "scan"
@@ -88,7 +91,8 @@ class Budget:
         return sum(days.get(d, 0) for d in win) / 7
 
     def backtest_left(self):
-        return max(0, config.BACKTEST_MONTHLY - self.b.get("backtest_used", 0))
+        mine = self.spent_this_run if self.job == "backtest" else 0
+        return max(0, config.BACKTEST_MONTHLY - self.bt_before - mine)
 
     def _day(self):
         n = _et()
@@ -143,7 +147,7 @@ class Budget:
             return False
         if self.job != "backtest" and self.spent_this_run + cost > config.RUN_CAP:
             return False
-        if self.job == "backtest" and self.spent_this_run + cost > self.backtest_left():
+        if self.job == "backtest" and cost > self.backtest_left():
             return False
         return essential or self.spent_this_run + cost <= self.allowance
 
@@ -151,7 +155,7 @@ class Budget:
         b = self.b
         self.spent_this_run += cost
         if self.job == "backtest":
-            b["backtest_used"] = b.get("backtest_used", 0) + cost
+            b["backtest_used"] = self.bt_before + self.spent_this_run
         else:
             self._day()["spent_today"] += cost
         if cost:

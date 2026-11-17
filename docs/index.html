@@ -1380,6 +1380,7 @@ async function renderHealth() {
   $("v-health").innerHTML = '<div class="empty">Checking…</div>';
   const date = D.players.date;
   const [ck, sims, team, dk, sb, cw] = await Promise.all([get("checks.json", null), get("sims.json", {}), get("team_model.json", {}), get(`dk/${date}.json`, {}), D.sb ? D.sb : get("scoreboard.json", {}), get("conv_switch.json", null)]);
+  const [btr, agx] = await Promise.all([get("backtest.json", null), get("agents.json", null)]);
   D.convsw = cw;
   const pre = (D.players.games || []).some(g => g.state === "pre");
   const age = ts => ts ? (Date.now() - new Date(ts)) / 3600e3 : null;
@@ -1393,8 +1394,40 @@ async function renderHealth() {
     <h2>Self-checks ${ck ? `<span class="tag">${ago(ck.updated)}</span>` : ""}</h2><div class="card">${C.length ? C.map(c => `<div class="ti"><span>${dot(c.status)}<b style="color:var(--text)">${esc(c.name)}</b><br><span class="dim" style="font-size:12px">${esc(c.detail)}</span></span><b class="${c.status === "ok" ? "dim" : c.status === "warn" ? "gold" : "neg"}">${c.status.toUpperCase()}</b></div>`).join("")
       : '<div class="empty">The first self-check runs with the next agent run.</div>'}
       <div class="desc" style="margin-top:6px">Run after every refresh: minutes add up, every game is simulated, lines are fresh, picks still have their minutes, no test runs in the log, credits last the month. A failure is also written to the agent's journal.</div></div>
+    ${agentsHtml(agx)}
+    ${backtestHtml(btr)}
     ${convSwitchHtml(cw)}
     <h2>Glossary</h2><div class="card">${Object.entries(GL).map(([k, v]) => `<div class="ti"><span><b style="color:var(--text)">${k}</b> · ${esc(v)}</span></div>`).join("")}</div>`;
+}
+
+// Backtester (agent/backtest.py): closing lines from the paid plan's historical odds.
+function backtestHtml(bt) {
+  if (!bt) return "";
+  const pc = x => x == null ? "—" : (x * 100).toFixed(1) + "%", sg = x => x == null ? "—" : (x > 0 ? "+" : "") + (x * 100).toFixed(1) + "%";
+  const cls = x => x == null ? "dim" : x > 0 ? "good" : "neg";
+  const b = bt.bets || {}, P = bt.props || {}, a = P.all || {};
+  const row = (name, v) => `<div class="ti"><span><b style="color:var(--text)">${esc(name)}</b> <span class="dim">· ${v.clv_n || 0} lines</span></span><span><b class="${cls(v.toward_model == null ? null : v.toward_model - .5)}">${pc(v.toward_model)}</b> <span class="dim">toward</span> · <b class="${cls(v.clv_avg)}">${sg(v.clv_avg)}</b> <span class="dim">CLV</span></span></div>`;
+  const STAT = {pts: "Points", reb: "Rebounds", ast: "Assists", tpm: "Threes", pra: "Pts+Reb+Ast", ra: "Reb+Ast"};
+  const pb = Object.entries(b.by_playbook || {}).map(([k, v]) => `<div class="ti"><span>${esc(k.replace(/_/g, " "))} <span class="dim">· ${v.n}</span></span><b class="${cls(v.clv_avg)}">${sg(v.clv_avg)}</b></div>`).join("");
+  return `<h2>Backtester <span class="tag">${ago(bt.updated)}</span></h2><div class="card">
+    ${(bt.verdict || []).map(v => `<div class="desc" style="margin-bottom:6px;color:var(--text)">${esc(v)}</div>`).join("")}
+    <div class="label" style="margin-top:8px">Agent's bets vs the close</div>
+    <div class="ti"><span>Settled legs with a closing price</span><b>${b.with_close ?? 0} / ${b.settled_legs ?? 0}</b></div>
+    <div class="ti"><span>Average CLV · beat the close</span><b class="${cls(b.clv_avg)}">${sg(b.clv_avg)} · ${pc(b.clv_pos)}</b></div>${pb}
+    <div class="label" style="margin-top:10px">Prop model side vs the closing line · ${bt.prop_games || 0} games</div>
+    ${row("All lines", a)}
+    ${Object.entries(P.by_edge || {}).map(([k, v]) => row("Model disagrees " + k, v)).join("")}
+    ${Object.entries(P.by_stat || {}).map(([k, v]) => row(STAT[k] || k, v)).join("")}
+    <div class="desc" style="margin-top:8px">"Toward" is how often the market moved toward the model's side between when the agent saw the line and the close (above 50% = the model sees moves first). CLV is the price we saw against the closing no-vig price, so it includes the book's margin: it turns positive only when the move beats the vig. Credits this cycle: ${Object.values(bt.credits || {}).slice(-1)[0] || 0} of ${bt.cap || 5000}. Runs Sundays ~3:20am ET.</div></div>`;
+}
+
+// Agent team (multi-agent framework): Auditor's scorecard and the Claude agents' latest files.
+function agentsHtml(ag) {
+  if (!ag) return "";
+  const st = {live: "good", shadow: "gold", off: "dim", stale: "neg"};
+  return `<h2>Agent team <span class="tag">${ago(ag.updated)}</span></h2><div class="card">${(ag.agents || []).map(x =>
+    `<div class="ti"><span><b style="color:var(--text)">${esc(x.name)}</b> <span class="dim">· ${esc(x.when || "")}</span><br><span class="dim" style="font-size:12px">${esc(x.detail || "")}</span></span><b class="${st[x.status] || "dim"}">${esc((x.status || "").toUpperCase())}</b></div>`).join("")}
+    ${ag.note ? `<div class="desc" style="margin-top:6px">${esc(ag.note)}</div>` : ""}</div>`;
 }
 
 // Conviction model retrain (agent/convswitch.py): tested every night against the current model on days neither has seen.

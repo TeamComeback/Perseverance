@@ -1,0 +1,150 @@
+{
+ "updated": "2026-11-17T17:27:49Z",
+ "credits": {
+  "2026-11-17": 965
+ },
+ "cap": 5000,
+ "bets": {
+  "settled_legs": 61,
+  "with_close": 54,
+  "clv_avg": -0.0187,
+  "clv_pos": 0.37,
+  "by_playbook": {
+   "arb": {
+    "n": 2,
+    "clv_avg": 0.0116
+   },
+   "longshot": {
+    "n": 5,
+    "clv_avg": 0.0431
+   },
+   "matchup_over": {
+    "n": 7,
+    "clv_avg": -0.0039
+   },
+   "matchup_under": {
+    "n": 28,
+    "clv_avg": -0.0296
+   },
+   "value_dog": {
+    "n": 11,
+    "clv_avg": -0.033
+   },
+   "value_fav": {
+    "n": 1,
+    "clv_avg": -0.0304
+   }
+  }
+ },
+ "props": {
+  "all": {
+   "n": 571,
+   "clv_n": 539,
+   "clv_avg": -0.0395,
+   "clv_pos": 0.076,
+   "moved_n": 296,
+   "toward_model": 0.574,
+   "line_moves": 27,
+   "hit_n": 571,
+   "hit": 0.503
+  },
+  "by_stat": {
+   "ast": {
+    "n": 151,
+    "clv_n": 149,
+    "clv_avg": -0.0339,
+    "clv_pos": 0.087,
+    "moved_n": 73,
+    "toward_model": 0.616,
+    "line_moves": 2,
+    "hit_n": 151,
+    "hit": 0.483
+   },
+   "pra": {
+    "n": 143,
+    "clv_n": 126,
+    "clv_avg": -0.0451,
+    "clv_pos": 0.048,
+    "moved_n": 79,
+    "toward_model": 0.544,
+    "line_moves": 17,
+    "hit_n": 143,
+    "hit": 0.483
+   },
+   "ra": {
+    "n": 231,
+    "clv_n": 218,
+    "clv_avg": -0.0403,
+    "clv_pos": 0.096,
+    "moved_n": 125,
+    "toward_model": 0.584,
+    "line_moves": 8,
+    "hit_n": 231,
+    "hit": 0.519
+   },
+   "tpm": {
+    "n": 46,
+    "clv_n": 46,
+    "clv_avg": -0.0383,
+    "clv_pos": 0.022,
+    "moved_n": 19,
+    "toward_model": 0.474,
+    "line_moves": 0,
+    "hit_n": 46,
+    "hit": 0.543
+   }
+  },
+  "by_edge": {
+   "under 3%": {
+    "n": 114,
+    "clv_n": 112,
+    "clv_avg": -0.0412,
+    "clv_pos": 0.054,
+    "moved_n": 48,
+    "toward_model": 0.438,
+    "line_moves": 2,
+    "hit_n": 114,
+    "hit": 0.518
+   },
+   "3-6%": {
+    "n": 107,
+    "clv_n": 104,
+    "clv_avg": -0.0451,
+    "clv_pos": 0.019,
+    "moved_n": 54,
+    "toward_model": 0.5,
+    "line_moves": 2,
+    "hit_n": 107,
+    "hit": 0.458
+   },
+   "6-10%": {
+    "n": 113,
+    "clv_n": 102,
+    "clv_avg": -0.0353,
+    "clv_pos": 0.088,
+    "moved_n": 64,
+    "toward_model": 0.609,
+    "line_moves": 8,
+    "hit_n": 113,
+    "hit": 0.513
+   },
+   "10%+": {
+    "n": 237,
+    "clv_n": 221,
+    "clv_avg": -0.038,
+    "clv_pos": 0.109,
+    "moved_n": 130,
+    "toward_model": 0.638,
+    "line_moves": 15,
+    "hit_n": 237,
+    "hit": 0.511
+   }
+  }
+ },
+ "prop_games": 26,
+ "verdict": [
+  "Agent's bets: 54 of 61 settled legs have a closing price; average CLV -1.9% (behind the close).",
+  "Prop model side, 539 lines: CLV -4.0% on average, positive on 8%; the market moved toward the model 57% of the time it moved (296 lines). Above 50% means the model sees moves before the market makes them.",
+  "Best stat by CLV: ast (-3.4%, 149 lines); worst: pra (-4.5%)."
+ ]
+}

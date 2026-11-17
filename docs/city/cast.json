@@ -34,6 +34,11 @@
    "at": "2026-11-16",
    "by": "Newsroom",
    "text": "Best Bets props are now sticky: a pick leaves only on a kill condition (injury, side flip, no longer +EV)."
+  },
+  {
+   "at": "2026-11-17",
+   "by": "Exchange",
+   "text": "Paid odds plan: a Scout every 15 minutes, a Closer at every tip, prop refreshes four times a day, and a Backtester with its own historical-odds allotment."
   }
  ],
  "companies": [
@@ -412,6 +417,19 @@
   "briefing_track.json": {
    "name": "Briefing report card",
    "fresh_h": 30
+  },
+  "backtest.json": {
+   "name": "Backtester report",
+   "fresh_h": 200
+  },
+  "clv_backfill.json": {
+   "name": "Closing prices from historical odds",
+   "fresh_h": 200
+  },
+  "backtest/prop-closes": {
+   "name": "Prop closing lines archive",
+   "path": "data/backtest/prop-closes.json",
+   "fresh_h": 200
   }
  },
  "desks": [
@@ -1314,6 +1332,72 @@
     "city_live.json",
     "city_trace.json",
     "city_now.json"
+   ]
+  },
+  {
+   "id": "scout",
+   "company": "exchange",
+   "title": "Scout",
+   "code": [
+    "agent/run.py#scout_run",
+    "agent/brain.py#pick_sports"
+   ],
+   "sources": [
+    "oddsapi"
+   ],
+   "job": "Every 15 minutes: buys the NBA board every run in the four hours before the first tip, every other board hourly, on an even pace through the day.",
+   "reads": [
+    "budget.json",
+    "state.json"
+   ],
+   "writes": [
+    "board.json",
+    "closes.json",
+    "state.json"
+   ]
+  },
+  {
+   "id": "closer",
+   "company": "exchange",
+   "title": "Closer",
+   "code": [
+    "agent/props.py#close_props"
+   ],
+   "sources": [
+    "oddsapi"
+   ],
+   "job": "Buys the closing price for every open bet about to tip, props included, so every bet gets a closing-line value.",
+   "reads": [
+    "state.json",
+    "manual.json"
+   ],
+   "writes": [
+    "state.json",
+    "manual.json"
+   ]
+  },
+  {
+   "id": "backtester",
+   "company": "audit",
+   "title": "Backtester",
+   "code": [
+    "agent/backtest.py",
+    "agent/run.py#backtest_run"
+   ],
+   "sources": [
+    "oddsapi"
+   ],
+   "job": "Weekly: buys historical closing lines inside its own allotment, backfills closing prices for past bets and tests whether the prop model's side beats the close.",
+   "reads": [
+    "lines.json",
+    "state.json",
+    "manual.json",
+    "nba/games"
+   ],
+   "writes": [
+    "backtest.json",
+    "clv_backfill.json",
+    "backtest/prop-closes"
    ]
   }
  ],
