@@ -2453,6 +2453,13 @@
    "kind": "conviction",
    "text": "NY @ TOR Under 215.5: conviction 49 Consider \u2192 38 Pass",
    "alert": false
+  },
+  {
+   "at": "2026-11-17T23:35:53Z",
+   "key": "p|5104157|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Victor Wembanyama Under 12.5 rebounds: San Antonio's injury report lists Tobias Harris out (calf), alongside Detroit missing Duren and Robinson, so more frontcourt minutes and rebounds may fall to Wembanyama than the matchup numbers assume.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2565,6 +2572,44 @@
     }
    ],
    "changes_at_write": 56
+  },
+  {
+   "edition": "final",
+   "at": "2026-11-17T23:35:53Z",
+   "author": "claude",
+   "headline": "Final: late reports hold steady; Wembanyama Under 12.5 is the only Consider left, and two morning picks are off the card",
+   "briefing": "It is a thin five-game night, and after the pre-game refresh only Victor Wembanyama Under 12.5 rebounds still rates Consider (conviction 46); every other prop on the card is now a Pass. The late reports mostly confirmed what we already knew: Detroit is without Jalen Duren and Duncan Robinson, Utah without Hayes, Markkanen, Jackson Jr. and Nurkic, the Lakers without Reaves and Kessler, and Charlotte without Knueppel and Schroder. New since midday, San Antonio has Tobias Harris out and Minnesota has Jonathan Kuminga out, while Deni Avdija (POR) is still questionable. The market has leaned against us all afternoon: Josh Green went from 2.5 at \u2212111 to 2.5 at \u2212137, Dylan Harper from \u2212119 to \u2212137 and Wembanyama from \u2212119 to \u2212130, so most of tonight's value has been priced away even where the line itself has not moved. The report has no graded record yet (0-0-0), and the game-line leans are 10-19 (-10.13u) since 2026-11-11, so treat them as leans only. What could still change before tip: Avdija's status, and any minutes limit on Wembanyama, whose projection is just 26.4 minutes.",
+   "cards": {
+    "p|5104157|reb|Under": "Still inside its play-to: 12.5 at \u2212130 against a limit of \u2212135, with the sim under in 71% and the projection at 9.1 rebounds. The risk grew today: Detroit is down Duren and Robinson and San Antonio has Tobias Harris out, so if Wembanyama plays well past his projected 26.4 minutes (he averaged 35.3 in the games he went over) this misses.",
+    "p|5037871|ast|Under": "At 4.5 \u2212137 it sits just inside the \u2212141 limit, but the agent has it tagged past play-to and conviction has slid to 44 (Pass). The case is the matchup (DET gives shooting guards -12% assists) and a sim under in 71%; it loses if he plays long, as in his overs at 33.5 minutes.",
+    "p|4432811|reb|Under": "The price has run from \u2212111 to \u2212137, close to the \u2212140 limit, and conviction is down to 44 (Pass). Projection 1.4 and the sim under in 73% still support it, but with Hayes, Markkanen, Jackson Jr. and Nurkic all out, extra minutes for Green are the clear way this goes wrong.",
+    "p|4433249|reb|Under": "Inside its play-to at 9.5 \u2212128 against \u2212131, now a Pass at 43. The projection of 7.4 and a tough LAL matchup for power forwards support it; the worry is the +16% usage bump without Knueppel and the line having moved against it from 8.5.",
+    "p|4873138|reb|Over": "At 5.5 \u2212119 it is inside the \u2212122 limit, though tagged past play-to and down to 43 (Pass). Utah's frontcourt is thin with Nurkic, Hayes, Markkanen and Jackson Jr. all out, which supports the sim's 75%; the counterpoint is that without Hayes he has gone over 5.5 in only 23 of 68, plus a 39% blowout risk."
+   },
+   "leans_note": "Of the game-line leans, DET +9.5 (\u2212105) is the only one upgraded; the CHA @ LAL Under and the POR @ MIN Under were removed today, NY @ TOR Under 215.5 is past its play-to, and game lines are 10-19 (-10.13u), so none is a best bet.",
+   "sources": [
+    {
+     "title": "ClutchPoints: Pistons vs. Spurs injury report",
+     "url": "https://clutchpoints.com/nba/nba-stories/pistons-vs-spurs-injury-report-detroit-really-banged-up-as-san-antonio-goes-for-13-in-a-row"
+    },
+    {
+     "title": "Detroit Sports Nation: Pistons injury report vs. Spurs",
+     "url": "https://detroitsportsnation.com/detroit-pistons-injury-report-spurs-november-17-2026/richardknight/detroit-pistons/11/17/2026/508316/"
+    },
+    {
+     "title": "iHeart: Jazz vs. Clippers injury report",
+     "url": "https://sportssd.iheart.com/content/2026-11-17-jazz-vs-clippers-injury-report-nov-17/"
+    },
+    {
+     "title": "iHeart: Hornets vs. Lakers injury report",
+     "url": "https://1049foxsports.iheart.com/content/2026-11-17-hornets-vs-lakers-injury-report-nov-17/"
+    },
+    {
+     "title": "Yardbarker: Final injury report for Trail Blazers-Timberwolves",
+     "url": "https://www.yardbarker.com/nba/articles/final_injury_report_for_trail_blazers_timberwolves_will_deni_avdija_jonathan_kuminga_play/s1_17615_44577577"
+    }
+   ],
+   "changes_at_write": 84
   }
  ],
  "overrides": [
@@ -2599,6 +2644,14 @@
    "action": "flag",
    "reason": "Utah's report also lists Jusuf Nurkic out (foot) alongside Hayes, Markkanen and Jackson Jr., leaving even fewer Jazz bigs to share the rebounds.",
    "source": "https://www.si.com/nba/jazz/onsi/utah-jazz-vs-la-clippers-injury-report-who-s-trending-to-miss-game"
+  },
+  {
+   "at": "2026-11-17T23:35:53Z",
+   "edition": "final",
+   "key": "p|5104157|reb|Under",
+   "action": "flag",
+   "reason": "San Antonio's injury report lists Tobias Harris out (calf), alongside Detroit missing Duren and Robinson, so more frontcourt minutes and rebounds may fall to Wembanyama than the matchup numbers assume.",
+   "source": "https://clutchpoints.com/nba/nba-stories/pistons-vs-spurs-injury-report-detroit-really-banged-up-as-san-antonio-goes-for-13-in-a-row"
   }
  ],
  "alerts": 6,
@@ -2622,5 +2675,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2531,
- "updated": "2026-11-17T23:31:06Z"
+ "updated": "2026-11-17T23:35:53Z"
 }
