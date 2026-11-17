@@ -34,6 +34,11 @@ def load_all():
 
 def save_all(state, manual, budget=None):
     state["updated"] = store.iso(store.now())
+    try:                                    # agent team: shadow calls on open bets (Newsroom, Skeptic)
+        from . import agents
+        agents.tag(state)
+    except Exception as e:
+        print(f"[agents] tagging failed: {e}")
     state["stats"] = bk.record_stats(state["book"])
     state["weights"] = {k: round(brain.arm_weight(v), 3) for k, v in state["arms"].items()}
     state["paused"] = [k for k, v in state["arms"].items() if brain.benched(v)]
@@ -43,6 +48,11 @@ def save_all(state, manual, budget=None):
     store.save("manual.json", manual)
     if budget:
         budget.save()
+    try:                                    # agent team scorecard (Model > Health)
+        from . import agents
+        agents.scorecard(state, budget)
+    except Exception as e:
+        print(f"[agents] scorecard failed: {e}")
 
 
 def history_point(state, manual):

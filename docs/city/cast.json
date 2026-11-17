@@ -39,6 +39,11 @@
    "at": "2026-11-17",
    "by": "Exchange",
    "text": "Paid odds plan: a Scout every 15 minutes, a Closer at every tip, prop refreshes four times a day, and a Backtester with its own historical-odds allotment."
+  },
+  {
+   "at": "2026-11-17",
+   "by": "Audit & Night School",
+   "text": "Four Claude agents join in shadow: Newsroom, Skeptic, Strategist and Auditor. Their calls are graded before any of them can act."
   }
  ],
  "companies": [
@@ -429,6 +434,30 @@
   "backtest/prop-closes": {
    "name": "Prop closing lines archive",
    "path": "data/backtest/prop-closes.json",
+   "fresh_h": 200
+  },
+  "agents.json": {
+   "name": "Agent team scorecard",
+   "fresh_h": 30
+  },
+  "agents/news.json": {
+   "name": "Newsroom's news",
+   "fresh_h": 30
+  },
+  "agents/holds.json": {
+   "name": "Skeptic's holds",
+   "fresh_h": 30
+  },
+  "agents/strategy.json": {
+   "name": "Strategist's proposals",
+   "fresh_h": 30
+  },
+  "agents/strategy_log.json": {
+   "name": "Strategist's proposal log",
+   "fresh_h": 200
+  },
+  "agents/audit.json": {
+   "name": "Auditor's weekly scorecard",
    "fresh_h": 200
   }
  },
@@ -1398,6 +1427,98 @@
     "backtest.json",
     "clv_backfill.json",
     "backtest/prop-closes"
+   ]
+  },
+  {
+   "id": "newsdesk",
+   "company": "news",
+   "title": "Newsroom (Claude)",
+   "code": [
+    "agent/team/NEWSROOM.md"
+   ],
+   "job": "A Claude agent, twice a day: injury, rest and lineup news beyond the official report. Shadow: its flags are graded, not acted on.",
+   "reads": [
+    "players.json",
+    "best.json",
+    "state.json"
+   ],
+   "writes": [
+    "agents/news.json"
+   ]
+  },
+  {
+   "id": "skeptic",
+   "company": "audit",
+   "title": "Skeptic (Claude)",
+   "code": [
+    "agent/team/SKEPTIC.md"
+   ],
+   "job": "A Claude agent before the evening slates: argues against the day's bets (stale, correlated, news, thin edge). Shadow: its vetoes are graded.",
+   "reads": [
+    "state.json",
+    "best.json",
+    "agents/news.json",
+    "backtest.json"
+   ],
+   "writes": [
+    "agents/holds.json"
+   ]
+  },
+  {
+   "id": "strategist",
+   "company": "audit",
+   "title": "Strategist (Claude)",
+   "code": [
+    "agent/team/STRATEGIST.md"
+   ],
+   "job": "A Claude agent nightly: proposes setting changes inside the hard bounds. Shadow: logged, not applied.",
+   "reads": [
+    "state.json",
+    "backtest.json",
+    "scoreboard.json"
+   ],
+   "writes": [
+    "agents/strategy.json",
+    "agents/strategy_log.json"
+   ]
+  },
+  {
+   "id": "auditor",
+   "company": "audit",
+   "title": "Auditor (Claude)",
+   "code": [
+    "agent/team/AUDITOR.md",
+    "agent/team/COMMON.md"
+   ],
+   "job": "A Claude agent on Sundays: the team's weekly scorecard and promote/keep/bench recommendations.",
+   "reads": [
+    "agents.json",
+    "backtest.json",
+    "budget.json"
+   ],
+   "writes": [
+    "agents/audit.json"
+   ]
+  },
+  {
+   "id": "chief",
+   "company": "ops",
+   "title": "Chief of Staff",
+   "code": [
+    "agent/agents.py"
+   ],
+   "job": "Every run: tags open bets with the Claude agents' shadow calls and keeps the team scorecard.",
+   "reads": [
+    "agents/news.json",
+    "agents/holds.json",
+    "agents/strategy.json",
+    "agents/audit.json",
+    "backtest.json",
+    "budget.json"
+   ],
+   "writes": [
+    "agents.json",
+    "state.json"
    ]
   }
  ],
