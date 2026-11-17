@@ -14574,15 +14574,15 @@
       "price": 3.75,
       "book": "hardrockbet",
       "fair_p": 0.2955,
-      "close_p": 0.2996,
+      "close_p": 0.2985,
       "result": null,
       "shop": {
        "median": 3.33,
        "gain": 0.1261,
        "n": 6
       },
-      "close_at": "2026-11-17T18:30:26Z",
-      "close_mins": 359
+      "close_at": "2026-11-17T20:15:23Z",
+      "close_mins": 254
      }
     ],
     "dec": 3.75,
@@ -14617,15 +14617,15 @@
       "price": 1.4,
       "book": "williamhill_us",
       "fair_p": 0.7176,
-      "close_p": 0.7004,
+      "close_p": 0.7015,
       "result": null,
       "shop": {
        "median": 1.339,
        "gain": 0.0458,
        "n": 6
       },
-      "close_at": "2026-11-17T18:30:26Z",
-      "close_mins": 359
+      "close_at": "2026-11-17T20:15:23Z",
+      "close_mins": 254
      }
     ],
     "dec": 1.4,
@@ -14742,7 +14742,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1475,
+  "min_edge": 0.145,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15095,7 +15095,7 @@
    "last_scanned": "2026-11-05T00:50:19Z"
   },
   "basketball_wncaab": {
-   "last_scanned": "2026-11-17T18:30:26Z"
+   "last_scanned": "2026-11-17T20:15:23Z"
   },
   "tennis_atp_finals": {
    "last_scanned": "2026-11-17T19:45:28Z"
@@ -15107,7 +15107,7 @@
    "last_scanned": "2026-11-17T18:00:39Z"
   },
   "cricket_odi": {
-   "last_scanned": "2026-11-17T18:00:39Z"
+   "last_scanned": "2026-11-17T20:15:23Z"
   },
   "cricket_test_match": {
    "last_scanned": "2026-11-17T19:45:28Z"
@@ -15123,11 +15123,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-07T19:21:28Z",
-   "kind": "scan",
-   "text": "Scanned mma_mixed_martial_arts (22) for 1 credits. Nothing cleared the bar. Equity $26.36."
-  },
   {
    "ts": "2026-11-07T21:39:26Z",
    "kind": "research",
@@ -16622,6 +16617,11 @@
    "ts": "2026-11-17T20:00:44Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 17: 5 games, 117 players projected, lineups for 5 games."
+  },
+  {
+   "ts": "2026-11-17T20:15:23Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.50% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -16688,7 +16688,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T20:01:16Z",
+ "updated": "2026-11-17T20:15:23Z",
  "stats": {
   "bets": 61,
   "won": 20,
@@ -16718,5 +16718,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
