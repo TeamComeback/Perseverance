@@ -15114,24 +15114,12 @@
   },
   "soccer_spain_copa_del_rey": {
    "last_scanned": "2026-11-17T18:45:23Z"
+  },
+  "soccer_uefa_nations_league": {
+   "last_scanned": "2026-11-17T19:01:11Z"
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-07T15:38:28Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Jakob Poeltl Under 19.5 @ -125 (theScore Bet) \u2014 LOST: 31 pts+reb+ast vs Under 19.5 [matchup-read-wrong, minutes-long, model-miss]"
-  },
-  {
-   "ts": "2026-11-07T15:38:28Z",
-   "kind": "adapt",
-   "text": "Model vs market on 972 graded lines: the 0% model blend scored best (log loss model 0.720, market 0.686). Moving the model's weight from 28% to 20%."
-  },
-  {
-   "ts": "2026-11-07T15:38:28Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran +6.2% vs actual over 659 player-games: level x0.947; REB projections ran +3.8% vs actual over 659 player-games: level x0.967; AST projections ran +4.9% vs actual over 659 player-games: level x0.953; TPM projections ran +6.0% vs actual over 659 player-games: level x0.958; PRA projections ran +5.2% vs actual over 659 player-games: level x0.955; RA projections ran +3.9% vs actual over 659 player-games: level x0.965; bench minutes were off by +0.5 on average over 321 player-games: correction -0.5 min; conviction factor 'bump' hurt by -3.1 pts of hit rate over 385 plays: weight 1.00 -> 0.88; conviction factor 'rest' helped by +9.6 pts of hit rate over 319 plays: weight 1.28 -> 1.33; conviction factor 'vegas' helped by +3.0 pts of hit rate over 366 plays: weight 1.00 -> 1.11."
-  },
   {
    "ts": "2026-11-07T15:38:28Z",
    "kind": "daily",
@@ -16616,6 +16604,21 @@
    "ts": "2026-11-17T18:34:36Z",
    "kind": "daily",
    "text": "Day close \u2014 equity $100.00 (run #2), 20-39-2, ROI -29.8%, CLV -1.5%."
+  },
+  {
+   "ts": "2026-11-17T19:00:39Z",
+   "kind": "research",
+   "text": "Research refresh for Tue Nov 17: 5 games, 117 players projected, lineups for 5 games."
+  },
+  {
+   "ts": "2026-11-17T19:01:17Z",
+   "kind": "focus",
+   "text": "Skipped 71 pts+reb+ast lines, 10 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, rebounds."
+  },
+  {
+   "ts": "2026-11-17T19:01:18Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: Ja'Kobe Walter ra -15% vs NY; Sandro Mamukelashvili ra -13% vs CHA; Collin Murray-Boyles pra -13% vs NY. Bought prop odds for NY@TOR (ast, ra, pra, team totals), CHA@LAL (ast, ra, pra, team totals), DET@SA (ast, ra, pra, team totals), UTAH@LAC (ast, ra, pra, tpm, team totals) (17 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -16682,7 +16685,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T18:45:23Z",
+ "updated": "2026-11-17T19:01:47Z",
  "stats": {
   "bets": 61,
   "won": 20,
@@ -16712,5 +16715,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 1
+ "dry_scans": 2
 }
