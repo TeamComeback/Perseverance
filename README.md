@@ -417,3 +417,27 @@ numbers (10,000-world histograms, matchup effects, the injury report, log loss, 
 that cycles through what the desk did last. "Documents arrive from / leave for" chips and "Follow the work" walk the
 pipeline building to building. `tools/orgmap.js` writes each desk's activity lines and chart data into
 `city_live.json` (`desks[id].work`) after every run; a "now" strip above the city cycles through them.
+
+## The agent team and the paid odds plan (Nov 17)
+The owner bought The Odds API's 20K plan ($30/month, 20,000 credits a billing cycle, renewing on the 17th). The old
+free key's remaining balance belongs to the 2H-Comeback tracker: the budget refuses to spend from any key whose plan
+(used + remaining) is under 1,000, so even a stale secret can't touch it.
+
+**Budget** (`agent/odds.py`): what's left above a 300-credit floor and the Backtester's untouched 5,000 is divided
+by the days left in the cycle. Scans keep to an even pace from 9am to 1am ET (15% headroom), prop refreshes and
+closing prices only to the day's budget, and no run spends more than 150. Spend is logged by agent (credits card,
+Agent tab).
+
+**In-program agents** (ride the 15-minute outside timer, no new runs):
+- **Scout**: NBA board every run in the 4 hours before the first tip, every other board hourly.
+- **Closer**: a closing-line scan for any board with an open bet tipping within 20 minutes, and closing prices for open props.
+- **Prop Pricer**: 11am, 2pm, 5pm ET and ~1 hour before the first tip; up to 5 stat markets per game.
+- **Shopper**: every bet records its best-of-ten-books price against the typical book (`shop` on the leg).
+- **Backtester** (`agent/backtest.py`, Sundays ~3:23am ET or `mode: backtest`): historical closing prices for past
+  bets (merged into the books by the next run) and the prop lean study. Report under Model › Health.
+
+**Claude agents** (scheduled tasks, shadow mode; instructions in `agent/team/`, module `agent/agents.py`):
+Newsroom (11:04am, 5:04pm ET), Skeptic (6:17pm, 9:17pm), Strategist (5:12am), Auditor (Sundays 12:23pm). Each
+writes one file in `docs/data/agents/`. Every run tags the agent's open bets with what the Newsroom and Skeptic
+would have held (only calls made before tip count), and the scorecard (`agents.json`, Model › Health) grades them.
+Nothing they write changes a bet or a setting until the owner promotes an agent (`agents.LIVE`).
