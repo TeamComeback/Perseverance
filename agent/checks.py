@@ -175,6 +175,15 @@ def run(log=print):
     except Exception as e:
         add("Daily Briefing", "warn", f"check could not run: {e}")
 
+    # 10. City map: the City Planner redraws the city after every run. It runs after these checks, so this looks at
+    #     the previous run's map: more than 2 hours old means the planner has stopped (it crashed silently Nov 16-17).
+    try:
+        a = _age_h((_load("city_live.json", {}) or {}).get("updated"))
+        add("City map", "ok" if a is not None and a <= 2 else "warn",
+            f"redrawn {a:.1f}h ago" if a is not None and a <= 2 else f"not redrawn for {a:.1f}h: the City Planner step is failing" if a is not None else "never drawn")
+    except Exception as e:
+        add("City map", "warn", f"check could not run: {e}")
+
     worst = "fail" if any(c["status"] == "fail" for c in out) else "warn" if any(c["status"] == "warn" for c in out) else "ok"
     res = {"updated": store.iso(store.now()), "status": worst, "checks": out}
     (DATA / "checks.json").write_text(json.dumps(res, ensure_ascii=False, separators=(",", ":")))
