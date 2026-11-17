@@ -1,0 +1,107 @@
+{
+ "updated": "2026-11-17T17:45:23Z",
+ "agents": [
+  {
+   "name": "Scout",
+   "kind": "program",
+   "status": "live",
+   "when": "every 15 min (NBA every run 4h before tip, others hourly)",
+   "detail": "27 credits today \u00b7 27 this cycle"
+  },
+  {
+   "name": "Prop Pricer",
+   "kind": "program",
+   "status": "live",
+   "when": "11am, 2pm, 5pm ET + ~1h before first tip",
+   "detail": "slots done today: 11h \u00b7 17 credits today"
+  },
+  {
+   "name": "Closer",
+   "kind": "program",
+   "status": "live",
+   "when": "every run, at tip",
+   "detail": "54 of 61 settled legs have a closing price \u00b7 0 credits today"
+  },
+  {
+   "name": "Shopper",
+   "kind": "program",
+   "status": "live",
+   "when": "every bet",
+   "detail": "best of ten books averages +7.3% over the typical book (4 legs)"
+  },
+  {
+   "name": "Backtester",
+   "kind": "program",
+   "status": "live",
+   "when": "Sundays ~3:23am ET",
+   "detail": "Agent's bets: 54 of 61 settled legs have a closing price; average CLV -1.9% (behind the close). \u00b7 965 credits used"
+  },
+  {
+   "name": "Newsroom",
+   "kind": "claude",
+   "status": "off",
+   "when": "~11:05am and ~5:05pm ET",
+   "detail": "0 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
+  },
+  {
+   "name": "Skeptic",
+   "kind": "claude",
+   "status": "off",
+   "when": "~5:45pm and ~9:15pm ET",
+   "detail": "0 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
+  },
+  {
+   "name": "Strategist",
+   "kind": "claude",
+   "status": "off",
+   "when": "nightly ~3:10am ET",
+   "detail": "first run tonight"
+  },
+  {
+   "name": "Auditor",
+   "kind": "claude",
+   "status": "off",
+   "when": "Sundays ~9:20am ET",
+   "detail": "first audit Sunday"
+  }
+ ],
+ "shadow": {
+  "newsroom": {
+   "held": {
+    "n": 0,
+    "profit": 0,
+    "won": 0,
+    "lost": 0,
+    "clv": null
+   },
+   "rest": {
+    "n": 0,
+    "profit": 0,
+    "won": 0,
+    "lost": 0,
+    "clv": null
+   },
+   "calls": 0,
+   "saved": 0
+  },
+  "skeptic": {
+   "held": {
+    "n": 0,
+    "profit": 0,
+    "won": 0,
+    "lost": 0,
+    "clv": null
+   },
+   "rest": {
+    "n": 0,
+    "profit": 0,
+    "won": 0,
+    "lost": 0,
+    "clv": null
+   },
+   "calls": 0,
+   "saved": 0
+  }
+ },
+ "note": "Claude agents start in shadow: their calls are recorded and graded, not acted on. An agent goes live after about 150 graded calls show it helps, and only with the owner's approval."
+}
