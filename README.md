@@ -368,6 +368,12 @@ the bet ledgers. It writes `docs/city/org.json`, `docs/data/city_live.json` and 
 without a desk shows up as a new hire, and `node tools/check.js` fails until it gets one. Team Comeback HQ may edit the
 cast; `docs/city/HQ.md` says how.
 
+### The city in 3D and live status (Nov 17)
+- **3D city.** The 2D / 3D switch on the map (bottom right) loads `docs/city3d.js` and three.js r128 from cdnjs on demand and draws the same city from the same two files: one tower per company, one floor per desk with its worker behind the glass, document routes as arcs (brighter with moving qubits when fresh), the outside portals in the sky and the Chairman's Spire in the middle. Drag to turn, pinch to zoom, or use the buttons (zoom, turn, tilt, reset); tap a tower or a floor to go inside. The choice is remembered on the device, `city.html#3d` opens it directly, and the 2D map stays when WebGL or the library is unavailable. Bet traces play on the 2D map.
+- **Run log.** `agent/citynow.py` writes `docs/data/city_now.json` during every run (not probe or manual-issue): which desk started what, in order, with the second it started. It is saved with the run's other files, so it adds no pushes, no network calls and no credits, and it can never fail a run (every call swallows its own errors). The City Planner signs off as the last step.
+- **On the page.** The city checks the run log every 20 seconds. When a new run lands it loads the fresh numbers straight away and replays the run across the city, desk by desk (window flash in 2D, a beam in 3D, the room if that building is open). "▶ replay" next to the clock plays the last run again.
+- **A run in progress.** GitHub's public API (no key) says whether the Agent workflow is running; the page asks about every 3 minutes, more often just after each quarter hour when the timer fires, and every 8 seconds during a run, staying under GitHub's 60-an-hour limit for anonymous requests. While a run is going the Spire pulses and the strip says so. The desk-by-desk detail arrives when the run's files do: runs take 20 to 60 seconds and GitHub Pages needs about 40 more to publish.
+
 ## Daily Briefing (Nov 16; first edition Nov 17)
 
 One report a day at the top of the Tonight tab (`agent/briefing.py`, `docs/data/briefing/YYYY-MM-DD.json`).

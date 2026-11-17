@@ -543,5 +543,10 @@ fs.mkdirSync(CITY, {recursive: true});
 fs.writeFileSync(path.join(CITY, "org.json"), JSON.stringify(org));
 fs.writeFileSync(path.join(DATA, "city_live.json"), JSON.stringify(live));
 fs.writeFileSync(path.join(DATA, "city_trace.json"), JSON.stringify({updated: nowIso, traces}));
+// the run log (agent/citynow.py): the City Planner signs off as the last desk of the run it just mapped
+try { const np = path.join(DATA, "city_now.json"), now = JSON.parse(fs.readFileSync(np, "utf8"));
+  if (now && Array.isArray(now.steps) && now.finished && !now.steps.some(s => s.desk === "planner")) {
+    now.steps.push({desk: "planner", text: `Redrew the city map: ${desks.length} desks, ${traces.length} bets traced`, at: now.secs != null ? now.secs : (now.steps[now.steps.length - 1] || {at: 0}).at});
+    fs.writeFileSync(np, JSON.stringify(now)); } } catch (e) { /* no run log yet */ }
 console.log(`[city] ${companies.length} companies, ${desks.length} desks, ${docs.length} documents, ${org.routes.length} routes, ${traces.length} traces` +
   (newHires.length ? `; new hires without a desk: ${newHires.join(", ")}` : "") + (stale.length ? `; stale: ${stale.map(s => s.id).join(", ")}` : ""));

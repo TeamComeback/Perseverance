@@ -3,11 +3,15 @@
 // docs/data/city_live.json (freshness, shifts, coherence) and docs/data/city_trace.json (bets, desk by desk).
 // Tap a building in Live to go inside: every desk is a room with its worker, inbox, outbox and a live animated chart.
 // Views: Live (who worked and what flows), Trace a bet (a qubit walks the bet's path and collapses at settlement),
-// Coherence (checks, records, probation, drift). Growth and a full 3D city come later.
+// Coherence (checks, records, probation, drift). The 2D / 3D switch on the map loads docs/city3d.js (three.js) on demand.
+// Live status: docs/data/city_now.json is the last run's desk-by-desk log (agent/citynow.py); the page checks it every
+// 20 seconds and replays a new run across the city, and asks GitHub whether a run is in progress right now. Growth comes later.
 (() => {
 "use strict";
 const $ = s => document.querySelector(s);
 const REPO = "https://github.com/TeamComeback/Perseverance/blob/main/";
+const GH_RUNS = "https://api.github.com/repos/TeamComeback/Perseverance/actions/workflows/agent.yml/runs?per_page=1";
+const THREE_SRC = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
 const VW = 400, VH = 610, SPIRE = {x: 200, y: 342};
 const A = 30, B = 17.3;                       // half-width and half-depth of a building footprint
 let ORG, LIVE, TRACE = null, view = "live";
@@ -185,15 +189,67 @@ function drawCity() {
   if (!order.some(c => c.at[1] === 2 && c.at[0] === 1)) s += spire();
   s += `</g><g class="bld" data-spire="1"><text class="lbl" x="${SPIRE.x}" y="${SPIRE.y - 36}" text-anchor="middle" style="font-size:8px">Chairman's Spire</text>
     <text class="sub" x="${SPIRE.x}" y="${SPIRE.y - 28}" text-anchor="middle" style="font-size:5.8px">BYLAWS · CLOCK · BULLETIN</text></g><g id="fx"></g>`;
+  const keep3 = $("#map3d"); if (keep3) keep3.remove();
   $("#stage").innerHTML = `<svg id="city" viewBox="0 0 ${VW} ${VH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perseverance City">${s}</svg>
+    <div class="mode" id="mode" role="group" aria-label="Map style"><button data-m="2d">2D</button><button data-m="3d">3D</button></div>
     <button class="zoomout" id="zoomout">Whole city</button><div class="hint" id="hint">Tap a building to go inside</div>`;
+  if (keep3) $("#stage").appendChild(keep3);
+  $("#mode").onclick = e => { const b = e.target.closest("button"); if (b) set3d(b.dataset.m === "3d"); };
+  if (C3) C3.update();
   $("#zoomout").onclick = () => { closeSheet(); zoom(null); };
   $("#city").addEventListener("click", onCity);
   if (!drawn) { drawn = true; const svg = $("#city"); svg.classList.add("enter"); setTimeout(() => svg.classList.remove("enter"), 2600); }
-  applyView();
+  applyView(); syncMap(); setBusy(busyNow);
   if (inside) { const co = inside, y = scrollY; inside = null; enterInside(co, null, true); scrollTo(0, y); }
 }
 let drawn = false;
+
+// ------------------------------------------------------------------ 2D / 3D
+// The 3D city (docs/city3d.js) draws the same data with three.js. It loads only when asked for, the choice is
+// remembered on this device, and the 2D map stays if WebGL or the library is not available.
+let mode3d = false, C3 = null, c3busy = false, busyNow = false;
+const canGL = (() => { try { const c = document.createElement("canvas"); return !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl"))); } catch (e) { return false; } })();
+const loadScript = src => new Promise((ok, no) => { const el = document.createElement("script"); el.src = src; el.onload = ok; el.onerror = () => no(new Error("could not load " + src)); document.head.appendChild(el); });
+const pref = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
+function syncMap() {
+  const svg = $("#city"), m3 = $("#map3d"), on3 = mode3d && !!C3 && !inside && view !== "trace";
+  if (svg) svg.style.display = inside || on3 ? "none" : "";
+  if (m3) m3.style.display = on3 ? "" : "none";
+  if (C3) { if (on3) C3.resume(); else C3.pause(); }
+  const md = $("#mode"); if (md) { md.style.display = inside ? "none" : ""; md.querySelectorAll("button").forEach(b => { b.classList.toggle("on", (b.dataset.m === "3d") === (mode3d && view !== "trace")); b.disabled = b.dataset.m === "3d" && (!canGL || view === "trace" || c3busy); }); }
+  const h = $("#hint"); if (h) { h.style.display = inside ? "none" : ""; h.textContent = on3 ? "Drag to turn · pinch · tap a tower" : !canGL ? "Tap a building to go inside · 3D is not available on this device" : view === "trace" && mode3d ? "Bet traces play on the 2D map" : "Tap a building to go inside"; }
+  const zb = $("#zoomout"); if (zb && on3) zb.classList.remove("show");
+}
+function pick3(u) {
+  if (u.spire) { stack = []; return openSheet(spireSheet()); }
+  if (u.portal) { stack = []; return openSheet(portalSheet(u.portal)); }
+  if (!u.co || !CO[u.co]) return;
+  if (view === "live") return enterInside(u.co, u.desk || null);
+  stack = []; openSheet(u.desk ? deskSheet(u.desk) : companySheet(u.co));
+}
+async function set3d(on, quiet) {
+  if (on && !canGL) return;
+  if (on && !C3) {
+    if (c3busy) return; c3busy = true; syncMap();
+    const h = $("#hint"); if (h) h.textContent = "Materialising the 3D city…";
+    try {
+      if (!window.THREE) await loadScript(THREE_SRC);
+      if (!window.City3D) await loadScript("city3d.js");
+      const host = document.createElement("div"); host.id = "map3d"; host.className = "map3d"; $("#stage").appendChild(host);
+      C3 = window.City3D.create(host, {ORG, CO, DK, live: () => LIVE, deskState, deskHealth, coHealth, winStyle, HC, routeFresh, onPick: pick3});
+      const ctl = document.createElement("div"); ctl.className = "c3ctl";
+      ctl.innerHTML = `<button data-c="in" aria-label="Zoom in">+</button><button data-c="out" aria-label="Zoom out">−</button><button data-c="l" aria-label="Turn left">‹</button><button data-c="r" aria-label="Turn right">›</button><button data-c="tilt" aria-label="Change the viewing angle">◐</button><button data-c="home" aria-label="Reset the view">⟲</button>`;
+      ctl.onclick = e => { const b = e.target.closest("button"); if (!b || !C3) return; const k = b.dataset.c;
+        if (k === "in") C3.zoom(.78); else if (k === "out") C3.zoom(1.28); else if (k === "l") C3.turn(-.6); else if (k === "r") C3.turn(.6); else if (k === "tilt") C3.tilt(); else C3.home(); };
+      host.appendChild(ctl); C3.setView(view); C3.setBusy(busyNow);
+    } catch (e) { c3busy = false; C3 = null; const m = $("#map3d"); if (m) m.remove(); mode3d = false; syncMap(); const h2 = $("#hint"); if (h2) h2.textContent = "3D could not load here; showing the 2D map"; return; }
+    c3busy = false;
+  }
+  mode3d = !!on; if (!quiet) pref("pcity3d", on ? "1" : "0");
+  if (on && view === "trace") { stopTrace(); view = "live"; applyView(); closeSheet(); }
+  syncMap();
+  if (on && location.hash === "") history.replaceState(null, "", "#3d"); else if (!on && location.hash === "#3d") history.replaceState(null, "", location.pathname);
+}
 
 // ------------------------------------------------------------------ camera
 let vb = [0, 0, VW, VH], anim = null;
@@ -309,7 +365,7 @@ function nextFire(cron, from) {
   for (let i = 0; i < 2880; i++, t.setUTCMinutes(t.getUTCMinutes() + 1)) if (cronMatch(hr, t.getUTCHours()) && cronMatch(mi, t.getUTCMinutes())) return new Date(t);
   return null;
 }
-const MODE = {nightly: "Overnight grading", props: "Props run", "props-backup": "Props backup", research: "Research refresh", live: "Live lines", injwatch: "Injury watch", cycle: "Market cycle"};
+const MODE = {auto: "Timer check", briefing: "Daily Briefing", nightly: "Overnight grading", props: "Props run", "props-backup": "Props backup", research: "Research refresh", live: "Live lines", injwatch: "Injury watch", cycle: "Market cycle"};
 function firesPerDay(cron) { let n = 0; const t = new Date(Date.UTC(2026, 0, 5)); for (let i = 0; i < 1440; i++, t.setUTCMinutes(t.getUTCMinutes() + 1)) { const [mi, hr] = cron.split(/\s+/); if (cronMatch(hr, t.getUTCHours()) && cronMatch(mi, t.getUTCMinutes())) n++; } return n; }
 function nextChime() {
   const now = Date.now(); let best = null;
@@ -325,8 +381,10 @@ function scheduleHtml() {
 }
 function tickClock() {
   const n = ORG && nextChime(); if (!n) return;
-  const mins = Math.round((n.t - Date.now()) / 6e4), runAgo = LIVE ? ago(LIVE.updated) : "–";
-  $("#clock").innerHTML = `<span class="pulse"></span><span>${etTime(new Date())} ET · next chime <b>${esc(MODE[n.s.mode] || n.s.mode)}</b> ${mins < 1 ? "now" : mins < 60 ? `in ${mins}m` : "at " + etTime(n.t)} · city updated ${runAgo}</span>`;
+  const mins = Math.round((n.t - Date.now()) / 6e4), runAgo = LIVE ? ago(LIVE.updated) : "–", st = stepsOf(NOW);
+  const lastRun = NOW && NOW.finished ? `last run ${ago(NOW.finished)}, ${new Set(st.map(s => s.desk)).size} desks` : `city updated ${runAgo}`;
+  $("#clock").innerHTML = `<span class="pulse"></span><span>${etTime(new Date())} ET · next <b>${esc(MODE[n.s.mode] || n.s.mode)}</b> ${mins < 1 ? "now" : mins < 60 ? `in ${mins}m` : etTime(n.t)} · ${lastRun}</span>` +
+    (st.length ? `<button class="rp" id="rp" aria-label="${replay ? "Stop the replay" : "Replay the last run"}">${replay ? "■ stop" : "▶ replay"}</button>` : "");
 }
 function spireSheet() {
   const g = ORG.git, t = ORG.totals, b = ORG.city;
@@ -451,6 +509,7 @@ function goStep(i) {
 // ------------------------------------------------------------------ views
 function applyView() {
   document.querySelectorAll("#seg button").forEach(b => b.classList.toggle("on", b.dataset.v === view));
+  if (C3) C3.setView(view);
   const svg = $("#city"); if (!svg) return;
   for (const c of ORG.companies) { const h = svg.querySelector(`#b-${c.id} .halo`); if (h) h.setAttribute("stroke", view === "coh" ? HC[coHealth(c.id)] : "transparent"); }
   for (const d of ORG.desks) { const w = svg.querySelector("#w-" + d.id); if (!w) continue;
@@ -469,7 +528,7 @@ async function setView(v) {
   if (v === "live" && view === "live" && inside) { exitInside(); return; }
   if (view === "trace" && v !== "trace") stopTrace();
   if (inside) exitInside();
-  view = v; applyView(); stack = []; zoom(null);
+  view = v; applyView(); syncMap(); stack = []; zoom(null);
   if (v === "coh") openSheet(cohSheet());
   else if (v === "trace") { openSheet(traceList()); if (!TRACE) { TRACE = await get("data/city_trace.json", {traces: []}); if (view === "trace" && !cur) openSheet(traceList(), {replace: true}); } }
   else closeSheet();
@@ -611,21 +670,20 @@ function enterInside(co, deskId, instant) {
   const show = () => {
     let el = $("#inroom"); if (!el) { el = document.createElement("div"); el.id = "inroom"; st.appendChild(el); }
     el.innerHTML = insideHtml(co); el.classList.remove("go"); void el.offsetWidth; if (!instant) el.classList.add("go");
-    svg.style.display = "none"; st.classList.add("in"); $("#zoomout").classList.remove("show"); const h = $("#hint"); if (h) h.style.display = "none";
+    st.classList.add("in"); $("#zoomout").classList.remove("show"); syncMap();
     clearInterval(actTimer); actTimer = setInterval(tickActs, 3600);
     history.replaceState(null, "", "#co=" + co);
     if (deskId) { const r = $("#room-" + deskId); if (r) { r.classList.add("pick"); setTimeout(() => r.scrollIntoView({behavior: "smooth", block: "center"}), instant ? 0 : 420); } }
     else if (!instant) st.scrollIntoView({behavior: "smooth", block: "start"});
   };
-  if (first && !instant && svg.style.display !== "none") { zoom(co); setTimeout(show, 480); } else show();
+  if (first && !instant && svg && svg.style.display !== "none") { zoom(co); setTimeout(show, 480); } else show();
   applyLegend();
 }
 function exitInside() {
   if (!inside) return;
   inside = null; clearInterval(actTimer);
   const el = $("#inroom"); if (el) el.remove();
-  const svg = $("#city"); if (svg) svg.style.display = "";
-  $("#stage").classList.remove("in"); const h = $("#hint"); if (h) h.style.display = "";
+  $("#stage").classList.remove("in"); syncMap();
   if (location.hash.startsWith("#co=")) history.replaceState(null, "", location.pathname);
   zoom(null); applyLegend();
 }
@@ -639,11 +697,86 @@ function nowItems() {
 }
 function tickNow() {
   const el = $("#now"); if (!el || !ORG) return;
+  if (replay || busyNow) return;                                          // a run is being shown: the strip belongs to it
   const it = nowItems(); if (!it.length) { el.style.display = "none"; return; }
   const x = it[nowN++ % it.length], c = CO[x.d.company];
   el.classList.add("swap");
   setTimeout(() => { el.dataset.go = x.d.company; el.dataset.deskid = x.d.id; el.style.setProperty("--c", c.color);
-    el.innerHTML = `<i></i><div><b>${esc(x.d.title)}</b><em>${esc(c.name)}</em><span>${esc(x.t)}</span></div><u>›</u>`; el.classList.remove("swap"); }, 240);
+    if (replay || busyNow) { el.classList.remove("swap"); return; }
+    el.classList.remove("run"); el.innerHTML = `<i></i><div><b>${esc(x.d.title)}</b><em>${esc(c.name)}</em><span>${esc(x.t)}</span></div><u>›</u>`; el.classList.remove("swap"); }, 240);
+}
+
+// ------------------------------------------------------------------ live status: the run happening now, the last run replayed
+// city_now.json (written by the agent as it works, saved with the run) lists the desks that worked, in order, with
+// the second each one started. When a new run lands the page fetches the fresh numbers and replays it across the city:
+// each desk lights up in turn (window flash in 2D, a beam in 3D, the room if you are inside that building).
+// While a run is still going, GitHub's public API says so (no key; at most ~50 small requests an hour, fewer if the
+// page is hidden), and the Spire pulses until its files land.
+let NOW = null, replay = null, gh = {run: null, left: 60, reset: 0, last: 0, since: 0}, nowFast = 0;
+const runKey = n => n ? n.started + "|" + (n.finished || "") : "";
+const stepsOf = n => ((n && n.steps) || []).filter(s => DK[s.desk]);
+function flashDesk(id) {
+  const d = DK[id]; if (!d) return; const c = CO[d.company];
+  if (C3 && mode3d && !inside) C3.pulse(d.company, id);
+  const b = $("#b-" + d.company); if (b) { b.classList.add("act"); setTimeout(() => b.classList.remove("act"), 2300); }
+  const w = $("#w-" + id), fxg = $("#fx");
+  if (w && fxg && !inside && !(mode3d && C3)) { let bb; try { bb = w.getBBox(); } catch (e) { bb = null; }
+    if (bb) for (const [r1, dur] of [[18, 1.1], [30, 1.7]]) { const f = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      f.setAttribute("cx", bb.x + bb.width / 2); f.setAttribute("cy", bb.y + bb.height / 2); f.setAttribute("r", 3); f.setAttribute("fill", "none"); f.setAttribute("stroke", r1 > 20 ? c.color : "#fff"); f.setAttribute("stroke-width", "1.4");
+      f.innerHTML = `<animate attributeName="r" from="3" to="${r1}" dur="${dur}s" fill="freeze"/><animate attributeName="opacity" from="1" to="0" dur="${dur}s" fill="freeze"/>`;
+      fxg.appendChild(f); setTimeout(() => f.remove(), dur * 1000 + 100); } }
+  const room = inside === d.company && $("#room-" + id); if (room) { room.classList.add("livepulse"); setTimeout(() => room.classList.remove("livepulse"), 3000); }
+}
+function showStep(i) {
+  const st = replay.steps[i], d = DK[st.desk], c = CO[d.company], el = $("#now"); replay.i = i;
+  if (el) { el.style.display = ""; el.classList.add("run"); el.dataset.go = d.company; el.dataset.deskid = d.id; el.style.setProperty("--c", c.color);
+    el.innerHTML = `<i></i><div><b>${esc(d.title)}</b><em>${replay.manual ? "Replay" : "New run"} · ${esc(MODE[NOW.mode] || NOW.mode)} ${ago(NOW.finished || NOW.started)} · ${i + 1}/${replay.steps.length}</em><span>${esc(st.text)}</span></div><u>›</u>
+      <p class="rbar"><b style="width:${((i + 1) / replay.steps.length * 100).toFixed(1)}%"></b></p>`; }
+  flashDesk(d.id);
+}
+function startReplay(manual) {
+  const steps = stepsOf(NOW); if (!steps.length || cur) return;
+  stopReplay(); replay = {steps, i: -1, manual: !!manual, timers: []};
+  let t = 0; steps.forEach((s, i) => { if (i) t += Math.max(1500, Math.min(3600, (s.at - steps[i - 1].at) * 1000)); replay.timers.push(setTimeout(() => showStep(i), t)); });
+  replay.timers.push(setTimeout(() => { stopReplay(); tickNow(); tickClock(); }, t + 3800));
+  tickClock();
+}
+function stopReplay() { if (!replay) return; replay.timers.forEach(clearTimeout); replay = null; const el = $("#now"); if (el) el.classList.remove("run"); }
+function setBusy(b) {
+  busyNow = !!b; const sp = $("#b-spire"); if (sp) sp.classList.toggle("busy", busyNow); if (C3) C3.setBusy(busyNow);
+  if (!busyNow || replay) return;
+  const el = $("#now"), r = gh.run; if (!el || !r) return; const secs = Math.max(0, Math.round((Date.now() - new Date(r.run_started_at || r.created_at)) / 1000));
+  el.style.display = ""; el.classList.add("run"); el.dataset.go = "ops"; el.dataset.deskid = "dispatcher"; el.style.setProperty("--c", "#7FE3FF");
+  el.innerHTML = `<i></i><div><b>The city is working</b><em>Live · ${r.status === "queued" ? "run queued" : "run started " + (secs < 90 ? secs + "s" : Math.round(secs / 60) + "m") + " ago"}</em><span>Its desk-by-desk log lands when the run ends</span></div><u>›</u><p class="rbar live"><b></b></p>`;
+}
+async function loadNow(first) {
+  const n = await get("data/city_now.json", null); if (!n || !n.started) return;
+  const fresh = runKey(n) !== runKey(NOW); NOW = n; if (!fresh) return;
+  if (n.finished && gh.run && (!n.gh_run || String(n.gh_run) === String(gh.run.id) || new Date(n.finished) >= new Date(gh.run.created_at))) { if (gh.run.status === "completed") setBusy(false); }
+  if (first) { tickClock(); if (n.finished && ageH(n.finished) < .1 && !location.hash.startsWith("#trace")) setTimeout(() => { if (!replay && !cur) startReplay(false); }, 3200); return; }
+  if (!n.finished) return;
+  nowFast = 0; setBusy(false);
+  const L = await get("data/city_live.json", null); if (L && L.updated !== (LIVE && LIVE.updated)) { LIVE = L; if (!cur) drawCity(); }
+  tickClock(); startReplay(false);
+}
+async function pollGitHub() {
+  if (document.hidden || Date.now() < gh.reset) return;
+  const now = Date.now(), q = (now / 1000) % 900, going = gh.run && gh.run.status !== "completed";
+  const seenThisQuarter = gh.run && new Date(gh.run.created_at).getTime() > now - q * 1000 - 5000;
+  const due = going ? now - gh.last >= 8000 : q >= 8 && q <= 80 && !seenThisQuarter ? now - gh.last >= 10000 : now - gh.last >= 170000;
+  if (!due) { if (busyNow && !replay) setBusy(true); return; }
+  gh.last = now;
+  try {
+    const r = await fetch(GH_RUNS, {headers: {accept: "application/vnd.github+json"}});
+    const left = +r.headers.get("x-ratelimit-remaining"), reset = +r.headers.get("x-ratelimit-reset");
+    if (!r.ok || (r.headers.get("x-ratelimit-remaining") != null && left <= 4)) { gh.reset = reset ? reset * 1000 + 2000 : now + 6e5; if (!r.ok) { setBusy(false); return; } }
+    const run = ((await r.json()).workflow_runs || [])[0]; if (!run) return;
+    const was = gh.run && gh.run.status !== "completed" && gh.run.id === run.id; gh.run = run;
+    if (run.status !== "completed") setBusy(true);
+    else { if (was) nowFast = Date.now() + 150000; if (busyNow && !was) setBusy(false);
+      if (was && !replay) { const el = $("#now"); if (el) el.innerHTML = `<i></i><div><b>Run finished</b><em>Live · ${run.conclusion === "success" ? "saved" : esc(run.conclusion || "ended")}</em><span>Its files are on their way to this page (about a minute)</span></div><u>›</u><p class="rbar live"><b></b></p>`;
+        setTimeout(() => { if (busyNow && !replay) { setBusy(false); const e2 = $("#now"); if (e2) e2.classList.remove("run"); tickNow(); } }, 150000); } }
+  } catch (e) { gh.reset = Date.now() + 120000; }
 }
 
 // ------------------------------------------------------------------ events
@@ -661,7 +794,7 @@ document.addEventListener("click", e => {
   const a = e.target.closest("[data-act]"), dk = e.target.closest("[data-desk]"), dc = e.target.closest("[data-doc]"), po = e.target.closest("[data-portal]");
   const tr = e.target.closest("[data-trace]"), tf = e.target.closest("[data-tf]"), st = e.target.closest("[data-step]");
   if (a) { const k = a.dataset.act;
-    if (k === "close") { if (view !== "live") { view = "live"; applyView(); } closeSheet(); }
+    if (k === "close") { if (view !== "live") { view = "live"; applyView(); } closeSheet(); syncMap(); }
     else if (k === "back") { if (cur) { stopTrace(); stack = []; openSheet(traceList()); } else backSheet(); }
     else if (k === "play") play(!tTimer); else if (k === "next") { play(false); goStep(tIdx + 1); } else if (k === "prev") { play(false); goStep(Math.max(0, tIdx - 1)); }
     else if (k === "list") { stopTrace(); stack = []; openSheet(traceList()); }
@@ -676,6 +809,7 @@ document.addEventListener("click", e => {
   if (po) return openSheet(portalSheet(po.dataset.portal));
 });
 document.addEventListener("click", e => {
+  if (e.target.closest("#rp")) { if (replay) { stopReplay(); tickNow(); tickClock(); } else { if (view === "trace") setView("live"); startReplay(true); } return; }
   const now = e.target.closest("#now"); if (now && now.dataset.go) { if (view !== "live") { if (view === "trace") stopTrace(); view = "live"; applyView(); } return enterInside(now.dataset.go, now.dataset.deskid); }
   if (!e.target.closest("#inroom")) return;
   const go = e.target.closest("[data-go]"), act = e.target.closest("[data-in]"), dc = e.target.closest("[data-doc]"), po = e.target.closest("[data-portal]"), dk = e.target.closest("[data-desk]");
@@ -703,7 +837,12 @@ $("#seg").addEventListener("click", e => { const b = e.target.closest("button");
   drawCity(); tickClock(); setInterval(tickClock, 30000);
   tickNow(); nowTimer = setInterval(tickNow, 3800);
   setInterval(async () => { const L = await get("data/city_live.json", null); if (L && L.updated !== (LIVE && LIVE.updated)) { LIVE = L; if (!cur) { drawCity(); } tickClock(); } }, 120000);
+  // live status: the run log every 20 seconds (every 6 just after a run ends), GitHub for a run in progress
+  loadNow(true); let nowLast = Date.now();
+  setInterval(() => { if (document.hidden) return; const t = Date.now(); if (t - nowLast >= (t < nowFast ? 6000 : 20000)) { nowLast = t; loadNow(false); } pollGitHub(); }, 2000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadNow(false); gh.last = Math.min(gh.last, Date.now() - 60000); } });
   const h = decodeURIComponent(location.hash.slice(1));
+  if (canGL && (h === "3d" || (pref("pcity3d") === "1" && !h))) set3d(true, true);
   if (h.startsWith("trace=")) { view = "trace"; applyView(); TRACE = await get("data/city_trace.json", {traces: []}); stack = [traceList()]; startTrace(h.slice(6)); }
   else if (h.startsWith("co=") && CO[h.slice(3)]) enterInside(h.slice(3), null, true);
   else if (h === "coh") setView("coh");

@@ -6,6 +6,7 @@ import sys
 from datetime import timedelta
 
 from . import book as bk
+from . import citynow
 from . import brain, config, market, store
 from . import props as nba_props
 from . import saved
@@ -105,6 +106,7 @@ def save_closes(events):
 
 
 def grade(state, manual, client):
+    citynow.mark("settle", "Grading finished bets against the final scores")
     try:
         from . import lines as linedb
         ldb = linedb.load()
@@ -217,6 +219,7 @@ def cycle():
 
     grade(state, manual, client)
     brain.adapt(state)
+    citynow.mark("buyer", "Choosing which boards are worth the credits and buying the odds")
 
     events, scanned = [], []
     for score, sport, n in brain.pick_sports(state, client, budget):
@@ -235,7 +238,9 @@ def cycle():
         state["sports"].setdefault(sport, {})["last_scanned"] = store.iso(store.now())
 
     market.closing_update(bk.open_bets(state["book"]) + bk.open_bets(manual["book"]), events)
+    citynow.mark("trader", f"Reading {len(events)} games for bets that clear the bar")
     placed = brain.bet_on_board(state, events) if events else []
+    citynow.mark("bookkeeper", f"Placed {len(placed)} paper bets; updating the books" if placed else "Nothing cleared the bar; updating the books")
     brain.drought(state, scanned, placed)
 
     board = store.load("board.json", {"events": []})
@@ -271,10 +276,14 @@ def run_sims():
     if not shutil.which("node"):
         print("[sims] node not found; skipping")
         return
+    citynow.mark("foreman", "Simulating every game on the slate 10,000 times" + (f" ({SIM_REASON})" if SIM_REASON else ""))
     try:
         r = subprocess.run(["node", str(config.ROOT / "tools" / "sim_all.js")], capture_output=True, text=True, timeout=900,
                            env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA), "SIM_REASON": SIM_REASON or os.environ.get("SIM_REASON", "scheduled refresh")})
         print(r.stdout[-2000:], r.stderr[-2000:])
+        citynow.mark("editor", "Re-ranked the board from the new simulations")
+        citynow.mark("picker", "Rechecked Best Bets against the new numbers")
+        citynow.mark("setter", "Set our own lines from the simulations")
     except Exception as e:
         print(f"[sims] failed: {e}")
 
@@ -284,6 +293,7 @@ def live_run():
     Also watches the injury report for games that haven't tipped yet (late West Coast games)."""
     from . import dk
     injwatch_run()
+    citynow.mark("dk", "Taking DraftKings' live lines, scores and game clocks")
     try:
         days = dk.live_snapshot()
         print(f"[live] snapshots for {days or 'no games in progress'}")
@@ -293,6 +303,7 @@ def live_run():
     if days:
         import shutil, subprocess
         if shutil.which("node"):
+            citynow.mark("liveop", "Re-running the simulations from the live score and clock")
             r = subprocess.run(["node", str(config.ROOT / "tools" / "live_sim.js")], capture_output=True, text=True, timeout=600,
                                env={**os.environ, "PERSEVERANCE_DATA": str(config.DATA), "SIM_REASON": SIM_REASON or os.environ.get("SIM_REASON", "scheduled refresh")})
             print(r.stdout[-1500:], r.stderr[-1500:])
@@ -303,6 +314,7 @@ def injwatch_run(and_live=False):
     or cleared to play) before tip-off, alert and re-price the whole slate right away instead of waiting
     for the next scheduled refresh."""
     from . import research, alerts
+    citynow.mark("doctor", "Checking the injury report for status changes")
     try:
         ch = research.injury_watch()
     except Exception as e:
@@ -314,6 +326,7 @@ def injwatch_run(and_live=False):
     txt = [(f"inj|{pid}|{new}", f"{name} ({team}) now {new.lower()} (was {old.lower()}), {mins:.0f} projected min. Projections and sims re-priced.")
            for pid, name, team, old, new, mins in ch]
     print("[injwatch] " + "; ".join(t for _, t in txt))
+    citynow.mark("messenger", f"Sending the injury alert: {len(ch)} status change" + ("s" if len(ch) != 1 else ""))
     try:
         alerts.send(txt, title="Injury news")
     except Exception as e:
@@ -328,6 +341,7 @@ def line_moves(log=print):
     """Free: compare DraftKings' current pregame line (ESPN) for each game still to tip with the line the last sims used.
     Returns a list of 'BOS@TOR total 223.5 → 225' for any spread moved 1+ point or total moved 1.5+."""
     from . import espn_odds as eo
+    citynow.mark("historian", "Comparing DraftKings' lines now with the ones the last simulations used")
     sims = store.load("sims.json", None) or {}
     pj = store.load("players.json", None) or {}
     if sims.get("date") != pj.get("date"):
@@ -363,10 +377,13 @@ def research_run():
     """Free daily refresh (morning and late afternoon): box scores, lineups, projections, trends."""
     from . import research
     state, manual = load_all()
+    citynow.mark("research", "Gathering box scores, lineups, injuries and trends")
     try:
         ctx = research.context()
+        citynow.mark("matchup", f"Projecting {len(ctx['entries'])} players across {len(ctx['games'])} games")
         research.write_all(ctx)
         try:
+            citynow.mark("team", "Rating the teams")
             from . import team_model
             team_model.build(log=lambda m: None)                       # ratings only; the backtest runs nightly
         except Exception as e:
@@ -378,6 +395,7 @@ def research_run():
         import traceback; traceback.print_exc()
         brain.note(state, "error", f"Research refresh failed: {e}")
     try:
+        citynow.mark("clerk", "Grading the Chairman's saved plays")
         saved.grade()
         recaps(state, manual, limit=6)
     except Exception as e:
@@ -409,6 +427,7 @@ def props_run(backup=False):
         return
     budget.start_run(units=config.PROPS_UNITS)
     grade(state, manual, client)
+    citynow.mark("research", "Gathering lineups and projections for the props run")
     try:
         from . import research
         ctx = research.context()
@@ -416,6 +435,7 @@ def props_run(backup=False):
             research.write_all(ctx)          # fresh lineups and projections for the dashboard
         except Exception as e:
             brain.note(state, "error", f"Research files failed: {e}")
+        citynow.mark("props", "Pricing player props against the matchup model")
         out = nba_props.run(state, manual, client, budget, ctx=ctx)
     except Exception as e:
         import traceback; traceback.print_exc()
@@ -450,17 +470,20 @@ def nightly():
         pass
     grade(state, manual, client)
     try:
+        citynow.mark("boxscore", "Collecting last night's box scores")
         from . import nba_data
         nba_data.update(log=lambda m: None)
     except Exception as e:
         brain.note(state, "error", f"NBA box-score refresh failed: {e}")
     try:
+        citynow.mark("team", "Rating the teams and re-running the walk-forward backtest")
         from . import team_model
         team_model.build(with_backtest=True, log=lambda m: None)      # ratings + walk-forward backtest vs DK lines
     except Exception as e:
         brain.note(state, "error", f"Team model failed: {e}")
     brain.adapt(state)
     try:
+        citynow.mark("audit_score", "Scoring the model against the market")
         from . import scoreboard, lines as linedb
         sb = scoreboard.build(linedb.load()["entries"], state["params"].get("prop_model_weight", 0.4))
         store.save("scoreboard.json", sb)
@@ -468,11 +491,14 @@ def nightly():
     except Exception as e:
         brain.note(state, "error", f"Model vs market scoreboard failed: {e}")
     try:
+        citynow.mark("teacher", "Night school: learning from the graded bets")
         from . import learn
         learn.run(state, brain.note)
     except Exception as e:
         brain.note(state, "error", f"Learning loop failed: {e}")
+    citynow.mark("trader", "Strategist review of the day")
     brain.strategist(state)
+    citynow.mark("bookkeeper", "Closing the day's books")
     s = bk.record_stats(state["book"])
     brain.note(state, "daily", f"Day close — equity ${s['equity']:.2f} (run #{state['book']['run']}), "
                                f"{s['won']}-{s['lost']}-{s['push']}, ROI {s['roi']:+.1%}"
@@ -687,6 +713,7 @@ def manual_issue():
 
 
 def run_checks():
+    citynow.mark("inspector", "Running the building inspection")
     try:
         from . import checks
         prev = store.load("checks.json", {}) or {}
@@ -728,15 +755,18 @@ def auto_run():
         except Exception:
             pass
     print(f"[auto] {hour:.2f}h ET: {len(live)} live, {len(pre)} to tip" + (", last night's games still on" if yday_live else ""))
+    citynow.mark("dispatcher", f"{len(live)} games live, {len(pre)} still to tip" + (", last night's games still on" if yday_live else "") + (": nothing is due" if not (live or pre or yday_live) else ""))
     if pre:
         _briefing_due_refresh()
     if live or pre:                                 # Kalshi: a second market's lines, free, a look every run
+        citynow.mark("kalshi", "Reading the second market's lines on Kalshi")
         try:
             from . import kalshi
             kalshi.refresh(games)
         except Exception as e:
             print(f"[kalshi] failed: {e}")
     if yday_live:
+        citynow.mark("kalshi", "Reading Kalshi's lines for last night's late games")
         try:
             from . import kalshi
             from datetime import timedelta as _td
@@ -775,6 +805,7 @@ def auto_run():
             from . import ourbook
             for kind, ids in ourbook.due(games, now.astimezone(nd_et()), research.et_today().isoformat()):
                 print(f"[auto] freezing our book: {kind}" + (f" ({len(ids)} games)" if ids else ""))
+                citynow.mark("gatekeeper", f"Sealing our own lines ({kind})")
                 ourbook.freeze(kind, ids)
         except Exception as e:
             print(f"[ourbook] freeze failed: {e}")
@@ -790,6 +821,7 @@ def briefing_run():
     if pj.get("date") != research.et_today().isoformat() or age_h >= 3:
         SIM_REASON = SIM_REASON or "morning briefing: fresh research before the 7am edition"
         research_run()
+    citynow.mark("writer", "Publishing the Daily Briefing's morning edition")
     briefing.tick()
 
 
@@ -840,6 +872,7 @@ def nd_et():
 
 if __name__ == "__main__":
     _mode = sys.argv[1]
+    citynow.start(_mode)
     {"cycle": cycle, "nightly": nightly, "props": props_run, "props-backup": lambda: props_run(backup=True),
      "research": research_run, "live": live_run, "injwatch": injwatch_run, "auto": auto_run, "manual-issue": manual_issue,
      "briefing": briefing_run,
@@ -847,9 +880,11 @@ if __name__ == "__main__":
     catch_up(_mode)
     if _mode not in ("manual-issue", "probe", "briefing"):
         try:                                        # Daily Briefing: publish when due, keep current, grade (local files only)
+            citynow.mark("writer", "Keeping the Daily Briefing current")
             from . import briefing
             briefing.tick()
         except Exception as e:
             print(f"[briefing] failed: {e}")
     if _mode in ("research", "auto", "nightly", "injwatch", "props", "props-backup", "cycle", "manual-issue", "briefing"):
         run_checks()
+    citynow.finish()

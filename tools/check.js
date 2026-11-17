@@ -10,7 +10,7 @@ let fails = 0; const ok = m => console.log("  ok   " + m), bad = m => { fails++;
 const read = f => JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8"));
 
 console.log("1. scripts parse");
-for (const f of ["case.js", "refresh.js", "sim.js", "games.js", "city.js"]) { try { new Function(fs.readFileSync(path.join(DOCS, f), "utf8")); ok(f); } catch (e) { bad(`${f}: ${e.message}`); } }
+for (const f of ["case.js", "refresh.js", "sim.js", "games.js", "city.js", "city3d.js"]) { try { new Function(fs.readFileSync(path.join(DOCS, f), "utf8")); ok(f); } catch (e) { bad(`${f}: ${e.message}`); } }
 const html = fs.readFileSync(path.join(DOCS, "index.html"), "utf8");
 try { new Function(html.slice(html.indexOf("<script>\nconst $") + 8, html.indexOf("</script>\n<script src="))); ok("index.html inline script"); } catch (e) { bad("index.html inline script: " + e.message); }
 
@@ -47,7 +47,7 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
     const srv = http.createServer((q, r) => { const f = path.join(DOCS, decodeURIComponent(q.url.split("?")[0]).replace(/\/$/, "/index.html"));
       fs.readFile(f, (e, b) => { if (e) { r.writeHead(404); return r.end(); } r.writeHead(200, {"content-type": mime[path.extname(f)] || "application/octet-stream"}); r.end(b); }); }).listen(8899);
     try {
-      const {chromium} = require("playwright"), b = await chromium.launch(), p = await b.newPage({viewport: {width: 390, height: 844}});
+      const {chromium} = require("playwright"), b = await chromium.launch({args: ["--use-gl=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"]}), p = await b.newPage({viewport: {width: 390, height: 844}});
       const errs = []; p.on("pageerror", e => errs.push(e.message));
       await p.route(/espn\.com|cdn\.|github\.com/, r => r.fulfill({status: 200, contentType: "application/json", headers: {"access-control-allow-origin": "*"}, body: "{}"}));
       await p.goto("http://localhost:8899/index.html"); await p.waitForTimeout(2500);
@@ -89,6 +89,36 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
         const end = await p.evaluate(() => (document.querySelector("#pane .ctl span") || {}).textContent || "");
         await p.evaluate(() => document.querySelector("#seg [data-v=coh]").click()); await p.waitForTimeout(500);
         errs.length === n && blds >= 10 && bets ? ok(`city: ${blds} buildings, ${bets} bets listed, trace reached ${end}, coherence opens`) : bad(`city: ${errs.slice(n).join(" | ") || `${blds} buildings, ${bets} bets`}`); }
+      // live status: the run log replays desk by desk; a run in progress (GitHub) takes over the strip
+      { const n = errs.length; let ghs = "in_progress";
+        await p.unroute(/espn\.com|cdn\.|github\.com/);
+        await p.route(/api\.github\.com/, r => r.fulfill({status: 200, contentType: "application/json", headers: {"access-control-allow-origin": "*"}, body: JSON.stringify({workflow_runs: [{id: 1, status: ghs, conclusion: null, created_at: new Date(Date.now() - 9000).toISOString(), run_started_at: new Date(Date.now() - 6000).toISOString()}]})}));
+        const three = await new Promise(res => { const f = path.join(require("os").tmpdir(), "three-r128.min.js"); if (fs.existsSync(f) && fs.statSync(f).size > 3e5) return res(fs.readFileSync(f));
+          require("https").get("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js", r => { if (r.statusCode !== 200) return res(null); const ch = []; r.on("data", d => ch.push(d)); r.on("end", () => { const bf = Buffer.concat(ch); try { fs.writeFileSync(f, bf); } catch (e) {} res(bf); }); }).on("error", () => res(null)).setTimeout(15000, function () { this.destroy(); res(null); }); });
+        await p.route(/cdnjs\.cloudflare\.com/, r => three ? r.fulfill({status: 200, contentType: "text/javascript", body: three}) : r.abort());
+        await p.goto("http://localhost:8899/city.html"); await p.waitForTimeout(1200);
+        const steps = (() => { try { return read("city_now.json").steps.length; } catch (e) { return 0; } })();
+        if (!steps) ok("city live: no run log yet (the next agent run writes docs/data/city_now.json)");
+        else { await p.evaluate(() => { const r = document.querySelector("#rp"); if (r && r.textContent.includes("stop")) r.click(); });
+          await p.evaluate(() => document.querySelector("#rp").click()); await p.waitForTimeout(600);
+          const rpl = await p.evaluate(() => [document.querySelector("#now").classList.contains("run"), document.querySelector("#now em").textContent, document.querySelectorAll(".bld.act").length]);
+          await p.evaluate(() => document.querySelector("#rp").click()); await p.waitForTimeout(13000);
+          const busy = await p.evaluate(() => [document.querySelector("#b-spire").classList.contains("busy"), document.querySelector("#now b").textContent]);
+          ghs = "completed";
+          rpl[0] && /1\//.test(rpl[1]) && rpl[2] >= 1 && busy[0] ? ok(`city live: ${steps}-step run log replays desk by desk; a run in progress shows "${busy[1]}"`) : bad(`city live: replay ${rpl}, in progress ${busy}`); }
+        // the 3D city: same towers and floors, tap a tower to go inside, 2D still there without WebGL or the library
+        if (!three) ok("city 3D: skipped (three.js could not be fetched here)");
+        else { await p.evaluate(() => document.querySelector('#mode [data-m="3d"]').click()); await p.waitForTimeout(4500);
+          const gl = await p.evaluate(() => !!window.City3D && window.City3D.supported());
+          if (!gl) ok("city 3D: skipped (no WebGL in this browser); 2D map stays");
+          else { const s3 = await p.evaluate(() => { const cv = document.querySelector("#map3d canvas"), r = cv && cv.getBoundingClientRect(); return {cv: !!cv, w: r ? r.width : 0, svg: document.querySelector("#city").style.display, ctl: document.querySelectorAll(".c3ctl button").length, x: r ? r.left + r.width / 2 : 0, y: r ? r.top + r.height * .6 : 0}; });
+            let inside = null; for (const dy of [0, -40, 40, -80, 80, -120]) { await p.mouse.click(s3.x, s3.y + dy); await p.waitForTimeout(700); inside = await p.evaluate(() => document.querySelectorAll("#inroom .room").length); if (inside) break; }
+            await p.evaluate(() => { const x = document.querySelector('#inroom [data-in="back"]'); x && x.click(); }); await p.waitForTimeout(400);
+            const back3 = await p.evaluate(() => document.querySelector("#map3d").style.display !== "none");
+            await p.evaluate(() => document.querySelector('#mode [data-m="2d"]').click()); await p.waitForTimeout(300);
+            const two = await p.evaluate(() => document.querySelector("#city").style.display !== "none" && document.querySelector("#map3d").style.display === "none");
+            s3.cv && s3.w > 300 && s3.svg === "none" && s3.ctl === 6 && inside && back3 && two ? ok(`city 3D: draws, a tapped tower opens ${inside} rooms, back to 3D, switch back to 2D`) : bad(`city 3D: ${JSON.stringify(s3)}, inside ${inside}, back ${back3}, 2D ${two}`); } }
+        if (errs.length !== n) bad("city live/3D: " + errs.slice(n).join(" | ")); }
       await b.close();
     } catch (e) { bad("ui: " + e.message); }
     srv.close();

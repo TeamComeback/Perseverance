@@ -16,6 +16,11 @@
  },
  "bulletin": [
   {
+   "at": "2026-11-17",
+   "by": "Storefront",
+   "text": "The city is now in 3D (drag to turn it, pinch to zoom) and shows each run live: which desks worked, in order, as soon as the run lands."
+  },
+  {
    "at": "2026-11-16",
    "by": "Storefront",
    "text": "The buildings are open: tap one to see every worker, what arrives on the desk, what leaves, and a live chart of the work."
@@ -394,6 +399,10 @@
   },
   "city_trace.json": {
    "name": "Bet traces",
+   "fresh_h": 30
+  },
+  "city_now.json": {
+   "name": "Run log (live status)",
    "fresh_h": 30
   },
   "briefing/*": {
@@ -1126,7 +1135,8 @@
    "company": "ops",
    "title": "Dispatcher",
    "code": [
-    "agent/run.py"
+    "agent/run.py",
+    "agent/citynow.py"
    ],
    "job": "Starts every run (cycle, research, props, injury watch, live, nightly) and catches up missed ones.",
    "reads": [
@@ -1137,7 +1147,8 @@
     "state.json",
     "board.json",
     "manual.json",
-    "refresh_asked.json"
+    "refresh_asked.json",
+    "city_now.json"
    ]
   },
   {
@@ -1207,7 +1218,8 @@
    ],
    "writes": [
     "city_live.json",
-    "city_trace.json"
+    "city_trace.json",
+    "city_now.json"
    ]
   },
   {
@@ -1294,12 +1306,14 @@
    "title": "Observatory Guide",
    "code": [
     "docs/city.html",
-    "docs/city.js"
+    "docs/city.js",
+    "docs/city3d.js"
    ],
-   "job": "This page: the city, the inside of every building with its workers at their desks, bet traces and coherence.",
+   "job": "This page: the city in 2D and 3D, the inside of every building with its workers at their desks, each run replayed desk by desk, bet traces and coherence.",
    "reads": [
     "city_live.json",
-    "city_trace.json"
+    "city_trace.json",
+    "city_now.json"
    ]
   }
  ],

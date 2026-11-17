@@ -41,7 +41,25 @@ header{display:flex;align-items:center;justify-content:space-between;gap:10px;pa
 .stage{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:
   radial-gradient(120% 70% at 50% 0,#0E1730 0,#060A14 60%,#04060C 100%)}
 .stage svg{display:block;width:100%;height:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
-.stage .hint{position:absolute;left:10px;bottom:8px;font:500 10.5px var(--mono);color:var(--dim2);pointer-events:none}
+.stage .hint{position:absolute;left:10px;bottom:8px;font:500 10.5px var(--mono);color:var(--dim2);pointer-events:none;z-index:2}
+/* 2D / 3D switch and the 3D city */
+.mode{position:absolute;right:8px;bottom:8px;z-index:3;display:flex;gap:2px;padding:3px;border:1px solid var(--line2);border-radius:999px;background:#0A0F1CCC;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mode button{appearance:none;border:0;background:none;color:var(--dim);font:700 12px var(--disp);letter-spacing:.06em;padding:7px 14px;border-radius:999px;min-width:44px}
+.mode button.on{background:linear-gradient(180deg,#7FE3FF33,#A78BFA26);color:#fff;box-shadow:inset 0 0 0 1px #7FE3FF66}
+.mode button:disabled{opacity:.35}
+.map3d{position:relative;width:100%;aspect-ratio:400/610;animation:fadein .7s ease both}
+.map3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;outline:none}
+.c3ctl{position:absolute;right:8px;bottom:58px;z-index:3;display:grid;grid-template-columns:40px 40px;gap:6px}
+.c3ctl button{appearance:none;width:40px;height:40px;border-radius:12px;border:1px solid var(--line2);background:#0A0F1CCC;color:var(--text);font:600 18px/1 var(--disp);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.c3ctl button:active{background:#7FE3FF33}
+@media (min-width:760px){.map3d{aspect-ratio:16/10}}
+/* a run on show: the desk that is working, the Spire while a run is in progress */
+.bld.act{animation:actp 1.1s ease-in-out 2}
+.bld.busy{animation:actp .9s ease-in-out infinite}
+@keyframes actp{50%{filter:brightness(1.9) drop-shadow(0 0 5px #7FE3FF)}}
+.room.livepulse{animation:roomp 1s ease-in-out 3;box-shadow:0 0 0 1.5px var(--c),0 0 26px color-mix(in srgb,var(--c) 45%,transparent)}
+@keyframes roomp{50%{box-shadow:0 0 0 2px #fff,0 0 34px var(--c)}}
+.rp{appearance:none;margin-left:auto;flex:none;border:1px solid var(--line2);background:var(--panel2);color:var(--q);font:700 10.5px var(--mono);letter-spacing:.06em;border-radius:999px;padding:5px 10px;white-space:nowrap}
 .zoomout{position:absolute;right:10px;top:10px;display:none;appearance:none;border:1px solid var(--line2);background:#0A0F1CCC;color:var(--text);font:600 12px var(--disp);border-radius:999px;padding:6px 12px;backdrop-filter:blur(6px)}
 .zoomout.show{display:block}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font:500 11px var(--disp);color:var(--dim);padding:10px 4px 0}
@@ -164,6 +182,14 @@ h3{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color
 #now em{font:500 10px var(--mono);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2);margin-left:7px}
 #now span{display:block;font-size:13px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #now u{text-decoration:none;color:var(--dim);font:600 18px var(--disp)}
+#now{position:relative;overflow:hidden}
+#now.run{border-color:color-mix(in srgb,var(--c,#7FE3FF) 55%,transparent);box-shadow:0 0 22px color-mix(in srgb,var(--c,#7FE3FF) 18%,transparent)}
+#now.run em{color:var(--c,var(--q));margin-left:0;display:block}
+#now.run b{color:#fff}
+#now .rbar{position:absolute;left:0;right:0;bottom:0;height:2px;margin:0;background:var(--line)}
+#now .rbar b{display:block;height:100%;background:linear-gradient(90deg,var(--q),var(--v));transition:width .5s}
+#now .rbar.live b{width:35%;animation:slide 1.3s linear infinite}
+@keyframes slide{from{transform:translateX(-100%)}to{transform:translateX(290%)}}
 /* inside a building */
 .stage.in{background:radial-gradient(120% 40% at 50% 0,#0E1730 0,#060A14 70%)}
 .stage.in .zoomout{display:none}
