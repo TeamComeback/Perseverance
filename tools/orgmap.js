@@ -184,7 +184,8 @@ function docFiles(id, x) {
   if (id.endsWith("/*")) {
     const dir = path.join(DATA, id.slice(0, -2)); if (!fs.existsSync(dir)) return [];
     const fl = fs.readdirSync(dir).filter(f => f.endsWith(".json")).sort();
-    const today = fl.find(f => f.startsWith(TODAY)); return [path.join(dir, today || fl[fl.length - 1])].filter(Boolean);
+    if (!fl.length) return [];                                 // the folder exists but nothing is in it yet (briefing/ before the first edition)
+    const today = fl.find(f => f.startsWith(TODAY)); return [path.join(dir, today || fl[fl.length - 1])];
   }
   if (x.path && x.path.startsWith("data/")) {
     const p = path.join(ROOT, x.path.replace("*", ""));
