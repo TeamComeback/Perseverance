@@ -243,9 +243,9 @@ def _scan(state, manual, client, budget, want=None):
         state["sports"].setdefault(sport, {})["last_scanned"] = store.iso(store.now())
 
     market.closing_update(bk.open_bets(state["book"]) + bk.open_bets(manual["book"]), events)
-    citynow.mark("trader", f"Reading {len(events)} games for bets that clear the bar")
+    citynow.mark("trader", f"Reading {len(events)} games for bets that clear the bar", quiet=not events)
     placed = brain.bet_on_board(state, events) if events else []
-    citynow.mark("bookkeeper", f"Placed {len(placed)} paper bets; updating the books" if placed else "Nothing cleared the bar; updating the books")
+    citynow.mark("bookkeeper", f"Placed {len(placed)} paper bets; updating the books" if placed else "Nothing cleared the bar; updating the books", quiet=not placed)
     brain.drought(state, scanned, placed)
 
     if events:
@@ -331,8 +331,12 @@ def scout_run(games):
             return mins >= 10
         return mins >= config.SCOUT_EVERY_MIN
 
-    citynow.mark("buyer", "Scout: buying the boards that are due" + (" (NBA every run before tip)" if nba_hot else ""))
     events, scanned, placed = _scan(state, manual, client, budget, want=want)
+    if scanned:
+        citynow.mark("scout", f"Scout bought {', '.join(s.split(' (')[0].split('_')[-1].upper() for s in scanned)} "
+                              f"for {budget.spent_this_run} credits" + (f", placed {len(placed)} bet(s)" if placed else ""))
+    else:
+        citynow.mark("scout", "Scout: no board due this run", quiet=True)
     budget.job = "closer"
     closed = 0
     try:
@@ -340,7 +344,7 @@ def scout_run(games):
     except Exception as e:
         print(f"[closer] prop closing lines failed: {e}")
     if closing or closed:
-        citynow.mark("closer", f"Closer: closing prices for {len(closing)} board(s) and {closed} prop(s) about to tip")
+        citynow.mark("closer", f"Closing prices for {len(closing)} board(s) and {closed} prop(s) about to tip")
     msg = (f"Scout: {', '.join(scanned) or 'nothing due'} for {budget.spent_this_run} credits"
            + (f"; closing lines for {', '.join(sorted(closing))}" if closing else "")
            + (f"; {closed} prop closing price(s)" if closed else ""))
@@ -416,7 +420,7 @@ def injwatch_run(and_live=False):
     or cleared to play) before tip-off, alert and re-price the whole slate right away instead of waiting
     for the next scheduled refresh."""
     from . import research, alerts
-    citynow.mark("doctor", "Checking the injury report for status changes")
+    citynow.mark("doctor", "Checking the injury report for status changes", quiet=True)
     try:
         ch = research.injury_watch()
     except Exception as e:
@@ -443,7 +447,7 @@ def line_moves(log=print):
     """Free: compare DraftKings' current pregame line (ESPN) for each game still to tip with the line the last sims used.
     Returns a list of 'BOS@TOR total 223.5 → 225' for any spread moved 1+ point or total moved 1.5+."""
     from . import espn_odds as eo
-    citynow.mark("historian", "Comparing DraftKings' lines now with the ones the last simulations used")
+    citynow.mark("historian", "Comparing DraftKings' lines now with the ones the last simulations used", quiet=True)
     sims = store.load("sims.json", None) or {}
     pj = store.load("players.json", None) or {}
     if sims.get("date") != pj.get("date"):
@@ -846,7 +850,7 @@ def manual_issue():
 
 
 def run_checks():
-    citynow.mark("inspector", "Running the building inspection")
+    citynow.mark("inspector", "Running the building inspection", quiet=True)
     try:
         from . import checks
         prev = store.load("checks.json", {}) or {}
@@ -888,18 +892,18 @@ def auto_run():
         except Exception:
             pass
     print(f"[auto] {hour:.2f}h ET: {len(live)} live, {len(pre)} to tip" + (", last night's games still on" if yday_live else ""))
-    citynow.mark("dispatcher", f"{len(live)} games live, {len(pre)} still to tip" + (", last night's games still on" if yday_live else "") + (": nothing is due" if not (live or pre or yday_live) else ""))
+    citynow.mark("dispatcher", f"{len(live)} games live, {len(pre)} still to tip" + (", last night's games still on" if yday_live else "") + (": nothing is due" if not (live or pre or yday_live) else ""), quiet=True)
     if pre:
         _briefing_due_refresh()
     if live or pre:                                 # Kalshi: a second market's lines, free, a look every run
-        citynow.mark("kalshi", "Reading the second market's lines on Kalshi")
+        citynow.mark("kalshi", "Reading the second market's lines on Kalshi", quiet=True)
         try:
             from . import kalshi
             kalshi.refresh(games)
         except Exception as e:
             print(f"[kalshi] failed: {e}")
     if yday_live:
-        citynow.mark("kalshi", "Reading Kalshi's lines for last night's late games")
+        citynow.mark("kalshi", "Reading Kalshi's lines for last night's late games", quiet=True)
         try:
             from . import kalshi
             from datetime import timedelta as _td
@@ -1027,7 +1031,7 @@ if __name__ == "__main__":
     catch_up(_mode)
     if _mode not in ("manual-issue", "probe", "briefing"):
         try:                                        # Daily Briefing: publish when due, keep current, grade (local files only)
-            citynow.mark("writer", "Keeping the Daily Briefing current")
+            citynow.mark("writer", "Keeping the Daily Briefing current", quiet=True)
             from . import briefing
             briefing.tick()
         except Exception as e:

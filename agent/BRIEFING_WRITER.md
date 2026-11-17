@@ -8,6 +8,7 @@ the afternoon props run), **final** (about 6:33pm ET, after the pre-game refresh
 
 1. Get the repo: call `add_repo` with owner `TeamComeback`, repo `Perseverance`, access `push`. Clone or update it at
    `/home/claude/perseverance` (`git pull -q` if it is already there).
+   Go on shift so the city shows you working: `cd /home/claude/perseverance && python3 -m agent.agents shift briefing start "Writing the <edition> edition" && git add docs/data/agents/shift.json && git commit -q -m "Briefing writer on shift" && for i in 1 2 3 4; do git pull -q --rebase && git push -q && break; sleep 5; done`
 2. Read the facts: `cd /home/claude/perseverance && python3 -m agent.briefing brief`. If it says there is no file for
    today, the morning edition has not been published (no games, or the agent's run is late): stop and write nothing.
 3. Research what the feeds may have missed: for every player in the props and the "Watch" lines, run one web search
@@ -27,8 +28,8 @@ the afternoon props run), **final** (about 6:33pm ET, after the pre-game refresh
 
 5. Save it: `python3 -m agent.briefing narrate /tmp/edition.json`. If it is rejected, fix what it names and run it
    again. The usual cause is a number that is not in the facts.
-6. Commit and push:
-   `git add docs/data/briefing docs/data/briefing_track.json && git commit -m "briefing: <edition> edition" && for i in 1 2 3 4; do git pull --rebase -q -X theirs && git push -q && break; sleep 5; done`
+6. Sign off shift and commit and push:
+   `python3 -m agent.agents shift briefing done "<edition> edition published" && git add docs/data/briefing docs/data/briefing_track.json docs/data/agents/shift.json && git commit -m "briefing: <edition> edition" && for i in 1 2 3 4; do git pull --rebase -q -X theirs && git push -q && break; sleep 5; done`
 
 ## Rules
 

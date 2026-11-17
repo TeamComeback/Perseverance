@@ -18,6 +18,7 @@ the owner approves (`LIVE` below, changed by hand).
 
   python3 -m agent.agents brief <newsroom|skeptic|strategist|auditor>   what that agent needs, as JSON
   python3 -m agent.agents save <role> <file.json>                       check the file and put it in place
+  python3 -m agent.agents shift <role> start "<what you're doing>"      on shift (shown live in the city)
 """
 import json
 import sys
@@ -275,7 +276,37 @@ def save(role, path):
         doc["recommendations"] = [r for r in doc.get("recommendations", []) if isinstance(r, dict) and r.get("agent")][:20]
     (config.DATA / DIR).mkdir(parents=True, exist_ok=True)
     store.save(f"{DIR}/{ROLES[role][0]}", doc)
+    n = {"newsroom": len(doc.get("items", [])), "skeptic": len(doc.get("holds", [])),
+         "strategist": len(doc.get("proposals", [])), "auditor": len(doc.get("recommendations", []))}[role]
+    shift(role, done=True, summary={"newsroom": f"{n} news item(s), {sum(1 for i in doc.get('items', []) if i.get('flag'))} flagged",
+                                    "skeptic": f"{n} hold(s)", "strategist": f"{n} proposal(s) (shadow)",
+                                    "auditor": doc.get("summary", "")[:160] or f"{n} recommendation(s)"}[role])
     print(f"saved {DIR}/{ROLES[role][0]}: " + ", ".join(f"{k} {len(v)}" for k, v in doc.items() if isinstance(v, list)))
+
+
+SHIFT_ROLES = {**{k: v[1] for k, v in ROLES.items()}, "briefing": "Briefing writer"}
+
+
+def shift(role, what="", done=False, summary=""):
+    """Claude agents' shift log (docs/data/agents/shift.json): who is on shift now and what they're doing. Only the
+    Claude agents write it (the agent's own runs never touch it), so it can't collide with a run's commit."""
+    if role not in SHIFT_ROLES:
+        raise SystemExit(f"unknown role {role}")
+    (config.DATA / DIR).mkdir(parents=True, exist_ok=True)
+    sh = store.load(f"{DIR}/shift.json", {}) or {}
+    now = store.iso(store.now())
+    cur = sh.get(role) or {}
+    if done:
+        cur.update(finished=now, summary=str(summary)[:200])
+    else:
+        cur = {"name": SHIFT_ROLES[role], "started": now, "doing": str(what)[:160], "finished": None, "summary": ""}
+    sh[role] = cur
+    log = (sh.get("log") or []) + [{"role": role, "name": SHIFT_ROLES[role], "at": now, "ev": "finished" if done else "started",
+                                    "text": str(summary if done else what)[:200]}]
+    sh["log"] = log[-120:]
+    sh["updated"] = now
+    store.save(f"{DIR}/shift.json", sh)
+    print(f"{SHIFT_ROLES[role]} {'finished' if done else 'on shift'}")
 
 
 if __name__ == "__main__":
@@ -283,5 +314,8 @@ if __name__ == "__main__":
         print(json.dumps(brief(sys.argv[2]), indent=1, default=str))
     elif len(sys.argv) >= 4 and sys.argv[1] == "save":
         save(sys.argv[2], sys.argv[3])
+    elif len(sys.argv) >= 4 and sys.argv[1] == "shift":
+        shift(sys.argv[2], " ".join(sys.argv[4:]) if sys.argv[3] == "start" else "", done=sys.argv[3] == "done",
+              summary=" ".join(sys.argv[4:]) if sys.argv[3] == "done" else "")
     else:
         print(__doc__)

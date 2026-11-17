@@ -16,13 +16,20 @@ unattended as a scheduled task: never ask questions, and finish in one pass.
   file and your role file direct you.
 
 ## Steps
-1. `cd /home/claude/perseverance && git pull -q` (the task prompt clones it first if needed).
+1. `cd /home/claude/perseverance && git pull -q` (the task prompt clones it first if needed). Then go on shift, so the
+   city shows you working while you work:
+   ```
+   python3 -m agent.agents shift <role> start "<one short line on what you're about to do>" && \
+   git add docs/data/agents/shift.json && git commit -q -m "<Role> on shift" && \
+   for i in 1 2 3 4; do git pull -q --rebase && git push -q && break; sleep 5; done
+   ```
 2. `python3 -m agent.agents brief <role>` and read it all.
 3. Do your role's work (your role file), write the JSON to `/tmp/<role>.json` following the brief's `schema`.
-4. `python3 -m agent.agents save <role> /tmp/<role>.json`
+4. `python3 -m agent.agents save <role> /tmp/<role>.json` (this also signs you off shift with a one-line summary).
 5. Commit and push, retrying on a race with the agent's own runs:
    ```
    git add docs/data/agents && git commit -q -m "<Role>: <one line>" && \
    for i in 1 2 3 4; do git pull -q --rebase && git push -q && break; sleep 5; done
    ```
-6. Stop. No summary message to the owner unless your role file says so.
+6. Stop. No summary message to the owner unless your role file says so. If you stop early without saving, sign off
+   anyway: `python3 -m agent.agents shift <role> done "<why>"`, then commit and push `docs/data/agents/shift.json`.

@@ -44,6 +44,11 @@
    "at": "2026-11-17",
    "by": "Audit & Night School",
    "text": "Four Claude agents join in shadow: Newsroom, Skeptic, Strategist and Auditor. Their calls are graded before any of them can act."
+  },
+  {
+   "at": "2026-11-17",
+   "by": "Storefront",
+   "text": "The city now rests when nobody is working: an On shift panel, a live activity log, and desks fire only when they change something. Brighter 3D."
   }
  ],
  "companies": [
@@ -459,6 +464,14 @@
   "agents/audit.json": {
    "name": "Auditor's weekly scorecard",
    "fresh_h": 200
+  },
+  "city_log.json": {
+   "name": "City activity log",
+   "fresh_h": 2
+  },
+  "agents/shift.json": {
+   "name": "Claude agents' shifts",
+   "fresh_h": 30
   }
  },
  "desks": [
@@ -1195,7 +1208,8 @@
     "board.json",
     "manual.json",
     "refresh_asked.json",
-    "city_now.json"
+    "city_now.json",
+    "city_log.json"
    ]
   },
   {
@@ -1360,7 +1374,9 @@
    "reads": [
     "city_live.json",
     "city_trace.json",
-    "city_now.json"
+    "city_now.json",
+    "city_log.json",
+    "agents/shift.json"
    ]
   },
   {
@@ -1518,7 +1534,8 @@
    ],
    "writes": [
     "agents.json",
-    "state.json"
+    "state.json",
+    "agents/shift.json"
    ]
   }
  ],

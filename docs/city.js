@@ -94,14 +94,14 @@ function building(c) {
       stroke="${col}" stroke-opacity="${st === "vacant" ? .7 : st === "hot" ? .9 : .35}" stroke-dasharray="${st === "vacant" ? "1.5 1.2" : ""}" stroke-width=".5"/>`;
     // the worker at the desk, seen through the glass: bright and typing if the desk worked in the last 3 hours
     if (st !== "vacant") { const [cx, cy] = face(g, .46, (z0 + z1) / 2), wc = st === "hot" ? "#fff" : st === "probation" ? "#FBBF24" : st === "understudy" ? "#A78BFA" : st === "lit" ? col : "#4A5670";
-      s += `<g class="wkr ${st}" style="--c:${col};animation-delay:${(i * .23).toFixed(2)}s" pointer-events="none"><circle cx="${(cx - 1.6).toFixed(1)}" cy="${(cy - 1.9).toFixed(1)}" r="1.45" fill="${wc}"/>
+      s += `<g class="wkr ${st}" id="k-${did}" style="--c:${col}" pointer-events="none"><circle cx="${(cx - 1.6).toFixed(1)}" cy="${(cy - 1.9).toFixed(1)}" r="1.45" fill="${wc}"/>
         <path d="M${(cx - 3.4).toFixed(1)} ${(cy + 3.1).toFixed(1)}q0-3.6 1.8-3.6t1.8 3.6z" fill="${wc}"/>
         <rect class="mon" x="${(cx + 1.6).toFixed(1)}" y="${(cy - 1.2).toFixed(1)}" width="2.6" height="2.2" rx=".4" fill="${st === "hot" || st === "lit" ? "#E8FBFF" : "#2B3754"}"/>
         <line x1="${(cx - 4.4).toFixed(1)}" y1="${(cy + 3.2).toFixed(1)}" x2="${(cx + 4.8).toFixed(1)}" y2="${(cy + 3.2).toFixed(1)}" stroke="${col}" stroke-opacity=".7" stroke-width=".5"/></g>`; }
   });
   s += `<polygon points="${pts(top)}" fill="${col}" fill-opacity=".16" stroke="${col}" stroke-width=".9" filter="url(#soft)"/>`;
   s += `<line x1="${g.x}" y1="${g.y - h}" x2="${g.x}" y2="${g.y - h - 13}" stroke="${col}" stroke-width=".8" stroke-opacity=".8"/>`;
-  s += `<circle cx="${g.x}" cy="${g.y - h - 13}" r="1.6" fill="${col}"><animate attributeName="opacity" values="1;.2;1" dur="${2 + (c.desks.length % 3)}s" repeatCount="indefinite"/></circle>`;
+  s += `<circle cx="${g.x}" cy="${g.y - h - 13}" r="1.6" fill="${col}"/>`;
   s += `<text class="lbl" x="${g.x}" y="${g.y - h - 27}" text-anchor="middle">${esc(c.name.replace(/^The /, ""))}</text>`;
   s += `<text class="sub" x="${g.x}" y="${g.y - h - 18}" text-anchor="middle">${esc(c.subtitle)}</text>`;
   return s + `</g>`;
@@ -112,7 +112,7 @@ function spire() {
   const right = [[x, y - h + 30 + b], [x + a, y - h + 30], [x + a, y], [x, y + b]];
   let s = `<g class="bld" data-spire="1" id="b-spire">`;
   s += `<ellipse cx="${x}" cy="${y + 4}" rx="70" ry="24" fill="url(#corepool)"/>`;
-  for (const [r, d] of [[52, 14], [82, 22], [112, 30]]) s += `<ellipse cx="${x}" cy="${y + 3}" rx="${r}" ry="${r * .5}" fill="none" stroke="#7FE3FF" stroke-opacity="${.22 - r / 1000}" stroke-width=".7" stroke-dasharray="2 5"><animate attributeName="stroke-dashoffset" values="0;-${d}" dur="${2 + r / 40}s" repeatCount="indefinite"/></ellipse>`;
+  for (const [r, d] of [[52, 14], [82, 22], [112, 30]]) s += `<ellipse cx="${x}" cy="${y + 3}" rx="${r}" ry="${r * .5}" fill="none" stroke="#7FE3FF" stroke-opacity="${.22 - r / 1000}" stroke-width=".7" stroke-dasharray="2 5"><animate class="spa" attributeName="stroke-dashoffset" values="0;-${d}" dur="${2 + r / 40}s" begin="indefinite" repeatCount="indefinite"/></ellipse>`;
   s += `<polygon points="${pts(left)}" fill="url(#spl)"/><polygon points="${pts(right)}" fill="url(#spr)"/>`;
   s += `<polygon points="${pts([[x - a, y - h + 30], [x, y - h - 6], [x, y - h + 30 + b]])}" fill="#E8FBFF" fill-opacity=".85"/>`;
   s += `<polygon points="${pts([[x, y - h - 6], [x + a, y - h + 30], [x, y - h + 30 + b]])}" fill="#A78BFA" fill-opacity=".85"/>`;
@@ -120,7 +120,7 @@ function spire() {
   s += `<g filter="url(#soft)">`;
   for (const [rot, col, dur] of [[0, "#7FE3FF", 7], [60, "#A78BFA", 9], [120, "#E5C158", 11]])
     s += `<g transform="translate(${x} ${oy})"><g><ellipse rx="34" ry="10" fill="none" stroke="${col}" stroke-width=".9" stroke-opacity=".85" transform="rotate(${rot})"/>
-      <circle r="1.8" fill="${col}" transform="rotate(${rot})"><animateMotion dur="${dur / 2}s" repeatCount="indefinite" path="M34,0 A34,10 0 1,1 -34,0 A34,10 0 1,1 34,0"/></circle></g></g>`;
+      <circle r="1.8" fill="${col}" transform="rotate(${rot})"><animateMotion class="spa" dur="${dur / 2}s" begin="indefinite" repeatCount="indefinite" path="M34,0 A34,10 0 1,1 -34,0 A34,10 0 1,1 34,0"/></circle></g></g>`;
   s += `<circle cx="${x}" cy="${oy}" r="3.4" fill="#fff"/></g>`;
   return s + `</g>`;
 }
@@ -154,7 +154,7 @@ function drawCity() {
   defs += `</defs>`;
   let s = defs;
   for (let i = 0; i < 70; i++) { const x = R() * VW, y = R() * 230, r = R() * .9 + .2;
-    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}" fill="#fff" opacity="${(.15 + R() * .5).toFixed(2)}">${R() < .3 ? `<animate attributeName="opacity" values=".1;.8;.1" dur="${(3 + R() * 5).toFixed(1)}s" repeatCount="indefinite"/>` : ""}</circle>`; }
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}" fill="#fff" opacity="${(.15 + R() * .5).toFixed(2)}"/>`; }
   // the ground: an isometric grid with a horizon glow
   s += `<rect x="0" y="95" width="${VW}" height="${VH - 95}" fill="url(#corepool)" opacity=".18"/>`;
   for (let k = -24; k <= 24; k++) {
@@ -167,18 +167,15 @@ function drawCity() {
   const seen = new Set(); s += `<g id="beams">`;
   for (const bm of ORG.beams) { const k = bm.source + bm.company; if (seen.has(k)) continue; seen.add(k);
     const a = GEO["src-" + bm.source], g = GEO[bm.company]; if (!a || !g) continue;
-    s += `<path class="beam" d="M${a[0]},${a[1] + 4} L${g.roof[0]},${g.roof[1] - 14}" stroke="#7FE3FF" stroke-opacity=".16" stroke-width=".6" stroke-dasharray="1 3" fill="none"><animate attributeName="stroke-dashoffset" values="8;0" dur="1.6s" repeatCount="indefinite"/></path>`; }
+    s += `<path class="beam" d="M${a[0]},${a[1] + 4} L${g.roof[0]},${g.roof[1] - 14}" stroke="#7FE3FF" stroke-opacity=".16" stroke-width=".6" stroke-dasharray="1 3" fill="none"/>`; }
   s += `</g>`;
-  // routes: documents flowing between companies; brighter and carrying qubits when the documents are fresh
+  // routes: documents flowing between companies; brighter when the documents are fresh. A qubit only travels a
+  // route when a desk actually writes one of its documents (flashDesk), never on its own.
   s += `<g id="routes">`;
   ORG.routes.forEach((r, i) => {
     const a = GEO[r.from].port, b = GEO[r.to].port, cv = curve(a, b, .34, 6), f = routeFresh(r), col = CO[r.from].color;
     const w = Math.min(2.2, .5 + r.docs.length * .32), op = f != null && f < 6 ? .42 : f != null && f < 30 ? .24 : .1;
     s += `<g class="route" data-route="${i}"><path id="rt${i}" d="${cv.d}" fill="none" stroke="${col}" stroke-opacity="${op}" stroke-width="${w.toFixed(2)}"/>`;
-    if (f != null && f < 6) for (let k = 0; k < Math.min(3, r.docs.length); k++) {
-      const dur = (3 + R() * 3).toFixed(1);
-      s += `<circle r="1.5" fill="${col}" filter="url(#soft)"><animateMotion dur="${dur}s" begin="-${(k * dur / 3).toFixed(2)}s" repeatCount="indefinite"><mpath href="#rt${i}"/></animateMotion></circle>`;
-    }
     s += `</g>`;
   });
   s += `</g>`;
@@ -381,8 +378,9 @@ function scheduleHtml() {
 }
 function tickClock() {
   const n = ORG && nextChime(); if (!n) return;
-  const mins = Math.round((n.t - Date.now()) / 6e4), runAgo = LIVE ? ago(LIVE.updated) : "–", st = stepsOf(NOW);
-  const lastRun = NOW && NOW.finished ? `last run ${ago(NOW.finished)}, ${new Set(st.map(s => s.desk)).size} desks` : `city updated ${runAgo}`;
+  const mins = Math.round((n.t - Date.now()) / 6e4), runAgo = LIVE ? ago(LIVE.updated) : "–", st = stepsOf(NOW).filter(x => !x.q);
+  const lastRun = NOW && NOW.finished ? (st.length ? `last run ${ago(NOW.finished)}, ${new Set(st.map(s => s.desk)).size} desks worked` : `last check-in ${ago(NOW.finished)}, nothing changed`) : `city updated ${runAgo}`;
+  $("#clock").classList.toggle("live", busyNow || onShift().length > 0);
   $("#clock").innerHTML = `<span class="pulse"></span><span>${etTime(new Date())} ET · next <b>${esc(MODE[n.s.mode] || n.s.mode)}</b> ${mins < 1 ? "now" : mins < 60 ? `in ${mins}m` : etTime(n.t)} · ${lastRun}</span>` +
     (st.length ? `<button class="rp" id="rp" aria-label="${replay ? "Stop the replay" : "Replay the last run"}">${replay ? "■ stop" : "▶ replay"}</button>` : "");
 }
@@ -671,7 +669,7 @@ function enterInside(co, deskId, instant) {
     let el = $("#inroom"); if (!el) { el = document.createElement("div"); el.id = "inroom"; st.appendChild(el); }
     el.innerHTML = insideHtml(co); el.classList.remove("go"); void el.offsetWidth; if (!instant) el.classList.add("go");
     st.classList.add("in"); $("#zoomout").classList.remove("show"); syncMap();
-    clearInterval(actTimer); actTimer = setInterval(tickActs, 3600);
+    clearInterval(actTimer);
     history.replaceState(null, "", "#co=" + co);
     if (deskId) { const r = $("#room-" + deskId); if (r) { r.classList.add("pick"); setTimeout(() => r.scrollIntoView({behavior: "smooth", block: "center"}), instant ? 0 : 420); } }
     else if (!instant) st.scrollIntoView({behavior: "smooth", block: "start"});
@@ -698,6 +696,7 @@ function nowItems() {
 function tickNow() {
   const el = $("#now"); if (!el || !ORG) return;
   if (replay || busyNow) return;                                          // a run is being shown: the strip belongs to it
+  el.style.display = "none"; el.classList.remove("run"); return;          // idle: nothing rotates (Nov 17); On shift says who's working
   const it = nowItems(); if (!it.length) { el.style.display = "none"; return; }
   const x = it[nowN++ % it.length], c = CO[x.d.company];
   el.classList.add("swap");
@@ -725,7 +724,14 @@ function flashDesk(id) {
       f.setAttribute("cx", bb.x + bb.width / 2); f.setAttribute("cy", bb.y + bb.height / 2); f.setAttribute("r", 3); f.setAttribute("fill", "none"); f.setAttribute("stroke", r1 > 20 ? c.color : "#fff"); f.setAttribute("stroke-width", "1.4");
       f.innerHTML = `<animate attributeName="r" from="3" to="${r1}" dur="${dur}s" fill="freeze"/><animate attributeName="opacity" from="1" to="0" dur="${dur}s" fill="freeze"/>`;
       fxg.appendChild(f); setTimeout(() => f.remove(), dur * 1000 + 100); } }
-  const room = inside === d.company && $("#room-" + id); if (room) { room.classList.add("livepulse"); setTimeout(() => room.classList.remove("livepulse"), 3000); }
+  const room = inside === d.company && $("#room-" + id); if (room) { room.classList.add("livepulse", "work"); setTimeout(() => room.classList.remove("livepulse", "work"), 3400); }
+  const k = $("#k-" + id); if (k) { k.classList.remove("work"); void k.getBBox; k.classList.add("work"); setTimeout(() => k.classList.remove("work"), 3400); }
+  if (!inside && !(mode3d && C3) && fxg) ORG.routes.forEach((r, i) => {           // documents this desk just wrote travel once
+    if (r.from !== d.company || !r.docs.some(x => (d.writes || []).includes(x))) return;
+    const q = document.createElementNS("http://www.w3.org/2000/svg", "circle"); q.setAttribute("r", "2"); q.setAttribute("fill", c.color); q.setAttribute("filter", "url(#soft)");
+    q.innerHTML = `<animateMotion dur="1.7s" fill="freeze" begin="indefinite"><mpath href="#rt${i}"/></animateMotion>`; fxg.appendChild(q);
+    const rt = $("#rt" + i); if (rt) { rt.style.transition = "stroke-opacity .3s"; const o = rt.getAttribute("stroke-opacity"); rt.setAttribute("stroke-opacity", ".9"); setTimeout(() => rt.setAttribute("stroke-opacity", o), 1900); }
+    try { q.firstChild.beginElement(); } catch (e) { /* SMIL unsupported */ } setTimeout(() => q.remove(), 1900); });
 }
 function showStep(i) {
   const st = replay.steps[i], d = DK[st.desk], c = CO[d.company], el = $("#now"); replay.i = i;
@@ -735,7 +741,7 @@ function showStep(i) {
   flashDesk(d.id);
 }
 function startReplay(manual) {
-  const steps = stepsOf(NOW); if (!steps.length || cur) return;
+  const steps = stepsOf(NOW).filter(x => !x.q); if (!steps.length || cur) return;     // quiet checks are logged, not fired
   stopReplay(); replay = {steps, i: -1, manual: !!manual, timers: []};
   let t = 0; steps.forEach((s, i) => { if (i) t += Math.max(1500, Math.min(3600, (s.at - steps[i - 1].at) * 1000)); replay.timers.push(setTimeout(() => showStep(i), t)); });
   replay.timers.push(setTimeout(() => { stopReplay(); tickNow(); tickClock(); }, t + 3800));
@@ -743,7 +749,9 @@ function startReplay(manual) {
 }
 function stopReplay() { if (!replay) return; replay.timers.forEach(clearTimeout); replay = null; const el = $("#now"); if (el) el.classList.remove("run"); }
 function setBusy(b) {
-  busyNow = !!b; const sp = $("#b-spire"); if (sp) sp.classList.toggle("busy", busyNow); if (C3) C3.setBusy(busyNow);
+  const was = busyNow; busyNow = !!b; const sp = $("#b-spire"); if (sp) sp.classList.toggle("busy", busyNow); if (C3) C3.setBusy(busyNow);
+  const cy = $("#city"); if (cy) cy.classList.toggle("busy", busyNow); if (was !== busyNow) renderShift();
+  if (cy) cy.querySelectorAll(".spa").forEach(el => { try { busyNow ? el.beginElement() : el.endElement(); } catch (e) { /* no SMIL */ } });   // the Spire turns only while a run works
   if (!busyNow || replay) return;
   const el = $("#now"), r = gh.run; if (!el || !r) return; const secs = Math.max(0, Math.round((Date.now() - new Date(r.run_started_at || r.created_at)) / 1000));
   el.style.display = ""; el.classList.add("run"); el.dataset.go = "ops"; el.dataset.deskid = "dispatcher"; el.style.setProperty("--c", "#7FE3FF");
@@ -753,11 +761,11 @@ async function loadNow(first) {
   const n = await get("data/city_now.json", null); if (!n || !n.started) return;
   const fresh = runKey(n) !== runKey(NOW); NOW = n; if (!fresh) return;
   if (n.finished && gh.run && (!n.gh_run || String(n.gh_run) === String(gh.run.id) || new Date(n.finished) >= new Date(gh.run.created_at))) { if (gh.run.status === "completed") setBusy(false); }
-  if (first) { tickClock(); if (n.finished && ageH(n.finished) < .1 && !location.hash.startsWith("#trace")) setTimeout(() => { if (!replay && !cur) startReplay(false); }, 3200); return; }
+  if (first) { tickClock(); if (n.finished && !n.idle && ageH(n.finished) < .1 && !location.hash.startsWith("#trace")) setTimeout(() => { if (!replay && !cur) startReplay(false); }, 3200); return; }
   if (!n.finished) return;
   nowFast = 0; setBusy(false);
   const L = await get("data/city_live.json", null); if (L && L.updated !== (LIVE && LIVE.updated)) { LIVE = L; if (!cur) drawCity(); }
-  tickClock(); startReplay(false);
+  tickClock(); loadActivity(true); if (!n.idle) startReplay(false);
 }
 async function pollGitHub() {
   if (document.hidden || Date.now() < gh.reset) return;
@@ -823,6 +831,89 @@ document.addEventListener("input", e => { if (e.target.id === "tq") { tQuery = e
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); });
 $("#seg").addEventListener("click", e => { const b = e.target.closest("button"); if (b && !b.disabled) setView(b.dataset.v); });
 
+
+// ------------------------------------------------------------------ On shift now + the activity log (Nov 17)
+// city_log.json: every run of the agent in the last 36 hours, desk by desk, with checks that found nothing marked
+// quiet (q). agents/shift.json: the Claude agents going on and off shift. Nothing on the map moves unless one of
+// these says someone is working.
+let ACT = {log: null, shift: null, last: 0, seen: null}, logF = "act", lShow = 25;
+const CLAUDE = [["Briefing writer", "7:22,14:41,18:33"], ["Newsroom", "11:04,17:04"], ["Skeptic", "18:17,21:17"], ["Strategist", "5:12"], ["Auditor", "12:23", 0]];
+const CLC = "#C4B5FD";
+function etParts(d) { const p = {}; for (const x of new Intl.DateTimeFormat("en-US", {timeZone: "America/New_York", hour12: false, weekday: "short", hour: "2-digit", minute: "2-digit"}).formatToParts(d)) p[x.type] = x.value; return {wd: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(p.weekday), m: (+p.hour % 24) * 60 + +p.minute}; }
+function nextUp(n = 2) {
+  const now = new Date(), e = etParts(now), out = [];
+  for (const [name, times, dow] of CLAUDE) for (const t of times.split(",")) { const [h, m] = t.split(":").map(Number); let mins = h * 60 + m - e.m, dd = 0;
+    if (dow != null) { dd = (dow - e.wd + 7) % 7; if (!dd && mins <= 0) dd = 7; } else if (mins <= 0) dd = 1;
+    out.push({name, mins: mins + dd * 1440, claude: true}); }
+  for (const sc of ORG.schedule) { const t = nextFire(sc.cron, now); if (t) out.push({name: MODE[sc.mode] || sc.mode, mins: (t - now) / 6e4}); }
+  return out.sort((a, b) => a.mins - b.mins).slice(0, n).map(x => `<b>${esc(x.name)}${x.claude ? " (Claude)" : ""}</b> ${x.mins < 60 ? "in " + Math.max(1, Math.round(x.mins)) + "m" : etTime(new Date(now.getTime() + x.mins * 6e4))}`).join(" · ");
+}
+function onShift() {
+  const sh = (ACT.shift || {}), out = [];
+  for (const [role, x] of Object.entries(sh)) if (x && x.started && !x.finished && ageH(x.started) < .75) out.push({role, ...x});
+  return out;
+}
+function lastAction() {
+  const runs = ((ACT.log || {}).runs || []).filter(r => !r.idle), r = runs[runs.length - 1];
+  const sl = ((ACT.shift || {}).log || []).filter(x => x.ev === "finished"), c = sl[sl.length - 1];
+  const a = r ? {at: r.finished || r.started, t: (() => { const st = (r.steps || []).filter(x => !x.q && DK[x.desk]); const x = st[st.length - 1]; return x ? `${DK[x.desk].title}: ${x.text}` : MODE[r.mode] || r.mode; })()} : null;
+  const b = c ? {at: c.at, t: `${c.name} (Claude): ${c.text}`} : null;
+  return [a, b].filter(Boolean).sort((x, y) => y.at.localeCompare(x.at))[0];
+}
+function renderShift() {
+  const el = $("#shift"); if (!el || !ORG) return;
+  const who = onShift(), rows = [];
+  if (busyNow && gh.run) { const secs = Math.max(0, Math.round((Date.now() - new Date(gh.run.run_started_at || gh.run.created_at)) / 1000));
+    rows.push(`<div class="who" data-wgo="ops" style="--c:#7FE3FF"><b>Dispatcher</b><span>${gh.run.status === "queued" ? "run queued" : "working a run: desk-by-desk log lands when it ends"}</span><em>${secs < 90 ? secs + "s" : Math.round(secs / 60) + "m"}</em></div>`); }
+  for (const x of who) rows.push(`<div class="who" style="--c:${CLC}"><b>${esc(x.name)} (Claude)</b><span>${esc(x.doing || "working")}</span><em>${Math.max(1, Math.round(ageH(x.started) * 60))}m</em></div>`);
+  const on = rows.length > 0, la = lastAction();
+  el.classList.toggle("on", on);
+  el.innerHTML = `<i></i><div class="sb"><div class="st">${on ? "On shift now" : "City at rest · nobody on shift"}</div>${rows.join("")}
+    ${!on && la ? `<div class="rest">Last action ${ago(la.at)}: <b>${esc(cut(la.t, 90))}</b></div>` : ""}
+    <div class="rest">Next: ${nextUp(2)}</div></div>`;
+  $("#clock") && $("#clock").classList.toggle("live", on);
+}
+function logEvents() {
+  const ev = [];
+  for (const r of ((ACT.log || {}).runs || [])) ev.push({kind: r.idle ? "idle" : "run", at: r.started, r});
+  for (const x of ((ACT.shift || {}).log || [])) ev.push({kind: "claude", at: x.at, x});
+  return ev.sort((a, b) => b.at.localeCompare(a.at));
+}
+function renderLog() {
+  const el = $("#log"); if (!el || !ORG) return;
+  let ev = logEvents().filter(e => logF === "all" || (logF === "claude" ? e.kind === "claude" : e.kind !== "idle"));
+  const html = [], seen = ACT.seen; let i = 0;
+  while (i < ev.length && html.length < lShow) {
+    const e = ev[i];
+    if (e.kind === "idle") { let j = i; while (j + 1 < ev.length && ev[j + 1].kind === "idle") j++;
+      const n = j - i + 1, t1 = etTime(new Date(ev[j].at)), t2 = etTime(new Date(e.at));
+      html.push(`<div class="lg idle"><div class="lr"><b>${n > 1 ? n + " check-ins" : "Check-in"} · nothing changed</b><span>${n > 1 ? t1 + "–" + t2 : t2}</span></div></div>`); i = j + 1; continue; }
+    const fresh = seen && e.at > seen ? " fresh" : "";
+    if (e.kind === "claude") { const x = e.x;
+      html.push(`<div class="lg claude${fresh}"><div class="lr"><b>${esc(x.name)} (Claude) ${x.ev === "started" ? "went on shift" : "finished"}</b><span>${etTime(new Date(x.at))}</span></div>${x.text ? `<div class="ls" style="--c:${CLC}"><i></i><span>${esc(x.text)}</span></div>` : ""}</div>`); i++; continue; }
+    const r = e.r, st = (r.steps || []).filter(x => DK[x.desk] && (logF === "all" || !x.q)), act = (r.steps || []).filter(x => !x.q).length;
+    html.push(`<div class="lg${fresh}"><div class="lr"><b>${esc(MODE[r.mode] || r.mode)}</b>${r.secs != null ? `· ${Math.round(r.secs)}s` : ""}<span>${act} action${act === 1 ? "" : "s"} · ${etTime(new Date(r.started))}</span></div>` +
+      st.map(x => { const d = DK[x.desk], c = CO[d.company]; return `<div class="ls${x.q ? " q" : ""}" data-lgo="${d.company}" data-ldesk="${d.id}" style="--c:${c.color}"><i></i><b>${esc(d.title)}</b><span>${esc(x.text)}</span></div>`; }).join("") + `</div>`);
+    i++;
+  }
+  el.innerHTML = html.join("") || `<div class="lg"><div class="lr">${logF === "claude" ? "No Claude agent shifts in the log yet." : "Nothing logged yet: the log starts with the next run."}</div></div>`;
+  if (ev.length > i) el.insertAdjacentHTML("beforeend", `<button class="lmore" id="lmore">Show more</button>`);
+}
+async function loadActivity(force) {
+  const t = Date.now(); if (!force && t - ACT.last < 20000) return; ACT.last = t;
+  const [lg, sh] = await Promise.all([get("data/city_log.json", null), get("data/agents/shift.json", null)]);
+  const prevTop = ACT.log ? logEvents()[0] : null;
+  if (lg) ACT.log = lg; if (sh) ACT.shift = sh;
+  if (ACT.seen == null) ACT.seen = (logEvents()[0] || {}).at || ""; else if (prevTop) ACT.seen = prevTop.at;
+  renderShift(); renderLog();
+}
+document.addEventListener("click", e => {
+  const f = e.target.closest("[data-lf]"); if (f) { logF = f.dataset.lf; lShow = 25; document.querySelectorAll("[data-lf]").forEach(b => b.classList.toggle("on", b === f)); renderLog(); return; }
+  if (e.target.closest("#lmore")) { lShow += 25; renderLog(); return; }
+  const s = e.target.closest("[data-lgo]"), w = e.target.closest("[data-wgo]");
+  if (s || w) { if (view !== "live") { if (view === "trace") stopTrace(); view = "live"; applyView(); } enterInside(s ? s.dataset.lgo : w.dataset.wgo, s ? s.dataset.ldesk : "dispatcher"); }
+});
+
 // ------------------------------------------------------------------ boot
 (async () => {
   [ORG, LIVE] = await Promise.all([get("city/org.json", null), get("data/city_live.json", null)]);
@@ -835,12 +926,12 @@ $("#seg").addEventListener("click", e => { const b = e.target.closest("button");
     [chimes, "chimes a day"], g ? [num(g.commits), `commits · ${days} days`] : null, [t.tests, "backtests"]].filter(Boolean).map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
   $("#ticker").innerHTML = ORG.bulletin.slice(0, 3).map(x => `<div><b>${esc(x.by)}</b>${esc(x.text)}</div>`).join("") || "";
   drawCity(); tickClock(); setInterval(tickClock, 30000);
-  tickNow(); nowTimer = setInterval(tickNow, 3800);
+  tickNow(); loadActivity(true); setInterval(() => { if (!document.hidden) { loadActivity(false); renderShift(); } }, 5000);
   setInterval(async () => { const L = await get("data/city_live.json", null); if (L && L.updated !== (LIVE && LIVE.updated)) { LIVE = L; if (!cur) { drawCity(); } tickClock(); } }, 120000);
   // live status: the run log every 20 seconds (every 6 just after a run ends), GitHub for a run in progress
   loadNow(true); let nowLast = Date.now();
   setInterval(() => { if (document.hidden) return; const t = Date.now(); if (t - nowLast >= (t < nowFast ? 6000 : 20000)) { nowLast = t; loadNow(false); } pollGitHub(); }, 2000);
-  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadNow(false); gh.last = Math.min(gh.last, Date.now() - 60000); } });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadNow(false); loadActivity(true); gh.last = Math.min(gh.last, Date.now() - 60000); } });
   const h = decodeURIComponent(location.hash.slice(1));
   if (canGL && (h === "3d" || (pref("pcity3d") === "1" && !h))) set3d(true, true);
   if (h.startsWith("trace=")) { view = "trace"; applyView(); TRACE = await get("data/city_trace.json", {traces: []}); stack = [traceList()]; startTrace(h.slice(6)); }
