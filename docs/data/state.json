@@ -14163,7 +14163,7 @@
       "book": "espnbet",
       "fair_p": 0.5021,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "model": {
        "proj": 6.11,
        "base": 5.38,
@@ -14194,6 +14194,22 @@
          "txt": "WSH games have +10% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 120.0,
+       "away": 136.0
+      },
+      "actual": 9.0,
+      "box": {
+       "min": 32.0,
+       "pts": 12.0,
+       "reb": 6.0,
+       "ast": 9.0,
+       "tpm": 1.0,
+       "tpa": 4.0,
+       "fga": 10.0,
+       "fta": 3.0,
+       "tov": 1.0
       }
      }
     ],
@@ -14204,10 +14220,218 @@
     "note": "Proj 6.1 vs line 7.5 (norm 5.4, 25 min). Model 72% vs market 50%. WSH gives point guards +16% assists vs their norm (#1 softest of 30) \u00b7 Players with his profile: +9% assists vs WSH (87 close comps) \u00b7 His history vs WSH: 9.0 assists/g in 2 games (+5%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-17T05:12:32Z",
+    "review": {
+     "headline": "LOST: 9 assists vs Under 7.5",
+     "final": "Memphis Grizzlies 136 \u2013 Washington Wizards 120",
+     "legs": [
+      {
+       "outcome": "Cam Spencer Under",
+       "result": "loss",
+       "headline": "9 assists vs Under 7.5",
+       "final": "Memphis Grizzlies 136 \u2013 Washington Wizards 120",
+       "why": [
+        "Cam Spencer finished with 9 assists against a line of 7.5: under missed by 1.5.",
+        "Minutes: played 32 vs 24.6 projected.",
+        "Box score: 9 ast, 1 TO.",
+        "Model projected 6.1 (5.4 norm \u00d7 1.14 matchup); actual was +2.9 off (+1.0 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (7) in a matchup the model rated soft.",
+        "Signal: WSH gives point guards +16% assists vs their norm (#1 softest of 30)",
+        "Signal: Players with his profile: +9% assists vs WSH (87 close comps)",
+        "Signal: His history vs WSH: 9.0 assists/g in 2 games (+5%)",
+        "We priced it at 59% to hit vs 51% needed to break even at 1.95x (+15.7% expected edge).",
+        "Consensus fair probability when placed: 50% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "WSH",
+        "away": "MEM"
+       },
+       "final": "MEM 136 \u2013 WSH 120",
+       "periods": {
+        "away": [
+         33,
+         26,
+         42,
+         35
+        ],
+        "home": [
+         35,
+         34,
+         18,
+         33
+        ]
+       },
+       "largest_lead": {
+        "MEM": 22,
+        "WSH": 12
+       },
+       "largest_lead_at": {
+        "MEM": "1:10 4th Q",
+        "WSH": "24.8 2nd Q"
+       },
+       "lead_changes": 20,
+       "ties": 9,
+       "runs": [
+        {
+         "team": "MEM",
+         "pts": 10,
+         "from": "10:33 3rd Q",
+         "to": "8:11 3rd Q",
+         "score": "MEM 73-73 WSH"
+        },
+        {
+         "team": "WSH",
+         "pts": 9,
+         "from": "4:02 2nd Q",
+         "to": "2:30 2nd Q",
+         "score": "MEM 55-62 WSH"
+        },
+        {
+         "team": "MEM",
+         "pts": 9,
+         "from": "5:54 3rd Q",
+         "to": "3:58 3rd Q",
+         "score": "MEM 86-79 WSH"
+        },
+        {
+         "team": "MEM",
+         "pts": 8,
+         "from": "1:56 3rd Q",
+         "to": "1:16 3rd Q",
+         "score": "MEM 101-87 WSH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "MEM",
+         "swing": 19,
+         "from": "11:22 3rd Q",
+         "to": "3:37 3rd Q",
+         "mins": 7.8,
+         "from_score": "MEM 61-71 WSH",
+         "to_score": "MEM 90-81 WSH",
+         "pts_for": 29,
+         "pts_against": 10
+        },
+        {
+         "team": "WSH",
+         "swing": 15,
+         "from": "5:37 2nd Q",
+         "to": "24.8 2nd Q",
+         "mins": 5.2,
+         "from_score": "MEM 53-50 WSH",
+         "to_score": "MEM 57-69 WSH",
+         "pts_for": 19,
+         "pts_against": 4
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Cameron Boozer (MEM): 29 pts, 7 reb, 7 ast, 7-13 3PT in 29 min",
+        "Zach Edey (MEM): 23 pts, 10 reb, 1 ast, 0-0 3PT in 21 min",
+        "AJ Dybantsa (WSH): 21 pts, 5 reb, 3 ast, 1-7 3PT in 32 min",
+        "Anthony Davis (WSH): 23 pts, 4 reb, 0 ast, 0-1 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 2,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 4,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 2,
+          "reb": 3,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "3:37 3rd Q"
+        ],
+        "box": {
+         "id": "4433083",
+         "name": "Cam Spencer",
+         "team": "MEM",
+         "min": "32",
+         "pts": 12,
+         "reb": 6,
+         "ast": 9,
+         "3pt": "1-4",
+         "fg": "4-10",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MEM 59-69 WSH, WSH up 10.",
+        "The 3rd quarter decided the most: MEM won it 42-18.",
+        "Largest leads: MEM 22 (1:10 4th Q), WSH 12 (24.8 2nd Q). 20 lead changes, 9 ties.",
+        "Momentum swing: MEM outscored them 29-10 in 7.8 minutes (11:22 3rd Q to 3:37 3rd Q), moving it from MEM 61-71 WSH to MEM 90-81 WSH.",
+        "Momentum swing: WSH outscored them 19-4 in 5.2 minutes (5:37 2nd Q to 24.8 2nd Q), moving it from MEM 53-50 WSH to MEM 57-69 WSH.",
+        "MEM went on a 10-0 run (10:33 3rd Q to 8:11 3rd Q), making it MEM 73-73 WSH.",
+        "WSH went on a 9-0 run (4:02 2nd Q to 2:30 2nd Q), making it MEM 55-62 WSH.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Cam Spencer by period (AST): Q1 3, Q2 0, Q3 3, Q4 3.",
+        "He went over 7.5 in Q4.",
+        "Threes made at: 3:37 3rd Q."
+       ],
+       "espn_id": "401909996",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909996"
+      }
+     ]
+    }
    }
   ],
   "runs": []
@@ -14402,9 +14626,9 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 33,
-   "staked": 165.0,
-   "profit": -41.650000000000006,
+   "bets": 34,
+   "staked": 170.0,
+   "profit": -46.650000000000006,
    "clv_n": 0,
    "clv_sum": 0.0,
    "tags": {
@@ -14419,9 +14643,9 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 17,
+     "n": 18,
      "won": 6,
-     "lost": 11
+     "lost": 12
     },
     "matchup-read-wrong": {
      "n": 12,
@@ -14439,14 +14663,14 @@
      "lost": 4
     },
     "model-miss": {
-     "n": 16,
+     "n": 17,
      "won": 0,
-     "lost": 16
+     "lost": 17
     },
     "minutes-long": {
-     "n": 10,
+     "n": 11,
      "won": 0,
-     "lost": 10
+     "lost": 11
     },
     "model-beat": {
      "n": 3,
@@ -14465,9 +14689,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-10T04:44:47Z",
-   "bets": 48.0,
-   "staked": 240.0,
-   "profit": -47.849999999999994
+   "bets": 49.0,
+   "staked": 245.0,
+   "profit": -52.849999999999994
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-10T02:38:49Z",
@@ -14567,21 +14791,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-06T16:44:04Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -2.3% over 15 legs, so the market is beating my picks. Raising the minimum edge to 15.0%."
-  },
-  {
-   "ts": "2026-11-06T16:44:04Z",
-   "kind": "adapt",
-   "text": "Model vs market on 280 graded lines: the 0% model blend scored best (log loss model 0.717, market 0.681). Moving the model's weight from 40% to 28%."
-  },
-  {
-   "ts": "2026-11-06T16:44:04Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran +6.7% vs actual over 487 player-games: level x0.962; REB projections ran +3.3% vs actual over 487 player-games: level x0.977; AST projections ran +5.0% vs actual over 487 player-games: level x0.964; TPM projections ran +6.5% vs actual over 487 player-games: level x0.972; PRA projections ran +5.4% vs actual over 487 player-games: level x0.968; RA projections ran +3.5% vs actual over 487 player-games: level x0.975; starter minutes were off by -1.1 on average over 248 player-games: correction +0.5 min; bench minutes were off by +1.0 on average over 239 player-games: correction -0.4 min."
-  },
   {
    "ts": "2026-11-06T16:44:04Z",
    "kind": "daily",
@@ -16066,6 +16275,21 @@
    "ts": "2026-11-17T05:04:48Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 17: 5 games, 117 players projected, lineups for 8 games."
+  },
+  {
+   "ts": "2026-11-17T05:12:32Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Cam Spencer Under 7.5 @ -105 (theScore Bet) \u2014 LOST: 9 assists vs Under 7.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-17T05:12:33Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 0 left this month)."
+  },
+  {
+   "ts": "2026-11-17T05:12:33Z",
+   "kind": "error",
+   "text": "Self-check failed: Odds API credits (0 left, 14 days to go: -1.8 a day after the reserve)"
   }
  ],
  "learned_ids": [
@@ -16128,24 +16352,25 @@
   "7c117c18",
   "7f5e4e11",
   "e56fcf07",
-  "83bedb64"
+  "83bedb64",
+  "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T05:05:13Z",
+ "updated": "2026-11-17T05:12:33Z",
  "stats": {
-  "bets": 60,
+  "bets": 61,
   "won": 20,
-  "lost": 38,
+  "lost": 39,
   "push": 2,
-  "staked": 302.63,
-  "profit": -86.84,
-  "roi": -0.287,
+  "staked": 307.63,
+  "profit": -91.84,
+  "roi": -0.2985,
   "clv": -0.0228,
   "clv_n": 15,
-  "clv_no_close": 45,
+  "clv_no_close": 46,
   "close_mins_median": 151,
-  "open": 1,
-  "equity": 13.16
+  "open": 0,
+  "equity": 8.16
  },
  "weights": {
   "value_fav": 0.842,
@@ -16154,7 +16379,7 @@
   "arb": 1.003,
   "parlay_ev": 1.0,
   "matchup_over": 1.296,
-  "matchup_under": 0.63
+  "matchup_under": 0.594
  },
  "paused": [
   "value_dog"
