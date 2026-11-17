@@ -14742,7 +14742,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1425,
+  "min_edge": 0.14,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15044,7 +15044,7 @@
    "last_scanned": "2026-11-17T22:30:39Z"
   },
   "soccer_brazil_campeonato": {
-   "last_scanned": "2026-11-17T18:45:23Z"
+   "last_scanned": "2026-11-17T23:00:41Z"
   },
   "tennis_atp_swiss_indoors": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -15059,7 +15059,7 @@
    "last_scanned": "2026-11-01T02:29:41Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-11-17T21:45:29Z"
+   "last_scanned": "2026-11-17T23:00:41Z"
   },
   "soccer_germany_bundesliga": {
    "last_scanned": "2026-11-06T03:35:30Z"
@@ -15107,7 +15107,7 @@
    "last_scanned": "2026-11-17T18:00:39Z"
   },
   "cricket_odi": {
-   "last_scanned": "2026-11-17T20:15:23Z"
+   "last_scanned": "2026-11-17T23:00:41Z"
   },
   "cricket_test_match": {
    "last_scanned": "2026-11-17T22:00:29Z"
@@ -15123,11 +15123,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-08T07:56:19Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 8: 7 games, 163 players projected, lineups for 7 games."
-  },
   {
    "ts": "2026-11-08T15:56:53Z",
    "kind": "result",
@@ -16622,6 +16617,11 @@
    "ts": "2026-11-17T22:50:56Z",
    "kind": "scan",
    "text": "Scanned icehockey_nhl (14), basketball_ncaab (79), basketball_nba (5), americanfootball_ncaaf (5), icehockey_liiga (6), basketball_nbl (2) for 18 credits. Nothing cleared the bar. Equity $100.00."
+  },
+  {
+   "ts": "2026-11-17T23:00:41Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.00% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -16688,7 +16688,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T22:50:56Z",
+ "updated": "2026-11-17T23:00:41Z",
  "stats": {
   "bets": 61,
   "won": 20,
@@ -16718,5 +16718,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
