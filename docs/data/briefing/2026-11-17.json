@@ -1265,9 +1265,76 @@
    "status": "Past play-to"
   }
  },
- "changes": [],
- "narratives": [],
- "overrides": [],
+ "changes": [
+  {
+   "at": "2026-11-17T12:24:12Z",
+   "key": "p|5104157|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Victor Wembanyama Under 12.5 rebounds: Detroit lists Jalen Duren out (hamstring) along with Duncan Robinson, which could leave more rebounds for San Antonio's bigs than the matchup numbers assume.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-17T12:24:12Z",
+   "key": "p|4278580|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Sandro Mamukelashvili Under 7.5 rebounds: With Walker Kessler ruled out, Lakers Nation expects Mamukelashvili to start at center, the long-minutes scenario where this prop has missed.",
+   "alert": false
+  }
+ ],
+ "narratives": [
+  {
+   "edition": "morning",
+   "at": "2026-11-17T12:24:12Z",
+   "author": "claude",
+   "headline": "Five-game Tuesday, four rebound props and one assist prop, all priced before the injury reports settle",
+   "briefing": "It is a five-game night with every game still to tip, and the report starts the day at 0-0-0 with no closing-line history yet. The edge the model sees is concentrated in props: four Unders and a Towns Over, led by Sandro Mamukelashvili Under 7.5 rebounds at conviction 56, while Towns at conviction 42 grades as a Pass. Every prop is Holding at its published price, and nothing has crossed a kill line this morning. The game-line leans are mostly Unders, but game lines are 10-19 (-10.13u) since 2026-11-11, so treat them as leans only. Before tip we are waiting on official reports, in particular Jonathan Kuminga (Day-To-Day) for MIN, and on how the Lakers fill the minutes left by Austin Reaves and Walker Kessler, and how Detroit's frontcourt absences shape the rebounding in San Antonio.",
+   "cards": {
+    "p|4278580|reb|Under": "The sim has him under 7.5 in 79% of games with an average of 5.8, he stayed under in 8 of his last 10, and CHA games offer -10% rebounds vs the league. The risk is minutes: he is projected for 29.4 with Reaves and Kessler out, and his overs came when he played long, so a bigger starting role at center is what would make this wrong.",
+    "p|5104157|reb|Under": "The model projects 9.2 against a 12.5 line, the sim goes under in 69% of games, and he stayed under 12.5 in all of his last 5. What argues against it is his history vs DET (16.5 rebounds per game in 2 games) and DET giving power forwards +6% rebounds; with Detroit thin up front tonight, more boards may be available than the model assumes.",
+    "p|4433249|reb|Under": "The sim goes under 9.5 in 72% of games with an average of 8.1, LAL is the #3 toughest matchup for power-forward rebounds, and he averaged 4.5 rebounds per game in 2 games vs LAL. The line already moved against it from 8.5 to 9.5, and a usage bump of +16% without Knueppel is the main way this misses.",
+    "p|5037871|ast|Under": "DET is the #2 toughest defense on shooting-guard assists (-12%), the sim goes under 4.5 in 69% of games, and he stayed under in 4 of the last 5. A long night above his 28.7-minute projection is the risk, since his overs came at 33.5 minutes.",
+    "p|3136195|reb|Over": "He is averaging 14.5 rebounds over his last 10 against a 12.5 line and the sim clears it in 69% of games, but conviction is only 42 and the report grades it a Pass. Blowout risk is real, with 36% of sims ending 15+ points apart, and the play-to price at \u2212103 leaves almost no room."
+   },
+   "leans_note": "The leans are four Unders and DET +9.5, with POR @ MIN already past its play-to, and given the 10-19 game-line record none of them is a best bet.",
+   "sources": [
+    {
+     "title": "Pistons vs. Spurs Injury Report (Nov. 17)",
+     "url": "https://khey1380.iheart.com/content/2026-11-17-pistons-vs-spurs-injury-report-nov-17/"
+    },
+    {
+     "title": "Lakers injury report: Walker Kessler, Austin Reaves out vs Hornets",
+     "url": "https://lakersnation.com/lakers-injury-report-walker-kessler-austin-reaves-out-vs-hornets/"
+    },
+    {
+     "title": "Walker Kessler (leg) out Tuesday vs. Charlotte - NBC Sports",
+     "url": "https://www.nbcsports.com/fantasy/basketball/player-news/2026-11-16/walker-kessler-leg-out-tuesday-vs-charlotte"
+    },
+    {
+     "title": "Dennis Schroder will miss at least two weeks, Kon Knueppel out for at least a month",
+     "url": "https://www.eurohoops.net/en/nba-news/2032570/dennis-schroder-will-miss-at-least-two-weeks-kon-knueppel-out-for-at-least-a-month/"
+    }
+   ],
+   "changes_at_write": 0
+  }
+ ],
+ "overrides": [
+  {
+   "at": "2026-11-17T12:24:12Z",
+   "edition": "morning",
+   "key": "p|5104157|reb|Under",
+   "action": "flag",
+   "reason": "Detroit lists Jalen Duren out (hamstring) along with Duncan Robinson, which could leave more rebounds for San Antonio's bigs than the matchup numbers assume.",
+   "source": "https://khey1380.iheart.com/content/2026-11-17-pistons-vs-spurs-injury-report-nov-17/"
+  },
+  {
+   "at": "2026-11-17T12:24:12Z",
+   "edition": "morning",
+   "key": "p|4278580|reb|Under",
+   "action": "flag",
+   "reason": "With Walker Kessler ruled out, Lakers Nation expects Mamukelashvili to start at center, the long-minutes scenario where this prop has missed.",
+   "source": "https://lakersnation.com/lakers-injury-report-walker-kessler-austin-reaves-out-vs-hornets/"
+  }
+ ],
  "alerts": 1,
  "slate": {
   "games": 5,
@@ -1289,5 +1356,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2531,
- "updated": "2026-11-17T12:15:20Z"
+ "updated": "2026-11-17T12:24:12Z"
 }
