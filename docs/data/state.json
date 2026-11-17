@@ -14660,15 +14660,15 @@
       "price": 1.69,
       "book": "williamhill_us",
       "fair_p": 0.6058,
-      "close_p": 0.559,
+      "close_p": 0.5608,
       "result": null,
       "shop": {
        "median": 1.58,
        "gain": 0.0696,
        "n": 10
       },
-      "close_at": "2026-11-17T23:30:27Z",
-      "close_mins": 69
+      "close_at": "2026-11-17T23:45:20Z",
+      "close_mins": 54
      }
     ],
     "dec": 1.69,
@@ -14703,15 +14703,15 @@
       "price": 2.55,
       "book": "espnbet",
       "fair_p": 0.4004,
-      "close_p": 0.441,
+      "close_p": 0.4392,
       "result": null,
       "shop": {
        "median": 2.428,
        "gain": 0.0504,
        "n": 10
       },
-      "close_at": "2026-11-17T23:30:27Z",
-      "close_mins": 69
+      "close_at": "2026-11-17T23:45:20Z",
+      "close_mins": 54
      }
     ],
     "dec": 2.55,
@@ -14742,7 +14742,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.14,
+  "min_edge": 0.1375,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -14993,7 +14993,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-17T23:30:27Z",
+   "last_scanned": "2026-11-17T23:45:20Z",
    "bets": 49.0,
    "staked": 245.0,
    "profit": -52.849999999999994
@@ -15123,11 +15123,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-08T15:56:54Z",
-   "kind": "adapt",
-   "text": "Model vs market on 1491 graded lines: the 0% model blend scored best (log loss model 0.715, market 0.687). Moving the model's weight from 20% to 14%."
-  },
   {
    "ts": "2026-11-08T15:56:54Z",
    "kind": "adapt",
@@ -16622,6 +16617,11 @@
    "ts": "2026-11-17T23:30:34Z",
    "kind": "props",
    "text": "NBA matchups: 5 games, strongest spots: Ja'Kobe Walter ra -15% vs NY; Sandro Mamukelashvili ra -13% vs CHA; Collin Murray-Boyles pra -13% vs NY. Bought prop odds for NY@TOR (ast, ra, pra, team totals), CHA@LAL (ast, ra, pra, team totals), DET@SA (ast, ra, pra, team totals), UTAH@LAC (ast, ra, pra, tpm, team totals) (17 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-17T23:45:20Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 13.75% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -16688,7 +16688,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T23:31:06Z",
+ "updated": "2026-11-17T23:45:20Z",
  "stats": {
   "bets": 61,
   "won": 20,
@@ -16718,5 +16718,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
