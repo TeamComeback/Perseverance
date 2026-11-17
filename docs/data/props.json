@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T00:30:44Z",
+ "updated": "2026-11-17T01:00:43Z",
  "date": "2026-11-16",
  "priced_date": "2026-11-16",
  "games": [
@@ -29,14 +29,14 @@
    "away": "PHI",
    "start": "2026-11-17T00:30Z",
    "espn_id": "401909997",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "MIA",
    "away": "HOU",
    "start": "2026-11-17T00:30Z",
    "espn_id": "401909998",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "MIN",
@@ -490,10 +490,10 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 8.71,
-   "base": 7.79,
+   "proj": 8.64,
+   "base": 7.73,
    "mult": 1.118,
-   "minutes": 18.7,
+   "minutes": 18.5,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
@@ -1423,10 +1423,10 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 19.2,
-   "base": 17.46,
+   "proj": 19.05,
+   "base": 17.33,
    "mult": 1.099,
-   "minutes": 18.7,
+   "minutes": 18.5,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
@@ -2395,10 +2395,10 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 3.42,
-   "base": 3.72,
+   "proj": 3.5,
+   "base": 3.8,
    "mult": 0.922,
-   "minutes": 19.3,
+   "minutes": 19.8,
    "status": "",
    "start": "2026-11-17T02:00Z",
    "espn_id": "401910001",
@@ -2927,10 +2927,10 @@
    "role": "PF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 3.99,
-   "base": 3.71,
+   "proj": 3.96,
+   "base": 3.68,
    "mult": 1.077,
-   "minutes": 11.0,
+   "minutes": 10.9,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
@@ -3157,16 +3157,16 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 5.54,
-   "base": 5.16,
+   "proj": 6.53,
+   "base": 6.08,
    "mult": 1.075,
-   "minutes": 16.6,
+   "minutes": 19.6,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
    "lean": "Over",
    "strength": 0.0723,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -4668,16 +4668,16 @@
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 2.82,
-   "base": 2.64,
+   "proj": 3.0,
+   "base": 2.82,
    "mult": 1.066,
-   "minutes": 17.9,
+   "minutes": 19.0,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
    "lean": "Over",
    "strength": 0.0639,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -5070,6 +5070,52 @@
      "k": "chances",
      "v": 1.057,
      "txt": "CHI games have +6% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "3213",
+   "name": "Al Horford",
+   "team": "GS",
+   "opp": "NO",
+   "home": false,
+   "role": "C",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 2.45,
+   "base": 2.3,
+   "mult": 1.063,
+   "minutes": 19.6,
+   "status": "",
+   "start": "2026-11-17T01:00Z",
+   "espn_id": "401910000",
+   "lean": "Over",
+   "strength": 0.0611,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.057,
+     "n": 47.6,
+     "rank": 3,
+     "txt": "NO gives centers +6% assists vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.037,
+     "n": 35,
+     "txt": "Players with his profile: +4% assists vs NO (35 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.14,
+     "n": 2,
+     "txt": "His history vs NO: 6.0 assists/g in 2 games (+14%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.041,
+     "txt": "NO games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   },
@@ -5496,16 +5542,16 @@
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 13.43,
-   "base": 12.65,
+   "proj": 14.27,
+   "base": 13.45,
    "mult": 1.061,
-   "minutes": 17.9,
+   "minutes": 19.0,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
    "lean": "Over",
    "strength": 0.0592,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -5680,16 +5726,16 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 10.67,
-   "base": 10.06,
+   "proj": 12.59,
+   "base": 11.88,
    "mult": 1.06,
-   "minutes": 16.6,
+   "minutes": 19.6,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
    "lean": "Over",
    "strength": 0.0583,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -6462,10 +6508,10 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 11.13,
-   "base": 10.56,
+   "proj": 11.05,
+   "base": 10.48,
    "mult": 1.054,
-   "minutes": 18.7,
+   "minutes": 18.5,
    "status": "",
    "start": "2026-11-17T01:00Z",
    "espn_id": "401910000",
@@ -7554,52 +7600,6 @@
      "k": "chances",
      "v": 1.013,
      "txt": "PHX games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "5041951",
-   "name": "Meleek Thomas",
-   "team": "CLE",
-   "opp": "CHI",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 20.5,
-   "base": 19.56,
-   "mult": 1.048,
-   "minutes": 26.9,
-   "status": "",
-   "start": "2026-11-17T00:00Z",
-   "espn_id": "401909995",
-   "lean": "Over",
-   "strength": 0.0469,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.033,
-     "n": 102.7,
-     "rank": 6,
-     "txt": "CHI gives shooting guards +3% pts+reb+ast vs their norm (#6 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.042,
-     "n": 86,
-     "txt": "Players with his profile: +4% pts+reb+ast vs CHI (86 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs CHI yet"
-    },
-    {
-     "k": "chances",
-     "v": 1.057,
-     "txt": "CHI games have +6% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   }
