@@ -21,27 +21,37 @@
     "current": 0.6889,
     "line": 0.6892
    }
+  },
+  {
+   "d": "2026-11-17",
+   "pass": false,
+   "n": 5617,
+   "ll": {
+    "market": 0.6885,
+    "current": 0.6889,
+    "line": 0.6893
+   }
   }
  ],
  "switched": null,
  "latest": {
-  "n": 5074,
-  "days": 11,
+  "n": 5617,
+  "days": 12,
   "from": "2026-11-05",
-  "to": "2026-11-15",
+  "to": "2026-11-16",
   "ll": {
-   "market": 0.6889,
+   "market": 0.6885,
    "current": 0.6889,
-   "line": 0.6892
+   "line": 0.6893
   },
   "top": {
    "current": {
-    "n": 1155,
-    "w": 689
+    "n": 1225,
+    "w": 720
    },
    "line": {
-    "n": 1296,
-    "w": 755
+    "n": 1261,
+    "w": 733
    }
   },
   "days_better": 6,
@@ -50,106 +60,113 @@
     "d": "2026-11-05",
     "n": 135,
     "market": 0.6806,
-    "current": 0.6802,
-    "line": 0.6876
+    "current": 0.6797,
+    "line": 0.6857
    },
    {
     "d": "2026-11-06",
     "n": 609,
     "market": 0.6879,
-    "current": 0.6875,
+    "current": 0.6882,
     "line": 0.6904
    },
    {
     "d": "2026-11-07",
     "n": 455,
     "market": 0.6864,
-    "current": 0.687,
-    "line": 0.6843
+    "current": 0.6873,
+    "line": 0.6849
    },
    {
     "d": "2026-11-08",
     "n": 453,
     "market": 0.6856,
-    "current": 0.6804,
-    "line": 0.6825
+    "current": 0.681,
+    "line": 0.683
    },
    {
     "d": "2026-11-09",
     "n": 473,
     "market": 0.6926,
-    "current": 0.6925,
-    "line": 0.6872
+    "current": 0.693,
+    "line": 0.6889
    },
    {
     "d": "2026-11-10",
     "n": 414,
     "market": 0.691,
-    "current": 0.6835,
-    "line": 0.6827
+    "current": 0.6847,
+    "line": 0.6846
    },
    {
     "d": "2026-11-11",
     "n": 678,
     "market": 0.6903,
-    "current": 0.6885,
-    "line": 0.6914
+    "current": 0.6883,
+    "line": 0.6907
    },
    {
     "d": "2026-11-12",
     "n": 293,
     "market": 0.6834,
-    "current": 0.6816,
-    "line": 0.6792
+    "current": 0.6821,
+    "line": 0.6801
    },
    {
     "d": "2026-11-13",
     "n": 677,
     "market": 0.6939,
-    "current": 0.7007,
-    "line": 0.7006
+    "current": 0.6995,
+    "line": 0.6991
    },
    {
     "d": "2026-11-14",
     "n": 325,
     "market": 0.6865,
-    "current": 0.6853,
-    "line": 0.6903
+    "current": 0.6855,
+    "line": 0.6897
    },
    {
     "d": "2026-11-15",
     "n": 562,
     "market": 0.6886,
-    "current": 0.6936,
-    "line": 0.6926
+    "current": 0.6928,
+    "line": 0.6912
+   },
+   {
+    "d": "2026-11-16",
+    "n": 543,
+    "market": 0.6846,
+    "current": 0.689,
+    "line": 0.6911
    }
   ],
   "coef_line": {
-   "b0": -0.0222,
-   "cv2a": 0.1721,
-   "cv3a": -0.0036,
-   "cv4a": -0.0868,
-   "split": 0.0327,
-   "under": 0.1109,
-   "agree": -0.0134,
-   "edge": 0.0415
+   "b0": -0.024,
+   "cv2a": 0.1495,
+   "cv3a": -0.0145,
+   "cv4a": -0.066,
+   "split": 0.0272,
+   "under": 0.0806,
+   "agree": 0.0075,
+   "edge": 0.0135
   },
   "checks": [
    {
     "ok": true,
-    "t": "5,074 graded props (needs 3,000)"
+    "t": "5,617 graded props (needs 3,000)"
    },
    {
     "ok": false,
-    "t": "11 days (needs 14)"
+    "t": "12 days (needs 14)"
    },
    {
     "ok": false,
-    "t": "log loss 0.6892 vs current 0.6889 (needs 0.001 better)"
+    "t": "log loss 0.6893 vs current 0.6889 (needs 0.001 better)"
    },
    {
     "ok": false,
-    "t": "beats the market alone (0.6889)"
+    "t": "beats the market alone (0.6885)"
    }
   ],
   "pass": false,
@@ -160,6 +177,6 @@
    "streak": 3
   }
  },
- "updated": "2026-11-16T19:35:21Z",
+ "updated": "2026-11-17T18:34:36Z",
  "ready": false
 }

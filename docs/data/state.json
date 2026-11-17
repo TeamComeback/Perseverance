@@ -14742,7 +14742,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1475,
+  "min_edge": 0.15,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -14753,7 +14753,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.04,
-  "prop_model_weight": 0.204,
+  "prop_model_weight": 0.173,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -15114,26 +15114,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-07T07:44:58Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 7: 7 games, 165 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-07T15:38:28Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Jamal Shead Under 8.5 @ -102 (DraftKings) \u2014 LOST: 16 assists vs Under 8.5 [matchup-read-right, minutes-long, model-miss]"
-  },
-  {
-   "ts": "2026-11-07T15:38:28Z",
-   "kind": "result",
-   "text": "LOST -$5.00: RJ Barrett Under 38.5 @ -104 (FanDuel) \u2014 LOST: 39 pts+reb+ast vs Under 38.5 [matchup-read-right, model-miss, near-miss]"
-  },
-  {
-   "ts": "2026-11-07T15:38:28Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Collin Murray-Boyles Under 22.5 @ -120 (DraftKings) \u2014 LOST: 28 pts+reb+ast vs Under 22.5 [matchup-read-right, minutes-long, model-miss]"
-  },
   {
    "ts": "2026-11-07T15:38:28Z",
    "kind": "result",
@@ -16613,6 +16593,26 @@
    "ts": "2026-11-17T18:30:26Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-17T18:33:50Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -1.5% over 58 legs, so the market is beating my picks. Raising the minimum edge to 15.0%."
+  },
+  {
+   "ts": "2026-11-17T18:34:36Z",
+   "kind": "adapt",
+   "text": "Model vs market on 6456 graded lines: the 10% model blend scored best (log loss model 0.722, market 0.689). Moving the model's weight from 20% to 17%."
+  },
+  {
+   "ts": "2026-11-17T18:34:36Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran -1.7% vs actual over 2054 player-games: level x0.896; AST projections ran -2.3% vs actual over 2054 player-games: level x0.919; TPM projections ran -3.4% vs actual over 2054 player-games: level x0.989; PRA projections ran -1.5% vs actual over 2054 player-games: level x0.906; RA projections ran -1.0% vs actual over 2054 player-games: level x0.914; starter minutes were off by +0.9 on average over 1066 player-games: correction -2.1 min."
+  },
+  {
+   "ts": "2026-11-17T18:34:36Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $100.00 (run #2), 20-39-2, ROI -29.8%, CLV -1.5%."
   }
  ],
  "learned_ids": [
@@ -16679,7 +16679,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-17T18:30:26Z",
+ "updated": "2026-11-17T18:34:36Z",
  "stats": {
   "bets": 61,
   "won": 20,
