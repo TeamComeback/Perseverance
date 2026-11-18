@@ -2,10 +2,10 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 59.74,
+  "cash": 58.65,
   "start": 100.0,
   "goal": 1000.0,
-  "peak": 100.0,
+  "peak": 108.36,
   "status": "racing",
   "started": "2026-11-17T13:05:45Z",
   "bets": [
@@ -14575,14 +14575,18 @@
       "book": "hardrockbet",
       "fair_p": 0.2955,
       "close_p": 0.2993,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 3.33,
        "gain": 0.1261,
        "n": 6
       },
       "close_at": "2026-11-18T00:15:24Z",
-      "close_mins": 14
+      "close_mins": 14,
+      "final": {
+       "home": 73.0,
+       "away": 48.0
+      }
      }
     ],
     "dec": 3.75,
@@ -14592,10 +14596,10 @@
     "note": "Arb: 1.90% locked across 2 books",
     "group": "arb-f427c20263",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.47,
+    "settled": "2026-11-18T04:40:02Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -14605,7 +14609,35 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Marquette Golden Eagles lost by 25",
+     "final": "Marquette Golden Eagles 48 \u2013 Wisconsin Badgers 73",
+     "legs": [
+      {
+       "outcome": "Marquette Golden Eagles",
+       "result": "loss",
+       "headline": "Marquette Golden Eagles lost by 25",
+       "final": "Marquette Golden Eagles 48 \u2013 Wisconsin Badgers 73",
+       "why": [
+        "Marquette Golden Eagles lost by 25.",
+        "We priced it at 27% to hit vs 27% needed to break even at 3.75x (+1.9% expected edge).",
+        "Closing consensus 30% vs 27% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "blowout",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "blowout",
+      "underdog-lost"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "bb2b2784",
@@ -14627,14 +14659,18 @@
       "book": "williamhill_us",
       "fair_p": 0.7176,
       "close_p": 0.7007,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.339,
        "gain": 0.0458,
        "n": 6
       },
       "close_at": "2026-11-18T00:15:24Z",
-      "close_mins": 14
+      "close_mins": 14,
+      "final": {
+       "home": 73.0,
+       "away": 48.0
+      }
      }
     ],
     "dec": 1.4,
@@ -14644,10 +14680,10 @@
     "note": "Arb: 1.90% locked across 2 books",
     "group": "arb-f427c20263",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 20.52,
+    "profit": 5.86,
+    "settled": "2026-11-18T04:40:02Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -14657,7 +14693,33 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: Wisconsin Badgers won by 25",
+     "final": "Marquette Golden Eagles 48 \u2013 Wisconsin Badgers 73",
+     "legs": [
+      {
+       "outcome": "Wisconsin Badgers",
+       "result": "win",
+       "headline": "Wisconsin Badgers won by 25",
+       "final": "Marquette Golden Eagles 48 \u2013 Wisconsin Badgers 73",
+       "why": [
+        "Wisconsin Badgers won by 25.",
+        "We priced it at 73% to hit vs 71% needed to break even at 1.4x (+1.9% expected edge).",
+        "Closing consensus 70% vs 71% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "blowout",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "lost-closing-line"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "1ebcefa5",
@@ -14679,14 +14741,18 @@
       "book": "williamhill_us",
       "fair_p": 0.6058,
       "close_p": 0.5581,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.58,
        "gain": 0.0696,
        "n": 10
       },
       "close_at": "2026-11-18T00:30:59Z",
-      "close_mins": 9
+      "close_mins": 9,
+      "final": {
+       "home": 102.0,
+       "away": 111.0
+      }
      }
     ],
     "dec": 1.69,
@@ -14696,10 +14762,10 @@
     "note": "Arb: 1.61% locked across 2 books",
     "group": "arb-5ff20ee693",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 20.47,
+    "profit": 8.36,
+    "settled": "2026-11-18T04:40:02Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -14709,6 +14775,145 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "WON: New York Knicks won by 9",
+     "final": "New York Knicks 111 \u2013 Toronto Raptors 102",
+     "legs": [
+      {
+       "outcome": "New York Knicks",
+       "result": "win",
+       "headline": "New York Knicks won by 9",
+       "final": "New York Knicks 111 \u2013 Toronto Raptors 102",
+       "why": [
+        "New York Knicks won by 9.",
+        "We priced it at 60% to hit vs 59% needed to break even at 1.69x (+1.6% expected edge).",
+        "Closing consensus 56% vs 59% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "TOR",
+        "away": "NY"
+       },
+       "final": "NY 111 \u2013 TOR 102",
+       "periods": {
+        "away": [
+         23,
+         31,
+         26,
+         31
+        ],
+        "home": [
+         29,
+         21,
+         33,
+         19
+        ]
+       },
+       "largest_lead": {
+        "NY": 9,
+        "TOR": 13
+       },
+       "largest_lead_at": {
+        "NY": "7:51 4th Q",
+        "TOR": "5:07 2nd Q"
+       },
+       "lead_changes": 12,
+       "ties": 14,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 19,
+         "from": "4:38 2nd Q",
+         "to": "25.1 2nd Q",
+         "score": "NY 54-48 TOR"
+        },
+        {
+         "team": "NY",
+         "pts": 11,
+         "from": "10:22 4th Q",
+         "to": "7:51 4th Q",
+         "score": "NY 93-84 TOR"
+        },
+        {
+         "team": "TOR",
+         "pts": 11,
+         "from": "7:09 4th Q",
+         "to": "5:04 4th Q",
+         "score": "NY 93-95 TOR"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "10:08 1st Q",
+         "to": "8:35 1st Q",
+         "score": "NY 6-9 TOR"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 19,
+         "from": "5:07 2nd Q",
+         "to": "25.1 2nd Q",
+         "mins": 4.7,
+         "from_score": "NY 35-48 TOR",
+         "to_score": "NY 54-48 TOR",
+         "pts_for": 19,
+         "pts_against": 0
+        },
+        {
+         "team": "TOR",
+         "swing": 12,
+         "from": "10:27 1st Q",
+         "to": "5:51 1st Q",
+         "mins": 4.6,
+         "from_score": "NY 6-0 TOR",
+         "to_score": "NY 12-18 TOR",
+         "pts_for": 18,
+         "pts_against": 6
+        }
+       ],
+       "clutch": [
+        "2:56 4th Q: Karl-Anthony Towns makes two point shot (NY 100-100 TOR)",
+        "1:56 4th Q: Jalen Brunson makes 13-foot step back jumpshot (NY 102-100 TOR)",
+        "1:39 4th Q: RJ Barrett makes 2-foot two point shot (Collin Murray-Boyles assists) (NY 102-102 TOR)",
+        "1:25 4th Q: Jalen Brunson makes 25-foot three point jumper (Karl-Anthony Towns assists) (NY 105-102 TOR)",
+        "1:25 4th Q: Jalen Brunson makes free throw flagrant 1 of 1 (NY 106-102 TOR)",
+        "1:23 4th Q: Landry Shamet makes free throw 1 of 2 (NY 107-102 TOR)",
+        "1:23 4th Q: Landry Shamet makes free throw 2 of 2 (NY 108-102 TOR)",
+        "36.3 4th Q: Mikal Bridges makes 26-foot three point jumper (Landry Shamet assists) (NY 111-102 TOR)"
+       ],
+       "leaders": [
+        "Jalen Brunson (NY): 31 pts, 5 reb, 5 ast, 4-11 3PT in 34 min",
+        "Karl-Anthony Towns (NY): 16 pts, 16 reb, 8 ast, 1-2 3PT in 36 min",
+        "RJ Barrett (TOR): 22 pts, 5 reb, 5 ast, 2-8 3PT in 39 min",
+        "Ja'Kobe Walter (TOR): 25 pts, 1 reb, 2 ast, 7-12 3PT in 33 min"
+       ],
+       "story": [
+        "Halftime: NY 54-50 TOR, NY up 4.",
+        "The 4th quarter decided the most: NY won it 31-19.",
+        "Largest leads: NY 9 (7:51 4th Q), TOR 13 (5:07 2nd Q). 12 lead changes, 14 ties.",
+        "Momentum swing: NY outscored them 19-0 in 4.7 minutes (5:07 2nd Q to 25.1 2nd Q), moving it from NY 35-48 TOR to NY 54-48 TOR.",
+        "Momentum swing: TOR outscored them 18-6 in 4.6 minutes (10:27 1st Q to 5:51 1st Q), moving it from NY 6-0 TOR to NY 12-18 TOR.",
+        "NY went on a 19-0 run (4:38 2nd Q to 25.1 2nd Q), making it NY 54-48 TOR.",
+        "NY went on a 11-0 run (10:22 4th Q to 7:51 4th Q), making it NY 93-84 TOR.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six."
+       ],
+       "espn_id": "401910002",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910002"
+      }
+     ]
     }
    },
    {
@@ -14731,14 +14936,18 @@
       "book": "espnbet",
       "fair_p": 0.4004,
       "close_p": 0.4419,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.428,
        "gain": 0.0504,
        "n": 10
       },
       "close_at": "2026-11-18T00:30:59Z",
-      "close_mins": 9
+      "close_mins": 9,
+      "final": {
+       "home": 102.0,
+       "away": 111.0
+      }
      }
     ],
     "dec": 2.55,
@@ -14748,10 +14957,10 @@
     "note": "Arb: 1.61% locked across 2 books",
     "group": "arb-5ff20ee693",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -8.02,
+    "settled": "2026-11-18T04:40:02Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -14761,7 +14970,312 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: Toronto Raptors lost by 9",
+     "final": "New York Knicks 111 \u2013 Toronto Raptors 102",
+     "legs": [
+      {
+       "outcome": "Toronto Raptors",
+       "result": "loss",
+       "headline": "Toronto Raptors lost by 9",
+       "final": "New York Knicks 111 \u2013 Toronto Raptors 102",
+       "why": [
+        "Toronto Raptors lost by 9.",
+        "We priced it at 40% to hit vs 39% needed to break even at 2.55x (+1.6% expected edge).",
+        "Closing consensus 44% vs 39% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "underdog-lost"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "TOR",
+        "away": "NY"
+       },
+       "final": "NY 111 \u2013 TOR 102",
+       "periods": {
+        "away": [
+         23,
+         31,
+         26,
+         31
+        ],
+        "home": [
+         29,
+         21,
+         33,
+         19
+        ]
+       },
+       "largest_lead": {
+        "NY": 9,
+        "TOR": 13
+       },
+       "largest_lead_at": {
+        "NY": "7:51 4th Q",
+        "TOR": "5:07 2nd Q"
+       },
+       "lead_changes": 12,
+       "ties": 14,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 19,
+         "from": "4:38 2nd Q",
+         "to": "25.1 2nd Q",
+         "score": "NY 54-48 TOR"
+        },
+        {
+         "team": "NY",
+         "pts": 11,
+         "from": "10:22 4th Q",
+         "to": "7:51 4th Q",
+         "score": "NY 93-84 TOR"
+        },
+        {
+         "team": "TOR",
+         "pts": 11,
+         "from": "7:09 4th Q",
+         "to": "5:04 4th Q",
+         "score": "NY 93-95 TOR"
+        },
+        {
+         "team": "TOR",
+         "pts": 9,
+         "from": "10:08 1st Q",
+         "to": "8:35 1st Q",
+         "score": "NY 6-9 TOR"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 19,
+         "from": "5:07 2nd Q",
+         "to": "25.1 2nd Q",
+         "mins": 4.7,
+         "from_score": "NY 35-48 TOR",
+         "to_score": "NY 54-48 TOR",
+         "pts_for": 19,
+         "pts_against": 0
+        },
+        {
+         "team": "TOR",
+         "swing": 12,
+         "from": "10:27 1st Q",
+         "to": "5:51 1st Q",
+         "mins": 4.6,
+         "from_score": "NY 6-0 TOR",
+         "to_score": "NY 12-18 TOR",
+         "pts_for": 18,
+         "pts_against": 6
+        }
+       ],
+       "clutch": [
+        "2:56 4th Q: Karl-Anthony Towns makes two point shot (NY 100-100 TOR)",
+        "1:56 4th Q: Jalen Brunson makes 13-foot step back jumpshot (NY 102-100 TOR)",
+        "1:39 4th Q: RJ Barrett makes 2-foot two point shot (Collin Murray-Boyles assists) (NY 102-102 TOR)",
+        "1:25 4th Q: Jalen Brunson makes 25-foot three point jumper (Karl-Anthony Towns assists) (NY 105-102 TOR)",
+        "1:25 4th Q: Jalen Brunson makes free throw flagrant 1 of 1 (NY 106-102 TOR)",
+        "1:23 4th Q: Landry Shamet makes free throw 1 of 2 (NY 107-102 TOR)",
+        "1:23 4th Q: Landry Shamet makes free throw 2 of 2 (NY 108-102 TOR)",
+        "36.3 4th Q: Mikal Bridges makes 26-foot three point jumper (Landry Shamet assists) (NY 111-102 TOR)"
+       ],
+       "leaders": [
+        "Jalen Brunson (NY): 31 pts, 5 reb, 5 ast, 4-11 3PT in 34 min",
+        "Karl-Anthony Towns (NY): 16 pts, 16 reb, 8 ast, 1-2 3PT in 36 min",
+        "RJ Barrett (TOR): 22 pts, 5 reb, 5 ast, 2-8 3PT in 39 min",
+        "Ja'Kobe Walter (TOR): 25 pts, 1 reb, 2 ast, 7-12 3PT in 33 min"
+       ],
+       "story": [
+        "Halftime: NY 54-50 TOR, NY up 4.",
+        "The 4th quarter decided the most: NY won it 31-19.",
+        "Largest leads: NY 9 (7:51 4th Q), TOR 13 (5:07 2nd Q). 12 lead changes, 14 ties.",
+        "Momentum swing: NY outscored them 19-0 in 4.7 minutes (5:07 2nd Q to 25.1 2nd Q), moving it from NY 35-48 TOR to NY 54-48 TOR.",
+        "Momentum swing: TOR outscored them 18-6 in 4.6 minutes (10:27 1st Q to 5:51 1st Q), moving it from NY 6-0 TOR to NY 12-18 TOR.",
+        "NY went on a 19-0 run (4:38 2nd Q to 25.1 2nd Q), making it NY 54-48 TOR.",
+        "NY went on a 11-0 run (10:22 4th Q to 7:51 4th Q), making it NY 93-84 TOR.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six."
+       ],
+       "espn_id": "401910002",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910002"
+      }
+     ]
     }
+   },
+   {
+    "id": "5d2f45e0",
+    "placed": "2026-11-18T04:40:07Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "0184484f6b614c2d85a18a6cd254f32f",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-19T01:00:00Z",
+      "home": "Bradley Braves",
+      "away": "Fort Wayne Mastodons",
+      "market": "h2h",
+      "outcome": "Bradley Braves",
+      "point": null,
+      "price": 1.38,
+      "book": "fanduel",
+      "fair_p": 0.7148,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.355,
+       "gain": 0.0185,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 1.38,
+    "stake": 15.38,
+    "ev": 0.0087,
+    "p": 0.731,
+    "note": "Arb: 0.87% locked across 2 books",
+    "group": "arb-0184484f6b",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "5c21d4ff",
+    "placed": "2026-11-18T04:40:07Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "0184484f6b614c2d85a18a6cd254f32f",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-19T01:00:00Z",
+      "home": "Bradley Braves",
+      "away": "Fort Wayne Mastodons",
+      "market": "h2h",
+      "outcome": "Fort Wayne Mastodons",
+      "point": null,
+      "price": 3.75,
+      "book": "betrivers",
+      "fair_p": 0.2959,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 3.25,
+       "gain": 0.1538,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 3.75,
+    "stake": 5.66,
+    "ev": 0.0087,
+    "p": 0.269,
+    "note": "Arb: 0.87% locked across 2 books",
+    "group": "arb-0184484f6b",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "b3bc638d",
+    "placed": "2026-11-18T04:40:07Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "990b541d0ada46fce07ce8b502cf425c",
+      "sport": "basketball_nba",
+      "commence": "2026-11-19T01:10:00Z",
+      "home": "New Orleans Pelicans",
+      "away": "Detroit Pistons",
+      "market": "h2h",
+      "outcome": "Detroit Pistons",
+      "point": null,
+      "price": 1.401,
+      "book": "polymarket_us",
+      "fair_p": 0.7176,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.335,
+       "gain": 0.0491,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 1.401,
+    "stake": 15.15,
+    "ev": 0.0082,
+    "p": 0.7199,
+    "note": "Arb: 0.82% locked across 2 books",
+    "group": "arb-990b541d0a",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "c9b7e67b",
+    "placed": "2026-11-18T04:40:07Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "990b541d0ada46fce07ce8b502cf425c",
+      "sport": "basketball_nba",
+      "commence": "2026-11-19T01:10:00Z",
+      "home": "New Orleans Pelicans",
+      "away": "Detroit Pistons",
+      "market": "h2h",
+      "outcome": "New Orleans Pelicans",
+      "point": null,
+      "price": 3.6,
+      "book": "fanatics",
+      "fair_p": 0.2919,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 3.375,
+       "gain": 0.0667,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 3.6,
+    "stake": 5.89,
+    "ev": 0.0082,
+    "p": 0.2801,
+    "note": "Arb: 0.82% locked across 2 books",
+    "group": "arb-990b541d0a",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -14778,7 +15292,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1275,
+  "min_edge": 0.1325,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -14894,15 +15408,30 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 2,
-   "staked": 12.629999999999999,
-   "profit": 0.11000000000000032,
-   "clv_n": 2,
-   "clv_sum": 0.02314399999999983,
+   "bets": 6,
+   "staked": 52.89,
+   "profit": 0.8399999999999999,
+   "clv_n": 6,
+   "clv_sum": 0.19653299999999985,
    "tags": {
     "underdog-lost": {
-     "n": 1,
+     "n": 3,
      "won": 0,
+     "lost": 3
+    },
+    "lost-closing-line": {
+     "n": 2,
+     "won": 2,
+     "lost": 0
+    },
+    "beat-closing-line": {
+     "n": 2,
+     "won": 0,
+     "lost": 2
+    },
+    "blowout": {
+     "n": 2,
+     "won": 1,
      "lost": 1
     }
    },
@@ -15029,13 +15558,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-18T04:00:30Z",
-   "bets": 49.0,
-   "staked": 245.0,
-   "profit": -52.849999999999994
+   "last_scanned": "2026-11-18T04:40:07Z",
+   "bets": 51.0,
+   "staked": 265.13,
+   "profit": -52.50999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-18T04:15:25Z",
+   "last_scanned": "2026-11-18T04:40:07Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -15047,7 +15576,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-18T04:15:25Z",
+   "last_scanned": "2026-11-18T04:40:07Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -15077,7 +15606,7 @@
    "last_scanned": "2026-10-27T23:40:48Z"
   },
   "boxing_boxing": {
-   "last_scanned": "2026-11-18T01:31:04Z"
+   "last_scanned": "2026-11-18T04:40:07Z"
   },
   "soccer_brazil_campeonato": {
    "last_scanned": "2026-11-18T04:30:29Z"
@@ -15110,7 +15639,7 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-18T04:15:25Z"
+   "last_scanned": "2026-11-18T04:40:07Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -15131,7 +15660,10 @@
    "last_scanned": "2026-11-05T00:50:19Z"
   },
   "basketball_wncaab": {
-   "last_scanned": "2026-11-18T02:00:37Z"
+   "last_scanned": "2026-11-18T02:00:37Z",
+   "bets": 2.0,
+   "staked": 20.13,
+   "profit": 0.39000000000000057
   },
   "tennis_atp_finals": {
    "last_scanned": "2026-11-17T22:00:29Z"
@@ -15162,36 +15694,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-10T02:38:50Z",
-   "kind": "scan",
-   "text": "Scanned icehockey_nhl (9) for 3 credits. Nothing cleared the bar. Equity $42.46."
-  },
-  {
-   "ts": "2026-11-10T02:58:33Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 9: 8 games, 188 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-10T04:37:41Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 9: 8 games, 187 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-10T04:44:47Z",
-   "kind": "scan",
-   "text": "Scanned basketball_nba (6) for 3 credits. Nothing cleared the bar. Equity $42.46."
-  },
-  {
-   "ts": "2026-11-10T08:49:34Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 10: 6 games, 131 players projected, lineups for 6 games."
-  },
-  {
-   "ts": "2026-11-10T17:00:05Z",
-   "kind": "adapt",
-   "text": "Model vs market on 2532 graded lines: the 20% model blend scored best (log loss model 0.706, market 0.688). Moving the model's weight from 13% to 15%."
-  },
   {
    "ts": "2026-11-10T17:00:05Z",
    "kind": "adapt",
@@ -16661,6 +17163,36 @@
    "ts": "2026-11-18T04:19:59Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 17: 5 games, 119 players projected, lineups for 5 games."
+  },
+  {
+   "ts": "2026-11-18T04:40:02Z",
+   "kind": "result",
+   "text": "WON +$8.36: New York Knicks @ -145 (Caesars) \u2014 WON: New York Knicks won by 9 [lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-18T04:40:02Z",
+   "kind": "result",
+   "text": "LOST -$8.02: Toronto Raptors @ +155 (theScore Bet) \u2014 LOST: Toronto Raptors lost by 9 [beat-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-18T04:40:02Z",
+   "kind": "result",
+   "text": "LOST -$5.47: Marquette Golden Eagles @ +275 (Hard Rock Bet) \u2014 LOST: Marquette Golden Eagles lost by 25 [beat-closing-line, blowout, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-18T04:40:02Z",
+   "kind": "result",
+   "text": "WON +$5.86: Wisconsin Badgers @ -250 (Caesars) \u2014 WON: Wisconsin Badgers won by 25 [blowout, lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-18T04:40:03Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -1.4% over 58 legs, so the market is beating my picks. Raising the minimum edge to 13.2%."
+  },
+  {
+   "ts": "2026-11-18T04:40:07Z",
+   "kind": "scan",
+   "text": "Scanned basketball_ncaab (61), basketball_nba (11), icehockey_nhl (3), americanfootball_ncaaf (2), boxing_boxing (1) for 17 credits. Placed 4: Bradley Braves @ -263 (FanDuel); Fort Wayne Mastodons @ +275 (BetRivers); Detroit Pistons @ -249 (Polymarket); New Orleans Pelicans @ +260 (Fanatics) Equity $100.73."
   }
  ],
  "learned_ids": [
@@ -16724,32 +17256,36 @@
   "7f5e4e11",
   "e56fcf07",
   "83bedb64",
-  "02383dc5"
+  "02383dc5",
+  "1ebcefa5",
+  "bd89c5bd",
+  "e28771fa",
+  "bb2b2784"
  ],
  "strategist": null,
- "updated": "2026-11-18T04:30:29Z",
+ "updated": "2026-11-18T04:40:07Z",
  "stats": {
-  "bets": 61,
-  "won": 20,
-  "lost": 39,
-  "shop_n": 4,
-  "shop_avg": 0.073,
+  "bets": 65,
+  "won": 22,
+  "lost": 41,
+  "shop_n": 8,
+  "shop_avg": 0.0725,
   "push": 2,
-  "staked": 307.63,
-  "profit": -91.84,
-  "roi": -0.2985,
+  "staked": 347.89,
+  "profit": -91.11,
+  "roi": -0.2619,
   "clv": -0.0145,
   "clv_n": 58,
   "clv_no_close": 7,
   "close_mins_median": 4,
   "open": 4,
-  "equity": 100.0
+  "equity": 100.73
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.422,
   "longshot": 0.444,
-  "arb": 1.007,
+  "arb": 1.044,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
   "matchup_under": 0.505
@@ -16757,5 +17293,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }

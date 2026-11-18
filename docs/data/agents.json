@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-18T04:30:29Z",
+ "updated": "2026-11-18T04:40:07Z",
  "agents": [
   {
    "name": "Scout",
    "kind": "program",
    "status": "live",
    "when": "every 15 min (NBA every run 4h before tip, others hourly)",
-   "detail": "367 credits today \u00b7 367 this cycle"
+   "detail": "384 credits today \u00b7 384 this cycle"
   },
   {
    "name": "Prop Pricer",
@@ -20,14 +20,14 @@
    "kind": "program",
    "status": "live",
    "when": "every run, at tip",
-   "detail": "54 of 61 settled legs have a closing price \u00b7 0 credits today"
+   "detail": "58 of 65 settled legs have a closing price \u00b7 0 credits today"
   },
   {
    "name": "Shopper",
    "kind": "program",
    "status": "live",
    "when": "every bet",
-   "detail": "best of ten books averages +7.3% over the typical book (4 legs)"
+   "detail": "best of ten books averages +7.2% over the typical book (8 legs)"
   },
   {
    "name": "Backtester",
@@ -41,14 +41,14 @@
    "kind": "claude",
    "status": "shadow",
    "when": "~11:05am and ~5:05pm ET",
-   "detail": "updated 6h ago \u00b7 0 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
+   "detail": "updated 7h ago \u00b7 4 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
   },
   {
    "name": "Skeptic",
    "kind": "claude",
    "status": "shadow",
    "when": "~5:45pm and ~9:15pm ET",
-   "detail": "updated 2h ago \u00b7 0 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
+   "detail": "updated 2h ago \u00b7 4 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
   },
   {
    "name": "Strategist",
@@ -75,13 +75,13 @@
     "clv": null
    },
    "rest": {
-    "n": 0,
-    "profit": 0,
-    "won": 0,
-    "lost": 0,
-    "clv": null
+    "n": 4,
+    "profit": 0.73,
+    "won": 2,
+    "lost": 2,
+    "clv": 0.0433
    },
-   "calls": 0,
+   "calls": 4,
    "saved": 0
   },
   "skeptic": {
@@ -93,13 +93,13 @@
     "clv": null
    },
    "rest": {
-    "n": 0,
-    "profit": 0,
-    "won": 0,
-    "lost": 0,
-    "clv": null
+    "n": 4,
+    "profit": 0.73,
+    "won": 2,
+    "lost": 2,
+    "clv": 0.0433
    },
-   "calls": 0,
+   "calls": 4,
    "saved": 0
   }
  },
