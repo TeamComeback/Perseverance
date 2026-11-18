@@ -335,15 +335,15 @@
    "start": "2026-11-18T04:00Z",
    "side": "Under",
    "point": 9.5,
-   "dec": 1.81,
-   "am": -123,
-   "conv": 45,
+   "dec": 1.85,
+   "am": -118,
+   "conv": 47,
    "tier": "Consider",
-   "p": 0.56,
-   "p_sim": 0.708,
-   "p_mkt": 0.516,
+   "p": 0.552,
+   "p_sim": 0.713,
+   "p_mkt": 0.505,
    "p_kalshi": 0.515,
-   "ev": 0.014,
+   "ev": 0.021,
    "verdict": "Consider: simulation and recent form agree; the main risk is usage.",
    "home": "LAL",
    "away": "CHA",
@@ -353,14 +353,14 @@
    "opp": "LAL",
    "stat": "reb",
    "proj": 7.4,
-   "sim": 8.1,
+   "sim": 8.2,
    "ob_ind": 7.5,
    "avg10": 9.9,
    "minutes": 26.7,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 71% of 10,000 simulated games (sim average 8.1).",
+     "t": "Goes under in 71% of 10,000 simulated games (sim average 8.2).",
      "rec": [
       819,
       707
@@ -418,8 +418,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.786,
-    "floor_am": -127,
+    "floor_dec": 1.812,
+    "floor_am": -123,
     "line": 9.5,
     "next": 8.5
    },
@@ -459,7 +459,7 @@
    ],
    "kill": [
     "The line reaching 8.5",
-    "The price at 9.5 going past \u2212127",
+    "The price at 9.5 going past \u2212123",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -486,7 +486,7 @@
    },
    "first_seen": "2026-11-17T11:45:32Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Holding"
   },
   "p|5037871|ast|Under": {
    "key": "p|5037871|ast|Under",
@@ -504,7 +504,7 @@
    "p": 0.593,
    "p_sim": 0.713,
    "p_mkt": 0.549,
-   "p_kalshi": 0.557,
+   "p_kalshi": 0.563,
    "ev": 0.008,
    "verdict": "Pass: simulation and recent form agree; the main risk is minutes.",
    "home": "SA",
@@ -595,7 +595,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.557
+    "kalshi": 0.563
    },
    "started": false,
    "published": {
@@ -937,7 +937,7 @@
    "p": 0.582,
    "p_sim": 0.718,
    "p_mkt": 0.54,
-   "p_kalshi": 0.536,
+   "p_kalshi": 0.541,
    "ev": 0.007,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "LAC",
@@ -1052,7 +1052,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.536
+    "kalshi": 0.541
    },
    "started": false,
    "published": {
@@ -1389,25 +1389,25 @@
   "g|401910005|total|Under": {
    "key": "g|401910005|total|Under",
    "kind": "total",
-   "label": "CHA @ LAL Under 221.5",
+   "label": "CHA @ LAL Under 223.5",
    "espn_id": "401910005",
    "game": "CHA @ LAL",
    "start": "2026-11-18T04:00Z",
    "side": "Under",
-   "point": 221.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 52,
+   "point": 223.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 55,
    "tier": "Consider",
-   "p": 0.557,
+   "p": 0.551,
    "p_sim": 0.607,
-   "p_mkt": 0.512,
+   "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.037,
+   "ev": 0.047,
    "verdict": "Consider: simulation and team model agree; the main risk is line move.",
    "home": "LAL",
    "away": "CHA",
-   "why": "Sim total 216.9 (after a learned +1.9 correction) vs 221.5 \u00b7 under in 61% of sims vs 51% DraftKings",
+   "why": "Sim total 219.1 (after a learned +1.9 correction) vs 223.5 \u00b7 under in 61% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1419,14 +1419,14 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 218.6 points, 2.9 on your side of 221.5.",
+     "t": "Team ratings project 218.6 points, 4.9 on your side of 223.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (218.5 to 221.5).",
+     "t": "The line has moved against this side since it opened (218.5 to 223.5).",
      "rec": [
       123,
       98
@@ -1434,7 +1434,7 @@
     },
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 620-636 against DraftKings' totals. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 624-640 against DraftKings' totals. Treat this as a lean.",
      "rec": [
       34,
       40
@@ -1442,10 +1442,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.795,
-    "floor_am": -126,
-    "line": 220.5,
-    "next": 219.5
+    "floor_dec": 1.815,
+    "floor_am": -123,
+    "line": 223.5,
+    "next": 222.5
    },
    "watch": [
     {
@@ -1482,12 +1482,12 @@
     }
    ],
    "kill": [
-    "The line reaching 219.5 (still a bet at 220.5 near \u2212115)",
-    "The price at 221.5 going past \u2212126"
+    "The line reaching 222.5",
+    "The price at 223.5 going past \u2212123"
    ],
    "market": {
     "open": null,
-    "now": 221.5,
+    "now": 223.5,
     "kalshi": null
    },
    "started": false,
@@ -1508,11 +1508,8 @@
     }
    },
    "first_seen": "2026-11-17T11:45:32Z",
-   "removed": {
-    "at": "2026-11-17T17:31:12Z",
-    "why": "confidence fell 52 \u2192 49"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Upgraded"
   },
   "g|401910003|total|Under": {
    "key": "g|401910003|total|Under",
@@ -1525,18 +1522,27 @@
    "point": 227.5,
    "dec": 1.88,
    "am": -114,
-   "conv": 36,
+   "conv": 39,
    "tier": "Pass",
-   "p": 0.526,
-   "p_sim": 0.547,
+   "p": 0.531,
+   "p_sim": 0.557,
    "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": -0.011,
-   "verdict": "Pass: the price is the case; the main risk is line move.",
+   "ev": -0.002,
+   "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "MIN",
    "away": "POR",
-   "why": "Sim total 225.7 (after a learned +1.9 correction) vs 227.5 \u00b7 under in 55% of sims vs 51% DraftKings",
-   "for": [],
+   "why": "Sim total 225.4 (after a learned +1.9 correction) vs 227.5 \u00b7 under in 56% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games.",
+     "rec": [
+      819,
+      707
+     ]
+    }
+   ],
    "against": [
     {
      "tag": "line move",
@@ -1556,8 +1562,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
+    "floor_dec": 1.883,
+    "floor_am": -113,
     "line": null,
     "next": 226.5
    },
@@ -1574,9 +1580,9 @@
      "pid": "4683021",
      "name": "Deni Avdija",
      "team": "POR",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 31.0
+     "min": 32.8
     },
     {
      "pid": "4433247",
@@ -1597,8 +1603,7 @@
    ],
    "kill": [
     "The line reaching 226.5",
-    "The price at 227.5 going past \u2212111",
-    "A change in Deni Avdija (questionable): the model re-prices on the next run"
+    "The price at 227.5 going past \u2212113"
    ],
    "market": {
     "open": null,
@@ -1748,8 +1753,11 @@
     }
    },
    "first_seen": "2026-11-17T17:31:12Z",
-   "removed": null,
-   "status": "Downgraded"
+   "removed": {
+    "at": "2026-11-18T00:30:59Z",
+    "why": "confidence fell 46 \u2192 38"
+   },
+   "status": "Removed"
   },
   "g|401910003|spread|home": {
    "key": "g|401910003|spread|home",
@@ -2517,6 +2525,41 @@
    "kind": "removed",
    "text": "Removed: MIN -2.5 (POR @ MIN) \u2014 confidence fell 37 \u2192 35",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T00:30:59Z",
+   "key": "p|4433249|reb|Under",
+   "kind": "line",
+   "text": "Moussa Diabate: line 9.5 at \u2212123 \u2192 9.5 at \u2212118",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T00:30:59Z",
+   "key": "g|401910005|total|Under",
+   "kind": "back",
+   "text": "Back on the board: CHA @ LAL Under 223.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T00:30:59Z",
+   "key": "g|401910005|total|Under",
+   "kind": "line",
+   "text": "CHA @ LAL Under 223.5: line 221.5 at \u2212116 \u2192 223.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T00:30:59Z",
+   "key": "g|401910003|total|Under",
+   "kind": "injury",
+   "text": "Deni Avdija questionable \u2192 out (POR @ MIN Under 227.5 re-priced: 227.5 at \u2212114, conviction 39)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T00:30:59Z",
+   "key": "g|401910005|spread|home",
+   "kind": "removed",
+   "text": "Removed: LAL -6.5 (CHA @ LAL) \u2014 confidence fell 46 \u2192 38",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2716,13 +2759,7 @@
   "games": 5,
   "to_tip": 5,
   "first": "2026-11-18T00:30Z",
-  "questionable": [
-   {
-    "name": "Deni Avdija",
-    "team": "POR",
-    "status": "Questionable"
-   }
-  ],
+  "questionable": [],
   "picks": 7
  },
  "leans_record": {
@@ -2732,5 +2769,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2531,
- "updated": "2026-11-18T00:15:26Z"
+ "updated": "2026-11-18T00:30:59Z"
 }
