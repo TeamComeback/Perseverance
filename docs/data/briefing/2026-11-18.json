@@ -213,7 +213,7 @@
    "p": 0.485,
    "p_sim": 0.631,
    "p_mkt": 0.444,
-   "p_kalshi": 0.429,
+   "p_kalshi": 0.426,
    "ev": 0.019,
    "verdict": "Consider: recent form and tonight's spot agree; the main risk is similar players.",
    "home": "BKN",
@@ -328,7 +328,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.429
+    "kalshi": 0.426
    },
    "started": false,
    "published": {
@@ -847,7 +847,7 @@
    "p": 0.554,
    "p_sim": 0.82,
    "p_mkt": 0.501,
-   "p_kalshi": 0.492,
+   "p_kalshi": 0.495,
    "ev": 0.03,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "NO",
@@ -979,7 +979,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.492
+    "kalshi": 0.495
    },
    "started": false,
    "published": {
@@ -1018,7 +1018,7 @@
    "p": 0.598,
    "p_sim": 0.802,
    "p_mkt": 0.549,
-   "p_kalshi": 0.596,
+   "p_kalshi": 0.59,
    "ev": 0.017,
    "verdict": "Consider: simulation and recent form agree; the main risk is matchup.",
    "home": "CLE",
@@ -1036,7 +1036,7 @@
    "for": [
     {
      "tag": "second market",
-     "t": "Kalshi likes it more: 60% there vs 55% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 330 of 611 times.",
+     "t": "Kalshi likes it more: 59% there vs 55% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 330 of 611 times.",
      "rec": [
       68,
       56
@@ -1141,7 +1141,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.596
+    "kalshi": 0.59
    },
    "started": false,
    "published": {
@@ -1180,7 +1180,7 @@
    "p": 0.524,
    "p_sim": 0.735,
    "p_mkt": 0.475,
-   "p_kalshi": 0.455,
+   "p_kalshi": 0.46,
    "ev": 0.033,
    "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
    "home": "NO",
@@ -1328,7 +1328,7 @@
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.455
+    "kalshi": 0.46
    },
    "started": false,
    "published": {
@@ -1519,6 +1519,172 @@
     }
    },
    "first_seen": "2026-11-18T22:32:45Z",
+   "removed": {
+    "at": "2026-11-18T23:05:52Z",
+    "why": "no longer +EV at tonight's line (8.5 at -116)"
+   },
+   "status": "Removed"
+  },
+  "p|4017837|reb|Under": {
+   "key": "p|4017837|reb|Under",
+   "kind": "prop",
+   "label": "Ivica Zubac Under 8.5 rebounds",
+   "espn_id": "401910008",
+   "game": "HOU @ IND",
+   "start": "2026-11-19T00:00Z",
+   "side": "Under",
+   "point": 8.5,
+   "dec": 2.04,
+   "am": 104,
+   "conv": 46,
+   "tier": "Consider",
+   "p": 0.501,
+   "p_sim": 0.794,
+   "p_mkt": 0.457,
+   "p_kalshi": 0.468,
+   "ev": 0.022,
+   "verdict": "Consider: simulation and matchup strength agree; the main risk is tonight's spot.",
+   "home": "IND",
+   "away": "HOU",
+   "pid": "4017837",
+   "name": "Ivica Zubac",
+   "team": "IND",
+   "opp": "HOU",
+   "stat": "reb",
+   "proj": 6.3,
+   "sim": 6.6,
+   "ob_ind": 7.5,
+   "avg10": 8.4,
+   "minutes": 21.4,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 79% of 10,000 simulated games (sim average 6.6).",
+     "rec": [
+      895,
+      769
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 6.3 rebounds against a line of 8.5.",
+     "rec": [
+      914,
+      817
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "HOU games have -9% rebounds up for grabs vs the league (missed shots and extra possessions).",
+     "rec": [
+      555,
+      512
+     ]
+    },
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: -6% rebounds vs HOU (150 close comps).",
+     "rec": [
+      340,
+      330
+     ]
+    },
+    {
+     "tag": "matchup strength",
+     "t": "Matchup strength 4 of 5, and the matchup points under.",
+     "rec": [
+      82,
+      82
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 28.3 minutes in the games he went over vs 22.4 otherwise. He's projected for 21.4 tonight.",
+     "rec": [
+      804,
+      705
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "Home split +4%.",
+     "rec": [
+      542,
+      499
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "At home: 5 of 20 under 8.5 (25% vs 55% lately).",
+     "rec": [
+      446,
+      433
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.996,
+    "floor_am": -100,
+    "line": null,
+    "next": 7.5
+   },
+   "watch": [
+    {
+     "pid": "4395712",
+     "name": "Andrew Nembhard",
+     "team": "IND",
+     "status": "Out",
+     "self": false,
+     "min": 33.9
+    },
+    {
+     "pid": "4396993",
+     "name": "Tyrese Haliburton",
+     "team": "IND",
+     "status": "Out",
+     "self": false,
+     "min": 33.1
+    },
+    {
+     "pid": "4684740",
+     "name": "Amen Thompson",
+     "team": "HOU",
+     "status": "Questionable",
+     "self": false,
+     "min": 30.7
+    }
+   ],
+   "kill": [
+    "The line reaching 7.5",
+    "The price at 8.5 going past \u2212100",
+    "A change in Amen Thompson (questionable): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 9.5,
+    "now": 8.5,
+    "kalshi": 0.468
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-18T23:05:52Z",
+    "edition": "update",
+    "point": 8.5,
+    "dec": 2.04,
+    "am": 104,
+    "conv": 46,
+    "tier": "Consider",
+    "p": 0.501,
+    "play_to": {
+     "floor_dec": 1.996,
+     "floor_am": -100,
+     "line": null,
+     "next": 7.5
+    }
+   },
+   "first_seen": "2026-11-18T23:05:52Z",
    "removed": null,
    "status": "New"
   }
@@ -1683,20 +1849,11 @@
      "status": "Out",
      "self": false,
      "min": 21.8
-    },
-    {
-     "pid": "4431687",
-     "name": "Patrick Williams",
-     "team": "CHI",
-     "status": "Probable",
-     "self": false,
-     "min": 21.0
     }
    ],
    "kill": [
     "The line reaching 238.5",
-    "The price at 239.5 going past \u2212120",
-    "A change in Patrick Williams (probable): the model re-prices on the next run"
+    "The price at 239.5 going past \u2212120"
    ],
    "market": {
     "open": null,
@@ -2188,19 +2345,19 @@
    "start": "2026-11-19T03:00Z",
    "side": "home",
    "point": -12.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 43,
-   "tier": "Pass",
-   "p": 0.517,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 45,
+   "tier": "Consider",
+   "p": 0.515,
    "p_sim": 0.549,
-   "p_mkt": 0.488,
+   "p_mkt": 0.484,
    "p_kalshi": null,
-   "ev": 0.009,
-   "verdict": "Pass: who's out carries it; the main risk is team model.",
+   "ev": 0.015,
+   "verdict": "Consider: who's out carries it; the main risk is team model.",
    "home": "LAL",
    "away": "UTAH",
-   "why": "Sim: LAL by 14.5 on average (UTAH 107.7, LAL 122.2) \u00b7 LAL -12.5 covers in 55% of sims vs 49% DraftKings",
+   "why": "Sim: LAL by 14.5 on average (UTAH 107.7, LAL 122.2) \u00b7 LAL -12.5 covers in 55% of sims vs 48% DraftKings",
    "for": [
     {
      "tag": "who's out",
@@ -2229,8 +2386,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.934,
-    "floor_am": -107,
+    "floor_dec": 1.942,
+    "floor_am": -106,
     "line": null,
     "next": -13.5
    },
@@ -2262,7 +2419,7 @@
    ],
    "kill": [
     "The line reaching -13.5",
-    "The price at -12.5 going past \u2212107"
+    "The price at -12.5 going past \u2212106"
    ],
    "market": {
     "open": null,
@@ -2540,19 +2697,19 @@
    "start": "2026-11-19T00:00Z",
    "side": "away",
    "point": 1.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 44,
+   "dec": 1.82,
+   "am": -122,
+   "conv": 41,
    "tier": "Pass",
-   "p": 0.544,
-   "p_sim": 0.58,
-   "p_mkt": 0.512,
+   "p": 0.552,
+   "p_sim": 0.582,
+   "p_mkt": 0.524,
    "p_kalshi": null,
-   "ev": 0.013,
+   "ev": 0.004,
    "verdict": "Pass: simulation carries it; the main risk is who's out.",
    "home": "ORL",
    "away": "PHI",
-   "why": "Sim: PHI by 2.4 on average (PHI 111.9, ORL 109.5) \u00b7 PHI +1.5 covers in 58% of sims vs 51% DraftKings",
+   "why": "Sim: PHI by 2.5 on average (PHI 110.8, ORL 108.2) \u00b7 PHI +1.5 covers in 58% of sims vs 52% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2587,12 +2744,20 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.838,
-    "floor_am": -119,
+    "floor_dec": 1.812,
+    "floor_am": -123,
     "line": 1.5,
     "next": 0.5
    },
    "watch": [
+    {
+     "pid": "4431678",
+     "name": "Tyrese Maxey",
+     "team": "PHI",
+     "status": "Questionable",
+     "self": false,
+     "min": 36.2
+    },
     {
      "pid": "4432573",
      "name": "Paolo Banchero",
@@ -2620,8 +2785,8 @@
    ],
    "kill": [
     "The line reaching 0.5",
-    "The price at 1.5 going past \u2212119",
-    "A change in Dean Wade (questionable): the model re-prices on the next run"
+    "The price at 1.5 going past \u2212123",
+    "A change in Tyrese Maxey (questionable), Dean Wade (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -2646,11 +2811,8 @@
     }
    },
    "first_seen": "2026-11-18T18:04:11Z",
-   "removed": {
-    "at": "2026-11-18T20:31:45Z",
-    "why": "other plays ranked higher"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "g|401910009|spread|home": {
    "key": "g|401910009|spread|home",
@@ -2863,8 +3025,11 @@
     }
    },
    "first_seen": "2026-11-18T20:31:45Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-18T23:05:52Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   },
   "g|401910007|spread|home": {
    "key": "g|401910007|spread|home",
@@ -2999,8 +3164,128 @@
     }
    },
    "first_seen": "2026-11-18T21:32:10Z",
+   "removed": {
+    "at": "2026-11-18T23:05:52Z",
+    "why": "line moved -5.5 \u2192 -4.5"
+   },
+   "status": "Removed"
+  },
+  "g|401910012|total|Under": {
+   "key": "g|401910012|total|Under",
+   "kind": "total",
+   "label": "WSH @ TOR Under 225.5",
+   "espn_id": "401910012",
+   "game": "WSH @ TOR",
+   "start": "2026-11-19T00:30Z",
+   "side": "Under",
+   "point": 225.5,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 49,
+   "tier": "Consider",
+   "p": 0.547,
+   "p_sim": 0.59,
+   "p_mkt": 0.507,
+   "p_kalshi": null,
+   "ev": 0.028,
+   "verdict": "Consider: simulation and line move agree; the main risk is team model.",
+   "home": "TOR",
+   "away": "WSH",
+   "why": "Sim total 221.8 (after a learned +1.9 correction) vs 225.5 \u00b7 under in 59% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 59% of 10,000 simulated games.",
+     "rec": [
+      895,
+      769
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (227.5 to 225.5): you're with the money, at a worse number.",
+     "rec": [
+      97,
+      109
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 624-645 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      51,
+      61
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings project 231.2 points, 5.7 the wrong side of 225.5.",
+     "rec": null
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.828,
+    "floor_am": -121,
+    "line": 225.5,
+    "next": 224.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    },
+    {
+     "pid": "4433134",
+     "name": "Scottie Barnes",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 34.7
+    },
+    {
+     "pid": "6450",
+     "name": "Kawhi Leonard",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 28.5
+    }
+   ],
+   "kill": [
+    "The line reaching 224.5",
+    "The price at 225.5 going past \u2212121"
+   ],
+   "market": {
+    "open": null,
+    "now": 225.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-18T23:05:52Z",
+    "edition": "update",
+    "point": 225.5,
+    "dec": 1.88,
+    "am": -114,
+    "conv": 49,
+    "tier": "Consider",
+    "p": 0.547,
+    "play_to": {
+     "floor_dec": 1.828,
+     "floor_am": -121,
+     "line": 225.5,
+     "next": 224.5
+    }
+   },
+   "first_seen": "2026-11-18T23:05:52Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "New"
   }
  },
  "changes": [
@@ -3864,6 +4149,69 @@
    "kind": "removed",
    "text": "Removed: Giannis Antetokounmpo Under 5.5 assists \u2014 no longer +EV at tonight's line (5.5 at +103)",
    "alert": true
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "p|4017837|reb|Under",
+   "kind": "added",
+   "text": "Added: Ivica Zubac Under 8.5 rebounds at +104, conviction 46",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "p|4432241|ast|Under",
+   "kind": "removed",
+   "text": "Removed: Jamal Shead Under 7.5 assists \u2014 no longer +EV at tonight's line (8.5 at -116)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910012|total|Under",
+   "kind": "added",
+   "text": "Added: WSH @ TOR Under 225.5 at \u2212114, conviction 49",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910017|spread|home",
+   "kind": "line",
+   "text": "LAL -12.5 (UTAH @ LAL): line -12.5 at \u2212105 \u2192 -12.5 at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910017|spread|home",
+   "kind": "conviction",
+   "text": "LAL -12.5 (UTAH @ LAL): conviction 43 Pass \u2192 45 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910010|spread|away",
+   "kind": "back",
+   "text": "Back on the board: PHI +1.5 (PHI @ ORL) at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910010|spread|away",
+   "kind": "line",
+   "text": "PHI +1.5 (PHI @ ORL): line 1.5 at \u2212116 \u2192 1.5 at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910016|spread|home",
+   "kind": "removed",
+   "text": "Removed: DAL -4.5 (GS @ DAL) \u2014 other plays ranked higher",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:05:52Z",
+   "key": "g|401910007|spread|home",
+   "kind": "removed",
+   "text": "Removed: CLE -4.5 (MEM @ CLE) \u2014 line moved -5.5 \u2192 -4.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4016,8 +4364,8 @@
     "status": "Questionable"
    },
    {
-    "name": "RJ Barrett",
-    "team": "TOR",
+    "name": "Tyrese Maxey",
+    "team": "PHI",
     "status": "Questionable"
    },
    {
@@ -4036,7 +4384,7 @@
     "status": "Doubtful"
    }
   ],
-  "picks": 9
+  "picks": 10
  },
  "leans_record": {
   "w": 12,
@@ -4045,5 +4393,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T22:45:21Z"
+ "updated": "2026-11-18T23:05:52Z"
 }
