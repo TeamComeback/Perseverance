@@ -2974,6 +2974,34 @@
    "kind": "removed",
    "text": "Removed: HOU -7.5 (HOU @ IND) \u2014 confidence fell 41 \u2192 40",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T19:43:37Z",
+   "key": "p|5061589|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Yves Missi Under 8.5 rebounds: Cade Cunningham is questionable with right knee soreness that was reported after Tuesday's game, and the Pistons have not said whether he will play.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T19:43:37Z",
+   "key": "p|3032977|ast|Under",
+   "kind": "override",
+   "text": "Writer flags Giannis Antetokounmpo Under 6.5 assists: The Heat list Myron Gardner as questionable, not out, and Bam Adebayo as probable with a hip impingement, so the minutes bump in the brief may not hold.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T19:43:44Z",
+   "key": "p|5061589|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Yves Missi Under 8.5 rebounds: Cade Cunningham is questionable with right knee soreness that was reported after Tuesday's game, and the Pistons have not said whether he will play.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T19:43:44Z",
+   "key": "p|3032977|ast|Under",
+   "kind": "override",
+   "text": "Writer flags Giannis Antetokounmpo Under 6.5 assists: The Heat list Myron Gardner as questionable, not out, and Bam Adebayo as probable with a hip impingement, so the minutes bump in the brief may not hold.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3010,9 +3038,110 @@
     }
    ],
    "changes_at_write": 0
+  },
+  {
+   "edition": "midday",
+   "at": "2026-11-18T19:43:37Z",
+   "author": "claude",
+   "headline": "Midday: Allen and Mitchell are off the board, Missi and Spencer are in, and every remaining prop has slipped to a downgrade or worse",
+   "briefing": "Since the morning edition the board has thinned out. Jarrett Allen Under 9.5 rebounds was removed when it stopped passing the checks, and Donovan Mitchell Under 4.5 rebounds was removed once \u2212128 was no longer +EV. Two unders were added in their place, Yves Missi Under 8.5 rebounds and Cam Spencer Under 8.5 assists. After the 2pm run, Missi, Julius Randle and Giannis Antetokounmpo were all downgraded, and Josh Giddey is marked past the play-to line, so no prop is better than Consider right now. On the game lines, PHX @ SAC Under moved to 226.5 at \u2212105 and is past its play-to, CHI @ BKN Under 239.5 is the only lean still holding, and MIA -11.5 and PHI -1.5 are new. The record is mixed: the morning report is 3-2-0 (+0.54u), the final is 2-3-0 (-1.57u), and game lines are 12-22 (-11.35u) since 2026-11-11. Before tip, the main news to wait on is Cade Cunningham, who is questionable with knee soreness.",
+   "cards": {
+    "p|5061589|reb|Under": "The simulation has him under in 81% of games, the projection is 6 against 8.5, and he stayed under in 7 of his last 10, with room to spare at 7.5 in 6 of them. The risk is minutes: when he has gone over he averaged 27.3 minutes, and he is projected for 20.1. It was downgraded to 47 at the 2pm run. If Cade Cunningham's questionable tag changes, the model re-prices, and a move to 7.5 or a price past \u2212134 ends it. Jalen Duren has been out since early November, so his absence should already be in Missi's recent games.",
+    "p|3064514|ast|Under": "At home he has gone under 4.5 in 16 of 20, the sim has the under at 62%, and the projection is 3.9. The case against is thin margin: 5 of his last 10 finished within 1 of the line, and CHI gives small forwards +6% assists (#7 softest of 30), and the play-to is near at +109. Conviction fell to 46 at the 2pm run.",
+    "p|4433083|ast|Under": "He is averaging 6.6 assists over his last 10 against a line of 8.5, the sim has the under at 80%, and he stayed under in 7 of 10. The case against is the matchup: CLE gives point guards +12% assists (strength 5 of 5), and he goes over when he plays long, which means 26.2 minutes against a projection of 25.4. At \u2212147 it is close to the \u2212153 play-to, so there is little room on price.",
+    "p|3032977|ast|Under": "The numbers favor the under: a 5.3 average over his last 10, a projection of 5.2 and a 78% sim. Still, conviction is 43, which is a Pass, the price is \u2212147 against a \u2212151 play-to, and MIL gives power forwards +8% assists (#2 softest). The minutes bump in the brief assumes Myron Gardner sits, but the Heat list him as questionable, not out. Bam Adebayo, probable with a hip impingement, is the other name to check before tip.",
+    "p|4871145|ast|Under": "The projection is 7.6 against 8.5, with a 68% sim and the under in 6 of his last 10. The card is marked past the play-to line at \u2212118 and conviction is 43, a Pass, so this is one to hold rather than add. It goes wrong if he plays long: he averaged 33.4 minutes in his overs, against a projection of 26."
+   },
+   "leans_note": "CHI @ BKN Under 239.5 is the only lean holding its status; PHX @ SAC Under is past its play-to at \u2212105, and game lines are 12-22 since 2026-11-11, so treat all of these as leans only.",
+   "sources": [
+    {
+     "title": "Pistons Get Concerning Cade Cunningham News (Heavy)",
+     "url": "https://heavy.com/sports/nba/detroit-pistons/pistons-cade-cunningham-injury-update-pelicans"
+    },
+    {
+     "title": "Miami Heat Injury Report for Bucks Game, Nov. 18 (Heavy)",
+     "url": "https://heavy.com/sports/nba/miami-heat/injury-report-for-bucks-november-18/"
+    },
+    {
+     "title": "Cavaliers Injury Report vs. Grizzlies, Nov. 18 (Heavy)",
+     "url": "https://heavy.com/sports/nba/cleveland-cavaliers/injury-report-vs-grizzlies-november-18/"
+    },
+    {
+     "title": "NBA Injury Status (ESPN)",
+     "url": "https://www.espn.com/nba/injuries"
+    }
+   ],
+   "changes_at_write": 82
+  },
+  {
+   "edition": "midday",
+   "at": "2026-11-18T19:43:44Z",
+   "author": "claude",
+   "headline": "Midday: Allen and Mitchell are off the board, Missi and Spencer are in, and every remaining prop has slipped to a downgrade or worse",
+   "briefing": "Since the morning edition the board has thinned out. Jarrett Allen Under 9.5 rebounds was removed when it stopped passing the checks, and Donovan Mitchell Under 4.5 rebounds was removed once \u2212128 was no longer +EV. Two unders were added in their place, Yves Missi Under 8.5 rebounds and Cam Spencer Under 8.5 assists. After the 2pm run, Missi, Julius Randle and Giannis Antetokounmpo were all downgraded, and Josh Giddey is marked past the play-to line, so no prop is better than Consider right now. On the game lines, PHX @ SAC Under moved to 226.5 at \u2212105 and is past its play-to, CHI @ BKN Under 239.5 is the only lean still holding, and MIA -11.5 and PHI -1.5 are new. The record is mixed: the morning report is 3-2-0 (+0.54u), the final is 2-3-0 (-1.57u), and game lines are 12-22 (-11.35u) since 2026-11-11. Before tip, the main news to wait on is Cade Cunningham, who is questionable with knee soreness.",
+   "cards": {
+    "p|5061589|reb|Under": "The simulation has him under in 81% of games, the projection is 6 against 8.5, and he stayed under in 7 of his last 10, with room to spare at 7.5 in 6 of them. The risk is minutes: when he has gone over he averaged 27.3 minutes, and he is projected for 20.1. It was downgraded to 47 at the 2pm run. If Cade Cunningham's questionable tag changes, the model re-prices, and a move to 7.5 or a price past \u2212134 ends it. Jalen Duren has been out since early November, so his absence should already be in Missi's recent games.",
+    "p|3064514|ast|Under": "At home he has gone under 4.5 in 16 of 20, the sim has the under at 62%, and the projection is 3.9. Against it: 5 of his last 10 finished within 1 of the line, CHI gives small forwards +6% assists (#7 softest of 30), and the +114 price sits near its +109 play-to. Conviction fell to 46 at the 2pm run.",
+    "p|4433083|ast|Under": "He is averaging 6.6 assists over his last 10 against a line of 8.5, the sim has the under at 80%, and he stayed under in 7 of 10. The case against is the matchup: CLE gives point guards +12% assists (strength 5 of 5), and he goes over when he plays long, which means 26.2 minutes against a projection of 25.4. At \u2212147 it is close to the \u2212153 play-to, so there is little room on price.",
+    "p|3032977|ast|Under": "The numbers favor the under: a 5.3 average over his last 10, a projection of 5.2 and a 78% sim. Still, conviction is 43, which is a Pass, the price is \u2212147 against a \u2212151 play-to, and MIL gives power forwards +8% assists (#2 softest). The minutes bump in the brief assumes Myron Gardner sits, but the Heat list him as questionable, not out. Bam Adebayo, probable with a hip impingement, is the other name to check before tip.",
+    "p|4871145|ast|Under": "The projection is 7.6 against 8.5, with a 68% sim and the under in 6 of his last 10. The card is marked past the play-to line at \u2212118 and conviction is 43, a Pass, so this is one to hold rather than add. It goes wrong if he plays long: he averaged 33.4 minutes in his overs, against a projection of 26."
+   },
+   "leans_note": "CHI @ BKN Under 239.5 is the only lean holding its status; PHX @ SAC Under is past its play-to at \u2212105, and game lines are 12-22 since 2026-11-11, so treat all of these as leans only.",
+   "sources": [
+    {
+     "title": "Pistons Get Concerning Cade Cunningham News (Heavy)",
+     "url": "https://heavy.com/sports/nba/detroit-pistons/pistons-cade-cunningham-injury-update-pelicans"
+    },
+    {
+     "title": "Miami Heat Injury Report for Bucks Game, Nov. 18 (Heavy)",
+     "url": "https://heavy.com/sports/nba/miami-heat/injury-report-for-bucks-november-18/"
+    },
+    {
+     "title": "Cavaliers Injury Report vs. Grizzlies, Nov. 18 (Heavy)",
+     "url": "https://heavy.com/sports/nba/cleveland-cavaliers/injury-report-vs-grizzlies-november-18/"
+    },
+    {
+     "title": "NBA Injury Status (ESPN)",
+     "url": "https://www.espn.com/nba/injuries"
+    }
+   ],
+   "changes_at_write": 84
   }
  ],
- "overrides": [],
+ "overrides": [
+  {
+   "at": "2026-11-18T19:43:37Z",
+   "edition": "midday",
+   "key": "p|5061589|reb|Under",
+   "action": "flag",
+   "reason": "Cade Cunningham is questionable with right knee soreness that was reported after Tuesday's game, and the Pistons have not said whether he will play.",
+   "source": "https://heavy.com/sports/nba/detroit-pistons/pistons-cade-cunningham-injury-update-pelicans"
+  },
+  {
+   "at": "2026-11-18T19:43:37Z",
+   "edition": "midday",
+   "key": "p|3032977|ast|Under",
+   "action": "flag",
+   "reason": "The Heat list Myron Gardner as questionable, not out, and Bam Adebayo as probable with a hip impingement, so the minutes bump in the brief may not hold.",
+   "source": "https://heavy.com/sports/nba/miami-heat/injury-report-for-bucks-november-18/"
+  },
+  {
+   "at": "2026-11-18T19:43:44Z",
+   "edition": "midday",
+   "key": "p|5061589|reb|Under",
+   "action": "flag",
+   "reason": "Cade Cunningham is questionable with right knee soreness that was reported after Tuesday's game, and the Pistons have not said whether he will play.",
+   "source": "https://heavy.com/sports/nba/detroit-pistons/pistons-cade-cunningham-injury-update-pelicans"
+  },
+  {
+   "at": "2026-11-18T19:43:44Z",
+   "edition": "midday",
+   "key": "p|3032977|ast|Under",
+   "action": "flag",
+   "reason": "The Heat list Myron Gardner as questionable, not out, and Bam Adebayo as probable with a hip impingement, so the minutes bump in the brief may not hold.",
+   "source": "https://heavy.com/sports/nba/miami-heat/injury-report-for-bucks-november-18/"
+  }
+ ],
  "alerts": 6,
  "slate": {
   "games": 12,
@@ -3069,5 +3198,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T19:38:39Z"
+ "updated": "2026-11-18T19:43:44Z"
 }
