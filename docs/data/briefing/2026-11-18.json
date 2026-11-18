@@ -354,22 +354,22 @@
   "p|3032977|ast|Under": {
    "key": "p|3032977|ast|Under",
    "kind": "prop",
-   "label": "Giannis Antetokounmpo Under 6.5 assists",
+   "label": "Giannis Antetokounmpo Under 5.5 assists",
    "espn_id": "401910009",
    "game": "MIL @ MIA",
    "start": "2026-11-19T00:00Z",
    "side": "Under",
-   "point": 6.5,
-   "dec": 1.67,
-   "am": -149,
-   "conv": 43,
+   "point": 5.5,
+   "dec": 2.15,
+   "am": 115,
+   "conv": 42,
    "tier": "Pass",
-   "p": 0.603,
-   "p_sim": 0.777,
-   "p_mkt": 0.559,
-   "p_kalshi": 0.587,
-   "ev": 0.008,
-   "verdict": "Pass: simulation and recent form agree; the main risk is similar players.",
+   "p": 0.469,
+   "p_sim": 0.629,
+   "p_mkt": 0.436,
+   "p_kalshi": 0.445,
+   "ev": 0.007,
+   "verdict": "Pass: simulation and projection agree; the main risk is similar players.",
    "home": "MIA",
    "away": "MIL",
    "pid": "3032977",
@@ -384,16 +384,8 @@
    "minutes": 30.4,
    "for": [
     {
-     "tag": "average",
-     "t": "Averaging 5.3 assists over his last 10; the line is 6.5.",
-     "rec": [
-      312,
-      265
-     ]
-    },
-    {
      "tag": "simulation",
-     "t": "Goes under in 78% of 10,000 simulated games (sim average 5).",
+     "t": "Goes under in 63% of 10,000 simulated games (sim average 5).",
      "rec": [
       895,
       769
@@ -401,18 +393,10 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 5.2 assists against a line of 6.5.",
+     "t": "Model projects 5.2 assists against a line of 5.5.",
      "rec": [
       914,
       817
-     ]
-    },
-    {
-     "tag": "recent form",
-     "t": "Stayed under 6.5 in 7 of his last 10 (4 of the last 5).",
-     "rec": [
-      755,
-      697
      ]
     },
     {
@@ -421,6 +405,22 @@
      "rec": [
       493,
       474
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Assists is a stat where the model has beaten the market so far.",
+     "rec": [
+      287,
+      295
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (6.5 to 5.5): money has been on the under.",
+     "rec": [
+      97,
+      109
      ]
     }
    ],
@@ -431,14 +431,6 @@
      "rec": [
       542,
       499
-     ]
-    },
-    {
-     "tag": "role tonight",
-     "t": "Minutes up tonight: +2.5 min with Gardner out.",
-     "rec": [
-      172,
-      163
      ]
     },
     {
@@ -456,24 +448,32 @@
       14,
       16
      ]
+    },
+    {
+     "tag": "market",
+     "t": "You're betting against the market: DraftKings' price says this happens 44% of the time.",
+     "rec": [
+      60,
+      73
+     ]
     }
    ],
    "play_to": {
-    "floor_dec": 1.658,
-    "floor_am": -152,
-    "line": 6.5,
-    "next": 5.5
+    "floor_dec": 2.132,
+    "floor_am": 113,
+    "line": null,
+    "next": 4.5
    },
    "watch": [],
    "kill": [
-    "The line reaching 5.5",
-    "The price at 6.5 going past \u2212152",
+    "The line reaching 4.5",
+    "The price at 5.5 going past +113",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 6.5,
-    "now": 6.5,
-    "kalshi": 0.587
+    "now": 5.5,
+    "kalshi": 0.445
    },
    "started": false,
    "published": {
@@ -512,7 +512,7 @@
    "p": 0.553,
    "p_sim": 0.685,
    "p_mkt": 0.515,
-   "p_kalshi": 0.524,
+   "p_kalshi": 0.532,
    "ev": 0.001,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "BKN",
@@ -636,7 +636,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.524
+    "kalshi": 0.532
    },
    "started": false,
    "published": {
@@ -841,7 +841,7 @@
    "p": 0.559,
    "p_sim": 0.806,
    "p_mkt": 0.508,
-   "p_kalshi": 0.495,
+   "p_kalshi": 0.492,
    "ev": 0.028,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "NO",
@@ -973,7 +973,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.495
+    "kalshi": 0.492
    },
    "started": false,
    "published": {
@@ -1844,23 +1844,18 @@
    "point": -10.5,
    "dec": 1.97,
    "am": -103,
-   "conv": 40,
+   "conv": 44,
    "tier": "Pass",
-   "p": 0.507,
-   "p_sim": 0.532,
+   "p": 0.514,
+   "p_sim": 0.545,
    "p_mkt": 0.484,
    "p_kalshi": null,
-   "ev": -0.0,
-   "verdict": "Pass: team model and who's out agree; the main risk is line move.",
+   "ev": 0.012,
+   "verdict": "Pass: who's out carries it; the main risk is who's out.",
    "home": "LAL",
    "away": "UTAH",
-   "why": "Sim: LAL by 11.6 on average (UTAH 107.5, LAL 119.1) \u00b7 LAL -10.5 covers in 53% of sims vs 48% DraftKings",
+   "why": "Sim: LAL by 12.1 on average (UTAH 108.0, LAL 120.1) \u00b7 LAL -10.5 covers in 55% of sims vs 48% DraftKings",
    "for": [
-    {
-     "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it LAL by 12.6, 2.1 better than this number.",
-     "rec": null
-    },
     {
      "tag": "who's out",
      "t": "UTAH without Lauri Markkanen, Isaiah Collier: worth about 1.6 points.",
@@ -1878,20 +1873,33 @@
     },
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 627-637 against DraftKings' spreads. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 627-642 against DraftKings' spreads. Treat this as a lean.",
      "rec": [
       51,
       61
      ]
+    },
+    {
+     "tag": "who's out",
+     "t": "LAL without Austin Reaves: worth about 1.7 points.",
+     "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 1.972,
-    "floor_am": -103,
+    "floor_dec": 1.946,
+    "floor_am": -106,
     "line": null,
     "next": -11.5
    },
    "watch": [
+    {
+     "pid": "4066457",
+     "name": "Austin Reaves",
+     "team": "LAL",
+     "status": "Out",
+     "self": false,
+     "min": 33.5
+    },
     {
      "pid": "4066336",
      "name": "Lauri Markkanen",
@@ -1901,20 +1909,12 @@
      "min": 31.9
     },
     {
-     "pid": "4066457",
-     "name": "Austin Reaves",
-     "team": "LAL",
-     "status": "Day-To-Day",
-     "self": false,
-     "min": 30.8
-    },
-    {
      "pid": "4433136",
      "name": "Walker Kessler",
      "team": "LAL",
      "status": "Day-To-Day",
      "self": false,
-     "min": 28.2
+     "min": 27.9
     },
     {
      "pid": "4277961",
@@ -1927,8 +1927,8 @@
    ],
    "kill": [
     "The line reaching -11.5",
-    "The price at -10.5 going past \u2212103",
-    "A change in Austin Reaves (day-to-day), Walker Kessler (day-to-day): the model re-prices on the next run"
+    "The price at -10.5 going past \u2212106",
+    "A change in Walker Kessler (day-to-day): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -1953,11 +1953,8 @@
     }
    },
    "first_seen": "2026-11-18T14:47:02Z",
-   "removed": {
-    "at": "2026-11-18T18:04:11Z",
-    "why": "confidence fell 52 \u2192 39"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401910014|total|Under": {
    "key": "g|401910014|total|Under",
@@ -2526,8 +2523,11 @@
     }
    },
    "first_seen": "2026-11-18T20:31:45Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-18T21:02:05Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -3223,6 +3223,34 @@
    "kind": "removed",
    "text": "Removed: PHI +1.5 (PHI @ ORL) \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T21:02:05Z",
+   "key": "p|3032977|ast|Under",
+   "kind": "line",
+   "text": "Giannis Antetokounmpo: line 6.5 at \u2212149 \u2192 5.5 at +115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T21:02:05Z",
+   "key": "g|401910017|spread|home",
+   "kind": "back",
+   "text": "Back on the board: LAL -10.5 (UTAH @ LAL) at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T21:02:05Z",
+   "key": "g|401910017|spread|home",
+   "kind": "injury",
+   "text": "Austin Reaves day-to-day \u2192 out (LAL -10.5 (UTAH @ LAL) re-priced: -10.5 at \u2212103, conviction 44)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T21:02:05Z",
+   "key": "g|401910016|spread|home",
+   "kind": "removed",
+   "text": "Removed: DAL -4.5 (GS @ DAL) \u2014 other plays ranked higher",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3395,11 +3423,6 @@
     "status": "Questionable"
    },
    {
-    "name": "Austin Reaves",
-    "team": "LAL",
-    "status": "Day-To-Day"
-   },
-   {
     "name": "Dean Wade",
     "team": "PHI",
     "status": "Questionable"
@@ -3408,6 +3431,11 @@
     "name": "Walker Kessler",
     "team": "LAL",
     "status": "Day-To-Day"
+   },
+   {
+    "name": "Peyton Watson",
+    "team": "CLE",
+    "status": "Doubtful"
    }
   ],
   "picks": 7
@@ -3419,5 +3447,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T20:45:27Z"
+ "updated": "2026-11-18T21:02:05Z"
 }
