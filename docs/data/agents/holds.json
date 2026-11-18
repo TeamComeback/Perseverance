@@ -1,14 +1,21 @@
 {
  "holds": [
   {
-   "player": "Dylan Harper",
-   "stat": "ast",
-   "game": "DET @ SA",
-   "kind": "correlated",
-   "reason": "Third DET @ SA play that wins on the same script (Spurs underperform: DET +9.5, Wembanyama reb Under 12.5, Harper ast Under 4.5); Harper is the weakest of the three at 1.5% EV and the steepest price (-133)."
+   "player": "Sandro Mamukelashvili",
+   "stat": "reb",
+   "game": "CHA @ LAL",
+   "kind": "thin_edge",
+   "reason": "The model's own sim average (5.7) sits above the 5.5 line it is betting Under, and EV is 0.08%, so there is effectively no edge here."
+  },
+  {
+   "player": "Josh Green",
+   "stat": "reb",
+   "game": "UTAH @ LAC",
+   "kind": "thin_edge",
+   "reason": "EV is 0.46% at -137 after the learned blend, in the under-3% band where the backtest shows the market moving toward the model only 43.8% of the time (n=48) with -4.1% average CLV."
   }
  ],
- "notes": "Arbs (Marquette/Wisconsin 1/3.75+1/1.4=0.981; NY/TOR 1/1.69+1/2.55=0.984) are hedged pairs, so Barnes news doesn't hurt them and holding one leg would unhedge; no hold. NY @ TOR Under 214.5: Barnes still questionable (illness) per cited reports and the model shows no sign of pricing his absence, but if he sits the market total should drop, which makes 214.5 a better under number, not a worse one; no hold, but recheck before tip. CHA @ LAL: model already prices Reaves and Kessler out (~3.4 pts), so LAL -7.5 is not stale. POR @ MIN spread, Ace Bailey reb and UTAH @ LAC total are already Pass tier. Backtest: CLV is negative in every edge bucket (-3.5% to -4.5%), so even the Consider plays are below the close on average.",
- "updated": "2026-11-17T23:18:50Z",
+ "notes": "Open agent bets are all arb legs on games already tipped (NY @ TOR, Marquette @ Wisconsin), so nothing to hold there; DET @ SA and POR @ MIN are live too. Left the CHA @ LAL Under 223.5 (EV 5.1%) alone: Reaves and Kessler are out for LAL per NBA.com, which cuts both LAL scoring and rim protection, so the news doesn't clearly argue against the Under. UTAH @ LAC Under 226.5 (EV 2.0%) is also thin but already only a Consider; Ace Bailey reb Over is a Pass at 0.9% EV.",
+ "updated": "2026-11-18T02:18:57Z",
  "by": "skeptic"
 }
