@@ -15300,7 +15300,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1225,
+  "min_edge": 0.12,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15632,7 +15632,7 @@
    "last_scanned": "2026-11-01T02:29:41Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-11-18T01:45:36Z"
+   "last_scanned": "2026-11-18T18:30:28Z"
   },
   "soccer_germany_bundesliga": {
    "last_scanned": "2026-11-06T03:35:30Z"
@@ -15705,11 +15705,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-11T17:07:06Z",
-   "kind": "adapt",
-   "text": "Model vs market on 3000 graded lines: the 35% model blend scored best (log loss model 0.699, market 0.688). Moving the model's weight from 15% to 21%."
-  },
   {
    "ts": "2026-11-11T17:07:06Z",
    "kind": "adapt",
@@ -17204,6 +17199,11 @@
    "ts": "2026-11-18T18:17:57Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 18: 12 games, 297 players projected, lineups for 12 games."
+  },
+  {
+   "ts": "2026-11-18T18:30:28Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 12.00% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -17274,7 +17274,7 @@
   "bb2b2784"
  ],
  "strategist": null,
- "updated": "2026-11-18T18:19:02Z",
+ "updated": "2026-11-18T18:30:28Z",
  "stats": {
   "bets": 65,
   "won": 22,
@@ -17304,5 +17304,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
