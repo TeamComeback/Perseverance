@@ -305,7 +305,7 @@
     "now": 12.5,
     "kalshi": 0.536
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-17T11:45:32Z",
     "edition": "morning",
@@ -324,7 +324,7 @@
    },
    "first_seen": "2026-11-17T11:45:32Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "p|4433249|reb|Under": {
    "key": "p|4433249|reb|Under",
@@ -339,11 +339,11 @@
    "am": -118,
    "conv": 47,
    "tier": "Consider",
-   "p": 0.552,
-   "p_sim": 0.713,
+   "p": 0.553,
+   "p_sim": 0.72,
    "p_mkt": 0.505,
    "p_kalshi": 0.515,
-   "ev": 0.021,
+   "ev": 0.022,
    "verdict": "Consider: simulation and recent form agree; the main risk is usage.",
    "home": "LAL",
    "away": "CHA",
@@ -353,14 +353,14 @@
    "opp": "LAL",
    "stat": "reb",
    "proj": 7.4,
-   "sim": 8.2,
+   "sim": 8,
    "ob_ind": 7.5,
    "avg10": 9.9,
    "minutes": 26.7,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 71% of 10,000 simulated games (sim average 8.2).",
+     "t": "Goes under in 72% of 10,000 simulated games (sim average 8).",
      "rec": [
       819,
       707
@@ -418,8 +418,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.812,
-    "floor_am": -123,
+    "floor_dec": 1.808,
+    "floor_am": -124,
     "line": 9.5,
     "next": 8.5
    },
@@ -459,7 +459,7 @@
    ],
    "kill": [
     "The line reaching 8.5",
-    "The price at 9.5 going past \u2212123",
+    "The price at 9.5 going past \u2212124",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -597,7 +597,7 @@
     "now": 4.5,
     "kalshi": 0.563
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-17T11:45:32Z",
     "edition": "morning",
@@ -616,7 +616,7 @@
    },
    "first_seen": "2026-11-17T11:45:32Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|3136195|reb|Over": {
    "key": "p|3136195|reb|Over",
@@ -918,8 +918,11 @@
     }
    },
    "first_seen": "2026-11-17T14:31:08Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-18T01:15:51Z",
+    "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
+   },
+   "status": "Removed"
   },
   "p|4432811|reb|Under": {
    "key": "p|4432811|reb|Under",
@@ -932,13 +935,13 @@
    "point": 2.5,
    "dec": 1.73,
    "am": -137,
-   "conv": 43,
+   "conv": 44,
    "tier": "Pass",
-   "p": 0.582,
-   "p_sim": 0.718,
+   "p": 0.584,
+   "p_sim": 0.735,
    "p_mkt": 0.54,
-   "p_kalshi": 0.541,
-   "ev": 0.007,
+   "p_kalshi": 0.559,
+   "ev": 0.011,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "LAC",
    "away": "UTAH",
@@ -955,7 +958,7 @@
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 72% of 10,000 simulated games (sim average 1.9).",
+     "t": "Goes under in 73% of 10,000 simulated games (sim average 1.9).",
      "rec": [
       819,
       707
@@ -1013,8 +1016,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.718,
-    "floor_am": -139,
+    "floor_dec": 1.712,
+    "floor_am": -140,
     "line": 2.5,
     "next": 1.5
    },
@@ -1046,13 +1049,13 @@
    ],
    "kill": [
     "The line reaching 1.5",
-    "The price at 2.5 going past \u2212139",
+    "The price at 2.5 going past \u2212140",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.541
+    "kalshi": 0.559
    },
    "started": false,
    "published": {
@@ -1074,6 +1077,184 @@
    "first_seen": "2026-11-17T21:54:41Z",
    "removed": null,
    "status": "Past play-to"
+  },
+  "p|4396971|ast|Under": {
+   "key": "p|4396971|ast|Under",
+   "kind": "prop",
+   "label": "Naz Reid Under 2.5 assists",
+   "espn_id": "401910005",
+   "game": "CHA @ LAL",
+   "start": "2026-11-18T04:00Z",
+   "side": "Under",
+   "point": 2.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 43,
+   "tier": "Pass",
+   "p": 0.561,
+   "p_sim": 0.634,
+   "p_mkt": 0.52,
+   "p_kalshi": 0.53,
+   "ev": 0.01,
+   "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
+   "home": "LAL",
+   "away": "CHA",
+   "pid": "4396971",
+   "name": "Naz Reid",
+   "team": "CHA",
+   "opp": "LAL",
+   "stat": "ast",
+   "proj": 1.8,
+   "sim": 2.2,
+   "ob_ind": 2.5,
+   "avg10": 2,
+   "minutes": 28.4,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 63% of 10,000 simulated games (sim average 2.2).",
+     "rec": [
+      819,
+      707
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against LAL: 12 of 12 under 2.5 (100% vs 70% lately).",
+     "rec": [
+      278,
+      247
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 1.8 assists against a line of 2.5.",
+     "rec": [
+      838,
+      751
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 2.5 in 7 of his last 10 (2 of the last 5).",
+     "rec": [
+      690,
+      636
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "LAL gives centers -8% assists vs their norm (#4 toughest of 30).",
+     "rec": [
+      499,
+      462
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 31.5 minutes in the games he went over vs 28.4 otherwise. He's projected for 28.4 tonight.",
+     "rec": [
+      735,
+      652
+     ]
+    },
+    {
+     "tag": "thin margin",
+     "t": "Thin margin: 6 of his last 10 finished within 1 of this number, so it often comes down to one play.",
+     "rec": [
+      302,
+      274
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone under his posted line in only 1 of 4 tracked games.",
+     "rec": [
+      68,
+      64
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without Dennis Schroder: 1 of 4 under 2.5 (25% vs 70% lately).",
+     "rec": [
+      408,
+      393
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.783,
+    "floor_am": -128,
+    "line": 2.5,
+    "next": 1.5
+   },
+   "watch": [
+    {
+     "pid": "4066457",
+     "name": "Austin Reaves",
+     "team": "LAL",
+     "status": "Out",
+     "self": false,
+     "min": 33.5
+    },
+    {
+     "pid": "4433136",
+     "name": "Walker Kessler",
+     "team": "LAL",
+     "status": "Out",
+     "self": false,
+     "min": 30.9
+    },
+    {
+     "pid": "3032979",
+     "name": "Dennis Schroder",
+     "team": "CHA",
+     "status": "Out",
+     "self": false,
+     "min": 27.2
+    },
+    {
+     "pid": "5061575",
+     "name": "Kon Knueppel",
+     "team": "CHA",
+     "status": "Out",
+     "self": false,
+     "min": 23.6
+    }
+   ],
+   "kill": [
+    "The line reaching 1.5",
+    "The price at 2.5 going past \u2212128",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 2.5,
+    "now": 2.5,
+    "kalshi": 0.53
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-18T01:15:51Z",
+    "edition": "update",
+    "point": 2.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 43,
+    "tier": "Pass",
+    "p": 0.561,
+    "play_to": {
+     "floor_dec": 1.783,
+     "floor_am": -128,
+     "line": 2.5,
+     "next": 1.5
+    }
+   },
+   "first_seen": "2026-11-18T01:15:51Z",
+   "removed": null,
+   "status": "New"
   }
  },
  "leans": {
@@ -1144,7 +1325,7 @@
     "now": 215.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-17T11:45:32Z",
     "edition": "morning",
@@ -1163,7 +1344,7 @@
    },
    "first_seen": "2026-11-17T11:45:32Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "g|401910006|total|Under": {
    "key": "g|401910006|total|Under",
@@ -1174,23 +1355,23 @@
    "start": "2026-11-18T03:30Z",
    "side": "Under",
    "point": 226.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 39,
-   "tier": "Pass",
-   "p": 0.535,
-   "p_sim": 0.561,
-   "p_mkt": 0.512,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 50,
+   "tier": "Consider",
+   "p": 0.542,
+   "p_sim": 0.588,
+   "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": -0.004,
-   "verdict": "Pass: simulation carries it; the main risk is line move.",
+   "ev": 0.03,
+   "verdict": "Consider: simulation carries it; the main risk is line move.",
    "home": "LAC",
    "away": "UTAH",
-   "why": "Sim total 224.1 (after a learned +1.9 correction) vs 226.5 \u00b7 under in 56% of sims vs 51% DraftKings",
+   "why": "Sim total 222.9 (after a learned +1.9 correction) vs 226.5 \u00b7 under in 59% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 56% of 10,000 simulated games.",
+     "t": "Goes under in 59% of 10,000 simulated games.",
      "rec": [
       819,
       707
@@ -1216,8 +1397,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.869,
-    "floor_am": -115,
+    "floor_dec": 1.845,
+    "floor_am": -118,
     "line": 226.5,
     "next": 225.5
    },
@@ -1249,7 +1430,7 @@
    ],
    "kill": [
     "The line reaching 225.5",
-    "The price at 226.5 going past \u2212115"
+    "The price at 226.5 going past \u2212118"
    ],
    "market": {
     "open": null,
@@ -1365,7 +1546,7 @@
     "now": 9.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-17T11:45:32Z",
     "edition": "morning",
@@ -1384,7 +1565,7 @@
    },
    "first_seen": "2026-11-17T11:45:32Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Started"
   },
   "g|401910005|total|Under": {
    "key": "g|401910005|total|Under",
@@ -1508,8 +1689,11 @@
     }
    },
    "first_seen": "2026-11-17T11:45:32Z",
-   "removed": null,
-   "status": "Upgraded"
+   "removed": {
+    "at": "2026-11-18T01:15:51Z",
+    "why": "confidence fell 52 \u2192 49"
+   },
+   "status": "Removed"
   },
   "g|401910003|total|Under": {
    "key": "g|401910003|total|Under",
@@ -1610,7 +1794,7 @@
     "now": 227.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-17T11:45:32Z",
     "edition": "morning",
@@ -1629,34 +1813,34 @@
    },
    "first_seen": "2026-11-17T11:45:32Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Started"
   },
   "g|401910005|spread|home": {
    "key": "g|401910005|spread|home",
    "kind": "spread",
-   "label": "LAL -6.5 (CHA @ LAL)",
+   "label": "LAL -7.5 (CHA @ LAL)",
    "espn_id": "401910005",
    "game": "CHA @ LAL",
    "start": "2026-11-18T04:00Z",
    "side": "home",
-   "point": -6.5,
-   "dec": 1.84,
-   "am": -119,
-   "conv": 44,
-   "tier": "Pass",
-   "p": 0.551,
-   "p_sim": 0.586,
-   "p_mkt": 0.518,
+   "point": -7.5,
+   "dec": 1.98,
+   "am": -102,
+   "conv": 54,
+   "tier": "Consider",
+   "p": 0.528,
+   "p_sim": 0.579,
+   "p_mkt": 0.482,
    "p_kalshi": null,
-   "ev": 0.014,
-   "verdict": "Pass: simulation carries it; the main risk is who's out.",
+   "ev": 0.046,
+   "verdict": "Consider: simulation carries it; the main risk is who's out.",
    "home": "LAL",
    "away": "CHA",
-   "why": "Sim: LAL by 9.8 on average (CHA 104.5, LAL 114.3) \u00b7 LAL -6.5 covers in 59% of sims vs 52% DraftKings",
+   "why": "Sim: LAL by 10.2 on average (CHA 104.1, LAL 114.3) \u00b7 LAL -7.5 covers in 58% of sims vs 48% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 59% of 10,000 simulated games.",
+     "t": "Covers in 58% of 10,000 simulated games.",
      "rec": [
       819,
       707
@@ -1666,7 +1850,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-10.5 to -6.5).",
+     "t": "The line has moved against this side since it opened (-10.5 to -7.5).",
      "rec": [
       123,
       98
@@ -1687,10 +1871,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.815,
-    "floor_am": -123,
-    "line": -6.5,
-    "next": -7.5
+    "floor_dec": 1.894,
+    "floor_am": -112,
+    "line": null,
+    "next": -8.5
    },
    "watch": [
     {
@@ -1727,12 +1911,12 @@
     }
    ],
    "kill": [
-    "The line reaching -7.5",
-    "The price at -6.5 going past \u2212123"
+    "The line reaching -8.5",
+    "The price at -7.5 going past \u2212112"
    ],
    "market": {
     "open": null,
-    "now": -6.5,
+    "now": -7.5,
     "kalshi": null
    },
    "started": false,
@@ -1753,11 +1937,8 @@
     }
    },
    "first_seen": "2026-11-17T17:31:12Z",
-   "removed": {
-    "at": "2026-11-18T00:30:59Z",
-    "why": "confidence fell 46 \u2192 38"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "g|401910003|spread|home": {
    "key": "g|401910003|spread|home",
@@ -2560,6 +2741,62 @@
    "kind": "removed",
    "text": "Removed: LAL -6.5 (CHA @ LAL) \u2014 confidence fell 46 \u2192 38",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "p|4396971|ast|Under",
+   "kind": "added",
+   "text": "Added: Naz Reid Under 2.5 assists at \u2212125, conviction 43",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "p|4873138|reb|Over",
+   "kind": "removed",
+   "text": "Removed: Ace Bailey Over 5.5 rebounds \u2014 no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "g|401910005|spread|home",
+   "kind": "back",
+   "text": "Back on the board: LAL -7.5 (CHA @ LAL) at \u2212102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "g|401910005|spread|home",
+   "kind": "line",
+   "text": "LAL -7.5 (CHA @ LAL): line -6.5 at \u2212119 \u2192 -7.5 at \u2212102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "g|401910005|spread|home",
+   "kind": "conviction",
+   "text": "LAL -7.5 (CHA @ LAL): conviction 44 Pass \u2192 54 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "g|401910006|total|Under",
+   "kind": "line",
+   "text": "UTAH @ LAC Under 226.5: line 226.5 at \u2212116 \u2192 226.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "g|401910006|total|Under",
+   "kind": "conviction",
+   "text": "UTAH @ LAC Under 226.5: conviction 39 Pass \u2192 50 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T01:15:51Z",
+   "key": "g|401910005|total|Under",
+   "kind": "removed",
+   "text": "Removed: CHA @ LAL Under 223.5 \u2014 confidence fell 52 \u2192 49",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2757,10 +2994,10 @@
  "alerts": 6,
  "slate": {
   "games": 5,
-  "to_tip": 5,
+  "to_tip": 2,
   "first": "2026-11-18T00:30Z",
   "questionable": [],
-  "picks": 7
+  "picks": 8
  },
  "leans_record": {
   "w": 10,
@@ -2769,5 +3006,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2531,
- "updated": "2026-11-18T01:00:41Z"
+ "updated": "2026-11-18T01:15:51Z"
 }
