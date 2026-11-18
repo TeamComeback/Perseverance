@@ -514,7 +514,7 @@
    "p": 0.546,
    "p_sim": 0.675,
    "p_mkt": 0.505,
-   "p_kalshi": 0.518,
+   "p_kalshi": 0.524,
    "ev": 0.01,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "BKN",
@@ -638,7 +638,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.518
+    "kalshi": 0.524
    },
    "started": false,
    "published": {
@@ -843,7 +843,7 @@
    "p": 0.59,
    "p_sim": 0.811,
    "p_mkt": 0.531,
-   "p_kalshi": 0.51,
+   "p_kalshi": 0.508,
    "ev": 0.038,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "NO",
@@ -966,7 +966,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.51
+    "kalshi": 0.508
    },
    "started": false,
    "published": {
@@ -1005,7 +1005,7 @@
    "p": 0.609,
    "p_sim": 0.814,
    "p_mkt": 0.55,
-   "p_kalshi": 0.59,
+   "p_kalshi": 0.593,
    "ev": 0.035,
    "verdict": "Consider: simulation and recent form agree; the main risk is matchup.",
    "home": "CLE",
@@ -1021,6 +1021,14 @@
    "avg10": 6.6,
    "minutes": 25.5,
    "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 59% there vs 55% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 330 of 611 times.",
+     "rec": [
+      68,
+      56
+     ]
+    },
     {
      "tag": "average",
      "t": "Averaging 6.6 assists over his last 10; the line is 8.5.",
@@ -1051,14 +1059,6 @@
      "rec": [
       755,
       697
-     ]
-    },
-    {
-     "tag": "model record",
-     "t": "Assists is a stat where the model has beaten the market so far.",
-     "rec": [
-      287,
-      295
      ]
     }
    ],
@@ -1128,7 +1128,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.59
+    "kalshi": 0.593
    },
    "started": false,
    "published": {
@@ -2521,6 +2521,11 @@
   "first": "2026-11-19T00:00Z",
   "questionable": [
    {
+    "name": "RJ Barrett",
+    "team": "TOR",
+    "status": "Questionable"
+   },
+   {
     "name": "De'Andre Hunter",
     "team": "SAC",
     "status": "Questionable"
@@ -2565,5 +2570,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T17:31:40Z"
+ "updated": "2026-11-18T17:47:13Z"
 }

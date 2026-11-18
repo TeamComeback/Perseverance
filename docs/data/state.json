@@ -15132,15 +15132,15 @@
       "price": 1.38,
       "book": "fanduel",
       "fair_p": 0.7148,
-      "close_p": 0.712,
+      "close_p": 0.7126,
       "result": null,
       "shop": {
        "median": 1.355,
        "gain": 0.0185,
        "n": 6
       },
-      "close_at": "2026-11-18T15:31:51Z",
-      "close_mins": 568
+      "close_at": "2026-11-18T17:47:13Z",
+      "close_mins": 432
      }
     ],
     "dec": 1.38,
@@ -15175,15 +15175,15 @@
       "price": 3.75,
       "book": "betrivers",
       "fair_p": 0.2959,
-      "close_p": 0.288,
+      "close_p": 0.2874,
       "result": null,
       "shop": {
        "median": 3.25,
        "gain": 0.1538,
        "n": 6
       },
-      "close_at": "2026-11-18T15:31:51Z",
-      "close_mins": 568
+      "close_at": "2026-11-18T17:47:13Z",
+      "close_mins": 432
      }
     ],
     "dec": 3.75,
@@ -15218,15 +15218,15 @@
       "price": 1.401,
       "book": "polymarket_us",
       "fair_p": 0.7176,
-      "close_p": 0.694,
+      "close_p": 0.6884,
       "result": null,
       "shop": {
        "median": 1.335,
        "gain": 0.0491,
        "n": 6
       },
-      "close_at": "2026-11-18T15:45:26Z",
-      "close_mins": 564
+      "close_at": "2026-11-18T17:47:13Z",
+      "close_mins": 442
      }
     ],
     "dec": 1.401,
@@ -15261,15 +15261,15 @@
       "price": 3.6,
       "book": "fanatics",
       "fair_p": 0.2919,
-      "close_p": 0.306,
+      "close_p": 0.3116,
       "result": null,
       "shop": {
        "median": 3.375,
        "gain": 0.0667,
        "n": 6
       },
-      "close_at": "2026-11-18T15:45:26Z",
-      "close_mins": 564
+      "close_at": "2026-11-18T17:47:13Z",
+      "close_mins": 442
      }
     ],
     "dec": 3.6,
@@ -15300,7 +15300,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.12,
+  "min_edge": 0.1175,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15566,13 +15566,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-18T15:45:25Z",
+   "last_scanned": "2026-11-18T17:47:13Z",
    "bets": 51.0,
    "staked": 265.13,
    "profit": -52.50999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-18T15:45:25Z",
+   "last_scanned": "2026-11-18T17:47:13Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -15647,7 +15647,7 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-18T15:31:51Z"
+   "last_scanned": "2026-11-18T17:47:13Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -15705,16 +15705,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-11T15:15:32Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 11: 10 games, 233 players projected, lineups for 10 games."
-  },
-  {
-   "ts": "2026-11-11T15:34:53Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 11: 10 games, 233 players projected, lineups for 10 games."
-  },
   {
    "ts": "2026-11-11T16:00:40Z",
    "kind": "research",
@@ -17204,6 +17194,16 @@
    "ts": "2026-11-18T17:30:39Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 18: 12 games, 293 players projected, lineups for 12 games."
+  },
+  {
+   "ts": "2026-11-18T17:46:09Z",
+   "kind": "research",
+   "text": "Research refresh for Wed Nov 18: 12 games, 295 players projected, lineups for 12 games."
+  },
+  {
+   "ts": "2026-11-18T17:47:13Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 11.75% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -17274,7 +17274,7 @@
   "bb2b2784"
  ],
  "strategist": null,
- "updated": "2026-11-18T17:31:40Z",
+ "updated": "2026-11-18T17:47:13Z",
  "stats": {
   "bets": 65,
   "won": 22,
@@ -17285,7 +17285,7 @@
   "staked": 347.89,
   "profit": -91.11,
   "roi": -0.2619,
-  "clv": -0.0113,
+  "clv": -0.0112,
   "clv_n": 62,
   "clv_no_close": 7,
   "close_mins_median": 4,
@@ -17304,5 +17304,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
