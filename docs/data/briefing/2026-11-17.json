@@ -940,7 +940,7 @@
    "p": 0.584,
    "p_sim": 0.735,
    "p_mkt": 0.54,
-   "p_kalshi": 0.559,
+   "p_kalshi": 0.556,
    "ev": 0.011,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "LAC",
@@ -1055,7 +1055,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.559
+    "kalshi": 0.556
    },
    "started": false,
    "published": {
@@ -1818,29 +1818,29 @@
   "g|401910005|spread|home": {
    "key": "g|401910005|spread|home",
    "kind": "spread",
-   "label": "LAL -7.5 (CHA @ LAL)",
+   "label": "LAL -6.5 (CHA @ LAL)",
    "espn_id": "401910005",
    "game": "CHA @ LAL",
    "start": "2026-11-18T04:00Z",
    "side": "home",
-   "point": -7.5,
-   "dec": 1.98,
-   "am": -102,
-   "conv": 54,
+   "point": -6.5,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 51,
    "tier": "Consider",
-   "p": 0.528,
-   "p_sim": 0.579,
-   "p_mkt": 0.482,
+   "p": 0.556,
+   "p_sim": 0.603,
+   "p_mkt": 0.513,
    "p_kalshi": null,
-   "ev": 0.046,
+   "ev": 0.034,
    "verdict": "Consider: simulation carries it; the main risk is who's out.",
    "home": "LAL",
    "away": "CHA",
-   "why": "Sim: LAL by 10.2 on average (CHA 104.1, LAL 114.3) \u00b7 LAL -7.5 covers in 58% of sims vs 48% DraftKings",
+   "why": "Sim: LAL by 10.2 on average (CHA 104.1, LAL 114.3) \u00b7 LAL -6.5 covers in 60% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 58% of 10,000 simulated games.",
+     "t": "Covers in 60% of 10,000 simulated games.",
      "rec": [
       819,
       707
@@ -1850,7 +1850,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-10.5 to -7.5).",
+     "t": "The line has moved against this side since it opened (-10.5 to -6.5).",
      "rec": [
       123,
       98
@@ -1871,10 +1871,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.894,
-    "floor_am": -112,
-    "line": null,
-    "next": -8.5
+    "floor_dec": 1.799,
+    "floor_am": -125,
+    "line": -6.5,
+    "next": -7.5
    },
    "watch": [
     {
@@ -1911,12 +1911,12 @@
     }
    ],
    "kill": [
-    "The line reaching -8.5",
-    "The price at -7.5 going past \u2212112"
+    "The line reaching -7.5",
+    "The price at -6.5 going past \u2212125"
    ],
    "market": {
     "open": null,
-    "now": -7.5,
+    "now": -6.5,
     "kalshi": null
    },
    "started": false,
@@ -2797,6 +2797,13 @@
    "kind": "removed",
    "text": "Removed: CHA @ LAL Under 223.5 \u2014 confidence fell 52 \u2192 49",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T01:30:32Z",
+   "key": "g|401910005|spread|home",
+   "kind": "line",
+   "text": "LAL -6.5 (CHA @ LAL): line -7.5 at \u2212102 \u2192 -6.5 at \u2212116",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3006,5 +3013,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2531,
- "updated": "2026-11-18T01:15:51Z"
+ "updated": "2026-11-18T01:30:32Z"
 }
