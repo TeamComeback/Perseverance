@@ -26,22 +26,22 @@
   "p|4278580|reb|Under": {
    "key": "p|4278580|reb|Under",
    "kind": "prop",
-   "label": "Sandro Mamukelashvili Under 6.5 rebounds",
+   "label": "Sandro Mamukelashvili Under 5.5 rebounds",
    "espn_id": "401910005",
    "game": "CHA @ LAL",
    "start": "2026-11-18T04:00Z",
    "side": "Under",
-   "point": 6.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 43,
+   "point": 5.5,
+   "dec": 2.13,
+   "am": 113,
+   "conv": 40,
    "tier": "Pass",
-   "p": 0.532,
-   "p_sim": 0.648,
-   "p_mkt": 0.492,
-   "p_kalshi": 0.503,
-   "ev": 0.011,
-   "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
+   "p": 0.47,
+   "p_sim": 0.517,
+   "p_mkt": 0.44,
+   "p_kalshi": 0.435,
+   "ev": 0.001,
+   "verdict": "Pass: recent form and matchup strength agree; the main risk is market.",
    "home": "LAL",
    "away": "CHA",
    "pid": "4278580",
@@ -50,22 +50,14 @@
    "opp": "CHA",
    "stat": "reb",
    "proj": 4.7,
-   "sim": 5.9,
-   "ob_ind": 5.5,
+   "sim": 5.7,
+   "ob_ind": 4.5,
    "avg10": 4.4,
    "minutes": 29.1,
    "for": [
     {
-     "tag": "simulation",
-     "t": "Goes under in 65% of 10,000 simulated games (sim average 5.9).",
-     "rec": [
-      819,
-      707
-     ]
-    },
-    {
      "tag": "recent form",
-     "t": "Stayed under 6.5 in 7 of his last 10 (4 of the last 5).",
+     "t": "Stayed under 5.5 in 6 of his last 10 (4 of the last 5).",
      "rec": [
       690,
       636
@@ -77,6 +69,14 @@
      "rec": [
       499,
       462
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 4.5 in 6 of his last 10.",
+     "rec": [
+      175,
+      167
      ]
     },
     {
@@ -98,27 +98,27 @@
    ],
    "against": [
     {
-     "tag": "minutes",
-     "t": "It misses when he plays long: 23.2 minutes in the games he went over vs 19.7 otherwise. He's projected for 29.1 tonight.",
-     "rec": [
-      735,
-      652
-     ]
-    },
-    {
      "tag": "role tonight",
      "t": "Minutes up tonight: +2.7 min with Reaves out.",
      "rec": [
       146,
       139
      ]
+    },
+    {
+     "tag": "market",
+     "t": "You're betting against the market: DraftKings' price says this happens 44% of the time.",
+     "rec": [
+      57,
+      65
+     ]
     }
    ],
    "play_to": {
-    "floor_dec": 1.88,
-    "floor_am": -114,
+    "floor_dec": 2.128,
+    "floor_am": 113,
     "line": null,
-    "next": 5.5
+    "next": 4.5
    },
    "watch": [
     {
@@ -139,14 +139,14 @@
     }
    ],
    "kill": [
-    "The line reaching 5.5",
-    "The price at 6.5 going past \u2212114",
+    "The line reaching 4.5",
+    "The price at 5.5 going past +113",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 7.5,
-    "now": 6.5,
-    "kalshi": 0.503
+    "now": 5.5,
+    "kalshi": 0.435
    },
    "started": false,
    "published": {
@@ -166,11 +166,8 @@
     }
    },
    "first_seen": "2026-11-17T11:45:32Z",
-   "removed": {
-    "at": "2026-11-17T21:54:41Z",
-    "why": "no longer +EV at tonight's line (6.5 at -132)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|5104157|reb|Under": {
    "key": "p|5104157|reb|Under",
@@ -485,8 +482,11 @@
     }
    },
    "first_seen": "2026-11-17T11:45:32Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-18T02:15:59Z",
+    "why": "no longer +EV at tonight's line (9.5 at -125)"
+   },
+   "status": "Removed"
   },
   "p|5037871|ast|Under": {
    "key": "p|5037871|ast|Under",
@@ -762,13 +762,13 @@
    "point": 5.5,
    "dec": 1.84,
    "am": -119,
-   "conv": 44,
+   "conv": 43,
    "tier": "Pass",
-   "p": 0.55,
-   "p_sim": 0.761,
+   "p": 0.548,
+   "p_sim": 0.751,
    "p_mkt": 0.507,
    "p_kalshi": 0.525,
-   "ev": 0.011,
+   "ev": 0.009,
    "verdict": "Pass: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "LAC",
    "away": "UTAH",
@@ -778,14 +778,14 @@
    "opp": "LAC",
    "stat": "reb",
    "proj": 5.7,
-   "sim": 7.6,
+   "sim": 7.5,
    "ob_ind": 6.5,
    "avg10": 5.7,
    "minutes": 32.2,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 76% of 10,000 simulated games (sim average 7.6).",
+     "t": "Goes over in 75% of 10,000 simulated games (sim average 7.5).",
      "rec": [
       819,
       707
@@ -859,8 +859,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.818,
-    "floor_am": -122,
+    "floor_dec": 1.825,
+    "floor_am": -121,
     "line": 5.5,
     "next": 6.5
    },
@@ -892,7 +892,7 @@
    ],
    "kill": [
     "The line reaching 6.5",
-    "The price at 5.5 going past \u2212122",
+    "The price at 5.5 going past \u2212121",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -918,11 +918,8 @@
     }
    },
    "first_seen": "2026-11-17T14:31:08Z",
-   "removed": {
-    "at": "2026-11-18T01:15:51Z",
-    "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4432811|reb|Under": {
    "key": "p|4432811|reb|Under",
@@ -935,13 +932,13 @@
    "point": 2.5,
    "dec": 1.73,
    "am": -137,
-   "conv": 44,
+   "conv": 42,
    "tier": "Pass",
-   "p": 0.584,
-   "p_sim": 0.735,
+   "p": 0.581,
+   "p_sim": 0.704,
    "p_mkt": 0.54,
-   "p_kalshi": 0.556,
-   "ev": 0.011,
+   "p_kalshi": 0.569,
+   "ev": 0.005,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "LAC",
    "away": "UTAH",
@@ -951,14 +948,14 @@
    "opp": "LAC",
    "stat": "reb",
    "proj": 1.4,
-   "sim": 1.9,
+   "sim": 2,
    "ob_ind": 1.5,
    "avg10": 1.5,
    "minutes": 19.8,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 73% of 10,000 simulated games (sim average 1.9).",
+     "t": "Goes under in 70% of 10,000 simulated games (sim average 2).",
      "rec": [
       819,
       707
@@ -1016,8 +1013,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.712,
-    "floor_am": -140,
+    "floor_dec": 1.721,
+    "floor_am": -139,
     "line": 2.5,
     "next": 1.5
    },
@@ -1049,13 +1046,13 @@
    ],
    "kill": [
     "The line reaching 1.5",
-    "The price at 2.5 going past \u2212140",
+    "The price at 2.5 going past \u2212139",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.556
+    "kalshi": 0.569
    },
    "started": false,
    "published": {
@@ -1253,8 +1250,11 @@
     }
    },
    "first_seen": "2026-11-18T01:15:51Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-18T02:15:59Z",
+    "why": "no longer +EV at tonight's line (2.5 at -111)"
+   },
+   "status": "Removed"
   }
  },
  "leans": {
@@ -1357,21 +1357,21 @@
    "point": 226.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 50,
+   "conv": 46,
    "tier": "Consider",
-   "p": 0.542,
-   "p_sim": 0.588,
+   "p": 0.537,
+   "p_sim": 0.577,
    "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.03,
+   "ev": 0.02,
    "verdict": "Consider: simulation carries it; the main risk is line move.",
    "home": "LAC",
    "away": "UTAH",
-   "why": "Sim total 222.9 (after a learned +1.9 correction) vs 226.5 \u00b7 under in 59% of sims vs 50% DraftKings",
+   "why": "Sim total 223.3 (after a learned +1.9 correction) vs 226.5 \u00b7 under in 58% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 59% of 10,000 simulated games.",
+     "t": "Goes under in 58% of 10,000 simulated games.",
      "rec": [
       819,
       707
@@ -1397,8 +1397,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.845,
-    "floor_am": -118,
+    "floor_dec": 1.862,
+    "floor_am": -116,
     "line": 226.5,
     "next": 225.5
    },
@@ -1430,7 +1430,7 @@
    ],
    "kill": [
     "The line reaching 225.5",
-    "The price at 226.5 going past \u2212118"
+    "The price at 226.5 going past \u2212116"
    ],
    "market": {
     "open": null,
@@ -1576,23 +1576,23 @@
    "start": "2026-11-18T04:00Z",
    "side": "Under",
    "point": 223.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 55,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 56,
    "tier": "Consider",
-   "p": 0.551,
-   "p_sim": 0.607,
-   "p_mkt": 0.5,
+   "p": 0.547,
+   "p_sim": 0.603,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": 0.047,
+   "ev": 0.051,
    "verdict": "Consider: simulation and team model agree; the main risk is line move.",
    "home": "LAL",
    "away": "CHA",
-   "why": "Sim total 219.1 (after a learned +1.9 correction) vs 223.5 \u00b7 under in 61% of sims vs 50% DraftKings",
+   "why": "Sim total 219.4 (after a learned +1.9 correction) vs 223.5 \u00b7 under in 60% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 61% of 10,000 simulated games.",
+     "t": "Goes under in 60% of 10,000 simulated games.",
      "rec": [
       819,
       707
@@ -1623,8 +1623,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.815,
-    "floor_am": -123,
+    "floor_dec": 1.828,
+    "floor_am": -121,
     "line": 223.5,
     "next": 222.5
    },
@@ -1646,6 +1646,14 @@
      "min": 30.9
     },
     {
+     "pid": "3135045",
+     "name": "Grayson Allen",
+     "team": "CHA",
+     "status": "Out",
+     "self": false,
+     "min": 27.8
+    },
+    {
      "pid": "3032979",
      "name": "Dennis Schroder",
      "team": "CHA",
@@ -1664,7 +1672,7 @@
    ],
    "kill": [
     "The line reaching 222.5",
-    "The price at 223.5 going past \u2212123"
+    "The price at 223.5 going past \u2212121"
    ],
    "market": {
     "open": null,
@@ -1689,11 +1697,8 @@
     }
    },
    "first_seen": "2026-11-17T11:45:32Z",
-   "removed": {
-    "at": "2026-11-18T01:15:51Z",
-    "why": "confidence fell 52 \u2192 49"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Upgraded"
   },
   "g|401910003|total|Under": {
    "key": "g|401910003|total|Under",
@@ -1937,8 +1942,11 @@
     }
    },
    "first_seen": "2026-11-17T17:31:12Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-18T02:15:59Z",
+    "why": "confidence fell 46 \u2192 38"
+   },
+   "status": "Removed"
   },
   "g|401910003|spread|home": {
    "key": "g|401910003|spread|home",
@@ -2804,6 +2812,69 @@
    "kind": "line",
    "text": "LAL -6.5 (CHA @ LAL): line -7.5 at \u2212102 \u2192 -6.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "p|4873138|reb|Over",
+   "kind": "back",
+   "text": "Back on the board: Ace Bailey Over 5.5 rebounds at \u2212119",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "p|4278580|reb|Under",
+   "kind": "back",
+   "text": "Back on the board: Sandro Mamukelashvili Under 5.5 rebounds at +113",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "p|4278580|reb|Under",
+   "kind": "line",
+   "text": "Sandro Mamukelashvili: line 6.5 at \u2212111 \u2192 5.5 at +113",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "p|4433249|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Moussa Diabate Under 9.5 rebounds \u2014 no longer +EV at tonight's line (9.5 at -125)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "p|4396971|ast|Under",
+   "kind": "removed",
+   "text": "Removed: Naz Reid Under 2.5 assists \u2014 no longer +EV at tonight's line (2.5 at -111)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "g|401910005|total|Under",
+   "kind": "back",
+   "text": "Back on the board: CHA @ LAL Under 223.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "g|401910005|total|Under",
+   "kind": "line",
+   "text": "CHA @ LAL Under 223.5: line 223.5 at \u2212111 \u2192 223.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "g|401910005|total|Under",
+   "kind": "injury",
+   "text": "Grayson Allen ruled out (CHA @ LAL Under 223.5 re-priced: 223.5 at \u2212109, conviction 56)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T02:15:59Z",
+   "key": "g|401910005|spread|home",
+   "kind": "removed",
+   "text": "Removed: LAL -6.5 (CHA @ LAL) \u2014 confidence fell 46 \u2192 38",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3013,5 +3084,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2531,
- "updated": "2026-11-18T02:00:37Z"
+ "updated": "2026-11-18T02:15:59Z"
 }
