@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T15:15:42Z",
+ "updated": "2026-11-18T15:30:47Z",
  "date": "2026-11-18",
  "priced_date": null,
  "games": [
@@ -834,10 +834,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 8.96,
-   "base": 8.0,
+   "proj": 8.41,
+   "base": 7.52,
    "mult": 1.12,
-   "minutes": 38.6,
+   "minutes": 36.2,
    "status": "",
    "start": "2026-11-19T01:00Z",
    "espn_id": "401910013",
@@ -1616,10 +1616,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 5.83,
-   "base": 5.26,
+   "proj": 6.18,
+   "base": 5.57,
    "mult": 1.11,
-   "minutes": 36.3,
+   "minutes": 38.5,
    "status": "",
    "start": "2026-11-19T01:00Z",
    "espn_id": "401910013",
@@ -3410,10 +3410,10 @@
    "role": "PF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 11.0,
-   "base": 10.11,
+   "proj": 10.37,
+   "base": 9.53,
    "mult": 1.088,
-   "minutes": 28.7,
+   "minutes": 27.1,
    "status": "",
    "start": "2026-11-19T01:00Z",
    "espn_id": "401910013",
@@ -4284,10 +4284,10 @@
    "role": "SF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 6.46,
-   "base": 5.97,
+   "proj": 6.04,
+   "base": 5.59,
    "mult": 1.082,
-   "minutes": 26.4,
+   "minutes": 24.7,
    "status": "",
    "start": "2026-11-19T01:00Z",
    "espn_id": "401910013",
@@ -4456,6 +4456,52 @@
      "k": "chances",
      "v": 1.096,
      "txt": "WSH games have +10% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "4683771",
+   "name": "Ronald Holland II",
+   "team": "DET",
+   "opp": "NO",
+   "home": false,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.35,
+   "base": 4.95,
+   "mult": 1.081,
+   "minutes": 17.0,
+   "status": "Day-To-Day",
+   "start": "2026-11-19T01:00Z",
+   "espn_id": "401910013",
+   "lean": "Over",
+   "strength": 0.0779,
+   "starter": false,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.073,
+     "n": 107.3,
+     "rank": 2,
+     "txt": "NO gives small forwards +7% reb+ast vs their norm (#2 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.073,
+     "n": 91,
+     "txt": "Players with his profile: +7% reb+ast vs NO (91 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.032,
+     "n": 2,
+     "txt": "His history vs NO: 7.5 reb+ast/g in 2 games (+3%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.043,
+     "txt": "NO games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   },
@@ -5250,10 +5296,10 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 18.07,
-   "base": 16.8,
+   "proj": 16.9,
+   "base": 15.72,
    "mult": 1.076,
-   "minutes": 26.4,
+   "minutes": 24.7,
    "status": "",
    "start": "2026-11-19T01:00Z",
    "espn_id": "401910013",
@@ -6492,10 +6538,10 @@
    "role": "PF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 24.26,
-   "base": 22.67,
+   "proj": 22.86,
+   "base": 21.36,
    "mult": 1.07,
-   "minutes": 28.7,
+   "minutes": 27.1,
    "status": "",
    "start": "2026-11-19T01:00Z",
    "espn_id": "401910013",
@@ -7402,52 +7448,6 @@
      "txt": "MEM games have +3% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
-  },
-  {
-   "pid": "2991235",
-   "name": "Steven Adams",
-   "team": "HOU",
-   "opp": "IND",
-   "home": false,
-   "role": "C",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 10.23,
-   "base": 9.59,
-   "mult": 1.066,
-   "minutes": 14.9,
-   "status": "",
-   "start": "2026-11-19T00:00Z",
-   "espn_id": "401910008",
-   "lean": "Over",
-   "strength": 0.0639,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.079,
-     "n": 45.4,
-     "rank": 5,
-     "txt": "IND gives centers +8% pts+reb+ast vs their norm (#5 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.033,
-     "n": 129,
-     "txt": "Players with his profile: +3% pts+reb+ast vs IND (129 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.994,
-     "n": 1,
-     "txt": "His history vs IND: 13.0 pts+reb+ast/g in 1 games (-1%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.067,
-     "txt": "IND games have +7% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
   }
  ],
  "priced": {},
@@ -7622,7 +7622,6 @@
   "ronald holland": "4683771",
   "javonte green": "2596112",
   "kevin huerter": "4066372",
-  "taurean prince": "2990962",
   "john collins": "3908845",
   "chaz lanier": "4700852",
   "daniss jenkins": "5107199",
