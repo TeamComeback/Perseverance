@@ -15218,15 +15218,15 @@
       "price": 1.401,
       "book": "polymarket_us",
       "fair_p": 0.7176,
-      "close_p": 0.7084,
+      "close_p": 0.694,
       "result": null,
       "shop": {
        "median": 1.335,
        "gain": 0.0491,
        "n": 6
       },
-      "close_at": "2026-11-18T07:45:25Z",
-      "close_mins": 1044
+      "close_at": "2026-11-18T14:45:36Z",
+      "close_mins": 624
      }
     ],
     "dec": 1.401,
@@ -15261,15 +15261,15 @@
       "price": 3.6,
       "book": "fanatics",
       "fair_p": 0.2919,
-      "close_p": 0.2916,
+      "close_p": 0.306,
       "result": null,
       "shop": {
        "median": 3.375,
        "gain": 0.0667,
        "n": 6
       },
-      "close_at": "2026-11-18T07:45:25Z",
-      "close_mins": 1044
+      "close_at": "2026-11-18T14:45:36Z",
+      "close_mins": 624
      }
     ],
     "dec": 3.6,
@@ -15300,7 +15300,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.125,
+  "min_edge": 0.1225,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15566,13 +15566,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-18T07:45:24Z",
+   "last_scanned": "2026-11-18T14:45:36Z",
    "bets": 51.0,
    "staked": 265.13,
    "profit": -52.50999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-18T07:45:24Z",
+   "last_scanned": "2026-11-18T14:45:36Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -15584,7 +15584,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-18T07:45:25Z",
+   "last_scanned": "2026-11-18T14:45:36Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -15705,16 +15705,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-10T23:55:41Z",
-   "kind": "props",
-   "text": "NBA matchups: 6 games, strongest spots: Brayden Burries ast -10% vs NY; Isaiah Collier ast +11% vs MIA; Klay Thompson pra +11% vs UTAH. Bought prop odds for MIL@NY (ast, tpm, ra, team totals) (4 credits). Nothing cleared the bar."
-  },
-  {
-   "ts": "2026-11-11T00:32:25Z",
-   "kind": "scan",
-   "text": "No scan this run (allowance 0 credits, 201 left this month)."
-  },
   {
    "ts": "2026-11-11T00:55:33Z",
    "kind": "research",
@@ -17204,6 +17194,16 @@
    "ts": "2026-11-18T14:15:45Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 18: 12 games, 296 players projected, lineups for 12 games."
+  },
+  {
+   "ts": "2026-11-18T14:45:36Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 12.25% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-18T14:46:00Z",
+   "kind": "research",
+   "text": "Research refresh for Wed Nov 18: 12 games, 296 players projected, lineups for 12 games."
   }
  ],
  "learned_ids": [
@@ -17274,7 +17274,7 @@
   "bb2b2784"
  ],
  "strategist": null,
- "updated": "2026-11-18T14:30:31Z",
+ "updated": "2026-11-18T14:47:02Z",
  "stats": {
   "bets": 65,
   "won": 22,
@@ -17285,7 +17285,7 @@
   "staked": 347.89,
   "profit": -91.11,
   "roi": -0.2619,
-  "clv": -0.0118,
+  "clv": -0.0113,
   "clv_n": 62,
   "clv_no_close": 7,
   "close_mins_median": 4,
@@ -17304,5 +17304,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
