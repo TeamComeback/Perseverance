@@ -15218,15 +15218,15 @@
       "price": 1.401,
       "book": "polymarket_us",
       "fair_p": 0.7176,
-      "close_p": 0.6292,
+      "close_p": 0.6296,
       "result": null,
       "shop": {
        "median": 1.335,
        "gain": 0.0491,
        "n": 6
       },
-      "close_at": "2026-11-18T21:30:31Z",
-      "close_mins": 219
+      "close_at": "2026-11-18T22:00:34Z",
+      "close_mins": 189
      }
     ],
     "dec": 1.401,
@@ -15261,15 +15261,15 @@
       "price": 3.6,
       "book": "fanatics",
       "fair_p": 0.2919,
-      "close_p": 0.3708,
+      "close_p": 0.3704,
       "result": null,
       "shop": {
        "median": 3.375,
        "gain": 0.0667,
        "n": 6
       },
-      "close_at": "2026-11-18T21:30:31Z",
-      "close_mins": 219
+      "close_at": "2026-11-18T22:00:34Z",
+      "close_mins": 189
      }
     ],
     "dec": 3.6,
@@ -15566,7 +15566,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-18T21:30:30Z",
+   "last_scanned": "2026-11-18T22:00:34Z",
    "bets": 51.0,
    "staked": 265.13,
    "profit": -52.50999999999999
@@ -15578,7 +15578,7 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-18T21:02:04Z"
+   "last_scanned": "2026-11-18T22:00:34Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -15605,7 +15605,7 @@
    "last_scanned": "2026-10-30T23:36:54Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-11-18T21:02:05Z",
+   "last_scanned": "2026-11-18T22:00:34Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
@@ -15705,16 +15705,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-11T21:51:20Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-11T21:51:20Z",
-   "kind": "scan",
-   "text": "Scanned mma_mixed_martial_arts (1) for 1 credits. Nothing cleared the bar. Equity $50.86."
-  },
   {
    "ts": "2026-11-11T22:00:46Z",
    "kind": "research",
@@ -17204,6 +17194,16 @@
    "ts": "2026-11-18T21:35:24Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 18: 12 games, 297 players projected, lineups for 12 games."
+  },
+  {
+   "ts": "2026-11-18T22:00:56Z",
+   "kind": "focus",
+   "text": "Skipped 192 pts+reb+ast lines, 24 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists."
+  },
+  {
+   "ts": "2026-11-18T22:00:56Z",
+   "kind": "props",
+   "text": "NBA matchups: 12 games, strongest spots: Jakob Poeltl ra +17% vs WSH; Immanuel Quickley ast +16% vs WSH; Jamal Shead ast +15% vs WSH. Bought prop odds for WSH@TOR (ast, ra, pra, team totals), DET@NO (ast, ra, team totals), CHI@BKN (ast, ra, pra, team totals), HOU@IND (ast, ra, pra, team totals), UTAH@LAL (ast, ra, pra, tpm, team totals), MIL@MIA (ast, ra, pra, team totals), GS@DAL (ast, ra, team totals), MEM@CLE (ast, ra, pra, team totals), ATL@OKC (ast, ra, pra, team totals), PHI@ORL (ast, ra, pra, tpm, team totals), PHX@SAC (ast, ra, pra, team totals), BOS@DEN (ast, ra, pra, team totals) (48 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -17274,7 +17274,7 @@
   "bb2b2784"
  ],
  "strategist": null,
- "updated": "2026-11-18T21:45:24Z",
+ "updated": "2026-11-18T22:02:13Z",
  "stats": {
   "bets": 65,
   "won": 22,
@@ -17304,5 +17304,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 1
+ "dry_scans": 2
 }
