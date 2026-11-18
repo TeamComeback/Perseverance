@@ -844,7 +844,7 @@
    "p": 0.56,
    "p_sim": 0.82,
    "p_mkt": 0.508,
-   "p_kalshi": 0.49,
+   "p_kalshi": 0.484,
    "ev": 0.03,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "NO",
@@ -976,7 +976,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.49
+    "kalshi": 0.484
    },
    "started": false,
    "published": {
@@ -1170,15 +1170,15 @@
    "start": "2026-11-19T01:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 2.04,
-   "am": 104,
-   "conv": 51,
+   "dec": 1.99,
+   "am": -101,
+   "conv": 50,
    "tier": "Consider",
-   "p": 0.509,
+   "p": 0.52,
    "p_sim": 0.735,
-   "p_mkt": 0.457,
-   "p_kalshi": 0.45,
-   "ev": 0.039,
+   "p_mkt": 0.469,
+   "p_kalshi": 0.447,
+   "ev": 0.034,
    "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
    "home": "NO",
    "away": "DET",
@@ -1269,8 +1269,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.965,
-    "floor_am": -104,
+    "floor_dec": 1.923,
+    "floor_am": -108,
     "line": null,
     "next": 5.5
    },
@@ -1318,14 +1318,14 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212104",
+    "The price at 6.5 going past \u2212108",
     "A change in Cade Cunningham (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.45
+    "kalshi": 0.447
    },
    "started": false,
    "published": {
@@ -1353,29 +1353,29 @@
   "g|401910018|total|Under": {
    "key": "g|401910018|total|Under",
    "kind": "total",
-   "label": "PHX @ SAC Under 227.5",
+   "label": "PHX @ SAC Under 226.5",
    "espn_id": "401910018",
    "game": "PHX @ SAC",
    "start": "2026-11-19T03:00Z",
    "side": "Under",
-   "point": 227.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 54,
+   "point": 226.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 55,
    "tier": "Consider",
-   "p": 0.561,
-   "p_sim": 0.615,
-   "p_mkt": 0.512,
+   "p": 0.538,
+   "p_sim": 0.593,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": 0.044,
+   "ev": 0.05,
    "verdict": "Consider: simulation and line move agree; the main risk is model record.",
    "home": "SAC",
    "away": "PHX",
-   "why": "Sim total 222.6 (after a learned +1.9 correction) vs 227.5 \u00b7 under in 62% of sims vs 51% DraftKings",
+   "why": "Sim total 222.6 (after a learned +1.9 correction) vs 226.5 \u00b7 under in 59% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 62% of 10,000 simulated games.",
+     "t": "Goes under in 59% of 10,000 simulated games.",
      "rec": [
       895,
       769
@@ -1383,7 +1383,7 @@
     },
     {
      "tag": "line move",
-     "t": "The line has moved this way since it opened (229.5 to 227.5): you're with the money, at a worse number.",
+     "t": "The line has moved this way since it opened (229.5 to 226.5): you're with the money, at a worse number.",
      "rec": [
       97,
       109
@@ -1401,19 +1401,19 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.783,
-    "floor_am": -128,
+    "floor_dec": 1.859,
+    "floor_am": -116,
     "line": 226.5,
     "next": 225.5
    },
    "watch": [],
    "kill": [
-    "The line reaching 225.5 (still a bet at 226.5 near \u2212115)",
-    "The price at 227.5 going past \u2212128"
+    "The line reaching 225.5",
+    "The price at 226.5 going past \u2212116"
    ],
    "market": {
     "open": null,
-    "now": 227.5,
+    "now": 226.5,
     "kalshi": null
    },
    "started": false,
@@ -1435,7 +1435,7 @@
    },
    "first_seen": "2026-11-18T11:45:27Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Past play-to"
   },
   "g|401910011|total|Under": {
    "key": "g|401910011|total|Under",
@@ -3620,6 +3620,20 @@
    "kind": "removed",
    "text": "Removed: MIA -11.5 (MIL @ MIA) \u2014 confidence fell 41 \u2192 34",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T21:36:42Z",
+   "key": "p|5107199|ast|Under",
+   "kind": "line",
+   "text": "Daniss Jenkins: line 6.5 at +104 \u2192 6.5 at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T21:36:42Z",
+   "key": "g|401910018|total|Under",
+   "kind": "line",
+   "text": "PHX @ SAC Under 226.5: line 227.5 at \u2212116 \u2192 226.5 at \u2212105 \u2014 past the play-to line; don't add at this number",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3806,5 +3820,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T21:32:10Z"
+ "updated": "2026-11-18T21:36:42Z"
 }
