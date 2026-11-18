@@ -14778,7 +14778,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.13,
+  "min_edge": 0.135,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15029,13 +15029,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-18T02:15:59Z",
+   "last_scanned": "2026-11-18T02:19:00Z",
    "bets": 49.0,
    "staked": 245.0,
    "profit": -52.849999999999994
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-18T02:00:36Z",
+   "last_scanned": "2026-11-18T02:19:00Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -15047,7 +15047,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-18T02:00:36Z",
+   "last_scanned": "2026-11-18T02:19:00Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -15080,7 +15080,7 @@
    "last_scanned": "2026-11-18T01:31:04Z"
   },
   "soccer_brazil_campeonato": {
-   "last_scanned": "2026-11-18T00:30:59Z"
+   "last_scanned": "2026-11-18T02:19:00Z"
   },
   "tennis_atp_swiss_indoors": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -15110,7 +15110,7 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-18T02:00:36Z"
+   "last_scanned": "2026-11-18T02:19:00Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -15159,16 +15159,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-09T02:54:47Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-09T02:54:47Z",
-   "kind": "scan",
-   "text": "Scanned basketball_ncaab (36) for 3 credits. Nothing cleared the bar. Equity $42.46."
-  },
   {
    "ts": "2026-11-09T08:38:58Z",
    "kind": "research",
@@ -16658,6 +16648,16 @@
    "ts": "2026-11-18T02:15:38Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 17: 5 games, 120 players projected, lineups for 5 games."
+  },
+  {
+   "ts": "2026-11-18T02:18:56Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -1.4% over 58 legs, so the market is beating my picks. Raising the minimum edge to 13.5%."
+  },
+  {
+   "ts": "2026-11-18T02:19:00Z",
+   "kind": "scan",
+   "text": "Scanned basketball_ncaab (44), basketball_nba (11), icehockey_nhl (5), soccer_brazil_campeonato (6), americanfootball_ncaaf (2) for 14 credits. Nothing cleared the bar. Equity $100.00."
   }
  ],
  "learned_ids": [
@@ -16724,7 +16724,7 @@
   "02383dc5"
  ],
  "strategist": null,
- "updated": "2026-11-18T02:15:59Z",
+ "updated": "2026-11-18T02:19:00Z",
  "stats": {
   "bets": 61,
   "won": 20,
@@ -16754,5 +16754,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 1
+ "dry_scans": 2
 }
