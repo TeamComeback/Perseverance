@@ -1,21 +1,27 @@
 {
  "holds": [
   {
-   "player": "Sandro Mamukelashvili",
-   "stat": "reb",
-   "game": "CHA @ LAL",
-   "kind": "thin_edge",
-   "reason": "The model's own sim average (5.7) sits above the 5.5 line it is betting Under, and EV is 0.08%, so there is effectively no edge here."
+   "player": "Daniss Jenkins",
+   "pid": "5107199",
+   "stat": "ast",
+   "game": "DET @ NO",
+   "kind": "news",
+   "reason": "Cade Cunningham is questionable (knee, 2nd night of back-to-back) with a game-time decision, and the Newsroom names Jenkins the main beneficiary of extra playmaking if he sits, which works directly against the Under 6.5 assists (sim 5.2) until Cunningham's status is known."
   },
   {
-   "player": "Josh Green",
-   "stat": "reb",
-   "game": "UTAH @ LAC",
+   "player": "Julius Randle",
+   "stat": "ast",
+   "game": "CHI @ BKN",
+   "kind": "correlated",
+   "reason": "Same game script as the CHI @ BKN total Under 239.5 (EV 3.6%, conv 51); the Randle assists Under is the weaker leg (EV 2.0%, conv 46, sim 4.0 vs 4.5) so drop it rather than double up on a slow game."
+  },
+  {
+   "game": "PHI @ ORL",
    "kind": "thin_edge",
-   "reason": "EV is 0.46% at -137 after the learned blend, in the under-3% band where the backtest shows the market moving toward the model only 43.8% of the time (n=48) with -4.1% average CLV."
+   "reason": "PHI +1.5 at -122 carries only 0.4% EV (tier Pass) and a 2.5-point sim margin; nothing worth betting here."
   }
  ],
- "notes": "Open agent bets are all arb legs on games already tipped (NY @ TOR, Marquette @ Wisconsin), so nothing to hold there; DET @ SA and POR @ MIN are live too. Left the CHA @ LAL Under 223.5 (EV 5.1%) alone: Reaves and Kessler are out for LAL per NBA.com, which cuts both LAL scoring and rim protection, so the news doesn't clearly argue against the Under. UTAH @ LAC Under 226.5 (EV 2.0%) is also thin but already only a Consider; Ace Bailey reb Over is a Pass at 0.9% EV.",
- "updated": "2026-11-18T02:18:57Z",
+ "notes": "Arb pairs (Bradley/Fort Wayne, DET/NO h2h) left alone: both legs already placed, so holding one leg would break the hedge. Ivica Zubac was cleared as available Wednesday after an ankle sprain (rotoballer), so the reb Under 8.5 (sim 6.6) stands but is worth a watch if a minutes limit is reported. Backtest: disagreements under 3% move toward the model only 43.8% of the time (hit 51.8%, n=114) vs 63.8% at 10%+, and every edge bucket still has about -4% average CLV, so treat all 'Consider' tiers as small.",
+ "updated": "2026-11-18T23:19:08Z",
  "by": "skeptic"
 }
