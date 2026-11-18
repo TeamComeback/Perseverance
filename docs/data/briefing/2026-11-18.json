@@ -367,7 +367,7 @@
    "p": 0.595,
    "p_sim": 0.777,
    "p_mkt": 0.549,
-   "p_kalshi": 0.576,
+   "p_kalshi": 0.587,
    "ev": 0.011,
    "verdict": "Pass: simulation and recent form agree; the main risk is similar players.",
    "home": "MIA",
@@ -473,7 +473,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.576
+    "kalshi": 0.587
    },
    "started": false,
    "published": {
@@ -512,7 +512,7 @@
    "p": 0.536,
    "p_sim": 0.685,
    "p_mkt": 0.495,
-   "p_kalshi": 0.524,
+   "p_kalshi": 0.529,
    "ev": 0.012,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "BKN",
@@ -636,7 +636,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.524
+    "kalshi": 0.529
    },
    "started": false,
    "published": {
@@ -841,7 +841,7 @@
    "p": 0.559,
    "p_sim": 0.806,
    "p_mkt": 0.508,
-   "p_kalshi": 0.497,
+   "p_kalshi": 0.495,
    "ev": 0.028,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "NO",
@@ -973,7 +973,7 @@
    "market": {
     "open": 7.5,
     "now": 8.5,
-    "kalshi": 0.497
+    "kalshi": 0.495
    },
    "started": false,
    "published": {
@@ -1005,15 +1005,15 @@
    "start": "2026-11-19T00:00Z",
    "side": "Under",
    "point": 8.5,
-   "dec": 1.68,
-   "am": -147,
+   "dec": 1.7,
+   "am": -143,
    "conv": 46,
    "tier": "Consider",
-   "p": 0.605,
+   "p": 0.598,
    "p_sim": 0.804,
-   "p_mkt": 0.557,
+   "p_mkt": 0.549,
    "p_kalshi": 0.596,
-   "ev": 0.016,
+   "ev": 0.017,
    "verdict": "Consider: simulation and recent form agree; the main risk is matchup.",
    "home": "CLE",
    "away": "MEM",
@@ -1028,6 +1028,14 @@
    "avg10": 6.6,
    "minutes": 25.4,
    "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 60% there vs 55% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 330 of 611 times.",
+     "rec": [
+      68,
+      56
+     ]
+    },
     {
      "tag": "average",
      "t": "Averaging 6.6 assists over his last 10; the line is 8.5.",
@@ -1058,14 +1066,6 @@
      "rec": [
       755,
       697
-     ]
-    },
-    {
-     "tag": "model record",
-     "t": "Assists is a stat where the model has beaten the market so far.",
-     "rec": [
-      287,
-      295
      ]
     }
    ],
@@ -1104,8 +1104,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.653,
-    "floor_am": -153,
+    "floor_dec": 1.672,
+    "floor_am": -149,
     "line": 8.5,
     "next": 7.5
    },
@@ -1129,7 +1129,7 @@
    ],
    "kill": [
     "The line reaching 7.5",
-    "The price at 8.5 going past \u2212153",
+    "The price at 8.5 going past \u2212149",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -3049,6 +3049,13 @@
    "kind": "line",
    "text": "PHI +1.5 (PHI @ ORL): line -1.5 at \u2212101 \u2192 1.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-18T20:02:39Z",
+   "key": "p|4433083|ast|Under",
+   "kind": "line",
+   "text": "Cam Spencer: line 8.5 at \u2212147 \u2192 8.5 at \u2212143",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3245,5 +3252,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T19:46:32Z"
+ "updated": "2026-11-18T20:02:39Z"
 }
