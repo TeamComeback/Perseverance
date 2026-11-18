@@ -14788,7 +14788,7 @@
   "arb_pct": 0.2,
   "parlay_enabled": true,
   "props_enabled": true,
-  "prop_min_edge": 0.04,
+  "prop_min_edge": 0.08,
   "prop_model_weight": 0.173,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
@@ -16658,6 +16658,11 @@
    "ts": "2026-11-18T00:30:59Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 13.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-18T01:06:48Z",
+   "kind": "owner",
+   "text": "Owner approved raising the prop minimum edge from 4% to 8% while closing-line value is negative (-2.3% over 57 bets). Revert to 4% once CLV is positive over at least 30 bets. Game-bet edge, the $5 minimum bet and the credit floor are unchanged."
   }
  ],
  "learned_ids": [
