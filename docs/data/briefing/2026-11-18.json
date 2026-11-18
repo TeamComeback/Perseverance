@@ -213,7 +213,7 @@
    "p": 0.485,
    "p_sim": 0.631,
    "p_mkt": 0.444,
-   "p_kalshi": 0.42,
+   "p_kalshi": 0.415,
    "ev": 0.019,
    "verdict": "Consider: recent form and tonight's spot agree; the main risk is similar players.",
    "home": "BKN",
@@ -328,7 +328,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.42
+    "kalshi": 0.415
    },
    "started": false,
    "published": {
@@ -1180,7 +1180,7 @@
    "p": 0.524,
    "p_sim": 0.735,
    "p_mkt": 0.475,
-   "p_kalshi": 0.46,
+   "p_kalshi": 0.465,
    "ev": 0.033,
    "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
    "home": "NO",
@@ -1328,7 +1328,7 @@
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.46
+    "kalshi": 0.465
    },
    "started": false,
    "published": {
@@ -1676,6 +1676,163 @@
     }
    },
    "first_seen": "2026-11-18T23:05:52Z",
+   "removed": {
+    "at": "2026-11-18T23:35:50Z",
+    "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
+   },
+   "status": "Removed"
+  },
+  "p|5279130|ast|Under": {
+   "key": "p|5279130|ast|Under",
+   "kind": "prop",
+   "label": "Nolan Traore Under 3.5 assists",
+   "espn_id": "401910011",
+   "game": "CHI @ BKN",
+   "start": "2026-11-19T00:30Z",
+   "side": "Under",
+   "point": 3.5,
+   "dec": 2.25,
+   "am": 125,
+   "conv": 44,
+   "tier": "Pass",
+   "p": 0.452,
+   "p_sim": 0.567,
+   "p_mkt": 0.416,
+   "p_kalshi": 0.415,
+   "ev": 0.017,
+   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
+   "home": "BKN",
+   "away": "CHI",
+   "pid": "5279130",
+   "name": "Nolan Traore",
+   "team": "BKN",
+   "opp": "CHI",
+   "stat": "ast",
+   "proj": 3.3,
+   "sim": 3.4,
+   "ob_ind": 3.5,
+   "avg10": 3.2,
+   "minutes": 22.5,
+   "for": [
+    {
+     "tag": "vs his lines",
+     "t": "Has gone under his posted line in 3 of 3 tracked games.",
+     "rec": [
+      121,
+      102
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 57% of 10,000 simulated games (sim average 3.4).",
+     "rec": [
+      895,
+      769
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 3.3 assists against a line of 3.5.",
+     "rec": [
+      914,
+      817
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 3.5 in 6 of his last 10 (4 of the last 5).",
+     "rec": [
+      755,
+      697
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (4.5 to 3.5): money has been on the under.",
+     "rec": [
+      97,
+      109
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "history",
+     "t": "His history vs CHI: 7.3 assists/g in 3 games (+7%).",
+     "rec": [
+      249,
+      209
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 26.1 minutes in the games he went over vs 18.7 otherwise. He's projected for 22.5 tonight.",
+     "rec": [
+      804,
+      705
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "CHI gives point guards +16% assists vs their norm (#2 softest of 30).",
+     "rec": [
+      542,
+      499
+     ]
+    },
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +12% assists vs CHI (66 close comps).",
+     "rec": [
+      333,
+      318
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.212,
+    "floor_am": 121,
+    "line": null,
+    "next": 2.5
+   },
+   "watch": [
+    {
+     "pid": "5242502",
+     "name": "Ben Saraf",
+     "team": "BKN",
+     "status": "Out",
+     "self": false,
+     "min": 21.8
+    }
+   ],
+   "kill": [
+    "The line reaching 2.5",
+    "The price at 3.5 going past +121",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 4.5,
+    "now": 3.5,
+    "kalshi": 0.415
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-18T23:35:50Z",
+    "edition": "update",
+    "point": 3.5,
+    "dec": 2.25,
+    "am": 125,
+    "conv": 44,
+    "tier": "Pass",
+    "p": 0.452,
+    "play_to": {
+     "floor_dec": 2.212,
+     "floor_am": 121,
+     "line": null,
+     "next": 2.5
+    }
+   },
+   "first_seen": "2026-11-18T23:35:50Z",
    "removed": null,
    "status": "New"
   }
@@ -1777,19 +1934,19 @@
    "start": "2026-11-19T00:30Z",
    "side": "Under",
    "point": 239.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 51,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 48,
    "tier": "Consider",
-   "p": 0.545,
+   "p": 0.551,
    "p_sim": 0.594,
-   "p_mkt": 0.5,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": 0.035,
+   "ev": 0.025,
    "verdict": "Consider: simulation carries it; the main risk is line move.",
    "home": "BKN",
    "away": "CHI",
-   "why": "Sim total 235.5 (after a learned +1.9 correction) vs 239.5 \u00b7 under in 59% of sims vs 50% DraftKings",
+   "why": "Sim total 235.5 (after a learned +1.9 correction) vs 239.5 \u00b7 under in 59% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1819,8 +1976,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.835,
-    "floor_am": -120,
+    "floor_dec": 1.815,
+    "floor_am": -123,
     "line": 239.5,
     "next": 238.5
    },
@@ -1844,7 +2001,7 @@
    ],
    "kill": [
     "The line reaching 238.5",
-    "The price at 239.5 going past \u2212120"
+    "The price at 239.5 going past \u2212123"
    ],
    "market": {
     "open": null,
@@ -2688,23 +2845,23 @@
    "start": "2026-11-19T00:00Z",
    "side": "away",
    "point": 2.5,
-   "dec": 1.9,
-   "am": -111,
+   "dec": 1.86,
+   "am": -116,
    "conv": 59,
    "tier": "Consider",
-   "p": 0.578,
-   "p_sim": 0.663,
-   "p_mkt": 0.5,
+   "p": 0.576,
+   "p_sim": 0.644,
+   "p_mkt": 0.513,
    "p_kalshi": null,
-   "ev": 0.098,
-   "verdict": "Consider: simulation carries it; the main risk is who's out.",
+   "ev": 0.072,
+   "verdict": "Consider: simulation carries it; the main risk is team model.",
    "home": "ORL",
    "away": "PHI",
-   "why": "Sim: PHI by 4.8 on average (PHI 113.7, ORL 108.9) \u00b7 PHI +2.5 covers in 66% of sims vs 50% DraftKings",
+   "why": "Sim: PHI by 3.9 on average (PHI 112.3, ORL 108.4) \u00b7 PHI +2.5 covers in 64% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 66% of 10,000 simulated games.",
+     "t": "Covers in 64% of 10,000 simulated games.",
      "rec": [
       895,
       769
@@ -2729,14 +2886,19 @@
      ]
     },
     {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it ORL by 5.7, 3.2 worse than this number.",
+     "rec": null
+    },
+    {
      "tag": "who's out",
-     "t": "PHI without Jaylen Brown: worth about 2.4 points.",
+     "t": "PHI without Tyrese Maxey, Jaylen Brown: worth about 5.4 points.",
      "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 1.73,
-    "floor_am": -137,
+    "floor_dec": 1.736,
+    "floor_am": -136,
     "line": 1.5,
     "next": 0.5
    },
@@ -2745,9 +2907,9 @@
      "pid": "4431678",
      "name": "Tyrese Maxey",
      "team": "PHI",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 40.2
+     "min": 35.0
     },
     {
      "pid": "4432573",
@@ -2776,8 +2938,7 @@
    ],
    "kill": [
     "The line reaching 0.5 (still a bet at 1.5 near \u2212115)",
-    "The price at 2.5 going past \u2212137",
-    "A change in Tyrese Maxey (questionable): the model re-prices on the next run"
+    "The price at 2.5 going past \u2212136"
    ],
    "market": {
     "open": null,
@@ -4260,17 +4421,38 @@
    "alert": false
   },
   {
-   "at": "2026-11-18T23:35:41Z",
-   "key": "p|5107199|ast|Under",
-   "kind": "override",
-   "text": "Writer flags Daniss Jenkins Under 6.5 assists: Cade Cunningham is questionable with right knee soreness on the second night of a back-to-back after playing heavy minutes Tuesday, and if he sits Jenkins is expected to take on more of the playmaking.",
+   "at": "2026-11-18T23:35:50Z",
+   "key": "p|5279130|ast|Under",
+   "kind": "added",
+   "text": "Added: Nolan Traore Under 3.5 assists at +125, conviction 44",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T23:35:50Z",
+   "key": "p|4017837|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Ivica Zubac Under 8.5 rebounds \u2014 no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-18T23:35:50Z",
+   "key": "g|401910010|spread|away",
+   "kind": "line",
+   "text": "PHI +2.5 (PHI @ ORL): line 2.5 at \u2212111 \u2192 2.5 at \u2212116",
    "alert": false
   },
   {
-   "at": "2026-11-18T23:35:41Z",
-   "key": "p|4433083|ast|Under",
-   "kind": "override",
-   "text": "Writer flags Cam Spencer Under 8.5 assists: Memphis has also ruled out Scotty Pippen Jr. along with Ty Jerome, and Spencer is listed in the expected starting lineup, which could push his minutes and touches above the projection.",
+   "at": "2026-11-18T23:35:50Z",
+   "key": "g|401910010|spread|away",
+   "kind": "injury",
+   "text": "Tyrese Maxey questionable \u2192 out (PHI +2.5 (PHI @ ORL) re-priced: 2.5 at \u2212116, conviction 59)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-18T23:35:50Z",
+   "key": "g|401910011|total|Under",
+   "kind": "line",
+   "text": "CHI @ BKN Under 239.5: line 239.5 at \u2212111 \u2192 239.5 at \u2212116",
    "alert": false
   }
  ],
@@ -4477,17 +4659,12 @@
   "first": "2026-11-19T00:00Z",
   "questionable": [
    {
-    "name": "Tyrese Maxey",
-    "team": "PHI",
-    "status": "Questionable"
-   },
-   {
     "name": "Cade Cunningham",
     "team": "DET",
     "status": "Questionable"
    }
   ],
-  "picks": 10
+  "picks": 11
  },
  "leans_record": {
   "w": 12,
@@ -4496,5 +4673,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-18T23:35:41Z"
+ "updated": "2026-11-18T23:35:50Z"
 }
