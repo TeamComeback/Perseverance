@@ -15986,7 +15986,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1075,
+  "min_edge": 0.105,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -16262,7 +16262,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-19T21:45:23Z",
+   "last_scanned": "2026-11-19T22:00:30Z",
    "bets": 53.0,
    "staked": 286.16999999999996,
    "profit": -52.31999999999999
@@ -16274,7 +16274,7 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-19T21:00:37Z"
+   "last_scanned": "2026-11-19T22:00:30Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -16424,7 +16424,7 @@
    "last_scanned": "2026-11-19T17:45:21Z"
   },
   "soccer_russia_premier_league": {
-   "last_scanned": "2026-11-19T07:00:26Z"
+   "last_scanned": "2026-11-19T22:00:30Z"
   },
   "soccer_france_ligue_two": {
    "last_scanned": "2026-11-19T07:15:23Z"
@@ -16434,21 +16434,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-13T17:13:10Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran +1.1% vs actual over 1462 player-games: level x0.885; REB projections ran +3.2% vs actual over 1462 player-games: level x0.906; AST projections ran +1.1% vs actual over 1462 player-games: level x0.900; TPM projections ran -2.6% vs actual over 1462 player-games: level x0.936; PRA projections ran +1.5% vs actual over 1462 player-games: level x0.897; RA projections ran +2.3% vs actual over 1462 player-games: level x0.911; starter minutes were off by +1.0 on average over 756 player-games: correction -0.8 min."
-  },
-  {
-   "ts": "2026-11-13T17:13:10Z",
-   "kind": "daily",
-   "text": "Day close \u2014 equity $43.16 (run #1), 20-32-2, ROI -20.8%, CLV -2.3%."
-  },
-  {
-   "ts": "2026-11-13T17:45:39Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 13: 9 games, 214 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-13T18:00:47Z",
    "kind": "research",
@@ -17933,6 +17918,21 @@
    "ts": "2026-11-19T21:47:37Z",
    "kind": "research",
    "text": "Research refresh for Thu Nov 19: 4 games, 101 players projected, lineups for 4 games."
+  },
+  {
+   "ts": "2026-11-19T22:00:30Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-19T22:00:38Z",
+   "kind": "focus",
+   "text": "Skipped 56 pts+reb+ast lines, 11 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, reb+ast, rebounds."
+  },
+  {
+   "ts": "2026-11-19T22:00:38Z",
+   "kind": "props",
+   "text": "NBA matchups: 4 games, strongest spots: Jonathan Kuminga ra -12% vs NY; Jrue Holiday ra +13% vs MIL; Jrue Holiday ast +12% vs MIL. Bought prop odds for NY@MIN (ast, ra, pra, team totals), LAC@SA (ast, ra, pra, tpm, team totals), GS@MEM (ast, ra, pra, team totals) (13 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -18007,7 +18007,7 @@
   "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-19T21:48:03Z",
+ "updated": "2026-11-19T22:01:05Z",
  "stats": {
   "bets": 69,
   "won": 24,
@@ -18037,5 +18037,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
