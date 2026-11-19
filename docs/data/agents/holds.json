@@ -1,47 +1,27 @@
 {
  "holds": [
   {
-   "player": "Daniss Jenkins",
+   "bet_id": "d23ca4e7",
+   "player": "Ayo Dosunmu",
    "stat": "ast",
-   "game": "DET @ NO",
    "kind": "news",
-   "reason": "Newsroom has Cade Cunningham questionable (knee, 2nd night of back-to-back) and names Jenkins the beneficiary if he sits, which argues against an Under 9.5 whose EV is only 1.1%."
+   "reason": "Newsroom: with Edwards out and Kuminga questionable (decision near tip), Dosunmu (30 pts Tuesday) may again carry a larger role, which works against the 3.5 assists Under."
   },
   {
-   "player": "Julius Randle",
+   "bet_id": "9ccd7bbf",
+   "player": "LaMelo Ball",
    "stat": "ast",
-   "game": "CHI @ BKN",
-   "kind": "thin_edge",
-   "reason": "EV 1.95% sits in the under-3% backtest bucket where the market moved toward the model only 43.8% of the time (48 moves) with CLV -4.1%."
-  },
-  {
-   "player": "Nolan Traore",
-   "stat": "ast",
-   "game": "CHI @ BKN",
    "kind": "correlated",
-   "reason": "Third bet on the same low-pace CHI @ BKN script (with the Under 239.5 and Randle ast Under), and the weakest: sim 3.4 vs a 3.5 line, EV 1.66%, Pass tier."
+   "reason": "Four open matchup_unders all ride on a slow NY @ MIN script (Dosunmu ast, Ball ast, Bridges R+A, Gobert R+A); Ball's is the lowest-EV of the four at 8.4%."
   },
   {
-   "player": "Cam Spencer",
-   "stat": "ast",
-   "game": "MEM @ CLE",
-   "kind": "thin_edge",
-   "reason": "EV 1.54% at -143 is in the under-3% bucket (43.8% toward-model, CLV -4.1%); the big sim gap (6.5 vs 8.5) is mostly washed out by the 24% model weight."
-  },
-  {
-   "player": "Yves Missi",
+   "player": "Rudy Gobert",
    "stat": "reb",
-   "game": "DET @ NO",
-   "kind": "thin_edge",
-   "reason": "EV 2.6% is under the 3% threshold where the backtest shows the market moving toward the model only 43.8% of the time."
-  },
-  {
-   "game": "MEM @ CLE",
-   "kind": "thin_edge",
-   "reason": "CLE -4.5 spread carries EV 1.57%, inside the under-3% bucket (43.8% toward-model, hit rate 51.8% on 114)."
+   "kind": "correlated",
+   "reason": "Best Bets Gobert reb Under 9.5 shows only 0.2% EV and stacks on the already-open Gobert R+A Under 11.5 in the same game."
   }
  ],
- "notes": "Run at 02:18Z: only BOS@DEN, UTAH@LAL and PHX@SAC are still to tip, so holds on in-progress games are for grading only. Not held: PHI +4.5 (EV 10.2%, 10%+ bucket at 63.8% toward-model), PHX@SAC Under 227.5 (EV 4.4%, sim 222.6), CHI@BKN Under 239.5 (EV 3.1%), NO +4.5 (Pass tier; a Cunningham absence would only help it). The four open arb legs (Bradley/Fort Wayne, DET/NO) are hedged pairs already tipped; holding one leg would break the hedge, so none held. Data check: brief lists Julius Randle under CHI @ BKN; verify the roster mapping, since he was a Timberwolf as of my last information. Web search found no confirmed tip-time Cunningham decision.",
- "updated": "2026-11-19T02:18:49Z",
+ "notes": "Arb pair 9563e2a0/78512287 (UNC vs Texas Tech) tipped at 23:00Z, nothing to review. Bridges and Gobert R+A Unders kept (12.9% and 10.7% EV, the 10%+ bucket where the market moved toward the model 63.8% of the time). Kuminga's status is the swing for every NY @ MIN under; a re-check near tip is worth it. POR @ MIL total Under (0.15% EV) is already tier Pass; Avdija questionable adds noise there.",
+ "updated": "2026-11-19T23:19:11Z",
  "by": "skeptic"
 }
