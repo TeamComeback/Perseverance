@@ -15832,7 +15832,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.115,
+  "min_edge": 0.1125,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -16108,7 +16108,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-19T17:00:31Z",
+   "last_scanned": "2026-11-19T18:00:29Z",
    "bets": 53.0,
    "staked": 286.16999999999996,
    "profit": -52.31999999999999
@@ -16168,10 +16168,10 @@
    "last_scanned": "2026-11-18T07:15:33Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-11-19T17:00:32Z"
+   "last_scanned": "2026-11-19T18:00:29Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-19T16:00:34Z"
+   "last_scanned": "2026-11-19T18:00:29Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-11-19T17:00:31Z"
@@ -16243,7 +16243,7 @@
    "last_scanned": "2026-11-19T05:45:22Z"
   },
   "soccer_uefa_champs_league_women": {
-   "last_scanned": "2026-11-19T06:15:33Z"
+   "last_scanned": "2026-11-19T18:00:29Z"
   },
   "icehockey_mestis": {
    "last_scanned": "2026-11-18T07:00:37Z"
@@ -16277,11 +16277,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-13T00:59:21Z",
-   "kind": "scan",
-   "text": "No scan this run (allowance 0 credits, 158 left this month)."
-  },
   {
    "ts": "2026-11-13T01:30:50Z",
    "kind": "research",
@@ -17776,6 +17771,11 @@
    "ts": "2026-11-19T17:15:22Z",
    "kind": "scan",
    "text": "Scout: basketball_wncaab (10), soccer_germany_bundesliga (1), americanfootball_nfl (1) for 8 credits. Placed 2: North Carolina Tar Heels @ -244 (FanDuel); Texas Tech Red Raiders @ +250 (DraftKings). Equity $101.11."
+  },
+  {
+   "ts": "2026-11-19T18:00:29Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 11.25% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -17850,7 +17850,7 @@
   "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-19T17:45:21Z",
+ "updated": "2026-11-19T18:00:29Z",
  "stats": {
   "bets": 69,
   "won": 24,
@@ -17880,5 +17880,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
