@@ -15193,7 +15193,7 @@
       "lost-closing-line"
      ]
     },
-    "recap_tried": 1
+    "recap_tried": 2
    },
    {
     "id": "5c21d4ff",
@@ -15275,7 +15275,7 @@
       "upset-hit"
      ]
     },
-    "recap_tried": 1
+    "recap_tried": 2
    },
    {
     "id": "b3bc638d",
@@ -15832,7 +15832,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1125,
+  "min_edge": 0.1175,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15843,7 +15843,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.151,
+  "prop_model_weight": 0.136,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -16277,26 +16277,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-13T01:30:50Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-13T03:25:48Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 93 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-13T03:32:21Z",
-   "kind": "scan",
-   "text": "No scan this run (allowance 0 credits, 154 left this month)."
-  },
-  {
-   "ts": "2026-11-13T05:01:34Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 13: 9 games, 224 players projected, lineups for 4 games."
-  },
   {
    "ts": "2026-11-13T08:44:14Z",
    "kind": "research",
@@ -17776,6 +17756,26 @@
    "ts": "2026-11-19T18:00:29Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 11.25% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-19T18:16:31Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.9% over 62 legs, so the market is beating my picks. Raising the minimum edge to 11.8%."
+  },
+  {
+   "ts": "2026-11-19T18:17:49Z",
+   "kind": "adapt",
+   "text": "Model vs market on 8162 graded lines: the 10% model blend scored best (log loss model 0.723, market 0.687). Moving the model's weight from 15% to 14%."
+  },
+  {
+   "ts": "2026-11-19T18:17:49Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran -2.5% vs actual over 2387 player-games: level x0.912; AST projections ran -3.1% vs actual over 2387 player-games: level x0.941; TPM projections ran -3.9% vs actual over 2387 player-games: level x1.020; PRA projections ran -2.1% vs actual over 2387 player-games: level x0.920; RA projections ran -1.4% vs actual over 2387 player-games: level x0.924; starter minutes were off by +0.7 on average over 1236 player-games: correction -2.6 min; bench minutes were off by +0.3 on average over 1151 player-games: correction -0.6 min."
+  },
+  {
+   "ts": "2026-11-19T18:17:49Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $101.11 (run #2), 24-43-2, ROI -23.3%, CLV -0.9%."
   }
  ],
  "learned_ids": [
@@ -17850,7 +17850,7 @@
   "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-19T18:00:29Z",
+ "updated": "2026-11-19T18:17:49Z",
  "stats": {
   "bets": 69,
   "won": 24,
