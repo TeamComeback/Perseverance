@@ -2,26 +2,46 @@
  "holds": [
   {
    "player": "Daniss Jenkins",
-   "pid": "5107199",
    "stat": "ast",
    "game": "DET @ NO",
    "kind": "news",
-   "reason": "Cade Cunningham is questionable (knee, 2nd night of back-to-back) with a game-time decision, and the Newsroom names Jenkins the main beneficiary of extra playmaking if he sits, which works directly against the Under 6.5 assists (sim 5.2) until Cunningham's status is known."
+   "reason": "Newsroom has Cade Cunningham questionable (knee, 2nd night of back-to-back) and names Jenkins the beneficiary if he sits, which argues against an Under 9.5 whose EV is only 1.1%."
   },
   {
    "player": "Julius Randle",
    "stat": "ast",
    "game": "CHI @ BKN",
-   "kind": "correlated",
-   "reason": "Same game script as the CHI @ BKN total Under 239.5 (EV 3.6%, conv 51); the Randle assists Under is the weaker leg (EV 2.0%, conv 46, sim 4.0 vs 4.5) so drop it rather than double up on a slow game."
+   "kind": "thin_edge",
+   "reason": "EV 1.95% sits in the under-3% backtest bucket where the market moved toward the model only 43.8% of the time (48 moves) with CLV -4.1%."
   },
   {
-   "game": "PHI @ ORL",
+   "player": "Nolan Traore",
+   "stat": "ast",
+   "game": "CHI @ BKN",
+   "kind": "correlated",
+   "reason": "Third bet on the same low-pace CHI @ BKN script (with the Under 239.5 and Randle ast Under), and the weakest: sim 3.4 vs a 3.5 line, EV 1.66%, Pass tier."
+  },
+  {
+   "player": "Cam Spencer",
+   "stat": "ast",
+   "game": "MEM @ CLE",
    "kind": "thin_edge",
-   "reason": "PHI +1.5 at -122 carries only 0.4% EV (tier Pass) and a 2.5-point sim margin; nothing worth betting here."
+   "reason": "EV 1.54% at -143 is in the under-3% bucket (43.8% toward-model, CLV -4.1%); the big sim gap (6.5 vs 8.5) is mostly washed out by the 24% model weight."
+  },
+  {
+   "player": "Yves Missi",
+   "stat": "reb",
+   "game": "DET @ NO",
+   "kind": "thin_edge",
+   "reason": "EV 2.6% is under the 3% threshold where the backtest shows the market moving toward the model only 43.8% of the time."
+  },
+  {
+   "game": "MEM @ CLE",
+   "kind": "thin_edge",
+   "reason": "CLE -4.5 spread carries EV 1.57%, inside the under-3% bucket (43.8% toward-model, hit rate 51.8% on 114)."
   }
  ],
- "notes": "Arb pairs (Bradley/Fort Wayne, DET/NO h2h) left alone: both legs already placed, so holding one leg would break the hedge. Ivica Zubac was cleared as available Wednesday after an ankle sprain (rotoballer), so the reb Under 8.5 (sim 6.6) stands but is worth a watch if a minutes limit is reported. Backtest: disagreements under 3% move toward the model only 43.8% of the time (hit 51.8%, n=114) vs 63.8% at 10%+, and every edge bucket still has about -4% average CLV, so treat all 'Consider' tiers as small.",
- "updated": "2026-11-18T23:19:08Z",
+ "notes": "Run at 02:18Z: only BOS@DEN, UTAH@LAL and PHX@SAC are still to tip, so holds on in-progress games are for grading only. Not held: PHI +4.5 (EV 10.2%, 10%+ bucket at 63.8% toward-model), PHX@SAC Under 227.5 (EV 4.4%, sim 222.6), CHI@BKN Under 239.5 (EV 3.1%), NO +4.5 (Pass tier; a Cunningham absence would only help it). The four open arb legs (Bradley/Fort Wayne, DET/NO) are hedged pairs already tipped; holding one leg would break the hedge, so none held. Data check: brief lists Julius Randle under CHI @ BKN; verify the roster mapping, since he was a Timberwolf as of my last information. Web search found no confirmed tip-time Cunningham decision.",
+ "updated": "2026-11-19T02:18:49Z",
  "by": "skeptic"
 }
