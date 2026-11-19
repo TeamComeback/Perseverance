@@ -15336,7 +15336,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1275,
+  "min_edge": 0.125,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -15602,25 +15602,25 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-19T05:00:45Z",
+   "last_scanned": "2026-11-19T06:00:31Z",
    "bets": 51.0,
    "staked": 265.13,
    "profit": -52.50999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-19T05:00:45Z",
+   "last_scanned": "2026-11-19T06:00:31Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-19T05:00:45Z"
+   "last_scanned": "2026-11-19T06:00:31Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-19T05:00:46Z",
+   "last_scanned": "2026-11-19T06:00:31Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -15641,7 +15641,7 @@
    "last_scanned": "2026-10-30T23:36:54Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-11-19T05:00:46Z",
+   "last_scanned": "2026-11-19T06:00:32Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
@@ -15683,7 +15683,7 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-19T05:00:45Z"
+   "last_scanned": "2026-11-19T06:00:31Z"
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -15747,14 +15747,15 @@
   },
   "soccer_germany_bundesliga_women": {
    "last_scanned": "2026-11-19T05:45:22Z"
+  },
+  "soccer_germany_bundesliga2": {
+   "last_scanned": "2026-11-19T06:00:31Z"
+  },
+  "soccer_germany_liga3": {
+   "last_scanned": "2026-11-19T06:00:32Z"
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-12T15:30:34Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 89 players projected, lineups for 4 games."
-  },
   {
    "ts": "2026-11-12T16:45:28Z",
    "kind": "research",
@@ -17249,6 +17250,11 @@
    "ts": "2026-11-19T05:04:11Z",
    "kind": "research",
    "text": "Research refresh for Thu Nov 19: 4 games, 101 players projected, lineups for 12 games."
+  },
+  {
+   "ts": "2026-11-19T06:00:32Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 12.50% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -17319,7 +17325,7 @@
   "bb2b2784"
  ],
  "strategist": null,
- "updated": "2026-11-19T05:45:22Z",
+ "updated": "2026-11-19T06:00:32Z",
  "stats": {
   "bets": 65,
   "won": 22,
@@ -17349,5 +17355,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
