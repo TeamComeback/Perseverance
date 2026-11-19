@@ -38,7 +38,7 @@
    "p": 0.604,
    "p_sim": 0.774,
    "p_mkt": 0.557,
-   "p_kalshi": 0.549,
+   "p_kalshi": 0.554,
    "ev": 0.014,
    "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
    "home": "SA",
@@ -153,7 +153,7 @@
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.549
+    "kalshi": 0.554
    },
    "started": false,
    "published": {
@@ -185,15 +185,15 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 3.5,
-   "dec": 2.07,
-   "am": 107,
-   "conv": 44,
+   "dec": 2.05,
+   "am": 105,
+   "conv": 43,
    "tier": "Pass",
-   "p": 0.489,
+   "p": 0.493,
    "p_sim": 0.626,
-   "p_mkt": 0.451,
+   "p_mkt": 0.455,
    "p_kalshi": 0.44,
-   "ev": 0.013,
+   "ev": 0.01,
    "verdict": "Pass: recent form and simulation agree.",
    "home": "MIL",
    "away": "POR",
@@ -251,8 +251,8 @@
    ],
    "against": [],
    "play_to": {
-    "floor_dec": 2.045,
-    "floor_am": 104,
+    "floor_dec": 2.028,
+    "floor_am": 103,
     "line": null,
     "next": 2.5
    },
@@ -284,7 +284,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 3.5 going past +104",
+    "The price at 3.5 going past +103",
     "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -799,7 +799,7 @@
    "p": 0.597,
    "p_sim": 0.763,
    "p_mkt": 0.55,
-   "p_kalshi": 0.559,
+   "p_kalshi": 0.562,
    "ev": 0.014,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MEM",
@@ -922,7 +922,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.559
+    "kalshi": 0.562
    },
    "started": false,
    "published": {
@@ -1088,29 +1088,29 @@
   "g|401910020|total|Under": {
    "key": "g|401910020|total|Under",
    "kind": "total",
-   "label": "POR @ MIL Under 228.5",
+   "label": "POR @ MIL Under 229.5",
    "espn_id": "401910020",
    "game": "POR @ MIL",
    "start": "2026-11-20T01:00Z",
    "side": "Under",
-   "point": 228.5,
-   "dec": 1.95,
-   "am": -105,
+   "point": 229.5,
+   "dec": 1.86,
+   "am": -116,
    "conv": 59,
    "tier": "Consider",
-   "p": 0.559,
-   "p_sim": 0.635,
-   "p_mkt": 0.488,
+   "p": 0.582,
+   "p_sim": 0.657,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": 0.09,
+   "ev": 0.082,
    "verdict": "Consider: simulation carries it; the main risk is line move.",
    "home": "MIL",
    "away": "POR",
-   "why": "Sim total 222.8 (after a learned +2.1 correction) vs 228.5 \u00b7 under in 64% of sims vs 49% DraftKings",
+   "why": "Sim total 222.8 (after a learned +2.1 correction) vs 229.5 \u00b7 under in 66% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 64% of 10,000 simulated games.",
+     "t": "Goes under in 66% of 10,000 simulated games.",
      "rec": [
       895,
       769
@@ -1120,7 +1120,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (225.5 to 228.5).",
+     "t": "The line has moved against this side since it opened (225.5 to 229.5).",
      "rec": [
       127,
       108
@@ -1136,8 +1136,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.789,
-    "floor_am": -127,
+    "floor_dec": 1.718,
+    "floor_am": -139,
     "line": 227.5,
     "next": 226.5
    },
@@ -1177,12 +1177,12 @@
    ],
    "kill": [
     "The line reaching 226.5 (still a bet at 227.5 near \u2212115)",
-    "The price at 228.5 going past \u2212127",
+    "The price at 229.5 going past \u2212139",
     "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 228.5,
+    "now": 229.5,
     "kalshi": null
    },
    "started": false,
@@ -1408,8 +1408,11 @@
     }
    },
    "first_seen": "2026-11-19T11:45:22Z",
-   "removed": null,
-   "status": "Upgraded"
+   "removed": {
+    "at": "2026-11-19T14:45:58Z",
+    "why": "line moved 226.5 \u2192 225.5"
+   },
+   "status": "Removed"
   },
   "g|401910021|total|Over": {
    "key": "g|401910021|total|Over",
@@ -1701,6 +1704,125 @@
    "first_seen": "2026-11-19T14:15:57Z",
    "removed": null,
    "status": "Past play-to"
+  },
+  "g|401910019|spread|home": {
+   "key": "g|401910019|spread|home",
+   "kind": "spread",
+   "label": "MEM -6.5 (GS @ MEM)",
+   "espn_id": "401910019",
+   "game": "GS @ MEM",
+   "start": "2026-11-20T01:00Z",
+   "side": "home",
+   "point": -6.5,
+   "dec": 1.93,
+   "am": -108,
+   "conv": 42,
+   "tier": "Pass",
+   "p": 0.521,
+   "p_sim": 0.551,
+   "p_mkt": 0.493,
+   "p_kalshi": null,
+   "ev": 0.006,
+   "verdict": "Pass: simulation and who's out agree; the main risk is team model.",
+   "home": "MEM",
+   "away": "GS",
+   "why": "Sim: MEM by 8.4 on average (GS 106.8, MEM 115.2) \u00b7 MEM -6.5 covers in 55% of sims vs 49% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Covers in 55% of 10,000 simulated games.",
+     "rec": [
+      895,
+      769
+     ]
+    },
+    {
+     "tag": "who's out",
+     "t": "GS without Stephen Curry, Brandon Williams: worth about 2.4 points.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (-8.5 to -6.5).",
+     "rec": [
+      127,
+      108
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 627-642 against DraftKings' spreads. Treat this as a lean.",
+     "rec": [
+      51,
+      61
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it MEM by 3.8, 2.7 worse than this number.",
+     "rec": null
+    },
+    {
+     "tag": "who's out",
+     "t": "MEM without Ty Jerome, GG Jackson, Isaiah Stewart: worth about 2.6 points.",
+     "rec": null
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.919,
+    "floor_am": -109,
+    "line": null,
+    "next": -7.5
+   },
+   "watch": [
+    {
+     "pid": "4065733",
+     "name": "Ty Jerome",
+     "team": "MEM",
+     "status": "Out",
+     "self": false,
+     "min": 30.3
+    },
+    {
+     "pid": "3975",
+     "name": "Stephen Curry",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 22.5
+    }
+   ],
+   "kill": [
+    "The line reaching -7.5",
+    "The price at -6.5 going past \u2212109"
+   ],
+   "market": {
+    "open": null,
+    "now": -6.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-19T14:45:58Z",
+    "edition": "update",
+    "point": -6.5,
+    "dec": 1.93,
+    "am": -108,
+    "conv": 42,
+    "tier": "Pass",
+    "p": 0.521,
+    "play_to": {
+     "floor_dec": 1.919,
+     "floor_am": -109,
+     "line": null,
+     "next": -7.5
+    }
+   },
+   "first_seen": "2026-11-19T14:45:58Z",
+   "removed": null,
+   "status": "New"
   }
  },
  "changes": [
@@ -1822,6 +1944,34 @@
    "kind": "removed",
    "text": "Removed: NY @ MIN Under 217.5 \u2014 line moved 217.5 \u2192 215.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-19T14:45:58Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "line",
+   "text": "Tyler Herro: line 3.5 at +107 \u2192 3.5 at +105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T14:45:58Z",
+   "key": "g|401910020|total|Under",
+   "kind": "line",
+   "text": "POR @ MIL Under 229.5: line 228.5 at \u2212105 \u2192 229.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T14:45:58Z",
+   "key": "g|401910019|spread|home",
+   "kind": "added",
+   "text": "Added: MEM -6.5 (GS @ MEM) at \u2212108, conviction 42",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T14:45:58Z",
+   "key": "g|401910019|total|Under",
+   "kind": "removed",
+   "text": "Removed: GS @ MEM Under 226.5 \u2014 line moved 226.5 \u2192 225.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -1884,5 +2034,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-19T14:30:25Z"
+ "updated": "2026-11-19T14:45:58Z"
 }
