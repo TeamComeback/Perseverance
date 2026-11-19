@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 91.11,
+  "cash": 69.14,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -15734,6 +15734,88 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "9563e2a0",
+    "placed": "2026-11-19T17:15:22Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "9e03686ea9b7ff9cc5493dffeaf6872f",
+      "sport": "basketball_wncaab",
+      "commence": "2026-11-19T23:00:00Z",
+      "home": "North Carolina Tar Heels",
+      "away": "Texas Tech Red Raiders",
+      "market": "h2h",
+      "outcome": "North Carolina Tar Heels",
+      "point": null,
+      "price": 1.41,
+      "book": "fanduel",
+      "fair_p": 0.6983,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.4,
+       "gain": 0.0071,
+       "n": 5
+      }
+     }
+    ],
+    "dec": 1.41,
+    "stake": 15.66,
+    "ev": 0.0051,
+    "p": 0.7128,
+    "note": "Arb: 0.51% locked across 2 books",
+    "group": "arb-9e03686ea9",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "78512287",
+    "placed": "2026-11-19T17:15:22Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "9e03686ea9b7ff9cc5493dffeaf6872f",
+      "sport": "basketball_wncaab",
+      "commence": "2026-11-19T23:00:00Z",
+      "home": "North Carolina Tar Heels",
+      "away": "Texas Tech Red Raiders",
+      "market": "h2h",
+      "outcome": "Texas Tech Red Raiders",
+      "point": null,
+      "price": 3.5,
+      "book": "draftkings",
+      "fair_p": 0.3174,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 3.081,
+       "gain": 0.136,
+       "n": 5
+      }
+     }
+    ],
+    "dec": 3.5,
+    "stake": 6.31,
+    "ev": 0.0051,
+    "p": 0.2872,
+    "note": "Arb: 0.51% locked across 2 books",
+    "group": "arb-9e03686ea9",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -16038,7 +16120,7 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-19T15:45:22Z"
+   "last_scanned": "2026-11-19T17:15:22Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -16095,7 +16177,7 @@
    "last_scanned": "2026-11-19T17:00:31Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-11-19T07:30:25Z"
+   "last_scanned": "2026-11-19T17:15:22Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-11-19T05:45:22Z"
@@ -16131,7 +16213,7 @@
    "last_scanned": "2026-11-05T00:50:19Z"
   },
   "basketball_wncaab": {
-   "last_scanned": "2026-11-18T15:45:26Z",
+   "last_scanned": "2026-11-19T17:15:22Z",
    "bets": 2.0,
    "staked": 20.13,
    "profit": 0.39000000000000057
@@ -16195,11 +16277,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-12T23:59:18Z",
-   "kind": "props",
-   "text": "NBA matchups: 2 games, strongest spots: Khaman Maluach ra -9% vs CHA; LaMelo Ball ast +10% vs DAL; Dillon Brooks ra -8% vs CHA. Bought prop odds for CHA@PHX (ast, ra, pra) (3 credits). Placed 1: Devin Booker Under 4.5 @ +124 (FanDuel)"
-  },
   {
    "ts": "2026-11-13T00:59:21Z",
    "kind": "scan",
@@ -17694,6 +17771,11 @@
    "ts": "2026-11-19T17:00:32Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 11.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-19T17:15:22Z",
+   "kind": "scan",
+   "text": "Scout: basketball_wncaab (10), soccer_germany_bundesliga (1), americanfootball_nfl (1) for 8 credits. Placed 2: North Carolina Tar Heels @ -244 (FanDuel); Texas Tech Red Raiders @ +250 (DraftKings). Equity $101.11."
   }
  ],
  "learned_ids": [
@@ -17768,13 +17850,13 @@
   "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-19T17:00:32Z",
+ "updated": "2026-11-19T17:15:22Z",
  "stats": {
   "bets": 69,
   "won": 24,
   "lost": 43,
-  "shop_n": 10,
-  "shop_avg": 0.0648,
+  "shop_n": 12,
+  "shop_avg": 0.0659,
   "push": 2,
   "staked": 389.97,
   "profit": -90.73,
@@ -17783,7 +17865,7 @@
   "clv_n": 62,
   "clv_no_close": 7,
   "close_mins_median": 4,
-  "open": 2,
+  "open": 4,
   "equity": 101.11
  },
  "weights": {
