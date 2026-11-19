@@ -38,7 +38,7 @@
    "p": 0.615,
    "p_sim": 0.752,
    "p_mkt": 0.57,
-   "p_kalshi": 0.581,
+   "p_kalshi": 0.576,
    "ev": 0.009,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "SA",
@@ -153,7 +153,7 @@
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.581
+    "kalshi": 0.576
    },
    "started": false,
    "published": {
@@ -179,22 +179,22 @@
   "p|4395725|reb|Under": {
    "key": "p|4395725|reb|Under",
    "kind": "prop",
-   "label": "Tyler Herro Under 3.5 rebounds",
+   "label": "Tyler Herro Under 4.5 rebounds",
    "espn_id": "401910020",
    "game": "POR @ MIL",
    "start": "2026-11-20T01:00Z",
    "side": "Under",
-   "point": 3.5,
-   "dec": 2.22,
-   "am": 122,
-   "conv": 53,
+   "point": 4.5,
+   "dec": 1.62,
+   "am": -161,
+   "conv": 47,
    "tier": "Consider",
-   "p": 0.471,
-   "p_sim": 0.629,
-   "p_mkt": 0.422,
-   "p_kalshi": 0.415,
-   "ev": 0.047,
-   "verdict": "Consider: recent form and simulation agree; the main risk is market.",
+   "p": 0.628,
+   "p_sim": 0.806,
+   "p_mkt": 0.577,
+   "p_kalshi": 0.584,
+   "ev": 0.018,
+   "verdict": "Consider: simulation and recent form agree; the main risk is line move.",
    "home": "MIL",
    "away": "POR",
    "pid": "4395725",
@@ -206,11 +206,11 @@
    "sim": 3.1,
    "ob_ind": 2.5,
    "avg10": 3.3,
-   "minutes": 28.6,
+   "minutes": 28.4,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 63% of 10,000 simulated games (sim average 3.1).",
+     "t": "Goes under in 81% of 10,000 simulated games (sim average 3.1).",
      "rec": [
       1062,
       900
@@ -218,26 +218,26 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 3 rebounds against a line of 3.5.",
+     "t": "Model projects 3 rebounds against a line of 4.5.",
      "rec": [
       1108,
       950
      ]
     },
     {
-     "tag": "recent form",
-     "t": "Stayed under 3.5 in 6 of his last 10 (4 of the last 5).",
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 3.5 in 6 of his last 10.",
      "rec": [
-      900,
-      811
+      242,
+      208
      ]
     },
     {
-     "tag": "blowout",
-     "t": "Blowout risk: 47% of sims end 15+ points apart, when starters sit late.",
+     "tag": "recent form",
+     "t": "Stayed under 4.5 in 6 of his last 10 (4 of the last 5).",
      "rec": [
-      609,
-      551
+      900,
+      811
      ]
     },
     {
@@ -251,27 +251,27 @@
    ],
    "against": [
     {
+     "tag": "line move",
+     "t": "The line moved against it (3.5 to 4.5), though you now get a higher number than the opener's would have been.",
+     "rec": [
+      148,
+      116
+     ]
+    },
+    {
      "tag": "role tonight",
      "t": "Minutes up tonight: +1.7 min with Turner out.",
      "rec": [
       192,
       174
      ]
-    },
-    {
-     "tag": "market",
-     "t": "You're betting against the market: DraftKings' price says this happens 42% of the time.",
-     "rec": [
-      66,
-      86
-     ]
     }
    ],
    "play_to": {
-    "floor_dec": 2.123,
-    "floor_am": 112,
-    "line": null,
-    "next": 2.5
+    "floor_dec": 1.592,
+    "floor_am": -169,
+    "line": 4.5,
+    "next": 3.5
    },
    "watch": [
     {
@@ -280,7 +280,7 @@
      "team": "POR",
      "status": "Questionable",
      "self": false,
-     "min": 28.8
+     "min": 28.6
     },
     {
      "pid": "4431736",
@@ -288,7 +288,7 @@
      "team": "POR",
      "status": "Questionable",
      "self": false,
-     "min": 28.3
+     "min": 28.1
     },
     {
      "pid": "3134907",
@@ -308,15 +308,15 @@
     }
    ],
    "kill": [
-    "The line reaching 2.5",
-    "The price at 3.5 going past +112",
+    "The line reaching 3.5",
+    "The price at 4.5 going past \u2212169",
     "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 3.5,
-    "now": 3.5,
-    "kalshi": 0.415
+    "now": 4.5,
+    "kalshi": 0.584
    },
    "started": false,
    "published": {
@@ -337,7 +337,7 @@
    },
    "first_seen": "2026-11-19T11:45:22Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Holding"
   },
   "p|4683678|reb|Under": {
    "key": "p|4683678|reb|Under",
@@ -348,15 +348,15 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 2.5,
-   "dec": 1.73,
-   "am": -137,
-   "conv": 45,
+   "dec": 1.74,
+   "am": -135,
+   "conv": 47,
    "tier": "Consider",
    "p": 0.586,
-   "p_sim": 0.72,
-   "p_mkt": 0.54,
-   "p_kalshi": 0.551,
-   "ev": 0.014,
+   "p_sim": 0.74,
+   "p_mkt": 0.537,
+   "p_kalshi": 0.546,
+   "ev": 0.02,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIL",
    "away": "POR",
@@ -366,10 +366,10 @@
    "opp": "MIL",
    "stat": "reb",
    "proj": 1.6,
-   "sim": 1.9,
+   "sim": 1.8,
    "ob_ind": 1.5,
    "avg10": 1.6,
-   "minutes": 21.7,
+   "minutes": 21.8,
    "for": [
     {
      "tag": "average",
@@ -381,7 +381,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 72% of 10,000 simulated games (sim average 1.9).",
+     "t": "Goes under in 74% of 10,000 simulated games (sim average 1.8).",
      "rec": [
       1062,
       900
@@ -459,7 +459,7 @@
      "team": "POR",
      "status": "Questionable",
      "self": false,
-     "min": 28.8
+     "min": 28.6
     },
     {
      "pid": "4431736",
@@ -467,7 +467,7 @@
      "team": "POR",
      "status": "Questionable",
      "self": false,
-     "min": 28.3
+     "min": 28.1
     },
     {
      "pid": "4279888",
@@ -487,7 +487,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.551
+    "kalshi": 0.546
    },
    "started": false,
    "published": {
@@ -982,15 +982,15 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 2.06,
-   "am": 106,
-   "conv": 48,
+   "dec": 2,
+   "am": 100,
+   "conv": 46,
    "tier": "Consider",
-   "p": 0.498,
+   "p": 0.51,
    "p_sim": 0.62,
-   "p_mkt": 0.454,
+   "p_mkt": 0.467,
    "p_kalshi": null,
-   "ev": 0.027,
+   "ev": 0.02,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "SA",
    "away": "LAC",
@@ -1065,8 +1065,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.008,
-    "floor_am": 101,
+    "floor_dec": 1.961,
+    "floor_am": -104,
     "line": null,
     "next": 5.5
    },
@@ -1082,7 +1082,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past +101",
+    "The price at 6.5 going past \u2212104",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1120,15 +1120,15 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 9.5,
-   "dec": 2.06,
-   "am": 106,
-   "conv": 44,
+   "dec": 2.04,
+   "am": 104,
+   "conv": 42,
    "tier": "Pass",
-   "p": 0.492,
-   "p_sim": 0.611,
-   "p_mkt": 0.454,
+   "p": 0.494,
+   "p_sim": 0.605,
+   "p_mkt": 0.457,
    "p_kalshi": 0.46,
-   "ev": 0.013,
+   "ev": 0.009,
    "verdict": "Pass: simulation and matchup agree; the main risk is recent form.",
    "home": "MIN",
    "away": "NY",
@@ -1145,7 +1145,7 @@
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 61% of 10,000 simulated games (sim average 8.9).",
+     "t": "Goes under in 60% of 10,000 simulated games (sim average 8.9).",
      "rec": [
       1062,
       900
@@ -1203,8 +1203,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.033,
-    "floor_am": 103,
+    "floor_dec": 2.024,
+    "floor_am": 102,
     "line": null,
     "next": 8.5
    },
@@ -1228,7 +1228,7 @@
    ],
    "kill": [
     "The line reaching 8.5",
-    "The price at 9.5 going past +103",
+    "The price at 9.5 going past +102",
     "A change in Jonathan Kuminga (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1271,27 +1271,18 @@
    "point": 230.5,
    "dec": 1.92,
    "am": -109,
-   "conv": 43,
+   "conv": 40,
    "tier": "Pass",
-   "p": 0.526,
-   "p_sim": 0.558,
+   "p": 0.522,
+   "p_sim": 0.549,
    "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": 0.009,
-   "verdict": "Pass: simulation carries it; the main risk is line move.",
+   "ev": 0.002,
+   "verdict": "Pass: the price is the case; the main risk is line move.",
    "home": "MIL",
    "away": "POR",
-   "why": "Sim total 227.9 (after a learned +1.9 correction) vs 230.5 \u00b7 under in 56% of sims vs 50% DraftKings",
-   "for": [
-    {
-     "tag": "simulation",
-     "t": "Goes under in 56% of 10,000 simulated games.",
-     "rec": [
-      1062,
-      900
-     ]
-    }
-   ],
+   "why": "Sim total 228.3 (after a learned +1.9 correction) vs 230.5 \u00b7 under in 55% of sims vs 50% DraftKings",
+   "for": [],
    "against": [
     {
      "tag": "line move",
@@ -1311,8 +1302,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
+    "floor_dec": 1.916,
+    "floor_am": -109,
     "line": null,
     "next": 229.5
    },
@@ -1323,7 +1314,7 @@
      "team": "POR",
      "status": "Questionable",
      "self": false,
-     "min": 28.8
+     "min": 28.6
     },
     {
      "pid": "4431736",
@@ -1331,7 +1322,7 @@
      "team": "POR",
      "status": "Questionable",
      "self": false,
-     "min": 28.3
+     "min": 28.1
     },
     {
      "pid": "3134907",
@@ -1360,7 +1351,7 @@
    ],
    "kill": [
     "The line reaching 229.5",
-    "The price at 230.5 going past \u2212111",
+    "The price at 230.5 going past \u2212109",
     "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1885,8 +1876,11 @@
     }
    },
    "first_seen": "2026-11-19T14:15:57Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-19T20:15:53Z",
+    "why": "confidence fell 36 \u2192 23"
+   },
+   "status": "Removed"
   },
   "g|401910019|spread|home": {
    "key": "g|401910019|spread|home",
@@ -2019,20 +2013,28 @@
    "start": "2026-11-20T01:00Z",
    "side": "home",
    "point": 1.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 27,
+   "dec": 1.84,
+   "am": -119,
+   "conv": 35,
    "tier": "Pass",
-   "p": 0.516,
-   "p_sim": 0.52,
-   "p_mkt": 0.512,
+   "p": 0.536,
+   "p_sim": 0.554,
+   "p_mkt": 0.518,
    "p_kalshi": null,
-   "ev": -0.041,
-   "verdict": "Pass: team model carries it; the main risk is model record.",
+   "ev": -0.014,
+   "verdict": "Pass: simulation and team model agree; the main risk is model record.",
    "home": "MIN",
    "away": "NY",
-   "why": "Sim: dead even on average (NY 107.2, MIN 107.1) \u00b7 MIN +1.5 covers in 52% of sims vs 51% DraftKings",
+   "why": "Sim: MIN by 1.2 on average (NY 106.6, MIN 107.8) \u00b7 MIN +1.5 covers in 55% of sims vs 52% DraftKings",
    "for": [
+    {
+     "tag": "simulation",
+     "t": "Covers in 55% of 10,000 simulated games.",
+     "rec": [
+      1062,
+      900
+     ]
+    },
     {
      "tag": "team model",
      "t": "Team ratings with tonight's lineups make it MIN by 1.6, 3.1 better than this number.",
@@ -2050,9 +2052,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.938,
-    "floor_am": -107,
-    "line": null,
+    "floor_dec": 1.866,
+    "floor_am": -116,
+    "line": 1.5,
     "next": 0.5
    },
    "watch": [
@@ -2070,12 +2072,12 @@
      "team": "MIN",
      "status": "Questionable",
      "self": false,
-     "min": 28.0
+     "min": 27.6
     }
    ],
    "kill": [
     "The line reaching 0.5",
-    "The price at 1.5 going past \u2212107",
+    "The price at 1.5 going past \u2212116",
     "A change in Jonathan Kuminga (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -2101,11 +2103,8 @@
     }
    },
    "first_seen": "2026-11-19T18:31:10Z",
-   "removed": {
-    "at": "2026-11-19T18:46:02Z",
-    "why": "confidence fell 27 \u2192 16"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401910019|total|Over": {
    "key": "g|401910019|total|Over",
@@ -2118,26 +2117,18 @@
    "point": 224.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 39,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.525,
-   "p_sim": 0.552,
+   "p": 0.519,
+   "p_sim": 0.54,
    "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": -0.002,
-   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
+   "ev": -0.013,
+   "verdict": "Pass: team model carries it; the main risk is line move.",
    "home": "MEM",
    "away": "GS",
-   "why": "Sim total 227.0 (after a learned +1.9 correction) vs 224.5 \u00b7 over in 55% of sims vs 50% DraftKings",
+   "why": "Sim total 226.4 (after a learned +1.9 correction) vs 224.5 \u00b7 over in 54% of sims vs 50% DraftKings",
    "for": [
-    {
-     "tag": "simulation",
-     "t": "Goes over in 55% of 10,000 simulated games.",
-     "rec": [
-      1062,
-      900
-     ]
-    },
     {
      "tag": "team model",
      "t": "Team ratings project 230.6 points, 6.1 on your side of 224.5.",
@@ -2171,8 +2162,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.905,
-    "floor_am": -111,
+    "floor_dec": 1.927,
+    "floor_am": -108,
     "line": null,
     "next": 225.5
    },
@@ -2212,7 +2203,7 @@
    ],
    "kill": [
     "The line reaching 225.5",
-    "The price at 224.5 going past \u2212111"
+    "The price at 224.5 going past \u2212108"
    ],
    "market": {
     "open": null,
@@ -2938,6 +2929,69 @@
    "kind": "removed",
    "text": "Removed: MIL +10.5 (POR @ MIL) \u2014 line moved 10.5 \u2192 11.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "p|4683678|reb|Under",
+   "kind": "line",
+   "text": "Scoot Henderson: line 2.5 at \u2212137 \u2192 2.5 at \u2212135",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "line",
+   "text": "Tyler Herro: line 3.5 at +122 \u2192 4.5 at \u2212161",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "conviction",
+   "text": "Tyler Herro Under 4.5 rebounds: conviction 53 Consider \u2192 47 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "p|4592479|ra|Under",
+   "kind": "line",
+   "text": "Julian Champagnie: line 6.5 at +106 \u2192 6.5 at +100",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "p|3032976|reb|Under",
+   "kind": "line",
+   "text": "Rudy Gobert: line 9.5 at +106 \u2192 9.5 at +104",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "g|401910021|spread|home",
+   "kind": "back",
+   "text": "Back on the board: MIN +1.5 (NY @ MIN) at \u2212119",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "g|401910021|spread|home",
+   "kind": "line",
+   "text": "MIN +1.5 (NY @ MIN): line 1.5 at \u2212116 \u2192 1.5 at \u2212119",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "g|401910021|spread|home",
+   "kind": "conviction",
+   "text": "MIN +1.5 (NY @ MIN): conviction 27 Pass \u2192 35 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T20:15:53Z",
+   "key": "g|401910021|spread|away",
+   "kind": "removed",
+   "text": "Removed: NY -1.5 (NY @ MIN) \u2014 confidence fell 36 \u2192 23",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3030,5 +3084,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3252,
- "updated": "2026-11-19T20:00:49Z"
+ "updated": "2026-11-19T20:15:53Z"
 }
