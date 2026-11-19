@@ -38,7 +38,7 @@
    "p": 0.604,
    "p_sim": 0.774,
    "p_mkt": 0.557,
-   "p_kalshi": 0.559,
+   "p_kalshi": 0.565,
    "ev": 0.014,
    "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
    "home": "SA",
@@ -153,7 +153,7 @@
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.559
+    "kalshi": 0.565
    },
    "started": false,
    "published": {
@@ -185,16 +185,16 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 3.5,
-   "dec": 2.07,
-   "am": 107,
-   "conv": 45,
-   "tier": "Consider",
-   "p": 0.491,
+   "dec": 2.02,
+   "am": 102,
+   "conv": 43,
+   "tier": "Pass",
+   "p": 0.501,
    "p_sim": 0.634,
-   "p_mkt": 0.452,
+   "p_mkt": 0.463,
    "p_kalshi": 0.435,
-   "ev": 0.017,
-   "verdict": "Consider: simulation and recent form agree.",
+   "ev": 0.011,
+   "verdict": "Pass: simulation and recent form agree.",
    "home": "MIL",
    "away": "POR",
    "pid": "4395725",
@@ -251,8 +251,8 @@
    ],
    "against": [],
    "play_to": {
-    "floor_dec": 2.037,
-    "floor_am": 104,
+    "floor_dec": 1.996,
+    "floor_am": -100,
     "line": null,
     "next": 2.5
    },
@@ -284,7 +284,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 3.5 going past +104",
+    "The price at 3.5 going past \u2212100",
     "A change in Deni Avdija (questionable), Toumani Camara (questionable), Ryan Rollins (day-to-day): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -330,7 +330,7 @@
    "p": 0.573,
    "p_sim": 0.748,
    "p_mkt": 0.531,
-   "p_kalshi": 0.528,
+   "p_kalshi": 0.525,
    "ev": 0.009,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIL",
@@ -462,7 +462,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.528
+    "kalshi": 0.525
    },
    "started": false,
    "published": {
@@ -799,7 +799,7 @@
    "p": 0.595,
    "p_sim": 0.751,
    "p_mkt": 0.55,
-   "p_kalshi": 0.556,
+   "p_kalshi": 0.553,
    "ev": 0.012,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MEM",
@@ -922,7 +922,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.556
+    "kalshi": 0.553
    },
    "started": false,
    "published": {
@@ -2020,6 +2020,20 @@
    "kind": "conviction",
    "text": "MEM -6.5 (GS @ MEM): conviction 46 Consider \u2192 55 Consider",
    "alert": false
+  },
+  {
+   "at": "2026-11-19T15:45:44Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "line",
+   "text": "Tyler Herro: line 3.5 at +107 \u2192 3.5 at +102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T15:45:44Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "conviction",
+   "text": "Tyler Herro Under 3.5 rebounds: conviction 45 Consider \u2192 43 Pass",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2082,5 +2096,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-19T15:30:28Z"
+ "updated": "2026-11-19T15:45:44Z"
 }
