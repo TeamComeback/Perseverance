@@ -1847,21 +1847,21 @@
    "point": 227.5,
    "dec": 1.86,
    "am": -116,
-   "conv": 54,
+   "conv": 49,
    "tier": "Consider",
-   "p": 0.561,
-   "p_sim": 0.615,
+   "p": 0.552,
+   "p_sim": 0.596,
    "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": 0.044,
+   "ev": 0.028,
    "verdict": "Consider: simulation and line move agree; the main risk is model record.",
    "home": "SAC",
    "away": "PHX",
-   "why": "Sim total 222.6 (after a learned +1.9 correction) vs 227.5 \u00b7 under in 62% of sims vs 51% DraftKings",
+   "why": "Sim total 223.6 (after a learned +1.9 correction) vs 227.5 \u00b7 under in 60% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 62% of 10,000 simulated games.",
+     "t": "Goes under in 60% of 10,000 simulated games.",
      "rec": [
       895,
       769
@@ -1887,15 +1887,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.783,
-    "floor_am": -128,
-    "line": 226.5,
-    "next": 225.5
+    "floor_dec": 1.812,
+    "floor_am": -123,
+    "line": 227.5,
+    "next": 226.5
    },
    "watch": [],
    "kill": [
-    "The line reaching 225.5 (still a bet at 226.5 near \u2212115)",
-    "The price at 227.5 going past \u2212128"
+    "The line reaching 226.5",
+    "The price at 227.5 going past \u2212123"
    ],
    "market": {
     "open": null,
@@ -2480,7 +2480,13 @@
     "at": "2026-11-18T18:46:53Z",
     "why": "line moved 234.5 \u2192 235.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.89,
+    "actual": 245
+   },
+   "clv": null
   },
   "g|401910017|spread|home": {
    "key": "g|401910017|spread|home",
@@ -2966,7 +2972,18 @@
    },
    "first_seen": "2026-11-18T18:04:11Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 5
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 5
+   },
+   "clv": null
   },
   "g|401910009|spread|home": {
    "key": "g|401910009|spread|home",
@@ -3318,7 +3335,18 @@
    },
    "first_seen": "2026-11-18T21:32:10Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 3
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 3
+   },
+   "clv": null
   },
   "g|401910012|total|Under": {
    "key": "g|401910012|total|Under",
@@ -4722,6 +4750,13 @@
    "kind": "line",
    "text": "PHX @ SAC Under 227.5: line 226.5 at \u2212108 \u2192 227.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-19T02:46:11Z",
+   "key": "g|401910018|total|Under",
+   "kind": "conviction",
+   "text": "PHX @ SAC Under 227.5: conviction 54 Consider \u2192 49 Consider",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4935,5 +4970,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-19T02:30:36Z"
+ "updated": "2026-11-19T02:46:11Z"
 }
