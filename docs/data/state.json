@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 58.65,
+  "cash": 91.11,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -15133,14 +15133,18 @@
       "book": "fanduel",
       "fair_p": 0.7148,
       "close_p": 0.713,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.355,
        "gain": 0.0185,
        "n": 6
       },
       "close_at": "2026-11-18T21:45:24Z",
-      "close_mins": 194
+      "close_mins": 194,
+      "final": {
+       "home": 73.0,
+       "away": 78.0
+      }
      }
     ],
     "dec": 1.38,
@@ -15150,10 +15154,10 @@
     "note": "Arb: 0.87% locked across 2 books",
     "group": "arb-0184484f6b",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -15.38,
+    "settled": "2026-11-19T16:00:39Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15163,7 +15167,33 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Bradley Braves lost by 5",
+     "final": "Fort Wayne Mastodons 78 \u2013 Bradley Braves 73",
+     "legs": [
+      {
+       "outcome": "Bradley Braves",
+       "result": "loss",
+       "headline": "Bradley Braves lost by 5",
+       "final": "Fort Wayne Mastodons 78 \u2013 Bradley Braves 73",
+       "why": [
+        "Bradley Braves lost by 5.",
+        "We priced it at 73% to hit vs 72% needed to break even at 1.38x (+0.9% expected edge).",
+        "Closing consensus 71% vs 72% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "favorite-upset",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "favorite-upset",
+      "lost-closing-line"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "5c21d4ff",
@@ -15185,14 +15215,18 @@
       "book": "betrivers",
       "fair_p": 0.2959,
       "close_p": 0.287,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 3.25,
        "gain": 0.1538,
        "n": 6
       },
       "close_at": "2026-11-18T21:45:24Z",
-      "close_mins": 194
+      "close_mins": 194,
+      "final": {
+       "home": 73.0,
+       "away": 78.0
+      }
      }
     ],
     "dec": 3.75,
@@ -15202,10 +15236,10 @@
     "note": "Arb: 0.87% locked across 2 books",
     "group": "arb-0184484f6b",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 21.23,
+    "profit": 15.57,
+    "settled": "2026-11-19T16:00:39Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15215,7 +15249,33 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: Fort Wayne Mastodons won by 5",
+     "final": "Fort Wayne Mastodons 78 \u2013 Bradley Braves 73",
+     "legs": [
+      {
+       "outcome": "Fort Wayne Mastodons",
+       "result": "win",
+       "headline": "Fort Wayne Mastodons won by 5",
+       "final": "Fort Wayne Mastodons 78 \u2013 Bradley Braves 73",
+       "why": [
+        "Fort Wayne Mastodons won by 5.",
+        "We priced it at 27% to hit vs 27% needed to break even at 3.75x (+0.9% expected edge).",
+        "Closing consensus 29% vs 27% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "upset-hit",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "upset-hit"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "b3bc638d",
@@ -15237,14 +15297,18 @@
       "book": "polymarket_us",
       "fair_p": 0.7176,
       "close_p": 0.6296,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.335,
        "gain": 0.0491,
        "n": 6
       },
       "close_at": "2026-11-18T22:00:34Z",
-      "close_mins": 189
+      "close_mins": 189,
+      "final": {
+       "home": 109.0,
+       "away": 122.0
+      }
      }
     ],
     "dec": 1.401,
@@ -15254,10 +15318,10 @@
     "note": "Arb: 0.82% locked across 2 books",
     "group": "arb-990b541d0a",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 21.23,
+    "profit": 6.08,
+    "settled": "2026-11-19T16:00:39Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15267,6 +15331,101 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "WON: Detroit Pistons won by 13",
+     "final": "Detroit Pistons 122 \u2013 New Orleans Pelicans 109",
+     "legs": [
+      {
+       "outcome": "Detroit Pistons",
+       "result": "win",
+       "headline": "Detroit Pistons won by 13",
+       "final": "Detroit Pistons 122 \u2013 New Orleans Pelicans 109",
+       "why": [
+        "Detroit Pistons won by 13.",
+        "We priced it at 72% to hit vs 71% needed to break even at 1.401x (+0.8% expected edge).",
+        "Closing consensus 63% vs 71% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NO",
+        "away": "DET"
+       },
+       "final": "DET 122 \u2013 NO 109",
+       "periods": {
+        "away": [
+         31,
+         36,
+         25,
+         30
+        ],
+        "home": [
+         31,
+         29,
+         26,
+         23
+        ]
+       },
+       "largest_lead": {
+        "DET": 19,
+        "NO": 5
+       },
+       "largest_lead_at": {
+        "DET": "5:17 4th Q",
+        "NO": "5:21 1st Q"
+       },
+       "lead_changes": 6,
+       "ties": 14,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "5:51 2nd Q",
+         "to": "3:21 2nd Q",
+         "score": "DET 57-48 NO"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 13,
+         "from": "55.0 3rd Q",
+         "to": "5:17 4th Q",
+         "mins": 7.6,
+         "from_score": "DET 92-86 NO",
+         "to_score": "DET 117-98 NO",
+         "pts_for": 25,
+         "pts_against": 12
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "John Collins (DET): 20 pts, 7 reb, 2 ast, 4-6 3PT in 30 min",
+        "Daniss Jenkins (DET): 17 pts, 4 reb, 9 ast, 3-5 3PT in 36 min",
+        "Zion Williamson (NO): 24 pts, 7 reb, 1 ast, 0-0 3PT in 32 min",
+        "Jordan Poole (NO): 22 pts, 1 reb, 5 ast, 3-5 3PT in 30 min"
+       ],
+       "story": [
+        "Halftime: DET 67-60 NO, DET up 7.",
+        "The 2nd quarter decided the most: DET won it 36-29.",
+        "Largest leads: DET 19 (5:17 4th Q), NO 5 (5:21 1st Q). 6 lead changes, 14 ties.",
+        "Momentum swing: DET outscored them 25-12 in 7.6 minutes (55.0 3rd Q to 5:17 4th Q), moving it from DET 92-86 NO to DET 117-98 NO.",
+        "DET went on a 8-0 run (5:51 2nd Q to 3:21 2nd Q), making it DET 57-48 NO."
+       ],
+       "espn_id": "401910013",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910013"
+      }
+     ]
     }
    },
    {
@@ -15289,14 +15448,18 @@
       "book": "fanatics",
       "fair_p": 0.2919,
       "close_p": 0.3704,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 3.375,
        "gain": 0.0667,
        "n": 6
       },
       "close_at": "2026-11-18T22:00:34Z",
-      "close_mins": 189
+      "close_mins": 189,
+      "final": {
+       "home": 109.0,
+       "away": 122.0
+      }
      }
     ],
     "dec": 3.6,
@@ -15306,10 +15469,10 @@
     "note": "Arb: 0.82% locked across 2 books",
     "group": "arb-990b541d0a",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.89,
+    "settled": "2026-11-19T16:00:39Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15319,7 +15482,258 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: New Orleans Pelicans lost by 13",
+     "final": "Detroit Pistons 122 \u2013 New Orleans Pelicans 109",
+     "legs": [
+      {
+       "outcome": "New Orleans Pelicans",
+       "result": "loss",
+       "headline": "New Orleans Pelicans lost by 13",
+       "final": "Detroit Pistons 122 \u2013 New Orleans Pelicans 109",
+       "why": [
+        "New Orleans Pelicans lost by 13.",
+        "We priced it at 28% to hit vs 28% needed to break even at 3.6x (+0.8% expected edge).",
+        "Closing consensus 37% vs 28% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "underdog-lost"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NO",
+        "away": "DET"
+       },
+       "final": "DET 122 \u2013 NO 109",
+       "periods": {
+        "away": [
+         31,
+         36,
+         25,
+         30
+        ],
+        "home": [
+         31,
+         29,
+         26,
+         23
+        ]
+       },
+       "largest_lead": {
+        "DET": 19,
+        "NO": 5
+       },
+       "largest_lead_at": {
+        "DET": "5:17 4th Q",
+        "NO": "5:21 1st Q"
+       },
+       "lead_changes": 6,
+       "ties": 14,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "5:51 2nd Q",
+         "to": "3:21 2nd Q",
+         "score": "DET 57-48 NO"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 13,
+         "from": "55.0 3rd Q",
+         "to": "5:17 4th Q",
+         "mins": 7.6,
+         "from_score": "DET 92-86 NO",
+         "to_score": "DET 117-98 NO",
+         "pts_for": 25,
+         "pts_against": 12
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "John Collins (DET): 20 pts, 7 reb, 2 ast, 4-6 3PT in 30 min",
+        "Daniss Jenkins (DET): 17 pts, 4 reb, 9 ast, 3-5 3PT in 36 min",
+        "Zion Williamson (NO): 24 pts, 7 reb, 1 ast, 0-0 3PT in 32 min",
+        "Jordan Poole (NO): 22 pts, 1 reb, 5 ast, 3-5 3PT in 30 min"
+       ],
+       "story": [
+        "Halftime: DET 67-60 NO, DET up 7.",
+        "The 2nd quarter decided the most: DET won it 36-29.",
+        "Largest leads: DET 19 (5:17 4th Q), NO 5 (5:21 1st Q). 6 lead changes, 14 ties.",
+        "Momentum swing: DET outscored them 25-12 in 7.6 minutes (55.0 3rd Q to 5:17 4th Q), moving it from DET 92-86 NO to DET 117-98 NO.",
+        "DET went on a 8-0 run (5:51 2nd Q to 3:21 2nd Q), making it DET 57-48 NO."
+       ],
+       "espn_id": "401910013",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910013"
+      }
+     ]
     }
+   },
+   {
+    "id": "d23ca4e7",
+    "placed": "2026-11-19T16:00:46Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "5ee4efd00c1daaebd8249ff44fd6ac9d",
+      "sport": "basketball_nba",
+      "commence": "2026-11-20T01:10:00Z",
+      "home": "Minnesota Timberwolves",
+      "away": "New York Knicks",
+      "market": "player_assists",
+      "outcome": "Ayo Dosunmu Under",
+      "side": "Under",
+      "player": "Ayo Dosunmu",
+      "player_id": "4397002",
+      "stat": "ast",
+      "espn_id": "401910021",
+      "point": 3.5,
+      "price": 2.24,
+      "book": "fanduel",
+      "fair_p": 0.4323,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 2.2,
+       "gain": 0.0182,
+       "n": 7
+      },
+      "model": {
+       "proj": 3.05,
+       "base": 3.38,
+       "minutes": 31.3,
+       "mult": 0.905,
+       "sd": 3.01,
+       "p_model": 0.6639,
+       "p_mkt": 0.4323,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.858,
+         "txt": "NY gives shooting guards -14% assists vs their norm (#1 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.958,
+         "txt": "Players with his profile: -4% assists vs NY (82 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.064,
+         "txt": "His history vs NY: 9.0 assists/g in 1 games (+6%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.92,
+         "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.24,
+    "stake": 5.0,
+    "ev": 0.0938,
+    "p": 0.4883,
+    "note": "Proj 3.0 vs line 3.5 (norm 3.4, 31 min). Model 66% vs market 43%. NY gives shooting guards -14% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -4% assists vs NY (82 close comps) \u00b7 His history vs NY: 9.0 assists/g in 1 games (+6%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "9ccd7bbf",
+    "placed": "2026-11-19T16:00:46Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "5ee4efd00c1daaebd8249ff44fd6ac9d",
+      "sport": "basketball_nba",
+      "commence": "2026-11-20T01:10:00Z",
+      "home": "Minnesota Timberwolves",
+      "away": "New York Knicks",
+      "market": "player_assists",
+      "outcome": "LaMelo Ball Under",
+      "side": "Under",
+      "player": "LaMelo Ball",
+      "player_id": "4432816",
+      "stat": "ast",
+      "espn_id": "401910021",
+      "point": 5.5,
+      "price": 2.1,
+      "book": "betmgm",
+      "fair_p": 0.4656,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 2.0,
+       "gain": 0.05,
+       "n": 7
+      },
+      "model": {
+       "proj": 4.71,
+       "base": 5.01,
+       "minutes": 26.6,
+       "mult": 0.938,
+       "sd": 2.46,
+       "p_model": 0.6751,
+       "p_mkt": 0.4656,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.971,
+         "txt": "NY gives point guards -3% assists vs their norm (#4 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.946,
+         "txt": "Players with his profile: -5% assists vs NY (150 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.97,
+         "txt": "His history vs NY: 6.2 assists/g in 4 games (-3%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.92,
+         "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.1,
+    "stake": 5.0,
+    "ev": 0.0842,
+    "p": 0.5163,
+    "note": "Proj 4.7 vs line 5.5 (norm 5.0, 27 min). Model 68% vs market 47%. NY gives point guards -3% assists vs their norm (#4 toughest of 30) \u00b7 Players with his profile: -5% assists vs NY (150 close comps) \u00b7 His history vs NY: 6.2 assists/g in 4 games (-3%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -15452,31 +15866,41 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 6,
-   "staked": 52.89,
-   "profit": 0.8399999999999999,
-   "clv_n": 6,
-   "clv_sum": 0.19653299999999985,
+   "bets": 10,
+   "staked": 94.97,
+   "profit": 1.2199999999999989,
+   "clv_n": 10,
+   "clv_sum": 0.4722325999999998,
    "tags": {
     "underdog-lost": {
-     "n": 3,
+     "n": 4,
      "won": 0,
-     "lost": 3
+     "lost": 4
     },
     "lost-closing-line": {
-     "n": 2,
-     "won": 2,
-     "lost": 0
+     "n": 4,
+     "won": 3,
+     "lost": 1
     },
     "beat-closing-line": {
-     "n": 2,
-     "won": 0,
-     "lost": 2
+     "n": 4,
+     "won": 1,
+     "lost": 3
     },
     "blowout": {
      "n": 2,
      "won": 1,
      "lost": 1
+    },
+    "favorite-upset": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "upset-hit": {
+     "n": 1,
+     "won": 1,
+     "lost": 0
     }
    },
    "clv_gate": false
@@ -15602,10 +16026,10 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-19T07:00:26Z",
-   "bets": 51.0,
-   "staked": 265.13,
-   "profit": -52.50999999999999
+   "last_scanned": "2026-11-19T16:00:34Z",
+   "bets": 53.0,
+   "staked": 286.16999999999996,
+   "profit": -52.31999999999999
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-19T15:45:21Z",
@@ -15620,7 +16044,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-19T07:00:26Z",
+   "last_scanned": "2026-11-19T16:00:34Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -15665,7 +16089,7 @@
    "last_scanned": "2026-11-19T15:45:22Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-01T02:29:41Z"
+   "last_scanned": "2026-11-19T16:00:34Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-11-18T21:30:31Z"
@@ -15683,7 +16107,10 @@
    "last_scanned": "2026-11-07T23:35:00Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-19T15:30:28Z"
+   "last_scanned": "2026-11-19T15:30:28Z",
+   "bets": 2.0,
+   "staked": 21.04,
+   "profit": 0.1899999999999995
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-01T02:29:42Z"
@@ -15768,36 +16195,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-12T20:30:33Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-12T21:00:38Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-12T21:05:43Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-12T21:30:32Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-12T21:48:58Z",
-   "kind": "scan",
-   "text": "Scanned mma_mixed_martial_arts (2) for 1 credits. Nothing cleared the bar. Equity $59.16."
-  },
-  {
-   "ts": "2026-11-12T23:00:36Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 12: 4 games, 92 players projected, lineups for 4 games."
-  },
   {
    "ts": "2026-11-12T23:30:32Z",
    "kind": "research",
@@ -17267,6 +17664,36 @@
    "ts": "2026-11-19T15:45:28Z",
    "kind": "research",
    "text": "Research refresh for Thu Nov 19: 4 games, 99 players projected, lineups for 4 games."
+  },
+  {
+   "ts": "2026-11-19T16:00:39Z",
+   "kind": "result",
+   "text": "WON +$6.08: Detroit Pistons @ -249 (Polymarket) \u2014 WON: Detroit Pistons won by 13 [lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-19T16:00:39Z",
+   "kind": "result",
+   "text": "LOST -$5.89: New Orleans Pelicans @ +260 (Fanatics) \u2014 LOST: New Orleans Pelicans lost by 13 [beat-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-19T16:00:39Z",
+   "kind": "result",
+   "text": "LOST -$15.38: Bradley Braves @ -263 (FanDuel) \u2014 LOST: Bradley Braves lost by 5 [favorite-upset, lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-19T16:00:39Z",
+   "kind": "result",
+   "text": "WON +$15.57: Fort Wayne Mastodons @ +275 (BetRivers) \u2014 WON: Fort Wayne Mastodons won by 5 [beat-closing-line, upset-hit]"
+  },
+  {
+   "ts": "2026-11-19T16:00:45Z",
+   "kind": "focus",
+   "text": "Skipped 50 pts+reb+ast lines, 11 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists."
+  },
+  {
+   "ts": "2026-11-19T16:00:46Z",
+   "kind": "props",
+   "text": "NBA matchups: 4 games, strongest spots: Jonathan Kuminga ra -12% vs NY; Jrue Holiday ra +13% vs MIL; Jrue Holiday ast +12% vs MIL. Bought prop odds for NY@MIN (ast, ra, pra, team totals), LAC@SA (ast, ra, pra, tpm, team totals), GS@MEM (ast, ra, pra, team totals) (17 credits). Placed 2: Ayo Dosunmu Under 3.5 @ +124 (FanDuel); LaMelo Ball Under 5.5 @ +110 (BetMGM)"
   }
  ],
  "learned_ids": [
@@ -17334,32 +17761,36 @@
   "1ebcefa5",
   "bd89c5bd",
   "e28771fa",
-  "bb2b2784"
+  "bb2b2784",
+  "b3bc638d",
+  "c9b7e67b",
+  "5d2f45e0",
+  "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-19T15:45:44Z",
+ "updated": "2026-11-19T16:01:12Z",
  "stats": {
-  "bets": 65,
-  "won": 22,
-  "lost": 41,
-  "shop_n": 8,
-  "shop_avg": 0.0725,
+  "bets": 69,
+  "won": 24,
+  "lost": 43,
+  "shop_n": 10,
+  "shop_avg": 0.0648,
   "push": 2,
-  "staked": 347.89,
-  "profit": -91.11,
-  "roi": -0.2619,
+  "staked": 389.97,
+  "profit": -90.73,
+  "roi": -0.2327,
   "clv": -0.0091,
   "clv_n": 62,
   "clv_no_close": 7,
   "close_mins_median": 4,
-  "open": 4,
-  "equity": 100.73
+  "open": 2,
+  "equity": 101.11
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.422,
   "longshot": 0.444,
-  "arb": 1.044,
+  "arb": 1.087,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
   "matchup_under": 0.505
@@ -17367,5 +17798,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 0
+ "dry_scans": 1
 }

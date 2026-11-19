@@ -195,7 +195,13 @@
     "at": "2026-11-18T14:47:02Z",
     "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.85,
+    "actual": 9.0
+   },
+   "clv": "toward"
   },
   "p|3064514|ast|Under": {
    "key": "p|3064514|ast|Under",
@@ -349,7 +355,18 @@
    },
    "first_seen": "2026-11-18T11:45:27Z",
    "removed": null,
-   "status": "Started"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 1.17,
+    "actual": 4.0
+   },
+   "result_final": {
+    "res": "win",
+    "units": 1.1,
+    "actual": 4.0
+   },
+   "clv": "toward"
   },
   "p|3032977|ast|Under": {
    "key": "p|3032977|ast|Under",
@@ -497,7 +514,13 @@
     "at": "2026-11-18T22:32:45Z",
     "why": "no longer +EV at tonight's line (5.5 at +103)"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 9.0
+   },
+   "clv": "toward"
   },
   "p|4871145|ast|Under": {
    "key": "p|4871145|ast|Under",
@@ -663,7 +686,13 @@
     "at": "2026-11-18T21:32:10Z",
     "why": "no longer +EV at tonight's line (8.5 at -123)"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 9.0
+   },
+   "clv": "toward"
   },
   "p|3908809|reb|Under": {
    "key": "p|3908809|reb|Under",
@@ -829,7 +858,13 @@
     "at": "2026-11-18T14:47:02Z",
     "why": "no longer +EV at tonight's line (4.5 at -128)"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.94,
+    "actual": 4.0
+   },
+   "clv": "toward"
   },
   "p|5061589|reb|Under": {
    "key": "p|5061589|reb|Under",
@@ -999,7 +1034,18 @@
    },
    "first_seen": "2026-11-18T14:47:02Z",
    "removed": null,
-   "status": "Started"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.72,
+    "actual": 5.0
+   },
+   "result_final": {
+    "res": "win",
+    "units": 0.87,
+    "actual": 5.0
+   },
+   "clv": "against"
   },
   "p|4433083|ast|Under": {
    "key": "p|4433083|ast|Under",
@@ -1161,7 +1207,18 @@
    },
    "first_seen": "2026-11-18T14:47:02Z",
    "removed": null,
-   "status": "Started"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.7,
+    "actual": 7.0
+   },
+   "result_final": {
+    "res": "win",
+    "units": 0.7,
+    "actual": 7.0
+   },
+   "clv": "same"
   },
   "p|5107199|ast|Under": {
    "key": "p|5107199|ast|Under",
@@ -1347,7 +1404,18 @@
    },
    "first_seen": "2026-11-18T21:32:10Z",
    "removed": null,
-   "status": "Started"
+   "status": "Won",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 9.0
+   },
+   "result_final": {
+    "res": "win",
+    "units": 0.72,
+    "actual": 9.0
+   },
+   "clv": "against"
   },
   "p|4432241|ast|Under": {
    "key": "p|4432241|ast|Under",
@@ -1521,7 +1589,13 @@
     "at": "2026-11-18T23:05:52Z",
     "why": "no longer +EV at tonight's line (8.5 at -116)"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.84,
+    "actual": 6.0
+   },
+   "clv": "against"
   },
   "p|4017837|reb|Under": {
    "key": "p|4017837|reb|Under",
@@ -1678,7 +1752,13 @@
     "at": "2026-11-18T23:35:50Z",
     "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 1.04,
+    "actual": 3.0
+   },
+   "clv": "against"
   },
   "p|5279130|ast|Under": {
    "key": "p|5279130|ast|Under",
@@ -1832,7 +1912,18 @@
    },
    "first_seen": "2026-11-18T23:35:50Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 4.0
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 4.0
+   },
+   "clv": "same"
   }
  },
  "leans": {
@@ -2133,7 +2224,7 @@
    "result": {
     "res": "win",
     "units": 0.94,
-    "actual": 206
+    "actual": 206.0
    },
    "clv": null
   },
@@ -2252,7 +2343,7 @@
    "result": {
     "res": "win",
     "units": 0.92,
-    "actual": 210
+    "actual": 210.0
    },
    "clv": null
   },
@@ -2386,7 +2477,7 @@
    "result": {
     "res": "win",
     "units": 0.86,
-    "actual": 5
+    "actual": 5.0
    },
    "clv": null
   },
@@ -2524,7 +2615,7 @@
    "result": {
     "res": "win",
     "units": 0.89,
-    "actual": 245
+    "actual": 245.0
    },
    "clv": null
   },
@@ -2644,7 +2735,7 @@
    "result": {
     "res": "win",
     "units": 0.85,
-    "actual": 12
+    "actual": 12.0
    },
    "clv": null
   },
@@ -2778,7 +2869,7 @@
    "result": {
     "res": "loss",
     "units": -1,
-    "actual": 229
+    "actual": 229.0
    },
    "clv": null
   },
@@ -2897,7 +2988,7 @@
    "result": {
     "res": "loss",
     "units": -1,
-    "actual": 15
+    "actual": 15.0
    },
    "clv": null
   },
@@ -3138,7 +3229,7 @@
    "result": {
     "res": "loss",
     "units": -1,
-    "actual": -7
+    "actual": -7.0
    },
    "clv": null
   },
@@ -3262,7 +3353,7 @@
    "result": {
     "res": "loss",
     "units": -1,
-    "actual": -22
+    "actual": -22.0
    },
    "clv": null
   },
@@ -3534,7 +3625,7 @@
    "result": {
     "res": "win",
     "units": 0.88,
-    "actual": 202
+    "actual": 202.0
    },
    "clv": null
   },
@@ -5050,6 +5141,6 @@
   "u": -14.41,
   "since": "2026-11-11"
  },
- "patterns_n": 2762,
- "updated": "2026-11-19T15:45:44Z"
+ "patterns_n": 3252,
+ "updated": "2026-11-19T16:01:12Z"
 }
