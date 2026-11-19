@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 69.14,
+  "cash": 59.14,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -15816,6 +15816,160 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "396e158b",
+    "placed": "2026-11-19T19:02:28Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "5ee4efd00c1daaebd8249ff44fd6ac9d",
+      "sport": "basketball_nba",
+      "commence": "2026-11-20T01:10:00Z",
+      "home": "Minnesota Timberwolves",
+      "away": "New York Knicks",
+      "market": "player_rebounds_assists",
+      "outcome": "Mikal Bridges Under",
+      "side": "Under",
+      "player": "Mikal Bridges",
+      "player_id": "3147657",
+      "stat": "ra",
+      "espn_id": "401910021",
+      "point": 5.5,
+      "price": 2.1,
+      "book": "betmgm",
+      "fair_p": 0.4854,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.91,
+       "gain": 0.0995,
+       "n": 5
+      },
+      "model": {
+       "proj": 4.54,
+       "base": 4.74,
+       "minutes": 24.1,
+       "mult": 0.957,
+       "sd": 1.91,
+       "p_model": 0.7001,
+       "p_mkt": 0.4854,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.971,
+         "txt": "MIN gives shooting guards -3% reb+ast vs their norm (#10 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.957,
+         "txt": "Players with his profile: -4% reb+ast vs MIN (92 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.926,
+         "txt": "His history vs MIN: 4.5 reb+ast/g in 2 games (-7%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.005,
+         "txt": "MIN games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.1,
+    "stake": 5.0,
+    "ev": 0.1288,
+    "p": 0.5375,
+    "note": "Proj 4.5 vs line 5.5 (norm 4.7, 24 min). Model 70% vs market 49%. MIN gives shooting guards -3% reb+ast vs their norm (#10 toughest of 30) \u00b7 Players with his profile: -4% reb+ast vs MIN (92 close comps) \u00b7 His history vs MIN: 4.5 reb+ast/g in 2 games (-7%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "1c4a9295",
+    "placed": "2026-11-19T19:02:28Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "5ee4efd00c1daaebd8249ff44fd6ac9d",
+      "sport": "basketball_nba",
+      "commence": "2026-11-20T01:10:00Z",
+      "home": "Minnesota Timberwolves",
+      "away": "New York Knicks",
+      "market": "player_rebounds_assists",
+      "outcome": "Rudy Gobert Under",
+      "side": "Under",
+      "player": "Rudy Gobert",
+      "player_id": "3032976",
+      "stat": "ra",
+      "espn_id": "401910021",
+      "point": 11.5,
+      "price": 2.0,
+      "book": "betmgm",
+      "fair_p": 0.4789,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.95,
+       "gain": 0.0256,
+       "n": 5
+      },
+      "model": {
+       "proj": 8.99,
+       "base": 9.61,
+       "minutes": 24.2,
+       "mult": 0.936,
+       "sd": 2.6,
+       "p_model": 0.786,
+       "p_mkt": 0.4789,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.952,
+         "txt": "NY gives centers -5% reb+ast vs their norm (#5 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.941,
+         "txt": "Players with his profile: -6% reb+ast vs NY (159 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.007,
+         "txt": "His history vs NY: 13.5 reb+ast/g in 2 games (+1%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.92,
+         "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.0,
+    "stake": 5.0,
+    "ev": 0.1069,
+    "p": 0.5535,
+    "note": "Proj 9.0 vs line 11.5 (norm 9.6, 24 min). Model 79% vs market 48%. NY gives centers -5% reb+ast vs their norm (#5 toughest of 30) \u00b7 Players with his profile: -6% reb+ast vs NY (159 close comps) \u00b7 His history vs NY: 13.5 reb+ast/g in 2 games (+1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -16108,7 +16262,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-19T18:00:29Z",
+   "last_scanned": "2026-11-19T19:02:18Z",
    "bets": 53.0,
    "staked": 286.16999999999996,
    "profit": -52.31999999999999
@@ -16171,7 +16325,7 @@
    "last_scanned": "2026-11-19T18:00:29Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-19T18:00:29Z"
+   "last_scanned": "2026-11-19T19:02:18Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-11-19T17:00:31Z"
@@ -16180,7 +16334,7 @@
    "last_scanned": "2026-11-19T18:18:17Z"
   },
   "basketball_euroleague": {
-   "last_scanned": "2026-11-19T05:45:22Z"
+   "last_scanned": "2026-11-19T19:02:18Z"
   },
   "soccer_league_of_ireland": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -16277,21 +16431,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-13T14:45:38Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 13: 9 games, 213 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-13T15:15:36Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 13: 9 games, 213 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-13T15:45:38Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 13: 9 games, 214 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-13T16:30:38Z",
    "kind": "research",
@@ -17776,6 +17915,21 @@
    "ts": "2026-11-19T18:46:02Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 11.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-19T19:01:48Z",
+   "kind": "research",
+   "text": "Research refresh for Thu Nov 19: 4 games, 103 players projected, lineups for 4 games."
+  },
+  {
+   "ts": "2026-11-19T19:02:27Z",
+   "kind": "focus",
+   "text": "Skipped 58 pts+reb+ast lines, 11 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, reb+ast, rebounds."
+  },
+  {
+   "ts": "2026-11-19T19:02:28Z",
+   "kind": "props",
+   "text": "NBA matchups: 4 games, strongest spots: Jonathan Kuminga ra -12% vs NY; Jrue Holiday ra +13% vs MIL; Jrue Holiday ast +12% vs MIL. Bought prop odds for NY@MIN (ast, ra, pra, team totals), LAC@SA (ast, ra, pra, tpm, team totals), GS@MEM (ast, ra, pra, team totals) (13 credits). Placed 2: Mikal Bridges Under 5.5 @ +110 (BetMGM); Rudy Gobert Under 11.5 @ +100 (BetMGM)"
   }
  ],
  "learned_ids": [
@@ -17850,13 +18004,13 @@
   "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-19T18:46:02Z",
+ "updated": "2026-11-19T19:02:55Z",
  "stats": {
   "bets": 69,
   "won": 24,
   "lost": 43,
-  "shop_n": 12,
-  "shop_avg": 0.0659,
+  "shop_n": 14,
+  "shop_avg": 0.0655,
   "push": 2,
   "staked": 389.97,
   "profit": -90.73,
@@ -17865,7 +18019,7 @@
   "clv_n": 62,
   "clv_no_close": 7,
   "close_mins_median": 4,
-  "open": 4,
+  "open": 6,
   "equity": 101.11
  },
  "weights": {
@@ -17880,5 +18034,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 0
+ "dry_scans": 1
 }
