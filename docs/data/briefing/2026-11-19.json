@@ -31,16 +31,16 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 1.67,
-   "am": -149,
-   "conv": 45,
-   "tier": "Consider",
-   "p": 0.607,
+   "dec": 1.64,
+   "am": -156,
+   "conv": 43,
+   "tier": "Pass",
+   "p": 0.615,
    "p_sim": 0.752,
-   "p_mkt": 0.559,
+   "p_mkt": 0.57,
    "p_kalshi": 0.581,
-   "ev": 0.013,
-   "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
+   "ev": 0.009,
+   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "SA",
    "away": "LAC",
    "pid": "4066259",
@@ -130,8 +130,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.647,
-    "floor_am": -154,
+    "floor_dec": 1.626,
+    "floor_am": -160,
     "line": 6.5,
     "next": 5.5
    },
@@ -147,7 +147,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212154",
+    "The price at 6.5 going past \u2212160",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -330,7 +330,7 @@
    "p": 0.592,
    "p_sim": 0.747,
    "p_mkt": 0.543,
-   "p_kalshi": 0.549,
+   "p_kalshi": 0.559,
    "ev": 0.017,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIL",
@@ -462,7 +462,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.549
+    "kalshi": 0.559
    },
    "started": false,
    "published": {
@@ -942,8 +942,11 @@
     }
    },
    "first_seen": "2026-11-19T13:30:56Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-19T18:46:02Z",
+    "why": "no longer +EV at tonight's line (4.5 at -149)"
+   },
+   "status": "Removed"
   },
   "p|4592479|ra|Under": {
    "key": "p|4592479|ra|Under",
@@ -1082,6 +1085,153 @@
    "first_seen": "2026-11-19T13:30:56Z",
    "removed": null,
    "status": "Upgraded"
+  },
+  "p|3032976|reb|Under": {
+   "key": "p|3032976|reb|Under",
+   "kind": "prop",
+   "label": "Rudy Gobert Under 9.5 rebounds",
+   "espn_id": "401910021",
+   "game": "NY @ MIN",
+   "start": "2026-11-20T01:00Z",
+   "side": "Under",
+   "point": 9.5,
+   "dec": 2.06,
+   "am": 106,
+   "conv": 44,
+   "tier": "Pass",
+   "p": 0.492,
+   "p_sim": 0.615,
+   "p_mkt": 0.454,
+   "p_kalshi": 0.46,
+   "ev": 0.014,
+   "verdict": "Pass: simulation and matchup agree; the main risk is recent form.",
+   "home": "MIN",
+   "away": "NY",
+   "pid": "3032976",
+   "name": "Rudy Gobert",
+   "team": "MIN",
+   "opp": "NY",
+   "stat": "reb",
+   "proj": 7.7,
+   "sim": 8.9,
+   "ob_ind": 8.5,
+   "avg10": 9.9,
+   "minutes": 24.2,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 62% of 10,000 simulated games (sim average 8.9).",
+     "rec": [
+      1062,
+      900
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 7.7 rebounds against a line of 9.5.",
+     "rec": [
+      1108,
+      950
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against NY: 3 of 4 under 9.5 (75% vs 35% lately).",
+     "rec": [
+      353,
+      309
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions).",
+     "rec": [
+      633,
+      591
+     ]
+    },
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      117,
+      117
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 30.5 minutes in the games he went over vs 24.4 otherwise. He's projected for 24.2 tonight.",
+     "rec": [
+      949,
+      835
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Only 3 of his last 10 went under 9.5 (2 of the last 5).",
+     "rec": [
+      394,
+      397
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.033,
+    "floor_am": 103,
+    "line": null,
+    "next": 8.5
+   },
+   "watch": [
+    {
+     "pid": "4594268",
+     "name": "Anthony Edwards",
+     "team": "MIN",
+     "status": "Out",
+     "self": false,
+     "min": 34.6
+    },
+    {
+     "pid": "4433247",
+     "name": "Jonathan Kuminga",
+     "team": "MIN",
+     "status": "Questionable",
+     "self": false,
+     "min": 27.6
+    }
+   ],
+   "kill": [
+    "The line reaching 8.5",
+    "The price at 9.5 going past +103",
+    "A change in Jonathan Kuminga (questionable): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 10.5,
+    "now": 9.5,
+    "kalshi": 0.46
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-19T18:46:02Z",
+    "edition": "update",
+    "point": 9.5,
+    "dec": 2.06,
+    "am": 106,
+    "conv": 44,
+    "tier": "Pass",
+    "p": 0.492,
+    "play_to": {
+     "floor_dec": 2.033,
+     "floor_am": 103,
+     "line": null,
+     "next": 8.5
+    }
+   },
+   "first_seen": "2026-11-19T18:46:02Z",
+   "removed": null,
+   "status": "New"
   }
  },
  "leans": {
@@ -1613,24 +1763,24 @@
    "start": "2026-11-20T01:00Z",
    "side": "away",
    "point": -1.5,
-   "dec": 1.98,
-   "am": -102,
-   "conv": 36,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 34,
    "tier": "Pass",
-   "p": 0.498,
-   "p_sim": 0.516,
-   "p_mkt": 0.482,
+   "p": 0.503,
+   "p_sim": 0.518,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.014,
+   "ev": -0.02,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "MIN",
    "away": "NY",
-   "why": "Sim: NY by 1.8 on average (NY 107.9, MIN 106.1) \u00b7 NY -1.5 covers in 52% of sims vs 48% DraftKings",
+   "why": "Sim: NY by 1.7 on average (NY 107.6, MIN 105.9) \u00b7 NY -1.5 covers in 52% of sims vs 49% DraftKings",
    "for": [],
    "against": [
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 627-642 against DraftKings' spreads. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 630-651 against DraftKings' spreads. Treat this as a lean.",
      "rec": [
       70,
       82
@@ -1643,8 +1793,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.008,
-    "floor_am": 101,
+    "floor_dec": 1.988,
+    "floor_am": -101,
     "line": null,
     "next": -2.5
    },
@@ -1663,12 +1813,12 @@
      "team": "MIN",
      "status": "Questionable",
      "self": false,
-     "min": 27.9
+     "min": 27.6
     }
    ],
    "kill": [
     "The line reaching -2.5",
-    "The price at -1.5 going past +101",
+    "The price at -1.5 going past \u2212101",
     "A change in Jonathan Kuminga (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1694,11 +1844,8 @@
     }
    },
    "first_seen": "2026-11-19T14:15:57Z",
-   "removed": {
-    "at": "2026-11-19T18:31:10Z",
-    "why": "confidence fell 36 \u2192 23"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401910019|spread|home": {
    "key": "g|401910019|spread|home",
@@ -1816,8 +1963,11 @@
     }
    },
    "first_seen": "2026-11-19T14:45:58Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-19T18:46:02Z",
+    "why": "confidence fell 42 \u2192 27"
+   },
+   "status": "Removed"
   },
   "g|401910021|spread|home": {
    "key": "g|401910021|spread|home",
@@ -1910,6 +2060,118 @@
     }
    },
    "first_seen": "2026-11-19T18:31:10Z",
+   "removed": {
+    "at": "2026-11-19T18:46:02Z",
+    "why": "confidence fell 27 \u2192 16"
+   },
+   "status": "Removed"
+  },
+  "g|401910019|total|Over": {
+   "key": "g|401910019|total|Over",
+   "kind": "total",
+   "label": "GS @ MEM Over 225.5",
+   "espn_id": "401910019",
+   "game": "GS @ MEM",
+   "start": "2026-11-20T01:00Z",
+   "side": "Over",
+   "point": 225.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 39,
+   "tier": "Pass",
+   "p": 0.511,
+   "p_sim": 0.535,
+   "p_mkt": 0.488,
+   "p_kalshi": null,
+   "ev": -0.004,
+   "verdict": "Pass: team model carries it; the main risk is blowout.",
+   "home": "MEM",
+   "away": "GS",
+   "why": "Sim total 227.2 (after a learned +1.9 correction) vs 225.5 \u00b7 over in 54% of sims vs 49% DraftKings",
+   "for": [
+    {
+     "tag": "team model",
+     "t": "Team ratings project 230.6 points, 5.1 on your side of 225.5.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "blowout",
+     "t": "42% of sims are blowouts, and benches slow the scoring late.",
+     "rec": [
+      291,
+      259
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 627-654 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      70,
+      82
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.957,
+    "floor_am": -104,
+    "line": null,
+    "next": 226.5
+   },
+   "watch": [
+    {
+     "pid": "4065733",
+     "name": "Ty Jerome",
+     "team": "MEM",
+     "status": "Out",
+     "self": false,
+     "min": 30.3
+    },
+    {
+     "pid": "6589",
+     "name": "Draymond Green",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 23.3
+    },
+    {
+     "pid": "3975",
+     "name": "Stephen Curry",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 22.5
+    }
+   ],
+   "kill": [
+    "The line reaching 226.5",
+    "The price at 225.5 going past \u2212104"
+   ],
+   "market": {
+    "open": null,
+    "now": 225.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-19T18:46:02Z",
+    "edition": "update",
+    "point": 225.5,
+    "dec": 1.95,
+    "am": -105,
+    "conv": 39,
+    "tier": "Pass",
+    "p": 0.511,
+    "play_to": {
+     "floor_dec": 1.957,
+     "floor_am": -104,
+     "line": null,
+     "next": 226.5
+    }
+   },
+   "first_seen": "2026-11-19T18:46:02Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2285,6 +2547,69 @@
    "kind": "removed",
    "text": "Removed: NY -1.5 (NY @ MIN) \u2014 confidence fell 36 \u2192 23",
    "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "p|3032976|reb|Under",
+   "kind": "added",
+   "text": "Added: Rudy Gobert Under 9.5 rebounds at +106, conviction 44",
+   "alert": true
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "p|4066259|ast|Under",
+   "kind": "line",
+   "text": "De'Aaron Fox: line 6.5 at \u2212149 \u2192 6.5 at \u2212156",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "p|4066259|ast|Under",
+   "kind": "conviction",
+   "text": "De'Aaron Fox Under 6.5 assists: conviction 45 Consider \u2192 43 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "p|4709138|ast|Under",
+   "kind": "removed",
+   "text": "Removed: Brandin Podziemski Under 4.5 assists \u2014 no longer +EV at tonight's line (4.5 at -149)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "g|401910019|total|Over",
+   "kind": "added",
+   "text": "Added: GS @ MEM Over 225.5 at \u2212105, conviction 39",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "g|401910021|spread|away",
+   "kind": "back",
+   "text": "Back on the board: NY -1.5 (NY @ MIN) at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "g|401910021|spread|away",
+   "kind": "line",
+   "text": "NY -1.5 (NY @ MIN): line -1.5 at \u2212102 \u2192 -1.5 at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "g|401910019|spread|home",
+   "kind": "removed",
+   "text": "Removed: MEM -6.5 (GS @ MEM) \u2014 confidence fell 42 \u2192 27",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T18:46:02Z",
+   "key": "g|401910021|spread|home",
+   "kind": "removed",
+   "text": "Removed: MIN +1.5 (NY @ MIN) \u2014 confidence fell 27 \u2192 16",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2338,7 +2663,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 7
+  "picks": 8
  },
  "leans_record": {
   "w": 13,
@@ -2347,5 +2672,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3252,
- "updated": "2026-11-19T18:31:10Z"
+ "updated": "2026-11-19T18:46:02Z"
 }
