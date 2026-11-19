@@ -192,7 +192,7 @@
    "p": 0.491,
    "p_sim": 0.634,
    "p_mkt": 0.452,
-   "p_kalshi": 0.44,
+   "p_kalshi": 0.435,
    "ev": 0.017,
    "verdict": "Consider: simulation and recent form agree.",
    "home": "MIL",
@@ -291,7 +291,7 @@
    "market": {
     "open": 3.5,
     "now": 3.5,
-    "kalshi": 0.44
+    "kalshi": 0.435
    },
    "started": false,
    "published": {
@@ -330,7 +330,7 @@
    "p": 0.573,
    "p_sim": 0.748,
    "p_mkt": 0.531,
-   "p_kalshi": 0.546,
+   "p_kalshi": 0.528,
    "ev": 0.009,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIL",
@@ -462,7 +462,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.546
+    "kalshi": 0.528
    },
    "started": false,
    "published": {
@@ -794,13 +794,13 @@
    "point": 4.5,
    "dec": 1.7,
    "am": -143,
-   "conv": 43,
+   "conv": 44,
    "tier": "Pass",
-   "p": 0.594,
-   "p_sim": 0.738,
+   "p": 0.595,
+   "p_sim": 0.751,
    "p_mkt": 0.55,
-   "p_kalshi": 0.562,
-   "ev": 0.009,
+   "p_kalshi": 0.556,
+   "ev": 0.012,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MEM",
    "away": "GS",
@@ -809,11 +809,11 @@
    "team": "GS",
    "opp": "MEM",
    "stat": "ast",
-   "proj": 3.2,
-   "sim": 3.5,
+   "proj": 3.3,
+   "sim": 3.4,
    "ob_ind": 3.5,
    "avg10": 3.5,
-   "minutes": 27.4,
+   "minutes": 27.8,
    "for": [
     {
      "tag": "average",
@@ -825,7 +825,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 74% of 10,000 simulated games (sim average 3.5).",
+     "t": "Goes under in 75% of 10,000 simulated games (sim average 3.4).",
      "rec": [
       895,
       769
@@ -833,7 +833,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 3.2 assists against a line of 4.5.",
+     "t": "Model projects 3.3 assists against a line of 4.5.",
      "rec": [
       914,
       817
@@ -849,7 +849,7 @@
     },
     {
      "tag": "blowout",
-     "t": "Blowout risk: 45% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 47% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       493,
       474
@@ -891,8 +891,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.684,
-    "floor_am": -146,
+    "floor_dec": 1.681,
+    "floor_am": -147,
     "line": 4.5,
     "next": 3.5
    },
@@ -916,13 +916,13 @@
    ],
    "kill": [
     "The line reaching 3.5",
-    "The price at 4.5 going past \u2212146",
+    "The price at 4.5 going past \u2212147",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.562
+    "kalshi": 0.556
    },
    "started": false,
    "published": {
@@ -1209,40 +1209,32 @@
   "g|401910022|total|Under": {
    "key": "g|401910022|total|Under",
    "kind": "total",
-   "label": "LAC @ SA Under 224.5",
+   "label": "LAC @ SA Under 225.5",
    "espn_id": "401910022",
    "game": "LAC @ SA",
    "start": "2026-11-20T01:00Z",
    "side": "Under",
-   "point": 224.5,
-   "dec": 1.92,
-   "am": -109,
-   "conv": 55,
+   "point": 225.5,
+   "dec": 1.93,
+   "am": -108,
+   "conv": 59,
    "tier": "Consider",
-   "p": 0.545,
-   "p_sim": 0.598,
-   "p_mkt": 0.496,
+   "p": 0.555,
+   "p_sim": 0.622,
+   "p_mkt": 0.493,
    "p_kalshi": null,
-   "ev": 0.047,
-   "verdict": "Consider: simulation and line move agree; the main risk is model record.",
+   "ev": 0.072,
+   "verdict": "Consider: simulation carries it; the main risk is model record.",
    "home": "SA",
    "away": "LAC",
-   "why": "Sim total 220.7 (after a learned +2.1 correction) vs 224.5 \u00b7 under in 60% of sims vs 50% DraftKings",
+   "why": "Sim total 220.7 (after a learned +2.1 correction) vs 225.5 \u00b7 under in 62% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 60% of 10,000 simulated games.",
+     "t": "Goes under in 62% of 10,000 simulated games.",
      "rec": [
       895,
       769
-     ]
-    },
-    {
-     "tag": "line move",
-     "t": "The line has moved this way since it opened (225.5 to 224.5): you're with the money, at a worse number.",
-     "rec": [
-      97,
-      109
      ]
     }
    ],
@@ -1257,10 +1249,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.835,
-    "floor_am": -120,
-    "line": 224.5,
-    "next": 223.5
+    "floor_dec": 1.802,
+    "floor_am": -125,
+    "line": 225.5,
+    "next": 224.5
    },
    "watch": [
     {
@@ -1273,12 +1265,12 @@
     }
    ],
    "kill": [
-    "The line reaching 223.5",
-    "The price at 224.5 going past \u2212120"
+    "The line reaching 224.5",
+    "The price at 225.5 going past \u2212125"
    ],
    "market": {
     "open": null,
-    "now": 224.5,
+    "now": 225.5,
     "kalshi": null
    },
    "started": false,
@@ -1716,21 +1708,21 @@
    "point": -6.5,
    "dec": 1.93,
    "am": -108,
-   "conv": 46,
+   "conv": 55,
    "tier": "Consider",
-   "p": 0.529,
-   "p_sim": 0.567,
+   "p": 0.543,
+   "p_sim": 0.597,
    "p_mkt": 0.493,
    "p_kalshi": null,
-   "ev": 0.021,
+   "ev": 0.048,
    "verdict": "Consider: simulation and who's out agree; the main risk is team model.",
    "home": "MEM",
    "away": "GS",
-   "why": "Sim: MEM by 9.1 on average (GS 107.3, MEM 116.3) \u00b7 MEM -6.5 covers in 57% of sims vs 49% DraftKings",
+   "why": "Sim: MEM by 10.3 on average (GS 106.9, MEM 117.2) \u00b7 MEM -6.5 covers in 60% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 57% of 10,000 simulated games.",
+     "t": "Covers in 60% of 10,000 simulated games.",
      "rec": [
       895,
       769
@@ -1761,7 +1753,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it MEM by 3.9, 2.6 worse than this number.",
+     "t": "Team ratings with tonight's lineups make it MEM by 3.6, 2.9 worse than this number.",
      "rec": null
     },
     {
@@ -1771,9 +1763,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.89,
-    "floor_am": -112,
-    "line": null,
+    "floor_dec": 1.842,
+    "floor_am": -119,
+    "line": -6.5,
     "next": -7.5
    },
    "watch": [
@@ -1796,7 +1788,7 @@
    ],
    "kill": [
     "The line reaching -7.5",
-    "The price at -6.5 going past \u2212112"
+    "The price at -6.5 going past \u2212119"
    ],
    "market": {
     "open": null,
@@ -2014,6 +2006,20 @@
    "kind": "conviction",
    "text": "MEM -6.5 (GS @ MEM): conviction 42 Pass \u2192 46 Consider",
    "alert": false
+  },
+  {
+   "at": "2026-11-19T15:16:05Z",
+   "key": "g|401910022|total|Under",
+   "kind": "line",
+   "text": "LAC @ SA Under 225.5: line 224.5 at \u2212109 \u2192 225.5 at \u2212108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-19T15:16:05Z",
+   "key": "g|401910019|spread|home",
+   "kind": "conviction",
+   "text": "MEM -6.5 (GS @ MEM): conviction 46 Consider \u2192 55 Consider",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2076,5 +2082,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 2762,
- "updated": "2026-11-19T15:01:19Z"
+ "updated": "2026-11-19T15:16:05Z"
 }
