@@ -30,5 +30,16 @@
    }
   ],
   "summary": "Little new grading since last night: the record is still 65 bets, 22-41-2, -26% ROI, with overall CLV at -0.91% on 62 closes, and every playbook's sample is unchanged. matchup_under (34 bets, -2.96% CLV) remains the one real-sample leak and the prop model still loses to the market on log-loss in every stat, so the calls stay the same direction: less prop volume and less model weight. Game-side playbooks (longshot 5, arb 6, value_fav 1, matchup_over 8) are too small to touch and value_dog stays paused."
+ },
+ {
+  "at": "2026-11-20T10:13:52Z",
+  "proposals": [
+   {
+    "param": "prop_max_bets",
+    "value": 3,
+    "why": "Third night asking, still unapplied: matchup_under is the only playbook past 30 bets (34) and its sample hasn't moved, still -2.96% average CLV on 28 closes and -$46.65 on $170 staked, so trim prop volume from 4 to 3 per run until that CLV turns."
+   }
+  ],
+  "summary": "Overall record moved to 71 bets, 25-44-2, -$90.62 (-22% ROI), but the new bets were college games and the closing-line sample is unchanged at -0.91% on 62 closes, so the only real-sample leak is still matchup_under (34 bets, -2.96% CLV). I'm holding prop_model_weight at its current 0.136 rather than pushing lower: the assist log-loss gap is flat (0.6971 vs 0.6838 on 1323, was 0.6979 vs 0.6844 on 1103) and the scoreboard now shows a small blend gain at w=0.25 for ast, ra and reb, so the evidence for cutting further has not grown. Every game-side playbook (arb 12, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched, with value_dog still paused."
  }
 ]
