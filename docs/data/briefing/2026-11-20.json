@@ -341,16 +341,16 @@
    "start": "2026-11-21T01:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.91,
-   "am": -110,
-   "conv": 43,
-   "tier": "Pass",
-   "p": 0.529,
-   "p_sim": 0.67,
-   "p_mkt": 0.488,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 48,
+   "tier": "Consider",
+   "p": 0.521,
+   "p_sim": 0.701,
+   "p_mkt": 0.475,
    "p_kalshi": 0.485,
-   "ev": 0.01,
-   "verdict": "Pass: simulation and projection agree; the main risk is recent form.",
+   "ev": 0.027,
+   "verdict": "Consider: simulation and projection agree; the main risk is recent form.",
    "home": "OKC",
    "away": "NO",
    "pid": "4395628",
@@ -359,14 +359,14 @@
    "opp": "OKC",
    "stat": "reb",
    "proj": 4.6,
-   "sim": 4.7,
+   "sim": 4.5,
    "ob_ind": 4.5,
    "avg10": 6.1,
    "minutes": 26.9,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 67% of 10,000 simulated games (sim average 4.7).",
+     "t": "Goes under in 70% of 10,000 simulated games (sim average 4.5).",
      "rec": [
       1114,
       954
@@ -440,8 +440,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.89,
-    "floor_am": -112,
+    "floor_dec": 1.919,
+    "floor_am": -109,
     "line": null,
     "next": 4.5
    },
@@ -481,7 +481,7 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212112",
+    "The price at 5.5 going past \u2212109",
     "A change in Trey Murphy III (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -539,7 +539,7 @@
    "stat": "ra",
    "proj": 4.8,
    "sim": 5.2,
-   "ob_ind": 4.5,
+   "ob_ind": 5.5,
    "avg10": 4.4,
    "minutes": 18.1,
    "for": [
@@ -981,29 +981,29 @@
   "g|401909305|total|Under": {
    "key": "g|401909305|total|Under",
    "kind": "total",
-   "label": "CHA @ ATL Under 219.5",
+   "label": "CHA @ ATL Under 218.5",
    "espn_id": "401909305",
    "game": "CHA @ ATL",
    "start": "2026-11-21T00:00Z",
    "side": "Under",
-   "point": 219.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 44,
-   "tier": "Pass",
-   "p": 0.544,
-   "p_sim": 0.579,
-   "p_mkt": 0.512,
+   "point": 218.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 45,
+   "tier": "Consider",
+   "p": 0.521,
+   "p_sim": 0.556,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": 0.012,
-   "verdict": "Pass: simulation carries it; the main risk is line move.",
+   "ev": 0.015,
+   "verdict": "Consider: simulation carries it; the main risk is model record.",
    "home": "ATL",
    "away": "CHA",
-   "why": "Sim total 216.3 (after a learned +2.0 correction) vs 219.5 \u00b7 under in 58% of sims vs 51% DraftKings",
+   "why": "Sim total 216.3 (after a learned +2.0 correction) vs 218.5 \u00b7 under in 56% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 58% of 10,000 simulated games.",
+     "t": "Goes under in 56% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1011,14 +1011,6 @@
     }
    ],
    "against": [
-    {
-     "tag": "line move",
-     "t": "The line has moved against this side since it opened (218.5 to 219.5).",
-     "rec": [
-      156,
-      124
-     ]
-    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 629-656 against DraftKings' totals. Treat this as a lean.",
@@ -1029,10 +1021,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.838,
-    "floor_am": -119,
-    "line": 219.5,
-    "next": 218.5
+    "floor_dec": 1.919,
+    "floor_am": -109,
+    "line": null,
+    "next": 217.5
    },
    "watch": [
     {
@@ -1077,12 +1069,12 @@
     }
    ],
    "kill": [
-    "The line reaching 218.5",
-    "The price at 219.5 going past \u2212119"
+    "The line reaching 217.5",
+    "The price at 218.5 going past \u2212109"
    ],
    "market": {
     "open": null,
-    "now": 219.5,
+    "now": 218.5,
     "kalshi": null
    },
    "started": false,
@@ -1104,52 +1096,44 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Past play-to"
   },
   "g|401909312|total|Under": {
    "key": "g|401909312|total|Under",
    "kind": "total",
-   "label": "HOU @ DEN Under 226.5",
+   "label": "HOU @ DEN Under 227.5",
    "espn_id": "401909312",
    "game": "HOU @ DEN",
    "start": "2026-11-21T03:00Z",
    "side": "Under",
-   "point": 226.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 53,
-   "tier": "Consider",
-   "p": 0.551,
-   "p_sim": 0.601,
-   "p_mkt": 0.504,
+   "point": 227.5,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 43,
+   "tier": "Pass",
+   "p": 0.538,
+   "p_sim": 0.571,
+   "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": 0.041,
-   "verdict": "Consider: simulation and line move agree; the main risk is model record.",
+   "ev": 0.011,
+   "verdict": "Pass: simulation carries it; the main risk is model record.",
    "home": "DEN",
    "away": "HOU",
-   "why": "Sim total 222.3 (after a learned +2.0 correction) vs 226.5 \u00b7 under in 60% of sims vs 50% DraftKings",
+   "why": "Sim total 224.7 (after a learned +2.0 correction) vs 227.5 \u00b7 under in 57% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 60% of 10,000 simulated games.",
+     "t": "Goes under in 57% of 10,000 simulated games.",
      "rec": [
       1114,
       954
-     ]
-    },
-    {
-     "tag": "line move",
-     "t": "The line has moved this way since it opened (227.5 to 226.5): you're with the money, at a worse number.",
-     "rec": [
-      117,
-      144
      ]
     }
    ],
    "against": [
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 627-654 against DraftKings' totals. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 629-656 against DraftKings' totals. Treat this as a lean.",
      "rec": [
       75,
       94
@@ -1157,10 +1141,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.815,
-    "floor_am": -123,
-    "line": 226.5,
-    "next": 225.5
+    "floor_dec": 1.859,
+    "floor_am": -116,
+    "line": 227.5,
+    "next": 226.5
    },
    "watch": [
     {
@@ -1169,17 +1153,17 @@
      "team": "HOU",
      "status": "Questionable",
      "self": false,
-     "min": 24.8
+     "min": 24.5
     }
    ],
    "kill": [
-    "The line reaching 225.5",
-    "The price at 226.5 going past \u2212123",
+    "The line reaching 226.5",
+    "The price at 227.5 going past \u2212116",
     "A change in Alperen Sengun (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 226.5,
+    "now": 227.5,
     "kalshi": null
    },
    "started": false,
@@ -1200,11 +1184,8 @@
     }
    },
    "first_seen": "2026-11-20T11:45:26Z",
-   "removed": {
-    "at": "2026-11-20T18:01:42Z",
-    "why": "confidence fell 53 \u2192 39"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Downgraded"
   },
   "g|401909307|spread|home": {
    "key": "g|401909307|spread|home",
@@ -1217,21 +1198,21 @@
    "point": -5.5,
    "dec": 1.84,
    "am": -119,
-   "conv": 55,
+   "conv": 45,
    "tier": "Consider",
-   "p": 0.568,
-   "p_sim": 0.621,
+   "p": 0.552,
+   "p_sim": 0.588,
    "p_mkt": 0.518,
    "p_kalshi": null,
-   "ev": 0.045,
+   "ev": 0.016,
    "verdict": "Consider: simulation carries it; the main risk is team model.",
    "home": "CLE",
    "away": "IND",
-   "why": "Sim: CLE by 10.7 on average (IND 111.7, CLE 122.4) \u00b7 CLE -5.5 covers in 62% of sims vs 52% DraftKings",
+   "why": "Sim: CLE by 9.0 on average (IND 112.6, CLE 121.6) \u00b7 CLE -5.5 covers in 59% of sims vs 52% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 62% of 10,000 simulated games.",
+     "t": "Covers in 59% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1257,7 +1238,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it CLE by 3.7, 1.8 worse than this number.",
+     "t": "Team ratings with tonight's lineups make it CLE by 3.8, 1.7 worse than this number.",
      "rec": null
     },
     {
@@ -1267,10 +1248,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.761,
-    "floor_am": -131,
-    "line": -6.5,
-    "next": -7.5
+    "floor_dec": 1.812,
+    "floor_am": -123,
+    "line": -5.5,
+    "next": -6.5
    },
    "watch": [
     {
@@ -1280,14 +1261,6 @@
      "status": "Out",
      "self": false,
      "min": 33.1
-    },
-    {
-     "pid": "4395712",
-     "name": "Andrew Nembhard",
-     "team": "IND",
-     "status": "Questionable",
-     "self": false,
-     "min": 31.0
     },
     {
      "pid": "4432158",
@@ -1315,9 +1288,9 @@
     }
    ],
    "kill": [
-    "The line reaching -7.5 (still a bet at -6.5 near \u2212115)",
-    "The price at -5.5 going past \u2212131",
-    "A change in Andrew Nembhard (questionable), Peyton Watson (questionable): the model re-prices on the next run"
+    "The line reaching -6.5",
+    "The price at -5.5 going past \u2212123",
+    "A change in Peyton Watson (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -1343,7 +1316,7 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Holding"
   },
   "g|401909313|total|Under": {
    "key": "g|401909313|total|Under",
@@ -1593,21 +1566,21 @@
    "point": 11.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 44,
+   "conv": 39,
    "tier": "Pass",
-   "p": 0.533,
-   "p_sim": 0.568,
+   "p": 0.525,
+   "p_sim": 0.552,
    "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.012,
+   "ev": -0.002,
    "verdict": "Pass: simulation carries it; the main risk is model record.",
    "home": "OKC",
    "away": "NO",
-   "why": "Sim: OKC by 9.0 on average (NO 109.0, OKC 118.0) \u00b7 NO +11.5 covers in 57% of sims vs 50% DraftKings",
+   "why": "Sim: OKC by 9.4 on average (NO 108.7, OKC 118.1) \u00b7 NO +11.5 covers in 55% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 57% of 10,000 simulated games.",
+     "t": "Covers in 55% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1625,8 +1598,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.876,
-    "floor_am": -114,
+    "floor_dec": 1.905,
+    "floor_am": -111,
     "line": null,
     "next": 10.5
    },
@@ -1666,7 +1639,7 @@
    ],
    "kill": [
     "The line reaching 10.5",
-    "The price at 11.5 going past \u2212114",
+    "The price at 11.5 going past \u2212111",
     "A change in Trey Murphy III (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1693,7 +1666,7 @@
    },
    "first_seen": "2026-11-20T13:16:28Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "New"
   },
   "g|401909308|spread|home": {
    "key": "g|401909308|spread|home",
@@ -2134,8 +2107,11 @@
     }
    },
    "first_seen": "2026-11-20T18:01:42Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-20T23:16:23Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -2677,6 +2653,76 @@
    "kind": "conviction",
    "text": "CHA @ ATL Under 219.5: conviction 45 Consider \u2192 44 Pass",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "p|4395628|reb|Under",
+   "kind": "line",
+   "text": "Zion Williamson: line 5.5 at \u2212110 \u2192 5.5 at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "p|4395628|reb|Under",
+   "kind": "conviction",
+   "text": "Zion Williamson Under 5.5 rebounds: conviction 43 Pass \u2192 48 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909307|spread|home",
+   "kind": "conviction",
+   "text": "CLE -5.5 (IND @ CLE): conviction 55 Consider \u2192 45 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909305|total|Under",
+   "kind": "line",
+   "text": "CHA @ ATL Under 218.5: line 219.5 at \u2212116 \u2192 218.5 at \u2212105 \u2014 past the play-to line; don't add at this number",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909305|total|Under",
+   "kind": "conviction",
+   "text": "CHA @ ATL Under 218.5: conviction 44 Pass \u2192 45 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909312|total|Under",
+   "kind": "back",
+   "text": "Back on the board: HOU @ DEN Under 227.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909312|total|Under",
+   "kind": "line",
+   "text": "HOU @ DEN Under 227.5: line 226.5 at \u2212112 \u2192 227.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909312|total|Under",
+   "kind": "conviction",
+   "text": "HOU @ DEN Under 227.5: conviction 53 Consider \u2192 43 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909310|spread|away",
+   "kind": "conviction",
+   "text": "NO +11.5 (NO @ OKC): conviction 44 Pass \u2192 39 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:16:23Z",
+   "key": "g|401909312|spread|away",
+   "kind": "removed",
+   "text": "Removed: HOU +1.5 (HOU @ DEN) \u2014 other plays ranked higher",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2870,11 +2916,6 @@
     "status": "Questionable"
    },
    {
-    "name": "Andrew Nembhard",
-    "team": "IND",
-    "status": "Questionable"
-   },
-   {
     "name": "Trey Murphy III",
     "team": "NO",
     "status": "Questionable"
@@ -2894,5 +2935,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-20T23:01:54Z"
+ "updated": "2026-11-20T23:16:23Z"
 }
