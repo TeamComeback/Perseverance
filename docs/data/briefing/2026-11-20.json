@@ -522,13 +522,13 @@
    "point": 6.5,
    "dec": 2.01,
    "am": 101,
-   "conv": 48,
+   "conv": 47,
    "tier": "Consider",
-   "p": 0.511,
-   "p_sim": 0.757,
+   "p": 0.508,
+   "p_sim": 0.74,
    "p_mkt": 0.465,
    "p_kalshi": null,
-   "ev": 0.026,
+   "ev": 0.022,
    "verdict": "Consider: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "ATL",
    "away": "CHA",
@@ -538,14 +538,14 @@
    "opp": "ATL",
    "stat": "ra",
    "proj": 4.8,
-   "sim": 5.1,
+   "sim": 5.2,
    "ob_ind": 4.5,
    "avg10": 4.4,
    "minutes": 18.1,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 76% of 10,000 simulated games (sim average 5.1).",
+     "t": "Goes under in 74% of 10,000 simulated games (sim average 5.2).",
      "rec": [
       1114,
       954
@@ -611,8 +611,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.957,
-    "floor_am": -104,
+    "floor_dec": 1.969,
+    "floor_am": -103,
     "line": null,
     "next": 5.5
    },
@@ -652,7 +652,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212104",
+    "The price at 6.5 going past \u2212103",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -981,29 +981,29 @@
   "g|401909305|total|Under": {
    "key": "g|401909305|total|Under",
    "kind": "total",
-   "label": "CHA @ ATL Under 219.5",
+   "label": "CHA @ ATL Under 218.5",
    "espn_id": "401909305",
    "game": "CHA @ ATL",
    "start": "2026-11-21T00:00Z",
    "side": "Under",
-   "point": 219.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 49,
+   "point": 218.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 45,
    "tier": "Consider",
-   "p": 0.553,
-   "p_sim": 0.596,
-   "p_mkt": 0.512,
+   "p": 0.521,
+   "p_sim": 0.556,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": 0.028,
-   "verdict": "Consider: simulation carries it; the main risk is line move.",
+   "ev": 0.015,
+   "verdict": "Consider: simulation carries it; the main risk is model record.",
    "home": "ATL",
    "away": "CHA",
-   "why": "Sim total 215.4 (after a learned +2.0 correction) vs 219.5 \u00b7 under in 60% of sims vs 51% DraftKings",
+   "why": "Sim total 216.3 (after a learned +2.0 correction) vs 218.5 \u00b7 under in 56% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 60% of 10,000 simulated games.",
+     "t": "Goes under in 56% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1011,14 +1011,6 @@
     }
    ],
    "against": [
-    {
-     "tag": "line move",
-     "t": "The line has moved against this side since it opened (218.5 to 219.5).",
-     "rec": [
-      156,
-      124
-     ]
-    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 629-656 against DraftKings' totals. Treat this as a lean.",
@@ -1029,10 +1021,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.808,
-    "floor_am": -124,
-    "line": 219.5,
-    "next": 218.5
+    "floor_dec": 1.919,
+    "floor_am": -109,
+    "line": null,
+    "next": 217.5
    },
    "watch": [
     {
@@ -1071,19 +1063,18 @@
      "pid": "5149077",
      "name": "Kingston Flemings",
      "team": "ATL",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 21.4
+     "min": 22.4
     }
    ],
    "kill": [
-    "The line reaching 218.5",
-    "The price at 219.5 going past \u2212124",
-    "A change in Kingston Flemings (questionable): the model re-prices on the next run"
+    "The line reaching 217.5",
+    "The price at 218.5 going past \u2212109"
    ],
    "market": {
     "open": null,
-    "now": 219.5,
+    "now": 218.5,
     "kalshi": null
    },
    "started": false,
@@ -1105,7 +1096,7 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Past play-to"
   },
   "g|401909312|total|Under": {
    "key": "g|401909312|total|Under",
@@ -2643,6 +2634,20 @@
    "kind": "line",
    "text": "CHA @ ATL Under 219.5: line 218.5 at \u2212105 \u2192 219.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T22:16:39Z",
+   "key": "g|401909305|total|Under",
+   "kind": "line",
+   "text": "CHA @ ATL Under 218.5: line 219.5 at \u2212116 \u2192 218.5 at \u2212105 \u2014 past the play-to line; don't add at this number",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T22:16:39Z",
+   "key": "g|401909305|total|Under",
+   "kind": "injury",
+   "text": "Kingston Flemings questionable \u2192 out (CHA @ ATL Under 218.5 re-priced: 218.5 at \u2212105, conviction 45)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2860,5 +2865,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-20T22:13:32Z"
+ "updated": "2026-11-20T22:16:39Z"
 }
