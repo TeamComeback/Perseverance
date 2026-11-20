@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 59.14,
+  "cash": 81.22,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -15777,11 +15777,15 @@
       "book": "fanduel",
       "fair_p": 0.6983,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.4,
        "gain": 0.0071,
        "n": 5
+      },
+      "final": {
+       "home": 61.0,
+       "away": 47.0
       }
      }
     ],
@@ -15792,10 +15796,10 @@
     "note": "Arb: 0.51% locked across 2 books",
     "group": "arb-9e03686ea9",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 22.08,
+    "profit": 6.42,
+    "settled": "2026-11-20T04:12:40Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15805,7 +15809,27 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: North Carolina Tar Heels won by 14",
+     "final": "Texas Tech Red Raiders 47 \u2013 North Carolina Tar Heels 61",
+     "legs": [
+      {
+       "outcome": "North Carolina Tar Heels",
+       "result": "win",
+       "headline": "North Carolina Tar Heels won by 14",
+       "final": "Texas Tech Red Raiders 47 \u2013 North Carolina Tar Heels 61",
+       "why": [
+        "North Carolina Tar Heels won by 14.",
+        "We priced it at 71% to hit vs 71% needed to break even at 1.41x (+0.5% expected edge).",
+        "Consensus fair probability when placed: 70% (no closing price captured)."
+       ],
+       "tags": []
+      }
+     ],
+     "tags": []
+    },
+    "recap_tried": 1
    },
    {
     "id": "78512287",
@@ -15827,11 +15851,15 @@
       "book": "draftkings",
       "fair_p": 0.3174,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 3.081,
        "gain": 0.136,
        "n": 5
+      },
+      "final": {
+       "home": 61.0,
+       "away": 47.0
       }
      }
     ],
@@ -15842,10 +15870,10 @@
     "note": "Arb: 0.51% locked across 2 books",
     "group": "arb-9e03686ea9",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -6.31,
+    "settled": "2026-11-20T04:12:40Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15855,7 +15883,31 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Texas Tech Red Raiders lost by 14",
+     "final": "Texas Tech Red Raiders 47 \u2013 North Carolina Tar Heels 61",
+     "legs": [
+      {
+       "outcome": "Texas Tech Red Raiders",
+       "result": "loss",
+       "headline": "Texas Tech Red Raiders lost by 14",
+       "final": "Texas Tech Red Raiders 47 \u2013 North Carolina Tar Heels 61",
+       "why": [
+        "Texas Tech Red Raiders lost by 14.",
+        "We priced it at 29% to hit vs 29% needed to break even at 3.5x (+0.5% expected edge).",
+        "Consensus fair probability when placed: 32% (no closing price captured)."
+       ],
+       "tags": [
+        "underdog-lost"
+       ]
+      }
+     ],
+     "tags": [
+      "underdog-lost"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "396e158b",
@@ -16044,7 +16096,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0975,
+  "min_edge": 0.1025,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -16160,16 +16212,16 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 10,
-   "staked": 94.97,
-   "profit": 1.2199999999999989,
+   "bets": 12,
+   "staked": 116.94,
+   "profit": 1.3299999999999992,
    "clv_n": 10,
    "clv_sum": 0.4722325999999998,
    "tags": {
     "underdog-lost": {
-     "n": 4,
+     "n": 5,
      "won": 0,
-     "lost": 4
+     "lost": 5
     },
     "lost-closing-line": {
      "n": 4,
@@ -16426,9 +16478,9 @@
   },
   "basketball_wncaab": {
    "last_scanned": "2026-11-19T23:30:37Z",
-   "bets": 2.0,
-   "staked": 20.13,
-   "profit": 0.39000000000000057
+   "bets": 4.0,
+   "staked": 42.1,
+   "profit": 0.5000000000000009
   },
   "tennis_atp_finals": {
    "last_scanned": "2026-11-18T15:17:03Z"
@@ -16504,26 +16556,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-14T12:00:35Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 123 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-14T13:14:55Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 123 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-14T14:15:31Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 123 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-14T14:45:31Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 124 players projected, lineups for 5 games."
-  },
   {
    "ts": "2026-11-14T15:15:31Z",
    "kind": "research",
@@ -18003,6 +18035,26 @@
    "ts": "2026-11-20T04:05:19Z",
    "kind": "error",
    "text": "Self-check failed: Slate date (players.json is for 2026-11-20, today is 2026-11-19); Sims for every game (missing: CHA@ATL, ORL@BKN, IND@CLE, TOR@DET, WSH@CHI, NO@OKC, PHX@UTAH, HOU@DEN, SAC@LAL); Best bets (5 props, 4 game lines; ruled out or low minutes since picked: Tyler Herro, Julian Champagnie, Rudy Gobert, De'Aaron Fox, Scoot Henderson)"
+  },
+  {
+   "ts": "2026-11-20T04:12:40Z",
+   "kind": "result",
+   "text": "WON +$6.42: North Carolina Tar Heels @ -244 (FanDuel) \u2014 WON: North Carolina Tar Heels won by 14"
+  },
+  {
+   "ts": "2026-11-20T04:12:40Z",
+   "kind": "result",
+   "text": "LOST -$6.31: Texas Tech Red Raiders @ +250 (DraftKings) \u2014 LOST: Texas Tech Red Raiders lost by 14 [underdog-lost]"
+  },
+  {
+   "ts": "2026-11-20T04:12:40Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.9% over 62 legs, so the market is beating my picks. Raising the minimum edge to 10.2%."
+  },
+  {
+   "ts": "2026-11-20T04:12:43Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 17511 left this cycle)."
   }
  ],
  "learned_ids": [
@@ -18074,32 +18126,34 @@
   "b3bc638d",
   "c9b7e67b",
   "5d2f45e0",
-  "5c21d4ff"
+  "5c21d4ff",
+  "9563e2a0",
+  "78512287"
  ],
  "strategist": null,
- "updated": "2026-11-20T04:05:42Z",
+ "updated": "2026-11-20T04:12:43Z",
  "stats": {
-  "bets": 69,
-  "won": 24,
-  "lost": 43,
+  "bets": 71,
+  "won": 25,
+  "lost": 44,
   "shop_n": 14,
   "shop_avg": 0.0655,
   "push": 2,
-  "staked": 389.97,
-  "profit": -90.73,
-  "roi": -0.2327,
+  "staked": 411.94,
+  "profit": -90.62,
+  "roi": -0.22,
   "clv": -0.0091,
   "clv_n": 62,
-  "clv_no_close": 7,
+  "clv_no_close": 9,
   "close_mins_median": 4,
-  "open": 6,
-  "equity": 101.11
+  "open": 4,
+  "equity": 101.22
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.422,
   "longshot": 0.444,
-  "arb": 1.087,
+  "arb": 1.086,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
   "matchup_under": 0.505
