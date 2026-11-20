@@ -211,15 +211,15 @@
    "start": "2026-11-21T00:30Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.91,
-   "am": -110,
-   "conv": 51,
+   "dec": 1.98,
+   "am": -102,
+   "conv": 53,
    "tier": "Consider",
-   "p": 0.542,
+   "p": 0.527,
    "p_sim": 0.723,
-   "p_mkt": 0.489,
+   "p_mkt": 0.472,
    "p_kalshi": null,
-   "ev": 0.036,
+   "ev": 0.044,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "BKN",
    "away": "ORL",
@@ -286,9 +286,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.845,
-    "floor_am": -118,
-    "line": 10.5,
+    "floor_dec": 1.898,
+    "floor_am": -111,
+    "line": null,
     "next": 9.5
    },
    "watch": [
@@ -303,7 +303,7 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212118",
+    "The price at 10.5 going past \u2212111",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -854,7 +854,7 @@
    "p": 0.55,
    "p_sim": 0.748,
    "p_mkt": 0.495,
-   "p_kalshi": 0.508,
+   "p_kalshi": 0.511,
    "ev": 0.04,
    "verdict": "Consider: simulation and recent form agree; the main risk is thin margin.",
    "home": "UTAH",
@@ -961,7 +961,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.508
+    "kalshi": 0.511
    },
    "started": false,
    "published": {
@@ -1816,6 +1816,94 @@
     }
    },
    "first_seen": "2026-11-20T15:16:33Z",
+   "removed": {
+    "at": "2026-11-20T15:46:31Z",
+    "why": "confidence fell 37 \u2192 34"
+   },
+   "status": "Removed"
+  },
+  "g|401909306|spread|home": {
+   "key": "g|401909306|spread|home",
+   "kind": "spread",
+   "label": "BKN +5.5 (ORL @ BKN)",
+   "espn_id": "401909306",
+   "game": "ORL @ BKN",
+   "start": "2026-11-21T00:30Z",
+   "side": "home",
+   "point": 5.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 37,
+   "tier": "Pass",
+   "p": 0.507,
+   "p_sim": 0.528,
+   "p_mkt": 0.488,
+   "p_kalshi": null,
+   "ev": -0.011,
+   "verdict": "Pass: team model carries it; the main risk is model record.",
+   "home": "BKN",
+   "away": "ORL",
+   "why": "Sim: ORL by 4.1 on average (ORL 112.3, BKN 108.2) \u00b7 BKN +5.5 covers in 53% of sims vs 49% DraftKings",
+   "for": [
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it ORL by 2.7, 2.8 better than this number.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 630-651 against DraftKings' spreads. Treat this as a lean.",
+     "rec": [
+      70,
+      82
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.972,
+    "floor_am": -103,
+    "line": null,
+    "next": 4.5
+   },
+   "watch": [
+    {
+     "pid": "4432573",
+     "name": "Paolo Banchero",
+     "team": "ORL",
+     "status": "Out",
+     "self": false,
+     "min": 34.6
+    }
+   ],
+   "kill": [
+    "The line reaching 4.5",
+    "The price at 5.5 going past \u2212103"
+   ],
+   "market": {
+    "open": null,
+    "now": 5.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-20T15:46:31Z",
+    "edition": "update",
+    "point": 5.5,
+    "dec": 1.95,
+    "am": -105,
+    "conv": 37,
+    "tier": "Pass",
+    "p": 0.507,
+    "play_to": {
+     "floor_dec": 1.972,
+     "floor_am": -103,
+     "line": null,
+     "next": 4.5
+    }
+   },
+   "first_seen": "2026-11-20T15:46:31Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2044,6 +2132,27 @@
    "kind": "removed",
    "text": "Removed: TOR @ DET Under 216.5 \u2014 confidence fell 41 \u2192 33",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T15:46:31Z",
+   "key": "p|3064514|ra|Under",
+   "kind": "line",
+   "text": "Julius Randle: line 10.5 at \u2212110 \u2192 10.5 at \u2212102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T15:46:31Z",
+   "key": "g|401909306|spread|home",
+   "kind": "added",
+   "text": "Added: BKN +5.5 (ORL @ BKN) at \u2212105, conviction 37",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T15:46:31Z",
+   "key": "g|401909308|spread|home",
+   "kind": "removed",
+   "text": "Removed: DET -6.5 (TOR @ DET) \u2014 confidence fell 37 \u2192 34",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2167,5 +2276,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3252,
- "updated": "2026-11-20T15:30:33Z"
+ "updated": "2026-11-20T15:46:31Z"
 }
