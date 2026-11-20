@@ -17623,7 +17623,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0925,
+  "min_edge": 0.09,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -17899,13 +17899,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-20T21:15:22Z",
+   "last_scanned": "2026-11-20T21:30:30Z",
    "bets": 57.0,
    "staked": 306.16999999999996,
    "profit": -62.31999999999999
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-20T20:30:32Z",
+   "last_scanned": "2026-11-20T21:30:30Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -18122,11 +18122,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-15T02:58:56Z",
-   "kind": "scan",
-   "text": "No scan this run (allowance 0 credits, 104 left this month)."
-  },
   {
    "ts": "2026-11-15T05:01:46Z",
    "kind": "research",
@@ -19621,6 +19616,11 @@
    "ts": "2026-11-20T20:45:26Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.25% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-20T21:30:30Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.00% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -19701,7 +19701,7 @@
   "1c4a9295"
  ],
  "strategist": null,
- "updated": "2026-11-20T21:15:23Z",
+ "updated": "2026-11-20T21:30:30Z",
  "stats": {
   "bets": 75,
   "won": 26,
@@ -19731,5 +19731,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
