@@ -348,7 +348,7 @@
    "p": 0.527,
    "p_sim": 0.655,
    "p_mkt": 0.488,
-   "p_kalshi": 0.47,
+   "p_kalshi": 0.475,
    "ev": 0.006,
    "verdict": "Pass: simulation and projection agree; the main risk is recent form.",
    "home": "OKC",
@@ -488,7 +488,7 @@
    "market": {
     "open": 5.5,
     "now": 5.5,
-    "kalshi": 0.47
+    "kalshi": 0.475
    },
    "started": false,
    "published": {
@@ -520,15 +520,15 @@
    "start": "2026-11-21T00:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 1.98,
-   "am": -102,
-   "conv": 46,
+   "dec": 2.02,
+   "am": 102,
+   "conv": 48,
    "tier": "Consider",
-   "p": 0.516,
+   "p": 0.509,
    "p_sim": 0.748,
-   "p_mkt": 0.471,
+   "p_mkt": 0.463,
    "p_kalshi": null,
-   "ev": 0.021,
+   "ev": 0.028,
    "verdict": "Consider: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "ATL",
    "away": "CHA",
@@ -611,8 +611,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.938,
-    "floor_am": -107,
+    "floor_dec": 1.965,
+    "floor_am": -104,
     "line": null,
     "next": 5.5
    },
@@ -652,7 +652,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212107",
+    "The price at 6.5 going past \u2212104",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1825,33 +1825,49 @@
   "g|401909306|spread|home": {
    "key": "g|401909306|spread|home",
    "kind": "spread",
-   "label": "BKN +5.5 (ORL @ BKN)",
+   "label": "BKN +6.5 (ORL @ BKN)",
    "espn_id": "401909306",
    "game": "ORL @ BKN",
    "start": "2026-11-21T00:30Z",
    "side": "home",
-   "point": 5.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 37,
+   "point": 6.5,
+   "dec": 1.91,
+   "am": -110,
+   "conv": 40,
    "tier": "Pass",
-   "p": 0.507,
-   "p_sim": 0.528,
-   "p_mkt": 0.488,
+   "p": 0.524,
+   "p_sim": 0.55,
+   "p_mkt": 0.499,
    "p_kalshi": null,
-   "ev": -0.011,
-   "verdict": "Pass: team model carries it; the main risk is model record.",
+   "ev": 0.0,
+   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "BKN",
    "away": "ORL",
-   "why": "Sim: ORL by 4.1 on average (ORL 112.3, BKN 108.2) \u00b7 BKN +5.5 covers in 53% of sims vs 49% DraftKings",
+   "why": "Sim: ORL by 4.1 on average (ORL 112.3, BKN 108.2) \u00b7 BKN +6.5 covers in 55% of sims vs 50% DraftKings",
    "for": [
     {
+     "tag": "simulation",
+     "t": "Covers in 55% of 10,000 simulated games.",
+     "rec": [
+      1114,
+      954
+     ]
+    },
+    {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it ORL by 2.7, 2.8 better than this number.",
+     "t": "Team ratings with tonight's lineups make it ORL by 2.7, 3.8 better than this number.",
      "rec": null
     }
    ],
    "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (5.5 to 6.5).",
+     "rec": [
+      156,
+      124
+     ]
+    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 630-651 against DraftKings' spreads. Treat this as a lean.",
@@ -1862,10 +1878,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.972,
-    "floor_am": -103,
+    "floor_dec": 1.908,
+    "floor_am": -110,
     "line": null,
-    "next": 4.5
+    "next": 5.5
    },
    "watch": [
     {
@@ -1878,12 +1894,12 @@
     }
    ],
    "kill": [
-    "The line reaching 4.5",
-    "The price at 5.5 going past \u2212103"
+    "The line reaching 5.5",
+    "The price at 6.5 going past \u2212110"
    ],
    "market": {
     "open": null,
-    "now": 5.5,
+    "now": 6.5,
     "kalshi": null
    },
    "started": false,
@@ -1905,7 +1921,7 @@
    },
    "first_seen": "2026-11-20T15:46:31Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "New"
   }
  },
  "changes": [
@@ -2167,6 +2183,20 @@
    "kind": "line",
    "text": "Darryn Peterson: line 4.5 at \u2212112 \u2192 4.5 at \u2212109",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T17:01:56Z",
+   "key": "p|4395651|ra|Under",
+   "kind": "line",
+   "text": "Coby White: line 6.5 at \u2212102 \u2192 6.5 at +102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T17:01:56Z",
+   "key": "g|401909306|spread|home",
+   "kind": "line",
+   "text": "BKN +6.5 (ORL @ BKN): line 5.5 at \u2212105 \u2192 6.5 at \u2212110",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2290,5 +2320,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-20T16:45:29Z"
+ "updated": "2026-11-20T17:01:56Z"
 }
