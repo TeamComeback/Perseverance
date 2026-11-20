@@ -1342,7 +1342,18 @@
    },
    "first_seen": "2026-11-19T11:45:22Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 238
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 238
+   },
+   "clv": null
   },
   "g|401910022|total|Under": {
    "key": "g|401910022|total|Under",
@@ -1438,7 +1449,18 @@
    },
    "first_seen": "2026-11-19T11:45:22Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 236
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 236
+   },
+   "clv": null
   },
   "g|401910019|total|Under": {
    "key": "g|401910019|total|Under",
@@ -1550,7 +1572,13 @@
     "at": "2026-11-19T14:45:58Z",
     "why": "line moved 226.5 \u2192 225.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.93,
+    "actual": 224
+   },
+   "clv": null
   },
   "g|401910021|total|Over": {
    "key": "g|401910021|total|Over",
@@ -1649,7 +1677,13 @@
     "at": "2026-11-19T13:30:56Z",
     "why": "line moved 215.5 \u2192 217.5"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 201
+   },
+   "clv": null
   },
   "g|401910021|total|Under": {
    "key": "g|401910021|total|Under",
@@ -1740,7 +1774,13 @@
     "at": "2026-11-20T01:04:40Z",
     "why": "line moved 217.5 \u2192 215.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.88,
+    "actual": 201
+   },
+   "clv": null
   },
   "g|401910021|spread|away": {
    "key": "g|401910021|spread|away",
@@ -1832,7 +1872,18 @@
    },
    "first_seen": "2026-11-19T14:15:57Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 3
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 3
+   },
+   "clv": null
   },
   "g|401910019|spread|home": {
    "key": "g|401910019|spread|home",
@@ -1962,7 +2013,13 @@
     "at": "2026-11-19T23:46:05Z",
     "why": "confidence fell 42 \u2192 27"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": -28
+   },
+   "clv": null
   },
   "g|401910021|spread|home": {
    "key": "g|401910021|spread|home",
@@ -2067,7 +2124,13 @@
     "at": "2026-11-19T21:15:52Z",
     "why": "confidence fell 27 \u2192 16"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.86,
+    "actual": 3
+   },
+   "clv": null
   },
   "g|401910019|total|Over": {
    "key": "g|401910019|total|Over",
@@ -2184,7 +2247,18 @@
    },
    "first_seen": "2026-11-19T18:46:02Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 224
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 224
+   },
+   "clv": null
   },
   "g|401910020|spread|home": {
    "key": "g|401910020|spread|home",
@@ -2314,7 +2388,13 @@
     "at": "2026-11-19T19:45:51Z",
     "why": "line moved 10.5 \u2192 11.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.92,
+    "actual": 10
+   },
+   "clv": null
   }
  },
  "changes": [
@@ -3428,5 +3508,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3252,
- "updated": "2026-11-20T07:00:30Z"
+ "updated": "2026-11-20T07:02:15Z"
 }
