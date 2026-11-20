@@ -341,15 +341,15 @@
    "start": "2026-11-21T01:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.97,
-   "am": -103,
-   "conv": 48,
+   "dec": 1.91,
+   "am": -110,
+   "conv": 45,
    "tier": "Consider",
-   "p": 0.521,
+   "p": 0.533,
    "p_sim": 0.701,
-   "p_mkt": 0.475,
+   "p_mkt": 0.488,
    "p_kalshi": 0.485,
-   "ev": 0.027,
+   "ev": 0.017,
    "verdict": "Consider: simulation and projection agree; the main risk is recent form.",
    "home": "OKC",
    "away": "NO",
@@ -440,8 +440,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.919,
-    "floor_am": -109,
+    "floor_dec": 1.876,
+    "floor_am": -114,
     "line": null,
     "next": 4.5
    },
@@ -463,14 +463,6 @@
      "min": 29.5
     },
     {
-     "pid": "4397688",
-     "name": "Trey Murphy III",
-     "team": "NO",
-     "status": "Questionable",
-     "self": false,
-     "min": 29.0
-    },
-    {
      "pid": "3907497",
      "name": "Dejounte Murray",
      "team": "NO",
@@ -481,8 +473,7 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212109",
-    "A change in Trey Murphy III (questionable): the model re-prices on the next run",
+    "The price at 5.5 going past \u2212114",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1290,7 +1281,7 @@
      "pid": "4576087",
      "name": "Peyton Watson",
      "team": "CLE",
-     "status": "Questionable",
+     "status": "Ques",
      "self": false,
      "min": 23.7
     }
@@ -1298,7 +1289,7 @@
    "kill": [
     "The line reaching -6.5",
     "The price at -5.5 going past \u2212120",
-    "A change in Peyton Watson (questionable): the model re-prices on the next run"
+    "A change in Peyton Watson (ques): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -1673,8 +1664,11 @@
     }
    },
    "first_seen": "2026-11-20T13:16:28Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-20T23:47:18Z",
+    "why": "confidence fell 44 \u2192 38"
+   },
+   "status": "Removed"
   },
   "g|401909308|spread|home": {
    "key": "g|401909308|spread|home",
@@ -2120,6 +2114,93 @@
     "why": "other plays ranked higher"
    },
    "status": "Removed"
+  },
+  "g|401909311|spread|away": {
+   "key": "g|401909311|spread|away",
+   "kind": "spread",
+   "label": "PHX -4.5 (PHX @ UTAH)",
+   "espn_id": "401909311",
+   "game": "PHX @ UTAH",
+   "start": "2026-11-21T02:30Z",
+   "side": "away",
+   "point": -4.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 34,
+   "tier": "Pass",
+   "p": 0.517,
+   "p_sim": 0.535,
+   "p_mkt": 0.5,
+   "p_kalshi": null,
+   "ev": -0.018,
+   "verdict": "Pass: the price is the case; the main risk is model record.",
+   "home": "UTAH",
+   "away": "PHX",
+   "why": "Sim: PHX by 6.0 on average (PHX 114.8, UTAH 108.8) \u00b7 PHX -4.5 covers in 53% of sims vs 50% DraftKings",
+   "for": [],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 631-654 against DraftKings' spreads. Treat this as a lean.",
+     "rec": [
+      75,
+      94
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.934,
+    "floor_am": -107,
+    "line": null,
+    "next": -5.5
+   },
+   "watch": [
+    {
+     "pid": "4066336",
+     "name": "Lauri Markkanen",
+     "team": "UTAH",
+     "status": "Out",
+     "self": false,
+     "min": 31.9
+    },
+    {
+     "pid": "4277961",
+     "name": "Jaren Jackson Jr.",
+     "team": "UTAH",
+     "status": "Out",
+     "self": false,
+     "min": 23.8
+    }
+   ],
+   "kill": [
+    "The line reaching -5.5",
+    "The price at -4.5 going past \u2212107"
+   ],
+   "market": {
+    "open": null,
+    "now": -4.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-20T23:47:18Z",
+    "edition": "update",
+    "point": -4.5,
+    "dec": 1.9,
+    "am": -111,
+    "conv": 34,
+    "tier": "Pass",
+    "p": 0.517,
+    "play_to": {
+     "floor_dec": 1.934,
+     "floor_am": -107,
+     "line": null,
+     "next": -5.5
+    }
+   },
+   "first_seen": "2026-11-20T23:47:18Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -2773,6 +2854,34 @@
    "kind": "override",
    "text": "Writer flags Zion Williamson Under 5.5 rebounds: Trey Murphy III (bilateral patellar tendinopathy) is still questionable on the final pre-game report for Friday at OKC, a listed kill trigger for this card.",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T23:47:18Z",
+   "key": "p|4395628|reb|Under",
+   "kind": "line",
+   "text": "Zion Williamson: line 5.5 at \u2212103 \u2192 5.5 at \u2212110",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:47:18Z",
+   "key": "g|401909307|spread|home",
+   "kind": "injury",
+   "text": "Peyton Watson questionable \u2192 ques (CLE -5.5 (IND @ CLE) re-priced: -5.5 at \u2212114, conviction 48)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:47:18Z",
+   "key": "g|401909311|spread|away",
+   "kind": "added",
+   "text": "Added: PHX -4.5 (PHX @ UTAH) at \u2212111, conviction 34",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T23:47:18Z",
+   "key": "g|401909310|spread|away",
+   "kind": "removed",
+   "text": "Removed: NO +11.5 (NO @ OKC) \u2014 confidence fell 44 \u2192 38",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3000,11 +3109,6 @@
     "status": "Questionable"
    },
    {
-    "name": "Trey Murphy III",
-    "team": "NO",
-    "status": "Questionable"
-   },
-   {
     "name": "Alperen Sengun",
     "team": "HOU",
     "status": "Questionable"
@@ -3019,5 +3123,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-20T23:35:29Z"
+ "updated": "2026-11-20T23:47:18Z"
 }
