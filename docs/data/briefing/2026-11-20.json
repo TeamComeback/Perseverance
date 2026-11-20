@@ -2766,6 +2766,13 @@
    "kind": "conviction",
    "text": "HOU @ DEN Under 228.5: conviction 43 Pass \u2192 48 Consider",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T23:35:29Z",
+   "key": "p|4395628|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Zion Williamson Under 5.5 rebounds: Trey Murphy III (bilateral patellar tendinopathy) is still questionable on the final pre-game report for Friday at OKC, a listed kill trigger for this card.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2890,6 +2897,32 @@
     }
    ],
    "changes_at_write": 61
+  },
+  {
+   "edition": "final",
+   "at": "2026-11-20T23:35:29Z",
+   "author": "claude",
+   "headline": "Final: Trey Murphy III still questionable for the Zion card; five unders hold, Jalen Smith off the board",
+   "briefing": "Nine games, all still to tip, and the board is five rebounding and reb+ast unders, all rated Consider, with no prop at high conviction. Julius Randle Under 10.5 at +103 and Coby White Under 6.5 at +104 are the cleanest spots, both priced better than when published this morning. The market has pressed the other three: Jamison Battle has gone from \u2212101 to \u2212132 and Darryn Peterson from \u2212112 to \u2212128, both still inside their play-to prices of \u2212139 and \u2212135, while Zion Williamson drifted back to \u2212103 after trading as far as \u2212112. Jalen Smith Under 8.5 was removed this morning when the line moved to 9.5 at -145. The late item is Trey Murphy III, who is still questionable at OKC on the final report and is a kill trigger for the Zion card; the record is mixed, with the morning card 7-8-0 (-1.78u) and the final card 9-6-0 (+1.50u).",
+   "cards": {
+    "p|3064514|ra|Under": "Projection 7.8 against 10.5, a 73% sim under rate, and 5 of his last 5 under make this the strongest-supported card tonight, and +103 beats the morning price of \u2212109. The risk is minutes: he went over when he played 35.3 minutes, so a close game that pushes him well past the 27.7 projection is how this loses.",
+    "p|4395628|reb|Under": "The model sees 4.6 rebounds against 5.5 and an 11.5-point spread brings blowout risk, and the price is back to \u2212103, inside the \u2212109 play-to. Against it: OKC is soft on small-forward rebounding, he went under in only 4 of his last 10, and Trey Murphy III remains questionable, so a late Murphy scratch could shift his role and should send you back to the next re-price before acting.",
+    "p|4395651|ra|Under": "Projection 4.9 against 6.5 with a 74% sim under rate and 7 of his last 10 under, at +104 versus \u2212103 at publish. What makes it wrong is the extra run with Grayson Allen out (+1.9 minutes) and his 1 of 6 under record against ATL.",
+    "p|4431893|reb|Under": "Projection 2 against 3.5 and 8 of his last 10 under keep this alive, but the price has run from \u2212101 to \u2212132, close to the \u2212139 play-to. Barrett being out lifts his rebounding and minutes, and Detroit missing Jalen Duren leaves more boards in the game, so this is the card most exposed to the matchup.",
+    "p|5041955|reb|Under": "Projection 3.2 against 4.5 with a 73% sim under rate, now at \u2212128 against a \u2212135 play-to. The margin is thin: 5 of his last 10 landed within 1 of the number, and his usage jumps without Markkanen."
+   },
+   "leans_note": "Game lines are 13-30 (-18.41u) since 2026-11-11, so CLE -5.5, the HOU @ DEN Under 228.5 and the rest are leans only; the CHA @ ATL Under 218.5 is past its play-to.",
+   "sources": [
+    {
+     "title": "Athlon: Final injury report for Pelicans-Thunder",
+     "url": "https://athlonsports.com/nba/oklahoma-city-thunder/final-injury-report-for-pelicans-thunder-will-alex-caruso-trey-murphy-iii-play"
+    },
+    {
+     "title": "CBS Sports/RotoWire: Pelicans' Trey Murphy iffy for Friday",
+     "url": "https://www.cbssports.com/fantasy/basketball/news/pelicans-trey-murphy-iffy-for-friday-540039/"
+    }
+   ],
+   "changes_at_write": 92
   }
  ],
  "overrides": [
@@ -2940,6 +2973,14 @@
    "action": "flag",
    "reason": "Trey Murphy III is still questionable for Friday at OKC with knee tendinopathy after missing six straight; his status is a kill trigger for this card.",
    "source": "https://www.rotowire.com/basketball/headlines/trey-murphy-injury-iffy-for-friday-540039"
+  },
+  {
+   "at": "2026-11-20T23:35:29Z",
+   "edition": "final",
+   "key": "p|4395628|reb|Under",
+   "action": "flag",
+   "reason": "Trey Murphy III (bilateral patellar tendinopathy) is still questionable on the final pre-game report for Friday at OKC, a listed kill trigger for this card.",
+   "source": "https://athlonsports.com/nba/oklahoma-city-thunder/final-injury-report-for-pelicans-thunder-will-alex-caruso-trey-murphy-iii-play"
   }
  ],
  "alerts": 6,
@@ -2978,5 +3019,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-20T23:31:45Z"
+ "updated": "2026-11-20T23:35:29Z"
 }
