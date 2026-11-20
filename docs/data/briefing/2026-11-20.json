@@ -39,7 +39,7 @@
    "p": 0.541,
    "p_sim": 0.743,
    "p_mkt": 0.485,
-   "p_kalshi": 0.495,
+   "p_kalshi": 0.505,
    "ev": 0.039,
    "verdict": "Consider: recent form and simulation agree; the main risk is minutes.",
    "home": "DET",
@@ -179,7 +179,7 @@
    "market": {
     "open": 3.5,
     "now": 3.5,
-    "kalshi": 0.495
+    "kalshi": 0.505
    },
    "started": false,
    "published": {
@@ -854,7 +854,7 @@
    "p": 0.543,
    "p_sim": 0.748,
    "p_mkt": 0.487,
-   "p_kalshi": 0.511,
+   "p_kalshi": 0.517,
    "ev": 0.043,
    "verdict": "Consider: simulation and recent form agree; the main risk is thin margin.",
    "home": "UTAH",
@@ -961,7 +961,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.511
+    "kalshi": 0.517
    },
    "started": false,
    "published": {
@@ -1213,19 +1213,19 @@
    "start": "2026-11-21T00:30Z",
    "side": "home",
    "point": -5.5,
-   "dec": 1.85,
-   "am": -118,
-   "conv": 52,
+   "dec": 1.84,
+   "am": -119,
+   "conv": 51,
    "tier": "Consider",
-   "p": 0.56,
+   "p": 0.562,
    "p_sim": 0.609,
-   "p_mkt": 0.514,
+   "p_mkt": 0.518,
    "p_kalshi": null,
-   "ev": 0.036,
+   "ev": 0.034,
    "verdict": "Consider: simulation carries it; the main risk is team model.",
    "home": "CLE",
    "away": "IND",
-   "why": "Sim: CLE by 10.2 on average (IND 111.8, CLE 122.0) \u00b7 CLE -5.5 covers in 61% of sims vs 51% DraftKings",
+   "why": "Sim: CLE by 10.2 on average (IND 111.8, CLE 122.0) \u00b7 CLE -5.5 covers in 61% of sims vs 52% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1265,8 +1265,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.786,
-    "floor_am": -127,
+    "floor_dec": 1.779,
+    "floor_am": -128,
     "line": -6.5,
     "next": -7.5
    },
@@ -1314,7 +1314,7 @@
    ],
    "kill": [
     "The line reaching -7.5 (still a bet at -6.5 near \u2212115)",
-    "The price at -5.5 going past \u2212127",
+    "The price at -5.5 going past \u2212128",
     "A change in Andrew Nembhard (questionable), Peyton Watson (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1341,7 +1341,7 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Holding"
   },
   "g|401909313|total|Under": {
    "key": "g|401909313|total|Under",
@@ -2197,6 +2197,13 @@
    "kind": "line",
    "text": "BKN +6.5 (ORL @ BKN): line 5.5 at \u2212105 \u2192 6.5 at \u2212110",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T17:31:24Z",
+   "key": "g|401909307|spread|home",
+   "kind": "line",
+   "text": "CLE -5.5 (IND @ CLE): line -5.5 at \u2212118 \u2192 -5.5 at \u2212119",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2320,5 +2327,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-20T17:15:29Z"
+ "updated": "2026-11-20T17:31:24Z"
 }
