@@ -185,15 +185,15 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 4.5,
-   "dec": 1.67,
-   "am": -149,
-   "conv": 49,
+   "dec": 1.74,
+   "am": -135,
+   "conv": 51,
    "tier": "Consider",
-   "p": 0.614,
-   "p_sim": 0.806,
-   "p_mkt": 0.56,
-   "p_kalshi": 0.589,
-   "ev": 0.026,
+   "p": 0.594,
+   "p_sim": 0.802,
+   "p_mkt": 0.537,
+   "p_kalshi": 0.594,
+   "ev": 0.033,
    "verdict": "Consider: simulation and recent form agree; the main risk is line move.",
    "home": "MIL",
    "away": "POR",
@@ -209,19 +209,19 @@
    "minutes": 28.4,
    "for": [
     {
-     "tag": "simulation",
-     "t": "Goes under in 81% of 10,000 simulated games (sim average 3.1).",
+     "tag": "second market",
+     "t": "Kalshi likes it more: 59% there vs 54% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 383 of 707 times.",
      "rec": [
-      1062,
-      900
+      96,
+      77
      ]
     },
     {
-     "tag": "projection",
-     "t": "Model projects 3 rebounds against a line of 4.5.",
+     "tag": "simulation",
+     "t": "Goes under in 80% of 10,000 simulated games (sim average 3.1).",
      "rec": [
-      1108,
-      950
+      1062,
+      900
      ]
     },
     {
@@ -268,8 +268,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.629,
-    "floor_am": -159,
+    "floor_dec": 1.684,
+    "floor_am": -146,
     "line": 4.5,
     "next": 3.5
    },
@@ -278,17 +278,9 @@
      "pid": "4683021",
      "name": "Deni Avdija",
      "team": "POR",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 28.6
-    },
-    {
-     "pid": "4431736",
-     "name": "Toumani Camara",
-     "team": "POR",
-     "status": "Questionable",
-     "self": false,
-     "min": 28.1
+     "min": 32.8
     },
     {
      "pid": "3134907",
@@ -309,14 +301,13 @@
    ],
    "kill": [
     "The line reaching 3.5",
-    "The price at 4.5 going past \u2212159",
-    "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run",
+    "The price at 4.5 going past \u2212146",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 3.5,
     "now": 4.5,
-    "kalshi": 0.589
+    "kalshi": 0.594
    },
    "started": false,
    "published": {
@@ -337,7 +328,7 @@
    },
    "first_seen": "2026-11-19T11:45:22Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Upgraded"
   },
   "p|4683678|reb|Under": {
    "key": "p|4683678|reb|Under",
@@ -348,15 +339,15 @@
    "start": "2026-11-20T01:00Z",
    "side": "Under",
    "point": 2.5,
-   "dec": 1.7,
-   "am": -143,
-   "conv": 45,
+   "dec": 1.78,
+   "am": -128,
+   "conv": 49,
    "tier": "Consider",
-   "p": 0.597,
-   "p_sim": 0.74,
-   "p_mkt": 0.55,
-   "p_kalshi": 0.54,
-   "ev": 0.015,
+   "p": 0.577,
+   "p_sim": 0.747,
+   "p_mkt": 0.525,
+   "p_kalshi": 0.497,
+   "ev": 0.027,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIL",
    "away": "POR",
@@ -369,7 +360,7 @@
    "sim": 1.8,
    "ob_ind": 1.5,
    "avg10": 1.6,
-   "minutes": 21.8,
+   "minutes": 22.0,
    "for": [
     {
      "tag": "average",
@@ -381,7 +372,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 74% of 10,000 simulated games (sim average 1.8).",
+     "t": "Goes under in 75% of 10,000 simulated games (sim average 1.8).",
      "rec": [
       1062,
       900
@@ -396,19 +387,19 @@
      ]
     },
     {
-     "tag": "vs his lines",
-     "t": "Has gone under his posted line in 6 of 6 tracked games.",
-     "rec": [
-      144,
-      129
-     ]
-    },
-    {
      "tag": "recent form",
      "t": "Stayed under 2.5 in 9 of his last 10 (5 of the last 5).",
      "rec": [
       900,
       811
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk (11.5-pt spread).",
+     "rec": [
+      609,
+      551
      ]
     }
    ],
@@ -447,8 +438,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.675,
-    "floor_am": -148,
+    "floor_dec": 1.733,
+    "floor_am": -136,
     "line": 2.5,
     "next": 1.5
    },
@@ -457,17 +448,9 @@
      "pid": "4683021",
      "name": "Deni Avdija",
      "team": "POR",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 28.6
-    },
-    {
-     "pid": "4431736",
-     "name": "Toumani Camara",
-     "team": "POR",
-     "status": "Questionable",
-     "self": false,
-     "min": 28.1
+     "min": 32.8
     },
     {
      "pid": "4279888",
@@ -480,14 +463,13 @@
    ],
    "kill": [
     "The line reaching 1.5",
-    "The price at 2.5 going past \u2212148",
-    "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run",
+    "The price at 2.5 going past \u2212136",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.54
+    "kalshi": 0.497
    },
    "started": false,
    "published": {
@@ -508,7 +490,7 @@
    },
    "first_seen": "2026-11-19T11:45:22Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Upgraded"
   },
   "p|4845367|ast|Under": {
    "key": "p|4845367|ast|Under",
@@ -1114,22 +1096,22 @@
   "p|3032976|reb|Under": {
    "key": "p|3032976|reb|Under",
    "kind": "prop",
-   "label": "Rudy Gobert Under 10.5 rebounds",
+   "label": "Rudy Gobert Under 9.5 rebounds",
    "espn_id": "401910021",
    "game": "NY @ MIN",
    "start": "2026-11-20T01:00Z",
    "side": "Under",
-   "point": 10.5,
-   "dec": 1.7,
-   "am": -143,
-   "conv": 40,
+   "point": 9.5,
+   "dec": 2.08,
+   "am": 108,
+   "conv": 43,
    "tier": "Pass",
-   "p": 0.589,
-   "p_sim": 0.721,
-   "p_mkt": 0.549,
-   "p_kalshi": 0.571,
-   "ev": 0.001,
-   "verdict": "Pass: simulation and matchup agree; the main risk is minutes.",
+   "p": 0.486,
+   "p_sim": 0.603,
+   "p_mkt": 0.448,
+   "p_kalshi": 0.465,
+   "ev": 0.011,
+   "verdict": "Pass: simulation and matchup agree; the main risk is recent form.",
    "home": "MIN",
    "away": "NY",
    "pid": "3032976",
@@ -1145,7 +1127,7 @@
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 72% of 10,000 simulated games (sim average 8.9).",
+     "t": "Goes under in 60% of 10,000 simulated games (sim average 8.9).",
      "rec": [
       1062,
       900
@@ -1153,10 +1135,18 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 7.7 rebounds against a line of 10.5.",
+     "t": "Model projects 7.7 rebounds against a line of 9.5.",
      "rec": [
       1108,
       950
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against NY: 3 of 4 under 9.5 (75% vs 35% lately).",
+     "rec": [
+      353,
+      309
      ]
     },
     {
@@ -1174,31 +1164,31 @@
       117,
       117
      ]
-    },
-    {
-     "tag": "model record",
-     "t": "Rebounds is a stat where the model has beaten the market so far.",
-     "rec": [
-      313,
-      328
-     ]
     }
    ],
    "against": [
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 31.2 minutes in the games he went over vs 26.1 otherwise. He's projected for 24.2 tonight.",
+     "t": "It misses when he plays long: 30.5 minutes in the games he went over vs 24.4 otherwise. He's projected for 24.2 tonight.",
      "rec": [
       949,
       835
      ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Only 3 of his last 10 went under 9.5 (2 of the last 5).",
+     "rec": [
+      394,
+      397
+     ]
     }
    ],
    "play_to": {
-    "floor_dec": 1.698,
-    "floor_am": -143,
-    "line": 10.5,
-    "next": 9.5
+    "floor_dec": 2.058,
+    "floor_am": 106,
+    "line": null,
+    "next": 8.5
    },
    "watch": [
     {
@@ -1208,26 +1198,17 @@
      "status": "Out",
      "self": false,
      "min": 34.6
-    },
-    {
-     "pid": "4433247",
-     "name": "Jonathan Kuminga",
-     "team": "MIN",
-     "status": "Questionable",
-     "self": false,
-     "min": 27.6
     }
    ],
    "kill": [
-    "The line reaching 9.5",
-    "The price at 10.5 going past \u2212143",
-    "A change in Jonathan Kuminga (questionable): the model re-prices on the next run",
+    "The line reaching 8.5",
+    "The price at 9.5 going past +106",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
-    "now": 10.5,
-    "kalshi": 0.571
+    "now": 9.5,
+    "kalshi": 0.465
    },
    "started": false,
    "published": {
@@ -1263,18 +1244,27 @@
    "point": 230.5,
    "dec": 1.92,
    "am": -109,
-   "conv": 40,
-   "tier": "Pass",
-   "p": 0.522,
-   "p_sim": 0.549,
+   "conv": 51,
+   "tier": "Consider",
+   "p": 0.539,
+   "p_sim": 0.585,
    "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": 0.002,
-   "verdict": "Pass: the price is the case; the main risk is line move.",
+   "ev": 0.035,
+   "verdict": "Consider: simulation carries it; the main risk is line move.",
    "home": "MIL",
    "away": "POR",
-   "why": "Sim total 228.3 (after a learned +1.9 correction) vs 230.5 \u00b7 under in 55% of sims vs 50% DraftKings",
-   "for": [],
+   "why": "Sim total 227.0 (after a learned +1.9 correction) vs 230.5 \u00b7 under in 59% of sims vs 50% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 59% of 10,000 simulated games.",
+     "rec": [
+      1062,
+      900
+     ]
+    }
+   ],
    "against": [
     {
      "tag": "line move",
@@ -1294,9 +1284,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.916,
-    "floor_am": -109,
-    "line": null,
+    "floor_dec": 1.855,
+    "floor_am": -117,
+    "line": 230.5,
     "next": 229.5
    },
    "watch": [
@@ -1304,17 +1294,9 @@
      "pid": "4683021",
      "name": "Deni Avdija",
      "team": "POR",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 28.6
-    },
-    {
-     "pid": "4431736",
-     "name": "Toumani Camara",
-     "team": "POR",
-     "status": "Questionable",
-     "self": false,
-     "min": 28.1
+     "min": 32.8
     },
     {
      "pid": "3134907",
@@ -1343,8 +1325,7 @@
    ],
    "kill": [
     "The line reaching 229.5",
-    "The price at 230.5 going past \u2212109",
-    "A change in Deni Avdija (questionable), Toumani Camara (questionable): the model re-prices on the next run"
+    "The price at 230.5 going past \u2212117"
    ],
    "market": {
     "open": null,
@@ -1735,20 +1716,11 @@
      "status": "Out",
      "self": false,
      "min": 34.6
-    },
-    {
-     "pid": "4433247",
-     "name": "Jonathan Kuminga",
-     "team": "MIN",
-     "status": "Questionable",
-     "self": false,
-     "min": 27.6
     }
    ],
    "kill": [
     "The line reaching 215.5",
-    "The price at 216.5 going past \u2212108",
-    "A change in Jonathan Kuminga (questionable): the model re-prices on the next run"
+    "The price at 216.5 going past \u2212108"
    ],
    "market": {
     "open": null,
@@ -3210,6 +3182,55 @@
    "kind": "line",
    "text": "Rudy Gobert: line 10.5 at \u2212139 \u2192 10.5 at \u2212143",
    "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "line",
+   "text": "Tyler Herro: line 4.5 at \u2212149 \u2192 4.5 at \u2212135",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "p|4395725|reb|Under",
+   "kind": "injury",
+   "text": "Deni Avdija questionable \u2192 out (Tyler Herro Under 4.5 rebounds re-priced: 4.5 at \u2212135, conviction 51)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "p|4683678|reb|Under",
+   "kind": "line",
+   "text": "Scoot Henderson: line 2.5 at \u2212143 \u2192 2.5 at \u2212128",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "p|4683678|reb|Under",
+   "kind": "injury",
+   "text": "Deni Avdija questionable \u2192 out (Scoot Henderson Under 2.5 rebounds re-priced: 2.5 at \u2212128, conviction 49)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "p|3032976|reb|Under",
+   "kind": "line",
+   "text": "Rudy Gobert: line 10.5 at \u2212143 \u2192 9.5 at +108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "g|401910020|total|Under",
+   "kind": "conviction",
+   "text": "POR @ MIL Under 230.5: conviction 40 Pass \u2192 51 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-20T00:31:01Z",
+   "key": "g|401910020|total|Under",
+   "kind": "injury",
+   "text": "Deni Avdija questionable \u2192 out (POR @ MIL Under 230.5 re-priced: 230.5 at \u2212109, conviction 51)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3338,23 +3359,7 @@
   "games": 4,
   "to_tip": 4,
   "first": "2026-11-20T01:00Z",
-  "questionable": [
-   {
-    "name": "Deni Avdija",
-    "team": "POR",
-    "status": "Questionable"
-   },
-   {
-    "name": "Toumani Camara",
-    "team": "POR",
-    "status": "Questionable"
-   },
-   {
-    "name": "Jonathan Kuminga",
-    "team": "MIN",
-    "status": "Questionable"
-   }
-  ],
+  "questionable": [],
   "picks": 8
  },
  "leans_record": {
@@ -3364,5 +3369,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3252,
- "updated": "2026-11-20T00:29:05Z"
+ "updated": "2026-11-20T00:31:01Z"
 }
