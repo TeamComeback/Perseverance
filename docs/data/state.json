@@ -15661,7 +15661,11 @@
       "hold": true,
       "why": "Newsroom: with Edwards out and Kuminga questionable (decision near tip), Dosunmu (30 pts Tuesday) may again carry a larger role, which works against the 3.5 ass",
       "at": "2026-11-19T23:19:11Z",
-      "final": false
+      "final": true
+     },
+     "newsroom": {
+      "hold": false,
+      "final": true
      }
     }
    },
@@ -15745,7 +15749,11 @@
       "hold": true,
       "why": "Four open matchup_unders all ride on a slow NY @ MIN script (Dosunmu ast, Ball ast, Bridges R+A, Gobert R+A); Ball's is the lowest-EV of the four at 8.4%.",
       "at": "2026-11-19T23:19:11Z",
-      "final": false
+      "final": true
+     },
+     "newsroom": {
+      "hold": false,
+      "final": true
      }
     }
    },
@@ -15924,7 +15932,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    },
    {
     "id": "1c4a9295",
@@ -16001,7 +16018,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    }
   ],
   "runs": [
@@ -16018,7 +16044,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1025,
+  "min_edge": 0.1,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -16312,7 +16338,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-19T23:15:24Z",
+   "last_scanned": "2026-11-20T01:15:28Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -16357,13 +16383,13 @@
    "last_scanned": "2026-11-20T01:00:34Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-19T23:00:30Z"
+   "last_scanned": "2026-11-20T01:15:28Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-11-19T17:00:31Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-11-19T23:15:24Z"
+   "last_scanned": "2026-11-20T01:15:29Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-11-19T19:02:18Z"
@@ -16466,11 +16492,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-13T23:28:22Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 13: 9 games, 220 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-14T00:13:33Z",
    "kind": "props",
@@ -17965,6 +17986,11 @@
    "ts": "2026-11-20T01:04:19Z",
    "kind": "props",
    "text": "No NBA games left to bet today."
+  },
+  {
+   "ts": "2026-11-20T01:15:29Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.00% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -18039,7 +18065,7 @@
   "5c21d4ff"
  ],
  "strategist": null,
- "updated": "2026-11-20T01:04:40Z",
+ "updated": "2026-11-20T01:15:29Z",
  "stats": {
   "bets": 69,
   "won": 24,
@@ -18069,5 +18095,5 @@
  "paused": [
   "value_dog"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
