@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 81.22,
+  "cash": 71.22,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -15606,7 +15606,7 @@
       "book": "fanduel",
       "fair_p": 0.4323,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.2,
        "gain": 0.0182,
@@ -15642,6 +15642,22 @@
          "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 99.0,
+       "away": 102.0
+      },
+      "actual": 4.0,
+      "box": {
+       "min": 32.0,
+       "pts": 6.0,
+       "reb": 4.0,
+       "ast": 4.0,
+       "tpm": 2.0,
+       "tpa": 5.0,
+       "fga": 9.0,
+       "fta": 0.0,
+       "tov": 3.0
       }
      }
     ],
@@ -15652,10 +15668,10 @@
     "note": "Proj 3.0 vs line 3.5 (norm 3.4, 31 min). Model 66% vs market 43%. NY gives shooting guards -14% assists vs their norm (#1 toughest of 30) \u00b7 Players with his profile: -4% assists vs NY (82 close comps) \u00b7 His history vs NY: 9.0 assists/g in 1 games (+6%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-20T16:00:34Z",
     "shadow": {
      "skeptic": {
       "hold": true,
@@ -15667,6 +15683,217 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 4 assists vs Under 3.5",
+     "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+     "legs": [
+      {
+       "outcome": "Ayo Dosunmu Under",
+       "result": "loss",
+       "headline": "4 assists vs Under 3.5",
+       "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+       "why": [
+        "Ayo Dosunmu finished with 4 assists against a line of 3.5: under missed by 0.5.",
+        "Minutes: played 32 vs 31.3 projected.",
+        "Box score: 4 ast, 3 TO.",
+        "Model projected 3 (3.4 norm \u00d7 0.91 matchup); actual was +1.0 off (+0.3 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (3.5) in a matchup the model rated tough.",
+        "Signal: NY gives shooting guards -14% assists vs their norm (#1 toughest of 30)",
+        "Signal: Players with his profile: -4% assists vs NY (82 close comps)",
+        "Signal: His history vs NY: 9.0 assists/g in 1 games (+6%)",
+        "We priced it at 49% to hit vs 45% needed to break even at 2.24x (+9.4% expected edge).",
+        "Consensus fair probability when placed: 43% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIN",
+        "away": "NY"
+       },
+       "final": "NY 102 \u2013 MIN 99",
+       "periods": {
+        "away": [
+         33,
+         32,
+         25,
+         12
+        ],
+        "home": [
+         26,
+         24,
+         28,
+         21
+        ]
+       },
+       "largest_lead": {
+        "NY": 21,
+        "MIN": 3
+       },
+       "largest_lead_at": {
+        "NY": "10:51 3rd Q",
+        "MIN": "11:35 1st Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 12,
+         "from": "8:51 1st Q",
+         "to": "6:35 1st Q",
+         "score": "NY 14-5 MIN"
+        },
+        {
+         "team": "NY",
+         "pts": 9,
+         "from": "1:59 2nd Q",
+         "to": "34.2 2nd Q",
+         "score": "NY 65-45 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "5:33 1st Q",
+         "to": "4:45 1st Q",
+         "score": "NY 16-18 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "7:03 4th Q",
+         "to": "5:27 4th Q",
+         "score": "NY 97-91 MIN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 15,
+         "from": "5:42 2nd Q",
+         "to": "10:51 3rd Q",
+         "mins": 6.8,
+         "from_score": "NY 47-41 MIN",
+         "to_score": "NY 69-48 MIN",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "MIN",
+         "swing": 12,
+         "from": "11:37 4th Q",
+         "to": "5:27 4th Q",
+         "mins": 6.2,
+         "from_score": "NY 94-76 MIN",
+         "to_score": "NY 97-91 MIN",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [
+        "4:10 4th Q: Karl-Anthony Towns makes layup (Jalen Brunson assists) (NY 99-91 MIN)"
+       ],
+       "leaders": [
+        "Karl-Anthony Towns (NY): 22 pts, 12 reb, 4 ast, 2-8 3PT in 33 min",
+        "Jalen Brunson (NY): 21 pts, 2 reb, 7 ast, 4-5 3PT in 35 min",
+        "Jonathan Kuminga (MIN): 23 pts, 3 reb, 3 ast, 2-4 3PT in 35 min",
+        "LaMelo Ball (MIN): 15 pts, 8 reb, 8 ast, 3-10 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 3,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 2,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "11:35 1st Q",
+         "2:34 4th Q"
+        ],
+        "box": {
+         "id": "4397002",
+         "name": "Ayo Dosunmu",
+         "team": "MIN",
+         "min": "32",
+         "pts": 6,
+         "reb": 4,
+         "ast": 4,
+         "3pt": "2-5",
+         "fg": "2-9",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: NY 65-50 MIN, NY up 15.",
+        "The 4th quarter decided the most: MIN won it 21-12.",
+        "Largest leads: NY 21 (10:51 3rd Q), MIN 3 (11:35 1st Q). 3 lead changes, 1 ties.",
+        "Momentum swing: NY outscored them 22-7 in 6.8 minutes (5:42 2nd Q to 10:51 3rd Q), moving it from NY 47-41 MIN to NY 69-48 MIN.",
+        "Momentum swing: MIN outscored them 15-3 in 6.2 minutes (11:37 4th Q to 5:27 4th Q), moving it from NY 94-76 MIN to NY 97-91 MIN.",
+        "NY went on a 12-0 run (8:51 1st Q to 6:35 1st Q), making it NY 14-5 MIN.",
+        "NY went on a 9-0 run (1:59 2nd Q to 34.2 2nd Q), making it NY 65-45 MIN.",
+        "Close finish: 1 scoring plays in the last five minutes with the game within six.",
+        "Ayo Dosunmu by period (AST): Q1 1, Q2 1, Q3 1, Q4 1.",
+        "He went over 3.5 in Q4.",
+        "Threes made at: 11:35 1st Q, 2:34 4th Q."
+       ],
+       "espn_id": "401910021",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910021"
+      }
+     ]
     }
    },
    {
@@ -15694,7 +15921,7 @@
       "book": "betmgm",
       "fair_p": 0.4656,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.0,
        "gain": 0.05,
@@ -15730,6 +15957,22 @@
          "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 99.0,
+       "away": 102.0
+      },
+      "actual": 8.0,
+      "box": {
+       "min": 35.0,
+       "pts": 15.0,
+       "reb": 8.0,
+       "ast": 8.0,
+       "tpm": 3.0,
+       "tpa": 10.0,
+       "fga": 21.0,
+       "fta": 0.0,
+       "tov": 1.0
       }
      }
     ],
@@ -15740,10 +15983,10 @@
     "note": "Proj 4.7 vs line 5.5 (norm 5.0, 27 min). Model 68% vs market 47%. NY gives point guards -3% assists vs their norm (#4 toughest of 30) \u00b7 Players with his profile: -5% assists vs NY (150 close comps) \u00b7 His history vs NY: 6.2 assists/g in 4 games (-3%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-20T16:00:34Z",
     "shadow": {
      "skeptic": {
       "hold": true,
@@ -15755,6 +15998,218 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 8 assists vs Under 5.5",
+     "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+     "legs": [
+      {
+       "outcome": "LaMelo Ball Under",
+       "result": "loss",
+       "headline": "8 assists vs Under 5.5",
+       "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+       "why": [
+        "LaMelo Ball finished with 8 assists against a line of 5.5: under missed by 2.5.",
+        "Minutes: played 35 vs 26.6 projected.",
+        "Box score: 8 ast, 1 TO.",
+        "Model projected 4.7 (5 norm \u00d7 0.94 matchup); actual was +3.3 off (+1.3 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (6.6) in a matchup the model rated tough.",
+        "Signal: NY gives point guards -3% assists vs their norm (#4 toughest of 30)",
+        "Signal: Players with his profile: -5% assists vs NY (150 close comps)",
+        "Signal: His history vs NY: 6.2 assists/g in 4 games (-3%)",
+        "We priced it at 52% to hit vs 48% needed to break even at 2.1x (+8.4% expected edge).",
+        "Consensus fair probability when placed: 47% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIN",
+        "away": "NY"
+       },
+       "final": "NY 102 \u2013 MIN 99",
+       "periods": {
+        "away": [
+         33,
+         32,
+         25,
+         12
+        ],
+        "home": [
+         26,
+         24,
+         28,
+         21
+        ]
+       },
+       "largest_lead": {
+        "NY": 21,
+        "MIN": 3
+       },
+       "largest_lead_at": {
+        "NY": "10:51 3rd Q",
+        "MIN": "11:35 1st Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 12,
+         "from": "8:51 1st Q",
+         "to": "6:35 1st Q",
+         "score": "NY 14-5 MIN"
+        },
+        {
+         "team": "NY",
+         "pts": 9,
+         "from": "1:59 2nd Q",
+         "to": "34.2 2nd Q",
+         "score": "NY 65-45 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "5:33 1st Q",
+         "to": "4:45 1st Q",
+         "score": "NY 16-18 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "7:03 4th Q",
+         "to": "5:27 4th Q",
+         "score": "NY 97-91 MIN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 15,
+         "from": "5:42 2nd Q",
+         "to": "10:51 3rd Q",
+         "mins": 6.8,
+         "from_score": "NY 47-41 MIN",
+         "to_score": "NY 69-48 MIN",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "MIN",
+         "swing": 12,
+         "from": "11:37 4th Q",
+         "to": "5:27 4th Q",
+         "mins": 6.2,
+         "from_score": "NY 94-76 MIN",
+         "to_score": "NY 97-91 MIN",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [
+        "4:10 4th Q: Karl-Anthony Towns makes layup (Jalen Brunson assists) (NY 99-91 MIN)"
+       ],
+       "leaders": [
+        "Karl-Anthony Towns (NY): 22 pts, 12 reb, 4 ast, 2-8 3PT in 33 min",
+        "Jalen Brunson (NY): 21 pts, 2 reb, 7 ast, 4-5 3PT in 35 min",
+        "Jonathan Kuminga (MIN): 23 pts, 3 reb, 3 ast, 2-4 3PT in 35 min",
+        "LaMelo Ball (MIN): 15 pts, 8 reb, 8 ast, 3-10 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 7,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 8,
+          "fgm": 3
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 3,
+          "reb": 3,
+          "ast": 3,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 3,
+          "fga": 6,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "5:09 1st Q",
+         "9:56 3rd Q",
+         "5:27 4th Q"
+        ],
+        "box": {
+         "id": "4432816",
+         "name": "LaMelo Ball",
+         "team": "MIN",
+         "min": "35",
+         "pts": 15,
+         "reb": 8,
+         "ast": 8,
+         "3pt": "3-10",
+         "fg": "6-21",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: NY 65-50 MIN, NY up 15.",
+        "The 4th quarter decided the most: MIN won it 21-12.",
+        "Largest leads: NY 21 (10:51 3rd Q), MIN 3 (11:35 1st Q). 3 lead changes, 1 ties.",
+        "Momentum swing: NY outscored them 22-7 in 6.8 minutes (5:42 2nd Q to 10:51 3rd Q), moving it from NY 47-41 MIN to NY 69-48 MIN.",
+        "Momentum swing: MIN outscored them 15-3 in 6.2 minutes (11:37 4th Q to 5:27 4th Q), moving it from NY 94-76 MIN to NY 97-91 MIN.",
+        "NY went on a 12-0 run (8:51 1st Q to 6:35 1st Q), making it NY 14-5 MIN.",
+        "NY went on a 9-0 run (1:59 2nd Q to 34.2 2nd Q), making it NY 65-45 MIN.",
+        "Close finish: 1 scoring plays in the last five minutes with the game within six.",
+        "LaMelo Ball by period (AST): Q1 1, Q2 2, Q3 3, Q4 2.",
+        "He went over 5.5 in Q3.",
+        "Threes made at: 5:09 1st Q, 9:56 3rd Q, 5:27 4th Q."
+       ],
+       "espn_id": "401910021",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910021"
+      }
+     ]
     }
    },
    {
@@ -15934,7 +16389,7 @@
       "book": "betmgm",
       "fair_p": 0.4854,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.91,
        "gain": 0.0995,
@@ -15970,6 +16425,22 @@
          "txt": "MIN games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 99.0,
+       "away": 102.0
+      },
+      "actual": 6.0,
+      "box": {
+       "min": 31.0,
+       "pts": 8.0,
+       "reb": 3.0,
+       "ast": 3.0,
+       "tpm": 2.0,
+       "tpa": 4.0,
+       "fga": 7.0,
+       "fta": 0.0,
+       "tov": 1.0
       }
      }
     ],
@@ -15980,10 +16451,10 @@
     "note": "Proj 4.5 vs line 5.5 (norm 4.7, 24 min). Model 70% vs market 49%. MIN gives shooting guards -3% reb+ast vs their norm (#10 toughest of 30) \u00b7 Players with his profile: -4% reb+ast vs MIN (92 close comps) \u00b7 His history vs MIN: 4.5 reb+ast/g in 2 games (-7%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-20T16:00:34Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -15993,6 +16464,216 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 6 reb+ast vs Under 5.5",
+     "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+     "legs": [
+      {
+       "outcome": "Mikal Bridges Under",
+       "result": "loss",
+       "headline": "6 reb+ast vs Under 5.5",
+       "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+       "why": [
+        "Mikal Bridges finished with 6 reb+ast against a line of 5.5: under missed by 0.5.",
+        "Minutes: played 31 vs 24.1 projected.",
+        "Box score: 3 reb \u00b7 3 ast, 1 TO.",
+        "Model projected 4.5 (4.7 norm \u00d7 0.96 matchup); actual was +1.5 off (+0.8 standard deviations).",
+        "Signal: MIN gives shooting guards -3% reb+ast vs their norm (#10 toughest of 30)",
+        "Signal: Players with his profile: -4% reb+ast vs MIN (92 close comps)",
+        "Signal: His history vs MIN: 4.5 reb+ast/g in 2 games (-7%)",
+        "We priced it at 54% to hit vs 48% needed to break even at 2.1x (+12.9% expected edge).",
+        "Consensus fair probability when placed: 49% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "ordinary-variance",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "minutes-long",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIN",
+        "away": "NY"
+       },
+       "final": "NY 102 \u2013 MIN 99",
+       "periods": {
+        "away": [
+         33,
+         32,
+         25,
+         12
+        ],
+        "home": [
+         26,
+         24,
+         28,
+         21
+        ]
+       },
+       "largest_lead": {
+        "NY": 21,
+        "MIN": 3
+       },
+       "largest_lead_at": {
+        "NY": "10:51 3rd Q",
+        "MIN": "11:35 1st Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 12,
+         "from": "8:51 1st Q",
+         "to": "6:35 1st Q",
+         "score": "NY 14-5 MIN"
+        },
+        {
+         "team": "NY",
+         "pts": 9,
+         "from": "1:59 2nd Q",
+         "to": "34.2 2nd Q",
+         "score": "NY 65-45 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "5:33 1st Q",
+         "to": "4:45 1st Q",
+         "score": "NY 16-18 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "7:03 4th Q",
+         "to": "5:27 4th Q",
+         "score": "NY 97-91 MIN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 15,
+         "from": "5:42 2nd Q",
+         "to": "10:51 3rd Q",
+         "mins": 6.8,
+         "from_score": "NY 47-41 MIN",
+         "to_score": "NY 69-48 MIN",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "MIN",
+         "swing": 12,
+         "from": "11:37 4th Q",
+         "to": "5:27 4th Q",
+         "mins": 6.2,
+         "from_score": "NY 94-76 MIN",
+         "to_score": "NY 97-91 MIN",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [
+        "4:10 4th Q: Karl-Anthony Towns makes layup (Jalen Brunson assists) (NY 99-91 MIN)"
+       ],
+       "leaders": [
+        "Karl-Anthony Towns (NY): 22 pts, 12 reb, 4 ast, 2-8 3PT in 33 min",
+        "Jalen Brunson (NY): 21 pts, 2 reb, 7 ast, 4-5 3PT in 35 min",
+        "Jonathan Kuminga (MIN): 23 pts, 3 reb, 3 ast, 2-4 3PT in 35 min",
+        "LaMelo Ball (MIN): 15 pts, 8 reb, 8 ast, 3-10 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 0,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 3,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "4:38 3rd Q",
+         "3:26 4th Q"
+        ],
+        "box": {
+         "id": "3147657",
+         "name": "Mikal Bridges",
+         "team": "NY",
+         "min": "31",
+         "pts": 8,
+         "reb": 3,
+         "ast": 3,
+         "3pt": "2-4",
+         "fg": "3-7",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: NY 65-50 MIN, NY up 15.",
+        "The 4th quarter decided the most: MIN won it 21-12.",
+        "Largest leads: NY 21 (10:51 3rd Q), MIN 3 (11:35 1st Q). 3 lead changes, 1 ties.",
+        "Momentum swing: NY outscored them 22-7 in 6.8 minutes (5:42 2nd Q to 10:51 3rd Q), moving it from NY 47-41 MIN to NY 69-48 MIN.",
+        "Momentum swing: MIN outscored them 15-3 in 6.2 minutes (11:37 4th Q to 5:27 4th Q), moving it from NY 94-76 MIN to NY 97-91 MIN.",
+        "NY went on a 12-0 run (8:51 1st Q to 6:35 1st Q), making it NY 14-5 MIN.",
+        "NY went on a 9-0 run (1:59 2nd Q to 34.2 2nd Q), making it NY 65-45 MIN.",
+        "Close finish: 1 scoring plays in the last five minutes with the game within six.",
+        "Mikal Bridges by period (REB+AST): Q1 1, Q2 1, Q3 2, Q4 2.",
+        "He went over 5.5 in Q4.",
+        "Threes made at: 4:38 3rd Q, 3:26 4th Q."
+       ],
+       "espn_id": "401910021",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910021"
+      }
+     ]
     }
    },
    {
@@ -16020,7 +16701,7 @@
       "book": "betmgm",
       "fair_p": 0.4789,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.95,
        "gain": 0.0256,
@@ -16056,6 +16737,22 @@
          "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 99.0,
+       "away": 102.0
+      },
+      "actual": 7.0,
+      "box": {
+       "min": 35.0,
+       "pts": 9.0,
+       "reb": 7.0,
+       "ast": 0.0,
+       "tpm": 0.0,
+       "tpa": 0.0,
+       "fga": 6.0,
+       "fta": 2.0,
+       "tov": 2.0
       }
      }
     ],
@@ -16066,10 +16763,10 @@
     "note": "Proj 9.0 vs line 11.5 (norm 9.6, 24 min). Model 79% vs market 48%. NY gives centers -5% reb+ast vs their norm (#5 toughest of 30) \u00b7 Players with his profile: -6% reb+ast vs NY (159 close comps) \u00b7 His history vs NY: 13.5 reb+ast/g in 2 games (+1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 10.0,
+    "profit": 5.0,
+    "settled": "2026-11-20T16:00:34Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -16079,7 +16776,522 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "WON: 7 reb+ast vs Under 11.5",
+     "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+     "legs": [
+      {
+       "outcome": "Rudy Gobert Under",
+       "result": "win",
+       "headline": "7 reb+ast vs Under 11.5",
+       "final": "New York Knicks 102 \u2013 Minnesota Timberwolves 99",
+       "why": [
+        "Rudy Gobert finished with 7 reb+ast against a line of 11.5: under cleared by 4.5.",
+        "Minutes: played 35 vs 24.2 projected.",
+        "Box score: 7 reb \u00b7 0 ast, 2 TO.",
+        "Model projected 9 (9.6 norm \u00d7 0.94 matchup); actual was -2.0 off (-0.8 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (13.9) in a matchup the model rated tough.",
+        "Signal: NY gives centers -5% reb+ast vs their norm (#5 toughest of 30)",
+        "Signal: Players with his profile: -6% reb+ast vs NY (159 close comps)",
+        "Signal: His history vs NY: 13.5 reb+ast/g in 2 games (+1%)",
+        "We priced it at 55% to hit vs 50% needed to break even at 2x (+10.7% expected edge).",
+        "Consensus fair probability when placed: 48% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MIN",
+        "away": "NY"
+       },
+       "final": "NY 102 \u2013 MIN 99",
+       "periods": {
+        "away": [
+         33,
+         32,
+         25,
+         12
+        ],
+        "home": [
+         26,
+         24,
+         28,
+         21
+        ]
+       },
+       "largest_lead": {
+        "NY": 21,
+        "MIN": 3
+       },
+       "largest_lead_at": {
+        "NY": "10:51 3rd Q",
+        "MIN": "11:35 1st Q"
+       },
+       "lead_changes": 3,
+       "ties": 1,
+       "runs": [
+        {
+         "team": "NY",
+         "pts": 12,
+         "from": "8:51 1st Q",
+         "to": "6:35 1st Q",
+         "score": "NY 14-5 MIN"
+        },
+        {
+         "team": "NY",
+         "pts": 9,
+         "from": "1:59 2nd Q",
+         "to": "34.2 2nd Q",
+         "score": "NY 65-45 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "5:33 1st Q",
+         "to": "4:45 1st Q",
+         "score": "NY 16-18 MIN"
+        },
+        {
+         "team": "MIN",
+         "pts": 8,
+         "from": "7:03 4th Q",
+         "to": "5:27 4th Q",
+         "score": "NY 97-91 MIN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 15,
+         "from": "5:42 2nd Q",
+         "to": "10:51 3rd Q",
+         "mins": 6.8,
+         "from_score": "NY 47-41 MIN",
+         "to_score": "NY 69-48 MIN",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "MIN",
+         "swing": 12,
+         "from": "11:37 4th Q",
+         "to": "5:27 4th Q",
+         "mins": 6.2,
+         "from_score": "NY 94-76 MIN",
+         "to_score": "NY 97-91 MIN",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [
+        "4:10 4th Q: Karl-Anthony Towns makes layup (Jalen Brunson assists) (NY 99-91 MIN)"
+       ],
+       "leaders": [
+        "Karl-Anthony Towns (NY): 22 pts, 12 reb, 4 ast, 2-8 3PT in 33 min",
+        "Jalen Brunson (NY): 21 pts, 2 reb, 7 ast, 4-5 3PT in 35 min",
+        "Jonathan Kuminga (MIN): 23 pts, 3 reb, 3 ast, 2-4 3PT in 35 min",
+        "LaMelo Ball (MIN): 15 pts, 8 reb, 8 ast, 3-10 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 2,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 2,
+          "reb": 4,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "3032976",
+         "name": "Rudy Gobert",
+         "team": "MIN",
+         "min": "35",
+         "pts": 9,
+         "reb": 7,
+         "ast": 0,
+         "3pt": "0-0",
+         "fg": "4-6",
+         "pf": "1",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: NY 65-50 MIN, NY up 15.",
+        "The 4th quarter decided the most: MIN won it 21-12.",
+        "Largest leads: NY 21 (10:51 3rd Q), MIN 3 (11:35 1st Q). 3 lead changes, 1 ties.",
+        "Momentum swing: NY outscored them 22-7 in 6.8 minutes (5:42 2nd Q to 10:51 3rd Q), moving it from NY 47-41 MIN to NY 69-48 MIN.",
+        "Momentum swing: MIN outscored them 15-3 in 6.2 minutes (11:37 4th Q to 5:27 4th Q), moving it from NY 94-76 MIN to NY 97-91 MIN.",
+        "NY went on a 12-0 run (8:51 1st Q to 6:35 1st Q), making it NY 14-5 MIN.",
+        "NY went on a 9-0 run (1:59 2nd Q to 34.2 2nd Q), making it NY 65-45 MIN.",
+        "Close finish: 1 scoring plays in the last five minutes with the game within six.",
+        "Rudy Gobert by period (REB+AST): Q1 0, Q2 1, Q3 2, Q4 4.",
+        "He never got past 11.5."
+       ],
+       "espn_id": "401910021",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910021"
+      }
+     ]
     }
+   },
+   {
+    "id": "4bdad21c",
+    "placed": "2026-11-20T16:00:48Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "9051693857c6a0e5e1bc6bb2b4f6fe35",
+      "sport": "basketball_nba",
+      "commence": "2026-11-21T00:40:00Z",
+      "home": "Detroit Pistons",
+      "away": "Toronto Raptors",
+      "market": "player_rebounds_assists",
+      "outcome": "Jamison Battle Under",
+      "side": "Under",
+      "player": "Jamison Battle",
+      "player_id": "4431893",
+      "stat": "ra",
+      "espn_id": "401909308",
+      "point": 4.5,
+      "price": 2.1,
+      "book": "hardrockbet",
+      "fair_p": 0.4603,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 2.045,
+       "gain": 0.0269,
+       "n": 4
+      },
+      "model": {
+       "proj": 2.41,
+       "base": 2.59,
+       "minutes": 20.5,
+       "mult": 0.929,
+       "sd": 1.96,
+       "p_model": 0.8751,
+       "p_mkt": 0.4603,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.939,
+         "txt": "DET gives small forwards -6% reb+ast vs their norm (#5 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.963,
+         "txt": "Players with his profile: -4% reb+ast vs DET (154 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "His history vs DET: 0.0 reb+ast/g in 1 games (+0%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.954,
+         "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.1,
+    "stake": 5.0,
+    "ev": 0.1781,
+    "p": 0.561,
+    "note": "Proj 2.4 vs line 4.5 (norm 2.6, 20 min). Model 88% vs market 46%. DET gives small forwards -6% reb+ast vs their norm (#5 toughest of 30) \u00b7 Players with his profile: -4% reb+ast vs DET (154 close comps) \u00b7 His history vs DET: 0.0 reb+ast/g in 1 games (+0%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "e17bf579",
+    "placed": "2026-11-20T16:00:48Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "086d2fe80483ffcc280994fe2e12d4f4",
+      "sport": "basketball_nba",
+      "commence": "2026-11-21T03:10:00Z",
+      "home": "Denver Nuggets",
+      "away": "Houston Rockets",
+      "market": "player_rebounds_assists",
+      "outcome": "Alperen Sengun Under",
+      "side": "Under",
+      "player": "Alperen Sengun",
+      "player_id": "4871144",
+      "stat": "ra",
+      "espn_id": "401909312",
+      "point": 15.5,
+      "price": 1.93,
+      "book": "draftkings",
+      "fair_p": 0.4928,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.91,
+       "gain": 0.0105,
+       "n": 5
+      },
+      "model": {
+       "proj": 10.92,
+       "base": 10.75,
+       "minutes": 24.8,
+       "mult": 1.016,
+       "sd": 2.77,
+       "p_model": 0.8766,
+       "p_mkt": 0.4928,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.009,
+         "txt": "DEN gives centers +1% reb+ast vs their norm (#15 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.055,
+         "txt": "Players with his profile: +6% reb+ast vs DEN (105 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.986,
+         "txt": "His history vs DEN: 13.2 reb+ast/g in 5 games (-1%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.994,
+         "txt": "DEN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.93,
+    "stake": 5.0,
+    "ev": 0.131,
+    "p": 0.586,
+    "note": "Proj 10.9 vs line 15.5 (norm 10.8, 25 min). Model 88% vs market 49%. DEN gives centers +1% reb+ast vs their norm (#15 toughest of 30) \u00b7 Players with his profile: +6% reb+ast vs DEN (105 close comps) \u00b7 His history vs DEN: 13.2 reb+ast/g in 5 games (-1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "1cf1b314",
+    "placed": "2026-11-20T16:00:48Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "ee204ae35d677450476eab6ad6a146a7",
+      "sport": "basketball_nba",
+      "commence": "2026-11-21T02:40:00Z",
+      "home": "Utah Jazz",
+      "away": "Phoenix Suns",
+      "market": "player_rebounds_assists",
+      "outcome": "Darryn Peterson Under",
+      "side": "Under",
+      "player": "Darryn Peterson",
+      "player_id": "5041955",
+      "stat": "ra",
+      "espn_id": "401909311",
+      "point": 8.5,
+      "price": 2.05,
+      "book": "hardrockbet",
+      "fair_p": 0.4617,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 2.02,
+       "gain": 0.0149,
+       "n": 4
+      },
+      "model": {
+       "proj": 6.14,
+       "base": 6.2,
+       "minutes": 26.2,
+       "mult": 0.989,
+       "sd": 1.59,
+       "p_model": 0.8142,
+       "p_mkt": 0.4617,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.972,
+         "txt": "PHX gives shooting guards -3% reb+ast vs their norm (#11 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.993,
+         "txt": "Players with his profile: -1% reb+ast vs PHX (165 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs PHX yet"
+        },
+        {
+         "k": "chances",
+         "v": 1.008,
+         "txt": "PHX games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.05,
+    "stake": 5.0,
+    "ev": 0.122,
+    "p": 0.5473,
+    "note": "Proj 6.1 vs line 8.5 (norm 6.2, 26 min). Model 81% vs market 46%. PHX gives shooting guards -3% reb+ast vs their norm (#11 toughest of 30) \u00b7 Players with his profile: -1% reb+ast vs PHX (165 close comps) \u00b7 No history vs PHX yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "0a5ce7fa",
+    "placed": "2026-11-20T16:00:48Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "6e1faf38d3fed9e0396d6613891770e1",
+      "sport": "basketball_nba",
+      "commence": "2026-11-21T00:40:00Z",
+      "home": "Brooklyn Nets",
+      "away": "Orlando Magic",
+      "market": "player_rebounds_assists",
+      "outcome": "Julius Randle Under",
+      "side": "Under",
+      "player": "Julius Randle",
+      "player_id": "3064514",
+      "stat": "ra",
+      "espn_id": "401909306",
+      "point": 10.5,
+      "price": 1.98,
+      "book": "fanduel",
+      "fair_p": 0.4851,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.95,
+       "gain": 0.0154,
+       "n": 5
+      },
+      "model": {
+       "proj": 7.84,
+       "base": 8.08,
+       "minutes": 27.9,
+       "mult": 0.97,
+       "sd": 2.25,
+       "p_model": 0.8109,
+       "p_mkt": 0.4851,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.941,
+         "txt": "ORL gives small forwards -6% reb+ast vs their norm (#6 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 0.972,
+         "txt": "Players with his profile: -3% reb+ast vs ORL (149 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.01,
+         "txt": "His history vs ORL: 10.0 reb+ast/g in 1 games (+1%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.984,
+         "txt": "ORL games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.98,
+    "stake": 5.0,
+    "ev": 0.1171,
+    "p": 0.5642,
+    "note": "Proj 7.8 vs line 10.5 (norm 8.1, 28 min). Model 81% vs market 49%. ORL gives small forwards -6% reb+ast vs their norm (#6 toughest of 30) \u00b7 Players with his profile: -3% reb+ast vs ORL (149 close comps) \u00b7 His history vs ORL: 10.0 reb+ast/g in 1 games (+1%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -16310,16 +17522,16 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 34,
-   "staked": 170.0,
-   "profit": -46.650000000000006,
+   "bets": 38,
+   "staked": 190.0,
+   "profit": -56.650000000000006,
    "clv_n": 28,
    "clv_sum": -0.8301100000000006,
    "tags": {
     "ordinary-variance": {
-     "n": 11,
-     "won": 8,
-     "lost": 3
+     "n": 14,
+     "won": 9,
+     "lost": 5
     },
     "dnp-void": {
      "n": 2,
@@ -16327,19 +17539,19 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 18,
-     "won": 6,
+     "n": 19,
+     "won": 7,
      "lost": 12
     },
     "matchup-read-wrong": {
-     "n": 12,
+     "n": 14,
      "won": 4,
-     "lost": 8
+     "lost": 10
     },
     "near-miss": {
-     "n": 5,
+     "n": 7,
      "won": 0,
-     "lost": 5
+     "lost": 7
     },
     "blowout": {
      "n": 8,
@@ -16347,14 +17559,14 @@
      "lost": 4
     },
     "model-miss": {
-     "n": 17,
+     "n": 18,
      "won": 0,
-     "lost": 17
+     "lost": 18
     },
     "minutes-long": {
-     "n": 11,
-     "won": 0,
-     "lost": 11
+     "n": 14,
+     "won": 1,
+     "lost": 13
     },
     "model-beat": {
      "n": 3,
@@ -16373,9 +17585,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-20T07:00:29Z",
-   "bets": 53.0,
-   "staked": 286.16999999999996,
-   "profit": -52.31999999999999
+   "bets": 57.0,
+   "staked": 306.16999999999996,
+   "profit": -62.31999999999999
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-20T01:45:08Z",
@@ -16595,36 +17807,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-14T18:51:03Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 123 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-14T19:15:28Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 123 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-14T19:30:43Z",
-   "kind": "focus",
-   "text": "Skipped 16 pts+reb+ast lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, reb+ast, rebounds."
-  },
-  {
-   "ts": "2026-11-14T19:30:44Z",
-   "kind": "props",
-   "text": "NBA matchups: 5 games, strongest spots: LaMelo Ball ast +15% vs CHI; Cade Cunningham ast +12% vs MIA; James Harden ast +12% vs DAL. Bought prop odds for DET@MIA (ast, ra, pra) (3 credits). Placed 2: Giannis Antetokounmpo Under 5.5 @ -120 (DraftKings); Davion Mitchell Under 8.5 @ -118 (BetRivers)"
-  },
-  {
-   "ts": "2026-11-14T19:45:42Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 14: 5 games, 125 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-14T19:52:38Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.75% so I get enough bets to learn from."
-  },
   {
    "ts": "2026-11-14T19:52:38Z",
    "kind": "scan",
@@ -18094,6 +19276,36 @@
    "ts": "2026-11-20T15:45:33Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 20: 9 games, 223 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-20T16:00:34Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Ayo Dosunmu Under 3.5 @ +124 (FanDuel) \u2014 LOST: 4 assists vs Under 3.5 [matchup-read-wrong, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-20T16:00:34Z",
+   "kind": "result",
+   "text": "LOST -$5.00: LaMelo Ball Under 5.5 @ +110 (BetMGM) \u2014 LOST: 8 assists vs Under 5.5 [matchup-read-wrong, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-20T16:00:34Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Mikal Bridges Under 5.5 @ +110 (BetMGM) \u2014 LOST: 6 reb+ast vs Under 5.5 [minutes-long, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-20T16:00:34Z",
+   "kind": "result",
+   "text": "WON +$5.00: Rudy Gobert Under 11.5 @ +100 (BetMGM) \u2014 WON: 7 reb+ast vs Under 11.5 [matchup-read-right, minutes-long, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-20T16:00:48Z",
+   "kind": "focus",
+   "text": "Skipped 162 pts+reb+ast lines, 33 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, reb+ast, rebounds."
+  },
+  {
+   "ts": "2026-11-20T16:00:48Z",
+   "kind": "props",
+   "text": "NBA matchups: 9 games, strongest spots: Nic Claxton ra +17% vs WSH; Josh Giddey ast +16% vs WSH; Spencer Jones ra -14% vs HOU. Bought prop odds for WSH@CHI (ast, ra, pra, team totals), HOU@DEN (ast, ra, pra, tpm, team totals), IND@CLE (ast, ra, pra, team totals), CHA@ATL (ast, ra, pra, team totals), NO@OKC (ast, ra, pra, team totals), TOR@DET (ast, ra, pra, tpm, team totals), PHX@UTAH (ast, ra, pra, team totals), SAC@LAL (ast, ra, pra, team totals), ORL@BKN (ast, ra, pra, tpm, team totals) (39 credits). Placed 4: Jamison Battle Under 4.5 @ +110 (Hard Rock Bet); Alperen Sengun Under 15.5 @ -108 (DraftKings); Darryn Peterson Under 8.5 @ +105 (Hard Rock Bet); Julius Randle Under 10.5 @ -102 (FanDuel)"
   }
  ],
  "learned_ids": [
@@ -18167,26 +19379,30 @@
   "5d2f45e0",
   "5c21d4ff",
   "9563e2a0",
-  "78512287"
+  "78512287",
+  "d23ca4e7",
+  "9ccd7bbf",
+  "396e158b",
+  "1c4a9295"
  ],
  "strategist": null,
- "updated": "2026-11-20T15:46:31Z",
+ "updated": "2026-11-20T16:01:23Z",
  "stats": {
-  "bets": 71,
-  "won": 25,
-  "lost": 44,
-  "shop_n": 14,
-  "shop_avg": 0.0655,
+  "bets": 75,
+  "won": 26,
+  "lost": 47,
+  "shop_n": 18,
+  "shop_avg": 0.0547,
   "push": 2,
-  "staked": 411.94,
-  "profit": -90.62,
-  "roi": -0.22,
+  "staked": 431.94,
+  "profit": -100.62,
+  "roi": -0.2329,
   "clv": -0.0091,
   "clv_n": 62,
-  "clv_no_close": 9,
+  "clv_no_close": 13,
   "close_mins_median": 4,
   "open": 4,
-  "equity": 101.22
+  "equity": 91.22
  },
  "weights": {
   "value_fav": 0.842,
@@ -18195,7 +19411,7 @@
   "arb": 1.086,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
-  "matchup_under": 0.505
+  "matchup_under": 0.458
  },
  "paused": [
   "value_dog"
