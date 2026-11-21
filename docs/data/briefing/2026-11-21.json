@@ -495,7 +495,7 @@
    "p": 0.487,
    "p_sim": 0.668,
    "p_mkt": 0.451,
-   "p_kalshi": 0.449,
+   "p_kalshi": 0.444,
    "ev": 0.008,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
@@ -611,7 +611,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.449
+    "kalshi": 0.444
    },
    "started": false,
    "published": {
@@ -1036,29 +1036,29 @@
   "g|401910023|spread|home": {
    "key": "g|401910023|spread|home",
    "kind": "spread",
-   "label": "PHI -11.5 (MIL @ PHI)",
+   "label": "PHI -10.5 (MIL @ PHI)",
    "espn_id": "401910023",
    "game": "MIL @ PHI",
    "start": "2026-11-21T18:00Z",
    "side": "home",
-   "point": -11.5,
-   "dec": 1.97,
-   "am": -103,
-   "conv": 54,
+   "point": -10.5,
+   "dec": 1.84,
+   "am": -119,
+   "conv": 50,
    "tier": "Consider",
-   "p": 0.531,
-   "p_sim": 0.582,
-   "p_mkt": 0.483,
+   "p": 0.56,
+   "p_sim": 0.607,
+   "p_mkt": 0.517,
    "p_kalshi": null,
-   "ev": 0.046,
+   "ev": 0.031,
    "verdict": "Consider: simulation carries it; the main risk is team model.",
    "home": "PHI",
    "away": "MIL",
-   "why": "Sim: PHI by 15.0 on average (MIL 107.5, PHI 122.5) \u00b7 PHI -11.5 covers in 58% of sims vs 48% DraftKings",
+   "why": "Sim: PHI by 15.0 on average (MIL 107.5, PHI 122.5) \u00b7 PHI -10.5 covers in 61% of sims vs 52% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 58% of 10,000 simulated games.",
+     "t": "Covers in 61% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
@@ -1066,6 +1066,14 @@
     }
    ],
    "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (-11.5 to -10.5).",
+     "rec": [
+      168,
+      133
+     ]
+    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 631-654 against DraftKings' spreads. Treat this as a lean.",
@@ -1076,7 +1084,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it PHI by 7.8, 3.7 worse than this number.",
+     "t": "Team ratings with tonight's lineups make it PHI by 7.8, 2.7 worse than this number.",
      "rec": null
     },
     {
@@ -1086,9 +1094,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.883,
-    "floor_am": -113,
-    "line": null,
+    "floor_dec": 1.786,
+    "floor_am": -127,
+    "line": -11.5,
     "next": -12.5
    },
    "watch": [
@@ -1118,13 +1126,13 @@
     }
    ],
    "kill": [
-    "The line reaching -12.5",
-    "The price at -11.5 going past \u2212113",
+    "The line reaching -12.5 (still a bet at -11.5 near \u2212115)",
+    "The price at -10.5 going past \u2212127",
     "A change in Tyrese Maxey (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": -11.5,
+    "now": -10.5,
     "kalshi": null
    },
    "started": false,
@@ -1628,6 +1636,13 @@
    "kind": "line",
    "text": "PHI -11.5 (MIL @ PHI): line -10.5 at \u2212116 \u2192 -11.5 at \u2212103",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T16:31:22Z",
+   "key": "g|401910023|spread|home",
+   "kind": "line",
+   "text": "PHI -10.5 (MIL @ PHI): line -11.5 at \u2212103 \u2192 -10.5 at \u2212119",
+   "alert": false
   }
  ],
  "narratives": [
@@ -1677,6 +1692,11 @@
     "status": "Probable"
    },
    {
+    "name": "Karl-Anthony Towns",
+    "team": "NY",
+    "status": "Day-To-Day"
+   },
+   {
     "name": "Jayson Tatum",
     "team": "BOS",
     "status": "Questionable"
@@ -1701,5 +1721,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T16:15:22Z"
+ "updated": "2026-11-21T16:31:22Z"
 }
