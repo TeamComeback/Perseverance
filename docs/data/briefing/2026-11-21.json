@@ -39,7 +39,7 @@
    "p": 0.516,
    "p_sim": 0.81,
    "p_mkt": 0.481,
-   "p_kalshi": 0.505,
+   "p_kalshi": 0.525,
    "ev": 0.001,
    "verdict": "Pass: simulation and tonight's spot agree; the main risk is minutes.",
    "home": "SAC",
@@ -55,6 +55,14 @@
    "avg10": 5.4,
    "minutes": 25.2,
    "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 53% there vs 48% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 443 of 819 times.",
+     "rec": [
+      111,
+      95
+     ]
+    },
     {
      "tag": "simulation",
      "t": "Goes under in 81% of 10,000 simulated games (sim average 3.9).",
@@ -77,14 +85,6 @@
      "rec": [
       406,
       377
-     ]
-    },
-    {
-     "tag": "role tonight",
-     "t": "Minutes down tonight: -1.1 min blowout risk (BOS starters sit 1.7 min in blowouts vs 2.1 league).",
-     "rec": [
-      135,
-      133
      ]
     },
     {
@@ -139,7 +139,7 @@
    "market": {
     "open": 5.5,
     "now": 5.5,
-    "kalshi": 0.505
+    "kalshi": 0.525
    },
    "started": false,
    "published": {
@@ -171,16 +171,16 @@
    "start": "2026-11-22T01:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 1.75,
-   "am": -133,
-   "conv": 43,
-   "tier": "Pass",
-   "p": 0.577,
-   "p_sim": 0.756,
-   "p_mkt": 0.533,
-   "p_kalshi": 0.543,
-   "ev": 0.009,
-   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
+   "dec": 1.87,
+   "am": -115,
+   "conv": 48,
+   "tier": "Consider",
+   "p": 0.547,
+   "p_sim": 0.776,
+   "p_mkt": 0.499,
+   "p_kalshi": 0.495,
+   "ev": 0.024,
+   "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "DAL",
    "away": "LAC",
    "pid": "4278049",
@@ -188,11 +188,11 @@
    "team": "DAL",
    "opp": "LAC",
    "stat": "reb",
-   "proj": 4.3,
-   "sim": 5.1,
+   "proj": 4.5,
+   "sim": 5,
    "ob_ind": 5.5,
    "avg10": 4.2,
-   "minutes": 17.5,
+   "minutes": 18.0,
    "for": [
     {
      "tag": "average",
@@ -204,7 +204,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 76% of 10,000 simulated games (sim average 5.1).",
+     "t": "Goes under in 78% of 10,000 simulated games (sim average 5).",
      "rec": [
       1216,
       1061
@@ -220,7 +220,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 4.3 rebounds against a line of 6.5.",
+     "t": "Model projects 4.6 rebounds against a line of 6.5.",
      "rec": [
       1273,
       1125
@@ -246,10 +246,18 @@
     },
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 25.9 minutes in the games he went over vs 18.3 otherwise. He's projected for 17.5 tonight.",
+     "t": "It misses when he plays long: 25.9 minutes in the games he went over vs 18.3 otherwise. He's projected for 18 tonight.",
      "rec": [
       1084,
       999
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without P.J. Washington: 5 of 13 under 6.5 (38% vs 60% lately).",
+     "rec": [
+      610,
+      598
      ]
     },
     {
@@ -262,8 +270,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.733,
-    "floor_am": -136,
+    "floor_dec": 1.828,
+    "floor_am": -121,
     "line": 6.5,
     "next": 5.5
    },
@@ -272,9 +280,9 @@
      "pid": "4278078",
      "name": "P.J. Washington",
      "team": "DAL",
-     "status": "Questionable",
+     "status": "Doubtful",
      "self": false,
-     "min": 23.5
+     "min": 25.9
     },
     {
      "pid": "4896372",
@@ -282,19 +290,19 @@
      "team": "DAL",
      "status": "Questionable",
      "self": false,
-     "min": 21.5
+     "min": 23.4
     }
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212136",
-    "A change in P.J. Washington (questionable), Walter Clayton Jr. (questionable): the model re-prices on the next run",
+    "The price at 6.5 going past \u2212121",
+    "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.543
+    "kalshi": 0.495
    },
    "started": false,
    "published": {
@@ -314,11 +322,8 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": {
-    "at": "2026-11-21T19:16:05Z",
-    "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "p|4845367|ra|Under": {
    "key": "p|4845367|ra|Under",
@@ -501,7 +506,7 @@
    "p": 0.476,
    "p_sim": 0.681,
    "p_mkt": 0.443,
-   "p_kalshi": 0.444,
+   "p_kalshi": 0.447,
    "ev": 0.005,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
@@ -608,7 +613,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.444
+    "kalshi": 0.447
    },
    "started": false,
    "published": {
@@ -1256,41 +1261,49 @@
     }
    },
    "first_seen": "2026-11-21T19:16:05Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-21T19:46:09Z",
+    "why": "no longer +EV at tonight's line (7.5 at -123)"
+   },
+   "status": "Removed"
   }
  },
  "leans": {
   "g|401910027|spread|away": {
    "key": "g|401910027|spread|away",
    "kind": "spread",
-   "label": "NO +18.5 (NO @ SA)",
+   "label": "NO +19.5 (NO @ SA)",
    "espn_id": "401910027",
    "game": "NO @ SA",
    "start": "2026-11-22T01:00Z",
    "side": "away",
-   "point": 18.5,
-   "dec": 1.96,
-   "am": -104,
+   "point": 19.5,
+   "dec": 1.86,
+   "am": -116,
    "conv": 59,
    "tier": "Consider",
-   "p": 0.564,
-   "p_sim": 0.646,
-   "p_mkt": 0.487,
+   "p": 0.588,
+   "p_sim": 0.669,
+   "p_mkt": 0.513,
    "p_kalshi": null,
-   "ev": 0.105,
-   "verdict": "Consider: simulation and who's out agree; the main risk is who's out.",
+   "ev": 0.094,
+   "verdict": "Consider: simulation and team model agree; the main risk is who's out.",
    "home": "SA",
    "away": "NO",
-   "why": "Sim: SA by 12.4 on average (NO 107.0, SA 119.4) \u00b7 NO +18.5 covers in 65% of sims vs 49% DraftKings",
+   "why": "Sim: SA by 12.4 on average (NO 107.0, SA 119.4) \u00b7 NO +19.5 covers in 67% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 65% of 10,000 simulated games.",
+     "t": "Covers in 67% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
      ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it SA by 17.2, 2.3 better than this number.",
+     "rec": null
     },
     {
      "tag": "who's out",
@@ -1301,7 +1314,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-16.5 to -18.5).",
+     "t": "The line has moved against this side since it opened (-16.5 to -19.5).",
      "rec": [
       168,
       133
@@ -1327,8 +1340,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.773,
-    "floor_am": -129,
+    "floor_dec": 1.701,
+    "floor_am": -143,
     "line": 17.5,
     "next": 16.5
    },
@@ -1360,11 +1373,11 @@
    ],
    "kill": [
     "The line reaching 16.5 (still a bet at 17.5 near \u2212115)",
-    "The price at 18.5 going past \u2212129"
+    "The price at 19.5 going past \u2212143"
    ],
    "market": {
     "open": null,
-    "now": 18.5,
+    "now": 19.5,
     "kalshi": null
    },
    "started": false,
@@ -1620,20 +1633,29 @@
    "start": "2026-11-22T01:00Z",
    "side": "Under",
    "point": 230.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 33,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 44,
    "tier": "Pass",
-   "p": 0.514,
-   "p_sim": 0.529,
-   "p_mkt": 0.5,
+   "p": 0.527,
+   "p_sim": 0.56,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.023,
-   "verdict": "Pass: the price is the case; the main risk is line move.",
+   "ev": 0.011,
+   "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "DAL",
    "away": "LAC",
-   "why": "Sim total 229.2 (after a learned +1.8 correction) vs 230.5 \u00b7 under in 53% of sims vs 50% DraftKings",
-   "for": [],
+   "why": "Sim total 227.9 (after a learned +1.8 correction) vs 230.5 \u00b7 under in 56% of sims vs 50% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games.",
+     "rec": [
+      1216,
+      1061
+     ]
+    }
+   ],
    "against": [
     {
      "tag": "line move",
@@ -1653,8 +1675,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.946,
-    "floor_am": -106,
+    "floor_dec": 1.898,
+    "floor_am": -111,
     "line": null,
     "next": 229.5
    },
@@ -1678,7 +1700,7 @@
    ],
    "kill": [
     "The line reaching 229.5",
-    "The price at 230.5 going past \u2212106",
+    "The price at 230.5 going past \u2212111",
     "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1705,7 +1727,7 @@
    },
    "first_seen": "2026-11-21T11:46:05Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Holding"
   },
   "g|401910028|spread|home": {
    "key": "g|401910028|spread|home",
@@ -1925,19 +1947,19 @@
    "start": "2026-11-22T00:30Z",
    "side": "home",
    "point": -3.5,
-   "dec": 1.92,
-   "am": -109,
-   "conv": 34,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 38,
    "tier": "Pass",
-   "p": 0.511,
+   "p": 0.505,
    "p_sim": 0.527,
-   "p_mkt": 0.496,
+   "p_mkt": 0.484,
    "p_kalshi": null,
-   "ev": -0.019,
+   "ev": -0.005,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "NY",
    "away": "POR",
-   "why": "Sim: NY by 4.0 on average (POR 105.2, NY 109.2) \u00b7 NY -3.5 covers in 53% of sims vs 50% DraftKings",
+   "why": "Sim: NY by 4.0 on average (POR 105.2, NY 109.2) \u00b7 NY -3.5 covers in 53% of sims vs 48% DraftKings",
    "for": [],
    "against": [
     {
@@ -1968,8 +1990,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.957,
-    "floor_am": -104,
+    "floor_dec": 1.98,
+    "floor_am": -102,
     "line": null,
     "next": -4.5
    },
@@ -2009,7 +2031,7 @@
    ],
    "kill": [
     "The line reaching -4.5",
-    "The price at -3.5 going past \u2212104",
+    "The price at -3.5 going past \u2212102",
     "A change in OG Anunoby (doubtful), Karl-Anthony Towns (day-to-day), Deni Avdija (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -2036,7 +2058,7 @@
    },
    "first_seen": "2026-11-21T17:01:40Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "New"
   }
  },
  "changes": [
@@ -2396,6 +2418,69 @@
    "kind": "injury",
    "text": "P.J. Washington questionable \u2192 doubtful (LAC @ DAL Under 230.5 re-priced: 230.5 at \u2212111, conviction 33)",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "back",
+   "text": "Back on the board: Daniel Gafford Under 6.5 rebounds at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "line",
+   "text": "Daniel Gafford: line 6.5 at \u2212133 \u2192 6.5 at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "conviction",
+   "text": "Daniel Gafford Under 6.5 rebounds: conviction 43 Pass \u2192 48 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "injury",
+   "text": "P.J. Washington questionable \u2192 doubtful (Daniel Gafford Under 6.5 rebounds re-priced: 6.5 at \u2212115, conviction 48)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "p|3062679|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Josh Hart Under 7.5 rebounds \u2014 no longer +EV at tonight's line (7.5 at -123)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "g|401910027|spread|away",
+   "kind": "line",
+   "text": "NO +19.5 (NO @ SA): line 18.5 at \u2212104 \u2192 19.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "g|401910025|total|Under",
+   "kind": "line",
+   "text": "LAC @ DAL Under 230.5: line 230.5 at \u2212111 \u2192 230.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "g|401910025|total|Under",
+   "kind": "conviction",
+   "text": "LAC @ DAL Under 230.5: conviction 33 Pass \u2192 44 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:46:09Z",
+   "key": "g|401910024|spread|home",
+   "kind": "line",
+   "text": "NY -3.5 (POR @ NY): line -3.5 at \u2212109 \u2192 -3.5 at \u2212103",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2486,5 +2571,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T19:42:51Z"
+ "updated": "2026-11-21T19:46:09Z"
 }
