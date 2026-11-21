@@ -504,13 +504,13 @@
    "point": 4.5,
    "dec": 2.11,
    "am": 111,
-   "conv": 43,
+   "conv": 42,
    "tier": "Pass",
    "p": 0.478,
-   "p_sim": 0.7,
+   "p_sim": 0.693,
    "p_mkt": 0.443,
    "p_kalshi": 0.45,
-   "ev": 0.009,
+   "ev": 0.008,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
    "away": "MEM",
@@ -527,7 +527,7 @@
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 70% of 10,000 simulated games (sim average 3.7).",
+     "t": "Goes under in 69% of 10,000 simulated games (sim average 3.7).",
      "rec": [
       1216,
       1061
@@ -1214,7 +1214,7 @@
      "pid": "3934719",
      "name": "OG Anunoby",
      "team": "NY",
-     "status": "Doubtful",
+     "status": "Out",
      "self": false,
      "min": 35.7
     },
@@ -1238,7 +1238,7 @@
    "kill": [
     "The line reaching 6.5",
     "The price at 7.5 going past \u2212126",
-    "A change in OG Anunoby (doubtful), Karl-Anthony Towns (day-to-day), Deni Avdija (questionable): the model re-prices on the next run",
+    "A change in Karl-Anthony Towns (day-to-day), Deni Avdija (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1715,8 +1715,11 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": null,
-   "status": "Downgraded"
+   "removed": {
+    "at": "2026-11-21T22:01:16Z",
+    "why": "confidence fell 33 \u2192 30"
+   },
+   "status": "Removed"
   },
   "g|401910028|spread|home": {
    "key": "g|401910028|spread|home",
@@ -1834,30 +1837,39 @@
   "g|401910028|total|Under": {
    "key": "g|401910028|total|Under",
    "kind": "total",
-   "label": "BOS @ SAC Under 217.5",
+   "label": "BOS @ SAC Under 216.5",
    "espn_id": "401910028",
    "game": "BOS @ SAC",
    "start": "2026-11-22T03:00Z",
    "side": "Under",
-   "point": 217.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 38,
+   "point": 216.5,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.526,
-   "p_sim": 0.549,
-   "p_mkt": 0.504,
+   "p": 0.523,
+   "p_sim": 0.537,
+   "p_mkt": 0.51,
    "p_kalshi": null,
-   "ev": -0.007,
-   "verdict": "Pass: the price is the case; the main risk is team model.",
+   "ev": -0.027,
+   "verdict": "Pass: line move carries it; the main risk is team model.",
    "home": "SAC",
    "away": "BOS",
-   "why": "Sim total 215.6 (after a learned +1.8 correction) vs 217.5 \u00b7 under in 55% of sims vs 50% DraftKings",
-   "for": [],
+   "why": "Sim total 215.3 (after a learned +2.0 correction) vs 216.5 \u00b7 under in 54% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (217.5 to 216.5): you're with the money, at a worse number.",
+     "rec": [
+      134,
+      167
+     ]
+    }
+   ],
    "against": [
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 629-656 against DraftKings' totals. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 631-663 against DraftKings' totals. Treat this as a lean.",
      "rec": [
       83,
       113
@@ -1865,42 +1877,41 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 220.0 points, 2.5 the wrong side of 217.5.",
+     "t": "Team ratings project 219.7 points, 3.2 the wrong side of 216.5.",
      "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
+    "floor_dec": 1.912,
+    "floor_am": -110,
     "line": null,
-    "next": 216.5
+    "next": 215.5
    },
    "watch": [
     {
      "pid": "4065648",
      "name": "Jayson Tatum",
      "team": "BOS",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 30.8
+     "min": 34.3
     },
     {
      "pid": "3078576",
      "name": "Derrick White",
      "team": "BOS",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 27.5
+     "min": 30.7
     }
    ],
    "kill": [
-    "The line reaching 216.5",
-    "The price at 217.5 going past \u2212111",
-    "A change in Jayson Tatum (questionable), Derrick White (questionable): the model re-prices on the next run"
+    "The line reaching 215.5",
+    "The price at 216.5 going past \u2212110"
    ],
    "market": {
     "open": null,
-    "now": 217.5,
+    "now": 216.5,
     "kalshi": null
    },
    "started": false,
@@ -1921,11 +1932,8 @@
     }
    },
    "first_seen": "2026-11-21T15:16:09Z",
-   "removed": {
-    "at": "2026-11-21T17:01:40Z",
-    "why": "confidence fell 38 \u2192 27"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Downgraded"
   },
   "g|401910024|spread|home": {
    "key": "g|401910024|spread|home",
@@ -1936,19 +1944,19 @@
    "start": "2026-11-22T00:30Z",
    "side": "home",
    "point": -3.5,
-   "dec": 1.96,
-   "am": -104,
-   "conv": 30,
+   "dec": 1.99,
+   "am": -101,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.493,
+   "p": 0.49,
    "p_sim": 0.502,
-   "p_mkt": 0.486,
+   "p_mkt": 0.479,
    "p_kalshi": null,
-   "ev": -0.033,
+   "ev": -0.025,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "NY",
    "away": "POR",
-   "why": "Sim: NY by 3.2 on average (POR 105.3, NY 108.5) \u00b7 NY -3.5 covers in 50% of sims vs 49% DraftKings",
+   "why": "Sim: NY by 3.2 on average (POR 105.3, NY 108.5) \u00b7 NY -3.5 covers in 50% of sims vs 48% DraftKings",
    "for": [],
    "against": [
     {
@@ -1979,8 +1987,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.028,
-    "floor_am": 103,
+    "floor_dec": 2.041,
+    "floor_am": 104,
     "line": null,
     "next": -4.5
    },
@@ -1989,7 +1997,7 @@
      "pid": "3934719",
      "name": "OG Anunoby",
      "team": "NY",
-     "status": "Doubtful",
+     "status": "Out",
      "self": false,
      "min": 35.7
     },
@@ -2020,8 +2028,8 @@
    ],
    "kill": [
     "The line reaching -4.5",
-    "The price at -3.5 going past +103",
-    "A change in OG Anunoby (doubtful), Karl-Anthony Towns (day-to-day), Deni Avdija (questionable): the model re-prices on the next run"
+    "The price at -3.5 going past +104",
+    "A change in Karl-Anthony Towns (day-to-day), Deni Avdija (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -2046,11 +2054,8 @@
     }
    },
    "first_seen": "2026-11-21T17:01:40Z",
-   "removed": {
-    "at": "2026-11-21T21:31:06Z",
-    "why": "line moved -3.5 \u2192 -2.5"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "g|401910026|total|Over": {
    "key": "g|401910026|total|Over",
@@ -2063,21 +2068,21 @@
    "point": 228.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 49,
+   "conv": 52,
    "tier": "Consider",
-   "p": 0.542,
-   "p_sim": 0.587,
+   "p": 0.546,
+   "p_sim": 0.597,
    "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.029,
+   "ev": 0.038,
    "verdict": "Consider: simulation and line move agree; the main risk is model record.",
    "home": "MIN",
    "away": "MEM",
-   "why": "Sim total 232.6 (after a learned +1.8 correction) vs 228.5 \u00b7 over in 59% of sims vs 50% DraftKings",
+   "why": "Sim total 233.1 (after a learned +2.0 correction) vs 228.5 \u00b7 over in 60% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 59% of 10,000 simulated games.",
+     "t": "Goes over in 60% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
@@ -2103,8 +2108,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.845,
-    "floor_am": -118,
+    "floor_dec": 1.832,
+    "floor_am": -120,
     "line": 228.5,
     "next": 229.5
    },
@@ -2136,7 +2141,7 @@
    ],
    "kill": [
     "The line reaching 229.5",
-    "The price at 228.5 going past \u2212118"
+    "The price at 228.5 going past \u2212120"
    ],
    "market": {
     "open": null,
@@ -2270,8 +2275,11 @@
     }
    },
    "first_seen": "2026-11-21T21:31:06Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-21T22:01:16Z",
+    "why": "confidence fell 29 \u2192 17"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -2792,6 +2800,83 @@
    "kind": "removed",
    "text": "Removed: NY -3.5 (POR @ NY) \u2014 line moved -3.5 \u2192 -2.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "p|3062679|reb|Under",
+   "kind": "injury",
+   "text": "OG Anunoby doubtful \u2192 out (Josh Hart Under 7.5 rebounds re-priced: 7.5 at \u2212123, conviction 43)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910024|spread|home",
+   "kind": "back",
+   "text": "Back on the board: NY -3.5 (POR @ NY) at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910024|spread|home",
+   "kind": "line",
+   "text": "NY -3.5 (POR @ NY): line -3.5 at \u2212104 \u2192 -3.5 at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910024|spread|home",
+   "kind": "injury",
+   "text": "OG Anunoby doubtful \u2192 out (NY -3.5 (POR @ NY) re-priced: -3.5 at \u2212101, conviction 33)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910028|total|Under",
+   "kind": "back",
+   "text": "Back on the board: BOS @ SAC Under 216.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910028|total|Under",
+   "kind": "line",
+   "text": "BOS @ SAC Under 216.5: line 217.5 at \u2212112 \u2192 216.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910028|total|Under",
+   "kind": "conviction",
+   "text": "BOS @ SAC Under 216.5: conviction 38 Pass \u2192 31 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910028|total|Under",
+   "kind": "injury",
+   "text": "Jayson Tatum questionable \u2192 out (BOS @ SAC Under 216.5 re-priced: 216.5 at \u2212116, conviction 31)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910028|total|Under",
+   "kind": "injury",
+   "text": "Derrick White questionable \u2192 out (BOS @ SAC Under 216.5 re-priced: 216.5 at \u2212116, conviction 31)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910025|total|Under",
+   "kind": "removed",
+   "text": "Removed: LAC @ DAL Under 230.5 \u2014 confidence fell 33 \u2192 30",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T22:01:16Z",
+   "key": "g|401910028|total|Over",
+   "kind": "removed",
+   "text": "Removed: BOS @ SAC Over 216.5 \u2014 confidence fell 29 \u2192 17",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2843,11 +2928,6 @@
   "first": "2026-11-21T18:00Z",
   "questionable": [
    {
-    "name": "OG Anunoby",
-    "team": "NY",
-    "status": "Doubtful"
-   },
-   {
     "name": "Karl-Anthony Towns",
     "team": "NY",
     "status": "Day-To-Day"
@@ -2872,5 +2952,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T21:45:32Z"
+ "updated": "2026-11-21T22:01:16Z"
 }

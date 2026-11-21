@@ -19528,7 +19528,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    },
    {
     "id": "42989098",
@@ -19571,7 +19580,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    },
    {
     "id": "65aaa4de",
@@ -19948,13 +19966,13 @@
    "profit": -102.32
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-21T21:00:34Z",
+   "last_scanned": "2026-11-21T22:00:43Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-21T20:52:32Z"
+   "last_scanned": "2026-11-21T22:00:42Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -20134,7 +20152,7 @@
    "last_scanned": "2026-11-21T06:30:22Z"
   },
   "soccer_greece_super_league": {
-   "last_scanned": "2026-11-21T07:15:19Z"
+   "last_scanned": "2026-11-21T22:00:43Z"
   },
   "soccer_korea_kleague1": {
    "last_scanned": "2026-11-21T07:30:23Z"
@@ -20171,16 +20189,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T13:45:39Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 116 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-17T14:30:44Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 116 players projected, lineups for 5 games."
-  },
   {
    "ts": "2026-11-17T15:15:33Z",
    "kind": "research",
@@ -21670,6 +21678,16 @@
    "ts": "2026-11-21T21:30:41Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-21T22:00:54Z",
+   "kind": "focus",
+   "text": "Skipped 39 assists lines, 69 pts+reb+ast lines, 54 reb+ast lines, 22 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
+  },
+  {
+   "ts": "2026-11-21T22:00:54Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -21758,7 +21776,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T21:45:32Z",
+ "updated": "2026-11-21T22:01:16Z",
  "stats": {
   "bets": 83,
   "won": 26,
@@ -21789,5 +21807,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 1
+ "dry_scans": 2
 }
