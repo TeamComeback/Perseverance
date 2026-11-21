@@ -498,7 +498,7 @@
    "p": 0.483,
    "p_sim": 0.681,
    "p_mkt": 0.451,
-   "p_kalshi": 0.444,
+   "p_kalshi": 0.447,
    "ev": 0.001,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
@@ -614,7 +614,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.444
+    "kalshi": 0.447
    },
    "started": false,
    "published": {
@@ -922,7 +922,7 @@
     "now": 4.5,
     "kalshi": 0.535
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-21T17:01:40Z",
     "edition": "update",
@@ -941,7 +941,7 @@
    },
    "first_seen": "2026-11-21T17:01:40Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|4395725|reb|Under": {
    "key": "p|4395725|reb|Under",
@@ -1073,7 +1073,7 @@
     "now": 3.5,
     "kalshi": 0.41
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-21T17:01:40Z",
     "edition": "update",
@@ -1092,7 +1092,7 @@
    },
    "first_seen": "2026-11-21T17:01:40Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   }
  },
  "leans": {
@@ -1109,19 +1109,19 @@
    "am": -115,
    "conv": 59,
    "tier": "Consider",
-   "p": 0.571,
-   "p_sim": 0.637,
+   "p": 0.576,
+   "p_sim": 0.646,
    "p_mkt": 0.509,
    "p_kalshi": null,
-   "ev": 0.067,
+   "ev": 0.076,
    "verdict": "Consider: simulation and who's out agree; the main risk is who's out.",
    "home": "SA",
    "away": "NO",
-   "why": "Sim: SA by 13.0 on average (NO 106.6, SA 119.6) \u00b7 NO +18.5 covers in 64% of sims vs 51% DraftKings",
+   "why": "Sim: SA by 12.4 on average (NO 107.0, SA 119.4) \u00b7 NO +18.5 covers in 65% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 64% of 10,000 simulated games.",
+     "t": "Covers in 65% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
@@ -1162,8 +1162,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.751,
-    "floor_am": -133,
+    "floor_dec": 1.736,
+    "floor_am": -136,
     "line": 17.5,
     "next": 16.5
    },
@@ -1172,6 +1172,14 @@
      "pid": "5037871",
      "name": "Dylan Harper",
      "team": "SA",
+     "status": "Out",
+     "self": false,
+     "min": 31.8
+    },
+    {
+     "pid": "4397688",
+     "name": "Trey Murphy III",
+     "team": "NO",
      "status": "Out",
      "self": false,
      "min": 31.8
@@ -1187,7 +1195,7 @@
    ],
    "kill": [
     "The line reaching 16.5 (still a bet at 17.5 near \u2212115)",
-    "The price at 18.5 going past \u2212133"
+    "The price at 18.5 going past \u2212136"
    ],
    "market": {
     "open": null,
@@ -1426,7 +1434,7 @@
     "now": -11.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-21T11:46:05Z",
     "edition": "morning",
@@ -1445,7 +1453,7 @@
    },
    "first_seen": "2026-11-21T11:46:05Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Started"
   },
   "g|401910025|total|Under": {
    "key": "g|401910025|total|Under",
@@ -2183,6 +2191,13 @@
    "kind": "line",
    "text": "PHI -11.5 (MIL @ PHI): line -10.5 at \u2212116 \u2192 -11.5 at \u2212106",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T18:16:09Z",
+   "key": "g|401910027|spread|away",
+   "kind": "injury",
+   "text": "Trey Murphy III ruled out (NO +18.5 (NO @ SA) re-priced: 18.5 at \u2212115, conviction 59)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2213,7 +2228,7 @@
  "alerts": 6,
  "slate": {
   "games": 6,
-  "to_tip": 6,
+  "to_tip": 5,
   "first": "2026-11-21T18:00Z",
   "questionable": [
    {
@@ -2256,5 +2271,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T18:01:29Z"
+ "updated": "2026-11-21T18:16:09Z"
 }
