@@ -1256,8 +1256,173 @@
     }
    },
    "first_seen": "2026-11-21T19:16:05Z",
+   "removed": {
+    "at": "2026-11-21T23:01:22Z",
+    "why": "no longer +EV at tonight's line (7.5 at -123)"
+   },
+   "status": "Removed"
+  },
+  "p|4593841|reb|Under": {
+   "key": "p|4593841|reb|Under",
+   "kind": "prop",
+   "label": "Baylor Scheierman Under 5.5 rebounds",
+   "espn_id": "401910028",
+   "game": "BOS @ SAC",
+   "start": "2026-11-22T03:00Z",
+   "side": "Under",
+   "point": 5.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 40,
+   "tier": "Pass",
+   "p": 0.555,
+   "p_sim": 0.678,
+   "p_mkt": 0.519,
+   "p_kalshi": 0.565,
+   "ev": -0.0,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "SAC",
+   "away": "BOS",
+   "pid": "4593841",
+   "name": "Baylor Scheierman",
+   "team": "BOS",
+   "opp": "SAC",
+   "stat": "reb",
+   "proj": 4.7,
+   "sim": 4.7,
+   "ob_ind": 2.5,
+   "avg10": 4,
+   "minutes": 27.1,
+   "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 56% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 443 of 819 times.",
+     "rec": [
+      111,
+      95
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 68% of 10,000 simulated games (sim average 4.7).",
+     "rec": [
+      1216,
+      1061
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 4.5 in 6 of his last 10.",
+     "rec": [
+      281,
+      246
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 4.7 rebounds against a line of 5.5.",
+     "rec": [
+      1273,
+      1125
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 5.5 in 8 of his last 10 (4 of the last 5).",
+     "rec": [
+      1039,
+      942
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "usage",
+     "t": "+50% without White.",
+     "rec": [
+      108,
+      91
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "Tatum out: rebounds +5% tonight. With him off the floor (1,508 possessions) his usage goes 12% \u2192 12%; 90% of his recent games were next to Tatum.",
+     "rec": [
+      812,
+      730
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 24.5 minutes in the games he went over vs 16.5 otherwise. He's projected for 27.1 tonight.",
+     "rec": [
+      1084,
+      999
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without Derrick White: 1 of 4 under 5.5 (25% vs 80% lately).",
+     "rec": [
+      610,
+      598
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.802,
+    "floor_am": -125,
+    "line": 5.5,
+    "next": 4.5
+   },
+   "watch": [
+    {
+     "pid": "4065648",
+     "name": "Jayson Tatum",
+     "team": "BOS",
+     "status": "Out",
+     "self": false,
+     "min": 34.3
+    },
+    {
+     "pid": "3078576",
+     "name": "Derrick White",
+     "team": "BOS",
+     "status": "Out",
+     "self": false,
+     "min": 30.7
+    }
+   ],
+   "kill": [
+    "The line reaching 4.5",
+    "The price at 5.5 going past \u2212125",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 5.5,
+    "now": 5.5,
+    "kalshi": 0.565
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-21T23:01:22Z",
+    "edition": "update",
+    "point": 5.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 40,
+    "tier": "Pass",
+    "p": 0.555,
+    "play_to": {
+     "floor_dec": 1.802,
+     "floor_am": -125,
+     "line": 5.5,
+     "next": 4.5
+    }
+   },
+   "first_seen": "2026-11-21T23:01:22Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -1927,30 +2092,25 @@
    "point": 1.5,
    "dec": 1.86,
    "am": -116,
-   "conv": 51,
-   "tier": "Consider",
-   "p": 0.556,
-   "p_sim": 0.604,
+   "conv": 36,
+   "tier": "Pass",
+   "p": 0.531,
+   "p_sim": 0.551,
    "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": 0.035,
-   "verdict": "Consider: simulation and team model agree; the main risk is who's out.",
+   "ev": -0.013,
+   "verdict": "Pass: simulation carries it; the main risk is who's out.",
    "home": "NY",
    "away": "POR",
-   "why": "Sim: NY by 3.2 on average (POR 105.3, NY 108.5) \u00b7 NY +1.5 covers in 60% of sims vs 51% DraftKings",
+   "why": "Sim: NY by 1.0 on average (POR 105.1, NY 106.2) \u00b7 NY +1.5 covers in 55% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 60% of 10,000 simulated games.",
+     "t": "Covers in 55% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
      ]
-    },
-    {
-     "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it NY by 1.4, 2.9 better than this number.",
-     "rec": null
     }
    ],
    "against": [
@@ -1972,14 +2132,14 @@
     },
     {
      "tag": "who's out",
-     "t": "NY without OG Anunoby: worth about 1.5 points.",
+     "t": "NY without Karl-Anthony Towns, OG Anunoby: worth about 4.9 points.",
      "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 1.799,
-    "floor_am": -125,
-    "line": 1.5,
+    "floor_dec": 1.883,
+    "floor_am": -113,
+    "line": null,
     "next": 0.5
    },
    "watch": [
@@ -1995,9 +2155,9 @@
      "pid": "3136195",
      "name": "Karl-Anthony Towns",
      "team": "NY",
-     "status": "Day-To-Day",
+     "status": "Out",
      "self": false,
-     "min": 33.7
+     "min": 34.8
     },
     {
      "pid": "4279888",
@@ -2010,8 +2170,7 @@
    ],
    "kill": [
     "The line reaching 0.5",
-    "The price at 1.5 going past \u2212125",
-    "A change in Karl-Anthony Towns (day-to-day): the model re-prices on the next run"
+    "The price at 1.5 going past \u2212113"
    ],
    "market": {
     "open": null,
@@ -2037,7 +2196,7 @@
    },
    "first_seen": "2026-11-21T17:01:40Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "New"
   },
   "g|401910026|total|Over": {
    "key": "g|401910026|total|Over",
@@ -2932,6 +3091,34 @@
    "kind": "removed",
    "text": "Removed: MEM @ MIN Over 228.5 \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T23:01:22Z",
+   "key": "p|4593841|reb|Under",
+   "kind": "added",
+   "text": "Added: Baylor Scheierman Under 5.5 rebounds at \u2212125, conviction 40",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T23:01:22Z",
+   "key": "p|3062679|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Josh Hart Under 7.5 rebounds \u2014 no longer +EV at tonight's line (7.5 at -123)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T23:01:22Z",
+   "key": "g|401910024|spread|home",
+   "kind": "conviction",
+   "text": "NY +1.5 (POR @ NY): conviction 51 Consider \u2192 36 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T23:01:22Z",
+   "key": "g|401910024|spread|home",
+   "kind": "injury",
+   "text": "Karl-Anthony Towns day-to-day \u2192 out (NY +1.5 (POR @ NY) re-priced: 1.5 at \u2212116, conviction 36)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2983,17 +3170,12 @@
   "first": "2026-11-21T18:00Z",
   "questionable": [
    {
-    "name": "Karl-Anthony Towns",
-    "team": "NY",
-    "status": "Day-To-Day"
-   },
-   {
     "name": "P.J. Washington",
     "team": "DAL",
     "status": "Doubtful"
    }
   ],
-  "picks": 8
+  "picks": 9
  },
  "leans_record": {
   "w": 15,
@@ -3002,5 +3184,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T22:56:42Z"
+ "updated": "2026-11-21T23:01:22Z"
 }
