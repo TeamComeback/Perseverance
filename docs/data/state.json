@@ -19683,7 +19683,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1,
+  "min_edge": 0.0975,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -19984,7 +19984,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-21T21:15:34Z"
+   "last_scanned": "2026-11-21T22:45:26Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -20041,7 +20041,7 @@
    "last_scanned": "2026-11-21T21:45:32Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-21T21:45:32Z",
+   "last_scanned": "2026-11-21T22:45:26Z",
    "bets": 2.0,
    "staked": 21.04,
    "profit": 0.1899999999999995
@@ -20189,16 +20189,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T15:15:33Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 116 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-17T17:30:28Z",
-   "kind": "research",
-   "text": "Backtester: 39 past bet(s) got their closing price from historical odds."
-  },
   {
    "ts": "2026-11-17T17:30:30Z",
    "kind": "scan",
@@ -21688,6 +21678,16 @@
    "ts": "2026-11-21T22:00:54Z",
    "kind": "props",
    "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-21T22:45:26Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-21T22:45:41Z",
+   "kind": "research",
+   "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
   }
  ],
  "learned_ids": [
@@ -21776,7 +21776,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T22:30:31Z",
+ "updated": "2026-11-21T22:46:14Z",
  "stats": {
   "bets": 83,
   "won": 26,
@@ -21807,5 +21807,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
