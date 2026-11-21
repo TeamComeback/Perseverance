@@ -17676,7 +17676,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.095,
+  "min_edge": 0.1,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -18175,16 +18175,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-15T20:19:22Z",
-   "kind": "scan",
-   "text": "No scan this run (allowance 0 credits, 102 left this month)."
-  },
-  {
-   "ts": "2026-11-15T20:30:44Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 211 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-15T21:15:34Z",
    "kind": "research",
@@ -19674,6 +19664,16 @@
    "ts": "2026-11-21T01:15:46Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-21T01:20:24Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.9% over 59 legs, so the market is beating my picks. Raising the minimum edge to 10.0%."
+  },
+  {
+   "ts": "2026-11-21T01:20:25Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 17035 left this cycle)."
   }
  ],
  "learned_ids": [
@@ -19754,7 +19754,7 @@
   "1c4a9295"
  ],
  "strategist": null,
- "updated": "2026-11-21T01:16:05Z",
+ "updated": "2026-11-21T01:20:25Z",
  "stats": {
   "bets": 75,
   "won": 26,
