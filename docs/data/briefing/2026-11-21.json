@@ -314,8 +314,11 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-21T19:16:05Z",
+    "why": "no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)"
+   },
+   "status": "Removed"
   },
   "p|4845367|ra|Under": {
    "key": "p|4845367|ra|Under",
@@ -491,15 +494,15 @@
    "start": "2026-11-22T01:00Z",
    "side": "Under",
    "point": 4.5,
-   "dec": 2.07,
-   "am": 107,
-   "conv": 40,
+   "dec": 2.11,
+   "am": 111,
+   "conv": 41,
    "tier": "Pass",
-   "p": 0.483,
+   "p": 0.476,
    "p_sim": 0.681,
-   "p_mkt": 0.451,
-   "p_kalshi": 0.447,
-   "ev": 0.001,
+   "p_mkt": 0.443,
+   "p_kalshi": 0.444,
+   "ev": 0.005,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
    "away": "MEM",
@@ -566,8 +569,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.07,
-    "floor_am": 107,
+    "floor_dec": 2.101,
+    "floor_am": 110,
     "line": null,
     "next": 3.5
    },
@@ -599,13 +602,13 @@
    ],
    "kill": [
     "The line reaching 3.5",
-    "The price at 4.5 going past +107",
+    "The price at 4.5 going past +110",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.447
+    "kalshi": 0.444
    },
    "started": false,
    "published": {
@@ -1084,6 +1087,177 @@
    "first_seen": "2026-11-21T17:01:40Z",
    "removed": null,
    "status": "Started"
+  },
+  "p|3062679|reb|Under": {
+   "key": "p|3062679|reb|Under",
+   "kind": "prop",
+   "label": "Josh Hart Under 7.5 rebounds",
+   "espn_id": "401910024",
+   "game": "POR @ NY",
+   "start": "2026-11-22T00:30Z",
+   "side": "Under",
+   "point": 7.5,
+   "dec": 1.81,
+   "am": -123,
+   "conv": 36,
+   "tier": "Pass",
+   "p": 0.545,
+   "p_sim": 0.595,
+   "p_mkt": 0.516,
+   "p_kalshi": 0.545,
+   "ev": -0.013,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "NY",
+   "away": "POR",
+   "pid": "3062679",
+   "name": "Josh Hart",
+   "team": "NY",
+   "opp": "POR",
+   "stat": "reb",
+   "proj": 6,
+   "sim": 7.1,
+   "ob_ind": 6.5,
+   "avg10": 5.6,
+   "minutes": 30.9,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 59% of 10,000 simulated games (sim average 7.1).",
+     "rec": [
+      1216,
+      1061
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 6.5 in 8 of his last 10.",
+     "rec": [
+      281,
+      246
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 6 rebounds against a line of 7.5.",
+     "rec": [
+      1273,
+      1125
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 7.5 in 8 of his last 10 (5 of the last 5).",
+     "rec": [
+      1039,
+      942
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "POR gives shooting guards -8% rebounds vs their norm (#3 toughest of 30).",
+     "rec": [
+      744,
+      708
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line moved against it (6.5 to 7.5), though you now get a higher number than the opener's would have been.",
+     "rec": [
+      168,
+      133
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes up tonight: +4.0 min with Anunoby out.",
+     "rec": [
+      220,
+      198
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 33.1 minutes in the games he went over vs 27.6 otherwise. He's projected for 30.9 tonight.",
+     "rec": [
+      1084,
+      999
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without OG Anunoby: 4 of 12 under 7.5 (33% vs 60% lately).",
+     "rec": [
+      610,
+      598
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.835,
+    "floor_am": -120,
+    "line": 7.5,
+    "next": 6.5
+   },
+   "watch": [
+    {
+     "pid": "3934719",
+     "name": "OG Anunoby",
+     "team": "NY",
+     "status": "Doubtful",
+     "self": false,
+     "min": 35.7
+    },
+    {
+     "pid": "3136195",
+     "name": "Karl-Anthony Towns",
+     "team": "NY",
+     "status": "Day-To-Day",
+     "self": false,
+     "min": 33.7
+    },
+    {
+     "pid": "4683021",
+     "name": "Deni Avdija",
+     "team": "POR",
+     "status": "Questionable",
+     "self": false,
+     "min": 29.8
+    }
+   ],
+   "kill": [
+    "The line reaching 6.5",
+    "The price at 7.5 going past \u2212120",
+    "A change in OG Anunoby (doubtful), Karl-Anthony Towns (day-to-day), Deni Avdija (questionable): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 6.5,
+    "now": 7.5,
+    "kalshi": 0.545
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-21T19:16:05Z",
+    "edition": "update",
+    "point": 7.5,
+    "dec": 1.81,
+    "am": -123,
+    "conv": 36,
+    "tier": "Pass",
+    "p": 0.545,
+    "play_to": {
+     "floor_dec": 1.835,
+     "floor_am": -120,
+     "line": 7.5,
+     "next": 6.5
+    }
+   },
+   "first_seen": "2026-11-21T19:16:05Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -1448,17 +1622,17 @@
    "point": 230.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 39,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.524,
-   "p_sim": 0.55,
+   "p": 0.514,
+   "p_sim": 0.529,
    "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": -0.004,
+   "ev": -0.023,
    "verdict": "Pass: the price is the case; the main risk is line move.",
    "home": "DAL",
    "away": "LAC",
-   "why": "Sim total 228.3 (after a learned +1.8 correction) vs 230.5 \u00b7 under in 55% of sims vs 50% DraftKings",
+   "why": "Sim total 229.2 (after a learned +1.8 correction) vs 230.5 \u00b7 under in 53% of sims vs 50% DraftKings",
    "for": [],
    "against": [
     {
@@ -1479,8 +1653,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.908,
-    "floor_am": -110,
+    "floor_dec": 1.946,
+    "floor_am": -106,
     "line": null,
     "next": 229.5
    },
@@ -1489,9 +1663,9 @@
      "pid": "4278078",
      "name": "P.J. Washington",
      "team": "DAL",
-     "status": "Questionable",
+     "status": "Doubtful",
      "self": false,
-     "min": 23.5
+     "min": 25.9
     },
     {
      "pid": "4896372",
@@ -1499,13 +1673,13 @@
      "team": "DAL",
      "status": "Questionable",
      "self": false,
-     "min": 21.5
+     "min": 23.4
     }
    ],
    "kill": [
     "The line reaching 229.5",
-    "The price at 230.5 going past \u2212110",
-    "A change in P.J. Washington (questionable), Walter Clayton Jr. (questionable): the model re-prices on the next run"
+    "The price at 230.5 going past \u2212106",
+    "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -2187,6 +2361,41 @@
    "kind": "line",
    "text": "NO +18.5 (NO @ SA): line 18.5 at \u2212115 \u2192 18.5 at \u2212104",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T19:16:05Z",
+   "key": "p|4684806|reb|Under",
+   "kind": "line",
+   "text": "Taylor Hendricks: line 4.5 at +107 \u2192 4.5 at +111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:16:05Z",
+   "key": "p|3062679|reb|Under",
+   "kind": "added",
+   "text": "Added: Josh Hart Under 7.5 rebounds at \u2212123, conviction 36",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T19:16:05Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Daniel Gafford Under 6.5 rebounds \u2014 no longer passes the checks (minutes, injury tag, or the sim and the line too far apart)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T19:16:05Z",
+   "key": "g|401910025|total|Under",
+   "kind": "conviction",
+   "text": "LAC @ DAL Under 230.5: conviction 39 Pass \u2192 33 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T19:16:05Z",
+   "key": "g|401910025|total|Under",
+   "kind": "injury",
+   "text": "P.J. Washington questionable \u2192 doubtful (LAC @ DAL Under 230.5 re-priced: 230.5 at \u2212111, conviction 33)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2244,9 +2453,14 @@
     "name": "Derrick White",
     "team": "BOS",
     "status": "Questionable"
+   },
+   {
+    "name": "P.J. Washington",
+    "team": "DAL",
+    "status": "Doubtful"
    }
   ],
-  "picks": 7
+  "picks": 8
  },
  "leans_record": {
   "w": 15,
@@ -2255,5 +2469,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T19:01:16Z"
+ "updated": "2026-11-21T19:16:05Z"
 }
