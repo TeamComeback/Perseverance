@@ -32,15 +32,15 @@
    "start": "2026-11-22T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.94,
-   "am": -106,
-   "conv": 40,
+   "dec": 1.84,
+   "am": -119,
+   "conv": 38,
    "tier": "Pass",
-   "p": 0.516,
+   "p": 0.54,
    "p_sim": 0.81,
-   "p_mkt": 0.481,
+   "p_mkt": 0.508,
    "p_kalshi": 0.525,
-   "ev": 0.001,
+   "ev": -0.006,
    "verdict": "Pass: simulation and tonight's spot agree; the main risk is minutes.",
    "home": "SAC",
    "away": "BOS",
@@ -55,14 +55,6 @@
    "avg10": 5.4,
    "minutes": 25.2,
    "for": [
-    {
-     "tag": "second market",
-     "t": "Kalshi likes it more: 53% there vs 48% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 443 of 819 times.",
-     "rec": [
-      111,
-      95
-     ]
-    },
     {
      "tag": "simulation",
      "t": "Goes under in 81% of 10,000 simulated games (sim average 3.9).",
@@ -88,6 +80,14 @@
      ]
     },
     {
+     "tag": "role tonight",
+     "t": "Minutes down tonight: -1.1 min blowout risk (BOS starters sit 1.7 min in blowouts vs 2.1 league).",
+     "rec": [
+      135,
+      133
+     ]
+    },
+    {
      "tag": "history",
      "t": "His history vs SAC: 2.0 rebounds/g in 1 games (-6%).",
      "rec": [
@@ -107,9 +107,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.938,
-    "floor_am": -107,
-    "line": null,
+    "floor_dec": 1.852,
+    "floor_am": -117,
+    "line": 5.5,
     "next": 4.5
    },
    "watch": [
@@ -132,7 +132,7 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212107",
+    "The price at 5.5 going past \u2212117",
     "A change in Jayson Tatum (questionable), Derrick White (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -178,7 +178,7 @@
    "p": 0.547,
    "p_sim": 0.776,
    "p_mkt": 0.499,
-   "p_kalshi": 0.495,
+   "p_kalshi": 0.492,
    "ev": 0.024,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "DAL",
@@ -190,7 +190,7 @@
    "stat": "reb",
    "proj": 4.5,
    "sim": 5,
-   "ob_ind": 5.5,
+   "ob_ind": 4.5,
    "avg10": 4.2,
    "minutes": 18.0,
    "for": [
@@ -302,7 +302,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.495
+    "kalshi": 0.492
    },
    "started": false,
    "published": {
@@ -506,7 +506,7 @@
    "p": 0.476,
    "p_sim": 0.681,
    "p_mkt": 0.443,
-   "p_kalshi": 0.447,
+   "p_kalshi": 0.444,
    "ev": 0.005,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
@@ -613,7 +613,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.447
+    "kalshi": 0.444
    },
    "started": false,
    "published": {
@@ -1272,38 +1272,33 @@
   "g|401910027|spread|away": {
    "key": "g|401910027|spread|away",
    "kind": "spread",
-   "label": "NO +19.5 (NO @ SA)",
+   "label": "NO +18.5 (NO @ SA)",
    "espn_id": "401910027",
    "game": "NO @ SA",
    "start": "2026-11-22T01:00Z",
    "side": "away",
-   "point": 19.5,
-   "dec": 1.86,
-   "am": -116,
+   "point": 18.5,
+   "dec": 1.94,
+   "am": -106,
    "conv": 59,
    "tier": "Consider",
-   "p": 0.588,
-   "p_sim": 0.669,
-   "p_mkt": 0.513,
+   "p": 0.566,
+   "p_sim": 0.646,
+   "p_mkt": 0.491,
    "p_kalshi": null,
-   "ev": 0.094,
-   "verdict": "Consider: simulation and team model agree; the main risk is who's out.",
+   "ev": 0.098,
+   "verdict": "Consider: simulation and who's out agree; the main risk is who's out.",
    "home": "SA",
    "away": "NO",
-   "why": "Sim: SA by 12.4 on average (NO 107.0, SA 119.4) \u00b7 NO +19.5 covers in 67% of sims vs 51% DraftKings",
+   "why": "Sim: SA by 12.4 on average (NO 107.0, SA 119.4) \u00b7 NO +18.5 covers in 65% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 67% of 10,000 simulated games.",
+     "t": "Covers in 65% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
      ]
-    },
-    {
-     "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it SA by 17.2, 2.3 better than this number.",
-     "rec": null
     },
     {
      "tag": "who's out",
@@ -1314,7 +1309,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-16.5 to -19.5).",
+     "t": "The line has moved against this side since it opened (-16.5 to -18.5).",
      "rec": [
       168,
       133
@@ -1340,8 +1335,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.701,
-    "floor_am": -143,
+    "floor_dec": 1.767,
+    "floor_am": -130,
     "line": 17.5,
     "next": 16.5
    },
@@ -1373,11 +1368,11 @@
    ],
    "kill": [
     "The line reaching 16.5 (still a bet at 17.5 near \u2212115)",
-    "The price at 19.5 going past \u2212143"
+    "The price at 18.5 going past \u2212130"
    ],
    "market": {
     "open": null,
-    "now": 19.5,
+    "now": 18.5,
     "kalshi": null
    },
    "started": false,
@@ -1947,19 +1942,19 @@
    "start": "2026-11-22T00:30Z",
    "side": "home",
    "point": -3.5,
-   "dec": 1.97,
-   "am": -103,
-   "conv": 38,
+   "dec": 1.96,
+   "am": -104,
+   "conv": 37,
    "tier": "Pass",
    "p": 0.505,
    "p_sim": 0.527,
-   "p_mkt": 0.484,
+   "p_mkt": 0.486,
    "p_kalshi": null,
-   "ev": -0.005,
+   "ev": -0.009,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "NY",
    "away": "POR",
-   "why": "Sim: NY by 4.0 on average (POR 105.2, NY 109.2) \u00b7 NY -3.5 covers in 53% of sims vs 48% DraftKings",
+   "why": "Sim: NY by 4.0 on average (POR 105.2, NY 109.2) \u00b7 NY -3.5 covers in 53% of sims vs 49% DraftKings",
    "for": [],
    "against": [
     {
@@ -2481,6 +2476,27 @@
    "kind": "line",
    "text": "NY -3.5 (POR @ NY): line -3.5 at \u2212109 \u2192 -3.5 at \u2212103",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T20:15:36Z",
+   "key": "p|4251|reb|Under",
+   "kind": "line",
+   "text": "Paul George: line 5.5 at \u2212106 \u2192 5.5 at \u2212119",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T20:15:36Z",
+   "key": "g|401910027|spread|away",
+   "kind": "line",
+   "text": "NO +18.5 (NO @ SA): line 19.5 at \u2212116 \u2192 18.5 at \u2212106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T20:15:36Z",
+   "key": "g|401910024|spread|home",
+   "kind": "line",
+   "text": "NY -3.5 (POR @ NY): line -3.5 at \u2212103 \u2192 -3.5 at \u2212104",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2571,5 +2587,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T20:01:15Z"
+ "updated": "2026-11-21T20:15:36Z"
 }
