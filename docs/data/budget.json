@@ -1,51 +1,9 @@
 {
  "month": "2026-11-17",
- "remaining": 16644,
- "used": 3356,
- "runs": 458,
+ "remaining": 16626,
+ "used": 3374,
+ "runs": 459,
  "log": [
-  {
-   "ts": "2026-11-21T23:01:10Z",
-   "ep": "/sports/soccer_epl/events",
-   "cost": 0,
-   "rem": 16683,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T23:01:10Z",
-   "ep": "/sports/soccer_france_ligue_two/events",
-   "cost": 0,
-   "rem": 16683,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T23:01:10Z",
-   "ep": "/sports/soccer_germany_bundesliga/events",
-   "cost": 0,
-   "rem": 16683,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T23:01:10Z",
-   "ep": "/sports/soccer_spain_la_liga/events",
-   "cost": 0,
-   "rem": 16683,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T23:01:10Z",
-   "ep": "/sports/soccer_spain_segunda_division/events",
-   "cost": 0,
-   "rem": 16683,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T23:01:10Z",
-   "ep": "/sports/soccer_uefa_champs_league/events",
-   "cost": 0,
-   "rem": 16683,
-   "job": "scan"
-  },
   {
    "ts": "2026-11-21T23:01:10Z",
    "ep": "/sports/soccer_usa_mls/events",
@@ -422,6 +380,48 @@
    "ep": "/sports/basketball_nba/events/37e3f99d7ee68587400e99e417db0e6a/odds",
    "cost": 5,
    "rem": 16644,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:11Z",
+   "ep": "/sports",
+   "cost": 0,
+   "rem": 16644,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events",
+   "cost": 0,
+   "rem": 16644,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events/1139ffb82856378723c5465df4e13d96/odds",
+   "cost": 4,
+   "rem": 16640,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events/293cafe6913a9bd59328c98049266ad0/odds",
+   "cost": 5,
+   "rem": 16635,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events/b754a1bf84af81d45d4a3a16398daa44/odds",
+   "cost": 4,
+   "rem": 16631,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:23Z",
+   "ep": "/sports/basketball_nba/events/37e3f99d7ee68587400e99e417db0e6a/odds",
+   "cost": 5,
+   "rem": 16626,
    "job": "props"
   }
  ],
@@ -6074,16 +6074,44 @@
    "cost": 5,
    "rem": 16644,
    "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events/1139ffb82856378723c5465df4e13d96/odds",
+   "cost": 4,
+   "rem": 16640,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events/293cafe6913a9bd59328c98049266ad0/odds",
+   "cost": 5,
+   "rem": 16635,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:22Z",
+   "ep": "/sports/basketball_nba/events/b754a1bf84af81d45d4a3a16398daa44/odds",
+   "cost": 4,
+   "rem": 16631,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T23:43:23Z",
+   "ep": "/sports/basketball_nba/events/37e3f99d7ee68587400e99e417db0e6a/odds",
+   "cost": 5,
+   "rem": 16626,
+   "job": "props"
   }
  ],
  "ext": [],
- "own_month": 2341,
+ "own_month": 2359,
  "external_month": 0,
  "monthly": 20000,
  "reserve": 300,
  "jobs_cycle": {
   "scan": 1558,
-  "props": 783
+  "props": 801
  },
  "backtest_used": 965,
  "ext_days": {
@@ -6109,17 +6137,17 @@
  "backtest_cap": 5000,
  "jobs_day": {
   "scan": 281,
-  "props": 98
+  "props": 116
  },
  "day": "2026-11-21",
  "days_left": 26,
  "day_budget": 488,
- "spent_today": 379,
- "units_today": 91,
+ "spent_today": 397,
+ "units_today": 94,
  "set_aside": 0,
  "ext_rate": 0.0,
  "plan": 20000,
- "allowance": 127,
+ "allowance": 109,
  "locked": false,
- "updated": "2026-11-21T23:31:13Z"
+ "updated": "2026-11-21T23:43:48Z"
 }

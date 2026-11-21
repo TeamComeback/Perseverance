@@ -20190,16 +20190,6 @@
  },
  "journal": [
   {
-   "ts": "2026-11-17T18:30:26Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-17T18:33:50Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -1.5% over 58 legs, so the market is beating my picks. Raising the minimum edge to 15.0%."
-  },
-  {
    "ts": "2026-11-17T18:34:36Z",
    "kind": "adapt",
    "text": "Model vs market on 6456 graded lines: the 10% model blend scored best (log loss model 0.722, market 0.689). Moving the model's weight from 20% to 17%."
@@ -21688,6 +21678,16 @@
    "ts": "2026-11-21T23:30:41Z",
    "kind": "props",
    "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-21T23:43:23Z",
+   "kind": "focus",
+   "text": "Skipped 38 assists lines, 66 pts+reb+ast lines, 50 reb+ast lines, 23 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
+  },
+  {
+   "ts": "2026-11-21T23:43:23Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -21776,7 +21776,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T23:31:13Z",
+ "updated": "2026-11-21T23:43:48Z",
  "stats": {
   "bets": 83,
   "won": 26,
