@@ -181,7 +181,7 @@
    "p": 0.547,
    "p_sim": 0.775,
    "p_mkt": 0.499,
-   "p_kalshi": 0.492,
+   "p_kalshi": 0.503,
    "ev": 0.023,
    "verdict": "Consider: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "DAL",
@@ -305,7 +305,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.492
+    "kalshi": 0.503
    },
    "started": false,
    "published": {
@@ -509,7 +509,7 @@
    "p": 0.478,
    "p_sim": 0.7,
    "p_mkt": 0.443,
-   "p_kalshi": 0.444,
+   "p_kalshi": 0.45,
    "ev": 0.009,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
@@ -616,7 +616,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.444
+    "kalshi": 0.45
    },
    "started": false,
    "published": {
@@ -1510,8 +1510,11 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-21T21:31:06Z",
+    "why": "confidence fell 51 \u2192 49"
+   },
+   "status": "Removed"
   },
   "g|401910023|spread|home": {
    "key": "g|401910023|spread|home",
@@ -1628,15 +1631,15 @@
    "start": "2026-11-22T01:00Z",
    "side": "Under",
    "point": 230.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 30,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.513,
+   "p": 0.509,
    "p_sim": 0.523,
-   "p_mkt": 0.504,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.03,
+   "ev": -0.022,
    "verdict": "Pass: the price is the case; the main risk is line move.",
    "home": "DAL",
    "away": "LAC",
@@ -1661,8 +1664,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.949,
-    "floor_am": -105,
+    "floor_dec": 1.965,
+    "floor_am": -104,
     "line": null,
     "next": 229.5
    },
@@ -1686,7 +1689,7 @@
    ],
    "kill": [
     "The line reaching 229.5",
-    "The price at 230.5 going past \u2212105",
+    "The price at 230.5 going past \u2212104",
     "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -2043,8 +2046,232 @@
     }
    },
    "first_seen": "2026-11-21T17:01:40Z",
+   "removed": {
+    "at": "2026-11-21T21:31:06Z",
+    "why": "line moved -3.5 \u2192 -2.5"
+   },
+   "status": "Removed"
+  },
+  "g|401910026|total|Over": {
+   "key": "g|401910026|total|Over",
+   "kind": "total",
+   "label": "MEM @ MIN Over 228.5",
+   "espn_id": "401910026",
+   "game": "MEM @ MIN",
+   "start": "2026-11-22T01:00Z",
+   "side": "Over",
+   "point": 228.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 49,
+   "tier": "Consider",
+   "p": 0.542,
+   "p_sim": 0.587,
+   "p_mkt": 0.5,
+   "p_kalshi": null,
+   "ev": 0.029,
+   "verdict": "Consider: simulation and line move agree; the main risk is model record.",
+   "home": "MIN",
+   "away": "MEM",
+   "why": "Sim total 232.6 (after a learned +1.8 correction) vs 228.5 \u00b7 over in 59% of sims vs 50% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes over in 59% of 10,000 simulated games.",
+     "rec": [
+      1216,
+      1061
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (227.5 to 228.5): you're with the money, at a worse number.",
+     "rec": [
+      134,
+      167
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 631-663 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      83,
+      113
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.845,
+    "floor_am": -118,
+    "line": 228.5,
+    "next": 229.5
+   },
+   "watch": [
+    {
+     "pid": "4594268",
+     "name": "Anthony Edwards",
+     "team": "MIN",
+     "status": "Out",
+     "self": false,
+     "min": 34.6
+    },
+    {
+     "pid": "5041935",
+     "name": "Cameron Boozer",
+     "team": "MEM",
+     "status": "Out",
+     "self": false,
+     "min": 28.4
+    },
+    {
+     "pid": "4781746",
+     "name": "Javon Small",
+     "team": "MEM",
+     "status": "Out",
+     "self": false,
+     "min": 23.6
+    }
+   ],
+   "kill": [
+    "The line reaching 229.5",
+    "The price at 228.5 going past \u2212118"
+   ],
+   "market": {
+    "open": null,
+    "now": 228.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-21T21:31:06Z",
+    "edition": "update",
+    "point": 228.5,
+    "dec": 1.9,
+    "am": -111,
+    "conv": 49,
+    "tier": "Consider",
+    "p": 0.542,
+    "play_to": {
+     "floor_dec": 1.845,
+     "floor_am": -118,
+     "line": 228.5,
+     "next": 229.5
+    }
+   },
+   "first_seen": "2026-11-21T21:31:06Z",
    "removed": null,
    "status": "New"
+  },
+  "g|401910028|total|Over": {
+   "key": "g|401910028|total|Over",
+   "kind": "total",
+   "label": "BOS @ SAC Over 216.5",
+   "espn_id": "401910028",
+   "game": "BOS @ SAC",
+   "start": "2026-11-22T03:00Z",
+   "side": "Over",
+   "point": 216.5,
+   "dec": 1.94,
+   "am": -106,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.497,
+   "p_sim": 0.504,
+   "p_mkt": 0.489,
+   "p_kalshi": null,
+   "ev": -0.036,
+   "verdict": "Pass: team model carries it; the main risk is line move.",
+   "home": "SAC",
+   "away": "BOS",
+   "why": "Sim total 216.7 (after a learned +1.8 correction) vs 216.5 \u00b7 over in 50% of sims vs 49% DraftKings",
+   "for": [
+    {
+     "tag": "team model",
+     "t": "Team ratings project 219.7 points, 3.2 on your side of 216.5.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (217.5 to 216.5).",
+     "rec": [
+      168,
+      133
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "50% of sims are blowouts, and benches slow the scoring late.",
+     "rec": [
+      315,
+      283
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 631-663 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      83,
+      113
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.012,
+    "floor_am": 101,
+    "line": null,
+    "next": 217.5
+   },
+   "watch": [
+    {
+     "pid": "4065648",
+     "name": "Jayson Tatum",
+     "team": "BOS",
+     "status": "Out",
+     "self": false,
+     "min": 34.3
+    },
+    {
+     "pid": "3078576",
+     "name": "Derrick White",
+     "team": "BOS",
+     "status": "Out",
+     "self": false,
+     "min": 30.7
+    }
+   ],
+   "kill": [
+    "The line reaching 217.5",
+    "The price at 216.5 going past +101"
+   ],
+   "market": {
+    "open": null,
+    "now": 216.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-21T21:31:06Z",
+    "edition": "update",
+    "point": 216.5,
+    "dec": 1.94,
+    "am": -106,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.497,
+    "play_to": {
+     "floor_dec": 2.012,
+     "floor_am": 101,
+     "line": null,
+     "next": 217.5
+    }
+   },
+   "first_seen": "2026-11-21T21:31:06Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -2530,6 +2757,41 @@
    "kind": "conviction",
    "text": "NY -3.5 (POR @ NY): conviction 37 Pass \u2192 30 Pass",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T21:31:06Z",
+   "key": "g|401910026|total|Over",
+   "kind": "added",
+   "text": "Added: MEM @ MIN Over 228.5 at \u2212111, conviction 49",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T21:31:06Z",
+   "key": "g|401910025|total|Under",
+   "kind": "line",
+   "text": "LAC @ DAL Under 230.5: line 230.5 at \u2212112 \u2192 230.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T21:31:06Z",
+   "key": "g|401910028|total|Over",
+   "kind": "added",
+   "text": "Added: BOS @ SAC Over 216.5 at \u2212106, conviction 29",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T21:31:06Z",
+   "key": "g|401910026|spread|away",
+   "kind": "removed",
+   "text": "Removed: MEM +6.5 (MEM @ MIN) \u2014 confidence fell 51 \u2192 49",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T21:31:06Z",
+   "key": "g|401910024|spread|home",
+   "kind": "removed",
+   "text": "Removed: NY -3.5 (POR @ NY) \u2014 line moved -3.5 \u2192 -2.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2610,5 +2872,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T21:15:34Z"
+ "updated": "2026-11-21T21:31:06Z"
 }

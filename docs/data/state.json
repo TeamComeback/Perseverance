@@ -19665,7 +19665,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1025,
+  "min_edge": 0.1,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -19960,7 +19960,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-21T20:30:32Z",
+   "last_scanned": "2026-11-21T21:30:34Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -20005,10 +20005,10 @@
    "last_scanned": "2026-11-21T07:00:39Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-21T20:16:01Z"
+   "last_scanned": "2026-11-21T21:30:34Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-11-21T07:15:19Z"
+   "last_scanned": "2026-11-21T21:30:34Z"
   },
   "soccer_germany_bundesliga": {
    "last_scanned": "2026-11-21T20:46:08Z"
@@ -20171,16 +20171,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T12:15:20Z",
-   "kind": "research",
-   "text": "Self-checks pass again: Odds API credits recovered."
-  },
-  {
-   "ts": "2026-11-17T13:05:45Z",
-   "kind": "race",
-   "text": "Perseverance run #1 LOST at $8.16 (peak $100.00, 61 bets). Owner reset the bankroll: run #2 starts from $100; record and lessons carry over."
-  },
   {
    "ts": "2026-11-17T13:45:39Z",
    "kind": "research",
@@ -21670,6 +21660,16 @@
    "ts": "2026-11-21T20:52:32Z",
    "kind": "scan",
    "text": "Scanned americanfootball_nfl (11) for 3 credits. Nothing cleared the bar. Equity $51.22."
+  },
+  {
+   "ts": "2026-11-21T21:30:34Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.00% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-21T21:30:41Z",
+   "kind": "research",
+   "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
   }
  ],
  "learned_ids": [
@@ -21758,7 +21758,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T21:15:34Z",
+ "updated": "2026-11-21T21:31:06Z",
  "stats": {
   "bets": 83,
   "won": 26,
@@ -21789,5 +21789,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
