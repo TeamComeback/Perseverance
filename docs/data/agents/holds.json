@@ -1,26 +1,21 @@
 {
  "holds": [
   {
-   "bet_id": "e17bf579",
-   "player": "Alperen Sengun",
-   "pid": "4871144",
-   "stat": "ra",
-   "kind": "news",
-   "reason": "Sengun (eye) is reported available (RotoWire, Nov 20) while Capela is out and Steven Adams is questionable, so he likely carries more center minutes than usual, which works against an Under 15.5 RA; the prop has also dropped off today's Best Bets."
-  },
-  {
-   "player": "Darryn Peterson",
+   "player": "Daniel Gafford",
    "stat": "reb",
+   "game": "LAC @ DAL",
    "kind": "thin_edge",
-   "reason": "EV is 2.1% at -128, inside the under-3% bucket where the market moved toward the model only 43.8% of the time (48 moved lines), and it rides the same script as the open Peterson RA Under bet 1cf1b314."
+   "reason": "EV is only 2.2% after the learned 19% model weight, and it rides the same low-Dallas-rebounding script as the open Cooper Flagg R+A Under (bet 65aaa4de, EV 8.5%), making it the weaker of two correlated legs."
   },
   {
-   "game": "HOU @ DEN",
-   "kind": "thin_edge",
-   "reason": "The Under 227.5 Best Bet has 2.7% EV (under the 3% line where toward_model is 43.8%), and the 224.7 sim total leans on a learned +2.0 correction that this edge depends on entirely."
+   "player": "Taylor Hendricks",
+   "stat": "reb",
+   "game": "MEM @ MIN",
+   "kind": "news",
+   "reason": "Newsroom reports Jerami Grant and Cameron Boozer both out, thinning Memphis's frontcourt and pushing Hendricks's minutes up against an Under whose EV is already just 0.06%."
   }
  ],
- "notes": "Only PHX@UTAH, HOU@DEN and SAC@LAL were still to tip at review time; holds on in-progress games would do nothing. Sabonis Under 16.5 RA (d26e8b41) and Peterson RA Under 8.5 (1cf1b314) carry no new news, but neither is on the current Best Bets list, so their 11-12% placement EV may have faded. All 8 open bets are matchup_under RA Unders, which keeps the slate's exposure in one direction. Backtest: 10%+ edges move toward the model 63.8% of the time, but CLV is negative in every bucket (-3.5% to -4.5%). Sources: https://www.rotowire.com/basketball/headlines/alperen-sengun-news-available-to-play-540238 , https://athlonsports.com/nba/houston-rockets/final-injury-report-for-rockets-nuggets-will-alperen-sengun-steven-adams-play",
- "updated": "2026-11-21T02:19:02Z",
+ "notes": "Flagg R+A Under (65aaa4de) left alone: EV 8.5%, no Dallas news in the brief, and a 2026-dated injury check didn't turn up anything usable. The two arb legs (9f69e006, 42989098) offset each other at a 0.9% EV and the game tipped at 22:00Z, so there's nothing to hold. MIL @ PHI is final. NO +18.5 (60% vs 49%) and MEM +5.5 (58% vs 49%) disagree with the market by 9-11 points, which lands in the 6-10%/10%+ buckets where the market moved toward the model 61-64% of the time; Ty Jerome being probable helps the MEM side. POR @ NY is already a Pass, but Towns and Avdija are both questionable, so any late NY +1.5 bet should wait for those calls. Caveat on all props: prop CLV is negative in every edge bucket (-3.5% to -4.5%) and hit rates are 46-52%, so even the larger edges haven't beaten the close yet.",
+ "updated": "2026-11-21T23:19:20Z",
  "by": "skeptic"
 }
