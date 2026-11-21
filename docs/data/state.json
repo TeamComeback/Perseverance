@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 36.84,
+  "cash": 31.84,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -17323,7 +17323,7 @@
       "book": "draftkings",
       "fair_p": 0.4928,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.91,
        "gain": 0.0105,
@@ -17359,6 +17359,22 @@
          "txt": "DEN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 133.0,
+       "away": 124.0
+      },
+      "actual": 21.0,
+      "box": {
+       "min": 36.0,
+       "pts": 28.0,
+       "reb": 11.0,
+       "ast": 10.0,
+       "tpm": 1.0,
+       "tpa": 2.0,
+       "fga": 16.0,
+       "fta": 13.0,
+       "tov": 2.0
       }
      }
     ],
@@ -17369,10 +17385,10 @@
     "note": "Proj 10.9 vs line 15.5 (norm 10.8, 25 min). Model 88% vs market 49%. DEN gives centers +1% reb+ast vs their norm (#15 toughest of 30) \u00b7 Players with his profile: +6% reb+ast vs DEN (105 close comps) \u00b7 His history vs DEN: 13.2 reb+ast/g in 5 games (-1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T16:01:31Z",
     "shadow": {
      "newsroom": {
       "hold": true,
@@ -17386,6 +17402,211 @@
       "at": "2026-11-21T02:19:02Z",
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 21 reb+ast vs Under 15.5",
+     "final": "Houston Rockets 124 \u2013 Denver Nuggets 133",
+     "legs": [
+      {
+       "outcome": "Alperen Sengun Under",
+       "result": "loss",
+       "headline": "21 reb+ast vs Under 15.5",
+       "final": "Houston Rockets 124 \u2013 Denver Nuggets 133",
+       "why": [
+        "Alperen Sengun finished with 21 reb+ast against a line of 15.5: under missed by 5.5.",
+        "Minutes: played 36 vs 24.8 projected.",
+        "Box score: 11 reb \u00b7 10 ast, 2 TO.",
+        "Model projected 10.9 (10.8 norm \u00d7 1.02 matchup); actual was +10.1 off (+3.6 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (15.6) in a matchup the model rated soft.",
+        "Signal: DEN gives centers +1% reb+ast vs their norm (#15 toughest of 30)",
+        "Signal: Players with his profile: +6% reb+ast vs DEN (105 close comps)",
+        "Signal: His history vs DEN: 13.2 reb+ast/g in 5 games (-1%)",
+        "We priced it at 59% to hit vs 52% needed to break even at 1.93x (+13.1% expected edge).",
+        "Consensus fair probability when placed: 49% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "DEN",
+        "away": "HOU"
+       },
+       "final": "HOU 124 \u2013 DEN 133",
+       "periods": {
+        "away": [
+         33,
+         27,
+         42,
+         22
+        ],
+        "home": [
+         31,
+         31,
+         37,
+         34
+        ]
+       },
+       "largest_lead": {
+        "HOU": 5,
+        "DEN": 12
+       },
+       "largest_lead_at": {
+        "HOU": "11:44 4th Q",
+        "DEN": "1.5 4th Q"
+       },
+       "lead_changes": 32,
+       "ties": 17,
+       "runs": [
+        {
+         "team": "DEN",
+         "pts": 10,
+         "from": "4:57 4th Q",
+         "to": "3:02 4th Q",
+         "score": "HOU 115-120 DEN"
+        },
+        {
+         "team": "HOU",
+         "pts": 9,
+         "from": "52.9 3rd Q",
+         "to": "11:44 4th Q",
+         "score": "HOU 104-99 DEN"
+        },
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "5:58 2nd Q",
+         "to": "4:45 2nd Q",
+         "score": "HOU 54-50 DEN"
+        },
+        {
+         "team": "HOU",
+         "pts": 8,
+         "from": "8:04 3rd Q",
+         "to": "6:09 3rd Q",
+         "score": "HOU 82-78 DEN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DEN",
+         "swing": 17,
+         "from": "5:10 4th Q",
+         "to": "1.5 4th Q",
+         "mins": 5.1,
+         "from_score": "HOU 115-110 DEN",
+         "to_score": "HOU 121-133 DEN",
+         "pts_for": 23,
+         "pts_against": 6
+        }
+       ],
+       "clutch": [
+        "3:02 4th Q: Christian Braun makes 2-foot driving dunk (HOU 115-120 DEN)",
+        "2:43 4th Q: Jabari Smith Jr. makes dunk (Alperen Sengun assists) (HOU 117-120 DEN)",
+        "2:24 4th Q: Jamal Murray makes 13-foot fade away jump shot (Nikola Jokic assists) (HOU 117-122 DEN)",
+        "2:01 4th Q: Nikola Jokic makes free throw 1 of 2 (HOU 117-123 DEN)",
+        "2:01 4th Q: Nikola Jokic makes free throw 2 of 2 (HOU 117-124 DEN)",
+        "1:33 4th Q: Jamal Murray makes free throw 1 of 3 (HOU 119-125 DEN)",
+        "1:33 4th Q: Jamal Murray makes free throw 2 of 3 (HOU 119-126 DEN)",
+        "57.3 4th Q: Nikola Jokic makes two point shot (HOU 121-129 DEN)"
+       ],
+       "leaders": [
+        "Alperen Sengun (HOU): 28 pts, 11 reb, 10 ast, 1-2 3PT in 36 min",
+        "Fred VanVleet (HOU): 25 pts, 1 reb, 9 ast, 3-9 3PT in 33 min",
+        "Nikola Jokic (DEN): 26 pts, 7 reb, 11 ast, 2-3 3PT in 38 min",
+        "Cameron Johnson (DEN): 19 pts, 3 reb, 6 ast, 2-6 3PT in 29 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 5,
+          "reb": 2,
+          "ast": 4,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 11,
+          "reb": 3,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 7,
+          "reb": 3,
+          "ast": 4,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 5,
+          "reb": 3,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "7:24 1st Q"
+        ],
+        "box": {
+         "id": "4871144",
+         "name": "Alperen Sengun",
+         "team": "HOU",
+         "min": "36",
+         "pts": 28,
+         "reb": 11,
+         "ast": 10,
+         "3pt": "1-2",
+         "fg": "9-16",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: HOU 60-62 DEN, DEN up 2.",
+        "The 4th quarter decided the most: DEN won it 34-22.",
+        "Largest leads: HOU 5 (11:44 4th Q), DEN 12 (1.5 4th Q). 32 lead changes, 17 ties.",
+        "Momentum swing: DEN outscored them 23-6 in 5.1 minutes (5:10 4th Q to 1.5 4th Q), moving it from HOU 115-110 DEN to HOU 121-133 DEN.",
+        "DEN went on a 10-0 run (4:57 4th Q to 3:02 4th Q), making it HOU 115-120 DEN.",
+        "HOU went on a 9-0 run (52.9 3rd Q to 11:44 4th Q), making it HOU 104-99 DEN.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Alperen Sengun by period (REB+AST): Q1 6, Q2 4, Q3 7, Q4 4.",
+        "He went over 15.5 in Q3.",
+        "Threes made at: 7:24 1st Q."
+       ],
+       "espn_id": "401909312",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909312"
+      }
+     ]
     }
    },
    {
@@ -17413,7 +17634,7 @@
       "book": "hardrockbet",
       "fair_p": 0.4617,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.02,
        "gain": 0.0149,
@@ -17449,6 +17670,22 @@
          "txt": "PHX games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 101.0,
+       "away": 111.0
+      },
+      "actual": 18.0,
+      "box": {
+       "min": 32.0,
+       "pts": 20.0,
+       "reb": 10.0,
+       "ast": 8.0,
+       "tpm": 0.0,
+       "tpa": 7.0,
+       "fga": 20.0,
+       "fta": 8.0,
+       "tov": 1.0
       }
      }
     ],
@@ -17459,10 +17696,10 @@
     "note": "Proj 6.1 vs line 8.5 (norm 6.2, 26 min). Model 81% vs market 46%. PHX gives shooting guards -3% reb+ast vs their norm (#11 toughest of 30) \u00b7 Players with his profile: -1% reb+ast vs PHX (165 close comps) \u00b7 No history vs PHX yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T16:01:32Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -17472,6 +17709,202 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 18 reb+ast vs Under 8.5",
+     "final": "Phoenix Suns 111 \u2013 Utah Jazz 101",
+     "legs": [
+      {
+       "outcome": "Darryn Peterson Under",
+       "result": "loss",
+       "headline": "18 reb+ast vs Under 8.5",
+       "final": "Phoenix Suns 111 \u2013 Utah Jazz 101",
+       "why": [
+        "Darryn Peterson finished with 18 reb+ast against a line of 8.5: under missed by 9.5.",
+        "Minutes: played 32 vs 26.2 projected.",
+        "Box score: 10 reb \u00b7 8 ast, 1 TO.",
+        "Model projected 6.1 (6.2 norm \u00d7 0.99 matchup); actual was +11.9 off (+7.5 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (7.6) in a matchup the model rated tough.",
+        "Signal: PHX gives shooting guards -3% reb+ast vs their norm (#11 toughest of 30)",
+        "Signal: Players with his profile: -1% reb+ast vs PHX (165 close comps)",
+        "Signal: No history vs PHX yet",
+        "We priced it at 55% to hit vs 49% needed to break even at 2.05x (+12.2% expected edge).",
+        "Consensus fair probability when placed: 46% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "UTAH",
+        "away": "PHX"
+       },
+       "final": "PHX 111 \u2013 UTAH 101",
+       "periods": {
+        "away": [
+         26,
+         35,
+         28,
+         22
+        ],
+        "home": [
+         23,
+         26,
+         27,
+         25
+        ]
+       },
+       "largest_lead": {
+        "PHX": 16,
+        "UTAH": 2
+       },
+       "largest_lead_at": {
+        "PHX": "2:26 2nd Q",
+        "UTAH": "5:38 1st Q"
+       },
+       "lead_changes": 2,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "PHX",
+         "pts": 10,
+         "from": "3:46 1st Q",
+         "to": "1:59 1st Q",
+         "score": "PHX 24-16 UTAH"
+        },
+        {
+         "team": "UTAH",
+         "pts": 9,
+         "from": "2:10 4th Q",
+         "to": "40.9 4th Q",
+         "score": "PHX 105-101 UTAH"
+        },
+        {
+         "team": "UTAH",
+         "pts": 8,
+         "from": "7:50 1st Q",
+         "to": "5:38 1st Q",
+         "score": "PHX 12-14 UTAH"
+        },
+        {
+         "team": "PHX",
+         "pts": 8,
+         "from": "11:11 2nd Q",
+         "to": "10:10 2nd Q",
+         "score": "PHX 36-25 UTAH"
+        }
+       ],
+       "swings": [
+        {
+         "team": "PHX",
+         "swing": 14,
+         "from": "4:55 1st Q",
+         "to": "9:30 2nd Q",
+         "mins": 7.4,
+         "from_score": "PHX 14-16 UTAH",
+         "to_score": "PHX 39-27 UTAH",
+         "pts_for": 25,
+         "pts_against": 11
+        }
+       ],
+       "clutch": [
+        "37.7 4th Q: Devin Booker makes layup (Miles Bridges assists) (PHX 107-101 UTAH)",
+        "18.3 4th Q: Devin Booker makes free throw 1 of 2 (PHX 108-101 UTAH)"
+       ],
+       "leaders": [
+        "Miles Bridges (PHX): 18 pts, 9 reb, 4 ast, 1-4 3PT in 25 min",
+        "Devin Booker (PHX): 23 pts, 2 reb, 3 ast, 1-4 3PT in 38 min",
+        "Darryn Peterson (UTAH): 20 pts, 10 reb, 8 ast, 0-7 3PT in 32 min",
+        "Jaxson Hayes (UTAH): 18 pts, 14 reb, 0 ast, 0-0 3PT in 28 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 5,
+          "reb": 5,
+          "ast": 4,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 7,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 7,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 4,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 4,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "5041955",
+         "name": "Darryn Peterson",
+         "team": "UTAH",
+         "min": "32",
+         "pts": 20,
+         "reb": 10,
+         "ast": 8,
+         "3pt": "0-7",
+         "fg": "7-20",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: PHX 61-49 UTAH, PHX up 12.",
+        "The 2nd quarter decided the most: PHX won it 35-26.",
+        "Largest leads: PHX 16 (2:26 2nd Q), UTAH 2 (5:38 1st Q). 2 lead changes, 3 ties.",
+        "Momentum swing: PHX outscored them 25-11 in 7.4 minutes (4:55 1st Q to 9:30 2nd Q), moving it from PHX 14-16 UTAH to PHX 39-27 UTAH.",
+        "PHX went on a 10-0 run (3:46 1st Q to 1:59 1st Q), making it PHX 24-16 UTAH.",
+        "UTAH went on a 9-0 run (2:10 4th Q to 40.9 4th Q), making it PHX 105-101 UTAH.",
+        "Close finish: 2 scoring plays in the last five minutes with the game within six.",
+        "Darryn Peterson by period (REB+AST): Q1 9, Q2 3, Q3 4, Q4 2.",
+        "He went over 8.5 in Q1."
+       ],
+       "espn_id": "401909311",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909311"
+      }
+     ]
     }
    },
    {
@@ -17820,7 +18253,7 @@
       "book": "fanduel",
       "fair_p": 0.4795,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.95,
        "gain": 0.0359,
@@ -17856,6 +18289,22 @@
          "txt": "LAL games have -6% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 106.0,
+       "away": 104.0
+      },
+      "actual": 17.0,
+      "box": {
+       "min": 38.0,
+       "pts": 19.0,
+       "reb": 16.0,
+       "ast": 1.0,
+       "tpm": 1.0,
+       "tpa": 1.0,
+       "fga": 13.0,
+       "fta": 3.0,
+       "tov": 3.0
       }
      }
     ],
@@ -17866,10 +18315,10 @@
     "note": "Proj 13.5 vs line 16.5 (norm 14.2, 27 min). Model 78% vs market 48%. LAL gives power forwards -8% reb+ast vs their norm (#2 toughest of 30) \u00b7 Players with his profile: -1% reb+ast vs LAL (87 close comps) \u00b7 His history vs LAL: 17.5 reb+ast/g in 2 games (+0%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T16:01:32Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -17879,6 +18328,225 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 17 reb+ast vs Under 16.5",
+     "final": "Sacramento Kings 104 \u2013 Los Angeles Lakers 106",
+     "legs": [
+      {
+       "outcome": "Domantas Sabonis Under",
+       "result": "loss",
+       "headline": "17 reb+ast vs Under 16.5",
+       "final": "Sacramento Kings 104 \u2013 Los Angeles Lakers 106",
+       "why": [
+        "Domantas Sabonis finished with 17 reb+ast against a line of 16.5: under missed by 0.5.",
+        "Minutes: played 38 vs 26.9 projected.",
+        "Box score: 16 reb \u00b7 1 ast, 3 TO.",
+        "Model projected 13.5 (14.2 norm \u00d7 0.95 matchup); actual was +3.5 off (+1.0 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (20.1) in a matchup the model rated tough.",
+        "Signal: LAL gives power forwards -8% reb+ast vs their norm (#2 toughest of 30)",
+        "Signal: Players with his profile: -1% reb+ast vs LAL (87 close comps)",
+        "Signal: His history vs LAL: 17.5 reb+ast/g in 2 games (+0%)",
+        "We priced it at 55% to hit vs 50% needed to break even at 2.02x (+11.5% expected edge).",
+        "Consensus fair probability when placed: 48% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "ordinary-variance",
+        "matchup-read-right",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "LAL",
+        "away": "SAC"
+       },
+       "final": "SAC 104 \u2013 LAL 106",
+       "periods": {
+        "away": [
+         28,
+         34,
+         22,
+         20
+        ],
+        "home": [
+         28,
+         26,
+         28,
+         24
+        ]
+       },
+       "largest_lead": {
+        "SAC": 11,
+        "LAL": 8
+       },
+       "largest_lead_at": {
+        "SAC": "11:09 3rd Q",
+        "LAL": "4:50 4th Q"
+       },
+       "lead_changes": 10,
+       "ties": 15,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 10,
+         "from": "2:36 3rd Q",
+         "to": "11:02 4th Q",
+         "score": "SAC 84-87 LAL"
+        },
+        {
+         "team": "SAC",
+         "pts": 9,
+         "from": "3:38 2nd Q",
+         "to": "2:26 2nd Q",
+         "score": "SAC 54-47 LAL"
+        },
+        {
+         "team": "LAL",
+         "pts": 9,
+         "from": "10:49 3rd Q",
+         "to": "9:00 3rd Q",
+         "score": "SAC 67-65 LAL"
+        },
+        {
+         "team": "SAC",
+         "pts": 8,
+         "from": "4:01 4th Q",
+         "to": "2:32 4th Q",
+         "score": "SAC 101-101 LAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "SAC",
+         "swing": 13,
+         "from": "6:36 2nd Q",
+         "to": "11:09 3rd Q",
+         "mins": 7.5,
+         "from_score": "SAC 38-40 LAL",
+         "to_score": "SAC 67-56 LAL",
+         "pts_for": 29,
+         "pts_against": 16
+        },
+        {
+         "team": "LAL",
+         "swing": 12,
+         "from": "4:41 3rd Q",
+         "to": "11:02 4th Q",
+         "mins": 5.7,
+         "from_score": "SAC 81-72 LAL",
+         "to_score": "SAC 84-87 LAL",
+         "pts_for": 15,
+         "pts_against": 3
+        }
+       ],
+       "clutch": [
+        "3:15 4th Q: De'Andre Hunter makes 24-foot three point jumper (Zach LaVine assists) (SAC 99-101 LAL)",
+        "2:32 4th Q: Domantas Sabonis makes free throw 1 of 2 (SAC 100-101 LAL)",
+        "2:32 4th Q: Domantas Sabonis makes free throw 2 of 2 (SAC 101-101 LAL)",
+        "2:10 4th Q: Quentin Grimes makes free throw 1 of 2 (SAC 101-102 LAL)",
+        "2:10 4th Q: Quentin Grimes makes free throw 2 of 2 (SAC 101-103 LAL)",
+        "1:56 4th Q: De'Andre Hunter makes 3-foot two point shot (Darius Acuff Jr. assists) (SAC 103-103 LAL)",
+        "57.0 4th Q: Quentin Grimes makes 26-foot three point step back jumpshot (Matisse Thybulle assists) (SAC 103-106 LAL)",
+        "6.6 4th Q: Zach LaVine makes free throw 1 of 2 (SAC 104-106 LAL)"
+       ],
+       "leaders": [
+        "De'Andre Hunter (SAC): 30 pts, 6 reb, 2 ast, 5-6 3PT in 37 min",
+        "Domantas Sabonis (SAC): 19 pts, 16 reb, 1 ast, 1-1 3PT in 38 min",
+        "Luka Doncic (LAL): 25 pts, 4 reb, 8 ast, 2-9 3PT in 36 min",
+        "Quentin Grimes (LAL): 13 pts, 5 reb, 7 ast, 1-5 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 8,
+          "reb": 3,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 7,
+          "reb": 5,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 2,
+          "reb": 6,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 2,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 0,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "9:02 2nd Q"
+        ],
+        "box": {
+         "id": "3155942",
+         "name": "Domantas Sabonis",
+         "team": "SAC",
+         "min": "38",
+         "pts": 19,
+         "reb": 16,
+         "ast": 1,
+         "3pt": "1-1",
+         "fg": "8-13",
+         "pf": "3",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: SAC 62-54 LAL, SAC up 8.",
+        "The 2nd quarter decided the most: SAC won it 34-26.",
+        "Largest leads: SAC 11 (11:09 3rd Q), LAL 8 (4:50 4th Q). 10 lead changes, 15 ties.",
+        "Momentum swing: SAC outscored them 29-16 in 7.5 minutes (6:36 2nd Q to 11:09 3rd Q), moving it from SAC 38-40 LAL to SAC 67-56 LAL.",
+        "Momentum swing: LAL outscored them 15-3 in 5.7 minutes (4:41 3rd Q to 11:02 4th Q), moving it from SAC 81-72 LAL to SAC 84-87 LAL.",
+        "LAL went on a 10-0 run (2:36 3rd Q to 11:02 4th Q), making it SAC 84-87 LAL.",
+        "SAC went on a 9-0 run (3:38 2nd Q to 2:26 2nd Q), making it SAC 54-47 LAL.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Domantas Sabonis by period (REB+AST): Q1 3, Q2 5, Q3 7, Q4 2.",
+        "He went over 16.5 in Q4.",
+        "Threes made at: 9:02 2nd Q."
+       ],
+       "espn_id": "401909313",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909313"
+      }
+     ]
     }
    },
    {
@@ -18904,6 +19572,83 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "65aaa4de",
+    "placed": "2026-11-21T16:01:41Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "293cafe6913a9bd59328c98049266ad0",
+      "sport": "basketball_nba",
+      "commence": "2026-11-22T01:10:00Z",
+      "home": "Dallas Mavericks",
+      "away": "Los Angeles Clippers",
+      "market": "player_rebounds_assists",
+      "outcome": "Cooper Flagg Under",
+      "side": "Under",
+      "player": "Cooper Flagg",
+      "player_id": "5041939",
+      "stat": "ra",
+      "espn_id": "401910025",
+      "point": 13.5,
+      "price": 1.81,
+      "book": "draftkings",
+      "fair_p": 0.5301,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.77,
+       "gain": 0.0226,
+       "n": 5
+      },
+      "model": {
+       "proj": 10.31,
+       "base": 10.66,
+       "minutes": 29.9,
+       "mult": 0.967,
+       "sd": 2.92,
+       "p_model": 0.8154,
+       "p_mkt": 0.5301,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.949,
+         "txt": "LAC gives small forwards -5% reb+ast vs their norm (#7 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.016,
+         "txt": "Players with his profile: +2% reb+ast vs LAC (169 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.945,
+         "txt": "His history vs LAC: 11.0 reb+ast/g in 4 games (-6%)"
+        },
+        {
+         "k": "chances",
+         "v": 0.977,
+         "txt": "LAC games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 1.81,
+    "stake": 5.0,
+    "ev": 0.0847,
+    "p": 0.5993,
+    "note": "Proj 10.3 vs line 13.5 (norm 10.7, 30 min). Model 82% vs market 53%. LAC gives small forwards -5% reb+ast vs their norm (#7 toughest of 30) \u00b7 Players with his profile: +2% reb+ast vs LAC (169 close comps) \u00b7 His history vs LAC: 11.0 reb+ast/g in 4 games (-6%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -19134,16 +19879,16 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 43,
-   "staked": 215.0,
-   "profit": -81.65,
+   "bets": 46,
+   "staked": 230.0,
+   "profit": -96.65,
    "clv_n": 28,
    "clv_sum": -0.8301100000000006,
    "tags": {
     "ordinary-variance": {
-     "n": 16,
+     "n": 17,
      "won": 9,
-     "lost": 7
+     "lost": 8
     },
     "dnp-void": {
      "n": 2,
@@ -19151,19 +19896,19 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 20,
+     "n": 22,
      "won": 7,
-     "lost": 13
+     "lost": 15
     },
     "matchup-read-wrong": {
-     "n": 18,
+     "n": 19,
      "won": 4,
-     "lost": 14
+     "lost": 15
     },
     "near-miss": {
-     "n": 10,
+     "n": 11,
      "won": 0,
-     "lost": 10
+     "lost": 11
     },
     "blowout": {
      "n": 8,
@@ -19171,14 +19916,14 @@
      "lost": 4
     },
     "model-miss": {
-     "n": 21,
+     "n": 23,
      "won": 0,
-     "lost": 21
+     "lost": 23
     },
     "minutes-long": {
-     "n": 16,
+     "n": 19,
      "won": 1,
-     "lost": 15
+     "lost": 18
     },
     "model-beat": {
      "n": 3,
@@ -19198,9 +19943,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-21T07:00:39Z",
-   "bets": 62.0,
-   "staked": 331.16999999999996,
-   "profit": -87.32
+   "bets": 65.0,
+   "staked": 346.16999999999996,
+   "profit": -102.32
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-21T07:00:37Z",
@@ -19426,36 +20171,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-16T18:00:46Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-16T19:00:49Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-16T19:30:36Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Alperen Sengun Over 16.5 @ +100 (FanDuel) \u2014 LOST: 16 reb+ast vs Over 16.5 [blowout, matchup-read-right, minutes-short, near-miss]"
-  },
-  {
-   "ts": "2026-11-16T19:30:42Z",
-   "kind": "props",
-   "text": "NBA matchups: 8 games, strongest spots: Zach Edey ra +16% vs WSH; James Harden ast +14% vs CHI; Zach Edey pra +14% vs WSH. Bought prop odds for MEM@WSH (ast, ra) (2 credits). Placed 1: Cam Spencer Under 7.5 @ -105 (theScore Bet)"
-  },
-  {
-   "ts": "2026-11-16T19:35:21Z",
-   "kind": "adapt",
-   "text": "Model vs market on 5870 graded lines: the 15% model blend scored best (log loss model 0.718, market 0.689). Moving the model's weight from 23% to 20%."
-  },
-  {
-   "ts": "2026-11-16T19:35:21Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran -1.4% vs actual over 1902 player-games: level x0.890; AST projections ran -2.0% vs actual over 1902 player-games: level x0.910; TPM projections ran -3.9% vs actual over 1902 player-games: level x0.976; PRA projections ran -1.1% vs actual over 1902 player-games: level x0.901; starter minutes were off by +0.9 on average over 986 player-games: correction -1.8 min; conviction factor 'minutes' helped by +0.5 pts of hit rate over 6064 plays: weight 0.99 -> 1.05; conviction factor 'bump' hurt by -1.8 pts of hit rate over 1556 plays: weight 0.79 -> 0.87; conviction factor 'vegas' helped by +1.3 pts of hit rate over 2567 plays: weight 1.19 -> 1.10; conviction factor 'blowout' helped by +1.0 pts of hit rate over 738 plays: weight 1.14 -> 1.06."
-  },
   {
    "ts": "2026-11-16T19:35:21Z",
    "kind": "daily",
@@ -20925,6 +21640,36 @@
    "ts": "2026-11-21T15:45:36Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 21: 6 games, 147 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-21T16:00:48Z",
+   "kind": "research",
+   "text": "Research refresh for Sat Nov 21: 6 games, 147 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-21T16:01:32Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Alperen Sengun Under 15.5 @ -108 (DraftKings) \u2014 LOST: 21 reb+ast vs Under 15.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-21T16:01:32Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Darryn Peterson Under 8.5 @ +105 (Hard Rock Bet) \u2014 LOST: 18 reb+ast vs Under 8.5 [matchup-read-wrong, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-21T16:01:32Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Domantas Sabonis Under 16.5 @ +102 (FanDuel) \u2014 LOST: 17 reb+ast vs Under 16.5 [matchup-read-right, minutes-long, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-21T16:01:40Z",
+   "kind": "focus",
+   "text": "Skipped 74 pts+reb+ast lines, 22 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets reb+ast, rebounds."
+  },
+  {
+   "ts": "2026-11-21T16:01:41Z",
+   "kind": "props",
+   "text": "NBA matchups: 6 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; VJ Edgecombe ra +13% vs MIL. Bought prop odds for NO@SA (ra, ast, pra, team totals), MIL@PHI (ra, ast, pra, team totals), LAC@DAL (ra, ast, pra, tpm, team totals), BOS@SAC (ra, ast, pra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (22 credits). Placed 1: Cooper Flagg Under 13.5 @ -123 (DraftKings)"
   }
  ],
  "learned_ids": [
@@ -21007,26 +21752,29 @@
   "0a5ce7fa",
   "c486b4d9",
   "0d4b2a04",
-  "aab02831"
+  "aab02831",
+  "e17bf579",
+  "1cf1b314",
+  "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T15:46:15Z",
+ "updated": "2026-11-21T16:02:11Z",
  "stats": {
-  "bets": 80,
+  "bets": 83,
   "won": 26,
-  "lost": 52,
-  "shop_n": 24,
-  "shop_avg": 0.0538,
+  "lost": 55,
+  "shop_n": 25,
+  "shop_avg": 0.0525,
   "push": 2,
-  "staked": 456.94,
-  "profit": -125.62,
-  "roi": -0.2749,
+  "staked": 471.94,
+  "profit": -140.62,
+  "roi": -0.298,
   "clv": -0.0085,
   "clv_n": 64,
-  "clv_no_close": 18,
+  "clv_no_close": 21,
   "close_mins_median": 4,
-  "open": 5,
-  "equity": 66.22
+  "open": 3,
+  "equity": 51.22
  },
  "weights": {
   "value_fav": 0.842,
@@ -21035,7 +21783,7 @@
   "arb": 1.086,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
-  "matchup_under": 0.317
+  "matchup_under": 0.3
  },
  "paused": [
   "value_dog",
