@@ -17060,7 +17060,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    },
    {
     "id": "e17bf579",
@@ -17309,7 +17318,11 @@
       "hold": true,
       "why": "Randle Under 10.5 RA and Porter Jr. Under 8.5 RA (c486b4d9) are both Brooklyn unders riding the same slow/low-volume BKN script, and Randle's edge has shrunk fr",
       "at": "2026-11-20T23:19:26Z",
-      "final": false
+      "final": true
+     },
+     "newsroom": {
+      "hold": false,
+      "final": true
      }
     }
    },
@@ -17465,7 +17478,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    },
    {
     "id": "0d4b2a04",
@@ -17628,7 +17650,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    }
   ],
   "runs": [
@@ -18144,16 +18175,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-15T18:47:34Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 211 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-15T19:27:54Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 211 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-15T19:30:37Z",
    "kind": "props",
@@ -19643,6 +19664,16 @@
    "ts": "2026-11-21T00:30:47Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "kind": "focus",
+   "text": "Skipped 99 pts+reb+ast lines: on the graded record the market alone beats the model in those stats, so the agent only bets reb+ast, rebounds."
+  },
+  {
+   "ts": "2026-11-21T00:39:58Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: Nic Claxton ra +17% vs WSH; Josh Giddey ast +16% vs WSH; Spencer Jones ra -14% vs HOU. Bought prop odds for WSH@CHI (ra, ast, pra, team totals), HOU@DEN (ra, ast, pra, team totals), NO@OKC (ra, ast, pra, team totals), PHX@UTAH (ra, ast, pra, team totals), SAC@LAL (ra, ast, pra, team totals) (20 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -19723,7 +19754,7 @@
   "1c4a9295"
  ],
  "strategist": null,
- "updated": "2026-11-21T00:31:27Z",
+ "updated": "2026-11-21T00:40:39Z",
  "stats": {
   "bets": 75,
   "won": 26,

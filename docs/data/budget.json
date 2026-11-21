@@ -1,58 +1,9 @@
 {
  "month": "2026-11-17",
- "remaining": 17055,
- "used": 2945,
- "runs": 355,
+ "remaining": 17035,
+ "used": 2965,
+ "runs": 356,
  "log": [
-  {
-   "ts": "2026-11-21T00:00:33Z",
-   "ep": "/sports/soccer_switzerland_superleague/events",
-   "cost": 0,
-   "rem": 17083,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T00:00:33Z",
-   "ep": "/sports/soccer_uefa_champs_league/events",
-   "cost": 0,
-   "rem": 17083,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T00:00:33Z",
-   "ep": "/sports/soccer_usa_mls/events",
-   "cost": 0,
-   "rem": 17083,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T00:00:34Z",
-   "ep": "/sports",
-   "cost": 0,
-   "rem": 17083,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-21T00:00:45Z",
-   "ep": "/sports/basketball_nba/events",
-   "cost": 0,
-   "rem": 17083,
-   "job": "props"
-  },
-  {
-   "ts": "2026-11-21T00:00:45Z",
-   "ep": "/sports/basketball_nba/events/d6ed1e97c331fc604506e4c354ab1cdc/odds",
-   "cost": 4,
-   "rem": 17079,
-   "job": "props"
-  },
-  {
-   "ts": "2026-11-21T00:00:46Z",
-   "ep": "/sports/basketball_nba/events/086d2fe80483ffcc280994fe2e12d4f4/odds",
-   "cost": 4,
-   "rem": 17075,
-   "job": "props"
-  },
   {
    "ts": "2026-11-21T00:00:46Z",
    "ep": "/sports/basketball_nba/events/10e9b9aca502ce158d6a3a91bf00bfd2/odds",
@@ -423,6 +374,55 @@
    "cost": 0,
    "rem": 17055,
    "job": "scan"
+  },
+  {
+   "ts": "2026-11-21T00:39:46Z",
+   "ep": "/sports",
+   "cost": 0,
+   "rem": 17055,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-21T00:39:56Z",
+   "ep": "/sports/basketball_nba/events",
+   "cost": 0,
+   "rem": 17055,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:56Z",
+   "ep": "/sports/basketball_nba/events/d6ed1e97c331fc604506e4c354ab1cdc/odds",
+   "cost": 4,
+   "rem": 17051,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/086d2fe80483ffcc280994fe2e12d4f4/odds",
+   "cost": 4,
+   "rem": 17047,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/17e3a8dc71275a88b19d0d6750a5052c/odds",
+   "cost": 4,
+   "rem": 17043,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/ee204ae35d677450476eab6ad6a146a7/odds",
+   "cost": 4,
+   "rem": 17039,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/55c3096b11f501ffb6d8bccbb2cd319d/odds",
+   "cost": 4,
+   "rem": 17035,
+   "job": "props"
   }
  ],
  "paid": [
@@ -5031,16 +5031,51 @@
    "cost": 4,
    "rem": 17055,
    "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:56Z",
+   "ep": "/sports/basketball_nba/events/d6ed1e97c331fc604506e4c354ab1cdc/odds",
+   "cost": 4,
+   "rem": 17051,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/086d2fe80483ffcc280994fe2e12d4f4/odds",
+   "cost": 4,
+   "rem": 17047,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/17e3a8dc71275a88b19d0d6750a5052c/odds",
+   "cost": 4,
+   "rem": 17043,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/ee204ae35d677450476eab6ad6a146a7/odds",
+   "cost": 4,
+   "rem": 17039,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-21T00:39:57Z",
+   "ep": "/sports/basketball_nba/events/55c3096b11f501ffb6d8bccbb2cd319d/odds",
+   "cost": 4,
+   "rem": 17035,
+   "job": "props"
   }
  ],
  "ext": [],
- "own_month": 1930,
+ "own_month": 1950,
  "external_month": 0,
  "monthly": 20000,
  "reserve": 300,
  "jobs_cycle": {
   "scan": 1277,
-  "props": 653
+  "props": 673
  },
  "backtest_used": 965,
  "ext_days": {
@@ -5066,17 +5101,17 @@
  "backtest_cap": 5000,
  "jobs_day": {
   "scan": 241,
-  "props": 215
+  "props": 235
  },
  "day": "2026-11-20",
  "days_left": 27,
  "day_budget": 488,
- "spent_today": 456,
- "units_today": 98,
+ "spent_today": 476,
+ "units_today": 101,
  "set_aside": 0,
  "ext_rate": 0.0,
  "plan": 20000,
- "allowance": 0,
+ "allowance": 32,
  "locked": false,
- "updated": "2026-11-21T00:30:35Z"
+ "updated": "2026-11-21T00:40:39Z"
 }
