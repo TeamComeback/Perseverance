@@ -957,7 +957,7 @@
     "now": 4.5,
     "kalshi": 0.558
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-20T15:16:33Z",
     "edition": "update",
@@ -976,7 +976,7 @@
    },
    "first_seen": "2026-11-20T15:16:33Z",
    "removed": null,
-   "status": "New"
+   "status": "Started"
   },
   "p|4431893|ra|Under": {
    "key": "p|4431893|ra|Under",
@@ -1300,21 +1300,21 @@
    "point": 227.5,
    "dec": 1.94,
    "am": -106,
-   "conv": 48,
+   "conv": 50,
    "tier": "Consider",
-   "p": 0.528,
-   "p_sim": 0.569,
+   "p": 0.532,
+   "p_sim": 0.577,
    "p_mkt": 0.491,
    "p_kalshi": null,
-   "ev": 0.025,
+   "ev": 0.033,
    "verdict": "Consider: simulation carries it; the main risk is model record.",
    "home": "DEN",
    "away": "HOU",
-   "why": "Sim total 224.7 (after a learned +2.0 correction) vs 227.5 \u00b7 under in 57% of sims vs 49% DraftKings",
+   "why": "Sim total 224.3 (after a learned +2.0 correction) vs 227.5 \u00b7 under in 58% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 57% of 10,000 simulated games.",
+     "t": "Goes under in 58% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1332,15 +1332,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.894,
-    "floor_am": -112,
+    "floor_dec": 1.88,
+    "floor_am": -114,
     "line": null,
     "next": 226.5
    },
    "watch": [],
    "kill": [
     "The line reaching 226.5",
-    "The price at 227.5 going past \u2212112"
+    "The price at 227.5 going past \u2212114"
    ],
    "market": {
     "open": null,
@@ -1488,7 +1488,18 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": -9
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": -9
+   },
+   "clv": null
   },
   "g|401909313|total|Under": {
    "key": "g|401909313|total|Under",
@@ -3378,7 +3389,7 @@
  "alerts": 6,
  "slate": {
   "games": 9,
-  "to_tip": 3,
+  "to_tip": 2,
   "first": "2026-11-21T00:00Z",
   "questionable": [],
   "picks": 7
@@ -3390,5 +3401,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-21T02:45:30Z"
+ "updated": "2026-11-21T03:01:06Z"
 }
