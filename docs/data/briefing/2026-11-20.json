@@ -199,8 +199,11 @@
     }
    },
    "first_seen": "2026-11-20T11:45:26Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-21T00:31:27Z",
+    "why": "no longer +EV at tonight's line (2.5 at +120)"
+   },
+   "status": "Removed"
   },
   "p|3064514|ra|Under": {
    "key": "p|3064514|ra|Under",
@@ -211,15 +214,15 @@
    "start": "2026-11-21T00:30Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 2.03,
-   "am": 103,
-   "conv": 54,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 51,
    "tier": "Consider",
-   "p": 0.517,
-   "p_sim": 0.732,
-   "p_mkt": 0.46,
+   "p": 0.531,
+   "p_sim": 0.714,
+   "p_mkt": 0.479,
    "p_kalshi": null,
-   "ev": 0.049,
+   "ev": 0.035,
    "verdict": "Consider: simulation and recent form agree; the main risk is minutes.",
    "home": "BKN",
    "away": "ORL",
@@ -229,14 +232,14 @@
    "opp": "ORL",
    "stat": "ra",
    "proj": 7.8,
-   "sim": 8.8,
+   "sim": 8.9,
    "ob_ind": 8.5,
    "avg10": 9.4,
    "minutes": 27.7,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 73% of 10,000 simulated games (sim average 8.8).",
+     "t": "Goes under in 71% of 10,000 simulated games (sim average 8.9).",
      "rec": [
       1114,
       954
@@ -286,8 +289,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.934,
-    "floor_am": -107,
+    "floor_dec": 1.883,
+    "floor_am": -113,
     "line": null,
     "next": 9.5
    },
@@ -303,7 +306,7 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212107",
+    "The price at 10.5 going past \u2212113",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -651,7 +654,7 @@
     "now": 6.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-20T11:45:26Z",
     "edition": "morning",
@@ -670,7 +673,7 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "p|4397189|reb|Under": {
    "key": "p|4397189|reb|Under",
@@ -966,6 +969,184 @@
    "first_seen": "2026-11-20T15:16:33Z",
    "removed": null,
    "status": "Past play-to"
+  },
+  "p|4431893|ra|Under": {
+   "key": "p|4431893|ra|Under",
+   "kind": "prop",
+   "label": "Jamison Battle Under 3.5 reb+ast",
+   "espn_id": "401909308",
+   "game": "TOR @ DET",
+   "start": "2026-11-21T00:30Z",
+   "side": "Under",
+   "point": 3.5,
+   "dec": 2.06,
+   "am": 106,
+   "conv": 50,
+   "tier": "Consider",
+   "p": 0.502,
+   "p_sim": 0.662,
+   "p_mkt": 0.454,
+   "p_kalshi": null,
+   "ev": 0.035,
+   "verdict": "Consider: recent form and simulation agree; the main risk is matchup.",
+   "home": "DET",
+   "away": "TOR",
+   "pid": "4431893",
+   "name": "Jamison Battle",
+   "team": "TOR",
+   "opp": "DET",
+   "stat": "ra",
+   "proj": 2.5,
+   "sim": 3,
+   "ob_ind": 2.5,
+   "avg10": 2.4,
+   "minutes": 20.9,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 66% of 10,000 simulated games (sim average 3).",
+     "rec": [
+      1114,
+      954
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 2.5 reb+ast against a line of 3.5.",
+     "rec": [
+      1161,
+      1005
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 2.5 in 6 of his last 10.",
+     "rec": [
+      252,
+      225
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 3.5 in 8 of his last 10 (4 of the last 5).",
+     "rec": [
+      932,
+      864
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "DET gives small forwards -6% reb+ast vs their norm (#5 toughest of 30).",
+     "rec": [
+      667,
+      623
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "usage",
+     "t": "+48% without Barrett.",
+     "rec": [
+      95,
+      81
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 20 minutes in the games he went over vs 16.8 otherwise. He's projected for 20.9 tonight.",
+     "rec": [
+      994,
+      891
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "Barrett out: reb+ast +5% tonight. With him off the floor (795 possessions) his usage goes 13% \u2192 16%.",
+     "rec": [
+      721,
+      647
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes up tonight: +1.4 min with Barrett out.",
+     "rec": [
+      201,
+      186
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.992,
+    "floor_am": -101,
+    "line": null,
+    "next": 2.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    },
+    {
+     "pid": "3157465",
+     "name": "Duncan Robinson",
+     "team": "DET",
+     "status": "Out",
+     "self": false,
+     "min": 29.6
+    },
+    {
+     "pid": "6450",
+     "name": "Kawhi Leonard",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 28.5
+    },
+    {
+     "pid": "5093267",
+     "name": "Collin Murray-Boyles",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 24.4
+    }
+   ],
+   "kill": [
+    "The line reaching 2.5",
+    "The price at 3.5 going past \u2212101",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 5.5,
+    "now": 3.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-21T00:31:27Z",
+    "edition": "update",
+    "point": 3.5,
+    "dec": 2.06,
+    "am": 106,
+    "conv": 50,
+    "tier": "Consider",
+    "p": 0.502,
+    "play_to": {
+     "floor_dec": 1.992,
+     "floor_am": -101,
+     "line": null,
+     "next": 2.5
+    }
+   },
+   "first_seen": "2026-11-21T00:31:27Z",
+   "removed": null,
+   "status": "New"
   }
  },
  "leans": {
@@ -1068,7 +1249,7 @@
     "now": 218.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-20T11:45:26Z",
     "edition": "morning",
@@ -1087,34 +1268,34 @@
    },
    "first_seen": "2026-11-20T11:45:26Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "g|401909312|total|Under": {
    "key": "g|401909312|total|Under",
    "kind": "total",
-   "label": "HOU @ DEN Under 228.5",
+   "label": "HOU @ DEN Under 227.5",
    "espn_id": "401909312",
    "game": "HOU @ DEN",
    "start": "2026-11-21T03:00Z",
    "side": "Under",
-   "point": 228.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 48,
+   "point": 227.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 45,
    "tier": "Consider",
-   "p": 0.551,
-   "p_sim": 0.594,
-   "p_mkt": 0.512,
+   "p": 0.534,
+   "p_sim": 0.571,
+   "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.026,
-   "verdict": "Consider: simulation carries it; the main risk is line move.",
+   "ev": 0.015,
+   "verdict": "Consider: simulation carries it; the main risk is model record.",
    "home": "DEN",
    "away": "HOU",
-   "why": "Sim total 224.7 (after a learned +2.0 correction) vs 228.5 \u00b7 under in 59% of sims vs 51% DraftKings",
+   "why": "Sim total 224.7 (after a learned +2.0 correction) vs 227.5 \u00b7 under in 57% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 59% of 10,000 simulated games.",
+     "t": "Goes under in 57% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1122,14 +1303,6 @@
     }
    ],
    "against": [
-    {
-     "tag": "line move",
-     "t": "The line has moved against this side since it opened (227.5 to 228.5).",
-     "rec": [
-      156,
-      124
-     ]
-    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 629-656 against DraftKings' totals. Treat this as a lean.",
@@ -1140,10 +1313,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.815,
-    "floor_am": -123,
-    "line": 228.5,
-    "next": 227.5
+    "floor_dec": 1.873,
+    "floor_am": -115,
+    "line": null,
+    "next": 226.5
    },
    "watch": [
     {
@@ -1156,13 +1329,13 @@
     }
    ],
    "kill": [
-    "The line reaching 227.5",
-    "The price at 228.5 going past \u2212123",
+    "The line reaching 226.5",
+    "The price at 227.5 going past \u2212115",
     "A change in Alperen Sengun (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 228.5,
+    "now": 227.5,
     "kalshi": null
    },
    "started": false,
@@ -1646,8 +1819,11 @@
     }
    },
    "first_seen": "2026-11-20T13:16:28Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-21T00:31:27Z",
+    "why": "confidence fell 44 \u2192 38"
+   },
+   "status": "Removed"
   },
   "g|401909308|spread|home": {
    "key": "g|401909308|spread|home",
@@ -1658,26 +1834,34 @@
    "start": "2026-11-21T00:30Z",
    "side": "home",
    "point": -6.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 37,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 39,
    "tier": "Pass",
-   "p": 0.521,
-   "p_sim": 0.543,
-   "p_mkt": 0.501,
+   "p": 0.527,
+   "p_sim": 0.551,
+   "p_mkt": 0.504,
    "p_kalshi": null,
-   "ev": -0.009,
-   "verdict": "Pass: who's out and line move agree; the main risk is model record.",
+   "ev": -0.004,
+   "verdict": "Pass: simulation and who's out agree; the main risk is model record.",
    "home": "DET",
    "away": "TOR",
-   "why": "Sim: DET by 8.2 on average (TOR 102.4, DET 110.7) \u00b7 DET -6.5 covers in 54% of sims vs 50% DraftKings",
+   "why": "Sim: DET by 8.2 on average (TOR 102.4, DET 110.6) \u00b7 DET -6.5 covers in 55% of sims vs 50% DraftKings",
    "for": [
+    {
+     "tag": "simulation",
+     "t": "Covers in 55% of 10,000 simulated games.",
+     "rec": [
+      1114,
+      954
+     ]
+    },
     {
      "tag": "line move",
      "t": "The line has moved this way since it opened (-1.5 to -6.5): you're with the money, at a worse number.",
      "rec": [
-      108,
-      131
+      117,
+      144
      ]
     },
     {
@@ -1689,16 +1873,16 @@
    "against": [
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 630-651 against DraftKings' spreads. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 631-654 against DraftKings' spreads. Treat this as a lean.",
      "rec": [
-      70,
-      82
+      75,
+      94
      ]
     }
    ],
    "play_to": {
-    "floor_dec": 1.919,
-    "floor_am": -109,
+    "floor_dec": 1.898,
+    "floor_am": -111,
     "line": null,
     "next": -7.5
    },
@@ -1710,14 +1894,6 @@
      "status": "Out",
      "self": false,
      "min": 36.6
-    },
-    {
-     "pid": "4432166",
-     "name": "Cade Cunningham",
-     "team": "DET",
-     "status": "Probable",
-     "self": false,
-     "min": 34.8
     },
     {
      "pid": "3157465",
@@ -1742,12 +1918,19 @@
      "status": "Out",
      "self": false,
      "min": 24.4
+    },
+    {
+     "pid": "5093267",
+     "name": "Collin Murray-Boyles",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 24.4
     }
    ],
    "kill": [
     "The line reaching -7.5",
-    "The price at -6.5 going past \u2212109",
-    "A change in Cade Cunningham (probable): the model re-prices on the next run"
+    "The price at -6.5 going past \u2212111"
    ],
    "market": {
     "open": null,
@@ -1772,11 +1955,8 @@
     }
    },
    "first_seen": "2026-11-20T15:16:33Z",
-   "removed": {
-    "at": "2026-11-20T15:46:31Z",
-    "why": "confidence fell 37 \u2192 34"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401909306|spread|home": {
    "key": "g|401909306|spread|home",
@@ -1787,23 +1967,23 @@
    "start": "2026-11-21T00:30Z",
    "side": "home",
    "point": 6.5,
-   "dec": 1.92,
-   "am": -109,
-   "conv": 41,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 42,
    "tier": "Pass",
-   "p": 0.523,
-   "p_sim": 0.551,
-   "p_mkt": 0.496,
+   "p": 0.532,
+   "p_sim": 0.563,
+   "p_mkt": 0.504,
    "p_kalshi": null,
-   "ev": 0.004,
+   "ev": 0.006,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "BKN",
    "away": "ORL",
-   "why": "Sim: ORL by 4.0 on average (ORL 112.7, BKN 108.8) \u00b7 BKN +6.5 covers in 55% of sims vs 50% DraftKings",
+   "why": "Sim: ORL by 3.7 on average (ORL 111.9, BKN 108.2) \u00b7 BKN +6.5 covers in 56% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 55% of 10,000 simulated games.",
+     "t": "Covers in 56% of 10,000 simulated games.",
      "rec": [
       1114,
       954
@@ -1834,8 +2014,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.912,
-    "floor_am": -110,
+    "floor_dec": 1.88,
+    "floor_am": -114,
     "line": null,
     "next": 5.5
    },
@@ -1851,7 +2031,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212110"
+    "The price at 6.5 going past \u2212114"
    ],
    "market": {
     "open": null,
@@ -1877,7 +2057,7 @@
    },
    "first_seen": "2026-11-20T15:46:31Z",
    "removed": null,
-   "status": "New"
+   "status": "Upgraded"
   },
   "g|401909309|total|Over": {
    "key": "g|401909309|total|Over",
@@ -2899,6 +3079,69 @@
    "kind": "removed",
    "text": "Removed: PHX -4.5 (PHX @ UTAH) \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "p|3064514|ra|Under",
+   "kind": "line",
+   "text": "Julius Randle: line 10.5 at +103 \u2192 10.5 at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "p|4431893|ra|Under",
+   "kind": "added",
+   "text": "Added: Jamison Battle Under 3.5 reb+ast at +106, conviction 50",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "p|4431893|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Jamison Battle Under 3.5 rebounds \u2014 no longer +EV at tonight's line (2.5 at +120)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "g|401909312|total|Under",
+   "kind": "line",
+   "text": "HOU @ DEN Under 227.5: line 228.5 at \u2212116 \u2192 227.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "g|401909306|spread|home",
+   "kind": "line",
+   "text": "BKN +6.5 (ORL @ BKN): line 6.5 at \u2212109 \u2192 6.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "g|401909308|spread|home",
+   "kind": "back",
+   "text": "Back on the board: DET -6.5 (TOR @ DET) at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "g|401909308|spread|home",
+   "kind": "line",
+   "text": "DET -6.5 (TOR @ DET): line -6.5 at \u2212111 \u2192 -6.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "g|401909308|spread|home",
+   "kind": "injury",
+   "text": "Collin Murray-Boyles ruled out (DET -6.5 (TOR @ DET) re-priced: -6.5 at \u2212112, conviction 39)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-21T00:31:27Z",
+   "key": "g|401909310|spread|away",
+   "kind": "removed",
+   "text": "Removed: NO +11.5 (NO @ OKC) \u2014 confidence fell 44 \u2192 38",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3112,14 +3355,9 @@
  "alerts": 6,
  "slate": {
   "games": 9,
-  "to_tip": 9,
+  "to_tip": 8,
   "first": "2026-11-21T00:00Z",
   "questionable": [
-   {
-    "name": "Cade Cunningham",
-    "team": "DET",
-    "status": "Probable"
-   },
    {
     "name": "De'Andre Hunter",
     "team": "SAC",
@@ -3131,7 +3369,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 6
+  "picks": 7
  },
  "leans_record": {
   "w": 13,
@@ -3140,5 +3378,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3438,
- "updated": "2026-11-21T00:15:31Z"
+ "updated": "2026-11-21T00:31:27Z"
 }
