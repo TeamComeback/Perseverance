@@ -3,10 +3,10 @@
   {
    "param": "prop_max_bets",
    "value": 3,
-   "why": "Third night asking, still unapplied: matchup_under is the only playbook past 30 bets (34) and its sample hasn't moved, still -2.96% average CLV on 28 closes and -$46.65 on $170 staked, so trim prop volume from 4 to 3 per run until that CLV turns."
+   "why": "Fourth night asking: matchup_under is still the only playbook past 30 bets and it got worse, now 43 bets and -$81.65 on $215 staked (was 34 and -$46.65), with -2.96% average CLV on its 28 closes and last night's five settled reb+ast unders all lost, so trim prop volume from 4 to 3 per run as a backstop for whenever the pause on matchup_under lifts."
   }
  ],
- "summary": "Overall record moved to 71 bets, 25-44-2, -$90.62 (-22% ROI), but the new bets were college games and the closing-line sample is unchanged at -0.91% on 62 closes, so the only real-sample leak is still matchup_under (34 bets, -2.96% CLV). I'm holding prop_model_weight at its current 0.136 rather than pushing lower: the assist log-loss gap is flat (0.6971 vs 0.6838 on 1323, was 0.6979 vs 0.6844 on 1103) and the scoreboard now shows a small blend gain at w=0.25 for ast, ra and reb, so the evidence for cutting further has not grown. Every game-side playbook (arb 12, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched, with value_dog still paused.",
- "updated": "2026-11-20T10:13:52Z",
+ "summary": "The record slid to 80 bets, 26-52-2, -$125.62 (-27% ROI), almost all of it from matchup_under, which is now paused at 43 bets and -2.96% CLV on 28 closes; overall CLV is -0.85% on 64 closes, about unchanged, and 15 of the new matchup_under bets have no closing price yet, so its CLV sample has not grown. I'm holding prop_model_weight at 0.125 and prop_min_edge at 0.08: the model trails the market on log-loss in every stat (e.g. ra 0.7105 vs 0.6876 on 1568) with only small blend gains at low weights, and the prop edge buckets show no clear CLV gradient (10%+ at -3.8% vs 3-6% at -4.5%). Every game-side playbook (arb 12, value_dog 11 paused, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched.",
+ "updated": "2026-11-21T10:13:35Z",
  "by": "strategist"
 }
