@@ -19683,7 +19683,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0975,
+  "min_edge": 0.095,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -19960,7 +19960,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-21T23:15:28Z",
+   "last_scanned": "2026-11-21T23:30:31Z",
    "bets": 65.0,
    "staked": 346.16999999999996,
    "profit": -102.32
@@ -20128,7 +20128,7 @@
    "last_scanned": "2026-11-20T05:30:24Z"
   },
   "soccer_spain_segunda_division": {
-   "last_scanned": "2026-11-20T06:45:21Z"
+   "last_scanned": "2026-11-21T23:30:31Z"
   },
   "soccer_sweden_superettan": {
    "last_scanned": "2026-11-20T05:15:20Z"
@@ -20182,28 +20182,13 @@
    "last_scanned": "2026-11-21T07:30:23Z"
   },
   "soccer_austria_bundesliga": {
-   "last_scanned": "2026-11-21T06:00:35Z"
+   "last_scanned": "2026-11-21T23:30:32Z"
   },
   "soccer_brazil_serie_b": {
    "last_scanned": "2026-11-21T07:15:19Z"
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T17:30:38Z",
-   "kind": "focus",
-   "text": "Skipped 67 pts+reb+ast lines, 10 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, rebounds."
-  },
-  {
-   "ts": "2026-11-17T17:30:38Z",
-   "kind": "props",
-   "text": "NBA matchups: 5 games, strongest spots: Ja'Kobe Walter ra -15% vs NY; Sandro Mamukelashvili ra -13% vs CHA; Collin Murray-Boyles pra -13% vs NY. Bought prop odds for NY@TOR (ast, ra, pra, team totals), CHA@LAL (ast, ra, pra, team totals), DET@SA (ast, ra, pra, team totals), UTAH@LAC (ast, ra, pra, tpm, team totals) (17 credits). Nothing cleared the bar."
-  },
-  {
-   "ts": "2026-11-17T18:15:47Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 116 players projected, lineups for 5 games."
-  },
   {
    "ts": "2026-11-17T18:30:26Z",
    "kind": "adapt",
@@ -21688,6 +21673,21 @@
    "ts": "2026-11-21T23:00:43Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-21T23:30:32Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-21T23:30:41Z",
+   "kind": "focus",
+   "text": "Skipped 37 assists lines, 68 pts+reb+ast lines, 51 reb+ast lines, 23 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
+  },
+  {
+   "ts": "2026-11-21T23:30:41Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -21776,7 +21776,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T23:15:28Z",
+ "updated": "2026-11-21T23:31:13Z",
  "stats": {
   "bets": 83,
   "won": 26,
@@ -21807,5 +21807,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
