@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T04:00:44Z",
+ "updated": "2026-11-21T04:12:39Z",
  "agents": [
   {
    "name": "Scout",
@@ -20,7 +20,7 @@
    "kind": "program",
    "status": "live",
    "when": "every run, at tip",
-   "detail": "62 of 75 settled legs have a closing price \u00b7 0 credits today"
+   "detail": "62 of 80 settled legs have a closing price \u00b7 0 credits today"
   },
   {
    "name": "Shopper",
@@ -41,14 +41,14 @@
    "kind": "claude",
    "status": "shadow",
    "when": "~11:05am and ~5:05pm ET",
-   "detail": "updated 6h ago \u00b7 14 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
+   "detail": "updated 6h ago \u00b7 19 graded calls \u00b7 would have held 0 bets (0-0, +0.00) \u00b7 saved $0.00"
   },
   {
    "name": "Skeptic",
    "kind": "claude",
    "status": "shadow",
    "when": "~5:45pm and ~9:15pm ET",
-   "detail": "updated 2h ago \u00b7 14 graded calls \u00b7 would have held 2 bets (0-2, -10.00) \u00b7 saved $10.00"
+   "detail": "updated 2h ago \u00b7 19 graded calls \u00b7 would have held 3 bets (0-3, -15.00) \u00b7 saved $15.00"
   },
   {
    "name": "Strategist",
@@ -75,32 +75,32 @@
     "clv": null
    },
    "rest": {
-    "n": 14,
-    "profit": -8.78,
+    "n": 19,
+    "profit": -33.78,
     "won": 6,
-    "lost": 8,
+    "lost": 13,
     "clv": 0.0561
    },
-   "calls": 14,
+   "calls": 19,
    "saved": 0
   },
   "skeptic": {
    "held": {
-    "n": 2,
-    "profit": -10.0,
+    "n": 3,
+    "profit": -15.0,
     "won": 0,
-    "lost": 2,
+    "lost": 3,
     "clv": null
    },
    "rest": {
-    "n": 12,
-    "profit": 1.22,
+    "n": 16,
+    "profit": -18.78,
     "won": 6,
-    "lost": 6,
+    "lost": 10,
     "clv": 0.0561
    },
-   "calls": 14,
-   "saved": 10.0
+   "calls": 19,
+   "saved": 15.0
   }
  },
  "note": "Claude agents start in shadow: their calls are recorded and graded, not acted on. An agent goes live after about 150 graded calls show it helps, and only with the owner's approval."

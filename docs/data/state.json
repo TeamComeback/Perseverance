@@ -17010,7 +17010,7 @@
       "book": "hardrockbet",
       "fair_p": 0.4603,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.045,
        "gain": 0.0269,
@@ -17046,6 +17046,22 @@
          "txt": "DET games have -5% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 102.0,
+       "away": 105.0
+      },
+      "actual": 5.0,
+      "box": {
+       "min": 20.0,
+       "pts": 10.0,
+       "reb": 5.0,
+       "ast": 0.0,
+       "tpm": 2.0,
+       "tpa": 4.0,
+       "fga": 6.0,
+       "fta": 0.0,
+       "tov": 1.0
       }
      }
     ],
@@ -17056,10 +17072,10 @@
     "note": "Proj 2.4 vs line 4.5 (norm 2.6, 20 min). Model 88% vs market 46%. DET gives small forwards -6% reb+ast vs their norm (#5 toughest of 30) \u00b7 Players with his profile: -4% reb+ast vs DET (154 close comps) \u00b7 His history vs DET: 0.0 reb+ast/g in 1 games (+0%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T04:12:38Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -17069,6 +17085,217 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 5 reb+ast vs Under 4.5",
+     "final": "Toronto Raptors 105 \u2013 Detroit Pistons 102",
+     "legs": [
+      {
+       "outcome": "Jamison Battle Under",
+       "result": "loss",
+       "headline": "5 reb+ast vs Under 4.5",
+       "final": "Toronto Raptors 105 \u2013 Detroit Pistons 102",
+       "why": [
+        "Jamison Battle finished with 5 reb+ast against a line of 4.5: under missed by 0.5.",
+        "Minutes: played 20 vs 20.5 projected.",
+        "Box score: 5 reb \u00b7 0 ast, 1 TO.",
+        "Model projected 2.4 (2.6 norm \u00d7 0.93 matchup); actual was +2.6 off (+1.3 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (2.5) in a matchup the model rated tough.",
+        "Signal: DET gives small forwards -6% reb+ast vs their norm (#5 toughest of 30)",
+        "Signal: Players with his profile: -4% reb+ast vs DET (154 close comps)",
+        "Signal: His history vs DET: 0.0 reb+ast/g in 1 games (+0%)",
+        "We priced it at 56% to hit vs 48% needed to break even at 2.1x (+17.8% expected edge).",
+        "Consensus fair probability when placed: 46% (no closing price captured)."
+       ],
+       "tags": [
+        "model-miss",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "model-miss",
+      "near-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "DET",
+        "away": "TOR"
+       },
+       "final": "TOR 105 \u2013 DET 102",
+       "periods": {
+        "away": [
+         26,
+         28,
+         23,
+         28
+        ],
+        "home": [
+         23,
+         25,
+         24,
+         30
+        ]
+       },
+       "largest_lead": {
+        "TOR": 14,
+        "DET": 2
+       },
+       "largest_lead_at": {
+        "TOR": "6:21 3rd Q",
+        "DET": "2:56 4th Q"
+       },
+       "lead_changes": 8,
+       "ties": 6,
+       "runs": [
+        {
+         "team": "DET",
+         "pts": 11,
+         "from": "3:45 3rd Q",
+         "to": "2:08 3rd Q",
+         "score": "TOR 72-70 DET"
+        },
+        {
+         "team": "TOR",
+         "pts": 8,
+         "from": "8:12 1st Q",
+         "to": "6:38 1st Q",
+         "score": "TOR 14-7 DET"
+        },
+        {
+         "team": "DET",
+         "pts": 8,
+         "from": "4:46 4th Q",
+         "to": "2:56 4th Q",
+         "score": "TOR 91-93 DET"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DET",
+         "swing": 13,
+         "from": "6:21 3rd Q",
+         "to": "1:10 3rd Q",
+         "mins": 5.2,
+         "from_score": "TOR 69-55 DET",
+         "to_score": "TOR 73-72 DET",
+         "pts_for": 17,
+         "pts_against": 4
+        },
+        {
+         "team": "TOR",
+         "swing": 10,
+         "from": "9:19 2nd Q",
+         "to": "1:59 2nd Q",
+         "mins": 7.3,
+         "from_score": "TOR 33-31 DET",
+         "to_score": "TOR 54-42 DET",
+         "pts_for": 21,
+         "pts_against": 11
+        }
+       ],
+       "clutch": [
+        "1:33 4th Q: Scottie Barnes makes 12-foot fade away jump shot (TOR 97-97 DET)",
+        "1:19 4th Q: Paul Reed makes 5-foot layup (Cade Cunningham assists) (TOR 97-99 DET)",
+        "55.6 4th Q: Immanuel Quickley makes 7-foot fade away jump shot (Scottie Barnes assists) (TOR 99-99 DET)",
+        "27.1 4th Q: Jakob Poeltl makes tip shot (TOR 101-99 DET)",
+        "19.8 4th Q: Cade Cunningham makes 27-foot three point step back jumpshot (TOR 101-102 DET)",
+        "14.3 4th Q: Scottie Barnes makes driving layup (TOR 103-102 DET)",
+        "4.5 4th Q: Immanuel Quickley makes free throw 1 of 2 (TOR 104-102 DET)",
+        "4.5 4th Q: Immanuel Quickley makes free throw 2 of 2 (TOR 105-102 DET)"
+       ],
+       "leaders": [
+        "Scottie Barnes (TOR): 29 pts, 5 reb, 5 ast, 0-0 3PT in 37 min",
+        "Allen Graves (TOR): 20 pts, 10 reb, 1 ast, 2-4 3PT in 33 min",
+        "Cade Cunningham (DET): 23 pts, 5 reb, 9 ast, 2-7 3PT in 36 min",
+        "Kevin Huerter (DET): 20 pts, 3 reb, 3 ast, 4-8 3PT in 36 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 2,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 0,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 6,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 2,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "7:37 4th Q",
+         "7:05 4th Q"
+        ],
+        "box": {
+         "id": "4431893",
+         "name": "Jamison Battle",
+         "team": "TOR",
+         "min": "20",
+         "pts": 10,
+         "reb": 5,
+         "ast": 0,
+         "3pt": "2-4",
+         "fg": "4-6",
+         "pf": "1",
+         "starter": false
+        }
+       },
+       "story": [
+        "Halftime: TOR 54-48 DET, TOR up 6.",
+        "The 1st quarter decided the most: TOR won it 26-23.",
+        "Largest leads: TOR 14 (6:21 3rd Q), DET 2 (2:56 4th Q). 8 lead changes, 6 ties.",
+        "Momentum swing: DET outscored them 17-4 in 5.2 minutes (6:21 3rd Q to 1:10 3rd Q), moving it from TOR 69-55 DET to TOR 73-72 DET.",
+        "Momentum swing: TOR outscored them 21-11 in 7.3 minutes (9:19 2nd Q to 1:59 2nd Q), moving it from TOR 33-31 DET to TOR 54-42 DET.",
+        "DET went on a 11-0 run (3:45 3rd Q to 2:08 3rd Q), making it TOR 72-70 DET.",
+        "TOR went on a 8-0 run (8:12 1st Q to 6:38 1st Q), making it TOR 14-7 DET.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Jamison Battle by period (REB+AST): Q1 1, Q2 2, Q3 1, Q4 1.",
+        "He went over 4.5 in Q4.",
+        "Threes made at: 7:37 4th Q, 7:05 4th Q."
+       ],
+       "espn_id": "401909308",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909308"
+      }
+     ]
     }
    },
    {
@@ -17272,7 +17499,7 @@
       "book": "fanduel",
       "fair_p": 0.4851,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.95,
        "gain": 0.0154,
@@ -17308,6 +17535,22 @@
          "txt": "ORL games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 111.0,
+       "away": 113.0
+      },
+      "actual": 15.0,
+      "box": {
+       "min": 39.0,
+       "pts": 27.0,
+       "reb": 9.0,
+       "ast": 6.0,
+       "tpm": 1.0,
+       "tpa": 7.0,
+       "fga": 20.0,
+       "fta": 11.0,
+       "tov": 3.0
       }
      }
     ],
@@ -17318,10 +17561,10 @@
     "note": "Proj 7.8 vs line 10.5 (norm 8.1, 28 min). Model 81% vs market 49%. ORL gives small forwards -6% reb+ast vs their norm (#6 toughest of 30) \u00b7 Players with his profile: -3% reb+ast vs ORL (149 close comps) \u00b7 His history vs ORL: 10.0 reb+ast/g in 1 games (+1%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T04:12:38Z",
     "shadow": {
      "skeptic": {
       "hold": true,
@@ -17333,6 +17576,223 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 15 reb+ast vs Under 10.5",
+     "final": "Orlando Magic 113 \u2013 Brooklyn Nets 111",
+     "legs": [
+      {
+       "outcome": "Julius Randle Under",
+       "result": "loss",
+       "headline": "15 reb+ast vs Under 10.5",
+       "final": "Orlando Magic 113 \u2013 Brooklyn Nets 111",
+       "why": [
+        "Julius Randle finished with 15 reb+ast against a line of 10.5: under missed by 4.5.",
+        "Minutes: played 39 vs 27.9 projected.",
+        "Box score: 9 reb \u00b7 6 ast, 3 TO.",
+        "Model projected 7.8 (8.1 norm \u00d7 0.97 matchup); actual was +7.2 off (+3.2 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (11.3) in a matchup the model rated tough.",
+        "Signal: ORL gives small forwards -6% reb+ast vs their norm (#6 toughest of 30)",
+        "Signal: Players with his profile: -3% reb+ast vs ORL (149 close comps)",
+        "Signal: His history vs ORL: 10.0 reb+ast/g in 1 games (+1%)",
+        "We priced it at 56% to hit vs 51% needed to break even at 1.98x (+11.7% expected edge).",
+        "Consensus fair probability when placed: 49% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-wrong"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "BKN",
+        "away": "ORL"
+       },
+       "final": "ORL 113 \u2013 BKN 111",
+       "periods": {
+        "away": [
+         38,
+         24,
+         29,
+         22
+        ],
+        "home": [
+         25,
+         36,
+         27,
+         23
+        ]
+       },
+       "largest_lead": {
+        "ORL": 15,
+        "BKN": 7
+       },
+       "largest_lead_at": {
+        "ORL": "11:45 2nd Q",
+        "BKN": "6:29 1st Q"
+       },
+       "lead_changes": 20,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "ORL",
+         "pts": 14,
+         "from": "2:47 1st Q",
+         "to": "11:45 2nd Q",
+         "score": "ORL 40-25 BKN"
+        },
+        {
+         "team": "BKN",
+         "pts": 10,
+         "from": "9:47 2nd Q",
+         "to": "6:44 2nd Q",
+         "score": "ORL 42-41 BKN"
+        },
+        {
+         "team": "ORL",
+         "pts": 10,
+         "from": "11:07 3rd Q",
+         "to": "8:44 3rd Q",
+         "score": "ORL 72-63 BKN"
+        },
+        {
+         "team": "BKN",
+         "pts": 9,
+         "from": "7:53 1st Q",
+         "to": "6:29 1st Q",
+         "score": "ORL 11-18 BKN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "ORL",
+         "swing": 22,
+         "from": "6:29 1st Q",
+         "to": "11:45 2nd Q",
+         "mins": 6.7,
+         "from_score": "ORL 11-18 BKN",
+         "to_score": "ORL 40-25 BKN",
+         "pts_for": 29,
+         "pts_against": 7
+        },
+        {
+         "team": "BKN",
+         "swing": 14,
+         "from": "11:45 2nd Q",
+         "to": "6:44 2nd Q",
+         "mins": 5.0,
+         "from_score": "ORL 40-25 BKN",
+         "to_score": "ORL 42-41 BKN",
+         "pts_for": 16,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [
+        "3:09 4th Q: Mikel Brown Jr. makes free throw 1 of 1 (ORL 106-105 BKN)",
+        "3:09 4th Q: Mikel Brown Jr. makes driving layup (ORL 106-107 BKN)",
+        "2:20 4th Q: Julius Randle makes 10-foot turnaround jump shot (ORL 106-109 BKN)",
+        "2:00 4th Q: Desmond Bane makes 25-foot three point step back jumpshot (ORL 109-109 BKN)",
+        "1:24 4th Q: Julius Randle makes free throw 1 of 2 (ORL 109-110 BKN)",
+        "1:24 4th Q: Julius Randle makes free throw 2 of 2 (ORL 109-111 BKN)",
+        "30.5 4th Q: Wendell Carter Jr. makes two point shot (ORL 111-111 BKN)",
+        "2.8 4th Q: Franz Wagner makes 14-foot step back jumpshot (ORL 113-111 BKN)"
+       ],
+       "leaders": [
+        "Franz Wagner (ORL): 35 pts, 5 reb, 7 ast, 2-5 3PT in 36 min",
+        "Desmond Bane (ORL): 21 pts, 2 reb, 3 ast, 7-13 3PT in 31 min",
+        "Julius Randle (BKN): 27 pts, 9 reb, 6 ast, 1-7 3PT in 39 min",
+        "Day'Ron Sharpe (BKN): 17 pts, 11 reb, 2 ast, 0-1 3PT in 26 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 9,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 4,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 2,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 7,
+          "reb": 5,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 7,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 7,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 3,
+          "fga": 5,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "9:24 4th Q"
+        ],
+        "box": {
+         "id": "3064514",
+         "name": "Julius Randle",
+         "team": "BKN",
+         "min": "39",
+         "pts": 27,
+         "reb": 9,
+         "ast": 6,
+         "3pt": "1-7",
+         "fg": "9-20",
+         "pf": "5",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: ORL 62-61 BKN, ORL up 1.",
+        "The 1st quarter decided the most: ORL won it 38-25.",
+        "Largest leads: ORL 15 (11:45 2nd Q), BKN 7 (6:29 1st Q). 20 lead changes, 5 ties.",
+        "Momentum swing: ORL outscored them 29-7 in 6.7 minutes (6:29 1st Q to 11:45 2nd Q), moving it from ORL 11-18 BKN to ORL 40-25 BKN.",
+        "Momentum swing: BKN outscored them 16-2 in 5 minutes (11:45 2nd Q to 6:44 2nd Q), moving it from ORL 40-25 BKN to ORL 42-41 BKN.",
+        "ORL went on a 14-0 run (2:47 1st Q to 11:45 2nd Q), making it ORL 40-25 BKN.",
+        "BKN went on a 10-0 run (9:47 2nd Q to 6:44 2nd Q), making it ORL 42-41 BKN.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Julius Randle by period (REB+AST): Q1 4, Q2 2, Q3 6, Q4 3.",
+        "He went over 10.5 in Q3.",
+        "Threes made at: 9:24 4th Q."
+       ],
+       "espn_id": "401909306",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909306"
+      }
+     ]
     }
    },
    {
@@ -17446,7 +17906,7 @@
       "book": "hardrockbet",
       "fair_p": 0.4617,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.05,
        "gain": 0.0244,
@@ -17482,6 +17942,22 @@
          "txt": "ORL games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 111.0,
+       "away": 113.0
+      },
+      "actual": 9.0,
+      "box": {
+       "min": 34.0,
+       "pts": 16.0,
+       "reb": 4.0,
+       "ast": 5.0,
+       "tpm": 3.0,
+       "tpa": 6.0,
+       "fga": 14.0,
+       "fta": 2.0,
+       "tov": 3.0
       }
      }
     ],
@@ -17492,10 +17968,10 @@
     "note": "Proj 6.8 vs line 8.5 (norm 7.3, 30 min). Model 75% vs market 46%. ORL gives small forwards -6% reb+ast vs their norm (#6 toughest of 30) \u00b7 Players with his profile: -3% reb+ast vs ORL (140 close comps) \u00b7 His history vs ORL: 9.3 reb+ast/g in 3 games (-5%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T04:12:38Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -17505,6 +17981,225 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 9 reb+ast vs Under 8.5",
+     "final": "Orlando Magic 113 \u2013 Brooklyn Nets 111",
+     "legs": [
+      {
+       "outcome": "Michael Porter Jr. Under",
+       "result": "loss",
+       "headline": "9 reb+ast vs Under 8.5",
+       "final": "Orlando Magic 113 \u2013 Brooklyn Nets 111",
+       "why": [
+        "Michael Porter Jr. finished with 9 reb+ast against a line of 8.5: under missed by 0.5.",
+        "Minutes: played 34 vs 29.5 projected.",
+        "Box score: 4 reb \u00b7 5 ast, 3 TO.",
+        "Model projected 6.8 (7.3 norm \u00d7 0.93 matchup); actual was +2.2 off (+0.7 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (8.4) in a matchup the model rated tough.",
+        "Signal: ORL gives small forwards -6% reb+ast vs their norm (#6 toughest of 30)",
+        "Signal: Players with his profile: -3% reb+ast vs ORL (140 close comps)",
+        "Signal: His history vs ORL: 9.3 reb+ast/g in 3 games (-5%)",
+        "We priced it at 53% to hit vs 48% needed to break even at 2.1x (+11.4% expected edge).",
+        "Consensus fair probability when placed: 46% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "BKN",
+        "away": "ORL"
+       },
+       "final": "ORL 113 \u2013 BKN 111",
+       "periods": {
+        "away": [
+         38,
+         24,
+         29,
+         22
+        ],
+        "home": [
+         25,
+         36,
+         27,
+         23
+        ]
+       },
+       "largest_lead": {
+        "ORL": 15,
+        "BKN": 7
+       },
+       "largest_lead_at": {
+        "ORL": "11:45 2nd Q",
+        "BKN": "6:29 1st Q"
+       },
+       "lead_changes": 20,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "ORL",
+         "pts": 14,
+         "from": "2:47 1st Q",
+         "to": "11:45 2nd Q",
+         "score": "ORL 40-25 BKN"
+        },
+        {
+         "team": "BKN",
+         "pts": 10,
+         "from": "9:47 2nd Q",
+         "to": "6:44 2nd Q",
+         "score": "ORL 42-41 BKN"
+        },
+        {
+         "team": "ORL",
+         "pts": 10,
+         "from": "11:07 3rd Q",
+         "to": "8:44 3rd Q",
+         "score": "ORL 72-63 BKN"
+        },
+        {
+         "team": "BKN",
+         "pts": 9,
+         "from": "7:53 1st Q",
+         "to": "6:29 1st Q",
+         "score": "ORL 11-18 BKN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "ORL",
+         "swing": 22,
+         "from": "6:29 1st Q",
+         "to": "11:45 2nd Q",
+         "mins": 6.7,
+         "from_score": "ORL 11-18 BKN",
+         "to_score": "ORL 40-25 BKN",
+         "pts_for": 29,
+         "pts_against": 7
+        },
+        {
+         "team": "BKN",
+         "swing": 14,
+         "from": "11:45 2nd Q",
+         "to": "6:44 2nd Q",
+         "mins": 5.0,
+         "from_score": "ORL 40-25 BKN",
+         "to_score": "ORL 42-41 BKN",
+         "pts_for": 16,
+         "pts_against": 2
+        }
+       ],
+       "clutch": [
+        "3:09 4th Q: Mikel Brown Jr. makes free throw 1 of 1 (ORL 106-105 BKN)",
+        "3:09 4th Q: Mikel Brown Jr. makes driving layup (ORL 106-107 BKN)",
+        "2:20 4th Q: Julius Randle makes 10-foot turnaround jump shot (ORL 106-109 BKN)",
+        "2:00 4th Q: Desmond Bane makes 25-foot three point step back jumpshot (ORL 109-109 BKN)",
+        "1:24 4th Q: Julius Randle makes free throw 1 of 2 (ORL 109-110 BKN)",
+        "1:24 4th Q: Julius Randle makes free throw 2 of 2 (ORL 109-111 BKN)",
+        "30.5 4th Q: Wendell Carter Jr. makes two point shot (ORL 111-111 BKN)",
+        "2.8 4th Q: Franz Wagner makes 14-foot step back jumpshot (ORL 113-111 BKN)"
+       ],
+       "leaders": [
+        "Franz Wagner (ORL): 35 pts, 5 reb, 7 ast, 2-5 3PT in 36 min",
+        "Desmond Bane (ORL): 21 pts, 2 reb, 3 ast, 7-13 3PT in 31 min",
+        "Julius Randle (BKN): 27 pts, 9 reb, 6 ast, 1-7 3PT in 39 min",
+        "Day'Ron Sharpe (BKN): 17 pts, 11 reb, 2 ast, 0-1 3PT in 26 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 5,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 9,
+          "reb": 1,
+          "ast": 3,
+          "tpm": 2,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 2,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 3,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 0,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 0
+         }
+        ],
+        "threes_at": [
+         "5:48 1st Q",
+         "11:26 2nd Q",
+         "11:00 2nd Q"
+        ],
+        "box": {
+         "id": "4278104",
+         "name": "Michael Porter Jr.",
+         "team": "BKN",
+         "min": "34",
+         "pts": 16,
+         "reb": 4,
+         "ast": 5,
+         "3pt": "3-6",
+         "fg": "6-14",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: ORL 62-61 BKN, ORL up 1.",
+        "The 1st quarter decided the most: ORL won it 38-25.",
+        "Largest leads: ORL 15 (11:45 2nd Q), BKN 7 (6:29 1st Q). 20 lead changes, 5 ties.",
+        "Momentum swing: ORL outscored them 29-7 in 6.7 minutes (6:29 1st Q to 11:45 2nd Q), moving it from ORL 11-18 BKN to ORL 40-25 BKN.",
+        "Momentum swing: BKN outscored them 16-2 in 5 minutes (11:45 2nd Q to 6:44 2nd Q), moving it from ORL 40-25 BKN to ORL 42-41 BKN.",
+        "ORL went on a 14-0 run (2:47 1st Q to 11:45 2nd Q), making it ORL 40-25 BKN.",
+        "BKN went on a 10-0 run (9:47 2nd Q to 6:44 2nd Q), making it ORL 42-41 BKN.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Michael Porter Jr. by period (REB+AST): Q1 2, Q2 4, Q3 2, Q4 1.",
+        "He went over 8.5 in Q4.",
+        "Threes made at: 5:48 1st Q, 11:26 2nd Q, 11:00 2nd Q."
+       ],
+       "espn_id": "401909306",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909306"
+      }
+     ]
     }
    },
    {
@@ -17532,7 +18227,7 @@
       "book": "betmgm",
       "fair_p": 0.4719,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.95,
        "gain": 0.1026,
@@ -17568,6 +18263,22 @@
          "txt": "CHA games have -9% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 111.0,
+       "away": 97.0
+      },
+      "actual": 7.0,
+      "box": {
+       "min": 32.0,
+       "pts": 17.0,
+       "reb": 4.0,
+       "ast": 3.0,
+       "tpm": 2.0,
+       "tpa": 8.0,
+       "fga": 20.0,
+       "fta": 1.0,
+       "tov": 1.0
       }
      }
     ],
@@ -17578,10 +18289,10 @@
     "note": "Proj 5.8 vs line 6.5 (norm 6.1, 31 min). Model 66% vs market 47%. CHA gives shooting guards -2% reb+ast vs their norm (#13 toughest of 30) \u00b7 Players with his profile: -1% reb+ast vs CHA (144 close comps) \u00b7 His history vs CHA: 9.2 reb+ast/g in 5 games (+10%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T04:12:38Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -17591,6 +18302,214 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 7 reb+ast vs Under 6.5",
+     "final": "Charlotte Hornets 97 \u2013 Atlanta Hawks 111",
+     "legs": [
+      {
+       "outcome": "Nickeil Alexander-Walker Under",
+       "result": "loss",
+       "headline": "7 reb+ast vs Under 6.5",
+       "final": "Charlotte Hornets 97 \u2013 Atlanta Hawks 111",
+       "why": [
+        "Nickeil Alexander-Walker finished with 7 reb+ast against a line of 6.5: under missed by 0.5.",
+        "Minutes: played 32 vs 30.9 projected.",
+        "Box score: 4 reb \u00b7 3 ast, 1 TO.",
+        "Model projected 5.8 (6.1 norm \u00d7 0.95 matchup); actual was +1.2 off (+0.5 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (6.3) in a matchup the model rated tough.",
+        "Signal: CHA gives shooting guards -2% reb+ast vs their norm (#13 toughest of 30)",
+        "Signal: Players with his profile: -1% reb+ast vs CHA (144 close comps)",
+        "Signal: His history vs CHA: 9.2 reb+ast/g in 5 games (+10%)",
+        "We priced it at 52% to hit vs 47% needed to break even at 2.15x (+11.0% expected edge).",
+        "Consensus fair probability when placed: 47% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "ATL",
+        "away": "CHA"
+       },
+       "final": "CHA 97 \u2013 ATL 111",
+       "periods": {
+        "away": [
+         31,
+         26,
+         19,
+         21
+        ],
+        "home": [
+         23,
+         33,
+         31,
+         24
+        ]
+       },
+       "largest_lead": {
+        "CHA": 14,
+        "ATL": 19
+       },
+       "largest_lead_at": {
+        "CHA": "6:30 2nd Q",
+        "ATL": "7:42 4th Q"
+       },
+       "lead_changes": 6,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "CHA",
+         "pts": 14,
+         "from": "8:41 1st Q",
+         "to": "6:02 1st Q",
+         "score": "CHA 19-11 ATL"
+        },
+        {
+         "team": "ATL",
+         "pts": 12,
+         "from": "5:44 2nd Q",
+         "to": "2:47 2nd Q",
+         "score": "CHA 50-48 ATL"
+        },
+        {
+         "team": "ATL",
+         "pts": 10,
+         "from": "9:20 4th Q",
+         "to": "7:42 4th Q",
+         "score": "CHA 80-99 ATL"
+        },
+        {
+         "team": "CHA",
+         "pts": 8,
+         "from": "4:58 4th Q",
+         "to": "3:08 4th Q",
+         "score": "CHA 94-104 ATL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "ATL",
+         "swing": 18,
+         "from": "9:20 3rd Q",
+         "to": "1:39 3rd Q",
+         "mins": 7.7,
+         "from_score": "CHA 62-56 ATL",
+         "to_score": "CHA 74-86 ATL",
+         "pts_for": 30,
+         "pts_against": 12
+        },
+        {
+         "team": "CHA",
+         "swing": 17,
+         "from": "9:19 1st Q",
+         "to": "2:29 1st Q",
+         "mins": 6.8,
+         "from_score": "CHA 5-11 ATL",
+         "to_score": "CHA 26-15 ATL",
+         "pts_for": 21,
+         "pts_against": 4
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Moussa Diabate (CHA): 21 pts, 15 reb, 2 ast, 0-0 3PT in 30 min",
+        "Brandon Miller (CHA): 19 pts, 8 reb, 3 ast, 5-13 3PT in 33 min",
+        "Jalen Johnson (ATL): 26 pts, 6 reb, 6 ast, 3-4 3PT in 36 min",
+        "Dyson Daniels (ATL): 11 pts, 8 reb, 10 ast, 1-3 3PT in 35 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 5,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 5,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 2
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 3,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 4,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "2:25 2nd Q",
+         "8:52 3rd Q"
+        ],
+        "box": {
+         "id": "4278039",
+         "name": "Nickeil Alexander-Walker",
+         "team": "ATL",
+         "min": "32",
+         "pts": 17,
+         "reb": 4,
+         "ast": 3,
+         "3pt": "2-8",
+         "fg": "7-20",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: CHA 57-56 ATL, CHA up 1.",
+        "The 3rd quarter decided the most: ATL won it 31-19.",
+        "Largest leads: CHA 14 (6:30 2nd Q), ATL 19 (7:42 4th Q). 6 lead changes, 3 ties.",
+        "Momentum swing: ATL outscored them 30-12 in 7.7 minutes (9:20 3rd Q to 1:39 3rd Q), moving it from CHA 62-56 ATL to CHA 74-86 ATL.",
+        "Momentum swing: CHA outscored them 21-4 in 6.8 minutes (9:19 1st Q to 2:29 1st Q), moving it from CHA 5-11 ATL to CHA 26-15 ATL.",
+        "CHA went on a 14-0 run (8:41 1st Q to 6:02 1st Q), making it CHA 19-11 ATL.",
+        "ATL went on a 12-0 run (5:44 2nd Q to 2:47 2nd Q), making it CHA 50-48 ATL.",
+        "Nickeil Alexander-Walker by period (REB+AST): Q1 1, Q2 4, Q3 1, Q4 1.",
+        "He went over 6.5 in Q4.",
+        "Threes made at: 2:25 2nd Q, 8:52 3rd Q."
+       ],
+       "espn_id": "401909305",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909305"
+      }
+     ]
     }
    },
    {
@@ -17618,7 +18537,7 @@
       "book": "draftkings",
       "fair_p": 0.4755,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.98,
        "gain": 0.0152,
@@ -17654,6 +18573,22 @@
          "txt": "CLE games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 128.0,
+       "away": 119.0
+      },
+      "actual": 12.0,
+      "box": {
+       "min": 27.0,
+       "pts": 21.0,
+       "reb": 10.0,
+       "ast": 2.0,
+       "tpm": 0.0,
+       "tpa": 0.0,
+       "fga": 11.0,
+       "fta": 6.0,
+       "tov": 2.0
       }
      }
     ],
@@ -17664,10 +18599,10 @@
     "note": "Proj 8.2 vs line 10.5 (norm 8.1, 21 min). Model 78% vs market 48%. CLE gives centers +4% reb+ast vs their norm (#9 softest of 30) \u00b7 Players with his profile: +1% reb+ast vs CLE (163 close comps) \u00b7 His history vs CLE: 22.0 reb+ast/g in 1 games (+4%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-21T04:12:38Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -17677,6 +18612,211 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 12 reb+ast vs Under 10.5",
+     "final": "Indiana Pacers 119 \u2013 Cleveland Cavaliers 128",
+     "legs": [
+      {
+       "outcome": "Ivica Zubac Under",
+       "result": "loss",
+       "headline": "12 reb+ast vs Under 10.5",
+       "final": "Indiana Pacers 119 \u2013 Cleveland Cavaliers 128",
+       "why": [
+        "Ivica Zubac finished with 12 reb+ast against a line of 10.5: under missed by 1.5.",
+        "Minutes: played 27 vs 21 projected.",
+        "Box score: 10 reb \u00b7 2 ast, 2 TO.",
+        "Model projected 8.2 (8.1 norm \u00d7 1.02 matchup); actual was +3.8 off (+1.3 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (10.4) in a matchup the model rated soft.",
+        "Signal: CLE gives centers +4% reb+ast vs their norm (#9 softest of 30)",
+        "Signal: Players with his profile: +1% reb+ast vs CLE (163 close comps)",
+        "Signal: His history vs CLE: 22.0 reb+ast/g in 1 games (+4%)",
+        "We priced it at 55% to hit vs 50% needed to break even at 2.01x (+10.2% expected edge).",
+        "Consensus fair probability when placed: 48% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CLE",
+        "away": "IND"
+       },
+       "final": "IND 119 \u2013 CLE 128",
+       "periods": {
+        "away": [
+         29,
+         32,
+         22,
+         36
+        ],
+        "home": [
+         29,
+         33,
+         43,
+         23
+        ]
+       },
+       "largest_lead": {
+        "IND": 14,
+        "CLE": 26
+       },
+       "largest_lead_at": {
+        "IND": "7:48 2nd Q",
+        "CLE": "11:33 4th Q"
+       },
+       "lead_changes": 11,
+       "ties": 8,
+       "runs": [
+        {
+         "team": "CLE",
+         "pts": 12,
+         "from": "5:20 3rd Q",
+         "to": "3:06 3rd Q",
+         "score": "IND 77-99 CLE"
+        },
+        {
+         "team": "IND",
+         "pts": 10,
+         "from": "9:23 1st Q",
+         "to": "7:55 1st Q",
+         "score": "IND 12-8 CLE"
+        },
+        {
+         "team": "IND",
+         "pts": 10,
+         "from": "9:12 2nd Q",
+         "to": "7:48 2nd Q",
+         "score": "IND 50-36 CLE"
+        },
+        {
+         "team": "CLE",
+         "pts": 10,
+         "from": "4:29 2nd Q",
+         "to": "3:10 2nd Q",
+         "score": "IND 53-55 CLE"
+        }
+       ],
+       "swings": [
+        {
+         "team": "CLE",
+         "swing": 21,
+         "from": "7:45 3rd Q",
+         "to": "0.0 3rd Q",
+         "mins": 7.8,
+         "from_score": "IND 73-76 CLE",
+         "to_score": "IND 83-107 CLE",
+         "pts_for": 31,
+         "pts_against": 10
+        },
+        {
+         "team": "IND",
+         "swing": 17,
+         "from": "3:19 1st Q",
+         "to": "7:48 2nd Q",
+         "mins": 7.5,
+         "from_score": "IND 20-23 CLE",
+         "to_score": "IND 50-36 CLE",
+         "pts_for": 30,
+         "pts_against": 13
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Ivica Zubac (IND): 21 pts, 10 reb, 2 ast, 0-0 3PT in 27 min",
+        "Pascal Siakam (IND): 21 pts, 7 reb, 2 ast, 2-6 3PT in 30 min",
+        "James Harden (CLE): 51 pts, 6 reb, 6 ast, 7-11 3PT in 40 min",
+        "Donovan Mitchell (CLE): 20 pts, 3 reb, 3 ast, 2-7 3PT in 29 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 4,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 2,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 12,
+          "reb": 6,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 6,
+          "fgm": 4
+         }
+        ],
+        "threes_at": [],
+        "box": {
+         "id": "4017837",
+         "name": "Ivica Zubac",
+         "team": "IND",
+         "min": "27",
+         "pts": 21,
+         "reb": 10,
+         "ast": 2,
+         "3pt": "0-0",
+         "fg": "8-11",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: IND 61-62 CLE, CLE up 1.",
+        "The 3rd quarter decided the most: CLE won it 43-22.",
+        "Largest leads: IND 14 (7:48 2nd Q), CLE 26 (11:33 4th Q). 11 lead changes, 8 ties.",
+        "Momentum swing: CLE outscored them 31-10 in 7.8 minutes (7:45 3rd Q to 0.0 3rd Q), moving it from IND 73-76 CLE to IND 83-107 CLE.",
+        "Momentum swing: IND outscored them 30-13 in 7.5 minutes (3:19 1st Q to 7:48 2nd Q), moving it from IND 20-23 CLE to IND 50-36 CLE.",
+        "CLE went on a 12-0 run (5:20 3rd Q to 3:06 3rd Q), making it IND 77-99 CLE.",
+        "IND went on a 10-0 run (9:23 1st Q to 7:55 1st Q), making it IND 12-8 CLE.",
+        "No real closing drama: the game was decided before the last five minutes.",
+        "Ivica Zubac by period (REB+AST): Q1 2, Q2 1, Q3 3, Q4 6.",
+        "He went over 10.5 in Q4."
+       ],
+       "espn_id": "401909307",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909307"
+      }
+     ]
     }
    }
   ],
@@ -17694,7 +18834,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1,
+  "min_edge": 0.105,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -17908,16 +19048,16 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 38,
-   "staked": 190.0,
-   "profit": -56.650000000000006,
+   "bets": 43,
+   "staked": 215.0,
+   "profit": -81.65,
    "clv_n": 28,
    "clv_sum": -0.8301100000000006,
    "tags": {
     "ordinary-variance": {
-     "n": 14,
+     "n": 16,
      "won": 9,
-     "lost": 5
+     "lost": 7
     },
     "dnp-void": {
      "n": 2,
@@ -17925,19 +19065,19 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 19,
+     "n": 20,
      "won": 7,
-     "lost": 12
+     "lost": 13
     },
     "matchup-read-wrong": {
-     "n": 14,
+     "n": 18,
      "won": 4,
-     "lost": 10
+     "lost": 14
     },
     "near-miss": {
-     "n": 7,
+     "n": 10,
      "won": 0,
-     "lost": 7
+     "lost": 10
     },
     "blowout": {
      "n": 8,
@@ -17945,14 +19085,14 @@
      "lost": 4
     },
     "model-miss": {
-     "n": 18,
+     "n": 21,
      "won": 0,
-     "lost": 18
+     "lost": 21
     },
     "minutes-long": {
-     "n": 14,
+     "n": 16,
      "won": 1,
-     "lost": 13
+     "lost": 15
     },
     "model-beat": {
      "n": 3,
@@ -17965,15 +19105,16 @@
      "lost": 0
     }
    },
-   "clv_gate": false
+   "clv_gate": false,
+   "bench_noted": true
   }
  },
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-20T21:45:22Z",
-   "bets": 57.0,
-   "staked": 306.16999999999996,
-   "profit": -62.31999999999999
+   "bets": 62.0,
+   "staked": 331.16999999999996,
+   "profit": -87.32
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-20T21:30:30Z",
@@ -18193,46 +19334,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-15T23:54:49Z",
-   "kind": "error",
-   "text": "Self-check failed: Odds API credits (0 left, 16 days to go: -1.6 a day after the reserve)"
-  },
-  {
-   "ts": "2026-11-16T00:00:47Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 214 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-16T00:25:50Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 214 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-16T00:30:40Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 214 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-16T01:00:46Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 215 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-16T01:15:35Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 216 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-16T02:00:44Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 214 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-16T02:43:42Z",
-   "kind": "research",
-   "text": "Research refresh for Sun Nov 15: 9 games, 216 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-16T02:57:40Z",
    "kind": "scan",
@@ -19692,6 +20793,46 @@
    "ts": "2026-11-21T03:58:06Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Jamison Battle Under 4.5 @ +110 (Hard Rock Bet) \u2014 LOST: 5 reb+ast vs Under 4.5 [matchup-read-wrong, model-miss, near-miss]"
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Julius Randle Under 10.5 @ -102 (FanDuel) \u2014 LOST: 15 reb+ast vs Under 10.5 [matchup-read-wrong, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Michael Porter Jr. Under 8.5 @ +110 (Hard Rock Bet) \u2014 LOST: 9 reb+ast vs Under 8.5 [matchup-read-wrong, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Nickeil Alexander-Walker Under 6.5 @ +115 (BetMGM) \u2014 LOST: 7 reb+ast vs Under 6.5 [matchup-read-wrong, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Ivica Zubac Under 10.5 @ +101 (DraftKings) \u2014 LOST: 12 reb+ast vs Under 10.5 [matchup-read-right, minutes-long, model-miss]"
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.9% over 59 legs, so the market is beating my picks. Raising the minimum edge to 10.5%."
+  },
+  {
+   "ts": "2026-11-21T04:12:38Z",
+   "kind": "adapt",
+   "text": "Benching the matchup_under playbook: 43 bets ($-81.65). It still gets the odd exploratory bet."
+  },
+  {
+   "ts": "2026-11-21T04:12:39Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 17023 left this cycle)."
   }
  ],
  "learned_ids": [
@@ -19769,26 +20910,31 @@
   "d23ca4e7",
   "9ccd7bbf",
   "396e158b",
-  "1c4a9295"
+  "1c4a9295",
+  "4bdad21c",
+  "0a5ce7fa",
+  "c486b4d9",
+  "0d4b2a04",
+  "aab02831"
  ],
  "strategist": null,
- "updated": "2026-11-21T04:00:44Z",
+ "updated": "2026-11-21T04:12:39Z",
  "stats": {
-  "bets": 75,
+  "bets": 80,
   "won": 26,
-  "lost": 47,
+  "lost": 52,
   "shop_n": 22,
   "shop_avg": 0.0528,
   "push": 2,
-  "staked": 431.94,
-  "profit": -100.62,
-  "roi": -0.2329,
+  "staked": 456.94,
+  "profit": -125.62,
+  "roi": -0.2749,
   "clv": -0.0091,
   "clv_n": 62,
-  "clv_no_close": 13,
+  "clv_no_close": 18,
   "close_mins_median": 4,
-  "open": 8,
-  "equity": 91.22
+  "open": 3,
+  "equity": 66.22
  },
  "weights": {
   "value_fav": 0.842,
@@ -19797,10 +20943,11 @@
   "arb": 1.086,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
-  "matchup_under": 0.458
+  "matchup_under": 0.317
  },
  "paused": [
-  "value_dog"
+  "value_dog",
+  "matchup_under"
  ],
  "dry_scans": 2
 }
