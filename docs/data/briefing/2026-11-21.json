@@ -3315,6 +3315,13 @@
    "kind": "removed",
    "text": "Removed: NY +1.5 (POR @ NY) \u2014 line moved -3.5 \u2192 -2.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-21T23:35:41Z",
+   "key": "p|4684806|reb|Under",
+   "kind": "override",
+   "text": "Writer flags Taylor Hendricks Under 4.5 rebounds: Memphis lists Zach Edey day-to-day (ankle), which the agent's Watch list does not include; if he sits, Hendricks' minutes and rebound chances likely rise.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3356,9 +3363,48 @@
    "leans_note": "NO +18.5 and MEM +6.5 still show the biggest sim-versus-market gaps after the Trey Murphy III re-price, but game lines are 15-33 (-19.57u) since 2026-11-11, so treat them as leans only.",
    "sources": [],
    "changes_at_write": 51
+  },
+  {
+   "edition": "final",
+   "at": "2026-11-21T23:35:41Z",
+   "author": "claude",
+   "headline": "Final: Gafford Under 6.5 is the one prop still good at tonight's number; Hart, George, Castle and Kuzma reb+ast are off",
+   "briefing": "It is a thin final board on a 6-game night, and the late news mostly confirmed what the agent already priced: P.J. Washington, OG Anunoby and Karl-Anthony Towns moved to out, and Jayson Tatum and Derrick White are out for Boston. Only Daniel Gafford Under 6.5 rebounds is still inside its play-to line at \u2212112. Taylor Hendricks and Baylor Scheierman are past theirs, and Tyler Herro and Kyle Kuzma rebounds are already under way in MIL @ PHI. The market has not helped: the report is 9-11-0 (-3.50u) on final picks, yesterday went 0-5 (-5.00u), and game lines are 15-33 (-19.57u) since November 11, so treat everything here with caution. One item the feeds have not priced is Zach Edey listed day-to-day with an ankle for Memphis, which matters for the Hendricks under if he sits.",
+   "cards": {
+    "p|4278049|reb|Under": "Gafford has averaged 4.2 rebounds over his last 10 and stayed under 6.5 in 8 of those, and the model projects 4.7 on 18.5 minutes at a line of 6.5. With Washington now out, the tonight's-spot split (5 of 13 under without him) is the real risk, along with any game that pushes his minutes toward the 25.9 he played in his overs. It is still good at 6.5 down to \u2212118; the agent priced it at \u2212112 after the Washington news, so it stands, but as a Consider, not a strong play.",
+    "p|4684806|reb|Under": "The model projects 3.6 rebounds against 4.5 and he stayed under 4.5 in 7 of his last 10, but the price is now at +104, the edge of the play-to line, and the conviction is a Pass. Zach Edey is listed day-to-day with an ankle injury; if he sits, Hendricks could see more frontcourt minutes, and his overs came when he played 25.4 minutes. Do not add at this number.",
+    "p|4593841|reb|Under": "The model and Kalshi both like the under (projection 4.7 against 5.5, Kalshi 56% vs DraftKings 52%), but this is at the play-to line of \u2212125 and graded a Pass. With Tatum and White both out he is projected for 27.1 minutes, well above the 24.5 he played in his overs, and he went under 5.5 just 1 of 4 without White. Do not add at this number.",
+    "p|4395725|reb|Under": "This game has started. It was bet at a lower number than published after the line moved from 4.5 to 3.5, and the model projects 3.1 rebounds; the risk is PHI, where he went under 3.5 just 1 of 7.",
+    "p|3134907|reb|Under": "This game has started. The model projects 4.1 against 4.5, but 6 of his last 10 finished within 1 of the line, so it is close to a coin flip, and the price moved past the play-to line before tip."
+   },
+   "leans_note": "Game lines are 15-33 (-19.57u) since November 11; NO +18.5 and the MEM @ MIN Over 228.5 are the leans still on the board, along with the new POR -1.5, but none of them is a bet.",
+   "sources": [
+    {
+     "title": "Grizzlies vs. Timberwolves injury report, Nov. 21 (iHeart)",
+     "url": "https://kxno.iheart.com/content/2026-11-21-grizzlies-vs-timberwolves-injury-report-nov-21/"
+    },
+    {
+     "title": "Mavericks vs. Clippers preview and injury report (Dallas Sports Journal)",
+     "url": "https://dallassportsjournal.com/mavericks-clippers-preview-darius-garland-november-21-2026/"
+    },
+    {
+     "title": "Jayson Tatum: won't play Saturday (RotoWire)",
+     "url": "https://www.rotowire.com/basketball/headlines/jayson-tatum-news-wont-play-saturday-540368"
+    }
+   ],
+   "changes_at_write": 110
   }
  ],
- "overrides": [],
+ "overrides": [
+  {
+   "at": "2026-11-21T23:35:41Z",
+   "edition": "final",
+   "key": "p|4684806|reb|Under",
+   "action": "flag",
+   "reason": "Memphis lists Zach Edey day-to-day (ankle), which the agent's Watch list does not include; if he sits, Hendricks' minutes and rebound chances likely rise.",
+   "source": "https://kxno.iheart.com/content/2026-11-21-grizzlies-vs-timberwolves-injury-report-nov-21/"
+  }
+ ],
  "alerts": 6,
  "slate": {
   "games": 6,
@@ -3374,5 +3420,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T23:31:13Z"
+ "updated": "2026-11-21T23:35:41Z"
 }
