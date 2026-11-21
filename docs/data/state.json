@@ -19665,7 +19665,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0975,
+  "min_edge": 0.1025,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -19676,7 +19676,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.125,
+  "prop_model_weight": 0.103,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -20171,26 +20171,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-16T20:45:33Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-16T21:15:36Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-16T22:00:43Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
-  },
-  {
-   "ts": "2026-11-16T22:15:46Z",
-   "kind": "research",
-   "text": "Research refresh for Mon Nov 16: 8 games, 194 players projected, lineups for 8 games."
-  },
   {
    "ts": "2026-11-16T23:00:55Z",
    "kind": "research",
@@ -21670,6 +21650,26 @@
    "ts": "2026-11-21T16:30:44Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 21: 6 games, 147 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-21T16:47:39Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.8% over 58 legs, so the market is beating my picks. Raising the minimum edge to 10.2%."
+  },
+  {
+   "ts": "2026-11-21T16:49:20Z",
+   "kind": "adapt",
+   "text": "Model vs market on 9529 graded lines: the 5% model blend scored best (log loss model 0.729, market 0.687). Moving the model's weight from 12% to 10%."
+  },
+  {
+   "ts": "2026-11-21T16:49:20Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran -3.0% vs actual over 2643 player-games: level x0.934; REB projections ran -1.1% vs actual over 2643 player-games: level x0.901; AST projections ran -3.4% vs actual over 2643 player-games: level x0.967; TPM projections ran -3.1% vs actual over 2643 player-games: level x1.050; PRA projections ran -2.5% vs actual over 2643 player-games: level x0.938; RA projections ran -1.9% vs actual over 2643 player-games: level x0.936; starter minutes were off by +0.4 on average over 1366 player-games: correction -3.0 min; bench minutes were off by +0.5 on average over 1277 player-games: correction -0.9 min; conviction factor 'vegas' helped by +1.8 pts of hit rate over 3751 plays: weight 1.10 -> 1.16."
+  },
+  {
+   "ts": "2026-11-21T16:49:20Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $51.22 (run #2), 26-55-2, ROI -29.8%, CLV -0.9%."
   }
  ],
  "learned_ids": [
@@ -21758,7 +21758,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T16:31:22Z",
+ "updated": "2026-11-21T16:49:20Z",
  "stats": {
   "bets": 83,
   "won": 26,
