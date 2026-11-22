@@ -52,5 +52,16 @@
    }
   ],
   "summary": "The record slid to 80 bets, 26-52-2, -$125.62 (-27% ROI), almost all of it from matchup_under, which is now paused at 43 bets and -2.96% CLV on 28 closes; overall CLV is -0.85% on 64 closes, about unchanged, and 15 of the new matchup_under bets have no closing price yet, so its CLV sample has not grown. I'm holding prop_model_weight at 0.125 and prop_min_edge at 0.08: the model trails the market on log-loss in every stat (e.g. ra 0.7105 vs 0.6876 on 1568) with only small blend gains at low weights, and the prop edge buckets show no clear CLV gradient (10%+ at -3.8% vs 3-6% at -4.5%). Every game-side playbook (arb 12, value_dog 11 paused, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched."
+ },
+ {
+  "at": "2026-11-22T10:13:57Z",
+  "proposals": [
+   {
+    "param": "prop_max_bets",
+    "value": 3,
+    "why": "Fifth night asking: matchup_under is still the only playbook past 30 bets and it slipped again to 46 bets and -$96.65 on $230 staked (was 43 and -$81.65), with -2.96% average CLV on its 28 closes and all three reb+ast unders settled since last night lost, so trim prop volume from 4 to 3 per run as a backstop for when its pause lifts."
+   }
+  ],
+  "summary": "The record is 85 bets, 27-56-2, -$140.49 (-29% ROI) with equity down to $51.35, and nearly all the loss is matchup_under (46 bets, -$96.65, -2.96% CLV on 28 closes, paused); overall CLV is -0.73% on 66 closes, roughly flat. I'm holding prop_min_edge at 0.08 and prop_model_weight at 0.103: the prop edge buckets show no CLV gradient (10%+ at -3.8% vs 6-10% at -3.5% vs under 3% at -4.1%), though the share of moves toward the model does rise with edge (63.8% at 10%+ vs 43.8% under 3%), and the model still trails the market on log-loss in every stat (e.g. ra 0.7246 vs 0.6875 on 1772). Every game-side playbook (arb 14, value_dog 11 paused, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched."
  }
 ]
