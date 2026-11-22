@@ -1,6 +1,33 @@
 {
- "holds": [],
- "notes": "Only BOS @ SAC (03:00Z) is still to tip; its three Best Bets props (Scheierman reb U5.5 -141, Acuff reb U3.5 -172) are already tier Pass with negative EV (-1.0% and -2.9%), so there is nothing actionable to hold. The one open bet (65aaa4de, Flagg R+A U13.5 @1.81) is in LAC @ DAL, already in progress, with no Newsroom item on Flagg; holding it now changes nothing. Newsroom flags (Towns, Avdija) concern POR @ NY, which has no open bet and only a Pass spread. Backtest context: CLV is negative in every edge bucket (-3.5% to -4.5%), so even Consider-tier spreads/totals deserve caution, but none remain pre-tip.",
- "updated": "2026-11-22T02:18:36Z",
+ "holds": [
+  {
+   "player": "Josh Hart",
+   "stat": "ra",
+   "game": "IND @ NY",
+   "kind": "news",
+   "reason": "Under 12.5 R+A leans on the model (81% of sims vs 52% DraftKings, sim 9.9) while Karl-Anthony Towns is questionable with an illness and the agent only has him Day-To-Day; a Towns absence pushes Hart's boards up, and Hart pra Under 22.5 also sits in model_gaps (25.9% vs 50.5%)."
+  },
+  {
+   "player": "Brandin Podziemski",
+   "stat": "pts",
+   "game": "BOS @ GS",
+   "kind": "gap",
+   "reason": "Same player and direction as the model_gaps entry Podziemski pra Under 24.5 (model 21.9% vs market 49.5%, 28.1 projected minutes), which suggests the model's minutes are low rather than the 15.5 points line being soft."
+  },
+  {
+   "game": "DAL @ UTAH",
+   "kind": "news",
+   "reason": "P.J. Washington is doubtful (illness) per the Newsroom and flagged as differing from the agent's status; the DAL -2.5 call is only 52% vs 49% in sims and likely built with him available."
+  },
+  {
+   "player": "Cameron Johnson",
+   "stat": "pts",
+   "game": "DEN @ CHI",
+   "kind": "correlated",
+   "reason": "Rides the same under script as the DEN @ CHI Under 236.5 Best Bet (sim 231.7); of the two it is the weaker, at -2.1% EV on a stat where the model hasn't beaten the market."
+  }
+ ],
+ "notes": "All ten Best Bets are tier Pass with negative EV, so these holds are mostly a guard if tiers change before tip. Open bets: the Troy/Nicholls St arb pair already tipped at 20:00Z (nothing to hold). The Tenn-Martin +330 value dog (2fa804d6, EV 9.9%) tips 01:00Z; the brief gives no current line, so I could not check it for staleness and did not hold it. Backtest context: prop model-side CLV is -4.0% and pra is the worst stat (-4.5%), which supports skepticism on model-driven props generally.",
+ "updated": "2026-11-22T23:18:43Z",
  "by": "skeptic"
 }
