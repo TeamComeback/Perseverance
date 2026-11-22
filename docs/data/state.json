@@ -20191,16 +20191,6 @@
  "journal": [
   {
    "ts": "2026-11-17T18:34:36Z",
-   "kind": "adapt",
-   "text": "Model vs market on 6456 graded lines: the 10% model blend scored best (log loss model 0.722, market 0.689). Moving the model's weight from 20% to 17%."
-  },
-  {
-   "ts": "2026-11-17T18:34:36Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran -1.7% vs actual over 2054 player-games: level x0.896; AST projections ran -2.3% vs actual over 2054 player-games: level x0.919; TPM projections ran -3.4% vs actual over 2054 player-games: level x0.989; PRA projections ran -1.5% vs actual over 2054 player-games: level x0.906; RA projections ran -1.0% vs actual over 2054 player-games: level x0.914; starter minutes were off by +0.9 on average over 1066 player-games: correction -2.1 min."
-  },
-  {
-   "ts": "2026-11-17T18:34:36Z",
    "kind": "daily",
    "text": "Day close \u2014 equity $100.00 (run #2), 20-39-2, ROI -29.8%, CLV -1.5%."
   },
@@ -21688,6 +21678,16 @@
    "ts": "2026-11-21T23:43:23Z",
    "kind": "props",
    "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-22T00:00:40Z",
+   "kind": "focus",
+   "text": "Skipped 38 assists lines, 67 pts+reb+ast lines, 50 reb+ast lines, 23 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
+  },
+  {
+   "ts": "2026-11-22T00:00:41Z",
+   "kind": "props",
+   "text": "NBA matchups: 5 games, strongest spots: Sidy Cissoko ra -13% vs NY; Sidy Cissoko ast -12% vs NY; Stephon Castle ast +13% vs NO. Bought prop odds for NO@SA (ast, ra, pra, team totals), LAC@DAL (ast, ra, pra, tpm, team totals), BOS@SAC (ast, pra, ra, team totals), MEM@MIN (ra, ast, tpm, pra, team totals) (18 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -21776,7 +21776,7 @@
   "d26e8b41"
  ],
  "strategist": null,
- "updated": "2026-11-21T23:45:22Z",
+ "updated": "2026-11-22T00:01:00Z",
  "stats": {
   "bets": 83,
   "won": 26,

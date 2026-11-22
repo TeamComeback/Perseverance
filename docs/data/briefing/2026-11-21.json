@@ -26,22 +26,22 @@
   "p|4251|reb|Under": {
    "key": "p|4251|reb|Under",
    "kind": "prop",
-   "label": "Paul George Under 5.5 rebounds",
+   "label": "Paul George Under 6.5 rebounds",
    "espn_id": "401910028",
    "game": "BOS @ SAC",
    "start": "2026-11-22T03:00Z",
    "side": "Under",
-   "point": 5.5,
-   "dec": 1.84,
-   "am": -119,
-   "conv": 38,
+   "point": 6.5,
+   "dec": 1.65,
+   "am": -154,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.54,
-   "p_sim": 0.81,
-   "p_mkt": 0.508,
-   "p_kalshi": 0.525,
-   "ev": -0.006,
-   "verdict": "Pass: simulation and tonight's spot agree; the main risk is minutes.",
+   "p": 0.599,
+   "p_sim": 0.802,
+   "p_mkt": 0.567,
+   "p_kalshi": 0.6,
+   "ev": -0.011,
+   "verdict": "Pass: simulation and recent form agree; the main risk is minutes.",
    "home": "SAC",
    "away": "BOS",
    "pid": "4251",
@@ -49,15 +49,23 @@
    "team": "BOS",
    "opp": "SAC",
    "stat": "reb",
-   "proj": 3.8,
-   "sim": 3.9,
-   "ob_ind": 3.5,
+   "proj": 4.9,
+   "sim": 4.8,
+   "ob_ind": 4.5,
    "avg10": 5.4,
-   "minutes": 25.2,
+   "minutes": 32.6,
    "for": [
     {
+     "tag": "average",
+     "t": "Averaging 5.4 rebounds over his last 10; the line is 6.5.",
+     "rec": [
+      428,
+      372
+     ]
+    },
+    {
      "tag": "simulation",
-     "t": "Goes under in 81% of 10,000 simulated games (sim average 3.9).",
+     "t": "Goes under in 80% of 10,000 simulated games (sim average 4.8).",
      "rec": [
       1216,
       1061
@@ -65,26 +73,18 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 3.8 rebounds against a line of 5.5.",
+     "t": "Model projects 4.9 rebounds against a line of 6.5.",
      "rec": [
       1273,
       1125
      ]
     },
     {
-     "tag": "tonight's spot",
-     "t": "In blowouts (15+ margin): 17 of 21 under 5.5 (81% vs 60% lately).",
+     "tag": "recent form",
+     "t": "Stayed under 6.5 in 7 of his last 10 (3 of the last 5).",
      "rec": [
-      406,
-      377
-     ]
-    },
-    {
-     "tag": "role tonight",
-     "t": "Minutes down tonight: -1.1 min blowout risk (BOS starters sit 1.7 min in blowouts vs 2.1 league).",
-     "rec": [
-      135,
-      133
+      1039,
+      942
      ]
     },
     {
@@ -98,8 +98,24 @@
    ],
    "against": [
     {
+     "tag": "line move",
+     "t": "The line moved against it (5.5 to 6.5), though you now get a higher number than the opener's would have been.",
+     "rec": [
+      168,
+      133
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes up tonight: +2.6 min with White out.",
+     "rec": [
+      220,
+      198
+     ]
+    },
+    {
      "tag": "minutes",
-     "t": "It misses when he plays long: 34.6 minutes in the games he went over vs 30.6 otherwise. He's projected for 25.2 tonight.",
+     "t": "It misses when he plays long: 34.8 minutes in the games he went over vs 31.3 otherwise. He's projected for 32.6 tonight.",
      "rec": [
       1084,
       999
@@ -107,39 +123,38 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.852,
-    "floor_am": -117,
-    "line": 5.5,
-    "next": 4.5
+    "floor_dec": 1.669,
+    "floor_am": -149,
+    "line": 6.5,
+    "next": 5.5
    },
    "watch": [
     {
      "pid": "4065648",
      "name": "Jayson Tatum",
      "team": "BOS",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 30.8
+     "min": 34.3
     },
     {
      "pid": "3078576",
      "name": "Derrick White",
      "team": "BOS",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 27.5
+     "min": 30.7
     }
    ],
    "kill": [
-    "The line reaching 4.5",
-    "The price at 5.5 going past \u2212117",
-    "A change in Jayson Tatum (questionable), Derrick White (questionable): the model re-prices on the next run",
+    "The line reaching 5.5",
+    "The price at 6.5 going past \u2212149",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 5.5,
-    "now": 5.5,
-    "kalshi": 0.525
+    "now": 6.5,
+    "kalshi": 0.6
    },
    "started": false,
    "published": {
@@ -159,11 +174,8 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": {
-    "at": "2026-11-21T20:46:08Z",
-    "why": "no longer +EV at tonight's line (5.5 at -119)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Downgraded"
   },
   "p|4278049|reb|Under": {
    "key": "p|4278049|reb|Under",
@@ -500,7 +512,7 @@
    "p": 0.491,
    "p_sim": 0.704,
    "p_mkt": 0.457,
-   "p_kalshi": 0.459,
+   "p_kalshi": 0.462,
    "ev": 0.003,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "MIN",
@@ -607,7 +619,7 @@
    "market": {
     "open": 4.5,
     "now": 4.5,
-    "kalshi": 0.459
+    "kalshi": 0.462
    },
    "started": false,
    "published": {
@@ -1412,8 +1424,11 @@
     }
    },
    "first_seen": "2026-11-21T23:01:22Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-22T00:01:00Z",
+    "why": "no longer +EV at tonight's line (5.5 at -145)"
+   },
+   "status": "Removed"
   }
  },
  "leans": {
@@ -3322,6 +3337,41 @@
    "kind": "override",
    "text": "Writer flags Taylor Hendricks Under 4.5 rebounds: Memphis lists Zach Edey day-to-day (ankle), which the agent's Watch list does not include; if he sits, Hendricks' minutes and rebound chances likely rise.",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T00:01:00Z",
+   "key": "p|4251|reb|Under",
+   "kind": "back",
+   "text": "Back on the board: Paul George Under 6.5 rebounds at \u2212154",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:01:00Z",
+   "key": "p|4251|reb|Under",
+   "kind": "line",
+   "text": "Paul George: line 5.5 at \u2212119 \u2192 6.5 at \u2212154",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:01:00Z",
+   "key": "p|4251|reb|Under",
+   "kind": "injury",
+   "text": "Jayson Tatum questionable \u2192 out (Paul George Under 6.5 rebounds re-priced: 6.5 at \u2212154, conviction 36)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:01:00Z",
+   "key": "p|4251|reb|Under",
+   "kind": "injury",
+   "text": "Derrick White questionable \u2192 out (Paul George Under 6.5 rebounds re-priced: 6.5 at \u2212154, conviction 36)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:01:00Z",
+   "key": "p|4593841|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Baylor Scheierman Under 5.5 rebounds \u2014 no longer +EV at tonight's line (5.5 at -145)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3420,5 +3470,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-21T23:45:22Z"
+ "updated": "2026-11-22T00:01:00Z"
 }
