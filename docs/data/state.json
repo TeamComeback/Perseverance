@@ -19674,7 +19674,7 @@
       "book": "draftkings",
       "fair_p": 0.5301,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.77,
        "gain": 0.0226,
@@ -19710,6 +19710,22 @@
          "txt": "LAC games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 110.0,
+       "away": 100.0
+      },
+      "actual": 14.0,
+      "box": {
+       "min": 36.0,
+       "pts": 22.0,
+       "reb": 6.0,
+       "ast": 8.0,
+       "tpm": 3.0,
+       "tpa": 6.0,
+       "fga": 16.0,
+       "fta": 13.0,
+       "tov": 3.0
       }
      }
     ],
@@ -19720,10 +19736,10 @@
     "note": "Proj 10.3 vs line 13.5 (norm 10.7, 30 min). Model 82% vs market 53%. LAC gives small forwards -5% reb+ast vs their norm (#7 toughest of 30) \u00b7 Players with his profile: +2% reb+ast vs LAC (169 close comps) \u00b7 His history vs LAC: 11.0 reb+ast/g in 4 games (-6%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-22T16:00:39Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -19733,6 +19749,221 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 14 reb+ast vs Under 13.5",
+     "final": "Los Angeles Clippers 100 \u2013 Dallas Mavericks 110",
+     "legs": [
+      {
+       "outcome": "Cooper Flagg Under",
+       "result": "loss",
+       "headline": "14 reb+ast vs Under 13.5",
+       "final": "Los Angeles Clippers 100 \u2013 Dallas Mavericks 110",
+       "why": [
+        "Cooper Flagg finished with 14 reb+ast against a line of 13.5: under missed by 0.5.",
+        "Minutes: played 36 vs 29.9 projected.",
+        "Box score: 6 reb \u00b7 8 ast, 3 TO.",
+        "Model projected 10.3 (10.7 norm \u00d7 0.97 matchup); actual was +3.7 off (+1.3 standard deviations).",
+        "Matchup read was wrong: he beat his own norm for the minutes played (12.8) in a matchup the model rated tough.",
+        "Signal: LAC gives small forwards -5% reb+ast vs their norm (#7 toughest of 30)",
+        "Signal: Players with his profile: +2% reb+ast vs LAC (169 close comps)",
+        "Signal: His history vs LAC: 11.0 reb+ast/g in 4 games (-6%)",
+        "We priced it at 60% to hit vs 55% needed to break even at 1.81x (+8.5% expected edge).",
+        "Consensus fair probability when placed: 53% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "model-miss",
+        "matchup-read-wrong",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-wrong",
+      "minutes-long",
+      "model-miss",
+      "near-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "DAL",
+        "away": "LAC"
+       },
+       "final": "LAC 100 \u2013 DAL 110",
+       "periods": {
+        "away": [
+         26,
+         18,
+         30,
+         26
+        ],
+        "home": [
+         23,
+         29,
+         26,
+         32
+        ]
+       },
+       "largest_lead": {
+        "LAC": 9,
+        "DAL": 15
+       },
+       "largest_lead_at": {
+        "LAC": "9:49 2nd Q",
+        "DAL": "54.5 4th Q"
+       },
+       "lead_changes": 8,
+       "ties": 6,
+       "runs": [
+        {
+         "team": "DAL",
+         "pts": 13,
+         "from": "9:39 2nd Q",
+         "to": "6:20 2nd Q",
+         "score": "LAC 33-37 DAL"
+        },
+        {
+         "team": "DAL",
+         "pts": 11,
+         "from": "4:18 4th Q",
+         "to": "3:09 4th Q",
+         "score": "LAC 88-102 DAL"
+        },
+        {
+         "team": "LAC",
+         "pts": 9,
+         "from": "9:15 1st Q",
+         "to": "7:23 1st Q",
+         "score": "LAC 9-6 DAL"
+        },
+        {
+         "team": "DAL",
+         "pts": 8,
+         "from": "2:15 1st Q",
+         "to": "56.7 1st Q",
+         "score": "LAC 20-22 DAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DAL",
+         "swing": 13,
+         "from": "9:49 2nd Q",
+         "to": "6:20 2nd Q",
+         "mins": 3.5,
+         "from_score": "LAC 33-24 DAL",
+         "to_score": "LAC 33-37 DAL",
+         "pts_for": 13,
+         "pts_against": 0
+        },
+        {
+         "team": "LAC",
+         "swing": 12,
+         "from": "9:33 1st Q",
+         "to": "2:30 1st Q",
+         "mins": 7.0,
+         "from_score": "LAC 0-6 DAL",
+         "to_score": "LAC 20-14 DAL",
+         "pts_for": 20,
+         "pts_against": 8
+        }
+       ],
+       "clutch": [
+        "4:18 4th Q: Daniel Gafford makes 9-foot two point shot (Cooper Flagg assists) (LAC 88-93 DAL)",
+        "4:01 4th Q: Max Christie makes running layup (LAC 88-95 DAL)"
+       ],
+       "leaders": [
+        "Rui Hachimura (LAC): 19 pts, 8 reb, 1 ast, 4-5 3PT in 29 min",
+        "Brook Lopez (LAC): 21 pts, 6 reb, 0 ast, 1-6 3PT in 25 min",
+        "Kyrie Irving (DAL): 25 pts, 6 reb, 4 ast, 3-11 3PT in 35 min",
+        "Cooper Flagg (DAL): 22 pts, 6 reb, 8 ast, 3-6 3PT in 36 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 5,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 2,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 8,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 4,
+          "reb": 2,
+          "ast": 3,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 6,
+          "fgm": 1
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 5,
+          "reb": 2,
+          "ast": 3,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 3,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "11:36 1st Q",
+         "6:20 2nd Q",
+         "55.1 3rd Q"
+        ],
+        "box": {
+         "id": "5041939",
+         "name": "Cooper Flagg",
+         "team": "DAL",
+         "min": "36",
+         "pts": 22,
+         "reb": 6,
+         "ast": 8,
+         "3pt": "3-6",
+         "fg": "6-16",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: LAC 44-52 DAL, DAL up 8.",
+        "The 2nd quarter decided the most: DAL won it 29-18.",
+        "Largest leads: LAC 9 (9:49 2nd Q), DAL 15 (54.5 4th Q). 8 lead changes, 6 ties.",
+        "Momentum swing: DAL outscored them 13-0 in 3.5 minutes (9:49 2nd Q to 6:20 2nd Q), moving it from LAC 33-24 DAL to LAC 33-37 DAL.",
+        "Momentum swing: LAC outscored them 20-8 in 7 minutes (9:33 1st Q to 2:30 1st Q), moving it from LAC 0-6 DAL to LAC 20-14 DAL.",
+        "DAL went on a 13-0 run (9:39 2nd Q to 6:20 2nd Q), making it LAC 33-37 DAL.",
+        "DAL went on a 11-0 run (4:18 4th Q to 3:09 4th Q), making it LAC 88-102 DAL.",
+        "Close finish: 2 scoring plays in the last five minutes with the game within six.",
+        "Cooper Flagg by period (REB+AST): Q1 1, Q2 3, Q3 5, Q4 5.",
+        "He went over 13.5 in Q4.",
+        "Threes made at: 11:36 1st Q, 6:20 2nd Q, 55.1 3rd Q."
+       ],
+       "espn_id": "401910025",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910025"
+      }
+     ]
     }
    },
    {
@@ -20091,9 +20322,9 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 46,
-   "staked": 230.0,
-   "profit": -96.65,
+   "bets": 47,
+   "staked": 235.0,
+   "profit": -101.65,
    "clv_n": 28,
    "clv_sum": -0.8301100000000006,
    "tags": {
@@ -20113,14 +20344,14 @@
      "lost": 15
     },
     "matchup-read-wrong": {
-     "n": 19,
+     "n": 20,
      "won": 4,
-     "lost": 15
+     "lost": 16
     },
     "near-miss": {
-     "n": 11,
+     "n": 12,
      "won": 0,
-     "lost": 11
+     "lost": 12
     },
     "blowout": {
      "n": 8,
@@ -20128,14 +20359,14 @@
      "lost": 4
     },
     "model-miss": {
-     "n": 23,
+     "n": 24,
      "won": 0,
-     "lost": 23
+     "lost": 24
     },
     "minutes-long": {
-     "n": 19,
+     "n": 20,
      "won": 1,
-     "lost": 18
+     "lost": 19
     },
     "model-beat": {
      "n": 3,
@@ -20155,9 +20386,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-22T07:00:30Z",
-   "bets": 65.0,
-   "staked": 346.16999999999996,
-   "profit": -102.32
+   "bets": 66.0,
+   "staked": 351.16999999999996,
+   "profit": -107.32
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-22T07:00:30Z",
@@ -20383,21 +20614,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-18T01:30:19Z",
-   "kind": "props",
-   "text": "NBA matchups: 2 games, strongest spots: Sandro Mamukelashvili ra -13% vs CHA; Sandro Mamukelashvili ast -12% vs CHA; Jake LaRavia ra -10% vs CHA. Bought prop odds for CHA@LAL (ast, ra, pra, team totals), UTAH@LAC (ast, ra, pra, tpm, team totals) (9 credits). Nothing cleared the bar."
-  },
-  {
-   "ts": "2026-11-18T02:00:37Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 13.00% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-18T02:15:38Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 120 players projected, lineups for 5 games."
-  },
   {
    "ts": "2026-11-18T02:18:56Z",
    "kind": "adapt",
@@ -21882,6 +22098,21 @@
    "ts": "2026-11-22T15:30:37Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 22: 7 games, 170 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-22T16:00:39Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Cooper Flagg Under 13.5 @ -123 (DraftKings) \u2014 LOST: 14 reb+ast vs Under 13.5 [matchup-read-wrong, minutes-long, model-miss, near-miss]"
+  },
+  {
+   "ts": "2026-11-22T16:00:44Z",
+   "kind": "focus",
+   "text": "Skipped 72 assists lines, 115 pts+reb+ast lines, 85 reb+ast lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
+  },
+  {
+   "ts": "2026-11-22T16:00:45Z",
+   "kind": "props",
+   "text": "NBA matchups: 7 games, strongest spots: Nickeil Alexander-Walker ra -14% vs DET; Wendell Carter Jr. ra +15% vs WSH; Nickeil Alexander-Walker ast -13% vs DET. Bought prop odds for ORL@WSH (ra, ast, pra, team totals), IND@NY (ra, pra, ast, team totals), DET@ATL (ra, ast, pra, team totals), DEN@CHI (ast, ra, pra, team totals), OKC@MIA (ast, ra, pra, team totals), DAL@UTAH (ast, ra, pra, team totals), BOS@GS (ra, pra, ast, team totals) (28 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -21969,26 +22200,27 @@
   "1cf1b314",
   "d26e8b41",
   "9f69e006",
-  "42989098"
+  "42989098",
+  "65aaa4de"
  ],
  "strategist": null,
- "updated": "2026-11-22T15:45:26Z",
+ "updated": "2026-11-22T16:01:20Z",
  "stats": {
-  "bets": 85,
+  "bets": 86,
   "won": 27,
-  "lost": 56,
+  "lost": 57,
   "shop_n": 28,
   "shop_avg": 0.0558,
   "push": 2,
-  "staked": 486.32,
-  "profit": -140.49,
-  "roi": -0.2889,
+  "staked": 491.32,
+  "profit": -145.49,
+  "roi": -0.2961,
   "clv": -0.0073,
   "clv_n": 66,
-  "clv_no_close": 21,
+  "clv_no_close": 22,
   "close_mins_median": 4,
-  "open": 4,
-  "equity": 51.35
+  "open": 3,
+  "equity": 46.35
  },
  "weights": {
   "value_fav": 0.842,
