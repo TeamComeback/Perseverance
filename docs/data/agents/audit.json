@@ -1,0 +1,77 @@
+{
+ "summary": "No, the model is not beating the closing line: placed bets average -0.73% CLV on 66 closes (Backtester's Nov 17 cut: -1.9% on 54), and the prop model side is worse at -4.0% on 539 lines, beating the close only 7.6% of the time. The record is 86 bets, 27-57-2, -$145.49 on $491.32 staked (-29.6% ROI) with equity at $46.35, and per the Strategist nearly all of the loss is matchup_under (46 bets, -$96.65, -2.96% CLV on 28 closes), now paused. The Strategist's week of calls pointed the right way: since it first asked to trim prop volume on Nov 18 (34 bets, -$46.65), matchup_under lost another $50 over 12 more bets, and the model's log-loss still trails the market in every stat. Both shadow agents' held bets lost every time (Newsroom 0-1, Skeptic 0-4, $25 saved combined), a good early sign but far short of the ~150 graded calls needed (25 each). Most important: keep matchup_under and value_dog paused and lower prop volume and prop model weight until the prop side's CLV turns positive.",
+ "recommendations": [
+  {
+   "agent": "Prop Pricer",
+   "action": "tune",
+   "why": "571 priced props average -4.0% CLV (positive on only 7.6%), hit 50.3%, with no CLV gradient across edge buckets (10%+ at -3.8% vs under 3% at -4.1%), so the Strategist's lower model weight and 3-bet cap are warranted even though moves go toward the model 57% of the time."
+  },
+  {
+   "agent": "Closer",
+   "action": "tune",
+   "why": "Only 64 of 86 settled legs (22 missing) have a closing price, leaving about a quarter of the record ungraded on CLV."
+  },
+  {
+   "agent": "Scout",
+   "action": "keep",
+   "why": "Largest spender at 1,769 credits this cycle (vs 853 for props) with 15,228 of 20,000 left before Dec 17, which is affordable, but its game-side playbooks are all under 30 bets so its value is not yet proven."
+  },
+  {
+   "agent": "Shopper",
+   "action": "keep",
+   "why": "Best-of-ten-books pricing averages +5.6% over the typical book on 28 legs, the one clearly positive number on the team."
+  },
+  {
+   "agent": "Backtester",
+   "action": "keep",
+   "why": "965 credits for its Nov 17 run (well under the 5,000 cap) produced the CLV-by-playbook and prop-edge numbers every other call here relies on."
+  },
+  {
+   "agent": "Newsroom",
+   "action": "keep",
+   "why": "25 graded calls, would have held 1 bet that lost (saved $5.00) while the rest went 7-17, far short of the ~150 calls needed to promote."
+  },
+  {
+   "agent": "Skeptic",
+   "action": "keep",
+   "why": "25 graded calls, would have held 4 bets that all lost (0-4, saved $20.00) while the rest went 7-14, promising but far short of ~150 calls."
+  },
+  {
+   "agent": "Strategist",
+   "action": "keep",
+   "why": "Five straight nights asking to cut prop_max_bets from 4 to 3 while matchup_under went from 34 bets/-$46.65 to 46 bets/-$96.65, and its prop_model_weight cuts tracked log-loss trailing the market in every stat, so its direction was right."
+  },
+  {
+   "agent": "matchup_under",
+   "action": "bench",
+   "why": "46 bets, -$96.65 on $230 staked with -2.96% average CLV on 28 closes; keep it paused."
+  },
+  {
+   "agent": "value_dog",
+   "action": "bench",
+   "why": "11 closes averaging -3.3% CLV, the worst game-side playbook; keep it paused."
+  },
+  {
+   "agent": "longshot",
+   "action": "keep",
+   "why": "5 closes averaging +4.3% CLV, the best playbook by CLV but too small a sample to scale."
+  },
+  {
+   "agent": "arb",
+   "action": "keep",
+   "why": "2 closes averaging +1.2% CLV, small but positive."
+  },
+  {
+   "agent": "matchup_over",
+   "action": "keep",
+   "why": "7 closes averaging -0.4% CLV, close to flat on a small sample."
+  },
+  {
+   "agent": "value_fav",
+   "action": "keep",
+   "why": "Only 1 close (-3.0% CLV), nothing to judge yet."
+  }
+ ],
+ "updated": "2026-11-22T17:24:57Z",
+ "by": "auditor"
+}
