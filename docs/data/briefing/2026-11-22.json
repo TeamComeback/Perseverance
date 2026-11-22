@@ -198,15 +198,15 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.91,
-   "am": -110,
-   "conv": 37,
+   "dec": 1.85,
+   "am": -118,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.518,
+   "p": 0.534,
    "p_sim": 0.62,
-   "p_mkt": 0.488,
+   "p_mkt": 0.505,
    "p_kalshi": 0.505,
-   "ev": -0.011,
+   "ev": -0.012,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
    "away": "DEN",
@@ -281,8 +281,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.931,
-    "floor_am": -107,
+    "floor_dec": 1.873,
+    "floor_am": -115,
     "line": null,
     "next": 4.5
    },
@@ -330,7 +330,7 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212107",
+    "The price at 5.5 going past \u2212115",
     "A change in Jalen Smith (probable), Nic Claxton (questionable), Patrick Williams (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1017,8 +1017,11 @@
     }
    },
    "first_seen": "2026-11-22T13:01:18Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-22T20:01:39Z",
+    "why": "no longer +EV at tonight's line (6.5 at -143)"
+   },
+   "status": "Removed"
   },
   "p|4017837|reb|Under": {
    "key": "p|4017837|reb|Under",
@@ -1036,7 +1039,7 @@
    "p": 0.548,
    "p_sim": 0.823,
    "p_mkt": 0.512,
-   "p_kalshi": 0.524,
+   "p_kalshi": 0.526,
    "ev": -0.003,
    "verdict": "Pass: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1168,7 +1171,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.524
+    "kalshi": 0.526
    },
    "started": false,
    "published": {
@@ -1545,15 +1548,15 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 2.13,
-   "am": 113,
-   "conv": 41,
+   "dec": 2.08,
+   "am": 108,
+   "conv": 40,
    "tier": "Pass",
-   "p": 0.471,
+   "p": 0.48,
    "p_sim": 0.698,
-   "p_mkt": 0.44,
-   "p_kalshi": 0.438,
-   "ev": 0.003,
+   "p_mkt": 0.45,
+   "p_kalshi": 0.454,
+   "ev": -0.001,
    "verdict": "Pass: simulation and projection agree; the main risk is history.",
    "home": "UTAH",
    "away": "DAL",
@@ -1627,17 +1630,17 @@
      ]
     },
     {
-     "tag": "market",
-     "t": "You're betting against the market: DraftKings' price says this happens 44% of the time.",
+     "tag": "tonight's spot",
+     "t": "Against UTAH: 0 of 3 under 6.5 (0% vs 55% lately).",
      "rec": [
-      85,
-      107
+      638,
+      624
      ]
     }
    ],
    "play_to": {
-    "floor_dec": 2.123,
-    "floor_am": 112,
+    "floor_dec": 2.083,
+    "floor_am": 108,
     "line": null,
     "next": 5.5
    },
@@ -1669,14 +1672,14 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past +112",
+    "The price at 6.5 going past +108",
     "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.438
+    "kalshi": 0.454
    },
    "started": false,
    "published": {
@@ -1708,16 +1711,16 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 3.5,
-   "dec": 1.89,
-   "am": -112,
+   "dec": 2.06,
+   "am": 106,
    "conv": 40,
    "tier": "Pass",
-   "p": 0.53,
-   "p_sim": 0.752,
-   "p_mkt": 0.495,
-   "p_kalshi": 0.485,
-   "ev": 0.001,
-   "verdict": "Pass: simulation and recent form agree; the main risk is minutes.",
+   "p": 0.485,
+   "p_sim": 0.736,
+   "p_mkt": 0.454,
+   "p_kalshi": 0.475,
+   "ev": -0.001,
+   "verdict": "Pass: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "UTAH",
    "away": "DAL",
    "pid": "4278594",
@@ -1725,11 +1728,11 @@
    "team": "DAL",
    "opp": "UTAH",
    "stat": "reb",
-   "proj": 2.4,
-   "sim": 2.6,
+   "proj": 2.8,
+   "sim": 2.7,
    "ob_ind": 2.5,
    "avg10": 2.8,
-   "minutes": 21.0,
+   "minutes": 23.5,
    "for": [
     {
      "tag": "average",
@@ -1741,7 +1744,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 75% of 10,000 simulated games (sim average 2.6).",
+     "t": "Goes under in 74% of 10,000 simulated games (sim average 2.7).",
      "rec": [
       1251,
       1095
@@ -1749,7 +1752,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 2.4 rebounds against a line of 3.5.",
+     "t": "Model projects 2.8 rebounds against a line of 3.5.",
      "rec": [
       1311,
       1158
@@ -1774,6 +1777,14 @@
    ],
    "against": [
     {
+     "tag": "usage",
+     "t": "+33% without Washington.",
+     "rec": [
+      116,
+      94
+     ]
+    },
+    {
      "tag": "matchup",
      "t": "UTAH games have +4% rebounds up for grabs vs the league (missed shots and extra possessions).",
      "rec": [
@@ -1783,16 +1794,24 @@
     },
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 28.1 minutes in the games he went over vs 24.8 otherwise. He's projected for 21 tonight.",
+     "t": "It misses when he plays long: 28.1 minutes in the games he went over vs 24.8 otherwise. He's projected for 23.5 tonight.",
      "rec": [
       1119,
       1042
      ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without P.J. Washington: 5 of 21 under 3.5 (24% vs 55% lately).",
+     "rec": [
+      638,
+      624
+     ]
     }
    ],
    "play_to": {
-    "floor_dec": 1.887,
-    "floor_am": -113,
+    "floor_dec": 2.062,
+    "floor_am": 106,
     "line": null,
     "next": 2.5
    },
@@ -1809,21 +1828,29 @@
      "pid": "4278078",
      "name": "P.J. Washington",
      "team": "DAL",
-     "status": "Day-To-Day",
+     "status": "Doubtful",
      "self": false,
-     "min": 22.9
+     "min": 25.9
+    },
+    {
+     "pid": "4896372",
+     "name": "Walter Clayton Jr.",
+     "team": "DAL",
+     "status": "Questionable",
+     "self": false,
+     "min": 23.9
     }
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 3.5 going past \u2212113",
-    "A change in P.J. Washington (day-to-day): the model re-prices on the next run",
+    "The price at 3.5 going past +106",
+    "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 3.5,
     "now": 3.5,
-    "kalshi": 0.485
+    "kalshi": 0.475
    },
    "started": false,
    "published": {
@@ -1843,11 +1870,8 @@
     }
    },
    "first_seen": "2026-11-22T15:16:26Z",
-   "removed": {
-    "at": "2026-11-22T17:31:22Z",
-    "why": "no longer +EV at tonight's line (3.5 at -112)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4397424|reb|Under": {
    "key": "p|4397424|reb|Under",
@@ -3007,7 +3031,7 @@
      "pid": "4432166",
      "name": "Cade Cunningham",
      "team": "DET",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
      "min": 34.0
     },
@@ -3039,7 +3063,7 @@
    "kill": [
     "The line reaching 224.5",
     "The price at 223.5 going past \u2212103",
-    "A change in Cade Cunningham (probable): the model re-prices on the next run"
+    "A change in Cade Cunningham (prob): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -3070,36 +3094,36 @@
   "g|401910030|spread|away": {
    "key": "g|401910030|spread|away",
    "kind": "spread",
-   "label": "OKC +4.5 (OKC @ MIA)",
+   "label": "OKC +3.5 (OKC @ MIA)",
    "espn_id": "401910030",
    "game": "OKC @ MIA",
    "start": "2026-11-22T23:00Z",
    "side": "away",
-   "point": 4.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 35,
+   "point": 3.5,
+   "dec": 1.96,
+   "am": -104,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.529,
-   "p_sim": 0.548,
-   "p_mkt": 0.512,
+   "p": 0.504,
+   "p_sim": 0.522,
+   "p_mkt": 0.487,
    "p_kalshi": null,
-   "ev": -0.016,
+   "ev": -0.013,
    "verdict": "Pass: team model carries it; the main risk is line move.",
    "home": "MIA",
    "away": "OKC",
-   "why": "Sim: MIA by 2.1 on average (OKC 114.9, MIA 117.0) \u00b7 OKC +4.5 covers in 55% of sims vs 51% DraftKings",
+   "why": "Sim: MIA by 2.1 on average (OKC 114.9, MIA 117.0) \u00b7 OKC +3.5 covers in 52% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it OKC by 0.8, 5.3 better than this number.",
+     "t": "Team ratings with tonight's lineups make it OKC by 0.8, 4.3 better than this number.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-2.5 to -4.5).",
+     "t": "The line has moved against this side since it opened (-2.5 to -3.5).",
      "rec": [
       170,
       136
@@ -3115,10 +3139,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.89,
-    "floor_am": -112,
+    "floor_dec": 1.984,
+    "floor_am": -102,
     "line": null,
-    "next": 3.5
+    "next": 2.5
    },
    "watch": [
     {
@@ -3155,13 +3179,13 @@
     }
    ],
    "kill": [
-    "The line reaching 3.5",
-    "The price at 4.5 going past \u2212112",
+    "The line reaching 2.5",
+    "The price at 3.5 going past \u2212102",
     "A change in Shai Gilgeous-Alexander (day-to-day), Giannis Antetokounmpo (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 4.5,
+    "now": 3.5,
     "kalshi": null
    },
    "started": false,
@@ -3183,7 +3207,7 @@
    },
    "first_seen": "2026-11-22T15:31:08Z",
    "removed": null,
-   "status": "New"
+   "status": "Past play-to"
   },
   "g|401910034|spread|home": {
    "key": "g|401910034|spread|home",
@@ -3656,6 +3680,122 @@
     }
    },
    "first_seen": "2026-11-22T19:31:15Z",
+   "removed": {
+    "at": "2026-11-22T20:01:39Z",
+    "why": "line moved 225.5 \u2192 226.5"
+   },
+   "status": "Removed"
+  },
+  "g|401910034|total|Under": {
+   "key": "g|401910034|total|Under",
+   "kind": "total",
+   "label": "IND @ NY Under 213.5",
+   "espn_id": "401910034",
+   "game": "IND @ NY",
+   "start": "2026-11-23T01:00Z",
+   "side": "Under",
+   "point": 213.5,
+   "dec": 1.87,
+   "am": -115,
+   "conv": 31,
+   "tier": "Pass",
+   "p": 0.52,
+   "p_sim": 0.532,
+   "p_mkt": 0.509,
+   "p_kalshi": null,
+   "ev": -0.027,
+   "verdict": "Pass: line move carries it; the main risk is model record.",
+   "home": "NY",
+   "away": "IND",
+   "why": "Sim total 212.9 (after a learned +1.4 correction) vs 213.5 \u00b7 under in 53% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (217.5 to 213.5): you're with the money, at a worse number.",
+     "rec": [
+      144,
+      176
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 632-668 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      103,
+      123
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.923,
+    "floor_am": -108,
+    "line": null,
+    "next": 212.5
+   },
+   "watch": [
+    {
+     "pid": "3934719",
+     "name": "OG Anunoby",
+     "team": "NY",
+     "status": "Out",
+     "self": false,
+     "min": 35.7
+    },
+    {
+     "pid": "4396993",
+     "name": "Tyrese Haliburton",
+     "team": "IND",
+     "status": "Out",
+     "self": false,
+     "min": 33.1
+    },
+    {
+     "pid": "3136195",
+     "name": "Karl-Anthony Towns",
+     "team": "NY",
+     "status": "Day-To-Day",
+     "self": false,
+     "min": 32.6
+    },
+    {
+     "pid": "3149673",
+     "name": "Pascal Siakam",
+     "team": "IND",
+     "status": "Questionable",
+     "self": false,
+     "min": 29.4
+    }
+   ],
+   "kill": [
+    "The line reaching 212.5",
+    "The price at 213.5 going past \u2212108",
+    "A change in Karl-Anthony Towns (day-to-day), Pascal Siakam (questionable): the model re-prices on the next run"
+   ],
+   "market": {
+    "open": null,
+    "now": 213.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-22T20:01:39Z",
+    "edition": "update",
+    "point": 213.5,
+    "dec": 1.87,
+    "am": -115,
+    "conv": 31,
+    "tier": "Pass",
+    "p": 0.52,
+    "play_to": {
+     "floor_dec": 1.923,
+     "floor_am": -108,
+     "line": null,
+     "next": 212.5
+    }
+   },
+   "first_seen": "2026-11-22T20:01:39Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -4514,6 +4654,76 @@
    "kind": "removed",
    "text": "Removed: DAL @ UTAH Over 223.5 \u2014 confidence fell 43 \u2192 36",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "p|5041939|reb|Under",
+   "kind": "line",
+   "text": "Cooper Flagg: line 6.5 at +113 \u2192 6.5 at +108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "p|4278594|reb|Under",
+   "kind": "back",
+   "text": "Back on the board: Naji Marshall Under 3.5 rebounds at +106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "p|4278594|reb|Under",
+   "kind": "line",
+   "text": "Naji Marshall: line 3.5 at \u2212112 \u2192 3.5 at +106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "p|4278594|reb|Under",
+   "kind": "injury",
+   "text": "P.J. Washington day-to-day \u2192 doubtful (Naji Marshall Under 3.5 rebounds re-priced: 3.5 at +106, conviction 40)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "p|4711294|reb|Under",
+   "kind": "line",
+   "text": "Matas Buzelis: line 5.5 at \u2212110 \u2192 5.5 at \u2212118",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Daniel Gafford Under 6.5 rebounds \u2014 no longer +EV at tonight's line (6.5 at -143)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "g|401910030|spread|away",
+   "kind": "line",
+   "text": "OKC +3.5 (OKC @ MIA): line 4.5 at \u2212116 \u2192 3.5 at \u2212104 \u2014 past the play-to line; don't add at this number",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "g|401910029|total|Over",
+   "kind": "injury",
+   "text": "Cade Cunningham probable \u2192 prob (DET @ ATL Over 223.5 re-priced: 223.5 at \u2212108, conviction 33)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "g|401910034|total|Under",
+   "kind": "added",
+   "text": "Added: IND @ NY Under 213.5 at \u2212115, conviction 31",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:01:39Z",
+   "key": "g|401910033|total|Under",
+   "kind": "removed",
+   "text": "Removed: DAL @ UTAH Under 225.5 \u2014 line moved 225.5 \u2192 226.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4596,7 +4806,7 @@
    {
     "name": "Cade Cunningham",
     "team": "DET",
-    "status": "Probable"
+    "status": "Prob"
    },
    {
     "name": "Karl-Anthony Towns",
@@ -4643,5 +4853,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T19:45:24Z"
+ "updated": "2026-11-22T20:01:39Z"
 }
