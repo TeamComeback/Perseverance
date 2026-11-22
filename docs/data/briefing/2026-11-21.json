@@ -1826,7 +1826,13 @@
     "at": "2026-11-21T23:31:13Z",
     "why": "confidence fell 51 \u2192 49"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.94,
+    "actual": -9
+   },
+   "clv": null
   },
   "g|401910023|spread|home": {
    "key": "g|401910023|spread|home",
@@ -2477,7 +2483,18 @@
    },
    "first_seen": "2026-11-21T21:31:06Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 199
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 199
+   },
+   "clv": null
   },
   "g|401910028|total|Over": {
    "key": "g|401910028|total|Over",
@@ -3749,5 +3766,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-22T03:10:08Z"
+ "updated": "2026-11-22T03:15:27Z"
 }
