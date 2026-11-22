@@ -200,13 +200,13 @@
    "point": 5.5,
    "dec": 1.84,
    "am": -119,
-   "conv": 39,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.542,
-   "p_sim": 0.694,
+   "p": 0.536,
+   "p_sim": 0.62,
    "p_mkt": 0.508,
    "p_kalshi": 0.495,
-   "ev": -0.002,
+   "ev": -0.013,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
    "away": "DEN",
@@ -215,15 +215,15 @@
    "team": "CHI",
    "opp": "DEN",
    "stat": "reb",
-   "proj": 4.6,
-   "sim": 4.6,
+   "proj": 5.1,
+   "sim": 5,
    "ob_ind": 4.5,
    "avg10": 4.9,
-   "minutes": 25.8,
+   "minutes": 28.6,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 69% of 10,000 simulated games (sim average 4.6).",
+     "t": "Goes under in 62% of 10,000 simulated games (sim average 5).",
      "rec": [
       1251,
       1095
@@ -231,7 +231,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 4.6 rebounds against a line of 5.5.",
+     "t": "Model projects 5.1 rebounds against a line of 5.5.",
      "rec": [
       1311,
       1158
@@ -246,11 +246,11 @@
      ]
     },
     {
-     "tag": "role tonight",
-     "t": "Minutes down tonight: -0.5 min blowout risk.",
+     "tag": "blowout",
+     "t": "Blowout risk: 46% of sims end 15+ points apart, when starters sit late.",
      "rec": [
-      144,
-      144
+      735,
+      674
      ]
     }
    ],
@@ -264,6 +264,14 @@
      ]
     },
     {
+     "tag": "role tonight",
+     "t": "Minutes up tonight: +2.8 min with Powell out.",
+     "rec": [
+      223,
+      199
+     ]
+    },
+    {
      "tag": "thin margin",
      "t": "Thin margin: 6 of his last 10 finished within 1 of this number, so it often comes down to one play.",
      "rec": [
@@ -273,12 +281,20 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.845,
-    "floor_am": -118,
+    "floor_dec": 1.866,
+    "floor_am": -116,
     "line": 5.5,
     "next": 4.5
    },
    "watch": [
+    {
+     "pid": "2595516",
+     "name": "Norman Powell",
+     "team": "CHI",
+     "status": "Out",
+     "self": false,
+     "min": 30.0
+    },
     {
      "pid": "5095151",
      "name": "Caleb Wilson",
@@ -288,20 +304,12 @@
      "min": 26.5
     },
     {
-     "pid": "2595516",
-     "name": "Norman Powell",
-     "team": "CHI",
-     "status": "Questionable",
-     "self": false,
-     "min": 23.3
-    },
-    {
      "pid": "4397189",
      "name": "Jalen Smith",
      "team": "CHI",
      "status": "Probable",
      "self": false,
-     "min": 23.0
+     "min": 25.6
     },
     {
      "pid": "4278067",
@@ -309,13 +317,21 @@
      "team": "CHI",
      "status": "Questionable",
      "self": false,
-     "min": 21.8
+     "min": 24.0
+    },
+    {
+     "pid": "4431687",
+     "name": "Patrick Williams",
+     "team": "CHI",
+     "status": "Probable",
+     "self": false,
+     "min": 21.7
     }
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212118",
-    "A change in Norman Powell (questionable), Jalen Smith (probable), Nic Claxton (questionable): the model re-prices on the next run",
+    "The price at 5.5 going past \u2212116",
+    "A change in Jalen Smith (probable), Nic Claxton (questionable), Patrick Williams (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -849,7 +865,7 @@
    "p": 0.533,
    "p_sim": 0.656,
    "p_mkt": 0.501,
-   "p_kalshi": 0.524,
+   "p_kalshi": 0.522,
    "ev": -0.008,
    "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
    "home": "UTAH",
@@ -973,7 +989,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.524
+    "kalshi": 0.522
    },
    "started": false,
    "published": {
@@ -1005,15 +1021,15 @@
    "start": "2026-11-23T01:00Z",
    "side": "Under",
    "point": 8.5,
-   "dec": 1.85,
-   "am": -118,
-   "conv": 41,
+   "dec": 1.82,
+   "am": -122,
+   "conv": 39,
    "tier": "Pass",
-   "p": 0.542,
+   "p": 0.548,
    "p_sim": 0.823,
-   "p_mkt": 0.505,
+   "p_mkt": 0.512,
    "p_kalshi": 0.518,
-   "ev": 0.002,
+   "ev": -0.003,
    "verdict": "Pass: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
    "away": "IND",
@@ -1096,8 +1112,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.845,
-    "floor_am": -118,
+    "floor_dec": 1.825,
+    "floor_am": -121,
     "line": 8.5,
     "next": 7.5
    },
@@ -1137,7 +1153,7 @@
    ],
    "kill": [
     "The line reaching 7.5",
-    "The price at 8.5 going past \u2212118",
+    "The price at 8.5 going past \u2212121",
     "A change in Karl-Anthony Towns (day-to-day), Pascal Siakam (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1828,13 +1844,13 @@
    "start": "2026-11-23T01:30Z",
    "side": "Under",
    "point": 7.5,
-   "dec": 2.09,
-   "am": 109,
+   "dec": 2.1,
+   "am": 110,
    "conv": 36,
    "tier": "Pass",
-   "p": 0.472,
+   "p": 0.47,
    "p_sim": 0.62,
-   "p_mkt": 0.447,
+   "p_mkt": 0.444,
    "p_kalshi": 0.455,
    "ev": -0.013,
    "verdict": "Pass: simulation and projection agree; the main risk is tonight's spot.",
@@ -1903,8 +1919,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.119,
-    "floor_am": 112,
+    "floor_dec": 2.128,
+    "floor_am": 113,
     "line": null,
     "next": 6.5
    },
@@ -1928,7 +1944,7 @@
    ],
    "kill": [
     "The line reaching 6.5",
-    "The price at 7.5 going past +112",
+    "The price at 7.5 going past +113",
     "A change in Jayson Tatum (day-to-day), Derrick White (day-to-day): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -2097,17 +2113,17 @@
    "point": -1.5,
    "dec": 1.93,
    "am": -108,
-   "conv": 34,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.508,
-   "p_sim": 0.523,
+   "p": 0.506,
+   "p_sim": 0.52,
    "p_mkt": 0.493,
    "p_kalshi": null,
-   "ev": -0.02,
+   "ev": -0.024,
    "verdict": "Pass: who's out carries it; the main risk is model record.",
    "home": "ATL",
    "away": "DET",
-   "why": "Sim: DET by 2.2 on average (DET 112.6, ATL 110.4) \u00b7 DET -1.5 covers in 52% of sims vs 49% DraftKings",
+   "why": "Sim: DET by 1.8 on average (DET 112.7, ATL 111.0) \u00b7 DET -1.5 covers in 52% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "who's out",
@@ -2126,8 +2142,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.969,
-    "floor_am": -103,
+    "floor_dec": 1.976,
+    "floor_am": -102,
     "line": null,
     "next": -2.5
    },
@@ -2138,7 +2154,7 @@
      "team": "DET",
      "status": "Probable",
      "self": false,
-     "min": 34.5
+     "min": 34.0
     },
     {
      "pid": "3157465",
@@ -2163,20 +2179,12 @@
      "status": "Out",
      "self": false,
      "min": 24.4
-    },
-    {
-     "pid": "5149077",
-     "name": "Kingston Flemings",
-     "team": "ATL",
-     "status": "Questionable",
-     "self": false,
-     "min": 20.3
     }
    ],
    "kill": [
     "The line reaching -2.5",
-    "The price at -1.5 going past \u2212103",
-    "A change in Cade Cunningham (probable), Kingston Flemings (questionable): the model re-prices on the next run"
+    "The price at -1.5 going past \u2212102",
+    "A change in Cade Cunningham (probable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -3131,21 +3139,21 @@
    "point": 235.5,
    "dec": 1.89,
    "am": -112,
-   "conv": 47,
+   "conv": 53,
    "tier": "Consider",
-   "p": 0.54,
-   "p_sim": 0.58,
+   "p": 0.55,
+   "p_sim": 0.6,
    "p_mkt": 0.504,
    "p_kalshi": null,
-   "ev": 0.021,
+   "ev": 0.04,
    "verdict": "Consider: simulation and line move agree; the main risk is model record.",
    "home": "CHI",
    "away": "DEN",
-   "why": "Sim total 232.6 (after a learned +1.4 correction) vs 235.5 \u00b7 under in 58% of sims vs 50% DraftKings",
+   "why": "Sim total 231.6 (after a learned +1.4 correction) vs 235.5 \u00b7 under in 60% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 58% of 10,000 simulated games.",
+     "t": "Goes under in 60% of 10,000 simulated games.",
      "rec": [
       1251,
       1095
@@ -3171,12 +3179,20 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.852,
-    "floor_am": -117,
+    "floor_dec": 1.818,
+    "floor_am": -122,
     "line": 235.5,
     "next": 234.5
    },
    "watch": [
+    {
+     "pid": "2595516",
+     "name": "Norman Powell",
+     "team": "CHI",
+     "status": "Out",
+     "self": false,
+     "min": 30.0
+    },
     {
      "pid": "5095151",
      "name": "Caleb Wilson",
@@ -3186,20 +3202,12 @@
      "min": 26.5
     },
     {
-     "pid": "2595516",
-     "name": "Norman Powell",
-     "team": "CHI",
-     "status": "Questionable",
-     "self": false,
-     "min": 23.3
-    },
-    {
      "pid": "4397189",
      "name": "Jalen Smith",
      "team": "CHI",
      "status": "Probable",
      "self": false,
-     "min": 23.0
+     "min": 25.6
     },
     {
      "pid": "4278067",
@@ -3207,13 +3215,21 @@
      "team": "CHI",
      "status": "Questionable",
      "self": false,
-     "min": 21.8
+     "min": 24.0
+    },
+    {
+     "pid": "4431687",
+     "name": "Patrick Williams",
+     "team": "CHI",
+     "status": "Probable",
+     "self": false,
+     "min": 21.7
     }
    ],
    "kill": [
     "The line reaching 234.5",
-    "The price at 235.5 going past \u2212117",
-    "A change in Norman Powell (questionable), Jalen Smith (probable), Nic Claxton (questionable): the model re-prices on the next run"
+    "The price at 235.5 going past \u2212122",
+    "A change in Jalen Smith (probable), Nic Claxton (questionable), Patrick Williams (probable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -3239,7 +3255,7 @@
    },
    "first_seen": "2026-11-22T18:01:29Z",
    "removed": null,
-   "status": "New"
+   "status": "Upgraded"
   },
   "g|401910033|total|Over": {
    "key": "g|401910033|total|Over",
@@ -4027,6 +4043,41 @@
    "kind": "line",
    "text": "Ivica Zubac: line 8.5 at \u2212119 \u2192 8.5 at \u2212118",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T18:46:05Z",
+   "key": "p|4017837|reb|Under",
+   "kind": "line",
+   "text": "Ivica Zubac: line 8.5 at \u2212118 \u2192 8.5 at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T18:46:05Z",
+   "key": "p|4711294|reb|Under",
+   "kind": "injury",
+   "text": "Norman Powell questionable \u2192 out (Matas Buzelis Under 5.5 rebounds re-priced: 5.5 at \u2212119, conviction 36)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T18:46:05Z",
+   "key": "p|4397424|reb|Under",
+   "kind": "line",
+   "text": "Neemias Queta: line 7.5 at +109 \u2192 7.5 at +110",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T18:46:05Z",
+   "key": "g|401910032|total|Under",
+   "kind": "conviction",
+   "text": "DEN @ CHI Under 235.5: conviction 47 Consider \u2192 53 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T18:46:05Z",
+   "key": "g|401910032|total|Under",
+   "kind": "injury",
+   "text": "Norman Powell questionable \u2192 out (DEN @ CHI Under 235.5 re-priced: 235.5 at \u2212112, conviction 53)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4106,6 +4157,11 @@
     "name": "Derrick White",
     "team": "BOS",
     "status": "Day-To-Day"
+   },
+   {
+    "name": "Jalen Smith",
+    "team": "CHI",
+    "status": "Probable"
    }
   ],
   "picks": 12
@@ -4117,5 +4173,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T18:42:45Z"
+ "updated": "2026-11-22T18:46:05Z"
 }
