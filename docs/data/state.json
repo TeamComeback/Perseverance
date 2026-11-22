@@ -19754,15 +19754,15 @@
       "price": 2.138,
       "book": "kalshi",
       "fair_p": 0.4948,
-      "close_p": 0.4826,
+      "close_p": 0.489,
       "result": null,
       "shop": {
        "median": 1.94,
        "gain": 0.1019,
        "n": 6
       },
-      "close_at": "2026-11-22T03:45:24Z",
-      "close_mins": 974
+      "close_at": "2026-11-22T05:00:41Z",
+      "close_mins": 899
      }
     ],
     "dec": 2.138,
@@ -19797,15 +19797,15 @@
       "price": 1.91,
       "book": "fanatics",
       "fair_p": 0.5167,
-      "close_p": 0.5174,
+      "close_p": 0.511,
       "result": null,
       "shop": {
        "median": 1.88,
        "gain": 0.016,
        "n": 6
       },
-      "close_at": "2026-11-22T03:45:24Z",
-      "close_mins": 974
+      "close_at": "2026-11-22T05:00:41Z",
+      "close_mins": 899
      }
     ],
     "dec": 1.91,
@@ -19836,7 +19836,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1,
+  "min_edge": 0.0975,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -20113,19 +20113,19 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-22T03:00:35Z",
+   "last_scanned": "2026-11-22T05:00:40Z",
    "bets": 65.0,
    "staked": 346.16999999999996,
    "profit": -102.32
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-22T03:30:30Z",
+   "last_scanned": "2026-11-22T05:00:40Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-22T03:24:13Z"
+   "last_scanned": "2026-11-22T05:00:39Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -20137,7 +20137,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-22T02:45:25Z"
+   "last_scanned": "2026-11-22T05:00:40Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -20152,7 +20152,7 @@
    "last_scanned": "2026-11-21T06:30:22Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-11-21T20:46:08Z",
+   "last_scanned": "2026-11-22T05:00:41Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
@@ -20176,13 +20176,13 @@
    "last_scanned": "2026-11-21T07:00:39Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-22T03:45:24Z"
+   "last_scanned": "2026-11-22T05:00:40Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-11-22T02:00:35Z"
+   "last_scanned": "2026-11-22T05:00:41Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-11-22T02:00:35Z"
+   "last_scanned": "2026-11-22T05:00:40Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-11-20T06:15:21Z"
@@ -20191,10 +20191,10 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-11-22T02:30:30Z"
+   "last_scanned": "2026-11-22T05:00:40Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-22T03:45:24Z",
+   "last_scanned": "2026-11-22T05:00:40Z",
    "bets": 4.0,
    "staked": 35.42,
    "profit": 0.3199999999999994
@@ -20323,7 +20323,7 @@
    "last_scanned": "2026-11-20T06:45:21Z"
   },
   "soccer_belgium_first_div": {
-   "last_scanned": "2026-11-21T21:15:34Z"
+   "last_scanned": "2026-11-22T05:00:41Z"
   },
   "soccer_norway_eliteserien": {
    "last_scanned": "2026-11-21T07:30:23Z"
@@ -20342,16 +20342,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T23:00:41Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.00% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-17T23:30:34Z",
-   "kind": "focus",
-   "text": "Skipped 76 pts+reb+ast lines, 13 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, rebounds."
-  },
   {
    "ts": "2026-11-17T23:30:34Z",
    "kind": "props",
@@ -21841,6 +21831,16 @@
    "ts": "2026-11-22T03:24:13Z",
    "kind": "scan",
    "text": "Scanned americanfootball_nfl (11) for 3 credits. Nothing cleared the bar. Equity $51.35."
+  },
+  {
+   "ts": "2026-11-22T05:00:41Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-22T05:01:35Z",
+   "kind": "research",
+   "text": "Research refresh for Sun Nov 22: 7 games, 174 players projected, lineups for 6 games."
   }
  ],
  "learned_ids": [
@@ -21931,7 +21931,7 @@
   "42989098"
  ],
  "strategist": null,
- "updated": "2026-11-22T04:45:22Z",
+ "updated": "2026-11-22T05:02:07Z",
  "stats": {
   "bets": 85,
   "won": 27,
@@ -21962,5 +21962,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
