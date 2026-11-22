@@ -200,13 +200,13 @@
    "point": 5.5,
    "dec": 1.86,
    "am": -116,
-   "conv": 40,
+   "conv": 41,
    "tier": "Pass",
-   "p": 0.537,
-   "p_sim": 0.647,
+   "p": 0.538,
+   "p_sim": 0.663,
    "p_mkt": 0.501,
-   "p_kalshi": 0.53,
-   "ev": -0.001,
+   "p_kalshi": 0.515,
+   "ev": 0.002,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
    "away": "DEN",
@@ -215,15 +215,15 @@
    "team": "CHI",
    "opp": "DEN",
    "stat": "reb",
-   "proj": 4.5,
-   "sim": 4.9,
+   "proj": 4.6,
+   "sim": 4.8,
    "ob_ind": 4.5,
    "avg10": 4.9,
-   "minutes": 25.6,
+   "minutes": 26.1,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 65% of 10,000 simulated games (sim average 4.9).",
+     "t": "Goes under in 66% of 10,000 simulated games (sim average 4.8).",
      "rec": [
       1216,
       1061
@@ -231,7 +231,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 4.5 rebounds against a line of 5.5.",
+     "t": "Model projects 4.6 rebounds against a line of 5.5.",
      "rec": [
       1273,
       1125
@@ -243,6 +243,14 @@
      "rec": [
       1039,
       942
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 43% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      699,
+      639
      ]
     }
    ],
@@ -265,20 +273,12 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.862,
+    "floor_dec": 1.859,
     "floor_am": -116,
     "line": 5.5,
     "next": 4.5
    },
    "watch": [
-    {
-     "pid": "2595516",
-     "name": "Norman Powell",
-     "team": "CHI",
-     "status": "Questionable",
-     "self": false,
-     "min": 27.0
-    },
     {
      "pid": "5095151",
      "name": "Caleb Wilson",
@@ -288,12 +288,20 @@
      "min": 26.5
     },
     {
+     "pid": "2595516",
+     "name": "Norman Powell",
+     "team": "CHI",
+     "status": "Questionable",
+     "self": false,
+     "min": 23.5
+    },
+    {
      "pid": "4397189",
      "name": "Jalen Smith",
      "team": "CHI",
      "status": "Questionable",
      "self": false,
-     "min": 22.7
+     "min": 23.2
     }
    ],
    "kill": [
@@ -305,7 +313,7 @@
    "market": {
     "open": 5.5,
     "now": 5.5,
-    "kalshi": 0.53
+    "kalshi": 0.515
    },
    "started": false,
    "published": {
@@ -833,7 +841,7 @@
    "p": 0.538,
    "p_sim": 0.722,
    "p_mkt": 0.495,
-   "p_kalshi": 0.513,
+   "p_kalshi": 0.505,
    "ev": 0.018,
    "verdict": "Consider: recent form and simulation agree; the main risk is similar players.",
    "home": "UTAH",
@@ -957,7 +965,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.513
+    "kalshi": 0.505
    },
    "started": false,
    "published": {
@@ -996,7 +1004,7 @@
    "p": 0.555,
    "p_sim": 0.839,
    "p_mkt": 0.508,
-   "p_kalshi": 0.524,
+   "p_kalshi": 0.521,
    "ev": 0.021,
    "verdict": "Consider: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1128,7 +1136,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.524
+    "kalshi": 0.521
    },
    "started": false,
    "published": {
@@ -1160,16 +1168,16 @@
    "start": "2026-11-22T23:00Z",
    "side": "Under",
    "point": 2.5,
-   "dec": 1.59,
-   "am": -169,
-   "conv": 45,
-   "tier": "Consider",
-   "p": 0.637,
+   "dec": 1.57,
+   "am": -175,
+   "conv": 44,
+   "tier": "Pass",
+   "p": 0.644,
    "p_sim": 0.886,
-   "p_mkt": 0.587,
+   "p_mkt": 0.595,
    "p_kalshi": 0.603,
-   "ev": 0.013,
-   "verdict": "Consider: simulation and recent form agree; the main risk is tonight's spot.",
+   "ev": 0.011,
+   "verdict": "Pass: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "MIA",
    "away": "OKC",
    "pid": "6475",
@@ -1227,7 +1235,7 @@
    "against": [
     {
      "tag": "price",
-     "t": "Heavy price: it has to win 63% of the time just to break even.",
+     "t": "Heavy price: it has to win 64% of the time just to break even.",
      "rec": [
       119,
       74
@@ -1251,8 +1259,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.57,
-    "floor_am": -175,
+    "floor_dec": 1.553,
+    "floor_am": -181,
     "line": 2.5,
     "next": 1.5
    },
@@ -1292,7 +1300,7 @@
    ],
    "kill": [
     "The line reaching 1.5",
-    "The price at 2.5 going past \u2212175",
+    "The price at 2.5 going past \u2212181",
     "A change in Shai Gilgeous-Alexander (day-to-day), Giannis Antetokounmpo (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1320,7 +1328,7 @@
    },
    "first_seen": "2026-11-22T13:01:18Z",
    "removed": null,
-   "status": "Upgraded"
+   "status": "New"
   },
   "p|4066261|reb|Under": {
    "key": "p|4066261|reb|Under",
@@ -2263,8 +2271,11 @@
     }
    },
    "first_seen": "2026-11-22T11:45:21Z",
-   "removed": null,
-   "status": "Upgraded"
+   "removed": {
+    "at": "2026-11-22T15:31:08Z",
+    "why": "confidence fell 47 \u2192 34"
+   },
+   "status": "Removed"
   },
   "g|401910031|spread|home": {
    "key": "g|401910031|spread|home",
@@ -2717,6 +2728,124 @@
    "first_seen": "2026-11-22T15:16:26Z",
    "removed": null,
    "status": "New"
+  },
+  "g|401910030|spread|away": {
+   "key": "g|401910030|spread|away",
+   "kind": "spread",
+   "label": "OKC +3.5 (OKC @ MIA)",
+   "espn_id": "401910030",
+   "game": "OKC @ MIA",
+   "start": "2026-11-22T23:00Z",
+   "side": "away",
+   "point": 3.5,
+   "dec": 1.94,
+   "am": -106,
+   "conv": 36,
+   "tier": "Pass",
+   "p": 0.509,
+   "p_sim": 0.529,
+   "p_mkt": 0.491,
+   "p_kalshi": null,
+   "ev": -0.012,
+   "verdict": "Pass: team model carries it; the main risk is line move.",
+   "home": "MIA",
+   "away": "OKC",
+   "why": "Sim: MIA by 1.8 on average (OKC 114.5, MIA 116.3) \u00b7 OKC +3.5 covers in 53% of sims vs 49% DraftKings",
+   "for": [
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it OKC by 0.8, 4.3 better than this number.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (-2.5 to -3.5).",
+     "rec": [
+      168,
+      133
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 635-659 against DraftKings' spreads. Treat this as a lean.",
+     "rec": [
+      83,
+      113
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.965,
+    "floor_am": -104,
+    "line": null,
+    "next": 2.5
+   },
+   "watch": [
+    {
+     "pid": "4278073",
+     "name": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "status": "Day-To-Day",
+     "self": false,
+     "min": 31.6
+    },
+    {
+     "pid": "4433255",
+     "name": "Chet Holmgren",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 30.1
+    },
+    {
+     "pid": "4593803",
+     "name": "Jalen Williams",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 29.5
+    },
+    {
+     "pid": "3032977",
+     "name": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "status": "Questionable",
+     "self": false,
+     "min": 28.4
+    }
+   ],
+   "kill": [
+    "The line reaching 2.5",
+    "The price at 3.5 going past \u2212104",
+    "A change in Shai Gilgeous-Alexander (day-to-day), Giannis Antetokounmpo (questionable): the model re-prices on the next run"
+   ],
+   "market": {
+    "open": null,
+    "now": 3.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-22T15:31:08Z",
+    "edition": "update",
+    "point": 3.5,
+    "dec": 1.94,
+    "am": -106,
+    "conv": 36,
+    "tier": "Pass",
+    "p": 0.509,
+    "play_to": {
+     "floor_dec": 1.965,
+     "floor_am": -104,
+     "line": null,
+     "next": 2.5
+    }
+   },
+   "first_seen": "2026-11-22T15:31:08Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -3041,6 +3170,34 @@
    "kind": "removed",
    "text": "Removed: DET -2.5 (DET @ ATL) \u2014 line moved -2.5 \u2192 -1.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T15:31:08Z",
+   "key": "p|6475|reb|Under",
+   "kind": "line",
+   "text": "Klay Thompson: line 2.5 at \u2212169 \u2192 2.5 at \u2212175",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T15:31:08Z",
+   "key": "p|6475|reb|Under",
+   "kind": "conviction",
+   "text": "Klay Thompson Under 2.5 rebounds: conviction 45 Consider \u2192 44 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T15:31:08Z",
+   "key": "g|401910030|spread|away",
+   "kind": "added",
+   "text": "Added: OKC +3.5 (OKC @ MIA) at \u2212106, conviction 36",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T15:31:08Z",
+   "key": "g|401910035|spread|away",
+   "kind": "removed",
+   "text": "Removed: BOS -8.5 (BOS @ GS) \u2014 confidence fell 47 \u2192 34",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3092,11 +3249,6 @@
     "status": "Probable"
    },
    {
-    "name": "Jayson Tatum",
-    "team": "BOS",
-    "status": "Day-To-Day"
-   },
-   {
     "name": "OG Anunoby",
     "team": "NY",
     "status": "Day-To-Day"
@@ -3112,6 +3264,11 @@
     "status": "Day-To-Day"
    },
    {
+    "name": "Jayson Tatum",
+    "team": "BOS",
+    "status": "Day-To-Day"
+   },
+   {
     "name": "Pascal Siakam",
     "team": "IND",
     "status": "Questionable"
@@ -3122,9 +3279,9 @@
     "status": "Questionable"
    },
    {
-    "name": "Norman Powell",
-    "team": "CHI",
-    "status": "Questionable"
+    "name": "Derrick White",
+    "team": "BOS",
+    "status": "Day-To-Day"
    }
   ],
   "picks": 11
@@ -3136,5 +3293,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-22T15:16:26Z"
+ "updated": "2026-11-22T15:31:08Z"
 }
