@@ -205,7 +205,7 @@
    "p": 0.538,
    "p_sim": 0.663,
    "p_mkt": 0.501,
-   "p_kalshi": 0.51,
+   "p_kalshi": 0.505,
    "ev": 0.002,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
@@ -313,7 +313,7 @@
    "market": {
     "open": 5.5,
     "now": 5.5,
-    "kalshi": 0.51
+    "kalshi": 0.505
    },
    "started": false,
    "published": {
@@ -841,7 +841,7 @@
    "p": 0.547,
    "p_sim": 0.722,
    "p_mkt": 0.504,
-   "p_kalshi": 0.508,
+   "p_kalshi": 0.511,
    "ev": 0.012,
    "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
    "home": "UTAH",
@@ -965,7 +965,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.508
+    "kalshi": 0.511
    },
    "started": false,
    "published": {
@@ -1175,7 +1175,7 @@
    "p": 0.652,
    "p_sim": 0.886,
    "p_mkt": 0.605,
-   "p_kalshi": 0.601,
+   "p_kalshi": 0.604,
    "ev": 0.011,
    "verdict": "Pass: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "MIA",
@@ -1307,7 +1307,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.601
+    "kalshi": 0.604
    },
    "started": false,
    "published": {
@@ -2466,39 +2466,30 @@
   "g|401910034|total|Over": {
    "key": "g|401910034|total|Over",
    "kind": "total",
-   "label": "IND @ NY Over 213.5",
+   "label": "IND @ NY Over 214.5",
    "espn_id": "401910034",
    "game": "IND @ NY",
    "start": "2026-11-23T01:00Z",
    "side": "Over",
-   "point": 213.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 40,
+   "point": 214.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 37,
    "tier": "Pass",
-   "p": 0.526,
-   "p_sim": 0.554,
-   "p_mkt": 0.5,
+   "p": 0.509,
+   "p_sim": 0.531,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.001,
-   "verdict": "Pass: simulation carries it; the main risk is line move.",
+   "ev": -0.008,
+   "verdict": "Pass: the price is the case; the main risk is line move.",
    "home": "NY",
    "away": "IND",
-   "why": "Sim total 216.2 (after a learned +1.4 correction) vs 213.5 \u00b7 over in 55% of sims vs 50% DraftKings",
-   "for": [
-    {
-     "tag": "simulation",
-     "t": "Goes over in 55% of 10,000 simulated games.",
-     "rec": [
-      1251,
-      1095
-     ]
-    }
-   ],
+   "why": "Sim total 216.2 (after a learned +1.4 correction) vs 214.5 \u00b7 over in 53% of sims vs 49% DraftKings",
+   "for": [],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (217.5 to 213.5).",
+     "t": "The line has moved against this side since it opened (217.5 to 214.5).",
      "rec": [
       170,
       136
@@ -2522,10 +2513,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
+    "floor_dec": 1.965,
+    "floor_am": -104,
     "line": null,
-    "next": 214.5
+    "next": 215.5
    },
    "watch": [
     {
@@ -2562,13 +2553,13 @@
     }
    ],
    "kill": [
-    "The line reaching 214.5",
-    "The price at 213.5 going past \u2212111",
+    "The line reaching 215.5",
+    "The price at 214.5 going past \u2212104",
     "A change in OG Anunoby (day-to-day), Karl-Anthony Towns (day-to-day), Pascal Siakam (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 213.5,
+    "now": 214.5,
     "kalshi": null
    },
    "started": false,
@@ -3276,6 +3267,13 @@
    "kind": "removed",
    "text": "Removed: DET @ ATL Over 223.5 \u2014 line moved 225.5 \u2192 226.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T16:31:54Z",
+   "key": "g|401910034|total|Over",
+   "kind": "line",
+   "text": "IND @ NY Over 214.5: line 213.5 at \u2212111 \u2192 214.5 at \u2212105",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3371,5 +3369,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T16:15:24Z"
+ "updated": "2026-11-22T16:31:54Z"
 }
