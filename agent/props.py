@@ -14,13 +14,14 @@ from datetime import datetime, timedelta
 
 from . import book as bk
 from . import scoreboard as sbm
-from . import brain, config, market, store
+from . import anchor, brain, config, market, store
 from . import nba_data as nd
 from . import nba_model as nm
 
 SPORT = "basketball_nba"
 MIN_MINUTES = 18
 SKIP_STATUS = {"Out", "Doubtful", "Suspension"}
+LAST = {}          # the last run's priced candidates (tests and the board)
 
 
 def norm(name):
@@ -218,7 +219,9 @@ def run(state, manual, client, budget, ctx=None):
 
     # 3) price every line we paid for
     key_stat = {v: k for k, v in nm.ODDS_KEY.items()}
-    cands, skipped = [], {}
+    cands, skipped, gaps = [], {}, []
+    A = anchor.load()
+    anchored = anchor.ready(A)
     for eid, (e, props) in lines.items():
         g = next(x for x in games if x["espn_id"] == eid)
         projs = {(norm(x["name"]), x["stat"]): x for x in by_game[eid]}
@@ -229,11 +232,23 @@ def run(state, manual, client, budget, ctx=None):
                 continue
             p_model = nm.p_over(pr, pt)
             p_mkt, best, nbooks = price_line(entry)
-            if FOCUS.get(s, {}).get("status") == "skip":
-                skipped[s] = skipped.get(s, 0) + 1          # the market alone has beaten the model here: don't pay the vig
-                continue
-            w = sbm.stat_weight(SB, s, p["prop_model_weight"])
-            p_fin = w * p_model + (1 - w) * p_mkt
+            if anchored:
+                # model audit Nov 22: start from the market's price; the model moves it only as far as graded history
+                # supports (anchor.json). An extreme disagreement is missing news, not value: flag it, don't bet it.
+                gp_ = anchor.gap(p_model, p_mkt)
+                if abs(gp_) > anchor.GAP_CAP:
+                    gaps.append({"pid": pr["pid"], "name": pr["name"], "team": pr["team"], "opp": pr["opp"], "game": g["espn_id"],
+                                 "start": g["start"], "stat": s, "line": pt, "model_side": "Over" if gp_ > 0 else "Under",
+                                 "p_model": round(p_model, 3), "p_mkt": round(p_mkt, 3), "proj": pr["proj"],
+                                 "minutes": pr["minutes"], "status": pr.get("status") or ""})
+                    continue
+                p_fin = anchor.prob(s, p_mkt, p_model, A)
+            else:
+                if FOCUS.get(s, {}).get("status") == "skip":
+                    skipped[s] = skipped.get(s, 0) + 1          # the market alone has beaten the model here: don't pay the vig
+                    continue
+                w = sbm.stat_weight(SB, s, p["prop_model_weight"])
+                p_fin = w * p_model + (1 - w) * p_mkt
             for side, pf, pm in (("Over", p_fin, p_model), ("Under", 1 - p_fin, 1 - p_model)):
                 price, bkey = best[side]
                 if not price:
@@ -247,6 +262,9 @@ def run(state, manual, client, budget, ctx=None):
                               "p": pf, "p_model": pm, "p_mkt": p_mkt if side == "Over" else 1 - p_mkt, "ev": ev,
                               "agrees": agrees, "nbooks": nbooks, "market": mkey})
     cands.sort(key=lambda c: -c["ev"])
+    LAST["cands"] = cands
+    if anchored:
+        save_gaps(ctx, gaps)
     if skipped:
         brain.note(state, "focus", "Skipped " + ", ".join(f"{n} {nm.STATS[k]} lines" for k, n in skipped.items())
                    + ": on the graded record the market alone beats the model in those stats, so the agent only bets "
@@ -281,7 +299,7 @@ def run(state, manual, client, budget, ctx=None):
         best = {}
         for c in cands:
             k = (c["pr"]["pid"], c["pr"]["stat"])
-            lean = "Over" if c["pr"]["mult"] > 1 else "Under"
+            lean = "Over" if c["pr"]["proj"] > c["point"] else "Under"     # the side vs the line, not the matchup direction
             if c["side"] == lean and (k not in best or c["ev"] > best[k]["ev"]):
                 best[k] = c
         items = []
@@ -307,7 +325,8 @@ def run(state, manual, client, budget, ctx=None):
         if len(placed) >= p["prop_max_bets"]:
             break
         pr = c["pr"]
-        need = p["prop_min_edge"] * (1.5 if "question" in (pr["status"] or "").lower() or pr["status"] == "GTD" else 1)
+        bar = config.ANCHOR_MIN_EDGE if anchored else p["prop_min_edge"]      # anchored edges are honest, so smaller
+        need = bar * (1.5 if "question" in (pr["status"] or "").lower() or pr["status"] == "GTD" else 1)
         if not c["agrees"] or c["ev"] < need or c["ev"] > config.MAX_EV or pr["pid"] in used:
             continue
         pb = "matchup_over" if c["side"] == "Over" else "matchup_under"
@@ -342,6 +361,19 @@ def run(state, manual, client, budget, ctx=None):
 
     write_board(ctx, lines, cands, {e["id"]: e for e in tt_events}, bought, plan=plan)
     return {"games": games, "spots": spots, "bought": bought, "placed": placed, "cands": len(cands)}
+
+
+def save_gaps(ctx, gaps):
+    """Extreme model-vs-market disagreements (|logit gap| > anchor.GAP_CAP). These usually mean news the inputs don't
+    have (a role change, a teammate out, a minutes limit), so they go to the Newsroom and Skeptic to check instead of
+    being bet. agents/gaps.json keeps today's list (newest run wins for a player-stat)."""
+    day = ctx["day"].isoformat()
+    db = store.load("agents/gaps.json", {}) or {}
+    items = {f"{x['pid']}|{x['stat']}": x for x in (db.get("items") or []) if db.get("day") == day}
+    for x in gaps:
+        items[f"{x['pid']}|{x['stat']}"] = {**x, "seen": store.iso(store.now())}
+    rows = sorted(items.values(), key=lambda x: -abs(anchor.gap(x["p_model"], x["p_mkt"])))
+    store.save("agents/gaps.json", {"day": day, "updated": store.iso(store.now()), "cap": anchor.GAP_CAP, "items": rows})
 
 
 def write_board(ctx, lines, cands, tt_events, bought, plan=()):

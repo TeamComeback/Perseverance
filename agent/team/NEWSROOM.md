@@ -14,6 +14,9 @@ already has, the agent's open bets and today's Best Bets props.
 3. `flag: true` only when a bet on that player should be held: he is out, doubtful, questionable with real doubt,
    resting, on a minutes limit, or moved to the bench. A teammate's absence that *raises* a player's role is an item
    with `flag: false` and a detail explaining it.
-4. If you find nothing new, save `{"items": [], "note": "no news beyond the official report"}`. That's a valid answer.
+4. `model_gaps` in the brief lists props where the model and the market disagree so much that the agent won't bet them
+   (it usually means news the model doesn't have: a role change, a teammate out, a minutes limit). Check each of those
+   players and write an item when you find the reason, `flag: false` unless he should be held.
+5. If you find nothing new, save `{"items": [], "note": "no news beyond the official report"}`. That's a valid answer.
 
 Morning run: focus on rest and status news. Evening run: focus on confirmed starters and late scratches.

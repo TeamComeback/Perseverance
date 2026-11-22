@@ -4,6 +4,11 @@ journal. What it learns is saved in tuning.json and used by the next research ru
 
   stat_factor   projections running high/low by stat (projection vs actual box score, last 30 days)
   min_delta     minutes running high/low for starters and for bench players
+                (model audit Nov 22: both are now estimated from the RAW projections, i.e. the shipped number with the
+                correction that was in force that day taken back out, so a correction is never multiplied onto itself.
+                Before, each night multiplied yesterday's factor by the same 30-day error, which kept pushing after the
+                error was fixed: points went from +6% high to 6-13% low and starter minutes sat at the -3.0 clamp while
+                starters played ~2 minutes MORE than projected.)
   sim_anchor    how hard the sim leans on the Vegas team total (more if Vegas totals beat the sim's)
   factor_w      how much each conviction factor counts (by its lift in the conviction track record)
   (the model-vs-market blend weight is tuned in scoreboard.py)
@@ -11,6 +16,7 @@ journal. What it learns is saved in tuning.json and used by the next research ru
 It also files a permanent monthly archive (data/archive/YYYY-MM.json) of every graded sim and line,
 so nothing ages out of the working files."""
 import json
+import re
 from datetime import timedelta
 
 from . import config, store
@@ -36,30 +42,81 @@ def run(state, note):
     W = _window(sdb)
     changes = []
 
-    # 1) projection level by stat
+    days = sorted(sdb.get("daily", {}))[-30:]
+    applied = tune.setdefault("applied", {})
+
+    def in_force(d):
+        """The corrections the projections shipped with on day d: recorded since Nov 22, rebuilt from the change log before."""
+        if d in applied:
+            return applied[d]
+        sf, md = {}, {}
+        for h in sorted(tune.get("history", []), key=lambda h: h["ts"]):
+            if h["ts"][:10] > d:
+                break
+            for c in h["changes"]:
+                m = re.match(r"(\w+) projections ran .* level x([\d.]+)", c)
+                if m:
+                    sf[m.group(1).lower()] = float(m.group(2))
+                m = re.match(r"(starter|bench) minutes were off .* correction ([+-][\d.]+) min", c)
+                if m:
+                    md[m.group(1)] = float(m.group(2))
+        return {"stat_factor": sf, "min_delta": md}
+
+    def wt(d):                                   # recent days count more (half-life 10 days)
+        return 0.5 ** ((len(days) - 1 - days.index(d)) / 10)
+
+    # 1) projection level by stat: actual / raw projection, recency-weighted, shrunk toward 1 by sample size
     for s in STATS:
-        n, sp, sa = (W.get("proj_" + s) or [0, 0, 0])[:3]
-        if n < 150 or sp <= 0:
+        n = sw_a = sw_r = 0.0
+        for d in days:
+            v = sdb["daily"][d].get("proj_" + s)
+            if not v or v[0] <= 0 or v[1] <= 0:
+                continue
+            f = (in_force(d).get("stat_factor") or {}).get(s, 1.0) or 1.0
+            w = wt(d)
+            n += v[0]
+            sw_a += w * v[2]
+            sw_r += w * v[1] / f
+        if n < 150 or sw_r <= 0:
             continue
-        raw = sa / sp
-        step = (raw - 1) * n / (n + 600) * 0.5
+        ratio = sw_a / sw_r
         prev = tune["stat_factor"].get(s, 1.0)
-        new = round(max(0.85, min(1.15, prev * (1 + step))), 4)
+        new = round(max(0.85, min(1.15, 1 + (ratio - 1) * n / (n + 600))), 4)
         if abs(new - prev) >= 0.003:
             tune["stat_factor"][s] = new
-            changes.append(f"{s.upper()} projections ran {(1 / raw - 1) * 100:+.1f}% vs actual over {int(n)} player-games: level x{new:.3f}")
+            changes.append(f"{s.upper()} raw projections ran {(1 / ratio - 1) * 100:+.1f}% vs actual over {int(n)} player-games: "
+                           f"level x{new:.3f} (was x{prev:.3f})")
 
-    # 2) minutes for starters and bench
+    # 2) minutes for starters and bench: actual minus raw projected minutes
     for grp in ("starter", "bench"):
-        n, sp, sa = (W.get("min_" + grp) or [0, 0, 0])[:3]
-        if n < 120:
+        n = sw_n = sw_d = 0.0
+        for d in days:
+            v = sdb["daily"][d].get("min_" + grp)
+            if not v or v[0] <= 0:
+                continue
+            md = (in_force(d).get("min_delta") or {}).get(grp, 0.0) or 0.0
+            w = wt(d)
+            n += v[0]
+            sw_n += w * v[0]
+            sw_d += w * (v[2] - (v[1] - md * v[0]))
+        if n < 120 or sw_n <= 0:
             continue
-        d = (sa - sp) / n
+        d_ = sw_d / sw_n
         prev = tune["min_delta"].get(grp, 0.0)
-        new = round(max(-3.0, min(3.0, prev + d * n / (n + 400) * 0.5)), 2)
+        new = round(max(-3.0, min(3.0, d_ * n / (n + 400))), 2)
         if abs(new - prev) >= 0.1:
             tune["min_delta"][grp] = new
-            changes.append(f"{grp} minutes were off by {-d:+.1f} on average over {int(n)} player-games: correction {new:+.1f} min")
+            changes.append(f"{grp} minutes (raw) were off by {-d_:+.1f} on average over {int(n)} player-games: "
+                           f"correction {new:+.1f} min (was {prev:+.1f})")
+
+    # what ships from today on (so the next fit can take it back out exactly)
+    try:
+        from zoneinfo import ZoneInfo
+        today = store.now().astimezone(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        today = store.now().date().isoformat()
+    applied[today] = {"stat_factor": dict(tune["stat_factor"]), "min_delta": dict(tune["min_delta"])}
+    tune["applied"] = {d: applied[d] for d in sorted(applied)[-60:]}
 
     # 3) how hard the sim leans on Vegas team totals
     n, sim_abs, veg_abs = (W.get("totals") or [0, 0, 0])[:3]

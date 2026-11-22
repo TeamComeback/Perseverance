@@ -30,9 +30,12 @@ DAY_START_ET, DAY_END_ET = 9, 25   # the betting day the pace is spread over (9a
 SCOUT_PRE_H = 4            # Scout: NBA every run when the first tip is this close, otherwise hourly
 SCOUT_EVERY_MIN = 55       # Scout: any other board at most this often
 CLOSER_MIN = 20            # Closer: buy a closing price for open bets tipping within this many minutes
-PROP_REFRESH_ET = (11.0, 14.0, 17.0)   # Prop Pricer slots (ET hours), plus one about an hour before the first tip
+PROP_REFRESH_ET = (10.0, 13.0, 17.0)   # Prop Pricer slots (ET hours), plus one about an hour before the first tip
+                                       # (audit Nov 22: earlier prices beat the close, so the first slot moved up)
 PROP_PRE_TIP_H = 1.0
 PROP_STATS_PER_GAME = 5      # Prop Pricer: stat markets bought per game (was 3 on the free key)
+ANCHOR_MIN_EDGE = 0.03       # prop bar once probabilities are market-anchored (agent/anchor.py): honest edges are small.
+                             # prop_min_edge (strategy param) still applies if the anchor has no fit.
 RUNS_PER_DAY = 3           # (legacy unit pacing, kept for old budget files)
 PROPS_UNITS = 3
 UNITS_PER_DAY = RUNS_PER_DAY + PROPS_UNITS

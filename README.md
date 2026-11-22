@@ -143,6 +143,29 @@ Every sim run also prices DraftKings' own lines: spreads, totals and moneylines 
 
 Sim tab → **👥 Lineup**: for the game you're looking at, mark any player **Out** or **Playing** and pick the **Starters**. The sim re-calibrates right away: a ruled-out player's minutes are re-shared to the rest (to 240), the team's scoring stays anchored to its implied total so his shots go to who's left, a player moved into the starting five gets starter minutes (26-30) and a starter moved to the bench loses about 20%. It's saved on your device for that game and also drives the live sim and the Games page. The overnight 10,000-sim averages are hidden while your lineup is set (they used the official one); Run 5,000 sims gives fresh numbers. **Reset** goes back to the official lineup. Best bets and Prop Lab projections still come from the agent's refreshes.
 
+## Model audit fixes (Nov 22): price from the market first
+
+A full audit of 8,447 graded DraftKings props (Nov 5-21) found the matchup model's projections about as accurate as
+the closing line but carrying no information beyond it, with probabilities about five times too confident. The fixes:
+
+- **Market anchor** (`agent/anchor.py` -> `anchor.json`, refit nightly): every prop price starts from the market's
+  no-vig probability; the model moves it only in stats where a walk-forward test (fit on earlier days, scored on the
+  next, never the same day) shows it lowers log loss. At launch that is no stat, so props are priced off the market
+  and the edges that remain come from a better price at one of the ten books. The model switches on by itself per stat
+  if it starts passing. Bar for a prop bet: 3% at the anchored price (`config.ANCHOR_MIN_EDGE`).
+- **Big gaps are news, not value:** a model-vs-market gap past `anchor.GAP_CAP` is never bet; it goes to
+  `agents/gaps.json` for the Newsroom and Skeptic to check (the ten biggest gaps a day won 47.6%).
+- **Side vs the line:** bets, alerts and conviction use the projection versus the line, not the matchup direction
+  (the conviction model is switched to its line-side version).
+- **Learning loop:** corrections are estimated from raw projections (the shipped number with that day's correction
+  taken back out), so they no longer compound; a new health check flags projections drifting from DraftKings' lines.
+- **Minutes:** short teams are filled toward 240; a missing player's minutes go mostly to teammates at his position.
+- **Game lines:** the sim's weight against DraftKings is the measured log-loss blend weight (0.10 until enough games,
+  capped at 0.15), not the old error ratio (0.48).
+- **Our Book gates:** a cut is a "signal" only if betting it at DraftKings' price has made money; lines moving its way
+  without that is "moves only".
+- **Earlier prop prices:** Prop Pricer slots are 10am, 1pm and 5pm ET plus ~1 hour before the first tip.
+
 ## Model upgrades (Nov 9): lineups, schedule, minutes, focus
 
 - **Lineup on/off data (pbpstats, free).** When a rotation player is out, the agent pulls what each teammate does in the possessions he is off the floor (this season and last) and moves tonight's projections. Checked out of sample on 73 absences (`tests/onoff.py`): the raw on/off numbers point the right way but are about three times too big, so the adjustment is scaled to what actually happened (points and assists rise most). The reason shows on the player card ("Grimes out: points +2% tonight…").

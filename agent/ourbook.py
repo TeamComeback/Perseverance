@@ -28,6 +28,7 @@ ORDER = ["9am", "noon", "3pm", "6pm", "tip"]
 EARLY = {"9am", "noon"}
 GATE_N = 300                   # moved lines before a cut counts
 SIGNAL, WATCH, KILL = 0.55, 0.52, 0.50
+PAPER_MIN = 300                # paper bets (at DraftKings' price) a cut needs, with a positive return, to be a signal
 BLEND_N = 1000                 # graded props (150 for game lines) before a blend weight can be used
 BLEND_N_GAME = 150
 STAGE3_DAYS = 28
@@ -370,17 +371,24 @@ def _cuts(moves, acc, old):
         rs = sorted(rs, key=lambda r: r["d"])
         a, last = _rate(rs), _rate(rs[-GATE_N:])
         was = prev.get(k) or {}
+        book, mg, _ = k.split("|")
+        # model audit Nov 22 (fix 7): "lines move toward our number" is not an edge by itself. DraftKings' own opening
+        # juice predicts the direction of a move 78% of the time, better than our number did, while this book's paper
+        # bets lost 7-9%. A cut is a signal only if betting it at DraftKings' price has also made money.
+        pp = paper.get(f"{book}|{mg}") or {}
+        pays = (pp.get("n") or 0) >= PAPER_MIN and (pp.get("roi") or 0) > 0
         if a["n"] < GATE_N:
             status = "collecting"
         elif was.get("status") == "signal" and last["rate"] is not None and last["rate"] < KILL:
             status = "off"                                    # kill switch
-        elif last["rate"] >= SIGNAL:
+        elif last["rate"] >= SIGNAL and pays:
             status = "signal"
+        elif last["rate"] >= SIGNAL:
+            status = "moves only"                             # lines move its way, but betting it at the price loses
         elif last["rate"] >= WATCH:
             status = "watch"
         else:
             status = "no edge"
-        book, mg, _ = k.split("|")
         blend = (acc_blend(acc, book, mg))
         stage = 1
         since = was.get("signal_since")
@@ -388,7 +396,6 @@ def _cuts(moves, acc, old):
             since = since or today
             if blend:
                 stage = 2
-                pp = paper.get(f"{book}|{mg}") or {}
                 if (store.parse(today + "T00:00:00Z") - store.parse(since + "T00:00:00Z")).days >= STAGE3_DAYS and (pp.get("roi") or 0) > 0:
                     stage = 3
         else:

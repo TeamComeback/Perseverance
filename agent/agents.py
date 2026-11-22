@@ -190,6 +190,16 @@ def _slate():
     return pj, games
 
 
+def _gaps(today):
+    """Props where the model and the market disagree so much (agents/gaps.json, written by props.py) that it usually
+    means news the model doesn't have. Not bet; listed so the Newsroom/Skeptic can find the reason."""
+    g = store.load("agents/gaps.json", {}) or {}
+    if g.get("day") != today:
+        return []
+    return [{k: x.get(k) for k in ("name", "pid", "team", "opp", "stat", "line", "model_side", "p_model", "p_mkt", "proj", "minutes", "status")}
+            for x in (g.get("items") or [])[:25]]
+
+
 def brief(role):
     pj, games = _slate()
     state = store.load("state.json", {}) or {}
@@ -205,6 +215,7 @@ def brief(role):
                  for x in ((best.get("days") or {}).get(today) or {}).get("props", [])]
         return {"date": today, "games": games, "rotation_players": sorted(rot, key=lambda x: -(x["min"] or 0)),
                 "open_bets": bets, "best_bet_props": picks, "official_report": pj.get("injury_report"),
+                "model_gaps": _gaps(today),
                 "schema": {"items": [{"player": "name", "pid": "ESPN id from rotation_players", "team": "abbr",
                                       "status": "out|doubtful|questionable|probable|available|rest|minutes_limit|starting|benched|other",
                                       "detail": "one sentence", "source": "URL", "flag": "true if a bet on this player should be held"}]}}
@@ -219,10 +230,11 @@ def brief(role):
                 "best_bets": [{k: x.get(k) for k in ("game", "kind", "player", "name", "stat", "side", "point", "am", "ev", "conv", "tier", "why")}
                               for x in day.get("props", []) + day.get("games", [])],
                 "news": (_load("newsroom") or {}).get("items", []),
+                "model_gaps": _gaps(today),
                 "backtest": {"by_edge": (bt.get("props") or {}).get("by_edge"), "verdict": bt.get("verdict")},
                 "schema": {"holds": [{"bet_id": "optional", "player": "optional", "pid": "optional", "stat": "optional",
                                       "game": "optional 'AWAY @ HOME' (abbr or full names), for a whole game",
-                                      "kind": "stale|correlated|news|thin_edge|other", "reason": "one sentence"}],
+                                      "kind": "stale|correlated|news|thin_edge|gap|other", "reason": "one sentence"}],
                            "notes": "optional"}}
     if role == "strategist":
         bt = store.load("backtest.json", {}) or {}

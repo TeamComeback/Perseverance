@@ -495,6 +495,7 @@ def minutes_model(model, games, inj, rw, flags, official_ok=None, eligible=None)
         tot_active = sum(base[p] for p in active) or 1
         sname = lambda pid: re.sub(r"\s+(Jr\.?|Sr\.?|II|III|IV)$", "", model.players[pid]["name"]).split()[-1]
         adds = {}
+        role_tot = {o: sum(base[p] * _role_w(model, p, o) for p in active) for o in fresh_outs}
         for pid in active:
             rows = [r for r in model.by_player[pid] if r["team"] == t]
             for o in fresh_outs:
@@ -504,7 +505,9 @@ def minutes_model(model, games, inj, rw, flags, official_ok=None, eligible=None)
                 if len(wo) >= 3 and len(w) >= 5:
                     d = sum(wo) / len(wo) - sum(w) / len(w)
                 else:
-                    d = model.minutes(o) * 0.8 * base[pid] / tot_active
+                    # no with/without history: his minutes go mostly to players at his position (audit Nov 22, fix 9;
+                    # before, they were spread over the whole roster by minutes alone)
+                    d = model.minutes(o) * 0.8 * base[pid] * _role_w(model, pid, o) / (role_tot.get(o) or tot_active)
                 d = max(-4, min(10, d))
                 if abs(d) >= 0.5:
                     adds.setdefault(pid, []).append((d, o))
@@ -554,6 +557,12 @@ def minutes_model(model, games, inj, rw, flags, official_ok=None, eligible=None)
             if p in out:
                 out[p].append(round(min(1.0, max(0.0, meta[p]["pp"])), 2))
     return out
+
+
+def _role_w(model, pid, out_pid):
+    """How much of a missing player's minutes this teammate can expect: same position 1.6, otherwise 0.7."""
+    a, b = (model.players.get(pid) or {}).get("role"), (model.players.get(out_pid) or {}).get("role")
+    return 1.6 if a and a == b else 0.7
 
 
 PP_W = (0.35, 0.25, 0.18, 0.12, 0.10)            # last five team games, most recent first
@@ -606,9 +615,11 @@ def _fit_240(team, pids, out, meta):
                     out[p][1].append(f"-{cut:.1f} min: the team's projections added up to {tot:.0f} of 240")
                 out[p][0] -= cut
             extra -= g_tot * k
-    elif tot < 226:
-        need = 232 - tot                                               # leave a few minutes for the end of the bench
-        room = {p: (38 if meta[p]["st"] else 32) - out[p][0] for p in live}
+    elif tot < 234:
+        # audit Nov 22: teams were left 10-30 minutes short (WSH 209, CHI 215) while starters played ~2 minutes more
+        # than projected; fill to 238 (a couple of minutes stay with the end of the bench)
+        need = 238 - tot
+        room = {p: (40 if meta[p]["st"] else 34) - out[p][0] for p in live}
         r_tot = sum(max(0.0, v) for v in room.values()) or 1
         for p in live:
             add = min(max(0.0, room[p]), need * max(0.0, room[p]) / r_tot)

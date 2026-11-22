@@ -1,5 +1,5 @@
 {
- "mode": "matchup",
+ "mode": "line",
  "streak": 0,
  "history": [
   {
@@ -83,7 +83,13 @@
    }
   }
  ],
- "switched": null,
+ "switched": {
+  "to": "line",
+  "at": "2026-11-22T23:00:00Z",
+  "issue": null,
+  "by": "owner (chat, model audit Nov 22, fix 3)",
+  "note": "Conviction is scored on the side vs the line, not the matchup direction. Test at switch: log loss line 0.6872 vs current 0.6871 on 8061 props (equal within noise)."
+ },
  "latest": {
   "n": 8061,
   "days": 17,
