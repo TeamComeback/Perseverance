@@ -20108,7 +20108,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.09,
+  "min_edge": 0.095,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -20119,7 +20119,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.103,
+  "prop_model_weight": 0.087,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -20614,26 +20614,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-18T02:30:27Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 13.25% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-18T02:30:35Z",
-   "kind": "focus",
-   "text": "Skipped 38 pts+reb+ast lines, 14 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, rebounds."
-  },
-  {
-   "ts": "2026-11-18T02:30:35Z",
-   "kind": "props",
-   "text": "NBA matchups: 2 games, strongest spots: Sandro Mamukelashvili ra -13% vs CHA; Sandro Mamukelashvili ast -12% vs CHA; Jake LaRavia ra -10% vs CHA. Bought prop odds for CHA@LAL (ast, ra, pra, team totals), UTAH@LAC (ast, ra, pra, tpm, team totals) (9 credits). Nothing cleared the bar."
-  },
-  {
-   "ts": "2026-11-18T02:37:23Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 120 players projected, lineups for 5 games."
-  },
   {
    "ts": "2026-11-18T03:00:47Z",
    "kind": "focus",
@@ -22113,6 +22093,26 @@
    "ts": "2026-11-22T17:00:45Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 22: 7 games, 170 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-22T17:09:42Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.3% over 57 legs, so the market is beating my picks. Raising the minimum edge to 9.5%."
+  },
+  {
+   "ts": "2026-11-22T17:11:39Z",
+   "kind": "adapt",
+   "text": "Model vs market on 10103 graded lines: the 5% model blend scored best (log loss model 0.729, market 0.686). Moving the model's weight from 10% to 9%."
+  },
+  {
+   "ts": "2026-11-22T17:11:39Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS projections ran -2.7% vs actual over 2754 player-games: level x0.945; REB projections ran -1.9% vs actual over 2754 player-games: level x0.908; AST projections ran -2.7% vs actual over 2754 player-games: level x0.979; TPM projections ran -2.2% vs actual over 2754 player-games: level x1.059; PRA projections ran -2.5% vs actual over 2754 player-games: level x0.948; RA projections ran -2.1% vs actual over 2754 player-games: level x0.945; bench minutes were off by +0.6 on average over 1328 player-games: correction -1.2 min; conviction factor 'bump' hurt by -3.4 pts of hit rate over 2692 plays: weight 0.82 -> 0.73."
+  },
+  {
+   "ts": "2026-11-22T17:11:39Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $46.35 (run #2), 27-57-2, ROI -29.6%, CLV -0.7%."
   }
  ],
  "learned_ids": [
@@ -22204,7 +22204,7 @@
   "65aaa4de"
  ],
  "strategist": null,
- "updated": "2026-11-22T17:01:21Z",
+ "updated": "2026-11-22T17:11:39Z",
  "stats": {
   "bets": 86,
   "won": 27,
