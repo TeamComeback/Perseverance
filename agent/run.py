@@ -628,6 +628,16 @@ def nightly():
     except Exception as e:
         brain.note(state, "error", f"Model vs market scoreboard failed: {e}")
     try:
+        citynow.mark("audit_score", "Re-fitting the market anchor (does the model move the market's price?)")
+        from . import anchor
+        A = anchor.build(log=lambda m: None)
+        if A:
+            on = [s for s, v in A["model_counts"].items() if v]
+            brain.note(state, "focus", "Prop prices start from the market; the model moves them in "
+                       + (", ".join(on) if on else "no stat yet") + f" (walk-forward test, {A['n']:,} graded props).")
+    except Exception as e:
+        brain.note(state, "error", f"Market anchor failed: {e}")
+    try:
         citynow.mark("teacher", "Night school: learning from the graded bets")
         from . import learn
         learn.run(state, brain.note)

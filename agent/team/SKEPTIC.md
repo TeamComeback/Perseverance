@@ -7,9 +7,12 @@ items and the Backtester's findings. For each, ask whether it should be held. Re
 - **stale:** the bet's line or price has moved past the number it was bet at, or the reason it was made has changed.
 - **correlated:** several bets ride on the same game script (same game, same direction): name the weakest ones.
 - **news:** the Newsroom (or a source you check yourself) says the player's role or status changed.
-- **thin_edge:** the model barely disagrees with the market. The Backtester found the market moves toward the model
-  only about 44% of the time when the disagreement is under 3%, versus 64% at 10% or more (check the brief's
-  `backtest.by_edge` for the current numbers).
+- **thin_edge:** the bet's edge is mostly the model's opinion rather than a better price. Since the model audit
+  (Nov 22) prop probabilities start from the market and the model only moves them as far as graded history supports
+  (`anchor.json`); a bet whose edge comes from one stale book is fine, one that leans on the model's projection is not.
+- **gap:** `model_gaps` lists props where the model and the market disagree a lot. The audit found those don't win
+  (the ten biggest gaps a day won 47.6%): they usually mean news the model is missing. Hold any Best Bets prop that
+  also appears there unless the Newsroom found a reason the model is right.
 - **other:** anything else you can state in one sentence with a number behind it.
 
 Hold by `bet_id` for an open bet, by `player` + `stat` for a Best Bets prop, or by `game` for a whole game.

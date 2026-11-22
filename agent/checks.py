@@ -85,6 +85,18 @@ def run(log=print):
             add("DraftKings lines", "ok" if (a is not None and a <= 4.5 and not nol) else "warn",
                 (f"saved {a:.1f}h ago" if a is not None else "no save time") + (f"; no line yet: {', '.join(nol)}" if nol else ""))
 
+    # 4a. projections vs the lines (model audit Nov 22): across today's props the average projection should sit near
+    # DraftKings' average line. From Nov 11 to 21 it sat 5-9% below (63% of props looked like unders) because the
+    # learning loop had over-corrected; this catches that kind of drift the same day.
+    if dk:
+        P = [r for r in (dk.get("props") or {}).values() if r.get("proj") is not None and (r.get("c") or [None])[0]]
+        if len(P) >= 40:
+            ratio = sum(r["proj"] for r in P) / sum(r["c"][0] for r in P)
+            under = sum(r["proj"] < r["c"][0] for r in P) / len(P)
+            add("Projections vs lines", "ok" if 0.96 <= ratio <= 1.04 and 0.38 <= under <= 0.62 else "warn",
+                f"average projection is {ratio:.3f}x DraftKings' line over {len(P)} props; {under:.0%} project under the line"
+                + ("" if 0.96 <= ratio <= 1.04 else " (projections have drifted from the market: check the learning loop)"))
+
     # 4b. Kalshi (second market): today's file is fresh and its lines roughly agree with DraftKings'
     kd = _load(f"kalshi/{today}.json", None)
     if pre:

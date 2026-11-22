@@ -38,22 +38,34 @@ function bestBetsSetup(pj, simlog) {
   const OBA = (read("ourbook_track.json", {}).accuracy) || {};
   const wStat = s => { const ob = OBA[`inf|${s}`]; if (ob && ob.blend && ob.blend.ready) return ob.blend.best_w;     // measured on frozen lines, leave-one-day-out
     const b = sb.by_stat && sb.by_stat[s]; if (!b || !b.n) return wGlobal; return (b.n * b.best_w + 100 * wGlobal) / (b.n + 100); };
-  // game lines: weight the sim by how its errors compare with the market's (inverse squared error)
-  const wGame = (() => {
-    const s_ = agg.margin, v_ = agg.margin_vegas;
-    if (!s_ || !v_ || v_[0] < 20 || s_[0] < 20) return 0.35;
-    const es = s_[1] / s_[0], ev = v_[1] / v_[0];
-    return Math.max(0.1, Math.min(0.6, (ev * ev) / (es * es + ev * ev)));
-  })();
+  // game lines (model audit Nov 22, fix 6): the old weight came from comparing the sim's errors with the market's as if
+  // they were independent (it reached 0.48); they aren't, and game picks went 32-46. The weight is now the log-loss
+  // blend weight measured on frozen lines (Our Book's "inf" book = this sim anchored to DraftKings), capped at 0.15,
+  // and 0.10 until that test has enough games.
+  const W_GAME_CAP = 0.15, W_GAME_DEFAULT = 0.10;
+  const gBlend = (OBA["inf|all_games"] || {}).blend || null;
+  const gLearned = !!(gBlend && gBlend.ready);
+  const wGame = gLearned ? Math.max(0, Math.min(W_GAME_CAP, gBlend.best_w || 0)) : W_GAME_DEFAULT;
   const totBias = bias("total");
   const am = d => d >= 2 ? Math.round((d - 1) * 100) : -Math.round(100 / (d - 1));
   const frac = (n, f) => { let w = 0, l = 0; for (let i = 0; i < n; i++) { const r = f(i); if (r > 0) w++; else if (r < 0) l++; } return w + l ? w / (w + l) : null; };
   const novig = (a, b) => (1 / a) / (1 / a + 1 / b);
+  // props (model audit Nov 22, fixes 1-4): start from DraftKings' no-vig price; the matchup model moves it only as far as
+  // graded history supports (agent/anchor.py -> anchor.json, refit nightly with a walk-forward test). A model-vs-market
+  // gap past the cap is missing news, not value: those props are skipped here and flagged for the Newsroom/Skeptic.
+  const ANC = read("anchor.json", null);
+  const lgt = p => { p = Math.min(0.98, Math.max(0.02, p)); return Math.log(p / (1 - p)); }, sgm = x => 1 / (1 + Math.exp(-x));
+  const ancCoef = s => (ANC && ANC.coef && ANC.coef[s]) || null;
+  const anchorOver = (s, pMktOver, pModelOver) => {
+    const c = ancCoef(s); if (!c) return null;
+    const lm = lgt(pMktOver), clip = ANC.gap_clip || 1, g = pModelOver == null ? 0 : Math.max(-clip, Math.min(clip, lgt(pModelOver) - lm));
+    return sgm(c[0] + c[1] * lm + c[2] * g);
+  };
+  const ancGap = (pMktOver, pModelOver) => pModelOver == null ? 0 : lgt(pModelOver) - lgt(pMktOver);
   const cands = {props: [], games: []};
   // every priced prop's case is logged (not just the five picks) so the agent can learn which reasons actually pay
   const CLOG = read("case_log.json", {days: {}}), clogDay = {};
-  const gLearned = !!(agg.margin && agg.margin_vegas && agg.margin[0] >= 20 && agg.margin_vegas[0] >= 20);
-  const learned = {focus: Object.fromEntries(["pts", "reb", "ast", "tpm", "pra", "ra"].map(k => [k, focusOf(k)])), w_props: {}, w_game: Math.round(wGame * 100) / 100, w_game_learned: gLearned, total_bias: r1(totBias), stat_bias: {},
+  const learned = {focus: Object.fromEntries(["pts", "reb", "ast", "tpm", "pra", "ra"].map(k => [k, focusOf(k)])), w_props: {}, w_game: Math.round(wGame * 100) / 100, w_game_learned: gLearned, anchor: ANC ? {coef: ANC.coef, model_counts: ANC.model_counts, n: ANC.n, gap_cap: ANC.gap_cap} : null, total_bias: r1(totBias), stat_bias: {},
     games_graded: (agg.total || [0])[0], props_scored: (sb.all && sb.all.n) || 0};
   ["pts", "reb", "ast", "tpm", "pra", "ra"].forEach(k => { learned.w_props[k] = Math.round(wStat(k) * 100) / 100; learned.stat_bias[k] = Math.round(bias(k) * 100) / 100; });
   const startOf = {}, NSIM = +(process.env.SIM_N || 10000); (pj.games || []).forEach(g => startOf[g.espn_id] = g);
@@ -140,10 +152,12 @@ function bestBetsSetup(pj, simlog) {
       const a = M.out[r.pid] && M.out[r.pid][r.stat]; if (!a) continue;
       const L = r.c[0], b = bias(r.stat), w = wStat(r.stat);
       const foc = focusOf(r.stat);
-      if (foc === "skip" && !(CM && (r.cv || 0) >= 3)) continue;   // the market beats the model in this stat: only strong conviction gets through
+      if (!ANC && foc === "skip" && !(CM && (r.cv || 0) >= 3)) continue;   // the market beats the model in this stat: only strong conviction gets through
       const gp = gf && gf.players && gf.players[r.pid];
       const pSim = frac(N, i => a[i] - b - L); if (pSim == null) continue;
       const pMkt = novig(r.c[1], r.c[2]), simAvg = mean(a) - b;
+      if (ANC && Math.abs(ancGap(pMkt, r.pm)) > (ANC.gap_cap || 1)) continue;   // extreme disagreement: a news flag, not a pick
+      const pAncOver = anchorOver(r.stat, pMkt, r.pm);
       // guards: only players with a real role tonight, and no line the market has clearly re-priced
       // (a big gap between the sim and DraftKings usually means news the inputs don't have yet)
       const pp = (pj.players || {})[r.pid] || {}, simMin = mean(M.out[r.pid].min);
@@ -153,7 +167,7 @@ function bestBetsSetup(pj, simlog) {
       if (r.proj != null && Math.abs(simAvg - r.proj) > Math.max(2, 0.25 * r.proj)) continue;
       for (const side of ["Over", "Under"]) {
         const ps = side === "Over" ? pSim : 1 - pSim, pm = side === "Over" ? pMkt : 1 - pMkt, dec = side === "Over" ? r.c[1] : r.c[2];
-        const pb = w * ps + (1 - w) * pm;
+        const pb = pAncOver != null ? (side === "Over" ? pAncOver : 1 - pAncOver) : w * ps + (1 - w) * pm;
         // the case: form at this line and the next ones out, tonight's context, how the misses happen, matchup, sim, price
         let cs = null;
         if (gp && gp.logs) try {
@@ -170,7 +184,7 @@ function bestBetsSetup(pj, simlog) {
           case: cs ? {for: cs.for, against: cs.against} : null, ladder: cs ? cs.ladder : null, verdict: cs ? CASE.verdict(cs, conv) : null, avg10: cs ? cs.avg10 : null, pid: r.pid, name: r.name, team: r.team, opp: r.opp, stat: r.stat, side, point: L, dec, am: am(dec),
           p: r1(p * 1000) / 1000, p_sim: r1(ps * 1000) / 1000, p_mkt: r1(pm * 1000) / 1000, p_kalshi: kalshiP(r.pid, r.stat, L, side), ev: r1((p * dec - 1) * 1000) / 1000,
           cv: r.cv || null, lean: r.lean || null, proj: r.proj != null ? r1(r.proj) : null, sim: r1(simAvg), open: r.o ? r.o[0] : null,
-          why: `Sim avg ${f1(simAvg)} vs ${L} · ${side.toLowerCase()} in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings · model counts ${Math.round(w * 100)}% (learned)`});
+          why: `Sim avg ${f1(simAvg)} vs ${L} · ${side.toLowerCase()} in ${Math.round(ps * 100)}% of sims vs ${Math.round(pm * 100)}% DraftKings · ${pAncOver != null ? (ancCoef(r.stat)[2] ? `model moves the price (tested on ${ANC.n.toLocaleString("en-US")} props)` : "priced off the market (the model hasn't beaten it in this stat)") : `model counts ${Math.round(w * 100)}% (learned)`}`});
       }
       const two = cands.props.slice(-2).filter(x => x.pid === r.pid && x.stat === r.stat && x.case);
       if (two.length === 2) { const b = two[0].conv >= two[1].conv ? two[0] : two[1];

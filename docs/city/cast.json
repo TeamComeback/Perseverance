@@ -472,6 +472,14 @@
   "agents/shift.json": {
    "name": "Claude agents' shifts",
    "fresh_h": 30
+  },
+  "anchor.json": {
+   "name": "Market anchor (how far the model may move each stat's price)",
+   "fresh_h": 30
+  },
+  "agents/gaps.json": {
+   "name": "Model gaps for the Newsroom and Skeptic to check",
+   "fresh_h": 30
   }
  },
  "desks": [
@@ -1030,7 +1038,8 @@
     "props.json",
     "props_ran.json",
     "lines.json",
-    "state.json"
+    "state.json",
+    "agents/gaps.json"
    ]
   },
   {
@@ -1136,6 +1145,22 @@
    "writes": [
     "scoreboard.json",
     "conv_switch.json"
+   ]
+  },
+  {
+   "id": "anchor",
+   "company": "audit",
+   "title": "Market Anchor",
+   "code": [
+    "agent/anchor.py"
+   ],
+   "job": "Starts every prop price from the market and lets the model move it only as far as a day-by-day test on unseen games allows. Flags big model-vs-market gaps as news to check.",
+   "reads": [
+    "dk/*"
+   ],
+   "writes": [
+    "anchor.json",
+    "agents/gaps.json"
    ]
   },
   {
@@ -1456,7 +1481,8 @@
    "reads": [
     "players.json",
     "best.json",
-    "state.json"
+    "state.json",
+    "agents/gaps.json"
    ],
    "writes": [
     "agents/news.json"
@@ -1474,7 +1500,8 @@
     "state.json",
     "best.json",
     "agents/news.json",
-    "backtest.json"
+    "backtest.json",
+    "agents/gaps.json"
    ],
    "writes": [
     "agents/holds.json"
