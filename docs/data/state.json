@@ -19567,7 +19567,7 @@
       "underdog-lost"
      ]
     },
-    "recap_tried": 2
+    "recap_tried": 3
    },
    {
     "id": "42989098",
@@ -19647,7 +19647,7 @@
       "lost-closing-line"
      ]
     },
-    "recap_tried": 2
+    "recap_tried": 3
    },
    {
     "id": "65aaa4de",
@@ -19832,7 +19832,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0975,
+  "min_edge": 0.1,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -20121,7 +20121,7 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-22T02:30:30Z"
+   "last_scanned": "2026-11-22T03:24:13Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -20338,21 +20338,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T22:30:39Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 13.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-17T22:50:53Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -1.5% over 58 legs, so the market is beating my picks. Raising the minimum edge to 14.2%."
-  },
-  {
-   "ts": "2026-11-17T22:50:56Z",
-   "kind": "scan",
-   "text": "Scanned icehockey_nhl (14), basketball_ncaab (79), basketball_nba (5), americanfootball_ncaaf (5), icehockey_liiga (6), basketball_nbl (2) for 18 credits. Nothing cleared the bar. Equity $100.00."
-  },
   {
    "ts": "2026-11-17T23:00:41Z",
    "kind": "adapt",
@@ -21837,6 +21822,21 @@
    "ts": "2026-11-22T03:10:01Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 21: 6 games, 152 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-22T03:24:12Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.3% over 56 legs, so the market is beating my picks. Raising the minimum edge to 10.2%."
+  },
+  {
+   "ts": "2026-11-22T03:24:13Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.00% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-22T03:24:13Z",
+   "kind": "scan",
+   "text": "Scanned americanfootball_nfl (11) for 3 credits. Nothing cleared the bar. Equity $51.35."
   }
  ],
  "learned_ids": [
@@ -21927,7 +21927,7 @@
   "42989098"
  ],
  "strategist": null,
- "updated": "2026-11-22T03:15:26Z",
+ "updated": "2026-11-22T03:24:13Z",
  "stats": {
   "bets": 85,
   "won": 27,
@@ -21958,5 +21958,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
