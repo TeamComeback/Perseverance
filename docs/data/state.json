@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 35.1,
+  "cash": 30.1,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -19754,15 +19754,15 @@
       "price": 2.138,
       "book": "kalshi",
       "fair_p": 0.4948,
-      "close_p": 0.489,
+      "close_p": 0.4832,
       "result": null,
       "shop": {
        "median": 1.94,
        "gain": 0.1019,
        "n": 6
       },
-      "close_at": "2026-11-22T06:00:31Z",
-      "close_mins": 839
+      "close_at": "2026-11-22T07:00:31Z",
+      "close_mins": 779
      }
     ],
     "dec": 2.138,
@@ -19797,15 +19797,15 @@
       "price": 1.91,
       "book": "fanatics",
       "fair_p": 0.5167,
-      "close_p": 0.511,
+      "close_p": 0.5168,
       "result": null,
       "shop": {
        "median": 1.88,
        "gain": 0.016,
        "n": 6
       },
-      "close_at": "2026-11-22T06:00:31Z",
-      "close_mins": 839
+      "close_at": "2026-11-22T07:00:31Z",
+      "close_mins": 779
      }
     ],
     "dec": 1.91,
@@ -19814,6 +19814,47 @@
     "p": 0.5282,
     "note": "Arb: 0.87% locked across 2 books",
     "group": "arb-a8fa96ce1e",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "2fa804d6",
+    "placed": "2026-11-22T07:00:31Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "value_dog",
+    "legs": [
+     {
+      "event_id": "4564c6b619ba4df5c3f81b609a24f582",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-23T01:00:00Z",
+      "home": "Utah Valley Wolverines",
+      "away": "Tenn-Martin Skyhawks",
+      "market": "h2h",
+      "outcome": "Tenn-Martin Skyhawks",
+      "point": null,
+      "price": 4.3,
+      "book": "betrivers",
+      "fair_p": 0.2556,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 3.8,
+       "gain": 0.1316,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 4.3,
+    "stake": 5.0,
+    "ev": 0.0989,
+    "p": 0.2556,
+    "note": "9.9% edge vs 6-book consensus",
+    "group": null,
     "issue": null,
     "status": "open",
     "payout": null,
@@ -20113,19 +20154,19 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-22T06:00:30Z",
+   "last_scanned": "2026-11-22T07:00:30Z",
    "bets": 65.0,
    "staked": 346.16999999999996,
    "profit": -102.32
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-22T06:00:29Z",
+   "last_scanned": "2026-11-22T07:00:30Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-22T06:00:29Z"
+   "last_scanned": "2026-11-22T07:00:29Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -20137,7 +20178,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-22T06:00:30Z"
+   "last_scanned": "2026-11-22T07:00:30Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -20152,13 +20193,13 @@
    "last_scanned": "2026-11-21T06:30:22Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-11-22T06:00:31Z",
+   "last_scanned": "2026-11-22T07:00:31Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
   },
   "soccer_mexico_ligamx": {
-   "last_scanned": "2026-11-21T07:15:19Z"
+   "last_scanned": "2026-11-22T07:00:31Z"
   },
   "boxing_boxing": {
    "last_scanned": "2026-11-21T05:15:35Z"
@@ -20176,13 +20217,13 @@
    "last_scanned": "2026-11-21T07:00:39Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-22T06:00:30Z"
+   "last_scanned": "2026-11-22T07:00:30Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-11-22T06:15:23Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-11-22T06:00:30Z"
+   "last_scanned": "2026-11-22T07:00:31Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-11-20T06:15:21Z"
@@ -20191,10 +20232,10 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-11-22T06:00:30Z"
+   "last_scanned": "2026-11-22T07:00:31Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-22T06:00:29Z",
+   "last_scanned": "2026-11-22T07:00:29Z",
    "bets": 4.0,
    "staked": 35.42,
    "profit": 0.3199999999999994
@@ -20260,13 +20301,13 @@
    "last_scanned": "2026-11-21T07:30:23Z"
   },
   "soccer_germany_bundesliga_women": {
-   "last_scanned": "2026-11-21T05:15:35Z"
+   "last_scanned": "2026-11-22T07:00:30Z"
   },
   "soccer_germany_bundesliga2": {
    "last_scanned": "2026-11-22T05:30:25Z"
   },
   "soccer_germany_liga3": {
-   "last_scanned": "2026-11-20T06:30:26Z"
+   "last_scanned": "2026-11-22T07:00:31Z"
   },
   "soccer_poland_ekstraklasa": {
    "last_scanned": "2026-11-22T06:15:23Z"
@@ -20342,11 +20383,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-18T00:00:57Z",
-   "kind": "focus",
-   "text": "Skipped 77 pts+reb+ast lines, 14 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, rebounds."
-  },
   {
    "ts": "2026-11-18T00:00:57Z",
    "kind": "props",
@@ -21841,6 +21877,11 @@
    "ts": "2026-11-22T06:30:33Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.25% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-22T07:00:31Z",
+   "kind": "scan",
+   "text": "Scout: americanfootball_nfl (11), basketball_ncaab (38), icehockey_nhl (5), soccer_italy_serie_a (5), soccer_spain_la_liga (4), basketball_nba (7), soccer_germany_bundesliga_women (4), soccer_germany_bundesliga (2), soccer_germany_liga3 (3), soccer_epl (2), soccer_mexico_ligamx (2), soccer_usa_mls (3) for 28 credits. Placed 1: Tenn-Martin Skyhawks @ +330 (BetRivers). Equity $51.35."
   }
  ],
  "learned_ids": [
@@ -21931,13 +21972,13 @@
   "42989098"
  ],
  "strategist": null,
- "updated": "2026-11-22T06:45:20Z",
+ "updated": "2026-11-22T07:00:31Z",
  "stats": {
   "bets": 85,
   "won": 27,
   "lost": 56,
-  "shop_n": 27,
-  "shop_avg": 0.053,
+  "shop_n": 28,
+  "shop_avg": 0.0558,
   "push": 2,
   "staked": 486.32,
   "profit": -140.49,
@@ -21946,7 +21987,7 @@
   "clv_n": 66,
   "clv_no_close": 21,
   "close_mins_median": 4,
-  "open": 3,
+  "open": 4,
   "equity": 51.35
  },
  "weights": {
@@ -21962,5 +22003,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 1
+ "dry_scans": 0
 }
