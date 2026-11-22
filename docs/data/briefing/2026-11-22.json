@@ -1039,7 +1039,7 @@
    "p": 0.548,
    "p_sim": 0.823,
    "p_mkt": 0.512,
-   "p_kalshi": 0.529,
+   "p_kalshi": 0.526,
    "ev": -0.003,
    "verdict": "Pass: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1171,7 +1171,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.529
+    "kalshi": 0.526
    },
    "started": false,
    "published": {
@@ -1555,7 +1555,7 @@
    "p": 0.49,
    "p_sim": 0.698,
    "p_mkt": 0.46,
-   "p_kalshi": 0.457,
+   "p_kalshi": 0.454,
    "ev": -0.005,
    "verdict": "Pass: simulation and projection agree; the main risk is history.",
    "home": "UTAH",
@@ -1679,7 +1679,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.457
+    "kalshi": 0.454
    },
    "started": false,
    "published": {
@@ -3079,8 +3079,11 @@
     }
    },
    "first_seen": "2026-11-22T15:16:26Z",
-   "removed": null,
-   "status": "Downgraded"
+   "removed": {
+    "at": "2026-11-22T20:28:54Z",
+    "why": "line moved 225.5 \u2192 226.5"
+   },
+   "status": "Removed"
   },
   "g|401910030|spread|away": {
    "key": "g|401910030|spread|away",
@@ -3579,15 +3582,15 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 225.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 32,
+   "dec": 1.93,
+   "am": -108,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.5,
+   "p": 0.502,
    "p_sim": 0.512,
-   "p_mkt": 0.488,
+   "p_mkt": 0.493,
    "p_kalshi": null,
-   "ev": -0.026,
+   "ev": -0.03,
    "verdict": "Pass: the price is the case; the main risk is model record.",
    "home": "UTAH",
    "away": "DAL",
@@ -3604,8 +3607,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.0,
-    "floor_am": 100,
+    "floor_dec": 1.992,
+    "floor_am": -101,
     "line": null,
     "next": 224.5
    },
@@ -3645,7 +3648,7 @@
    ],
    "kill": [
     "The line reaching 224.5",
-    "The price at 225.5 going past +100",
+    "The price at 225.5 going past \u2212101",
     "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -3671,11 +3674,8 @@
     }
    },
    "first_seen": "2026-11-22T19:31:15Z",
-   "removed": {
-    "at": "2026-11-22T20:01:39Z",
-    "why": "line moved 225.5 \u2192 226.5"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401910034|total|Under": {
    "key": "g|401910034|total|Under",
@@ -4757,6 +4757,27 @@
    "kind": "injury",
    "text": "Nic Claxton questionable \u2192 out (DEN @ CHI Under 235.5 re-priced: 235.5 at \u2212112, conviction 46)",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T20:28:54Z",
+   "key": "g|401910033|total|Under",
+   "kind": "back",
+   "text": "Back on the board: DAL @ UTAH Under 225.5 at \u2212108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:28:54Z",
+   "key": "g|401910033|total|Under",
+   "kind": "line",
+   "text": "DAL @ UTAH Under 225.5: line 225.5 at \u2212105 \u2192 225.5 at \u2212108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T20:28:54Z",
+   "key": "g|401910029|total|Over",
+   "kind": "removed",
+   "text": "Removed: DET @ ATL Over 223.5 \u2014 line moved 225.5 \u2192 226.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4886,5 +4907,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T20:16:15Z"
+ "updated": "2026-11-22T20:28:54Z"
 }
