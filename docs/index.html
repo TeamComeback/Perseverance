@@ -135,6 +135,17 @@ input.search{width:100%;background:var(--panel2);border:1px solid var(--line);co
 .tbl td.t{font-family:inherit}
 .tbl tr.hl td{background:#ADD8E612}
 .scroll{overflow-x:auto;margin:0 -14px;padding:0 14px}
+.ob-t th,.ob-t td{text-align:left;vertical-align:top;font-family:var(--f-body,inherit);padding:8px 4px}
+.ob-t th{cursor:default;white-space:normal;line-height:1.2;vertical-align:bottom}
+.ob-t .gm{font-weight:700;font-size:12px}.ob-t .sm{font-size:11px;color:var(--dim);line-height:1.4}
+.ob-t .pk{font-weight:700}
+.ob-t .bk{display:grid;grid-template-columns:auto auto;gap:0 6px;font-size:10px;line-height:1.5;white-space:nowrap}
+.ob-t .bk span{color:var(--dim)} .ob-t .bk b,.ob-t .bk i{font-family:var(--mono);font-style:normal;text-align:right;font-size:12px}
+.ob-t .bk b{color:var(--text)} .ob-t .bk i{color:var(--dim)} .ob-t .bk b.gold{color:var(--gold)} .ob-t .bk b.dim{color:var(--dim);font-weight:600}
+.ob-t .bk .inf,.ob-t .bk .inf+i{opacity:.75}
+.ob-t tr.hm>td{border-bottom:0}
+.ob-t td.mv{padding-top:0;font-size:11px;color:var(--dim);white-space:nowrap}.ob-t td.mv b{font-family:var(--mono);font-weight:600;color:var(--text)}
+.ob-key{margin:0 0 6px}
 td.h{color:var(--win)} td.m{color:var(--loss)}
 
 /* trend items */
@@ -1317,16 +1328,19 @@ async function renderBook() {
   })();
   // tonight: independent vs DraftKings vs the informed book, and how our number moved since the first freeze
   const tonight = !ob ? '<div class="empty">No freeze yet today. The first one lands at 9 AM.</div>' : (() => {
+    // one cell per market: ours, DraftKings, the gap (gold when it is big enough to matter), then the informed book
+    const bk = (fmt, ours, dk, inf, gap, big, tag) => `<td><div class="bk"><span>Ours</span><b>${fmt(ours)}</b><span>DraftKings</span><i>${fmt(dk)}</i><span>Gap</span><b class="${big ? "gold" : "dim"}">${gap == null ? "–" : spB(gap)}${big && tag ? " " + esc(tag) : ""}</b><span class="inf">Informed</span><i>${fmt(inf)}</i></div></td>`;
     const rows = games.filter(g => ob.games[g.espn_id]).map(g => {
       const G = ob.games[g.espn_id], [lk, L] = obLatest(G.f), [fk, F] = obFirst(G.f), i = (L || {}).ind || {}, inf = (L || {}).inf || {};
       const dkg = (D.dkday.games || {})[g.espn_id] || {}, c = dkg.close || dkg.open || {};
-      const mv = (a, b) => a == null || b == null || a === b ? "" : ` <span class="dim">(${fk === lk ? "" : OB_LBL[fk] + " "}${b > a ? "+" : ""}${f1(b - a)})</span>`;
       const fi = (F || {}).ind || {};
       const spG = i.sp != null && c.sp != null ? i.sp - c.sp : null, toG = i.tot != null && c.tot != null ? i.tot - c.tot : null;
-      return `<tr><td class="t">${esc(g.away)} @ ${esc(g.home)}<div class="dim" style="font-size:11px">${OB_LBL[lk] || ""}</div></td>
-        <td><b>${spB(i.sp)}</b>${mv(fi.sp, i.sp)}<div class="dim" style="font-size:11px">DK ${spB(c.sp)}<br>inf ${spB(inf.sp)}</div>${spG != null && Math.abs(spG) >= 1.5 ? `<div class="gold" style="font-size:11px">${esc(spG < 0 ? g.home : g.away)} ${f1(Math.abs(spG))} better</div>` : ""}</td>
-        <td><b>${f1(i.tot)}</b>${mv(fi.tot, i.tot)}<div class="dim" style="font-size:11px">DK ${f1(c.tot)}<br>inf ${f1(inf.tot)}</div>${toG != null && Math.abs(toG) >= 2.5 ? `<div class="gold" style="font-size:11px">${toG > 0 ? "higher" : "lower"} by ${f1(Math.abs(toG))}</div>` : ""}</td>
-        <td>${i.win != null ? esc(g.home) + " " + Math.round(i.win / 10) + "%" : "–"}</td></tr>`;
+      const hw = i.win != null ? i.win / 10 : null;
+      const mvs = [["spread", fi.sp, i.sp], ["total", fi.tot, i.tot]].filter(([, x, y]) => x != null && y != null && x !== y).map(([n, x, y]) => `${n} <b>${y > x ? "+" : ""}${f1(y - x)}</b>`).join(" · ");
+      return `<tr${mvs ? ' class="hm"' : ""}><td><div class="gm">${esc(g.away)} @ ${esc(g.home)}</div><div class="sm">${tod(g.start)}<br>${OB_LBL[lk] || ""} freeze</div></td>
+        <td>${hw != null ? `<div class="pk">${esc(hw >= 50 ? g.home : g.away)}</div><div class="sm">${Math.round(Math.max(hw, 100 - hw))}%</div>` : "–"}</td>
+        ${bk(spB, i.sp, c.sp, inf.sp, spG, spG != null && Math.abs(spG) >= 1.5, spG != null ? (spG < 0 ? g.home : g.away) : "")}
+        ${bk(f1, i.tot, c.tot, inf.tot, toG, toG != null && Math.abs(toG) >= 2.5, "")}</tr>${mvs ? `<tr><td class="mv" colspan="4">Moved since the ${OB_LBL[fk]} freeze: ${mvs}</td></tr>` : ""}`;
     }).join("");
     // biggest prop gaps between the independent book and DraftKings right now
     const gaps = [];
@@ -1337,8 +1351,9 @@ async function renderBook() {
     }
     gaps.sort((a, b) => Math.abs(b.gp) / Math.max(1, b.dk) - Math.abs(a.gp) / Math.max(1, a.dk));
     const gp = gaps.slice(0, 8).map(x => `<div class="row2"><span>${esc(x.pr.name)} <span class="dim">${STATN[x.st] || x.st}</span></span><span>ours <b>${f1(x.ours)}</b> · DK ${f1(x.dk)} <span class="gold">${x.gp > 0 ? "over" : "under"}</span></span></div>`).join("");
-    return `<div class="scroll"><table class="tbl"><tr><th></th><th>Home spread</th><th>Total</th><th>Win</th></tr>${rows}</table></div>
-      <div class="desc">Bold: independent book (latest freeze). Grey: DraftKings now and our informed book (the sim anchored to DraftKings). Brackets: how far our number moved since the first freeze today.</div>
+    return `<div class="desc ob-key">Ours = independent book · Gap = ours − DraftKings</div>
+      <div class="scroll"><table class="tbl ob-t"><tr><th>Game</th><th>Our pick</th><th>Home spread</th><th>Total</th></tr>${rows}</table></div>
+      <div class="desc">Ours is the independent book's latest freeze; DraftKings is its current line. Informed is our sim anchored to DraftKings. Gap turns gold at 1.5+ on the spread (with the team our number favors more) or 2.5+ on the total. The line under a game shows how far our number has moved since the first freeze today.</div>
       ${gp ? `<div class="lbl">Biggest prop gaps (independent vs DraftKings)</div>${gp}<div class="desc">Shown for watching only until the book passes its gates.</div>` : ""}`;
   })();
   const gates = !tr || !tr.cuts || !Object.keys(tr.cuts).length ? '<div class="empty">Grading starts the morning after the first freeze.</div>' : (() => {
