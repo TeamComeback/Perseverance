@@ -39,7 +39,7 @@
    "p": 0.599,
    "p_sim": 0.802,
    "p_mkt": 0.567,
-   "p_kalshi": 0.6,
+   "p_kalshi": 0.605,
    "ev": -0.011,
    "verdict": "Pass: simulation and recent form agree; the main risk is minutes.",
    "home": "SAC",
@@ -154,7 +154,7 @@
    "market": {
     "open": 5.5,
     "now": 6.5,
-    "kalshi": 0.6
+    "kalshi": 0.605
    },
    "started": false,
    "published": {
@@ -639,8 +639,11 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-22T00:31:19Z",
+    "why": "no longer +EV at tonight's line (4.5 at -128)"
+   },
+   "status": "Removed"
   },
   "p|3134907|ra|Under": {
    "key": "p|3134907|ra|Under",
@@ -1274,15 +1277,15 @@
    "start": "2026-11-22T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.8,
-   "am": -125,
-   "conv": 40,
+   "dec": 1.69,
+   "am": -145,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.555,
+   "p": 0.585,
    "p_sim": 0.678,
-   "p_mkt": 0.519,
+   "p_mkt": 0.552,
    "p_kalshi": 0.565,
-   "ev": -0.0,
+   "ev": -0.012,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "SAC",
    "away": "BOS",
@@ -1298,11 +1301,11 @@
    "minutes": 27.1,
    "for": [
     {
-     "tag": "second market",
-     "t": "Kalshi likes it more: 56% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 443 of 819 times.",
+     "tag": "average",
+     "t": "Averaging 4 rebounds over his last 10; the line is 5.5.",
      "rec": [
-      111,
-      95
+      428,
+      372
      ]
     },
     {
@@ -1373,8 +1376,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.802,
-    "floor_am": -125,
+    "floor_dec": 1.709,
+    "floor_am": -141,
     "line": 5.5,
     "next": 4.5
    },
@@ -1398,7 +1401,7 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212125",
+    "The price at 5.5 going past \u2212141",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1424,11 +1427,8 @@
     }
    },
    "first_seen": "2026-11-21T23:01:22Z",
-   "removed": {
-    "at": "2026-11-22T00:01:00Z",
-    "why": "no longer +EV at tonight's line (5.5 at -145)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -1445,19 +1445,19 @@
    "am": -106,
    "conv": 59,
    "tier": "Consider",
-   "p": 0.549,
-   "p_sim": 0.612,
+   "p": 0.555,
+   "p_sim": 0.623,
    "p_mkt": 0.491,
    "p_kalshi": null,
-   "ev": 0.066,
+   "ev": 0.076,
    "verdict": "Consider: simulation and who's out agree; the main risk is who's out.",
    "home": "SA",
    "away": "NO",
-   "why": "Sim: SA by 14.1 on average (NO 106.0, SA 120.1) \u00b7 NO +18.5 covers in 61% of sims vs 49% DraftKings",
+   "why": "Sim: SA by 13.4 on average (NO 107.0, SA 120.4) \u00b7 NO +18.5 covers in 62% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 61% of 10,000 simulated games.",
+     "t": "Covers in 62% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
@@ -1488,7 +1488,7 @@
     },
     {
      "tag": "who's out",
-     "t": "NO without Dejounte Murray, Trey Murphy III: worth about 1.3 points.",
+     "t": "NO without Zion Williamson, Dejounte Murray, Trey Murphy III: worth about 3.9 points.",
      "rec": null
     },
     {
@@ -1498,12 +1498,20 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.821,
-    "floor_am": -122,
+    "floor_dec": 1.802,
+    "floor_am": -125,
     "line": 18.5,
     "next": 17.5
    },
    "watch": [
+    {
+     "pid": "4395628",
+     "name": "Zion Williamson",
+     "team": "NO",
+     "status": "Out",
+     "self": false,
+     "min": 32.2
+    },
     {
      "pid": "5037871",
      "name": "Dylan Harper",
@@ -1531,7 +1539,7 @@
    ],
    "kill": [
     "The line reaching 17.5",
-    "The price at 18.5 going past \u2212122"
+    "The price at 18.5 going past \u2212125"
    ],
    "market": {
     "open": null,
@@ -2213,40 +2221,32 @@
   "g|401910026|total|Over": {
    "key": "g|401910026|total|Over",
    "kind": "total",
-   "label": "MEM @ MIN Over 228.5",
+   "label": "MEM @ MIN Over 227.5",
    "espn_id": "401910026",
    "game": "MEM @ MIN",
    "start": "2026-11-22T01:00Z",
    "side": "Over",
-   "point": 228.5,
+   "point": 227.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 56,
+   "conv": 59,
    "tier": "Consider",
-   "p": 0.552,
-   "p_sim": 0.609,
+   "p": 0.563,
+   "p_sim": 0.63,
    "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.049,
-   "verdict": "Consider: simulation and line move agree; the main risk is blowout.",
+   "ev": 0.069,
+   "verdict": "Consider: simulation carries it; the main risk is blowout.",
    "home": "MIN",
    "away": "MEM",
-   "why": "Sim total 233.3 (after a learned +2.0 correction) vs 228.5 \u00b7 over in 61% of sims vs 50% DraftKings",
+   "why": "Sim total 233.3 (after a learned +2.0 correction) vs 227.5 \u00b7 over in 63% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 61% of 10,000 simulated games.",
+     "t": "Goes over in 63% of 10,000 simulated games.",
      "rec": [
       1216,
       1061
-     ]
-    },
-    {
-     "tag": "line move",
-     "t": "The line has moved this way since it opened (227.5 to 228.5): you're with the money, at a worse number.",
-     "rec": [
-      134,
-      167
      ]
     }
    ],
@@ -2269,8 +2269,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.812,
-    "floor_am": -123,
+    "floor_dec": 1.776,
+    "floor_am": -129,
     "line": 228.5,
     "next": 229.5
    },
@@ -2301,12 +2301,12 @@
     }
    ],
    "kill": [
-    "The line reaching 229.5",
-    "The price at 228.5 going past \u2212123"
+    "The line reaching 229.5 (still a bet at 228.5 near \u2212115)",
+    "The price at 227.5 going past \u2212129"
    ],
    "market": {
     "open": null,
-    "now": 228.5,
+    "now": 227.5,
     "kalshi": null
    },
    "started": false,
@@ -2451,19 +2451,19 @@
    "start": "2026-11-22T00:30Z",
    "side": "away",
    "point": -1.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 43,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 39,
    "tier": "Pass",
-   "p": 0.518,
+   "p": 0.525,
    "p_sim": 0.551,
-   "p_mkt": 0.488,
+   "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": 0.011,
+   "ev": -0.003,
    "verdict": "Pass: simulation and who's out agree; the main risk is model record.",
    "home": "NY",
    "away": "POR",
-   "why": "Sim: POR by 3.2 on average (POR 106.8, NY 103.6) \u00b7 POR -1.5 covers in 55% of sims vs 49% DraftKings",
+   "why": "Sim: POR by 3.2 on average (POR 106.8, NY 103.6) \u00b7 POR -1.5 covers in 55% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2498,8 +2498,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.931,
-    "floor_am": -107,
+    "floor_dec": 1.905,
+    "floor_am": -111,
     "line": null,
     "next": -2.5
    },
@@ -2531,7 +2531,7 @@
    ],
    "kill": [
     "The line reaching -2.5",
-    "The price at -1.5 going past \u2212107"
+    "The price at -1.5 going past \u2212111"
    ],
    "market": {
     "open": null,
@@ -2557,7 +2557,7 @@
    },
    "first_seen": "2026-11-21T23:31:13Z",
    "removed": null,
-   "status": "New"
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -3372,6 +3372,48 @@
    "kind": "removed",
    "text": "Removed: Baylor Scheierman Under 5.5 rebounds \u2014 no longer +EV at tonight's line (5.5 at -145)",
    "alert": true
+  },
+  {
+   "at": "2026-11-22T00:31:19Z",
+   "key": "p|4593841|reb|Under",
+   "kind": "back",
+   "text": "Back on the board: Baylor Scheierman Under 5.5 rebounds at \u2212145",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:31:19Z",
+   "key": "p|4593841|reb|Under",
+   "kind": "line",
+   "text": "Baylor Scheierman: line 5.5 at \u2212125 \u2192 5.5 at \u2212145",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:31:19Z",
+   "key": "p|4684806|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Taylor Hendricks Under 4.5 rebounds \u2014 no longer +EV at tonight's line (4.5 at -128)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-22T00:31:19Z",
+   "key": "g|401910027|spread|away",
+   "kind": "injury",
+   "text": "Zion Williamson ruled out (NO +18.5 (NO @ SA) re-priced: 18.5 at \u2212106, conviction 59)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:31:19Z",
+   "key": "g|401910026|total|Over",
+   "kind": "line",
+   "text": "MEM @ MIN Over 227.5: line 228.5 at \u2212111 \u2192 227.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T00:31:19Z",
+   "key": "g|401910024|spread|away",
+   "kind": "line",
+   "text": "POR -1.5 (POR @ NY): line -1.5 at \u2212105 \u2192 -1.5 at \u2212111 \u2014 past the play-to line; don't add at this number",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3470,5 +3512,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-22T00:19:44Z"
+ "updated": "2026-11-22T00:31:19Z"
 }
