@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 46.35,
+  "cash": 35.1,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -19734,6 +19734,88 @@
       "final": true
      }
     }
+   },
+   {
+    "id": "61337d5b",
+    "placed": "2026-11-22T02:45:25Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "a8fa96ce1e2424029c99737ae7278b45",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-22T20:00:00Z",
+      "home": "Troy Trojans",
+      "away": "Nicholls St Colonels",
+      "market": "spreads",
+      "outcome": "Nicholls St Colonels",
+      "point": 5.5,
+      "price": 2.138,
+      "book": "kalshi",
+      "fair_p": 0.4948,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.94,
+       "gain": 0.1019,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 2.138,
+    "stake": 5.31,
+    "ev": 0.0087,
+    "p": 0.4718,
+    "note": "Arb: 0.87% locked across 2 books",
+    "group": "arb-a8fa96ce1e",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "4e2c66c6",
+    "placed": "2026-11-22T02:45:25Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "a8fa96ce1e2424029c99737ae7278b45",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-22T20:00:00Z",
+      "home": "Troy Trojans",
+      "away": "Nicholls St Colonels",
+      "market": "spreads",
+      "outcome": "Troy Trojans",
+      "point": -5.5,
+      "price": 1.91,
+      "book": "fanatics",
+      "fair_p": 0.5167,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.88,
+       "gain": 0.016,
+       "n": 6
+      }
+     }
+    ],
+    "dec": 1.91,
+    "stake": 5.94,
+    "ev": 0.0087,
+    "p": 0.5282,
+    "note": "Arb: 0.87% locked across 2 books",
+    "group": "arb-a8fa96ce1e",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -20051,7 +20133,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-22T01:45:32Z"
+   "last_scanned": "2026-11-22T02:45:25Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -20090,7 +20172,7 @@
    "last_scanned": "2026-11-21T07:00:39Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-22T01:45:32Z"
+   "last_scanned": "2026-11-22T02:45:25Z"
   },
   "icehockey_ahl": {
    "last_scanned": "2026-11-22T02:00:35Z"
@@ -20108,7 +20190,7 @@
    "last_scanned": "2026-11-22T02:30:30Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-22T01:45:32Z",
+   "last_scanned": "2026-11-22T02:45:25Z",
    "bets": 4.0,
    "staked": 35.42,
    "profit": 0.3199999999999994
@@ -20256,11 +20338,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T22:00:43Z",
-   "kind": "focus",
-   "text": "Skipped 67 pts+reb+ast lines, 12 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, rebounds."
-  },
   {
    "ts": "2026-11-17T22:00:43Z",
    "kind": "props",
@@ -21755,6 +21832,11 @@
    "ts": "2026-11-22T02:00:44Z",
    "kind": "props",
    "text": "NBA matchups: 1 games, strongest spots: Neemias Queta ast -8% vs SAC; Domantas Sabonis ast -8% vs BOS; Payton Pritchard ast +7% vs SAC. Bought prop odds for BOS@SAC (ast, pra, ra, team totals) (6 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-22T02:45:25Z",
+   "kind": "scan",
+   "text": "Scout: basketball_ncaab (40), soccer_italy_serie_a (5), soccer_spain_la_liga (4) for 7 credits. Placed 2: Nicholls St Colonels +5.5 @ +114 (Kalshi); Troy Trojans -5.5 @ -110 (Fanatics). Equity $51.35."
   }
  ],
  "learned_ids": [
@@ -21845,13 +21927,13 @@
   "42989098"
  ],
  "strategist": null,
- "updated": "2026-11-22T02:30:30Z",
+ "updated": "2026-11-22T02:45:25Z",
  "stats": {
   "bets": 85,
   "won": 27,
   "lost": 56,
-  "shop_n": 25,
-  "shop_avg": 0.0525,
+  "shop_n": 27,
+  "shop_avg": 0.053,
   "push": 2,
   "staked": 486.32,
   "profit": -140.49,
@@ -21860,7 +21942,7 @@
   "clv_n": 64,
   "clv_no_close": 21,
   "close_mins_median": 4,
-  "open": 1,
+  "open": 3,
   "equity": 51.35
  },
  "weights": {
@@ -21876,5 +21958,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
