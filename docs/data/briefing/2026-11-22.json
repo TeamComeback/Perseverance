@@ -205,7 +205,7 @@
    "p": 0.544,
    "p_sim": 0.754,
    "p_mkt": 0.505,
-   "p_kalshi": 0.505,
+   "p_kalshi": 0.515,
    "ev": 0.006,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
@@ -337,7 +337,7 @@
    "market": {
     "open": 5.5,
     "now": 5.5,
-    "kalshi": 0.505
+    "kalshi": 0.515
    },
    "started": false,
    "published": {
@@ -1210,7 +1210,7 @@
    "p": 0.638,
    "p_sim": 0.891,
    "p_mkt": 0.596,
-   "p_kalshi": 0.613,
+   "p_kalshi": 0.609,
    "ev": 0.001,
    "verdict": "Pass: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "MIA",
@@ -1342,7 +1342,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.613
+    "kalshi": 0.609
    },
    "started": false,
    "published": {
@@ -1555,7 +1555,7 @@
    "p": 0.49,
    "p_sim": 0.698,
    "p_mkt": 0.46,
-   "p_kalshi": 0.454,
+   "p_kalshi": 0.462,
    "ev": -0.005,
    "verdict": "Pass: simulation and projection agree; the main risk is history.",
    "home": "UTAH",
@@ -1679,7 +1679,7 @@
    "market": {
     "open": 6.5,
     "now": 6.5,
-    "kalshi": 0.454
+    "kalshi": 0.462
    },
    "started": false,
    "published": {
@@ -4854,22 +4854,27 @@
  "alerts": 6,
  "slate": {
   "games": 7,
-  "to_tip": 7,
+  "to_tip": 6,
   "first": "2026-11-22T20:30Z",
   "questionable": [
+   {
+    "name": "Jayson Tatum",
+    "team": "BOS",
+    "status": "Day-To-Day"
+   },
    {
     "name": "Karl-Anthony Towns",
     "team": "NY",
     "status": "Day-To-Day"
    },
    {
-    "name": "Shai Gilgeous-Alexander",
-    "team": "OKC",
+    "name": "Derrick White",
+    "team": "BOS",
     "status": "Day-To-Day"
    },
    {
-    "name": "Jayson Tatum",
-    "team": "BOS",
+    "name": "Shai Gilgeous-Alexander",
+    "team": "OKC",
     "status": "Day-To-Day"
    },
    {
@@ -4881,11 +4886,6 @@
     "name": "Giannis Antetokounmpo",
     "team": "MIA",
     "status": "Questionable"
-   },
-   {
-    "name": "Derrick White",
-    "team": "BOS",
-    "status": "Day-To-Day"
    },
    {
     "name": "P.J. Washington",
@@ -4907,5 +4907,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T21:00:29Z"
+ "updated": "2026-11-22T21:02:04Z"
 }
