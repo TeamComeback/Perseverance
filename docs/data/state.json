@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 31.84,
+  "cash": 46.35,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -19507,14 +19507,18 @@
       "book": "betrivers",
       "fair_p": 0.4103,
       "close_p": 0.4414,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.35,
        "gain": 0.0851,
        "n": 7
       },
       "close_at": "2026-11-21T21:45:32Z",
-      "close_mins": 14
+      "close_mins": 14,
+      "final": {
+       "home": 80.0,
+       "away": 69.0
+      }
      }
     ],
     "dec": 2.55,
@@ -19524,10 +19528,10 @@
     "note": "Arb: 0.90% locked across 2 books",
     "group": "arb-6ed855b505",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.69,
+    "settled": "2026-11-22T02:00:36Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -19537,7 +19541,33 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Nicholls St Colonels lost by 11",
+     "final": "Nicholls St Colonels 69 \u2013 Southern Miss Golden Eagles 80",
+     "legs": [
+      {
+       "outcome": "Nicholls St Colonels",
+       "result": "loss",
+       "headline": "Nicholls St Colonels lost by 11",
+       "final": "Nicholls St Colonels 69 \u2013 Southern Miss Golden Eagles 80",
+       "why": [
+        "Nicholls St Colonels lost by 11.",
+        "We priced it at 40% to hit vs 39% needed to break even at 2.55x (+0.9% expected edge).",
+        "Closing consensus 44% vs 39% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "underdog-lost"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "42989098",
@@ -19559,14 +19589,18 @@
       "book": "espnbet",
       "fair_p": 0.5981,
       "close_p": 0.5586,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.6,
        "gain": 0.0437,
        "n": 7
       },
       "close_at": "2026-11-21T21:45:32Z",
-      "close_mins": 14
+      "close_mins": 14,
+      "final": {
+       "home": 80.0,
+       "away": 69.0
+      }
      }
     ],
     "dec": 1.67,
@@ -19576,10 +19610,10 @@
     "note": "Arb: 0.90% locked across 2 books",
     "group": "arb-6ed855b505",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 14.51,
+    "profit": 5.82,
+    "settled": "2026-11-22T02:00:36Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -19589,7 +19623,31 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: Southern Miss Golden Eagles won by 11",
+     "final": "Nicholls St Colonels 69 \u2013 Southern Miss Golden Eagles 80",
+     "legs": [
+      {
+       "outcome": "Southern Miss Golden Eagles",
+       "result": "win",
+       "headline": "Southern Miss Golden Eagles won by 11",
+       "final": "Nicholls St Colonels 69 \u2013 Southern Miss Golden Eagles 80",
+       "why": [
+        "Southern Miss Golden Eagles won by 11.",
+        "We priced it at 60% to hit vs 60% needed to break even at 1.67x (+0.9% expected edge).",
+        "Closing consensus 56% vs 60% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "65aaa4de",
@@ -19692,7 +19750,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.1,
+  "min_edge": 0.0975,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -19808,26 +19866,26 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 12,
-   "staked": 116.94,
-   "profit": 1.3299999999999992,
-   "clv_n": 10,
-   "clv_sum": 0.4722325999999998,
+   "bets": 14,
+   "staked": 131.32,
+   "profit": 1.459999999999999,
+   "clv_n": 12,
+   "clv_sum": 0.5306645999999997,
    "tags": {
     "underdog-lost": {
-     "n": 5,
+     "n": 6,
      "won": 0,
-     "lost": 5
+     "lost": 6
     },
     "lost-closing-line": {
-     "n": 4,
-     "won": 3,
+     "n": 5,
+     "won": 4,
      "lost": 1
     },
     "beat-closing-line": {
-     "n": 4,
+     "n": 5,
      "won": 1,
-     "lost": 3
+     "lost": 4
     },
     "blowout": {
      "n": 2,
@@ -19969,7 +20027,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-21T23:30:31Z",
+   "last_scanned": "2026-11-22T02:00:35Z",
    "bets": 65.0,
    "staked": 346.16999999999996,
    "profit": -102.32
@@ -20035,10 +20093,10 @@
    "last_scanned": "2026-11-22T01:45:32Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-11-21T21:30:34Z"
+   "last_scanned": "2026-11-22T02:00:35Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-11-21T20:46:08Z"
+   "last_scanned": "2026-11-22T02:00:35Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-11-20T06:15:21Z"
@@ -20051,9 +20109,9 @@
   },
   "basketball_ncaab": {
    "last_scanned": "2026-11-22T01:45:32Z",
-   "bets": 2.0,
-   "staked": 21.04,
-   "profit": 0.1899999999999995
+   "bets": 4.0,
+   "staked": 35.42,
+   "profit": 0.3199999999999994
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-21T07:30:23Z"
@@ -20198,31 +20256,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-17T20:00:44Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 117 players projected, lineups for 5 games."
-  },
-  {
-   "ts": "2026-11-17T20:15:23Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.50% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-17T21:00:33Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.25% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-17T21:45:29Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 14.00% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-17T21:54:15Z",
-   "kind": "research",
-   "text": "Research refresh for Tue Nov 17: 5 games, 117 players projected, lineups for 5 games."
-  },
   {
    "ts": "2026-11-17T22:00:43Z",
    "kind": "focus",
@@ -21697,6 +21730,31 @@
    "ts": "2026-11-22T01:15:43Z",
    "kind": "research",
    "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
+  },
+  {
+   "ts": "2026-11-22T02:00:35Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-22T02:00:36Z",
+   "kind": "result",
+   "text": "LOST -$5.69: Nicholls St Colonels @ +155 (BetRivers) \u2014 LOST: Nicholls St Colonels lost by 11 [beat-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-22T02:00:36Z",
+   "kind": "result",
+   "text": "WON +$5.82: Southern Miss Golden Eagles @ -149 (theScore Bet) \u2014 WON: Southern Miss Golden Eagles won by 11 [lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-22T02:00:44Z",
+   "kind": "focus",
+   "text": "Skipped 10 assists lines, 18 pts+reb+ast lines, 11 reb+ast lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
+  },
+  {
+   "ts": "2026-11-22T02:00:44Z",
+   "kind": "props",
+   "text": "NBA matchups: 1 games, strongest spots: Neemias Queta ast -8% vs SAC; Domantas Sabonis ast -8% vs BOS; Payton Pritchard ast +7% vs SAC. Bought prop odds for BOS@SAC (ast, pra, ra, team totals) (6 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -21782,32 +21840,34 @@
   "aab02831",
   "e17bf579",
   "1cf1b314",
-  "d26e8b41"
+  "d26e8b41",
+  "9f69e006",
+  "42989098"
  ],
  "strategist": null,
- "updated": "2026-11-22T01:45:32Z",
+ "updated": "2026-11-22T02:00:48Z",
  "stats": {
-  "bets": 83,
-  "won": 26,
-  "lost": 55,
+  "bets": 85,
+  "won": 27,
+  "lost": 56,
   "shop_n": 25,
   "shop_avg": 0.0525,
   "push": 2,
-  "staked": 471.94,
-  "profit": -140.62,
-  "roi": -0.298,
+  "staked": 486.32,
+  "profit": -140.49,
+  "roi": -0.2889,
   "clv": -0.0079,
   "clv_n": 64,
   "clv_no_close": 21,
   "close_mins_median": 4,
-  "open": 3,
-  "equity": 51.22
+  "open": 1,
+  "equity": 51.35
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.422,
   "longshot": 0.444,
-  "arb": 1.086,
+  "arb": 1.095,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
   "matchup_under": 0.3
@@ -21816,5 +21876,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }

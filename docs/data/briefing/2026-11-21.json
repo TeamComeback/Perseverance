@@ -174,8 +174,11 @@
     }
    },
    "first_seen": "2026-11-21T11:46:05Z",
-   "removed": null,
-   "status": "Downgraded"
+   "removed": {
+    "at": "2026-11-22T02:00:48Z",
+    "why": "no longer +EV at tonight's line (5.5 at -119)"
+   },
+   "status": "Removed"
   },
   "p|4278049|reb|Under": {
    "key": "p|4278049|reb|Under",
@@ -1277,15 +1280,15 @@
    "start": "2026-11-22T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.74,
-   "am": -135,
-   "conv": 38,
+   "dec": 1.71,
+   "am": -141,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.572,
-   "p_sim": 0.678,
-   "p_mkt": 0.537,
+   "p": 0.579,
+   "p_sim": 0.667,
+   "p_mkt": 0.546,
    "p_kalshi": 0.565,
-   "ev": -0.005,
+   "ev": -0.01,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "SAC",
    "away": "BOS",
@@ -1295,7 +1298,7 @@
    "opp": "SAC",
    "stat": "reb",
    "proj": 4.7,
-   "sim": 4.7,
+   "sim": 4.8,
    "ob_ind": 4.5,
    "avg10": 4,
    "minutes": 27.1,
@@ -1310,7 +1313,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 68% of 10,000 simulated games (sim average 4.7).",
+     "t": "Goes under in 67% of 10,000 simulated games (sim average 4.8).",
      "rec": [
       1216,
       1061
@@ -1376,8 +1379,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.748,
-    "floor_am": -134,
+    "floor_dec": 1.727,
+    "floor_am": -138,
     "line": 5.5,
     "next": 4.5
    },
@@ -1401,7 +1404,7 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212134",
+    "The price at 5.5 going past \u2212138",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1427,6 +1430,160 @@
     }
    },
    "first_seen": "2026-11-21T23:01:22Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "p|5142620|reb|Under": {
+   "key": "p|5142620|reb|Under",
+   "kind": "prop",
+   "label": "Darius Acuff Jr. Under 3.5 rebounds",
+   "espn_id": "401910028",
+   "game": "BOS @ SAC",
+   "start": "2026-11-22T03:00Z",
+   "side": "Under",
+   "point": 3.5,
+   "dec": 1.58,
+   "am": -172,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.615,
+   "p_sim": 0.687,
+   "p_mkt": 0.592,
+   "p_kalshi": 0.575,
+   "ev": -0.029,
+   "verdict": "Pass: simulation and projection agree; the main risk is recent form.",
+   "home": "SAC",
+   "away": "BOS",
+   "pid": "5142620",
+   "name": "Darius Acuff Jr.",
+   "team": "SAC",
+   "opp": "BOS",
+   "stat": "reb",
+   "proj": 2.5,
+   "sim": 2.8,
+   "ob_ind": 2.5,
+   "avg10": 3.4,
+   "minutes": 31.6,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 69% of 10,000 simulated games (sim average 2.8).",
+     "rec": [
+      1216,
+      1061
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 2.5 rebounds against a line of 3.5.",
+     "rec": [
+      1273,
+      1125
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 51% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      699,
+      639
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "BOS games have -4% rebounds up for grabs vs the league (missed shots and extra possessions).",
+     "rec": [
+      744,
+      708
+     ]
+    },
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      134,
+      133
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "price",
+     "t": "Heavy price: it has to win 63% of the time just to break even.",
+     "rec": [
+      119,
+      74
+     ]
+    },
+    {
+     "tag": "thin margin",
+     "t": "Thin margin: 5 of his last 10 finished within 1 of this number, so it often comes down to one play.",
+     "rec": [
+      452,
+      415
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Only 4 of his last 10 went under 3.5 (2 of the last 5).",
+     "rec": [
+      466,
+      493
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.626,
+    "floor_am": -160,
+    "line": 3.5,
+    "next": 2.5
+   },
+   "watch": [
+    {
+     "pid": "4065648",
+     "name": "Jayson Tatum",
+     "team": "BOS",
+     "status": "Out",
+     "self": false,
+     "min": 34.3
+    },
+    {
+     "pid": "3078576",
+     "name": "Derrick White",
+     "team": "BOS",
+     "status": "Out",
+     "self": false,
+     "min": 30.7
+    }
+   ],
+   "kill": [
+    "The line reaching 2.5",
+    "The price at 3.5 going past \u2212160",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 3.5,
+    "now": 3.5,
+    "kalshi": 0.575
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-22T02:00:48Z",
+    "edition": "update",
+    "point": 3.5,
+    "dec": 1.58,
+    "am": -172,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.615,
+    "play_to": {
+     "floor_dec": 1.626,
+     "floor_am": -160,
+     "line": 3.5,
+     "next": 2.5
+    }
+   },
+   "first_seen": "2026-11-22T02:00:48Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -3450,6 +3607,27 @@
    "kind": "conviction",
    "text": "LAC @ DAL Under 230.5: conviction 41 Pass \u2192 34 Pass",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T02:00:48Z",
+   "key": "p|4593841|reb|Under",
+   "kind": "line",
+   "text": "Baylor Scheierman: line 5.5 at \u2212135 \u2192 5.5 at \u2212141",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T02:00:48Z",
+   "key": "p|5142620|reb|Under",
+   "kind": "added",
+   "text": "Added: Darius Acuff Jr. Under 3.5 rebounds at \u2212172, conviction 29",
+   "alert": true
+  },
+  {
+   "at": "2026-11-22T02:00:48Z",
+   "key": "p|4251|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Paul George Under 5.5 rebounds \u2014 no longer +EV at tonight's line (5.5 at -119)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3539,7 +3717,7 @@
   "to_tip": 1,
   "first": "2026-11-21T18:00Z",
   "questionable": [],
-  "picks": 9
+  "picks": 10
  },
  "leans_record": {
   "w": 15,
@@ -3548,5 +3726,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3827,
- "updated": "2026-11-22T01:45:32Z"
+ "updated": "2026-11-22T02:00:48Z"
 }
