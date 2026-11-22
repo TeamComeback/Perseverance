@@ -200,13 +200,13 @@
    "point": 5.5,
    "dec": 1.85,
    "am": -118,
-   "conv": 41,
+   "conv": 42,
    "tier": "Pass",
-   "p": 0.542,
-   "p_sim": 0.732,
+   "p": 0.543,
+   "p_sim": 0.74,
    "p_mkt": 0.505,
    "p_kalshi": 0.515,
-   "ev": 0.003,
+   "ev": 0.005,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
    "away": "DEN",
@@ -215,15 +215,15 @@
    "team": "CHI",
    "opp": "DEN",
    "stat": "reb",
-   "proj": 4.8,
-   "sim": 4.4,
+   "proj": 4.6,
+   "sim": 4.3,
    "ob_ind": 4.5,
    "avg10": 4.9,
-   "minutes": 26.9,
+   "minutes": 25.9,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 73% of 10,000 simulated games (sim average 4.4).",
+     "t": "Goes under in 74% of 10,000 simulated games (sim average 4.3).",
      "rec": [
       1251,
       1095
@@ -231,7 +231,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 4.8 rebounds against a line of 5.5.",
+     "t": "Model projects 4.6 rebounds against a line of 5.5.",
      "rec": [
       1311,
       1158
@@ -243,14 +243,6 @@
      "rec": [
       1077,
       980
-     ]
-    },
-    {
-     "tag": "blowout",
-     "t": "Blowout risk: 45% of sims end 15+ points apart, when starters sit late.",
-     "rec": [
-      735,
-      674
      ]
     },
     {
@@ -281,8 +273,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.845,
-    "floor_am": -118,
+    "floor_dec": 1.842,
+    "floor_am": -119,
     "line": 5.5,
     "next": 4.5
    },
@@ -307,17 +299,17 @@
      "pid": "4431687",
      "name": "Patrick Williams",
      "team": "CHI",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
-     "min": 24.1
+     "min": 23.7
     },
     {
      "pid": "4397189",
      "name": "Jalen Smith",
      "team": "CHI",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
-     "min": 24.0
+     "min": 22.9
     },
     {
      "pid": "4278067",
@@ -330,8 +322,8 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past \u2212118",
-    "A change in Patrick Williams (probable), Jalen Smith (probable): the model re-prices on the next run",
+    "The price at 5.5 going past \u2212119",
+    "A change in Patrick Williams (prob), Jalen Smith (prob): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -358,7 +350,7 @@
    },
    "first_seen": "2026-11-22T11:45:21Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Upgraded"
   },
   "p|4869342|ast|Under": {
    "key": "p|4869342|ast|Under",
@@ -1032,15 +1024,15 @@
    "start": "2026-11-23T01:00Z",
    "side": "Under",
    "point": 8.5,
-   "dec": 1.82,
-   "am": -122,
+   "dec": 1.81,
+   "am": -123,
    "conv": 39,
    "tier": "Pass",
-   "p": 0.548,
+   "p": 0.55,
    "p_sim": 0.823,
-   "p_mkt": 0.512,
-   "p_kalshi": 0.526,
-   "ev": -0.003,
+   "p_mkt": 0.515,
+   "p_kalshi": 0.532,
+   "ev": -0.004,
    "verdict": "Pass: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
    "away": "IND",
@@ -1123,8 +1115,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.825,
-    "floor_am": -121,
+    "floor_dec": 1.818,
+    "floor_am": -122,
     "line": 8.5,
     "next": 7.5
    },
@@ -1164,14 +1156,14 @@
    ],
    "kill": [
     "The line reaching 7.5",
-    "The price at 8.5 going past \u2212121",
+    "The price at 8.5 going past \u2212122",
     "A change in Karl-Anthony Towns (day-to-day), Pascal Siakam (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.526
+    "kalshi": 0.532
    },
    "started": false,
    "published": {
@@ -1362,8 +1354,11 @@
     }
    },
    "first_seen": "2026-11-22T13:01:18Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-22T22:02:05Z",
+    "why": "no longer +EV at tonight's line (2.5 at -169)"
+   },
+   "status": "Removed"
   },
   "p|4066261|reb|Under": {
    "key": "p|4066261|reb|Under",
@@ -1550,13 +1545,13 @@
    "point": 6.5,
    "dec": 2.03,
    "am": 103,
-   "conv": 39,
+   "conv": 37,
    "tier": "Pass",
-   "p": 0.49,
-   "p_sim": 0.698,
+   "p": 0.487,
+   "p_sim": 0.662,
    "p_mkt": 0.46,
    "p_kalshi": 0.462,
-   "ev": -0.005,
+   "ev": -0.01,
    "verdict": "Pass: simulation and projection agree; the main risk is history.",
    "home": "UTAH",
    "away": "DAL",
@@ -1566,14 +1561,14 @@
    "opp": "UTAH",
    "stat": "reb",
    "proj": 5.8,
-   "sim": 5.5,
+   "sim": 5.7,
    "ob_ind": 5.5,
    "avg10": 6.8,
    "minutes": 30.1,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 70% of 10,000 simulated games (sim average 5.5).",
+     "t": "Goes under in 66% of 10,000 simulated games (sim average 5.7).",
      "rec": [
       1251,
       1095
@@ -1589,7 +1584,7 @@
     },
     {
      "tag": "blowout",
-     "t": "Blowout risk: 37% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 38% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       735,
       674
@@ -1639,8 +1634,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.041,
-    "floor_am": 104,
+    "floor_dec": 2.053,
+    "floor_am": 105,
     "line": null,
     "next": 5.5
    },
@@ -1672,7 +1667,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past +104",
+    "The price at 6.5 going past +105",
     "A change in P.J. Washington (doubtful), Walter Clayton Jr. (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1699,11 +1694,8 @@
     }
    },
    "first_seen": "2026-11-22T13:01:18Z",
-   "removed": {
-    "at": "2026-11-22T21:31:11Z",
-    "why": "no longer +EV at tonight's line (6.5 at -106)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4278594|reb|Under": {
    "key": "p|4278594|reb|Under",
@@ -2211,13 +2203,13 @@
    "point": 3.5,
    "dec": 1.63,
    "am": -159,
-   "conv": 39,
+   "conv": 36,
    "tier": "Pass",
-   "p": 0.612,
-   "p_sim": 0.833,
+   "p": 0.607,
+   "p_sim": 0.761,
    "p_mkt": 0.573,
    "p_kalshi": 0.575,
-   "ev": -0.002,
+   "ev": -0.011,
    "verdict": "Pass: simulation and recent form agree; the main risk is minutes.",
    "home": "CHI",
    "away": "DEN",
@@ -2226,15 +2218,15 @@
    "team": "CHI",
    "opp": "DEN",
    "stat": "reb",
-   "proj": 2.5,
-   "sim": 2.2,
+   "proj": 2.4,
+   "sim": 2.5,
    "ob_ind": 2.5,
    "avg10": 3.5,
-   "minutes": 26.9,
+   "minutes": 25.9,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 83% of 10,000 simulated games (sim average 2.2).",
+     "t": "Goes under in 76% of 10,000 simulated games (sim average 2.5).",
      "rec": [
       1251,
       1095
@@ -2242,7 +2234,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 2.5 rebounds against a line of 3.5.",
+     "t": "Model projects 2.4 rebounds against a line of 3.5.",
      "rec": [
       1311,
       1158
@@ -2300,7 +2292,7 @@
     },
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 28.8 minutes in the games he went over vs 22.3 otherwise. He's projected for 26.9 tonight.",
+     "t": "It misses when he plays long: 28.8 minutes in the games he went over vs 22.3 otherwise. He's projected for 25.9 tonight.",
      "rec": [
       1119,
       1042
@@ -2308,8 +2300,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.634,
-    "floor_am": -158,
+    "floor_dec": 1.647,
+    "floor_am": -154,
     "line": 3.5,
     "next": 2.5
    },
@@ -2334,17 +2326,17 @@
      "pid": "4431687",
      "name": "Patrick Williams",
      "team": "CHI",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
-     "min": 24.1
+     "min": 23.7
     },
     {
      "pid": "4397189",
      "name": "Jalen Smith",
      "team": "CHI",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
-     "min": 24.0
+     "min": 22.9
     },
     {
      "pid": "4278067",
@@ -2357,8 +2349,8 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 3.5 going past \u2212158",
-    "A change in Patrick Williams (probable), Jalen Smith (probable): the model re-prices on the next run",
+    "The price at 3.5 going past \u2212154",
+    "A change in Patrick Williams (prob), Jalen Smith (prob): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -2864,17 +2856,17 @@
    "point": 4.5,
    "dec": 1.95,
    "am": -105,
-   "conv": 36,
+   "conv": 39,
    "tier": "Pass",
-   "p": 0.505,
-   "p_sim": 0.524,
+   "p": 0.511,
+   "p_sim": 0.536,
    "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.014,
+   "ev": -0.003,
    "verdict": "Pass: line move carries it; the main risk is model record.",
    "home": "WSH",
    "away": "ORL",
-   "why": "Sim: ORL by 3.2 on average (ORL 111.9, WSH 108.7) \u00b7 WSH +4.5 covers in 52% of sims vs 49% DraftKings",
+   "why": "Sim: ORL by 3.0 on average (ORL 112.2, WSH 109.2) \u00b7 WSH +4.5 covers in 54% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "line move",
@@ -2896,8 +2888,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.98,
-    "floor_am": -102,
+    "floor_dec": 1.957,
+    "floor_am": -104,
     "line": null,
     "next": 3.5
    },
@@ -2913,7 +2905,7 @@
    ],
    "kill": [
     "The line reaching 3.5",
-    "The price at 4.5 going past \u2212102"
+    "The price at 4.5 going past \u2212104"
    ],
    "market": {
     "open": null,
@@ -2938,11 +2930,8 @@
     }
    },
    "first_seen": "2026-11-22T11:45:21Z",
-   "removed": {
-    "at": "2026-11-22T21:31:11Z",
-    "why": "confidence fell 31 \u2192 28"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Upgraded"
   },
   "g|401910031|total|Over": {
    "key": "g|401910031|total|Over",
@@ -3042,8 +3031,11 @@
     }
    },
    "first_seen": "2026-11-22T13:01:18Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-22T22:02:05Z",
+    "why": "confidence fell 37 \u2192 30"
+   },
+   "status": "Removed"
   },
   "g|401910034|total|Over": {
    "key": "g|401910034|total|Over",
@@ -3538,21 +3530,21 @@
    "point": 236.5,
    "dec": 1.9,
    "am": -111,
-   "conv": 59,
+   "conv": 55,
    "tier": "Consider",
-   "p": 0.56,
-   "p_sim": 0.624,
+   "p": 0.552,
+   "p_sim": 0.607,
    "p_mkt": 0.501,
    "p_kalshi": null,
-   "ev": 0.064,
+   "ev": 0.048,
    "verdict": "Consider: simulation and line move agree; the main risk is model record.",
    "home": "CHI",
    "away": "DEN",
-   "why": "Sim total 231.6 (after a learned +1.4 correction) vs 236.5 \u00b7 under in 62% of sims vs 50% DraftKings",
+   "why": "Sim total 232.4 (after a learned +1.4 correction) vs 236.5 \u00b7 under in 61% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 62% of 10,000 simulated games.",
+     "t": "Goes under in 61% of 10,000 simulated games.",
      "rec": [
       1251,
       1095
@@ -3578,10 +3570,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.786,
-    "floor_am": -127,
-    "line": 235.5,
-    "next": 234.5
+    "floor_dec": 1.812,
+    "floor_am": -123,
+    "line": 236.5,
+    "next": 235.5
    },
    "watch": [
     {
@@ -3604,17 +3596,17 @@
      "pid": "4431687",
      "name": "Patrick Williams",
      "team": "CHI",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
-     "min": 24.1
+     "min": 23.7
     },
     {
      "pid": "4397189",
      "name": "Jalen Smith",
      "team": "CHI",
-     "status": "Probable",
+     "status": "Prob",
      "self": false,
-     "min": 24.0
+     "min": 22.9
     },
     {
      "pid": "4278067",
@@ -3626,9 +3618,9 @@
     }
    ],
    "kill": [
-    "The line reaching 234.5 (still a bet at 235.5 near \u2212115)",
-    "The price at 236.5 going past \u2212127",
-    "A change in Patrick Williams (probable), Jalen Smith (probable): the model re-prices on the next run"
+    "The line reaching 235.5",
+    "The price at 236.5 going past \u2212123",
+    "A change in Patrick Williams (prob), Jalen Smith (prob): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -4226,6 +4218,126 @@
     }
    },
    "first_seen": "2026-11-22T21:46:23Z",
+   "removed": {
+    "at": "2026-11-22T22:02:05Z",
+    "why": "confidence fell 39 \u2192 18"
+   },
+   "status": "Removed"
+  },
+  "g|401910030|total|Under": {
+   "key": "g|401910030|total|Under",
+   "kind": "total",
+   "label": "OKC @ MIA Under 228.5",
+   "espn_id": "401910030",
+   "game": "OKC @ MIA",
+   "start": "2026-11-22T23:00Z",
+   "side": "Under",
+   "point": 228.5,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 32,
+   "tier": "Pass",
+   "p": 0.518,
+   "p_sim": 0.531,
+   "p_mkt": 0.507,
+   "p_kalshi": null,
+   "ev": -0.025,
+   "verdict": "Pass: line move carries it; the main risk is team model.",
+   "home": "MIA",
+   "away": "OKC",
+   "why": "Sim total 227.9 (after a learned +1.4 correction) vs 228.5 \u00b7 under in 53% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (231.5 to 228.5): you're with the money, at a worse number.",
+     "rec": [
+      144,
+      176
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 632-668 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      103,
+      123
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings project 232.3 points, 3.8 the wrong side of 228.5.",
+     "rec": null
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.931,
+    "floor_am": -107,
+    "line": null,
+    "next": 227.5
+   },
+   "watch": [
+    {
+     "pid": "4278073",
+     "name": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 34.7
+    },
+    {
+     "pid": "3032977",
+     "name": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "status": "Out",
+     "self": false,
+     "min": 31.4
+    },
+    {
+     "pid": "4433255",
+     "name": "Chet Holmgren",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 30.1
+    },
+    {
+     "pid": "4593803",
+     "name": "Jalen Williams",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 29.5
+    }
+   ],
+   "kill": [
+    "The line reaching 227.5",
+    "The price at 228.5 going past \u2212107"
+   ],
+   "market": {
+    "open": null,
+    "now": 228.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-22T22:02:05Z",
+    "edition": "update",
+    "point": 228.5,
+    "dec": 1.88,
+    "am": -114,
+    "conv": 32,
+    "tier": "Pass",
+    "p": 0.518,
+    "play_to": {
+     "floor_dec": 1.931,
+     "floor_am": -107,
+     "line": null,
+     "next": 227.5
+    }
+   },
+   "first_seen": "2026-11-22T22:02:05Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -5357,6 +5469,97 @@
    "kind": "removed",
    "text": "Removed: OKC +3.5 (OKC @ MIA) \u2014 line moved 3.5 \u2192 7.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|4711294|reb|Under",
+   "kind": "injury",
+   "text": "Patrick Williams probable \u2192 prob (Matas Buzelis Under 5.5 rebounds re-priced: 5.5 at \u2212118, conviction 42)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|4711294|reb|Under",
+   "kind": "injury",
+   "text": "Jalen Smith probable \u2192 prob (Matas Buzelis Under 5.5 rebounds re-priced: 5.5 at \u2212118, conviction 42)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|4017837|reb|Under",
+   "kind": "line",
+   "text": "Ivica Zubac: line 8.5 at \u2212122 \u2192 8.5 at \u2212123",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|5041939|reb|Under",
+   "kind": "back",
+   "text": "Back on the board: Cooper Flagg Under 6.5 rebounds at +103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|4432822|reb|Under",
+   "kind": "injury",
+   "text": "Patrick Williams probable \u2192 prob (Isaac Okoro Under 3.5 rebounds re-priced: 3.5 at \u2212159, conviction 36)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|4432822|reb|Under",
+   "kind": "injury",
+   "text": "Jalen Smith probable \u2192 prob (Isaac Okoro Under 3.5 rebounds re-priced: 3.5 at \u2212159, conviction 36)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "p|6475|reb|Under",
+   "kind": "removed",
+   "text": "Removed: Klay Thompson Under 2.5 rebounds \u2014 no longer +EV at tonight's line (2.5 at -169)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "g|401910032|total|Under",
+   "kind": "injury",
+   "text": "Patrick Williams probable \u2192 prob (DEN @ CHI Under 236.5 re-priced: 236.5 at \u2212111, conviction 55)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "g|401910032|total|Under",
+   "kind": "injury",
+   "text": "Jalen Smith probable \u2192 prob (DEN @ CHI Under 236.5 re-priced: 236.5 at \u2212111, conviction 55)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "g|401910031|spread|home",
+   "kind": "back",
+   "text": "Back on the board: WSH +4.5 (ORL @ WSH) at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "g|401910030|total|Under",
+   "kind": "added",
+   "text": "Added: OKC @ MIA Under 228.5 at \u2212114, conviction 32",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "g|401910031|total|Over",
+   "kind": "removed",
+   "text": "Removed: ORL @ WSH Over 220.5 \u2014 confidence fell 37 \u2192 30",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T22:02:05Z",
+   "key": "g|401910030|total|Over",
+   "kind": "removed",
+   "text": "Removed: OKC @ MIA Over 228.5 \u2014 confidence fell 39 \u2192 18",
+   "alert": false
   }
  ],
  "narratives": [
@@ -5447,24 +5650,9 @@
     "status": "Questionable"
    },
    {
-    "name": "Giannis Antetokounmpo",
-    "team": "MIA",
-    "status": "Questionable"
-   },
-   {
     "name": "P.J. Washington",
     "team": "DAL",
     "status": "Doubtful"
-   },
-   {
-    "name": "Patrick Williams",
-    "team": "CHI",
-    "status": "Probable"
-   },
-   {
-    "name": "Jalen Smith",
-    "team": "CHI",
-    "status": "Probable"
    }
   ],
   "picks": 14
@@ -5476,5 +5664,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T21:46:23Z"
+ "updated": "2026-11-22T22:02:05Z"
 }
