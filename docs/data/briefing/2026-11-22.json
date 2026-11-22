@@ -2858,15 +2858,15 @@
    "start": "2026-11-23T01:30Z",
    "side": "Under",
    "point": 15.5,
-   "dec": 1.82,
-   "am": -122,
-   "conv": 32,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.537,
+   "p": 0.526,
    "p_sim": 0.575,
-   "p_mkt": 0.516,
+   "p_mkt": 0.505,
    "p_kalshi": 0.503,
-   "ev": -0.023,
+   "ev": -0.021,
    "verdict": "Pass: recent form and matchup agree; the main risk is matchup.",
    "home": "GS",
    "away": "BOS",
@@ -2957,9 +2957,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.862,
-    "floor_am": -116,
-    "line": 15.5,
+    "floor_dec": 1.901,
+    "floor_am": -111,
+    "line": null,
     "next": 14.5
    },
    "watch": [
@@ -2982,7 +2982,7 @@
    ],
    "kill": [
     "The line reaching 14.5",
-    "The price at 15.5 going past \u2212116",
+    "The price at 15.5 going past \u2212111",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -3341,6 +3341,163 @@
     }
    },
    "first_seen": "2026-11-22T23:01:19Z",
+   "removed": {
+    "at": "2026-11-22T23:31:20Z",
+    "why": "no longer +EV at tonight's line (21.5 at -115)"
+   },
+   "status": "Removed"
+  },
+  "p|4278594|pts|Under": {
+   "key": "p|4278594|pts|Under",
+   "kind": "prop",
+   "label": "Naji Marshall Under 12.5 points",
+   "espn_id": "401910033",
+   "game": "DAL @ UTAH",
+   "start": "2026-11-23T00:00Z",
+   "side": "Under",
+   "point": 12.5,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 34,
+   "tier": "Pass",
+   "p": 0.521,
+   "p_sim": 0.578,
+   "p_mkt": 0.501,
+   "p_kalshi": 0.524,
+   "ev": -0.02,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "UTAH",
+   "away": "DAL",
+   "pid": "4278594",
+   "name": "Naji Marshall",
+   "team": "DAL",
+   "opp": "UTAH",
+   "stat": "pts",
+   "proj": 12.2,
+   "sim": 11.8,
+   "ob_ind": 11.5,
+   "avg10": 10.2,
+   "minutes": 24.1,
+   "for": [
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -4 vs model.",
+     "rec": [
+      165,
+      140
+     ]
+    },
+    {
+     "tag": "average",
+     "t": "Averaging 10.2 points over his last 10; the line is 12.5.",
+     "rec": [
+      443,
+      385
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 58% of 10,000 simulated games (sim average 11.8).",
+     "rec": [
+      1251,
+      1095
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 12.5 in 7 of his last 10 (3 of the last 5).",
+     "rec": [
+      1077,
+      980
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +7% points vs UTAH (116 close comps).",
+     "rec": [
+      540,
+      478
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "UTAH gives small forwards +7% points vs their norm (#3 softest of 30).",
+     "rec": [
+      848,
+      769
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 30.1 minutes in the games he went over vs 22.5 otherwise. He's projected for 24.1 tonight.",
+     "rec": [
+      1119,
+      1042
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "On the road: 5 of 20 under 12.5 (25% vs 50% lately).",
+     "rec": [
+      638,
+      624
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.919,
+    "floor_am": -109,
+    "line": null,
+    "next": 11.5
+   },
+   "watch": [
+    {
+     "pid": "4066336",
+     "name": "Lauri Markkanen",
+     "team": "UTAH",
+     "status": "Out",
+     "self": false,
+     "min": 31.9
+    },
+    {
+     "pid": "4278078",
+     "name": "P.J. Washington",
+     "team": "DAL",
+     "status": "Out",
+     "self": false,
+     "min": 25.9
+    }
+   ],
+   "kill": [
+    "The line reaching 11.5",
+    "The price at 12.5 going past \u2212109",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 11.5,
+    "now": 12.5,
+    "kalshi": 0.524
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-22T23:31:20Z",
+    "edition": "update",
+    "point": 12.5,
+    "dec": 1.88,
+    "am": -114,
+    "conv": 34,
+    "tier": "Pass",
+    "p": 0.521,
+    "play_to": {
+     "floor_dec": 1.919,
+     "floor_am": -109,
+     "line": null,
+     "next": 11.5
+    }
+   },
+   "first_seen": "2026-11-22T23:31:20Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -3389,7 +3546,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it UTAH by 0.1, 2.6 worse than this number.",
+     "t": "Team ratings with tonight's lineups make it UTAH by 0.2, 2.7 worse than this number.",
      "rec": null
     },
     {
@@ -3916,7 +4073,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 225.6 points, 6.1 on your side of 219.5.",
+     "t": "Team ratings project 225.7 points, 6.2 on your side of 219.5.",
      "rec": null
     }
    ],
@@ -5267,7 +5424,7 @@
     "now": 225.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T22:02:05Z",
     "edition": "update",
@@ -5286,7 +5443,7 @@
    },
    "first_seen": "2026-11-22T22:02:05Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Started"
   },
   "g|401910030|spread|home": {
    "key": "g|401910030|spread|home",
@@ -6912,6 +7069,27 @@
    "kind": "removed",
    "text": "Removed: MIA -4.5 (OKC @ MIA) \u2014 confidence fell 42 \u2192 24",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T23:31:20Z",
+   "key": "p|4278594|pts|Under",
+   "kind": "added",
+   "text": "Added: Naji Marshall Under 12.5 points at \u2212114, conviction 34",
+   "alert": true
+  },
+  {
+   "at": "2026-11-22T23:31:20Z",
+   "key": "p|4709138|pts|Under",
+   "kind": "line",
+   "text": "Brandin Podziemski: line 15.5 at \u2212122 \u2192 15.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T23:31:20Z",
+   "key": "p|4873138|pra|Under",
+   "kind": "removed",
+   "text": "Removed: Ace Bailey Under 21.5 pts+reb+ast \u2014 no longer +EV at tonight's line (21.5 at -115)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -6988,7 +7166,7 @@
  "alerts": 6,
  "slate": {
   "games": 7,
-  "to_tip": 6,
+  "to_tip": 5,
   "first": "2026-11-22T20:30Z",
   "questionable": [
    {
@@ -7002,7 +7180,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 20
+  "picks": 21
  },
  "leans_record": {
   "w": 17,
@@ -7011,5 +7189,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T23:27:39Z"
+ "updated": "2026-11-22T23:31:20Z"
 }
