@@ -1039,7 +1039,7 @@
    "p": 0.548,
    "p_sim": 0.823,
    "p_mkt": 0.512,
-   "p_kalshi": 0.529,
+   "p_kalshi": 0.526,
    "ev": -0.003,
    "verdict": "Pass: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1171,7 +1171,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.529
+    "kalshi": 0.526
    },
    "started": false,
    "published": {
@@ -1203,15 +1203,15 @@
    "start": "2026-11-22T23:00Z",
    "side": "Under",
    "point": 2.5,
-   "dec": 1.57,
-   "am": -175,
+   "dec": 1.59,
+   "am": -169,
    "conv": 41,
    "tier": "Pass",
-   "p": 0.638,
-   "p_sim": 0.893,
-   "p_mkt": 0.596,
+   "p": 0.631,
+   "p_sim": 0.901,
+   "p_mkt": 0.588,
    "p_kalshi": 0.617,
-   "ev": 0.002,
+   "ev": 0.003,
    "verdict": "Pass: simulation and recent form agree; the main risk is tonight's spot.",
    "home": "MIA",
    "away": "OKC",
@@ -1228,7 +1228,7 @@
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 89% of 10,000 simulated games (sim average 1.2).",
+     "t": "Goes under in 90% of 10,000 simulated games (sim average 1.2).",
      "rec": [
       1251,
       1095
@@ -1270,7 +1270,7 @@
    "against": [
     {
      "tag": "price",
-     "t": "Heavy price: it has to win 64% of the time just to break even.",
+     "t": "Heavy price: it has to win 63% of the time just to break even.",
      "rec": [
       121,
       74
@@ -1294,8 +1294,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.567,
-    "floor_am": -176,
+    "floor_dec": 1.585,
+    "floor_am": -171,
     "line": 2.5,
     "next": 1.5
    },
@@ -1304,9 +1304,9 @@
      "pid": "4278073",
      "name": "Shai Gilgeous-Alexander",
      "team": "OKC",
-     "status": "Day-To-Day",
+     "status": "Out",
      "self": false,
-     "min": 31.7
+     "min": 34.7
     },
     {
      "pid": "4433255",
@@ -1335,8 +1335,8 @@
    ],
    "kill": [
     "The line reaching 1.5",
-    "The price at 2.5 going past \u2212176",
-    "A change in Shai Gilgeous-Alexander (day-to-day), Giannis Antetokounmpo (questionable): the model re-prices on the next run",
+    "The price at 2.5 going past \u2212171",
+    "A change in Giannis Antetokounmpo (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -3395,8 +3395,11 @@
     }
    },
    "first_seen": "2026-11-22T15:31:08Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-22T21:46:23Z",
+    "why": "line moved 3.5 \u2192 7.5"
+   },
+   "status": "Removed"
   },
   "g|401910034|spread|home": {
    "key": "g|401910034|spread|home",
@@ -3527,29 +3530,29 @@
   "g|401910032|total|Under": {
    "key": "g|401910032|total|Under",
    "kind": "total",
-   "label": "DEN @ CHI Under 235.5",
+   "label": "DEN @ CHI Under 236.5",
    "espn_id": "401910032",
    "game": "DEN @ CHI",
    "start": "2026-11-23T00:00Z",
    "side": "Under",
-   "point": 235.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 53,
+   "point": 236.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 59,
    "tier": "Consider",
-   "p": 0.551,
-   "p_sim": 0.602,
-   "p_mkt": 0.504,
+   "p": 0.56,
+   "p_sim": 0.624,
+   "p_mkt": 0.501,
    "p_kalshi": null,
-   "ev": 0.041,
+   "ev": 0.064,
    "verdict": "Consider: simulation and line move agree; the main risk is model record.",
    "home": "CHI",
    "away": "DEN",
-   "why": "Sim total 231.6 (after a learned +1.4 correction) vs 235.5 \u00b7 under in 60% of sims vs 50% DraftKings",
+   "why": "Sim total 231.6 (after a learned +1.4 correction) vs 236.5 \u00b7 under in 62% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 60% of 10,000 simulated games.",
+     "t": "Goes under in 62% of 10,000 simulated games.",
      "rec": [
       1251,
       1095
@@ -3557,7 +3560,7 @@
     },
     {
      "tag": "line move",
-     "t": "The line has moved this way since it opened (237.5 to 235.5): you're with the money, at a worse number.",
+     "t": "The line has moved this way since it opened (237.5 to 236.5): you're with the money, at a worse number.",
      "rec": [
       144,
       176
@@ -3575,8 +3578,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.815,
-    "floor_am": -123,
+    "floor_dec": 1.786,
+    "floor_am": -127,
     "line": 235.5,
     "next": 234.5
    },
@@ -3623,13 +3626,13 @@
     }
    ],
    "kill": [
-    "The line reaching 234.5",
-    "The price at 235.5 going past \u2212123",
+    "The line reaching 234.5 (still a bet at 235.5 near \u2212115)",
+    "The price at 236.5 going past \u2212127",
     "A change in Patrick Williams (probable), Jalen Smith (probable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 235.5,
+    "now": 236.5,
     "kalshi": null
    },
    "started": false,
@@ -3994,36 +3997,36 @@
   "g|401910035|total|Over": {
    "key": "g|401910035|total|Over",
    "kind": "total",
-   "label": "BOS @ GS Over 209.5",
+   "label": "BOS @ GS Over 210.5",
    "espn_id": "401910035",
    "game": "BOS @ GS",
    "start": "2026-11-23T01:30Z",
    "side": "Over",
-   "point": 209.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 38,
+   "point": 210.5,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.523,
-   "p_sim": 0.548,
-   "p_mkt": 0.5,
+   "p": 0.51,
+   "p_sim": 0.524,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.006,
+   "ev": -0.021,
    "verdict": "Pass: team model carries it; the main risk is line move.",
    "home": "GS",
    "away": "BOS",
-   "why": "Sim total 212.1 (after a learned +1.4 correction) vs 209.5 \u00b7 over in 55% of sims vs 50% DraftKings",
+   "why": "Sim total 212.1 (after a learned +1.4 correction) vs 210.5 \u00b7 over in 52% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "team model",
-     "t": "Team ratings project 217.8 points, 8.3 on your side of 209.5.",
+     "t": "Team ratings project 217.8 points, 7.3 on your side of 210.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (212.5 to 209.5).",
+     "t": "The line has moved against this side since it opened (212.5 to 210.5).",
      "rec": [
       170,
       136
@@ -4047,10 +4050,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.912,
-    "floor_am": -110,
+    "floor_dec": 1.961,
+    "floor_am": -104,
     "line": null,
-    "next": 210.5
+    "next": 211.5
    },
    "watch": [
     {
@@ -4071,12 +4074,12 @@
     }
    ],
    "kill": [
-    "The line reaching 210.5",
-    "The price at 209.5 going past \u2212110"
+    "The line reaching 211.5",
+    "The price at 210.5 going past \u2212104"
    ],
    "market": {
     "open": null,
-    "now": 209.5,
+    "now": 210.5,
     "kalshi": null
    },
    "started": false,
@@ -4097,6 +4100,132 @@
     }
    },
    "first_seen": "2026-11-22T21:31:11Z",
+   "removed": null,
+   "status": "Downgraded"
+  },
+  "g|401910030|total|Over": {
+   "key": "g|401910030|total|Over",
+   "kind": "total",
+   "label": "OKC @ MIA Over 228.5",
+   "espn_id": "401910030",
+   "game": "OKC @ MIA",
+   "start": "2026-11-22T23:00Z",
+   "side": "Over",
+   "point": 228.5,
+   "dec": 1.94,
+   "am": -106,
+   "conv": 39,
+   "tier": "Pass",
+   "p": 0.514,
+   "p_sim": 0.542,
+   "p_mkt": 0.489,
+   "p_kalshi": null,
+   "ev": -0.002,
+   "verdict": "Pass: team model carries it; the main risk is line move.",
+   "home": "MIA",
+   "away": "OKC",
+   "why": "Sim total 230.8 (after a learned +1.4 correction) vs 228.5 \u00b7 over in 54% of sims vs 49% DraftKings",
+   "for": [
+    {
+     "tag": "team model",
+     "t": "Team ratings project 232.3 points, 3.8 on your side of 228.5.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (231.5 to 228.5).",
+     "rec": [
+      170,
+      136
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "41% of sims are blowouts, and benches slow the scoring late.",
+     "rec": [
+      327,
+      290
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 632-668 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      103,
+      123
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.946,
+    "floor_am": -106,
+    "line": null,
+    "next": 229.5
+   },
+   "watch": [
+    {
+     "pid": "4278073",
+     "name": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 34.7
+    },
+    {
+     "pid": "4433255",
+     "name": "Chet Holmgren",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 30.1
+    },
+    {
+     "pid": "4593803",
+     "name": "Jalen Williams",
+     "team": "OKC",
+     "status": "Out",
+     "self": false,
+     "min": 29.5
+    },
+    {
+     "pid": "3032977",
+     "name": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "status": "Questionable",
+     "self": false,
+     "min": 28.4
+    }
+   ],
+   "kill": [
+    "The line reaching 229.5",
+    "The price at 228.5 going past \u2212106",
+    "A change in Giannis Antetokounmpo (questionable): the model re-prices on the next run"
+   ],
+   "market": {
+    "open": null,
+    "now": 228.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-22T21:46:23Z",
+    "edition": "update",
+    "point": 228.5,
+    "dec": 1.94,
+    "am": -106,
+    "conv": 39,
+    "tier": "Pass",
+    "p": 0.514,
+    "play_to": {
+     "floor_dec": 1.946,
+     "floor_am": -106,
+     "line": null,
+     "next": 229.5
+    }
+   },
+   "first_seen": "2026-11-22T21:46:23Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -5172,6 +5301,62 @@
    "kind": "removed",
    "text": "Removed: IND @ NY Under 213.5 \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "p|6475|reb|Under",
+   "kind": "line",
+   "text": "Klay Thompson: line 2.5 at \u2212175 \u2192 2.5 at \u2212169",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "p|6475|reb|Under",
+   "kind": "injury",
+   "text": "Shai Gilgeous-Alexander day-to-day \u2192 out (Klay Thompson Under 2.5 rebounds re-priced: 2.5 at \u2212169, conviction 41)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "g|401910032|total|Under",
+   "kind": "line",
+   "text": "DEN @ CHI Under 236.5: line 235.5 at \u2212112 \u2192 236.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "g|401910032|total|Under",
+   "kind": "conviction",
+   "text": "DEN @ CHI Under 236.5: conviction 53 Consider \u2192 59 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "g|401910030|total|Over",
+   "kind": "added",
+   "text": "Added: OKC @ MIA Over 228.5 at \u2212106, conviction 39",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "g|401910035|total|Over",
+   "kind": "line",
+   "text": "BOS @ GS Over 210.5: line 209.5 at \u2212111 \u2192 210.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "g|401910035|total|Over",
+   "kind": "conviction",
+   "text": "BOS @ GS Over 210.5: conviction 38 Pass \u2192 33 Pass",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T21:46:23Z",
+   "key": "g|401910030|spread|away",
+   "kind": "removed",
+   "text": "Removed: OKC +3.5 (OKC @ MIA) \u2014 line moved 3.5 \u2192 7.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -5257,11 +5442,6 @@
     "status": "Day-To-Day"
    },
    {
-    "name": "Shai Gilgeous-Alexander",
-    "team": "OKC",
-    "status": "Day-To-Day"
-   },
-   {
     "name": "Pascal Siakam",
     "team": "IND",
     "status": "Questionable"
@@ -5296,5 +5476,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T21:31:11Z"
+ "updated": "2026-11-22T21:46:23Z"
 }
