@@ -834,16 +834,16 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 6.5,
-   "dec": 1.85,
-   "am": -118,
-   "conv": 44,
-   "tier": "Pass",
-   "p": 0.547,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 46,
+   "tier": "Consider",
+   "p": 0.538,
    "p_sim": 0.722,
-   "p_mkt": 0.504,
+   "p_mkt": 0.495,
    "p_kalshi": 0.511,
-   "ev": 0.012,
-   "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
+   "ev": 0.018,
+   "verdict": "Consider: recent form and simulation agree; the main risk is similar players.",
    "home": "UTAH",
    "away": "DAL",
    "pid": "4278049",
@@ -933,8 +933,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.828,
-    "floor_am": -121,
+    "floor_dec": 1.859,
+    "floor_am": -116,
     "line": 6.5,
     "next": 5.5
    },
@@ -958,7 +958,7 @@
    ],
    "kill": [
     "The line reaching 5.5",
-    "The price at 6.5 going past \u2212121",
+    "The price at 6.5 going past \u2212116",
     "A change in P.J. Washington (day-to-day): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -986,7 +986,7 @@
    },
    "first_seen": "2026-11-22T13:01:18Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "New"
   },
   "p|4017837|reb|Under": {
    "key": "p|4017837|reb|Under",
@@ -1004,7 +1004,7 @@
    "p": 0.555,
    "p_sim": 0.839,
    "p_mkt": 0.508,
-   "p_kalshi": 0.521,
+   "p_kalshi": 0.516,
    "ev": 0.021,
    "verdict": "Consider: simulation and matchup agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1136,7 +1136,7 @@
    "market": {
     "open": 8.5,
     "now": 8.5,
-    "kalshi": 0.521
+    "kalshi": 0.516
    },
    "started": false,
    "published": {
@@ -1670,15 +1670,15 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 3.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 41,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 40,
    "tier": "Pass",
-   "p": 0.527,
+   "p": 0.53,
    "p_sim": 0.752,
-   "p_mkt": 0.492,
+   "p_mkt": 0.495,
    "p_kalshi": 0.485,
-   "ev": 0.002,
+   "ev": 0.001,
    "verdict": "Pass: simulation and recent form agree; the main risk is minutes.",
    "home": "UTAH",
    "away": "DAL",
@@ -1753,8 +1753,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.898,
-    "floor_am": -111,
+    "floor_dec": 1.887,
+    "floor_am": -113,
     "line": null,
     "next": 2.5
    },
@@ -1778,7 +1778,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 3.5 going past \u2212111",
+    "The price at 3.5 going past \u2212113",
     "A change in P.J. Washington (day-to-day): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1806,43 +1806,56 @@
    },
    "first_seen": "2026-11-22T15:16:26Z",
    "removed": null,
-   "status": "New"
+   "status": "Past play-to"
   }
  },
  "leans": {
   "g|401910033|spread|away": {
    "key": "g|401910033|spread|away",
    "kind": "spread",
-   "label": "DAL -1.5 (DAL @ UTAH)",
+   "label": "DAL +1.5 (DAL @ UTAH)",
    "espn_id": "401910033",
    "game": "DAL @ UTAH",
    "start": "2026-11-23T00:00Z",
    "side": "away",
-   "point": -1.5,
-   "dec": 1.98,
-   "am": -102,
-   "conv": 48,
+   "point": 1.5,
+   "dec": 1.83,
+   "am": -120,
+   "conv": 51,
    "tier": "Consider",
-   "p": 0.519,
-   "p_sim": 0.559,
-   "p_mkt": 0.482,
+   "p": 0.564,
+   "p_sim": 0.611,
+   "p_mkt": 0.521,
    "p_kalshi": null,
-   "ev": 0.027,
-   "verdict": "Consider: simulation carries it; the main risk is schedule.",
+   "ev": 0.032,
+   "verdict": "Consider: simulation and team model agree; the main risk is schedule.",
    "home": "UTAH",
    "away": "DAL",
-   "why": "Sim: DAL by 3.1 on average (DAL 114.2, UTAH 111.0) \u00b7 DAL -1.5 covers in 56% of sims vs 48% DraftKings",
+   "why": "Sim: DAL by 3.1 on average (DAL 114.2, UTAH 111.0) \u00b7 DAL +1.5 covers in 61% of sims vs 52% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 56% of 10,000 simulated games.",
+     "t": "Covers in 61% of 10,000 simulated games.",
      "rec": [
       1251,
       1095
      ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it DAL by 0.5, 2.0 better than this number.",
+     "rec": null
     }
    ],
    "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (1.5 to -1.5).",
+     "rec": [
+      170,
+      136
+     ]
+    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 635-659 against DraftKings' spreads. Treat this as a lean.",
@@ -1858,10 +1871,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.927,
-    "floor_am": -108,
-    "line": null,
-    "next": -2.5
+    "floor_dec": 1.773,
+    "floor_am": -129,
+    "line": -0.5,
+    "next": -1.5
    },
    "watch": [
     {
@@ -1890,13 +1903,13 @@
     }
    ],
    "kill": [
-    "The line reaching -2.5",
-    "The price at -1.5 going past \u2212108",
+    "The line reaching -1.5 (still a bet at -0.5 near \u2212115)",
+    "The price at 1.5 going past \u2212129",
     "A change in P.J. Washington (day-to-day): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": -1.5,
+    "now": 1.5,
     "kalshi": null
    },
    "started": false,
@@ -2365,44 +2378,36 @@
   "g|401910031|total|Over": {
    "key": "g|401910031|total|Over",
    "kind": "total",
-   "label": "ORL @ WSH Over 219.5",
+   "label": "ORL @ WSH Over 220.5",
    "espn_id": "401910031",
    "game": "ORL @ WSH",
    "start": "2026-11-23T00:00Z",
    "side": "Over",
-   "point": 219.5,
-   "dec": 1.88,
-   "am": -114,
-   "conv": 41,
+   "point": 220.5,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 38,
    "tier": "Pass",
-   "p": 0.534,
-   "p_sim": 0.564,
-   "p_mkt": 0.507,
+   "p": 0.517,
+   "p_sim": 0.54,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": 0.004,
-   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
+   "ev": -0.007,
+   "verdict": "Pass: team model carries it; the main risk is line move.",
    "home": "WSH",
    "away": "ORL",
-   "why": "Sim total 222.8 (after a learned +1.4 correction) vs 219.5 \u00b7 over in 56% of sims vs 51% DraftKings",
+   "why": "Sim total 222.8 (after a learned +1.4 correction) vs 220.5 \u00b7 over in 54% of sims vs 50% DraftKings",
    "for": [
     {
-     "tag": "simulation",
-     "t": "Goes over in 56% of 10,000 simulated games.",
-     "rec": [
-      1251,
-      1095
-     ]
-    },
-    {
      "tag": "team model",
-     "t": "Team ratings project 225.6 points, 6.1 on your side of 219.5.",
+     "t": "Team ratings project 225.6 points, 5.1 on your side of 220.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (222.5 to 219.5).",
+     "t": "The line has moved against this side since it opened (222.5 to 220.5).",
      "rec": [
       170,
       136
@@ -2418,10 +2423,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.873,
-    "floor_am": -115,
+    "floor_dec": 1.934,
+    "floor_am": -107,
     "line": null,
-    "next": 220.5
+    "next": 221.5
    },
    "watch": [
     {
@@ -2434,12 +2439,12 @@
     }
    ],
    "kill": [
-    "The line reaching 220.5",
-    "The price at 219.5 going past \u2212115"
+    "The line reaching 221.5",
+    "The price at 220.5 going past \u2212107"
    ],
    "market": {
     "open": null,
-    "now": 219.5,
+    "now": 220.5,
     "kalshi": null
    },
    "started": false,
@@ -3274,6 +3279,41 @@
    "kind": "line",
    "text": "IND @ NY Over 214.5: line 213.5 at \u2212111 \u2192 214.5 at \u2212105",
    "alert": false
+  },
+  {
+   "at": "2026-11-22T17:01:37Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "line",
+   "text": "Daniel Gafford: line 6.5 at \u2212118 \u2192 6.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T17:01:37Z",
+   "key": "p|4278049|reb|Under",
+   "kind": "conviction",
+   "text": "Daniel Gafford Under 6.5 rebounds: conviction 44 Pass \u2192 46 Consider",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T17:01:37Z",
+   "key": "p|4278594|reb|Under",
+   "kind": "line",
+   "text": "Naji Marshall: line 3.5 at \u2212111 \u2192 3.5 at \u2212112 \u2014 past the play-to line; don't add at this number",
+   "alert": true
+  },
+  {
+   "at": "2026-11-22T17:01:37Z",
+   "key": "g|401910033|spread|away",
+   "kind": "line",
+   "text": "DAL +1.5 (DAL @ UTAH): line -1.5 at \u2212102 \u2192 1.5 at \u2212120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-22T17:01:37Z",
+   "key": "g|401910031|total|Over",
+   "kind": "line",
+   "text": "ORL @ WSH Over 220.5: line 219.5 at \u2212114 \u2192 220.5 at \u2212109",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3369,5 +3409,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-22T16:45:21Z"
+ "updated": "2026-11-22T17:01:37Z"
 }
