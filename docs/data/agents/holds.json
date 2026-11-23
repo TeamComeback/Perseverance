@@ -1,33 +1,26 @@
 {
  "holds": [
   {
-   "player": "Josh Hart",
+   "bet_id": "597a5d5f",
+   "player": "Karl-Anthony Towns",
    "stat": "ra",
-   "game": "IND @ NY",
    "kind": "news",
-   "reason": "Under 12.5 R+A leans on the model (81% of sims vs 52% DraftKings, sim 9.9) while Karl-Anthony Towns is questionable with an illness and the agent only has him Day-To-Day; a Towns absence pushes Hart's boards up, and Hart pra Under 22.5 also sits in model_gaps (25.9% vs 50.5%)."
+   "reason": "Towns was questionable with an illness after missing the previous game when this Over 15.5 R+A was placed, and reports conflict (FanDuel Research listed him out, Rotowire/CBS later said cleared), so a game-day illness minutes cap is a real risk the 5.5% EV doesn't price."
   },
   {
-   "player": "Brandin Podziemski",
-   "stat": "pts",
-   "game": "BOS @ GS",
-   "kind": "gap",
-   "reason": "Same player and direction as the model_gaps entry Podziemski pra Under 24.5 (model 21.9% vs market 49.5%, 28.1 projected minutes), which suggests the model's minutes are low rather than the 15.5 points line being soft."
-  },
-  {
-   "game": "DAL @ UTAH",
-   "kind": "news",
-   "reason": "P.J. Washington is doubtful (illness) per the Newsroom and flagged as differing from the agent's status; the DAL -2.5 call is only 52% vs 49% in sims and likely built with him available."
-  },
-  {
-   "player": "Cameron Johnson",
-   "stat": "pts",
-   "game": "DEN @ CHI",
+   "bet_id": "01af6e35",
+   "player": "Jalen Brunson",
+   "stat": "ra",
    "kind": "correlated",
-   "reason": "Rides the same under script as the DEN @ CHI Under 236.5 Best Bet (sim 231.7); of the two it is the weaker, at -2.1% EV on a stat where the model hasn't beaten the market."
+   "reason": "Second NY rebounds+assists Over in the same game as the Towns bet, and the weaker of the two at 3.8% EV, where the backtest's 3-6% band moved toward the model only 50% of the time with -4.5% average CLV."
+  },
+  {
+   "bet_id": "2fa804d6",
+   "kind": "other",
+   "reason": "This is a college game (Tenn-Martin at Utah Valley, h2h at 4.3), outside the NBA model Perseverance is built and backtested on, so its 9.9% EV has no NBA calibration behind it."
   }
  ],
- "notes": "All ten Best Bets are tier Pass with negative EV, so these holds are mostly a guard if tiers change before tip. Open bets: the Troy/Nicholls St arb pair already tipped at 20:00Z (nothing to hold). The Tenn-Martin +330 value dog (2fa804d6, EV 9.9%) tips 01:00Z; the brief gives no current line, so I could not check it for staleness and did not hold it. Backtest context: prop model-side CLV is -4.0% and pra is the worst stat (-4.5%), which supports skepticism on model-driven props generally.",
- "updated": "2026-11-22T23:18:43Z",
+ "notes": "Best Bets are all Pass tier with negative EV, so there's nothing to hold there. I left the Utah +5.70 longshot at LAL (EV 13.9%, tomorrow) alone; Utah plays Dallas tonight, so it's the second night of a back-to-back, but I have no number showing the market misprices that. P.J. Washington is doubtful for DAL @ UTAH, and no open bet rides on him. IND @ NY was listed 'pre' in the brief although its 01:10Z tip had passed, so the bet state may be stale.",
+ "updated": "2026-11-23T02:19:13Z",
  "by": "skeptic"
 }
