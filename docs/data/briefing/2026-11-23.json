@@ -1404,8 +1404,11 @@
     }
    },
    "first_seen": "2026-11-23T15:01:40Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T21:01:32Z",
+    "why": "no longer +EV at tonight's line (9.5 at -125)"
+   },
+   "status": "Removed"
   },
   "p|4395651|pts|Under": {
    "key": "p|4395651|pts|Under",
@@ -2023,6 +2026,145 @@
     "why": "no longer +EV at tonight's line (7.5 at -149)"
    },
    "status": "Removed"
+  },
+  "p|4683021|ra|Under": {
+   "key": "p|4683021|ra|Under",
+   "kind": "prop",
+   "label": "Deni Avdija Under 12.5 reb+ast",
+   "espn_id": "401910037",
+   "game": "POR @ PHI",
+   "start": "2026-11-24T00:00Z",
+   "side": "Under",
+   "point": 12.5,
+   "dec": 2.05,
+   "am": 105,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.477,
+   "p_sim": 0.549,
+   "p_mkt": 0.456,
+   "p_kalshi": null,
+   "ev": -0.022,
+   "verdict": "Pass: recent form and projection agree; the main risk is context.",
+   "home": "PHI",
+   "away": "POR",
+   "pid": "4683021",
+   "name": "Deni Avdija",
+   "team": "POR",
+   "opp": "PHI",
+   "stat": "ra",
+   "proj": 11.4,
+   "sim": 12.3,
+   "ob_ind": 12.5,
+   "avg10": 11.8,
+   "minutes": 31.0,
+   "for": [
+    {
+     "tag": "projection",
+     "t": "Model projects 11.4 reb+ast against a line of 12.5.",
+     "rec": [
+      1393,
+      1238
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 12.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1180,
+      1071
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 41% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      809,
+      746
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      66,
+      69
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on reb+ast this season, so lean on the price here.",
+     "rec": [
+      148,
+      169
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.096,
+    "floor_am": 110,
+    "line": null,
+    "next": 11.5
+   },
+   "watch": [
+    {
+     "pid": "3917376",
+     "name": "Jaylen Brown",
+     "team": "PHI",
+     "status": "Probable",
+     "self": false,
+     "min": 29.9
+    },
+    {
+     "pid": "3059318",
+     "name": "Joel Embiid",
+     "team": "PHI",
+     "status": "Questionable",
+     "self": false,
+     "min": 29.3
+    },
+    {
+     "pid": "4279888",
+     "name": "Ja Morant",
+     "team": "POR",
+     "status": "Out",
+     "self": false,
+     "min": 26.0
+    }
+   ],
+   "kill": [
+    "The line reaching 11.5",
+    "The price at 12.5 going past +110",
+    "A change in Jaylen Brown (probable), Joel Embiid (questionable): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 12.5,
+    "now": 12.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-23T21:01:32Z",
+    "edition": "update",
+    "point": 12.5,
+    "dec": 2.05,
+    "am": 105,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.477,
+    "play_to": {
+     "floor_dec": 2.096,
+     "floor_am": 110,
+     "line": null,
+     "next": 11.5
+    }
+   },
+   "first_seen": "2026-11-23T21:01:32Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -2127,19 +2269,19 @@
    "start": "2026-11-24T00:00Z",
    "side": "away",
    "point": -2.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 32,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.515,
+   "p": 0.523,
    "p_sim": 0.614,
-   "p_mkt": 0.504,
+   "p_mkt": 0.513,
    "p_kalshi": null,
    "ev": -0.027,
    "verdict": "Pass: simulation and team model agree; the main risk is who's out.",
    "home": "CHA",
    "away": "MEM",
-   "why": "Sim: MEM by 6.7 on average (MEM 111.5, CHA 104.8) \u00b7 MEM -2.5 covers in 61% of sims vs 50% DraftKings",
+   "why": "Sim: MEM by 6.7 on average (MEM 111.5, CHA 104.8) \u00b7 MEM -2.5 covers in 61% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2184,8 +2326,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.942,
-    "floor_am": -106,
+    "floor_dec": 1.912,
+    "floor_am": -110,
     "line": null,
     "next": -3.5
    },
@@ -2233,7 +2375,7 @@
    ],
    "kill": [
     "The line reaching -3.5",
-    "The price at -2.5 going past \u2212106",
+    "The price at -2.5 going past \u2212110",
     "A change in Brandon Miller (probable): the model re-prices on the next run"
    ],
    "market": {
@@ -2662,21 +2804,21 @@
    "point": 224.5,
    "dec": 1.94,
    "am": -106,
-   "conv": 29,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.498,
-   "p_sim": 0.571,
+   "p": 0.5,
+   "p_sim": 0.594,
    "p_mkt": 0.489,
    "p_kalshi": null,
-   "ev": -0.035,
+   "ev": -0.03,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "LAL",
    "away": "UTAH",
-   "why": "Sim total 228.1 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 57% of sims vs 49% DraftKings",
+   "why": "Sim total 229.4 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 59% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 57% of 10,000 simulated games.",
+     "t": "Goes over in 59% of 10,000 simulated games.",
      "rec": [
       1330,
       1173
@@ -2699,7 +2841,7 @@
     },
     {
      "tag": "blowout",
-     "t": "53% of sims are blowouts, and benches slow the scoring late.",
+     "t": "52% of sims are blowouts, and benches slow the scoring late.",
      "rec": [
       348,
       309
@@ -2715,8 +2857,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.008,
-    "floor_am": 101,
+    "floor_dec": 2.0,
+    "floor_am": 100,
     "line": null,
     "next": 225.5
    },
@@ -2744,11 +2886,19 @@
      "status": "Out",
      "self": false,
      "min": 23.8
+    },
+    {
+     "pid": "4397077",
+     "name": "Jaxson Hayes",
+     "team": "UTAH",
+     "status": "Out",
+     "self": false,
+     "min": 20.8
     }
    ],
    "kill": [
     "The line reaching 225.5",
-    "The price at 224.5 going past +101"
+    "The price at 224.5 going past +100"
    ],
    "market": {
     "open": null,
@@ -3005,19 +3155,19 @@
    "start": "2026-11-24T00:00Z",
    "side": "home",
    "point": -2.5,
-   "dec": 1.94,
-   "am": -106,
-   "conv": 29,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.497,
+   "p": 0.506,
    "p_sim": 0.557,
-   "p_mkt": 0.491,
+   "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": -0.035,
+   "ev": -0.039,
    "verdict": "Pass: simulation carries it; the main risk is team model.",
    "home": "PHI",
    "away": "POR",
-   "why": "Sim: PHI by 4.8 on average (POR 113.5, PHI 118.2) \u00b7 PHI -2.5 covers in 56% of sims vs 49% DraftKings",
+   "why": "Sim: PHI by 4.8 on average (POR 113.5, PHI 118.2) \u00b7 PHI -2.5 covers in 56% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -3044,8 +3194,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.012,
-    "floor_am": 101,
+    "floor_dec": 1.976,
+    "floor_am": -102,
     "line": null,
     "next": -3.5
    },
@@ -3077,7 +3227,7 @@
    ],
    "kill": [
     "The line reaching -3.5",
-    "The price at -2.5 going past +101",
+    "The price at -2.5 going past \u2212102",
     "A change in Jaylen Brown (probable), Joel Embiid (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -3912,6 +4062,41 @@
    "kind": "line",
    "text": "BKN +11.5 (BKN @ MIN): line 10.5 at \u2212103 \u2192 11.5 at \u2212118 \u2014 past the play-to line; don't add at this number",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T21:01:32Z",
+   "key": "p|4683021|ra|Under",
+   "kind": "added",
+   "text": "Added: Deni Avdija Under 12.5 reb+ast at +105, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T21:01:32Z",
+   "key": "p|4278580|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Sandro Mamukelashvili Under 9.5 points \u2014 no longer +EV at tonight's line (9.5 at -125)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T21:01:32Z",
+   "key": "g|401910036|spread|away",
+   "kind": "line",
+   "text": "MEM -2.5 (MEM @ CHA): line -2.5 at \u2212112 \u2192 -2.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T21:01:32Z",
+   "key": "g|401910044|total|Over",
+   "kind": "injury",
+   "text": "Jaxson Hayes ruled out (UTAH @ LAL Over 224.5 re-priced: 224.5 at \u2212106, conviction 31)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T21:01:32Z",
+   "key": "g|401910037|spread|home",
+   "kind": "line",
+   "text": "PHI -2.5 (POR @ PHI): line -2.5 at \u2212106 \u2192 -2.5 at \u2212111",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4033,7 +4218,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 13
+  "picks": 14
  },
  "leans_record": {
   "w": 17,
@@ -4042,5 +4227,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T20:45:22Z"
+ "updated": "2026-11-23T21:01:32Z"
 }
