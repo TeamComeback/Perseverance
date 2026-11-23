@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 40.85,
+  "cash": 35.85,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -20963,6 +20963,83 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "e1504484",
+    "placed": "2026-11-23T23:00:44Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_under",
+    "legs": [
+     {
+      "event_id": "c9b6c9f77fd3628308dd34f50854a9c0",
+      "sport": "basketball_nba",
+      "commence": "2026-11-24T00:40:00Z",
+      "home": "Indiana Pacers",
+      "away": "Oklahoma City Thunder",
+      "market": "player_threes",
+      "outcome": "Kelly Oubre Jr. Under",
+      "side": "Under",
+      "player": "Kelly Oubre Jr.",
+      "player_id": "3133603",
+      "stat": "tpm",
+      "espn_id": "401910038",
+      "point": 1.5,
+      "price": 2.16,
+      "book": "draftkings",
+      "fair_p": 0.5294,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.74,
+       "gain": 0.2414,
+       "n": 6
+      },
+      "model": {
+       "proj": 1.21,
+       "base": 1.16,
+       "minutes": 27.3,
+       "mult": 1.045,
+       "sd": 1.03,
+       "p_model": 0.6706,
+       "p_mkt": 0.5294,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 1.099,
+         "txt": "OKC gives shooting guards +10% threes vs their norm (#1 softest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.148,
+         "txt": "Players with his profile: +15% threes vs OKC (52 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 1.0,
+         "txt": "No history vs OKC yet"
+        },
+        {
+         "k": "chances",
+         "v": 1.02,
+         "txt": "OKC games have +2% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.16,
+    "stake": 5.0,
+    "ev": 0.1112,
+    "p": 0.5145,
+    "note": "Proj 1.2 vs line 1.5 (norm 1.2, 27 min). Model 67% vs market 53%. OKC gives shooting guards +10% threes vs their norm (#1 softest of 30) \u00b7 Players with his profile: +15% threes vs OKC (52 close comps) \u00b7 No history vs OKC yet",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -21493,11 +21570,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T09:15:38Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 19: 4 games, 102 players projected, lineups for 4 games."
-  },
   {
    "ts": "2026-11-19T09:29:23Z",
    "kind": "research",
@@ -22992,6 +23064,11 @@
    "ts": "2026-11-23T22:45:41Z",
    "kind": "research",
    "text": "Research refresh for Mon Nov 23: 10 games, 240 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-23T23:00:44Z",
+   "kind": "props",
+   "text": "NBA matchups: 10 games, strongest spots: Derrick Jones Jr. ra -14% vs HOU; Jaylen Wells ra -13% vs CHA; Brook Lopez ra -13% vs HOU. Bought prop odds for LAC@HOU (ra, pra, team totals), MEM@CHA (ra, pra, ast, team totals), MIL@TOR (ra, ast, pra, team totals), CLE@CHI (ast, ra, pra, team totals), UTAH@LAL (ast, ra, pra, team totals), PHX@NO (ast, ra, tpm, pra, team totals), OKC@IND (pra, ra, ast, tpm, team totals), SA@SAC (ast, pra, team totals), BKN@MIN (ast, tpm, ra, pra, team totals) (37 credits). Placed 1: Kelly Oubre Jr. Under 1.5 @ +116 (DraftKings)"
   }
  ],
  "learned_ids": [
@@ -23088,13 +23165,13 @@
   "2fa804d6"
  ],
  "strategist": null,
- "updated": "2026-11-23T22:46:34Z",
+ "updated": "2026-11-23T23:01:37Z",
  "stats": {
   "bets": 91,
   "won": 30,
   "lost": 59,
-  "shop_n": 32,
-  "shop_avg": 0.0613,
+  "shop_n": 33,
+  "shop_avg": 0.0667,
   "push": 2,
   "staked": 517.57,
   "profit": -140.99,
@@ -23103,7 +23180,7 @@
   "clv_n": 70,
   "clv_no_close": 22,
   "close_mins_median": 4,
-  "open": 2,
+  "open": 3,
   "equity": 50.85
  },
  "weights": {

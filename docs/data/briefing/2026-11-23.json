@@ -1423,28 +1423,31 @@
     }
    },
    "first_seen": "2026-11-23T15:01:40Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-23T23:02:00Z",
+    "why": "no longer +EV at tonight's line (9.5 at -125)"
+   },
+   "status": "Removed"
   },
   "p|4395651|pts|Under": {
    "key": "p|4395651|pts|Under",
    "kind": "prop",
-   "label": "Coby White Under 17.5 points",
+   "label": "Coby White Under 16.5 points",
    "espn_id": "401910036",
    "game": "MEM @ CHA",
    "start": "2026-11-24T00:00Z",
    "side": "Under",
-   "point": 17.5,
-   "dec": 1.82,
-   "am": -122,
-   "conv": 33,
+   "point": 16.5,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.538,
-   "p_sim": 0.659,
-   "p_mkt": 0.517,
-   "p_kalshi": 0.491,
-   "ev": -0.021,
-   "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
+   "p": 0.49,
+   "p_sim": 0.566,
+   "p_mkt": 0.477,
+   "p_kalshi": 0.451,
+   "ev": -0.034,
+   "verdict": "Pass: recent form and cushion agree; the main risk is matchup.",
    "home": "CHA",
    "away": "MEM",
    "pid": "4395651",
@@ -1452,15 +1455,15 @@
    "team": "CHA",
    "opp": "MEM",
    "stat": "pts",
-   "proj": 14.3,
-   "sim": 15.2,
+   "proj": 15,
+   "sim": 15.6,
    "ob_ind": 14.5,
    "avg10": 13,
-   "minutes": 21.1,
+   "minutes": 21.5,
    "for": [
     {
      "tag": "average",
-     "t": "Averaging 13 points over his last 10; the line is 17.5.",
+     "t": "Averaging 13 points over his last 10; the line is 16.5.",
      "rec": [
       493,
       412
@@ -1468,7 +1471,7 @@
     },
     {
      "tag": "cushion",
-     "t": "Room to spare: he stayed under even 15.5 in 6 of his last 10.",
+     "t": "Room to spare: he stayed under even 14.5 in 6 of his last 10.",
      "rec": [
       327,
       283
@@ -1476,7 +1479,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 66% of 10,000 simulated games (sim average 15.2).",
+     "t": "Goes under in 57% of 10,000 simulated games (sim average 15.6).",
      "rec": [
       1330,
       1173
@@ -1484,7 +1487,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 14.3 points against a line of 17.5.",
+     "t": "Model projects 15 points against a line of 16.5.",
      "rec": [
       1393,
       1238
@@ -1492,7 +1495,7 @@
     },
     {
      "tag": "recent form",
-     "t": "Stayed under 17.5 in 6 of his last 10 (2 of the last 5).",
+     "t": "Stayed under 16.5 in 6 of his last 10 (2 of the last 5).",
      "rec": [
       1180,
       1071
@@ -1534,10 +1537,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.859,
-    "floor_am": -116,
-    "line": 17.5,
-    "next": 16.5
+    "floor_dec": 2.041,
+    "floor_am": 104,
+    "line": null,
+    "next": 15.5
    },
    "watch": [
     {
@@ -1565,32 +1568,31 @@
      "min": 27.2
     },
     {
-     "pid": "4433287",
-     "name": "Brandon Miller",
-     "team": "CHA",
-     "status": "Probable",
-     "self": false,
-     "min": 26.6
-    },
-    {
      "pid": "5061575",
      "name": "Kon Knueppel",
      "team": "CHA",
      "status": "Out",
      "self": false,
      "min": 23.6
+    },
+    {
+     "pid": "4066218",
+     "name": "Grant Williams",
+     "team": "CHA",
+     "status": "Out",
+     "self": false,
+     "min": 21.4
     }
    ],
    "kill": [
-    "The line reaching 16.5",
-    "The price at 17.5 going past \u2212116",
-    "A change in Brandon Miller (probable): the model re-prices on the next run",
+    "The line reaching 15.5",
+    "The price at 16.5 going past +104",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 17.5,
-    "now": 17.5,
-    "kalshi": 0.491
+    "now": 16.5,
+    "kalshi": 0.451
    },
    "started": false,
    "published": {
@@ -1610,11 +1612,8 @@
     }
    },
    "first_seen": "2026-11-23T15:01:40Z",
-   "removed": {
-    "at": "2026-11-23T21:31:35Z",
-    "why": "no longer +EV at tonight's line (17.5 at -118)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4278585|pts|Under": {
    "key": "p|4278585|pts|Under",
@@ -2478,7 +2477,7 @@
    "p": 0.507,
    "p_sim": 0.571,
    "p_mkt": 0.493,
-   "p_kalshi": 0.502,
+   "p_kalshi": 0.508,
    "ev": -0.032,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "CHI",
@@ -2602,7 +2601,7 @@
    "market": {
     "open": 26.5,
     "now": 26.5,
-    "kalshi": 0.502
+    "kalshi": 0.508
    },
    "started": false,
    "published": {
@@ -3956,39 +3955,38 @@
   "g|401910037|spread|home": {
    "key": "g|401910037|spread|home",
    "kind": "spread",
-   "label": "PHI -2.5 (POR @ PHI)",
+   "label": "PHI -1.5 (POR @ PHI)",
    "espn_id": "401910037",
    "game": "POR @ PHI",
    "start": "2026-11-24T00:00Z",
    "side": "home",
-   "point": -2.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 28,
+   "point": -1.5,
+   "dec": 1.98,
+   "am": -102,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.506,
-   "p_sim": 0.557,
-   "p_mkt": 0.5,
+   "p": 0.487,
+   "p_sim": 0.531,
+   "p_mkt": 0.482,
    "p_kalshi": null,
-   "ev": -0.039,
-   "verdict": "Pass: simulation carries it; the main risk is team model.",
+   "ev": -0.036,
+   "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "PHI",
    "away": "POR",
-   "why": "Sim: PHI by 4.8 on average (POR 113.5, PHI 118.2) \u00b7 PHI -2.5 covers in 56% of sims vs 50% DraftKings",
-   "for": [
-    {
-     "tag": "simulation",
-     "t": "Covers in 56% of 10,000 simulated games.",
-     "rec": [
-      1330,
-      1173
-     ]
-    }
-   ],
+   "why": "Sim: PHI by 2.4 on average (POR 114.5, PHI 116.9) \u00b7 PHI -1.5 covers in 53% of sims vs 48% DraftKings",
+   "for": [],
    "against": [
     {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (-2.5 to -1.5).",
+     "rec": [
+      174,
+      139
+     ]
+    },
+    {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 639-661 against DraftKings' spreads. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 644-663 against DraftKings' spreads. Treat this as a lean.",
      "rec": [
       148,
       169
@@ -3996,15 +3994,20 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it POR by 1.3, 3.8 worse than this number.",
+     "t": "Team ratings with tonight's lineups make it POR by 4.1, 5.6 worse than this number.",
+     "rec": null
+    },
+    {
+     "tag": "who's out",
+     "t": "PHI without Joel Embiid: worth about 2.8 points.",
      "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 1.976,
-    "floor_am": -102,
+    "floor_dec": 2.053,
+    "floor_am": 105,
     "line": null,
-    "next": -3.5
+    "next": -2.5
    },
    "watch": [
     {
@@ -4013,15 +4016,15 @@
      "team": "PHI",
      "status": "Probable",
      "self": false,
-     "min": 29.9
+     "min": 33.6
     },
     {
      "pid": "3059318",
      "name": "Joel Embiid",
      "team": "PHI",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 29.3
+     "min": 32.3
     },
     {
      "pid": "4279888",
@@ -4030,16 +4033,24 @@
      "status": "Out",
      "self": false,
      "min": 26.0
+    },
+    {
+     "pid": "3912848",
+     "name": "Dean Wade",
+     "team": "PHI",
+     "status": "Probable",
+     "self": false,
+     "min": 22.1
     }
    ],
    "kill": [
-    "The line reaching -3.5",
-    "The price at -2.5 going past \u2212102",
-    "A change in Jaylen Brown (probable), Joel Embiid (questionable): the model re-prices on the next run"
+    "The line reaching -2.5",
+    "The price at -1.5 going past +105",
+    "A change in Jaylen Brown (probable), Dean Wade (probable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": -2.5,
+    "now": -1.5,
     "kalshi": null
    },
    "started": false,
@@ -4060,11 +4071,8 @@
     }
    },
    "first_seen": "2026-11-23T17:16:35Z",
-   "removed": {
-    "at": "2026-11-23T21:31:35Z",
-    "why": "confidence fell 28 \u2192 27"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "g|401910038|total|Over": {
    "key": "g|401910038|total|Over",
@@ -4701,8 +4709,11 @@
     }
    },
    "first_seen": "2026-11-23T22:46:34Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T23:02:00Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -5643,6 +5654,62 @@
    "kind": "removed",
    "text": "Removed: POR @ PHI Over 231.5 \u2014 confidence fell 29 \u2192 26",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "p|4395651|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Coby White Under 16.5 points at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "p|4395651|pts|Under",
+   "kind": "line",
+   "text": "Coby White: line 17.5 at \u2212122 \u2192 16.5 at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "p|4395651|pts|Under",
+   "kind": "injury",
+   "text": "Grant Williams ruled out (Coby White Under 16.5 points re-priced: 16.5 at \u2212103, conviction 30)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "p|4278580|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Sandro Mamukelashvili Under 9.5 points \u2014 no longer +EV at tonight's line (9.5 at -125)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "g|401910037|spread|home",
+   "kind": "back",
+   "text": "Back on the board: PHI -1.5 (POR @ PHI) at \u2212102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "g|401910037|spread|home",
+   "kind": "line",
+   "text": "PHI -1.5 (POR @ PHI): line -2.5 at \u2212111 \u2192 -1.5 at \u2212102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "g|401910037|spread|home",
+   "kind": "injury",
+   "text": "Joel Embiid questionable \u2192 out (PHI -1.5 (POR @ PHI) re-priced: -1.5 at \u2212102, conviction 29)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T23:02:00Z",
+   "key": "g|401910039|spread|away",
+   "kind": "removed",
+   "text": "Removed: MIL +10.5 (MIL @ TOR) \u2014 other plays ranked higher",
+   "alert": false
   }
  ],
  "narratives": [
@@ -5757,11 +5824,6 @@
     "name": "Jaylon Tyson",
     "team": "CLE",
     "status": "Probable"
-   },
-   {
-    "name": "Dean Wade",
-    "team": "PHI",
-    "status": "Probable"
    }
   ],
   "picks": 19
@@ -5773,5 +5835,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T22:56:24Z"
+ "updated": "2026-11-23T23:02:00Z"
 }
