@@ -4103,7 +4103,18 @@
    },
    "first_seen": "2026-11-22T11:45:21Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 2
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 2
+   },
+   "clv": null
   },
   "g|401910029|spread|away": {
    "key": "g|401910029|spread|away",
@@ -4529,7 +4540,13 @@
     "at": "2026-11-22T23:01:19Z",
     "why": "confidence fell 31 \u2192 28"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": -20
+   },
+   "clv": null
   },
   "g|401910031|total|Over": {
    "key": "g|401910031|total|Over",
@@ -4630,7 +4647,18 @@
    },
    "first_seen": "2026-11-22T13:01:18Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 212
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 212
+   },
+   "clv": null
   },
   "g|401910034|total|Over": {
    "key": "g|401910034|total|Over",
@@ -5322,7 +5350,13 @@
     "at": "2026-11-22T19:31:15Z",
     "why": "confidence fell 43 \u2192 36"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.93,
+    "actual": 230
+   },
+   "clv": null
   },
   "g|401910033|total|Under": {
    "key": "g|401910033|total|Under",
@@ -5429,7 +5463,13 @@
     "at": "2026-11-22T21:31:11Z",
     "why": "line moved 225.5 \u2192 226.5"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 230
+   },
+   "clv": null
   },
   "g|401910034|total|Under": {
    "key": "g|401910034|total|Under",
@@ -7839,5 +7879,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-23T02:15:35Z"
+ "updated": "2026-11-23T02:30:46Z"
 }
