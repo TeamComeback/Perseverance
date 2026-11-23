@@ -1610,7 +1610,7 @@
    "p": 0.524,
    "p_sim": 0.537,
    "p_mkt": 0.504,
-   "p_kalshi": 0.485,
+   "p_kalshi": 0.493,
    "ev": -0.02,
    "verdict": "Pass: recent form and projection agree; the main risk is similar players.",
    "home": "NO",
@@ -1710,7 +1710,7 @@
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.485
+    "kalshi": 0.493
    },
    "started": false,
    "published": {
@@ -1744,19 +1744,19 @@
    "start": "2026-11-24T01:30Z",
    "side": "Under",
    "point": 223.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 28,
+   "dec": 1.93,
+   "am": -108,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.509,
+   "p": 0.5,
    "p_sim": 0.56,
-   "p_mkt": 0.504,
+   "p_mkt": 0.493,
    "p_kalshi": null,
-   "ev": -0.037,
+   "ev": -0.035,
    "verdict": "Pass: simulation and line move agree; the main risk is team model.",
    "home": "HOU",
    "away": "LAC",
-   "why": "Sim total 221.5 (after a learned +1.4 correction) vs 223.5 \u00b7 under in 56% of sims vs 50% DraftKings",
+   "why": "Sim total 221.5 (after a learned +1.4 correction) vs 223.5 \u00b7 under in 56% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1791,15 +1791,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.965,
-    "floor_am": -104,
+    "floor_dec": 2.0,
+    "floor_am": 100,
     "line": null,
     "next": 222.5
    },
    "watch": [],
    "kill": [
     "The line reaching 222.5",
-    "The price at 223.5 going past \u2212104"
+    "The price at 223.5 going past +100"
    ],
    "market": {
     "open": null,
@@ -2990,6 +2990,13 @@
    "kind": "removed",
    "text": "Removed: MIL @ TOR Under 223.5 \u2014 confidence fell 28 \u2192 24",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T16:46:19Z",
+   "key": "g|401910043|total|Under",
+   "kind": "line",
+   "text": "LAC @ HOU Under 223.5: line 223.5 at \u2212112 \u2192 223.5 at \u2212108",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3064,6 +3071,11 @@
     "status": "Probable"
    },
    {
+    "name": "Joel Embiid",
+    "team": "PHI",
+    "status": "Questionable"
+   },
+   {
     "name": "Zion Williamson",
     "team": "NO",
     "status": "Probable"
@@ -3087,11 +3099,6 @@
     "name": "Jaylon Tyson",
     "team": "CLE",
     "status": "Probable"
-   },
-   {
-    "name": "Trey Murphy III",
-    "team": "NO",
-    "status": "Probable"
    }
   ],
   "picks": 11
@@ -3103,5 +3110,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T16:30:27Z"
+ "updated": "2026-11-23T16:46:19Z"
 }
