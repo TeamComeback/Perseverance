@@ -16,7 +16,7 @@ try { new Function(html.slice(html.indexOf("<script>\nconst $") + 8, html.indexO
 
 console.log("2. data shapes");
 const need = {"players.json": d => d.date && Array.isArray(d.games) && d.players, "sims.json": d => d.date && d.games, "best.json": d => d.days,
-  "state.json": d => d.book && d.stats, "scoreboard.json": d => d.by_stat, "team_model.json": d => d.teams && d.params, "sims_day.json": d => Array.isArray(d.runs)};
+  "state.json": d => d.book && d.stats, "scoreboard.json": d => d.by_stat, "team_model.json": d => d.teams && d.params, "matchup_hist.json": d => Array.isArray(d.rows) && d.n === d.rows.length && d.rows.length > 0 && d.rows[0].length === 10, "sims_day.json": d => Array.isArray(d.runs)};
 for (const [f, t] of Object.entries(need)) { try { t(read(f)) ? ok(f) : bad(f + ": missing fields"); } catch (e) { bad(`${f}: ${e.message}`); } }
 try { const pj = read("players.json"); for (const g of pj.games.filter(g => g.state === "pre")) if (!fs.existsSync(path.join(DATA, "games", g.espn_id + ".json"))) bad(`game file missing for ${g.away}@${g.home}`); ok("game files present"); } catch (e) { bad("game files: " + e.message); }
 
@@ -56,6 +56,18 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
         const txt = await p.evaluate(() => [...document.querySelectorAll(".view.on")].map(v => v.innerText.length).join(","));
         errs.length === n && +txt > 50 ? ok(`${t} (${txt} chars)`) : bad(`${t}: ${errs.slice(n).join(" | ") || "renders nearly empty"}`);
       }
+      // matchup filters and sorter (Props tab): every row shown passes the filters, the sort is in order, Clear restores the list
+      console.log("5b. matchup filters and sorter");
+      try {
+        await p.evaluate(() => { go("props"); D.pf.all = true; mxSet({mxPace: "lo", mxPos: "soft", mxSort: "mx", mxAll: true, mxDir: ""}); }); await p.waitForTimeout(900);
+        const r = await p.evaluate(() => { const rows = [...document.querySelectorAll("#b-p-all .cr")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
+          const sc = rows.map(mxScore); return {n: rows.length, match: rows.every(x => { const m = mxInfo(x); return m.pace <= 10 && m.pos <= 10; }),
+            sorted: sc.every((v, i) => i === 0 || v <= sc[i - 1] + 1e-9), chips: document.querySelectorAll("#b-p-all .mxl").length}; });
+        r.n && r.match && r.sorted && r.chips === r.n ? ok(`${r.n} rows: all fast-pace + soft-position, sorted, chips shown`) : bad("matchup filter: " + JSON.stringify(r));
+        const rec = await p.evaluate(() => { const x = mxRecord({stat: "ast", mxPos: "soft"}); return {n: x.A.n, ok: x.A.n > 0 && x.A.o <= x.A.n}; });
+        rec.ok ? ok(`record panel: ${rec.n} graded assist props in soft position matchups`) : bad("matchup record panel is empty");
+        await p.evaluate(() => { mxSet({mxPace: "", mxPos: "", mxSort: "", mxAll: false, mxDir: ""}); D.pf.all = false; renderProps(); });
+      } catch (e) { bad("matchup filters: " + e.message); }
       // one side per prop: every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};

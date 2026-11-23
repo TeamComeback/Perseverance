@@ -505,6 +505,14 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .fbar .frow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.fbar .frow::-webkit-scrollbar{display:none}
 .fbar select,.fbar button{flex:none;background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:6px 10px;font:600 12px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
 .fbar select.on,.fbar button.on{color:var(--gold);border-color:#E5C15866;background:#E5C15814}
+.mxg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 8px}
+.mxg label{display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--dim);font-weight:600}
+.mxg select{background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:10px;padding:7px 9px;font:600 13px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
+.mxg select.on{color:var(--gold);border-color:#E5C15866;background:#E5C15814}
+.mxrec{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--dim2)} .mxrec b{color:var(--text)}
+.mxrec .mxr{padding:6px 0;border-top:1px solid var(--line)} .mxrec .mxr:first-child{border-top:0}
+.cr .why.mxl{white-space:normal}.mxc{display:inline-block;margin:2px 4px 0 0;padding:1px 8px;border-radius:99px;font-size:11px;font-weight:600;background:#ffffff0d;color:var(--dim)}
+.mxc.up{color:var(--win);background:var(--win-d)}.mxc.dn{color:var(--loss);background:var(--loss-d)}
 .fbar .focus{margin-top:6px;font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}.fbar .focus b{color:var(--text)}.fbar .focus button{padding:2px 8px}
 .sstrip{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;font-size:12px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;cursor:pointer}
 .sstrip b{color:var(--text);font-family:var(--mono)}
@@ -1188,7 +1196,8 @@ function modelP(proj, sd, line, side) {
   const pOver = 0.5 + 0.88 * ((1 - c) - 0.5);
   return side === "Over" ? pOver : 1 - pOver;
 }
-function cRow(x) {
+const cRowMx = x => cRow(x, true);                 // Props tab list: the same row plus the matchup chips (.map passes an index, so a flag only counts as `true`)
+function cRow(x, mx) {
   const priced = x.line != null, ms = matchupStrength(x), ag = mAgree(x);
   const mline = `matchup <span class="dots">${dots(ms.n)}</span> ${mArrow(x)}${ag == null ? "" : ag ? ' <span class="pos">agrees</span>' : ' <span class="neg">points the other way</span>'}`;
   const rt = priced
@@ -1204,7 +1213,8 @@ function cRow(x) {
     <div class="rt">${rt}</div>${olHtml}
     <div class="why">${mline}${focusOf(x.stat) === "edge" ? ' · <span class="pos">model-edge stat</span>' : focusOf(x.stat) === "skip" ? ' · <span class="neg">market wins this stat</span>' : ""} · ${esc(ms.why.join(" · "))}</div>
     ${schedNote(x) ? `<div class="why ol">${esc(schedNote(x))}</div>` : ""}
-    <div class="why">${esc(why)}${x.more ? ` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
+    ${mx === true ? mxChips(x) : ""}
+    <div class="why">${esc(why)}${x.more ?` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
 }
 // Matchup strength (the dots): how big and how trustworthy the matchup effect is. No line and no price in it, so it
 // can't be mistaken for a call on the bet; shown with its direction and whether it agrees with the bet side.
@@ -1244,7 +1254,7 @@ function oppsHtml() {
 }
 
 // ===================================================== filters, watchlist, glossary (one set, every tab)
-const FLT0 = {game: "", stat: "", side: "", watch: false};
+const FLT0 = {game: "", stat: "", side: "", watch: false, mxPos: "", mxPace: "", mxDef: "", mxLine: "", mxSort: "", mxDir: "", mxAll: false};
 const FLT = () => Object.assign({}, FLT0, store.get("flt", {}));
 function setFltQuiet(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); }
 function setFlt(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); const t = store.get("tab", "today"); fbar(t); (RENDER[t] || renderToday)(); }
@@ -1289,6 +1299,122 @@ function fbar(tab) {
     else setFlt(k, !f[k]);
   });
 }
+// ===================================================== MATCHUP FILTERS AND SORTER (Props tab)
+// Cut the slate by the matchup itself, then sort it. Four filters, all ranks out of 30:
+//   position matchup  the opponent's defense vs his role in that stat (1 = gives up the most = soft)  <- row.dvp
+//   opponent pace     1 = fastest                                                                      <- dvp.json teams
+//   opponent defense  1 = best team defense                                                            <- dvp.json teams
+//   line vs usual     (line - his usual output at tonight's minutes) / usual; "inflated" = line 8%+ above
+// Top/bottom 10 are the cut-offs. Every cut also shows how the same cut did on every graded prop at the closing price
+// (docs/data/matchup_hist.json, built nightly by agent/matchup_hist.py with each day's ranks as of that day).
+// The matchup model itself is untouched: this is for reading the slate, not a new bet signal. Study (Nov 23): tough
+// position matchups reliably hurt overs, pace alone showed nothing, and no cut beat the closing price.
+const MX = {lo: 10, hi: 21, line: 0.08, ship: "2026-11-23"};
+const mxAny = f => !!(f.mxPos || f.mxPace || f.mxDef || f.mxLine);
+const mxBand = (v, k, lo, hi) => v == null || v < 1 ? false : k === "lo" ? v <= lo : k === "hi" ? v >= hi : k === "mid" ? v > lo && v < hi : true;
+function mxMatch(f, pos, pace, def, lvb) {
+  if (f.mxPos && !mxBand(pos, f.mxPos === "soft" ? "lo" : "hi", MX.lo, MX.hi)) return false;
+  if (f.mxPace && !mxBand(pace, f.mxPace, MX.lo, MX.hi)) return false;
+  if (f.mxDef && !mxBand(def, f.mxDef === "top" ? "lo" : "hi", MX.lo, MX.hi)) return false;
+  if (f.mxLine && (lvb == null || (f.mxLine === "infl" ? lvb < MX.line : lvb > -MX.line))) return false;
+  return true;
+}
+function mxInfo(r) {
+  if (r._mx) return r._mx;
+  const T = D.dvp && D.dvp.teams && D.dvp.teams[r.opp];
+  const lvb = r.line != null && r.base > 0 ? (r.line - r.base) / r.base : null;
+  return r._mx = {pos: r.dvp || null, pace: T ? T.pace_rank : null, def: T ? T.drtg_rank : null, lvb};
+}
+const mxPass = (r, f) => !mxAny(f) || (m => mxMatch(f, m.pos, m.pace, m.def, m.lvb))(mxInfo(r));
+// one number for "how good is the matchup for an OVER" (-1..1): the average of whichever of the four reads exist
+function mxScore(r) {
+  const m = mxInfo(r), p = [];
+  if (m.pos != null) p.push((15.5 - m.pos) / 14.5);
+  if (m.pace != null) p.push((15.5 - m.pace) / 14.5);
+  if (m.def != null) p.push((m.def - 15.5) / 14.5);
+  if (m.lvb != null) p.push(Math.max(-1, Math.min(1, -m.lvb / 0.15)));
+  return p.length ? p.reduce((a, b) => a + b, 0) / p.length : null;
+}
+const MXKEYS = {mx: mxScore, pos: r => { const m = mxInfo(r); return m.pos == null ? null : -m.pos; }, pace: r => { const m = mxInfo(r); return m.pace == null ? null : -m.pace; },
+  def: r => { const m = mxInfo(r); return m.def; }, line: r => { const m = mxInfo(r); return m.lvb == null ? null : -m.lvb; }, edge: r => r.ev ?? null};
+// the sort the list uses: the chosen matchup key (best for overs first, or flipped for unders), else the usual ranking
+function mxSorter(f, dflt) {
+  const K = MXKEYS[f.mxSort]; if (!K) return dflt;
+  const dir = f.mxSort === "edge" || f.mxDir !== "u" ? 1 : -1;
+  return r => { const v = K(r); return v == null || isNaN(v) ? -1e9 : dir * v; };
+}
+function mxChips(x) {
+  const m = mxInfo(x), side = x.side || mDir(x), role = esc(x.role);
+  const c = (t, overFav) => `<span class="mxc ${overFav == null ? "" : (overFav === (side === "Over") ? "up" : "dn")}">${t}</span>`;
+  const out = [];
+  if (m.pos != null) out.push(c(`vs ${role}s #${m.pos}${m.pos <= MX.lo ? " soft" : m.pos >= MX.hi ? " tough" : ""}`, m.pos <= MX.lo ? true : m.pos >= MX.hi ? false : null));
+  if (m.pace != null) out.push(c(`opp pace #${m.pace}${m.pace <= MX.lo ? " fast" : m.pace >= MX.hi ? " slow" : ""}`, m.pace <= MX.lo ? true : m.pace >= MX.hi ? false : null));
+  if (m.def != null) out.push(c(`opp D #${m.def}${m.def <= MX.lo ? " top-10" : m.def >= MX.hi ? " weak" : ""}`, m.def >= MX.hi ? true : m.def <= MX.lo ? false : null));
+  if (m.lvb != null) out.push(c(`line ${m.lvb >= 0 ? "+" : ""}${Math.round(m.lvb * 100)}% vs usual`, m.lvb <= -MX.line ? true : m.lvb >= MX.line ? false : null));
+  return out.length ? `<div class="why mxl">${out.join(" ")}</div>` : "";
+}
+// how the same cut did on every graded prop, at the closing line and price (all days, and only days since this feature shipped)
+function mxRecord(f) {
+  const H = D.mxh; if (!H || !H.rows) return null;
+  const blank = () => ({n: 0, o: 0, beO: 0, beU: 0, pO: 0, pU: 0});
+  const A = blank(), W = blank();
+  for (const r of H.rows) {
+    if (f.stat && r[2] !== f.stat) continue;
+    if (!mxMatch(f, r[3], r[4], r[5], r[6])) continue;
+    for (const T of r[0] >= MX.ship ? [A, W] : [A]) {
+      T.n++; T.o += r[7]; T.beO += 1 / r[8]; T.beU += 1 / r[9];
+      T.pO += r[7] ? r[8] - 1 : -1; T.pU += r[7] ? -1 : r[9] - 1;
+    }
+  }
+  return {A, W, days: H.days, from: H.from};
+}
+function mxRecHtml(f) {
+  const R = mxRecord(f);
+  if (!R) return '<div class="mxrec"><span class="dim">Loading the graded history…</span></div>';
+  const line = (T, label) => {
+    if (!T.n) return `<div class="mxr"><b>${label}</b> · <span class="dim">${label.startsWith("Since") ? "none graded yet" : "no graded props in this cut"}</span></div>`;
+    const po = T.o / T.n, pu = 1 - po, se = 100 * Math.sqrt(0.25 / T.n), roi = x => `<span class="${x >= 0 ? "pos" : "neg"}">${x >= 0 ? "+" : ""}${(x * 100).toFixed(0)}%</span>`;
+    const side = f.side === "Over" ? 0 : f.side === "Under" ? 1 : 2;
+    const o = `Overs <b>${(po * 100).toFixed(1)}%</b> <span class="dim">(need ${(T.beO / T.n * 100).toFixed(0)}%)</span> ${roi(T.pO / T.n)}`;
+    const u = `Unders <b>${(pu * 100).toFixed(1)}%</b> <span class="dim">(need ${(T.beU / T.n * 100).toFixed(0)}%)</span> ${roi(T.pU / T.n)}`;
+    return `<div class="mxr"><b>${label}</b> · ${T.n.toLocaleString()} props${T.n < 100 ? ' <span class="gold">small sample, treat as a guess</span>' : ` <span class="dim">±${se.toFixed(0)} pts</span>`}<br>${side === 0 ? o : side === 1 ? u : o + " · " + u}</div>`;
+  };
+  const base = mxAny(f) ? mxRecord({stat: f.stat}) : null;
+  return `<div class="mxrec"><div class="desc" style="margin-bottom:2px"><b style="color:var(--text)">How this cut has done</b> on graded props at DraftKings' closing line and price (${R.days} days since ${md(R.from)}). "Need" is the win rate the price requires; the number after it is the return per $1.</div>
+    ${line(R.A, mxAny(f) ? "This cut" : "All props")}${base ? line(base.A, f.stat ? "All " + STATN[f.stat] + " props" : "All props") : ""}
+    ${line(R.W, "Since " + md(MX.ship) + " (forward only)")}
+    <div class="desc" style="margin-top:4px">Past results describe the past. A cut that looks good on a few weeks of data is often luck: only trust one whose edge holds up on the forward-only line as it fills in.</div></div>`;
+}
+function mxHtml() {
+  const f = FLT(), opt = (k, list) => `<select data-mx="${k}" class="${f[k] ? "on" : ""}">${list.map(([v, l]) => `<option value="${v}"${String(f[k]) === v ? " selected" : ""}>${l}</option>`).join("")}</select>`;
+  const lab = (t, k, list) => `<label>${t}${opt(k, list)}</label>`;
+  const chip = (on, a, l) => `<button data-mxc="${a}" class="${on ? "on" : ""}">${l}</button>`;
+  const body = `<div class="desc">Filter and sort the <b>All players</b> list below by the matchup. Ranks are out of 30. Chips on each row are green when they help the side shown, red when they hurt it.</div>
+    <div class="mxg">${lab("Position matchup", "mxPos", [["", "Any"], ["soft", "Soft · top 10"], ["tough", "Tough · bottom 10"]])}
+      ${lab("Opponent pace", "mxPace", [["", "Any"], ["lo", "Fast · top 10"], ["mid", "Middle"], ["hi", "Slow · bottom 10"]])}
+      ${lab("Opponent defense", "mxDef", [["", "Any"], ["top", "Top-10 defense"], ["weak", "Bottom-10 defense"]])}
+      ${lab("Line vs his usual", "mxLine", [["", "Any"], ["infl", "Inflated · 8%+ above"], ["shade", "Shaded · 8%+ below"]])}
+      ${lab("Sort by", "mxSort", [["", "Usual ranking"], ["mx", "Combined matchup"], ["pos", "Position matchup"], ["pace", "Opponent pace"], ["def", "Opponent defense"], ["line", "Line vs usual"], ["edge", "Price edge"]])}
+    </div>
+    <div class="chips">${chip(f.mxDir !== "u", "dir|", "Best for overs first")}${chip(f.mxDir === "u", "dir|u", "Best for unders first")}<span class="sep"></span>${chip(!f.mxAll, "all|0", "Best stat per player")}${chip(f.mxAll, "all|1", "Every stat line")}</div>
+    <div class="chips">${chip(f.mxPos === "soft" && f.mxPace === "lo" && f.mxDir !== "u", "p|fs", "Fast + soft · overs")}${chip(f.mxPos === "tough" && f.mxLine === "infl" && f.mxDir === "u", "p|ti", "Tough + inflated · unders")}${mxAny(f) || f.mxSort ? chip(false, "clear|", "Clear matchup filters") : ""}</div>
+    ${mxRecHtml(f)}`;
+  return sec("p-mx", "Matchup filters and sorter", mxAny(f) ? "on" : f.mxSort ? "sorted" : "", body, true);
+}
+function mxSet(o) {
+  const f = FLT(); Object.assign(f, o); store.set("flt", f); fbar("props"); renderProps();
+}
+function bindMx(root) {
+  root.querySelectorAll("select[data-mx]").forEach(s => s.onchange = () => mxSet({[s.dataset.mx]: s.value}));
+  root.querySelectorAll("button[data-mxc]").forEach(b => b.onclick = e => {
+    e.preventDefault(); const [a, v] = b.dataset.mxc.split("|");
+    if (a === "dir") mxSet({mxDir: v});
+    else if (a === "all") mxSet({mxAll: v === "1"});
+    else if (a === "clear") mxSet({mxPos: "", mxPace: "", mxDef: "", mxLine: "", mxSort: "", mxDir: "", mxAll: false});
+    else if (a === "p") mxSet(v === "fs" ? {mxPos: "soft", mxPace: "lo", mxDef: "", mxLine: "", mxSort: "mx", mxDir: ""} : {mxPos: "tough", mxPace: "", mxDef: "", mxLine: "infl", mxSort: "mx", mxDir: "u"});
+  });
+}
+
 const GL = {EV: "Expected value: what the bet returns per $1 on average if the win chance is right. +5% EV = 5 cents per dollar.",
   Need: "The win rate the price needs to break even. -110 needs 52.4%.", CLV: "Closing line value: how much better your number is than the line at tip-off. Beating the close is the best sign a bet was good.",
   Confident: "The chance of winning sits 3+ points above what the price needs (conviction 60+).", Consider: "About 1-3 points above what the price needs (conviction 45-59). Worth a look, not a lock.",
@@ -2024,6 +2150,9 @@ function renderProps() {
   const F = D.pf || (D.pf = {tab: null, stat: "all", lean: "all", q: "", all: false, game: "all"});
   if (D.propGame) { setFltQuiet("game", D.propGame); D.propGame = null; F.all = false; }
   const GF = FLT(); F.game = GF.game || "all"; F.stat = GF.stat || "all"; F.lean = GF.side || "all";
+  // matchup filters need the team pace/defense ranks (dvp.json) and, for the record panel, the graded history; both load once, then redraw
+  if (!D.dvp && !D._dvpL) { D._dvpL = 1; get("dvp.json", null).then(x => { D.dvp = x; if (store.get("tab") === "props") renderProps(); }); }
+  if (!D.mxh && !D._mxhL && store.get("o-p-mx", true)) { D._mxhL = 1; get("matchup_hist.json", null).then(x => { D.mxh = x || {rows: [], days: 0}; if (store.get("tab") === "props") renderProps(); }); }
   const rows = propRows().filter(r => F.game === "all" ? upcoming(r) : fresh(r));
   const pricedRows = rows.filter(r => r.line != null);
   if (!F.tab) F.tab = pricedRows.length ? "priced" : "research";
@@ -2041,9 +2170,13 @@ function renderProps() {
     && (F.stat === "all" ? (F.tab === "priced" || PROP_STATS.includes(r.stat)) : r.stat === F.stat)
     && (F.lean === "all" || r.side === F.lean)
     && (!q || r.name.toLowerCase().includes(q) || r.team.toLowerCase() === q || r.opp.toLowerCase() === q)
-    && (!GF.watch || WATCH().players.includes(String(r.pid))));
-  const list = onePerPlayer(base, F.tab === "priced" ? playScore : r => matchupStrength(r).n + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0));
-  const lim = F.all || q || F.game !== "all" ? list.length : 10;
+    && (!GF.watch || WATCH().players.includes(String(r.pid)))
+    && mxPass(r, GF));
+  const dflt = F.tab === "priced" ? playScore : r => matchupStrength(r).n + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0);
+  const sc = mxSorter(GF, dflt);
+  const list = GF.mxAll ? base.slice().sort((a, b) => sc(b) - sc(a)) : onePerPlayer(base, sc);
+  const mxOn = mxAny(GF) || !!GF.mxSort || GF.mxAll;
+  const lim = F.all || q || F.game !== "all" ? list.length : mxOn ? 30 : 10;
   const nP = onePerPlayer(pricedRows, r => r.ev ?? -1).length;
   const gameChips = [`<button data-g="all" class="${F.game === "all" ? "on" : ""}">All games</button>`]
     .concat(games.filter(g => g.state !== "post").map(g => `<button data-g="${g.espn_id}" class="${F.game === g.espn_id ? "on" : ""}">${esc(g.away)} @ ${esc(g.home)} ${g.state === "in" ? "· live" : tod(g.start)}</button>`)).join("");
@@ -2058,14 +2191,16 @@ function renderProps() {
     ${allCtl("props")}
     ${topSpotsHtml()}
     ${boardHtml()}
-    ${sec("p-all", "All players", list.length + " players", `<div class="tabs2" id="ptab"><button data-t="priced" class="${F.tab === "priced" ? "on" : ""}">Priced · ${nP}</button><button data-t="research" class="${F.tab === "research" ? "on" : ""}">Research</button></div>
+    ${mxHtml()}
+    ${sec("p-all", "All players", list.length + (GF.mxAll ? " lines" : " players") + (mxOn ? " · matchup view" : ""), `<div class="tabs2" id="ptab"><button data-t="priced" class="${F.tab === "priced" ? "on" : ""}">Priced · ${nP}</button><button data-t="research" class="${F.tab === "research" ? "on" : ""}">Research</button></div>
     <div class="desc" style="margin:2px 2px 6px">${F.tab === "priced" ? "Every player with a DraftKings line, his best play first: conviction, then edge. The tag is the bet side at that line; the arrow is the matchup." : "Matchup strength first (the dots: matchup size, signals agreeing, secure minutes; no line or price in it). No side until DraftKings posts a line. One row per player."}</div>
-    <div class="card" style="padding:2px 12px">${list.slice(0, lim).map(cRow).join("") || empty}</div>
-    ${list.length > lim ? `<button class="more" id="pall">Show all ${list.length} players</button>` : ""}`, true)}
+    <div class="card" style="padding:2px 12px">${list.slice(0, lim).map(cRowMx).join("") || empty}</div>
+    ${list.length > lim ? `<button class="more" id="pall">Show all ${list.length} ${GF.mxAll ? "lines" : "players"}</button>` : ""}`, true)}
     ${tt ? sec("p-tt", "Team totals", "", tt, false) : ""}
     ${sec("p-saved", "Saved props", L.saved.length + " saved", savedHtml(), false)}`;
   bindBoard($("v-props"));
   bindSaved($("v-props"));
+  bindMx($("v-props"));
   const rer = () => renderProps();
   $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
   $("ptab").querySelectorAll("button").forEach(b => b.onclick = () => { F.tab = b.dataset.t; F.all = false; rer(); });

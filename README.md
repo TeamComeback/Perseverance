@@ -143,6 +143,18 @@ Every sim run also prices DraftKings' own lines: spreads, totals and moneylines 
 
 Sim tab → **👥 Lineup**: for the game you're looking at, mark any player **Out** or **Playing** and pick the **Starters**. The sim re-calibrates right away: a ruled-out player's minutes are re-shared to the rest (to 240), the team's scoring stays anchored to its implied total so his shots go to who's left, a player moved into the starting five gets starter minutes (26-30) and a starter moved to the bench loses about 20%. It's saved on your device for that game and also drives the live sim and the Games page. The overnight 10,000-sim averages are hidden while your lineup is set (they used the official one); Run 5,000 sims gives fresh numbers. **Reset** goes back to the official lineup. Best bets and Prop Lab projections still come from the agent's refreshes.
 
+## Matchup filters and sorter (Nov 23, Props tab)
+
+Players tab → **Matchup filters and sorter** (above the All players list). Cut and sort the list by the matchup itself, for any stat:
+
+- **Position matchup**: the opponent's defense vs his role in that stat (rank of 30; soft = top 10, tough = bottom 10).
+- **Opponent pace** (fast / middle / slow), **opponent defense** (top-10 / bottom-10 team defense) and **line vs his usual** (line 8%+ above or below his usual output at tonight's minutes).
+- **Sort by** the combined matchup, or any one read, or price edge; **best for overs first** or **best for unders first**; **best stat per player** or **every stat line**. Presets: *Fast + soft · overs* and *Tough + inflated · unders*.
+- Each row gets chips (position rank, opponent pace, opponent defense, line vs usual), green when they help the side shown and red when they hurt it.
+- **How this cut has done**: the same cut on every graded prop at DraftKings' closing line and price (win rate vs what the price needs, return per $1, with a plus/minus and a small-sample warning), next to all props for comparison, plus a **forward-only** line that counts only props graded after the feature shipped (Nov 23). Past results on a few weeks of data are often luck; the forward line is the honest test.
+
+`agent/matchup_hist.py` (nightly, after the anchor) writes `docs/data/matchup_hist.json`: each graded prop's position rank, opponent pace and defense ranks and line vs usual as of its own day (a model that had only seen earlier games), with the closing line and prices. Only new days are computed. The matchup model and the projections are untouched; this is for reading the slate, not a new bet signal. First study (17 days, 8,441 props, closing price): tough position matchups reliably hurt overs (assist overs 44.7% vs 51.1% in soft ones), opponent pace alone showed nothing, and no cut beat the closing price (tough position defense + top-10 team defense + middle pace unders were break-even, 793 props). `tools/check.js --ui` step 5b tests the filters.
+
 ## Model audit fixes (Nov 22): price from the market first
 
 A full audit of 8,447 graded DraftKings props (Nov 5-21) found the matchup model's projections about as accurate as

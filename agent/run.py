@@ -638,6 +638,12 @@ def nightly():
     except Exception as e:
         brain.note(state, "error", f"Market anchor failed: {e}")
     try:
+        citynow.mark("matchup_hist", "Filing how every graded prop looked on the matchup filters")
+        from . import matchup_hist
+        matchup_hist.build(log=lambda m: None)
+    except Exception as e:
+        brain.note(state, "error", f"Matchup history failed: {e}")
+    try:
         citynow.mark("teacher", "Night school: learning from the graded bets")
         from . import learn
         learn.run(state, brain.note)

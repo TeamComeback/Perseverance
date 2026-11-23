@@ -477,6 +477,10 @@
    "name": "Market anchor (how far the model may move each stat's price)",
    "fresh_h": 30
   },
+  "matchup_hist.json": {
+   "name": "Matchup history (graded props on the Props tab's matchup filters)",
+   "fresh_h": 30
+  },
   "agents/gaps.json": {
    "name": "Model gaps for the Newsroom and Skeptic to check",
    "fresh_h": 30
@@ -1161,6 +1165,21 @@
    "writes": [
     "anchor.json",
     "agents/gaps.json"
+   ]
+  },
+  {
+   "id": "matchup_hist",
+   "company": "audit",
+   "title": "Matchup Filer",
+   "code": [
+    "agent/matchup_hist.py"
+   ],
+   "job": "Files how every graded prop looked on the Props tab's matchup filters (position matchup, opponent pace, opponent defense, line vs usual) as of its own day, so each filtered cut can show its record at the closing price.",
+   "reads": [
+    "dk/*"
+   ],
+   "writes": [
+    "matchup_hist.json"
    ]
   },
   {
