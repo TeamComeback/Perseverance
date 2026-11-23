@@ -20979,7 +20979,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0675,
+  "min_edge": 0.0725,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -20990,7 +20990,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.087,
+  "prop_model_weight": 0.076,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -21493,31 +21493,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T02:45:48Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 18: 12 games, 303 players projected, lineups for 12 games."
-  },
-  {
-   "ts": "2026-11-19T04:12:03Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 18: 12 games, 300 players projected, lineups for 12 games."
-  },
-  {
-   "ts": "2026-11-19T04:25:50Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -0.9% over 62 legs, so the market is beating my picks. Raising the minimum edge to 13.0%."
-  },
-  {
-   "ts": "2026-11-19T04:25:54Z",
-   "kind": "scan",
-   "text": "No scan this run (allowance 0 credits, 18001 left this cycle)."
-  },
-  {
-   "ts": "2026-11-19T05:00:46Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 12.75% so I get enough bets to learn from."
-  },
   {
    "ts": "2026-11-19T05:04:11Z",
    "kind": "research",
@@ -22992,6 +22967,31 @@
    "ts": "2026-11-23T21:00:38Z",
    "kind": "research",
    "text": "Research refresh for Mon Nov 23: 10 games, 249 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-23T21:18:13Z",
+   "kind": "adapt",
+   "text": "Closing-line value is -0.0% over 57 legs, so the market is beating my picks. Raising the minimum edge to 7.2%."
+  },
+  {
+   "ts": "2026-11-23T21:19:30Z",
+   "kind": "adapt",
+   "text": "Model vs market on 10731 graded lines: the 5% model blend scored best (log loss model 0.730, market 0.687). Moving the model's weight from 9% to 8%."
+  },
+  {
+   "ts": "2026-11-23T21:19:32Z",
+   "kind": "focus",
+   "text": "Prop prices start from the market; the model moves them in no stat yet (walk-forward test, 8,876 graded props)."
+  },
+  {
+   "ts": "2026-11-23T21:19:32Z",
+   "kind": "adapt",
+   "text": "Learning loop: PTS raw projections ran +4.3% vs actual over 2892 player-games: level x0.966 (was x0.945); REB raw projections ran +4.0% vs actual over 2892 player-games: level x0.968 (was x0.908); TPM raw projections ran -1.3% vs actual over 2892 player-games: level x1.011 (was x1.059); PRA raw projections ran +3.6% vs actual over 2892 player-games: level x0.971 (was x0.948); RA raw projections ran +3.0% vs actual over 2892 player-games: level x0.976 (was x0.945); starter minutes (raw) were off by +1.4 on average over 1496 player-games: correction -1.1 min (was -3.0)."
+  },
+  {
+   "ts": "2026-11-23T21:19:32Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $50.85 (run #2), 30-59-2, ROI -27.2%, CLV -0.5%."
   }
  ],
  "learned_ids": [
@@ -23088,7 +23088,7 @@
   "2fa804d6"
  ],
  "strategist": null,
- "updated": "2026-11-23T21:15:23Z",
+ "updated": "2026-11-23T21:19:32Z",
  "stats": {
   "bets": 91,
   "won": 30,

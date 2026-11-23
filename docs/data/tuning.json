@@ -1,14 +1,14 @@
 {
  "stat_factor": {
-  "pts": 0.9448,
-  "reb": 0.9081,
+  "pts": 0.9656,
+  "reb": 0.9683,
   "ast": 0.9785,
-  "pra": 0.948,
-  "ra": 0.9445,
-  "tpm": 1.0591
+  "pra": 0.9713,
+  "ra": 0.9763,
+  "tpm": 1.0108
  },
  "min_delta": {
-  "starter": -3.0,
+  "starter": -1.11,
   "bench": -1.17
  },
  "sim_anchor": 0.75,
@@ -278,7 +278,34 @@
     "bench minutes were off by +0.6 on average over 1328 player-games: correction -1.2 min",
     "conviction factor 'bump' hurt by -3.4 pts of hit rate over 2692 plays: weight 0.82 -> 0.73"
    ]
+  },
+  {
+   "ts": "2026-11-23T21:19:32Z",
+   "changes": [
+    "PTS raw projections ran +4.3% vs actual over 2892 player-games: level x0.966 (was x0.945)",
+    "REB raw projections ran +4.0% vs actual over 2892 player-games: level x0.968 (was x0.908)",
+    "TPM raw projections ran -1.3% vs actual over 2892 player-games: level x1.011 (was x1.059)",
+    "PRA raw projections ran +3.6% vs actual over 2892 player-games: level x0.971 (was x0.948)",
+    "RA raw projections ran +3.0% vs actual over 2892 player-games: level x0.976 (was x0.945)",
+    "starter minutes (raw) were off by +1.4 on average over 1496 player-games: correction -1.1 min (was -3.0)"
+   ]
   }
  ],
- "updated": "2026-11-22T17:11:39Z"
+ "updated": "2026-11-23T21:19:32Z",
+ "applied": {
+  "2026-11-23": {
+   "stat_factor": {
+    "pts": 0.9656,
+    "reb": 0.9683,
+    "ast": 0.9785,
+    "pra": 0.9713,
+    "ra": 0.9763,
+    "tpm": 1.0108
+   },
+   "min_delta": {
+    "starter": -1.11,
+    "bench": -1.17
+   }
+  }
+ }
 }
