@@ -39,7 +39,7 @@
    "p": 0.515,
    "p_sim": 0.602,
    "p_mkt": 0.495,
-   "p_kalshi": 0.505,
+   "p_kalshi": 0.509,
    "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "TOR",
@@ -163,7 +163,7 @@
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": 0.505
+    "kalshi": 0.509
    },
    "started": false,
    "published": {
@@ -500,7 +500,7 @@
    "p": 0.409,
    "p_sim": 0.541,
    "p_mkt": 0.392,
-   "p_kalshi": 0.4,
+   "p_kalshi": 0.39,
    "ev": -0.022,
    "verdict": "Pass: recent form and projection agree; the main risk is tonight's spot.",
    "home": "MIN",
@@ -615,7 +615,7 @@
    "market": {
     "open": 1.5,
     "now": 1.5,
-    "kalshi": 0.4
+    "kalshi": 0.39
    },
    "started": false,
    "published": {
@@ -790,8 +790,11 @@
     }
    },
    "first_seen": "2026-11-23T11:45:26Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T17:46:37Z",
+    "why": "no longer +EV at tonight's line (7.5 at -119)"
+   },
+   "status": "Removed"
   },
   "p|4066383|pts|Under": {
    "key": "p|4066383|pts|Under",
@@ -802,15 +805,15 @@
    "start": "2026-11-24T01:00Z",
    "side": "Under",
    "point": 14.5,
-   "dec": 1.84,
-   "am": -119,
+   "dec": 1.86,
+   "am": -116,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.532,
+   "p": 0.526,
    "p_sim": 0.589,
-   "p_mkt": 0.512,
-   "p_kalshi": 0.525,
-   "ev": -0.02,
+   "p_mkt": 0.505,
+   "p_kalshi": 0.53,
+   "ev": -0.022,
    "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
    "home": "NO",
    "away": "PHX",
@@ -885,8 +888,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.88,
-    "floor_am": -114,
+    "floor_dec": 1.901,
+    "floor_am": -111,
     "line": null,
     "next": 13.5
    },
@@ -910,14 +913,14 @@
    ],
    "kill": [
     "The line reaching 13.5",
-    "The price at 14.5 going past \u2212114",
+    "The price at 14.5 going past \u2212111",
     "A change in Zion Williamson (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 14.5,
     "now": 14.5,
-    "kalshi": 0.525
+    "kalshi": 0.53
    },
    "started": false,
    "published": {
@@ -937,11 +940,8 @@
     }
    },
    "first_seen": "2026-11-23T13:46:29Z",
-   "removed": {
-    "at": "2026-11-23T15:16:35Z",
-    "why": "no longer +EV at tonight's line (14.5 at -116)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|3155526|ast|Under": {
    "key": "p|3155526|ast|Under",
@@ -1413,15 +1413,15 @@
    "start": "2026-11-24T00:00Z",
    "side": "Under",
    "point": 17.5,
-   "dec": 1.88,
-   "am": -114,
+   "dec": 1.85,
+   "am": -118,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.521,
+   "p": 0.529,
    "p_sim": 0.659,
-   "p_mkt": 0.5,
-   "p_kalshi": 0.499,
-   "ev": -0.021,
+   "p_mkt": 0.508,
+   "p_kalshi": 0.496,
+   "ev": -0.022,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "CHA",
    "away": "MEM",
@@ -1512,8 +1512,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.919,
-    "floor_am": -109,
+    "floor_dec": 1.89,
+    "floor_am": -112,
     "line": null,
     "next": 16.5
    },
@@ -1561,14 +1561,14 @@
    ],
    "kill": [
     "The line reaching 16.5",
-    "The price at 17.5 going past \u2212109",
+    "The price at 17.5 going past \u2212112",
     "A change in Brandon Miller (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 17.5,
     "now": 17.5,
-    "kalshi": 0.499
+    "kalshi": 0.496
    },
    "started": false,
    "published": {
@@ -1588,11 +1588,8 @@
     }
    },
    "first_seen": "2026-11-23T15:01:40Z",
-   "removed": {
-    "at": "2026-11-23T17:16:35Z",
-    "why": "no longer +EV at tonight's line (17.5 at -118)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4278585|pts|Under": {
    "key": "p|4278585|pts|Under",
@@ -1730,8 +1727,11 @@
     }
    },
    "first_seen": "2026-11-23T15:16:35Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T17:46:37Z",
+    "why": "no longer +EV at tonight's line (10.5 at -111)"
+   },
+   "status": "Removed"
   }
  },
  "leans": {
@@ -2714,19 +2714,19 @@
    "start": "2026-11-24T00:00Z",
    "side": "home",
    "point": -2.5,
-   "dec": 1.92,
-   "am": -109,
+   "dec": 1.94,
+   "am": -106,
    "conv": 29,
    "tier": "Pass",
-   "p": 0.502,
+   "p": 0.497,
    "p_sim": 0.557,
-   "p_mkt": 0.496,
+   "p_mkt": 0.491,
    "p_kalshi": null,
-   "ev": -0.036,
+   "ev": -0.035,
    "verdict": "Pass: simulation carries it; the main risk is team model.",
    "home": "PHI",
    "away": "POR",
-   "why": "Sim: PHI by 4.8 on average (POR 113.5, PHI 118.2) \u00b7 PHI -2.5 covers in 56% of sims vs 50% DraftKings",
+   "why": "Sim: PHI by 4.8 on average (POR 113.5, PHI 118.2) \u00b7 PHI -2.5 covers in 56% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2753,8 +2753,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.992,
-    "floor_am": -101,
+    "floor_dec": 2.012,
+    "floor_am": 101,
     "line": null,
     "next": -3.5
    },
@@ -2786,7 +2786,7 @@
    ],
    "kill": [
     "The line reaching -3.5",
-    "The price at -2.5 going past \u2212101",
+    "The price at -2.5 going past +101",
     "A change in Jaylen Brown (probable), Joel Embiid (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -3138,6 +3138,55 @@
    "kind": "removed",
    "text": "Removed: BKN +11.5 (BKN @ MIN) \u2014 confidence fell 29 \u2192 27",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "p|4395651|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Coby White Under 17.5 points at \u2212118",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "p|4395651|pts|Under",
+   "kind": "line",
+   "text": "Coby White: line 17.5 at \u2212114 \u2192 17.5 at \u2212118",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Miles Bridges Under 14.5 points at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "line",
+   "text": "Miles Bridges: line 14.5 at \u2212119 \u2192 14.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "p|4601023|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Oso Ighodaro Under 7.5 points \u2014 no longer +EV at tonight's line (7.5 at -119)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Collin Gillespie Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -111)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T17:46:37Z",
+   "key": "g|401910037|spread|home",
+   "kind": "line",
+   "text": "PHI -2.5 (POR @ PHI): line -2.5 at \u2212109 \u2192 -2.5 at \u2212106",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3251,5 +3300,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T17:30:28Z"
+ "updated": "2026-11-23T17:46:37Z"
 }
