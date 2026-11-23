@@ -3,10 +3,10 @@
   {
    "param": "prop_max_bets",
    "value": 3,
-   "why": "Fifth night asking: matchup_under is still the only playbook past 30 bets and it slipped again to 46 bets and -$96.65 on $230 staked (was 43 and -$81.65), with -2.96% average CLV on its 28 closes and all three reb+ast unders settled since last night lost, so trim prop volume from 4 to 3 per run as a backstop for when its pause lifts."
+   "why": "Sixth night asking, numbers unchanged in direction: matchup_under is the only playbook past 30 bets and slipped again to 47 bets and -$101.65 on $235 staked (was 46 and -$96.65), with -2.96% average CLV on its 28 closes and last night's one settled prop (Flagg reb+ast Under 13.5) another loss, so trim prop volume from 4 to 3 per run as a backstop for when its pause lifts."
   }
  ],
- "summary": "The record is 85 bets, 27-56-2, -$140.49 (-29% ROI) with equity down to $51.35, and nearly all the loss is matchup_under (46 bets, -$96.65, -2.96% CLV on 28 closes, paused); overall CLV is -0.73% on 66 closes, roughly flat. I'm holding prop_min_edge at 0.08 and prop_model_weight at 0.103: the prop edge buckets show no CLV gradient (10%+ at -3.8% vs 6-10% at -3.5% vs under 3% at -4.1%), though the share of moves toward the model does rise with edge (63.8% at 10%+ vs 43.8% under 3%), and the model still trails the market on log-loss in every stat (e.g. ra 0.7246 vs 0.6875 on 1772). Every game-side playbook (arb 14, value_dog 11 paused, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched.",
- "updated": "2026-11-22T10:13:57Z",
+ "summary": "The record is 88 bets, 28-58-2, -$145.39 (-29% ROI) with equity down to $46.45; overall CLV is -0.46% on 70 closes (the Backtester's leg-level view is -1.9% on 54), and matchup_under (47 bets, -$101.65, paused) still accounts for about 70% of the loss. I'm leaving prop_min_edge at 0.08 and prop_model_weight at 0.087: the prop edge buckets still show no CLV gradient (10%+ -3.8%, 6-10% -3.5%, under 3% -4.1%) even though moves toward the model rise with edge (63.8% vs 43.8%), and the model trails the market on log-loss in every stat (e.g. pra 0.7798 vs 0.6928 on 1837, ra 0.7288 vs 0.6878 on 1887). Every game-side playbook (arb 16 bets with +3.9% CLV on 14 closes, value_dog 11 paused, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched.",
+ "updated": "2026-11-23T10:13:41Z",
  "by": "strategist"
 }
