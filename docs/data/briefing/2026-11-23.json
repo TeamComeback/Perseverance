@@ -808,13 +808,13 @@
    "start": "2026-11-24T01:00Z",
    "side": "Under",
    "point": 14.5,
-   "dec": 1.8,
-   "am": -125,
+   "dec": 1.82,
+   "am": -122,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.544,
+   "p": 0.538,
    "p_sim": 0.577,
-   "p_mkt": 0.524,
+   "p_mkt": 0.517,
    "p_kalshi": 0.53,
    "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
@@ -891,8 +891,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.838,
-    "floor_am": -119,
+    "floor_dec": 1.859,
+    "floor_am": -116,
     "line": 14.5,
     "next": 13.5
    },
@@ -916,7 +916,7 @@
    ],
    "kill": [
     "The line reaching 13.5",
-    "The price at 14.5 going past \u2212119",
+    "The price at 14.5 going past \u2212116",
     "A change in Zion Williamson (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1091,22 +1091,22 @@
   "p|4397014|pts|Under": {
    "key": "p|4397014|pts|Under",
    "kind": "prop",
-   "label": "Quentin Grimes Under 16.5 points",
+   "label": "Quentin Grimes Under 17.5 points",
    "espn_id": "401910044",
    "game": "UTAH @ LAL",
    "start": "2026-11-24T03:00Z",
    "side": "Under",
-   "point": 16.5,
-   "dec": 1.9,
-   "am": -111,
+   "point": 17.5,
+   "dec": 1.8,
+   "am": -125,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.515,
-   "p_sim": 0.544,
-   "p_mkt": 0.495,
-   "p_kalshi": 0.505,
-   "ev": -0.022,
-   "verdict": "Pass: recent form and cushion agree; the main risk is tonight's spot.",
+   "p": 0.544,
+   "p_sim": 0.612,
+   "p_mkt": 0.524,
+   "p_kalshi": 0.564,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "LAL",
    "away": "UTAH",
    "pid": "4397014",
@@ -1121,24 +1121,32 @@
    "minutes": 31.8,
    "for": [
     {
-     "tag": "average",
-     "t": "Averaging 13.9 points over his last 10; the line is 16.5.",
+     "tag": "second market",
+     "t": "Kalshi likes it more: 56% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 486 of 901 times.",
      "rec": [
-      493,
-      412
+      126,
+      105
      ]
     },
     {
      "tag": "cushion",
-     "t": "Room to spare: he stayed under even 14.5 in 7 of his last 10.",
+     "t": "Room to spare: he stayed under even 15.5 in 7 of his last 10.",
      "rec": [
       327,
       283
      ]
     },
     {
+     "tag": "simulation",
+     "t": "Goes under in 61% of 10,000 simulated games (sim average 16.1).",
+     "rec": [
+      1330,
+      1173
+     ]
+    },
+    {
      "tag": "projection",
-     "t": "Model projects 14.8 points against a line of 16.5.",
+     "t": "Model projects 14.8 points against a line of 17.5.",
      "rec": [
       1393,
       1238
@@ -1146,18 +1154,10 @@
     },
     {
      "tag": "recent form",
-     "t": "Stayed under 16.5 in 7 of his last 10 (2 of the last 5).",
+     "t": "Stayed under 17.5 in 7 of his last 10 (2 of the last 5).",
      "rec": [
       1180,
       1071
-     ]
-    },
-    {
-     "tag": "blowout",
-     "t": "Blowout risk (13.5-pt spread).",
-     "rec": [
-      809,
-      746
      ]
     }
    ],
@@ -1188,7 +1188,7 @@
     },
     {
      "tag": "tonight's spot",
-     "t": "Against UTAH: 4 of 8 under 16.5 (50% vs 80% lately).",
+     "t": "Against UTAH: 4 of 8 under 17.5 (50% vs 80% lately).",
      "rec": [
       678,
       682
@@ -1196,10 +1196,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.942,
-    "floor_am": -106,
-    "line": null,
-    "next": 15.5
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 17.5,
+    "next": 16.5
    },
    "watch": [
     {
@@ -1220,14 +1220,14 @@
     }
    ],
    "kill": [
-    "The line reaching 15.5",
-    "The price at 16.5 going past \u2212106",
+    "The line reaching 16.5",
+    "The price at 17.5 going past \u2212119",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 15.5,
-    "now": 16.5,
-    "kalshi": 0.505
+    "now": 17.5,
+    "kalshi": 0.564
    },
    "started": false,
    "published": {
@@ -1247,11 +1247,8 @@
     }
    },
    "first_seen": "2026-11-23T14:46:39Z",
-   "removed": {
-    "at": "2026-11-23T18:31:26Z",
-    "why": "no longer +EV at tonight's line (16.5 at -116)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4278580|pts|Under": {
    "key": "p|4278580|pts|Under",
@@ -1269,7 +1266,7 @@
    "p": 0.55,
    "p_sim": 0.445,
    "p_mkt": 0.53,
-   "p_kalshi": 0.53,
+   "p_kalshi": 0.535,
    "ev": -0.021,
    "verdict": "Pass: recent form and cushion agree; the main risk is tonight's spot.",
    "home": "LAL",
@@ -1384,7 +1381,7 @@
    "market": {
     "open": 8.5,
     "now": 9.5,
-    "kalshi": 0.53
+    "kalshi": 0.535
    },
    "started": false,
    "published": {
@@ -1591,8 +1588,11 @@
     }
    },
    "first_seen": "2026-11-23T15:01:40Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T20:02:25Z",
+    "why": "no longer +EV at tonight's line (17.5 at -118)"
+   },
+   "status": "Removed"
   },
   "p|4278585|pts|Under": {
    "key": "p|4278585|pts|Under",
@@ -1603,15 +1603,15 @@
    "start": "2026-11-24T01:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.88,
-   "am": -114,
-   "conv": 34,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.521,
+   "p": 0.544,
    "p_sim": 0.503,
-   "p_mkt": 0.501,
+   "p_mkt": 0.524,
    "p_kalshi": 0.52,
-   "ev": -0.02,
+   "ev": -0.022,
    "verdict": "Pass: recent form and projection agree; the main risk is similar players.",
    "home": "NO",
    "away": "PHX",
@@ -1678,9 +1678,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.919,
-    "floor_am": -109,
-    "line": null,
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 10.5,
     "next": 9.5
    },
    "watch": [
@@ -1703,7 +1703,7 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212109",
+    "The price at 10.5 going past \u2212119",
     "A change in Zion Williamson (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1730,11 +1730,8 @@
     }
    },
    "first_seen": "2026-11-23T15:16:35Z",
-   "removed": {
-    "at": "2026-11-23T19:31:47Z",
-    "why": "no longer +EV at tonight's line (10.5 at -111)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4591725|pts|Under": {
    "key": "p|4591725|pts|Under",
@@ -1863,8 +1860,11 @@
     }
    },
    "first_seen": "2026-11-23T18:01:53Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T20:02:25Z",
+    "why": "no longer +EV at tonight's line (11.5 at -110)"
+   },
+   "status": "Removed"
   },
   "p|4433134|reb|Under": {
    "key": "p|4433134|reb|Under",
@@ -3819,6 +3819,55 @@
    "kind": "removed",
    "text": "Removed: Collin Gillespie Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -111)",
    "alert": true
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4397014|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Quentin Grimes Under 17.5 points at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4397014|pts|Under",
+   "kind": "line",
+   "text": "Quentin Grimes: line 16.5 at \u2212111 \u2192 17.5 at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "line",
+   "text": "Miles Bridges: line 14.5 at \u2212125 \u2192 14.5 at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Collin Gillespie Under 10.5 points at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "line",
+   "text": "Collin Gillespie: line 10.5 at \u2212114 \u2192 10.5 at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4395651|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Coby White Under 17.5 points \u2014 no longer +EV at tonight's line (17.5 at -118)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T20:02:25Z",
+   "key": "p|4591725|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Ryan Rollins Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -110)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3949,5 +3998,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T19:45:24Z"
+ "updated": "2026-11-23T20:02:25Z"
 }
