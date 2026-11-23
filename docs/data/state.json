@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 30.1,
+  "cash": 41.45,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -19986,14 +19986,18 @@
       "book": "kalshi",
       "fair_p": 0.4948,
       "close_p": 0.49,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.94,
        "gain": 0.1019,
        "n": 6
       },
       "close_at": "2026-11-22T18:30:25Z",
-      "close_mins": 89
+      "close_mins": 89,
+      "final": {
+       "home": 78.0,
+       "away": 77.0
+      }
      }
     ],
     "dec": 2.138,
@@ -20003,10 +20007,10 @@
     "note": "Arb: 0.87% locked across 2 books",
     "group": "arb-a8fa96ce1e",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 11.35,
+    "profit": 6.04,
+    "settled": "2026-11-23T00:01:21Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -20016,7 +20020,31 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: Nicholls St Colonels +5.5: covered by 4.5",
+     "final": "Nicholls St Colonels 77 \u2013 Troy Trojans 78",
+     "legs": [
+      {
+       "outcome": "Nicholls St Colonels",
+       "result": "win",
+       "headline": "Nicholls St Colonels +5.5: covered by 4.5",
+       "final": "Nicholls St Colonels 77 \u2013 Troy Trojans 78",
+       "why": [
+        "Nicholls St Colonels lost the game by 1 and needed to win or lose by less than 5.5: covered by 4.5.",
+        "We priced it at 47% to hit vs 47% needed to break even at 2.138x (+0.9% expected edge).",
+        "Closing consensus 49% vs 47% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "4e2c66c6",
@@ -20038,14 +20066,18 @@
       "book": "fanatics",
       "fair_p": 0.5167,
       "close_p": 0.51,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.88,
        "gain": 0.016,
        "n": 6
       },
       "close_at": "2026-11-22T18:30:25Z",
-      "close_mins": 89
+      "close_mins": 89,
+      "final": {
+       "home": 78.0,
+       "away": 77.0
+      }
      }
     ],
     "dec": 1.91,
@@ -20055,10 +20087,10 @@
     "note": "Arb: 0.87% locked across 2 books",
     "group": "arb-a8fa96ce1e",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.94,
+    "settled": "2026-11-23T00:01:21Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -20068,7 +20100,31 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Troy Trojans -5.5: missed by 4.5",
+     "final": "Nicholls St Colonels 77 \u2013 Troy Trojans 78",
+     "legs": [
+      {
+       "outcome": "Troy Trojans",
+       "result": "loss",
+       "headline": "Troy Trojans -5.5: missed by 4.5",
+       "final": "Nicholls St Colonels 77 \u2013 Troy Trojans 78",
+       "why": [
+        "Troy Trojans won the game by 1 and needed to win by more than 5.5: missed the spread by 4.5.",
+        "We priced it at 53% to hit vs 52% needed to break even at 1.91x (+0.9% expected edge).",
+        "Closing consensus 51% vs 52% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "2fa804d6",
@@ -20244,11 +20300,11 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 14,
-   "staked": 131.32,
-   "profit": 1.459999999999999,
-   "clv_n": 12,
-   "clv_sum": 0.5306645999999997,
+   "bets": 16,
+   "staked": 142.57,
+   "profit": 1.5599999999999987,
+   "clv_n": 14,
+   "clv_sum": 0.5523845999999997,
    "tags": {
     "underdog-lost": {
      "n": 6,
@@ -20256,13 +20312,13 @@
      "lost": 6
     },
     "lost-closing-line": {
-     "n": 5,
+     "n": 6,
      "won": 4,
-     "lost": 1
+     "lost": 2
     },
     "beat-closing-line": {
-     "n": 5,
-     "won": 1,
+     "n": 6,
+     "won": 2,
      "lost": 4
     },
     "blowout": {
@@ -20411,13 +20467,13 @@
    "profit": -107.32
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-22T23:00:31Z",
+   "last_scanned": "2026-11-23T00:01:18Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-22T21:15:34Z"
+   "last_scanned": "2026-11-23T00:01:18Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -20429,7 +20485,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-22T21:30:28Z"
+   "last_scanned": "2026-11-23T00:01:18Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -20487,9 +20543,9 @@
   },
   "basketball_ncaab": {
    "last_scanned": "2026-11-22T23:45:26Z",
-   "bets": 4.0,
-   "staked": 35.42,
-   "profit": 0.3199999999999994
+   "bets": 6.0,
+   "staked": 46.67,
+   "profit": 0.41999999999999904
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-22T06:15:23Z"
@@ -20634,26 +20690,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-18T17:30:39Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 18: 12 games, 293 players projected, lineups for 12 games."
-  },
-  {
-   "ts": "2026-11-18T17:46:09Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 18: 12 games, 295 players projected, lineups for 12 games."
-  },
-  {
-   "ts": "2026-11-18T17:47:13Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 11.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-18T18:01:25Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -1.1% over 62 legs, so the market is beating my picks. Raising the minimum edge to 12.2%."
-  },
   {
    "ts": "2026-11-18T18:02:00Z",
    "kind": "adapt",
@@ -22133,6 +22169,26 @@
    "ts": "2026-11-22T23:45:26Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 8.25% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-23T00:00:39Z",
+   "kind": "research",
+   "text": "Research refresh for Sun Nov 22: 7 games, 181 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-23T00:01:21Z",
+   "kind": "result",
+   "text": "WON +$6.04: Nicholls St Colonels +5.5 @ +114 (Kalshi) \u2014 WON: Nicholls St Colonels +5.5: covered by 4.5 [beat-closing-line]"
+  },
+  {
+   "ts": "2026-11-23T00:01:21Z",
+   "kind": "result",
+   "text": "LOST -$5.94: Troy Trojans -5.5 @ -110 (Fanatics) \u2014 LOST: Troy Trojans -5.5: missed by 4.5 [lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-23T00:01:31Z",
+   "kind": "props",
+   "text": "NBA matchups: 2 games, strongest spots: Aaron Nesmith ra -12% vs NY; Karl-Anthony Towns ra +12% vs IND; Jalen Brunson pra +12% vs IND. Bought prop odds for IND@NY (ra, pra, ast, team totals), BOS@GS (ra, pra, ast, team totals) (10 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -22221,32 +22277,34 @@
   "d26e8b41",
   "9f69e006",
   "42989098",
-  "65aaa4de"
+  "65aaa4de",
+  "61337d5b",
+  "4e2c66c6"
  ],
  "strategist": null,
- "updated": "2026-11-22T23:45:26Z",
+ "updated": "2026-11-23T00:02:05Z",
  "stats": {
-  "bets": 86,
-  "won": 27,
-  "lost": 57,
+  "bets": 88,
+  "won": 28,
+  "lost": 58,
   "shop_n": 28,
   "shop_avg": 0.0558,
   "push": 2,
-  "staked": 491.32,
-  "profit": -145.49,
-  "roi": -0.2961,
+  "staked": 502.57,
+  "profit": -145.39,
+  "roi": -0.2893,
   "clv": -0.0037,
   "clv_n": 67,
   "clv_no_close": 22,
   "close_mins_median": 4,
-  "open": 3,
-  "equity": 46.35
+  "open": 1,
+  "equity": 46.45
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.422,
   "longshot": 0.444,
-  "arb": 1.095,
+  "arb": 1.098,
   "parlay_ev": 1.0,
   "matchup_over": 1.292,
   "matchup_under": 0.3
@@ -22255,5 +22313,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 0
+ "dry_scans": 1
 }
