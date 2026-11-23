@@ -793,8 +793,11 @@
     }
    },
    "first_seen": "2026-11-23T11:45:26Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T19:31:47Z",
+    "why": "no longer +EV at tonight's line (7.5 at -119)"
+   },
+   "status": "Removed"
   },
   "p|4066383|pts|Under": {
    "key": "p|4066383|pts|Under",
@@ -805,15 +808,15 @@
    "start": "2026-11-24T01:00Z",
    "side": "Under",
    "point": 14.5,
-   "dec": 1.86,
-   "am": -116,
+   "dec": 1.8,
+   "am": -125,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.526,
-   "p_sim": 0.589,
-   "p_mkt": 0.505,
+   "p": 0.544,
+   "p_sim": 0.577,
+   "p_mkt": 0.524,
    "p_kalshi": 0.53,
-   "ev": -0.022,
+   "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
    "home": "NO",
    "away": "PHX",
@@ -823,14 +826,14 @@
    "opp": "NO",
    "stat": "pts",
    "proj": 12.8,
-   "sim": 13.5,
+   "sim": 13.6,
    "ob_ind": 13.5,
    "avg10": 13.6,
    "minutes": 25.2,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 59% of 10,000 simulated games (sim average 13.5).",
+     "t": "Goes under in 58% of 10,000 simulated games (sim average 13.6).",
      "rec": [
       1330,
       1173
@@ -888,9 +891,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
-    "line": null,
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 14.5,
     "next": 13.5
    },
    "watch": [
@@ -913,7 +916,7 @@
    ],
    "kill": [
     "The line reaching 13.5",
-    "The price at 14.5 going past \u2212111",
+    "The price at 14.5 going past \u2212119",
     "A change in Zion Williamson (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -940,11 +943,8 @@
     }
    },
    "first_seen": "2026-11-23T13:46:29Z",
-   "removed": {
-    "at": "2026-11-23T18:01:53Z",
-    "why": "no longer +EV at tonight's line (14.5 at -116)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|3155526|ast|Under": {
    "key": "p|3155526|ast|Under",
@@ -1730,8 +1730,11 @@
     }
    },
    "first_seen": "2026-11-23T15:16:35Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T19:31:47Z",
+    "why": "no longer +EV at tonight's line (10.5 at -111)"
+   },
+   "status": "Removed"
   },
   "p|4591725|pts|Under": {
    "key": "p|4591725|pts|Under",
@@ -1749,7 +1752,7 @@
    "p": 0.512,
    "p_sim": 0.532,
    "p_mkt": 0.492,
-   "p_kalshi": 0.474,
+   "p_kalshi": 0.475,
    "ev": -0.022,
    "verdict": "Pass: recent form and vs his lines agree; the main risk is tonight's spot.",
    "home": "TOR",
@@ -1840,7 +1843,7 @@
    "market": {
     "open": 11.5,
     "now": 11.5,
-    "kalshi": 0.474
+    "kalshi": 0.475
    },
    "started": false,
    "published": {
@@ -1860,11 +1863,8 @@
     }
    },
    "first_seen": "2026-11-23T18:01:53Z",
-   "removed": {
-    "at": "2026-11-23T19:01:37Z",
-    "why": "no longer +EV at tonight's line (11.5 at -110)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4433134|reb|Under": {
    "key": "p|4433134|reb|Under",
@@ -3784,6 +3784,41 @@
    "kind": "removed",
    "text": "Removed: OKC @ IND Over 221.5 \u2014 line moved 221.5 \u2192 223.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T19:31:47Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Miles Bridges Under 14.5 points at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:31:47Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "line",
+   "text": "Miles Bridges: line 14.5 at \u2212116 \u2192 14.5 at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:31:47Z",
+   "key": "p|4591725|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Ryan Rollins Under 11.5 points at \u2212110",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:31:47Z",
+   "key": "p|4601023|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Oso Ighodaro Under 7.5 points \u2014 no longer +EV at tonight's line (7.5 at -119)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T19:31:47Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Collin Gillespie Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -111)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3897,5 +3932,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T19:15:22Z"
+ "updated": "2026-11-23T19:31:47Z"
 }
