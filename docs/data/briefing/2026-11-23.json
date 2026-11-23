@@ -39,7 +39,7 @@
    "p": 0.515,
    "p_sim": 0.602,
    "p_mkt": 0.495,
-   "p_kalshi": 0.509,
+   "p_kalshi": 0.499,
    "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "TOR",
@@ -163,7 +163,7 @@
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": 0.509
+    "kalshi": 0.499
    },
    "started": false,
    "published": {
@@ -493,15 +493,15 @@
    "start": "2026-11-24T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.39,
-   "am": 139,
+   "dec": 2.34,
+   "am": 134,
    "conv": 34,
    "tier": "Pass",
-   "p": 0.409,
+   "p": 0.417,
    "p_sim": 0.541,
-   "p_mkt": 0.392,
-   "p_kalshi": 0.39,
-   "ev": -0.022,
+   "p_mkt": 0.4,
+   "p_kalshi": 0.395,
+   "ev": -0.023,
    "verdict": "Pass: recent form and projection agree; the main risk is tonight's spot.",
    "home": "MIN",
    "away": "BKN",
@@ -568,7 +568,7 @@
     },
     {
      "tag": "market",
-     "t": "You're betting against the market: DraftKings' price says this happens 39% of the time.",
+     "t": "You're betting against the market: DraftKings' price says this happens 40% of the time.",
      "rec": [
       92,
       118
@@ -576,8 +576,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.445,
-    "floor_am": 144,
+    "floor_dec": 2.398,
+    "floor_am": 140,
     "line": null,
     "next": 2.5
    },
@@ -609,13 +609,13 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +144",
+    "The price at 1.5 going past +140",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 1.5,
     "now": 1.5,
-    "kalshi": 0.39
+    "kalshi": 0.395
    },
    "started": false,
    "published": {
@@ -940,8 +940,11 @@
     }
    },
    "first_seen": "2026-11-23T13:46:29Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T18:01:53Z",
+    "why": "no longer +EV at tonight's line (14.5 at -116)"
+   },
+   "status": "Removed"
   },
   "p|3155526|ast|Under": {
    "key": "p|3155526|ast|Under",
@@ -1732,6 +1735,144 @@
     "why": "no longer +EV at tonight's line (10.5 at -111)"
    },
    "status": "Removed"
+  },
+  "p|4591725|pts|Under": {
+   "key": "p|4591725|pts|Under",
+   "kind": "prop",
+   "label": "Ryan Rollins Under 11.5 points",
+   "espn_id": "401910039",
+   "game": "MIL @ TOR",
+   "start": "2026-11-24T00:30Z",
+   "side": "Under",
+   "point": 11.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 34,
+   "tier": "Pass",
+   "p": 0.503,
+   "p_sim": 0.559,
+   "p_mkt": 0.483,
+   "p_kalshi": 0.473,
+   "ev": -0.019,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "TOR",
+   "away": "MIL",
+   "pid": "4591725",
+   "name": "Ryan Rollins",
+   "team": "MIL",
+   "opp": "TOR",
+   "stat": "pts",
+   "proj": 11.2,
+   "sim": 11,
+   "ob_ind": 11.5,
+   "avg10": 10.2,
+   "minutes": 23.6,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games (sim average 11).",
+     "rec": [
+      1330,
+      1173
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 11.5 in 7 of his last 10 (3 of the last 5).",
+     "rec": [
+      1180,
+      1071
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone under his posted line in 5 of 7 tracked games.",
+     "rec": [
+      203,
+      202
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "history",
+     "t": "His history vs TOR: 14.4 points/g in 5 games (+4%).",
+     "rec": [
+      361,
+      338
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 28.3 minutes in the games he went over vs 23.3 otherwise. He's projected for 23.6 tonight.",
+     "rec": [
+      1213,
+      1138
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "On the road: 5 of 20 under 11.5 (25% vs 50% lately).",
+     "rec": [
+      678,
+      682
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      148,
+      169
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.988,
+    "floor_am": -101,
+    "line": null,
+    "next": 10.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    }
+   ],
+   "kill": [
+    "The line reaching 10.5",
+    "The price at 11.5 going past \u2212101",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 11.5,
+    "now": 11.5,
+    "kalshi": 0.473
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-23T18:01:53Z",
+    "edition": "update",
+    "point": 11.5,
+    "dec": 1.95,
+    "am": -105,
+    "conv": 34,
+    "tier": "Pass",
+    "p": 0.503,
+    "play_to": {
+     "floor_dec": 1.988,
+     "floor_am": -101,
+     "line": null,
+     "next": 10.5
+    }
+   },
+   "first_seen": "2026-11-23T18:01:53Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -3187,6 +3328,27 @@
    "kind": "line",
    "text": "PHI -2.5 (POR @ PHI): line -2.5 at \u2212109 \u2192 -2.5 at \u2212106",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T18:01:53Z",
+   "key": "p|4591725|pts|Under",
+   "kind": "added",
+   "text": "Added: Ryan Rollins Under 11.5 points at \u2212105, conviction 34",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T18:01:53Z",
+   "key": "p|5107173|tpm|Over",
+   "kind": "line",
+   "text": "Danny Wolf: line 1.5 at +139 \u2192 1.5 at +134",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T18:01:53Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Miles Bridges Under 14.5 points \u2014 no longer +EV at tonight's line (14.5 at -116)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3291,7 +3453,7 @@
     "status": "Probable"
    }
   ],
-  "picks": 11
+  "picks": 12
  },
  "leans_record": {
   "w": 17,
@@ -3300,5 +3462,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T17:46:37Z"
+ "updated": "2026-11-23T18:01:53Z"
 }

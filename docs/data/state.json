@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 2,
-  "cash": 45.85,
+  "cash": 40.85,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 108.36,
@@ -20886,6 +20886,83 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "d17fbf56",
+    "placed": "2026-11-23T18:00:48Z",
+    "run": 2,
+    "source": "agent",
+    "playbook": "matchup_over",
+    "legs": [
+     {
+      "event_id": "6caeb7cce7c8340fed588f3badd83fe0",
+      "sport": "basketball_nba",
+      "commence": "2026-11-24T01:10:00Z",
+      "home": "New Orleans Pelicans",
+      "away": "Phoenix Suns",
+      "market": "player_threes",
+      "outcome": "Saddiq Bey Over",
+      "side": "Over",
+      "player": "Saddiq Bey",
+      "player_id": "4397136",
+      "stat": "tpm",
+      "espn_id": "401910042",
+      "point": 2.5,
+      "price": 2.48,
+      "book": "draftkings",
+      "fair_p": 0.4118,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 2.26,
+       "gain": 0.0973,
+       "n": 6
+      },
+      "model": {
+       "proj": 2.53,
+       "base": 2.62,
+       "minutes": 32.3,
+       "mult": 0.967,
+       "sd": 1.56,
+       "p_model": 0.4357,
+       "p_mkt": 0.4118,
+       "signals": [
+        {
+         "k": "dvp",
+         "v": 0.927,
+         "txt": "PHX gives small forwards -7% threes vs their norm (#4 toughest of 30)"
+        },
+        {
+         "k": "sim",
+         "v": 1.013,
+         "txt": "Players with his profile: +1% threes vs PHX (116 close comps)"
+        },
+        {
+         "k": "h2h",
+         "v": 0.847,
+         "txt": "His history vs PHX: 0.8 threes/g in 4 games (-15%)"
+        },
+        {
+         "k": "chances",
+         "v": 1.011,
+         "txt": "PHX games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+        }
+       ]
+      }
+     }
+    ],
+    "dec": 2.48,
+    "stake": 5.0,
+    "ev": 0.0564,
+    "p": 0.426,
+    "note": "Proj 2.5 vs line 2.5 (norm 2.6, 32 min). Model 44% vs market 41%. PHX gives small forwards -7% threes vs their norm (#4 toughest of 30) \u00b7 Players with his profile: +1% threes vs PHX (116 close comps) \u00b7 His history vs PHX: 0.8 threes/g in 4 games (-15%)",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -21416,11 +21493,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T00:00:54Z",
-   "kind": "props",
-   "text": "NBA matchups: 8 games, strongest spots: Jakob Poeltl ra +17% vs WSH; Immanuel Quickley ast +16% vs WSH; Jamal Shead ast +15% vs WSH. Bought prop odds for WSH@TOR (ast, ra, pra, team totals), DET@NO (ast, ra, team totals), CHI@BKN (ast, ra, pra, team totals), UTAH@LAL (ast, ra, pra, tpm, team totals), GS@DAL (ast, ra, team totals), ATL@OKC (ast, ra, pra, team totals), PHX@SAC (ast, ra, pra, team totals), BOS@DEN (ast, ra) (29 credits). Nothing cleared the bar."
-  },
   {
    "ts": "2026-11-19T00:33:23Z",
    "kind": "research",
@@ -22915,6 +22987,11 @@
    "ts": "2026-11-23T17:45:33Z",
    "kind": "research",
    "text": "Research refresh for Mon Nov 23: 10 games, 244 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-23T18:00:48Z",
+   "kind": "props",
+   "text": "NBA matchups: 10 games, strongest spots: Derrick Jones Jr. ra -14% vs HOU; Jaylen Wells ra -13% vs CHA; Brook Lopez ra -13% vs HOU. Bought prop odds for MEM@CHA (ra, pra, team totals), LAC@HOU (ra, pra, team totals), MIL@TOR (ra, ast, pra, team totals), CLE@CHI (ast, ra, pra, team totals), UTAH@LAL (ast, ra, pra, team totals), PHX@NO (ast, ra, tpm, pra, team totals), OKC@IND (pra, ra, ast, team totals), SA@SAC (ast, pra, team totals), BKN@MIN (pra, ast, ra, tpm, team totals) (35 credits). Placed 1: Saddiq Bey Over 2.5 @ +148 (DraftKings)"
   }
  ],
  "learned_ids": [
@@ -23011,13 +23088,13 @@
   "2fa804d6"
  ],
  "strategist": null,
- "updated": "2026-11-23T17:46:37Z",
+ "updated": "2026-11-23T18:01:53Z",
  "stats": {
   "bets": 91,
   "won": 30,
   "lost": 59,
-  "shop_n": 31,
-  "shop_avg": 0.0601,
+  "shop_n": 32,
+  "shop_avg": 0.0613,
   "push": 2,
   "staked": 517.57,
   "profit": -140.99,
@@ -23026,7 +23103,7 @@
   "clv_n": 70,
   "clv_no_close": 22,
   "close_mins_median": 4,
-  "open": 1,
+  "open": 2,
   "equity": 50.85
  },
  "weights": {
