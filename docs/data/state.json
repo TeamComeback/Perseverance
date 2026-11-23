@@ -20260,7 +20260,11 @@
       "hold": true,
       "why": "Listed questionable with an illness for Pacers-Knicks and at risk of missing a second straight game (agent has only Day-To-Day).",
       "at": "2026-11-22T22:06:47Z",
-      "final": false
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
      }
     }
    },
@@ -20341,7 +20345,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    }
   ],
   "runs": [
@@ -20358,7 +20371,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0825,
+  "min_edge": 0.08,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -20647,7 +20660,7 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-23T00:01:18Z"
+   "last_scanned": "2026-11-23T01:15:32Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -20713,10 +20726,10 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-11-22T23:00:31Z"
+   "last_scanned": "2026-11-23T01:15:32Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-22T23:45:26Z",
+   "last_scanned": "2026-11-23T01:15:32Z",
    "bets": 6.0,
    "staked": 46.67,
    "profit": 0.41999999999999904
@@ -20864,11 +20877,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-18T18:17:57Z",
-   "kind": "research",
-   "text": "Research refresh for Wed Nov 18: 12 games, 297 players projected, lineups for 12 games."
-  },
   {
    "ts": "2026-11-18T18:30:28Z",
    "kind": "adapt",
@@ -22363,6 +22371,11 @@
    "ts": "2026-11-23T01:09:44Z",
    "kind": "research",
    "text": "Research refresh for Sun Nov 22: 7 games, 181 players projected, lineups for 7 games."
+  },
+  {
+   "ts": "2026-11-23T01:15:32Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 8.00% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -22456,7 +22469,7 @@
   "4e2c66c6"
  ],
  "strategist": null,
- "updated": "2026-11-23T01:09:52Z",
+ "updated": "2026-11-23T01:15:32Z",
  "stats": {
   "bets": 88,
   "won": 28,
@@ -22487,5 +22500,5 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2
+ "dry_scans": 0
 }
