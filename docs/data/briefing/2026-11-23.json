@@ -496,15 +496,15 @@
    "start": "2026-11-24T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.34,
-   "am": 134,
-   "conv": 34,
+   "dec": 2.44,
+   "am": 144,
+   "conv": 35,
    "tier": "Pass",
-   "p": 0.417,
+   "p": 0.401,
    "p_sim": 0.541,
-   "p_mkt": 0.4,
-   "p_kalshi": 0.39,
-   "ev": -0.023,
+   "p_mkt": 0.384,
+   "p_kalshi": 0.395,
+   "ev": -0.022,
    "verdict": "Pass: recent form and projection agree; the main risk is tonight's spot.",
    "home": "MIN",
    "away": "BKN",
@@ -571,7 +571,7 @@
     },
     {
      "tag": "market",
-     "t": "You're betting against the market: DraftKings' price says this happens 40% of the time.",
+     "t": "You're betting against the market: DraftKings' price says this happens 38% of the time.",
      "rec": [
       92,
       118
@@ -579,8 +579,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.398,
-    "floor_am": 140,
+    "floor_dec": 2.494,
+    "floor_am": 149,
     "line": null,
     "next": 2.5
    },
@@ -612,13 +612,13 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +140",
+    "The price at 1.5 going past +149",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 1.5,
     "now": 1.5,
-    "kalshi": 0.39
+    "kalshi": 0.395
    },
    "started": false,
    "published": {
@@ -639,7 +639,7 @@
    },
    "first_seen": "2026-11-23T11:45:26Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Holding"
   },
   "p|4601023|pts|Under": {
    "key": "p|4601023|pts|Under",
@@ -655,9 +655,9 @@
    "conv": 34,
    "tier": "Pass",
    "p": 0.517,
-   "p_sim": 0.594,
+   "p_sim": 0.599,
    "p_mkt": 0.496,
-   "p_kalshi": 0.506,
+   "p_kalshi": 0.509,
    "ev": -0.018,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "NO",
@@ -683,7 +683,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 59% of 10,000 simulated games (sim average 6.6).",
+     "t": "Goes under in 60% of 10,000 simulated games (sim average 6.6).",
      "rec": [
       1330,
       1173
@@ -773,7 +773,7 @@
    "market": {
     "open": 7.5,
     "now": 7.5,
-    "kalshi": 0.506
+    "kalshi": 0.509
    },
    "started": false,
    "published": {
@@ -1423,7 +1423,7 @@
    "p": 0.529,
    "p_sim": 0.659,
    "p_mkt": 0.508,
-   "p_kalshi": 0.499,
+   "p_kalshi": 0.495,
    "ev": -0.022,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "CHA",
@@ -1571,7 +1571,7 @@
    "market": {
     "open": 17.5,
     "now": 17.5,
-    "kalshi": 0.499
+    "kalshi": 0.495
    },
    "started": false,
    "published": {
@@ -1603,14 +1603,14 @@
    "start": "2026-11-24T01:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.87,
-   "am": -115,
+   "dec": 1.88,
+   "am": -114,
    "conv": 34,
    "tier": "Pass",
-   "p": 0.524,
-   "p_sim": 0.537,
-   "p_mkt": 0.504,
-   "p_kalshi": 0.493,
+   "p": 0.521,
+   "p_sim": 0.503,
+   "p_mkt": 0.501,
+   "p_kalshi": 0.52,
    "ev": -0.02,
    "verdict": "Pass: recent form and projection agree; the main risk is similar players.",
    "home": "NO",
@@ -1621,7 +1621,7 @@
    "opp": "NO",
    "stat": "pts",
    "proj": 9.8,
-   "sim": 10.3,
+   "sim": 10.8,
    "ob_ind": 10.5,
    "avg10": 10.7,
    "minutes": 24.3,
@@ -1678,8 +1678,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.908,
-    "floor_am": -110,
+    "floor_dec": 1.919,
+    "floor_am": -109,
     "line": null,
     "next": 9.5
    },
@@ -1703,14 +1703,14 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212110",
+    "The price at 10.5 going past \u2212109",
     "A change in Zion Williamson (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.493
+    "kalshi": 0.52
    },
    "started": false,
    "published": {
@@ -1730,11 +1730,8 @@
     }
    },
    "first_seen": "2026-11-23T15:16:35Z",
-   "removed": {
-    "at": "2026-11-23T17:46:37Z",
-    "why": "no longer +EV at tonight's line (10.5 at -111)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4591725|pts|Under": {
    "key": "p|4591725|pts|Under",
@@ -1863,8 +1860,11 @@
     }
    },
    "first_seen": "2026-11-23T18:01:53Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T19:01:37Z",
+    "why": "no longer +EV at tonight's line (11.5 at -110)"
+   },
+   "status": "Removed"
   },
   "p|4433134|reb|Under": {
    "key": "p|4433134|reb|Under",
@@ -2035,19 +2035,19 @@
    "start": "2026-11-24T01:30Z",
    "side": "Under",
    "point": 223.5,
-   "dec": 1.93,
-   "am": -108,
-   "conv": 29,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.5,
+   "p": 0.512,
    "p_sim": 0.56,
-   "p_mkt": 0.493,
+   "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": -0.035,
+   "ev": -0.038,
    "verdict": "Pass: simulation and line move agree; the main risk is team model.",
    "home": "HOU",
    "away": "LAC",
-   "why": "Sim total 221.5 (after a learned +1.4 correction) vs 223.5 \u00b7 under in 56% of sims vs 49% DraftKings",
+   "why": "Sim total 221.5 (after a learned +1.4 correction) vs 223.5 \u00b7 under in 56% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2082,15 +2082,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.0,
-    "floor_am": 100,
+    "floor_dec": 1.953,
+    "floor_am": -105,
     "line": null,
     "next": 222.5
    },
    "watch": [],
    "kill": [
     "The line reaching 222.5",
-    "The price at 223.5 going past +100"
+    "The price at 223.5 going past \u2212105"
    ],
    "market": {
     "open": null,
@@ -2550,32 +2550,32 @@
   "g|401910040|spread|away": {
    "key": "g|401910040|spread|away",
    "kind": "spread",
-   "label": "BKN +11.5 (BKN @ MIN)",
+   "label": "BKN +10.5 (BKN @ MIN)",
    "espn_id": "401910040",
    "game": "BKN @ MIN",
    "start": "2026-11-24T00:30Z",
    "side": "away",
-   "point": 11.5,
-   "dec": 1.94,
-   "am": -106,
-   "conv": 29,
+   "point": 10.5,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.497,
-   "p_sim": 0.56,
-   "p_mkt": 0.489,
+   "p": 0.488,
+   "p_sim": 0.537,
+   "p_mkt": 0.483,
    "p_kalshi": null,
-   "ev": -0.037,
-   "verdict": "Pass: simulation carries it; the main risk is model record.",
+   "ev": -0.038,
+   "verdict": "Pass: line move carries it; the main risk is team model.",
    "home": "MIN",
    "away": "BKN",
-   "why": "Sim: MIN by 9.0 on average (BKN 106.1, MIN 115.1) \u00b7 BKN +11.5 covers in 56% of sims vs 49% DraftKings",
+   "why": "Sim: MIN by 9.0 on average (BKN 106.1, MIN 115.1) \u00b7 BKN +10.5 covers in 54% of sims vs 48% DraftKings",
    "for": [
     {
-     "tag": "simulation",
-     "t": "Covers in 56% of 10,000 simulated games.",
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (-11.5 to -10.5): you're with the money, at a worse number.",
      "rec": [
-      1330,
-      1173
+      164,
+      195
      ]
     }
    ],
@@ -2587,13 +2587,18 @@
       148,
       169
      ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it MIN by 12.0, 1.5 worse than this number.",
+     "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 2.012,
-    "floor_am": 101,
+    "floor_dec": 2.049,
+    "floor_am": 105,
     "line": null,
-    "next": 10.5
+    "next": 9.5
    },
    "watch": [
     {
@@ -2622,12 +2627,12 @@
     }
    ],
    "kill": [
-    "The line reaching 10.5",
-    "The price at 11.5 going past +101"
+    "The line reaching 9.5",
+    "The price at 10.5 going past +105"
    ],
    "market": {
     "open": null,
-    "now": 11.5,
+    "now": 10.5,
     "kalshi": null
    },
    "started": false,
@@ -2648,11 +2653,8 @@
     }
    },
    "first_seen": "2026-11-23T11:45:26Z",
-   "removed": {
-    "at": "2026-11-23T17:16:35Z",
-    "why": "confidence fell 29 \u2192 27"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401910044|total|Over": {
    "key": "g|401910044|total|Over",
@@ -3243,8 +3245,11 @@
     }
    },
    "first_seen": "2026-11-23T18:31:26Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T19:01:37Z",
+    "why": "line moved 221.5 \u2192 223.5"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -3723,6 +3728,62 @@
    "kind": "removed",
    "text": "Removed: PHX @ NO Under 233.5 \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "p|5107173|tpm|Over",
+   "kind": "line",
+   "text": "Danny Wolf: line 1.5 at +134 \u2192 1.5 at +144",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Collin Gillespie Under 10.5 points at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "line",
+   "text": "Collin Gillespie: line 10.5 at \u2212115 \u2192 10.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "p|4591725|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Ryan Rollins Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -110)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "g|401910043|total|Under",
+   "kind": "line",
+   "text": "LAC @ HOU Under 223.5: line 223.5 at \u2212108 \u2192 223.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "g|401910040|spread|away",
+   "kind": "back",
+   "text": "Back on the board: BKN +10.5 (BKN @ MIN) at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "g|401910040|spread|away",
+   "kind": "line",
+   "text": "BKN +10.5 (BKN @ MIN): line 11.5 at \u2212106 \u2192 10.5 at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T19:01:37Z",
+   "key": "g|401910038|total|Over",
+   "kind": "removed",
+   "text": "Removed: OKC @ IND Over 221.5 \u2014 line moved 221.5 \u2192 223.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3787,11 +3848,6 @@
   "first": "2026-11-24T00:00Z",
   "questionable": [
    {
-    "name": "Shai Gilgeous-Alexander",
-    "team": "OKC",
-    "status": "Day-To-Day"
-   },
-   {
     "name": "Pascal Siakam",
     "team": "IND",
     "status": "Questionable"
@@ -3825,6 +3881,11 @@
     "name": "Brandon Miller",
     "team": "CHA",
     "status": "Probable"
+   },
+   {
+    "name": "De'Aaron Fox",
+    "team": "SA",
+    "status": "Questionable"
    }
   ],
   "picks": 13
@@ -3836,5 +3897,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T18:45:26Z"
+ "updated": "2026-11-23T19:01:37Z"
 }
