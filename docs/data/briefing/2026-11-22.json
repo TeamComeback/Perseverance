@@ -2666,7 +2666,7 @@
     "now": 13.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T23:01:19Z",
     "edition": "update",
@@ -2685,7 +2685,7 @@
    },
    "first_seen": "2026-11-22T23:01:19Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|4432165|pts|Under": {
    "key": "p|4432165|pts|Under",
@@ -2820,7 +2820,7 @@
     "now": 11.5,
     "kalshi": 0.52
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T23:01:19Z",
     "edition": "update",
@@ -2839,7 +2839,7 @@
    },
    "first_seen": "2026-11-22T23:01:19Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|4709138|pts|Under": {
    "key": "p|4709138|pts|Under",
@@ -2850,13 +2850,13 @@
    "start": "2026-11-23T01:30Z",
    "side": "Under",
    "point": 15.5,
-   "dec": 1.86,
-   "am": -116,
+   "dec": 1.83,
+   "am": -120,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.526,
+   "p": 0.535,
    "p_sim": 0.575,
-   "p_mkt": 0.505,
+   "p_mkt": 0.515,
    "p_kalshi": 0.503,
    "ev": -0.021,
    "verdict": "Pass: recent form and matchup agree; the main risk is matchup.",
@@ -2949,9 +2949,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
-    "line": null,
+    "floor_dec": 1.869,
+    "floor_am": -115,
+    "line": 15.5,
     "next": 14.5
    },
    "watch": [
@@ -2974,7 +2974,7 @@
    ],
    "kill": [
     "The line reaching 14.5",
-    "The price at 15.5 going past \u2212111",
+    "The price at 15.5 going past \u2212115",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -3179,8 +3179,11 @@
     }
    },
    "first_seen": "2026-11-22T23:01:19Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-23T00:30:52Z",
+    "why": "no longer +EV at tonight's line (11.5 at -125)"
+   },
+   "status": "Removed"
   },
   "p|4873138|pra|Under": {
    "key": "p|4873138|pra|Under",
@@ -3315,7 +3318,7 @@
     "now": 21.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T23:01:19Z",
     "edition": "update",
@@ -3334,7 +3337,7 @@
    },
    "first_seen": "2026-11-22T23:01:19Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|4278594|pts|Under": {
    "key": "p|4278594|pts|Under",
@@ -3492,6 +3495,177 @@
     "why": "the ranked board's side flipped"
    },
    "status": "Removed"
+  },
+  "p|3062679|pra|Under": {
+   "key": "p|3062679|pra|Under",
+   "kind": "prop",
+   "label": "Josh Hart Under 21.5 pts+reb+ast",
+   "espn_id": "401910034",
+   "game": "IND @ NY",
+   "start": "2026-11-23T01:00Z",
+   "side": "Under",
+   "point": 21.5,
+   "dec": 1.87,
+   "am": -115,
+   "conv": 31,
+   "tier": "Pass",
+   "p": 0.519,
+   "p_sim": 0.794,
+   "p_mkt": 0.499,
+   "p_kalshi": null,
+   "ev": -0.029,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "NY",
+   "away": "IND",
+   "pid": "3062679",
+   "name": "Josh Hart",
+   "team": "NY",
+   "opp": "IND",
+   "stat": "pra",
+   "proj": 18.7,
+   "sim": 17.2,
+   "ob_ind": 17.5,
+   "avg10": 13.7,
+   "minutes": 31.1,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 13.7 PRA over his last 10; the line is 21.5.",
+     "rec": [
+      443,
+      385
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 79% of 10,000 simulated games (sim average 17.2).",
+     "rec": [
+      1251,
+      1095
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 19.5 in 9 of his last 10.",
+     "rec": [
+      290,
+      254
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 18.7 PRA against a line of 21.5.",
+     "rec": [
+      1311,
+      1158
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 21.5 in 10 of his last 10 (5 of the last 5).",
+     "rec": [
+      1077,
+      980
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "matchup",
+     "t": "IND games have +7% rebounds up for grabs vs the league (missed shots and extra possessions).",
+     "rec": [
+      848,
+      769
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 32.4 minutes in the games he went over vs 28.4 otherwise. He's projected for 31.1 tonight.",
+     "rec": [
+      1119,
+      1042
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against IND: 3 of 12 under 21.5 (25% vs 60% lately).",
+     "rec": [
+      638,
+      624
+     ]
+    },
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      59,
+      64
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.927,
+    "floor_am": -108,
+    "line": null,
+    "next": 20.5
+   },
+   "watch": [
+    {
+     "pid": "3934719",
+     "name": "OG Anunoby",
+     "team": "NY",
+     "status": "Out",
+     "self": false,
+     "min": 35.7
+    },
+    {
+     "pid": "4396993",
+     "name": "Tyrese Haliburton",
+     "team": "IND",
+     "status": "Out",
+     "self": false,
+     "min": 33.1
+    },
+    {
+     "pid": "3149673",
+     "name": "Pascal Siakam",
+     "team": "IND",
+     "status": "Ques",
+     "self": false,
+     "min": 29.7
+    }
+   ],
+   "kill": [
+    "The line reaching 20.5",
+    "The price at 21.5 going past \u2212108",
+    "A change in Pascal Siakam (ques): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 22.5,
+    "now": 21.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-23T00:30:52Z",
+    "edition": "update",
+    "point": 21.5,
+    "dec": 1.87,
+    "am": -115,
+    "conv": 31,
+    "tier": "Pass",
+    "p": 0.519,
+    "play_to": {
+     "floor_dec": 1.927,
+     "floor_am": -108,
+     "line": null,
+     "next": 20.5
+    }
+   },
+   "first_seen": "2026-11-23T00:30:52Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -3588,7 +3762,7 @@
     "now": -2.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T11:45:21Z",
     "edition": "morning",
@@ -3607,7 +3781,7 @@
    },
    "first_seen": "2026-11-22T11:45:21Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "g|401910029|spread|away": {
    "key": "g|401910029|spread|away",
@@ -4115,7 +4289,7 @@
     "now": 219.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T13:01:18Z",
     "edition": "update",
@@ -4134,7 +4308,7 @@
    },
    "first_seen": "2026-11-22T13:01:18Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Started"
   },
   "g|401910034|total|Over": {
    "key": "g|401910034|total|Over",
@@ -4614,8 +4788,11 @@
     }
    },
    "first_seen": "2026-11-22T17:31:22Z",
-   "removed": null,
-   "status": "Downgraded"
+   "removed": {
+    "at": "2026-11-23T00:30:52Z",
+    "why": "confidence fell 41 \u2192 22"
+   },
+   "status": "Removed"
   },
   "g|401910032|total|Under": {
    "key": "g|401910032|total|Under",
@@ -4700,7 +4877,7 @@
     "now": 237.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-22T18:01:29Z",
     "edition": "update",
@@ -4719,7 +4896,7 @@
    },
    "first_seen": "2026-11-22T18:01:29Z",
    "removed": null,
-   "status": "Downgraded"
+   "status": "Started"
   },
   "g|401910033|total|Over": {
    "key": "g|401910033|total|Over",
@@ -4952,19 +5129,19 @@
    "start": "2026-11-23T01:00Z",
    "side": "Under",
    "point": 213.5,
-   "dec": 1.87,
-   "am": -115,
-   "conv": 31,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 27,
    "tier": "Pass",
-   "p": 0.52,
-   "p_sim": 0.532,
-   "p_mkt": 0.509,
+   "p": 0.498,
+   "p_sim": 0.521,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.027,
+   "ev": -0.043,
    "verdict": "Pass: line move carries it; the main risk is model record.",
    "home": "NY",
    "away": "IND",
-   "why": "Sim total 212.9 (after a learned +1.4 correction) vs 213.5 \u00b7 under in 53% of sims vs 51% DraftKings",
+   "why": "Sim total 213.2 (after a learned +1.3 correction) vs 213.5 \u00b7 under in 52% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "line move",
@@ -4986,8 +5163,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.923,
-    "floor_am": -108,
+    "floor_dec": 2.008,
+    "floor_am": 101,
     "line": null,
     "next": 212.5
    },
@@ -5009,26 +5186,18 @@
      "min": 33.1
     },
     {
-     "pid": "3136195",
-     "name": "Karl-Anthony Towns",
-     "team": "NY",
-     "status": "Day-To-Day",
-     "self": false,
-     "min": 32.6
-    },
-    {
      "pid": "3149673",
      "name": "Pascal Siakam",
      "team": "IND",
-     "status": "Questionable",
+     "status": "Ques",
      "self": false,
-     "min": 29.4
+     "min": 29.7
     }
    ],
    "kill": [
     "The line reaching 212.5",
-    "The price at 213.5 going past \u2212108",
-    "A change in Karl-Anthony Towns (day-to-day), Pascal Siakam (questionable): the model re-prices on the next run"
+    "The price at 213.5 going past +101",
+    "A change in Pascal Siakam (ques): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -5053,11 +5222,8 @@
     }
    },
    "first_seen": "2026-11-22T20:01:39Z",
-   "removed": {
-    "at": "2026-11-22T21:31:11Z",
-    "why": "other plays ranked higher"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401910035|total|Over": {
    "key": "g|401910035|total|Over",
@@ -7133,6 +7299,55 @@
    "kind": "line",
    "text": "DEN @ CHI Under 237.5: line 237.5 at \u2212114 \u2192 237.5 at \u2212109",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "p|4709138|pts|Under",
+   "kind": "line",
+   "text": "Brandin Podziemski: line 15.5 at \u2212116 \u2192 15.5 at \u2212120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "p|3062679|pra|Under",
+   "kind": "added",
+   "text": "Added: Josh Hart Under 21.5 pts+reb+ast at \u2212115, conviction 31",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "p|3062679|ra|Under",
+   "kind": "removed",
+   "text": "Removed: Josh Hart Under 12.5 reb+ast \u2014 no longer +EV at tonight's line (11.5 at -125)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "g|401910034|total|Under",
+   "kind": "back",
+   "text": "Back on the board: IND @ NY Under 213.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "g|401910034|total|Under",
+   "kind": "line",
+   "text": "IND @ NY Under 213.5: line 213.5 at \u2212115 \u2192 213.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "g|401910034|total|Under",
+   "kind": "injury",
+   "text": "Pascal Siakam questionable \u2192 ques (IND @ NY Under 213.5 re-priced: 213.5 at \u2212109, conviction 27)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-23T00:30:52Z",
+   "key": "g|401910034|spread|home",
+   "kind": "removed",
+   "text": "Removed: NY -7.5 (IND @ NY) \u2014 confidence fell 41 \u2192 22",
+   "alert": false
   }
  ],
  "narratives": [
@@ -7226,21 +7441,16 @@
  "alerts": 6,
  "slate": {
   "games": 7,
-  "to_tip": 5,
+  "to_tip": 2,
   "first": "2026-11-22T20:30Z",
   "questionable": [
    {
-    "name": "Karl-Anthony Towns",
-    "team": "NY",
-    "status": "Day-To-Day"
-   },
-   {
     "name": "Pascal Siakam",
     "team": "IND",
-    "status": "Questionable"
+    "status": "Ques"
    }
   ],
-  "picks": 21
+  "picks": 22
  },
  "leans_record": {
   "w": 17,
@@ -7249,5 +7459,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-23T00:15:40Z"
+ "updated": "2026-11-23T00:30:52Z"
 }
