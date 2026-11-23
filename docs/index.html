@@ -512,6 +512,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .mxrec{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--dim2)} .mxrec b{color:var(--text)}
 .mxrec .mxr{padding:6px 0;border-top:1px solid var(--line)} .mxrec .mxr:first-child{border-top:0}
 .cr .why.mxl{white-space:normal}.mxc{display:inline-block;margin:2px 4px 0 0;padding:1px 8px;border-radius:99px;font-size:11px;font-weight:600;background:#ffffff0d;color:var(--dim)}
+.lean.weak{background:#ffffff14;color:var(--dim)}
 .mxc.up{color:var(--win);background:var(--win-d)}.mxc.dn{color:var(--loss);background:var(--loss-d)}
 .fbar .focus{margin-top:6px;font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}.fbar .focus b{color:var(--text)}.fbar .focus button{padding:2px 8px}
 .sstrip{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;font-size:12px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;cursor:pointer}
@@ -1200,6 +1201,7 @@ const cRowMx = x => cRow(x, true);                 // Props tab list: the same r
 function cRow(x, mx) {
   const priced = x.line != null, ms = matchupStrength(x), ag = mAgree(x);
   const mline = `matchup <span class="dots">${dots(ms.n)}</span> ${mArrow(x)}${ag == null ? "" : ag ? ' <span class="pos">agrees</span>' : ' <span class="neg">points the other way</span>'}`;
+  const weak = priced && x.p_win != null && x.p_win < 0.5;
   const rt = priced
     ? `<div class="a">${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]}${x.conv != null ? ` <span class="cvs ${x.tier}">${x.conv}</span>` : ""}</div><div class="b">${amS(x.am)} ${esc(x.dkSrc || bookName(x.book))}${x.p_win != null ? ` · win <b style="color:var(--text)">${Math.round(x.p_win * 100)}%</b>/${Math.round(100 / (x.am > 0 ? 1 + x.am / 100 : 1 + 100 / -x.am))}% needed` : ""}${x.ev > 0 ? ` · <span class="gold">${pct(x.ev, 0)} edge</span>` : ""}${x.p_k != null ? ` · Kalshi ${Math.round(x.p_k * 100)}%` : ""}${x.open != null && x.open !== x.line ? ` · opened ${f1(x.open)}` : ""}</div>`
     : (() => { const e = estLine(x);
@@ -1208,12 +1210,12 @@ function cRow(x, mx) {
   const olHtml = ol ? `<div class="why ol">Our line <b style="color:var(--text)">${f1(ol.line)}</b> <span class="dim">o${amT(ol.over)} / u${amT(ol.under)}</span>${bl != null ? ` · <span class="${Math.abs(ol.line - bl) >= 0.5 ? "gold" : "dim"}">${esc(vsBookOU(ol.line, bl))}</span>` : ""}</div>` : "";
   const sig = (x.signals || []).find(g => g.k === "dvp") || (x.signals || [])[0];
   const why = sig ? sig.txt : (x.dvp ? `${x.opp} ranks #${x.dvp} of 30 vs ${x.role}s in ${STATL[x.stat].toLowerCase()} (1 = softest)` : "");
-  return `<div class="cr" data-pid="${x.pid}" data-stat="${x.stat}"><div><span class="nm">${esc(x.name)}</span>${priced ? `<span class="lean ${x.side}">${x.side.toUpperCase()}</span>` : mArrow(x)}${statusBadge(x)}
+  return `<div class="cr" data-pid="${x.pid}" data-stat="${x.stat}"><div><span class="nm">${esc(x.name)}</span>${priced ? `<span class="lean ${x.side}${weak ? " weak" : ""}"${weak ? ' title="the model gives this side under 50% to hit; the other side is likelier"' : ""}>${x.side.toUpperCase()}</span>` : mArrow(x)}${statusBadge(x)}
       <div class="gm">${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} · ${x.state === "in" ? '<span class="neg">live</span>' : tod(x.start)} · ${x.minutes.toFixed(0)} min</div></div>
     <div class="rt">${rt}</div>${olHtml}
     <div class="why">${mline}${focusOf(x.stat) === "edge" ? ' · <span class="pos">model-edge stat</span>' : focusOf(x.stat) === "skip" ? ' · <span class="neg">market wins this stat</span>' : ""} · ${esc(ms.why.join(" · "))}</div>
     ${schedNote(x) ? `<div class="why ol">${esc(schedNote(x))}</div>` : ""}
-    ${mx === true ? mxChips(x) : ""}
+    ${mx === true ? mxChips(x) + mxCheck(x) : ""}
     <div class="why">${esc(why)}${x.more ?` <span style="color:var(--dim)">· +${x.more} more stat${x.more > 1 ? "s" : ""}</span>` : ""}</div></div>`;
 }
 // Matchup strength (the dots): how big and how trustworthy the matchup effect is. No line and no price in it, so it
@@ -1336,16 +1338,27 @@ function mxScore(r) {
   return p.length ? p.reduce((a, b) => a + b, 0) / p.length : null;
 }
 const MXKEYS = {mx: mxScore, pos: r => { const m = mxInfo(r); return m.pos == null ? null : -m.pos; }, pace: r => { const m = mxInfo(r); return m.pace == null ? null : -m.pace; },
-  def: r => { const m = mxInfo(r); return m.def; }, line: r => { const m = mxInfo(r); return m.lvb == null ? null : -m.lvb; }, edge: r => r.ev ?? null};
+  def: r => { const m = mxInfo(r); return m.def; }, line: r => { const m = mxInfo(r); return m.lvb == null ? null : -m.lvb; }, edge: r => r.ev ?? null, win: r => r.p_win ?? null};
 // the sort the list uses: the chosen matchup key (best for overs first, or flipped for unders), else the usual ranking
 function mxSorter(f, dflt) {
   const K = MXKEYS[f.mxSort]; if (!K) return dflt;
-  const dir = f.mxSort === "edge" || f.mxDir !== "u" ? 1 : -1;
+  const dir = f.mxSort === "edge" || f.mxSort === "win" || f.mxDir !== "u" ? 1 : -1;
   return r => { const v = K(r); return v == null || isNaN(v) ? -1e9 : dir * v; };
+}
+// hit-chance check for the tagged side, plus what the 17-day study found for this position matchup (win-rate view)
+function mxCheck(x) {
+  if (x.line == null || x.p_win == null) return "";
+  const m = mxInfo(x), o = x.side === "Over" ? x.p_win : 1 - x.p_win, u = 1 - o;
+  const tag = x.p_win < 0.5 ? `<span class="neg">tagged side is the less likely winner</span> (it is only the cheaper price)` : `<b class="pos">${x.side}</b> is the likelier side`;
+  let st = "";
+  if (m.pos != null && m.pos >= MX.hi) st = x.side === "Over" ? ' · <span class="neg">⚠ study: overs into a tough position matchup hit ~3 pts below the price</span>' : ' · <span class="pos">study: unders into a tough position matchup held up</span>';
+  return `<div class="why mxl">Hit chance · Over ${Math.round(o * 100)}% / Under ${Math.round(u * 100)}% · ${tag}${st}</div>`;
 }
 function mxChips(x) {
   const m = mxInfo(x), side = x.side || mDir(x), role = esc(x.role);
-  const c = (t, overFav) => `<span class="mxc ${overFav == null ? "" : (overFav === (side === "Over") ? "up" : "dn")}">${t}</span>`;
+  // colored by what the factor does to the STAT (green ▲ = pushes it up, red ▼ = pushes it down), not by the bet side,
+  // so an under pick next to green chips reads as "the matchup is good, the line is the problem" instead of a contradiction
+  const c = (t, up) => `<span class="mxc ${up == null ? "" : up ? "up" : "dn"}" title="${up == null ? "neutral" : up ? "pushes the stat up" : "pushes the stat down"}">${up == null ? "" : up ? "▲ " : "▼ "}${t}</span>`;
   const out = [];
   if (m.pos != null) out.push(c(`vs ${role}s #${m.pos}${m.pos <= MX.lo ? " soft" : m.pos >= MX.hi ? " tough" : ""}`, m.pos <= MX.lo ? true : m.pos >= MX.hi ? false : null));
   if (m.pace != null) out.push(c(`opp pace #${m.pace}${m.pace <= MX.lo ? " fast" : m.pace >= MX.hi ? " slow" : ""}`, m.pace <= MX.lo ? true : m.pace >= MX.hi ? false : null));
@@ -1394,10 +1407,10 @@ function mxHtml() {
       ${lab("Opponent pace", "mxPace", [["", "Any"], ["lo", "Fast · top 10"], ["mid", "Middle"], ["hi", "Slow · bottom 10"]])}
       ${lab("Opponent defense", "mxDef", [["", "Any"], ["top", "Top-10 defense"], ["weak", "Bottom-10 defense"]])}
       ${lab("Line vs his usual", "mxLine", [["", "Any"], ["infl", "Inflated · 8%+ above"], ["shade", "Shaded · 8%+ below"]])}
-      ${lab("Sort by", "mxSort", [["", "Usual ranking"], ["mx", "Combined matchup"], ["pos", "Position matchup"], ["pace", "Opponent pace"], ["def", "Opponent defense"], ["line", "Line vs usual"], ["edge", "Price edge"]])}
+      ${lab("Sort by", "mxSort", [["", "Usual ranking"], ["mx", "Combined matchup"], ["pos", "Position matchup"], ["pace", "Opponent pace"], ["def", "Opponent defense"], ["line", "Line vs usual"], ["win", "Hit chance (model)"], ["edge", "Price edge"]])}
     </div>
     <div class="chips">${chip(f.mxDir !== "u", "dir|", "Best for overs first")}${chip(f.mxDir === "u", "dir|u", "Best for unders first")}<span class="sep"></span>${chip(!f.mxAll, "all|0", "Best stat per player")}${chip(f.mxAll, "all|1", "Every stat line")}</div>
-    <div class="chips">${chip(f.mxPos === "soft" && f.mxPace === "lo" && f.mxDir !== "u", "p|fs", "Fast + soft · overs")}${chip(f.mxPos === "tough" && f.mxLine === "infl" && f.mxDir === "u", "p|ti", "Tough + inflated · unders")}${mxAny(f) || f.mxSort ? chip(false, "clear|", "Clear matchup filters") : ""}</div>
+    <div class="chips">${chip(f.mxPos === "soft" && f.mxPace === "lo" && f.mxDir !== "u", "p|fs", "Fast + soft · overs")}${chip(f.mxPos === "tough" && f.mxLine === "infl" && f.mxDir === "u", "p|ti", "Tough + inflated · unders")}${chip(f.mxPos === "tough" && f.mxSort === "win" && f.mxDir === "u", "p|tu", "Tough position · unders by hit chance")}${mxAny(f) || f.mxSort ? chip(false, "clear|", "Clear matchup filters") : ""}</div>
     ${mxRecHtml(f)}`;
   return sec("p-mx", "Matchup filters and sorter", mxAny(f) ? "on" : f.mxSort ? "sorted" : "", body, true);
 }
@@ -1411,7 +1424,7 @@ function bindMx(root) {
     if (a === "dir") mxSet({mxDir: v});
     else if (a === "all") mxSet({mxAll: v === "1"});
     else if (a === "clear") mxSet({mxPos: "", mxPace: "", mxDef: "", mxLine: "", mxSort: "", mxDir: "", mxAll: false});
-    else if (a === "p") mxSet(v === "fs" ? {mxPos: "soft", mxPace: "lo", mxDef: "", mxLine: "", mxSort: "mx", mxDir: ""} : {mxPos: "tough", mxPace: "", mxDef: "", mxLine: "infl", mxSort: "mx", mxDir: "u"});
+    else if (a === "p") mxSet(v === "tu" ? {mxPos: "tough", mxPace: "", mxDef: "", mxLine: "", mxSort: "win", mxDir: "u"} : v === "fs" ? {mxPos: "soft", mxPace: "lo", mxDef: "", mxLine: "", mxSort: "mx", mxDir: ""} : {mxPos: "tough", mxPace: "", mxDef: "", mxLine: "infl", mxSort: "mx", mxDir: "u"});
   });
 }
 

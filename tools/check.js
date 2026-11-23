@@ -62,16 +62,16 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
         await p.evaluate(() => { go("props"); D.pf.all = true; mxSet({mxPace: "lo", mxPos: "soft", mxSort: "mx", mxAll: true, mxDir: ""}); }); await p.waitForTimeout(900);
         const r = await p.evaluate(() => { const rows = [...document.querySelectorAll("#b-p-all .cr")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
           const sc = rows.map(mxScore); return {n: rows.length, match: rows.every(x => { const m = mxInfo(x); return m.pace <= 10 && m.pos <= 10; }),
-            sorted: sc.every((v, i) => i === 0 || v <= sc[i - 1] + 1e-9), chips: document.querySelectorAll("#b-p-all .mxl").length}; });
+            sorted: sc.every((v, i) => i === 0 || v <= sc[i - 1] + 1e-9), chips: [...document.querySelectorAll("#b-p-all .cr")].filter(e => e.querySelector(".mxc")).length}; });
         r.n && r.match && r.sorted && r.chips === r.n ? ok(`${r.n} rows: all fast-pace + soft-position, sorted, chips shown`) : bad("matchup filter: " + JSON.stringify(r));
         const rec = await p.evaluate(() => { const x = mxRecord({stat: "ast", mxPos: "soft"}); return {n: x.A.n, ok: x.A.n > 0 && x.A.o <= x.A.n}; });
         rec.ok ? ok(`record panel: ${rec.n} graded assist props in soft position matchups`) : bad("matchup record panel is empty");
         await p.evaluate(() => { mxSet({mxPace: "", mxPos: "", mxSort: "", mxAll: false, mxDir: ""}); D.pf.all = false; renderProps(); });
       } catch (e) { bad("matchup filters: " + e.message); }
-      // one side per prop: every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
+      // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};
-      const grab = () => p.evaluate(() => [...document.querySelectorAll(".view.on [data-pid][data-stat]")].map(el => {
+      const grab = () => p.evaluate(() => [...document.querySelectorAll(".view.on [data-pid][data-stat]:not(.drop)")].map(el => {
         const t = el.querySelector(":scope > div > .lean, :scope .lean"); return t ? [el.dataset.pid + "|" + el.dataset.stat, t.textContent.trim()] : null; }).filter(Boolean));
       for (const t of ["today", "props"]) { await p.evaluate(v => go(v), t); await p.waitForTimeout(900);
         if (t === "props") { await p.evaluate(() => { D.pf.all = true; renderProps(); }); await p.waitForTimeout(600); }

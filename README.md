@@ -155,6 +155,13 @@ Players tab → **Matchup filters and sorter** (above the All players list). Cut
 
 `agent/matchup_hist.py` (nightly, after the anchor) writes `docs/data/matchup_hist.json`: each graded prop's position rank, opponent pace and defense ranks and line vs usual as of its own day (a model that had only seen earlier games), with the closing line and prices. Only new days are computed. The matchup model and the projections are untouched; this is for reading the slate, not a new bet signal. First study (17 days, 8,441 props, closing price): tough position matchups reliably hurt overs (assist overs 44.7% vs 51.1% in soft ones), opponent pace alone showed nothing, and no cut beat the closing price (tough position defense + top-10 team defense + middle pace unders were break-even, 793 props). `tools/check.js --ui` step 5b tests the filters.
 
+**Nov 23 update — win-rate view.** The list now answers "which side is likelier to win", not "which price is best":
+- Matchup chips are colored by what the factor does to the **stat** (green ▲ pushes it up, red ▼ pushes it down), no longer relative to the bet side, so an UNDER beside green chips reads as "good matchup, line too high".
+- Each row has a hit-chance line: Over % / Under % and which side is likelier. If the tagged side is under 50% the tag is grayed (`.lean.weak`) and the row says it is only the cheaper price.
+- New sort **Hit chance (model)** and preset **Tough position · unders by hit chance**.
+- A study note shows on rows with a tough position matchup (overs hit ~3 pts under the price; unders held up). 17-day study, nothing combined beat the closing price; see the project doc `perseverance-matchup-filter-study-nov23`.
+- `tools/check.js` step 6 ignores dimmed "dropped" best-bet cards (they show the morning's published side).
+
 ## Model audit fixes (Nov 22): price from the market first
 
 A full audit of 8,447 graded DraftKings props (Nov 5-21) found the matchup model's projections about as accurate as
