@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23T14:46:39Z",
+ "updated": "2026-11-23T15:01:40Z",
  "agents": [
   {
    "name": "Scout",
@@ -13,14 +13,14 @@
    "kind": "program",
    "status": "live",
    "when": "11am, 2pm, 5pm ET + ~1h before first tip",
-   "detail": "slots done today: 10h, 11h, 13h, 14h, 14.5h, 17h, 18h, 19h, 19.5h \u00b7 0 credits today"
+   "detail": "slots done today: 10h \u00b7 38 credits today"
   },
   {
    "name": "Closer",
    "kind": "program",
    "status": "live",
    "when": "every run, at tip",
-   "detail": "66 of 88 settled legs have a closing price \u00b7 0 credits today"
+   "detail": "69 of 91 settled legs have a closing price \u00b7 0 credits today"
   },
   {
    "name": "Shopper",
@@ -41,14 +41,14 @@
    "kind": "claude",
    "status": "shadow",
    "when": "~11:05am and ~5:05pm ET",
-   "detail": "updated 17h ago \u00b7 27 graded calls \u00b7 would have held 1 bets (0-1, -5.00) \u00b7 saved $5.00"
+   "detail": "updated 17h ago \u00b7 30 graded calls \u00b7 would have held 2 bets (1-1, -0.95) \u00b7 saved $0.95"
   },
   {
    "name": "Skeptic",
    "kind": "claude",
    "status": "shadow",
    "when": "~5:45pm and ~9:15pm ET",
-   "detail": "updated 12h ago \u00b7 27 graded calls \u00b7 would have held 4 bets (0-4, -20.00) \u00b7 saved $20.00"
+   "detail": "updated 13h ago \u00b7 30 graded calls \u00b7 would have held 4 bets (0-4, -20.00) \u00b7 saved $20.00"
   },
   {
    "name": "Strategist",
@@ -62,27 +62,27 @@
    "kind": "claude",
    "status": "shadow",
    "when": "Sundays ~9:20am ET",
-   "detail": "updated 21h ago \u00b7 No, the model is not beating the closing line: placed bets average -0.73% CLV on 66 closes (Backtester's Nov 17 cut: -1.9% on 54), and the prop model side is worse at -4.0% on 539 lines, beating the close only 7.6% of th"
+   "detail": "updated 22h ago \u00b7 No, the model is not beating the closing line: placed bets average -0.73% CLV on 66 closes (Backtester's Nov 17 cut: -1.9% on 54), and the prop model side is worse at -4.0% on 539 lines, beating the close only 7.6% of th"
   }
  ],
  "shadow": {
   "newsroom": {
    "held": {
-    "n": 1,
-    "profit": -5.0,
-    "won": 0,
+    "n": 2,
+    "profit": -0.95,
+    "won": 1,
     "lost": 1,
-    "clv": null
+    "clv": -0.0528
    },
    "rest": {
-    "n": 26,
-    "profit": -48.55,
-    "won": 8,
-    "lost": 18,
-    "clv": 0.0441
+    "n": 28,
+    "profit": -48.2,
+    "won": 9,
+    "lost": 19,
+    "clv": 0.0545
    },
-   "calls": 27,
-   "saved": 5.0
+   "calls": 30,
+   "saved": 0.95
   },
   "skeptic": {
    "held": {
@@ -93,13 +93,13 @@
     "clv": null
    },
    "rest": {
-    "n": 23,
-    "profit": -33.55,
-    "won": 8,
-    "lost": 15,
-    "clv": 0.0441
+    "n": 26,
+    "profit": -29.15,
+    "won": 10,
+    "lost": 16,
+    "clv": 0.0474
    },
-   "calls": 27,
+   "calls": 30,
    "saved": 20.0
   }
  },
