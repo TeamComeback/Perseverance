@@ -183,8 +183,11 @@
     }
    },
    "first_seen": "2026-11-23T11:45:26Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-23T18:16:35Z",
+    "why": "no longer +EV at tonight's line (12.5 at -109)"
+   },
+   "status": "Removed"
   },
   "p|4065778|pts|Under": {
    "key": "p|4065778|pts|Under",
@@ -1423,7 +1426,7 @@
    "p": 0.529,
    "p_sim": 0.659,
    "p_mkt": 0.508,
-   "p_kalshi": 0.496,
+   "p_kalshi": 0.499,
    "ev": -0.022,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "CHA",
@@ -1571,7 +1574,7 @@
    "market": {
     "open": 17.5,
     "now": 17.5,
-    "kalshi": 0.496
+    "kalshi": 0.499
    },
    "started": false,
    "published": {
@@ -1750,11 +1753,11 @@
    "conv": 34,
    "tier": "Pass",
    "p": 0.503,
-   "p_sim": 0.559,
+   "p_sim": 0.532,
    "p_mkt": 0.483,
-   "p_kalshi": 0.473,
+   "p_kalshi": 0.478,
    "ev": -0.019,
-   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "verdict": "Pass: recent form and vs his lines agree; the main risk is tonight's spot.",
    "home": "TOR",
    "away": "MIL",
    "pid": "4591725",
@@ -1762,20 +1765,12 @@
    "team": "MIL",
    "opp": "TOR",
    "stat": "pts",
-   "proj": 11.2,
-   "sim": 11,
+   "proj": 11,
+   "sim": 11.4,
    "ob_ind": 11.5,
    "avg10": 10.2,
-   "minutes": 23.6,
+   "minutes": 23.3,
    "for": [
-    {
-     "tag": "simulation",
-     "t": "Goes under in 56% of 10,000 simulated games (sim average 11).",
-     "rec": [
-      1330,
-      1173
-     ]
-    },
     {
      "tag": "recent form",
      "t": "Stayed under 11.5 in 7 of his last 10 (3 of the last 5).",
@@ -1804,7 +1799,7 @@
     },
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 28.3 minutes in the games he went over vs 23.3 otherwise. He's projected for 23.6 tonight.",
+     "t": "It misses when he plays long: 28.3 minutes in the games he went over vs 23.3 otherwise. He's projected for 23.3 tonight.",
      "rec": [
       1213,
       1138
@@ -1851,7 +1846,7 @@
    "market": {
     "open": 11.5,
     "now": 11.5,
-    "kalshi": 0.473
+    "kalshi": 0.478
    },
    "started": false,
    "published": {
@@ -1871,6 +1866,161 @@
     }
    },
    "first_seen": "2026-11-23T18:01:53Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "p|4433134|reb|Under": {
+   "key": "p|4433134|reb|Under",
+   "kind": "prop",
+   "label": "Scottie Barnes Under 6.5 rebounds",
+   "espn_id": "401910039",
+   "game": "MIL @ TOR",
+   "start": "2026-11-24T00:30Z",
+   "side": "Under",
+   "point": 6.5,
+   "dec": 2.13,
+   "am": 113,
+   "conv": 34,
+   "tier": "Pass",
+   "p": 0.46,
+   "p_sim": 0.448,
+   "p_mkt": 0.44,
+   "p_kalshi": 0.412,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and blowout agree; the main risk is tonight's spot.",
+   "home": "TOR",
+   "away": "MIL",
+   "pid": "4433134",
+   "name": "Scottie Barnes",
+   "team": "TOR",
+   "opp": "MIL",
+   "stat": "reb",
+   "proj": 6.2,
+   "sim": 7,
+   "ob_ind": 6.5,
+   "avg10": 7.3,
+   "minutes": 32.4,
+   "for": [
+    {
+     "tag": "recent form",
+     "t": "Stayed under 6.5 in 7 of his last 10 (3 of the last 5).",
+     "rec": [
+      1180,
+      1071
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 45% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      809,
+      746
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes down tonight: -0.7 min blowout risk.",
+     "rec": [
+      161,
+      163
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (7.5 to 6.5): money has been on the under.",
+     "rec": [
+      164,
+      195
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +7% rebounds vs MIL (87 close comps).",
+     "rec": [
+      596,
+      526
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 38.6 minutes in the games he went over vs 33.7 otherwise. He's projected for 32.4 tonight.",
+     "rec": [
+      1213,
+      1138
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without RJ Barrett: 9 of 24 under 6.5 (38% vs 60% lately).",
+     "rec": [
+      678,
+      682
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "The simulation disagrees: only 45% of 10,000 games go under.",
+     "rec": [
+      394,
+      445
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.174,
+    "floor_am": 117,
+    "line": null,
+    "next": 5.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    },
+    {
+     "pid": "5093267",
+     "name": "Collin Murray-Boyles",
+     "team": "TOR",
+     "status": "Day-To-Day",
+     "self": false,
+     "min": 22.0
+    }
+   ],
+   "kill": [
+    "The line reaching 5.5",
+    "The price at 6.5 going past +117",
+    "A change in Collin Murray-Boyles (day-to-day): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 7.5,
+    "now": 6.5,
+    "kalshi": 0.412
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-23T18:16:35Z",
+    "edition": "update",
+    "point": 6.5,
+    "dec": 2.13,
+    "am": 113,
+    "conv": 34,
+    "tier": "Pass",
+    "p": 0.46,
+    "play_to": {
+     "floor_dec": 2.174,
+     "floor_am": 117,
+     "line": null,
+     "next": 5.5
+    }
+   },
+   "first_seen": "2026-11-23T18:16:35Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2513,19 +2663,19 @@
    "start": "2026-11-24T03:00Z",
    "side": "Over",
    "point": 224.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 28,
+   "dec": 1.94,
+   "am": -106,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.507,
+   "p": 0.498,
    "p_sim": 0.571,
-   "p_mkt": 0.5,
+   "p_mkt": 0.489,
    "p_kalshi": null,
-   "ev": -0.037,
+   "ev": -0.035,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "LAL",
    "away": "UTAH",
-   "why": "Sim total 228.1 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 57% of sims vs 50% DraftKings",
+   "why": "Sim total 228.1 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 57% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2568,8 +2718,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.972,
-    "floor_am": -103,
+    "floor_dec": 2.008,
+    "floor_am": 101,
     "line": null,
     "next": 225.5
    },
@@ -2601,7 +2751,7 @@
    ],
    "kill": [
     "The line reaching 225.5",
-    "The price at 224.5 going past \u2212103"
+    "The price at 224.5 going past +101"
    ],
    "market": {
     "open": null,
@@ -3349,6 +3499,27 @@
    "kind": "removed",
    "text": "Removed: Miles Bridges Under 14.5 points \u2014 no longer +EV at tonight's line (14.5 at -116)",
    "alert": true
+  },
+  {
+   "at": "2026-11-23T18:16:35Z",
+   "key": "p|4433134|reb|Under",
+   "kind": "added",
+   "text": "Added: Scottie Barnes Under 6.5 rebounds at +113, conviction 34",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T18:16:35Z",
+   "key": "p|4684272|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Ja'Kobe Walter Under 13.5 points \u2014 no longer +EV at tonight's line (12.5 at -109)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-23T18:16:35Z",
+   "key": "g|401910044|total|Over",
+   "kind": "line",
+   "text": "UTAH @ LAL Over 224.5: line 224.5 at \u2212111 \u2192 224.5 at \u2212106",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3423,6 +3594,11 @@
     "status": "Probable"
    },
    {
+    "name": "Pascal Siakam",
+    "team": "IND",
+    "status": "Questionable"
+   },
+   {
     "name": "Joel Embiid",
     "team": "PHI",
     "status": "Questionable"
@@ -3446,14 +3622,9 @@
     "name": "De'Aaron Fox",
     "team": "SA",
     "status": "Questionable"
-   },
-   {
-    "name": "Jaylon Tyson",
-    "team": "CLE",
-    "status": "Probable"
    }
   ],
-  "picks": 12
+  "picks": 13
  },
  "leans_record": {
   "w": 17,
@@ -3462,5 +3633,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T18:01:53Z"
+ "updated": "2026-11-23T18:16:35Z"
 }
