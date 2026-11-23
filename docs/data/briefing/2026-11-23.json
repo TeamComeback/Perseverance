@@ -503,7 +503,7 @@
    "p": 0.394,
    "p_sim": 0.557,
    "p_mkt": 0.384,
-   "p_kalshi": 0.39,
+   "p_kalshi": 0.395,
    "ev": -0.038,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIN",
@@ -626,7 +626,7 @@
    "market": {
     "open": 1.5,
     "now": 1.5,
-    "kalshi": 0.39
+    "kalshi": 0.395
    },
    "started": false,
    "published": {
@@ -2636,7 +2636,7 @@
    "p": 0.476,
    "p_sim": 0.589,
    "p_mkt": 0.46,
-   "p_kalshi": 0.435,
+   "p_kalshi": 0.445,
    "ev": -0.034,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
@@ -2784,7 +2784,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.435
+    "kalshi": 0.445
    },
    "started": false,
    "published": {
@@ -2823,7 +2823,7 @@
    "p": 0.349,
    "p_sim": 0.471,
    "p_mkt": 0.343,
-   "p_kalshi": 0.32,
+   "p_kalshi": 0.315,
    "ev": -0.044,
    "verdict": "Pass: average and line move agree; the main risk is simulation.",
    "home": "PHI",
@@ -2931,7 +2931,7 @@
    "market": {
     "open": 0.5,
     "now": 1.5,
-    "kalshi": 0.32
+    "kalshi": 0.315
    },
    "started": false,
    "published": {
@@ -4524,14 +4524,6 @@
      "min": 27.8
     },
     {
-     "pid": "4433287",
-     "name": "Brandon Miller",
-     "team": "CHA",
-     "status": "Probable",
-     "self": false,
-     "min": 27.5
-    },
-    {
      "pid": "3032979",
      "name": "Dennis Schroder",
      "team": "CHA",
@@ -4546,12 +4538,19 @@
      "status": "Out",
      "self": false,
      "min": 23.6
+    },
+    {
+     "pid": "4066218",
+     "name": "Grant Williams",
+     "team": "CHA",
+     "status": "Out",
+     "self": false,
+     "min": 21.4
     }
    ],
    "kill": [
     "The line reaching 213.5",
-    "The price at 212.5 going past \u2212102",
-    "A change in Brandon Miller (probable): the model re-prices on the next run"
+    "The price at 212.5 going past \u2212102"
    ],
    "market": {
     "open": null,
@@ -5455,6 +5454,13 @@
    "kind": "removed",
    "text": "Removed: OKC @ IND Over 224.5 \u2014 line moved 221.5 \u2192 223.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T22:31:56Z",
+   "key": "g|401910036|total|Over",
+   "kind": "injury",
+   "text": "Grant Williams ruled out (MEM @ CHA Over 212.5 re-priced: 212.5 at \u2212106, conviction 34)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -5566,14 +5572,14 @@
     "status": "Questionable"
    },
    {
-    "name": "Brandon Miller",
-    "team": "CHA",
-    "status": "Probable"
-   },
-   {
     "name": "De'Aaron Fox",
     "team": "SA",
     "status": "Questionable"
+   },
+   {
+    "name": "Jaylon Tyson",
+    "team": "CLE",
+    "status": "Probable"
    }
   ],
   "picks": 19
@@ -5585,5 +5591,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-23T22:15:23Z"
+ "updated": "2026-11-23T22:31:56Z"
 }
