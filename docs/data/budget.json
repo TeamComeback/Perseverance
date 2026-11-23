@@ -1,37 +1,9 @@
 {
  "month": "2026-11-17",
- "remaining": 15012,
- "used": 4988,
- "runs": 568,
+ "remaining": 15004,
+ "used": 4996,
+ "runs": 569,
  "log": [
-  {
-   "ts": "2026-11-22T23:30:32Z",
-   "ep": "/sports/soccer_italy_serie_a/events",
-   "cost": 0,
-   "rem": 15033,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-22T23:30:32Z",
-   "ep": "/sports/soccer_netherlands_eredivisie/events",
-   "cost": 0,
-   "rem": 15033,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-22T23:30:32Z",
-   "ep": "/sports/soccer_spain_la_liga/events",
-   "cost": 0,
-   "rem": 15033,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-22T23:30:32Z",
-   "ep": "/sports/soccer_uefa_champs_league/events",
-   "cost": 0,
-   "rem": 15033,
-   "job": "scan"
-  },
   {
    "ts": "2026-11-22T23:30:32Z",
    "ep": "/sports/soccer_usa_mls/events",
@@ -422,6 +394,34 @@
    "ep": "/sports/basketball_nba/events/b8c5bdb50209c7d050400c7d28c32e30/odds",
    "cost": 4,
    "rem": 15012,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-23T00:02:36Z",
+   "ep": "/sports",
+   "cost": 0,
+   "rem": 15012,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-23T00:02:47Z",
+   "ep": "/sports/basketball_nba/events",
+   "cost": 0,
+   "rem": 15012,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-23T00:02:47Z",
+   "ep": "/sports/basketball_nba/events/031fa761cc38e1b5afd9309b731b38b2/odds",
+   "cost": 4,
+   "rem": 15008,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-23T00:02:47Z",
+   "ep": "/sports/basketball_nba/events/b8c5bdb50209c7d050400c7d28c32e30/odds",
+   "cost": 4,
+   "rem": 15004,
    "job": "props"
   }
  ],
@@ -7299,6 +7299,20 @@
    "cost": 4,
    "rem": 15012,
    "job": "props"
+  },
+  {
+   "ts": "2026-11-23T00:02:47Z",
+   "ep": "/sports/basketball_nba/events/031fa761cc38e1b5afd9309b731b38b2/odds",
+   "cost": 4,
+   "rem": 15008,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-23T00:02:47Z",
+   "ep": "/sports/basketball_nba/events/b8c5bdb50209c7d050400c7d28c32e30/odds",
+   "cost": 4,
+   "rem": 15004,
+   "job": "props"
   }
  ],
  "ext": [
@@ -7308,13 +7322,13 @@
    "rem": 15231
   }
  ],
- "own_month": 2838,
+ "own_month": 2846,
  "external_month": 1135,
  "monthly": 20000,
  "reserve": 300,
  "jobs_cycle": {
   "scan": 1874,
-  "props": 964
+  "props": 972
  },
  "backtest_used": 965,
  "ext_days": {
@@ -7341,17 +7355,17 @@
  "backtest_cap": 5000,
  "jobs_day": {
   "scan": 249,
-  "props": 139
+  "props": 147
  },
  "day": "2026-11-22",
  "days_left": 25,
  "day_budget": 488,
- "spent_today": 388,
- "units_today": 96,
+ "spent_today": 396,
+ "units_today": 99,
  "set_aside": 0,
  "ext_rate": 0.0,
  "plan": 20000,
- "allowance": 110,
+ "allowance": 100,
  "locked": false,
- "updated": "2026-11-23T00:02:05Z"
+ "updated": "2026-11-23T00:03:20Z"
 }

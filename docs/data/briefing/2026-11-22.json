@@ -2703,7 +2703,7 @@
    "p": 0.515,
    "p_sim": 0.641,
    "p_mkt": 0.495,
-   "p_kalshi": 0.545,
+   "p_kalshi": 0.52,
    "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "WSH",
@@ -2719,14 +2719,6 @@
    "avg10": 8.8,
    "minutes": 26.9,
    "for": [
-    {
-     "tag": "second market",
-     "t": "Kalshi likes it more: 55% there vs 49% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 462 of 860 times.",
-     "rec": [
-      114,
-      99
-     ]
-    },
     {
      "tag": "simulation",
      "t": "Goes under in 64% of 10,000 simulated games (sim average 10).",
@@ -2757,6 +2749,14 @@
      "rec": [
       1077,
       980
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against WSH: 3 of 4 under 11.5 (75% vs 50% lately).",
+     "rec": [
+      418,
+      399
      ]
     }
    ],
@@ -2818,7 +2818,7 @@
    "market": {
     "open": 11.5,
     "now": 11.5,
-    "kalshi": 0.545
+    "kalshi": 0.52
    },
    "started": false,
    "published": {
@@ -4626,19 +4626,19 @@
    "start": "2026-11-23T00:00Z",
    "side": "Under",
    "point": 237.5,
-   "dec": 1.88,
-   "am": -114,
-   "conv": 31,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 32,
    "tier": "Pass",
-   "p": 0.516,
+   "p": 0.507,
    "p_sim": 0.605,
-   "p_mkt": 0.507,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.029,
+   "ev": -0.027,
    "verdict": "Pass: simulation carries it; the main risk is model record.",
    "home": "CHI",
    "away": "DEN",
-   "why": "Sim total 233.5 (after a learned +1.3 correction) vs 237.5 \u00b7 under in 61% of sims vs 51% DraftKings",
+   "why": "Sim total 233.5 (after a learned +1.3 correction) vs 237.5 \u00b7 under in 61% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -4660,8 +4660,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.938,
-    "floor_am": -107,
+    "floor_dec": 1.972,
+    "floor_am": -103,
     "line": null,
     "next": 236.5
    },
@@ -4693,7 +4693,7 @@
    ],
    "kill": [
     "The line reaching 236.5",
-    "The price at 237.5 going past \u2212107"
+    "The price at 237.5 going past \u2212103"
    ],
    "market": {
     "open": null,
@@ -7126,6 +7126,13 @@
    "kind": "removed",
    "text": "Removed: BOS -7.5 (BOS @ GS) \u2014 confidence fell 47 \u2192 34",
    "alert": false
+  },
+  {
+   "at": "2026-11-23T00:03:20Z",
+   "key": "g|401910032|total|Under",
+   "kind": "line",
+   "text": "DEN @ CHI Under 237.5: line 237.5 at \u2212114 \u2192 237.5 at \u2212109",
+   "alert": false
   }
  ],
  "narratives": [
@@ -7242,5 +7249,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 3995,
- "updated": "2026-11-23T00:02:05Z"
+ "updated": "2026-11-23T00:03:20Z"
 }
