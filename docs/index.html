@@ -3083,6 +3083,21 @@ async function fillLearn() {
     <div class="lbl">Changes</div>${hist.length ? `<div class="log">${hist.slice(0, 15).map(h => `<div><time>${when(h.ts)}</time>${h.changes.map(esc).join("<br>")}</div>`).join("")}</div>`
       : '<div class="empty">No changes yet. Each correction needs enough graded games first (about a week or two of slates), so early nights change nothing on purpose.</div>'}`;
 }
+// Playbook scorecard: settled agent bets grouped by playbook. Current run first; the toggle shows every run.
+let SCORE_ALL = false;
+function scoreH(state) {
+  const sc = state.scorecard;
+  if (!sc) return '<div class="empty">The scorecard appears after the next agent run.</div>';
+  const rows = Object.entries(SCORE_ALL ? sc.all : sc.current).sort((a, b) => b[1].staked - a[1].staked);
+  const body = rows.length ? rows.map(([k, v]) => `<tr><td>${PB[k] || esc(k)}${v.paused ? ' <span class="neg">paused</span>' : ""}</td><td class="num">${v.bets}${v.open ? ` <span class="dim">+${v.open} open</span>` : ""}</td>
+    <td class="num">${v.won}-${v.lost}${v.push ? "-" + v.push : ""}</td><td class="num">${money(v.staked)}</td><td class="num ${cls(v.profit)}">${money(v.profit, true)}</td>
+    <td class="num ${cls(v.roi)}">${v.roi == null ? "–" : pct(v.roi)}</td><td class="num ${cls(v.clv)}">${v.clv == null ? "–" : pct(v.clv)}</td></tr>`).join("")
+    : '<tr><td colspan="7" class="dim">No bets yet in this run.</td></tr>';
+  return `<div class="row" style="margin-bottom:6px"><button class="btn" onclick="SCORE_ALL=false;renderAgent()" ${SCORE_ALL ? "" : 'style="font-weight:700"'}>Run #${sc.run}</button>
+    <button class="btn" onclick="SCORE_ALL=true;renderAgent()" ${SCORE_ALL ? 'style="font-weight:700"' : ""}>All runs</button></div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Playbook</th><th>Bets</th><th>W-L</th><th>Staked</th><th>Profit</th><th>ROI</th><th>CLV</th></tr></thead><tbody>${body}</tbody></table></div>
+    <div class="desc" style="margin-top:6px">Settled bets only. CLV is the average closing-line value of each playbook's legs; negative means the price you got was worse than the close.</div>`;
+}
 function renderAgent() {
   const {state, manual, budget} = D;
   const p = state.params;
@@ -3106,6 +3121,7 @@ function renderAgent() {
     sec("a-learn", "What the agent has learned", "", '<div class="empty">Loading…</div>', true) +
     sec("a-brain", "Brain", "live strategy", `<div class="params">${items.map(([k, v]) => `<div class="param"><div class="label">${k}</div><div class="v">${v}</div></div>`).join("")}</div>${strat}`, true) +
     sec("a-journal", "Journal", state.journal.length + " entries", "", false) +
+    sec("a-score", "Playbook scorecard", "bets, ROI, CLV", scoreH(state), false) +
     sec("a-arms", "Playbooks", "what it leans on", armsH, false) +
     sec("a-books", "Books", books.length + " allowed", `<div class="desc" style="margin-bottom:6px">Owner rule: the agent only reads, compares and bets these. Neither the agent nor the strategist can change the list.</div>` +
       books.map(([k, n]) => `<div class="ti"><span><b style="font-family:inherit">${bookName(k)}</b>${n ? ` <span class="dim">· ${esc(n)}</span>` : ""}</span><b class="good">✓</b></div>`).join(""), false) +

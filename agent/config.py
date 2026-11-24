@@ -10,6 +10,9 @@ START_BANKROLL = 100.0
 MIN_STAKE = 5.0            # the one fixed rule: every bet is at least $5 (agent and you)
 GOAL = 1000.0
 BUST_LINE = 5.0           # cash below this with nothing open = run over
+# Runs the owner has asked to end, by run number. The agent stops placing bets in that run, its open bets settle,
+# and the run is archived and the next one starts from START_BANKROLL (HQ item t20261123run3, owner answer to q10).
+END_RUNS = {2: "Ended by the owner on Nov 23 (HQ q10: end run #2, start run #3 at $100). Open bets settled first; bets and record kept."}
 AUTO_RESTART = True        # after a bust or a win, start a new run (lessons carry over)
 
 # ---- The Odds API budget (paid 20K plan from Nov 17 2026) ----------------------
