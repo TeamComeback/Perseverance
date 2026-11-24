@@ -424,8 +424,11 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T16:00:59Z",
+    "why": "no longer +EV at tonight's line (26.5 at -109)"
+   },
+   "status": "Removed"
   },
   "p|4432166|ast|Under": {
    "key": "p|4432166|ast|Under",
@@ -765,15 +768,15 @@
    "start": "2026-11-25T01:00Z",
    "side": "Under",
    "point": 15.5,
-   "dec": 1.81,
-   "am": -123,
+   "dec": 1.79,
+   "am": -127,
    "conv": 29,
    "tier": "Pass",
-   "p": 0.533,
+   "p": 0.54,
    "p_sim": 0.544,
-   "p_mkt": 0.52,
+   "p_mkt": 0.526,
    "p_kalshi": null,
-   "ev": -0.035,
+   "ev": -0.033,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is minutes.",
    "home": "WSH",
    "away": "BOS",
@@ -864,15 +867,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.876,
-    "floor_am": -114,
-    "line": null,
+    "floor_dec": 1.852,
+    "floor_am": -117,
+    "line": 15.5,
     "next": 14.5
    },
    "watch": [],
    "kill": [
     "The line reaching 14.5",
-    "The price at 15.5 going past \u2212114",
+    "The price at 15.5 going past \u2212117",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -898,11 +901,8 @@
     }
    },
    "first_seen": "2026-11-24T14:15:46Z",
-   "removed": {
-    "at": "2026-11-24T14:45:48Z",
-    "why": "no longer +EV at tonight's line (15.5 at -120)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|5041939|pts|Under": {
    "key": "p|5041939|pts|Under",
@@ -913,15 +913,15 @@
    "start": "2026-11-25T03:00Z",
    "side": "Under",
    "point": 24.5,
-   "dec": 1.81,
-   "am": -123,
+   "dec": 1.83,
+   "am": -120,
    "conv": 29,
    "tier": "Pass",
-   "p": 0.534,
+   "p": 0.528,
    "p_sim": 0.64,
-   "p_mkt": 0.521,
+   "p_mkt": 0.515,
    "p_kalshi": null,
-   "ev": -0.033,
+   "ev": -0.034,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "DEN",
    "away": "DAL",
@@ -1012,8 +1012,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.873,
-    "floor_am": -115,
+    "floor_dec": 1.894,
+    "floor_am": -112,
     "line": null,
     "next": 23.5
    },
@@ -1029,7 +1029,7 @@
    ],
    "kill": [
     "The line reaching 23.5",
-    "The price at 24.5 going past \u2212115",
+    "The price at 24.5 going past \u2212112",
     "A change in P.J. Washington (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -1605,6 +1605,34 @@
    "kind": "removed",
    "text": "Removed: Cade Cunningham Under 8.5 assists \u2014 no longer +EV at tonight's line (8.5 at -125)",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T16:00:59Z",
+   "key": "p|4277905|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Trae Young Under 15.5 points at \u2212127",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:00:59Z",
+   "key": "p|4277905|pts|Under",
+   "kind": "line",
+   "text": "Trae Young: line 15.5 at \u2212123 \u2192 15.5 at \u2212127",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:00:59Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "line",
+   "text": "Cooper Flagg: line 24.5 at \u2212123 \u2192 24.5 at \u2212120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:00:59Z",
+   "key": "p|4065648|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jayson Tatum Under 26.5 points \u2014 no longer +EV at tonight's line (26.5 at -109)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -1662,5 +1690,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T15:45:23Z"
+ "updated": "2026-11-24T16:00:59Z"
 }
