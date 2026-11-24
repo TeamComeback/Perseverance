@@ -919,15 +919,15 @@
    "start": "2026-11-25T03:00Z",
    "side": "Under",
    "point": 24.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 28,
+   "dec": 1.96,
+   "am": -104,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.509,
+   "p": 0.492,
    "p_sim": 0.639,
-   "p_mkt": 0.497,
-   "p_kalshi": 0.505,
-   "ev": -0.038,
+   "p_mkt": 0.48,
+   "p_kalshi": 0.495,
+   "ev": -0.036,
    "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "DEN",
    "away": "DAL",
@@ -1018,8 +1018,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.965,
-    "floor_am": -104,
+    "floor_dec": 2.033,
+    "floor_am": 103,
     "line": null,
     "next": 23.5
    },
@@ -1035,14 +1035,14 @@
    ],
    "kill": [
     "The line reaching 23.5",
-    "The price at 24.5 going past \u2212104",
+    "The price at 24.5 going past +103",
     "A change in P.J. Washington (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 23.5,
     "now": 24.5,
-    "kalshi": 0.505
+    "kalshi": 0.495
    },
    "started": false,
    "published": {
@@ -1062,11 +1062,8 @@
     }
    },
    "first_seen": "2026-11-24T14:15:46Z",
-   "removed": {
-    "at": "2026-11-24T22:45:56Z",
-    "why": "no longer +EV at tonight's line (24.5 at -125)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4066354|pts|Under": {
    "key": "p|4066354|pts|Under",
@@ -1652,8 +1649,11 @@
     }
    },
    "first_seen": "2026-11-24T22:45:56Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T23:16:18Z",
+    "why": "no longer +EV at tonight's line (10.5 at -114)"
+   },
+   "status": "Removed"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -1791,6 +1791,154 @@
     }
    },
    "first_seen": "2026-11-24T22:45:56Z",
+   "removed": {
+    "at": "2026-11-24T23:16:18Z",
+    "why": "no longer +EV at tonight's line (8.5 at -101)"
+   },
+   "status": "Removed"
+  },
+  "p|5174563|tpm|Over": {
+   "key": "p|5174563|tpm|Over",
+   "kind": "prop",
+   "label": "Kyshawn George Over 2.5 threes",
+   "espn_id": "401909315",
+   "game": "BOS @ WSH",
+   "start": "2026-11-25T01:00Z",
+   "side": "Over",
+   "point": 2.5,
+   "dec": 2.26,
+   "am": 126,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.424,
+   "p_sim": 0.603,
+   "p_mkt": 0.414,
+   "p_kalshi": 0.425,
+   "ev": -0.042,
+   "verdict": "Pass: simulation and projection agree; the main risk is tonight's spot.",
+   "home": "WSH",
+   "away": "BOS",
+   "pid": "5174563",
+   "name": "Kyshawn George",
+   "team": "WSH",
+   "opp": "BOS",
+   "stat": "tpm",
+   "proj": 2.7,
+   "sim": 3.1,
+   "ob_ind": 2.5,
+   "avg10": 3.1,
+   "minutes": 34.0,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 3.1 threes over his last 10; the line is 2.5.",
+     "rec": [
+      570,
+      498
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes over in 60% of 10,000 simulated games (sim average 3.1).",
+     "rec": [
+      1491,
+      1312
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 2.7 threes against a line of 2.5.",
+     "rec": [
+      1547,
+      1390
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "Home split +4%.",
+     "rec": [
+      934,
+      908
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone over his posted line in 7 of 10 tracked games.",
+     "rec": [
+      238,
+      233
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 45% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      435,
+      372
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs BOS: 1.5 threes/g in 2 games (-4%).",
+     "rec": [
+      415,
+      379
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against BOS: 1 of 4 over 2.5 (25% vs 50% lately).",
+     "rec": [
+      786,
+      773
+     ]
+    },
+    {
+     "tag": "market",
+     "t": "You're betting against the market: DraftKings' price says this happens 41% of the time.",
+     "rec": [
+      109,
+      141
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.358,
+    "floor_am": 136,
+    "line": null,
+    "next": 3.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 3.5",
+    "The price at 2.5 going past +136",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 2.5,
+    "now": 2.5,
+    "kalshi": 0.425
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T23:16:18Z",
+    "edition": "update",
+    "point": 2.5,
+    "dec": 2.26,
+    "am": 126,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.424,
+    "play_to": {
+     "floor_dec": 2.358,
+     "floor_am": 136,
+     "line": null,
+     "next": 3.5
+    }
+   },
+   "first_seen": "2026-11-24T23:16:18Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -3012,6 +3160,41 @@
    "kind": "line",
    "text": "Payton Pritchard: line 13.5 at \u2212111 \u2192 13.5 at \u2212106",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T23:16:18Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Cooper Flagg Under 24.5 points at \u2212104",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T23:16:18Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "line",
+   "text": "Cooper Flagg: line 24.5 at \u2212112 \u2192 24.5 at \u2212104",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T23:16:18Z",
+   "key": "p|5174563|tpm|Over",
+   "kind": "added",
+   "text": "Added: Kyshawn George Over 2.5 threes at +126, conviction 29",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T23:16:18Z",
+   "key": "p|3978|pts|Under",
+   "kind": "removed",
+   "text": "Removed: DeMar DeRozan Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -114)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T23:16:18Z",
+   "key": "p|4278049|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Daniel Gafford Under 9.5 points \u2014 no longer +EV at tonight's line (8.5 at -101)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3115,7 +3298,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 12
+  "picks": 13
  },
  "leans_record": {
   "w": 20,
@@ -3124,5 +3307,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T23:15:24Z"
+ "updated": "2026-11-24T23:16:18Z"
 }
