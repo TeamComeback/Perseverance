@@ -21009,7 +21009,7 @@
       "book": "draftkings",
       "fair_p": 0.5294,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.74,
        "gain": 0.2414,
@@ -21045,6 +21045,22 @@
          "txt": "OKC games have +2% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 125.0,
+       "away": 120.0
+      },
+      "actual": 4.0,
+      "box": {
+       "min": 28.0,
+       "pts": 20.0,
+       "reb": 4.0,
+       "ast": 2.0,
+       "tpm": 4.0,
+       "tpa": 7.0,
+       "fga": 13.0,
+       "fta": 0.0,
+       "tov": 2.0
       }
      }
     ],
@@ -21055,10 +21071,10 @@
     "note": "Proj 1.2 vs line 1.5 (norm 1.2, 27 min). Model 67% vs market 53%. OKC gives shooting guards +10% threes vs their norm (#1 softest of 30) \u00b7 Players with his profile: +15% threes vs OKC (52 close comps) \u00b7 No history vs OKC yet",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-24T04:12:40Z",
     "shadow": {
      "skeptic": {
       "hold": true,
@@ -21070,6 +21086,218 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 4 threes vs Under 1.5",
+     "final": "Oklahoma City Thunder 120 \u2013 Indiana Pacers 125",
+     "legs": [
+      {
+       "outcome": "Kelly Oubre Jr. Under",
+       "result": "loss",
+       "headline": "4 threes vs Under 1.5",
+       "final": "Oklahoma City Thunder 120 \u2013 Indiana Pacers 125",
+       "why": [
+        "Kelly Oubre Jr. finished with 4 threes against a line of 1.5: under missed by 2.5.",
+        "Minutes: played 28 vs 27.3 projected.",
+        "Box score: 4-of-7 from three.",
+        "Model projected 1.2 (1.2 norm \u00d7 1.04 matchup); actual was +2.8 off (+2.7 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (1.2) in a matchup the model rated soft.",
+        "Signal: OKC gives shooting guards +10% threes vs their norm (#1 softest of 30)",
+        "Signal: Players with his profile: +15% threes vs OKC (52 close comps)",
+        "Signal: No history vs OKC yet",
+        "We priced it at 51% to hit vs 46% needed to break even at 2.16x (+11.1% expected edge).",
+        "Consensus fair probability when placed: 53% (no closing price captured)."
+       ],
+       "tags": [
+        "model-miss",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "model-miss"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "IND",
+        "away": "OKC"
+       },
+       "final": "OKC 120 \u2013 IND 125",
+       "periods": {
+        "away": [
+         27,
+         24,
+         40,
+         29
+        ],
+        "home": [
+         27,
+         29,
+         40,
+         29
+        ]
+       },
+       "largest_lead": {
+        "OKC": 7,
+        "IND": 13
+       },
+       "largest_lead_at": {
+        "OKC": "6:01 1st Q",
+        "IND": "10:08 3rd Q"
+       },
+       "lead_changes": 1,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "IND",
+         "pts": 12,
+         "from": "3:10 1st Q",
+         "to": "1:21 1st Q",
+         "score": "OKC 19-27 IND"
+        },
+        {
+         "team": "OKC",
+         "pts": 8,
+         "from": "1:02 1st Q",
+         "to": "1.2 1st Q",
+         "score": "OKC 27-27 IND"
+        },
+        {
+         "team": "IND",
+         "pts": 8,
+         "from": "10:34 2nd Q",
+         "to": "9:06 2nd Q",
+         "score": "OKC 29-37 IND"
+        }
+       ],
+       "swings": [
+        {
+         "team": "IND",
+         "swing": 15,
+         "from": "6:01 1st Q",
+         "to": "1:21 1st Q",
+         "mins": 4.7,
+         "from_score": "OKC 12-5 IND",
+         "to_score": "OKC 19-27 IND",
+         "pts_for": 22,
+         "pts_against": 7
+        },
+        {
+         "team": "OKC",
+         "swing": 10,
+         "from": "3:29 3rd Q",
+         "to": "9:19 4th Q",
+         "mins": 6.2,
+         "from_score": "OKC 78-88 IND",
+         "to_score": "OKC 98-98 IND",
+         "pts_for": 20,
+         "pts_against": 10
+        }
+       ],
+       "clutch": [
+        "2:21 4th Q: Ajay Mitchell makes 28-foot three point jumper (Shai Gilgeous-Alexander assists) (OKC 114-116 IND)",
+        "2:01 4th Q: Obi Toppin makes alley oop layup (Kelly Oubre Jr. assists) (OKC 114-118 IND)",
+        "1:33 4th Q: Kenrich Williams makes 26-foot three point jumper (Ajay Mitchell assists) (OKC 117-118 IND)",
+        "1:11 4th Q: Pascal Siakam makes 19-foot pullup jump shot (Ivica Zubac assists) (OKC 117-120 IND)",
+        "59.4 4th Q: Shai Gilgeous-Alexander makes 19-foot step back jumpshot (OKC 119-120 IND)",
+        "45.3 4th Q: Pascal Siakam makes 26-foot three point jumper (Andrew Nembhard assists) (OKC 119-123 IND)",
+        "40.6 4th Q: Shai Gilgeous-Alexander makes free throw 1 of 2 (OKC 120-123 IND)",
+        "7.4 4th Q: Ivica Zubac makes running dunk (Andrew Nembhard assists) (OKC 120-125 IND)"
+       ],
+       "leaders": [
+        "Shai Gilgeous-Alexander (OKC): 38 pts, 5 reb, 7 ast, 4-10 3PT in 38 min",
+        "Kenrich Williams (OKC): 20 pts, 9 reb, 2 ast, 4-6 3PT in 26 min",
+        "Pascal Siakam (IND): 20 pts, 8 reb, 5 ast, 2-5 3PT in 35 min",
+        "Ivica Zubac (IND): 14 pts, 15 reb, 1 ast, 0-0 3PT in 26 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0,
+          "pf": 3,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 5,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 3,
+          "fgm": 2
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 10,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 2,
+          "pf": 0,
+          "fga": 7,
+          "fgm": 4
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 5,
+          "reb": 2,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 2,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "2:00 2nd Q",
+         "10:42 3rd Q",
+         "5:32 3rd Q",
+         "5:28 4th Q"
+        ],
+        "box": {
+         "id": "3133603",
+         "name": "Kelly Oubre Jr.",
+         "team": "IND",
+         "min": "28",
+         "pts": 20,
+         "reb": 4,
+         "ast": 2,
+         "3pt": "4-7",
+         "fg": "8-13",
+         "pf": "2",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: OKC 51-56 IND, IND up 5.",
+        "The 2nd quarter decided the most: IND won it 29-24.",
+        "Largest leads: OKC 7 (6:01 1st Q), IND 13 (10:08 3rd Q). 1 lead changes, 3 ties.",
+        "Momentum swing: IND outscored them 22-7 in 4.7 minutes (6:01 1st Q to 1:21 1st Q), moving it from OKC 12-5 IND to OKC 19-27 IND.",
+        "Momentum swing: OKC outscored them 20-10 in 6.2 minutes (3:29 3rd Q to 9:19 4th Q), moving it from OKC 78-88 IND to OKC 98-98 IND.",
+        "IND went on a 12-0 run (3:10 1st Q to 1:21 1st Q), making it OKC 19-27 IND.",
+        "OKC went on a 8-0 run (1:02 1st Q to 1.2 1st Q), making it OKC 27-27 IND.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Kelly Oubre Jr. by period (TPM): Q1 0, Q2 1, Q3 2, Q4 1.",
+        "He went over 1.5 in Q3.",
+        "Foul trouble: 3 fouls by the end of Q1, which cuts minutes.",
+        "Threes made at: 2:00 2nd Q, 10:42 3rd Q, 5:32 3rd Q, 5:28 4th Q."
+       ],
+       "espn_id": "401910038",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910038"
+      }
+     ]
     }
    }
   ],
@@ -21307,9 +21535,9 @@
    "clv_gate": false
   },
   "matchup_under": {
-   "bets": 47,
-   "staked": 235.0,
-   "profit": -101.65,
+   "bets": 48,
+   "staked": 240.0,
+   "profit": -106.65,
    "clv_n": 28,
    "clv_sum": -0.8301100000000006,
    "tags": {
@@ -21324,9 +21552,9 @@
      "lost": 0
     },
     "matchup-read-right": {
-     "n": 22,
+     "n": 23,
      "won": 7,
-     "lost": 15
+     "lost": 16
     },
     "matchup-read-wrong": {
      "n": 20,
@@ -21344,9 +21572,9 @@
      "lost": 4
     },
     "model-miss": {
-     "n": 24,
+     "n": 25,
      "won": 0,
-     "lost": 24
+     "lost": 25
     },
     "minutes-long": {
      "n": 20,
@@ -21371,9 +21599,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-23T07:00:27Z",
-   "bets": 68.0,
-   "staked": 361.16999999999996,
-   "profit": -97.92
+   "bets": 69.0,
+   "staked": 366.16999999999996,
+   "profit": -102.92
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-23T07:00:27Z",
@@ -21602,16 +21830,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T16:00:39Z",
-   "kind": "result",
-   "text": "LOST -$15.38: Bradley Braves @ -263 (FanDuel) \u2014 LOST: Bradley Braves lost by 5 [favorite-upset, lost-closing-line]"
-  },
-  {
-   "ts": "2026-11-19T16:00:39Z",
-   "kind": "result",
-   "text": "WON +$15.57: Fort Wayne Mastodons @ +275 (BetRivers) \u2014 WON: Fort Wayne Mastodons won by 5 [beat-closing-line, upset-hit]"
-  },
   {
    "ts": "2026-11-19T16:00:45Z",
    "kind": "focus",
@@ -23101,6 +23319,16 @@
    "ts": "2026-11-24T03:00:47Z",
    "kind": "research",
    "text": "Research refresh for Mon Nov 23: 10 games, 244 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-24T04:12:40Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Kelly Oubre Jr. Under 1.5 @ +116 (DraftKings) \u2014 LOST: 4 threes vs Under 1.5 [matchup-read-right, model-miss]"
+  },
+  {
+   "ts": "2026-11-24T04:12:50Z",
+   "kind": "props",
+   "text": "No NBA games left to bet today."
   }
  ],
  "learned_ids": [
@@ -23194,26 +23422,27 @@
   "4e2c66c6",
   "597a5d5f",
   "01af6e35",
-  "2fa804d6"
+  "2fa804d6",
+  "e1504484"
  ],
  "strategist": null,
- "updated": "2026-11-24T04:00:32Z",
+ "updated": "2026-11-24T04:12:51Z",
  "stats": {
-  "bets": 91,
+  "bets": 92,
   "won": 30,
-  "lost": 59,
+  "lost": 60,
   "shop_n": 33,
   "shop_avg": 0.0667,
   "push": 2,
-  "staked": 517.57,
-  "profit": -140.99,
-  "roi": -0.2724,
+  "staked": 522.57,
+  "profit": -145.99,
+  "roi": -0.2794,
   "clv": -0.0046,
   "clv_n": 70,
-  "clv_no_close": 22,
+  "clv_no_close": 23,
   "close_mins_median": 4,
-  "open": 3,
-  "equity": 50.85
+  "open": 2,
+  "equity": 45.85
  },
  "weights": {
   "value_fav": 0.842,
@@ -23269,15 +23498,15 @@
     "paused": false
    },
    "matchup_under": {
-    "bets": 13,
+    "bets": 14,
     "won": 1,
-    "lost": 12,
+    "lost": 13,
     "push": 0,
-    "staked": 65.0,
-    "profit": -55.0,
-    "roi": -0.8462,
+    "staked": 70.0,
+    "profit": -60.0,
+    "roi": -0.8571,
     "clv": null,
-    "open": 1,
+    "open": 0,
     "paused": true
    },
    "value_dog": {
@@ -23331,15 +23560,15 @@
     "paused": false
    },
    "matchup_under": {
-    "bets": 47,
+    "bets": 48,
     "won": 13,
-    "lost": 32,
+    "lost": 33,
     "push": 2,
-    "staked": 235.0,
-    "profit": -101.65,
-    "roi": -0.4326,
+    "staked": 240.0,
+    "profit": -106.65,
+    "roi": -0.4444,
     "clv": -0.0296,
-    "open": 1,
+    "open": 0,
     "paused": true
    },
    "value_dog": {
