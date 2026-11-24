@@ -628,7 +628,7 @@
     "now": 1.5,
     "kalshi": 0.375
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-23T11:45:26Z",
     "edition": "morning",
@@ -647,7 +647,7 @@
    },
    "first_seen": "2026-11-23T11:45:26Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "p|4601023|pts|Under": {
    "key": "p|4601023|pts|Under",
@@ -1627,15 +1627,15 @@
    "start": "2026-11-24T01:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.83,
-   "am": -120,
-   "conv": 33,
+   "dec": 2,
+   "am": 100,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.534,
-   "p_sim": 0.503,
-   "p_mkt": 0.515,
-   "p_kalshi": 0.52,
-   "ev": -0.022,
+   "p": 0.484,
+   "p_sim": 0.535,
+   "p_mkt": 0.471,
+   "p_kalshi": null,
+   "ev": -0.032,
    "verdict": "Pass: recent form and projection agree; the main risk is similar players.",
    "home": "NO",
    "away": "PHX",
@@ -1645,10 +1645,10 @@
    "opp": "NO",
    "stat": "pts",
    "proj": 9.8,
-   "sim": 10.8,
-   "ob_ind": 10.5,
+   "sim": 10.3,
+   "ob_ind": 9.5,
    "avg10": 10.7,
-   "minutes": 24.3,
+   "minutes": 23.8,
    "for": [
     {
      "tag": "projection",
@@ -1686,7 +1686,7 @@
     },
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 27.7 minutes in the games he went over vs 23.3 otherwise. He's projected for 24.3 tonight.",
+     "t": "It misses when he plays long: 27.7 minutes in the games he went over vs 23.3 otherwise. He's projected for 23.8 tonight.",
      "rec": [
       1213,
       1138
@@ -1702,20 +1702,12 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.873,
-    "floor_am": -115,
+    "floor_dec": 2.066,
+    "floor_am": 107,
     "line": null,
     "next": 9.5
    },
    "watch": [
-    {
-     "pid": "4395628",
-     "name": "Zion Williamson",
-     "team": "NO",
-     "status": "Probable",
-     "self": false,
-     "min": 29.2
-    },
     {
      "pid": "3907497",
      "name": "Dejounte Murray",
@@ -1727,14 +1719,13 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212115",
-    "A change in Zion Williamson (probable): the model re-prices on the next run",
+    "The price at 10.5 going past +107",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.52
+    "kalshi": null
    },
    "started": false,
    "published": {
@@ -1754,11 +1745,8 @@
     }
    },
    "first_seen": "2026-11-23T15:16:35Z",
-   "removed": {
-    "at": "2026-11-23T21:31:35Z",
-    "why": "no longer +EV at tonight's line (10.5 at -111)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4591725|pts|Under": {
    "key": "p|4591725|pts|Under",
@@ -2641,7 +2629,7 @@
    "p": 0.475,
    "p_sim": 0.588,
    "p_mkt": 0.459,
-   "p_kalshi": 0.44,
+   "p_kalshi": 0.425,
    "ev": -0.032,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
@@ -2772,7 +2760,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.44
+    "kalshi": 0.425
    },
    "started": false,
    "published": {
@@ -3404,8 +3392,11 @@
     }
    },
    "first_seen": "2026-11-24T00:31:32Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T01:01:23Z",
+    "why": "no longer +EV at tonight's line (8.5 at -123)"
+   },
+   "status": "Removed"
   },
   "p|4395724|tpm|Over": {
    "key": "p|4395724|tpm|Over",
@@ -3540,7 +3531,7 @@
     "now": 2.5,
     "kalshi": 0.52
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-24T00:31:32Z",
     "edition": "update",
@@ -3559,7 +3550,7 @@
    },
    "first_seen": "2026-11-24T00:31:32Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|5149115|pts|Under": {
    "key": "p|5149115|pts|Under",
@@ -3694,7 +3685,7 @@
     "now": 9.5,
     "kalshi": 0.535
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-24T00:31:32Z",
     "edition": "update",
@@ -3713,7 +3704,7 @@
    },
    "first_seen": "2026-11-24T00:31:32Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   }
  },
  "leans": {
@@ -4332,7 +4323,7 @@
     "now": 10.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-23T11:45:26Z",
     "edition": "morning",
@@ -4351,7 +4342,7 @@
    },
    "first_seen": "2026-11-23T11:45:26Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "g|401910044|total|Over": {
    "key": "g|401910044|total|Over",
@@ -6589,6 +6580,27 @@
    "kind": "removed",
    "text": "Removed: Devin Vassell Under 13.5 points \u2014 no longer +EV at tonight's line (13.5 at -105)",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T01:01:23Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Collin Gillespie Under 10.5 points at +100",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T01:01:23Z",
+   "key": "p|4278585|pts|Under",
+   "kind": "line",
+   "text": "Collin Gillespie: line 10.5 at \u2212120 \u2192 10.5 at +100",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T01:01:23Z",
+   "key": "p|4683747|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jaylon Tyson Under 8.5 points \u2014 no longer +EV at tonight's line (8.5 at -123)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -6683,14 +6695,9 @@
  "alerts": 6,
  "slate": {
   "games": 10,
-  "to_tip": 8,
+  "to_tip": 5,
   "first": "2026-11-24T00:00Z",
   "questionable": [
-   {
-    "name": "Zion Williamson",
-    "team": "NO",
-    "status": "Prob"
-   },
    {
     "name": "Victor Wembanyama",
     "team": "SA",
@@ -6711,5 +6718,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-24T00:45:35Z"
+ "updated": "2026-11-24T01:01:23Z"
 }
