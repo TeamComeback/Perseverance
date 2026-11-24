@@ -34,3 +34,24 @@ def test_scorecard_current_run_and_all_runs():
     assert s["run"] == 3 and set(s["current"]) == {"value_dog", "arb"} and s["all"]["value_dog"]["bets"] == 2
     assert s["current"]["value_dog"]["roi"] == 1.2 and s["current"]["value_dog"]["paused"]
     assert s["current"]["arb"]["open"] == 1 and s["current"]["arb"]["roi"] is None
+
+
+def test_out_of_funds_loses_run_now_and_old_bets_grade_under_old_run():
+    book = bk.new_book("T", run=4)
+    book["cash"] = 0.67
+    _bet(book, "arb", 5.0, "open")
+    _bet(book, "arb", 10.0, "open")
+    r = bk.check_race(book, "T")
+    assert r["result"] == "busted" and r["loss"] and r["open_at_end"] == 2 and r["final"] == 15.67
+    assert book["run"] == 5 and book["cash"] == 100.0 and bk.equity(book) == 100.0      # new run is clean
+    old = book["bets"][0]
+    old["legs"][0]["result"] = "win"
+    assert bk.settle(book, old)
+    assert book["cash"] == 100.0 and book["runs"][0]["final"] == 20.67 and book["runs"][0]["late"]   # credited to run 4 only
+
+
+def test_owner_reset_ends_run_as_loss():
+    book = bk.new_book("T", run=1)
+    _bet(book, "arb", 5.0, "open")
+    r = bk.check_race(book, "T", force="ended")
+    assert r["result"] == "ended" and r["loss"] and book["run"] == 2 and book["cash"] == 100.0

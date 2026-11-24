@@ -758,6 +758,22 @@ def refresh_issue(num):
     store.gh_close(num)
 
 
+def reset_issue(num):
+    """You tapped "End the AI's run": the dashboard opened a "Reset: agent" issue. The agent's run is lost now, marked as
+    ended by you, and the next run starts at $100. Open bets stay in the old run and grade there."""
+    state, manual = load_all()
+    book = state["book"]
+    if book.get("wind_down"):
+        book.pop("wind_down", None)
+    r = bk.check_race(book, "Perseverance", force="ended")
+    brain.note(state, "race", f"Run #{r['run']} ended by you at ${r['final']:.2f} (counted as a loss). Run #{book['run']} "
+                              f"starts at ${config.START_BANKROLL:.0f}; {r['open_at_end']} open bet(s) finish under the old run.")
+    store.save("state.json", state)
+    store.gh_comment(num, f"Run #{r['run']} is over (counted as a loss, final ${r['final']:.2f}). Run #{book['run']} "
+                          f"starts at ${config.START_BANKROLL:.0f}. Reload the dashboard.")
+    store.gh_close(num)
+
+
 def manual_issue():
     ev = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
     issue = ev["issue"]
@@ -770,6 +786,10 @@ def manual_issue():
         if "comment" not in ev:
             from . import convswitch
             convswitch.apply_issue(num, issue.get("title", ""))
+        return
+    if issue.get("title", "").lower().startswith("reset"):
+        if "comment" not in ev:
+            reset_issue(num)
         return
     if issue.get("title", "").lower().startswith("save"):
         saved.from_issue(ev)

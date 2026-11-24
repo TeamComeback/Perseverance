@@ -17,7 +17,7 @@ jobs:
   log:
     # Only bet and saved-prop issues, and only from people with access to the repo.
     if: >-
-      (startsWith(github.event.issue.title, 'Bet') || startsWith(github.event.issue.title, 'Save') || startsWith(github.event.issue.title, 'Refresh') || startsWith(github.event.issue.title, 'Switch')) &&
+      (startsWith(github.event.issue.title, 'Bet') || startsWith(github.event.issue.title, 'Save') || startsWith(github.event.issue.title, 'Refresh') || startsWith(github.event.issue.title, 'Switch') || startsWith(github.event.issue.title, 'Reset')) &&
       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
         github.event.comment.author_association || github.event.issue.author_association)
     runs-on: ubuntu-latest
