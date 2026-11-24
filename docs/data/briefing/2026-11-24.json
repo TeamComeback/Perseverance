@@ -155,8 +155,11 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T20:30:55Z",
+    "why": "no longer +EV at tonight's line (16.5 at -118)"
+   },
+   "status": "Removed"
   },
   "p|3064290|pts|Under": {
    "key": "p|3064290|pts|Under",
@@ -169,13 +172,13 @@
    "point": 13.5,
    "dec": 1.89,
    "am": -112,
-   "conv": 29,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.51,
+   "p": 0.509,
    "p_sim": 0.549,
    "p_mkt": 0.497,
-   "p_kalshi": 0.5,
-   "ev": -0.035,
+   "p_kalshi": 0.504,
+   "ev": -0.038,
    "verdict": "Pass: recent form and projection agree; the main risk is model record.",
    "home": "DEN",
    "away": "DAL",
@@ -242,7 +245,7 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.961,
+    "floor_dec": 1.965,
     "floor_am": -104,
     "line": null,
     "next": 12.5
@@ -256,7 +259,7 @@
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": 0.5
+    "kalshi": 0.504
    },
    "started": false,
    "published": {
@@ -772,7 +775,7 @@
    "p": 0.531,
    "p_sim": 0.544,
    "p_mkt": 0.517,
-   "p_kalshi": 0.53,
+   "p_kalshi": 0.527,
    "ev": -0.034,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is minutes.",
    "home": "WSH",
@@ -878,7 +881,7 @@
    "market": {
     "open": 14.5,
     "now": 15.5,
-    "kalshi": 0.53
+    "kalshi": 0.527
    },
    "started": false,
    "published": {
@@ -1052,15 +1055,15 @@
    "start": "2026-11-25T01:00Z",
    "side": "Under",
    "point": 13.5,
-   "dec": 1.8,
-   "am": -125,
-   "conv": 29,
+   "dec": 1.87,
+   "am": -115,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.537,
+   "p": 0.515,
    "p_sim": 0.607,
-   "p_mkt": 0.524,
-   "p_kalshi": null,
-   "ev": -0.033,
+   "p_mkt": 0.503,
+   "p_kalshi": 0.524,
+   "ev": -0.038,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "WSH",
    "away": "BOS",
@@ -1143,21 +1146,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.862,
-    "floor_am": -116,
-    "line": 13.5,
+    "floor_dec": 1.942,
+    "floor_am": -106,
+    "line": null,
     "next": 12.5
    },
    "watch": [],
    "kill": [
     "The line reaching 12.5",
-    "The price at 13.5 going past \u2212116",
+    "The price at 13.5 going past \u2212106",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 12.5,
     "now": 13.5,
-    "kalshi": null
+    "kalshi": 0.524
    },
    "started": false,
    "published": {
@@ -1177,11 +1180,8 @@
     }
    },
    "first_seen": "2026-11-24T15:30:59Z",
-   "removed": {
-    "at": "2026-11-24T16:45:53Z",
-    "why": "no longer +EV at tonight's line (12.5 at -101)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4432165|pts|Under": {
    "key": "p|4432165|pts|Under",
@@ -1194,13 +1194,13 @@
    "point": 10.5,
    "dec": 1.97,
    "am": -103,
-   "conv": 32,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.494,
+   "p": 0.492,
    "p_sim": 0.66,
    "p_mkt": 0.477,
-   "p_kalshi": 0.469,
-   "ev": -0.027,
+   "p_kalshi": 0.466,
+   "ev": -0.031,
    "verdict": "Pass: recent form and simulation agree; the main risk is model record.",
    "home": "ORL",
    "away": "DET",
@@ -1267,8 +1267,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.024,
-    "floor_am": 102,
+    "floor_dec": 2.033,
+    "floor_am": 103,
     "line": null,
     "next": 9.5
    },
@@ -1292,14 +1292,14 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past +102",
+    "The price at 10.5 going past +103",
     "A change in Cade Cunningham (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.469
+    "kalshi": 0.466
    },
    "started": false,
    "published": {
@@ -1367,7 +1367,7 @@
    "against": [
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 644-663 against DraftKings' spreads. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 652-665 against DraftKings' spreads. Treat this as a lean.",
      "rec": [
       259,
       264
@@ -1471,7 +1471,7 @@
     },
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 634-673 against DraftKings' totals. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 638-679 against DraftKings' totals. Treat this as a lean.",
      "rec": [
       259,
       264
@@ -1794,6 +1794,102 @@
     }
    },
    "first_seen": "2026-11-24T17:30:54Z",
+   "removed": {
+    "at": "2026-11-24T20:30:55Z",
+    "why": "confidence fell 25 \u2192 23"
+   },
+   "status": "Removed"
+  },
+  "g|401909316|spread|home": {
+   "key": "g|401909316|spread|home",
+   "kind": "spread",
+   "label": "DEN -8.5 (DAL @ DEN)",
+   "espn_id": "401909316",
+   "game": "DAL @ DEN",
+   "start": "2026-11-25T03:00Z",
+   "side": "home",
+   "point": -8.5,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 26,
+   "tier": "Pass",
+   "p": 0.484,
+   "p_sim": 0.495,
+   "p_mkt": 0.483,
+   "p_kalshi": null,
+   "ev": -0.046,
+   "verdict": "Pass: the price is the case; the main risk is simulation.",
+   "home": "DEN",
+   "away": "DAL",
+   "why": "Sim: DEN by 8.4 on average (DAL 112.2, DEN 120.5) \u00b7 DEN -8.5 covers in 50% of sims vs 48% DraftKings",
+   "for": [],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 652-665 against DraftKings' spreads. Treat this as a lean.",
+     "rec": [
+      259,
+      264
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "The simulation leans the other way (50%).",
+     "rec": [
+      479,
+      546
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it DEN by 3.7, 4.8 worse than this number.",
+     "rec": null
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.066,
+    "floor_am": 107,
+    "line": null,
+    "next": -9.5
+   },
+   "watch": [
+    {
+     "pid": "4278078",
+     "name": "P.J. Washington",
+     "team": "DAL",
+     "status": "Questionable",
+     "self": false,
+     "min": 24.8
+    }
+   ],
+   "kill": [
+    "The line reaching -9.5",
+    "The price at -8.5 going past +107",
+    "A change in P.J. Washington (questionable): the model re-prices on the next run"
+   ],
+   "market": {
+    "open": null,
+    "now": -8.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T20:30:55Z",
+    "edition": "update",
+    "point": -8.5,
+    "dec": 1.97,
+    "am": -103,
+    "conv": 26,
+    "tier": "Pass",
+    "p": 0.484,
+    "play_to": {
+     "floor_dec": 2.066,
+     "floor_am": 107,
+     "line": null,
+     "next": -9.5
+    }
+   },
+   "first_seen": "2026-11-24T20:30:55Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2176,6 +2272,41 @@
    "kind": "line",
    "text": "Wendell Carter Jr.: line 10.5 at +102 \u2192 10.5 at \u2212104 \u2014 past the play-to line; don't add at this number",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T20:30:55Z",
+   "key": "p|4066354|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Payton Pritchard Under 13.5 points at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T20:30:55Z",
+   "key": "p|4066354|pts|Under",
+   "kind": "line",
+   "text": "Payton Pritchard: line 13.5 at \u2212125 \u2192 13.5 at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T20:30:55Z",
+   "key": "p|5142718|pts|Under",
+   "kind": "removed",
+   "text": "Removed: AJ Dybantsa Under 15.5 points \u2014 no longer +EV at tonight's line (16.5 at -118)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T20:30:55Z",
+   "key": "g|401909316|spread|home",
+   "kind": "added",
+   "text": "Added: DEN -8.5 (DAL @ DEN) at \u2212103, conviction 26",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T20:30:55Z",
+   "key": "g|401909316|spread|away",
+   "kind": "removed",
+   "text": "Removed: DAL +8.5 (DAL @ DEN) \u2014 confidence fell 25 \u2192 23",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2288,5 +2419,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T20:15:34Z"
+ "updated": "2026-11-24T20:30:55Z"
 }
