@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 85.0,
+  "cash": 58.04,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -21674,13 +21674,15 @@
       "price": 1.77,
       "book": "fanatics",
       "fair_p": 0.6005,
-      "close_p": null,
+      "close_p": 0.6319,
       "result": null,
       "shop": {
        "median": 1.646,
        "gain": 0.0754,
        "n": 2
-      }
+      },
+      "close_at": "2026-11-24T21:45:28Z",
+      "close_mins": 1604
      }
     ],
     "dec": 1.77,
@@ -21715,13 +21717,15 @@
       "price": 7.847,
       "book": "kalshi",
       "fair_p": 0.1459,
-      "close_p": null,
+      "close_p": 0.1432,
       "result": null,
       "shop": {
        "median": 6.625,
        "gain": 0.1844,
        "n": 8
-      }
+      },
+      "close_at": "2026-11-24T21:45:28Z",
+      "close_mins": 134
      }
     ],
     "dec": 7.847,
@@ -21770,6 +21774,129 @@
     "ev": 0.0757,
     "p": 0.1537,
     "note": "7.6% edge vs 7-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "71cdaeb3",
+    "placed": "2026-11-24T21:45:28Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "482e1e1c8e5e977fcf7e2322241bb598",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-26T00:00:00Z",
+      "home": "UConn Huskies",
+      "away": "Duke Blue Devils",
+      "market": "h2h",
+      "outcome": "Duke Blue Devils",
+      "point": null,
+      "price": 2.3,
+      "book": "draftkings",
+      "fair_p": 0.4587,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 2.1,
+       "gain": 0.0952,
+       "n": 5
+      }
+     }
+    ],
+    "dec": 2.3,
+    "stake": 9.7,
+    "ev": 0.0158,
+    "p": 0.4417,
+    "note": "Arb: 1.58% locked across 2 books",
+    "group": "arb-482e1e1c8e",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "0cbf3379",
+    "placed": "2026-11-24T21:45:28Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "482e1e1c8e5e977fcf7e2322241bb598",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-26T00:00:00Z",
+      "home": "UConn Huskies",
+      "away": "Duke Blue Devils",
+      "market": "h2h",
+      "outcome": "UConn Huskies",
+      "point": null,
+      "price": 1.82,
+      "book": "fanduel",
+      "fair_p": 0.5547,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.76,
+       "gain": 0.0341,
+       "n": 5
+      }
+     }
+    ],
+    "dec": 1.82,
+    "stake": 12.26,
+    "ev": 0.0158,
+    "p": 0.5583,
+    "note": "Arb: 1.58% locked across 2 books",
+    "group": "arb-482e1e1c8e",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "c53bc86b",
+    "placed": "2026-11-24T21:45:28Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "836e49363e2e574ede8873b9e53cb5f7",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-25T21:30:00Z",
+      "home": "USC Trojans",
+      "away": "South Carolina Gamecocks",
+      "market": "h2h",
+      "outcome": "South Carolina Gamecocks",
+      "point": null,
+      "price": 5.5,
+      "book": "fanduel",
+      "fair_p": 0.1992,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 4.9,
+       "gain": 0.1224,
+       "n": 5
+      }
+     }
+    ],
+    "dec": 5.5,
+    "stake": 5.0,
+    "ev": 0.0956,
+    "p": 0.1992,
+    "note": "9.6% edge vs 5-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -22180,7 +22307,7 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-24T20:45:24Z",
+   "last_scanned": "2026-11-24T21:45:28Z",
    "bets": 7.0,
    "staked": 51.67,
    "profit": -4.580000000000001
@@ -22331,11 +22458,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T00:31:01Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.25% so I get enough bets to learn from."
-  },
   {
    "ts": "2026-11-20T01:04:19Z",
    "kind": "props",
@@ -23830,6 +23952,11 @@
    "ts": "2026-11-24T21:00:45Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 24: 3 games, 67 players projected, lineups for 3 games."
+  },
+  {
+   "ts": "2026-11-24T21:45:28Z",
+   "kind": "scan",
+   "text": "Scout: basketball_ncaab (92) for 3 credits. Placed 3: Duke Blue Devils @ +130 (DraftKings); UConn Huskies @ -122 (FanDuel); South Carolina Gamecocks @ +450 (FanDuel). Equity $100.00."
   }
  ],
  "learned_ids": [
@@ -23929,22 +24056,22 @@
   "c613bf8e"
  ],
  "strategist": null,
- "updated": "2026-11-24T21:30:28Z",
+ "updated": "2026-11-24T21:45:28Z",
  "stats": {
   "bets": 94,
   "won": 30,
   "lost": 62,
-  "shop_n": 36,
-  "shop_avg": 0.073,
+  "shop_n": 39,
+  "shop_avg": 0.0739,
   "push": 2,
   "staked": 532.57,
   "profit": -155.99,
   "roi": -0.2929,
-  "clv": -0.0046,
-  "clv_n": 70,
+  "clv": -0.0012,
+  "clv_n": 72,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 3,
+  "open": 6,
   "equity": 100.0
  },
  "weights": {
@@ -23960,11 +24087,11 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
   "current": {
-   "longshot": {
+   "arb": {
     "bets": 0,
     "won": 0,
     "lost": 0,
@@ -23976,6 +24103,18 @@
     "open": 2,
     "paused": false
    },
+   "longshot": {
+    "bets": 0,
+    "won": 0,
+    "lost": 0,
+    "push": 0,
+    "staked": 0,
+    "profit": 0,
+    "roi": null,
+    "clv": 0.1237,
+    "open": 3,
+    "paused": false
+   },
    "value_fav": {
     "bets": 0,
     "won": 0,
@@ -23984,7 +24123,7 @@
     "staked": 0,
     "profit": 0,
     "roi": null,
-    "clv": null,
+    "clv": 0.1185,
     "open": 1,
     "paused": false
    }
@@ -23999,7 +24138,7 @@
     "profit": 1.56,
     "roi": 0.0109,
     "clv": 0.0395,
-    "open": 0,
+    "open": 2,
     "paused": false
    },
    "longshot": {
@@ -24010,8 +24149,8 @@
     "staked": 30.0,
     "profit": -30.0,
     "roi": -1.0,
-    "clv": 0.032,
-    "open": 2,
+    "clv": 0.0451,
+    "open": 3,
     "paused": false
    },
    "matchup_over": {
@@ -24058,7 +24197,7 @@
     "staked": 5.0,
     "profit": -5.0,
     "roi": -1.0,
-    "clv": -0.0304,
+    "clv": 0.044,
     "open": 1,
     "paused": false
    }
