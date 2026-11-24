@@ -21700,7 +21700,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.076,
+  "prop_model_weight": 0.053,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -22208,26 +22208,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T22:38:17Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -0.9% over 62 legs, so the market is beating my picks. Raising the minimum edge to 11.0%."
-  },
-  {
-   "ts": "2026-11-19T22:38:22Z",
-   "kind": "scan",
-   "text": "Scanned icehockey_nhl (12), mma_mixed_martial_arts (4) for 4 credits. Nothing cleared the bar. Equity $101.11."
-  },
-  {
-   "ts": "2026-11-19T22:45:37Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-19T23:30:37Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.50% so I get enough bets to learn from."
-  },
   {
    "ts": "2026-11-19T23:45:43Z",
    "kind": "research",
@@ -23707,6 +23687,26 @@
    "ts": "2026-11-24T20:00:47Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 24: 3 games, 67 players projected, lineups for 3 games."
+  },
+  {
+   "ts": "2026-11-24T20:13:08Z",
+   "kind": "adapt",
+   "text": "Model vs market on 11695 graded lines: the 0% model blend scored best (log loss model 0.729, market 0.687). Moving the model's weight from 8% to 5%."
+  },
+  {
+   "ts": "2026-11-24T20:13:10Z",
+   "kind": "focus",
+   "text": "Prop prices start from the market; the model moves them in no stat yet (walk-forward test, 9,566 graded props)."
+  },
+  {
+   "ts": "2026-11-24T20:13:11Z",
+   "kind": "adapt",
+   "text": "Learning loop: AST raw projections ran +2.2% vs actual over 3086 player-games: level x0.982 (was x0.979); conviction factor 'bump' hurt by -4.0 pts of hit rate over 3173 plays: weight 0.73 -> 0.67."
+  },
+  {
+   "ts": "2026-11-24T20:13:11Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $100.00 (run #3), 30-62-2, ROI -29.3%, CLV -0.5%."
   }
  ],
  "learned_ids": [
@@ -23806,7 +23806,7 @@
   "c613bf8e"
  ],
  "strategist": null,
- "updated": "2026-11-24T20:01:07Z",
+ "updated": "2026-11-24T20:13:11Z",
  "stats": {
   "bets": 94,
   "won": 30,

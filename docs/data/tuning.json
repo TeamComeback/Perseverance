@@ -2,7 +2,7 @@
  "stat_factor": {
   "pts": 0.9656,
   "reb": 0.9683,
-  "ast": 0.9785,
+  "ast": 0.9821,
   "pra": 0.9713,
   "ra": 0.9763,
   "tpm": 1.0108
@@ -16,7 +16,7 @@
   "minutes": 1.05,
   "agree": 1.01,
   "rest": 1.33,
-  "bump": 0.73,
+  "bump": 0.67,
   "vegas": 1.16,
   "blowout": 1.06
  },
@@ -289,15 +289,36 @@
     "RA raw projections ran +3.0% vs actual over 2892 player-games: level x0.976 (was x0.945)",
     "starter minutes (raw) were off by +1.4 on average over 1496 player-games: correction -1.1 min (was -3.0)"
    ]
+  },
+  {
+   "ts": "2026-11-24T20:13:11Z",
+   "changes": [
+    "AST raw projections ran +2.2% vs actual over 3086 player-games: level x0.982 (was x0.979)",
+    "conviction factor 'bump' hurt by -4.0 pts of hit rate over 3173 plays: weight 0.73 -> 0.67"
+   ]
   }
  ],
- "updated": "2026-11-23T21:19:32Z",
+ "updated": "2026-11-24T20:13:11Z",
  "applied": {
   "2026-11-23": {
    "stat_factor": {
     "pts": 0.9656,
     "reb": 0.9683,
     "ast": 0.9785,
+    "pra": 0.9713,
+    "ra": 0.9763,
+    "tpm": 1.0108
+   },
+   "min_delta": {
+    "starter": -1.11,
+    "bench": -1.17
+   }
+  },
+  "2026-11-24": {
+   "stat_factor": {
+    "pts": 0.9656,
+    "reb": 0.9683,
+    "ast": 0.9821,
     "pra": 0.9713,
     "ra": 0.9763,
     "tpm": 1.0108
