@@ -21,6 +21,11 @@ def load_all():
         state["arms"].setdefault(k, brain._blank())
     for k, a in state["arms"].items():
         a["clv_gate"] = k in config.CLV_GATED
+    ask = config.END_RUNS.get(state["book"]["run"])
+    if ask and not state["book"].get("wind_down"):
+        bk.request_end(state["book"], ask)
+        brain.note(state, "race", f"Run #{state['book']['run']} is winding down: no new bets, open bets settle, then run "
+                                  f"#{state['book']['run'] + 1} starts at ${config.START_BANKROLL:.0f}.")
     manual = store.load("manual.json", None) or {"book": bk.new_book("Your book")}
     try:                                    # Backtester: closing prices bought from historical odds for past bets
         from . import backtest
@@ -42,6 +47,7 @@ def save_all(state, manual, budget=None):
     state["stats"] = bk.record_stats(state["book"])
     state["weights"] = {k: round(brain.arm_weight(v), 3) for k, v in state["arms"].items()}
     state["paused"] = [k for k, v in state["arms"].items() if brain.benched(v)]
+    state["scorecard"] = bk.playbook_scorecard(state["book"], state["paused"])
     manual["updated"] = state["updated"]
     manual["stats"] = bk.record_stats(manual["book"])
     store.save("state.json", state)

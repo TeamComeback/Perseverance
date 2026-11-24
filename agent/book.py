@@ -21,6 +21,8 @@ def equity(book):
 
 
 def place(book, legs, stake, playbook, ev=None, p=None, note="", group=None, source="agent", issue=None):
+    if book.get("wind_down"):          # run is being ended: open bets settle, nothing new is placed
+        return None
     stake = round(min(stake, book["cash"]), 2)
     if stake < config.MIN_STAKE:
         return None
@@ -123,26 +125,75 @@ def apply_scores(book, sport, games):
     return settled
 
 
+def request_end(book, note):
+    """End the current run once its open bets have settled (the owner's call, HQ item t20261123run3).
+    Nothing new is placed meanwhile, so the next run never inherits a stake from this one."""
+    book["wind_down"] = note
+    return book
+
+
+def run_summary(book, run):
+    """Record of one run, from its own bets: record, staked, profit, ROI and average closing-line value."""
+    mine = [b for b in book["bets"] if b["run"] == run]
+    settled = [b for b in mine if b["status"] in ("won", "lost", "push")]
+    staked = sum(b["stake"] for b in settled)
+    profit = sum(b["profit"] for b in settled)
+    clvs = [l["price"] * l["close_p"] - 1 for b in mine for l in b["legs"] if l.get("close_p")]
+    return {"bets": len(mine), "won": sum(b["status"] == "won" for b in settled),
+            "lost": sum(b["status"] == "lost" for b in settled),
+            "push": sum(b["status"] == "push" for b in settled), "staked": round(staked, 2),
+            "profit": round(profit, 2), "roi": round(profit / staked, 4) if staked else 0,
+            "clv": round(sum(clvs) / len(clvs), 4) if clvs else None}
+
+
 def check_race(book, label):
-    """Goal hit or busted? Archive the run and (optionally) start the next one."""
+    """Goal hit, busted or ended by the owner? Archive the run and (optionally) start the next one."""
     eq = equity(book)
     done = None
     if eq >= book["goal"] and not open_bets(book):
         done = "won"
     elif book["cash"] < config.BUST_LINE and not open_bets(book):
         done = "busted"
+    elif book.get("wind_down") and not open_bets(book):
+        done = "ended"
     if not done:
         return None
     summary = {"run": book["run"], "result": done, "started": book["started"],
                "ended": store.iso(store.now()), "final": eq, "peak": book["peak"],
-               "bets": sum(1 for b in book["bets"] if b["run"] == book["run"])}
+               **run_summary(book, book["run"])}
+    if book.get("wind_down"):
+        summary["note"] = book["wind_down"]
     book["runs"].append(summary)
+    book.pop("wind_down", None)
     if config.AUTO_RESTART:
         book.update(run=book["run"] + 1, cash=config.START_BANKROLL, peak=config.START_BANKROLL,
                     status="racing", started=store.iso(store.now()))
     else:
         book["status"] = done
     return summary
+
+
+def playbook_scorecard(book, paused=()):
+    """Settled bets grouped by playbook, for the current run and for all runs:
+    bets, record, staked, profit, ROI, average closing-line value, open count and whether it is paused."""
+    def rows(bets):
+        out = {}
+        for pb in sorted({b["playbook"] for b in bets}):
+            mine = [b for b in bets if b["playbook"] == pb]
+            settled = [b for b in mine if b["status"] in ("won", "lost", "push")]
+            staked = sum(b["stake"] for b in settled)
+            profit = sum(b["profit"] for b in settled)
+            clvs = [l["price"] * l["close_p"] - 1 for b in mine for l in b["legs"] if l.get("close_p")]
+            out[pb] = {"bets": len(settled), "won": sum(b["status"] == "won" for b in settled),
+                       "lost": sum(b["status"] == "lost" for b in settled),
+                       "push": sum(b["status"] == "push" for b in settled),
+                       "staked": round(staked, 2), "profit": round(profit, 2),
+                       "roi": round(profit / staked, 4) if staked else None,
+                       "clv": round(sum(clvs) / len(clvs), 4) if clvs else None,
+                       "open": len(mine) - len(settled), "paused": pb in paused}
+        return out
+    cur = [b for b in book["bets"] if b["run"] == book["run"]]
+    return {"run": book["run"], "current": rows(cur), "all": rows(book["bets"])}
 
 
 def record_stats(book):
