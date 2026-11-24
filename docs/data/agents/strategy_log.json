@@ -74,5 +74,16 @@
    }
   ],
   "summary": "The record is 88 bets, 28-58-2, -$145.39 (-29% ROI) with equity down to $46.45; overall CLV is -0.46% on 70 closes (the Backtester's leg-level view is -1.9% on 54), and matchup_under (47 bets, -$101.65, paused) still accounts for about 70% of the loss. I'm leaving prop_min_edge at 0.08 and prop_model_weight at 0.087: the prop edge buckets still show no CLV gradient (10%+ -3.8%, 6-10% -3.5%, under 3% -4.1%) even though moves toward the model rise with edge (63.8% vs 43.8%), and the model trails the market on log-loss in every stat (e.g. pra 0.7798 vs 0.6928 on 1837, ra 0.7288 vs 0.6878 on 1887). Every game-side playbook (arb 16 bets with +3.9% CLV on 14 closes, value_dog 11 paused, matchup_over 8, longshot 5, value_fav 1) is under 30 bets and stays untouched."
+ },
+ {
+  "at": "2026-11-24T10:13:47Z",
+  "proposals": [
+   {
+    "param": "prop_max_bets",
+    "value": 3,
+    "why": "Seventh night asking, direction unchanged: matchup_under is still the only playbook past 30 bets and slipped again to 48 bets and -$106.65 on $240 staked (was 47 and -$101.65), with -2.96% average CLV on 28 closes (Backtester leg view -2.96% on 28) and about 68% of the total -$155.99 loss, while the anchor now lets the model move prop prices in no stat (walk-forward on 8,876 graded props), so trimming prop volume from 4 to 3 per run is a cheap backstop as run #3 starts from $100."
+   }
+  ],
+  "summary": "The record is 94 bets, 30-62-2, -$155.99 (-29.3% ROI); run #2 ended at $35.85 and run #3 restarts at $100, with overall CLV still slightly negative (-0.46% on 70 closes; Backtester leg view -1.9% on 54). The model trails the market on log-loss in every prop stat (e.g. pra 0.7803 vs 0.6928 on 1,969; reb, the only 'watch' stat, 0.7100 vs 0.6816 with w 0.15), and the prop edge buckets show no CLV gradient (10%+ -3.8%, under 3% -4.1%), so I'm leaving prop_min_edge and prop_model_weight alone since the anchor governs props anyway. Every game-side playbook is under 30 bets (arb 16 with +3.9% CLV on 14, value_dog 12 paused, matchup_over 11 at +$19.20 but -0.9% CLV, longshot 6, value_fav 1), so they stay untouched; kelly_mult is already at its 0.05 floor."
  }
 ]
