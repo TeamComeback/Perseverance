@@ -175,11 +175,11 @@
    "conv": 28,
    "tier": "Pass",
    "p": 0.509,
-   "p_sim": 0.549,
+   "p_sim": 0.562,
    "p_mkt": 0.497,
    "p_kalshi": 0.504,
    "ev": -0.038,
-   "verdict": "Pass: recent form and projection agree; the main risk is model record.",
+   "verdict": "Pass: recent form and simulation agree; the main risk is model record.",
    "home": "DEN",
    "away": "DAL",
    "pid": "3064290",
@@ -188,7 +188,7 @@
    "opp": "DAL",
    "stat": "pts",
    "proj": 12.5,
-   "sim": 13.1,
+   "sim": 12.9,
    "ob_ind": 12.5,
    "avg10": 11.7,
    "minutes": 29.3,
@@ -199,6 +199,14 @@
      "rec": [
       570,
       498
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games (sim average 12.9).",
+     "rec": [
+      1491,
+      1312
      ]
     },
     {
@@ -218,16 +226,8 @@
      ]
     },
     {
-     "tag": "Vegas",
-     "t": "Vegas team total -3 vs model.",
-     "rec": [
-      207,
-      189
-     ]
-    },
-    {
      "tag": "blowout",
-     "t": "Blowout risk: 43% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 44% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       908,
       854
@@ -610,9 +610,9 @@
    "conv": 30,
    "tier": "Pass",
    "p": 0.494,
-   "p_sim": 0.531,
+   "p_sim": 0.521,
    "p_mkt": 0.48,
-   "p_kalshi": 0.493,
+   "p_kalshi": 0.492,
    "ev": -0.033,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is tonight's spot.",
    "home": "ORL",
@@ -623,7 +623,7 @@
    "opp": "DET",
    "stat": "pts",
    "proj": 10.2,
-   "sim": 10.4,
+   "sim": 10.5,
    "ob_ind": 10.5,
    "avg10": 12.3,
    "minutes": 29.3,
@@ -654,7 +654,7 @@
     },
     {
      "tag": "matchup strength",
-     "t": "Matchup strength 4 of 5, and the matchup points under.",
+     "t": "Matchup strength 5 of 5, and the matchup points under.",
      "rec": [
       210,
       208
@@ -736,7 +736,7 @@
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.493
+    "kalshi": 0.492
    },
    "started": false,
    "published": {
@@ -901,28 +901,31 @@
     }
    },
    "first_seen": "2026-11-24T14:15:46Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T21:01:05Z",
+    "why": "no longer +EV at tonight's line (15.5 at -120)"
+   },
+   "status": "Removed"
   },
   "p|5041939|pts|Under": {
    "key": "p|5041939|pts|Under",
    "kind": "prop",
-   "label": "Cooper Flagg Under 23.5 points",
+   "label": "Cooper Flagg Under 24.5 points",
    "espn_id": "401909316",
    "game": "DAL @ DEN",
    "start": "2026-11-25T03:00Z",
    "side": "Under",
-   "point": 23.5,
-   "dec": 1.97,
-   "am": -103,
-   "conv": 30,
+   "point": 24.5,
+   "dec": 1.91,
+   "am": -110,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.491,
-   "p_sim": 0.583,
-   "p_mkt": 0.477,
-   "p_kalshi": 0.486,
-   "ev": -0.034,
-   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
+   "p": 0.504,
+   "p_sim": 0.639,
+   "p_mkt": 0.492,
+   "p_kalshi": 0.505,
+   "ev": -0.038,
+   "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
    "home": "DEN",
    "away": "DAL",
    "pid": "5041939",
@@ -937,16 +940,32 @@
    "minutes": 31.6,
    "for": [
     {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 22.5 in 6 of his last 10.",
+     "rec": [
+      366,
+      321
+     ]
+    },
+    {
      "tag": "simulation",
-     "t": "Goes under in 58% of 10,000 simulated games (sim average 22.3).",
+     "t": "Goes under in 64% of 10,000 simulated games (sim average 22.3).",
      "rec": [
       1491,
       1312
      ]
     },
     {
+     "tag": "projection",
+     "t": "Model projects 22.8 points against a line of 24.5.",
+     "rec": [
+      1547,
+      1390
+     ]
+    },
+    {
      "tag": "recent form",
-     "t": "Stayed under 23.5 in 6 of his last 10 (3 of the last 5).",
+     "t": "Stayed under 24.5 in 6 of his last 10 (3 of the last 5).",
      "rec": [
       1347,
       1220
@@ -954,7 +973,7 @@
     },
     {
      "tag": "blowout",
-     "t": "Blowout risk: 43% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 44% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       908,
       854
@@ -987,19 +1006,19 @@
      ]
     },
     {
-     "tag": "tonight's spot",
-     "t": "Against DEN: 1 of 4 under 23.5 (25% vs 50% lately).",
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
      "rec": [
-      786,
-      773
+      259,
+      264
      ]
     }
    ],
    "play_to": {
-    "floor_dec": 2.037,
-    "floor_am": 104,
+    "floor_dec": 1.984,
+    "floor_am": -102,
     "line": null,
-    "next": 22.5
+    "next": 23.5
    },
    "watch": [
     {
@@ -1012,15 +1031,15 @@
     }
    ],
    "kill": [
-    "The line reaching 22.5",
-    "The price at 23.5 going past +104",
+    "The line reaching 23.5",
+    "The price at 24.5 going past \u2212102",
     "A change in P.J. Washington (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 23.5,
-    "now": 23.5,
-    "kalshi": 0.486
+    "now": 24.5,
+    "kalshi": 0.505
    },
    "started": false,
    "published": {
@@ -1040,11 +1059,8 @@
     }
    },
    "first_seen": "2026-11-24T14:15:46Z",
-   "removed": {
-    "at": "2026-11-24T18:00:56Z",
-    "why": "no longer +EV at tonight's line (24.5 at -125)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4066354|pts|Under": {
    "key": "p|4066354|pts|Under",
@@ -1060,9 +1076,9 @@
    "conv": 28,
    "tier": "Pass",
    "p": 0.515,
-   "p_sim": 0.607,
+   "p_sim": 0.573,
    "p_mkt": 0.503,
-   "p_kalshi": 0.524,
+   "p_kalshi": 0.519,
    "ev": -0.038,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "WSH",
@@ -1073,14 +1089,14 @@
    "opp": "WSH",
    "stat": "pts",
    "proj": 13.1,
-   "sim": 12.4,
+   "sim": 12.8,
    "ob_ind": 12.5,
    "avg10": 12.6,
    "minutes": 27.5,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 61% of 10,000 simulated games (sim average 12.4).",
+     "t": "Goes under in 57% of 10,000 simulated games (sim average 12.8).",
      "rec": [
       1491,
       1312
@@ -1096,7 +1112,7 @@
     },
     {
      "tag": "Vegas",
-     "t": "Vegas team total -6 vs model.",
+     "t": "Vegas team total -5 vs model.",
      "rec": [
       207,
       189
@@ -1104,7 +1120,7 @@
     },
     {
      "tag": "blowout",
-     "t": "Blowout risk: 46% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 45% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       908,
       854
@@ -1160,7 +1176,7 @@
    "market": {
     "open": 12.5,
     "now": 13.5,
-    "kalshi": 0.524
+    "kalshi": 0.519
    },
    "started": false,
    "published": {
@@ -1319,6 +1335,172 @@
     }
    },
    "first_seen": "2026-11-24T17:30:54Z",
+   "removed": {
+    "at": "2026-11-24T21:01:05Z",
+    "why": "no longer +EV at tonight's line (10.5 at -103)"
+   },
+   "status": "Removed"
+  },
+  "p|4066320|tpm|Over": {
+   "key": "p|4066320|tpm|Over",
+   "kind": "prop",
+   "label": "Desmond Bane Over 3.5 threes",
+   "espn_id": "401909314",
+   "game": "DET @ ORL",
+   "start": "2026-11-25T00:00Z",
+   "side": "Over",
+   "point": 3.5,
+   "dec": 2.17,
+   "am": 117,
+   "conv": 30,
+   "tier": "Pass",
+   "p": 0.444,
+   "p_sim": 0.49,
+   "p_mkt": 0.43,
+   "p_kalshi": 0.455,
+   "ev": -0.036,
+   "verdict": "Pass: recent form and history agree; the main risk is tonight's spot.",
+   "home": "ORL",
+   "away": "DET",
+   "pid": "4066320",
+   "name": "Desmond Bane",
+   "team": "ORL",
+   "opp": "DET",
+   "stat": "tpm",
+   "proj": 3.8,
+   "sim": 3.7,
+   "ob_ind": 3.5,
+   "avg10": 4.7,
+   "minutes": 33.3,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 4.7 threes over his last 10; the line is 3.5.",
+     "rec": [
+      570,
+      498
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 3.8 threes against a line of 3.5.",
+     "rec": [
+      1547,
+      1390
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Cleared 3.5 in 7 of his last 10 (3 of the last 5).",
+     "rec": [
+      1347,
+      1220
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs DET: 2.8 threes/g in 11 games (+8%).",
+     "rec": [
+      409,
+      400
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone over his posted line in 6 of 8 tracked games.",
+     "rec": [
+      238,
+      233
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "matchup",
+     "t": "DET gives shooting guards -7% threes vs their norm (#3 toughest of 30).",
+     "rec": [
+      1058,
+      977
+     ]
+    },
+    {
+     "tag": "thin margin",
+     "t": "Thin margin: 5 of his last 10 finished within 1 of this number, so it often comes down to one play.",
+     "rec": [
+      595,
+      567
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against DET: 5 of 13 over 3.5 (38% vs 60% lately).",
+     "rec": [
+      786,
+      773
+     ]
+    },
+    {
+     "tag": "market",
+     "t": "You're betting against the market: DraftKings' price says this happens 43% of the time.",
+     "rec": [
+      109,
+      141
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.252,
+    "floor_am": 125,
+    "line": null,
+    "next": 4.5
+   },
+   "watch": [
+    {
+     "pid": "4432166",
+     "name": "Cade Cunningham",
+     "team": "DET",
+     "status": "Probable",
+     "self": false,
+     "min": 35.3
+    },
+    {
+     "pid": "3157465",
+     "name": "Duncan Robinson",
+     "team": "DET",
+     "status": "Out",
+     "self": false,
+     "min": 29.6
+    }
+   ],
+   "kill": [
+    "The line reaching 4.5",
+    "The price at 3.5 going past +125",
+    "A change in Cade Cunningham (probable): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 3.5,
+    "now": 3.5,
+    "kalshi": 0.455
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T21:01:05Z",
+    "edition": "update",
+    "point": 3.5,
+    "dec": 2.17,
+    "am": 117,
+    "conv": 30,
+    "tier": "Pass",
+    "p": 0.444,
+    "play_to": {
+     "floor_dec": 2.252,
+     "floor_am": 125,
+     "line": null,
+     "next": 4.5
+    }
+   },
+   "first_seen": "2026-11-24T21:01:05Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -1426,8 +1608,11 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T21:01:05Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   },
   "g|401909315|total|Over": {
    "key": "g|401909315|total|Over",
@@ -1440,18 +1625,27 @@
    "point": 218.5,
    "dec": 1.89,
    "am": -112,
-   "conv": 27,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.508,
-   "p_sim": 0.542,
+   "p": 0.514,
+   "p_sim": 0.601,
    "p_mkt": 0.504,
    "p_kalshi": null,
-   "ev": -0.04,
-   "verdict": "Pass: the price is the case; the main risk is line move.",
+   "ev": -0.029,
+   "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "WSH",
    "away": "BOS",
-   "why": "Sim total 220.1 (after a learned +1.6 correction) vs 218.5 \u00b7 over in 54% of sims vs 50% DraftKings",
-   "for": [],
+   "why": "Sim total 222.7 (after a learned +1.6 correction) vs 218.5 \u00b7 over in 60% of sims vs 50% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes over in 60% of 10,000 simulated games.",
+     "rec": [
+      1491,
+      1312
+     ]
+    }
+   ],
    "against": [
     {
      "tag": "line move",
@@ -1463,7 +1657,7 @@
     },
     {
      "tag": "blowout",
-     "t": "46% of sims are blowouts, and benches slow the scoring late.",
+     "t": "45% of sims are blowouts, and benches slow the scoring late.",
      "rec": [
       435,
       372
@@ -1479,15 +1673,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.969,
-    "floor_am": -103,
+    "floor_dec": 1.946,
+    "floor_am": -106,
     "line": null,
     "next": 219.5
    },
    "watch": [],
    "kill": [
     "The line reaching 219.5",
-    "The price at 218.5 going past \u2212103"
+    "The price at 218.5 going past \u2212106"
    ],
    "market": {
     "open": null,
@@ -1811,17 +2005,17 @@
    "point": -8.5,
    "dec": 1.97,
    "am": -103,
-   "conv": 26,
+   "conv": 27,
    "tier": "Pass",
-   "p": 0.484,
-   "p_sim": 0.495,
+   "p": 0.486,
+   "p_sim": 0.516,
    "p_mkt": 0.483,
    "p_kalshi": null,
-   "ev": -0.046,
-   "verdict": "Pass: the price is the case; the main risk is simulation.",
+   "ev": -0.042,
+   "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "DEN",
    "away": "DAL",
-   "why": "Sim: DEN by 8.4 on average (DAL 112.2, DEN 120.5) \u00b7 DEN -8.5 covers in 50% of sims vs 48% DraftKings",
+   "why": "Sim: DEN by 9.1 on average (DAL 112.2, DEN 121.3) \u00b7 DEN -8.5 covers in 52% of sims vs 48% DraftKings",
    "for": [],
    "against": [
     {
@@ -1833,22 +2027,14 @@
      ]
     },
     {
-     "tag": "simulation",
-     "t": "The simulation leans the other way (50%).",
-     "rec": [
-      479,
-      546
-     ]
-    },
-    {
      "tag": "team model",
      "t": "Team ratings with tonight's lineups make it DEN by 3.7, 4.8 worse than this number.",
      "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 2.066,
-    "floor_am": 107,
+    "floor_dec": 2.058,
+    "floor_am": 106,
     "line": null,
     "next": -9.5
    },
@@ -1864,7 +2050,7 @@
    ],
    "kill": [
     "The line reaching -9.5",
-    "The price at -8.5 going past +107",
+    "The price at -8.5 going past +106",
     "A change in P.J. Washington (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1890,6 +2076,116 @@
     }
    },
    "first_seen": "2026-11-24T20:30:55Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "g|401909314|total|Over": {
+   "key": "g|401909314|total|Over",
+   "kind": "total",
+   "label": "DET @ ORL Over 212.5",
+   "espn_id": "401909314",
+   "game": "DET @ ORL",
+   "start": "2026-11-25T00:00Z",
+   "side": "Over",
+   "point": 212.5,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 28,
+   "tier": "Pass",
+   "p": 0.512,
+   "p_sim": 0.562,
+   "p_mkt": 0.507,
+   "p_kalshi": null,
+   "ev": -0.037,
+   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
+   "home": "ORL",
+   "away": "DET",
+   "why": "Sim total 215.0 (after a learned +1.6 correction) vs 212.5 \u00b7 over in 56% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes over in 56% of 10,000 simulated games.",
+     "rec": [
+      1491,
+      1312
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings project 220.9 points, 8.4 on your side of 212.5.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (214.5 to 212.5).",
+     "rec": [
+      193,
+      161
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 638-679 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      259,
+      264
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.953,
+    "floor_am": -105,
+    "line": null,
+    "next": 213.5
+   },
+   "watch": [
+    {
+     "pid": "4432166",
+     "name": "Cade Cunningham",
+     "team": "DET",
+     "status": "Probable",
+     "self": false,
+     "min": 35.3
+    },
+    {
+     "pid": "3157465",
+     "name": "Duncan Robinson",
+     "team": "DET",
+     "status": "Out",
+     "self": false,
+     "min": 29.6
+    }
+   ],
+   "kill": [
+    "The line reaching 213.5",
+    "The price at 212.5 going past \u2212105",
+    "A change in Cade Cunningham (probable): the model re-prices on the next run"
+   ],
+   "market": {
+    "open": null,
+    "now": 212.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T21:01:05Z",
+    "edition": "update",
+    "point": 212.5,
+    "dec": 1.88,
+    "am": -114,
+    "conv": 28,
+    "tier": "Pass",
+    "p": 0.512,
+    "play_to": {
+     "floor_dec": 1.953,
+     "floor_am": -105,
+     "line": null,
+     "next": 213.5
+    }
+   },
+   "first_seen": "2026-11-24T21:01:05Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2307,6 +2603,55 @@
    "kind": "removed",
    "text": "Removed: DAL +8.5 (DAL @ DEN) \u2014 confidence fell 25 \u2192 23",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "p|4066320|tpm|Over",
+   "kind": "added",
+   "text": "Added: Desmond Bane Over 3.5 threes at +117, conviction 30",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Cooper Flagg Under 24.5 points at \u2212110",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "line",
+   "text": "Cooper Flagg: line 23.5 at \u2212103 \u2192 24.5 at \u2212110",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "p|4277905|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Trae Young Under 15.5 points \u2014 no longer +EV at tonight's line (15.5 at -120)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "p|4432165|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jalen Suggs Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -103)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "g|401909314|total|Over",
+   "kind": "added",
+   "text": "Added: DET @ ORL Over 212.5 at \u2212114, conviction 28",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T21:01:05Z",
+   "key": "g|401909314|spread|away",
+   "kind": "removed",
+   "text": "Removed: DET -2.5 (DET @ ORL) \u2014 other plays ranked higher",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2410,7 +2755,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 9
+  "picks": 10
  },
  "leans_record": {
   "w": 20,
@@ -2419,5 +2764,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T20:45:25Z"
+ "updated": "2026-11-24T21:01:05Z"
 }

@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 90.0,
+  "cash": 85.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -21736,6 +21736,47 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "35fc2a2e",
+    "placed": "2026-11-24T21:00:34Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "14007bc0605bce3bd164b132254ba24c",
+      "sport": "soccer_uefa_champs_league",
+      "commence": "2026-11-25T20:00:00Z",
+      "home": "Paris Saint Germain",
+      "away": "AS Roma",
+      "market": "h2h",
+      "outcome": "AS Roma",
+      "point": null,
+      "price": 7.0,
+      "book": "betrivers",
+      "fair_p": 0.1537,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 6.0,
+       "gain": 0.1667,
+       "n": 7
+      }
+     }
+    ],
+    "dec": 7.0,
+    "stake": 5.0,
+    "ev": 0.0757,
+    "p": 0.1537,
+    "note": "7.6% edge vs 7-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -22058,7 +22099,7 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-24T07:03:21Z",
+   "last_scanned": "2026-11-24T21:00:33Z",
    "bets": 71.0,
    "staked": 376.16999999999996,
    "profit": -112.92
@@ -22154,7 +22195,7 @@
    "last_scanned": "2026-11-01T02:29:42Z"
   },
   "soccer_uefa_champs_league": {
-   "last_scanned": "2026-11-24T20:00:38Z"
+   "last_scanned": "2026-11-24T21:00:34Z"
   },
   "soccer_argentina_primera_division": {
    "last_scanned": "2026-11-24T20:45:24Z"
@@ -22290,16 +22331,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T00:00:59Z",
-   "kind": "props",
-   "text": "NBA matchups: 4 games, strongest spots: Jonathan Kuminga ra -12% vs NY; Jrue Holiday ra +13% vs MIL; Jrue Holiday ast +12% vs MIL. Bought prop odds for NY@MIN (ast, ra, pra, team totals), LAC@SA (ast, ra, pra, tpm, team totals), GS@MEM (ast, ra, pra, team totals) (13 credits). Nothing cleared the bar."
-  },
-  {
-   "ts": "2026-11-20T00:30:36Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 19: 4 games, 102 players projected, lineups for 4 games."
-  },
   {
    "ts": "2026-11-20T00:31:01Z",
    "kind": "adapt",
@@ -23789,6 +23820,16 @@
    "ts": "2026-11-24T20:45:24Z",
    "kind": "scan",
    "text": "Scout: basketball_ncaab (94), soccer_argentina_primera_division (1) for 5 credits. Placed 2: Mississippi St Bulldogs @ -130 (Fanatics); Gardner-Webb Bulldogs @ +685 (Kalshi). Equity $100.00."
+  },
+  {
+   "ts": "2026-11-24T21:00:34Z",
+   "kind": "scan",
+   "text": "Scout: basketball_nba (7), soccer_uefa_champs_league (9) for 5 credits. Placed 1: AS Roma @ +600 (BetRivers). Equity $100.00."
+  },
+  {
+   "ts": "2026-11-24T21:00:45Z",
+   "kind": "research",
+   "text": "Research refresh for Tue Nov 24: 3 games, 67 players projected, lineups for 3 games."
   }
  ],
  "learned_ids": [
@@ -23888,13 +23929,13 @@
   "c613bf8e"
  ],
  "strategist": null,
- "updated": "2026-11-24T20:45:24Z",
+ "updated": "2026-11-24T21:01:04Z",
  "stats": {
   "bets": 94,
   "won": 30,
   "lost": 62,
-  "shop_n": 35,
-  "shop_avg": 0.0703,
+  "shop_n": 36,
+  "shop_avg": 0.073,
   "push": 2,
   "staked": 532.57,
   "profit": -155.99,
@@ -23903,7 +23944,7 @@
   "clv_n": 70,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 2,
+  "open": 3,
   "equity": 100.0
  },
  "weights": {
@@ -23932,7 +23973,7 @@
     "profit": 0,
     "roi": null,
     "clv": null,
-    "open": 1,
+    "open": 2,
     "paused": false
    },
    "value_fav": {
@@ -23970,7 +24011,7 @@
     "profit": -30.0,
     "roi": -1.0,
     "clv": 0.032,
-    "open": 1,
+    "open": 2,
     "paused": false
    },
    "matchup_over": {
