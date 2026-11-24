@@ -56,25 +56,35 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
         const txt = await p.evaluate(() => [...document.querySelectorAll(".view.on")].map(v => v.innerText.length).join(","));
         errs.length === n && +txt > 50 ? ok(`${t} (${txt} chars)`) : bad(`${t}: ${errs.slice(n).join(" | ") || "renders nearly empty"}`);
       }
-      // matchup filters and sorter (Props tab): every row shown passes the filters, the sort is in order, Clear restores the list
-      console.log("5b. matchup filters and sorter");
+      // the one prop list (Props tab): presets, filters and sorter act on the same rows; Winning bets are all real wins; Clear restores the list
+      console.log("5b. prop list: presets, filters and sorter");
       try {
-        await p.evaluate(() => { go("props"); D.pf.all = true; mxSet({mxPace: "lo", mxPos: "soft", mxSort: "mx", mxAll: true, mxDir: ""}); }); await p.waitForTimeout(900);
-        const r = await p.evaluate(() => { const rows = [...document.querySelectorAll("#b-p-all .cr")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
-          const sc = rows.map(mxScore); return {n: rows.length, match: rows.every(x => { const m = mxInfo(x); return m.pace <= 10 && m.pos <= 10; }),
-            sorted: sc.every((v, i) => i === 0 || v <= sc[i - 1] + 1e-9), chips: [...document.querySelectorAll("#b-p-all .cr")].filter(e => e.querySelector(".mxc")).length}; });
-        r.n && r.match && r.sorted && r.chips === r.n ? ok(`${r.n} rows: all fast-pace + soft-position, sorted, chips shown`) : bad("matchup filter: " + JSON.stringify(r));
-        const rec = await p.evaluate(() => { const x = mxRecord({stat: "ast", mxPos: "soft"}); return {n: x.A.n, ok: x.A.n > 0 && x.A.o <= x.A.n}; });
-        rec.ok ? ok(`record panel: ${rec.n} graded assist props in soft position matchups`) : bad("matchup record panel is empty");
-        await p.evaluate(() => { mxSet({mxPace: "", mxPos: "", mxSort: "", mxAll: false, mxDir: ""}); D.pf.all = false; renderProps(); });
-      } catch (e) { bad("matchup filters: " + e.message); }
+        const gid0 = await p.evaluate(() => { const g = D.players.games.find(x => x.state !== "post" && new Date(x.start) > Date.now() - 3 * 3600e3); return g && g.espn_id; });
+        if (!gid0) ok("prop list: no game left to test against (skipped)");
+        else {
+          await p.evaluate(g => { go("props"); store.set("flt", {}); setFlt("game", g); setFlt("pre", "all"); }, gid0); await p.waitForTimeout(700);
+          const base = await p.evaluate(() => document.querySelectorAll("#v-props .ur").length);
+          base ? ok(`${base} rows in one list (preset All, one game)`) : bad("prop list is empty for a live game");
+          const side = await p.evaluate(() => { setFlt("side", "Over"); return [...document.querySelectorAll("#v-props .ur")].every(el => el.querySelector(".bt.Over")); });
+          side ? ok("side filter: every row is an over") : bad("side filter leaks unders");
+          await p.evaluate(() => { setFlt("side", ""); setFlt("pre", "priced"); setFlt("sort", "edge"); }); await p.waitForTimeout(500);
+          const ev = await p.evaluate(() => { const rows = [...document.querySelectorAll("#v-props .ur")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
+            const e = rows.map(r => r.ev ?? -9); return {n: rows.length, priced: rows.every(r => r.line != null), sorted: e.every((v, i) => i === 0 || v <= e[i - 1] + 1e-9)}; });
+          ev.n && ev.priced && ev.sorted ? ok(`priced + sort by edge: ${ev.n} rows in order`) : bad("priced/edge sort: " + JSON.stringify(ev));
+          const win = await p.evaluate(() => { setFlt("sort", ""); setFlt("pre", "win"); return [...document.querySelectorAll("#v-props .ur")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean).every(isWin); });
+          win ? ok("Winning bets: every row clears the bar") : bad("Winning bets shows a row that is not a win");
+          const rec = await p.evaluate(() => { const x = mxRecord({stat: "ast", mxPos: "soft"}); return {n: x.A.n, ok: x.A.n > 0 && x.A.o <= x.A.n}; });
+          rec.ok ? ok(`record panel: ${rec.n} graded assist props in soft position matchups`) : bad("matchup record panel is empty");
+          await p.evaluate(() => { store.set("flt", {}); fbar("props"); renderProps(); });
+        }
+      } catch (e) { bad("prop list: " + e.message); }
       // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};
       const grab = () => p.evaluate(() => [...document.querySelectorAll(".view.on [data-pid][data-stat]:not(.drop)")].map(el => {
         const t = el.querySelector(":scope > div > .lean, :scope .lean"); return t ? [el.dataset.pid + "|" + el.dataset.stat, t.textContent.trim()] : null; }).filter(Boolean));
       for (const t of ["today", "props"]) { await p.evaluate(v => go(v), t); await p.waitForTimeout(900);
-        if (t === "props") { await p.evaluate(() => { D.pf.all = true; renderProps(); }); await p.waitForTimeout(600); }
+        if (t === "props") { await p.evaluate(() => { setFlt("pre", "all"); }); await p.waitForTimeout(600); }
         for (const [k, v] of await grab()) (seen[k] = seen[k] || new Set()).add(v); }
       const gl = await p.evaluate(() => D.players.games.filter(g => g.state === "pre").map(g => g.espn_id));
       for (const g of gl) { await p.evaluate(x => { go("games"); openGame(x, "props"); }, g); await p.waitForTimeout(500); for (const [k, v] of await grab()) (seen[k] = seen[k] || new Set()).add(v); }

@@ -168,7 +168,7 @@ def size(state, p, dec, weight, mult=1.0):
     pr, book = state["params"], state["book"]
     eq = bk.equity(book)
     raw = eq * pr["kelly_mult"] * weight * mult * market.kelly(p, dec)
-    room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.open_bets(book))
+    room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.cur_open(book))
     if raw <= 0:
         return 0.0
     stake = min(max(raw, config.MIN_STAKE), max(eq * pr["max_bet_pct"], config.MIN_STAKE))
@@ -191,7 +191,7 @@ def bet_on_board(state, events):
         if (a["event"]["id"], a["line"]["market"]) in held:
             continue
         eq = bk.equity(book)
-        room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.open_bets(book))
+        room = eq * pr["max_exposure_pct"] - sum(b["stake"] for b in bk.cur_open(book))
         total = min(eq * pr["arb_pct"] * arm_weight(arm), room, book["cash"])
         inv = sum(1 / l["price"] for l in a["legs"])
         need = config.MIN_STAKE * inv * max(l["price"] for l in a["legs"])   # smallest leg ≥ $5

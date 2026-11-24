@@ -162,6 +162,13 @@ Players tab → **Matchup filters and sorter** (above the All players list). Cut
 - A study note shows on rows with a tough position matchup (overs hit ~3 pts under the price; unders held up). 17-day study, nothing combined beat the closing price; see the project doc `perseverance-matchup-filter-study-nov23`.
 - `tools/check.js` step 6 ignores dimmed "dropped" best-bet cards (they show the morning's published side).
 
+## Ledger, runs and screens (Nov 23)
+
+- **One ledger.** `dedupeBook` removes a bet logged twice (once in the app, once from a sportsbook slip): same game night, market, side, line and player or team. A slip import wins over a self-logged copy; two copies logged within ten minutes are a double tap. Imports no longer need cash, and cash is always rebuilt from the bets (`cashFromBets`).
+- **Runs.** A run is lost the moment cash drops under $5, even with bets open; those bets finish under the old run and never touch the new run's cash (`agent/book.py` `check_race` / `settle`, same rules in `docs/index.html` `checkRace` / `settleBet`). "End my run" and "End the AI's run" end a run as a loss now. The AI button opens a `Reset: agent` issue, handled by `reset_issue` in `agent/run.py`. Every lost run has a mark on the equity chart and in the Runs list.
+- **Screens.** Cherry wine `#8E1B3C` and sky blue `#7EC8E3` on a dark base. Tonight is the bankroll, best bets, open bets and games; everything else sits under "More from the model". Props is one list with one sticky filter bar (Winning bets, Priced, Matchup, Game lines, All; game, stat, side, sort, minimum edge). Rows are two lines; tap a row for the full player card.
+- "Winning bets" = priced at 3%+ edge, matchup not against it, 20+ minutes, no injury tag, not rated Pass.
+
 ## Model audit fixes (Nov 22): price from the market first
 
 A full audit of 8,447 graded DraftKings props (Nov 5-21) found the matchup model's projections about as accurate as

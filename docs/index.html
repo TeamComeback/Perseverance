@@ -11,8 +11,8 @@
 <style>
 :root{
   --bg:#0b0f17; --panel:#121826; --panel2:#182033; --panel3:#1e2840; --line:#232c42; --text:#e7ecf5; --dim:#8a94ab; --dim2:#6b7590;
-  --mars:#ADD8E6; --mars-d:#ADD8E622; --win:#3ddc97; --win-d:#3ddc9722; --loss:#ff5d73; --loss-d:#ff5d7322;
-  --you:#E5C158; --you-d:#E5C15822; --gold:#E5C158; --gold-d:#E5C15822;
+  --mars:#7EC8E3; --mars-d:#7EC8E322; --win:#3ddc97; --win-d:#3ddc9722; --loss:#ff5d73; --loss-d:#ff5d7322;
+  --you:#D8587D; --you-d:#D8587D22; --gold:#D8587D; --gold-d:#D8587D22;
   --mono:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box}
@@ -125,7 +125,7 @@ input.search{width:100%;background:var(--panel2);border:1px solid var(--line);co
 .mx{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:1px;background:var(--panel3);color:var(--dim)}.mx.up{color:var(--win)}.mx.dn{color:var(--loss)}
 .cvs{font-size:11px;font-weight:800;padding:1px 6px;border-radius:6px;border:1px solid var(--line);color:var(--dim)}.cvs.Confident{color:var(--win);border-color:#3ddc9766}.cvs.Consider{color:var(--gold)}
 .st{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;margin-left:5px;vertical-align:1px;border:1px solid var(--line);color:var(--dim)}
-.st.s{color:var(--win);border-color:#3ddc9755} .st.q{color:var(--gold);border-color:#E5C15855} .st.o{color:var(--loss);border-color:#ff5d7355}
+.st.s{color:var(--win);border-color:#3ddc9755} .st.q{color:var(--gold);border-color:#D8587D55} .st.o{color:var(--loss);border-color:#ff5d7355}
 
 /* tables */
 .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
@@ -133,7 +133,7 @@ input.search{width:100%;background:var(--panel2);border:1px solid var(--line);co
 .tbl th:first-child,.tbl td:first-child{text-align:left}
 .tbl td{padding:6px 5px;border-bottom:1px solid #1a2134;text-align:right;font-family:var(--mono);white-space:nowrap}
 .tbl td.t{font-family:inherit}
-.tbl tr.hl td{background:#ADD8E612}
+.tbl tr.hl td{background:#7EC8E312}
 .scroll{overflow-x:auto;margin:0 -14px;padding:0 14px}
 .ob-t th,.ob-t td{text-align:left;vertical-align:top;font-family:var(--f-body,inherit);padding:8px 4px}
 .ob-t th{cursor:default;white-space:normal;line-height:1.2;vertical-align:bottom}
@@ -206,7 +206,7 @@ ul.sig{margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--dim)} ul.sig 
 .rv .q td,.rv .q th{padding:3px 5px;text-align:right;border-bottom:1px solid var(--line)} .rv .q th{color:var(--dim);font-weight:600}
 .rv .q td:first-child,.rv .q th:first-child{text-align:left}
 .tg{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;margin:0 4px 4px 0;background:var(--panel);color:var(--dim);border:1px solid var(--line)}
-.tg.good{color:var(--win);border-color:#3ddc9755} .tg.bad{color:var(--loss);border-color:#ff5d7355} .tg.mid{color:var(--gold);border-color:#E5C15855}
+.tg.good{color:var(--win);border-color:#3ddc9755} .tg.bad{color:var(--loss);border-color:#ff5d7355} .tg.mid{color:var(--gold);border-color:#D8587D55}
 .tl{border-left:2px solid var(--line);margin-left:4px;padding-left:14px}
 .tl .e{position:relative;padding:7px 0;font-size:13px}
 .tl .e::before{content:"";position:absolute;left:-20px;top:13px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--mars)}
@@ -283,7 +283,7 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 .lbt td{vertical-align:top;font-size:12px;white-space:normal}.lbt td .dim{font-size:11px}
 .ownt{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:4px 0 6px;background:var(--panel2)}.ownt b{font-family:var(--mono);font-size:15px}
 .cvb{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-weight:800;font-size:12px;padding:2px 7px;border-radius:7px;border:1px solid var(--line);margin-left:6px}
-.cvb.Confident{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Consider{color:var(--gold);border-color:#E5C15855;background:#E5C15812}.cvb.Pass{color:var(--dim)}
+.cvb.Confident{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Consider{color:var(--gold);border-color:#D8587D55;background:#D8587D12}.cvb.Pass{color:var(--dim)}
 .verd{grid-column:1/-1;font-size:12.5px;color:var(--text);margin-top:3px;line-height:1.4}
 .case{grid-column:1/-1;margin-top:4px}.case summary{cursor:pointer;font-size:12px;color:var(--dim);padding:4px 0;list-style:none}.case summary::-webkit-details-marker{display:none}.case summary:before{content:"▸ "}.case[open] summary:before{content:"▾ "}
 .case ul{margin:4px 0 8px;padding:0;list-style:none}.case li{font-size:12.5px;line-height:1.45;padding:3px 0 3px 18px;position:relative;color:var(--text)}
@@ -312,10 +312,10 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 .ptag text{font:italic 800 19px 'Barlow Condensed',Inter,sans-serif;letter-spacing:.04em}
 .ptag .m{fill:#0b0f17ee} .ptag .tm{fill:#fff}
 .ptag.home .n{fill:var(--hc)} .ptag.home .tn{fill:var(--ht)} .ptag.away .n{fill:var(--ac)} .ptag.away .tn{fill:var(--at)}
-.ptag .a{fill:#E5C158} .ptag .ta{fill:#0b0f17}
+.ptag .a{fill:#D8587D} .ptag .ta{fill:#0b0f17}
 .ptag.big .a{fill:#ffd447;filter:drop-shadow(0 0 6px #ffd44799)}
 @keyframes tagIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
-.hoop .rim{stroke:#E5C158;stroke-width:2.5;fill:none}
+.hoop .rim{stroke:#D8587D;stroke-width:2.5;fill:none}
 .hoop .net{stroke:#fff;stroke-opacity:.75;stroke-width:1.4;stroke-dasharray:1.6 1.6;fill:none}
 .hoop .burst{fill:none;stroke:#ffe08a;stroke-width:3;opacity:0}
 .hoop circle{transform-box:fill-box;transform-origin:center}
@@ -329,7 +329,7 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 @keyframes burst{0%{transform:scale(1);opacity:.95}100%{transform:scale(4.2);opacity:0}}
 @keyframes slam{0%,100%{transform:scale(1)}30%{transform:scale(.82)}60%{transform:scale(1.08)}}
 @keyframes rimShake{0%,100%{transform:translate(0,0)}20%{transform:translate(3px,-2px)}40%{transform:translate(-3px,2px)}60%{transform:translate(2px,1px)}80%{transform:translate(-1px,-1px)}}
-@keyframes rimFlash{0%,100%{stroke:#E5C158}30%{stroke:#fff;stroke-width:4}}
+@keyframes rimFlash{0%,100%{stroke:#D8587D}30%{stroke:#fff;stroke-width:4}}
 #simCourt{cursor:pointer}
 @media (prefers-reduced-motion:reduce){.hoop,.hoop *,.ptag .in,.pdot .bob,.bc-tm .sc.pop,.bdg.on{animation:none!important}}
 .btn.ghost{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
@@ -339,7 +339,7 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 .bxt th{font:600 9.5px Inter,sans-serif;color:var(--dim);text-align:right;padding:2px 3px}
 .bxt td{text-align:right;padding:2px 3px;border-top:1px solid var(--line);color:var(--dim)}
 .bxt td.t{text-align:left;font-family:Inter,sans-serif;white-space:nowrap;max-width:110px;overflow:hidden;text-overflow:ellipsis}
-.bxt tr.on td{color:var(--text)} .bxt tr.hot td{background:#ADD8E61f}
+.bxt tr.on td{color:var(--text)} .bxt tr.hot td{background:#7EC8E31f}
 .lbtns{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
 .lbtn{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:99px;padding:6px 10px;font:600 12.5px Inter,sans-serif;cursor:pointer;white-space:nowrap}
 .lbtn b{font-family:var(--mono);color:var(--gold);font-weight:700}
@@ -349,7 +349,7 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 .plrow select,.plrow input{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 8px;font:inherit;font-size:14px;min-width:0}
 .plrow select{flex:1 1 120px} .plrow input{width:72px}
 /* ---- broadcast stage ---- */
-.bc{--hc:#ADD8E6;--ha:#fff;--ht:#0b0f17;--ac:#E5C158;--aa:#fff;--at:#0b0f17;position:relative;display:flex;flex-direction:column;gap:8px;
+.bc{--hc:#7EC8E3;--ha:#fff;--ht:#0b0f17;--ac:#D8587D;--aa:#fff;--at:#0b0f17;position:relative;display:flex;flex-direction:column;gap:8px;
   background:radial-gradient(90% 60% at 15% 0%,color-mix(in srgb,var(--ac) 22%,transparent),transparent 70%),radial-gradient(90% 60% at 85% 0%,color-mix(in srgb,var(--hc) 22%,transparent),transparent 70%),#0a0d14;
   border:1px solid var(--line);border-radius:16px;padding:10px;overflow:hidden}
 .bc-main{display:contents}
@@ -435,10 +435,10 @@ body.theater{overflow:hidden} body.theater nav.tabs,body.theater .fab{display:no
 :root{--bg:#0A0E14;--panel:#121821;--panel2:#171F2B;--panel3:#1D2735;--line:#232C3A;--text:#E6EBF2;--dim:#8C98AA;--dim2:#6B7789;
   --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;--f-body:"Instrument Sans",Inter,"Helvetica Neue",Arial,sans-serif}
 html,body{font-family:var(--f-body)}
-body{background:radial-gradient(900px 380px at 50% -140px,#ADD8E614,transparent 70%),radial-gradient(700px 300px at 100% 0,#E5C1580a,transparent 70%),var(--bg);background-attachment:fixed}
+body{background:radial-gradient(900px 380px at 50% -140px,#7EC8E314,transparent 70%),radial-gradient(700px 300px at 100% 0,#D8587D0a,transparent 70%),var(--bg);background-attachment:fixed}
 h1{font-family:var(--f-display);font-weight:800;font-size:17px;letter-spacing:.16em}
-.dot{box-shadow:0 0 0 0 #ADD8E6aa;animation:ping 2.6s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 #ADD8E688}80%,100%{box-shadow:0 0 0 9px transparent}}
+.dot{box-shadow:0 0 0 0 #7EC8E3aa;animation:ping 2.6s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 #7EC8E388}80%,100%{box-shadow:0 0 0 9px transparent}}
 h2{font-family:var(--f-display);font-size:12.5px;letter-spacing:.12em;font-weight:700;display:flex;align-items:center;gap:8px}
 h2::before{content:"";width:14px;height:2px;border-radius:2px;background:var(--mars);box-shadow:0 0 8px var(--mars);flex:none}
 .card,details.sec,.gcard,.hint{background:linear-gradient(180deg,#141B26,#10161F);border-color:var(--line);box-shadow:inset 0 1px 0 #ffffff08,0 10px 26px #00000055}
@@ -446,28 +446,28 @@ h2::before{content:"";width:14px;height:2px;border-radius:2px;background:var(--m
 details.sec>summary{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:-.005em}
 details.sec[open]>summary{border-bottom:1px solid var(--line)}
 .tag{background:#ffffff08;font-family:var(--mono);font-size:10.5px}
-.btn{border-radius:12px;box-shadow:0 0 0 1px #ffffff14 inset,0 6px 18px #E5C15822}
+.btn{border-radius:12px;box-shadow:0 0 0 1px #ffffff14 inset,0 6px 18px #D8587D22}
 .btn.ghost{box-shadow:none;background:#ffffff0a}
 .more{background:#ffffff08;border-radius:12px}
 .chips button,.seg button{background:#ffffff08;border-color:var(--line)}
-.chips button.on,.seg button.on{background:#ADD8E61c;border-color:#ADD8E666;color:var(--text);box-shadow:0 0 14px #ADD8E622}
+.chips button.on,.seg button.on{background:#7EC8E31c;border-color:#7EC8E366;color:var(--text);box-shadow:0 0 14px #7EC8E322}
 nav.tabs{background:#0A0E14d9;backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3)}
 nav.tabs button{font-family:var(--f-body);transition:color .15s,background .15s}
-nav.tabs button.on{background:#ADD8E614;box-shadow:inset 0 0 0 1px #ADD8E62e}
-nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
-.fab{box-shadow:0 0 0 1px #ffffff30 inset,0 10px 28px #ADD8E640;font-family:var(--f-display)}
+nav.tabs button.on{background:#7EC8E314;box-shadow:inset 0 0 0 1px #7EC8E32e}
+nav.tabs button.on svg{filter:drop-shadow(0 0 6px #7EC8E3bb)}
+.fab{box-shadow:0 0 0 1px #ffffff30 inset,0 10px 28px #7EC8E340;font-family:var(--f-display)}
 .tbl th{font-family:var(--f-body)} .lbl{font-family:var(--f-body);font-weight:700}
 .cr .nm,.pr .nm{font-family:var(--f-display);font-weight:700;letter-spacing:-.005em}
 /* command hero on Today */
 .hero{background:linear-gradient(160deg,#16202E 0%,#10161F 55%,#131A16 100%);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:inset 0 1px 0 #ffffff0a,0 14px 34px #00000066;position:relative}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 160px at 12% 0,#ADD8E61f,transparent 70%),radial-gradient(360px 140px at 100% 0,#E5C15814,transparent 70%);pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 160px at 12% 0,#7EC8E31f,transparent 70%),radial-gradient(360px 140px at 100% 0,#D8587D14,transparent 70%);pointer-events:none}
 .hero-top{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 14px 10px}
 .hero .label{font-size:10px;letter-spacing:.16em;color:var(--dim);font-weight:700}
 .hero .hname{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,7vw,32px);line-height:1.05;letter-spacing:-.01em}
 .hero .mission{font-family:var(--f-display);font-weight:600;color:var(--mars);font-size:13px;margin-top:2px}
 .runclock{min-width:142px;text-align:right}
 .rc-l{display:flex;justify-content:space-between;gap:10px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
-.rc-t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:24px;font-weight:700;letter-spacing:.06em;color:var(--mars);line-height:1.2;text-shadow:0 0 16px #ADD8E666}
+.rc-t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:24px;font-weight:700;letter-spacing:.06em;color:var(--mars);line-height:1.2;text-shadow:0 0 16px #7EC8E366}
 .rc-bar{height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:3px}
 .rc-bar i{display:block;height:100%;width:0;background:var(--mars);box-shadow:0 0 8px var(--mars);transition:width 1s linear}
 .rc-n{font-size:11px;color:var(--dim);margin-top:3px}
@@ -476,7 +476,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .tl{background:#10161Fee;padding:10px 12px;cursor:pointer;min-width:0}
 .tl .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
 .tl .v{font-family:var(--mono);font-size:20px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tl.agent .v{color:var(--mars);text-shadow:0 0 14px #ADD8E640} .tl.you .v{color:var(--gold);text-shadow:0 0 14px #E5C15840}
+.tl.agent .v{color:var(--mars);text-shadow:0 0 14px #7EC8E340} .tl.you .v{color:var(--gold);text-shadow:0 0 14px #D8587D40}
 .tl .r{font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fchip{display:inline-block;font:700 10px var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
 .fchip.edge{background:var(--win-d);color:var(--win)} .fchip.skip{background:var(--loss-d);color:var(--loss)} .fchip.watch{background:#ffffff10;color:var(--dim)}
@@ -495,7 +495,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .lu-n{flex:1;min-width:0;font-size:13.5px;line-height:1.25}
 .lu-n .dim{display:block;font-size:11px}
 .lu-b{background:#ffffff08;border:1px solid var(--line);color:var(--dim);border-radius:99px;padding:5px 9px;font:600 11.5px var(--f-body);cursor:pointer;white-space:nowrap}
-.lu-b.on{background:#E5C1581f;border-color:#E5C15866;color:var(--gold)}
+.lu-b.on{background:#D8587D1f;border-color:#D8587D66;color:var(--gold)}
 .lu-b.in{background:var(--win-d);border-color:#3ddc9755;color:var(--win)}
 .lu-b.out{background:var(--loss-d);border-color:#ff5d7355;color:var(--loss)}
 .lu-b:disabled{opacity:.35;cursor:default}
@@ -504,11 +504,11 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .fbar{position:sticky;top:0;z-index:20;margin:0 -2px 8px;padding:6px 2px;background:linear-gradient(var(--bg) 70%,#0b0f1700)}
 .fbar .frow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.fbar .frow::-webkit-scrollbar{display:none}
 .fbar select,.fbar button{flex:none;background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:6px 10px;font:600 12px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
-.fbar select.on,.fbar button.on{color:var(--gold);border-color:#E5C15866;background:#E5C15814}
+.fbar select.on,.fbar button.on{color:var(--gold);border-color:#D8587D66;background:#D8587D14}
 .mxg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 8px}
 .mxg label{display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--dim);font-weight:600}
 .mxg select{background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:10px;padding:7px 9px;font:600 13px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
-.mxg select.on{color:var(--gold);border-color:#E5C15866;background:#E5C15814}
+.mxg select.on{color:var(--gold);border-color:#D8587D66;background:#D8587D14}
 .mxrec{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--dim2)} .mxrec b{color:var(--text)}
 .mxrec .mxr{padding:6px 0;border-top:1px solid var(--line)} .mxrec .mxr:first-child{border-top:0}
 .cr .why.mxl{white-space:normal}.mxc{display:inline-block;margin:2px 4px 0 0;padding:1px 8px;border-radius:99px;font-size:11px;font-weight:600;background:#ffffff0d;color:var(--dim)}
@@ -527,7 +527,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #ADD8E6bb)}
 .star{background:none;border:0;color:var(--dim);font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}.star.on{color:var(--gold)}
 .gl{border-bottom:1px dotted var(--dim2);cursor:help}
 .mseg{display:flex;margin-bottom:10px}.mseg button{flex:1}
-.gsum{border:1px solid #E5C15855;background:#E5C1580a}.gsum .row2{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}.gsum .row2:first-of-type{border-top:0}.gsum .row2 span:first-child{color:var(--dim)}
+.gsum{border:1px solid #D8587D55;background:#D8587D0a}.gsum .row2{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}.gsum .row2:first-of-type{border-top:0}.gsum .row2 span:first-child{color:var(--dim)}
 .ourl{font-size:12.5px;margin:8px 0 2px;padding:7px 10px;border:1px solid var(--line);border-radius:10px}.ourl .k{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
 #v-book .row2{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:4px 0;border-top:1px solid var(--line)}#v-book .row2 span:first-child{color:var(--dim)}#v-book .row2 b{color:var(--text)}
 .pbar{height:3px;background:var(--line);border-radius:2px;margin-top:3px;min-width:50px}.pbar i{display:block;height:100%;background:var(--gold, #d6b34a);border-radius:2px}
@@ -579,6 +579,37 @@ details.rbmore>summary{font-size:12px;color:var(--dim);padding:4px 0 8px 22px;cu
 .brf .rec div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 9px}
 .brf .rec b{display:block;font-family:var(--mono);font-size:13.5px}.brf .rec span{font-size:10.5px;color:var(--dim)}
 .allctl{display:flex;justify-content:flex-end;gap:6px;margin:8px 0 -2px}.allctl button{background:none;border:0;color:var(--dim);font:inherit;font-size:12px;cursor:pointer;padding:2px 4px;text-decoration:underline;text-underline-offset:3px}.sched .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2)}
+
+/* ===== Nov 23: cherry wine + sky blue, quieter surfaces, one-line rows ===== */
+:root{--wine:#8E1B3C; --wine-hi:#D8587D; --sky:#7EC8E3; --mars:#7EC8E3; --mars-d:#7EC8E322; --you:#D8587D; --you-d:#D8587D22; --gold:#D8587D; --gold-d:#D8587D22;
+  --bg:#0E0A0F; --panel:#171119; --panel2:#1E1620; --panel3:#271C2A; --line:#2F2232; --text:#F0E8EE; --dim:#A394A1; --dim2:#7C6E7B}
+body{background:radial-gradient(900px 380px at 50% -140px,#8E1B3C22,transparent 70%),radial-gradient(700px 300px at 100% 0,#7EC8E30d,transparent 70%),var(--bg);background-attachment:fixed}
+.card,details.sec,.gcard,.hint{background:linear-gradient(180deg,#1A131C,#140E16);box-shadow:inset 0 1px 0 #ffffff08,0 8px 22px #00000055}
+nav.tabs{background:#0E0A0Fee} nav.tabs button.on{background:var(--wine);color:#fff} nav.tabs button.on svg{stroke:#fff}
+.btn,.fab,.fm .go,.tabs2 button.on{background:var(--wine);color:#fff} .btn.mars{background:var(--sky);color:#0E0A0F}
+.btn.ghost{background:transparent;color:var(--sky);border:1px solid var(--sky)}
+.fbar select.on,.fbar button.on{color:#fff;border-color:var(--wine-hi);background:var(--wine)}
+.fbar{background:linear-gradient(var(--bg) 78%,#0E0A0F00);padding-bottom:8px}
+.fbar button[data-fp]{font-weight:700}
+a{color:var(--sky)}
+/* the one prop list: two lines per row, everything else behind the tap */
+.pnote{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:6px 2px 8px;font-size:12px;color:var(--dim);line-height:1.35}
+.pnote .btn{flex:none;padding:5px 9px;font-size:12px}
+.ulist{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ur{padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ur:last-child{border-bottom:0} .ur:active{background:var(--panel2)}
+.ur.win{box-shadow:inset 3px 0 0 var(--wine-hi)}
+.ur .l1{display:flex;align-items:baseline;gap:8px;min-width:0}
+.ur .nm{font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ur .bt{flex:none;font:700 12.5px var(--mono);color:var(--sky)} .ur .bt.Under{color:var(--wine-hi)}
+.ur .od{flex:none;font:600 12.5px var(--mono);color:var(--text);min-width:38px;text-align:right}
+.ur .l2{margin-top:2px;font-size:11.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ur .l2 .dots{letter-spacing:0}
+/* long explainer text stays out of the way until you open a section */
+.view>.desc,.view .sec>.sb>.desc:first-child{font-size:12px}
+details.sec>summary .meta{color:var(--dim2)}
+.neg{color:#FF7A93}
+.bankrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -708,27 +739,106 @@ async function loadL(repoManual) {
   try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
   syncManual();
 }
-// Bets you took at a sportsbook and asked Claude to add (docs/data/manual_import.json). Each is added once per device,
-// already settled, with the stake and odds you took; "placed" stays unknown when you didn't note the time.
+// ---- one ledger, no bet counted twice ---------------------------------------------------------------------------
+// A bet can reach the ledger twice: once when you log it in the app, and again when a sportsbook slip you sent Claude is
+// imported. A bet's identity is its game, market, side, line and player/team, not the wording or the stake.
+const NBA_TEAMS = {ATL:"hawks atlanta",BOS:"celtics boston",BKN:"nets brooklyn",CHA:"hornets charlotte",CHI:"bulls chicago",CLE:"cavaliers cleveland",
+  DAL:"mavericks dallas",DEN:"nuggets denver",DET:"pistons detroit",GSW:"warriors golden state",HOU:"rockets houston",IND:"pacers indiana",
+  LAC:"clippers",LAL:"lakers",MEM:"grizzlies memphis",MIA:"heat miami",MIL:"bucks milwaukee",MIN:"timberwolves minnesota",NOP:"pelicans new orleans",
+  NYK:"knicks new york",OKC:"thunder oklahoma",ORL:"magic orlando",PHI:"76ers philadelphia sixers",PHX:"suns phoenix",POR:"trail blazers portland blazers",
+  SAC:"kings sacramento",SAS:"spurs san antonio",TOR:"raptors toronto",UTA:"jazz utah",WAS:"wizards washington"};
+function teamKey(text) {
+  const t = " " + String(text || "").toLowerCase().replace(/[^a-z0-9+. ]/g, " ") + " ";
+  for (const [ab, names] of Object.entries(NBA_TEAMS)) {
+    if (t.includes(" " + ab.toLowerCase() + " ")) return ab;
+    if (names.split(" ").some(n => n.length > 4 && t.includes(" " + n))) return ab;
+    if (names.includes("new york") && t.includes("new york")) return ab;
+  }
+  return "";
+}
+const LEG_DAY = s => { const t = Date.parse(s || ""); return isNaN(t) ? 0 : Math.round(t / 864e5 - 0.25); };   // a game-night bucket (UTC date, shifted so a 7pm-1am tip stays on one night)
+function legKey(l) {
+  const sideOf = x => /under/i.test(x) ? "U" : /over/i.test(x) ? "O" : "";
+  const pt = l.point == null ? "" : Math.abs(+l.point);
+  if (l.market === "custom") return "custom|" + String(l.outcome || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (String(l.market || "").startsWith("player_")) return ["p", l.market, normName(l.player || l.outcome || "").replace(/\s+(over|under)$/, ""), sideOf(l.side || l.outcome), pt].join("|");
+  if (l.market === "totals") return ["t", sideOf(l.outcome || l.side), pt, teamKey(l.home) + teamKey(l.away)].join("|");
+  if (l.market === "team_totals") return ["tt", teamKey(l.team || l.outcome), sideOf(l.outcome || l.side), pt].join("|");
+  if (l.market === "spreads") return ["s", teamKey(l.outcome || l.team), l.point == null ? "" : Math.abs(+l.point)].join("|");
+  return [l.market, teamKey(l.outcome || l.team), pt].join("|");
+}
+const betKey = b => b.legs.map(legKey).sort().join("&&");
+// Removes duplicates and returns how many went. Rule: a slip import beats a copy you logged yourself (it has the real
+// stake and price); two copies logged within ten minutes of each other are a double tap. Everything else stays.
+function dedupeBook(book) {
+  // same bet = same key AND the same game night (a bet with no game time recorded matches any night)
+  const groups = {};
+  for (const b of book.bets) { if (b.status === "cancelled") continue; (groups[betKey(b)] = groups[betKey(b)] || []).push(b); }
+  const drop = new Set(), nightOf = b => LEG_DAY((b.legs[0] || {}).commence);
+  for (const g of Object.values(groups)) {
+    if (g.length < 2) continue;
+    const clusters = [];
+    for (const b of g) {
+      const n = nightOf(b), c = clusters.find(c => !c.n || !n || c.n === n);
+      if (c) { c.bets.push(b); c.n = c.n || n; } else clusters.push({n, bets: [b]});
+    }
+    for (const {bets} of clusters) {
+      if (bets.length < 2) continue;
+      const imp = bets.filter(b => b.imported);
+      if (imp.length) { imp.slice(1).forEach(b => drop.add(b)); bets.filter(b => !b.imported).forEach(b => drop.add(b)); continue; }
+      bets.sort((a, b) => String(a.placed).localeCompare(String(b.placed)));
+      for (let i = 1; i < bets.length; i++) if (Math.abs(Date.parse(bets[i].placed) - Date.parse(bets[i - 1].placed)) < 10 * 60e3 && !drop.has(bets[i - 1])) drop.add(bets[i]);
+    }
+  }
+  if (drop.size) book.bets = book.bets.filter(b => !drop.has(b));
+  return drop.size;
+}
+// Cash is always what the bets say: $100 at the start of the run, minus every stake, plus every payout (this run only).
+function cashFromBets(book) {
+  let c = START;
+  for (const b of book.bets) {
+    if ((b.run ?? book.run) !== book.run || b.status === "cancelled") continue;
+    c -= b.stake;
+    if (b.status !== "open") c += b.payout || 0;
+  }
+  return Math.round(c * 100) / 100;
+}
+function tidyLedger() {
+  if (!L) return {};
+  const out = {removed: dedupeBook(L.book)};
+  const c = cashFromBets(L.book);
+  if (Math.abs(c - L.book.cash) > 0.005) { out.cash = [L.book.cash, c]; L.book.cash = c; }
+  L.book.peak = Math.max(L.book.peak || START, equityOf(L.book));
+  const run0 = L.book.run; checkRace(); out.ended = L.book.run !== run0;
+  if (out.removed || out.cash || out.ended) { saveL(); syncManual(); }
+  return out;
+}
+// Bets you took at a sportsbook and asked Claude to add (docs/data/manual_import.json). Each is added once, already
+// settled, with the stake and odds you took. It never needs cash: it already happened.
 function importBets(imp) {
   const items = (imp && imp.items) || []; if (!items.length || !L) return 0;
   L.imported = L.imported || []; let n = 0;
   for (const it of items) {
     if (L.imported.includes(it.id)) continue;
-    const r = placeBet([{...it.leg}], it.stake || MIN_STAKE, it.note || "Logged afterwards");
-    if (r.err) continue;
-    const b = r.bet;
-    b.placed = it.placed || it.leg.commence; b.placed_unknown = !it.placed; b.imported = it.id;
-    b.legs[0].result = it.result === "won" ? "win" : it.result === "lost" ? "loss" : it.result === "push" ? "push" : null;
-    if (it.actual != null) b.legs[0].actual = it.actual;
-    if (it.result) { settleBet(b, it.result); if (it.settled) b.settled = it.settled; }
+    const stake = it.stake || MIN_STAKE, leg = {...it.leg}, dec = Math.round(leg.price * 1000) / 1000;
+    const b = {id: lid(), placed: it.placed || leg.commence, placed_unknown: !it.placed, run: L.book.run, source: "you", playbook: "manual", legs: [leg], dec, stake,
+      ev: null, p: null, note: it.note || "Logged afterwards", status: "open", payout: null, profit: null, settled: null, imported: it.id};
+    leg.result = it.result === "won" ? "win" : it.result === "lost" ? "loss" : it.result === "push" ? "push" : null;
+    if (it.actual != null) leg.actual = it.actual;
+    L.book.bets.push(b);
+    if (it.result) {
+      const payout = Math.round(stake * {won: dec, lost: 0, push: 1}[it.result] * 100) / 100;
+      Object.assign(b, {status: it.result, payout, profit: Math.round((payout - stake) * 100) / 100, settled: it.settled || new Date().toISOString()});
+      b.review = reviewLocal(b);
+    }
     L.imported.push(it.id); n++;
   }
   if (n) { saveL(); syncManual(); }
   return n;
 }
 const lid = () => Math.random().toString(36).slice(2, 10);
-const equityOf = book => Math.round((book.cash + book.bets.filter(b => b.status === "open").reduce((s, b) => s + b.stake, 0)) * 100) / 100;
+const curOpen = book => book.bets.filter(b => b.status === "open" && (b.run ?? book.run) === book.run);
+const equityOf = book => Math.round((book.cash + curOpen(book).reduce((s, b) => s + b.stake, 0)) * 100) / 100;
 function statsOf(book) {
   const st = book.bets.filter(b => ["won", "lost", "push"].includes(b.status));
   const staked = st.reduce((s, b) => s + b.stake, 0), profit = st.reduce((s, b) => s + b.profit, 0);
@@ -737,12 +847,12 @@ function statsOf(book) {
     clv: null, open: book.bets.filter(b => b.status === "open").length, equity: equityOf(book)};
 }
 function syncManual() { D.manual = {book: L.book, stats: statsOf(L.book)}; }
-function histPoint() { L.hist.push({ts: new Date().toISOString(), eq: equityOf(L.book)}); L.hist = L.hist.slice(-2000); }
+function histPoint(ev) { const h = {ts: new Date().toISOString(), eq: equityOf(L.book)}; if (ev) h.ev = ev; L.hist.push(h); L.hist = L.hist.slice(-2000); }
 
 function placeBet(legs, stake, note) {
   const book = L.book;
   stake = Math.round(Math.min(stake, book.cash) * 100) / 100;
-  if (stake < MIN_STAKE) return {err: book.cash < MIN_STAKE ? `Not enough fake cash: you have ${money(book.cash)}.` : "Minimum bet is $5."};
+  if (stake < MIN_STAKE) return {err: book.cash < MIN_STAKE ? `Not enough to bet: ${money(book.cash)} available.` + (curOpen(book).length ? ` Your other ${money(curOpen(book).reduce((s, b) => s + b.stake, 0))} is riding on ${curOpen(book).length} open bet${curOpen(book).length > 1 ? "s" : ""} and comes back when they settle.` : "") : "Minimum bet is $5.", broke: book.cash < MIN_STAKE};
   const dec = Math.round(legs.reduce((d, l) => d * l.price, 1) * 1000) / 1000;
   const b = {id: lid(), placed: new Date().toISOString(), run: book.run, source: "you", playbook: "manual", legs, dec, stake,
     ev: null, p: null, note: note || "", status: "open", payout: null, profit: null, settled: null};
@@ -765,19 +875,37 @@ function settleBet(b, result) {
   const payout = Math.round(b.stake * mult * 100) / 100;
   Object.assign(b, {status: result === "cancel" ? "cancelled" : result, payout, profit: Math.round((payout - b.stake) * 100) / 100, settled: new Date().toISOString()});
   if (result !== "cancel") b.review = reviewLocal(b);
-  book.cash = Math.round((book.cash + payout) * 100) / 100;
-  book.peak = Math.max(book.peak, equityOf(book));
+  if ((b.run ?? book.run) !== book.run) {            // a bet from a run that is already over: it counts for that run, never for this run's cash
+    const old = book.runs.find(r => r.run === b.run);
+    if (old) { old.final = Math.round((old.final + b.profit) * 100) / 100; old.late = (old.late || 0) + 1; }
+  } else {
+    book.cash = Math.round((book.cash + payout) * 100) / 100;
+    book.peak = Math.max(book.peak, equityOf(book));
+  }
   checkRace(); histPoint(); saveL(); syncManual();
   return true;
 }
-function checkRace() {
-  const book = L.book, eq = equityOf(book), open = book.bets.some(b => b.status === "open");
-  const done = eq >= book.goal && !open ? "won" : book.cash < MIN_STAKE && !open ? "busted" : null;
+// A run is lost the moment cash drops under $5, even with bets still open (they finish under the old run); it is won at $1,000
+// with nothing open. force = "ended" is the End my run button. Every lost run gets a mark on the chart and in the Runs list.
+function checkRace(force) {
+  const book = L.book, eq = equityOf(book), open = curOpen(book);
+  const done = force || (eq >= book.goal && !open.length ? "won" : book.cash < MIN_STAKE ? "busted" : null);
   if (!done) return;
-  book.runs.push({run: book.run, result: done, started: book.started, ended: new Date().toISOString(), final: eq, peak: book.peak,
-    bets: book.bets.filter(b => b.run === book.run).length});
+  const mine = book.bets.filter(b => (b.run ?? book.run) === book.run), st = mine.filter(b => ["won", "lost", "push"].includes(b.status));
+  book.runs.push({run: book.run, result: done, loss: done !== "won", started: book.started, ended: new Date().toISOString(), final: eq, peak: book.peak,
+    bets: mine.length, won: st.filter(b => b.status === "won").length, lost: st.filter(b => b.status === "lost").length,
+    open_at_end: open.length, note: force ? "Ended by you." : undefined});
+  histPoint(done === "won" ? "won" : "lost");
   Object.assign(book, {run: book.run + 1, cash: START, peak: START, status: "racing", started: new Date().toISOString()});
-  toast(done === "won" ? "You hit $1,000! New run started from $100." : "Run busted. New run started from $100.");
+  toast(done === "won" ? "You hit $1,000! New run started from $100." : `Run ${book.run - 1} lost. New run started from $100.`);
+}
+function endMyRun() {
+  if (!confirm(`End run #${L.book.run}? It counts as a loss and a new run starts at $100. Your ${curOpen(L.book).length} open bet(s) still grade under the old run.`)) return;
+  checkRace("ended"); saveL(); syncManual(); histPoint(); saveL(); RENDER[store.get("tab", "today")]();
+}
+function endAgentRun() {
+  if (!confirm("End the AI's run? It counts as a loss and its next run starts at $100. This opens a request on GitHub; the agent applies it within a few minutes.")) return;
+  window.open(`https://github.com/${OWNER}/${REPO}/issues/new?title=${encodeURIComponent("Reset: agent")}&body=${encodeURIComponent("End the agent's current run as a loss and start the next run at $100.")}`, "_blank", "noopener");
 }
 
 // ---- grading in the app (free ESPN data, same feed the live tracker uses) ----
@@ -899,7 +1027,7 @@ function restoreLedger(file) {
       if (!L.book.bets.length) { L.book = led.book; L.hist = led.hist || []; }       // empty app: take the backup as-is
       else { L.book.bets.push(...addB); L.book.bets.sort((a, b) => a.placed.localeCompare(b.placed)); }
       L.saved.push(...addS);
-      saveL(); syncManual();
+      tidyLedger(); saveL(); syncManual();
       toast(`Restored ${L.book.bets.length ? addB.length || L.book.bets.length : 0} bets and ${addS.length} saved props`);
       RENDER[store.get("tab", "bets")]();
     } catch (e) { toast("Couldn't read that file: " + e.message); }
@@ -1005,9 +1133,12 @@ function betRow(b) {
 function raceCard(name, book, stats, color, kind) {
   const eq = stats.equity, prog = Math.max(0, Math.min(1, Math.log10(Math.max(eq, 1) / book.start)));
   const pos = v => (Math.log10(v / book.start) * 100) + "%";
+  const open = (book.bets || []).filter(b => b.status === "open" && (b.run ?? book.run) === book.run), riding = open.reduce((s, b) => s + b.stake, 0);
+  const lost = (book.runs || []).filter(r => r.loss).length;
   return `<div class="card ${kind}">
-    <div class="label">${name} · run #${book.run}</div>
+    <div class="label">${name} · run #${book.run}${lost ? ` · <span class="neg">✕ ${lost} lost</span>` : ""}</div>
     <div class="big num">${money(eq)}</div>
+    <div class="desc" style="margin-top:-2px">Available to bet <b class="num">${money(book.cash)}</b>${open.length ? ` · riding on ${open.length} bet${open.length > 1 ? "s" : ""} <b class="num">${money(riding)}</b>` : ""}</div>
     <div class="track"><div class="fill" style="width:${prog*100}%;background:${color}"></div>
       <div class="tick" style="left:${pos(250)}"></div><div class="tick" style="left:${pos(500)}"></div></div>
     <div class="ticks num"><span>$100</span><span>$250</span><span>$500</span><span>$1,000</span></div>
@@ -1015,20 +1146,23 @@ function raceCard(name, book, stats, color, kind) {
       <span>P&amp;L <b class="num ${cls(stats.profit)}">${money(stats.profit, true)}</b></span>
       <span>ROI <b class="num ${cls(stats.roi)}">${pct(stats.roi)}</b></span>
       ${stats.clv != null ? `<span>CLV <b class="num ${cls(stats.clv)}">${pct(stats.clv)}</b></span>` : ""}
-      <span>Open <b class="num">${stats.open}</b></span></div></div>`;
+      <span>Open <b class="num">${stats.open}</b></span></div>
+    <div class="row" style="margin-top:8px"><button class="btn sm" onclick="${kind === "you" ? "endMyRun()" : "endAgentRun()"}">${kind === "you" ? "End my run" : "End the AI's run"}</button></div></div>`;
 }
-function chart(hist) {
+function chart(hist, marks = []) {
   if (hist.length < 2) return '<div class="empty">The line starts after the first couple of runs.</div>';
   const W = 700, H = 130, P = 6;
   const vals = hist.flatMap(h => [h.a, h.m]);
   const lo = Math.min(...vals, 100) * 0.95, hi = Math.max(...vals, 100) * 1.05;
   const x = i => P + i * (W - 2*P) / (hist.length - 1), y = v => H - P - (v - lo) / (hi - lo) * (H - 2*P);
   const path = k => hist.map((h, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(h[k]).toFixed(1)).join("");
+  const mk = marks.map(m => { let i = hist.findIndex(h => h.ts >= m.ts); if (i < 0) i = hist.length - 1; return `<line x1="${x(i)}" x2="${x(i)}" y1="0" y2="${H}" stroke="${m.color}" stroke-dasharray="3 3" opacity=".7" vector-effect="non-scaling-stroke"/>
+    <text x="${Math.min(x(i) + 4, W - 40)}" y="${m.who === "you" ? 24 : 12}" fill="${m.color}" font-size="11" font-weight="700">✕ ${m.who === "you" ? "You" : "AI"} #${m.run}</text>`; }).join("");
   return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
-    <line x1="0" x2="${W}" y1="${y(100)}" y2="${y(100)}" stroke="#232c42" stroke-dasharray="4 4"/>
+    <line x1="0" x2="${W}" y1="${y(100)}" y2="${y(100)}" stroke="#2a1a22" stroke-dasharray="4 4"/>${mk}
     <path d="${path("m")}" fill="none" stroke="var(--you)" stroke-width="2" vector-effect="non-scaling-stroke"/>
     <path d="${path("a")}" fill="none" stroke="var(--mars)" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>
-    <div class="row"><span style="color:var(--mars)">● Agent ${money(hist.at(-1).a)}</span><span style="color:var(--you)">● You ${money(hist.at(-1).m)}</span><span>dashed = $100 start</span></div>`;
+    <div class="row"><span style="color:var(--mars)">● Agent ${money(hist.at(-1).a)}</span><span style="color:var(--you)">● You ${money(hist.at(-1).m)}</span><span>✕ = run lost</span></div>`;
 }
 
 // ===================================================== TODAY
@@ -1256,7 +1390,7 @@ function oppsHtml() {
 }
 
 // ===================================================== filters, watchlist, glossary (one set, every tab)
-const FLT0 = {game: "", stat: "", side: "", watch: false, mxPos: "", mxPace: "", mxDef: "", mxLine: "", mxSort: "", mxDir: "", mxAll: false};
+const FLT0 = {pre: "", sort: "", edge: "", game: "", stat: "", side: "", watch: false, mxPos: "", mxPace: "", mxDef: "", mxLine: "", mxSort: "", mxDir: "", mxAll: false};
 const FLT = () => Object.assign({}, FLT0, store.get("flt", {}));
 function setFltQuiet(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); }
 function setFlt(k, v) { const f = FLT(); f[k] = v; store.set("flt", f); const t = store.get("tab", "today"); fbar(t); (RENDER[t] || renderToday)(); }
@@ -1279,21 +1413,28 @@ function passF(x, opt = {}) {
   if (f.watch && !(w.players.includes(String(x.pid)) || w.games.includes(String(x.espn_id)))) return false;
   return true;
 }
+const PRESETS = [["win", "★ Winning bets"], ["priced", "Priced"], ["matchup", "Matchup"], ["games", "Game lines"], ["all", "All"]];
+const SORTS = [["", "Best first"], ["edge", "Edge"], ["win", "Hit chance"], ["conv", "Conviction"], ["mx", "Matchup size"], ["time", "Tip time"]];
+const fltDirty = f => Object.keys(FLT0).some(k => k === "pre" ? (f.pre && f.pre !== "win") : f[k]);
 function fbar(tab) {
   const el = $("fbar"); if (!el) return;
   if (tab !== "props" || !D.players) { el.innerHTML = ""; el.style.display = "none"; return; }
   el.style.display = "";
-  const f = FLT(), games = (D.players.games || []).filter(g => g.state !== "post" || g.espn_id === f.game);
+  const f = FLT(), pre = f.pre || "win", games = (D.players.games || []).filter(g => g.state !== "post" || g.espn_id === f.game);
   const sel = (k, opts, lab) => `<select data-f="${k}" class="${f[k] ? "on" : ""}" aria-label="${lab}">${opts.map(([v, l]) => `<option value="${esc(v)}"${String(f[k]) === String(v) ? " selected" : ""}>${esc(l)}</option>`).join("")}</select>`;
   const fg = f.game && (D.players.games || []).find(g => g.espn_id === f.game);
-  el.innerHTML = `<div class="frow">
+  el.innerHTML = `<div class="frow">${PRESETS.map(([k, l]) => `<button data-fp="${k}" class="${pre === k ? "on" : ""}">${l}</button>`).join("")}</div>
+    <div class="frow" style="margin-top:5px">
       ${sel("game", [["", "All games"], ...games.map(g => [g.espn_id, `${g.away} @ ${g.home}`])], "Game")}
       ${sel("stat", [["", "All stats"], ...ALL_STATS.map(k => [k, STATN[k]])], "Stat")}
       ${sel("side", [["", "Over + under"], ["Over", "Overs"], ["Under", "Unders"]], "Side")}
+      ${sel("sort", SORTS.map(([v, l]) => [v, v ? "Sort: " + l : "Sort: best"]), "Sort")}
+      ${sel("edge", [["", "Any edge"], ["0", "Edge > 0"], ["3", "Edge 3%+"], ["5", "Edge 5%+"]], "Minimum edge")}
       <button data-ft="watch" class="${f.watch ? "on" : ""}">★ Watchlist</button>
-      ${Object.keys(FLT0).some(k => f[k]) ? '<button data-ft="clear">Clear</button>' : ""}</div>
+      ${fltDirty(f) ? '<button data-ft="clear">Clear</button>' : ""}</div>
     ${fg ? `<div class="focus">Showing <b>${esc(fg.away)} @ ${esc(fg.home)}</b> only <button data-ft="unfocus">×</button></div>` : ""}`;
   el.querySelectorAll("select").forEach(x => x.onchange = () => setFlt(x.dataset.f, x.value));
+  el.querySelectorAll("button[data-fp]").forEach(b => b.onclick = () => setFlt("pre", b.dataset.fp));
   el.querySelectorAll("button[data-ft]").forEach(b => b.onclick = () => {
     const k = b.dataset.ft;
     if (k === "clear") { store.set("flt", {}); fbar(tab); (RENDER[tab] || renderToday)(); }
@@ -1402,7 +1543,7 @@ function mxHtml() {
   const f = FLT(), opt = (k, list) => `<select data-mx="${k}" class="${f[k] ? "on" : ""}">${list.map(([v, l]) => `<option value="${v}"${String(f[k]) === v ? " selected" : ""}>${l}</option>`).join("")}</select>`;
   const lab = (t, k, list) => `<label>${t}${opt(k, list)}</label>`;
   const chip = (on, a, l) => `<button data-mxc="${a}" class="${on ? "on" : ""}">${l}</button>`;
-  const body = `<div class="desc">Filter and sort the <b>All players</b> list below by the matchup. Ranks are out of 30. Chips on each row are green when they help the side shown, red when they hurt it.</div>
+  const body = `<div class="desc">Narrow the list above by the matchup. Ranks are out of 30. Chips on each row are green when they help the side shown, red when they hurt it.</div>
     <div class="mxg">${lab("Position matchup", "mxPos", [["", "Any"], ["soft", "Soft · top 10"], ["tough", "Tough · bottom 10"]])}
       ${lab("Opponent pace", "mxPace", [["", "Any"], ["lo", "Fast · top 10"], ["mid", "Middle"], ["hi", "Slow · bottom 10"]])}
       ${lab("Opponent defense", "mxDef", [["", "Any"], ["top", "Top-10 defense"], ["weak", "Bottom-10 defense"]])}
@@ -1412,7 +1553,7 @@ function mxHtml() {
     <div class="chips">${chip(f.mxDir !== "u", "dir|", "Best for overs first")}${chip(f.mxDir === "u", "dir|u", "Best for unders first")}<span class="sep"></span>${chip(!f.mxAll, "all|0", "Best stat per player")}${chip(f.mxAll, "all|1", "Every stat line")}</div>
     <div class="chips">${chip(f.mxPos === "soft" && f.mxPace === "lo" && f.mxDir !== "u", "p|fs", "Fast + soft · overs")}${chip(f.mxPos === "tough" && f.mxLine === "infl" && f.mxDir === "u", "p|ti", "Tough + inflated · unders")}${chip(f.mxPos === "tough" && f.mxSort === "win" && f.mxDir === "u", "p|tu", "Tough position · unders by hit chance")}${mxAny(f) || f.mxSort ? chip(false, "clear|", "Clear matchup filters") : ""}</div>
     ${mxRecHtml(f)}`;
-  return sec("p-mx", "Matchup filters and sorter", mxAny(f) ? "on" : f.mxSort ? "sorted" : "", body, true);
+  return sec("p-mx", "More matchup filters", mxAny(f) ? "on" : f.mxSort ? "sorted" : "", body, false);
 }
 function mxSet(o) {
   const f = FLT(); Object.assign(f, o); store.set("flt", f); fbar("props"); renderProps();
@@ -1755,19 +1896,22 @@ function renderToday() {
   if ((games.some(g => g.state === "in" || (g.state === "pre" && new Date(g.start) < Date.now()))) && (!D.tonightSbAt || Date.now() - D.tonightSbAt > 60e3)) {
     D.tonightSbAt = Date.now(); scoreboard("basketball_nba", D.players.date.replaceAll("-", "")).then(x => { if (x) { D.tonightSb = x; if (store.get("tab") === "today" && !$("sheet").classList.contains("on")) renderToday(); } });
   }
-  $("v-today").innerHTML = `${statusStrip()}
-    ${briefHtml()}
-    ${changesHtml()}
-    ${allCtl("today")}
-    ${bestHtml()}
+  const bank = `<div class="bankrow">${tile("You · run #" + L.book.run, "you", youEq, manual.stats)}${tile("Agent · run #" + state.book.run, "agent", state.stats.equity, state.stats)}</div>
+    <div class="desc" style="margin:-4px 2px 8px">You have <b class="num">${money(L.book.cash)}</b> available to bet${mOpen.length ? ` · ${money(mOpen.filter(b => (b.run ?? L.book.run) === L.book.run).reduce((t, b) => t + b.stake, 0))} riding on ${mOpen.length} open` : ""}</div>`;
+  const wins = onePerPlayer(propRows().filter(r => upcoming(r) && isWin(r)), r => r.ev ?? -1).slice(0, 5);
+  const topHtml = wins.length ? `<div class="ulist">${wins.map(uRow).join("")}</div><button class="more" onclick="go('props')">All props, filters and sorting →</button>`
+    : `<div class="hint"><span>No winning bets right now: nothing clears 3% at today's prices.</span><button class="btn" onclick="go('props')">Browse props</button></div>`;
+  const gameLines = games.map(g => {
+    const badge = g.state === "in" ? '<span class="pill live">LIVE</span>' : g.state === "post" ? '<span class="pill fin">FINAL</span>' : "";
+    return `<div class="gcard" data-game="${g.espn_id}"><div class="m"><span>${esc(g.away)} @ ${esc(g.home)}</span><span class="t">${badge}${tod(g.start)}</span></div>${vegasLine(g)}</div>`;
+  }).join("");
+  $("v-today").innerHTML = `${bank}
     ${liveNowHtml()}
-    ${watchHtml()}
-    ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), true)
+    <h2>Best bets now</h2>${topHtml}
+    ${allOpen.length ? sec("t-open", "Open bets", allOpen.length + " · " + money(allOpen.reduce((t, b) => t + b.stake, 0)) + " riding", allOpen.map(betRow).join(""), false)
       : `<div class="hint"><span>No open bets</span><button class="btn" onclick="openLogBet()">+ Log a bet</button></div>`}
-    ${sec("t-bank", "Bankroll and model", money(youEq) + " you · " + money(state.stats.equity) + " agent", heroHtml(youEq), false)}
-    <button class="more" onclick="go('props')">Top matchup spots and every priced line, ranked →</button>
-    ${oppsHtml()}
-    ${sec("t-slate", "Tonight's games", games.length + " games", games.length ? `<div class="games">${gameHtml}</div>` : '<div class="empty">No NBA games on the slate.</div>', false)}`;
+    ${sec("t-slate", "Tonight's games", games.length + " games", games.length ? `<div class="games">${gameLines}</div>` : '<div class="empty">No NBA games on the slate.</div>', true)}
+    ${sec("t-more", "More from the model", "briefing, game picks, watchlist, changes", `${statusStrip()}${briefHtml()}${changesHtml()}${bestHtml()}${watchHtml()}${sec("t-bank", "Bankroll and model", money(youEq) + " you · " + money(state.stats.equity) + " agent", heroHtml(youEq), false)}${oppsHtml()}`, false)}`;
   $("v-today").querySelectorAll(".gcard, [data-game]").forEach(el => el.onclick = () => openGame(el.dataset.game));
   const sa = $("seenAll"); if (sa) sa.onclick = () => { D._seen = snapNow(); store.set("seen", D._seen); renderToday(); };
   bindPlayerLinks($("v-today")); bindBest($("v-today"));
@@ -2135,8 +2279,10 @@ function raceHtml() {
   const youAt = ts => { let v = START; for (const h of L.hist) { if (h.ts <= ts) v = h.eq; else break; } return v; };
   const hist2 = hist.map(h => ({...h, m: youAt(h.ts)}));
   if (hist2.length) hist2.push({ts: new Date().toISOString(), a: state.stats.equity, m: equityOf(L.book)});
+  const marks = [...state.book.runs.filter(r => r.loss || r.result === "busted" || r.result === "ended").map(r => ({ts: r.ended, run: r.run, who: "agent", color: "var(--mars)"})),
+    ...L.book.runs.filter(r => r.loss || r.result === "busted").map(r => ({ts: r.ended, run: r.run, who: "you", color: "var(--you)"}))];
   return `<div class="race">${raceCard("Agent", state.book, state.stats, "var(--mars)", "agent")}${raceCard("You", manual.book, manual.stats, "var(--you)", "you")}</div>
-    <div class="card chart" style="margin-top:10px"><div class="label">Equity · agent vs you</div>${chart(hist2)}</div>`;
+    <div class="card chart" style="margin-top:10px"><div class="label">Equity · agent vs you</div>${chart(hist2, marks)}</div>`;
 }
 function topSpots(spots) {
   const s = spots.filter(x => new Date(x.start) > Date.now() - 3 * 3600e3).slice(0, 8);
@@ -2156,69 +2302,91 @@ function propRow(x) {
 function bindPlayerLinks(root) {
   root.querySelectorAll("[data-pid]").forEach(el => el.onclick = e => { e.stopPropagation(); openPlayer(el.dataset.pid, el.dataset.stat); });
 }
+// "Winning bets": priced at 3%+ edge, the matchup does not point the other way, a secure role, and not flagged Pass.
+// (Audit Nov 22: the market price is the anchor, so an edge only counts when the price is better than fair.)
+const WIN_EDGE = 0.03;
+const isWin = r => r.line != null && r.ev >= WIN_EDGE && mAgree(r) !== false && r.tier !== "Pass" && r.minutes >= 20 && !/quest|gtd|doubt|day-to-day|day to day|out/i.test(r.status || "");
+const sideOf = r => r.side || r.lean;
+function uRow(x) {
+  const priced = x.line != null, ag = mAgree(x), ms = matchupStrength(x), win = isWin(x);
+  const bet = priced ? `${x.side.toUpperCase()} ${f1(x.line)} ${STATN[x.stat]}` : `${x.lean.toUpperCase()} ${STATN[x.stat]}`;
+  const bits = [`${esc(x.team)} ${x.home ? "vs" : "@"} ${esc(x.opp)} ${x.state === "in" ? '<span class="neg">live</span>' : tod(x.start)}`];
+  if (priced) {
+    if (x.ev != null) bits.push(`<span class="${x.ev >= WIN_EDGE ? "pos" : x.ev > 0 ? "" : "neg"}">edge ${x.ev > 0 ? "+" : ""}${(x.ev * 100).toFixed(1)}%</span>`);
+    if (x.p_win != null) bits.push(`hit ${Math.round(x.p_win * 100)}%`);
+    if (x.conv != null) bits.push(`conv ${x.conv}`);
+  } else bits.push(`proj ${f1(x.proj)}`);
+  bits.push(`<span class="dots">${dots(ms.n)}</span> ${mArrow(x)}${ag === false ? ' <span class="neg">opposed</span>' : ""}`);
+  return `<div class="ur${win ? " win" : ""}" data-pid="${x.pid}" data-stat="${x.stat}"><div class="l1"><span class="nm">${esc(x.name)}</span><span class="bt ${sideOf(x)}">${bet}</span><span class="od">${priced ? amS(x.am) : ""}</span></div>
+    <div class="l2">${bits.join(" · ")}${x.more ? ` · +${x.more} more` : ""}</div></div>`;
+}
+function gameLineRows() {
+  const B = rankBoard(); if (!B) return '<div class="empty">Game lines appear after the next research run.</div>';
+  const games = (D.players && D.players.games) || [], gOf = id => games.find(g => g.espn_id === id);
+  const rows = (B.games || []).filter(r => { const g = gOf(r.espn_id); return g && g.state === "pre" && new Date(g.start) > Date.now() && r.rank != null; }).sort((a, b) => a.rank - b.rank);
+  if (!rows.length) return '<div class="empty">No game lines left to bet tonight.</div>';
+  return rows.map(r => { const g = gOf(r.espn_id), t = r.side === "home" ? g.home : g.away;
+    const bet = r.kind === "total" ? `${String(r.side).toUpperCase()} ${f1(r.point)}` : `${esc(t)} ${r.point > 0 ? "+" : ""}${f1(r.point)}`;
+    return `<div class="ur" data-bgame="${r.espn_id}"><div class="l1"><span class="nm">${esc(g.away)} @ ${esc(g.home)}</span><span class="bt">${r.kind === "total" ? "Total " : "Spread "}${bet}</span><span class="od">${amS(r.am)}</span></div>
+      <div class="l2">${tod(g.start)} · #${r.rank}${r.tier ? " · " + esc(r.tier) : ""} · hit ${Math.round(r.p * 100)}% · needs ${Math.round(100 / r.dec)}%</div></div>`; }).join("");
+}
 function renderProps() {
   if (!D.lines) getLines().then(() => { if (store.get("tab") === "props") renderProps(); });
   const {players, pz} = D;
-  const games = players.games || [];
-  const F = D.pf || (D.pf = {tab: null, stat: "all", lean: "all", q: "", all: false, game: "all"});
-  if (D.propGame) { setFltQuiet("game", D.propGame); D.propGame = null; F.all = false; }
-  const GF = FLT(); F.game = GF.game || "all"; F.stat = GF.stat || "all"; F.lean = GF.side || "all";
+  const F = D.pf || (D.pf = {q: "", n: 25});
+  if (D.propGame) { setFltQuiet("game", D.propGame); D.propGame = null; fbar("props"); }
+  const GF = FLT(), pre = GF.pre || "win";
   // matchup filters need the team pace/defense ranks (dvp.json) and, for the record panel, the graded history; both load once, then redraw
   if (!D.dvp && !D._dvpL) { D._dvpL = 1; get("dvp.json", null).then(x => { D.dvp = x; if (store.get("tab") === "props") renderProps(); }); }
-  if (!D.mxh && !D._mxhL && store.get("o-p-mx", true)) { D._mxhL = 1; get("matchup_hist.json", null).then(x => { D.mxh = x || {rows: [], days: 0}; if (store.get("tab") === "props") renderProps(); }); }
-  const rows = propRows().filter(r => F.game === "all" ? upcoming(r) : fresh(r));
-  const pricedRows = rows.filter(r => r.line != null);
-  if (!F.tab) F.tab = pricedRows.length ? "priced" : "research";
+  if (!D.mxh && !D._mxhL) { D._mxhL = 1; get("matchup_hist.json", null).then(x => { D.mxh = x || {rows: [], days: 0}; if (store.get("tab") === "props") renderProps(); }); }
   const q = F.q.trim().toLowerCase();
+  const searchBox = `<div class="sbox"><input class="search" id="pq" placeholder="Search a player or team (e.g. BOS)" value="${esc(F.q)}">${q ? '<button class="sx" id="pqx" aria-label="Clear">×</button>' : ""}</div>`;
+  const wireSearch = () => {
+    $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { renderProps(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
+    const x = $("pqx"); if (x) x.onclick = () => { F.q = ""; renderProps(); };
+  };
   if (q.length >= 2) {                          // search mode: every filter paused, every prop for the players found
-    $("v-props").innerHTML = `<div class="sbox"><input class="search" id="pq" placeholder="Search a player or team (e.g. BOS)" value="${esc(F.q)}"><button class="sx" id="pqx" aria-label="Clear">×</button></div>${searchHtml(F.q)}`;
-    const rer_ = () => renderProps();
-    $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer_(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
-    $("pqx").onclick = () => { F.q = ""; rer_(); };
-    $("v-props").querySelectorAll("[data-sp]").forEach(el => el.onclick = () => { F.q = idx_name(el.dataset.sp); rer_(); window.scrollTo(0, 0); });
+    $("v-props").innerHTML = searchBox + searchHtml(F.q);
+    wireSearch();
+    $("v-props").querySelectorAll("[data-sp]").forEach(el => el.onclick = () => { F.q = idx_name(el.dataset.sp); renderProps(); window.scrollTo(0, 0); });
     bindPlayerLinks($("v-props"));
     return;
   }
-  const base = (F.tab === "priced" ? pricedRows : rows).filter(r => (F.game === "all" || r.espn_id === F.game)
-    && (F.stat === "all" ? (F.tab === "priced" || PROP_STATS.includes(r.stat)) : r.stat === F.stat)
-    && (F.lean === "all" || r.side === F.lean)
-    && (!q || r.name.toLowerCase().includes(q) || r.team.toLowerCase() === q || r.opp.toLowerCase() === q)
+  const rows = propRows().filter(r => GF.game ? fresh(r) && r.espn_id === GF.game : upcoming(r));
+  const minEdge = GF.edge === "" ? null : +GF.edge / 100;
+  const base = rows.filter(r => (pre === "win" ? isWin(r) : pre === "priced" ? r.line != null : true)
+    && (GF.stat ? r.stat === GF.stat : (pre === "priced" || pre === "win" || pre === "all" || PROP_STATS.includes(r.stat)))
+    && (!GF.side || sideOf(r) === GF.side)
+    && (minEdge == null || (r.ev != null && r.ev >= minEdge))
     && (!GF.watch || WATCH().players.includes(String(r.pid)))
     && mxPass(r, GF));
-  const dflt = F.tab === "priced" ? playScore : r => matchupStrength(r).n + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0);
+  const SC = {edge: r => r.ev ?? -9, win: r => r.p_win ?? -9, conv: r => r.conv ?? -9, mx: r => matchupStrength(r).n + r.strength, time: r => -new Date(r.start).getTime()};
+  const dflt = GF.sort ? SC[GF.sort] : pre === "win" ? r => (r.ev ?? 0) + (r.conv != null ? r.conv / 150 : 0) : pre === "matchup" ? r => matchupStrength(r).n + r.strength + ({edge: 1.5, skip: -2.5}[focusOf(r.stat)] || 0) : playScore;
   const sc = mxSorter(GF, dflt);
   const list = GF.mxAll ? base.slice().sort((a, b) => sc(b) - sc(a)) : onePerPlayer(base, sc);
-  const mxOn = mxAny(GF) || !!GF.mxSort || GF.mxAll;
-  const lim = F.all || q || F.game !== "all" ? list.length : mxOn ? 30 : 10;
-  const nP = onePerPlayer(pricedRows, r => r.ev ?? -1).length;
-  const gameChips = [`<button data-g="all" class="${F.game === "all" ? "on" : ""}">All games</button>`]
-    .concat(games.filter(g => g.state !== "post").map(g => `<button data-g="${g.espn_id}" class="${F.game === g.espn_id ? "on" : ""}">${esc(g.away)} @ ${esc(g.home)} ${g.state === "in" ? "· live" : tod(g.start)}</button>`)).join("");
-  const statChips = ["all", ...ALL_STATS].map(k => `<button data-s="${k}" class="${F.stat === k ? "on" : ""}">${k === "all" ? "All stats" : STATN[k]}</button>`).join("")
-    + '<span class="sep"></span>' + [["Over", "Overs"], ["Under", "Unders"]].map(([k, l]) => `<button data-l="${k}" class="${F.lean === k ? "on" : ""}">${l}</button>`).join("");
-  const empty = F.tab === "priced"
-    ? '<div class="empty">No priced lines for these filters. The agent buys prop odds around 2pm ET; until then, use Research.</div>'
-    : '<div class="empty">Nothing matches these filters.</div>';
+  const lim = F.all || GF.game ? list.length : F.n;
+  const nWin = onePerPlayer(rows.filter(isWin), r => r.ev ?? -1).length;
+  const note = {win: `Priced at ${WIN_EDGE * 100}%+ edge, matchup not against it, secure minutes. The market price is the anchor, so on most nights this list is short or empty.`,
+    priced: "Every player with a DraftKings line, best play first.", matchup: "Matchup strength first (no price in it). Tap a player for the full card.",
+    games: "Every priced game line, ranked.", all: "Every player and stat tonight."}[pre];
+  const body = pre === "games" ? gameLineRows()
+    : list.slice(0, lim).map(uRow).join("") || `<div class="empty">${pre === "win" ? "No winning bets right now. Nothing clears 3% at the current prices; try Priced, or check back after the next price refresh." : "Nothing matches these filters."}</div>`;
   const tt = teamTotalsHtml(pz);
-  $("v-props").innerHTML = `
-    <input class="search" id="pq" placeholder="Search a player or team (e.g. BOS)" value="${esc(F.q)}">
-    ${allCtl("props")}
-    ${topSpotsHtml()}
-    ${boardHtml()}
+  $("v-props").innerHTML = `${searchBox}
+    <div class="pnote"><span>${esc(note)}</span>${pre === "win" ? "" : ""}<button class="btn ghost sm" id="rbReprice"${gamesLeft() ? "" : " disabled"}>↻ Re-price</button></div>
+    <div class="ulist">${body}</div>
+    ${pre !== "games" && list.length > lim ? `<button class="more" id="pall">Show ${Math.min(25, list.length - lim)} more (${list.length - lim} left)</button>` : ""}
     ${mxHtml()}
-    ${sec("p-all", "All players", list.length + (GF.mxAll ? " lines" : " players") + (mxOn ? " · matchup view" : ""), `<div class="tabs2" id="ptab"><button data-t="priced" class="${F.tab === "priced" ? "on" : ""}">Priced · ${nP}</button><button data-t="research" class="${F.tab === "research" ? "on" : ""}">Research</button></div>
-    <div class="desc" style="margin:2px 2px 6px">${F.tab === "priced" ? "Every player with a DraftKings line, his best play first: conviction, then edge. The tag is the bet side at that line; the arrow is the matchup." : "Matchup strength first (the dots: matchup size, signals agreeing, secure minutes; no line or price in it). No side until DraftKings posts a line. One row per player."}</div>
-    <div class="card" style="padding:2px 12px">${list.slice(0, lim).map(cRowMx).join("") || empty}</div>
-    ${list.length > lim ? `<button class="more" id="pall">Show all ${list.length} ${GF.mxAll ? "lines" : "players"}</button>` : ""}`, true)}
     ${tt ? sec("p-tt", "Team totals", "", tt, false) : ""}
     ${sec("p-saved", "Saved props", L.saved.length + " saved", savedHtml(), false)}`;
-  bindBoard($("v-props"));
+  wireSearch();
   bindSaved($("v-props"));
   bindMx($("v-props"));
-  const rer = () => renderProps();
-  $("pq").oninput = e => { F.q = e.target.value; clearTimeout(D._qt); D._qt = setTimeout(() => { rer(); const el = $("pq"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); }, 250); };
-  $("ptab").querySelectorAll("button").forEach(b => b.onclick = () => { F.tab = b.dataset.t; F.all = false; rer(); });
-
-  const pa = $("pall"); if (pa) pa.onclick = () => { F.all = true; rer(); };
+  const pa = $("pall"); if (pa) pa.onclick = () => { F.n += 25; renderProps(); };
+  $("v-props").querySelectorAll("[data-bgame]").forEach(r => r.onclick = () => window.openGame && openGame(r.dataset.bgame));
+  const rp = $("rbReprice"); if (rp && window.BESTREFRESH) rp.onclick = async () => { rp.disabled = true;
+    try { await BESTREFRESH.reprice(() => {}); store.set("bestview", "local"); renderProps(); toast("Re-priced the games still to tip with DraftKings' current lines"); }
+    catch (e2) { toast("Couldn't re-price: " + e2.message); rp.disabled = false; } };
   bindPlayerLinks($("v-props"));
 }
 function teamTotalsHtml(pz) {
@@ -2319,7 +2487,7 @@ function openLogBet(pref) {
         <div><label>Sportsbook</label><select id="lb">${LOG_BOOKS.map(b => `<option ${b === lastBook ? "selected" : ""}>${b}</option>`).join("")}</select></div>
         <div><label>Notes (optional)</label><textarea id="ln" rows="2" placeholder="Why you like it"></textarea></div>
         <div class="err" id="lerr"></div>
-        <button class="go" id="lgo">Place bet · ${money(L.book.cash)} available</button>
+        <button class="go" id="lgo">Place bet · ${money(L.book.cash)} available to bet</button>
         ${st.kind === "line" ? '<div class="desc">Grades itself from the final score.</div>' : prop ? '<div class="desc">Grades itself from the box score after the game. A player who does not play is voided.</div>' : '<div class="desc">Custom bets: tap Won, Lost or Push on the bet in Your book when it is decided.</div>'}
       </div>`;
     $("pane").querySelectorAll(".seg:not(#lside) button").forEach(b => b.onclick = () => { keep(); st.kind = b.dataset.k; draw(); });
@@ -2359,7 +2527,7 @@ function openLogBet(pref) {
       leg = {market: "custom", outcome: d, point: line === "" ? null : +line, price: Math.round(dec * 1000) / 1000, book: bookKey, result: null};
     }
     const r = placeBet([leg], stake, note);
-    if (r.err) return err(r.err);
+    if (r.err) { err(r.err); if (r.broke) { const e = $("lerr"); e.innerHTML = esc(r.err) + ' <button class="btn sm" id="lend" type="button">End this run (counts as a loss) and start at $100</button>'; $("lend").onclick = () => { history.back(); setTimeout(endMyRun, 80); }; } return; }
     toast(`Logged ${money(r.bet.stake)} on ${leg.outcome}${leg.point != null && leg.market !== "h2h" ? " " + leg.point : ""}`);
     history.back();
     setTimeout(() => RENDER[store.get("tab", "today")](), 50);
@@ -2561,8 +2729,8 @@ function barChart(L, pc) {
       ${bw > 26 ? `<text x="${x + bw / 2}" y="${H - 8}" font-size="9.5" text-anchor="middle" fill="#8a94ab">${esc(r[1])}</text>` : ""}`;
   }).join("");
   return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${bars}
-    <line x1="0" x2="${W}" y1="${y(pc.line)}" y2="${y(pc.line)}" stroke="#E5C158" stroke-width="1.5" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>
-    <text x="${W - 4}" y="${y(pc.line) - 4}" font-size="11" text-anchor="end" fill="#E5C158" font-family="JetBrains Mono">${pc.line}</text></svg>
+    <line x1="0" x2="${W}" y1="${y(pc.line)}" y2="${y(pc.line)}" stroke="#D8587D" stroke-width="1.5" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>
+    <text x="${W - 4}" y="${y(pc.line) - 4}" font-size="11" text-anchor="end" fill="#D8587D" font-family="JetBrains Mono">${pc.line}</text></svg>
     <div class="desc">Oldest → newest${xs.length < L.length ? " (last 30 shown)" : ""}. Green = ${pc.side.toLowerCase()} hit. Faded bars = came off the bench.</div>`;
 }
 function logTable(L, pc, withSeason) {
@@ -2720,7 +2888,7 @@ function shotChart(pc) {
     <rect x="0" y="0" width="500" height="360"/>
     <rect x="170" y="0" width="160" height="190"/><circle cx="250" cy="190" r="60"/>
     <path d="M30 0 V${Y(arcY)} A237.5 237.5 0 0 0 470 ${Y(arcY)} V0"/>
-    <path d="M210 ${Y(0)} A40 40 0 0 0 290 ${Y(0)}"/><circle cx="250" cy="${Y(0)}" r="7.5" stroke="#ADD8E6"/><line x1="220" x2="280" y1="40" y2="40"/></g>`;
+    <path d="M210 ${Y(0)} A40 40 0 0 0 290 ${Y(0)}"/><circle cx="250" cy="${Y(0)}" r="7.5" stroke="#7EC8E3"/><line x1="220" x2="280" y1="40" y2="40"/></g>`;
   const Z = {};
   S.forEach(r => { const z = shotZone(r[0], r[1], r[3]); const o = Z[z] || (Z[z] = [0, 0]); o[1]++; if (r[2]) o[0]++; });
   const order = ["Rim", "Paint", "Mid-range", "Corner 3", "Above-break 3"];
@@ -2788,9 +2956,10 @@ async function fillClv() {
 function renderBets() {
   const {state, manual, bd} = D;
   $("v-bets").innerHTML =
+    sec("b-race", "Bankroll · you vs agent", money(manual.stats.equity) + " vs " + money(state.stats.equity), raceHtml(), true) +
+    sec("b-runs", "Runs", runsMeta(), runsHtml(), false) +
     `<div class="card" style="padding:10px 12px" id="betList"></div>` +
     sec("b-clv", "Your CLV · did you beat the closing line?", "", '<div class="empty">Loading…</div>', false) +
-    sec("b-race", "Bankroll race · agent vs you", money(state.stats.equity) + " vs " + money(manual.stats.equity), raceHtml(), false) +
     sec("b-data", "Your data · backup", L.lastExport ? "last backup " + ago(L.lastExport) : "no backup yet", backupHtml(), false) +
     sec("b-log", "Time log", "", "", false);
   betList();
@@ -3098,6 +3267,12 @@ function scoreH(state) {
     <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Playbook</th><th>Bets</th><th>W-L</th><th>Staked</th><th>Profit</th><th>ROI</th><th>CLV</th></tr></thead><tbody>${body}</tbody></table></div>
     <div class="desc" style="margin-top:6px">Settled bets only. CLV is the average closing-line value of each playbook's legs; negative means the price you got was worse than the close.</div>`;
 }
+function allRuns() { return D.state.book.runs.concat(D.manual.book.runs.map(r => ({...r, you: true}))).sort((a, b) => b.ended.localeCompare(a.ended)); }
+function runsMeta() { const r = allRuns(), lost = r.filter(x => x.result !== "won").length; return r.length ? `${r.length} finished · ${lost} lost` : "none yet"; }
+function runsHtml() {
+  return allRuns().map(r => `<div class="bet"><div class="what"><span class="pill ${r.result === "won" ? "won" : "lost"}">${r.result === "won" ? "WON" : "✕ LOST"}</span>${r.you ? "You" : "Agent"} · run #${r.run}</div>
+    <div class="amt">${money(r.final)}</div><div class="sub">${r.result === "busted" ? "ran out of funds" : r.result === "ended" ? "ended by " + (r.you ? "you" : "the owner") : "hit $1,000"} · peak ${money(r.peak)} · ${r.bets} bets${r.open_at_end ? ` · ${r.open_at_end} still open when it ended` : ""} · ${when(r.started)} → ${when(r.ended)}</div></div>`).join("") || '<div class="empty">A run is lost when cash drops under $5 or you end it, and won at $1,000. None have finished yet.</div>';
+}
 function renderAgent() {
   const {state, manual, budget} = D;
   const p = state.params;
@@ -3139,9 +3314,7 @@ function renderAgent() {
       })() +
       `${budget.unconfirmed ? `<div class="desc" style="margin-top:8px;color:var(--warn,#FBBF24)">The last balance check was refused (too many requests); this is the last real reading, and the next run checks again.</div>` : ""}
        <div class="desc" style="margin-top:8px">Paid plan: ${mon.toLocaleString()} credits a billing cycle, renewing on the billing date. What's left above the floor and the Backtester's untouched allotment is divided by the days left in the cycle; within the day the Scout keeps to an even pace from 9am to 1am ET, prop refreshes and closing prices only to the day's budget, and no run can spend more than 150. The old free key is the 2H-Comeback tracker's: the agent never spends on it.</div>`, false) +
-    sec("a-runs", "Past runs", runs.length ? runs.length + " finished" : "none yet",
-      runs.map(r => `<div class="bet"><div class="what"><span class="pill ${r.result === "won" ? "won" : "lost"}">${r.result.toUpperCase()}</span>${r.you ? "You" : "Agent"} · run #${r.run}</div>
-        <div class="amt">${money(r.final)}</div><div class="sub">peak ${money(r.peak)} · ${r.bets} bets · ${when(r.started)} → ${when(r.ended)}</div></div>`).join("") || '<div class="empty">Every run ends at $1,000 or broke. None have finished yet.</div>', false);
+    sec("a-runs", "Past runs", runsMeta(), runsHtml(), false);
   journal(state);
   fillLearn();
 }
@@ -3347,7 +3520,9 @@ window.addEventListener("hashchange", () => { const v = location.hash.slice(1); 
   if (!state) { $("updated").textContent = "waiting for first run"; $("v-today").innerHTML = '<div class="card">The agent hasn\'t run yet. Trigger the Agent workflow once in GitHub Actions.</div>'; $("v-today").classList.add("on"); return; }
   Object.assign(D, {state, budget, bd, hist, pz, players, dvp});
   await loadL(manual);
+  let tidy = {};
   try { const k = importBets(await get("manual_import.json", null)); if (k) setTimeout(() => toast(`Added ${k} bet${k > 1 ? "s" : ""} you took at the sportsbook`), 1200); } catch (e) {}
+  try { tidy = tidyLedger(); if (tidy.removed || tidy.cash) setTimeout(() => toast(`Cleaned your ledger: ${tidy.removed ? tidy.removed + " duplicate bet" + (tidy.removed > 1 ? "s" : "") + " removed" : "balance recalculated"}`), 2600); } catch (e) { console.log("tidy", e); }
   $("updated").textContent = "updated " + ago(state.updated);
   go((location.hash || "").slice(1) || store.get("tab", "today"));
   setInterval(liveTick, 30000);

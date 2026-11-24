@@ -16,8 +16,13 @@ def open_bets(book):
     return [b for b in book["bets"] if b["status"] == "open"]
 
 
+def cur_open(book):
+    """Open bets of the current run. After a run is lost or ended, its open bets still grade, but under the old run."""
+    return [b for b in open_bets(book) if b.get("run", book["run"]) == book["run"]]
+
+
 def equity(book):
-    return round(book["cash"] + sum(b["stake"] for b in open_bets(book)), 2)
+    return round(book["cash"] + sum(b["stake"] for b in cur_open(book)), 2)
 
 
 def place(book, legs, stake, playbook, ev=None, p=None, note="", group=None, source="agent", issue=None):
@@ -83,6 +88,14 @@ def settle(book, bet, result=None):
     bet.update(status=result, payout=payout, profit=round(payout - bet["stake"], 2),
                settled=store.iso(store.now()))
     bet["review"] = review.build(bet)
+    if bet.get("run", book["run"]) != book["run"]:
+        # a bet from a run that is already over: it counts for that run's record, never for the new run's cash
+        old = next((r for r in book["runs"] if r["run"] == bet["run"]), None)
+        if old:
+            old["final"] = round(old["final"] + bet["profit"], 2)
+            old.update(run_summary(book, bet["run"]))
+            old["late"] = True
+        return True
     book["cash"] = round(book["cash"] + payout, 2)
     book["peak"] = max(book["peak"], equity(book))
     return True
@@ -146,23 +159,29 @@ def run_summary(book, run):
             "clv": round(sum(clvs) / len(clvs), 4) if clvs else None}
 
 
-def check_race(book, label):
-    """Goal hit, busted or ended by the owner? Archive the run and (optionally) start the next one."""
+def check_race(book, label, force=None):
+    """Goal hit, out of funds or ended by the owner? Archive the run with a loss mark and start the next one.
+    Out of funds = cash under the bust line, even with bets still open: those bets finish under the old run.
+    force="ended" is the owner's reset button: the run is lost now."""
     eq = equity(book)
-    done = None
-    if eq >= book["goal"] and not open_bets(book):
-        done = "won"
-    elif book["cash"] < config.BUST_LINE and not open_bets(book):
-        done = "busted"
-    elif book.get("wind_down") and not open_bets(book):
-        done = "ended"
+    done = force
+    if not done:
+        if eq >= book["goal"] and not cur_open(book):
+            done = "won"
+        elif book["cash"] < config.BUST_LINE:
+            done = "busted"
+        elif book.get("wind_down") and not cur_open(book):
+            done = "ended"
     if not done:
         return None
     summary = {"run": book["run"], "result": done, "started": book["started"],
                "ended": store.iso(store.now()), "final": eq, "peak": book["peak"],
+               "loss": done != "won", "open_at_end": len(cur_open(book)),
                **run_summary(book, book["run"])}
     if book.get("wind_down"):
         summary["note"] = book["wind_down"]
+    if force:
+        summary["note"] = summary.get("note") or "Ended by the owner."
     book["runs"].append(summary)
     book.pop("wind_down", None)
     if config.AUTO_RESTART:
