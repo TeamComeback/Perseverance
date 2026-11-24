@@ -3388,6 +3388,13 @@
    "kind": "injury",
    "text": "Cade Cunningham probable \u2192 out (DET @ ORL Over 212.5 re-priced: 212.5 at \u2212114, conviction 26)",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T23:35:08Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Cooper Flagg Under 24.5 points: P.J. Washington is questionable with an illness after joining shootaround; if he sits, Flagg's minutes and usage likely rise, and the model has not re-priced for it yet.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3454,6 +3461,44 @@
     }
    ],
    "changes_at_write": 50
+  },
+  {
+   "edition": "final",
+   "at": "2026-11-24T23:35:08Z",
+   "author": "claude",
+   "headline": "Final: Cunningham ruled out, Washington a game-time call, and every prop left on the card is now past its play-to price",
+   "briefing": "It is a thin 3-game Tuesday, and the late news landed on two of them: Detroit ruled Cade Cunningham out after he had been probable, and Dallas still lists P.J. Washington as questionable with an illness after he took part in shootaround. Five props remain on the card (Desmond Bane, Wendell Carter Jr., Cooper Flagg, DeMar DeRozan and Neemias Queta), all graded Pass at conviction 28 to 31, and every one is priced past its play-to line tonight, so none of them is a good add at the current number. The market spent the afternoon moving against the card: Payton Pritchard and Kyshawn George came off in the last run, AJ Dybantsa, Jalen Suggs, Trae Young, Jayson Tatum, Aaron Gordon, Daniel Gafford and Cade Cunningham's assists under were all removed earlier as their lines moved away. The record argues for restraint as well: the final edition is 15-20-0 (-6.20u), the morning 13-21-0 (-9.08u), and game lines are 20-43 (-25.05u) since 2026-11-11, even after a 3-2-0 day yesterday. What could still change before tip is Washington's status, which the model has not priced in yet and which touches the Flagg card most directly.",
+   "cards": {
+    "p|4066320|tpm|Over": "Bane is averaging 4.7 threes over his last 10 and the model projects 3.8 against a 3.5 line, and the model re-priced him after Cunningham was ruled out, nudging conviction to 31. What would make this wrong is the matchup: DET is the #3 toughest team on shooting-guard threes, he is 5 of 13 over 3.5 against them, and DraftKings puts it at 42%. At +123 it is past the +131 play-to, so it is a watch, not an add.",
+    "p|4277847|pts|Under": "The case is the matchup: DET gives centers -8% points (#3 toughest), and his 11-game history against them is 9.9 points per game. The risk is shot volume and his home split (5 of 20 under 10.5 at home), plus a frontcourt reshuffled by Paolo Banchero's absence, which we flagged earlier. At \u2212104 it is past the +102 play-to.",
+    "p|5041939|pts|Under": "The simulation has him under in 64% of games with a 22.8 projection and room to spare (under 22.5 in 6 of his last 10). What makes it wrong is DEN being the #2 softest team on small forwards and more minutes: he goes over when he plays long, and a Washington absence would push minutes and shots his way. At \u2212104 it is past the +103 play-to, and Washington's status is the deciding news.",
+    "p|3978|pts|Under": "He is averaging 8.6 points over his last 10 on a projected 19.1 minutes, and the model has 9.5 against a 10.5 line. It loses if his minutes run long (27.6 in his overs) or the home split holds (6 of 20 under at home). At \u2212120 it is past the \u2212111 play-to.",
+    "p|4397424|pts|Under": "A new addition at the last run: the model projects 10.9 and the simulation has him under in 57% of games. The matchup is the problem, since WSH gives centers +13% points (#2 softest) and he has averaged 18.7 against them in 3 games. At \u2212122 it is past the \u2212112 play-to."
+   },
+   "leans_note": "Only the BOS @ WSH Over 218.5 is still holding among the game-line leans; DET -2.5 was removed and the Cunningham news re-priced the DET @ ORL Over, and game lines are 20-43 so they stay leans only.",
+   "sources": [
+    {
+     "title": "Cade Cunningham ruled out against Magic",
+     "url": "https://hottakes.com/articles/cade-cunningham-ruled-out-against-magic-after-brutal-weekend-performance-cf480d4f-22ac-4ad6-bba0-960aef2bc377"
+    },
+    {
+     "title": "NBA injury report: Banchero, Cunningham listed on Tuesday, November 24 (TalkBasket)",
+     "url": "https://www.talkbasket.net/229884-nba-injury-report-banchero-cunningham-listed-on-tuesday-november-24"
+    },
+    {
+     "title": "P.J. Washington joins shootaround, questionable vs. Nuggets (Dallas Sports Journal)",
+     "url": "https://dallassportsjournal.com/pj-washington-mavericks-shootaround-denver-nuggets/"
+    },
+    {
+     "title": "Mavericks vs. Nuggets injury report: Washington up in the air, Denver clean (Yahoo Sports)",
+     "url": "https://sports.yahoo.com/articles/mavericks-vs-nuggets-injury-report-173014937.html"
+    },
+    {
+     "title": "Orlando Magic vs. Detroit Pistons game preview (NBA.com)",
+     "url": "https://www.nba.com/magic/news/orlando-magic-detroit-pistons-game-preview-injury-report-20261124"
+    }
+   ],
+   "changes_at_write": 89
   }
  ],
  "overrides": [
@@ -3472,6 +3517,14 @@
    "action": "flag",
    "reason": "Banchero is out for Orlando and Jalen Duren is out for Detroit, which changes the frontcourt minutes and shots around Carter Jr.",
    "source": "https://sports.yahoo.com/articles/watch-magic-vs-pistons-injury-030723428.html"
+  },
+  {
+   "at": "2026-11-24T23:35:08Z",
+   "edition": "final",
+   "key": "p|5041939|pts|Under",
+   "action": "flag",
+   "reason": "P.J. Washington is questionable with an illness after joining shootaround; if he sits, Flagg's minutes and usage likely rise, and the model has not re-priced for it yet.",
+   "source": "https://dallassportsjournal.com/pj-washington-mavericks-shootaround-denver-nuggets/"
   }
  ],
  "alerts": 6,
@@ -3495,5 +3548,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T23:31:31Z"
+ "updated": "2026-11-24T23:35:08Z"
 }
