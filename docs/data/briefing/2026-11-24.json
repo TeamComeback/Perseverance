@@ -37,7 +37,7 @@
    "p": 0.485,
    "p_sim": 0.473,
    "p_mkt": 0.472,
-   "p_kalshi": 0.475,
+   "p_kalshi": 0.467,
    "ev": -0.035,
    "verdict": "Pass: blowout and Vegas agree; the main risk is recent form.",
    "home": "WSH",
@@ -135,7 +135,7 @@
    "market": {
     "open": 16.5,
     "now": 15.5,
-    "kalshi": 0.475
+    "kalshi": 0.467
    },
    "started": false,
    "published": {
@@ -602,15 +602,15 @@
    "start": "2026-11-25T00:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.97,
-   "am": -103,
+   "dec": 2.02,
+   "am": 102,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.491,
+   "p": 0.479,
    "p_sim": 0.531,
-   "p_mkt": 0.477,
-   "p_kalshi": 0.497,
-   "ev": -0.033,
+   "p_mkt": 0.466,
+   "p_kalshi": 0.493,
+   "ev": -0.032,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is tonight's spot.",
    "home": "ORL",
    "away": "DET",
@@ -701,8 +701,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.037,
-    "floor_am": 104,
+    "floor_dec": 2.088,
+    "floor_am": 109,
     "line": null,
     "next": 9.5
    },
@@ -726,14 +726,14 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past +104",
+    "The price at 10.5 going past +109",
     "A change in Cade Cunningham (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.497
+    "kalshi": 0.493
    },
    "started": false,
    "published": {
@@ -754,7 +754,7 @@
    },
    "first_seen": "2026-11-24T11:45:23Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Holding"
   },
   "p|4277905|pts|Under": {
    "key": "p|4277905|pts|Under",
@@ -772,7 +772,7 @@
    "p": 0.531,
    "p_sim": 0.544,
    "p_mkt": 0.517,
-   "p_kalshi": 0.53,
+   "p_kalshi": 0.527,
    "ev": -0.034,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is minutes.",
    "home": "WSH",
@@ -878,7 +878,7 @@
    "market": {
     "open": 14.5,
     "now": 15.5,
-    "kalshi": 0.53
+    "kalshi": 0.527
    },
    "started": false,
    "published": {
@@ -1199,7 +1199,7 @@
    "p": 0.484,
    "p_sim": 0.66,
    "p_mkt": 0.468,
-   "p_kalshi": 0.477,
+   "p_kalshi": 0.467,
    "ev": -0.026,
    "verdict": "Pass: recent form and simulation agree; the main risk is model record.",
    "home": "ORL",
@@ -1299,7 +1299,7 @@
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.477
+    "kalshi": 0.467
    },
    "started": false,
    "published": {
@@ -1432,39 +1432,30 @@
   "g|401909315|total|Over": {
    "key": "g|401909315|total|Over",
    "kind": "total",
-   "label": "BOS @ WSH Over 217.5",
+   "label": "BOS @ WSH Over 218.5",
    "espn_id": "401909315",
    "game": "BOS @ WSH",
    "start": "2026-11-25T01:00Z",
    "side": "Over",
-   "point": 217.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 28,
+   "point": 218.5,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 27,
    "tier": "Pass",
-   "p": 0.517,
-   "p_sim": 0.562,
-   "p_mkt": 0.512,
+   "p": 0.508,
+   "p_sim": 0.542,
+   "p_mkt": 0.504,
    "p_kalshi": null,
-   "ev": -0.039,
-   "verdict": "Pass: simulation carries it; the main risk is line move.",
+   "ev": -0.04,
+   "verdict": "Pass: the price is the case; the main risk is line move.",
    "home": "WSH",
    "away": "BOS",
-   "why": "Sim total 220.1 (after a learned +1.6 correction) vs 217.5 \u00b7 over in 56% of sims vs 51% DraftKings",
-   "for": [
-    {
-     "tag": "simulation",
-     "t": "Goes over in 56% of 10,000 simulated games.",
-     "rec": [
-      1491,
-      1312
-     ]
-    }
-   ],
+   "why": "Sim total 220.1 (after a learned +1.6 correction) vs 218.5 \u00b7 over in 54% of sims vs 50% DraftKings",
+   "for": [],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (230.5 to 217.5).",
+     "t": "The line has moved against this side since it opened (230.5 to 218.5).",
      "rec": [
       193,
       161
@@ -1488,19 +1479,19 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.934,
-    "floor_am": -107,
+    "floor_dec": 1.969,
+    "floor_am": -103,
     "line": null,
-    "next": 218.5
+    "next": 219.5
    },
    "watch": [],
    "kill": [
-    "The line reaching 218.5",
-    "The price at 217.5 going past \u2212107"
+    "The line reaching 219.5",
+    "The price at 218.5 going past \u2212103"
    ],
    "market": {
     "open": null,
-    "now": 217.5,
+    "now": 218.5,
     "kalshi": null
    },
    "started": false,
@@ -1521,11 +1512,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-24T17:30:54Z",
-    "why": "line moved 217.5 \u2192 218.5"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909316|total|Over": {
    "key": "g|401909316|total|Over",
@@ -1717,8 +1705,11 @@
     }
    },
    "first_seen": "2026-11-24T17:30:54Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T19:30:46Z",
+    "why": "line moved 10.5 \u2192 11.5"
+   },
+   "status": "Removed"
   },
   "g|401909316|spread|away": {
    "key": "g|401909316|spread|away",
@@ -2129,6 +2120,34 @@
    "kind": "line",
    "text": "Aaron Gordon: line 13.5 at \u2212111 \u2192 13.5 at \u2212112",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T19:30:46Z",
+   "key": "p|4277847|pts|Under",
+   "kind": "line",
+   "text": "Wendell Carter Jr.: line 10.5 at \u2212103 \u2192 10.5 at +102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T19:30:46Z",
+   "key": "g|401909315|total|Over",
+   "kind": "back",
+   "text": "Back on the board: BOS @ WSH Over 218.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T19:30:46Z",
+   "key": "g|401909315|total|Over",
+   "kind": "line",
+   "text": "BOS @ WSH Over 218.5: line 217.5 at \u2212116 \u2192 218.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T19:30:46Z",
+   "key": "g|401909315|spread|home",
+   "kind": "removed",
+   "text": "Removed: WSH +10.5 (BOS @ WSH) \u2014 line moved 10.5 \u2192 11.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2186,5 +2205,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T19:15:23Z"
+ "updated": "2026-11-24T19:30:46Z"
 }
