@@ -65,7 +65,7 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           await p.evaluate(g => { go("props"); store.set("flt", {}); setFlt("game", g); setFlt("pre", "all"); }, gid0); await p.waitForTimeout(700);
           const base = await p.evaluate(() => document.querySelectorAll("#v-props .ur").length);
           base ? ok(`${base} rows in one list (preset All, one game)`) : bad("prop list is empty for a live game");
-          const side = await p.evaluate(() => { setFlt("side", "Over"); return [...document.querySelectorAll("#v-props .ur")].every(el => el.querySelector(".bt.Over")); });
+          const side = await p.evaluate(() => { setFlt("side", "Over"); return [...document.querySelectorAll("#v-props .ur")].every(el => el.querySelector(".ubt.Over")); });
           side ? ok("side filter: every row is an over") : bad("side filter leaks unders");
           await p.evaluate(() => { setFlt("side", ""); setFlt("pre", "priced"); setFlt("sort", "edge"); }); await p.waitForTimeout(500);
           const ev = await p.evaluate(() => { const rows = [...document.querySelectorAll("#v-props .ur")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
@@ -75,6 +75,17 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           win ? ok("Winning bets: every row clears the bar") : bad("Winning bets shows a row that is not a win");
           const rec = await p.evaluate(() => { const x = mxRecord({stat: "ast", mxPos: "soft"}); return {n: x.A.n, ok: x.A.n > 0 && x.A.o <= x.A.n}; });
           rec.ok ? ok(`record panel: ${rec.n} graded assist props in soft position matchups`) : bad("matchup record panel is empty");
+          // names stay on every row; one sort changes who is on the list; one matchup dropdown filters; stale hidden settings are cleared
+          const nm = await p.evaluate(() => { store.set("flt", {}); setFlt("pre", "all"); const r = [...document.querySelectorAll("#v-props .ur .nm")]; return {n: r.length, ok: r.every(e => e.getBoundingClientRect().width > 30 && e.textContent.trim().length > 1)}; });
+          nm.n && nm.ok ? ok(`names visible on all ${nm.n} rows`) : bad("player name missing or squeezed on a row: " + JSON.stringify(nm));
+          const srt = await p.evaluate(() => { const ids = () => [...document.querySelectorAll("#v-props .ur")].map(e => e.dataset.pid + e.dataset.stat).join(",");
+            setFlt("pre", "priced"); setFlt("sort", ""); const a = ids(); setFlt("sort", "win"); const b = ids(); setFlt("sort", "conv"); const c = ids(); return {same: a === b && b === c, n: a.split(",").length}; });
+          !srt.same ? ok("sort: Best, Hit chance and Conviction give different lists") : bad("sorting does not change the list");
+          const mxs = await p.evaluate(() => { setFlt("sort", ""); setFlt("mxPos", "tough"); const r = [...document.querySelectorAll("#v-props .ur")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
+            return {n: r.length, okAll: r.every(x => mxInfo(x).pos >= MX.hi), line: !!document.querySelector("#v-props .mxrec"), sel: !!document.querySelector('#fbar select[data-f="mxPos"]')}; });
+          mxs.sel && mxs.okAll && mxs.line ? ok(`matchup dropdown: ${mxs.n} rows, all tough, record line shown`) : bad("matchup dropdown: " + JSON.stringify(mxs));
+          const old = await p.evaluate(() => { store.set("flt", {mxSort: "win", mxDir: "u", mxPace: "lo", sort: "mx"}); return JSON.stringify(FLT()); });
+          /mx(Sort|Dir|Pace)/.test(old) || /"sort":"mx"/.test(old) ? bad("old matchup settings not cleared: " + old) : ok("old hidden matchup settings are cleared");
           await p.evaluate(() => { store.set("flt", {}); fbar("props"); renderProps(); });
         }
       } catch (e) { bad("prop list: " + e.message); }

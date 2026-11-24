@@ -490,3 +490,9 @@ Newsroom (11:04am, 5:04pm ET), Skeptic (6:17pm, 9:17pm), Strategist (5:12am), Au
 writes one file in `docs/data/agents/`. Every run tags the agent's open bets with what the Newsroom and Skeptic
 would have held (only calls made before tip count), and the scorecard (`agents.json`, Model › Health) grades them.
 Nothing they write changes a bet or a setting until the owner promotes an agent (`agents.LIVE`).
+
+## Players tab filters, simplified (Nov 24)
+- Bet label on each row has its own class (`.ubt`); it had reused the box-score table's full-width `.bt`, which squeezed the player name away.
+- One sort (top bar: Best, Hit chance, Conviction, Edge, Tip time). Hit chance / Conviction / Edge list only props that have that number, each player's best prop by it, so the list changes.
+- One matchup dropdown (Any / Soft / Tough, position matchup). The "More matchup filters" section, presets, pace/defense/line filters and the second sort are gone; a one-line graded record shows under the list when a matchup is set.
+- Old saved settings (`mxSort`, `mxDir`, `mxPace`, `mxDef`, `mxLine`, `mxAll`, sort `mx`) are stripped on read.
