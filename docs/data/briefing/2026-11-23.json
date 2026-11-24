@@ -503,7 +503,7 @@
    "p": 0.394,
    "p_sim": 0.566,
    "p_mkt": 0.384,
-   "p_kalshi": 0.395,
+   "p_kalshi": 0.375,
    "ev": -0.038,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "MIN",
@@ -626,7 +626,7 @@
    "market": {
     "open": 1.5,
     "now": 1.5,
-    "kalshi": 0.395
+    "kalshi": 0.375
    },
    "started": false,
    "published": {
@@ -2320,8 +2320,11 @@
     }
    },
    "first_seen": "2026-11-23T21:31:35Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T00:31:32Z",
+    "why": "no longer +EV at tonight's line (1.5 at +142)"
+   },
+   "status": "Removed"
   },
   "p|4431671|pts|Under": {
    "key": "p|4431671|pts|Under",
@@ -2616,8 +2619,11 @@
     }
    },
    "first_seen": "2026-11-23T21:31:35Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T00:31:32Z",
+    "why": "no longer +EV at tonight's line (27.5 at -123)"
+   },
+   "status": "Removed"
   },
   "p|4711294|tpm|Over": {
    "key": "p|4711294|tpm|Over",
@@ -2633,9 +2639,9 @@
    "conv": 31,
    "tier": "Pass",
    "p": 0.475,
-   "p_sim": 0.583,
+   "p_sim": 0.588,
    "p_mkt": 0.459,
-   "p_kalshi": 0.425,
+   "p_kalshi": 0.44,
    "ev": -0.032,
    "verdict": "Pass: recent form and simulation agree; the main risk is thin margin.",
    "home": "CHI",
@@ -2653,7 +2659,7 @@
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 58% of 10,000 simulated games (sim average 3.1).",
+     "t": "Goes over in 59% of 10,000 simulated games (sim average 3.1).",
      "rec": [
       1330,
       1173
@@ -2695,7 +2701,7 @@
    "against": [
     {
      "tag": "blowout",
-     "t": "Blowout risk: 49% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 48% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       348,
       309
@@ -2766,7 +2772,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.425
+    "kalshi": 0.44
    },
    "started": false,
    "published": {
@@ -3249,6 +3255,463 @@
     }
    },
    "first_seen": "2026-11-24T00:01:33Z",
+   "removed": {
+    "at": "2026-11-24T00:31:32Z",
+    "why": "no longer +EV at tonight's line (13.5 at -105)"
+   },
+   "status": "Removed"
+  },
+  "p|4683747|pts|Under": {
+   "key": "p|4683747|pts|Under",
+   "kind": "prop",
+   "label": "Jaylon Tyson Under 8.5 points",
+   "espn_id": "401910041",
+   "game": "CLE @ CHI",
+   "start": "2026-11-24T01:00Z",
+   "side": "Under",
+   "point": 8.5,
+   "dec": 2.01,
+   "am": 101,
+   "conv": 30,
+   "tier": "Pass",
+   "p": 0.481,
+   "p_sim": 0.56,
+   "p_mkt": 0.468,
+   "p_kalshi": null,
+   "ev": -0.033,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "CHI",
+   "away": "CLE",
+   "pid": "4683747",
+   "name": "Jaylon Tyson",
+   "team": "CLE",
+   "opp": "CHI",
+   "stat": "pts",
+   "proj": 8.2,
+   "sim": 8.2,
+   "ob_ind": 10.5,
+   "avg10": 8.2,
+   "minutes": 19.3,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games (sim average 8.2).",
+     "rec": [
+      1330,
+      1173
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 8.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1180,
+      1071
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (9.5 to 8.5): money has been on the under.",
+     "rec": [
+      164,
+      195
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "matchup",
+     "t": "Mobley out: points +7% tonight. With him off the floor (1,129 possessions) his usage goes 17% \u2192 21%; 80% of his recent games were next to Mobley.",
+     "rec": [
+      937,
+      860
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs CHI: 16.2 points/g in 4 games (+6%).",
+     "rec": [
+      361,
+      338
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 23.7 minutes in the games he went over vs 14.7 otherwise. He's projected for 19.3 tonight.",
+     "rec": [
+      1213,
+      1138
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without Evan Mobley: 3 of 17 under 8.5 (18% vs 70% lately).",
+     "rec": [
+      678,
+      682
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.079,
+    "floor_am": 108,
+    "line": null,
+    "next": 7.5
+   },
+   "watch": [
+    {
+     "pid": "4432158",
+     "name": "Evan Mobley",
+     "team": "CLE",
+     "status": "Out",
+     "self": false,
+     "min": 30.6
+    },
+    {
+     "pid": "2595516",
+     "name": "Norman Powell",
+     "team": "CHI",
+     "status": "Out",
+     "self": false,
+     "min": 30.0
+    }
+   ],
+   "kill": [
+    "The line reaching 7.5",
+    "The price at 8.5 going past +108",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 9.5,
+    "now": 8.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T00:31:32Z",
+    "edition": "update",
+    "point": 8.5,
+    "dec": 2.01,
+    "am": 101,
+    "conv": 30,
+    "tier": "Pass",
+    "p": 0.481,
+    "play_to": {
+     "floor_dec": 2.079,
+     "floor_am": 108,
+     "line": null,
+     "next": 7.5
+    }
+   },
+   "first_seen": "2026-11-24T00:31:32Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "p|4395724|tpm|Over": {
+   "key": "p|4395724|tpm|Over",
+   "kind": "prop",
+   "label": "Immanuel Quickley Over 2.5 threes",
+   "espn_id": "401910039",
+   "game": "MIL @ TOR",
+   "start": "2026-11-24T00:30Z",
+   "side": "Over",
+   "point": 2.5,
+   "dec": 2.03,
+   "am": 103,
+   "conv": 30,
+   "tier": "Pass",
+   "p": 0.476,
+   "p_sim": 0.501,
+   "p_mkt": 0.46,
+   "p_kalshi": 0.52,
+   "ev": -0.034,
+   "verdict": "Pass: recent form and second market agree; the main risk is thin margin.",
+   "home": "TOR",
+   "away": "MIL",
+   "pid": "4395724",
+   "name": "Immanuel Quickley",
+   "team": "TOR",
+   "opp": "MIL",
+   "stat": "tpm",
+   "proj": 2.7,
+   "sim": 2.7,
+   "ob_ind": 2.5,
+   "avg10": 2.6,
+   "minutes": 31.7,
+   "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 52% there vs 46% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 486 of 901 times.",
+     "rec": [
+      126,
+      105
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 2.7 threes against a line of 2.5.",
+     "rec": [
+      1393,
+      1238
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Cleared 2.5 in 6 of his last 10 (4 of the last 5).",
+     "rec": [
+      1180,
+      1071
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "MIL gives point guards +8% threes vs their norm (#3 softest of 30).",
+     "rec": [
+      824,
+      809
+     ]
+    },
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +8% threes vs MIL (129 close comps).",
+     "rec": [
+      504,
+      507
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "history",
+     "t": "His history vs MIL: 2.0 threes/g in 4 games (-6%).",
+     "rec": [
+      361,
+      338
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when the minutes dip: 27.6 minutes in his misses vs 31.4 when he cleared it. He's projected for 31.7 tonight.",
+     "rec": [
+      1213,
+      1138
+     ]
+    },
+    {
+     "tag": "thin margin",
+     "t": "Thin margin: 6 of his last 10 finished within 1 of this number, so it often comes down to one play.",
+     "rec": [
+      496,
+      485
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against MIL: 1 of 5 over 2.5 (20% vs 55% lately).",
+     "rec": [
+      678,
+      682
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.101,
+    "floor_am": 110,
+    "line": null,
+    "next": 3.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    }
+   ],
+   "kill": [
+    "The line reaching 3.5",
+    "The price at 2.5 going past +110",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 2.5,
+    "now": 2.5,
+    "kalshi": 0.52
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T00:31:32Z",
+    "edition": "update",
+    "point": 2.5,
+    "dec": 2.03,
+    "am": 103,
+    "conv": 30,
+    "tier": "Pass",
+    "p": 0.476,
+    "play_to": {
+     "floor_dec": 2.101,
+     "floor_am": 110,
+     "line": null,
+     "next": 3.5
+    }
+   },
+   "first_seen": "2026-11-24T00:31:32Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "p|5149115|pts|Under": {
+   "key": "p|5149115|pts|Under",
+   "kind": "prop",
+   "label": "Allen Graves Under 9.5 points",
+   "espn_id": "401910039",
+   "game": "MIL @ TOR",
+   "start": "2026-11-24T00:30Z",
+   "side": "Under",
+   "point": 9.5,
+   "dec": 2.01,
+   "am": 101,
+   "conv": 30,
+   "tier": "Pass",
+   "p": 0.48,
+   "p_sim": 0.565,
+   "p_mkt": 0.47,
+   "p_kalshi": 0.535,
+   "ev": -0.034,
+   "verdict": "Pass: recent form and second market agree; the main risk is minutes.",
+   "home": "TOR",
+   "away": "MIL",
+   "pid": "5149115",
+   "name": "Allen Graves",
+   "team": "TOR",
+   "opp": "MIL",
+   "stat": "pts",
+   "proj": 8.4,
+   "sim": 9,
+   "ob_ind": 8.5,
+   "avg10": 5.8,
+   "minutes": 24.9,
+   "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 54% there vs 47% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 486 of 901 times.",
+     "rec": [
+      126,
+      105
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 7.5 in 7 of his last 10.",
+     "rec": [
+      327,
+      283
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games (sim average 9).",
+     "rec": [
+      1330,
+      1173
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 8.4 points against a line of 9.5.",
+     "rec": [
+      1393,
+      1238
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 9.5 in 8 of his last 10 (4 of the last 5).",
+     "rec": [
+      1180,
+      1071
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line moved against it (7.5 to 9.5), though you now get a higher number than the opener's would have been.",
+     "rec": [
+      174,
+      139
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 23.7 minutes in the games he went over vs 14.2 otherwise. He's projected for 24.9 tonight.",
+     "rec": [
+      1213,
+      1138
+     ]
+    },
+    {
+     "tag": "shot volume",
+     "t": "Depends on shot volume: 8 shots in the misses vs 3.5 in the hits.",
+     "rec": [
+      175,
+      165
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      148,
+      169
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.083,
+    "floor_am": 108,
+    "line": null,
+    "next": 8.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    }
+   ],
+   "kill": [
+    "The line reaching 8.5",
+    "The price at 9.5 going past +108",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 7.5,
+    "now": 9.5,
+    "kalshi": 0.535
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T00:31:32Z",
+    "edition": "update",
+    "point": 9.5,
+    "dec": 2.01,
+    "am": 101,
+    "conv": 30,
+    "tier": "Pass",
+    "p": 0.48,
+    "play_to": {
+     "floor_dec": 2.083,
+     "floor_am": 108,
+     "line": null,
+     "next": 8.5
+    }
+   },
+   "first_seen": "2026-11-24T00:31:32Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -4336,7 +4799,7 @@
     "now": 1.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-23T17:16:35Z",
     "edition": "update",
@@ -4355,7 +4818,7 @@
    },
    "first_seen": "2026-11-23T17:16:35Z",
    "removed": null,
-   "status": "New"
+   "status": "Started"
   },
   "g|401910038|total|Over": {
    "key": "g|401910038|total|Over",
@@ -4859,7 +5322,7 @@
     "now": 213.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-23T22:01:34Z",
     "edition": "update",
@@ -4878,7 +5341,7 @@
    },
    "first_seen": "2026-11-23T22:01:34Z",
    "removed": null,
-   "status": "New"
+   "status": "Started"
   },
   "g|401910039|spread|away": {
    "key": "g|401910039|spread|away",
@@ -6084,6 +6547,48 @@
    "kind": "line",
    "text": "PHI +1.5 (POR @ PHI): line -1.5 at \u2212102 \u2192 1.5 at \u2212120",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T00:31:32Z",
+   "key": "p|4683747|pts|Under",
+   "kind": "added",
+   "text": "Added: Jaylon Tyson Under 8.5 points at +101, conviction 30",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T00:31:32Z",
+   "key": "p|4395724|tpm|Over",
+   "kind": "added",
+   "text": "Added: Immanuel Quickley Over 2.5 threes at +103, conviction 30",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T00:31:32Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "added",
+   "text": "Added: Allen Graves Under 9.5 points at +101, conviction 30",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T00:31:32Z",
+   "key": "p|4432848|tpm|Over",
+   "kind": "removed",
+   "text": "Removed: Jaime Jaquez Jr. Over 1.5 threes \u2014 no longer +EV at tonight's line (1.5 at +142)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T00:31:32Z",
+   "key": "p|3908809|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Donovan Mitchell Under 26.5 points \u2014 no longer +EV at tonight's line (27.5 at -123)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T00:31:32Z",
+   "key": "p|4395630|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Devin Vassell Under 13.5 points \u2014 no longer +EV at tonight's line (13.5 at -105)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -6178,13 +6683,13 @@
  "alerts": 6,
  "slate": {
   "games": 10,
-  "to_tip": 10,
+  "to_tip": 8,
   "first": "2026-11-24T00:00Z",
   "questionable": [
    {
     "name": "Zion Williamson",
     "team": "NO",
-    "status": "Probable"
+    "status": "Prob"
    },
    {
     "name": "Victor Wembanyama",
@@ -6195,14 +6700,9 @@
     "name": "De'Aaron Fox",
     "team": "SA",
     "status": "Questionable"
-   },
-   {
-    "name": "Jaylon Tyson",
-    "team": "CLE",
-    "status": "Probable"
    }
   ],
-  "picks": 21
+  "picks": 24
  },
  "leans_record": {
   "w": 17,
@@ -6211,5 +6711,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-24T00:15:38Z"
+ "updated": "2026-11-24T00:31:32Z"
 }
