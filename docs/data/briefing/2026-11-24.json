@@ -2148,6 +2148,20 @@
    "kind": "removed",
    "text": "Removed: WSH +10.5 (BOS @ WSH) \u2014 line moved 10.5 \u2192 11.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T19:43:28Z",
+   "key": "p|4432165|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Jalen Suggs Under 10.5 points: Paolo Banchero is ruled out for Orlando tonight (ankle), which can push more usage to Suggs; he is not on the card's Watch list.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T19:43:28Z",
+   "key": "p|4277847|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Wendell Carter Jr. Under 10.5 points: Banchero is out for Orlando and Jalen Duren is out for Detroit, which changes the frontcourt minutes and shots around Carter Jr.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2176,9 +2190,64 @@
     }
    ],
    "changes_at_write": 0
+  },
+  {
+   "edition": "midday",
+   "at": "2026-11-24T19:43:28Z",
+   "author": "claude",
+   "headline": "Midday: Suggs added, Tatum, Pritchard, Flagg and Cade assists pulled; only Carter Jr. is still at a playable price",
+   "briefing": "The board has turned over since the morning edition: Jalen Suggs Under 10.5 joined at 17:30Z as the highest-conviction card at 32, Trae Young is back on, and Jayson Tatum, Payton Pritchard, Cooper Flagg and Cade Cunningham's assists under have all been removed as no longer +EV. Of the cards still standing, Wendell Carter Jr. Under 10.5 is the only one holding at its play-to price, now +102 after opening the day at \u2212110; Suggs, AJ Dybantsa, Aaron Gordon and Trae Young have all moved past their play-to numbers, so they are not adds at current prices. Every card is rated Pass by conviction, and the record argues for small, careful action: the morning report is 13-21-0 (-9.08u) and game lines are 20-43 (-25.05u). On leans, WSH +10.5 came and went when the number moved to 11.5, the BOS @ WSH over is back at 218.5, and DET -2.5 improved to \u2212105 but is past its play-to. Official reports this morning list Cade Cunningham probable (knee), Duncan Robinson, Jalen Duren and Paolo Banchero out, and P.J. Washington questionable with illness; Cunningham's and Washington's final calls are the news to wait on before tip.",
+   "cards": {
+    "p|4432165|pts|Under": "New since the morning: Suggs is the top card at conviction 32, with the sim at 66% under, a projection of 8.7 and 7 of his last 10 under 10.5. The price has drifted to +101, just past the +107 play-to, and the model's own record on points (259-264 when it argued against) says lean on the market. Banchero being out puts more of Orlando's offense in his hands, which is the main way this loses.",
+    "p|4277847|pts|Under": "The one card still at a playable price: 10.5 at +102, inside the +109 play-to, after moving from \u2212110 this morning. The case is the DET matchup (#3 toughest on centers) and 6 of his last 10 under; the risk is home games, where he has gone under in only 5 of 20, and a shot-volume night like the 9.9 attempts in his misses. Detroit is without Duren, which could open the paint.",
+    "p|5142718|pts|Under": "Back on at 15.5 \u2212101 after a day bouncing between 15.5 and 16.5, but the play-to wants plus money, so this is not an add here. The sim (47%) and recent form (3 of his last 10 under, 0 of the last 5) both argue against it; the case rests on the Vegas team total and blowout risk.",
+    "p|3064290|pts|Under": "Gordon has drifted from +100 this morning to \u2212112, past the \u2212104 play-to. The underlying case holds (averaging 11.7 over his last 10, projection 12.5, 7 of 10 under), but the price has moved enough that it is a watch, not an add.",
+    "p|4277905|pts|Under": "Trae Young has been added and removed several times today and sits at \u2212122, past the \u2212113 play-to. BOS is the #3 toughest matchup for point guards; what makes this wrong is a high-volume night, with 14.6 shots in his misses vs 9.3 in his hits."
+   },
+   "leans_note": "Game lines remain leans only at 20-43 (-25.05u): DET -2.5 and DAL +8.5 are past their play-to, the BOS @ WSH over is holding at 218.5, and WSH +10.5 was pulled when the line reached 11.5.",
+   "sources": [
+    {
+     "title": "ClutchPoints: Pistons vs. Magic injury report, Cade Cunningham update",
+     "url": "https://clutchpoints.com/nba/nba-stories/pistons-magic-injury-report-cade-cunningham-update"
+    },
+    {
+     "title": "Yahoo Sports: How to watch Magic vs Pistons, injury reports",
+     "url": "https://sports.yahoo.com/articles/watch-magic-vs-pistons-injury-030723428.html"
+    },
+    {
+     "title": "Yahoo Sports: Mavericks vs. Nuggets injury report",
+     "url": "https://sports.yahoo.com/articles/mavericks-vs-nuggets-injury-report-173014937.html"
+    },
+    {
+     "title": "Dallas Sports Journal: P.J. Washington status for Nov. 24",
+     "url": "https://dallassportsjournal.com/pj-washington-questionable-illness-mavericks-nuggets/"
+    },
+    {
+     "title": "Roundtable: Injury report, Celtics vs. Wizards",
+     "url": "https://roundtable.io/sports/nba/wizards/news/injury-report-boston-celtics-vs-washington-wizards"
+    }
+   ],
+   "changes_at_write": 50
   }
  ],
- "overrides": [],
+ "overrides": [
+  {
+   "at": "2026-11-24T19:43:28Z",
+   "edition": "midday",
+   "key": "p|4432165|pts|Under",
+   "action": "flag",
+   "reason": "Paolo Banchero is ruled out for Orlando tonight (ankle), which can push more usage to Suggs; he is not on the card's Watch list.",
+   "source": "https://clutchpoints.com/nba/nba-stories/pistons-magic-injury-report-cade-cunningham-update"
+  },
+  {
+   "at": "2026-11-24T19:43:28Z",
+   "edition": "midday",
+   "key": "p|4277847|pts|Under",
+   "action": "flag",
+   "reason": "Banchero is out for Orlando and Jalen Duren is out for Detroit, which changes the frontcourt minutes and shots around Carter Jr.",
+   "source": "https://sports.yahoo.com/articles/watch-magic-vs-pistons-injury-030723428.html"
+  }
+ ],
  "alerts": 6,
  "slate": {
   "games": 3,
@@ -2205,5 +2274,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T19:30:46Z"
+ "updated": "2026-11-24T19:43:28Z"
 }
