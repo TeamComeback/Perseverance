@@ -613,9 +613,9 @@
    "conv": 30,
    "tier": "Pass",
    "p": 0.494,
-   "p_sim": 0.521,
+   "p_sim": 0.525,
    "p_mkt": 0.48,
-   "p_kalshi": 0.482,
+   "p_kalshi": 0.518,
    "ev": -0.033,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is tonight's spot.",
    "home": "ORL",
@@ -626,7 +626,7 @@
    "opp": "DET",
    "stat": "pts",
    "proj": 10.2,
-   "sim": 10.5,
+   "sim": 10.4,
    "ob_ind": 10.5,
    "avg10": 12.3,
    "minutes": 29.3,
@@ -717,9 +717,9 @@
      "pid": "4432166",
      "name": "Cade Cunningham",
      "team": "DET",
-     "status": "Probable",
+     "status": "Out",
      "self": false,
-     "min": 35.3
+     "min": 36.2
     },
     {
      "pid": "3157465",
@@ -733,13 +733,12 @@
    "kill": [
     "The line reaching 9.5",
     "The price at 10.5 going past +102",
-    "A change in Cade Cunningham (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.482
+    "kalshi": 0.518
    },
    "started": false,
    "published": {
@@ -1199,8 +1198,11 @@
     }
    },
    "first_seen": "2026-11-24T15:30:59Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-24T23:31:31Z",
+    "why": "no longer +EV at tonight's line (12.5 at -101)"
+   },
+   "status": "Removed"
   },
   "p|4432165|pts|Under": {
    "key": "p|4432165|pts|Under",
@@ -1353,14 +1355,14 @@
    "start": "2026-11-25T00:00Z",
    "side": "Over",
    "point": 3.5,
-   "dec": 2.18,
-   "am": 118,
+   "dec": 2.23,
+   "am": 123,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.443,
-   "p_sim": 0.49,
-   "p_mkt": 0.429,
-   "p_kalshi": 0.445,
+   "p": 0.433,
+   "p_sim": 0.533,
+   "p_mkt": 0.419,
+   "p_kalshi": 0.435,
    "ev": -0.034,
    "verdict": "Pass: recent form and history agree; the main risk is tonight's spot.",
    "home": "ORL",
@@ -1371,7 +1373,7 @@
    "opp": "DET",
    "stat": "tpm",
    "proj": 3.8,
-   "sim": 3.7,
+   "sim": 3.8,
    "ob_ind": 3.5,
    "avg10": 4.7,
    "minutes": 33.3,
@@ -1444,7 +1446,7 @@
     },
     {
      "tag": "market",
-     "t": "You're betting against the market: DraftKings' price says this happens 43% of the time.",
+     "t": "You're betting against the market: DraftKings' price says this happens 42% of the time.",
      "rec": [
       109,
       141
@@ -1452,8 +1454,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.257,
-    "floor_am": 126,
+    "floor_dec": 2.309,
+    "floor_am": 131,
     "line": null,
     "next": 4.5
    },
@@ -1462,9 +1464,9 @@
      "pid": "4432166",
      "name": "Cade Cunningham",
      "team": "DET",
-     "status": "Probable",
+     "status": "Out",
      "self": false,
-     "min": 35.3
+     "min": 36.2
     },
     {
      "pid": "3157465",
@@ -1477,14 +1479,13 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 3.5 going past +126",
-    "A change in Cade Cunningham (probable): the model re-prices on the next run",
+    "The price at 3.5 going past +131",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 3.5,
     "now": 3.5,
-    "kalshi": 0.445
+    "kalshi": 0.435
    },
    "started": false,
    "published": {
@@ -1649,11 +1650,8 @@
     }
    },
    "first_seen": "2026-11-24T22:45:56Z",
-   "removed": {
-    "at": "2026-11-24T23:16:18Z",
-    "why": "no longer +EV at tonight's line (10.5 at -114)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -1939,6 +1937,154 @@
     }
    },
    "first_seen": "2026-11-24T23:16:18Z",
+   "removed": {
+    "at": "2026-11-24T23:31:31Z",
+    "why": "no longer +EV at tonight's line (2.5 at +121)"
+   },
+   "status": "Removed"
+  },
+  "p|4397424|pts|Under": {
+   "key": "p|4397424|pts|Under",
+   "kind": "prop",
+   "label": "Neemias Queta Under 11.5 points",
+   "espn_id": "401909315",
+   "game": "BOS @ WSH",
+   "start": "2026-11-25T01:00Z",
+   "side": "Under",
+   "point": 11.5,
+   "dec": 1.82,
+   "am": -122,
+   "conv": 28,
+   "tier": "Pass",
+   "p": 0.529,
+   "p_sim": 0.574,
+   "p_mkt": 0.517,
+   "p_kalshi": 0.543,
+   "ev": -0.037,
+   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
+   "home": "WSH",
+   "away": "BOS",
+   "pid": "4397424",
+   "name": "Neemias Queta",
+   "team": "BOS",
+   "opp": "WSH",
+   "stat": "pts",
+   "proj": 10.9,
+   "sim": 10.8,
+   "ob_ind": 10.5,
+   "avg10": 10.3,
+   "minutes": 24.7,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 57% of 10,000 simulated games (sim average 10.8).",
+     "rec": [
+      1491,
+      1312
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 10.9 points against a line of 11.5.",
+     "rec": [
+      1547,
+      1390
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 11.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1347,
+      1220
+     ]
+    },
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -5 vs model.",
+     "rec": [
+      207,
+      189
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes down tonight: -0.6 min blowout risk (BOS starters sit 1.7 min in blowouts vs 2.1 league).",
+     "rec": [
+      220,
+      221
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +6% points vs WSH (146 close comps).",
+     "rec": [
+      658,
+      598
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs WSH: 18.7 points/g in 3 games (+11%).",
+     "rec": [
+      415,
+      379
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "WSH gives centers +13% points vs their norm (#2 softest of 30).",
+     "rec": [
+      1058,
+      977
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against WSH: 3 of 7 under 11.5 (43% vs 65% lately).",
+     "rec": [
+      786,
+      773
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.89,
+    "floor_am": -112,
+    "line": null,
+    "next": 10.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 10.5",
+    "The price at 11.5 going past \u2212112",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 10.5,
+    "now": 11.5,
+    "kalshi": 0.543
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T23:31:31Z",
+    "edition": "update",
+    "point": 11.5,
+    "dec": 1.82,
+    "am": -122,
+    "conv": 28,
+    "tier": "Pass",
+    "p": 0.529,
+    "play_to": {
+     "floor_dec": 1.89,
+     "floor_am": -112,
+     "line": null,
+     "next": 10.5
+    }
+   },
+   "first_seen": "2026-11-24T23:31:31Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2528,26 +2674,18 @@
    "point": 212.5,
    "dec": 1.88,
    "am": -114,
-   "conv": 28,
+   "conv": 26,
    "tier": "Pass",
-   "p": 0.512,
-   "p_sim": 0.562,
+   "p": 0.509,
+   "p_sim": 0.527,
    "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": -0.037,
-   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
+   "ev": -0.044,
+   "verdict": "Pass: team model carries it; the main risk is line move.",
    "home": "ORL",
    "away": "DET",
-   "why": "Sim total 215.0 (after a learned +1.6 correction) vs 212.5 \u00b7 over in 56% of sims vs 51% DraftKings",
+   "why": "Sim total 213.3 (after a learned +1.6 correction) vs 212.5 \u00b7 over in 53% of sims vs 51% DraftKings",
    "for": [
-    {
-     "tag": "simulation",
-     "t": "Goes over in 56% of 10,000 simulated games.",
-     "rec": [
-      1491,
-      1312
-     ]
-    },
     {
      "tag": "team model",
      "t": "Team ratings project 220.9 points, 8.4 on your side of 212.5.",
@@ -2573,8 +2711,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.953,
-    "floor_am": -105,
+    "floor_dec": 1.965,
+    "floor_am": -104,
     "line": null,
     "next": 213.5
    },
@@ -2583,9 +2721,9 @@
      "pid": "4432166",
      "name": "Cade Cunningham",
      "team": "DET",
-     "status": "Probable",
+     "status": "Out",
      "self": false,
-     "min": 35.3
+     "min": 36.2
     },
     {
      "pid": "3157465",
@@ -2598,8 +2736,7 @@
    ],
    "kill": [
     "The line reaching 213.5",
-    "The price at 212.5 going past \u2212105",
-    "A change in Cade Cunningham (probable): the model re-prices on the next run"
+    "The price at 212.5 going past \u2212104"
    ],
    "market": {
     "open": null,
@@ -3195,6 +3332,62 @@
    "kind": "removed",
    "text": "Removed: Daniel Gafford Under 9.5 points \u2014 no longer +EV at tonight's line (8.5 at -101)",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|4066320|tpm|Over",
+   "kind": "line",
+   "text": "Desmond Bane: line 3.5 at +118 \u2192 3.5 at +123",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|4066320|tpm|Over",
+   "kind": "injury",
+   "text": "Cade Cunningham probable \u2192 out (Desmond Bane Over 3.5 threes re-priced: 3.5 at +123, conviction 31)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|4277847|pts|Under",
+   "kind": "injury",
+   "text": "Cade Cunningham probable \u2192 out (Wendell Carter Jr. Under 10.5 points re-priced: 10.5 at \u2212104, conviction 30)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "added",
+   "text": "Added: Neemias Queta Under 11.5 points at \u2212122, conviction 28",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|3978|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: DeMar DeRozan Under 10.5 points at \u2212120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|4066354|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Payton Pritchard Under 13.5 points \u2014 no longer +EV at tonight's line (12.5 at -101)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "p|5174563|tpm|Over",
+   "kind": "removed",
+   "text": "Removed: Kyshawn George Over 2.5 threes \u2014 no longer +EV at tonight's line (2.5 at +121)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T23:31:31Z",
+   "key": "g|401909314|total|Over",
+   "kind": "injury",
+   "text": "Cade Cunningham probable \u2192 out (DET @ ORL Over 212.5 re-priced: 212.5 at \u2212114, conviction 26)",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3288,17 +3481,12 @@
   "first": "2026-11-25T00:00Z",
   "questionable": [
    {
-    "name": "Cade Cunningham",
-    "team": "DET",
-    "status": "Probable"
-   },
-   {
     "name": "P.J. Washington",
     "team": "DAL",
     "status": "Questionable"
    }
   ],
-  "picks": 13
+  "picks": 14
  },
  "leans_record": {
   "w": 20,
@@ -3307,5 +3495,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T23:16:18Z"
+ "updated": "2026-11-24T23:31:31Z"
 }
