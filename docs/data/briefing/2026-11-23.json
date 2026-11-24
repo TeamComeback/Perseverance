@@ -4239,7 +4239,13 @@
     "at": "2026-11-23T15:16:35Z",
     "why": "confidence fell 29 \u2192 26"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": -5
+   },
+   "clv": null
   },
   "g|401910040|spread|away": {
    "key": "g|401910040|spread|away",
@@ -4348,7 +4354,18 @@
    },
    "first_seen": "2026-11-23T11:45:26Z",
    "removed": null,
-   "status": "Started"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.94,
+    "actual": -26
+   },
+   "result_final": {
+    "res": "win",
+    "units": 0.93,
+    "actual": -26
+   },
+   "clv": null
   },
   "g|401910044|total|Over": {
    "key": "g|401910044|total|Over",
@@ -4363,19 +4380,19 @@
    "am": -114,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.521,
-   "p_sim": 0.647,
+   "p": 0.519,
+   "p_sim": 0.636,
    "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": -0.021,
+   "ev": -0.023,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "LAL",
    "away": "UTAH",
-   "why": "Sim total 231.7 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 65% of sims vs 51% DraftKings",
+   "why": "Sim total 231.2 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 64% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 65% of 10,000 simulated games.",
+     "t": "Goes over in 64% of 10,000 simulated games.",
      "rec": [
       1330,
       1173
@@ -4383,7 +4400,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 229.5 points, 5.0 on your side of 224.5.",
+     "t": "Team ratings project 229.7 points, 5.2 on your side of 224.5.",
      "rec": null
     }
    ],
@@ -4398,7 +4415,7 @@
     },
     {
      "tag": "blowout",
-     "t": "53% of sims are blowouts, and benches slow the scoring late.",
+     "t": "52% of sims are blowouts, and benches slow the scoring late.",
      "rec": [
       348,
       309
@@ -4414,8 +4431,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.919,
-    "floor_am": -109,
+    "floor_dec": 1.927,
+    "floor_am": -108,
     "line": null,
     "next": 225.5
    },
@@ -4455,7 +4472,7 @@
    ],
    "kill": [
     "The line reaching 225.5",
-    "The price at 224.5 going past \u2212109"
+    "The price at 224.5 going past \u2212108"
    ],
    "market": {
     "open": null,
@@ -4966,7 +4983,13 @@
     "at": "2026-11-23T22:01:34Z",
     "why": "line moved 221.5 \u2192 223.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.94,
+    "actual": 245
+   },
+   "clv": null
   },
   "g|401910037|total|Over": {
    "key": "g|401910037|total|Over",
@@ -5492,37 +5515,29 @@
   "g|401910045|total|Under": {
    "key": "g|401910045|total|Under",
    "kind": "total",
-   "label": "SA @ SAC Under 223.5",
+   "label": "SA @ SAC Under 222.5",
    "espn_id": "401910045",
    "game": "SA @ SAC",
    "start": "2026-11-24T03:00Z",
    "side": "Under",
-   "point": 223.5,
-   "dec": 1.93,
-   "am": -108,
-   "conv": 29,
+   "point": 222.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.5,
-   "p_sim": 0.563,
-   "p_mkt": 0.493,
+   "p": 0.493,
+   "p_sim": 0.54,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.034,
-   "verdict": "Pass: simulation and line move agree; the main risk is model record.",
+   "ev": -0.038,
+   "verdict": "Pass: line move carries it; the main risk is model record.",
    "home": "SAC",
    "away": "SA",
-   "why": "Sim total 221.4 (after a learned +1.4 correction) vs 223.5 \u00b7 under in 56% of sims vs 49% DraftKings",
+   "why": "Sim total 221.4 (after a learned +1.4 correction) vs 222.5 \u00b7 under in 54% of sims vs 49% DraftKings",
    "for": [
     {
-     "tag": "simulation",
-     "t": "Goes under in 56% of 10,000 simulated games.",
-     "rec": [
-      1330,
-      1173
-     ]
-    },
-    {
      "tag": "line move",
-     "t": "The line has moved this way since it opened (224.5 to 223.5): you're with the money, at a worse number.",
+     "t": "The line has moved this way since it opened (224.5 to 222.5): you're with the money, at a worse number.",
      "rec": [
       164,
       195
@@ -5540,10 +5555,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.0,
-    "floor_am": 100,
+    "floor_dec": 2.028,
+    "floor_am": 103,
     "line": null,
-    "next": 222.5
+    "next": 221.5
    },
    "watch": [
     {
@@ -5572,12 +5587,12 @@
     }
    ],
    "kill": [
-    "The line reaching 222.5",
-    "The price at 223.5 going past +100"
+    "The line reaching 221.5",
+    "The price at 222.5 going past +103"
    ],
    "market": {
     "open": null,
-    "now": 223.5,
+    "now": 222.5,
     "kalshi": null
    },
    "started": false,
@@ -6785,6 +6800,13 @@
    "kind": "line",
    "text": "SA @ SAC Under 223.5: line 225.5 at \u2212114 \u2192 223.5 at \u2212108",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T03:01:00Z",
+   "key": "g|401910045|total|Under",
+   "kind": "line",
+   "text": "SA @ SAC Under 222.5: line 223.5 at \u2212108 \u2192 222.5 at \u2212105",
+   "alert": false
   }
  ],
  "narratives": [
@@ -6891,5 +6913,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-24T02:45:41Z"
+ "updated": "2026-11-24T03:01:00Z"
 }
