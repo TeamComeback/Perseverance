@@ -1,13 +1,13 @@
 {
  "book": {
   "name": "Perseverance",
-  "run": 2,
-  "cash": 35.85,
+  "run": 3,
+  "cash": 100.0,
   "start": 100.0,
   "goal": 1000.0,
-  "peak": 108.36,
+  "peak": 100.0,
   "status": "racing",
-  "started": "2026-11-17T13:05:45Z",
+  "started": "2026-11-24T07:03:20Z",
   "bets": [
    {
     "id": "c83a8adf",
@@ -20864,14 +20864,18 @@
       "book": "fanduel",
       "fair_p": 0.1699,
       "close_p": 0.1457,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 5.903,
        "gain": 0.135,
        "n": 3
       },
       "close_at": "2026-11-23T07:00:27Z",
-      "close_mins": 1209
+      "close_mins": 1209,
+      "final": {
+       "home": 109.0,
+       "away": 94.0
+      }
      }
     ],
     "dec": 6.7,
@@ -20881,10 +20885,10 @@
     "note": "13.9% edge vs 3-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-24T07:03:20Z",
     "shadow": {
      "skeptic": {
       "hold": true,
@@ -20896,6 +20900,115 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: Utah Jazz lost by 15",
+     "final": "Utah Jazz 94 \u2013 Los Angeles Lakers 109",
+     "legs": [
+      {
+       "outcome": "Utah Jazz",
+       "result": "loss",
+       "headline": "Utah Jazz lost by 15",
+       "final": "Utah Jazz 94 \u2013 Los Angeles Lakers 109",
+       "why": [
+        "Utah Jazz lost by 15.",
+        "We priced it at 17% to hit vs 15% needed to break even at 6.7x (+13.9% expected edge).",
+        "Closing consensus 15% vs 15% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "underdog-lost",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line",
+      "underdog-lost"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "LAL",
+        "away": "UTAH"
+       },
+       "final": "UTAH 94 \u2013 LAL 109",
+       "periods": {
+        "away": [
+         20,
+         22,
+         35,
+         17
+        ],
+        "home": [
+         30,
+         23,
+         25,
+         31
+        ]
+       },
+       "largest_lead": {
+        "UTAH": 3,
+        "LAL": 17
+       },
+       "largest_lead_at": {
+        "UTAH": "1:27 3rd Q",
+        "LAL": "2:13 4th Q"
+       },
+       "lead_changes": 11,
+       "ties": 6,
+       "runs": [
+        {
+         "team": "LAL",
+         "pts": 11,
+         "from": "0.6 3rd Q",
+         "to": "9:54 4th Q",
+         "score": "UTAH 77-87 LAL"
+        }
+       ],
+       "swings": [
+        {
+         "team": "UTAH",
+         "swing": 17,
+         "from": "2:40 2nd Q",
+         "to": "8:12 3rd Q",
+         "mins": 6.5,
+         "from_score": "UTAH 34-50 LAL",
+         "to_score": "UTAH 57-56 LAL",
+         "pts_for": 23,
+         "pts_against": 6
+        },
+        {
+         "team": "LAL",
+         "swing": 16,
+         "from": "1:27 3rd Q",
+         "to": "8:35 4th Q",
+         "mins": 4.9,
+         "from_score": "UTAH 74-71 LAL",
+         "to_score": "UTAH 80-93 LAL",
+         "pts_for": 22,
+         "pts_against": 6
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "Kyle Filipowski (UTAH): 21 pts, 12 reb, 4 ast, 1-3 3PT in 24 min",
+        "Ace Bailey (UTAH): 18 pts, 5 reb, 1 ast, 1-3 3PT in 33 min",
+        "Luka Doncic (LAL): 28 pts, 4 reb, 8 ast, 3-14 3PT in 33 min",
+        "Jake LaRavia (LAL): 15 pts, 10 reb, 1 ast, 1-4 3PT in 37 min"
+       ],
+       "story": [
+        "Halftime: UTAH 42-53 LAL, LAL up 11.",
+        "The 4th quarter decided the most: LAL won it 31-17.",
+        "Largest leads: UTAH 3 (1:27 3rd Q), LAL 17 (2:13 4th Q). 11 lead changes, 6 ties.",
+        "Momentum swing: UTAH outscored them 23-6 in 6.5 minutes (2:40 2nd Q to 8:12 3rd Q), moving it from UTAH 34-50 LAL to UTAH 57-56 LAL.",
+        "Momentum swing: LAL outscored them 22-6 in 4.9 minutes (1:27 3rd Q to 8:35 4th Q), moving it from UTAH 74-71 LAL to UTAH 80-93 LAL.",
+        "LAL went on a 11-0 run (0.6 3rd Q to 9:54 4th Q), making it UTAH 77-87 LAL."
+       ],
+       "espn_id": "401910044",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910044"
+      }
+     ]
     }
    },
    {
@@ -21553,9 +21666,27 @@
     "peak": 100.0,
     "bets": 61,
     "note": "Ended by the owner at $8.16; run 1 counted as lost. Bets and record kept."
+   },
+   {
+    "run": 2,
+    "result": "ended",
+    "started": "2026-11-17T13:05:45Z",
+    "ended": "2026-11-24T07:03:20Z",
+    "final": 35.85,
+    "peak": 108.36,
+    "loss": true,
+    "open_at_end": 0,
+    "bets": 33,
+    "won": 10,
+    "lost": 23,
+    "push": 0,
+    "staked": 224.94,
+    "profit": -64.15,
+    "roi": -0.2852,
+    "clv": 0.0429,
+    "note": "Ended by the owner on Nov 23 (HQ q10: end run #2, start run #3 at $100). Open bets settled first; bets and record kept."
    }
-  ],
-  "wind_down": "Ended by the owner on Nov 23 (HQ q10: end run #2, start run #3 at $100). Open bets settled first; bets and record kept."
+  ]
  },
  "params": {
   "min_edge": 0.0675,
@@ -21639,16 +21770,16 @@
    "bench_noted": true
   },
   "longshot": {
-   "bets": 5,
-   "staked": 25.0,
-   "profit": -25.0,
-   "clv_n": 5,
-   "clv_sum": 0.21558500000000014,
+   "bets": 6,
+   "staked": 30.0,
+   "profit": -30.0,
+   "clv_n": 6,
+   "clv_sum": 0.19177500000000014,
    "tags": {
     "lost-closing-line": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     },
     "near-miss": {
      "n": 1,
@@ -21656,9 +21787,9 @@
      "lost": 1
     },
     "underdog-lost": {
-     "n": 5,
+     "n": 6,
      "won": 0,
-     "lost": 5
+     "lost": 6
     },
     "beat-closing-line": {
      "n": 3,
@@ -21845,13 +21976,13 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-24T07:00:27Z",
-   "bets": 70.0,
-   "staked": 371.16999999999996,
-   "profit": -107.92
+   "last_scanned": "2026-11-24T07:03:21Z",
+   "bets": 71.0,
+   "staked": 376.16999999999996,
+   "profit": -112.92
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-24T07:00:27Z",
+   "last_scanned": "2026-11-24T07:03:21Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -21863,7 +21994,7 @@
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-24T07:00:27Z",
+   "last_scanned": "2026-11-24T07:03:21Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -21884,7 +22015,7 @@
    "last_scanned": "2026-11-24T07:00:27Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-11-24T07:00:27Z",
+   "last_scanned": "2026-11-24T07:03:21Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
@@ -21902,7 +22033,7 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "icehockey_sweden_hockey_league": {
-   "last_scanned": "2026-11-23T07:15:21Z"
+   "last_scanned": "2026-11-24T07:03:21Z"
   },
   "mma_mixed_martial_arts": {
    "last_scanned": "2026-11-21T07:00:39Z"
@@ -21917,7 +22048,7 @@
    "last_scanned": "2026-11-22T07:00:31Z"
   },
   "basketball_euroleague": {
-   "last_scanned": "2026-11-24T06:30:26Z"
+   "last_scanned": "2026-11-24T07:03:21Z"
   },
   "soccer_league_of_ireland": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -21926,7 +22057,7 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-24T07:00:27Z",
+   "last_scanned": "2026-11-24T07:03:21Z",
    "bets": 7.0,
    "staked": 51.67,
    "profit": -4.580000000000001
@@ -21941,7 +22072,7 @@
    "last_scanned": "2026-11-01T02:29:42Z"
   },
   "soccer_uefa_champs_league": {
-   "last_scanned": "2026-11-24T07:00:27Z"
+   "last_scanned": "2026-11-24T07:03:21Z"
   },
   "soccer_argentina_primera_division": {
    "last_scanned": "2026-11-23T03:00:31Z"
@@ -21968,7 +22099,7 @@
    "last_scanned": "2026-11-18T00:15:24Z"
   },
   "cricket_test_match": {
-   "last_scanned": "2026-11-24T05:00:44Z"
+   "last_scanned": "2026-11-24T07:03:21Z"
   },
   "soccer_spain_copa_del_rey": {
    "last_scanned": "2026-11-18T18:19:02Z"
@@ -22077,21 +22208,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T18:17:49Z",
-   "kind": "adapt",
-   "text": "Learning loop: PTS projections ran -2.5% vs actual over 2387 player-games: level x0.912; AST projections ran -3.1% vs actual over 2387 player-games: level x0.941; TPM projections ran -3.9% vs actual over 2387 player-games: level x1.020; PRA projections ran -2.1% vs actual over 2387 player-games: level x0.920; RA projections ran -1.4% vs actual over 2387 player-games: level x0.924; starter minutes were off by +0.7 on average over 1236 player-games: correction -2.6 min; bench minutes were off by +0.3 on average over 1151 player-games: correction -0.6 min."
-  },
-  {
-   "ts": "2026-11-19T18:17:49Z",
-   "kind": "daily",
-   "text": "Day close \u2014 equity $101.11 (run #2), 24-43-2, ROI -23.3%, CLV -0.9%."
-  },
-  {
-   "ts": "2026-11-19T18:30:42Z",
-   "kind": "research",
-   "text": "Research refresh for Thu Nov 19: 4 games, 99 players projected, lineups for 4 games."
-  },
   {
    "ts": "2026-11-19T18:45:37Z",
    "kind": "research",
@@ -23576,6 +23692,21 @@
    "ts": "2026-11-24T06:58:11Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 24: 3 games, 69 players projected, lineups for 10 games."
+  },
+  {
+   "ts": "2026-11-24T07:03:20Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Utah Jazz @ +570 (FanDuel) \u2014 LOST: Utah Jazz lost by 15 [lost-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-24T07:03:20Z",
+   "kind": "race",
+   "text": "Perseverance run #2 ENDED at $35.85 (peak $108.36, 33 bets). New run started from $100; lessons carry over."
+  },
+  {
+   "ts": "2026-11-24T07:03:21Z",
+   "kind": "scan",
+   "text": "Scanned soccer_uefa_champs_league (11), basketball_ncaab (78), icehockey_nhl (1), icehockey_sweden_hockey_league (2), basketball_nba (3), basketball_euroleague (7), americanfootball_ncaaf (2), soccer_usa_mls (1), cricket_test_match (1) for 27 credits. Nothing cleared the bar. Equity $100.00."
   }
  ],
  "learned_ids": [
@@ -23671,31 +23802,32 @@
   "01af6e35",
   "2fa804d6",
   "e1504484",
-  "d17fbf56"
+  "d17fbf56",
+  "c613bf8e"
  ],
  "strategist": null,
- "updated": "2026-11-24T07:00:28Z",
+ "updated": "2026-11-24T07:03:21Z",
  "stats": {
-  "bets": 93,
+  "bets": 94,
   "won": 30,
-  "lost": 61,
+  "lost": 62,
   "shop_n": 33,
   "shop_avg": 0.0667,
   "push": 2,
-  "staked": 527.57,
-  "profit": -150.99,
-  "roi": -0.2862,
+  "staked": 532.57,
+  "profit": -155.99,
+  "roi": -0.2929,
   "clv": -0.0046,
   "clv_n": 70,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 1,
-  "equity": 40.85
+  "open": 0,
+  "equity": 100.0
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.396,
-  "longshot": 0.444,
+  "longshot": 0.362,
   "arb": 1.098,
   "parlay_ev": 1.0,
   "matchup_over": 1.322,
@@ -23705,71 +23837,10 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 1,
+ "dry_scans": 2,
  "scorecard": {
-  "run": 2,
-  "current": {
-   "arb": {
-    "bets": 14,
-    "won": 7,
-    "lost": 7,
-    "push": 0,
-    "staked": 129.94,
-    "profit": 1.45,
-    "roi": 0.0112,
-    "clv": 0.0441,
-    "open": 0,
-    "paused": false
-   },
-   "longshot": {
-    "bets": 0,
-    "won": 0,
-    "lost": 0,
-    "push": 0,
-    "staked": 0,
-    "profit": 0,
-    "roi": null,
-    "clv": -0.0238,
-    "open": 1,
-    "paused": false
-   },
-   "matchup_over": {
-    "bets": 3,
-    "won": 2,
-    "lost": 1,
-    "push": 0,
-    "staked": 15.0,
-    "profit": 4.4,
-    "roi": 0.2933,
-    "clv": -0.0272,
-    "open": 0,
-    "paused": false
-   },
-   "matchup_under": {
-    "bets": 14,
-    "won": 1,
-    "lost": 13,
-    "push": 0,
-    "staked": 70.0,
-    "profit": -60.0,
-    "roi": -0.8571,
-    "clv": null,
-    "open": 0,
-    "paused": true
-   },
-   "value_dog": {
-    "bets": 1,
-    "won": 0,
-    "lost": 1,
-    "push": 0,
-    "staked": 5.0,
-    "profit": -5.0,
-    "roi": -1.0,
-    "clv": 0.2358,
-    "open": 0,
-    "paused": true
-   }
-  },
+  "run": 3,
+  "current": {},
   "all": {
    "arb": {
     "bets": 16,
@@ -23784,15 +23855,15 @@
     "paused": false
    },
    "longshot": {
-    "bets": 5,
+    "bets": 6,
     "won": 0,
-    "lost": 5,
+    "lost": 6,
     "push": 0,
-    "staked": 25.0,
-    "profit": -25.0,
+    "staked": 30.0,
+    "profit": -30.0,
     "roi": -1.0,
     "clv": 0.032,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "matchup_over": {

@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-24T07:00:28Z",
+ "updated": "2026-11-24T07:03:21Z",
  "agents": [
   {
    "name": "Scout",
    "kind": "program",
    "status": "live",
    "when": "every 15 min (NBA every run 4h before tip, others hourly)",
-   "detail": "86 credits today \u00b7 2,162 this cycle"
+   "detail": "113 credits today \u00b7 2,189 this cycle"
   },
   {
    "name": "Prop Pricer",
@@ -20,7 +20,7 @@
    "kind": "program",
    "status": "live",
    "when": "every run, at tip",
-   "detail": "69 of 93 settled legs have a closing price \u00b7 0 credits today"
+   "detail": "70 of 94 settled legs have a closing price \u00b7 0 credits today"
   },
   {
    "name": "Shopper",
@@ -41,14 +41,14 @@
    "kind": "claude",
    "status": "shadow",
    "when": "~11:05am and ~5:05pm ET",
-   "detail": "updated 9h ago \u00b7 32 graded calls \u00b7 would have held 2 bets (1-1, -0.95) \u00b7 saved $0.95"
+   "detail": "updated 9h ago \u00b7 33 graded calls \u00b7 would have held 2 bets (1-1, -0.95) \u00b7 saved $0.95"
   },
   {
    "name": "Skeptic",
    "kind": "claude",
    "status": "shadow",
    "when": "~5:45pm and ~9:15pm ET",
-   "detail": "updated 5h ago \u00b7 32 graded calls \u00b7 would have held 5 bets (0-5, -25.00) \u00b7 saved $25.00"
+   "detail": "updated 5h ago \u00b7 33 graded calls \u00b7 would have held 6 bets (0-6, -30.00) \u00b7 saved $30.00"
   },
   {
    "name": "Strategist",
@@ -75,22 +75,22 @@
     "clv": -0.0528
    },
    "rest": {
-    "n": 30,
-    "profit": -58.2,
+    "n": 31,
+    "profit": -63.2,
     "won": 9,
-    "lost": 21,
-    "clv": 0.0545
+    "lost": 22,
+    "clv": 0.0493
    },
-   "calls": 32,
+   "calls": 33,
    "saved": 0.95
   },
   "skeptic": {
    "held": {
-    "n": 5,
-    "profit": -25.0,
+    "n": 6,
+    "profit": -30.0,
     "won": 0,
-    "lost": 5,
-    "clv": null
+    "lost": 6,
+    "clv": -0.0238
    },
    "rest": {
     "n": 27,
@@ -99,8 +99,8 @@
     "lost": 17,
     "clv": 0.0474
    },
-   "calls": 32,
-   "saved": 25.0
+   "calls": 33,
+   "saved": 30.0
   }
  },
  "note": "Claude agents start in shadow: their calls are recorded and graded, not acted on. An agent goes live after about 150 graded calls show it helps, and only with the owner's approval."
