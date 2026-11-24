@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 100.0,
+  "cash": 90.0,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -21654,6 +21654,88 @@
       }
      ]
     }
+   },
+   {
+    "id": "c7000dc7",
+    "placed": "2026-11-24T20:45:24Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "value_fav",
+    "legs": [
+     {
+      "event_id": "a0ecce85720e6b272a86b2160699e242",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-26T00:30:00Z",
+      "home": "Mississippi St Bulldogs",
+      "away": "Wake Forest Demon Deacons",
+      "market": "h2h",
+      "outcome": "Mississippi St Bulldogs",
+      "point": null,
+      "price": 1.77,
+      "book": "fanatics",
+      "fair_p": 0.6005,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.646,
+       "gain": 0.0754,
+       "n": 2
+      }
+     }
+    ],
+    "dec": 1.77,
+    "stake": 5.0,
+    "ev": 0.0628,
+    "p": 0.6005,
+    "note": "6.3% edge vs 2-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "8fbbd302",
+    "placed": "2026-11-24T20:45:24Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "longshot",
+    "legs": [
+     {
+      "event_id": "864548d14d1c51b9eb5c8124103739bd",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-25T00:00:00Z",
+      "home": "Bowling Green Falcons",
+      "away": "Gardner-Webb Bulldogs",
+      "market": "h2h",
+      "outcome": "Gardner-Webb Bulldogs",
+      "point": null,
+      "price": 7.847,
+      "book": "kalshi",
+      "fair_p": 0.1459,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 6.625,
+       "gain": 0.1844,
+       "n": 8
+      }
+     }
+    ],
+    "dec": 7.847,
+    "stake": 5.0,
+    "ev": 0.1451,
+    "p": 0.1459,
+    "note": "14.5% edge vs 8-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -22057,7 +22139,7 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-24T07:03:21Z",
+   "last_scanned": "2026-11-24T20:45:24Z",
    "bets": 7.0,
    "staked": 51.67,
    "profit": -4.580000000000001
@@ -22075,7 +22157,7 @@
    "last_scanned": "2026-11-24T20:00:38Z"
   },
   "soccer_argentina_primera_division": {
-   "last_scanned": "2026-11-23T03:00:31Z"
+   "last_scanned": "2026-11-24T20:45:24Z"
   },
   "soccer_uefa_europa_league": {
    "last_scanned": "2026-11-05T00:50:19Z"
@@ -22208,11 +22290,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T00:00:59Z",
-   "kind": "focus",
-   "text": "Skipped 57 pts+reb+ast lines, 11 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists, reb+ast, rebounds."
-  },
   {
    "ts": "2026-11-20T00:00:59Z",
    "kind": "props",
@@ -23707,6 +23784,11 @@
    "ts": "2026-11-24T20:30:36Z",
    "kind": "research",
    "text": "Research refresh for Tue Nov 24: 3 games, 67 players projected, lineups for 3 games."
+  },
+  {
+   "ts": "2026-11-24T20:45:24Z",
+   "kind": "scan",
+   "text": "Scout: basketball_ncaab (94), soccer_argentina_primera_division (1) for 5 credits. Placed 2: Mississippi St Bulldogs @ -130 (Fanatics); Gardner-Webb Bulldogs @ +685 (Kalshi). Equity $100.00."
   }
  ],
  "learned_ids": [
@@ -23806,13 +23888,13 @@
   "c613bf8e"
  ],
  "strategist": null,
- "updated": "2026-11-24T20:30:55Z",
+ "updated": "2026-11-24T20:45:24Z",
  "stats": {
   "bets": 94,
   "won": 30,
   "lost": 62,
-  "shop_n": 33,
-  "shop_avg": 0.0667,
+  "shop_n": 35,
+  "shop_avg": 0.0703,
   "push": 2,
   "staked": 532.57,
   "profit": -155.99,
@@ -23821,7 +23903,7 @@
   "clv_n": 70,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 0,
+  "open": 2,
   "equity": 100.0
  },
  "weights": {
@@ -23837,10 +23919,35 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
-  "current": {},
+  "current": {
+   "longshot": {
+    "bets": 0,
+    "won": 0,
+    "lost": 0,
+    "push": 0,
+    "staked": 0,
+    "profit": 0,
+    "roi": null,
+    "clv": null,
+    "open": 1,
+    "paused": false
+   },
+   "value_fav": {
+    "bets": 0,
+    "won": 0,
+    "lost": 0,
+    "push": 0,
+    "staked": 0,
+    "profit": 0,
+    "roi": null,
+    "clv": null,
+    "open": 1,
+    "paused": false
+   }
+  },
   "all": {
    "arb": {
     "bets": 16,
@@ -23863,7 +23970,7 @@
     "profit": -30.0,
     "roi": -1.0,
     "clv": 0.032,
-    "open": 0,
+    "open": 1,
     "paused": false
    },
    "matchup_over": {
@@ -23911,7 +24018,7 @@
     "profit": -5.0,
     "roi": -1.0,
     "clv": -0.0304,
-    "open": 0,
+    "open": 1,
     "paused": false
    }
   }
