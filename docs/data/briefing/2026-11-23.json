@@ -4347,29 +4347,29 @@
   "g|401910044|total|Over": {
    "key": "g|401910044|total|Over",
    "kind": "total",
-   "label": "UTAH @ LAL Over 225.5",
+   "label": "UTAH @ LAL Over 224.5",
    "espn_id": "401910044",
    "game": "UTAH @ LAL",
    "start": "2026-11-24T03:00Z",
    "side": "Over",
-   "point": 225.5,
-   "dec": 1.93,
-   "am": -108,
+   "point": 224.5,
+   "dec": 1.88,
+   "am": -114,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.506,
-   "p_sim": 0.624,
-   "p_mkt": 0.493,
+   "p": 0.521,
+   "p_sim": 0.647,
+   "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": -0.023,
+   "ev": -0.021,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "LAL",
    "away": "UTAH",
-   "why": "Sim total 231.7 (after a learned +1.4 correction) vs 225.5 \u00b7 over in 62% of sims vs 49% DraftKings",
+   "why": "Sim total 231.7 (after a learned +1.4 correction) vs 224.5 \u00b7 over in 65% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 62% of 10,000 simulated games.",
+     "t": "Goes over in 65% of 10,000 simulated games.",
      "rec": [
       1330,
       1173
@@ -4377,14 +4377,14 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 229.5 points, 4.0 on your side of 225.5.",
+     "t": "Team ratings project 229.5 points, 5.0 on your side of 224.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (230.5 to 225.5).",
+     "t": "The line has moved against this side since it opened (230.5 to 224.5).",
      "rec": [
       174,
       139
@@ -4408,10 +4408,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.976,
-    "floor_am": -102,
+    "floor_dec": 1.919,
+    "floor_am": -109,
     "line": null,
-    "next": 226.5
+    "next": 225.5
    },
    "watch": [
     {
@@ -4448,12 +4448,12 @@
     }
    ],
    "kill": [
-    "The line reaching 226.5",
-    "The price at 225.5 going past \u2212102"
+    "The line reaching 225.5",
+    "The price at 224.5 going past \u2212109"
    ],
    "market": {
     "open": null,
-    "now": 225.5,
+    "now": 224.5,
     "kalshi": null
    },
    "started": false,
@@ -5190,8 +5190,11 @@
     }
    },
    "first_seen": "2026-11-23T21:31:35Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T01:31:09Z",
+    "why": "line moved 12.5 \u2192 8.5"
+   },
+   "status": "Removed"
   },
   "g|401910036|total|Over": {
    "key": "g|401910036|total|Over",
@@ -5451,6 +5454,132 @@
     "why": "other plays ranked higher"
    },
    "status": "Removed"
+  },
+  "g|401910045|total|Under": {
+   "key": "g|401910045|total|Under",
+   "kind": "total",
+   "label": "SA @ SAC Under 225.5",
+   "espn_id": "401910045",
+   "game": "SA @ SAC",
+   "start": "2026-11-24T03:00Z",
+   "side": "Under",
+   "point": 225.5,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 31,
+   "tier": "Pass",
+   "p": 0.517,
+   "p_sim": 0.615,
+   "p_mkt": 0.507,
+   "p_kalshi": null,
+   "ev": -0.027,
+   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
+   "home": "SAC",
+   "away": "SA",
+   "why": "Sim total 221.2 (after a learned +1.4 correction) vs 225.5 \u00b7 under in 62% of sims vs 51% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 62% of 10,000 simulated games.",
+     "rec": [
+      1330,
+      1173
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings project 222.9 points, 2.6 on your side of 225.5.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (224.5 to 225.5).",
+     "rec": [
+      174,
+      139
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 634-673 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      148,
+      169
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.934,
+    "floor_am": -107,
+    "line": null,
+    "next": 224.5
+   },
+   "watch": [
+    {
+     "pid": "5037871",
+     "name": "Dylan Harper",
+     "team": "SA",
+     "status": "Out",
+     "self": false,
+     "min": 31.8
+    },
+    {
+     "pid": "5104157",
+     "name": "Victor Wembanyama",
+     "team": "SA",
+     "status": "Out",
+     "self": false,
+     "min": 31.3
+    },
+    {
+     "pid": "4066259",
+     "name": "De'Aaron Fox",
+     "team": "SA",
+     "status": "Out",
+     "self": false,
+     "min": 27.9
+    },
+    {
+     "pid": "3134916",
+     "name": "Jordan McLaughlin",
+     "team": "SA",
+     "status": "Ques",
+     "self": false,
+     "min": 20.6
+    }
+   ],
+   "kill": [
+    "The line reaching 224.5",
+    "The price at 225.5 going past \u2212107",
+    "A change in Jordan McLaughlin (ques): the model re-prices on the next run"
+   ],
+   "market": {
+    "open": null,
+    "now": 225.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T01:31:09Z",
+    "edition": "update",
+    "point": 225.5,
+    "dec": 1.88,
+    "am": -114,
+    "conv": 31,
+    "tier": "Pass",
+    "p": 0.517,
+    "play_to": {
+     "floor_dec": 1.934,
+     "floor_am": -107,
+     "line": null,
+     "next": 224.5
+    }
+   },
+   "first_seen": "2026-11-24T01:31:09Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -6608,6 +6737,27 @@
    "kind": "line",
    "text": "SAC +12.5 (SA @ SAC): line 12.5 at \u2212111 \u2192 12.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-24T01:31:09Z",
+   "key": "g|401910044|total|Over",
+   "kind": "line",
+   "text": "UTAH @ LAL Over 224.5: line 225.5 at \u2212108 \u2192 224.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T01:31:09Z",
+   "key": "g|401910045|total|Under",
+   "kind": "added",
+   "text": "Added: SA @ SAC Under 225.5 at \u2212114, conviction 31",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T01:31:09Z",
+   "key": "g|401910045|spread|home",
+   "kind": "removed",
+   "text": "Removed: SAC +12.5 (SA @ SAC) \u2014 line moved 12.5 \u2192 8.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -6704,18 +6854,7 @@
   "games": 10,
   "to_tip": 3,
   "first": "2026-11-24T00:00Z",
-  "questionable": [
-   {
-    "name": "Victor Wembanyama",
-    "team": "SA",
-    "status": "Questionable"
-   },
-   {
-    "name": "De'Aaron Fox",
-    "team": "SA",
-    "status": "Questionable"
-   }
-  ],
+  "questionable": [],
   "picks": 24
  },
  "leans_record": {
@@ -6725,5 +6864,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-24T01:15:35Z"
+ "updated": "2026-11-24T01:31:09Z"
 }
