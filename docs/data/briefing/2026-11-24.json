@@ -170,15 +170,15 @@
    "start": "2026-11-25T03:00Z",
    "side": "Under",
    "point": 13.5,
-   "dec": 1.88,
-   "am": -114,
+   "dec": 1.9,
+   "am": -111,
    "conv": 29,
    "tier": "Pass",
-   "p": 0.514,
+   "p": 0.508,
    "p_sim": 0.549,
-   "p_mkt": 0.501,
+   "p_mkt": 0.495,
    "p_kalshi": null,
-   "ev": -0.033,
+   "ev": -0.035,
    "verdict": "Pass: recent form and projection agree; the main risk is model record.",
    "home": "DEN",
    "away": "DAL",
@@ -245,15 +245,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.946,
-    "floor_am": -106,
+    "floor_dec": 1.969,
+    "floor_am": -103,
     "line": null,
     "next": 12.5
    },
    "watch": [],
    "kill": [
     "The line reaching 12.5",
-    "The price at 13.5 going past \u2212106",
+    "The price at 13.5 going past \u2212103",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -587,8 +587,11 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T15:30:59Z",
+    "why": "no longer +EV at tonight's line (8.5 at -125)"
+   },
+   "status": "Removed"
   },
   "p|4277847|pts|Under": {
    "key": "p|4277847|pts|Under",
@@ -1055,6 +1058,143 @@
    "first_seen": "2026-11-24T14:15:46Z",
    "removed": null,
    "status": "Past play-to"
+  },
+  "p|4066354|pts|Under": {
+   "key": "p|4066354|pts|Under",
+   "kind": "prop",
+   "label": "Payton Pritchard Under 13.5 points",
+   "espn_id": "401909315",
+   "game": "BOS @ WSH",
+   "start": "2026-11-25T01:00Z",
+   "side": "Under",
+   "point": 13.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.537,
+   "p_sim": 0.607,
+   "p_mkt": 0.524,
+   "p_kalshi": null,
+   "ev": -0.033,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "WSH",
+   "away": "BOS",
+   "pid": "4066354",
+   "name": "Payton Pritchard",
+   "team": "BOS",
+   "opp": "WSH",
+   "stat": "pts",
+   "proj": 13.1,
+   "sim": 12.4,
+   "ob_ind": 12.5,
+   "avg10": 12.6,
+   "minutes": 27.5,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 61% of 10,000 simulated games (sim average 12.4).",
+     "rec": [
+      1491,
+      1312
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 13.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1347,
+      1220
+     ]
+    },
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -6 vs model.",
+     "rec": [
+      207,
+      189
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 46% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      908,
+      854
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +5% points vs WSH (106 close comps).",
+     "rec": [
+      658,
+      598
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "WSH gives point guards +7% points vs their norm (#4 softest of 30).",
+     "rec": [
+      1058,
+      977
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 30.5 minutes in the games he went over vs 27.3 otherwise. He's projected for 27.5 tonight.",
+     "rec": [
+      1391,
+      1297
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "On the road: 6 of 20 under 13.5 (30% vs 60% lately).",
+     "rec": [
+      786,
+      773
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.862,
+    "floor_am": -116,
+    "line": 13.5,
+    "next": 12.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 12.5",
+    "The price at 13.5 going past \u2212116",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 12.5,
+    "now": 13.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-24T15:30:59Z",
+    "edition": "update",
+    "point": 13.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.537,
+    "play_to": {
+     "floor_dec": 1.862,
+     "floor_am": -116,
+     "line": 13.5,
+     "next": 12.5
+    }
+   },
+   "first_seen": "2026-11-24T15:30:59Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -1444,6 +1584,27 @@
    "kind": "removed",
    "text": "Removed: Trae Young Under 15.5 points \u2014 no longer +EV at tonight's line (15.5 at -120)",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T15:30:59Z",
+   "key": "p|4066354|pts|Under",
+   "kind": "added",
+   "text": "Added: Payton Pritchard Under 13.5 points at \u2212125, conviction 29",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T15:30:59Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "line",
+   "text": "Aaron Gordon: line 13.5 at \u2212114 \u2192 13.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T15:30:59Z",
+   "key": "p|4432166|ast|Under",
+   "kind": "removed",
+   "text": "Removed: Cade Cunningham Under 8.5 assists \u2014 no longer +EV at tonight's line (8.5 at -125)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -1492,7 +1653,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 7
+  "picks": 8
  },
  "leans_record": {
   "w": 20,
@@ -1501,5 +1662,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T15:15:24Z"
+ "updated": "2026-11-24T15:30:59Z"
 }
