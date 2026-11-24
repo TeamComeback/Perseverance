@@ -24,22 +24,22 @@
   "p|5142718|pts|Under": {
    "key": "p|5142718|pts|Under",
    "kind": "prop",
-   "label": "AJ Dybantsa Under 15.5 points",
+   "label": "AJ Dybantsa Under 16.5 points",
    "espn_id": "401909315",
    "game": "BOS @ WSH",
    "start": "2026-11-25T01:00Z",
    "side": "Under",
-   "point": 15.5,
-   "dec": 1.97,
-   "am": -103,
-   "conv": 31,
+   "point": 16.5,
+   "dec": 1.81,
+   "am": -123,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.492,
-   "p_sim": 0.473,
-   "p_mkt": 0.479,
-   "p_kalshi": null,
-   "ev": -0.031,
-   "verdict": "Pass: blowout and Vegas agree; the main risk is recent form.",
+   "p": 0.534,
+   "p_sim": 0.539,
+   "p_mkt": 0.521,
+   "p_kalshi": 0.523,
+   "ev": -0.034,
+   "verdict": "Pass: tonight's spot and projection agree; the main risk is model record.",
    "home": "WSH",
    "away": "BOS",
    "pid": "5142718",
@@ -49,10 +49,18 @@
    "stat": "pts",
    "proj": 15.3,
    "sim": 16.1,
-   "ob_ind": null,
+   "ob_ind": 16.5,
    "avg10": 16.5,
    "minutes": 33.6,
    "for": [
+    {
+     "tag": "projection",
+     "t": "Model projects 15.3 points against a line of 16.5.",
+     "rec": [
+      1547,
+      1390
+     ]
+    },
     {
      "tag": "Vegas",
      "t": "Vegas team total -3 vs model.",
@@ -70,19 +78,19 @@
      ]
     },
     {
+     "tag": "tonight's spot",
+     "t": "At home: 4 of 6 under 16.5 (67% vs 43% lately).",
+     "rec": [
+      529,
+      520
+     ]
+    },
+    {
      "tag": "role tonight",
      "t": "Minutes down tonight: -0.6 min blowout risk (WSH starters sit 1.6 min in blowouts vs 2.1 league).",
      "rec": [
       220,
       221
-     ]
-    },
-    {
-     "tag": "line move",
-     "t": "The line moved his way (16.5 to 15.5): money has been on the under.",
-     "rec": [
-      196,
-      227
      ]
     }
    ],
@@ -94,48 +102,24 @@
       259,
       264
      ]
-    },
-    {
-     "tag": "recent form",
-     "t": "Only 3 of his last 10 went under 15.5 (0 of the last 5).",
-     "rec": [
-      621,
-      644
-     ]
-    },
-    {
-     "tag": "trend",
-     "t": "Cooling off: only 0 of his last 5 after a better run before that.",
-     "rec": [
-      52,
-      54
-     ]
-    },
-    {
-     "tag": "simulation",
-     "t": "The simulation disagrees: only 47% of 10,000 games go under.",
-     "rec": [
-      479,
-      546
-     ]
     }
    ],
    "play_to": {
-    "floor_dec": 2.033,
-    "floor_am": 103,
+    "floor_dec": 1.873,
+    "floor_am": -115,
     "line": null,
-    "next": 14.5
+    "next": 15.5
    },
    "watch": [],
    "kill": [
-    "The line reaching 14.5",
-    "The price at 15.5 going past +103",
+    "The line reaching 15.5",
+    "The price at 16.5 going past \u2212115",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 16.5,
-    "now": 15.5,
-    "kalshi": null
+    "now": 16.5,
+    "kalshi": 0.523
    },
    "started": false,
    "published": {
@@ -155,11 +139,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-24T14:15:46Z",
-    "why": "no longer +EV at tonight's line (16.5 at -118)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "p|3064290|pts|Under": {
    "key": "p|3064290|pts|Under",
@@ -177,7 +158,7 @@
    "p": 0.508,
    "p_sim": 0.549,
    "p_mkt": 0.495,
-   "p_kalshi": null,
+   "p_kalshi": 0.488,
    "ev": -0.035,
    "verdict": "Pass: recent form and projection agree; the main risk is model record.",
    "home": "DEN",
@@ -259,7 +240,7 @@
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": null
+    "kalshi": 0.488
    },
    "started": false,
    "published": {
@@ -291,15 +272,15 @@
    "start": "2026-11-25T01:00Z",
    "side": "Under",
    "point": 26.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 30,
+   "dec": 1.82,
+   "am": -122,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.512,
+   "p": 0.531,
    "p_sim": 0.576,
-   "p_mkt": 0.499,
-   "p_kalshi": null,
-   "ev": -0.032,
+   "p_mkt": 0.517,
+   "p_kalshi": 0.526,
+   "ev": -0.034,
    "verdict": "Pass: recent form and simulation agree; the main risk is similar players.",
    "home": "WSH",
    "away": "BOS",
@@ -390,21 +371,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.953,
-    "floor_am": -105,
+    "floor_dec": 1.883,
+    "floor_am": -113,
     "line": null,
     "next": 25.5
    },
    "watch": [],
    "kill": [
     "The line reaching 25.5",
-    "The price at 26.5 going past \u2212105",
+    "The price at 26.5 going past \u2212113",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 26.5,
     "now": 26.5,
-    "kalshi": null
+    "kalshi": 0.526
    },
    "started": false,
    "published": {
@@ -424,11 +405,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-24T16:00:59Z",
-    "why": "no longer +EV at tonight's line (26.5 at -109)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4432166|ast|Under": {
    "key": "p|4432166|ast|Under",
@@ -605,15 +583,15 @@
    "start": "2026-11-25T00:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.93,
-   "am": -108,
+   "dec": 1.97,
+   "am": -103,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.502,
+   "p": 0.491,
    "p_sim": 0.531,
-   "p_mkt": 0.488,
-   "p_kalshi": null,
-   "ev": -0.032,
+   "p_mkt": 0.477,
+   "p_kalshi": 0.509,
+   "ev": -0.033,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is tonight's spot.",
    "home": "ORL",
    "away": "DET",
@@ -704,8 +682,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.992,
-    "floor_am": -101,
+    "floor_dec": 2.037,
+    "floor_am": 104,
     "line": null,
     "next": 9.5
    },
@@ -729,14 +707,14 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212101",
+    "The price at 10.5 going past +104",
     "A change in Cade Cunningham (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": null
+    "kalshi": 0.509
    },
    "started": false,
    "published": {
@@ -901,28 +879,31 @@
     }
    },
    "first_seen": "2026-11-24T14:15:46Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T16:45:53Z",
+    "why": "no longer +EV at tonight's line (15.5 at -120)"
+   },
+   "status": "Removed"
   },
   "p|5041939|pts|Under": {
    "key": "p|5041939|pts|Under",
    "kind": "prop",
-   "label": "Cooper Flagg Under 24.5 points",
+   "label": "Cooper Flagg Under 23.5 points",
    "espn_id": "401909316",
    "game": "DAL @ DEN",
    "start": "2026-11-25T03:00Z",
    "side": "Under",
-   "point": 24.5,
-   "dec": 1.83,
-   "am": -120,
-   "conv": 29,
+   "point": 23.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.528,
-   "p_sim": 0.64,
-   "p_mkt": 0.515,
-   "p_kalshi": null,
-   "ev": -0.034,
-   "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
+   "p": 0.496,
+   "p_sim": 0.583,
+   "p_mkt": 0.483,
+   "p_kalshi": 0.492,
+   "ev": -0.033,
+   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "DEN",
    "away": "DAL",
    "pid": "5041939",
@@ -937,32 +918,16 @@
    "minutes": 31.6,
    "for": [
     {
-     "tag": "cushion",
-     "t": "Room to spare: he stayed under even 22.5 in 6 of his last 10.",
-     "rec": [
-      366,
-      321
-     ]
-    },
-    {
      "tag": "simulation",
-     "t": "Goes under in 64% of 10,000 simulated games (sim average 22.3).",
+     "t": "Goes under in 58% of 10,000 simulated games (sim average 22.3).",
      "rec": [
       1491,
       1312
      ]
     },
     {
-     "tag": "projection",
-     "t": "Model projects 22.8 points against a line of 24.5.",
-     "rec": [
-      1547,
-      1390
-     ]
-    },
-    {
      "tag": "recent form",
-     "t": "Stayed under 24.5 in 6 of his last 10 (3 of the last 5).",
+     "t": "Stayed under 23.5 in 6 of his last 10 (3 of the last 5).",
      "rec": [
       1347,
       1220
@@ -1003,19 +968,19 @@
      ]
     },
     {
-     "tag": "model record",
-     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "tag": "tonight's spot",
+     "t": "Against DEN: 1 of 4 under 23.5 (25% vs 50% lately).",
      "rec": [
-      259,
-      264
+      786,
+      773
      ]
     }
    ],
    "play_to": {
-    "floor_dec": 1.894,
-    "floor_am": -112,
+    "floor_dec": 2.016,
+    "floor_am": 102,
     "line": null,
-    "next": 23.5
+    "next": 22.5
    },
    "watch": [
     {
@@ -1028,15 +993,15 @@
     }
    ],
    "kill": [
-    "The line reaching 23.5",
-    "The price at 24.5 going past \u2212112",
+    "The line reaching 22.5",
+    "The price at 23.5 going past +102",
     "A change in P.J. Washington (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 23.5,
-    "now": 24.5,
-    "kalshi": null
+    "now": 23.5,
+    "kalshi": 0.492
    },
    "started": false,
    "published": {
@@ -1057,7 +1022,7 @@
    },
    "first_seen": "2026-11-24T14:15:46Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "New"
   },
   "p|4066354|pts|Under": {
    "key": "p|4066354|pts|Under",
@@ -1193,8 +1158,11 @@
     }
    },
    "first_seen": "2026-11-24T15:30:59Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-24T16:45:53Z",
+    "why": "no longer +EV at tonight's line (12.5 at -101)"
+   },
+   "status": "Removed"
   }
  },
  "leans": {
@@ -1312,19 +1280,19 @@
    "start": "2026-11-25T01:00Z",
    "side": "Over",
    "point": 217.5,
-   "dec": 1.89,
-   "am": -112,
+   "dec": 1.86,
+   "am": -116,
    "conv": 28,
    "tier": "Pass",
-   "p": 0.51,
+   "p": 0.517,
    "p_sim": 0.562,
-   "p_mkt": 0.504,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": -0.036,
+   "ev": -0.039,
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "WSH",
    "away": "BOS",
-   "why": "Sim total 220.1 (after a learned +1.6 correction) vs 217.5 \u00b7 over in 56% of sims vs 50% DraftKings",
+   "why": "Sim total 220.1 (after a learned +1.6 correction) vs 217.5 \u00b7 over in 56% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1362,15 +1330,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.961,
-    "floor_am": -104,
+    "floor_dec": 1.934,
+    "floor_am": -107,
     "line": null,
     "next": 218.5
    },
    "watch": [],
    "kill": [
     "The line reaching 218.5",
-    "The price at 217.5 going past \u2212104"
+    "The price at 217.5 going past \u2212107"
    ],
    "market": {
     "open": null,
@@ -1407,19 +1375,19 @@
    "start": "2026-11-25T03:00Z",
    "side": "Over",
    "point": 233.5,
-   "dec": 1.91,
-   "am": -110,
-   "conv": 26,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 25,
    "tier": "Pass",
-   "p": 0.501,
+   "p": 0.513,
    "p_sim": 0.522,
-   "p_mkt": 0.499,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": -0.043,
+   "ev": -0.046,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "DEN",
    "away": "DAL",
-   "why": "Sim total 234.3 (after a learned +1.6 correction) vs 233.5 \u00b7 over in 52% of sims vs 50% DraftKings",
+   "why": "Sim total 234.3 (after a learned +1.6 correction) vs 233.5 \u00b7 over in 52% of sims vs 51% DraftKings",
    "for": [],
    "against": [
     {
@@ -1453,8 +1421,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.996,
-    "floor_am": -100,
+    "floor_dec": 1.949,
+    "floor_am": -105,
     "line": null,
     "next": 234.5
    },
@@ -1470,7 +1438,7 @@
    ],
    "kill": [
     "The line reaching 234.5",
-    "The price at 233.5 going past \u2212100",
+    "The price at 233.5 going past \u2212105",
     "A change in P.J. Washington (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1633,6 +1601,76 @@
    "kind": "removed",
    "text": "Removed: Jayson Tatum Under 26.5 points \u2014 no longer +EV at tonight's line (26.5 at -109)",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|4277847|pts|Under",
+   "kind": "line",
+   "text": "Wendell Carter Jr.: line 10.5 at \u2212108 \u2192 10.5 at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "line",
+   "text": "Cooper Flagg: line 24.5 at \u2212120 \u2192 23.5 at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|5142718|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: AJ Dybantsa Under 16.5 points at \u2212123",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|5142718|pts|Under",
+   "kind": "line",
+   "text": "AJ Dybantsa: line 15.5 at \u2212103 \u2192 16.5 at \u2212123",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|4065648|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Jayson Tatum Under 26.5 points at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|4065648|pts|Under",
+   "kind": "line",
+   "text": "Jayson Tatum: line 26.5 at \u2212112 \u2192 26.5 at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|4277905|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Trae Young Under 15.5 points \u2014 no longer +EV at tonight's line (15.5 at -120)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "p|4066354|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Payton Pritchard Under 13.5 points \u2014 no longer +EV at tonight's line (12.5 at -101)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "g|401909315|total|Over",
+   "kind": "line",
+   "text": "BOS @ WSH Over 217.5: line 217.5 at \u2212112 \u2192 217.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-24T16:45:53Z",
+   "key": "g|401909316|total|Over",
+   "kind": "line",
+   "text": "DAL @ DEN Over 233.5: line 233.5 at \u2212110 \u2192 233.5 at \u2212116",
+   "alert": false
   }
  ],
  "narratives": [
@@ -1690,5 +1728,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T16:30:28Z"
+ "updated": "2026-11-24T16:45:53Z"
 }
