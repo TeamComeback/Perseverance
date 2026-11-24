@@ -609,6 +609,10 @@ a{color:var(--sky)}
 .view>.desc,.view .sec>.sb>.desc:first-child{font-size:12px}
 details.sec>summary .meta{color:var(--dim2)}
 .neg{color:#FF7A93}
+.mvline{font-size:12px;line-height:1.5;cursor:pointer;padding-top:2px}
+.mvdet{margin-top:6px;padding:8px;background:var(--panel2);border-radius:10px}
+.mvr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;color:var(--dim)} .mvr.me{color:var(--text);font-weight:700}
+.mvl{margin-top:4px;max-height:150px;overflow:auto}
 .bankrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
 </style>
 </head>
@@ -1124,7 +1128,7 @@ function betRow(b) {
   return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div>` +
     (b.note ? `<div class="sub" style="grid-column:1/-1">${esc(b.note)}</div>` : "") +
     (time ? `<div class="sub" style="grid-column:1/-1">⏱ ${esc(time)}</div>` : "") +
-    reviewHtml(b) + (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") +
+    reviewHtml(b) + (b.legs.length === 1 && b.status !== "cancelled" ? `<div class="lmslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") + (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") +
     (b.source === "you" && b.status === "open" && L && L.book.bets.includes(b) ? `<div class="acts">${b.legs.some(l => l.market === "custom") ?
       `<button class="w" data-set="won|${b.id}">Won</button><button class="l" data-set="lost|${b.id}">Lost</button><button data-set="push|${b.id}">Push</button>` : ""}
       <button data-set="cancel|${b.id}">Cancel · refund</button></div>` : "") + `</div>`;
@@ -1866,7 +1870,7 @@ function renderToday() {
     ${sec("t-more", "More from the model", "briefing, game picks, watchlist, changes", `${statusStrip()}${briefHtml()}${changesHtml()}${bestHtml()}${watchHtml()}${sec("t-bank", "Bankroll and model", money(youEq) + " you · " + money(state.stats.equity) + " agent", heroHtml(youEq), false)}${oppsHtml()}`, false)}`;
   $("v-today").querySelectorAll(".gcard, [data-game]").forEach(el => el.onclick = () => openGame(el.dataset.game));
   const sa = $("seenAll"); if (sa) sa.onclick = () => { D._seen = snapNow(); store.set("seen", D._seen); renderToday(); };
-  bindPlayerLinks($("v-today")); bindBest($("v-today"));
+  bindPlayerLinks($("v-today")); bindBest($("v-today")); fillMoves($("v-today"));
 }
 // ------------------------------------------------------------------ best bets of the day (tools/sim_all.js -> best.json)
 // The case for and against a play (docs/case.js builds it): strongest points first, then the hit-rate ladder.
@@ -2905,17 +2909,127 @@ async function fillClv() {
       <div class="sub dim">${takenAt(r.b, r.l)}</div></div>`).join("")
     : '<div class="empty">Shows up once you have bets on lines the agent tracks: board game lines it scans, or props it priced that day.</div>';
 }
+// ===================================================== LINE MOVEMENT AND CLV (Nov 24)
+// Where DraftKings' number is now (or closed) against the number you took. History comes from docs/data/dkh/<day>.json
+// (the agent adds a point whenever a line or price changes, about every 30 minutes) plus this phone's last re-price.
+const etDay = ts => new Intl.DateTimeFormat("en-CA", {timeZone: "America/New_York"}).format(new Date(ts));
+const SD_STAT = {pts: 6.5, reb: 3, ast: 2.3, tpm: 1.2, pra: 8, ra: 4};
+function lineDay(day) {
+  D.lh = D.lh || {};
+  if (day < "2026-11-05") return Promise.resolve({});         // before the line history starts
+  if (!D.lh[day]) D.lh[day] = Promise.all([get(`dkh/${day}.json`, null), get(`dk/${day}.json`, null)]).then(([h, d]) => ({h, d}));
+  return D.lh[day];
+}
+function allBetsFlat() { return D.state.book.bets.concat(L.book.bets); }
+// His side of the line over time: [[ts, line, price, otherPrice], ...] plus what kind of bet it is.
+async function moveOf(b) {
+  if (b.legs.length !== 1 || b.status === "cancelled") return null;
+  const l = b.legs[0], day = etDay(l.commence || b.placed);
+  const {h, d} = await lineDay(day); if (!h || !d) return null;
+  const over = /over/i.test(l.side || l.outcome || "");
+  let kind, key, pts = [];
+  if (String(l.market || "").startsWith("player_") && l.stat) {
+    key = l.player_id ? l.player_id + "|" + l.stat : Object.keys(d.props || {}).find(k => d.props[k].stat === l.stat && normName(d.props[k].name) === normName(l.player));
+    const s = key && (h.props || {})[key]; if (!s) return null;
+    kind = "prop"; pts = s.map(p => [p[0], p[1], over ? p[2] : p[3], over ? p[3] : p[2]]);
+    const live = dkLiveProps();                       // this phone's last re-price, if newer than the agent's last point
+    if (live && live.date === day && live.props[key] && new Date(live.at) > new Date(s.at(-1)[0])) { const c = live.props[key]; pts.push([live.at, c[0], over ? c[1] : c[2], over ? c[2] : c[1]]); }
+  } else if (l.market === "spreads" || l.market === "totals") {
+    const tk = teamKey(l.outcome || l.team);
+    const ht = teamKey(l.home || "");
+    const gid = Object.keys(d.games || {}).find(id => { const g = d.games[id]; return l.market === "totals" ? ht && teamKey(g.home_name) === ht : tk && (teamKey(g.home_name) === tk || teamKey(g.away_name) === tk); });
+    const s = gid && (h.games || {})[gid]; if (!s) return null;
+    const g = d.games[gid], home = teamKey(g.home_name) === tk;
+    if (l.market === "spreads") { kind = "spread"; pts = s.map(p => [p[0], home ? p[1] : -p[1], home ? p[2] : p[3], home ? p[3] : p[2]]); }
+    else { kind = "total"; pts = s.map(p => [p[0], p[4], over ? p[5] : p[6], over ? p[6] : p[5]]); }
+  } else return null;
+  pts = pts.filter(p => p[1] != null && p[2] && p[3]);
+  if (!pts.length) return null;
+  const mine = +l.point;
+  // when did you take it? the stored time if it is real, otherwise the first moment DraftKings showed your number
+  let at = b.placed_unknown ? null : b.placed, inferred = false;
+  if (!at) { const hit = pts.find(p => p[1] === mine && Math.abs(p[2] - l.price) <= 0.04); if (hit) { at = hit[0]; inferred = true; } }
+  const alt = !pts.some(p => p[1] === mine);          // an alternate line: its price isn't tracked, only the main line's
+  const last = pts.at(-1), closed = new Date(l.commence) <= Date.now(), sd = kind === "prop" ? SD_STAT[l.stat] || 4 : kind === "spread" ? 11 : 17;
+  // points gained: for an over (and a total over) a lower number is better, for an under or a spread a higher number is better
+  const gained = kind === "spread" || !over ? mine - last[1] : last[1] - mine;
+  // price CLV: your price against DraftKings' price on your side now/at the close. When the number moved, the close price at
+  // your number is estimated: each point is worth about 0.4/sd of win probability.
+  let clv = null, est = false;
+  if (!alt && last[2] > 1) {
+    if (last[1] === mine) clv = l.price / last[2] - 1;
+    else { clv = l.price * Math.min(0.97, Math.max(0.03, 1 / last[2] - gained * 0.4 / sd)) - 1; est = true; }
+  }
+  return {kind, pts, mine, price: l.price, at, inferred, last, closed, gained: alt ? null : gained, clv, est, over, stat: l.stat, alt};
+}
+const moveTitle = l => /[+-]?\d/.test(String(l.outcome || "")) && l.point != null && String(l.outcome).includes(String(Math.abs(l.point))) ? esc(l.outcome) + " " + (MK[l.market] || "").toLowerCase() : legText(l);
+const fmtLine = (m, p) => `${m.kind === "prop" || m.kind === "total" ? (m.over ? "O " : "U ") : ""}${m.kind === "spread" && p[1] > 0 ? "+" : ""}${f1(p[1])} ${am(p[2])}`;
+function moveLine(m) {
+  if (m.alt) return `<span class="dim">You</span> ${fmtLine(m, [0, m.mine, m.price])} <span class="dim">· alternate line. Main line ${m.closed ? "closed" : "now"}</span> ${fmtLine(m, m.last)}`;
+  const g = m.gained, mv = Math.abs(g) < 1e-9 ? "same number" : `${g > 0 ? "+" : "−"}${f1(Math.abs(g))} pt${Math.abs(g) === 1 ? "" : "s"}`;
+  const tone = m.clv == null ? cls(g) : cls(m.clv);
+  return `<span class="dim">You</span> ${fmtLine(m, [0, m.mine, m.price])} <span class="dim">→ ${m.closed ? "Closed" : "Now"}</span> ${fmtLine(m, m.last)} <b class="${tone}">${mv}</b>${m.clv != null ? ` · CLV <b class="${cls(m.clv)}">${pct(m.clv)}${m.est ? "*" : ""}</b>` : ""}`;
+}
+function moveChart(m) {
+  const P = m.pts, t0 = new Date(P[0][0]).getTime(), t1 = Math.max(new Date(P.at(-1)[0]).getTime(), t0 + 36e5), W = 320, H = 92, X = t => 6 + (t - t0) / (t1 - t0) * (W - 12);
+  const ys = P.map(p => p[1]).concat([m.mine]), lo = Math.min(...ys) - 0.5, hi = Math.max(...ys) + 0.5, Y = v => H - 8 - (v - lo) / (hi - lo) * (H - 22);
+  let d = "";
+  P.forEach((p, i) => { const x = X(new Date(p[0]).getTime()), y = Y(p[1]); d += (i ? `H${x.toFixed(1)}V${y.toFixed(1)}` : `M${x.toFixed(1)} ${y.toFixed(1)}`); });
+  d += `H${X(t1).toFixed(1)}`;
+  const bx = m.at ? X(Math.min(t1, Math.max(t0, new Date(m.at).getTime()))) : null;
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px"><line x1="0" x2="${W}" y1="${Y(m.mine)}" y2="${Y(m.mine)}" stroke="var(--wine-hi)" stroke-dasharray="4 3" opacity=".8"/>
+    <path d="${d}" fill="none" stroke="var(--sky)" stroke-width="2"/>${bx != null ? `<line x1="${bx}" x2="${bx}" y1="0" y2="${H}" stroke="var(--wine-hi)" opacity=".9"/><text x="${Math.min(bx + 3, W - 70)}" y="11" fill="var(--wine-hi)" font-size="10" font-weight="700">${m.inferred ? "you (time inferred)" : "you"}</text>` : ""}
+    <text x="6" y="${H - 1}" fill="var(--dim)" font-size="9">${tod(P[0][0])}</text><text x="${W - 6}" y="${H - 1}" fill="var(--dim)" font-size="9" text-anchor="end">${tod(P.at(-1)[0])}</text></svg>`;
+}
+function moveDetail(m) {
+  const rows = m.pts.slice().reverse().slice(0, 10).map(p => `<div class="mvr${p[1] === m.mine && Math.abs(p[2] - m.price) <= 0.04 ? " me" : ""}"><span>${tod(p[0])}</span><span class="num">${fmtLine(m, p)}</span></div>`).join("");
+  return `${moveChart(m)}<div class="mvl">${rows}</div><div class="desc">Dashed line = your number. Points come from DraftKings about every 30 minutes, so a quick move and its reversal can fall between two checks.${m.at ? "" : " Your bet time is unknown, so no marker."}${m.est ? " *CLV is an estimate when the number moved: each point is worth about " + (0.4 / (m.kind === "prop" ? SD_STAT[m.stat] || 4 : m.kind === "spread" ? 11 : 17) * 100).toFixed(1) + "% of win probability." : ""}</div>`;
+}
+async function fillMoves(root) {
+  root = root || document;
+  const slots = [...root.querySelectorAll(".lmslot:not([data-done])")]; if (!slots.length) return;
+  const byId = {}; allBetsFlat().forEach(b => byId[b.id] = b);
+  await Promise.all(slots.map(async el => {
+    el.dataset.done = "1";
+    const b = byId[el.dataset.id]; if (!b) return;
+    let m = null; try { m = await moveOf(b); } catch (e) { return; }
+    if (!m) return;
+    D._mv = D._mv || {}; D._mv[b.id] = m;
+    el.innerHTML = `<div class="mvline">${moveLine(m)} <span class="dim">· chart ▸</span></div><div class="mvdet" hidden></div>`;
+    el.onclick = e => { e.stopPropagation(); const det = el.querySelector(".mvdet"); if (det.hidden) det.innerHTML = moveDetail(m); det.hidden = !det.hidden; };
+  }));
+}
+// summary card + one row per bet that has history
+async function fillMoveSummary() {
+  const el = $("b-b-moves"), meta = $("m-b-moves"); if (!el) return;
+  const bets = L.book.bets.slice().sort((a, b) => String(b.placed).localeCompare(String(a.placed)));
+  const ms = [];
+  for (const b of bets) { let m = null; try { m = await moveOf(b); } catch (e) {} if (m) ms.push({b, m}); }
+  if (!ms.length) { el.innerHTML = '<div class="empty">Shows up for bets on DraftKings props and game spreads and totals the agent tracks.</div>'; if (meta) meta.textContent = ""; return; }
+  const beat = x => !x.m.alt && Math.abs(x.m.gained) > 1e-9 ? x.m.gained > 0 : x.m.price > x.m.last[2] + 1e-9;
+  ms.splice(0, ms.length, ...ms.filter(x => !x.m.alt).concat(ms.filter(x => x.m.alt)));
+  const nT = ms.filter(x => !x.m.alt).length, nb = ms.filter(beat).length, withC = ms.filter(x => x.m.clv != null), avg = withC.length ? withC.reduce((t, x) => t + x.m.clv, 0) / withC.length : null;
+  const grp = f => { const g = {}; ms.filter(x => !x.m.alt).forEach(x => { const k = f(x); (g[k] = g[k] || [0, 0])[1]++; if (beat(x)) g[k][0]++; }); return Object.entries(g).map(([k, [a, n]]) => `<span>${esc(k)} <b class="num">${a}/${n}</b></span>`).join(""); };
+  if (meta) meta.textContent = `beat ${nb}/${nT}`;
+  el.innerHTML = `<div class="card" style="padding:9px 12px;margin-bottom:8px">You beat the closing number on <b>${nb} of ${nT}</b> tracked bets${ms.length > nT ? ` <span class="dim">(+${ms.length - nT} alternate lines, not scored)</span>` : ""}${avg != null ? ` · average CLV <b class="${cls(avg)}">${pct(avg)}</b>` : ""}.
+      <div class="row" style="margin-top:6px">${grp(x => x.m.kind === "prop" ? "Props" : x.m.kind === "spread" ? "Spreads" : "Totals")}${grp(x => x.m.kind === "prop" || x.m.kind === "total" ? (x.m.over ? "Overs" : "Unders") : "Sides")}${grp(x => x.m.stat ? STATN[x.m.stat] || "Game" : "Game")}</div>
+      <div class="desc" style="margin-top:6px">CLV = your price against DraftKings' price on your side now or at the close. Beating the close = the number moved your way, or (same number) you got the better price. * = estimated, because the number moved. Tap a bet for its day.</div></div>` +
+    ms.slice(0, 40).map(({b, m}) => `<div class="bet lmrow" data-id="${b.id}"><div class="what">${moveTitle(b.legs[0])}</div><div class="amt ${m.clv != null ? cls(m.clv) : m.alt ? "dim" : cls(m.gained)}">${m.alt ? "alt" : m.clv != null ? pct(m.clv) + (m.est ? "*" : "") : (m.gained > 0 ? "+" : "") + f1(m.gained) + " pts"}</div>
+      <div class="sub" style="grid-column:1/-1">${moveLine(m)}</div><div class="mvdet" hidden style="grid-column:1/-1"></div></div>`).join("");
+  el.querySelectorAll(".lmrow").forEach(r => r.onclick = () => { const x = ms.find(z => z.b.id === r.dataset.id), det = r.querySelector(".mvdet"); if (det.hidden) det.innerHTML = moveDetail(x.m); det.hidden = !det.hidden; });
+}
 function renderBets() {
   const {state, manual, bd} = D;
   $("v-bets").innerHTML =
     sec("b-race", "Bankroll · you vs agent", money(manual.stats.equity) + " vs " + money(state.stats.equity), raceHtml(), true) +
     sec("b-runs", "Runs", runsMeta(), runsHtml(), false) +
     `<div class="card" style="padding:10px 12px" id="betList"></div>` +
-    sec("b-clv", "Your CLV · did you beat the closing line?", "", '<div class="empty">Loading…</div>', false) +
+    sec("b-moves", "Line movement and CLV", "", '<div class="empty">Loading…</div>', false) +
+    sec("b-clv", "Closing-line check (older method)", "", '<div class="empty">Loading…</div>', false) +
     sec("b-data", "Your data · backup", L.lastExport ? "last backup " + ago(L.lastExport) : "no backup yet", backupHtml(), false) +
     sec("b-log", "Time log", "", "", false);
   betList();
-  timeLog(state, manual); fillClv();
+  timeLog(state, manual); fillClv(); fillMoveSummary(); fillMoves();
 }
 // One list for every bet: filter by who and status, newest or oldest first, grouped by the day it was placed.
 function betList() {
@@ -2957,6 +3071,7 @@ function betList() {
   $("bfSort").onclick = () => { F.newest = !F.newest; D.bfOpen = null; save(); betList(); liveTick(); };
   L_.querySelectorAll("details.bday").forEach(d => d.addEventListener("toggle", () => { const s_ = D.bfOpen || new Set(); d.open ? s_.add(d.dataset.day) : s_.delete(d.dataset.day); D.bfOpen = s_; }));
   if (typeof bindBetActs === "function") bindBetActs(L_);
+  fillMoves(L_);
 }
 function backupHtml() {
   const n = L.book.bets.length, nS = L.saved.length;

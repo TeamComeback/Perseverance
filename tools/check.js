@@ -89,6 +89,16 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           await p.evaluate(() => { store.set("flt", {}); fbar("props"); renderProps(); });
         }
       } catch (e) { bad("prop list: " + e.message); }
+      // line movement on My bets: history files exist for the days with bets, rows and chart render, no page errors
+      console.log("5c. line movement and CLV");
+      try {
+        const n = errs.length; await p.evaluate(() => go("bets")); await p.waitForTimeout(2200);
+        const r = await p.evaluate(async () => { const m = L.book.bets.filter(b => b.legs.length === 1); let ok = 0, alt = 0;
+          for (const b of m) { const x = await moveOf(b).catch(() => null); if (x) { ok++; if (x.alt) alt++; if (!x.pts.length || !x.last) return {bad: b.id}; } }
+          return {bets: m.length, ok, alt, rows: document.querySelectorAll(".lmrow").length}; });
+        r.bad ? bad("line movement: broken series for " + r.bad) : r.bets && !r.ok ? bad("line movement found no history for any bet") : ok(`line movement: ${r.ok}/${r.bets} bets have history (${r.alt} alternate lines), ${r.rows} rows`);
+        errs.length === n ? ok("no page errors on My bets") : bad("My bets errors: " + errs.slice(n).join(" | "));
+      } catch (e) { bad("line movement: " + e.message); }
       // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};

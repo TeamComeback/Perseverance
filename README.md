@@ -162,6 +162,11 @@ Players tab → **Matchup filters and sorter** (above the All players list). Cut
 - A study note shows on rows with a tough position matchup (overs hit ~3 pts under the price; unders held up). 17-day study, nothing combined beat the closing price; see the project doc `perseverance-matchup-filter-study-nov23`.
 - `tools/check.js` step 6 ignores dimmed "dropped" best-bet cards (they show the morning's published side).
 
+## Line movement and CLV (Nov 24)
+
+- `agent/dk.py` writes `docs/data/dkh/<day>.json` on every refresh (about every 30 minutes): a point `[time, line, over, under]` per prop and `[time, sp, sp_h, sp_a, tot, ov, un, ml_h, ml_a]` per game, only when something changed. `tools/dk_history.py` rebuilt Nov 5-24 from the git history of `docs/data/dk/*.json` (safe to re-run).
+- My bets: every single-leg bet shows "You O 7.5 -110 -> Now O 8.5 -115 (+1 pt) CLV" with a tap-through step chart and the list of changes; "Line movement and CLV" summarises beats by stat and side. Bets with an unknown time get the marker where DraftKings first showed the number (labelled inferred). Alternate lines are shown but not scored (only the main line's price is tracked). When the number moved, CLV is an estimate (about 0.4/sd of win probability per point, marked *).
+
 ## Ledger, runs and screens (Nov 23)
 
 - **One ledger.** `dedupeBook` removes a bet logged twice (once in the app, once from a sportsbook slip): same game night, market, side, line and player or team. A slip import wins over a self-logged copy; two copies logged within ten minutes are a double tap. Imports no longer need cash, and cash is always rebuilt from the bets (`cashFromBets`).

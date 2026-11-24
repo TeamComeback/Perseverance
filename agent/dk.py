@@ -21,6 +21,17 @@ DIR = "dk"
 KEEP_DAYS = 45
 
 
+HIST = "dkh"                                   # dkh/<day>.json: {"props": {"pid|stat": [[time, line, over, under], ...]}, "games": {id: [[time, sp, sp_h, sp_a, tot, ov, un, ml_h, ml_a], ...]}}
+GAME_KEYS = ("sp", "sp_h", "sp_a", "tot", "ov", "un", "ml_h", "ml_a")
+
+
+def hist_add(hdb, bucket, key, vals, ts=None):
+    """Line history for the My bets timeline: a point only when the line or a price changed."""
+    h = hdb.setdefault(bucket, {}).setdefault(key, [])
+    if not h or h[-1][1:] != list(vals):
+        h.append([ts or store.iso(store.now()), *vals])
+
+
 def path(day):
     return f"{DIR}/{day}.json"
 
@@ -50,6 +61,7 @@ def refresh(ctx, players, log=print):
     """Pre-game: opening and closing game lines and props for every game still to tip off."""
     day = ctx["day"].isoformat()
     db = load(day)
+    hdb = store.load(f"{HIST}/{day}.json", {"props": {}, "games": {}})
     entries = {e["pid"]: e for e in ctx["entries"]}
     n_props = 0
     for g in ctx["games"]:
@@ -69,6 +81,7 @@ def refresh(ctx, players, log=print):
             G["open"] = o.get("open") or G.get("open")
             if o.get("current"):
                 G["close"], G["close_at"] = o["current"], store.iso(store.now())
+                hist_add(hdb, "games", eid, [o["current"].get(k) for k in GAME_KEYS])
         try:
             pr = eo.props(eid)
         except Exception as e:
@@ -86,8 +99,10 @@ def refresh(ctx, players, log=print):
             rec.setdefault("o_at", store.iso(store.now()))      # first time we saw this prop posted
             rec.update(o=v["open"], c=v["cur"], pm=round(nm.p_over(proj, line), 4), lean="Over" if proj["mult"] > 1 else "Under",
                        cv=cv[2] if cv else None, proj=round(proj["proj"], 1))
+            hist_add(hdb, "props", f"{pid}|{st}", v["cur"][:3])
             n_props += 1
     save(day, db)
+    store.save(f"{HIST}/{day}.json", hdb, compact=True)
     log(f"[dk] {day}: lines for {sum(1 for G in db['games'].values() if G.get('close'))} games, {n_props} props")
     return db
 
@@ -303,7 +318,7 @@ def prune():
     if not root.exists():
         return
     cut = (store.now() - timedelta(days=KEEP_DAYS)).date().isoformat()
-    for f in root.glob("*.json"):
+    for f in list(root.glob("*.json")) + list((config.DATA / HIST).glob("*.json")):
         if f.stem < cut:
             f.unlink()
 
