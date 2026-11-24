@@ -5264,7 +5264,13 @@
     "at": "2026-11-24T01:31:09Z",
     "why": "line moved 12.5 \u2192 8.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.9,
+    "actual": 16
+   },
+   "clv": null
   },
   "g|401910036|total|Over": {
    "key": "g|401910036|total|Over",
@@ -5644,7 +5650,18 @@
    },
    "first_seen": "2026-11-24T01:31:09Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 230
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 230
+   },
+   "clv": null
   }
  },
  "changes": [
@@ -6943,5 +6960,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-24T05:15:26Z"
+ "updated": "2026-11-24T05:30:37Z"
 }
