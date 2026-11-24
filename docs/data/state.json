@@ -20923,7 +20923,7 @@
       "book": "draftkings",
       "fair_p": 0.4118,
       "close_p": null,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 2.26,
        "gain": 0.0973,
@@ -20959,6 +20959,22 @@
          "txt": "PHX games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 119.0,
+       "away": 123.0
+      },
+      "actual": 2.0,
+      "box": {
+       "min": 40.0,
+       "pts": 21.0,
+       "reb": 4.0,
+       "ast": 3.0,
+       "tpm": 2.0,
+       "tpa": 9.0,
+       "fga": 18.0,
+       "fta": 6.0,
+       "tov": 1.0
       }
      }
     ],
@@ -20969,10 +20985,10 @@
     "note": "Proj 2.5 vs line 2.5 (norm 2.6, 32 min). Model 44% vs market 41%. PHX gives small forwards -7% threes vs their norm (#4 toughest of 30) \u00b7 Players with his profile: +1% threes vs PHX (116 close comps) \u00b7 His history vs PHX: 0.8 threes/g in 4 games (-15%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-24T04:41:44Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -20982,6 +20998,232 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: 2 threes vs Over 2.5",
+     "final": "Phoenix Suns 123 \u2013 New Orleans Pelicans 119",
+     "legs": [
+      {
+       "outcome": "Saddiq Bey Over",
+       "result": "loss",
+       "headline": "2 threes vs Over 2.5",
+       "final": "Phoenix Suns 123 \u2013 New Orleans Pelicans 119",
+       "why": [
+        "Saddiq Bey finished with 2 threes against a line of 2.5: over missed by 0.5.",
+        "Minutes: played 40 vs 32.3 projected.",
+        "Box score: 2-of-9 from three.",
+        "Model projected 2.5 (2.6 norm \u00d7 0.97 matchup); actual was -0.5 off (-0.3 standard deviations).",
+        "Matchup read was right: he fell short of his own norm for the minutes played (3.2) in a matchup the model rated tough.",
+        "Signal: PHX gives small forwards -7% threes vs their norm (#4 toughest of 30)",
+        "Signal: Players with his profile: +1% threes vs PHX (116 close comps)",
+        "Signal: His history vs PHX: 0.8 threes/g in 4 games (-15%)",
+        "We priced it at 43% to hit vs 40% needed to break even at 2.48x (+5.6% expected edge).",
+        "Consensus fair probability when placed: 41% (no closing price captured)."
+       ],
+       "tags": [
+        "minutes-long",
+        "ordinary-variance",
+        "matchup-read-right",
+        "near-miss"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "minutes-long",
+      "near-miss",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NO",
+        "away": "PHX"
+       },
+       "final": "PHX 123 \u2013 NO 119 (OT)",
+       "periods": {
+        "away": [
+         31,
+         25,
+         23,
+         30,
+         14
+        ],
+        "home": [
+         35,
+         19,
+         29,
+         26,
+         10
+        ]
+       },
+       "largest_lead": {
+        "PHX": 7,
+        "NO": 10
+       },
+       "largest_lead_at": {
+        "PHX": "5:03 1st Q",
+        "NO": "1:11 3rd Q"
+       },
+       "lead_changes": 19,
+       "ties": 12,
+       "runs": [
+        {
+         "team": "NO",
+         "pts": 15,
+         "from": "4:01 3rd Q",
+         "to": "1:11 3rd Q",
+         "score": "PHX 73-83 NO"
+        },
+        {
+         "team": "NO",
+         "pts": 10,
+         "from": "3:00 1st Q",
+         "to": "1:31 1st Q",
+         "score": "PHX 25-28 NO"
+        },
+        {
+         "team": "PHX",
+         "pts": 8,
+         "from": "6:36 1st Q",
+         "to": "5:03 1st Q",
+         "score": "PHX 20-13 NO"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NO",
+         "swing": 17,
+         "from": "5:37 3rd Q",
+         "to": "1:11 3rd Q",
+         "mins": 4.4,
+         "from_score": "PHX 71-64 NO",
+         "to_score": "PHX 73-83 NO",
+         "pts_for": 19,
+         "pts_against": 2
+        },
+        {
+         "team": "PHX",
+         "swing": 12,
+         "from": "7:55 2nd Q",
+         "to": "2:38 2nd Q",
+         "mins": 5.3,
+         "from_score": "PHX 38-45 NO",
+         "to_score": "PHX 54-49 NO",
+         "pts_for": 16,
+         "pts_against": 4
+        }
+       ],
+       "clutch": [
+        "1:49 OT: Collin Gillespie makes 18-foot pullup jump shot (Devin Booker assists) (PHX 119-113 NO)",
+        "1:34 OT: Jeremiah Fears makes free throw 2 of 2 (PHX 119-114 NO)",
+        "43.1 OT: Devin Booker makes free throw 1 of 2 (PHX 120-114 NO)",
+        "25.7 OT: Saddiq Bey makes 24-foot three point step back jumpshot (PHX 120-117 NO)",
+        "23.4 OT: Miles Bridges makes free throw 1 of 2 (PHX 121-117 NO)",
+        "2.6 OT: Dillon Brooks makes free throw 1 of 2 (PHX 122-117 NO)",
+        "2.6 OT: Dillon Brooks makes free throw 2 of 2 (PHX 123-117 NO)",
+        "1.5 OT: Zion Williamson makes dunk (Herbert Jones assists) (PHX 123-119 NO)"
+       ],
+       "leaders": [
+        "Devin Booker (PHX): 22 pts, 5 reb, 8 ast, 2-6 3PT in 42 min",
+        "Jalen Green (PHX): 25 pts, 3 reb, 0 ast, 3-9 3PT in 37 min",
+        "Jordan Poole (NO): 28 pts, 0 reb, 3 ast, 6-8 3PT in 27 min",
+        "Zion Williamson (NO): 25 pts, 4 reb, 0 ast, 0-0 3PT in 40 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 8,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 4
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 3,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 1
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 0,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 2,
+          "fga": 1,
+          "fgm": 0
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 5,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 5,
+          "label": "OT",
+          "pts": 5,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 2
+         }
+        ],
+        "threes_at": [
+         "2:13 2nd Q",
+         "25.7 OT"
+        ],
+        "box": {
+         "id": "4397136",
+         "name": "Saddiq Bey",
+         "team": "NO",
+         "min": "40",
+         "pts": 21,
+         "reb": 4,
+         "ast": 3,
+         "3pt": "2-9",
+         "fg": "8-18",
+         "pf": "1",
+         "starter": false
+        }
+       },
+       "story": [
+        "Halftime: PHX 56-54 NO, PHX up 2.",
+        "The 2nd quarter decided the most: PHX won it 25-19.",
+        "Largest leads: PHX 7 (5:03 1st Q), NO 10 (1:11 3rd Q). 19 lead changes, 12 ties.",
+        "Momentum swing: NO outscored them 19-2 in 4.4 minutes (5:37 3rd Q to 1:11 3rd Q), moving it from PHX 71-64 NO to PHX 73-83 NO.",
+        "Momentum swing: PHX outscored them 16-4 in 5.3 minutes (7:55 2nd Q to 2:38 2nd Q), moving it from PHX 38-45 NO to PHX 54-49 NO.",
+        "NO went on a 15-0 run (4:01 3rd Q to 1:11 3rd Q), making it PHX 73-83 NO.",
+        "NO went on a 10-0 run (3:00 1st Q to 1:31 1st Q), making it PHX 25-28 NO.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Saddiq Bey by period (TPM): Q1 0, Q2 1, Q3 0, Q4 0, OT 1.",
+        "He never got past 2.5.",
+        "Threes made at: 2:13 2nd Q, 25.7 OT."
+       ],
+       "espn_id": "401910042",
+       "link": "https://www.espn.com/nba/game/_/gameId/401910042"
+      }
+     ]
     }
    },
    {
@@ -21480,16 +21722,16 @@
    "clv_gate": false
   },
   "matchup_over": {
-   "bets": 10,
-   "staked": 50.0,
-   "profit": 24.200000000000003,
+   "bets": 11,
+   "staked": 55.0,
+   "profit": 19.200000000000003,
    "clv_n": 9,
    "clv_sum": -0.08185399999999976,
    "tags": {
     "ordinary-variance": {
-     "n": 4,
+     "n": 5,
      "won": 4,
-     "lost": 0
+     "lost": 1
     },
     "blowout": {
      "n": 6,
@@ -21497,9 +21739,9 @@
      "lost": 3
     },
     "matchup-read-right": {
-     "n": 8,
+     "n": 9,
      "won": 6,
-     "lost": 2
+     "lost": 3
     },
     "minutes-short": {
      "n": 4,
@@ -21522,14 +21764,19 @@
      "lost": 0
     },
     "near-miss": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     },
     "lost-closing-line": {
      "n": 2,
      "won": 2,
      "lost": 0
+    },
+    "minutes-long": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
     }
    },
    "clv_gate": false
@@ -21599,9 +21846,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-23T07:00:27Z",
-   "bets": 69.0,
-   "staked": 366.16999999999996,
-   "profit": -102.92
+   "bets": 70.0,
+   "staked": 371.16999999999996,
+   "profit": -107.92
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-23T07:00:27Z",
@@ -21830,16 +22077,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-19T16:00:45Z",
-   "kind": "focus",
-   "text": "Skipped 50 pts+reb+ast lines, 11 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets assists."
-  },
-  {
-   "ts": "2026-11-19T16:00:46Z",
-   "kind": "props",
-   "text": "NBA matchups: 4 games, strongest spots: Jonathan Kuminga ra -12% vs NY; Jrue Holiday ra +13% vs MIL; Jrue Holiday ast +12% vs MIL. Bought prop odds for NY@MIN (ast, ra, pra, team totals), LAC@SA (ast, ra, pra, tpm, team totals), GS@MEM (ast, ra, pra, team totals) (17 credits). Placed 2: Ayo Dosunmu Under 3.5 @ +124 (FanDuel); LaMelo Ball Under 5.5 @ +110 (BetMGM)"
-  },
   {
    "ts": "2026-11-19T17:00:32Z",
    "kind": "adapt",
@@ -23329,6 +23566,16 @@
    "ts": "2026-11-24T04:12:50Z",
    "kind": "props",
    "text": "No NBA games left to bet today."
+  },
+  {
+   "ts": "2026-11-24T04:41:44Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Saddiq Bey Over 2.5 @ +148 (DraftKings) \u2014 LOST: 2 threes vs Over 2.5 [matchup-read-right, minutes-long, near-miss, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-24T04:41:45Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 14634 left this cycle)."
   }
  ],
  "learned_ids": [
@@ -23423,26 +23670,27 @@
   "597a5d5f",
   "01af6e35",
   "2fa804d6",
-  "e1504484"
+  "e1504484",
+  "d17fbf56"
  ],
  "strategist": null,
- "updated": "2026-11-24T04:30:49Z",
+ "updated": "2026-11-24T04:41:45Z",
  "stats": {
-  "bets": 92,
+  "bets": 93,
   "won": 30,
-  "lost": 60,
+  "lost": 61,
   "shop_n": 33,
   "shop_avg": 0.0667,
   "push": 2,
-  "staked": 522.57,
-  "profit": -145.99,
-  "roi": -0.2794,
+  "staked": 527.57,
+  "profit": -150.99,
+  "roi": -0.2862,
   "clv": -0.0046,
   "clv_n": 70,
-  "clv_no_close": 23,
+  "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 2,
-  "equity": 45.85
+  "open": 1,
+  "equity": 40.85
  },
  "weights": {
   "value_fav": 0.842,
@@ -23450,7 +23698,7 @@
   "longshot": 0.444,
   "arb": 1.098,
   "parlay_ev": 1.0,
-  "matchup_over": 1.428,
+  "matchup_over": 1.322,
   "matchup_under": 0.3
  },
  "paused": [
@@ -23486,15 +23734,15 @@
     "paused": false
    },
    "matchup_over": {
-    "bets": 2,
+    "bets": 3,
     "won": 2,
-    "lost": 0,
+    "lost": 1,
     "push": 0,
-    "staked": 10.0,
-    "profit": 9.4,
-    "roi": 0.94,
+    "staked": 15.0,
+    "profit": 4.4,
+    "roi": 0.2933,
     "clv": -0.0272,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "matchup_under": {
@@ -23548,15 +23796,15 @@
     "paused": false
    },
    "matchup_over": {
-    "bets": 10,
+    "bets": 11,
     "won": 7,
-    "lost": 3,
+    "lost": 4,
     "push": 0,
-    "staked": 50.0,
-    "profit": 24.2,
-    "roi": 0.484,
+    "staked": 55.0,
+    "profit": 19.2,
+    "roi": 0.3491,
     "clv": -0.0091,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "matchup_under": {
