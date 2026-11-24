@@ -1727,7 +1727,7 @@
     "now": 10.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-23T15:16:35Z",
     "edition": "update",
@@ -1746,7 +1746,7 @@
    },
    "first_seen": "2026-11-23T15:16:35Z",
    "removed": null,
-   "status": "New"
+   "status": "Started"
   },
   "p|4591725|pts|Under": {
    "key": "p|4591725|pts|Under",
@@ -2762,7 +2762,7 @@
     "now": 2.5,
     "kalshi": 0.425
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-23T21:31:35Z",
     "edition": "update",
@@ -2781,7 +2781,7 @@
    },
    "first_seen": "2026-11-23T21:31:35Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|5081727|tpm|Over": {
    "key": "p|5081727|tpm|Over",
@@ -5084,19 +5084,19 @@
    "start": "2026-11-24T03:00Z",
    "side": "home",
    "point": 12.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 29,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.508,
+   "p": 0.517,
    "p_sim": 0.564,
-   "p_mkt": 0.501,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": -0.036,
+   "ev": -0.038,
    "verdict": "Pass: simulation and who's out agree; the main risk is line move.",
    "home": "SAC",
    "away": "SA",
-   "why": "Sim: SA by 9.9 on average (SA 117.1, SAC 107.2) \u00b7 SAC +12.5 covers in 56% of sims vs 50% DraftKings",
+   "why": "Sim: SA by 9.9 on average (SA 117.1, SAC 107.2) \u00b7 SAC +12.5 covers in 56% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -5131,8 +5131,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.969,
-    "floor_am": -103,
+    "floor_dec": 1.934,
+    "floor_am": -107,
     "line": null,
     "next": 11.5
    },
@@ -5164,7 +5164,7 @@
    ],
    "kill": [
     "The line reaching 11.5",
-    "The price at 12.5 going past \u2212103",
+    "The price at 12.5 going past \u2212107",
     "A change in Victor Wembanyama (questionable), De'Aaron Fox (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -6601,6 +6601,13 @@
    "kind": "removed",
    "text": "Removed: Jaylon Tyson Under 8.5 points \u2014 no longer +EV at tonight's line (8.5 at -123)",
    "alert": true
+  },
+  {
+   "at": "2026-11-24T01:12:28Z",
+   "key": "g|401910045|spread|home",
+   "kind": "line",
+   "text": "SAC +12.5 (SA @ SAC): line 12.5 at \u2212111 \u2192 12.5 at \u2212116",
+   "alert": false
   }
  ],
  "narratives": [
@@ -6695,7 +6702,7 @@
  "alerts": 6,
  "slate": {
   "games": 10,
-  "to_tip": 5,
+  "to_tip": 3,
   "first": "2026-11-24T00:00Z",
   "questionable": [
    {
@@ -6718,5 +6725,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4353,
- "updated": "2026-11-24T01:01:23Z"
+ "updated": "2026-11-24T01:12:28Z"
 }
