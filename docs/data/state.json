@@ -22042,7 +22042,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.053,
+  "prop_model_weight": 0.037,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -22553,26 +22553,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T18:00:45Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 223 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-20T18:30:51Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 223 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-20T19:00:31Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.50% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-20T19:00:45Z",
-   "kind": "focus",
-   "text": "Skipped 172 pts+reb+ast lines, 24 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets reb+ast, rebounds."
-  },
   {
    "ts": "2026-11-20T19:00:45Z",
    "kind": "props",
@@ -24052,6 +24032,26 @@
    "ts": "2026-11-25T18:00:47Z",
    "kind": "props",
    "text": "NBA matchups: 9 games, strongest spots: Sam Merrill ast -14% vs NY; Jaylon Tyson ra -13% vs NY; Sam Merrill ra -13% vs NY. Bought prop odds for CLE@NY (ast, ra, pra, team totals), PHX@HOU (ra, pra, ast, team totals), CHI@CHA (ast, ra, pra, team totals), MIA@PHI (ast, ra, team totals), BKN@MIL (pra, ra, ast, tpm, team totals), MIN@OKC (tpm, ra, pra, team totals), LAC@MEM (ast, ra, pra, team totals), SAC@GS (ast, pra, tpm, ra, team totals) (33 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-25T19:18:19Z",
+   "kind": "adapt",
+   "text": "Model vs market on 11983 graded lines: the 0% model blend scored best (log loss model 0.729, market 0.687). Moving the model's weight from 5% to 4%."
+  },
+  {
+   "ts": "2026-11-25T19:18:21Z",
+   "kind": "focus",
+   "text": "Prop prices start from the market; the model moves them in no stat yet (walk-forward test, 9,761 graded props)."
+  },
+  {
+   "ts": "2026-11-25T19:18:22Z",
+   "kind": "adapt",
+   "text": "Learning loop: bench minutes (raw) were off by +1.6 on average over 1517 player-games: correction -1.3 min (was -1.2)."
+  },
+  {
+   "ts": "2026-11-25T19:18:22Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $95.00 (run #3), 30-63-2, ROI -29.9%, CLV +0.2%."
   }
  ],
  "learned_ids": [
@@ -24152,7 +24152,7 @@
   "8fbbd302"
  ],
  "strategist": null,
- "updated": "2026-11-25T19:00:34Z",
+ "updated": "2026-11-25T19:18:22Z",
  "stats": {
   "bets": 95,
   "won": 30,
