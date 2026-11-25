@@ -2350,7 +2350,18 @@
    },
    "first_seen": "2026-11-24T11:45:23Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 18
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 18
+   },
+   "clv": null
   },
   "g|401909315|total|Over": {
    "key": "g|401909315|total|Over",
@@ -2919,7 +2930,13 @@
     "at": "2026-11-25T00:01:04Z",
     "why": "line moved 211.5 \u2192 212.5"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 190
+   },
+   "clv": null
   }
  },
  "changes": [
@@ -3824,5 +3841,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-25T02:15:32Z"
+ "updated": "2026-11-25T02:30:40Z"
 }
