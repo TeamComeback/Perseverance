@@ -186,15 +186,15 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.41,
-   "am": 141,
+   "dec": 2.4,
+   "am": 140,
    "conv": 32,
    "tier": "Pass",
-   "p": 0.402,
+   "p": 0.403,
    "p_sim": 0.48,
-   "p_mkt": 0.388,
+   "p_mkt": 0.389,
    "p_kalshi": 0.38,
-   "ev": -0.031,
+   "ev": -0.033,
    "verdict": "Pass: recent form and history agree; the main risk is minutes.",
    "home": "NY",
    "away": "CLE",
@@ -285,8 +285,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.488,
-    "floor_am": 149,
+    "floor_dec": 2.481,
+    "floor_am": 148,
     "line": null,
     "next": 2.5
    },
@@ -326,7 +326,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +149",
+    "The price at 1.5 going past +148",
     "A change in Karl-Anthony Towns (day-to-day), Josh Hart (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -538,7 +538,7 @@
    "p": 0.464,
    "p_sim": 0.485,
    "p_mkt": 0.45,
-   "p_kalshi": 0.465,
+   "p_kalshi": 0.46,
    "ev": -0.035,
    "verdict": "Pass: recent form and average agree; the main risk is tonight's spot.",
    "home": "CHA",
@@ -670,7 +670,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.465
+    "kalshi": 0.46
    },
    "started": false,
    "published": {
@@ -1742,8 +1742,11 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-25T17:16:14Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   },
   "g|401909324|spread|away": {
    "key": "g|401909324|spread|away",
@@ -2182,19 +2185,19 @@
    "start": "2026-11-26T01:00Z",
    "side": "Over",
    "point": 227.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 29,
+   "dec": 1.93,
+   "am": -108,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.511,
+   "p": 0.501,
    "p_sim": 0.57,
-   "p_mkt": 0.504,
+   "p_mkt": 0.493,
    "p_kalshi": null,
-   "ev": -0.035,
+   "ev": -0.033,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "MEM",
    "away": "LAC",
-   "why": "Sim total 230.5 (after a learned +1.5 correction) vs 227.5 \u00b7 over in 57% of sims vs 50% DraftKings",
+   "why": "Sim total 230.5 (after a learned +1.5 correction) vs 227.5 \u00b7 over in 57% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2237,8 +2240,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.957,
-    "floor_am": -104,
+    "floor_dec": 1.996,
+    "floor_am": -100,
     "line": null,
     "next": 228.5
    },
@@ -2254,7 +2257,7 @@
    ],
    "kill": [
     "The line reaching 228.5",
-    "The price at 227.5 going past \u2212104"
+    "The price at 227.5 going past \u2212100"
    ],
    "market": {
     "open": null,
@@ -2279,11 +2282,8 @@
     }
    },
    "first_seen": "2026-11-25T14:46:12Z",
-   "removed": {
-    "at": "2026-11-25T16:16:31Z",
-    "why": "confidence fell 29 \u2192 26"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -2552,6 +2552,34 @@
    "kind": "removed",
    "text": "Removed: Day'Ron Sharpe Under 9.5 points \u2014 no longer +EV at tonight's line (9.5 at +103)",
    "alert": true
+  },
+  {
+   "at": "2026-11-25T17:16:14Z",
+   "key": "p|5023693|tpm|Over",
+   "kind": "line",
+   "text": "Tyrese Proctor: line 1.5 at +141 \u2192 1.5 at +140",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T17:16:14Z",
+   "key": "g|401909321|total|Over",
+   "kind": "back",
+   "text": "Back on the board: LAC @ MEM Over 227.5 at \u2212108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T17:16:14Z",
+   "key": "g|401909321|total|Over",
+   "kind": "line",
+   "text": "LAC @ MEM Over 227.5: line 227.5 at \u2212112 \u2192 227.5 at \u2212108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T17:16:14Z",
+   "key": "g|401909317|total|Over",
+   "kind": "removed",
+   "text": "Removed: MIA @ PHI Over 237.5 \u2014 other plays ranked higher",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2668,5 +2696,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T17:00:56Z"
+ "updated": "2026-11-25T17:16:14Z"
 }
