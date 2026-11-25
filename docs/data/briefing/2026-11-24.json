@@ -170,14 +170,14 @@
    "start": "2026-11-25T03:00Z",
    "side": "Under",
    "point": 13.5,
-   "dec": 1.89,
-   "am": -112,
+   "dec": 1.94,
+   "am": -106,
    "conv": 28,
    "tier": "Pass",
-   "p": 0.509,
+   "p": 0.496,
    "p_sim": 0.562,
-   "p_mkt": 0.497,
-   "p_kalshi": 0.496,
+   "p_mkt": 0.484,
+   "p_kalshi": 0.504,
    "ev": -0.038,
    "verdict": "Pass: recent form and simulation agree; the main risk is model record.",
    "home": "DEN",
@@ -245,21 +245,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.965,
-    "floor_am": -104,
+    "floor_dec": 2.016,
+    "floor_am": 102,
     "line": null,
     "next": 12.5
    },
    "watch": [],
    "kill": [
     "The line reaching 12.5",
-    "The price at 13.5 going past \u2212104",
+    "The price at 13.5 going past +102",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": 0.496
+    "kalshi": 0.504
    },
    "started": false,
    "published": {
@@ -279,11 +279,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-25T00:45:48Z",
-    "why": "no longer +EV at tonight's line (13.5 at -112)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -912,22 +909,22 @@
   "p|5041939|pts|Under": {
    "key": "p|5041939|pts|Under",
    "kind": "prop",
-   "label": "Cooper Flagg Under 24.5 points",
+   "label": "Cooper Flagg Under 25.5 points",
    "espn_id": "401909316",
    "game": "DAL @ DEN",
    "start": "2026-11-25T03:00Z",
    "side": "Under",
-   "point": 24.5,
-   "dec": 1.96,
-   "am": -104,
-   "conv": 29,
+   "point": 25.5,
+   "dec": 1.81,
+   "am": -123,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.492,
-   "p_sim": 0.639,
-   "p_mkt": 0.48,
-   "p_kalshi": 0.495,
+   "p": 0.533,
+   "p_sim": 0.688,
+   "p_mkt": 0.521,
+   "p_kalshi": 0.543,
    "ev": -0.036,
-   "verdict": "Pass: simulation and recent form agree; the main risk is matchup.",
+   "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "DEN",
    "away": "DAL",
    "pid": "5041939",
@@ -943,7 +940,7 @@
    "for": [
     {
      "tag": "cushion",
-     "t": "Room to spare: he stayed under even 22.5 in 6 of his last 10.",
+     "t": "Room to spare: he stayed under even 23.5 in 6 of his last 10.",
      "rec": [
       366,
       321
@@ -951,7 +948,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 64% of 10,000 simulated games (sim average 22.3).",
+     "t": "Goes under in 69% of 10,000 simulated games (sim average 22.3).",
      "rec": [
       1491,
       1312
@@ -959,7 +956,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 22.8 points against a line of 24.5.",
+     "t": "Model projects 22.8 points against a line of 25.5.",
      "rec": [
       1547,
       1390
@@ -967,7 +964,7 @@
     },
     {
      "tag": "recent form",
-     "t": "Stayed under 24.5 in 6 of his last 10 (3 of the last 5).",
+     "t": "Stayed under 25.5 in 7 of his last 10 (3 of the last 5).",
      "rec": [
       1347,
       1220
@@ -1001,7 +998,7 @@
     },
     {
      "tag": "minutes",
-     "t": "It misses when he plays long: 34.3 minutes in the games he went over vs 30 otherwise. He's projected for 31.6 tonight.",
+     "t": "It misses when he plays long: 35.1 minutes in the games he went over vs 30.2 otherwise. He's projected for 31.6 tonight.",
      "rec": [
       1391,
       1297
@@ -1017,10 +1014,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.033,
-    "floor_am": 103,
+    "floor_dec": 1.876,
+    "floor_am": -114,
     "line": null,
-    "next": 23.5
+    "next": 24.5
    },
    "watch": [
     {
@@ -1033,15 +1030,15 @@
     }
    ],
    "kill": [
-    "The line reaching 23.5",
-    "The price at 24.5 going past +103",
+    "The line reaching 24.5",
+    "The price at 25.5 going past \u2212114",
     "A change in P.J. Washington (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 23.5,
-    "now": 24.5,
-    "kalshi": 0.495
+    "now": 25.5,
+    "kalshi": 0.543
    },
    "started": false,
    "published": {
@@ -1650,8 +1647,11 @@
     }
    },
    "first_seen": "2026-11-24T22:45:56Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T02:00:49Z",
+    "why": "no longer +EV at tonight's line (10.5 at -114)"
+   },
+   "status": "Removed"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -2215,7 +2215,7 @@
     "now": 2.5,
     "kalshi": 0.395
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-25T00:45:48Z",
     "edition": "update",
@@ -2234,7 +2234,7 @@
    },
    "first_seen": "2026-11-25T00:45:48Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   }
  },
  "leans": {
@@ -2426,7 +2426,7 @@
     "now": 218.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-24T11:45:23Z",
     "edition": "morning",
@@ -2445,7 +2445,7 @@
    },
    "first_seen": "2026-11-24T11:45:23Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "g|401909316|total|Over": {
    "key": "g|401909316|total|Over",
@@ -3643,6 +3643,34 @@
    "kind": "removed",
    "text": "Removed: Neemias Queta Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -114)",
    "alert": true
+  },
+  {
+   "at": "2026-11-25T02:00:49Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "line",
+   "text": "Cooper Flagg: line 24.5 at \u2212104 \u2192 25.5 at \u2212123",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T02:00:49Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Aaron Gordon Under 13.5 points at \u2212106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T02:00:49Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "line",
+   "text": "Aaron Gordon: line 13.5 at \u2212112 \u2192 13.5 at \u2212106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T02:00:49Z",
+   "key": "p|3978|pts|Under",
+   "kind": "removed",
+   "text": "Removed: DeMar DeRozan Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -114)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3778,7 +3806,7 @@
  "alerts": 6,
  "slate": {
   "games": 3,
-  "to_tip": 2,
+  "to_tip": 1,
   "first": "2026-11-25T00:00Z",
   "questionable": [
    {
@@ -3796,5 +3824,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-25T01:45:34Z"
+ "updated": "2026-11-25T02:00:49Z"
 }
