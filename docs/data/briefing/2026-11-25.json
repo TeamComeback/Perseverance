@@ -174,8 +174,11 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T21:31:22Z",
+    "why": "no longer +EV at tonight's line (2.5 at +104)"
+   },
+   "status": "Removed"
   },
   "p|5023693|tpm|Over": {
    "key": "p|5023693|tpm|Over",
@@ -186,13 +189,13 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.35,
-   "am": 135,
+   "dec": 2.31,
+   "am": 131,
    "conv": 32,
    "tier": "Pass",
-   "p": 0.411,
+   "p": 0.419,
    "p_sim": 0.481,
-   "p_mkt": 0.397,
+   "p_mkt": 0.405,
    "p_kalshi": 0.395,
    "ev": -0.033,
    "verdict": "Pass: recent form and history agree; the main risk is minutes.",
@@ -285,8 +288,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.433,
-    "floor_am": 143,
+    "floor_dec": 2.387,
+    "floor_am": 139,
     "line": null,
     "next": 2.5
    },
@@ -303,7 +306,7 @@
      "pid": "3934672",
      "name": "Jalen Brunson",
      "team": "NY",
-     "status": "Questionable",
+     "status": "Probable",
      "self": false,
      "min": 35.0
     },
@@ -334,8 +337,8 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +143",
-    "A change in Jalen Brunson (questionable), Karl-Anthony Towns (day-to-day), Josh Hart (probable): the model re-prices on the next run",
+    "The price at 1.5 going past +139",
+    "A change in Jalen Brunson (probable), Karl-Anthony Towns (day-to-day), Josh Hart (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -474,7 +477,7 @@
      "pid": "3934672",
      "name": "Jalen Brunson",
      "team": "NY",
-     "status": "Questionable",
+     "status": "Probable",
      "self": false,
      "min": 35.0
     },
@@ -506,7 +509,7 @@
    "kill": [
     "The line reaching 3.5",
     "The price at 2.5 going past +119",
-    "A change in Jalen Brunson (questionable), Karl-Anthony Towns (day-to-day), Josh Hart (probable): the model re-prices on the next run",
+    "A change in Jalen Brunson (probable), Karl-Anthony Towns (day-to-day), Josh Hart (probable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1842,14 +1845,14 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.22,
-   "am": 122,
+   "dec": 2.2,
+   "am": 120,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.436,
-   "p_sim": 0.644,
-   "p_mkt": 0.422,
-   "p_kalshi": null,
+   "p": 0.439,
+   "p_sim": 0.624,
+   "p_mkt": 0.426,
+   "p_kalshi": 0.44,
    "ev": -0.033,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "OKC",
@@ -1860,7 +1863,7 @@
    "opp": "MIN",
    "stat": "tpm",
    "proj": 2.1,
-   "sim": 2.2,
+   "sim": 2.1,
    "ob_ind": 1.5,
    "avg10": 2.1,
    "minutes": 22.6,
@@ -1875,7 +1878,7 @@
     },
     {
      "tag": "simulation",
-     "t": "Goes over in 64% of 10,000 simulated games (sim average 2.2).",
+     "t": "Goes over in 62% of 10,000 simulated games (sim average 2.1).",
      "rec": [
       1540,
       1357
@@ -1933,8 +1936,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.294,
-    "floor_am": 129,
+    "floor_dec": 2.278,
+    "floor_am": 128,
     "line": null,
     "next": 2.5
    },
@@ -1958,13 +1961,13 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +129",
+    "The price at 1.5 going past +128",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 1.5,
     "now": 1.5,
-    "kalshi": null
+    "kalshi": 0.44
    },
    "started": false,
    "published": {
@@ -1984,11 +1987,8 @@
     }
    },
    "first_seen": "2026-11-25T19:31:29Z",
-   "removed": {
-    "at": "2026-11-25T20:02:23Z",
-    "why": "no longer +EV at tonight's line (1.5 at +124)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|3133626|tpm|Over": {
    "key": "p|3133626|tpm|Over",
@@ -1999,15 +1999,15 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.5,
-   "am": 150,
+   "dec": 2.55,
+   "am": 155,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.385,
+   "p": 0.378,
    "p_sim": 0.508,
-   "p_mkt": 0.375,
+   "p_mkt": 0.367,
    "p_kalshi": 0.385,
-   "ev": -0.036,
+   "ev": -0.037,
    "verdict": "Pass: projection carries it; the main risk is recent form.",
    "home": "OKC",
    "away": "MIN",
@@ -2066,8 +2066,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.597,
-    "floor_am": 160,
+    "floor_dec": 2.646,
+    "floor_am": 165,
     "line": null,
     "next": 2.5
    },
@@ -2091,7 +2091,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +160",
+    "The price at 1.5 going past +165",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -2129,15 +2129,15 @@
    "start": "2026-11-26T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 2.02,
-   "am": 102,
-   "conv": 30,
+   "dec": 1.98,
+   "am": -102,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.479,
+   "p": 0.489,
    "p_sim": 0.626,
-   "p_mkt": 0.466,
-   "p_kalshi": 0.451,
-   "ev": -0.033,
+   "p_mkt": 0.476,
+   "p_kalshi": 0.457,
+   "ev": -0.031,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "GS",
    "away": "SAC",
@@ -2228,8 +2228,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.088,
-    "floor_am": 109,
+    "floor_dec": 2.045,
+    "floor_am": 104,
     "line": null,
     "next": 4.5
    },
@@ -2261,14 +2261,14 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past +109",
+    "The price at 5.5 going past +104",
     "A change in Yaxel Lendeborg (questionable), Zach LaVine (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 6.5,
     "now": 5.5,
-    "kalshi": 0.451
+    "kalshi": 0.457
    },
    "started": false,
    "published": {
@@ -2462,29 +2462,29 @@
   "g|401909317|total|Over": {
    "key": "g|401909317|total|Over",
    "kind": "total",
-   "label": "MIA @ PHI Over 237.5",
+   "label": "MIA @ PHI Over 238.5",
    "espn_id": "401909317",
    "game": "MIA @ PHI",
    "start": "2026-11-25T22:00Z",
    "side": "Over",
-   "point": 237.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 29,
+   "point": 238.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.507,
-   "p_sim": 0.572,
-   "p_mkt": 0.5,
+   "p": 0.495,
+   "p_sim": 0.56,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.036,
-   "verdict": "Pass: simulation carries it; the main risk is line move.",
+   "ev": -0.034,
+   "verdict": "Pass: simulation carries it; the main risk is model record.",
    "home": "PHI",
    "away": "MIA",
-   "why": "Sim total 240.5 (after a learned +1.5 correction) vs 237.5 \u00b7 over in 57% of sims vs 50% DraftKings",
+   "why": "Sim total 241.1 (after a learned +1.5 correction) vs 238.5 \u00b7 over in 56% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 57% of 10,000 simulated games.",
+     "t": "Goes over in 56% of 10,000 simulated games.",
      "rec": [
       1540,
       1357
@@ -2493,16 +2493,8 @@
    ],
    "against": [
     {
-     "tag": "line move",
-     "t": "The line has moved against this side since it opened (238.5 to 237.5).",
-     "rec": [
-      199,
-      169
-     ]
-    },
-    {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 638-679 against DraftKings' totals. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 639-681 against DraftKings' totals. Treat this as a lean.",
      "rec": [
       295,
       306
@@ -2510,37 +2502,28 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.972,
-    "floor_am": -103,
+    "floor_dec": 2.02,
+    "floor_am": 102,
     "line": null,
-    "next": 238.5
+    "next": 239.5
    },
    "watch": [
     {
      "pid": "3059318",
      "name": "Joel Embiid",
      "team": "PHI",
-     "status": "Doubtful",
+     "status": "Out",
      "self": false,
      "min": 32.3
-    },
-    {
-     "pid": "3032977",
-     "name": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "status": "Questionable",
-     "self": false,
-     "min": 30.3
     }
    ],
    "kill": [
-    "The line reaching 238.5",
-    "The price at 237.5 going past \u2212103",
-    "A change in Joel Embiid (doubtful), Giannis Antetokounmpo (questionable): the model re-prices on the next run"
+    "The line reaching 239.5",
+    "The price at 238.5 going past +102"
    ],
    "market": {
     "open": null,
-    "now": 237.5,
+    "now": 238.5,
     "kalshi": null
    },
    "started": false,
@@ -2561,11 +2544,8 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": {
-    "at": "2026-11-25T18:01:45Z",
-    "why": "other plays ranked higher"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909324|spread|away": {
    "key": "g|401909324|spread|away",
@@ -2576,19 +2556,19 @@
    "start": "2026-11-26T03:00Z",
    "side": "away",
    "point": 7.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 30,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.512,
+   "p": 0.498,
    "p_sim": 0.59,
-   "p_mkt": 0.504,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.031,
+   "ev": -0.028,
    "verdict": "Pass: simulation and who's out agree; the main risk is line move.",
    "home": "GS",
    "away": "SAC",
-   "why": "Sim: GS by 3.7 on average (SAC 106.2, GS 109.9) \u00b7 SAC +7.5 covers in 59% of sims vs 50% DraftKings",
+   "why": "Sim: GS by 3.7 on average (SAC 106.2, GS 109.9) \u00b7 SAC +7.5 covers in 59% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2623,8 +2603,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.953,
-    "floor_am": -105,
+    "floor_dec": 2.008,
+    "floor_am": 101,
     "line": null,
     "next": 6.5
    },
@@ -2656,7 +2636,7 @@
    ],
    "kill": [
     "The line reaching 6.5",
-    "The price at 7.5 going past \u2212105",
+    "The price at 7.5 going past +101",
     "A change in Yaxel Lendeborg (questionable), Zach LaVine (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -3008,8 +2988,11 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-25T21:31:22Z",
+    "why": "confidence fell 29 \u2192 28"
+   },
+   "status": "Removed"
   },
   "g|401909321|total|Over": {
    "key": "g|401909321|total|Over",
@@ -3996,6 +3979,97 @@
    "kind": "removed",
    "text": "Removed: MIA +1.5 (MIA @ PHI) \u2014 line moved 1.5 \u2192 -1.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|5023693|tpm|Over",
+   "kind": "line",
+   "text": "Tyrese Proctor: line 1.5 at +135 \u2192 1.5 at +131",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|5023693|tpm|Over",
+   "kind": "injury",
+   "text": "Jalen Brunson questionable \u2192 probable (Tyrese Proctor Over 1.5 threes re-priced: 1.5 at +131, conviction 32)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|6589|pts|Under",
+   "kind": "line",
+   "text": "Draymond Green: line 5.5 at +102 \u2192 5.5 at \u2212102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|3992|tpm|Over",
+   "kind": "injury",
+   "text": "Jalen Brunson questionable \u2192 probable (James Harden Over 2.5 threes re-priced: 2.5 at +112, conviction 31)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|5241364|tpm|Over",
+   "kind": "back",
+   "text": "Back on the board: Bennett Stirtz Over 1.5 threes at +120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|5241364|tpm|Over",
+   "kind": "line",
+   "text": "Bennett Stirtz: line 1.5 at +122 \u2192 1.5 at +120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|3133626|tpm|Over",
+   "kind": "line",
+   "text": "Kenrich Williams: line 1.5 at +150 \u2192 1.5 at +155",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "p|4396907|tpm|Over",
+   "kind": "removed",
+   "text": "Removed: Darius Garland Over 2.5 threes \u2014 no longer +EV at tonight's line (2.5 at +104)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "g|401909324|spread|away",
+   "kind": "line",
+   "text": "SAC +7.5 (SAC @ GS): line 7.5 at \u2212112 \u2192 7.5 at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "g|401909317|total|Over",
+   "kind": "back",
+   "text": "Back on the board: MIA @ PHI Over 238.5 at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "g|401909317|total|Over",
+   "kind": "line",
+   "text": "MIA @ PHI Over 238.5: line 237.5 at \u2212111 \u2192 238.5 at \u2212105",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "g|401909317|total|Over",
+   "kind": "injury",
+   "text": "Joel Embiid doubtful \u2192 out (MIA @ PHI Over 238.5 re-priced: 238.5 at \u2212105, conviction 30)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:31:22Z",
+   "key": "g|401909320|total|Over",
+   "kind": "removed",
+   "text": "Removed: MIN @ OKC Over 221.5 \u2014 confidence fell 29 \u2192 28",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4091,7 +4165,7 @@
    {
     "name": "Jalen Brunson",
     "team": "NY",
-    "status": "Questionable"
+    "status": "Probable"
    },
    {
     "name": "Karl-Anthony Towns",
@@ -4124,9 +4198,9 @@
     "status": "Questionable"
    },
    {
-    "name": "Giannis Antetokounmpo",
-    "team": "MIA",
-    "status": "Probable"
+    "name": "Jalen Smith",
+    "team": "CHI",
+    "status": "Questionable"
    }
   ],
   "picks": 15
@@ -4138,5 +4212,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T21:15:24Z"
+ "updated": "2026-11-25T21:31:22Z"
 }
