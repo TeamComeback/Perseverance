@@ -177,7 +177,7 @@
    "p": 0.509,
    "p_sim": 0.562,
    "p_mkt": 0.497,
-   "p_kalshi": 0.5,
+   "p_kalshi": 0.496,
    "ev": -0.038,
    "verdict": "Pass: recent form and simulation agree; the main risk is model record.",
    "home": "DEN",
@@ -259,7 +259,7 @@
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": 0.5
+    "kalshi": 0.496
    },
    "started": false,
    "published": {
@@ -279,11 +279,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-24T22:45:56Z",
-    "why": "no longer +EV at tonight's line (13.5 at -112)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -608,15 +605,15 @@
    "start": "2026-11-25T00:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.96,
-   "am": -104,
-   "conv": 30,
+   "dec": 2,
+   "am": 100,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.494,
-   "p_sim": 0.525,
-   "p_mkt": 0.48,
-   "p_kalshi": 0.518,
-   "ev": -0.033,
+   "p": 0.484,
+   "p_sim": 0.535,
+   "p_mkt": 0.471,
+   "p_kalshi": 0.503,
+   "ev": -0.031,
    "verdict": "Pass: recent form and matchup strength agree; the main risk is tonight's spot.",
    "home": "ORL",
    "away": "DET",
@@ -626,7 +623,7 @@
    "opp": "DET",
    "stat": "pts",
    "proj": 10.2,
-   "sim": 10.4,
+   "sim": 10.2,
    "ob_ind": 10.5,
    "avg10": 12.3,
    "minutes": 29.3,
@@ -707,8 +704,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.024,
-    "floor_am": 102,
+    "floor_dec": 2.066,
+    "floor_am": 107,
     "line": null,
     "next": 9.5
    },
@@ -732,13 +729,13 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past +102",
+    "The price at 10.5 going past +107",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.518
+    "kalshi": 0.503
    },
    "started": false,
    "published": {
@@ -759,7 +756,7 @@
    },
    "first_seen": "2026-11-24T11:45:23Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Holding"
   },
   "p|4277905|pts|Under": {
    "key": "p|4277905|pts|Under",
@@ -1355,14 +1352,14 @@
    "start": "2026-11-25T00:00Z",
    "side": "Over",
    "point": 3.5,
-   "dec": 2.23,
-   "am": 123,
+   "dec": 2.18,
+   "am": 118,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.433,
-   "p_sim": 0.533,
-   "p_mkt": 0.419,
-   "p_kalshi": 0.435,
+   "p": 0.443,
+   "p_sim": 0.509,
+   "p_mkt": 0.429,
+   "p_kalshi": 0.425,
    "ev": -0.034,
    "verdict": "Pass: recent form and history agree; the main risk is tonight's spot.",
    "home": "ORL",
@@ -1373,7 +1370,7 @@
    "opp": "DET",
    "stat": "tpm",
    "proj": 3.8,
-   "sim": 3.8,
+   "sim": 3.7,
    "ob_ind": 3.5,
    "avg10": 4.7,
    "minutes": 33.3,
@@ -1446,7 +1443,7 @@
     },
     {
      "tag": "market",
-     "t": "You're betting against the market: DraftKings' price says this happens 42% of the time.",
+     "t": "You're betting against the market: DraftKings' price says this happens 43% of the time.",
      "rec": [
       109,
       141
@@ -1454,8 +1451,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.309,
-    "floor_am": 131,
+    "floor_dec": 2.257,
+    "floor_am": 126,
     "line": null,
     "next": 4.5
    },
@@ -1479,13 +1476,13 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 3.5 going past +131",
+    "The price at 3.5 going past +126",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 3.5,
     "now": 3.5,
-    "kalshi": 0.435
+    "kalshi": 0.425
    },
    "started": false,
    "published": {
@@ -1650,8 +1647,11 @@
     }
    },
    "first_seen": "2026-11-24T22:45:56Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T00:01:04Z",
+    "why": "no longer +EV at tonight's line (10.5 at -114)"
+   },
+   "status": "Removed"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -2093,44 +2093,49 @@
   "g|401909314|spread|away": {
    "key": "g|401909314|spread|away",
    "kind": "spread",
-   "label": "DET -2.5 (DET @ ORL)",
+   "label": "DET +3.5 (DET @ ORL)",
    "espn_id": "401909314",
    "game": "DET @ ORL",
    "start": "2026-11-25T00:00Z",
    "side": "away",
-   "point": -2.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 30,
+   "point": 3.5,
+   "dec": 1.87,
+   "am": -115,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.496,
-   "p_sim": 0.565,
-   "p_mkt": 0.488,
+   "p": 0.523,
+   "p_sim": 0.651,
+   "p_mkt": 0.509,
    "p_kalshi": null,
-   "ev": -0.033,
-   "verdict": "Pass: simulation and line move agree; the main risk is model record.",
+   "ev": -0.021,
+   "verdict": "Pass: simulation and team model agree; the main risk is who's out.",
    "home": "ORL",
    "away": "DET",
-   "why": "Sim: DET by 4.8 on average (DET 109.4, ORL 104.5) \u00b7 DET -2.5 covers in 57% of sims vs 49% DraftKings",
+   "why": "Sim: DET by 2.9 on average (DET 107.0, ORL 104.1) \u00b7 DET +3.5 covers in 65% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 57% of 10,000 simulated games.",
+     "t": "Covers in 65% of 10,000 simulated games.",
      "rec": [
       1491,
       1312
      ]
     },
     {
-     "tag": "line move",
-     "t": "The line has moved this way since it opened (1.5 to 2.5): you're with the money, at a worse number.",
-     "rec": [
-      196,
-      227
-     ]
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it ORL by 0.8, 2.7 better than this number.",
+     "rec": null
     }
    ],
    "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (1.5 to -3.5).",
+     "rec": [
+      193,
+      161
+     ]
+    },
     {
      "tag": "model record",
      "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 652-665 against DraftKings' spreads. Treat this as a lean.",
@@ -2138,22 +2143,27 @@
       259,
       264
      ]
+    },
+    {
+     "tag": "who's out",
+     "t": "DET without Cade Cunningham, Duncan Robinson: worth about 3.4 points.",
+     "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 2.016,
-    "floor_am": 102,
+    "floor_dec": 1.912,
+    "floor_am": -110,
     "line": null,
-    "next": -3.5
+    "next": 2.5
    },
    "watch": [
     {
      "pid": "4432166",
      "name": "Cade Cunningham",
      "team": "DET",
-     "status": "Probable",
+     "status": "Out",
      "self": false,
-     "min": 35.3
+     "min": 36.2
     },
     {
      "pid": "3157465",
@@ -2165,13 +2175,12 @@
     }
    ],
    "kill": [
-    "The line reaching -3.5",
-    "The price at -2.5 going past +102",
-    "A change in Cade Cunningham (probable): the model re-prices on the next run"
+    "The line reaching 2.5",
+    "The price at 3.5 going past \u2212110"
    ],
    "market": {
     "open": null,
-    "now": -2.5,
+    "now": 3.5,
     "kalshi": null
    },
    "started": false,
@@ -2192,11 +2201,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-24T21:01:05Z",
-    "why": "other plays ranked higher"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909315|total|Over": {
    "key": "g|401909315|total|Over",
@@ -2761,8 +2767,11 @@
     }
    },
    "first_seen": "2026-11-24T21:01:05Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T00:01:04Z",
+    "why": "line moved 211.5 \u2192 212.5"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -3395,6 +3404,62 @@
    "kind": "override",
    "text": "Writer flags Cooper Flagg Under 24.5 points: P.J. Washington is questionable with an illness after joining shootaround; if he sits, Flagg's minutes and usage likely rise, and the model has not re-priced for it yet.",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "p|4277847|pts|Under",
+   "kind": "line",
+   "text": "Wendell Carter Jr.: line 10.5 at \u2212104 \u2192 10.5 at +100",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "p|4066320|tpm|Over",
+   "kind": "line",
+   "text": "Desmond Bane: line 3.5 at +123 \u2192 3.5 at +118",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Aaron Gordon Under 13.5 points at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "p|3978|pts|Under",
+   "kind": "removed",
+   "text": "Removed: DeMar DeRozan Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -114)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "g|401909314|spread|away",
+   "kind": "back",
+   "text": "Back on the board: DET +3.5 (DET @ ORL) at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "g|401909314|spread|away",
+   "kind": "line",
+   "text": "DET +3.5 (DET @ ORL): line -2.5 at \u2212105 \u2192 3.5 at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "g|401909314|spread|away",
+   "kind": "injury",
+   "text": "Cade Cunningham probable \u2192 out (DET +3.5 (DET @ ORL) re-priced: 3.5 at \u2212115, conviction 33)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:01:04Z",
+   "key": "g|401909314|total|Over",
+   "kind": "removed",
+   "text": "Removed: DET @ ORL Over 212.5 \u2014 line moved 211.5 \u2192 212.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3548,5 +3613,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-24T23:51:15Z"
+ "updated": "2026-11-25T00:01:04Z"
 }
