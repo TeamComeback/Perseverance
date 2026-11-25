@@ -1123,15 +1123,15 @@ function betRow(b) {
   const settled = b.settled && b.status !== "open" ? "settled " + when(b.settled) : "";
   const sub = [l.sport && SPORT(l.sport), MK[l.market] && !multi ? MK[l.market] : "", game, l.commence && b.status === "open" ? "starts " + when(l.commence) : "",
                bookName(l.book) + " " + am(b.dec), b.ev != null ? pct(b.ev) + " edge" : "",
-               l.actual != null ? "finished with " + l.actual : ""].filter(Boolean).map(esc).join(" · ");
+               l.actual != null ? "finished with " + l.actual : "", b.edited ? "edited" : ""].filter(Boolean).map(esc).join(" · ");
   const time = [placed, settled].filter(Boolean).join(" · ");
   return `<div class="bet"><div class="what">${status}${pb}${title}</div><div class="amt">${right}</div><div class="sub">${sub}</div>` +
     (b.note ? `<div class="sub" style="grid-column:1/-1">${esc(b.note)}</div>` : "") +
     (time ? `<div class="sub" style="grid-column:1/-1">⏱ ${esc(time)}</div>` : "") +
     reviewHtml(b) + (b.legs.length === 1 && b.status !== "cancelled" ? `<div class="lmslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") + (b.status === "open" ? `<div class="lvslot" style="grid-column:1/-1" data-id="${b.id}"></div>` : "") +
-    (b.source === "you" && b.status === "open" && L && L.book.bets.includes(b) ? `<div class="acts">${b.legs.some(l => l.market === "custom") ?
-      `<button class="w" data-set="won|${b.id}">Won</button><button class="l" data-set="lost|${b.id}">Lost</button><button data-set="push|${b.id}">Push</button>` : ""}
-      <button data-set="cancel|${b.id}">Cancel · refund</button></div>` : "") + `</div>`;
+    (b.source === "you" && L && L.book.bets.includes(b) ? `<div class="acts">${b.status === "open" ? (b.legs.some(l => l.market === "custom") ?
+      `<button class="w" data-set="won|${b.id}">Won</button><button class="l" data-set="lost|${b.id}">Lost</button><button data-set="push|${b.id}">Push</button>` : "") : ""}
+      <button data-edit="${b.id}">Edit</button>${b.status === "open" ? `<button data-set="cancel|${b.id}">Cancel · refund</button>` : ""}</div>` : "") + `</div>`;
 }
 
 function raceCard(name, book, stats, color, kind) {
@@ -2493,6 +2493,104 @@ function openLogBet(pref) {
   $("sheet").classList.add("on"); document.body.style.overflow = "hidden";
   history.pushState({sheet: 1}, "");
 }
+
+// ===================================================== EDIT A BET (Nov 24)
+// Fix a bet you logged wrong: line, side, odds, stake, book, time, note. Cash is rebuilt from the bets, a settled bet is
+// re-graded from the box score numbers already saved on it, and the original number stays in the note.
+const amPlain = dec => dec >= 2 ? "+" + Math.round((dec - 1) * 100) : "-" + Math.round(100 / (dec - 1));
+const decOfAm = o => { const a = parseInt(o, 10); return a > 0 ? 1 + a / 100 : 1 + 100 / Math.abs(a); };
+const hasSide = l => /over|under/i.test(l.side || "") || (/over|under/i.test(l.outcome || "") && l.market !== "spreads");
+function localGrade(l) {                       // result from numbers saved on the leg, or null when they aren't there
+  const dir = (v) => { const d = /under/i.test(l.side || l.outcome || "") ? l.point - v : v - l.point; return d > 0 ? "win" : d < 0 ? "loss" : "push"; };
+  if (l.actual != null && (l.stat || l.market === "team_totals")) return dir(+l.actual);
+  if (l.final && l.market === "totals") return dir(l.final.home + l.final.away);
+  if (l.final && l.market === "spreads" && l.final.ha) {
+    const tk = teamKey(l.outcome || l.team), home = tk === l.final.ha, away = tk === l.final.aa; if (!home && !away) return null;
+    const d = (home ? l.final.home - l.final.away : l.final.away - l.final.home) + l.point; return d > 0 ? "win" : d < 0 ? "loss" : "push";
+  }
+  return null;
+}
+function editBet(id) {
+  const b = L.book.bets.find(x => x.id === id); if (!b) return;
+  const single = b.legs.length === 1, l = b.legs[0], settled = b.status !== "open" && b.status !== "cancelled";
+  const side = /under/i.test(l.side || l.outcome || "") ? "Under" : "Over", canSide = single && hasSide(l);
+  const regradable = single && localGrade({...l, point: l.point, side}) != null;
+  const placedLocal = b.placed && !b.placed_unknown ? new Date(new Date(b.placed).getTime() - new Date(b.placed).getTimezoneOffset() * 6e4).toISOString().slice(0, 16) : "";
+  const BOOKS = LOG_BOOKS.includes(bookName(l.book)) ? LOG_BOOKS : [bookName(l.book), ...LOG_BOOKS];
+  let sd = side;
+  $("pane").innerHTML = `<div class="hd"><button class="x" onclick="history.back()">×</button><div class="name">Edit bet</div><div class="desc">${single ? legText(l) : b.legs.map(legText).join(" + ")}</div></div>
+    <div class="fm">
+      ${single && l.market !== "custom" ? `<div class="two"><div><label>Line</label><input id="el" type="number" step="0.5" inputmode="decimal" value="${l.point ?? ""}"></div>
+        ${canSide ? `<div><label>Side</label><div class="seg" id="eside"><button data-s="Over" class="${side === "Over" ? "on" : ""}">Over</button><button data-s="Under" class="${side === "Under" ? "on" : ""}">Under</button></div></div>` : "<div></div>"}</div>` : ""}
+      <div class="two"><div><label>Odds (American)</label><input id="eo" inputmode="text" value="${amPlain(b.dec)}"${single ? "" : " disabled"}></div>
+        <div><label>Stake ($, min 5)</label><input id="ek" type="number" min="5" step="0.01" inputmode="decimal" value="${b.stake}"></div></div>
+      <div><label>Sportsbook</label><select id="eb">${BOOKS.map(x => `<option ${x === bookName(l.book) ? "selected" : ""}>${esc(x)}</option>`).join("")}</select></div>
+      <div><label>When you bet it (optional)</label><input id="et" type="datetime-local" value="${placedLocal}"></div>
+      ${settled ? `<div><label>Result</label><select id="er">${regradable ? '<option value="auto">Re-grade from the saved box score</option>' : ""}<option value="keep"${regradable ? "" : " selected"}>Keep ${b.status.toUpperCase()}</option><option value="won">Won</option><option value="lost">Lost</option><option value="push">Push</option><option value="open">Re-open (grade again later)</option></select></div>` : ""}
+      <div><label>Notes</label><textarea id="en" rows="2">${esc(b.note || "")}</textarea></div>
+      <div class="err" id="eerr"></div>
+      <button class="go" id="ego">Save changes</button>
+      <div class="desc">${settled ? "Your cash and record are recalculated from the new numbers. " : "Your cash is recalculated from the new stake. "}The original number is kept in the note.</div></div>`;
+  const seg = $("eside"); if (seg) seg.querySelectorAll("button").forEach(x => x.onclick = () => { sd = x.dataset.s; seg.querySelectorAll("button").forEach(y => y.classList.toggle("on", y === x)); });
+  $("ego").onclick = () => {
+    const err = m => { $("eerr").textContent = m; };
+    const stake = Math.round(parseFloat($("ek").value) * 100) / 100, book = $("eb").value, note = $("en").value.trim();
+    const odds = single ? ($("eo").value || "").trim().replace("−", "-") : null, lineEl = $("el"), line = lineEl ? lineEl.value.trim() : "";
+    if (!(stake >= MIN_STAKE)) return err("Minimum bet is $5.");
+    if (single && !/^[+-]?\d{3,4}$/.test(odds)) return err("Odds look like -110 or +150.");
+    if (lineEl && (line === "" || isNaN(+line)) && l.market !== "custom") return err("Enter the line, like 3.5.");
+    const before = {point: l.point, side, price: b.dec, stake: b.stake, book: bookName(l.book)};
+    const hadResult = b.status;
+    // 1. the numbers
+    if (single) {
+      const oldPt = l.point, newPt = lineEl ? +line : l.point;
+      if (odds.replace("+", "") !== amPlain(b.dec).replace("+", "")) { l.price = Math.round(decOfAm(odds.startsWith("+") || odds.startsWith("-") ? odds : "+" + odds) * 1000) / 1000; b.dec = l.price; }   // untouched odds keep the exact price you logged
+      if (lineEl && newPt !== oldPt) {
+        l.point = newPt;
+        if (oldPt != null && typeof l.outcome === "string") { l.outcome = l.outcome.split(String(oldPt)).join(String(newPt)); if (l.market === "spreads" && typeof l.side === "string" && /^[+-]?\d/.test(l.side)) l.side = l.side.split(String(oldPt)).join(String(newPt)); }
+      }
+      if (canSide && sd !== side) { l.side = sd; if (typeof l.outcome === "string") l.outcome = l.outcome.replace(/\b(over|under)\b/i, sd); }
+      const bk = Object.keys(BOOKN).find(k => BOOKN[k] === book || (book === "Hard Rock" && k === "hardrockbet")); l.book = bk || book;
+    } else { const bk = Object.keys(BOOKN).find(k => BOOKN[k] === book); b.legs.forEach(x => { x.book = bk || book; }); }
+    b.stake = stake;
+    const t = $("et").value; if (t) { b.placed = new Date(t).toISOString(); b.placed_unknown = false; }
+    // 2. the result
+    let result = null;
+    if (hadResult === "open") { if (single) l.result = null; }
+    else if (settled) {
+      const pick = $("er").value;
+      if (pick === "open") { b.status = "open"; b.payout = b.profit = b.settled = null; b.legs.forEach(x => { x.result = null; delete x.actual; delete x.box; delete x.final; }); }
+      else if (pick === "auto") result = {win: "won", loss: "lost", push: "push"}[localGrade(l)];
+      else if (pick === "keep") result = hadResult;
+      else result = pick;
+    }
+    if (result) {
+      const mult = {won: b.dec, lost: 0, push: 1}[result], payout = Math.round(b.stake * mult * 100) / 100, oldProfit = b.profit || 0;
+      Object.assign(b, {status: result, payout, profit: Math.round((payout - b.stake) * 100) / 100});
+      if (single) l.result = result === "won" ? "win" : result === "lost" ? "loss" : "push";
+      b.review = reviewLocal(b);
+      if ((b.run ?? L.book.run) !== L.book.run) { const old = L.book.runs.find(r => r.run === b.run); if (old) old.final = Math.round((old.final + b.profit - oldProfit) * 100) / 100; }
+    }
+    // 3. the record of the edit
+    const now = {point: single ? l.point : null, side: canSide ? sd : side, price: b.dec, stake: b.stake, book};
+    const ch = [];
+    if (single && before.point !== now.point) ch.push(`line ${f1(before.point)} → ${f1(now.point)}`);
+    if (canSide && before.side !== now.side) ch.push(`${before.side} → ${now.side}`);
+    if (Math.abs(before.price - now.price) > 1e-6) ch.push(`odds ${am(before.price)} → ${am(now.price)}`);
+    if (before.stake !== now.stake) ch.push(`stake ${money(before.stake)} → ${money(now.stake)}`);
+    if (before.book !== now.book) ch.push(`book ${before.book} → ${now.book}`);
+    if (result && result !== hadResult) ch.push(`${hadResult} → ${result}`);
+    b.note = note;
+    if (ch.length) { b.edited = true; (b.edits = b.edits || []).push({at: new Date().toISOString(), changes: ch}); b.note = (note ? note + " " : "") + `[Edited ${new Date().toLocaleDateString([], {month: "short", day: "numeric"})}: ${ch.join(", ")}]`; }
+    // 4. cash from the bets, then the run rules
+    L.book.cash = cashFromBets(L.book); L.book.peak = Math.max(L.book.peak || START, equityOf(L.book));
+    checkRace(); histPoint(); saveL(); syncManual();
+    toast(ch.length ? "Saved: " + ch.join(", ") : "Saved");
+    history.back(); setTimeout(() => RENDER[store.get("tab", "bets")](), 60);
+  };
+  $("sheet").classList.add("on"); document.body.style.overflow = "hidden"; history.pushState({sheet: 1}, "");
+}
+document.addEventListener("click", e => { const a = e.target.closest("[data-edit]"); if (a) { e.stopPropagation(); editBet(a.dataset.edit); } });
 
 function closeSheet() { $("sheet").classList.remove("on"); document.body.style.overflow = ""; clearInterval(D._cliveT); D._cliveT = null; }
 window.addEventListener("popstate", () => { if ($("sheet").classList.contains("on")) closeSheet(); });

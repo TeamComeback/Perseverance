@@ -162,6 +162,10 @@ Players tab → **Matchup filters and sorter** (above the All players list). Cut
 - A study note shows on rows with a tough position matchup (overs hit ~3 pts under the price; unders held up). 17-day study, nothing combined beat the closing price; see the project doc `perseverance-matchup-filter-study-nov23`.
 - `tools/check.js` step 6 ignores dimmed "dropped" best-bet cards (they show the morning's published side).
 
+## Edit a bet (Nov 24)
+
+Every bet you logged has an Edit button on My bets (line, side, odds, stake, book, time, note; multi-leg bets: stake, book, note). Cash is rebuilt from the bets; a settled bet can re-grade from the box score saved on it (or be set to Won, Lost, Push or re-opened); the original number goes into the note and the bet is tagged "edited". Untouched odds keep the exact price logged. Code: `editBet` in `docs/index.html`; check `tools/check.js` 5d.
+
 ## Line movement and CLV (Nov 24)
 
 - `agent/dk.py` writes `docs/data/dkh/<day>.json` on every refresh (about every 30 minutes): a point `[time, line, over, under]` per prop and `[time, sp, sp_h, sp_a, tot, ov, un, ml_h, ml_a]` per game, only when something changed. `tools/dk_history.py` rebuilt Nov 5-24 from the git history of `docs/data/dk/*.json` (safe to re-run).
