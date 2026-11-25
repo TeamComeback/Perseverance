@@ -114,6 +114,15 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           return {st: b1.status, d1: +(c1 - c0).toFixed(2), ed: b1.edited, note: /line 2\.5 → 3\.5/.test(b1.note), st2: b2.status, stake2: b2.stake, d2: +(L.book.cash - c1).toFixed(2) }; });
         r.st === "won" && r.d1 === 9.5 && r.ed && r.note && r.st2 === "open" && r.stake2 === 10 ? ok("edit: regraded to a win, cash +$9.50, note kept; open bet stake change re-prices cash") : bad("edit bet: " + JSON.stringify(r));
       } catch (e) { bad("edit bet: " + e.message); }
+      // My bets opens fully collapsed (every date and every menu) and lists newest first
+      console.log("5e. My bets collapsed, newest first");
+      try {
+        await p.evaluate(() => { go("today"); }); await p.waitForTimeout(300);
+        await p.evaluate(() => { D.bfOpen = new Set(["x"]); store.set("o-b-race", true); go("bets"); }); await p.waitForTimeout(1200);
+        const r = await p.evaluate(() => { const days = [...document.querySelectorAll("#betList details.bday")], keys = days.map(d => d.dataset.day).filter(k => k !== "unknown");
+          return {n: days.length, open: days.filter(d => d.open).length, sorted: keys.every((k, i) => i === 0 || k <= keys[i - 1]), menus: [...document.querySelectorAll("#v-bets > details.sec")].filter(d => d.open).length, sortBtn: !!document.getElementById("bfSort")}; });
+        r.n && !r.open && r.sorted && !r.menus && !r.sortBtn ? ok(`${r.n} dates, all closed, newest first, all menus closed`) : bad("My bets layout: " + JSON.stringify(r));
+      } catch (e) { bad("my bets collapsed: " + e.message); }
       // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};
