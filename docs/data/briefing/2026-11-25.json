@@ -1381,9 +1381,80 @@
    "status": "Past play-to"
   }
  },
- "changes": [],
- "narratives": [],
- "overrides": [],
+ "changes": [
+  {
+   "at": "2026-11-25T12:25:06Z",
+   "key": "p|4222252|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Isaiah Hartenstein Under 8.5 points: Pre-game reports list Chet Holmgren out and Aday Mara, Jaylin Williams and Alex Caruso uncertain for OKC, which raises the chance Hartenstein plays the long minutes that sink this under.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T12:25:06Z",
+   "key": "p|4711294|tpm|Over",
+   "kind": "override",
+   "text": "Writer flags Matas Buzelis Over 2.5 threes: Chicago's report has Caleb Wilson and Norman Powell out and Jalen Smith day-to-day with illness; Buzelis is not listed.",
+   "alert": false
+  }
+ ],
+ "narratives": [
+  {
+   "edition": "morning",
+   "at": "2026-11-25T12:25:06Z",
+   "author": "claude",
+   "headline": "Nine-game Wednesday, five thin threes-and-points cards, all marked past play-to; Knicks and Spurs tags decide a lot",
+   "briefing": "It is a full nine-game Wednesday with every game still to tip, but this is a quiet card: all five props carry Pass-level conviction around 30, and every one is marked past its play-to price, so the edge we published may already be gone. Do not chase a worse number. The honest backdrop is a morning record of 15-23-0 (-9.17u), although the closing line has moved toward our morning picks 26 times against 10, which says the reads are better than the results. Game-line leans are 21-45 (-26.16u) since 2026-11-11 and stay leans only. Before tip we are waiting on Karl-Anthony Towns (knee) and Josh Hart (shoulder) for New York, Jalen Smith (illness) for Chicago, and the Thunder frontcourt, where injury reports are not final yet.",
+   "cards": {
+    "p|4396907|tpm|Over": "Garland gets the softest matchup on the board for point-guard threes, with MEM #1 softest of 30, and the model projects 2.8 on secure minutes against a line of 2.5. What makes this wrong is the 41% blowout risk and a thin margin, with 6 of his last 10 finishing within 1 of the number, plus the market pricing it at only 44%.",
+    "p|5023693|tpm|Over": "Proctor has averaged 1.9 threes over his last 10 and the model has 1.7 against a 1.5 line, with Evan Mobley out for Cleveland. This one lives on minutes: 12.9 in his misses vs 24.6 when he cleared it, and the market (39%) has out-predicted the model on threes this season.",
+    "p|3992|tpm|Over": "Harden is averaging 3.1 threes over his last 10 against a 2.5 line, and the projection of 2.9 agrees. The risks are a 37% blowout rate, 7 of his last 10 landing within 1 of the number, and the Knicks' status changes for Towns and Hart, which will re-price this on the next run.",
+    "p|4711294|tpm|Over": "Buzelis has cleared 2.5 in 7 of his last 10 and his usage jumps without Caleb Wilson, who is out again with Norman Powell. The warning is tonight's spot: just 1 of 8 over 2.5 against CHA, plus a minutes dip in his misses.",
+    "p|4222252|pts|Under": "Hartenstein has stayed under 8.5 in 7 of his last 10 and MIN is #8 toughest of 30 for centers, with the projection sitting right on 8.5. The way this loses is a long night: he goes over when he plays long, and with OKC's frontcourt thinned out he is projected for 27.6 minutes; Kalshi also likes it less at 44%."
+   },
+   "leans_note": "The five game-line leans, led by MIA @ PHI Over 236.5 with Embiid doubtful and Giannis questionable, are model disagreements with the market only; the game-line record is poor and none is a bet.",
+   "sources": [
+    {
+     "title": "DAZN: Knicks could be without five players for NBA Cup clash with Cavs",
+     "url": "https://www.dazn.com/en-US/news/basketball/knicks-injury-report-karl-anthony-towns-josh-hart-cavaliers/11ejtg5suq5cm146sgraozo09o"
+    },
+    {
+     "title": "FanDuel Research: Karl-Anthony Towns DTD for Nov. 25 against Cavaliers",
+     "url": "https://www.fanduel.com/research/nba/player-news/injuries/karl-anthony-towns-dtd-november-25-2026-against-cavaliers-knee"
+    },
+    {
+     "title": "iHeart: Bulls vs. Hornets injury report, Nov. 25",
+     "url": "https://1049foxsports.iheart.com/content/2026-11-25-bulls-vs-hornets-injury-report-nov-25/"
+    },
+    {
+     "title": "Sports Mole: Timberwolves vs. Thunder preview and injury report",
+     "url": "https://www.sportsmole.co.uk/basketball/okc-thunder/preview/minnesota-timberwolves-vs-oklahoma-city-thunder-player-props-injury-report-and-prediction--nba-cup_609766.html"
+    },
+    {
+     "title": "Beatline: Clippers at Grizzlies preview (Boozer out)",
+     "url": "https://www.beatlinesports.com/2026/11/25/beatline-nba-lac-at-mem-2026-11-26/"
+    }
+   ],
+   "changes_at_write": 0
+  }
+ ],
+ "overrides": [
+  {
+   "at": "2026-11-25T12:25:06Z",
+   "edition": "morning",
+   "key": "p|4222252|pts|Under",
+   "action": "flag",
+   "reason": "Pre-game reports list Chet Holmgren out and Aday Mara, Jaylin Williams and Alex Caruso uncertain for OKC, which raises the chance Hartenstein plays the long minutes that sink this under.",
+   "source": "https://www.sportsmole.co.uk/basketball/okc-thunder/preview/minnesota-timberwolves-vs-oklahoma-city-thunder-player-props-injury-report-and-prediction--nba-cup_609766.html"
+  },
+  {
+   "at": "2026-11-25T12:25:06Z",
+   "edition": "morning",
+   "key": "p|4711294|tpm|Over",
+   "action": "flag",
+   "reason": "Chicago's report has Caleb Wilson and Norman Powell out and Jalen Smith day-to-day with illness; Buzelis is not listed.",
+   "source": "https://1049foxsports.iheart.com/content/2026-11-25-bulls-vs-hornets-injury-report-nov-25/"
+  }
+ ],
  "alerts": 1,
  "slate": {
   "games": 9,
@@ -1440,5 +1511,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T12:15:22Z"
+ "updated": "2026-11-25T12:25:06Z"
 }
