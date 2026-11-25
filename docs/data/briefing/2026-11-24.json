@@ -170,16 +170,16 @@
    "start": "2026-11-25T03:00Z",
    "side": "Under",
    "point": 13.5,
-   "dec": 1.94,
-   "am": -106,
+   "dec": 1.81,
+   "am": -123,
    "conv": 28,
    "tier": "Pass",
-   "p": 0.496,
-   "p_sim": 0.562,
-   "p_mkt": 0.484,
-   "p_kalshi": 0.504,
+   "p": 0.532,
+   "p_sim": 0.544,
+   "p_mkt": 0.52,
+   "p_kalshi": 0.518,
    "ev": -0.038,
-   "verdict": "Pass: recent form and simulation agree; the main risk is model record.",
+   "verdict": "Pass: recent form and projection agree; the main risk is model record.",
    "home": "DEN",
    "away": "DAL",
    "pid": "3064290",
@@ -188,7 +188,7 @@
    "opp": "DAL",
    "stat": "pts",
    "proj": 12.5,
-   "sim": 12.9,
+   "sim": 13.2,
    "ob_ind": 12.5,
    "avg10": 11.7,
    "minutes": 29.3,
@@ -199,14 +199,6 @@
      "rec": [
       570,
       498
-     ]
-    },
-    {
-     "tag": "simulation",
-     "t": "Goes under in 56% of 10,000 simulated games (sim average 12.9).",
-     "rec": [
-      1491,
-      1312
      ]
     },
     {
@@ -227,7 +219,7 @@
     },
     {
      "tag": "blowout",
-     "t": "Blowout risk: 44% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 42% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       908,
       854
@@ -245,21 +237,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.016,
-    "floor_am": 102,
+    "floor_dec": 1.88,
+    "floor_am": -114,
     "line": null,
     "next": 12.5
    },
    "watch": [],
    "kill": [
     "The line reaching 12.5",
-    "The price at 13.5 going past +102",
+    "The price at 13.5 going past \u2212114",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 13.5,
     "now": 13.5,
-    "kalshi": 0.504
+    "kalshi": 0.518
    },
    "started": false,
    "published": {
@@ -1058,8 +1050,11 @@
     }
    },
    "first_seen": "2026-11-24T14:15:46Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-25T02:45:38Z",
+    "why": "no longer +EV at tonight's line (24.5 at -125)"
+   },
+   "status": "Removed"
   },
   "p|4066354|pts|Under": {
    "key": "p|4066354|pts|Under",
@@ -2235,6 +2230,151 @@
    "first_seen": "2026-11-25T00:45:48Z",
    "removed": null,
    "status": "Started"
+  },
+  "p|4278078|pts|Under": {
+   "key": "p|4278078|pts|Under",
+   "kind": "prop",
+   "label": "P.J. Washington Under 12.5 points",
+   "espn_id": "401909316",
+   "game": "DAL @ DEN",
+   "start": "2026-11-25T03:00Z",
+   "side": "Under",
+   "point": 12.5,
+   "dec": 1.82,
+   "am": -122,
+   "conv": 28,
+   "tier": "Pass",
+   "p": 0.529,
+   "p_sim": 0.615,
+   "p_mkt": 0.517,
+   "p_kalshi": 0.606,
+   "ev": -0.037,
+   "verdict": "Pass: second market and recent form agree; the main risk is matchup.",
+   "home": "DEN",
+   "away": "DAL",
+   "pid": "4278078",
+   "name": "P.J. Washington",
+   "team": "DAL",
+   "opp": "DEN",
+   "stat": "pts",
+   "proj": 11.4,
+   "sim": 11.3,
+   "ob_ind": 10.5,
+   "avg10": 13,
+   "minutes": 24.8,
+   "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 61% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 529 of 977 times.",
+     "rec": [
+      153,
+      126
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 62% of 10,000 simulated games (sim average 11.3).",
+     "rec": [
+      1491,
+      1312
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 11.4 points against a line of 12.5.",
+     "rec": [
+      1547,
+      1390
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 12.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1347,
+      1220
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone under his posted line in 5 of 7 tracked games.",
+     "rec": [
+      238,
+      233
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "matchup",
+     "t": "DEN gives small forwards +7% points vs their norm (#2 softest of 30).",
+     "rec": [
+      1058,
+      977
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 33.5 minutes in the games he went over vs 29.2 otherwise. He's projected for 24.8 tonight.",
+     "rec": [
+      1391,
+      1297
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      259,
+      264
+     ]
+    },
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      90,
+      94
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.89,
+    "floor_am": -112,
+    "line": null,
+    "next": 11.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 11.5",
+    "The price at 12.5 going past \u2212112",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 12.5,
+    "now": 12.5,
+    "kalshi": 0.606
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-25T02:45:38Z",
+    "edition": "update",
+    "point": 12.5,
+    "dec": 1.82,
+    "am": -122,
+    "conv": 28,
+    "tier": "Pass",
+    "p": 0.529,
+    "play_to": {
+     "floor_dec": 1.89,
+     "floor_am": -112,
+     "line": null,
+     "next": 11.5
+    }
+   },
+   "first_seen": "2026-11-25T02:45:38Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -2461,30 +2601,30 @@
   "g|401909316|total|Over": {
    "key": "g|401909316|total|Over",
    "kind": "total",
-   "label": "DAL @ DEN Over 233.5",
+   "label": "DAL @ DEN Over 234.5",
    "espn_id": "401909316",
    "game": "DAL @ DEN",
    "start": "2026-11-25T03:00Z",
    "side": "Over",
-   "point": 233.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 25,
+   "point": 234.5,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 26,
    "tier": "Pass",
-   "p": 0.513,
-   "p_sim": 0.522,
-   "p_mkt": 0.512,
+   "p": 0.498,
+   "p_sim": 0.514,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.046,
+   "ev": -0.044,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "DEN",
    "away": "DAL",
-   "why": "Sim total 234.3 (after a learned +1.6 correction) vs 233.5 \u00b7 over in 52% of sims vs 51% DraftKings",
+   "why": "Sim total 235.0 (after a learned +1.6 correction) vs 234.5 \u00b7 over in 51% of sims vs 50% DraftKings",
    "for": [],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (236.5 to 233.5).",
+     "t": "The line has moved against this side since it opened (236.5 to 234.5).",
      "rec": [
       193,
       161
@@ -2492,7 +2632,7 @@
     },
     {
      "tag": "blowout",
-     "t": "43% of sims are blowouts, and benches slow the scoring late.",
+     "t": "42% of sims are blowouts, and benches slow the scoring late.",
      "rec": [
       435,
       372
@@ -2500,7 +2640,7 @@
     },
     {
      "tag": "model record",
-     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 634-673 against DraftKings' totals. Treat this as a lean.",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 638-679 against DraftKings' totals. Treat this as a lean.",
      "rec": [
       259,
       264
@@ -2508,34 +2648,24 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 230.6 points, 2.9 the wrong side of 233.5.",
+     "t": "Team ratings project 230.5 points, 4.0 the wrong side of 234.5.",
      "rec": null
     }
    ],
    "play_to": {
-    "floor_dec": 1.949,
-    "floor_am": -105,
+    "floor_dec": 2.008,
+    "floor_am": 101,
     "line": null,
-    "next": 234.5
+    "next": 235.5
    },
-   "watch": [
-    {
-     "pid": "4278078",
-     "name": "P.J. Washington",
-     "team": "DAL",
-     "status": "Questionable",
-     "self": false,
-     "min": 24.8
-    }
-   ],
+   "watch": [],
    "kill": [
-    "The line reaching 234.5",
-    "The price at 233.5 going past \u2212105",
-    "A change in P.J. Washington (questionable): the model re-prices on the next run"
+    "The line reaching 235.5",
+    "The price at 234.5 going past +101"
    ],
    "market": {
     "open": null,
-    "now": 233.5,
+    "now": 234.5,
     "kalshi": null
    },
    "started": false,
@@ -2556,11 +2686,8 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": {
-    "at": "2026-11-24T17:30:54Z",
-    "why": "line moved 233.5 \u2192 234.5"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909315|spread|home": {
    "key": "g|401909315|spread|home",
@@ -2825,8 +2952,11 @@
     }
    },
    "first_seen": "2026-11-24T20:30:55Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T02:45:38Z",
+    "why": "line moved -8.5 \u2192 -7.5"
+   },
+   "status": "Removed"
   },
   "g|401909314|total|Over": {
    "key": "g|401909314|total|Over",
@@ -3688,6 +3818,48 @@
    "kind": "removed",
    "text": "Removed: DeMar DeRozan Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -114)",
    "alert": true
+  },
+  {
+   "at": "2026-11-25T02:45:38Z",
+   "key": "p|4278078|pts|Under",
+   "kind": "added",
+   "text": "Added: P.J. Washington Under 12.5 points at \u2212122, conviction 28",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T02:45:38Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "line",
+   "text": "Aaron Gordon: line 13.5 at \u2212106 \u2192 13.5 at \u2212123",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T02:45:38Z",
+   "key": "p|5041939|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Cooper Flagg Under 25.5 points \u2014 no longer +EV at tonight's line (24.5 at -125)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T02:45:38Z",
+   "key": "g|401909316|total|Over",
+   "kind": "back",
+   "text": "Back on the board: DAL @ DEN Over 234.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T02:45:38Z",
+   "key": "g|401909316|total|Over",
+   "kind": "line",
+   "text": "DAL @ DEN Over 234.5: line 233.5 at \u2212116 \u2192 234.5 at \u2212109",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T02:45:38Z",
+   "key": "g|401909316|spread|home",
+   "kind": "removed",
+   "text": "Removed: DEN -8.5 (DAL @ DEN) \u2014 line moved -8.5 \u2192 -7.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3825,14 +3997,8 @@
   "games": 3,
   "to_tip": 1,
   "first": "2026-11-25T00:00Z",
-  "questionable": [
-   {
-    "name": "P.J. Washington",
-    "team": "DAL",
-    "status": "Questionable"
-   }
-  ],
-  "picks": 15
+  "questionable": [],
+  "picks": 16
  },
  "leans_record": {
   "w": 20,
@@ -3841,5 +4007,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-25T02:30:40Z"
+ "updated": "2026-11-25T02:45:38Z"
 }
