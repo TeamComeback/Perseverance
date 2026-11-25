@@ -39,7 +39,7 @@
    "p": 0.474,
    "p_sim": 0.541,
    "p_mkt": 0.457,
-   "p_kalshi": 0.455,
+   "p_kalshi": 0.45,
    "ev": -0.032,
    "verdict": "Pass: recent form and matchup agree; the main risk is thin margin.",
    "home": "MEM",
@@ -154,7 +154,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.455
+    "kalshi": 0.45
    },
    "started": false,
    "published": {
@@ -538,7 +538,7 @@
    "p": 0.464,
    "p_sim": 0.485,
    "p_mkt": 0.45,
-   "p_kalshi": 0.46,
+   "p_kalshi": 0.465,
    "ev": -0.035,
    "verdict": "Pass: recent form and average agree; the main risk is tonight's spot.",
    "home": "CHA",
@@ -670,7 +670,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.46
+    "kalshi": 0.465
    },
    "started": false,
    "published": {
@@ -874,7 +874,7 @@
    "p": 0.529,
    "p_sim": 0.628,
    "p_mkt": 0.515,
-   "p_kalshi": 0.537,
+   "p_kalshi": 0.539,
    "ev": -0.031,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1014,7 +1014,7 @@
    "market": {
     "open": 10.5,
     "now": 11.5,
-    "kalshi": 0.537
+    "kalshi": 0.539
    },
    "started": false,
    "published": {
@@ -1188,8 +1188,11 @@
     }
    },
    "first_seen": "2026-11-25T14:16:27Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T16:46:26Z",
+    "why": "no longer +EV at tonight's line (9.5 at +103)"
+   },
+   "status": "Removed"
   },
   "p|4871145|pts|Under": {
    "key": "p|4871145|pts|Under",
@@ -1496,6 +1499,144 @@
     "why": "no longer +EV at tonight's line (23.5 at -104)"
    },
    "status": "Removed"
+  },
+  "p|3032976|pts|Under": {
+   "key": "p|3032976|pts|Under",
+   "kind": "prop",
+   "label": "Rudy Gobert Under 8.5 points",
+   "espn_id": "401909320",
+   "game": "MIN @ OKC",
+   "start": "2026-11-26T00:30Z",
+   "side": "Under",
+   "point": 8.5,
+   "dec": 1.84,
+   "am": -119,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.525,
+   "p_sim": 0.69,
+   "p_mkt": 0.512,
+   "p_kalshi": 0.479,
+   "ev": -0.034,
+   "verdict": "Pass: simulation and recent form agree; the main risk is thin margin.",
+   "home": "OKC",
+   "away": "MIN",
+   "pid": "3032976",
+   "name": "Rudy Gobert",
+   "team": "MIN",
+   "opp": "OKC",
+   "stat": "pts",
+   "proj": 6.9,
+   "sim": 6.9,
+   "ob_ind": 6.5,
+   "avg10": 7.7,
+   "minutes": 28.3,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 69% of 10,000 simulated games (sim average 6.9).",
+     "rec": [
+      1540,
+      1357
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 8.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1383,
+      1263
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs OKC: 7.5 points/g in 4 games (-9%).",
+     "rec": [
+      428,
+      414
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "OKC gives centers -8% points vs their norm (#6 toughest of 30).",
+     "rec": [
+      976,
+      955
+     ]
+    },
+    {
+     "tag": "matchup strength",
+     "t": "Matchup strength 4 of 5, and the matchup points under.",
+     "rec": [
+      229,
+      230
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "thin margin",
+     "t": "Thin margin: 7 of his last 10 finished within 2 of this number, so it often comes down to one play.",
+     "rec": [
+      615,
+      588
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      295,
+      306
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.905,
+    "floor_am": -111,
+    "line": null,
+    "next": 7.5
+   },
+   "watch": [
+    {
+     "pid": "4594268",
+     "name": "Anthony Edwards",
+     "team": "MIN",
+     "status": "Out",
+     "self": false,
+     "min": 34.6
+    }
+   ],
+   "kill": [
+    "The line reaching 7.5",
+    "The price at 8.5 going past \u2212111",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 8.5,
+    "now": 8.5,
+    "kalshi": 0.479
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-25T16:46:26Z",
+    "edition": "update",
+    "point": 8.5,
+    "dec": 1.84,
+    "am": -119,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.525,
+    "play_to": {
+     "floor_dec": 1.905,
+     "floor_am": -111,
+     "line": null,
+     "next": 7.5
+    }
+   },
+   "first_seen": "2026-11-25T16:46:26Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -2397,6 +2538,20 @@
    "kind": "removed",
    "text": "Removed: LAC @ MEM Over 227.5 \u2014 confidence fell 29 \u2192 26",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T16:46:26Z",
+   "key": "p|3032976|pts|Under",
+   "kind": "added",
+   "text": "Added: Rudy Gobert Under 8.5 points at \u2212119, conviction 29",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T16:46:26Z",
+   "key": "p|4432194|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Day'Ron Sharpe Under 9.5 points \u2014 no longer +EV at tonight's line (9.5 at +103)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -2504,7 +2659,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 9
+  "picks": 10
  },
  "leans_record": {
   "w": 21,
@@ -2513,5 +2668,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T16:30:35Z"
+ "updated": "2026-11-25T16:46:26Z"
 }
