@@ -39,7 +39,7 @@
    "p": 0.474,
    "p_sim": 0.541,
    "p_mkt": 0.457,
-   "p_kalshi": 0.465,
+   "p_kalshi": 0.455,
    "ev": -0.032,
    "verdict": "Pass: recent form and matchup agree; the main risk is thin margin.",
    "home": "MEM",
@@ -154,7 +154,7 @@
    "market": {
     "open": 2.5,
     "now": 2.5,
-    "kalshi": 0.465
+    "kalshi": 0.455
    },
    "started": false,
    "published": {
@@ -874,7 +874,7 @@
    "p": 0.529,
    "p_sim": 0.628,
    "p_mkt": 0.515,
-   "p_kalshi": 0.539,
+   "p_kalshi": 0.537,
    "ev": -0.031,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "NY",
@@ -1014,7 +1014,7 @@
    "market": {
     "open": 10.5,
     "now": 11.5,
-    "kalshi": 0.539
+    "kalshi": 0.537
    },
    "started": false,
    "published": {
@@ -1723,19 +1723,19 @@
    "start": "2026-11-26T00:30Z",
    "side": "away",
    "point": 3.5,
-   "dec": 1.83,
-   "am": -120,
-   "conv": 28,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.527,
+   "p": 0.514,
    "p_sim": 0.583,
-   "p_mkt": 0.521,
+   "p_mkt": 0.507,
    "p_kalshi": null,
-   "ev": -0.035,
+   "ev": -0.033,
    "verdict": "Pass: simulation and who's out agree; the main risk is model record.",
    "home": "NY",
    "away": "CLE",
-   "why": "Sim: dead even on average (CLE 109.4, NY 109.2) \u00b7 CLE +3.5 covers in 58% of sims vs 52% DraftKings",
+   "why": "Sim: dead even on average (CLE 109.4, NY 109.2) \u00b7 CLE +3.5 covers in 58% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1770,8 +1770,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.898,
-    "floor_am": -111,
+    "floor_dec": 1.946,
+    "floor_am": -106,
     "line": null,
     "next": 2.5
    },
@@ -1811,7 +1811,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 3.5 going past \u2212111",
+    "The price at 3.5 going past \u2212106",
     "A change in Karl-Anthony Towns (day-to-day), Josh Hart (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1837,11 +1837,8 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": {
-    "at": "2026-11-25T14:46:12Z",
-    "why": "other plays ranked higher"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401909322|spread|away": {
    "key": "g|401909322|spread|away",
@@ -2141,8 +2138,11 @@
     }
    },
    "first_seen": "2026-11-25T14:46:12Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T16:16:31Z",
+    "why": "confidence fell 29 \u2192 26"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -2376,6 +2376,27 @@
    "kind": "line",
    "text": "MIN @ OKC Over 222.5: line 222.5 at \u2212105 \u2192 222.5 at \u2212109",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T16:16:31Z",
+   "key": "g|401909319|spread|away",
+   "kind": "back",
+   "text": "Back on the board: CLE +3.5 (CLE @ NY) at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T16:16:31Z",
+   "key": "g|401909319|spread|away",
+   "kind": "line",
+   "text": "CLE +3.5 (CLE @ NY): line 3.5 at \u2212120 \u2192 3.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T16:16:31Z",
+   "key": "g|401909321|total|Over",
+   "kind": "removed",
+   "text": "Removed: LAC @ MEM Over 227.5 \u2014 confidence fell 29 \u2192 26",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2492,5 +2513,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T15:45:32Z"
+ "updated": "2026-11-25T16:16:31Z"
 }
