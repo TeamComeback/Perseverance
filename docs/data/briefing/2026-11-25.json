@@ -4355,6 +4355,20 @@
    "kind": "removed",
    "text": "Removed: BKN +1.5 (BKN @ MIL) \u2014 confidence fell 30 \u2192 28",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T23:35:23Z",
+   "key": "p|3133626|tpm|Over",
+   "kind": "override",
+   "text": "Writer flags Kenrich Williams Over 1.5 threes: Alex Caruso was cleared from OKC's injury report for Wednesday's game against Minnesota after a three-game absence, which is expected to cut into OKC's backcourt minutes.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:35:23Z",
+   "key": "p|6589|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Draymond Green Under 5.5 points: Golden State's injury list for the Kings game shows Yaxel Lendeborg day-to-day with illness and Curry, Porzingis, Moody and Butler out; Draymond Green is not listed.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4421,6 +4435,32 @@
     }
    ],
    "changes_at_write": 70
+  },
+  {
+   "edition": "final",
+   "at": "2026-11-25T23:35:23Z",
+   "author": "claude",
+   "headline": "Final: every live prop is past its play-to price tonight; Caruso returns for OKC; game-line leans stay at 21-45",
+   "briefing": "It is a thin, Pass-grade night: 9 games, 8 still to tip, and no prop on the board rated above conviction 31. The honest read on the 6:15pm refresh is that none of the five live props is still at or better than its play-to price: Proctor sits at +128 against a +136 play-to, Kenrich Williams at +154 against +164, Draymond Green at -101 against +105, Booker at -123 against -115, and Bridges re-entered at +101, shorter than his +108 play-to. Today removed James Harden threes, Bennett Stirtz threes and Darius Garland threes for no longer being +EV at tonight's line, plus earlier removals of Buzelis, Sharpe, Melton, Hartenstein, Giddey, Gobert and Ajay Mitchell. The late news that matters is Alex Caruso coming off OKC's injury report, which should cut into backcourt minutes for Stirtz (already removed) and is worth knowing on Kenrich Williams. The record argues for restraint: the final report is 18-22-0 (-5.20u), the morning report 15-23-0 (-9.17u), though morning picks have moved toward the closing line 26 times against 10.",
+   "cards": {
+    "p|5023693|tpm|Over": "Proctor's case rests on volume: 1.9 threes a game over his last 10, a 1.7 projection and 22.1 projected minutes with OG Anunoby and Evan Mobley out. What makes it wrong is minutes, since he averaged 12.9 in his misses, and tonight's +128 is already past the +136 play-to, so this is not a price to add at.",
+    "p|3147657|pts|Under": "Bridges has averaged 9 points over his last 10 and stayed under 11.5 in 7 of them, and the model projects 10.4. The risk is real: with Anunoby out his usage goes from 16% to 19%, and he has only 3 of 12 unders against CLE; the posted +101 is shorter than the +108 play-to, so the number has moved against the pick.",
+    "p|3133626|tpm|Over": "The only argument for Kenrich Williams is the 1.7 projection against a 1.5 line; recent form (4 of his last 10), a tough MIN matchup and 1 of 12 overs against MIN all point the other way. Caruso's return could also trim his 26.7 projected minutes, and at +154 he is past the +164 play-to.",
+    "p|6589|pts|Under": "Draymond Green stayed under 5.5 in 8 of his last 10 and the sim averages 4.7, with Curry out and Zach LaVine ruled out for SAC in the feed. What breaks it is shot volume (6.2 shots in the misses vs 2.9 in the hits) and a 1 of 6 under record against SAC; at -101 he is past the +105 play-to.",
+    "p|3136193|pts|Under": "Booker stayed under 24.5 in 6 of his last 10, the model projects 23.5 and 45% of sims are blowouts where starters sit late. The market has out-predicted the model on points this season, he needs fewer shots than his misses (19.9), and -123 is past the -115 play-to."
+   },
+   "leans_note": "Game lines are 21-45 (-26.16u) since 2026-11-11, so SAC +7.5, CLE +4.5 and the CHI @ CHA Over 217.5 are leans only, and LAC @ MEM Over 227.5 is already past its play-to.",
+   "sources": [
+    {
+     "title": "Thunder's Alex Caruso: Cleared from injury report (CBS Sports)",
+     "url": "https://www.cbssports.com/fantasy/basketball/news/thunders-alex-caruso-cleared-from-injury-report-540873/"
+    },
+    {
+     "title": "Kings vs. Warriors Injury Report, Nov. 25 (iHeart Sports)",
+     "url": "https://sports.iheart.com/content/2026-11-25-kings-vs-warriors-injury-report-nov-25/"
+    }
+   ],
+   "changes_at_write": 144
   }
  ],
  "overrides": [
@@ -4439,6 +4479,22 @@
    "action": "flag",
    "reason": "Chicago's report has Caleb Wilson and Norman Powell out and Jalen Smith day-to-day with illness; Buzelis is not listed.",
    "source": "https://1049foxsports.iheart.com/content/2026-11-25-bulls-vs-hornets-injury-report-nov-25/"
+  },
+  {
+   "at": "2026-11-25T23:35:23Z",
+   "edition": "final",
+   "key": "p|3133626|tpm|Over",
+   "action": "flag",
+   "reason": "Alex Caruso was cleared from OKC's injury report for Wednesday's game against Minnesota after a three-game absence, which is expected to cut into OKC's backcourt minutes.",
+   "source": "https://www.cbssports.com/fantasy/basketball/news/thunders-alex-caruso-cleared-from-injury-report-540873/"
+  },
+  {
+   "at": "2026-11-25T23:35:23Z",
+   "edition": "final",
+   "key": "p|6589|pts|Under",
+   "action": "flag",
+   "reason": "Golden State's injury list for the Kings game shows Yaxel Lendeborg day-to-day with illness and Curry, Porzingis, Moody and Butler out; Draymond Green is not listed.",
+   "source": "https://sports.iheart.com/content/2026-11-25-kings-vs-warriors-injury-report-nov-25/"
   }
  ],
  "alerts": 6,
@@ -4482,5 +4538,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T23:34:14Z"
+ "updated": "2026-11-25T23:35:23Z"
 }
