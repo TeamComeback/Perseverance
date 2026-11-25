@@ -32,15 +32,15 @@
    "start": "2026-11-26T01:00Z",
    "side": "Over",
    "point": 2.5,
-   "dec": 2.01,
-   "am": 101,
+   "dec": 2.04,
+   "am": 104,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.482,
+   "p": 0.474,
    "p_sim": 0.541,
-   "p_mkt": 0.465,
+   "p_mkt": 0.457,
    "p_kalshi": 0.465,
-   "ev": -0.03,
+   "ev": -0.032,
    "verdict": "Pass: recent form and matchup agree; the main risk is thin margin.",
    "home": "MEM",
    "away": "LAC",
@@ -131,8 +131,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.075,
-    "floor_am": 107,
+    "floor_dec": 2.11,
+    "floor_am": 111,
     "line": null,
     "next": 3.5
    },
@@ -148,7 +148,7 @@
    ],
    "kill": [
     "The line reaching 3.5",
-    "The price at 2.5 going past +107",
+    "The price at 2.5 going past +111",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -186,15 +186,15 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.45,
-   "am": 145,
+   "dec": 2.44,
+   "am": 144,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.396,
+   "p": 0.397,
    "p_sim": 0.48,
-   "p_mkt": 0.383,
+   "p_mkt": 0.384,
    "p_kalshi": 0.38,
-   "ev": -0.029,
+   "ev": -0.03,
    "verdict": "Pass: recent form and history agree; the main risk is minutes.",
    "home": "NY",
    "away": "CLE",
@@ -285,8 +285,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.525,
-    "floor_am": 153,
+    "floor_dec": 2.519,
+    "floor_am": 152,
     "line": null,
     "next": 2.5
    },
@@ -326,7 +326,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +153",
+    "The price at 1.5 going past +152",
     "A change in Karl-Anthony Towns (day-to-day), Josh Hart (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
@@ -550,7 +550,7 @@
    "stat": "tpm",
    "proj": 2.6,
    "sim": 2.7,
-   "ob_ind": null,
+   "ob_ind": 2.5,
    "avg10": 2.9,
    "minutes": 30.3,
    "for": [
@@ -690,11 +690,8 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": {
-    "at": "2026-11-25T14:16:27Z",
-    "why": "no longer +EV at tonight's line (2.5 at +104)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4222252|pts|Under": {
    "key": "p|4222252|pts|Under",
@@ -855,8 +852,11 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T15:01:45Z",
+    "why": "no longer +EV at tonight's line (8.5 at -111)"
+   },
+   "status": "Removed"
   },
   "p|3147657|pts|Under": {
    "key": "p|3147657|pts|Under",
@@ -1370,6 +1370,130 @@
     }
    },
    "first_seen": "2026-11-25T14:46:12Z",
+   "removed": {
+    "at": "2026-11-25T15:01:45Z",
+    "why": "no longer +EV at tonight's line (12.5 at -114)"
+   },
+   "status": "Removed"
+  },
+  "p|3136193|pts|Under": {
+   "key": "p|3136193|pts|Under",
+   "kind": "prop",
+   "label": "Devin Booker Under 24.5 points",
+   "espn_id": "401909323",
+   "game": "PHX @ HOU",
+   "start": "2026-11-26T01:30Z",
+   "side": "Under",
+   "point": 24.5,
+   "dec": 1.81,
+   "am": -123,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.535,
+   "p_sim": 0.534,
+   "p_mkt": 0.52,
+   "p_kalshi": 0.545,
+   "ev": -0.032,
+   "verdict": "Pass: recent form and matchup agree; the main risk is model record.",
+   "home": "HOU",
+   "away": "PHX",
+   "pid": "3136193",
+   "name": "Devin Booker",
+   "team": "PHX",
+   "opp": "HOU",
+   "stat": "pts",
+   "proj": 23.5,
+   "sim": 24.2,
+   "ob_ind": 25.5,
+   "avg10": 24.4,
+   "minutes": 35.4,
+   "for": [
+    {
+     "tag": "recent form",
+     "t": "Stayed under 24.5 in 6 of his last 10 (4 of the last 5).",
+     "rec": [
+      1383,
+      1263
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 43% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      929,
+      882
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "HOU gives point guards -4% points vs their norm (#5 toughest of 30).",
+     "rec": [
+      976,
+      955
+     ]
+    },
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      164,
+      169
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "shot volume",
+     "t": "Depends on shot volume: 19.9 shots in the misses vs 16.2 in the hits.",
+     "rec": [
+      203,
+      194
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      295,
+      306
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.869,
+    "floor_am": -115,
+    "line": 24.5,
+    "next": 23.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 23.5",
+    "The price at 24.5 going past \u2212115",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 24.5,
+    "now": 24.5,
+    "kalshi": 0.545
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-25T15:01:45Z",
+    "edition": "update",
+    "point": 24.5,
+    "dec": 1.81,
+    "am": -123,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.535,
+    "play_to": {
+     "floor_dec": 1.869,
+     "floor_am": -115,
+     "line": 24.5,
+     "next": 23.5
+    }
+   },
+   "first_seen": "2026-11-25T15:01:45Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -1396,7 +1520,7 @@
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "PHI",
    "away": "MIA",
-   "why": "Sim total 240.8 (after a learned +1.6 correction) vs 237.5 \u00b7 over in 58% of sims vs 50% DraftKings",
+   "why": "Sim total 240.7 (after a learned +1.5 correction) vs 237.5 \u00b7 over in 58% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1828,7 +1952,7 @@
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "OKC",
    "away": "MIN",
-   "why": "Sim total 226.8 (after a learned +1.6 correction) vs 222.5 \u00b7 over in 60% of sims vs 49% DraftKings",
+   "why": "Sim total 226.8 (after a learned +1.5 correction) vs 222.5 \u00b7 over in 60% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1932,7 +2056,7 @@
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "MEM",
    "away": "LAC",
-   "why": "Sim total 230.6 (after a learned +1.6 correction) vs 227.5 \u00b7 over in 57% of sims vs 50% DraftKings",
+   "why": "Sim total 230.5 (after a learned +1.5 correction) vs 227.5 \u00b7 over in 57% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2168,6 +2292,48 @@
    "kind": "removed",
    "text": "Removed: CLE +3.5 (CLE @ NY) \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T15:01:45Z",
+   "key": "p|5023693|tpm|Over",
+   "kind": "line",
+   "text": "Tyrese Proctor: line 1.5 at +145 \u2192 1.5 at +144",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T15:01:45Z",
+   "key": "p|4396907|tpm|Over",
+   "kind": "line",
+   "text": "Darius Garland: line 2.5 at +101 \u2192 2.5 at +104",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T15:01:45Z",
+   "key": "p|4711294|tpm|Over",
+   "kind": "back",
+   "text": "Back on the board: Matas Buzelis Over 2.5 threes at +108",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T15:01:45Z",
+   "key": "p|3136193|pts|Under",
+   "kind": "added",
+   "text": "Added: Devin Booker Under 24.5 points at \u2212123, conviction 29",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T15:01:45Z",
+   "key": "p|4222252|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Isaiah Hartenstein Under 8.5 points \u2014 no longer +EV at tonight's line (8.5 at -111)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T15:01:45Z",
+   "key": "p|4871145|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Josh Giddey Under 12.5 points \u2014 no longer +EV at tonight's line (12.5 at -114)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -2275,7 +2441,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 8
+  "picks": 9
  },
  "leans_record": {
   "w": 21,
@@ -2284,5 +2450,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T14:46:12Z"
+ "updated": "2026-11-25T15:01:45Z"
 }
