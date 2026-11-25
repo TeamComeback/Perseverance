@@ -279,8 +279,11 @@
     }
    },
    "first_seen": "2026-11-24T11:45:23Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T00:45:48Z",
+    "why": "no longer +EV at tonight's line (13.5 at -112)"
+   },
+   "status": "Removed"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -737,7 +740,7 @@
     "now": 10.5,
     "kalshi": 0.503
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-24T11:45:23Z",
     "edition": "morning",
@@ -756,7 +759,7 @@
    },
    "first_seen": "2026-11-24T11:45:23Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "p|4277905|pts|Under": {
    "key": "p|4277905|pts|Under",
@@ -1484,7 +1487,7 @@
     "now": 3.5,
     "kalshi": 0.425
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-24T21:01:05Z",
     "edition": "update",
@@ -1503,7 +1506,7 @@
    },
    "first_seen": "2026-11-24T21:01:05Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|3978|pts|Under": {
    "key": "p|3978|pts|Under",
@@ -1514,13 +1517,13 @@
    "start": "2026-11-25T03:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.83,
-   "am": -120,
+   "dec": 1.82,
+   "am": -122,
    "conv": 28,
    "tier": "Pass",
-   "p": 0.526,
+   "p": 0.529,
    "p_sim": 0.594,
-   "p_mkt": 0.515,
+   "p_mkt": 0.517,
    "p_kalshi": 0.512,
    "ev": -0.037,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
@@ -1613,15 +1616,15 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.901,
-    "floor_am": -111,
+    "floor_dec": 1.89,
+    "floor_am": -112,
     "line": null,
     "next": 9.5
    },
    "watch": [],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212111",
+    "The price at 10.5 going past \u2212112",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1647,11 +1650,8 @@
     }
    },
    "first_seen": "2026-11-24T22:45:56Z",
-   "removed": {
-    "at": "2026-11-25T00:01:04Z",
-    "why": "no longer +EV at tonight's line (10.5 at -114)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -2085,6 +2085,154 @@
     }
    },
    "first_seen": "2026-11-24T23:31:31Z",
+   "removed": {
+    "at": "2026-11-25T00:45:48Z",
+    "why": "no longer +EV at tonight's line (11.5 at -114)"
+   },
+   "status": "Removed"
+  },
+  "p|4065804|tpm|Over": {
+   "key": "p|4065804|tpm|Over",
+   "kind": "prop",
+   "label": "Sam Hauser Over 2.5 threes",
+   "espn_id": "401909315",
+   "game": "BOS @ WSH",
+   "start": "2026-11-25T01:00Z",
+   "side": "Over",
+   "point": 2.5,
+   "dec": 2.39,
+   "am": 139,
+   "conv": 32,
+   "tier": "Pass",
+   "p": 0.405,
+   "p_sim": 0.498,
+   "p_mkt": 0.392,
+   "p_kalshi": 0.395,
+   "ev": -0.033,
+   "verdict": "Pass: recent form and vs his lines agree; the main risk is thin margin.",
+   "home": "WSH",
+   "away": "BOS",
+   "pid": "4065804",
+   "name": "Sam Hauser",
+   "team": "BOS",
+   "opp": "WSH",
+   "stat": "tpm",
+   "proj": 2.6,
+   "sim": 2.7,
+   "ob_ind": 2.5,
+   "avg10": 2.7,
+   "minutes": 22.6,
+   "for": [
+    {
+     "tag": "role",
+     "t": "Secure minutes.",
+     "rec": [
+      215,
+      164
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Cleared 2.5 in 6 of his last 10 (3 of the last 5).",
+     "rec": [
+      1347,
+      1220
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone over his posted line in 7 of 8 tracked games.",
+     "rec": [
+      238,
+      233
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes up tonight: +1.2 min starting tonight.",
+     "rec": [
+      220,
+      221
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (1.5 to 2.5): money has been on the over.",
+     "rec": [
+      196,
+      227
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "minutes",
+     "t": "It misses when the minutes dip: 19.8 minutes in his misses vs 23.1 when he cleared it. He's projected for 22.6 tonight.",
+     "rec": [
+      1391,
+      1297
+     ]
+    },
+    {
+     "tag": "thin margin",
+     "t": "Thin margin: 5 of his last 10 finished within 1 of this number, so it often comes down to one play.",
+     "rec": [
+      595,
+      567
+     ]
+    },
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -5 vs model.",
+     "rec": [
+      138,
+      136
+     ]
+    },
+    {
+     "tag": "market",
+     "t": "You're betting against the market: DraftKings' price says this happens 39% of the time.",
+     "rec": [
+      109,
+      141
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.469,
+    "floor_am": 147,
+    "line": null,
+    "next": 3.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 3.5",
+    "The price at 2.5 going past +147",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 1.5,
+    "now": 2.5,
+    "kalshi": 0.395
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-25T00:45:48Z",
+    "edition": "update",
+    "point": 2.5,
+    "dec": 2.39,
+    "am": 139,
+    "conv": 32,
+    "tier": "Pass",
+    "p": 0.405,
+    "play_to": {
+     "floor_dec": 2.469,
+     "floor_am": 147,
+     "line": null,
+     "next": 3.5
+    }
+   },
+   "first_seen": "2026-11-25T00:45:48Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2183,7 +2331,7 @@
     "now": 3.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-24T11:45:23Z",
     "edition": "morning",
@@ -2202,7 +2350,7 @@
    },
    "first_seen": "2026-11-24T11:45:23Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "g|401909315|total|Over": {
    "key": "g|401909315|total|Over",
@@ -2218,14 +2366,14 @@
    "conv": 31,
    "tier": "Pass",
    "p": 0.514,
-   "p_sim": 0.601,
+   "p_sim": 0.604,
    "p_mkt": 0.504,
    "p_kalshi": null,
    "ev": -0.029,
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "WSH",
    "away": "BOS",
-   "why": "Sim total 222.7 (after a learned +1.6 correction) vs 218.5 \u00b7 over in 60% of sims vs 50% DraftKings",
+   "why": "Sim total 222.9 (after a learned +1.6 correction) vs 218.5 \u00b7 over in 60% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2247,7 +2395,7 @@
     },
     {
      "tag": "blowout",
-     "t": "45% of sims are blowouts, and benches slow the scoring late.",
+     "t": "47% of sims are blowouts, and benches slow the scoring late.",
      "rec": [
       435,
       372
@@ -3460,6 +3608,41 @@
    "kind": "removed",
    "text": "Removed: DET @ ORL Over 212.5 \u2014 line moved 211.5 \u2192 212.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T00:45:48Z",
+   "key": "p|4065804|tpm|Over",
+   "kind": "added",
+   "text": "Added: Sam Hauser Over 2.5 threes at +139, conviction 32",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T00:45:48Z",
+   "key": "p|3978|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: DeMar DeRozan Under 10.5 points at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:45:48Z",
+   "key": "p|3978|pts|Under",
+   "kind": "line",
+   "text": "DeMar DeRozan: line 10.5 at \u2212120 \u2192 10.5 at \u2212122",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T00:45:48Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Aaron Gordon Under 13.5 points \u2014 no longer +EV at tonight's line (13.5 at -112)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T00:45:48Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Neemias Queta Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -114)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -3595,7 +3778,7 @@
  "alerts": 6,
  "slate": {
   "games": 3,
-  "to_tip": 3,
+  "to_tip": 2,
   "first": "2026-11-25T00:00Z",
   "questionable": [
    {
@@ -3604,7 +3787,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 14
+  "picks": 15
  },
  "leans_record": {
   "w": 20,
@@ -3613,5 +3796,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 4995,
- "updated": "2026-11-25T00:30:31Z"
+ "updated": "2026-11-25T00:45:48Z"
 }

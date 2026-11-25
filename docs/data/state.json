@@ -21674,15 +21674,15 @@
       "price": 1.77,
       "book": "fanatics",
       "fair_p": 0.6005,
-      "close_p": 0.6319,
+      "close_p": 0.6403,
       "result": null,
       "shop": {
        "median": 1.646,
        "gain": 0.0754,
        "n": 2
       },
-      "close_at": "2026-11-24T21:45:28Z",
-      "close_mins": 1604
+      "close_at": "2026-11-25T00:45:24Z",
+      "close_mins": 1424
      }
     ],
     "dec": 1.77,
@@ -21769,15 +21769,15 @@
       "price": 7.0,
       "book": "betrivers",
       "fair_p": 0.1537,
-      "close_p": 0.1496,
+      "close_p": 0.1511,
       "result": null,
       "shop": {
        "median": 6.0,
        "gain": 0.1667,
        "n": 7
       },
-      "close_at": "2026-11-24T23:00:34Z",
-      "close_mins": 1259
+      "close_at": "2026-11-25T00:45:24Z",
+      "close_mins": 1154
      }
     ],
     "dec": 7.0,
@@ -21812,13 +21812,15 @@
       "price": 2.3,
       "book": "draftkings",
       "fair_p": 0.4587,
-      "close_p": null,
+      "close_p": 0.4528,
       "result": null,
       "shop": {
        "median": 2.1,
        "gain": 0.0952,
        "n": 5
-      }
+      },
+      "close_at": "2026-11-25T00:45:24Z",
+      "close_mins": 1394
      }
     ],
     "dec": 2.3,
@@ -21853,13 +21855,15 @@
       "price": 1.82,
       "book": "fanduel",
       "fair_p": 0.5547,
-      "close_p": null,
+      "close_p": 0.5472,
       "result": null,
       "shop": {
        "median": 1.76,
        "gain": 0.0341,
        "n": 5
-      }
+      },
+      "close_at": "2026-11-25T00:45:24Z",
+      "close_mins": 1394
      }
     ],
     "dec": 1.82,
@@ -21894,13 +21898,15 @@
       "price": 5.5,
       "book": "fanduel",
       "fair_p": 0.1992,
-      "close_p": null,
+      "close_p": 0.1814,
       "result": null,
       "shop": {
        "median": 4.9,
        "gain": 0.1224,
        "n": 5
-      }
+      },
+      "close_at": "2026-11-25T00:45:24Z",
+      "close_mins": 1244
      }
     ],
     "dec": 5.5,
@@ -21950,7 +21956,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.06,
+  "min_edge": 0.0575,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -22318,7 +22324,7 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-24T21:45:28Z",
+   "last_scanned": "2026-11-25T00:45:24Z",
    "bets": 7.0,
    "staked": 51.67,
    "profit": -4.580000000000001
@@ -22333,7 +22339,7 @@
    "last_scanned": "2026-11-01T02:29:42Z"
   },
   "soccer_uefa_champs_league": {
-   "last_scanned": "2026-11-24T23:00:34Z"
+   "last_scanned": "2026-11-25T00:45:24Z"
   },
   "soccer_argentina_primera_division": {
    "last_scanned": "2026-11-24T20:45:24Z"
@@ -22469,16 +22475,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T04:04:21Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 224 players projected, lineups for 4 games."
-  },
-  {
-   "ts": "2026-11-20T04:05:19Z",
-   "kind": "error",
-   "text": "Self-check failed: Slate date (players.json is for 2026-11-20, today is 2026-11-19); Sims for every game (missing: CHA@ATL, ORL@BKN, IND@CLE, TOR@DET, WSH@CHI, NO@OKC, PHX@UTAH, HOU@DEN, SAC@LAL); Best bets (5 props, 4 game lines; ruled out or low minutes since picked: Tyler Herro, Julian Champagnie, Rudy Gobert, De'Aaron Fox, Scoot Henderson)"
-  },
   {
    "ts": "2026-11-20T04:12:40Z",
    "kind": "result",
@@ -23968,6 +23964,16 @@
    "ts": "2026-11-25T00:00:43Z",
    "kind": "props",
    "text": "NBA matchups: 2 games, strongest spots: Derrick White ast +16% vs WSH; Neemias Queta ra +15% vs WSH; Payton Pritchard ast +14% vs WSH. Bought prop odds for BOS@WSH (ast, ra, pra, team totals), DAL@DEN (ast, ra, pra, team totals) (8 credits). Nothing cleared the bar."
+  },
+  {
+   "ts": "2026-11-25T00:45:24Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 5.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-25T00:45:32Z",
+   "kind": "research",
+   "text": "Research refresh for Tue Nov 24: 3 games, 66 players projected, lineups for 3 games."
   }
  ],
  "learned_ids": [
@@ -24067,7 +24073,7 @@
   "c613bf8e"
  ],
  "strategist": null,
- "updated": "2026-11-25T00:30:30Z",
+ "updated": "2026-11-25T00:45:45Z",
  "stats": {
   "bets": 94,
   "won": 30,
@@ -24078,8 +24084,8 @@
   "staked": 532.57,
   "profit": -155.99,
   "roi": -0.2929,
-  "clv": -0.0005,
-  "clv_n": 73,
+  "clv": 0.0003,
+  "clv_n": 76,
   "clv_no_close": 24,
   "close_mins_median": 4,
   "open": 6,
@@ -24098,7 +24104,7 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
   "current": {
@@ -24110,7 +24116,7 @@
     "staked": 0,
     "profit": 0,
     "roi": null,
-    "clv": null,
+    "clv": 0.0187,
     "open": 2,
     "paused": false
    },
@@ -24122,7 +24128,7 @@
     "staked": 0,
     "profit": 0,
     "roi": null,
-    "clv": 0.0854,
+    "clv": 0.0597,
     "open": 3,
     "paused": false
    },
@@ -24134,7 +24140,7 @@
     "staked": 0,
     "profit": 0,
     "roi": null,
-    "clv": 0.1185,
+    "clv": 0.1333,
     "open": 1,
     "paused": false
    }
@@ -24148,7 +24154,7 @@
     "staked": 142.57,
     "profit": 1.56,
     "roi": 0.0109,
-    "clv": 0.0395,
+    "clv": 0.0369,
     "open": 2,
     "paused": false
    },
@@ -24160,7 +24166,7 @@
     "staked": 30.0,
     "profit": -30.0,
     "roi": -1.0,
-    "clv": 0.0453,
+    "clv": 0.0412,
     "open": 3,
     "paused": false
    },
@@ -24208,7 +24214,7 @@
     "staked": 5.0,
     "profit": -5.0,
     "roi": -1.0,
-    "clv": 0.044,
+    "clv": 0.0515,
     "open": 1,
     "paused": false
    }
