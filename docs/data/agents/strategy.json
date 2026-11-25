@@ -3,10 +3,10 @@
   {
    "param": "prop_max_bets",
    "value": 3,
-   "why": "Seventh night asking, direction unchanged: matchup_under is still the only playbook past 30 bets and slipped again to 48 bets and -$106.65 on $240 staked (was 47 and -$101.65), with -2.96% average CLV on 28 closes (Backtester leg view -2.96% on 28) and about 68% of the total -$155.99 loss, while the anchor now lets the model move prop prices in no stat (walk-forward on 8,876 graded props), so trimming prop volume from 4 to 3 per run is a cheap backstop as run #3 starts from $100."
+   "why": "Eighth night asking, direction unchanged: matchup_under is still the only playbook past 30 bets, flat at 48 bets and -$106.65 on $240 staked with -2.96% average CLV on 28 closes (Backtester leg view -2.96% on 28), about 66% of the total -$160.99 loss, and the anchor still lets the model move prop prices in no stat (walk-forward on 9,566 graded props; every scoreboard stat has model log-loss above market, e.g. pra 0.7751 vs 0.6927), so trimming prop volume from 4 to 3 per run is a cheap backstop early in run #3."
   }
  ],
- "summary": "The record is 94 bets, 30-62-2, -$155.99 (-29.3% ROI); run #2 ended at $35.85 and run #3 restarts at $100, with overall CLV still slightly negative (-0.46% on 70 closes; Backtester leg view -1.9% on 54). The model trails the market on log-loss in every prop stat (e.g. pra 0.7803 vs 0.6928 on 1,969; reb, the only 'watch' stat, 0.7100 vs 0.6816 with w 0.15), and the prop edge buckets show no CLV gradient (10%+ -3.8%, under 3% -4.1%), so I'm leaving prop_min_edge and prop_model_weight alone since the anchor governs props anyway. Every game-side playbook is under 30 bets (arb 16 with +3.9% CLV on 14, value_dog 12 paused, matchup_over 11 at +$19.20 but -0.9% CLV, longshot 6, value_fav 1), so they stay untouched; kelly_mult is already at its 0.05 floor.",
- "updated": "2026-11-24T10:13:47Z",
+ "summary": "The record is 95 bets, 30-63-2, -$160.99 (-29.9% ROI) with equity at $95.00 in run #3; the only new settlement was a $5 longshot loss (Gardner-Webb +685) that beat the close, and overall CLV ticked up to +0.01% on 77 closes (Backtester leg view still -1.9% on 54). Props show no CLV gradient by edge (10%+ -3.8%, under 3% -4.1%) and the anchor governs them, so prop_min_edge and prop_model_weight stay put. Every game-side playbook remains under 30 bets (arb 16 at +3.9% CLV on 14, value_dog 12 paused, matchup_over 11 at +$19.20 but -0.9% CLV, longshot 7 at -$35 yet +4.5% CLV), so they're left alone; kelly_mult is already at its 0.05 floor.",
+ "updated": "2026-11-25T10:14:04Z",
  "by": "strategist"
 }
