@@ -21823,7 +21823,16 @@
     "payout": null,
     "profit": null,
     "settled": null,
-    "shadow": {}
+    "shadow": {
+     "newsroom": {
+      "hold": false,
+      "final": true
+     },
+     "skeptic": {
+      "hold": false,
+      "final": true
+     }
+    }
    },
    {
     "id": "71cdaeb3",
@@ -22553,16 +22562,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T20:00:47Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 223 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-20T20:45:26Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.25% so I get enough bets to learn from."
-  },
   {
    "ts": "2026-11-20T21:30:30Z",
    "kind": "adapt",
@@ -24052,6 +24051,16 @@
    "ts": "2026-11-25T19:30:43Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 25: 9 games, 213 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-25T20:00:40Z",
+   "kind": "error",
+   "text": "Couldn't list sports: HTTP Error 502: Bad Gateway"
+  },
+  {
+   "ts": "2026-11-25T20:00:54Z",
+   "kind": "research",
+   "text": "Research refresh for Wed Nov 25: 9 games, 213 players projected, lineups for 9 games."
   }
  ],
  "learned_ids": [
@@ -24152,7 +24161,7 @@
   "8fbbd302"
  ],
  "strategist": null,
- "updated": "2026-11-25T19:45:35Z",
+ "updated": "2026-11-25T20:01:55Z",
  "stats": {
   "bets": 95,
   "won": 30,
