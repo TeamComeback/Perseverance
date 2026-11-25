@@ -532,8 +532,11 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T23:02:05Z",
+    "why": "no longer +EV at tonight's line (2.5 at +113)"
+   },
+   "status": "Removed"
   },
   "p|4711294|tpm|Over": {
    "key": "p|4711294|tpm|Over",
@@ -1842,15 +1845,15 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.19,
-   "am": 119,
-   "conv": 30,
+   "dec": 2.18,
+   "am": 118,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.441,
+   "p": 0.443,
    "p_sim": 0.624,
-   "p_mkt": 0.427,
+   "p_mkt": 0.429,
    "p_kalshi": 0.435,
-   "ev": -0.035,
+   "ev": -0.034,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "OKC",
    "away": "MIN",
@@ -1933,8 +1936,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.268,
-    "floor_am": 127,
+    "floor_dec": 2.257,
+    "floor_am": 126,
     "line": null,
     "next": 2.5
    },
@@ -1958,7 +1961,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +127",
+    "The price at 1.5 going past +126",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1996,13 +1999,13 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.56,
-   "am": 156,
-   "conv": 32,
+   "dec": 2.53,
+   "am": 153,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.377,
+   "p": 0.381,
    "p_sim": 0.508,
-   "p_mkt": 0.366,
+   "p_mkt": 0.371,
    "p_kalshi": 0.385,
    "ev": -0.036,
    "verdict": "Pass: projection carries it; the main risk is recent form.",
@@ -2063,8 +2066,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.653,
-    "floor_am": 165,
+    "floor_dec": 2.625,
+    "floor_am": 162,
     "line": null,
     "next": 2.5
    },
@@ -2088,7 +2091,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +165",
+    "The price at 1.5 going past +162",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -2126,14 +2129,14 @@
    "start": "2026-11-26T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.98,
-   "am": -102,
+   "dec": 1.99,
+   "am": -101,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.489,
-   "p_sim": 0.599,
-   "p_mkt": 0.476,
-   "p_kalshi": 0.456,
+   "p": 0.487,
+   "p_sim": 0.626,
+   "p_mkt": 0.473,
+   "p_kalshi": 0.457,
    "ev": -0.031,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "GS",
@@ -2144,14 +2147,14 @@
    "opp": "SAC",
    "stat": "pts",
    "proj": 4.4,
-   "sim": 5,
+   "sim": 4.7,
    "ob_ind": 4.5,
    "avg10": 3.7,
    "minutes": 24.0,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 60% of 10,000 simulated games (sim average 5).",
+     "t": "Goes under in 63% of 10,000 simulated games (sim average 4.7).",
      "rec": [
       1540,
       1357
@@ -2225,8 +2228,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.045,
-    "floor_am": 104,
+    "floor_dec": 2.053,
+    "floor_am": 105,
     "line": null,
     "next": 4.5
    },
@@ -2258,14 +2261,14 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past +104",
+    "The price at 5.5 going past +105",
     "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 6.5,
     "now": 5.5,
-    "kalshi": 0.456
+    "kalshi": 0.457
    },
    "started": false,
    "published": {
@@ -2285,11 +2288,8 @@
     }
    },
    "first_seen": "2026-11-25T19:31:29Z",
-   "removed": {
-    "at": "2026-11-25T22:45:12Z",
-    "why": "no longer +EV at tonight's line (5.5 at -105)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4066436|pts|Under": {
    "key": "p|4066436|pts|Under",
@@ -2564,19 +2564,19 @@
    "start": "2026-11-26T03:00Z",
    "side": "away",
    "point": 7.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 30,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.497,
+   "p": 0.507,
    "p_sim": 0.574,
-   "p_mkt": 0.488,
+   "p_mkt": 0.5,
    "p_kalshi": null,
-   "ev": -0.031,
+   "ev": -0.036,
    "verdict": "Pass: simulation and who's out agree; the main risk is who's out.",
    "home": "GS",
    "away": "SAC",
-   "why": "Sim: GS by 4.4 on average (SAC 105.4, GS 109.8) \u00b7 SAC +7.5 covers in 57% of sims vs 49% DraftKings",
+   "why": "Sim: GS by 4.4 on average (SAC 105.4, GS 109.8) \u00b7 SAC +7.5 covers in 57% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2616,8 +2616,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.012,
-    "floor_am": 101,
+    "floor_dec": 1.972,
+    "floor_am": -103,
     "line": null,
     "next": 6.5
    },
@@ -2649,7 +2649,7 @@
    ],
    "kill": [
     "The line reaching 6.5",
-    "The price at 7.5 going past +101",
+    "The price at 7.5 going past \u2212103",
     "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -2821,19 +2821,19 @@
    "start": "2026-11-26T01:00Z",
    "side": "away",
    "point": 1.5,
-   "dec": 1.92,
-   "am": -109,
-   "conv": 30,
+   "dec": 1.87,
+   "am": -115,
+   "conv": 28,
    "tier": "Pass",
-   "p": 0.504,
+   "p": 0.514,
    "p_sim": 0.56,
-   "p_mkt": 0.497,
+   "p_mkt": 0.509,
    "p_kalshi": null,
-   "ev": -0.033,
+   "ev": -0.038,
    "verdict": "Pass: simulation carries it; the main risk is model record.",
    "home": "MIL",
    "away": "BKN",
-   "why": "Sim: BKN by 1.4 on average (BKN 117.3, MIL 115.9) \u00b7 BKN +1.5 covers in 56% of sims vs 50% DraftKings",
+   "why": "Sim: BKN by 1.4 on average (BKN 117.3, MIL 115.9) \u00b7 BKN +1.5 covers in 56% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2855,8 +2855,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.984,
-    "floor_am": -102,
+    "floor_dec": 1.946,
+    "floor_am": -106,
     "line": null,
     "next": 0.5
    },
@@ -2872,7 +2872,7 @@
    ],
    "kill": [
     "The line reaching 0.5",
-    "The price at 1.5 going past \u2212102"
+    "The price at 1.5 going past \u2212106"
    ],
    "market": {
     "open": null,
@@ -2897,11 +2897,8 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": {
-    "at": "2026-11-25T22:02:57Z",
-    "why": "confidence fell 30 \u2192 28"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401909320|total|Over": {
    "key": "g|401909320|total|Over",
@@ -3249,8 +3246,11 @@
     }
    },
    "first_seen": "2026-11-25T19:31:29Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-25T23:02:05Z",
+    "why": "confidence fell 30 \u2192 28"
+   },
+   "status": "Removed"
   },
   "g|401909317|spread|away": {
    "key": "g|401909317|spread|away",
@@ -4239,6 +4239,69 @@
    "kind": "removed",
    "text": "Removed: Draymond Green Under 5.5 points \u2014 no longer +EV at tonight's line (5.5 at -105)",
    "alert": true
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "p|6589|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Draymond Green Under 5.5 points at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "p|6589|pts|Under",
+   "kind": "line",
+   "text": "Draymond Green: line 5.5 at \u2212102 \u2192 5.5 at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "p|5241364|tpm|Over",
+   "kind": "line",
+   "text": "Bennett Stirtz: line 1.5 at +119 \u2192 1.5 at +118",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "p|3133626|tpm|Over",
+   "kind": "line",
+   "text": "Kenrich Williams: line 1.5 at +156 \u2192 1.5 at +153",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "p|3992|tpm|Over",
+   "kind": "removed",
+   "text": "Removed: James Harden Over 2.5 threes \u2014 no longer +EV at tonight's line (2.5 at +113)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "g|401909324|spread|away",
+   "kind": "line",
+   "text": "SAC +7.5 (SAC @ GS): line 7.5 at \u2212105 \u2192 7.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "g|401909322|spread|away",
+   "kind": "back",
+   "text": "Back on the board: BKN +1.5 (BKN @ MIL) at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "g|401909322|spread|away",
+   "kind": "line",
+   "text": "BKN +1.5 (BKN @ MIL): line 1.5 at \u2212109 \u2192 1.5 at \u2212115 \u2014 past the play-to line; don't add at this number",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T23:02:05Z",
+   "key": "g|401909318|total|Over",
+   "kind": "removed",
+   "text": "Removed: CHI @ CHA Over 218.5 \u2014 confidence fell 30 \u2192 28",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4371,5 +4434,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T22:45:44Z"
+ "updated": "2026-11-25T23:02:05Z"
 }
