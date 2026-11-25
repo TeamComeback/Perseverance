@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 58.04,
+  "cash": 53.04,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -21674,15 +21674,15 @@
       "price": 1.77,
       "book": "fanatics",
       "fair_p": 0.6005,
-      "close_p": 0.6205,
+      "close_p": 0.6213,
       "result": null,
       "shop": {
        "median": 1.646,
        "gain": 0.0754,
        "n": 2
       },
-      "close_at": "2026-11-25T05:00:38Z",
-      "close_mins": 1169
+      "close_at": "2026-11-25T05:37:32Z",
+      "close_mins": 1132
      }
     ],
     "dec": 1.77,
@@ -21718,14 +21718,18 @@
       "book": "kalshi",
       "fair_p": 0.1459,
       "close_p": 0.1432,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 6.625,
        "gain": 0.1844,
        "n": 8
       },
       "close_at": "2026-11-24T21:45:28Z",
-      "close_mins": 134
+      "close_mins": 134,
+      "final": {
+       "home": 91.0,
+       "away": 65.0
+      }
      }
     ],
     "dec": 7.847,
@@ -21735,10 +21739,10 @@
     "note": "14.5% edge vs 8-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-25T05:37:27Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -21748,7 +21752,35 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Gardner-Webb Bulldogs lost by 26",
+     "final": "Gardner-Webb Bulldogs 65 \u2013 Bowling Green Falcons 91",
+     "legs": [
+      {
+       "outcome": "Gardner-Webb Bulldogs",
+       "result": "loss",
+       "headline": "Gardner-Webb Bulldogs lost by 26",
+       "final": "Gardner-Webb Bulldogs 65 \u2013 Bowling Green Falcons 91",
+       "why": [
+        "Gardner-Webb Bulldogs lost by 26.",
+        "We priced it at 15% to hit vs 13% needed to break even at 7.847x (+14.5% expected edge).",
+        "Closing consensus 14% vs 13% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "blowout",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "blowout",
+      "underdog-lost"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "35fc2a2e",
@@ -21776,8 +21808,8 @@
        "gain": 0.1667,
        "n": 7
       },
-      "close_at": "2026-11-25T05:00:38Z",
-      "close_mins": 899
+      "close_at": "2026-11-25T05:37:32Z",
+      "close_mins": 862
      }
     ],
     "dec": 7.0,
@@ -21812,15 +21844,15 @@
       "price": 2.3,
       "book": "draftkings",
       "fair_p": 0.4587,
-      "close_p": 0.4424,
+      "close_p": 0.4433,
       "result": null,
       "shop": {
        "median": 2.1,
        "gain": 0.0952,
        "n": 5
       },
-      "close_at": "2026-11-25T05:00:38Z",
-      "close_mins": 1139
+      "close_at": "2026-11-25T05:37:32Z",
+      "close_mins": 1102
      }
     ],
     "dec": 2.3,
@@ -21855,15 +21887,15 @@
       "price": 1.82,
       "book": "fanduel",
       "fair_p": 0.5547,
-      "close_p": 0.5576,
+      "close_p": 0.5567,
       "result": null,
       "shop": {
        "median": 1.76,
        "gain": 0.0341,
        "n": 5
       },
-      "close_at": "2026-11-25T05:00:38Z",
-      "close_mins": 1139
+      "close_at": "2026-11-25T05:37:32Z",
+      "close_mins": 1102
      }
     ],
     "dec": 1.82,
@@ -21898,15 +21930,15 @@
       "price": 5.5,
       "book": "fanduel",
       "fair_p": 0.1992,
-      "close_p": 0.1725,
+      "close_p": 0.174,
       "result": null,
       "shop": {
        "median": 4.9,
        "gain": 0.1224,
        "n": 5
       },
-      "close_at": "2026-11-25T05:00:38Z",
-      "close_mins": 989
+      "close_at": "2026-11-25T05:37:32Z",
+      "close_mins": 952
      }
     ],
     "dec": 5.5,
@@ -21914,6 +21946,47 @@
     "ev": 0.0956,
     "p": 0.1992,
     "note": "9.6% edge vs 5-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "9cee21a6",
+    "placed": "2026-11-25T05:37:32Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "value_fav",
+    "legs": [
+     {
+      "event_id": "15a92ac931f0e07923ce6f87c599a20d",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-25T23:00:00Z",
+      "home": "Weber State Wildcats",
+      "away": "CSU Northridge Matadors",
+      "market": "totals",
+      "outcome": "Under",
+      "point": 165.5,
+      "price": 2.091,
+      "book": "kalshi",
+      "fair_p": 0.5053,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.986,
+       "gain": 0.0532,
+       "n": 2
+      }
+     }
+    ],
+    "dec": 2.091,
+    "stake": 5.0,
+    "ev": 0.0565,
+    "p": 0.5053,
+    "note": "5.7% edge vs 2-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -22037,11 +22110,11 @@
    "bench_noted": true
   },
   "longshot": {
-   "bets": 6,
-   "staked": 30.0,
-   "profit": -30.0,
-   "clv_n": 6,
-   "clv_sum": 0.19177500000000014,
+   "bets": 7,
+   "staked": 35.0,
+   "profit": -35.0,
+   "clv_n": 7,
+   "clv_sum": 0.31546540000000023,
    "tags": {
     "lost-closing-line": {
      "n": 2,
@@ -22054,19 +22127,19 @@
      "lost": 1
     },
     "underdog-lost": {
-     "n": 6,
+     "n": 7,
      "won": 0,
-     "lost": 6
+     "lost": 7
     },
     "beat-closing-line": {
-     "n": 3,
+     "n": 4,
      "won": 0,
-     "lost": 3
+     "lost": 4
     },
     "blowout": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     }
    },
    "clv_gate": false
@@ -22243,19 +22316,19 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-25T05:00:38Z",
+   "last_scanned": "2026-11-25T05:37:32Z",
    "bets": 71.0,
    "staked": 376.16999999999996,
    "profit": -112.92
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-25T05:00:38Z",
+   "last_scanned": "2026-11-25T05:37:31Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-25T05:00:38Z"
+   "last_scanned": "2026-11-25T05:37:32Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
@@ -22315,7 +22388,7 @@
    "last_scanned": "2026-11-22T07:00:31Z"
   },
   "basketball_euroleague": {
-   "last_scanned": "2026-11-24T07:03:21Z"
+   "last_scanned": "2026-11-25T05:37:32Z"
   },
   "soccer_league_of_ireland": {
    "last_scanned": "2026-10-29T23:54:28Z"
@@ -22324,10 +22397,10 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-25T05:00:38Z",
-   "bets": 7.0,
-   "staked": 51.67,
-   "profit": -4.580000000000001
+   "last_scanned": "2026-11-25T05:37:32Z",
+   "bets": 8.0,
+   "staked": 56.67,
+   "profit": -9.580000000000002
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-22T06:15:23Z"
@@ -22339,10 +22412,10 @@
    "last_scanned": "2026-11-01T02:29:42Z"
   },
   "soccer_uefa_champs_league": {
-   "last_scanned": "2026-11-25T05:00:38Z"
+   "last_scanned": "2026-11-25T05:37:31Z"
   },
   "soccer_argentina_primera_division": {
-   "last_scanned": "2026-11-24T20:45:24Z"
+   "last_scanned": "2026-11-25T05:37:32Z"
   },
   "soccer_uefa_europa_league": {
    "last_scanned": "2026-11-05T00:50:19Z"
@@ -22423,7 +22496,7 @@
    "last_scanned": "2026-11-24T07:30:28Z"
   },
   "soccer_italy_serie_b": {
-   "last_scanned": "2026-11-25T04:00:30Z"
+   "last_scanned": "2026-11-25T05:37:32Z"
   },
   "soccer_switzerland_superleague": {
    "last_scanned": "2026-11-22T07:45:21Z"
@@ -22475,16 +22548,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-20T14:15:41Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 223 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-20T14:45:42Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 223 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-20T15:15:34Z",
    "kind": "research",
@@ -23974,6 +24037,16 @@
    "ts": "2026-11-25T05:30:31Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 4.50% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-25T05:37:27Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Gardner-Webb Bulldogs @ +685 (Kalshi) \u2014 LOST: Gardner-Webb Bulldogs lost by 26 [beat-closing-line, blowout, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-25T05:37:32Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (14), soccer_uefa_champs_league (9), basketball_ncaab (53), americanfootball_nfl (1), basketball_nba (9), basketball_euroleague (4), soccer_italy_serie_b (4), soccer_argentina_primera_division (1) for 23 credits. Placed 1: Under 165.5 @ +109 (Kalshi) Equity $95.00."
   }
  ],
  "learned_ids": [
@@ -24070,31 +24143,32 @@
   "2fa804d6",
   "e1504484",
   "d17fbf56",
-  "c613bf8e"
+  "c613bf8e",
+  "8fbbd302"
  ],
  "strategist": null,
- "updated": "2026-11-25T05:30:31Z",
+ "updated": "2026-11-25T05:37:32Z",
  "stats": {
-  "bets": 94,
+  "bets": 95,
   "won": 30,
-  "lost": 62,
-  "shop_n": 39,
-  "shop_avg": 0.0739,
+  "lost": 63,
+  "shop_n": 40,
+  "shop_avg": 0.0733,
   "push": 2,
-  "staked": 532.57,
-  "profit": -155.99,
-  "roi": -0.2929,
-  "clv": -0.0007,
+  "staked": 537.57,
+  "profit": -160.99,
+  "roi": -0.2995,
+  "clv": -0.0006,
   "clv_n": 76,
   "clv_no_close": 24,
   "close_mins_median": 4,
   "open": 6,
-  "equity": 100.0
+  "equity": 95.0
  },
  "weights": {
   "value_fav": 0.842,
   "value_dog": 0.396,
-  "longshot": 0.362,
+  "longshot": 0.31,
   "arb": 1.098,
   "parlay_ev": 1.0,
   "matchup_over": 1.322,
@@ -24116,20 +24190,20 @@
     "staked": 0,
     "profit": 0,
     "roi": null,
-    "clv": 0.0162,
+    "clv": 0.0164,
     "open": 2,
     "paused": false
    },
    "longshot": {
-    "bets": 0,
+    "bets": 1,
     "won": 0,
-    "lost": 0,
+    "lost": 1,
     "push": 0,
-    "staked": 0,
-    "profit": 0,
-    "roi": null,
-    "clv": 0.0471,
-    "open": 3,
+    "staked": 5.0,
+    "profit": -5.0,
+    "roi": -1.0,
+    "clv": 0.0499,
+    "open": 2,
     "paused": false
    },
    "value_fav": {
@@ -24140,8 +24214,8 @@
     "staked": 0,
     "profit": 0,
     "roi": null,
-    "clv": 0.0983,
-    "open": 1,
+    "clv": 0.0997,
+    "open": 2,
     "paused": false
    }
   },
@@ -24154,20 +24228,20 @@
     "staked": 142.57,
     "profit": 1.56,
     "roi": 0.0109,
-    "clv": 0.0365,
+    "clv": 0.0366,
     "open": 2,
     "paused": false
    },
    "longshot": {
-    "bets": 6,
+    "bets": 7,
     "won": 0,
-    "lost": 6,
+    "lost": 7,
     "push": 0,
-    "staked": 30.0,
-    "profit": -30.0,
+    "staked": 35.0,
+    "profit": -35.0,
     "roi": -1.0,
-    "clv": 0.037,
-    "open": 3,
+    "clv": 0.0379,
+    "open": 2,
     "paused": false
    },
    "matchup_over": {
@@ -24214,8 +24288,8 @@
     "staked": 5.0,
     "profit": -5.0,
     "roi": -1.0,
-    "clv": 0.0339,
-    "open": 1,
+    "clv": 0.0346,
+    "open": 2,
     "paused": false
    }
   }
