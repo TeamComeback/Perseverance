@@ -2129,15 +2129,15 @@
    "start": "2026-11-26T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 2,
-   "am": 100,
+   "dec": 2.02,
+   "am": 102,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.484,
-   "p_sim": 0.607,
-   "p_mkt": 0.471,
+   "p": 0.479,
+   "p_sim": 0.626,
+   "p_mkt": 0.466,
    "p_kalshi": 0.451,
-   "ev": -0.032,
+   "ev": -0.033,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "GS",
    "away": "SAC",
@@ -2147,14 +2147,14 @@
    "opp": "SAC",
    "stat": "pts",
    "proj": 4.4,
-   "sim": 4.9,
+   "sim": 4.7,
    "ob_ind": 4.5,
    "avg10": 3.7,
    "minutes": 24.0,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 61% of 10,000 simulated games (sim average 4.9).",
+     "t": "Goes under in 63% of 10,000 simulated games (sim average 4.7).",
      "rec": [
       1540,
       1357
@@ -2228,8 +2228,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.066,
-    "floor_am": 107,
+    "floor_dec": 2.088,
+    "floor_am": 109,
     "line": null,
     "next": 4.5
    },
@@ -2243,6 +2243,14 @@
      "min": 31.3
     },
     {
+     "pid": "3064440",
+     "name": "Zach LaVine",
+     "team": "SAC",
+     "status": "Questionable",
+     "self": false,
+     "min": 31.2
+    },
+    {
      "pid": "3975",
      "name": "Stephen Curry",
      "team": "GS",
@@ -2253,8 +2261,8 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past +107",
-    "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run",
+    "The price at 5.5 going past +109",
+    "A change in Yaxel Lendeborg (questionable), Zach LaVine (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -2562,29 +2570,29 @@
   "g|401909324|spread|away": {
    "key": "g|401909324|spread|away",
    "kind": "spread",
-   "label": "SAC +6.5 (SAC @ GS)",
+   "label": "SAC +7.5 (SAC @ GS)",
    "espn_id": "401909324",
    "game": "SAC @ GS",
    "start": "2026-11-26T03:00Z",
    "side": "away",
-   "point": 6.5,
-   "dec": 1.96,
-   "am": -104,
-   "conv": 33,
+   "point": 7.5,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.498,
-   "p_sim": 0.598,
-   "p_mkt": 0.487,
+   "p": 0.512,
+   "p_sim": 0.59,
+   "p_mkt": 0.504,
    "p_kalshi": null,
-   "ev": -0.024,
+   "ev": -0.031,
    "verdict": "Pass: simulation and who's out agree; the main risk is line move.",
    "home": "GS",
    "away": "SAC",
-   "why": "Sim: GS by 2.3 on average (SAC 107.7, GS 110.0) \u00b7 SAC +6.5 covers in 60% of sims vs 49% DraftKings",
+   "why": "Sim: GS by 3.7 on average (SAC 106.2, GS 109.9) \u00b7 SAC +7.5 covers in 59% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 60% of 10,000 simulated games.",
+     "t": "Covers in 59% of 10,000 simulated games.",
      "rec": [
       1540,
       1357
@@ -2599,7 +2607,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-5.5 to -6.5).",
+     "t": "The line has moved against this side since it opened (-5.5 to -7.5).",
      "rec": [
       199,
       169
@@ -2615,10 +2623,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.008,
-    "floor_am": 101,
+    "floor_dec": 1.953,
+    "floor_am": -105,
     "line": null,
-    "next": 5.5
+    "next": 6.5
    },
    "watch": [
     {
@@ -2630,6 +2638,14 @@
      "min": 31.3
     },
     {
+     "pid": "3064440",
+     "name": "Zach LaVine",
+     "team": "SAC",
+     "status": "Questionable",
+     "self": false,
+     "min": 31.2
+    },
+    {
      "pid": "3975",
      "name": "Stephen Curry",
      "team": "GS",
@@ -2639,13 +2655,13 @@
     }
    ],
    "kill": [
-    "The line reaching 5.5",
-    "The price at 6.5 going past +101",
-    "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run"
+    "The line reaching 6.5",
+    "The price at 7.5 going past \u2212105",
+    "A change in Yaxel Lendeborg (questionable), Zach LaVine (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 6.5,
+    "now": 7.5,
     "kalshi": null
    },
    "started": false,
@@ -2904,19 +2920,19 @@
    "am": -111,
    "conv": 29,
    "tier": "Pass",
-   "p": 0.508,
-   "p_sim": 0.564,
+   "p": 0.509,
+   "p_sim": 0.575,
    "p_mkt": 0.501,
    "p_kalshi": null,
-   "ev": -0.036,
+   "ev": -0.034,
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "OKC",
    "away": "MIN",
-   "why": "Sim total 224.2 (after a learned +1.5 correction) vs 221.5 \u00b7 over in 56% of sims vs 50% DraftKings",
+   "why": "Sim total 224.4 (after a learned +1.5 correction) vs 221.5 \u00b7 over in 57% of sims vs 50% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 56% of 10,000 simulated games.",
+     "t": "Goes over in 57% of 10,000 simulated games.",
      "rec": [
       1540,
       1357
@@ -2942,8 +2958,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.969,
-    "floor_am": -103,
+    "floor_dec": 1.965,
+    "floor_am": -104,
     "line": null,
     "next": 222.5
    },
@@ -2967,7 +2983,7 @@
    ],
    "kill": [
     "The line reaching 222.5",
-    "The price at 221.5 going past \u2212103"
+    "The price at 221.5 going past \u2212104"
    ],
    "market": {
     "open": null,
@@ -2992,11 +3008,8 @@
     }
    },
    "first_seen": "2026-11-25T11:45:33Z",
-   "removed": {
-    "at": "2026-11-25T20:31:30Z",
-    "why": "confidence fell 29 \u2192 28"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909321|total|Over": {
    "key": "g|401909321|total|Over",
@@ -3353,8 +3366,11 @@
     }
    },
    "first_seen": "2026-11-25T20:31:30Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T21:02:09Z",
+    "why": "line moved 1.5 \u2192 -1.5"
+   },
+   "status": "Removed"
   }
  },
  "changes": [
@@ -3952,6 +3968,34 @@
    "kind": "removed",
    "text": "Removed: MIN @ OKC Over 221.5 \u2014 confidence fell 29 \u2192 28",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T21:02:09Z",
+   "key": "p|6589|pts|Under",
+   "kind": "line",
+   "text": "Draymond Green: line 5.5 at +100 \u2192 5.5 at +102",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:02:09Z",
+   "key": "g|401909324|spread|away",
+   "kind": "line",
+   "text": "SAC +7.5 (SAC @ GS): line 6.5 at \u2212104 \u2192 7.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:02:09Z",
+   "key": "g|401909320|total|Over",
+   "kind": "back",
+   "text": "Back on the board: MIN @ OKC Over 221.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T21:02:09Z",
+   "key": "g|401909317|spread|away",
+   "kind": "removed",
+   "text": "Removed: MIA +1.5 (MIA @ PHI) \u2014 line moved 1.5 \u2192 -1.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4070,6 +4114,11 @@
     "status": "Questionable"
    },
    {
+    "name": "Zach LaVine",
+    "team": "SAC",
+    "status": "Questionable"
+   },
+   {
     "name": "Victor Wembanyama",
     "team": "SA",
     "status": "Questionable"
@@ -4078,11 +4127,6 @@
     "name": "Giannis Antetokounmpo",
     "team": "MIA",
     "status": "Probable"
-   },
-   {
-    "name": "Jalen Smith",
-    "team": "CHI",
-    "status": "Questionable"
    }
   ],
   "picks": 15
@@ -4094,5 +4138,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T20:45:31Z"
+ "updated": "2026-11-25T21:02:09Z"
 }
