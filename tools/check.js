@@ -99,6 +99,21 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
         r.bad ? bad("line movement: broken series for " + r.bad) : r.bets && !r.ok ? bad("line movement found no history for any bet") : ok(`line movement: ${r.ok}/${r.bets} bets have history (${r.alt} alternate lines), ${r.rows} rows`);
         errs.length === n ? ok("no page errors on My bets") : bad("My bets errors: " + errs.slice(n).join(" | "));
       } catch (e) { bad("line movement: " + e.message); }
+      // edit a bet: a lost under 2.5 (finished 3) edited to 3.5 re-grades to a win, cash and record move together, the original number stays in the note
+      console.log("5d. edit a bet");
+      try {
+        const r = await p.evaluate(async () => { go("bets"); saveL = () => {};
+          const bet = (id, st) => ({id, placed: "2026-11-23T20:00:00Z", run: L.book.run, source: "you", playbook: "manual", dec: 1.9, stake: 5, note: "", status: st, payout: st === "lost" ? 0 : null, profit: st === "lost" ? -5 : null, settled: st === "lost" ? "2026-11-24T03:00:00Z" : null,
+            legs: [{sport: "basketball_nba", commence: "2026-11-24T00:00Z", market: "player_rebounds", outcome: "Test Player Under", side: "Under", player: "Test Player", stat: "reb", point: 2.5, price: 1.9, book: "draftkings", result: st === "lost" ? "loss" : null, actual: st === "lost" ? 3 : undefined}]});
+          L.book.bets.push(bet("edt1", "lost"), bet("edt2", "open")); L.book.cash = cashFromBets(L.book); syncManual();
+          const c0 = L.book.cash; editBet("edt1"); document.getElementById("el").value = "3.5"; document.getElementById("er").value = "auto"; document.getElementById("ego").click();
+          const b1 = L.book.bets.find(x => x.id === "edt1"), c1 = L.book.cash;
+          editBet("edt2"); document.getElementById("ek").value = "10"; document.getElementById("ego").click();
+          const b2 = L.book.bets.find(x => x.id === "edt2");
+          L.book.bets = L.book.bets.filter(x => !x.id.startsWith("edt")); L.book.cash = cashFromBets(L.book); syncManual();
+          return {st: b1.status, d1: +(c1 - c0).toFixed(2), ed: b1.edited, note: /line 2\.5 → 3\.5/.test(b1.note), st2: b2.status, stake2: b2.stake, d2: +(L.book.cash - c1).toFixed(2) }; });
+        r.st === "won" && r.d1 === 9.5 && r.ed && r.note && r.st2 === "open" && r.stake2 === 10 ? ok("edit: regraded to a win, cash +$9.50, note kept; open bet stake change re-prices cash") : bad("edit bet: " + JSON.stringify(r));
+      } catch (e) { bad("edit bet: " + e.message); }
       // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};
