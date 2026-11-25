@@ -1842,15 +1842,15 @@
    "start": "2026-11-26T00:30Z",
    "side": "Over",
    "point": 1.5,
-   "dec": 2.2,
-   "am": 120,
-   "conv": 31,
+   "dec": 2.19,
+   "am": 119,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.439,
+   "p": 0.441,
    "p_sim": 0.624,
-   "p_mkt": 0.426,
+   "p_mkt": 0.427,
    "p_kalshi": 0.435,
-   "ev": -0.033,
+   "ev": -0.035,
    "verdict": "Pass: recent form and simulation agree; the main risk is matchup.",
    "home": "OKC",
    "away": "MIN",
@@ -1933,8 +1933,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.278,
-    "floor_am": 128,
+    "floor_dec": 2.268,
+    "floor_am": 127,
     "line": null,
     "next": 2.5
    },
@@ -1958,7 +1958,7 @@
    ],
    "kill": [
     "The line reaching 2.5",
-    "The price at 1.5 going past +128",
+    "The price at 1.5 going past +127",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -1984,11 +1984,8 @@
     }
    },
    "first_seen": "2026-11-25T19:31:29Z",
-   "removed": {
-    "at": "2026-11-25T22:31:39Z",
-    "why": "no longer +EV at tonight's line (1.5 at +124)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|3133626|tpm|Over": {
    "key": "p|3133626|tpm|Over",
@@ -2288,8 +2285,11 @@
     }
    },
    "first_seen": "2026-11-25T19:31:29Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-25T22:45:12Z",
+    "why": "no longer +EV at tonight's line (5.5 at -105)"
+   },
+   "status": "Removed"
   },
   "p|4066436|pts|Under": {
    "key": "p|4066436|pts|Under",
@@ -2568,15 +2568,15 @@
    "am": -105,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.496,
-   "p_sim": 0.569,
+   "p": 0.497,
+   "p_sim": 0.574,
    "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.032,
+   "ev": -0.031,
    "verdict": "Pass: simulation and who's out agree; the main risk is who's out.",
    "home": "GS",
    "away": "SAC",
-   "why": "Sim: GS by 4.5 on average (SAC 104.7, GS 109.1) \u00b7 SAC +7.5 covers in 57% of sims vs 49% DraftKings",
+   "why": "Sim: GS by 4.4 on average (SAC 105.4, GS 109.8) \u00b7 SAC +7.5 covers in 57% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -2616,8 +2616,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.016,
-    "floor_am": 102,
+    "floor_dec": 2.012,
+    "floor_am": 101,
     "line": null,
     "next": 6.5
    },
@@ -2649,7 +2649,7 @@
    ],
    "kill": [
     "The line reaching 6.5",
-    "The price at 7.5 going past +102",
+    "The price at 7.5 going past +101",
     "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -4218,6 +4218,27 @@
    "kind": "injury",
    "text": "Caleb Wilson ruled out (CHI @ CHA Over 218.5 re-priced: 218.5 at \u2212111, conviction 28)",
    "alert": false
+  },
+  {
+   "at": "2026-11-25T22:45:12Z",
+   "key": "p|5241364|tpm|Over",
+   "kind": "back",
+   "text": "Back on the board: Bennett Stirtz Over 1.5 threes at +119",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T22:45:12Z",
+   "key": "p|5241364|tpm|Over",
+   "kind": "line",
+   "text": "Bennett Stirtz: line 1.5 at +120 \u2192 1.5 at +119",
+   "alert": false
+  },
+  {
+   "at": "2026-11-25T22:45:12Z",
+   "key": "p|6589|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Draymond Green Under 5.5 points \u2014 no longer +EV at tonight's line (5.5 at -105)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -4350,5 +4371,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-25T22:31:39Z"
+ "updated": "2026-11-25T22:45:12Z"
 }
