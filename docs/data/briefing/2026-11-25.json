@@ -2669,7 +2669,18 @@
    },
    "first_seen": "2026-11-25T11:45:33Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 215
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 215
+   },
+   "clv": null
   },
   "g|401909324|spread|away": {
    "key": "g|401909324|spread|away",
@@ -3459,7 +3470,13 @@
     "at": "2026-11-25T21:02:09Z",
     "why": "line moved 1.5 \u2192 -1.5"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.89,
+    "actual": -7
+   },
+   "clv": null
   }
  },
  "changes": [
@@ -4706,5 +4723,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-26T00:31:18Z"
+ "updated": "2026-11-26T00:45:34Z"
 }
