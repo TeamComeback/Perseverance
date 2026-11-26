@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 80.81,
+  "cash": 56.8,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -22629,6 +22629,129 @@
     "profit": null,
     "settled": null,
     "shadow": {}
+   },
+   {
+    "id": "a57d57d2",
+    "placed": "2026-11-26T06:00:28Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "978dfc077c2cba5159882a1f65088b8d",
+      "sport": "icehockey_nhl",
+      "commence": "2026-11-27T18:00:00Z",
+      "home": "New Jersey Devils",
+      "away": "Calgary Flames",
+      "market": "h2h",
+      "outcome": "Calgary Flames",
+      "point": null,
+      "price": 3.4,
+      "book": "betrivers",
+      "fair_p": 0.3023,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 3.343,
+       "gain": 0.0171,
+       "n": 4
+      }
+     }
+    ],
+    "dec": 3.4,
+    "stake": 5.63,
+    "ev": 0.0066,
+    "p": 0.2961,
+    "note": "Arb: 0.66% locked across 2 books",
+    "group": "arb-978dfc077c",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "bf619664",
+    "placed": "2026-11-26T06:00:28Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "arb",
+    "legs": [
+     {
+      "event_id": "978dfc077c2cba5159882a1f65088b8d",
+      "sport": "icehockey_nhl",
+      "commence": "2026-11-27T18:00:00Z",
+      "home": "New Jersey Devils",
+      "away": "Calgary Flames",
+      "market": "h2h",
+      "outcome": "New Jersey Devils",
+      "point": null,
+      "price": 1.43,
+      "book": "fanatics",
+      "fair_p": 0.7136,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.354,
+       "gain": 0.0562,
+       "n": 4
+      }
+     }
+    ],
+    "dec": 1.43,
+    "stake": 13.38,
+    "ev": 0.0066,
+    "p": 0.7039,
+    "note": "Arb: 0.66% locked across 2 books",
+    "group": "arb-978dfc077c",
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "56ce09be",
+    "placed": "2026-11-26T06:00:28Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "value_fav",
+    "legs": [
+     {
+      "event_id": "b5234ea5788fb4f5393efc6c33c8e5e7",
+      "sport": "icehockey_nhl",
+      "commence": "2026-11-27T18:00:00Z",
+      "home": "Nashville Predators",
+      "away": "Utah Mammoth",
+      "market": "totals",
+      "outcome": "Under",
+      "point": 6.5,
+      "price": 2.0,
+      "book": "fanatics",
+      "fair_p": 0.5157,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.87,
+       "gain": 0.0695,
+       "n": 3
+      }
+     }
+    ],
+    "dec": 2.0,
+    "stake": 5.0,
+    "ev": 0.0315,
+    "p": 0.5157,
+    "note": "3.1% edge vs 3-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -22967,7 +23090,7 @@
    "profit": -112.92
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-25T20:15:28Z",
+   "last_scanned": "2026-11-26T06:00:28Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
@@ -23199,11 +23322,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T04:12:38Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Julius Randle Under 10.5 @ -102 (FanDuel) \u2014 LOST: 15 reb+ast vs Under 10.5 [matchup-read-wrong, minutes-long, model-miss]"
-  },
   {
    "ts": "2026-11-21T04:12:38Z",
    "kind": "result",
@@ -24698,6 +24816,11 @@
    "ts": "2026-11-26T05:25:11Z",
    "kind": "scan",
    "text": "Scanned americanfootball_nfl (3), basketball_ncaab (22), mma_mixed_martial_arts (1), icehockey_liiga (5), americanfootball_ncaaf (6), cricket_test_match (1), aussierules_aflw (1), soccer_mexico_ligamx (2) for 23 credits. Placed 1: Under 2.5 @ +102 (BetRivers) Equity $85.81."
+  },
+  {
+   "ts": "2026-11-26T06:00:28Z",
+   "kind": "scan",
+   "text": "Scout: icehockey_nhl (3) for 3 credits. Placed 3: Calgary Flames @ +240 (BetRivers); New Jersey Devils @ -233 (Fanatics); Under 6.5 @ +100 (Fanatics). Equity $85.81."
   }
  ],
  "learned_ids": [
@@ -24804,13 +24927,13 @@
   "0cbf3379"
  ],
  "strategist": null,
- "updated": "2026-11-26T05:45:25Z",
+ "updated": "2026-11-26T06:00:28Z",
  "stats": {
   "bets": 101,
   "won": 32,
   "lost": 67,
-  "shop_n": 41,
-  "shop_avg": 0.0737,
+  "shop_n": 44,
+  "shop_avg": 0.0719,
   "push": 2,
   "staked": 579.53,
   "profit": -170.18,
@@ -24819,7 +24942,7 @@
   "clv_n": 77,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 1,
+  "open": 4,
   "equity": 85.81
  },
  "weights": {
@@ -24835,7 +24958,7 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
   "current": {
@@ -24848,7 +24971,7 @@
     "profit": 0.35,
     "roi": 0.0159,
     "clv": 0.0245,
-    "open": 0,
+    "open": 2,
     "paused": false
    },
    "longshot": {
@@ -24872,7 +24995,7 @@
     "profit": 0.46,
     "roi": 0.046,
     "clv": 0.026,
-    "open": 1,
+    "open": 2,
     "paused": false
    }
   },
@@ -24886,7 +25009,7 @@
     "profit": 1.91,
     "roi": 0.0116,
     "clv": 0.0376,
-    "open": 0,
+    "open": 2,
     "paused": false
    },
    "longshot": {
@@ -24946,7 +25069,7 @@
     "profit": -4.54,
     "roi": -0.3027,
     "clv": 0.0072,
-    "open": 1,
+    "open": 2,
     "paused": false
    }
   }
