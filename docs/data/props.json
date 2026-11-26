@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T03:00:46Z",
+ "updated": "2026-11-26T03:12:58Z",
  "date": "2026-11-25",
  "priced_date": "2026-11-25",
  "games": [
@@ -29,7 +29,7 @@
    "away": "MIN",
    "start": "2026-11-26T00:30Z",
    "espn_id": "401909320",
-   "state": "in"
+   "state": "post"
   },
   {
    "home": "MEM",
@@ -57,7 +57,7 @@
    "away": "SAC",
    "start": "2026-11-26T03:00Z",
    "espn_id": "401909324",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "POR",
@@ -256,13 +256,13 @@
    "stat_name": "assists",
    "proj": 1.95,
    "base": 2.26,
-   "mult": 0.865,
+   "mult": 0.864,
    "minutes": 23.1,
    "status": "",
    "start": "2026-11-26T00:30Z",
    "espn_id": "401909319",
    "lean": "Under",
-   "strength": 0.145,
+   "strength": 0.1462,
    "starter": null,
    "signals": [
     {
@@ -379,7 +379,7 @@
     },
     {
      "k": "sim",
-     "v": 0.952,
+     "v": 0.953,
      "n": 168,
      "txt": "Players with his profile: -5% reb+ast vs NY (168 close comps)"
     },
@@ -523,7 +523,7 @@
    "role": "C",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 20.08,
+   "proj": 20.09,
    "base": 22.95,
    "mult": 0.875,
    "minutes": 28.2,
@@ -620,6 +620,52 @@
    ]
   },
   {
+   "pid": "4683747",
+   "name": "Jaylon Tyson",
+   "team": "CLE",
+   "opp": "NY",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.12,
+   "base": 5.84,
+   "mult": 0.876,
+   "minutes": 23.1,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909319",
+   "lean": "Under",
+   "strength": 0.1324,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.904,
+     "n": 127.8,
+     "rank": 29,
+     "txt": "NY gives shooting guards -10% reb+ast vs their norm (#2 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.922,
+     "n": 96,
+     "txt": "Players with his profile: -8% reb+ast vs NY (96 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.95,
+     "n": 7,
+     "txt": "His history vs NY: 5.6 reb+ast/g in 7 games (-5%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.922,
+     "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "5242496",
    "name": "Noa Essengue",
    "team": "CHI",
@@ -662,52 +708,6 @@
      "k": "chances",
      "v": 0.904,
      "txt": "CHA games have -10% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "4683747",
-   "name": "Jaylon Tyson",
-   "team": "CLE",
-   "opp": "NY",
-   "home": false,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 5.12,
-   "base": 5.84,
-   "mult": 0.877,
-   "minutes": 23.1,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909319",
-   "lean": "Under",
-   "strength": 0.1312,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.904,
-     "n": 127.8,
-     "rank": 29,
-     "txt": "NY gives shooting guards -10% reb+ast vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.922,
-     "n": 96,
-     "txt": "Players with his profile: -8% reb+ast vs NY (96 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.95,
-     "n": 7,
-     "txt": "His history vs NY: 5.6 reb+ast/g in 7 games (-5%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.922,
-     "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   },
@@ -845,7 +845,7 @@
     },
     {
      "k": "sim",
-     "v": 0.907,
+     "v": 0.905,
      "n": 152,
      "txt": "Players with his profile: -9% reb+ast vs HOU (152 close comps)"
     },
@@ -1002,7 +1002,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.928,
+     "v": 0.929,
      "n": 117.8,
      "rank": 28,
      "txt": "HOU gives shooting guards -7% reb+ast vs their norm (#3 toughest of 30)"
@@ -1115,8 +1115,8 @@
     {
      "k": "sim",
      "v": 1.122,
-     "n": 188,
-     "txt": "Players with his profile: +12% assists vs CHI (188 close comps)"
+     "n": 189,
+     "txt": "Players with his profile: +12% assists vs CHI (189 close comps)"
     },
     {
      "k": "h2h",
@@ -1166,7 +1166,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.917,
+     "v": 0.916,
      "n": 114.5,
      "rank": 30,
      "txt": "HOU gives small forwards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
@@ -1225,14 +1225,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.928,
+     "v": 0.929,
      "n": 117.8,
      "rank": 28,
      "txt": "HOU gives shooting guards -7% reb+ast vs their norm (#3 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.928,
+     "v": 0.929,
      "n": 141,
      "txt": "Players with his profile: -7% reb+ast vs HOU (141 close comps)"
     },
@@ -1278,7 +1278,7 @@
     },
     {
      "k": "sim",
-     "v": 0.927,
+     "v": 0.928,
      "n": 59,
      "txt": "Players with his profile: -7% pts+reb+ast vs NY (59 close comps)"
     },
@@ -1306,18 +1306,18 @@
    "stat_name": "reb+ast",
    "proj": 5.28,
    "base": 5.9,
-   "mult": 0.894,
+   "mult": 0.895,
    "minutes": 28.0,
    "status": "",
    "start": "2026-11-26T01:30Z",
    "espn_id": "401909323",
    "lean": "Under",
-   "strength": 0.112,
+   "strength": 0.1109,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.903,
+     "v": 0.902,
      "n": 114.5,
      "rank": 30,
      "txt": "HOU gives small forwards -10% reb+ast vs their norm (#1 toughest of 30)"
@@ -1691,7 +1691,7 @@
    "role": "PF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 8.07,
+   "proj": 8.08,
    "base": 8.97,
    "mult": 0.9,
    "minutes": 25.8,
@@ -1770,7 +1770,7 @@
     },
     {
      "k": "sim",
-     "v": 0.919,
+     "v": 0.917,
      "n": 25,
      "txt": "Players with his profile: -8% assists vs NY (25 close comps)"
     },
@@ -1906,6 +1906,65 @@
    ]
   },
   {
+   "pid": "4683778",
+   "name": "Jared McCain",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 4.26,
+   "base": 4.72,
+   "mult": 0.903,
+   "minutes": 29.8,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.102,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.957,
+     "n": 128.7,
+     "rank": 24,
+     "txt": "MIN gives shooting guards -4% reb+ast vs their norm (#7 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.979,
+     "n": 129,
+     "txt": "Players with his profile: -2% reb+ast vs MIN (129 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.873,
+     "n": 2,
+     "txt": "His history vs MIN: 1.0 reb+ast/g in 2 games (-13%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 5.5,
+   "side": "Over",
+   "price": 2.12,
+   "am": 112,
+   "book": "fanduel",
+   "ev": -0.0125,
+   "p_model": 0.353,
+   "p_mkt": 0.466,
+   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
+   "market": "player_rebounds_assists",
+   "nbooks": 6,
+   "at": "2026-11-26T00:01:30Z",
+   "open": 5.5
+  },
+  {
    "pid": "4683750",
    "name": "Jordan Hawkins",
    "team": "CHI",
@@ -2019,7 +2078,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.94,
+     "v": 0.941,
      "n": 54.3,
      "rank": 27,
      "txt": "HOU gives centers -6% reb+ast vs their norm (#4 toughest of 30)"
@@ -2044,63 +2103,63 @@
    ]
   },
   {
-   "pid": "4437244",
-   "name": "Jalen Green",
-   "team": "PHX",
-   "opp": "HOU",
-   "home": false,
+   "pid": "5124612",
+   "name": "VJ Edgecombe",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
    "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 6.01,
-   "base": 6.63,
-   "mult": 0.907,
-   "minutes": 27.9,
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 5.1,
+   "base": 4.62,
+   "mult": 1.102,
+   "minutes": 35.2,
    "status": "",
-   "start": "2026-11-26T01:30Z",
-   "espn_id": "401909323",
-   "lean": "Under",
-   "strength": 0.0976,
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.0971,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.928,
-     "n": 117.8,
-     "rank": 28,
-     "txt": "HOU gives shooting guards -7% reb+ast vs their norm (#3 toughest of 30)"
+     "v": 1.065,
+     "n": 121.7,
+     "rank": 4,
+     "txt": "MIA gives shooting guards +7% assists vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.912,
-     "n": 165,
-     "txt": "Players with his profile: -9% reb+ast vs HOU (165 close comps)"
+     "v": 1.046,
+     "n": 51,
+     "txt": "Players with his profile: +5% assists vs MIA (51 close comps)"
     },
     {
      "k": "h2h",
-     "v": 0.99,
-     "n": 2,
-     "txt": "His history vs HOU: 6.5 reb+ast/g in 2 games (-1%)"
+     "v": 1.068,
+     "n": 3,
+     "txt": "His history vs MIA: 4.7 assists/g in 3 games (+7%)"
     },
     {
      "k": "chances",
-     "v": 0.905,
-     "txt": "HOU games have -10% rebounds up for grabs vs the league (missed shots and extra possessions)"
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
-   "line": 5.5,
+   "line": 3.5,
    "side": "Under",
-   "price": 2.15,
-   "am": 115,
-   "book": "hardrockbet",
-   "ev": -0.0172,
-   "p_model": 0.488,
-   "p_mkt": 0.457,
-   "event_id": "60fd73164f7b0d1848f998d922155d87",
-   "market": "player_rebounds_assists",
-   "nbooks": 2,
-   "at": "2026-11-26T00:30:43Z",
-   "open": 5.5
+   "price": 2.3,
+   "am": 130,
+   "book": "fanduel",
+   "ev": -0.0201,
+   "p_model": 0.391,
+   "p_mkt": 0.426,
+   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
+   "market": "player_assists",
+   "nbooks": 4,
+   "at": "2026-11-25T21:01:11Z",
+   "open": 3.5
   },
   {
    "pid": "4576087",
@@ -2162,63 +2221,63 @@
    "open": 18.5
   },
   {
-   "pid": "5124612",
-   "name": "VJ Edgecombe",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
+   "pid": "4437244",
+   "name": "Jalen Green",
+   "team": "PHX",
+   "opp": "HOU",
+   "home": false,
    "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 5.1,
-   "base": 4.62,
-   "mult": 1.101,
-   "minutes": 35.2,
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 6.02,
+   "base": 6.63,
+   "mult": 0.908,
+   "minutes": 27.9,
    "status": "",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0962,
+   "start": "2026-11-26T01:30Z",
+   "espn_id": "401909323",
+   "lean": "Under",
+   "strength": 0.0965,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 1.065,
-     "n": 121.7,
-     "rank": 4,
-     "txt": "MIA gives shooting guards +6% assists vs their norm (#4 softest of 30)"
+     "v": 0.929,
+     "n": 117.8,
+     "rank": 28,
+     "txt": "HOU gives shooting guards -7% reb+ast vs their norm (#3 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.047,
-     "n": 51,
-     "txt": "Players with his profile: +5% assists vs MIA (51 close comps)"
+     "v": 0.912,
+     "n": 165,
+     "txt": "Players with his profile: -9% reb+ast vs HOU (165 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.068,
-     "n": 3,
-     "txt": "His history vs MIA: 4.7 assists/g in 3 games (+7%)"
+     "v": 0.99,
+     "n": 2,
+     "txt": "His history vs HOU: 6.5 reb+ast/g in 2 games (-1%)"
     },
     {
      "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+     "v": 0.905,
+     "txt": "HOU games have -10% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
-   "line": 3.5,
+   "line": 5.5,
    "side": "Under",
-   "price": 2.3,
-   "am": 130,
-   "book": "fanduel",
-   "ev": -0.0201,
-   "p_model": 0.391,
-   "p_mkt": 0.426,
-   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
-   "market": "player_assists",
-   "nbooks": 4,
-   "at": "2026-11-25T21:01:11Z",
-   "open": 3.5
+   "price": 2.15,
+   "am": 115,
+   "book": "hardrockbet",
+   "ev": -0.0172,
+   "p_model": 0.488,
+   "p_mkt": 0.457,
+   "event_id": "60fd73164f7b0d1848f998d922155d87",
+   "market": "player_rebounds_assists",
+   "nbooks": 2,
+   "at": "2026-11-26T00:30:43Z",
+   "open": 5.5
   },
   {
    "pid": "5242496",
@@ -2295,9 +2354,9 @@
     },
     {
      "k": "sim",
-     "v": 0.926,
+     "v": 0.925,
      "n": 152,
-     "txt": "Players with his profile: -7% pts+reb+ast vs HOU (152 close comps)"
+     "txt": "Players with his profile: -8% pts+reb+ast vs HOU (152 close comps)"
     },
     {
      "k": "h2h",
@@ -2334,7 +2393,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.052,
+     "v": 1.051,
      "n": 99.1,
      "rank": 4,
      "txt": "CHI gives small forwards +5% pts+reb+ast vs their norm (#4 softest of 30)"
@@ -2370,65 +2429,6 @@
    "nbooks": 6,
    "at": "2026-11-25T23:30:53Z",
    "open": 29.5
-  },
-  {
-   "pid": "4431678",
-   "name": "Tyrese Maxey",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
-   "role": "PG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 9.31,
-   "base": 8.48,
-   "mult": 1.099,
-   "minutes": 34.8,
-   "status": "",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0944,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.074,
-     "n": 65.6,
-     "rank": 4,
-     "txt": "MIA gives point guards +7% reb+ast vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.08,
-     "n": 197,
-     "txt": "Players with his profile: +8% reb+ast vs MIA (197 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.072,
-     "n": 4,
-     "txt": "His history vs MIA: 12.5 reb+ast/g in 4 games (+7%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 8.5,
-   "side": "Under",
-   "price": 2.1,
-   "am": 110,
-   "book": "hardrockbet",
-   "ev": -0.0406,
-   "p_model": 0.545,
-   "p_mkt": 0.457,
-   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
-   "market": "player_rebounds_assists",
-   "nbooks": 5,
-   "at": "2026-11-25T21:01:11Z",
-   "open": 9.5
   },
   {
    "pid": "4066328",
@@ -2490,6 +2490,65 @@
    "open": 10.5
   },
   {
+   "pid": "4431678",
+   "name": "Tyrese Maxey",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
+   "role": "PG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 9.31,
+   "base": 8.48,
+   "mult": 1.098,
+   "minutes": 34.8,
+   "status": "",
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.0935,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.073,
+     "n": 65.6,
+     "rank": 4,
+     "txt": "MIA gives point guards +7% reb+ast vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.08,
+     "n": 197,
+     "txt": "Players with his profile: +8% reb+ast vs MIA (197 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.072,
+     "n": 4,
+     "txt": "His history vs MIA: 12.5 reb+ast/g in 4 games (+7%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 8.5,
+   "side": "Under",
+   "price": 2.1,
+   "am": 110,
+   "book": "hardrockbet",
+   "ev": -0.0406,
+   "p_model": 0.545,
+   "p_mkt": 0.457,
+   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
+   "market": "player_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-25T21:01:11Z",
+   "open": 9.5
+  },
+  {
    "pid": "4278402",
    "name": "Jordan Goodwin",
    "team": "PHX",
@@ -2511,7 +2570,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.959,
+     "v": 0.96,
      "n": 117.8,
      "rank": 23,
      "txt": "HOU gives shooting guards -4% assists vs their norm (#8 toughest of 30)"
@@ -2534,6 +2593,65 @@
      "txt": "HOU games have -10% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
+  },
+  {
+   "pid": "5124612",
+   "name": "VJ Edgecombe",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 11.95,
+   "base": 10.9,
+   "mult": 1.097,
+   "minutes": 35.2,
+   "status": "",
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.0926,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.066,
+     "n": 121.7,
+     "rank": 1,
+     "txt": "MIA gives shooting guards +7% reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.054,
+     "n": 51,
+     "txt": "Players with his profile: +5% reb+ast vs MIA (51 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.01,
+     "n": 3,
+     "txt": "His history vs MIA: 9.7 reb+ast/g in 3 games (+1%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 10.5,
+   "side": "Over",
+   "price": 2.12,
+   "am": 112,
+   "book": "fanduel",
+   "ev": 0.0007,
+   "p_model": 0.557,
+   "p_mkt": 0.472,
+   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
+   "market": "player_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-25T21:01:11Z",
+   "open": 9.5
   },
   {
    "pid": "5203685",
@@ -2582,65 +2700,6 @@
    ]
   },
   {
-   "pid": "5124612",
-   "name": "VJ Edgecombe",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 11.95,
-   "base": 10.9,
-   "mult": 1.096,
-   "minutes": 35.2,
-   "status": "",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0917,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.065,
-     "n": 121.7,
-     "rank": 1,
-     "txt": "MIA gives shooting guards +7% reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.054,
-     "n": 51,
-     "txt": "Players with his profile: +5% reb+ast vs MIA (51 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.01,
-     "n": 3,
-     "txt": "His history vs MIA: 9.7 reb+ast/g in 3 games (+1%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 10.5,
-   "side": "Over",
-   "price": 2.12,
-   "am": 112,
-   "book": "fanduel",
-   "ev": 0.0007,
-   "p_model": 0.557,
-   "p_mkt": 0.472,
-   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
-   "market": "player_rebounds_assists",
-   "nbooks": 5,
-   "at": "2026-11-25T21:01:11Z",
-   "open": 9.5
-  },
-  {
    "pid": "4395651",
    "name": "Coby White",
    "team": "CHA",
@@ -2670,8 +2729,8 @@
     {
      "k": "sim",
      "v": 1.077,
-     "n": 188,
-     "txt": "Players with his profile: +8% reb+ast vs CHI (188 close comps)"
+     "n": 189,
+     "txt": "Players with his profile: +8% reb+ast vs CHI (189 close comps)"
     },
     {
      "k": "h2h",
@@ -2759,52 +2818,6 @@
    "open": 5.5
   },
   {
-   "pid": "3934723",
-   "name": "Thomas Bryant",
-   "team": "CLE",
-   "opp": "NY",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 3.97,
-   "base": 4.34,
-   "mult": 0.915,
-   "minutes": 13.5,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909319",
-   "lean": "Under",
-   "strength": 0.0888,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.938,
-     "n": 57.5,
-     "rank": 28,
-     "txt": "NY gives centers -6% reb+ast vs their norm (#3 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.945,
-     "n": 59,
-     "txt": "Players with his profile: -6% reb+ast vs NY (59 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.042,
-     "n": 6,
-     "txt": "His history vs NY: 3.0 reb+ast/g in 6 games (+4%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.922,
-     "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
    "pid": "5041951",
    "name": "Meleek Thomas",
    "team": "CLE",
@@ -2872,7 +2885,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.903,
+     "v": 0.902,
      "n": 114.5,
      "rank": 30,
      "txt": "HOU gives small forwards -10% reb+ast vs their norm (#1 toughest of 30)"
@@ -2969,6 +2982,52 @@
    "open": 13.5
   },
   {
+   "pid": "3934723",
+   "name": "Thomas Bryant",
+   "team": "CLE",
+   "opp": "NY",
+   "home": false,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 3.97,
+   "base": 4.34,
+   "mult": 0.916,
+   "minutes": 13.5,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909319",
+   "lean": "Under",
+   "strength": 0.0877,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.938,
+     "n": 57.5,
+     "rank": 28,
+     "txt": "NY gives centers -6% reb+ast vs their norm (#3 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.945,
+     "n": 59,
+     "txt": "Players with his profile: -5% reb+ast vs NY (59 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.042,
+     "n": 6,
+     "txt": "His history vs NY: 3.0 reb+ast/g in 6 games (+4%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.922,
+     "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "5101761",
    "name": "Mikel Brown Jr.",
    "team": "BKN",
@@ -2990,7 +3049,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.1,
+     "v": 1.099,
      "n": 61.7,
      "rank": 1,
      "txt": "MIL gives point guards +10% pts+reb+ast vs their norm (#1 softest of 30)"
@@ -3009,7 +3068,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -3057,8 +3116,8 @@
     {
      "k": "sim",
      "v": 0.959,
-     "n": 116,
-     "txt": "Players with his profile: -4% pts+reb+ast vs CHA (116 close comps)"
+     "n": 118,
+     "txt": "Players with his profile: -4% pts+reb+ast vs CHA (118 close comps)"
     },
     {
      "k": "h2h",
@@ -3213,7 +3272,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.944,
+     "v": 0.945,
      "n": 62.6,
      "rank": 27,
      "txt": "HOU gives point guards -6% pts+reb+ast vs their norm (#4 toughest of 30)"
@@ -3261,13 +3320,13 @@
    "stat_name": "reb+ast",
    "proj": 8.24,
    "base": 7.56,
-   "mult": 1.09,
+   "mult": 1.089,
    "minutes": 31.9,
    "status": "",
    "start": "2026-11-26T01:00Z",
    "espn_id": "401909322",
    "lean": "Over",
-   "strength": 0.0862,
+   "strength": 0.0853,
    "starter": true,
    "signals": [
     {
@@ -3291,7 +3350,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -3310,52 +3369,6 @@
    "open": 7.5
   },
   {
-   "pid": "3134916",
-   "name": "Jordan McLaughlin",
-   "team": "SA",
-   "opp": "POR",
-   "home": false,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 4.83,
-   "base": 5.26,
-   "mult": 0.918,
-   "minutes": 17.1,
-   "status": "",
-   "start": "2026-11-26T03:00Z",
-   "espn_id": "401909325",
-   "lean": "Under",
-   "strength": 0.0856,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.931,
-     "n": 120.0,
-     "rank": 27,
-     "txt": "POR gives shooting guards -7% reb+ast vs their norm (#4 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.974,
-     "n": 113,
-     "txt": "Players with his profile: -3% reb+ast vs POR (113 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.921,
-     "n": 4,
-     "txt": "His history vs POR: 0.8 reb+ast/g in 4 games (-8%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.975,
-     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
    "pid": "4576087",
    "name": "Peyton Watson",
    "team": "CLE",
@@ -3364,15 +3377,15 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 6.29,
+   "proj": 6.28,
    "base": 6.82,
-   "mult": 0.92,
+   "mult": 0.919,
    "minutes": 26.3,
    "status": "",
    "start": "2026-11-26T00:30Z",
    "espn_id": "401909319",
    "lean": "Under",
-   "strength": 0.0834,
+   "strength": 0.0845,
    "starter": true,
    "signals": [
     {
@@ -3384,7 +3397,7 @@
     },
     {
      "k": "sim",
-     "v": 0.97,
+     "v": 0.967,
      "n": 25,
      "txt": "Players with his profile: -3% reb+ast vs NY (25 close comps)"
     },
@@ -3413,6 +3426,52 @@
    "nbooks": 1,
    "at": "2026-11-26T00:01:30Z",
    "open": 6.5
+  },
+  {
+   "pid": "3134916",
+   "name": "Jordan McLaughlin",
+   "team": "SA",
+   "opp": "POR",
+   "home": false,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 4.84,
+   "base": 5.26,
+   "mult": 0.919,
+   "minutes": 17.1,
+   "status": "",
+   "start": "2026-11-26T03:00Z",
+   "espn_id": "401909325",
+   "lean": "Under",
+   "strength": 0.0845,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.932,
+     "n": 120.0,
+     "rank": 27,
+     "txt": "POR gives shooting guards -7% reb+ast vs their norm (#4 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.975,
+     "n": 113,
+     "txt": "Players with his profile: -2% reb+ast vs POR (113 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.921,
+     "n": 4,
+     "txt": "His history vs POR: 0.8 reb+ast/g in 4 games (-8%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.975,
+     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
   },
   {
    "pid": "1966",
@@ -3606,7 +3665,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -3653,7 +3712,7 @@
     },
     {
      "k": "sim",
-     "v": 0.928,
+     "v": 0.927,
      "n": 126,
      "txt": "Players with his profile: -7% assists vs HOU (126 close comps)"
     },
@@ -3771,7 +3830,7 @@
     },
     {
      "k": "sim",
-     "v": 0.925,
+     "v": 0.926,
      "n": 184,
      "txt": "Players with his profile: -7% pts+reb+ast vs SA (184 close comps)"
     },
@@ -3799,13 +3858,13 @@
    "stat_name": "assists",
    "proj": 3.19,
    "base": 2.95,
-   "mult": 1.081,
+   "mult": 1.082,
    "minutes": 28.9,
    "status": "",
    "start": "2026-11-26T01:00Z",
    "espn_id": "401909321",
    "lean": "Over",
-   "strength": 0.0779,
+   "strength": 0.0788,
    "starter": true,
    "signals": [
     {
@@ -3864,8 +3923,8 @@
     {
      "k": "sim",
      "v": 1.099,
-     "n": 188,
-     "txt": "Players with his profile: +10% pts+reb+ast vs CHI (188 close comps)"
+     "n": 189,
+     "txt": "Players with his profile: +10% pts+reb+ast vs CHI (189 close comps)"
     },
     {
      "k": "h2h",
@@ -3961,7 +4020,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.917,
+     "v": 0.916,
      "n": 114.5,
      "rank": 30,
      "txt": "HOU gives small forwards -8% pts+reb+ast vs their norm (#1 toughest of 30)"
@@ -4020,7 +4079,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.944,
+     "v": 0.945,
      "n": 62.6,
      "rank": 27,
      "txt": "HOU gives point guards -6% pts+reb+ast vs their norm (#4 toughest of 30)"
@@ -4088,7 +4147,7 @@
      "k": "sim",
      "v": 0.945,
      "n": 35,
-     "txt": "Players with his profile: -5% pts+reb+ast vs HOU (35 close comps)"
+     "txt": "Players with his profile: -6% pts+reb+ast vs HOU (35 close comps)"
     },
     {
      "k": "h2h",
@@ -4178,7 +4237,7 @@
     },
     {
      "k": "sim",
-     "v": 0.969,
+     "v": 0.97,
      "n": 168,
      "txt": "Players with his profile: -3% assists vs NY (168 close comps)"
     },
@@ -4329,7 +4388,7 @@
     },
     {
      "k": "sim",
-     "v": 1.033,
+     "v": 1.032,
      "n": 110,
      "txt": "Players with his profile: +3% reb+ast vs PHI (110 close comps)"
     },
@@ -4368,7 +4427,7 @@
    "role": "C",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 12.38,
+   "proj": 12.37,
    "base": 11.48,
    "mult": 1.078,
    "minutes": 35.8,
@@ -4388,7 +4447,7 @@
     },
     {
      "k": "sim",
-     "v": 1.045,
+     "v": 1.043,
      "n": 42,
      "txt": "Players with his profile: +4% reb+ast vs CHI (42 close comps)"
     },
@@ -4488,12 +4547,12 @@
      "k": "dvp",
      "v": 0.938,
      "n": 85.7,
-     "rank": 29,
-     "txt": "NY gives point guards -6% pts+reb+ast vs their norm (#2 toughest of 30)"
+     "rank": 30,
+     "txt": "NY gives point guards -6% pts+reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.959,
+     "v": 0.96,
      "n": 168,
      "txt": "Players with his profile: -4% pts+reb+ast vs NY (168 close comps)"
     },
@@ -4522,65 +4581,6 @@
    "nbooks": 5,
    "at": "2026-11-26T00:01:30Z",
    "open": 28.5
-  },
-  {
-   "pid": "4900671",
-   "name": "Ajay Mitchell",
-   "team": "OKC",
-   "opp": "MIN",
-   "home": true,
-   "role": "SG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.04,
-   "base": 1.12,
-   "mult": 0.928,
-   "minutes": 29.8,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909320",
-   "lean": "Under",
-   "strength": 0.0747,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.881,
-     "n": 124.0,
-     "rank": 30,
-     "txt": "MIN gives shooting guards -12% threes vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.927,
-     "n": 137,
-     "txt": "Players with his profile: -7% threes vs MIN (137 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.919,
-     "n": 3,
-     "txt": "His history vs MIN: 0.3 threes/g in 3 games (-8%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 1.5,
-   "side": "Over",
-   "price": 3.0,
-   "am": 200,
-   "book": "fanduel",
-   "ev": -0.0087,
-   "p_model": 0.271,
-   "p_mkt": 0.315,
-   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
-   "market": "player_threes",
-   "nbooks": 1,
-   "at": "2026-11-26T00:01:30Z",
-   "open": 0.5
   },
   {
    "pid": "4278104",
@@ -4623,7 +4623,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -4642,65 +4642,6 @@
    "open": 9.5
   },
   {
-   "pid": "4683778",
-   "name": "Jared McCain",
-   "team": "OKC",
-   "opp": "MIN",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 4.87,
-   "base": 5.25,
-   "mult": 0.929,
-   "minutes": 31.9,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909320",
-   "lean": "Under",
-   "strength": 0.0736,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.962,
-     "n": 124.0,
-     "rank": 22,
-     "txt": "MIN gives shooting guards -4% reb+ast vs their norm (#9 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.98,
-     "n": 130,
-     "txt": "Players with his profile: -2% reb+ast vs MIN (130 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.948,
-     "n": 1,
-     "txt": "His history vs MIN: 0.0 reb+ast/g in 1 games (-5%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 5.5,
-   "side": "Over",
-   "price": 2.12,
-   "am": 112,
-   "book": "fanduel",
-   "ev": -0.0125,
-   "p_model": 0.353,
-   "p_mkt": 0.466,
-   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
-   "market": "player_rebounds_assists",
-   "nbooks": 6,
-   "at": "2026-11-26T00:01:30Z",
-   "open": 5.5
-  },
-  {
    "pid": "4601023",
    "name": "Oso Ighodaro",
    "team": "PHX",
@@ -4709,7 +4650,7 @@
    "role": "PF",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 2.96,
+   "proj": 2.97,
    "base": 3.19,
    "mult": 0.929,
    "minutes": 25.8,
@@ -4722,14 +4663,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.997,
+     "v": 0.996,
      "n": 31.9,
      "rank": 12,
      "txt": "HOU gives power forwards -0% assists vs their norm (#12 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.939,
+     "v": 0.94,
      "n": 155,
      "txt": "Players with his profile: -6% assists vs HOU (155 close comps)"
     },
@@ -4760,6 +4701,52 @@
    "open": 2.5
   },
   {
+   "pid": "5124612",
+   "name": "VJ Edgecombe",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 27.92,
+   "base": 25.96,
+   "mult": 1.076,
+   "minutes": 35.2,
+   "status": "",
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.0733,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.067,
+     "n": 121.7,
+     "rank": 1,
+     "txt": "MIA gives shooting guards +7% pts+reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.046,
+     "n": 51,
+     "txt": "Players with his profile: +5% pts+reb+ast vs MIA (51 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.032,
+     "n": 3,
+     "txt": "His history vs MIA: 26.3 pts+reb+ast/g in 3 games (+3%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "2581018",
    "name": "Kentavious Caldwell-Pope",
    "team": "PHI",
@@ -4768,7 +4755,7 @@
    "role": "SG",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 5.34,
+   "proj": 5.35,
    "base": 4.97,
    "mult": 1.076,
    "minutes": 25.6,
@@ -4781,16 +4768,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.065,
+     "v": 1.066,
      "n": 121.7,
      "rank": 1,
      "txt": "MIA gives shooting guards +7% reb+ast vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.051,
-     "n": 152,
-     "txt": "Players with his profile: +5% reb+ast vs MIA (152 close comps)"
+     "v": 1.052,
+     "n": 153,
+     "txt": "Players with his profile: +5% reb+ast vs MIA (153 close comps)"
     },
     {
      "k": "h2h",
@@ -4802,6 +4789,52 @@
      "k": "chances",
      "v": 1.049,
      "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "5105800",
+   "name": "Josh Dix",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 6.29,
+   "base": 6.76,
+   "mult": 0.93,
+   "minutes": 19.8,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.0726,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.948,
+     "n": 128.7,
+     "rank": 25,
+     "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.923,
+     "n": 203,
+     "txt": "Players with his profile: -8% pts+reb+ast vs MIN (203 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.0,
+     "n": 0,
+     "txt": "No history vs MIN yet"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   },
@@ -4852,111 +4885,6 @@
    ]
   },
   {
-   "pid": "5124612",
-   "name": "VJ Edgecombe",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 27.92,
-   "base": 25.96,
-   "mult": 1.075,
-   "minutes": 35.2,
-   "status": "",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0723,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.067,
-     "n": 121.7,
-     "rank": 1,
-     "txt": "MIA gives shooting guards +7% pts+reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.046,
-     "n": 51,
-     "txt": "Players with his profile: +5% pts+reb+ast vs MIA (51 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.032,
-     "n": 3,
-     "txt": "His history vs MIA: 26.3 pts+reb+ast/g in 3 games (+3%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "4278104",
-   "name": "Michael Porter Jr.",
-   "team": "BKN",
-   "opp": "MIL",
-   "home": false,
-   "role": "SF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 3.2,
-   "base": 2.98,
-   "mult": 1.075,
-   "minutes": 33.2,
-   "status": "",
-   "start": "2026-11-26T01:00Z",
-   "espn_id": "401909322",
-   "lean": "Over",
-   "strength": 0.0723,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.105,
-     "n": 103.7,
-     "rank": 1,
-     "txt": "MIL gives small forwards +11% threes vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.118,
-     "n": 120,
-     "txt": "Players with his profile: +12% threes vs MIL (120 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.995,
-     "n": 1,
-     "txt": "His history vs MIL: 2.0 threes/g in 1 games (-0%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.04,
-     "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 3.5,
-   "side": "Over",
-   "price": 2.36,
-   "am": 136,
-   "book": "draftkings",
-   "ev": 0.0031,
-   "p_model": 0.343,
-   "p_mkt": 0.408,
-   "event_id": "9e203cbbc6d37b7b0d9c08cb89fe0b28",
-   "market": "player_threes",
-   "nbooks": 7,
-   "at": "2026-11-26T00:30:43Z",
-   "open": 3.5
-  },
-  {
    "pid": "3136193",
    "name": "Devin Booker",
    "team": "PHX",
@@ -4967,13 +4895,13 @@
    "stat_name": "assists",
    "proj": 5.21,
    "base": 5.6,
-   "mult": 0.931,
+   "mult": 0.93,
    "minutes": 35.4,
    "status": "",
    "start": "2026-11-26T01:30Z",
    "espn_id": "401909323",
    "lean": "Under",
-   "strength": 0.0715,
+   "strength": 0.0726,
    "starter": true,
    "signals": [
     {
@@ -4985,7 +4913,7 @@
     },
     {
      "k": "sim",
-     "v": 0.955,
+     "v": 0.954,
      "n": 191,
      "txt": "Players with his profile: -5% assists vs HOU (191 close comps)"
     },
@@ -5016,6 +4944,65 @@
    "open": 4.5
   },
   {
+   "pid": "4278104",
+   "name": "Michael Porter Jr.",
+   "team": "BKN",
+   "opp": "MIL",
+   "home": false,
+   "role": "SF",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 3.2,
+   "base": 2.98,
+   "mult": 1.075,
+   "minutes": 33.2,
+   "status": "",
+   "start": "2026-11-26T01:00Z",
+   "espn_id": "401909322",
+   "lean": "Over",
+   "strength": 0.0723,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.105,
+     "n": 103.7,
+     "rank": 1,
+     "txt": "MIL gives small forwards +10% threes vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.118,
+     "n": 120,
+     "txt": "Players with his profile: +12% threes vs MIL (120 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.995,
+     "n": 1,
+     "txt": "His history vs MIL: 2.0 threes/g in 1 games (-0%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.039,
+     "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 3.5,
+   "side": "Over",
+   "price": 2.36,
+   "am": 136,
+   "book": "draftkings",
+   "ev": 0.0031,
+   "p_model": 0.343,
+   "p_mkt": 0.408,
+   "event_id": "9e203cbbc6d37b7b0d9c08cb89fe0b28",
+   "market": "player_threes",
+   "nbooks": 7,
+   "at": "2026-11-26T00:30:43Z",
+   "open": 3.5
+  },
+  {
    "pid": "4437244",
    "name": "Jalen Green",
    "team": "PHX",
@@ -5039,12 +5026,12 @@
      "k": "dvp",
      "v": 0.968,
      "n": 117.8,
-     "rank": 18,
-     "txt": "HOU gives shooting guards -3% threes vs their norm (#13 toughest of 30)"
+     "rank": 19,
+     "txt": "HOU gives shooting guards -3% threes vs their norm (#12 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.95,
+     "v": 0.951,
      "n": 165,
      "txt": "Players with his profile: -5% threes vs HOU (165 close comps)"
     },
@@ -5070,7 +5057,7 @@
    "role": "PG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 2.58,
+   "proj": 2.57,
    "base": 2.4,
    "mult": 1.074,
    "minutes": 34.8,
@@ -5090,7 +5077,7 @@
     },
     {
      "k": "sim",
-     "v": 1.103,
+     "v": 1.102,
      "n": 197,
      "txt": "Players with his profile: +10% threes vs MIA (197 close comps)"
     },
@@ -5106,6 +5093,65 @@
      "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
+  },
+  {
+   "pid": "3917376",
+   "name": "Jaylen Brown",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
+   "role": "SG",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 3.18,
+   "base": 2.97,
+   "mult": 1.074,
+   "minutes": 26.8,
+   "status": "Day-To-Day",
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.0714,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.065,
+     "n": 121.7,
+     "rank": 4,
+     "txt": "MIA gives shooting guards +7% assists vs their norm (#4 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.1,
+     "n": 171,
+     "txt": "Players with his profile: +10% assists vs MIA (171 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.939,
+     "n": 5,
+     "txt": "His history vs MIA: 3.4 assists/g in 5 games (-6%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 3.5,
+   "side": "Over",
+   "price": 1.95,
+   "am": -105,
+   "book": "betmgm",
+   "ev": -0.0269,
+   "p_model": 0.491,
+   "p_mkt": 0.499,
+   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
+   "market": "player_assists",
+   "nbooks": 7,
+   "at": "2026-11-25T21:01:11Z",
+   "open": 3.5
   },
   {
    "pid": "4433287",
@@ -5136,7 +5182,7 @@
     },
     {
      "k": "sim",
-     "v": 1.126,
+     "v": 1.125,
      "n": 144,
      "txt": "Players with his profile: +13% assists vs CHI (144 close comps)"
     },
@@ -5266,69 +5312,10 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
-  },
-  {
-   "pid": "3917376",
-   "name": "Jaylen Brown",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
-   "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 3.18,
-   "base": 2.97,
-   "mult": 1.073,
-   "minutes": 26.8,
-   "status": "Day-To-Day",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0705,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.065,
-     "n": 121.7,
-     "rank": 4,
-     "txt": "MIA gives shooting guards +6% assists vs their norm (#4 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.101,
-     "n": 172,
-     "txt": "Players with his profile: +10% assists vs MIA (172 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.939,
-     "n": 5,
-     "txt": "His history vs MIA: 3.4 assists/g in 5 games (-6%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 3.5,
-   "side": "Over",
-   "price": 1.95,
-   "am": -105,
-   "book": "betmgm",
-   "ev": -0.0269,
-   "p_model": 0.491,
-   "p_mkt": 0.499,
-   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
-   "market": "player_assists",
-   "nbooks": 7,
-   "at": "2026-11-25T21:01:11Z",
-   "open": 3.5
   },
   {
    "pid": "3934672",
@@ -5359,9 +5346,9 @@
     },
     {
      "k": "sim",
-     "v": 1.068,
-     "n": 213,
-     "txt": "Players with his profile: +7% assists vs CLE (213 close comps)"
+     "v": 1.069,
+     "n": 214,
+     "txt": "Players with his profile: +7% assists vs CLE (214 close comps)"
     },
     {
      "k": "h2h",
@@ -5436,6 +5423,65 @@
    ]
   },
   {
+   "pid": "4432194",
+   "name": "Day'Ron Sharpe",
+   "team": "BKN",
+   "opp": "MIL",
+   "home": false,
+   "role": "C",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 11.92,
+   "base": 11.13,
+   "mult": 1.072,
+   "minutes": 23.8,
+   "status": "",
+   "start": "2026-11-26T01:00Z",
+   "espn_id": "401909322",
+   "lean": "Over",
+   "strength": 0.0695,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.04,
+     "n": 50.6,
+     "rank": 12,
+     "txt": "MIL gives centers +4% reb+ast vs their norm (#12 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.051,
+     "n": 92,
+     "txt": "Players with his profile: +5% reb+ast vs MIL (92 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.014,
+     "n": 2,
+     "txt": "His history vs MIL: 11.0 reb+ast/g in 2 games (+1%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.039,
+     "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 11.5,
+   "side": "Over",
+   "price": 1.74,
+   "am": -135,
+   "book": "draftkings",
+   "ev": -0.0631,
+   "p_model": 0.326,
+   "p_mkt": 0.538,
+   "event_id": "9e203cbbc6d37b7b0d9c08cb89fe0b28",
+   "market": "player_rebounds_assists",
+   "nbooks": 1,
+   "at": "2026-11-26T00:30:43Z",
+   "open": 12.5
+  },
+  {
    "pid": "5175643",
    "name": "Egor Demin",
    "team": "BKN",
@@ -5464,7 +5510,7 @@
     },
     {
      "k": "sim",
-     "v": 1.143,
+     "v": 1.144,
      "n": 89,
      "txt": "Players with his profile: +14% threes vs MIL (89 close comps)"
     },
@@ -5476,7 +5522,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -5554,65 +5600,6 @@
    "open": 4.5
   },
   {
-   "pid": "4432194",
-   "name": "Day'Ron Sharpe",
-   "team": "BKN",
-   "opp": "MIL",
-   "home": false,
-   "role": "C",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 11.92,
-   "base": 11.13,
-   "mult": 1.071,
-   "minutes": 23.8,
-   "status": "",
-   "start": "2026-11-26T01:00Z",
-   "espn_id": "401909322",
-   "lean": "Over",
-   "strength": 0.0686,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.04,
-     "n": 50.6,
-     "rank": 12,
-     "txt": "MIL gives centers +4% reb+ast vs their norm (#12 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.051,
-     "n": 92,
-     "txt": "Players with his profile: +5% reb+ast vs MIL (92 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.014,
-     "n": 2,
-     "txt": "His history vs MIL: 11.0 reb+ast/g in 2 games (+1%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.04,
-     "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 11.5,
-   "side": "Over",
-   "price": 1.74,
-   "am": -135,
-   "book": "draftkings",
-   "ev": -0.0631,
-   "p_model": 0.326,
-   "p_mkt": 0.538,
-   "event_id": "9e203cbbc6d37b7b0d9c08cb89fe0b28",
-   "market": "player_rebounds_assists",
-   "nbooks": 1,
-   "at": "2026-11-26T00:30:43Z",
-   "open": 12.5
-  },
-  {
    "pid": "5175643",
    "name": "Egor Demin",
    "team": "BKN",
@@ -5637,7 +5624,7 @@
      "v": 1.045,
      "n": 119.3,
      "rank": 4,
-     "txt": "MIL gives shooting guards +4% pts+reb+ast vs their norm (#4 softest of 30)"
+     "txt": "MIL gives shooting guards +5% pts+reb+ast vs their norm (#4 softest of 30)"
     },
     {
      "k": "sim",
@@ -5653,7 +5640,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -5700,7 +5687,7 @@
     },
     {
      "k": "sim",
-     "v": 1.101,
+     "v": 1.1,
      "n": 139,
      "txt": "Players with his profile: +10% assists vs MIL (139 close comps)"
     },
@@ -5712,7 +5699,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -5731,18 +5718,18 @@
    "open": 4.5
   },
   {
-   "pid": "5105800",
-   "name": "Josh Dix",
+   "pid": "4683778",
+   "name": "Jared McCain",
    "team": "OKC",
    "opp": "MIN",
    "home": true,
    "role": "SG",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 6.46,
-   "base": 6.92,
+   "proj": 18.28,
+   "base": 19.58,
    "mult": 0.934,
-   "minutes": 20.2,
+   "minutes": 29.8,
    "status": "",
    "start": "2026-11-26T00:30Z",
    "espn_id": "401909320",
@@ -5752,29 +5739,42 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.952,
-     "n": 124.0,
-     "rank": 24,
-     "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#7 toughest of 30)"
+     "v": 0.948,
+     "n": 128.7,
+     "rank": 25,
+     "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.928,
-     "n": 200,
-     "txt": "Players with his profile: -7% pts+reb+ast vs MIN (200 close comps)"
+     "v": 0.963,
+     "n": 129,
+     "txt": "Players with his profile: -4% pts+reb+ast vs MIN (129 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs MIN yet"
+     "v": 0.951,
+     "n": 2,
+     "txt": "His history vs MIN: 13.0 pts+reb+ast/g in 2 games (-5%)"
     },
     {
      "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
-   ]
+   ],
+   "line": 20.5,
+   "side": "Over",
+   "price": 1.9,
+   "am": -111,
+   "book": "betmgm",
+   "ev": -0.0398,
+   "p_model": 0.502,
+   "p_mkt": 0.505,
+   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
+   "market": "player_points_rebounds_assists",
+   "nbooks": 5,
+   "at": "2026-11-26T00:01:30Z",
+   "open": 20.5
   },
   {
    "pid": "3917376",
@@ -5806,8 +5806,8 @@
     {
      "k": "sim",
      "v": 1.07,
-     "n": 172,
-     "txt": "Players with his profile: +7% pts+reb+ast vs MIA (172 close comps)"
+     "n": 171,
+     "txt": "Players with his profile: +7% pts+reb+ast vs MIA (171 close comps)"
     },
     {
      "k": "h2h",
@@ -5863,7 +5863,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -5880,65 +5880,6 @@
    "nbooks": 7,
    "at": "2026-11-26T00:30:43Z",
    "open": 2.5
-  },
-  {
-   "pid": "3064514",
-   "name": "Julius Randle",
-   "team": "BKN",
-   "opp": "MIL",
-   "home": false,
-   "role": "SF",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 12.24,
-   "base": 11.45,
-   "mult": 1.07,
-   "minutes": 36.7,
-   "status": "",
-   "start": "2026-11-26T01:00Z",
-   "espn_id": "401909322",
-   "lean": "Over",
-   "strength": 0.0677,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.041,
-     "n": 103.7,
-     "rank": 8,
-     "txt": "MIL gives small forwards +4% reb+ast vs their norm (#8 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.077,
-     "n": 139,
-     "txt": "Players with his profile: +8% reb+ast vs MIL (139 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.013,
-     "n": 2,
-     "txt": "His history vs MIL: 11.5 reb+ast/g in 2 games (+1%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.04,
-     "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 11.5,
-   "side": "Under",
-   "price": 1.85,
-   "am": -118,
-   "book": "betmgm",
-   "ev": -0.0192,
-   "p_model": 0.543,
-   "p_mkt": 0.53,
-   "event_id": "9e203cbbc6d37b7b0d9c08cb89fe0b28",
-   "market": "player_rebounds_assists",
-   "nbooks": 6,
-   "at": "2026-11-26T00:30:43Z",
-   "open": 11.5
   },
   {
    "pid": "4397040",
@@ -5970,8 +5911,8 @@
     {
      "k": "sim",
      "v": 1.116,
-     "n": 137,
-     "txt": "Players with his profile: +12% assists vs SAC (137 close comps)"
+     "n": 136,
+     "txt": "Players with his profile: +12% assists vs SAC (136 close comps)"
     },
     {
      "k": "h2h",
@@ -6010,8 +5951,8 @@
      "k": "dvp",
      "v": 0.938,
      "n": 85.7,
-     "rank": 29,
-     "txt": "NY gives point guards -6% pts+reb+ast vs their norm (#2 toughest of 30)"
+     "rank": 30,
+     "txt": "NY gives point guards -6% pts+reb+ast vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
@@ -6046,6 +5987,157 @@
    "open": 33.5
   },
   {
+   "pid": "4351851",
+   "name": "Anfernee Simons",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 14.3,
+   "base": 13.37,
+   "mult": 1.069,
+   "minutes": 20.6,
+   "status": "",
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.0667,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.067,
+     "n": 121.7,
+     "rank": 1,
+     "txt": "MIA gives shooting guards +7% pts+reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.076,
+     "n": 130,
+     "txt": "Players with his profile: +8% pts+reb+ast vs MIA (130 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.034,
+     "n": 3,
+     "txt": "His history vs MIA: 24.7 pts+reb+ast/g in 3 games (+3%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "3064514",
+   "name": "Julius Randle",
+   "team": "BKN",
+   "opp": "MIL",
+   "home": false,
+   "role": "SF",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 12.24,
+   "base": 11.45,
+   "mult": 1.069,
+   "minutes": 36.7,
+   "status": "",
+   "start": "2026-11-26T01:00Z",
+   "espn_id": "401909322",
+   "lean": "Over",
+   "strength": 0.0667,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.041,
+     "n": 103.7,
+     "rank": 8,
+     "txt": "MIL gives small forwards +4% reb+ast vs their norm (#8 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.076,
+     "n": 139,
+     "txt": "Players with his profile: +8% reb+ast vs MIL (139 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.013,
+     "n": 2,
+     "txt": "His history vs MIL: 11.5 reb+ast/g in 2 games (+1%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.039,
+     "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 11.5,
+   "side": "Under",
+   "price": 1.85,
+   "am": -118,
+   "book": "betmgm",
+   "ev": -0.0192,
+   "p_model": 0.543,
+   "p_mkt": 0.53,
+   "event_id": "9e203cbbc6d37b7b0d9c08cb89fe0b28",
+   "market": "player_rebounds_assists",
+   "nbooks": 6,
+   "at": "2026-11-26T00:30:43Z",
+   "open": 11.5
+  },
+  {
+   "pid": "2991350",
+   "name": "Alex Caruso",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 5.21,
+   "base": 5.56,
+   "mult": 0.936,
+   "minutes": 20.3,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.0661,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.957,
+     "n": 128.7,
+     "rank": 24,
+     "txt": "MIN gives shooting guards -4% reb+ast vs their norm (#7 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.952,
+     "n": 140,
+     "txt": "Players with his profile: -5% reb+ast vs MIN (140 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.922,
+     "n": 4,
+     "txt": "His history vs MIN: 5.5 reb+ast/g in 4 games (-8%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "4437244",
    "name": "Jalen Green",
    "team": "PHX",
@@ -6056,18 +6148,18 @@
    "stat_name": "assists",
    "proj": 2.74,
    "base": 2.93,
-   "mult": 0.935,
+   "mult": 0.936,
    "minutes": 27.9,
    "status": "",
    "start": "2026-11-26T01:30Z",
    "espn_id": "401909323",
    "lean": "Under",
-   "strength": 0.0672,
+   "strength": 0.0661,
    "starter": true,
    "signals": [
     {
      "k": "dvp",
-     "v": 0.959,
+     "v": 0.96,
      "n": 117.8,
      "rank": 23,
      "txt": "HOU gives shooting guards -4% assists vs their norm (#8 toughest of 30)"
@@ -6105,52 +6197,6 @@
    "open": 2.5
   },
   {
-   "pid": "4351851",
-   "name": "Anfernee Simons",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 14.29,
-   "base": 13.37,
-   "mult": 1.069,
-   "minutes": 20.6,
-   "status": "",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0667,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.067,
-     "n": 121.7,
-     "rank": 1,
-     "txt": "MIA gives shooting guards +7% pts+reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.076,
-     "n": 131,
-     "txt": "Players with his profile: +8% pts+reb+ast vs MIA (131 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.034,
-     "n": 3,
-     "txt": "His history vs MIA: 24.7 pts+reb+ast/g in 3 games (+3%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
    "pid": "4432446",
    "name": "Jabari Walker",
    "team": "PHI",
@@ -6180,8 +6226,8 @@
     {
      "k": "sim",
      "v": 1.063,
-     "n": 113,
-     "txt": "Players with his profile: +6% reb+ast vs MIA (113 close comps)"
+     "n": 114,
+     "txt": "Players with his profile: +6% reb+ast vs MIA (114 close comps)"
     },
     {
      "k": "h2h",
@@ -6256,111 +6302,6 @@
    ]
   },
   {
-   "pid": "3133626",
-   "name": "Kenrich Williams",
-   "team": "OKC",
-   "opp": "MIN",
-   "home": true,
-   "role": "SG",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 1.64,
-   "base": 1.74,
-   "mult": 0.937,
-   "minutes": 26.4,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909320",
-   "lean": "Under",
-   "strength": 0.0651,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.881,
-     "n": 124.0,
-     "rank": 30,
-     "txt": "MIN gives shooting guards -12% threes vs their norm (#1 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.909,
-     "n": 95,
-     "txt": "Players with his profile: -9% threes vs MIN (95 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.982,
-     "n": 3,
-     "txt": "His history vs MIN: 0.3 threes/g in 3 games (-2%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 1.5,
-   "side": "Over",
-   "price": 2.53,
-   "am": 153,
-   "book": "draftkings",
-   "ev": 0.0344,
-   "p_model": 0.462,
-   "p_mkt": 0.392,
-   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
-   "market": "player_threes",
-   "nbooks": 7,
-   "at": "2026-11-26T00:01:30Z",
-   "open": 1.5
-  },
-  {
-   "pid": "3134916",
-   "name": "Jordan McLaughlin",
-   "team": "SA",
-   "opp": "POR",
-   "home": false,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 9.29,
-   "base": 9.92,
-   "mult": 0.937,
-   "minutes": 17.1,
-   "status": "",
-   "start": "2026-11-26T03:00Z",
-   "espn_id": "401909325",
-   "lean": "Under",
-   "strength": 0.0651,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.935,
-     "n": 120.0,
-     "rank": 27,
-     "txt": "POR gives shooting guards -6% pts+reb+ast vs their norm (#4 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.954,
-     "n": 113,
-     "txt": "Players with his profile: -5% pts+reb+ast vs POR (113 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.954,
-     "n": 4,
-     "txt": "His history vs POR: 2.5 pts+reb+ast/g in 4 games (-5%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.975,
-     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
    "pid": "5060701",
    "name": "Christian Anderson",
    "team": "CHA",
@@ -6390,8 +6331,8 @@
     {
      "k": "sim",
      "v": 1.068,
-     "n": 111,
-     "txt": "Players with his profile: +7% assists vs CHI (111 close comps)"
+     "n": 107,
+     "txt": "Players with his profile: +7% assists vs CHI (107 close comps)"
     },
     {
      "k": "h2h",
@@ -6418,6 +6359,144 @@
    "nbooks": 7,
    "at": "2026-11-25T23:30:53Z",
    "open": 2.5
+  },
+  {
+   "pid": "4702384",
+   "name": "Nique Clifford",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 7.59,
+   "base": 8.08,
+   "mult": 0.938,
+   "minutes": 14.9,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.064,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.948,
+     "n": 128.7,
+     "rank": 25,
+     "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.933,
+     "n": 162,
+     "txt": "Players with his profile: -7% pts+reb+ast vs MIN (162 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.934,
+     "n": 5,
+     "txt": "His history vs MIN: 6.6 pts+reb+ast/g in 5 games (-7%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "5105800",
+   "name": "Josh Dix",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 3.18,
+   "base": 3.39,
+   "mult": 0.938,
+   "minutes": 19.8,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.064,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.957,
+     "n": 128.7,
+     "rank": 24,
+     "txt": "MIN gives shooting guards -4% reb+ast vs their norm (#7 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.926,
+     "n": 203,
+     "txt": "Players with his profile: -7% reb+ast vs MIN (203 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.0,
+     "n": 0,
+     "txt": "No history vs MIN yet"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
+   "pid": "3134916",
+   "name": "Jordan McLaughlin",
+   "team": "SA",
+   "opp": "POR",
+   "home": false,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 9.3,
+   "base": 9.92,
+   "mult": 0.938,
+   "minutes": 17.1,
+   "status": "",
+   "start": "2026-11-26T03:00Z",
+   "espn_id": "401909325",
+   "lean": "Under",
+   "strength": 0.064,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.937,
+     "n": 120.0,
+     "rank": 27,
+     "txt": "POR gives shooting guards -6% pts+reb+ast vs their norm (#4 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.955,
+     "n": 113,
+     "txt": "Players with his profile: -4% pts+reb+ast vs POR (113 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.954,
+     "n": 4,
+     "txt": "His history vs POR: 2.5 pts+reb+ast/g in 4 games (-5%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.975,
+     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
   },
   {
    "pid": "4278104",
@@ -6460,7 +6539,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -6489,13 +6568,13 @@
    "stat_name": "reb+ast",
    "proj": 16.41,
    "base": 15.42,
-   "mult": 1.064,
+   "mult": 1.065,
    "minutes": 35.9,
    "status": "",
    "start": "2026-11-26T00:00Z",
    "espn_id": "401909318",
    "lean": "Over",
-   "strength": 0.062,
+   "strength": 0.063,
    "starter": true,
    "signals": [
     {
@@ -6536,6 +6615,65 @@
    "nbooks": 4,
    "at": "2026-11-25T23:30:53Z",
    "open": 12.5
+  },
+  {
+   "pid": "3917376",
+   "name": "Jaylen Brown",
+   "team": "PHI",
+   "opp": "MIA",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 7.91,
+   "base": 7.44,
+   "mult": 1.064,
+   "minutes": 26.8,
+   "status": "Day-To-Day",
+   "start": "2026-11-25T22:00Z",
+   "espn_id": "401909317",
+   "lean": "Over",
+   "strength": 0.062,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.066,
+     "n": 121.7,
+     "rank": 1,
+     "txt": "MIA gives shooting guards +7% reb+ast vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.089,
+     "n": 171,
+     "txt": "Players with his profile: +9% reb+ast vs MIA (171 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.946,
+     "n": 5,
+     "txt": "His history vs MIA: 8.8 reb+ast/g in 5 games (-5%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.049,
+     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 9.5,
+   "side": "Over",
+   "price": 1.87,
+   "am": -115,
+   "book": "betmgm",
+   "ev": -0.0052,
+   "p_model": 0.453,
+   "p_mkt": 0.532,
+   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
+   "market": "player_rebounds_assists",
+   "nbooks": 3,
+   "at": "2026-11-25T21:01:11Z",
+   "open": 9.5
   },
   {
    "pid": "5281370",
@@ -6584,6 +6722,65 @@
    ]
   },
   {
+   "pid": "3136196",
+   "name": "Trey Lyles",
+   "team": "MIN",
+   "opp": "OKC",
+   "home": false,
+   "role": "SF",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.3,
+   "base": 1.22,
+   "mult": 1.064,
+   "minutes": 20.5,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Over",
+   "strength": 0.062,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.067,
+     "n": 123.8,
+     "rank": 3,
+     "txt": "OKC gives small forwards +7% threes vs their norm (#3 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.134,
+     "n": 112,
+     "txt": "Players with his profile: +13% threes vs OKC (112 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.097,
+     "n": 1,
+     "txt": "His history vs OKC: 3.0 threes/g in 1 games (+10%)"
+    },
+    {
+     "k": "chances",
+     "v": 1.027,
+     "txt": "OKC games have +3% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 0.5,
+   "side": "Over",
+   "price": 1.54,
+   "am": -185,
+   "book": "betrivers",
+   "ev": -0.0293,
+   "p_model": 0.596,
+   "p_mkt": 0.615,
+   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
+   "market": "player_threes",
+   "nbooks": 3,
+   "at": "2026-11-26T00:01:30Z",
+   "open": 0.5
+  },
+  {
    "pid": "4432848",
    "name": "Jaime Jaquez Jr.",
    "team": "MIL",
@@ -6605,7 +6802,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.088,
+     "v": 1.089,
      "n": 98.7,
      "rank": 2,
      "txt": "BKN gives small forwards +9% assists vs their norm (#2 softest of 30)"
@@ -6613,8 +6810,8 @@
     {
      "k": "sim",
      "v": 1.119,
-     "n": 85,
-     "txt": "Players with his profile: +12% assists vs BKN (85 close comps)"
+     "n": 81,
+     "txt": "Players with his profile: +12% assists vs BKN (81 close comps)"
     },
     {
      "k": "h2h",
@@ -6702,6 +6899,52 @@
    "open": 4.5
   },
   {
+   "pid": "5241364",
+   "name": "Bennett Stirtz",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "ra",
+   "stat_name": "reb+ast",
+   "proj": 4.38,
+   "base": 4.66,
+   "mult": 0.94,
+   "minutes": 25.4,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.0619,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.957,
+     "n": 128.7,
+     "rank": 24,
+     "txt": "MIN gives shooting guards -4% reb+ast vs their norm (#7 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.937,
+     "n": 166,
+     "txt": "Players with his profile: -6% reb+ast vs MIN (166 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.979,
+     "n": 1,
+     "txt": "His history vs MIN: 3.0 reb+ast/g in 1 games (-2%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "3995",
    "name": "Jrue Holiday",
    "team": "POR",
@@ -6725,8 +6968,8 @@
      "k": "dvp",
      "v": 0.978,
      "n": 72.4,
-     "rank": 25,
-     "txt": "SA gives point guards -2% reb+ast vs their norm (#6 toughest of 30)"
+     "rank": 24,
+     "txt": "SA gives point guards -2% reb+ast vs their norm (#7 toughest of 30)"
     },
     {
      "k": "sim",
@@ -6746,65 +6989,6 @@
      "txt": "SA games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
-  },
-  {
-   "pid": "3917376",
-   "name": "Jaylen Brown",
-   "team": "PHI",
-   "opp": "MIA",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 7.91,
-   "base": 7.44,
-   "mult": 1.063,
-   "minutes": 26.8,
-   "status": "Day-To-Day",
-   "start": "2026-11-25T22:00Z",
-   "espn_id": "401909317",
-   "lean": "Over",
-   "strength": 0.0611,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.065,
-     "n": 121.7,
-     "rank": 1,
-     "txt": "MIA gives shooting guards +7% reb+ast vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.088,
-     "n": 172,
-     "txt": "Players with his profile: +9% reb+ast vs MIA (172 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.946,
-     "n": 5,
-     "txt": "His history vs MIA: 8.8 reb+ast/g in 5 games (-5%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.049,
-     "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 9.5,
-   "side": "Over",
-   "price": 1.87,
-   "am": -115,
-   "book": "betmgm",
-   "ev": -0.0052,
-   "p_model": 0.453,
-   "p_mkt": 0.532,
-   "event_id": "4f6d199bb67cf3a517a3880fd2f00b26",
-   "market": "player_rebounds_assists",
-   "nbooks": 3,
-   "at": "2026-11-25T21:01:11Z",
-   "open": 9.5
   },
   {
    "pid": "4278053",
@@ -6887,7 +7071,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.047,
+     "v": 1.046,
      "n": 99.1,
      "rank": 5,
      "txt": "CHI gives small forwards +5% reb+ast vs their norm (#5 softest of 30)"
@@ -6946,7 +7130,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.022,
+     "v": 1.023,
      "n": 111.3,
      "rank": 9,
      "txt": "SAC gives shooting guards +2% pts+reb+ast vs their norm (#9 softest of 30)"
@@ -7013,8 +7197,8 @@
     {
      "k": "sim",
      "v": 0.966,
-     "n": 116,
-     "txt": "Players with his profile: -3% reb+ast vs CHA (116 close comps)"
+     "n": 118,
+     "txt": "Players with his profile: -3% reb+ast vs CHA (118 close comps)"
     },
     {
      "k": "h2h",
@@ -7043,52 +7227,6 @@
    "open": 5.5
   },
   {
-   "pid": "5105800",
-   "name": "Josh Dix",
-   "team": "OKC",
-   "opp": "MIN",
-   "home": true,
-   "role": "SG",
-   "stat": "ra",
-   "stat_name": "reb+ast",
-   "proj": 3.26,
-   "base": 3.47,
-   "mult": 0.941,
-   "minutes": 20.2,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909320",
-   "lean": "Under",
-   "strength": 0.0608,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.962,
-     "n": 124.0,
-     "rank": 22,
-     "txt": "MIN gives shooting guards -4% reb+ast vs their norm (#9 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.926,
-     "n": 200,
-     "txt": "Players with his profile: -7% reb+ast vs MIN (200 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs MIN yet"
-    },
-    {
-     "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
    "pid": "4703889",
    "name": "Jayson Kent",
    "team": "POR",
@@ -7112,12 +7250,12 @@
      "k": "dvp",
      "v": 0.951,
      "n": 147.0,
-     "rank": 25,
-     "txt": "SA gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)"
+     "rank": 24,
+     "txt": "SA gives shooting guards -5% pts+reb+ast vs their norm (#7 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.92,
+     "v": 0.921,
      "n": 249,
      "txt": "Players with his profile: -8% pts+reb+ast vs SA (249 close comps)"
     },
@@ -7181,6 +7319,65 @@
    ]
   },
   {
+   "pid": "4900671",
+   "name": "Ajay Mitchell",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "tpm",
+   "stat_name": "threes",
+   "proj": 1.11,
+   "base": 1.17,
+   "mult": 0.942,
+   "minutes": 29.8,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.0598,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.886,
+     "n": 128.7,
+     "rank": 30,
+     "txt": "MIN gives shooting guards -11% threes vs their norm (#1 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.924,
+     "n": 140,
+     "txt": "Players with his profile: -8% threes vs MIN (140 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.004,
+     "n": 4,
+     "txt": "His history vs MIN: 0.8 threes/g in 4 games (+0%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 1.5,
+   "side": "Over",
+   "price": 3.0,
+   "am": 200,
+   "book": "fanduel",
+   "ev": -0.0087,
+   "p_model": 0.271,
+   "p_mkt": 0.315,
+   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
+   "market": "player_threes",
+   "nbooks": 1,
+   "at": "2026-11-26T00:01:30Z",
+   "open": 0.5
+  },
+  {
    "pid": "4683021",
    "name": "Deni Avdija",
    "team": "POR",
@@ -7209,9 +7406,9 @@
     },
     {
      "k": "sim",
-     "v": 0.928,
-     "n": 178,
-     "txt": "Players with his profile: -7% assists vs SA (178 close comps)"
+     "v": 0.929,
+     "n": 176,
+     "txt": "Players with his profile: -7% assists vs SA (176 close comps)"
     },
     {
      "k": "h2h",
@@ -7255,9 +7452,9 @@
     },
     {
      "k": "sim",
-     "v": 0.943,
-     "n": 167,
-     "txt": "Players with his profile: -6% pts+reb+ast vs POR (167 close comps)"
+     "v": 0.944,
+     "n": 171,
+     "txt": "Players with his profile: -6% pts+reb+ast vs POR (171 close comps)"
     },
     {
      "k": "h2h",
@@ -7294,7 +7491,7 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.047,
+     "v": 1.046,
      "n": 99.1,
      "rank": 5,
      "txt": "CHI gives small forwards +5% reb+ast vs their norm (#5 softest of 30)"
@@ -7406,7 +7603,7 @@
     },
     {
      "k": "sim",
-     "v": 1.03,
+     "v": 1.031,
      "n": 176,
      "txt": "Players with his profile: +3% reb+ast vs MEM (176 close comps)"
     },
@@ -7470,6 +7667,65 @@
    ]
   },
   {
+   "pid": "5241364",
+   "name": "Bennett Stirtz",
+   "team": "OKC",
+   "opp": "MIN",
+   "home": true,
+   "role": "SG",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 14.74,
+   "base": 15.63,
+   "mult": 0.943,
+   "minutes": 25.4,
+   "status": "",
+   "start": "2026-11-26T00:30Z",
+   "espn_id": "401909320",
+   "lean": "Under",
+   "strength": 0.0587,
+   "starter": true,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.948,
+     "n": 128.7,
+     "rank": 25,
+     "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#6 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.947,
+     "n": 166,
+     "txt": "Players with his profile: -5% pts+reb+ast vs MIN (166 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 0.956,
+     "n": 1,
+     "txt": "His history vs MIN: 9.0 pts+reb+ast/g in 1 games (-4%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ],
+   "line": 10.5,
+   "side": "Under",
+   "price": 1.8,
+   "am": -125,
+   "book": "espnbet",
+   "ev": -0.064,
+   "p_model": 0.336,
+   "p_mkt": 0.52,
+   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
+   "market": "player_points_rebounds_assists",
+   "nbooks": 1,
+   "at": "2026-11-26T00:01:30Z",
+   "open": 10.5
+  },
+  {
    "pid": "3134907",
    "name": "Kyle Kuzma",
    "team": "MIL",
@@ -7491,16 +7747,16 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.088,
+     "v": 1.089,
      "n": 98.7,
      "rank": 2,
      "txt": "BKN gives small forwards +9% assists vs their norm (#2 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.105,
-     "n": 130,
-     "txt": "Players with his profile: +11% assists vs BKN (130 close comps)"
+     "v": 1.106,
+     "n": 127,
+     "txt": "Players with his profile: +11% assists vs BKN (127 close comps)"
     },
     {
      "k": "h2h",
@@ -7569,7 +7825,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -7596,7 +7852,7 @@
    "role": "SG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 3.02,
+   "proj": 3.03,
    "base": 2.86,
    "mult": 1.06,
    "minutes": 22.2,
@@ -7693,18 +7949,18 @@
    ]
   },
   {
-   "pid": "4432185",
-   "name": "Micah Peavy",
+   "pid": "5241364",
+   "name": "Bennett Stirtz",
    "team": "OKC",
    "opp": "MIN",
    "home": true,
    "role": "SG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 0.76,
-   "base": 0.8,
+   "proj": 2.26,
+   "base": 2.41,
    "mult": 0.944,
-   "minutes": 23.8,
+   "minutes": 25.4,
    "status": "",
    "start": "2026-11-26T00:30Z",
    "espn_id": "401909320",
@@ -7714,29 +7970,42 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 0.881,
-     "n": 124.0,
+     "v": 0.886,
+     "n": 128.7,
      "rank": 30,
-     "txt": "MIN gives shooting guards -12% threes vs their norm (#1 toughest of 30)"
+     "txt": "MIN gives shooting guards -11% threes vs their norm (#1 toughest of 30)"
     },
     {
      "k": "sim",
-     "v": 0.901,
-     "n": 180,
-     "txt": "Players with his profile: -10% threes vs MIN (180 close comps)"
+     "v": 0.91,
+     "n": 166,
+     "txt": "Players with his profile: -9% threes vs MIN (166 close comps)"
     },
     {
      "k": "h2h",
-     "v": 1.002,
-     "n": 4,
-     "txt": "His history vs MIN: 0.5 threes/g in 4 games (+0%)"
+     "v": 0.952,
+     "n": 1,
+     "txt": "His history vs MIN: 1.0 threes/g in 1 games (-5%)"
     },
     {
      "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
+     "v": 0.995,
+     "txt": "MIN games have -1% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
-   ]
+   ],
+   "line": 1.5,
+   "side": "Over",
+   "price": 2.4,
+   "am": 140,
+   "book": "betmgm",
+   "ev": 0.0531,
+   "p_model": 0.58,
+   "p_mkt": 0.422,
+   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
+   "market": "player_threes",
+   "nbooks": 6,
+   "at": "2026-11-26T00:01:30Z",
+   "open": 1.5
   },
   {
    "pid": "4278053",
@@ -7822,11 +8091,11 @@
      "v": 1.105,
      "n": 103.7,
      "rank": 1,
-     "txt": "MIL gives small forwards +11% threes vs their norm (#1 softest of 30)"
+     "txt": "MIL gives small forwards +10% threes vs their norm (#1 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.078,
+     "v": 1.077,
      "n": 31,
      "txt": "Players with his profile: +8% threes vs MIL (31 close comps)"
     },
@@ -7838,7 +8107,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -7886,8 +8155,8 @@
     {
      "k": "sim",
      "v": 1.082,
-     "n": 73,
-     "txt": "Players with his profile: +8% assists vs MEM (73 close comps)"
+     "n": 70,
+     "txt": "Players with his profile: +8% assists vs MEM (70 close comps)"
     },
     {
      "k": "h2h",
@@ -7931,7 +8200,7 @@
     },
     {
      "k": "sim",
-     "v": 1.05,
+     "v": 1.051,
      "n": 92,
      "txt": "Players with his profile: +5% pts+reb+ast vs MIL (92 close comps)"
     },
@@ -7943,7 +8212,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -8002,7 +8271,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -8078,111 +8347,6 @@
    "nbooks": 7,
    "at": "2026-11-26T02:04:21Z",
    "open": 3.5
-  },
-  {
-   "pid": "4395723",
-   "name": "Keldon Johnson",
-   "team": "SA",
-   "opp": "POR",
-   "home": false,
-   "role": "PF",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 3.11,
-   "base": 2.94,
-   "mult": 1.058,
-   "minutes": 26.2,
-   "status": "",
-   "start": "2026-11-26T03:00Z",
-   "espn_id": "401909325",
-   "lean": "Over",
-   "strength": 0.0564,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.152,
-     "n": 27.3,
-     "rank": 1,
-     "txt": "POR gives power forwards +15% assists vs their norm (#1 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.014,
-     "n": 55,
-     "txt": "Players with his profile: +1% assists vs POR (55 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.097,
-     "n": 9,
-     "txt": "His history vs POR: 1.7 assists/g in 9 games (+10%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.975,
-     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "3133626",
-   "name": "Kenrich Williams",
-   "team": "OKC",
-   "opp": "MIN",
-   "home": true,
-   "role": "SG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 16.26,
-   "base": 17.19,
-   "mult": 0.946,
-   "minutes": 26.4,
-   "status": "",
-   "start": "2026-11-26T00:30Z",
-   "espn_id": "401909320",
-   "lean": "Under",
-   "strength": 0.0555,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.952,
-     "n": 124.0,
-     "rank": 24,
-     "txt": "MIN gives shooting guards -5% pts+reb+ast vs their norm (#7 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.935,
-     "n": 95,
-     "txt": "Players with his profile: -6% pts+reb+ast vs MIN (95 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.978,
-     "n": 3,
-     "txt": "His history vs MIN: 5.7 pts+reb+ast/g in 3 games (-2%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.996,
-     "txt": "MIN games have -0% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ],
-   "line": 15.5,
-   "side": "Over",
-   "price": 2.0,
-   "am": 100,
-   "book": "fanduel",
-   "ev": -0.05,
-   "p_model": 0.54,
-   "p_mkt": 0.475,
-   "event_id": "07421d1675d6bc51bb5fa91f84a09eb3",
-   "market": "player_points_rebounds_assists",
-   "nbooks": 4,
-   "at": "2026-11-26T00:01:30Z",
-   "open": 16.5
   },
   {
    "pid": "4437244",
@@ -8265,14 +8429,14 @@
    "signals": [
     {
      "k": "dvp",
-     "v": 1.031,
+     "v": 1.032,
      "n": 50.6,
      "rank": 8,
      "txt": "MIL gives centers +3% assists vs their norm (#8 softest of 30)"
     },
     {
      "k": "sim",
-     "v": 1.079,
+     "v": 1.08,
      "n": 92,
      "txt": "Players with his profile: +8% assists vs MIL (92 close comps)"
     },
@@ -8284,7 +8448,7 @@
     },
     {
      "k": "chances",
-     "v": 1.04,
+     "v": 1.039,
      "txt": "MIL games have +4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ],
@@ -8301,6 +8465,52 @@
    "nbooks": 6,
    "at": "2026-11-26T00:30:43Z",
    "open": 3.5
+  },
+  {
+   "pid": "4395723",
+   "name": "Keldon Johnson",
+   "team": "SA",
+   "opp": "POR",
+   "home": false,
+   "role": "PF",
+   "stat": "ast",
+   "stat_name": "assists",
+   "proj": 3.11,
+   "base": 2.94,
+   "mult": 1.057,
+   "minutes": 26.2,
+   "status": "",
+   "start": "2026-11-26T03:00Z",
+   "espn_id": "401909325",
+   "lean": "Over",
+   "strength": 0.0554,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 1.15,
+     "n": 27.3,
+     "rank": 1,
+     "txt": "POR gives power forwards +15% assists vs their norm (#1 softest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 1.014,
+     "n": 55,
+     "txt": "Players with his profile: +1% assists vs POR (55 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.097,
+     "n": 9,
+     "txt": "His history vs POR: 1.7 assists/g in 9 games (+10%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.975,
+     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
   },
   {
    "pid": "4591725",
@@ -8408,52 +8618,6 @@
    ]
   },
   {
-   "pid": "3134916",
-   "name": "Jordan McLaughlin",
-   "team": "SA",
-   "opp": "POR",
-   "home": false,
-   "role": "SG",
-   "stat": "ast",
-   "stat_name": "assists",
-   "proj": 2.44,
-   "base": 2.57,
-   "mult": 0.947,
-   "minutes": 17.1,
-   "status": "",
-   "start": "2026-11-26T03:00Z",
-   "espn_id": "401909325",
-   "lean": "Under",
-   "strength": 0.0545,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.977,
-     "n": 120.0,
-     "rank": 19,
-     "txt": "POR gives shooting guards -2% assists vs their norm (#12 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.982,
-     "n": 113,
-     "txt": "Players with his profile: -2% assists vs POR (113 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.905,
-     "n": 4,
-     "txt": "His history vs POR: 0.2 assists/g in 4 games (-9%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.975,
-     "txt": "POR games have -3% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
    "pid": "4396907",
    "name": "Darius Garland",
    "team": "LAC",
@@ -8511,144 +8675,6 @@
    "nbooks": 4,
    "at": "2026-11-26T00:30:43Z",
    "open": 27.5
-  },
-  {
-   "pid": "4397040",
-   "name": "Brandon Williams",
-   "team": "GS",
-   "opp": "SAC",
-   "home": true,
-   "role": "PG",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 12.08,
-   "base": 11.45,
-   "mult": 1.055,
-   "minutes": 12.8,
-   "status": "",
-   "start": "2026-11-26T03:00Z",
-   "espn_id": "401909324",
-   "lean": "Over",
-   "strength": 0.0535,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.059,
-     "n": 55.1,
-     "rank": 5,
-     "txt": "SAC gives point guards +6% pts+reb+ast vs their norm (#5 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.071,
-     "n": 137,
-     "txt": "Players with his profile: +7% pts+reb+ast vs SAC (137 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.998,
-     "n": 2,
-     "txt": "His history vs SAC: 22.5 pts+reb+ast/g in 2 games (-0%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.005,
-     "txt": "SAC games have +1% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "4431736",
-   "name": "Toumani Camara",
-   "team": "POR",
-   "opp": "SA",
-   "home": true,
-   "role": "SF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 2.35,
-   "base": 2.47,
-   "mult": 0.949,
-   "minutes": 31.5,
-   "status": "",
-   "start": "2026-11-26T03:00Z",
-   "espn_id": "401909325",
-   "lean": "Under",
-   "strength": 0.0523,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.908,
-     "n": 123.8,
-     "rank": 29,
-     "txt": "SA gives small forwards -9% threes vs their norm (#2 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.935,
-     "n": 184,
-     "txt": "Players with his profile: -6% threes vs SA (184 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 0.898,
-     "n": 9,
-     "txt": "His history vs SA: 2.0 threes/g in 9 games (-10%)"
-    },
-    {
-     "k": "chances",
-     "v": 0.981,
-     "txt": "SA games have -2% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "4433287",
-   "name": "Brandon Miller",
-   "team": "CHA",
-   "opp": "CHI",
-   "home": true,
-   "role": "SF",
-   "stat": "tpm",
-   "stat_name": "threes",
-   "proj": 3.33,
-   "base": 3.16,
-   "mult": 1.053,
-   "minutes": 30.5,
-   "status": "",
-   "start": "2026-11-26T00:00Z",
-   "espn_id": "401909318",
-   "lean": "Over",
-   "strength": 0.0516,
-   "starter": true,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 1.014,
-     "n": 99.1,
-     "rank": 10,
-     "txt": "CHI gives small forwards +1% threes vs their norm (#10 softest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 1.025,
-     "n": 144,
-     "txt": "Players with his profile: +3% threes vs CHI (144 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.102,
-     "n": 5,
-     "txt": "His history vs CHI: 4.0 threes/g in 5 games (+10%)"
-    },
-    {
-     "k": "chances",
-     "v": 1.052,
-     "txt": "CHI games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
   }
  ],
  "priced": {
@@ -12862,6 +12888,7 @@
   "shai gilgeousalexander": "4278073",
   "jaylin williams": "4432823",
   "brooks barnhizer": "4684208",
+  "alex caruso": "2991350",
   "ajay mitchell": "4900671",
   "nique clifford": "4702384",
   "micah peavy": "4432185",
@@ -13477,9 +13504,9 @@
  ],
  "teams": {
   "OKC": {
-   "pace": 102.16420113544201,
-   "ortg": 114.60727324035328,
-   "drtg": 106.23624730498737,
+   "pace": 102.14146847565843,
+   "ortg": 114.4561789149851,
+   "drtg": 106.33257701983332,
    "pace_rank": 13,
    "ortg_rank": 8,
    "drtg_rank": 2
@@ -13578,7 +13605,7 @@
    "drtg": 107.93542793844802,
    "pace_rank": 30,
    "ortg_rank": 5,
-   "drtg_rank": 5
+   "drtg_rank": 6
   },
   "PHI": {
    "pace": 102.05801150369763,
@@ -13608,7 +13635,7 @@
    "pace": 103.62848816029144,
    "ortg": 112.11273539407127,
    "drtg": 113.87404464415418,
-   "pace_rank": 8,
+   "pace_rank": 7,
    "ortg_rank": 15,
    "drtg_rank": 21
   },
@@ -13632,7 +13659,7 @@
    "pace": 103.61309481216458,
    "ortg": 108.39411526876573,
    "drtg": 117.49191984486102,
-   "pace_rank": 9,
+   "pace_rank": 8,
    "ortg_rank": 28,
    "drtg_rank": 29
   },
@@ -13693,12 +13720,12 @@
    "drtg_rank": 10
   },
   "MIN": {
-   "pace": 103.6413700918964,
-   "ortg": 112.76148215981527,
-   "drtg": 107.95799000844488,
-   "pace_rank": 7,
+   "pace": 103.59368940016434,
+   "ortg": 112.7552393513839,
+   "drtg": 107.91124172061119,
+   "pace_rank": 9,
    "ortg_rank": 12,
-   "drtg_rank": 6
+   "drtg_rank": 5
   },
   "IND": {
    "pace": 103.53865209471768,
