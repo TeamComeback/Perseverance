@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 53.04,
+  "cash": 63.5,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -21995,14 +21995,18 @@
       "book": "fanduel",
       "fair_p": 0.1992,
       "close_p": 0.1854,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 4.9,
        "gain": 0.1224,
        "n": 5
       },
       "close_at": "2026-11-25T20:45:31Z",
-      "close_mins": 44
+      "close_mins": 44,
+      "final": {
+       "home": 71.0,
+       "away": 69.0
+      }
      }
     ],
     "dec": 5.5,
@@ -22012,10 +22016,10 @@
     "note": "9.6% edge vs 5-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-26T02:00:47Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22025,6 +22029,110 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: South Carolina Gamecocks lost by 2",
+     "final": "South Carolina Gamecocks 69 \u2013 USC Trojans 71",
+     "legs": [
+      {
+       "outcome": "South Carolina Gamecocks",
+       "result": "loss",
+       "headline": "South Carolina Gamecocks lost by 2",
+       "final": "South Carolina Gamecocks 69 \u2013 USC Trojans 71",
+       "why": [
+        "South Carolina Gamecocks lost by 2.",
+        "We priced it at 20% to hit vs 18% needed to break even at 5.5x (+9.6% expected edge).",
+        "Closing consensus 19% vs 18% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "underdog-lost",
+        "near-miss",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "near-miss",
+      "underdog-lost"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "USC",
+        "away": "SC"
+       },
+       "final": "SC 69 \u2013 USC 71",
+       "periods": {
+        "away": [
+         37,
+         32
+        ],
+        "home": [
+         35,
+         36
+        ]
+       },
+       "largest_lead": {
+        "SC": 10,
+        "USC": 2
+       },
+       "largest_lead_at": {
+        "SC": "9:48 2nd half",
+        "USC": "18:35 1st half"
+       },
+       "lead_changes": 8,
+       "ties": 10,
+       "runs": [
+        {
+         "team": "USC",
+         "pts": 8,
+         "from": "3:24 2nd half",
+         "to": "0:03 2nd half",
+         "score": "SC 69-71 USC"
+        }
+       ],
+       "swings": [
+        {
+         "team": "USC",
+         "swing": 11,
+         "from": "9:48 2nd half",
+         "to": "2:09 2nd half",
+         "mins": 7.7,
+         "from_score": "SC 60-50 USC",
+         "to_score": "SC 69-70 USC",
+         "pts_for": 20,
+         "pts_against": 9
+        }
+       ],
+       "clutch": [
+        "4:05 2nd half: Jakub Necas makes free throw 2 of 2 (SC 69-64 USC)",
+        "3:24 2nd half: KJ Lewis makes layup (SC 69-66 USC)",
+        "2:45 2nd half: Alijah Arenas makes driving layup (SC 69-68 USC)",
+        "2:09 2nd half: Alijah Arenas makes free throw 1 of 2 (SC 69-69 USC)",
+        "2:09 2nd half: Alijah Arenas makes free throw 2 of 2 (SC 69-70 USC)",
+        "0:05 2nd half: Alijah Arenas makes free throw 2 of 2 (SC 69-71 USC)",
+        "0:05 2nd half: South Carolina Timeout (SC 69-70 USC)",
+        "0:03 2nd half: Camden Heide Defensive Rebound. (SC 69-71 USC)"
+       ],
+       "leaders": [
+        "Aleksas Bieliauskas (SC): 18 pts, 12 reb, 0 ast, 3-3 3PT in 30 min",
+        "Marcus Johnson (SC): 11 pts, 4 reb, 5 ast, 0-1 3PT in 36 min",
+        "Alijah Arenas (USC): 25 pts, 2 reb, 1 ast, 1-5 3PT in 38 min",
+        "Rodney Rice (USC): 13 pts, 3 reb, 2 ast, 2-6 3PT in 37 min"
+       ],
+       "story": [
+        "Halftime: SC 69-71 USC, USC up 2.",
+        "Largest leads: SC 10 (9:48 2nd half), USC 2 (18:35 1st half). 8 lead changes, 10 ties.",
+        "Momentum swing: USC outscored them 20-9 in 7.7 minutes (9:48 2nd half to 2:09 2nd half), moving it from SC 60-50 USC to SC 69-70 USC.",
+        "USC went on a 8-0 run (3:24 2nd half to 0:03 2nd half), making it SC 69-71 USC.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six."
+       ],
+       "espn_id": "401921670",
+       "link": "https://www.espn.com/mens-college-basketball/game/_/gameId/401921670"
+      }
+     ]
     }
    },
    {
@@ -22047,14 +22155,18 @@
       "book": "kalshi",
       "fair_p": 0.5053,
       "close_p": 0.467,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.986,
        "gain": 0.0532,
        "n": 2
       },
       "close_at": "2026-11-25T07:45:23Z",
-      "close_mins": 914
+      "close_mins": 914,
+      "final": {
+       "home": 67.0,
+       "away": 89.0
+      }
      }
     ],
     "dec": 2.091,
@@ -22064,10 +22176,10 @@
     "note": "5.7% edge vs 2-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 10.46,
+    "profit": 5.46,
+    "settled": "2026-11-26T02:00:47Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22077,7 +22189,33 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: Total 156 vs Under 165.5",
+     "final": "CSU Northridge Matadors 89 \u2013 Weber State Wildcats 67",
+     "legs": [
+      {
+       "outcome": "Under",
+       "result": "win",
+       "headline": "Total 156 vs Under 165.5",
+       "final": "CSU Northridge Matadors 89 \u2013 Weber State Wildcats 67",
+       "why": [
+        "Game total was 156 against a line of 165.5: under cleared by 9.5.",
+        "We priced it at 51% to hit vs 48% needed to break even at 2.091x (+5.7% expected edge).",
+        "Closing consensus 47% vs 48% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "blowout",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout",
+      "lost-closing-line"
+     ]
+    },
+    "recap_tried": 1
    }
   ],
   "runs": [
@@ -22133,20 +22271,20 @@
  },
  "arms": {
   "value_fav": {
-   "bets": 1,
-   "staked": 5.0,
-   "profit": -5.0,
-   "clv_n": 1,
-   "clv_sum": -0.030429999999999957,
+   "bets": 2,
+   "staked": 10.0,
+   "profit": 0.45999999999999996,
+   "clv_n": 2,
+   "clv_sum": -0.05393299999999979,
    "tags": {
     "blowout": {
-     "n": 1,
-     "won": 0,
+     "n": 2,
+     "won": 1,
      "lost": 1
     },
     "lost-closing-line": {
-     "n": 1,
-     "won": 0,
+     "n": 2,
+     "won": 1,
      "lost": 1
     }
    },
@@ -22194,11 +22332,11 @@
    "bench_noted": true
   },
   "longshot": {
-   "bets": 8,
-   "staked": 40.0,
-   "profit": -40.0,
-   "clv_n": 8,
-   "clv_sum": 0.46626540000000005,
+   "bets": 9,
+   "staked": 45.0,
+   "profit": -45.0,
+   "clv_n": 9,
+   "clv_sum": 0.4859654000000001,
    "tags": {
     "lost-closing-line": {
      "n": 2,
@@ -22206,19 +22344,19 @@
      "lost": 2
     },
     "near-miss": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     },
     "underdog-lost": {
-     "n": 7,
+     "n": 8,
      "won": 0,
-     "lost": 7
+     "lost": 8
     },
     "beat-closing-line": {
-     "n": 5,
+     "n": 6,
      "won": 0,
-     "lost": 5
+     "lost": 6
     },
     "blowout": {
      "n": 2,
@@ -22482,9 +22620,9 @@
   },
   "basketball_ncaab": {
    "last_scanned": "2026-11-25T20:45:31Z",
-   "bets": 8.0,
-   "staked": 56.67,
-   "profit": -9.580000000000002
+   "bets": 10.0,
+   "staked": 66.67,
+   "profit": -9.120000000000001
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-22T06:15:23Z"
@@ -22638,21 +22776,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T00:01:00Z",
-   "kind": "props",
-   "text": "NBA matchups: 8 games, strongest spots: Nic Claxton ra +17% vs WSH; Josh Giddey ast +16% vs WSH; Spencer Jones ra -14% vs HOU. Bought prop odds for WSH@CHI (ra, ast, pra, team totals), HOU@DEN (ra, ast, pra, team totals), IND@CLE (ra, ast, pra, team totals), NO@OKC (ra, ast, pra, team totals), TOR@DET (ra, pra, tpm, team totals), PHX@UTAH (ra, ast, pra, team totals), SAC@LAL (ra, ast, pra, team totals) (28 credits). Nothing cleared the bar."
-  },
-  {
-   "ts": "2026-11-21T00:30:47Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-21T00:39:57Z",
-   "kind": "focus",
-   "text": "Skipped 99 pts+reb+ast lines: on the graded record the market alone beats the model in those stats, so the agent only bets reb+ast, rebounds."
-  },
   {
    "ts": "2026-11-21T00:39:58Z",
    "kind": "props",
@@ -24137,6 +24260,21 @@
    "ts": "2026-11-26T01:30:44Z",
    "kind": "research",
    "text": "Research refresh for Wed Nov 25: 9 games, 215 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-26T02:00:47Z",
+   "kind": "result",
+   "text": "LOST -$5.00: South Carolina Gamecocks @ +450 (FanDuel) \u2014 LOST: South Carolina Gamecocks lost by 2 [beat-closing-line, near-miss, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-26T02:00:47Z",
+   "kind": "result",
+   "text": "WON +$5.46: Under 165.5 @ +109 (Kalshi) \u2014 WON: Total 156 vs Under 165.5 [blowout, lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-26T02:00:55Z",
+   "kind": "props",
+   "text": "NBA matchups: 2 games, strongest spots: Toumani Camara pra -7% vs SA; Brandin Podziemski ast +6% vs SAC; Jrue Holiday ra -6% vs SA. Bought prop odds for SAC@GS (ast, pra, tpm, ra, team totals) (7 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -24235,29 +24373,31 @@
   "d17fbf56",
   "c613bf8e",
   "8fbbd302",
-  "35fc2a2e"
+  "35fc2a2e",
+  "c53bc86b",
+  "9cee21a6"
  ],
  "strategist": null,
- "updated": "2026-11-26T01:45:45Z",
+ "updated": "2026-11-26T02:01:08Z",
  "stats": {
-  "bets": 96,
-  "won": 30,
-  "lost": 64,
+  "bets": 98,
+  "won": 31,
+  "lost": 65,
   "shop_n": 40,
   "shop_avg": 0.0733,
   "push": 2,
-  "staked": 542.57,
-  "profit": -165.99,
-  "roi": -0.3059,
+  "staked": 552.57,
+  "profit": -165.53,
+  "roi": -0.2996,
   "clv": 0.0009,
   "clv_n": 77,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 5,
-  "equity": 90.0
+  "open": 3,
+  "equity": 90.46
  },
  "weights": {
-  "value_fav": 0.842,
+  "value_fav": 1.005,
   "value_dog": 0.396,
   "longshot": 0.3,
   "arb": 1.098,
@@ -24286,27 +24426,27 @@
     "paused": false
    },
    "longshot": {
-    "bets": 2,
+    "bets": 3,
     "won": 0,
-    "lost": 2,
+    "lost": 3,
     "push": 0,
-    "staked": 10.0,
-    "profit": -10.0,
+    "staked": 15.0,
+    "profit": -15.0,
     "roi": -1.0,
     "clv": 0.0981,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "value_fav": {
-    "bets": 0,
-    "won": 0,
+    "bets": 1,
+    "won": 1,
     "lost": 0,
     "push": 0,
-    "staked": 0,
-    "profit": 0,
-    "roi": null,
+    "staked": 5.0,
+    "profit": 5.46,
+    "roi": 1.092,
     "clv": 0.026,
-    "open": 2,
+    "open": 1,
     "paused": false
    }
   },
@@ -24324,15 +24464,15 @@
     "paused": false
    },
    "longshot": {
-    "bets": 8,
+    "bets": 9,
     "won": 0,
-    "lost": 8,
+    "lost": 9,
     "push": 0,
-    "staked": 40.0,
-    "profit": -40.0,
+    "staked": 45.0,
+    "profit": -45.0,
     "roi": -1.0,
     "clv": 0.054,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "matchup_over": {
@@ -24372,15 +24512,15 @@
     "paused": true
    },
    "value_fav": {
-    "bets": 1,
-    "won": 0,
+    "bets": 2,
+    "won": 1,
     "lost": 1,
     "push": 0,
-    "staked": 5.0,
-    "profit": -5.0,
-    "roi": -1.0,
+    "staked": 10.0,
+    "profit": 0.46,
+    "roi": 0.046,
     "clv": 0.0072,
-    "open": 2,
+    "open": 1,
     "paused": false
    }
   }
