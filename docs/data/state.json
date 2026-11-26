@@ -22847,7 +22847,7 @@
   "parlay_enabled": true,
   "props_enabled": true,
   "prop_min_edge": 0.08,
-  "prop_model_weight": 0.037,
+  "prop_model_weight": 0.026,
   "prop_max_bets": 4,
   "w_dvp": 0.45,
   "w_sim": 0.4,
@@ -23374,26 +23374,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T06:00:35Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.25% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-21T06:45:23Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 10.00% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-21T07:30:23Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-21T08:44:54Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 21: 6 games, 145 players projected, lineups for 6 games."
-  },
   {
    "ts": "2026-11-21T11:45:33Z",
    "kind": "research",
@@ -24873,6 +24853,26 @@
    "ts": "2026-11-26T18:45:21Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 1.25% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-26T19:01:28Z",
+   "kind": "adapt",
+   "text": "Model vs market on 12868 graded lines: the 0% model blend scored best (log loss model 0.728, market 0.687). Moving the model's weight from 4% to 3%."
+  },
+  {
+   "ts": "2026-11-26T19:01:30Z",
+   "kind": "focus",
+   "text": "Prop prices start from the market; the model moves them in no stat yet (walk-forward test, 10,381 graded props)."
+  },
+  {
+   "ts": "2026-11-26T19:01:30Z",
+   "kind": "adapt",
+   "text": "Learning loop: REB raw projections ran +3.2% vs actual over 3319 player-games: level x0.974 (was x0.968); AST raw projections ran +2.5% vs actual over 3319 player-games: level x0.979 (was x0.982); TPM raw projections ran -0.1% vs actual over 3319 player-games: level x1.001 (was x1.011); RA raw projections ran +2.4% vs actual over 3319 player-games: level x0.980 (was x0.976); starter minutes (raw) were off by +1.2 on average over 1715 player-games: correction -1.0 min (was -1.1); conviction factor 'agree' helped by +0.6 pts of hit rate over 5348 plays: weight 1.01 -> 1.06; conviction factor 'bump' hurt by -4.6 pts of hit rate over 3422 plays: weight 0.67 -> 0.61; conviction factor 'vegas' helped by +2.5 pts of hit rate over 4732 plays: weight 1.16 -> 1.22."
+  },
+  {
+   "ts": "2026-11-26T19:01:30Z",
+   "kind": "daily",
+   "text": "Day close \u2014 equity $85.81 (run #3), 32-67-2, ROI -29.4%, CLV +0.2%."
   }
  ],
  "learned_ids": [
@@ -24979,7 +24979,7 @@
   "0cbf3379"
  ],
  "strategist": null,
- "updated": "2026-11-26T18:45:21Z",
+ "updated": "2026-11-26T19:01:30Z",
  "stats": {
   "bets": 101,
   "won": 32,
