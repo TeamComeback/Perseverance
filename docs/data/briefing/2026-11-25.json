@@ -156,7 +156,7 @@
     "now": 2.5,
     "kalshi": 0.46
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-25T11:45:33Z",
     "edition": "morning",
@@ -175,7 +175,7 @@
    },
    "first_seen": "2026-11-25T11:45:33Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|5023693|tpm|Over": {
    "key": "p|5023693|tpm|Over",
@@ -2079,15 +2079,15 @@
    "start": "2026-11-26T03:00Z",
    "side": "Under",
    "point": 5.5,
-   "dec": 1.99,
-   "am": -101,
-   "conv": 31,
+   "dec": 1.88,
+   "am": -114,
+   "conv": 29,
    "tier": "Pass",
-   "p": 0.487,
+   "p": 0.513,
    "p_sim": 0.621,
-   "p_mkt": 0.473,
-   "p_kalshi": 0.485,
-   "ev": -0.031,
+   "p_mkt": 0.5,
+   "p_kalshi": 0.497,
+   "ev": -0.035,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "GS",
    "away": "SAC",
@@ -2178,8 +2178,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.053,
-    "floor_am": 105,
+    "floor_dec": 1.949,
+    "floor_am": -105,
     "line": null,
     "next": 4.5
    },
@@ -2193,14 +2193,6 @@
      "min": 32.3
     },
     {
-     "pid": "5175737",
-     "name": "Yaxel Lendeborg",
-     "team": "GS",
-     "status": "Questionable",
-     "self": false,
-     "min": 31.3
-    },
-    {
      "pid": "3975",
      "name": "Stephen Curry",
      "team": "GS",
@@ -2211,14 +2203,13 @@
    ],
    "kill": [
     "The line reaching 4.5",
-    "The price at 5.5 going past +105",
-    "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run",
+    "The price at 5.5 going past \u2212105",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 6.5,
     "now": 5.5,
-    "kalshi": 0.485
+    "kalshi": 0.497
    },
    "started": false,
    "published": {
@@ -2685,29 +2676,29 @@
   "g|401909324|spread|away": {
    "key": "g|401909324|spread|away",
    "kind": "spread",
-   "label": "SAC +8.5 (SAC @ GS)",
+   "label": "SAC +7.5 (SAC @ GS)",
    "espn_id": "401909324",
    "game": "SAC @ GS",
    "start": "2026-11-26T03:00Z",
    "side": "away",
-   "point": 8.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 31,
+   "point": 7.5,
+   "dec": 1.97,
+   "am": -103,
+   "conv": 32,
    "tier": "Pass",
-   "p": 0.522,
-   "p_sim": 0.615,
-   "p_mkt": 0.512,
+   "p": 0.493,
+   "p_sim": 0.589,
+   "p_mkt": 0.483,
    "p_kalshi": null,
-   "ev": -0.029,
+   "ev": -0.028,
    "verdict": "Pass: simulation and who's out agree; the main risk is who's out.",
    "home": "GS",
    "away": "SAC",
-   "why": "Sim: GS by 3.7 on average (SAC 105.6, GS 109.3) \u00b7 SAC +8.5 covers in 61% of sims vs 51% DraftKings",
+   "why": "Sim: GS by 3.7 on average (SAC 105.6, GS 109.3) \u00b7 SAC +7.5 covers in 59% of sims vs 48% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Covers in 61% of 10,000 simulated games.",
+     "t": "Covers in 59% of 10,000 simulated games.",
      "rec": [
       1540,
       1357
@@ -2722,7 +2713,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (-5.5 to -8.5).",
+     "t": "The line has moved against this side since it opened (-5.5 to -7.5).",
      "rec": [
       199,
       169
@@ -2743,10 +2734,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.916,
-    "floor_am": -109,
+    "floor_dec": 2.028,
+    "floor_am": 103,
     "line": null,
-    "next": 7.5
+    "next": 6.5
    },
    "watch": [
     {
@@ -2758,14 +2749,6 @@
      "min": 32.3
     },
     {
-     "pid": "5175737",
-     "name": "Yaxel Lendeborg",
-     "team": "GS",
-     "status": "Questionable",
-     "self": false,
-     "min": 31.3
-    },
-    {
      "pid": "3975",
      "name": "Stephen Curry",
      "team": "GS",
@@ -2775,13 +2758,12 @@
     }
    ],
    "kill": [
-    "The line reaching 7.5",
-    "The price at 8.5 going past \u2212109",
-    "A change in Yaxel Lendeborg (questionable): the model re-prices on the next run"
+    "The line reaching 6.5",
+    "The price at 7.5 going past +103"
    ],
    "market": {
     "open": null,
-    "now": 8.5,
+    "now": 7.5,
     "kalshi": null
    },
    "started": false,
@@ -3200,7 +3182,7 @@
     "now": 227.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-25T14:46:12Z",
     "edition": "update",
@@ -3219,7 +3201,7 @@
    },
    "first_seen": "2026-11-25T14:46:12Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "g|401909318|total|Over": {
    "key": "g|401909318|total|Over",
@@ -4599,6 +4581,20 @@
    "kind": "line",
    "text": "LAC @ MEM Over 227.5: line 227.5 at \u2212112 \u2192 227.5 at \u2212114",
    "alert": false
+  },
+  {
+   "at": "2026-11-26T01:30:56Z",
+   "key": "p|6589|pts|Under",
+   "kind": "line",
+   "text": "Draymond Green: line 5.5 at \u2212101 \u2192 5.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-26T01:30:56Z",
+   "key": "g|401909324|spread|away",
+   "kind": "line",
+   "text": "SAC +7.5 (SAC @ GS): line 8.5 at \u2212116 \u2192 7.5 at \u2212103",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4730,14 +4726,9 @@
  "alerts": 6,
  "slate": {
   "games": 9,
-  "to_tip": 5,
+  "to_tip": 3,
   "first": "2026-11-25T22:00Z",
   "questionable": [
-   {
-    "name": "Yaxel Lendeborg",
-    "team": "GS",
-    "status": "Questionable"
-   },
    {
     "name": "Victor Wembanyama",
     "team": "SA",
@@ -4758,5 +4749,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5184,
- "updated": "2026-11-26T01:15:33Z"
+ "updated": "2026-11-26T01:30:56Z"
 }
