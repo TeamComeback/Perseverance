@@ -22550,13 +22550,13 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-26T03:30:40Z"
+   "last_scanned": "2026-11-26T05:00:30Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-25T20:15:29Z",
+   "last_scanned": "2026-11-26T05:00:30Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -22619,7 +22619,7 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-26T03:45:28Z",
+   "last_scanned": "2026-11-26T05:00:30Z",
    "bets": 10.0,
    "staked": 66.67,
    "profit": -9.120000000000001
@@ -22776,11 +22776,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T01:48:16Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
-  },
   {
    "ts": "2026-11-21T02:00:54Z",
    "kind": "props",
@@ -24275,6 +24270,11 @@
    "ts": "2026-11-26T03:30:40Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 2.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-26T05:00:30Z",
+   "kind": "error",
+   "text": "Self-check failed: Slate date (players.json is for 2026-11-25, today is 2026-11-26); Sims for every game (missing: SA@POR); DraftKings lines (no dk/2026-11-26.json)"
   }
  ],
  "learned_ids": [
@@ -24378,7 +24378,7 @@
   "9cee21a6"
  ],
  "strategist": null,
- "updated": "2026-11-26T04:45:26Z",
+ "updated": "2026-11-26T05:00:30Z",
  "stats": {
   "bets": 98,
   "won": 31,
@@ -24409,7 +24409,7 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 1,
+ "dry_scans": 2,
  "scorecard": {
   "run": 3,
   "current": {
