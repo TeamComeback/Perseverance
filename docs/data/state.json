@@ -22608,13 +22608,15 @@
       "price": 2.02,
       "book": "betrivers",
       "fair_p": 0.51,
-      "close_p": null,
+      "close_p": 0.5077,
       "result": null,
       "shop": {
        "median": 1.858,
        "gain": 0.0874,
        "n": 3
-      }
+      },
+      "close_at": "2026-11-26T17:45:20Z",
+      "close_mins": 434
      }
     ],
     "dec": 2.02,
@@ -22834,7 +22836,7 @@
   ]
  },
  "params": {
-  "min_edge": 0.0175,
+  "min_edge": 0.015,
   "kelly_mult": 0.05,
   "max_bet_pct": 0.08,
   "max_exposure_pct": 0.45,
@@ -23155,7 +23157,7 @@
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-26T16:45:25Z"
+   "last_scanned": "2026-11-26T17:45:20Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -23176,7 +23178,7 @@
    "profit": -10.0
   },
   "soccer_mexico_ligamx": {
-   "last_scanned": "2026-11-26T05:25:11Z"
+   "last_scanned": "2026-11-26T17:45:20Z"
   },
   "boxing_boxing": {
    "last_scanned": "2026-11-26T17:15:21Z"
@@ -23212,7 +23214,7 @@
    "last_scanned": "2026-11-26T17:30:25Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-26T16:45:25Z",
+   "last_scanned": "2026-11-26T17:45:20Z",
    "bets": 13.0,
    "staked": 93.63000000000001,
    "profit": -13.770000000000001
@@ -23372,11 +23374,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T05:00:47Z",
-   "kind": "scan",
-   "text": "Scout: icehockey_nhl (14), soccer_epl (9), basketball_ncaab (52), soccer_italy_serie_a (8), soccer_germany_bundesliga (8), soccer_spain_la_liga (6), mma_mixed_martial_arts (21), basketball_nba (6), soccer_italy_serie_b (9), americanfootball_ncaaf (58), soccer_netherlands_eredivisie (9), soccer_norway_eliteserien (6), soccer_france_ligue_one (7), icehockey_mestis (3), soccer_argentina_primera_division (2), soccer_usa_mls (3), soccer_korea_kleague1 (4) for 38 credits. Placed 2: Nicholls St Colonels @ +155 (BetRivers); Southern Miss Golden Eagles @ -149 (theScore Bet). Equity $66.22."
-  },
   {
    "ts": "2026-11-21T05:02:20Z",
    "kind": "research",
@@ -24871,6 +24868,11 @@
    "ts": "2026-11-26T17:00:37Z",
    "kind": "adapt",
    "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 1.75% so I get enough bets to learn from."
+  },
+  {
+   "ts": "2026-11-26T17:45:20Z",
+   "kind": "adapt",
+   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 1.50% so I get enough bets to learn from."
   }
  ],
  "learned_ids": [
@@ -24977,7 +24979,7 @@
   "0cbf3379"
  ],
  "strategist": null,
- "updated": "2026-11-26T17:30:25Z",
+ "updated": "2026-11-26T17:45:20Z",
  "stats": {
   "bets": 101,
   "won": 32,
@@ -24988,8 +24990,8 @@
   "staked": 579.53,
   "profit": -170.18,
   "roi": -0.2937,
-  "clv": 0.0013,
-  "clv_n": 80,
+  "clv": 0.0016,
+  "clv_n": 81,
   "clv_no_close": 24,
   "close_mins_median": 9,
   "open": 5,
@@ -25008,7 +25010,7 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
   "current": {
@@ -25044,7 +25046,7 @@
     "staked": 10.0,
     "profit": 0.46,
     "roi": 0.046,
-    "clv": 0.0156,
+    "clv": 0.0181,
     "open": 3,
     "paused": false
    }
@@ -25118,7 +25120,7 @@
     "staked": 15.0,
     "profit": -4.54,
     "roi": -0.3027,
-    "clv": 0.0041,
+    "clv": 0.0084,
     "open": 3,
     "paused": false
    }
