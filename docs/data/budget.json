@@ -1,30 +1,9 @@
 {
  "month": "2026-11-17",
- "remaining": 13907,
- "used": 6093,
- "runs": 899,
+ "remaining": 13902,
+ "used": 6098,
+ "runs": 900,
  "log": [
-  {
-   "ts": "2026-11-26T01:30:32Z",
-   "ep": "/sports/mma_mixed_martial_arts/events",
-   "cost": 0,
-   "rem": 13914,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-26T01:30:33Z",
-   "ep": "/sports/soccer_conmebol_copa_libertadores/events",
-   "cost": 0,
-   "rem": 13914,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-26T01:30:33Z",
-   "ep": "/sports/soccer_epl/events",
-   "cost": 0,
-   "rem": 13914,
-   "job": "scan"
-  },
   {
    "ts": "2026-11-26T01:30:33Z",
    "ep": "/sports/soccer_fa_cup/events",
@@ -422,6 +401,27 @@
    "ep": "/sports/basketball_nba/events/e6df92326adb480e427bb7c10f445c60/odds",
    "cost": 5,
    "rem": 13907,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-26T02:04:09Z",
+   "ep": "/sports",
+   "cost": 0,
+   "rem": 13907,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-26T02:04:21Z",
+   "ep": "/sports/basketball_nba/events",
+   "cost": 0,
+   "rem": 13907,
+   "job": "props"
+  },
+  {
+   "ts": "2026-11-26T02:04:21Z",
+   "ep": "/sports/basketball_nba/events/e6df92326adb480e427bb7c10f445c60/odds",
+   "cost": 5,
+   "rem": 13902,
    "job": "props"
   }
  ],
@@ -9868,6 +9868,13 @@
    "cost": 5,
    "rem": 13907,
    "job": "props"
+  },
+  {
+   "ts": "2026-11-26T02:04:21Z",
+   "ep": "/sports/basketball_nba/events/e6df92326adb480e427bb7c10f445c60/odds",
+   "cost": 5,
+   "rem": 13902,
+   "job": "props"
   }
  ],
  "ext": [
@@ -9877,13 +9884,13 @@
    "rem": 15231
   }
  ],
- "own_month": 3943,
+ "own_month": 3948,
  "external_month": 1135,
  "monthly": 20000,
  "reserve": 300,
  "jobs_cycle": {
   "scan": 2501,
-  "props": 1441,
+  "props": 1446,
   "closer": 1
  },
  "backtest_used": 965,
@@ -9911,17 +9918,17 @@
  "backtest_cap": 5000,
  "jobs_day": {
   "scan": 200,
-  "props": 242
+  "props": 247
  },
  "day": "2026-11-25",
  "days_left": 22,
  "day_budget": 455,
- "spent_today": 442,
- "units_today": 113,
+ "spent_today": 447,
+ "units_today": 116,
  "set_aside": 0,
  "ext_rate": 0.0,
  "plan": 20000,
- "allowance": 20,
+ "allowance": 13,
  "locked": false,
- "updated": "2026-11-26T02:01:08Z"
+ "updated": "2026-11-26T02:04:33Z"
 }
