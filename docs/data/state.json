@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 63.5,
+  "cash": 80.81,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -21675,14 +21675,18 @@
       "book": "fanatics",
       "fair_p": 0.6005,
       "close_p": 0.6076,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.646,
        "gain": 0.0754,
        "n": 2
       },
       "close_at": "2026-11-25T20:45:31Z",
-      "close_mins": 329
+      "close_mins": 329,
+      "final": {
+       "home": 71.0,
+       "away": 78.0
+      }
      }
     ],
     "dec": 1.77,
@@ -21692,10 +21696,10 @@
     "note": "6.3% edge vs 2-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-26T05:25:06Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -21705,6 +21709,128 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: Mississippi St Bulldogs lost by 7",
+     "final": "Wake Forest Demon Deacons 78 \u2013 Mississippi St Bulldogs 71",
+     "legs": [
+      {
+       "outcome": "Mississippi St Bulldogs",
+       "result": "loss",
+       "headline": "Mississippi St Bulldogs lost by 7",
+       "final": "Wake Forest Demon Deacons 78 \u2013 Mississippi St Bulldogs 71",
+       "why": [
+        "Mississippi St Bulldogs lost by 7.",
+        "We priced it at 60% to hit vs 56% needed to break even at 1.77x (+6.3% expected edge).",
+        "Closing consensus 61% vs 56% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "favorite-upset",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "favorite-upset"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "MSST",
+        "away": "WAKE"
+       },
+       "final": "WAKE 78 \u2013 MSST 71",
+       "periods": {
+        "away": [
+         38,
+         40
+        ],
+        "home": [
+         32,
+         39
+        ]
+       },
+       "largest_lead": {
+        "WAKE": 13,
+        "MSST": 5
+       },
+       "largest_lead_at": {
+        "WAKE": "17:38 2nd half",
+        "MSST": "16:16 1st half"
+       },
+       "lead_changes": 5,
+       "ties": 2,
+       "runs": [
+        {
+         "team": "WAKE",
+         "pts": 11,
+         "from": "10:44 1st half",
+         "to": "7:33 1st half",
+         "score": "WAKE 26-16 MSST"
+        },
+        {
+         "team": "MSST",
+         "pts": 9,
+         "from": "17:24 2nd half",
+         "to": "13:41 2nd half",
+         "score": "WAKE 45-41 MSST"
+        }
+       ],
+       "swings": [
+        {
+         "team": "WAKE",
+         "swing": 13,
+         "from": "11:38 1st half",
+         "to": "4:32 1st half",
+         "mins": 7.1,
+         "from_score": "WAKE 15-16 MSST",
+         "to_score": "WAKE 32-20 MSST",
+         "pts_for": 17,
+         "pts_against": 4
+        },
+        {
+         "team": "MSST",
+         "swing": 11,
+         "from": "17:38 2nd half",
+         "to": "10:31 2nd half",
+         "mins": 7.1,
+         "from_score": "WAKE 45-32 MSST",
+         "to_score": "WAKE 49-47 MSST",
+         "pts_for": 15,
+         "pts_against": 4
+        }
+       ],
+       "clutch": [
+        "1:50 2nd half: Josh Hubbard makes free throw 1 of 1 (WAKE 68-63 MSST)",
+        "1:32 2nd half: Kevair Kennedy makes free throw 1 of 2 (WAKE 69-63 MSST)",
+        "1:32 2nd half: Kevair Kennedy makes free throw 2 of 2 (WAKE 70-63 MSST)",
+        "1:03 2nd half: Kevair Kennedy makes free throw 1 of 2 (WAKE 71-65 MSST)",
+        "1:03 2nd half: Kevair Kennedy makes free throw 2 of 2 (WAKE 72-65 MSST)",
+        "0:26 2nd half: Kevair Kennedy makes free throw 1 of 2 (WAKE 73-66 MSST)",
+        "0:17 2nd half: Kevair Kennedy makes free throw 1 of 2 (WAKE 75-68 MSST)",
+        "0:07 2nd half: Gallagher Placide makes free throw 1 of 2 (WAKE 77-70 MSST)"
+       ],
+       "leaders": [
+        "Kevair Kennedy (WAKE): 17 pts, 5 reb, 7 ast, 1-2 3PT in 34 min",
+        "Justin Ray (WAKE): 19 pts, 3 reb, 2 ast, 4-11 3PT in 31 min",
+        "Josh Hubbard (MSST): 24 pts, 0 reb, 7 ast, 5-12 3PT in 38 min",
+        "Thomas Bassong (MSST): 16 pts, 3 reb, 0 ast, 0-2 3PT in 27 min"
+       ],
+       "story": [
+        "Halftime: WAKE 78-71 MSST, WAKE up 7.",
+        "Largest leads: WAKE 13 (17:38 2nd half), MSST 5 (16:16 1st half). 5 lead changes, 2 ties.",
+        "Momentum swing: WAKE outscored them 17-4 in 7.1 minutes (11:38 1st half to 4:32 1st half), moving it from WAKE 15-16 MSST to WAKE 32-20 MSST.",
+        "Momentum swing: MSST outscored them 15-4 in 7.1 minutes (17:38 2nd half to 10:31 2nd half), moving it from WAKE 45-32 MSST to WAKE 49-47 MSST.",
+        "WAKE went on a 11-0 run (10:44 1st half to 7:33 1st half), making it WAKE 26-16 MSST.",
+        "MSST went on a 9-0 run (17:24 2nd half to 13:41 2nd half), making it WAKE 45-41 MSST.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six."
+       ],
+       "espn_id": "401929287",
+       "link": "https://www.espn.com/mens-college-basketball/game/_/gameId/401929287"
+      }
+     ]
     }
    },
    {
@@ -21891,14 +22017,18 @@
       "book": "draftkings",
       "fair_p": 0.4587,
       "close_p": 0.4769,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 2.1,
        "gain": 0.0952,
        "n": 5
       },
       "close_at": "2026-11-25T20:45:31Z",
-      "close_mins": 194
+      "close_mins": 194,
+      "final": {
+       "home": 63.0,
+       "away": 77.0
+      }
      }
     ],
     "dec": 2.3,
@@ -21908,10 +22038,10 @@
     "note": "Arb: 1.58% locked across 2 books",
     "group": "arb-482e1e1c8e",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 22.31,
+    "profit": 12.61,
+    "settled": "2026-11-26T05:25:06Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -21921,6 +22051,125 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "WON: Duke Blue Devils won by 14",
+     "final": "Duke Blue Devils 77 \u2013 UConn Huskies 63",
+     "legs": [
+      {
+       "outcome": "Duke Blue Devils",
+       "result": "win",
+       "headline": "Duke Blue Devils won by 14",
+       "final": "Duke Blue Devils 77 \u2013 UConn Huskies 63",
+       "why": [
+        "Duke Blue Devils won by 14.",
+        "We priced it at 44% to hit vs 43% needed to break even at 2.3x (+1.6% expected edge).",
+        "Closing consensus 48% vs 43% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "upset-hit",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "upset-hit"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CONN",
+        "away": "DUKE"
+       },
+       "final": "DUKE 77 \u2013 CONN 63",
+       "periods": {
+        "away": [
+         38,
+         39
+        ],
+        "home": [
+         32,
+         31
+        ]
+       },
+       "largest_lead": {
+        "DUKE": 15,
+        "CONN": 3
+       },
+       "largest_lead_at": {
+        "DUKE": "0:16 2nd half",
+        "CONN": "15:30 1st half"
+       },
+       "lead_changes": 4,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "DUKE",
+         "pts": 12,
+         "from": "12:32 1st half",
+         "to": "8:47 1st half",
+         "score": "DUKE 23-14 CONN"
+        },
+        {
+         "team": "DUKE",
+         "pts": 9,
+         "from": "17:49 2nd half",
+         "to": "15:37 2nd half",
+         "score": "DUKE 49-40 CONN"
+        },
+        {
+         "team": "DUKE",
+         "pts": 8,
+         "from": "2:12 2nd half",
+         "to": "0:16 2nd half",
+         "score": "DUKE 77-62 CONN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DUKE",
+         "swing": 12,
+         "from": "15:30 1st half",
+         "to": "8:47 1st half",
+         "mins": 6.7,
+         "from_score": "DUKE 7-10 CONN",
+         "to_score": "DUKE 23-14 CONN",
+         "pts_for": 16,
+         "pts_against": 4
+        },
+        {
+         "team": "CONN",
+         "swing": 10,
+         "from": "8:47 1st half",
+         "to": "2:12 1st half",
+         "mins": 6.6,
+         "from_score": "DUKE 23-14 CONN",
+         "to_score": "DUKE 31-32 CONN",
+         "pts_for": 18,
+         "pts_against": 8
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "John Blackwell (DUKE): 25 pts, 5 reb, 2 ast, 5-6 3PT in 39 min",
+        "Patrick Ngongba II (DUKE): 17 pts, 11 reb, 5 ast, 1-2 3PT in 32 min",
+        "Silas Demary Jr. (CONN): 25 pts, 3 reb, 4 ast, 5-9 3PT in 40 min",
+        "Colben Landrew (CONN): 9 pts, 7 reb, 2 ast, 1-6 3PT in 33 min"
+       ],
+       "story": [
+        "Halftime: DUKE 77-63 CONN, DUKE up 14.",
+        "Largest leads: DUKE 15 (0:16 2nd half), CONN 3 (15:30 1st half). 4 lead changes, 5 ties.",
+        "Momentum swing: DUKE outscored them 16-4 in 6.7 minutes (15:30 1st half to 8:47 1st half), moving it from DUKE 7-10 CONN to DUKE 23-14 CONN.",
+        "Momentum swing: CONN outscored them 18-8 in 6.6 minutes (8:47 1st half to 2:12 1st half), moving it from DUKE 23-14 CONN to DUKE 31-32 CONN.",
+        "DUKE went on a 12-0 run (12:32 1st half to 8:47 1st half), making it DUKE 23-14 CONN.",
+        "DUKE went on a 9-0 run (17:49 2nd half to 15:37 2nd half), making it DUKE 49-40 CONN."
+       ],
+       "espn_id": "401909568",
+       "link": "https://www.espn.com/mens-college-basketball/game/_/gameId/401909568"
+      }
+     ]
     }
    },
    {
@@ -21943,14 +22192,18 @@
       "book": "fanduel",
       "fair_p": 0.5547,
       "close_p": 0.5231,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.76,
        "gain": 0.0341,
        "n": 5
       },
       "close_at": "2026-11-25T20:45:31Z",
-      "close_mins": 194
+      "close_mins": 194,
+      "final": {
+       "home": 63.0,
+       "away": 77.0
+      }
      }
     ],
     "dec": 1.82,
@@ -21960,10 +22213,10 @@
     "note": "Arb: 1.58% locked across 2 books",
     "group": "arb-482e1e1c8e",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -12.26,
+    "settled": "2026-11-26T05:25:06Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -21973,6 +22226,125 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: UConn Huskies lost by 14",
+     "final": "Duke Blue Devils 77 \u2013 UConn Huskies 63",
+     "legs": [
+      {
+       "outcome": "UConn Huskies",
+       "result": "loss",
+       "headline": "UConn Huskies lost by 14",
+       "final": "Duke Blue Devils 77 \u2013 UConn Huskies 63",
+       "why": [
+        "UConn Huskies lost by 14.",
+        "We priced it at 56% to hit vs 55% needed to break even at 1.82x (+1.6% expected edge).",
+        "Closing consensus 52% vs 55% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "favorite-upset",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "favorite-upset",
+      "lost-closing-line"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "CONN",
+        "away": "DUKE"
+       },
+       "final": "DUKE 77 \u2013 CONN 63",
+       "periods": {
+        "away": [
+         38,
+         39
+        ],
+        "home": [
+         32,
+         31
+        ]
+       },
+       "largest_lead": {
+        "DUKE": 15,
+        "CONN": 3
+       },
+       "largest_lead_at": {
+        "DUKE": "0:16 2nd half",
+        "CONN": "15:30 1st half"
+       },
+       "lead_changes": 4,
+       "ties": 5,
+       "runs": [
+        {
+         "team": "DUKE",
+         "pts": 12,
+         "from": "12:32 1st half",
+         "to": "8:47 1st half",
+         "score": "DUKE 23-14 CONN"
+        },
+        {
+         "team": "DUKE",
+         "pts": 9,
+         "from": "17:49 2nd half",
+         "to": "15:37 2nd half",
+         "score": "DUKE 49-40 CONN"
+        },
+        {
+         "team": "DUKE",
+         "pts": 8,
+         "from": "2:12 2nd half",
+         "to": "0:16 2nd half",
+         "score": "DUKE 77-62 CONN"
+        }
+       ],
+       "swings": [
+        {
+         "team": "DUKE",
+         "swing": 12,
+         "from": "15:30 1st half",
+         "to": "8:47 1st half",
+         "mins": 6.7,
+         "from_score": "DUKE 7-10 CONN",
+         "to_score": "DUKE 23-14 CONN",
+         "pts_for": 16,
+         "pts_against": 4
+        },
+        {
+         "team": "CONN",
+         "swing": 10,
+         "from": "8:47 1st half",
+         "to": "2:12 1st half",
+         "mins": 6.6,
+         "from_score": "DUKE 23-14 CONN",
+         "to_score": "DUKE 31-32 CONN",
+         "pts_for": 18,
+         "pts_against": 8
+        }
+       ],
+       "clutch": [],
+       "leaders": [
+        "John Blackwell (DUKE): 25 pts, 5 reb, 2 ast, 5-6 3PT in 39 min",
+        "Patrick Ngongba II (DUKE): 17 pts, 11 reb, 5 ast, 1-2 3PT in 32 min",
+        "Silas Demary Jr. (CONN): 25 pts, 3 reb, 4 ast, 5-9 3PT in 40 min",
+        "Colben Landrew (CONN): 9 pts, 7 reb, 2 ast, 1-6 3PT in 33 min"
+       ],
+       "story": [
+        "Halftime: DUKE 77-63 CONN, DUKE up 14.",
+        "Largest leads: DUKE 15 (0:16 2nd half), CONN 3 (15:30 1st half). 4 lead changes, 5 ties.",
+        "Momentum swing: DUKE outscored them 16-4 in 6.7 minutes (15:30 1st half to 8:47 1st half), moving it from DUKE 7-10 CONN to DUKE 23-14 CONN.",
+        "Momentum swing: CONN outscored them 18-8 in 6.6 minutes (8:47 1st half to 2:12 1st half), moving it from DUKE 23-14 CONN to DUKE 31-32 CONN.",
+        "DUKE went on a 12-0 run (12:32 1st half to 8:47 1st half), making it DUKE 23-14 CONN.",
+        "DUKE went on a 9-0 run (17:49 2nd half to 15:37 2nd half), making it DUKE 49-40 CONN."
+       ],
+       "espn_id": "401909568",
+       "link": "https://www.espn.com/mens-college-basketball/game/_/gameId/401909568"
+      }
+     ]
     }
    },
    {
@@ -22216,6 +22588,47 @@
      ]
     },
     "recap_tried": 3
+   },
+   {
+    "id": "9314b6ef",
+    "placed": "2026-11-26T05:25:11Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "value_fav",
+    "legs": [
+     {
+      "event_id": "a648e84f07617a98535305954fc21467",
+      "sport": "soccer_mexico_ligamx",
+      "commence": "2026-11-27T01:00:00Z",
+      "home": "Pachuca",
+      "away": "Guadalajara",
+      "market": "totals",
+      "outcome": "Under",
+      "point": 2.5,
+      "price": 2.02,
+      "book": "betrivers",
+      "fair_p": 0.51,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.858,
+       "gain": 0.0874,
+       "n": 3
+      }
+     }
+    ],
+    "dec": 2.02,
+    "stake": 5.0,
+    "ev": 0.0302,
+    "p": 0.51,
+    "note": "3.0% edge vs 3-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
    }
   ],
   "runs": [
@@ -22271,11 +22684,11 @@
  },
  "arms": {
   "value_fav": {
-   "bets": 2,
-   "staked": 10.0,
-   "profit": 0.45999999999999996,
-   "clv_n": 2,
-   "clv_sum": -0.05393299999999979,
+   "bets": 3,
+   "staked": 15.0,
+   "profit": -4.54,
+   "clv_n": 3,
+   "clv_sum": 0.021519000000000288,
    "tags": {
     "blowout": {
      "n": 2,
@@ -22285,6 +22698,16 @@
     "lost-closing-line": {
      "n": 2,
      "won": 1,
+     "lost": 1
+    },
+    "beat-closing-line": {
+     "n": 1,
+     "won": 0,
+     "lost": 1
+    },
+    "favorite-upset": {
+     "n": 1,
+     "won": 0,
      "lost": 1
     }
    },
@@ -22367,11 +22790,11 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 16,
-   "staked": 142.57,
-   "profit": 1.5599999999999987,
-   "clv_n": 14,
-   "clv_sum": 0.5523845999999997,
+   "bets": 18,
+   "staked": 164.52999999999997,
+   "profit": 1.9099999999999984,
+   "clv_n": 16,
+   "clv_sum": 0.6012965999999995,
    "tags": {
     "underdog-lost": {
      "n": 6,
@@ -22379,13 +22802,13 @@
      "lost": 6
     },
     "lost-closing-line": {
-     "n": 6,
+     "n": 7,
      "won": 4,
-     "lost": 2
+     "lost": 3
     },
     "beat-closing-line": {
-     "n": 6,
-     "won": 2,
+     "n": 7,
+     "won": 3,
      "lost": 4
     },
     "blowout": {
@@ -22394,13 +22817,13 @@
      "lost": 1
     },
     "favorite-upset": {
-     "n": 1,
+     "n": 2,
      "won": 0,
-     "lost": 1
+     "lost": 2
     },
     "upset-hit": {
-     "n": 1,
-     "won": 1,
+     "n": 2,
+     "won": 2,
      "lost": 0
     }
    },
@@ -22550,13 +22973,13 @@
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-26T05:00:30Z"
+   "last_scanned": "2026-11-26T05:25:10Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-26T05:00:30Z",
+   "last_scanned": "2026-11-26T05:25:10Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
@@ -22583,7 +23006,7 @@
    "profit": -10.0
   },
   "soccer_mexico_ligamx": {
-   "last_scanned": "2026-11-25T21:00:56Z"
+   "last_scanned": "2026-11-26T05:25:11Z"
   },
   "boxing_boxing": {
    "last_scanned": "2026-11-25T19:30:36Z"
@@ -22598,7 +23021,7 @@
    "last_scanned": "2026-11-25T17:46:26Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-11-21T07:00:39Z"
+   "last_scanned": "2026-11-26T05:25:10Z"
   },
   "soccer_spain_la_liga": {
    "last_scanned": "2026-11-23T07:00:27Z"
@@ -22619,10 +23042,10 @@
    "last_scanned": "2026-11-23T07:00:27Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-26T05:00:30Z",
-   "bets": 10.0,
-   "staked": 66.67,
-   "profit": -9.120000000000001
+   "last_scanned": "2026-11-26T05:25:10Z",
+   "bets": 13.0,
+   "staked": 93.63000000000001,
+   "profit": -13.770000000000001
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-22T06:15:23Z"
@@ -22664,7 +23087,7 @@
    "last_scanned": "2026-11-18T00:15:24Z"
   },
   "cricket_test_match": {
-   "last_scanned": "2026-11-25T07:30:26Z"
+   "last_scanned": "2026-11-26T05:25:10Z"
   },
   "soccer_spain_copa_del_rey": {
    "last_scanned": "2026-11-18T18:19:02Z"
@@ -22673,7 +23096,7 @@
    "last_scanned": "2026-11-17T19:01:11Z"
   },
   "icehockey_liiga": {
-   "last_scanned": "2026-11-25T07:00:34Z"
+   "last_scanned": "2026-11-26T05:25:10Z"
   },
   "soccer_uefa_champs_league_women": {
    "last_scanned": "2026-11-19T18:00:29Z"
@@ -22739,7 +23162,7 @@
    "last_scanned": "2026-11-21T07:30:23Z"
   },
   "aussierules_aflw": {
-   "last_scanned": "2026-11-20T07:30:24Z"
+   "last_scanned": "2026-11-26T05:25:10Z"
   },
   "soccer_turkey_super_league": {
    "last_scanned": "2026-11-23T05:30:24Z"
@@ -22776,26 +23199,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T02:30:42Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-21T03:00:53Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 227 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-21T03:58:06Z",
-   "kind": "research",
-   "text": "Research refresh for Fri Nov 20: 9 games, 226 players projected, lineups for 9 games."
-  },
-  {
-   "ts": "2026-11-21T04:12:38Z",
-   "kind": "result",
-   "text": "LOST -$5.00: Jamison Battle Under 4.5 @ +110 (Hard Rock Bet) \u2014 LOST: 5 reb+ast vs Under 4.5 [matchup-read-wrong, model-miss, near-miss]"
-  },
   {
    "ts": "2026-11-21T04:12:38Z",
    "kind": "result",
@@ -24275,6 +24678,26 @@
    "ts": "2026-11-26T05:23:35Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 27: 11 games, 255 players projected, lineups for 9 games."
+  },
+  {
+   "ts": "2026-11-26T05:25:06Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Mississippi St Bulldogs @ -130 (Fanatics) \u2014 LOST: Mississippi St Bulldogs lost by 7 [beat-closing-line, favorite-upset]"
+  },
+  {
+   "ts": "2026-11-26T05:25:06Z",
+   "kind": "result",
+   "text": "WON +$12.61: Duke Blue Devils @ +130 (DraftKings) \u2014 WON: Duke Blue Devils won by 14 [beat-closing-line, upset-hit]"
+  },
+  {
+   "ts": "2026-11-26T05:25:06Z",
+   "kind": "result",
+   "text": "LOST -$12.26: UConn Huskies @ -122 (FanDuel) \u2014 LOST: UConn Huskies lost by 14 [favorite-upset, lost-closing-line]"
+  },
+  {
+   "ts": "2026-11-26T05:25:11Z",
+   "kind": "scan",
+   "text": "Scanned americanfootball_nfl (3), basketball_ncaab (22), mma_mixed_martial_arts (1), icehockey_liiga (5), americanfootball_ncaaf (6), cricket_test_match (1), aussierules_aflw (1), soccer_mexico_ligamx (2) for 23 credits. Placed 1: Under 2.5 @ +102 (BetRivers) Equity $85.81."
   }
  ],
  "learned_ids": [
@@ -24375,32 +24798,35 @@
   "8fbbd302",
   "35fc2a2e",
   "c53bc86b",
-  "9cee21a6"
+  "9cee21a6",
+  "c7000dc7",
+  "71cdaeb3",
+  "0cbf3379"
  ],
  "strategist": null,
- "updated": "2026-11-26T05:24:27Z",
+ "updated": "2026-11-26T05:25:11Z",
  "stats": {
-  "bets": 98,
-  "won": 31,
-  "lost": 65,
-  "shop_n": 40,
-  "shop_avg": 0.0733,
+  "bets": 101,
+  "won": 32,
+  "lost": 67,
+  "shop_n": 41,
+  "shop_avg": 0.0737,
   "push": 2,
-  "staked": 552.57,
-  "profit": -165.53,
-  "roi": -0.2996,
+  "staked": 579.53,
+  "profit": -170.18,
+  "roi": -0.2937,
   "clv": 0.0009,
   "clv_n": 77,
   "clv_no_close": 24,
   "close_mins_median": 4,
-  "open": 3,
-  "equity": 90.46
+  "open": 1,
+  "equity": 85.81
  },
  "weights": {
-  "value_fav": 1.005,
+  "value_fav": 0.882,
   "value_dog": 0.396,
   "longshot": 0.3,
-  "arb": 1.098,
+  "arb": 1.107,
   "parlay_ev": 1.0,
   "matchup_over": 1.322,
   "matchup_under": 0.3
@@ -24409,20 +24835,20 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 2,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
   "current": {
    "arb": {
-    "bets": 0,
-    "won": 0,
-    "lost": 0,
+    "bets": 2,
+    "won": 1,
+    "lost": 1,
     "push": 0,
-    "staked": 0,
-    "profit": 0,
-    "roi": null,
+    "staked": 21.96,
+    "profit": 0.35,
+    "roi": 0.0159,
     "clv": 0.0245,
-    "open": 2,
+    "open": 0,
     "paused": false
    },
    "longshot": {
@@ -24438,13 +24864,13 @@
     "paused": false
    },
    "value_fav": {
-    "bets": 1,
+    "bets": 2,
     "won": 1,
-    "lost": 0,
+    "lost": 1,
     "push": 0,
-    "staked": 5.0,
-    "profit": 5.46,
-    "roi": 1.092,
+    "staked": 10.0,
+    "profit": 0.46,
+    "roi": 0.046,
     "clv": 0.026,
     "open": 1,
     "paused": false
@@ -24452,15 +24878,15 @@
   },
   "all": {
    "arb": {
-    "bets": 16,
-    "won": 8,
-    "lost": 8,
+    "bets": 18,
+    "won": 9,
+    "lost": 9,
     "push": 0,
-    "staked": 142.57,
-    "profit": 1.56,
-    "roi": 0.0109,
+    "staked": 164.53,
+    "profit": 1.91,
+    "roi": 0.0116,
     "clv": 0.0376,
-    "open": 2,
+    "open": 0,
     "paused": false
    },
    "longshot": {
@@ -24512,13 +24938,13 @@
     "paused": true
    },
    "value_fav": {
-    "bets": 2,
+    "bets": 3,
     "won": 1,
-    "lost": 1,
+    "lost": 2,
     "push": 0,
-    "staked": 10.0,
-    "profit": 0.46,
-    "roi": 0.046,
+    "staked": 15.0,
+    "profit": -4.54,
+    "roi": -0.3027,
     "clv": 0.0072,
     "open": 1,
     "paused": false
