@@ -443,15 +443,15 @@
    "start": "2026-11-28T00:30Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.78,
-   "am": -128,
+   "dec": 1.83,
+   "am": -120,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.55,
+   "p": 0.535,
    "p_sim": 0.628,
-   "p_mkt": 0.529,
+   "p_mkt": 0.515,
    "p_kalshi": null,
-   "ev": -0.02,
+   "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "TOR",
    "away": "BKN",
@@ -462,7 +462,7 @@
    "stat": "pts",
    "proj": 8.7,
    "sim": 9.2,
-   "ob_ind": null,
+   "ob_ind": 9.5,
    "avg10": 6.5,
    "minutes": 26.9,
    "for": [
@@ -542,8 +542,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.818,
-    "floor_am": -122,
+    "floor_dec": 1.869,
+    "floor_am": -115,
     "line": 10.5,
     "next": 9.5
    },
@@ -559,7 +559,7 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212122",
+    "The price at 10.5 going past \u2212115",
     "His minutes projection falling 15% or more"
    ],
    "market": {
@@ -585,11 +585,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-27T14:16:37Z",
-    "why": "no longer +EV at tonight's line (10.5 at -128)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -1165,8 +1162,11 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T14:46:45Z",
+    "why": "no longer +EV at tonight's line (14.5 at -130)"
+   },
+   "status": "Removed"
   },
   "p|4278355|pts|Under": {
    "key": "p|4278355|pts|Under",
@@ -1304,6 +1304,155 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
+   "removed": {
+    "at": "2026-11-27T14:46:45Z",
+    "why": "no longer +EV at tonight's line (11.5 at -104)"
+   },
+   "status": "Removed"
+  },
+  "p|5144091|pts|Under": {
+   "key": "p|5144091|pts|Under",
+   "kind": "prop",
+   "label": "Jeremiah Fears Under 18.5 points",
+   "espn_id": "401909335",
+   "game": "NO @ LAC",
+   "start": "2026-11-28T02:30Z",
+   "side": "Under",
+   "point": 18.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.544,
+   "p_sim": 0.61,
+   "p_mkt": 0.524,
+   "p_kalshi": null,
+   "ev": -0.02,
+   "verdict": "Pass: recent form and simulation agree; the main risk is history.",
+   "home": "LAC",
+   "away": "NO",
+   "pid": "5144091",
+   "name": "Jeremiah Fears",
+   "team": "NO",
+   "opp": "LAC",
+   "stat": "pts",
+   "proj": 17.6,
+   "sim": 17,
+   "ob_ind": 17.5,
+   "avg10": 17.4,
+   "minutes": 31.7,
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes under in 61% of 10,000 simulated games (sim average 17).",
+     "rec": [
+      1702,
+      1521
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 18.5 in 6 of his last 10 (2 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 37% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      980,
+      952
+     ]
+    },
+    {
+     "tag": "role tonight",
+     "t": "Minutes down tonight: -2.6 min with Pierre out.",
+     "rec": [
+      249,
+      269
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line moved against it (17.5 to 18.5), though you now get a higher number than the opener's would have been.",
+     "rec": [
+      223,
+      185
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 33.4 minutes in the games he went over vs 29.5 otherwise. He's projected for 31.7 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs LAC: 17.0 points/g in 5 games (+9%).",
+     "rec": [
+      452,
+      443
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 18.5,
+    "next": 17.5
+   },
+   "watch": [
+    {
+     "pid": "3907497",
+     "name": "Dejounte Murray",
+     "team": "NO",
+     "status": "Out",
+     "self": false,
+     "min": 28.8
+    }
+   ],
+   "kill": [
+    "The line reaching 17.5",
+    "The price at 18.5 going past \u2212119",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 17.5,
+    "now": 18.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T14:46:45Z",
+    "edition": "update",
+    "point": 18.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.544,
+    "play_to": {
+     "floor_dec": 1.838,
+     "floor_am": -119,
+     "line": 18.5,
+     "next": 17.5
+    }
+   },
+   "first_seen": "2026-11-27T14:46:45Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -1836,35 +1985,38 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-27T14:46:45Z",
+    "why": "other plays ranked higher"
+   },
+   "status": "Removed"
   },
   "g|401909328|total|Over": {
    "key": "g|401909328|total|Over",
    "kind": "total",
-   "label": "PHI @ IND Over 230.5",
+   "label": "PHI @ IND Over 229.5",
    "espn_id": "401909328",
    "game": "PHI @ IND",
    "start": "2026-11-28T00:30Z",
    "side": "Over",
-   "point": 230.5,
-   "dec": 1.95,
-   "am": -105,
+   "point": 229.5,
+   "dec": 1.86,
+   "am": -116,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.497,
-   "p_sim": 0.574,
-   "p_mkt": 0.488,
+   "p": 0.52,
+   "p_sim": 0.597,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": -0.031,
+   "ev": -0.032,
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "IND",
    "away": "PHI",
-   "why": "Sim total 234.3 (after a learned +1.2 correction) vs 230.5 \u00b7 over in 57% of sims vs 49% DraftKings",
+   "why": "Sim total 234.3 (after a learned +1.2 correction) vs 229.5 \u00b7 over in 60% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 57% of 10,000 simulated games.",
+     "t": "Goes over in 60% of 10,000 simulated games.",
      "rec": [
       1702,
       1521
@@ -1874,7 +2026,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (234.5 to 230.5).",
+     "t": "The line has moved against this side since it opened (234.5 to 229.5).",
      "rec": [
       223,
       185
@@ -1890,10 +2042,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.012,
-    "floor_am": 101,
+    "floor_dec": 1.923,
+    "floor_am": -108,
     "line": null,
-    "next": 231.5
+    "next": 230.5
    },
    "watch": [
     {
@@ -1922,13 +2074,13 @@
     }
    ],
    "kill": [
-    "The line reaching 231.5",
-    "The price at 230.5 going past +101",
+    "The line reaching 230.5",
+    "The price at 229.5 going past \u2212108",
     "A change in Joel Embiid (questionable), Kelly Oubre Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 230.5,
+    "now": 229.5,
     "kalshi": null
    },
    "started": false,
@@ -1950,7 +2102,7 @@
    },
    "first_seen": "2026-11-27T14:16:37Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "New"
   },
   "g|401909329|spread|away": {
    "key": "g|401909329|spread|away",
@@ -2193,6 +2345,120 @@
    "first_seen": "2026-11-27T14:16:37Z",
    "removed": null,
    "status": "Past play-to"
+  },
+  "g|401909327|spread|away": {
+   "key": "g|401909327|spread|away",
+   "kind": "spread",
+   "label": "MIL +10.5 (MIL @ DET)",
+   "espn_id": "401909327",
+   "game": "MIL @ DET",
+   "start": "2026-11-28T00:30Z",
+   "side": "away",
+   "point": 10.5,
+   "dec": 1.89,
+   "am": -112,
+   "conv": 29,
+   "tier": "Pass",
+   "p": 0.511,
+   "p_sim": 0.574,
+   "p_mkt": 0.504,
+   "p_kalshi": null,
+   "ev": -0.034,
+   "verdict": "Pass: simulation and team model agree; the main risk is model record.",
+   "home": "DET",
+   "away": "MIL",
+   "why": "Sim: DET by 7.4 on average (MIL 105.3, DET 112.7) \u00b7 MIL +10.5 covers in 57% of sims vs 50% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Covers in 57% of 10,000 simulated games.",
+     "rec": [
+      1702,
+      1521
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line has moved this way since it opened (-11.5 to -10.5): you're with the money, at a worse number.",
+     "rec": [
+      221,
+      265
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings with tonight's lineups make it DET by 9.0, 1.5 better than this number.",
+     "rec": null
+    },
+    {
+     "tag": "who's out",
+     "t": "DET without Cade Cunningham, Duncan Robinson: worth about 3.1 points.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 658-671 against DraftKings' spreads. Treat this as a lean.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.957,
+    "floor_am": -104,
+    "line": null,
+    "next": 9.5
+   },
+   "watch": [
+    {
+     "pid": "4432166",
+     "name": "Cade Cunningham",
+     "team": "DET",
+     "status": "Out",
+     "self": false,
+     "min": 36.2
+    },
+    {
+     "pid": "3157465",
+     "name": "Duncan Robinson",
+     "team": "DET",
+     "status": "Out",
+     "self": false,
+     "min": 29.6
+    }
+   ],
+   "kill": [
+    "The line reaching 9.5",
+    "The price at 10.5 going past \u2212104"
+   ],
+   "market": {
+    "open": null,
+    "now": 10.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T14:46:45Z",
+    "edition": "update",
+    "point": 10.5,
+    "dec": 1.89,
+    "am": -112,
+    "conv": 29,
+    "tier": "Pass",
+    "p": 0.511,
+    "play_to": {
+     "floor_dec": 1.957,
+     "floor_am": -104,
+     "line": null,
+     "next": 9.5
+    }
+   },
+   "first_seen": "2026-11-27T14:46:45Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -2300,6 +2566,62 @@
    "kind": "removed",
    "text": "Removed: MEM @ MIN Over 221.5 \u2014 line moved 221.5 \u2192 222.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "p|5144091|pts|Under",
+   "kind": "added",
+   "text": "Added: Jeremiah Fears Under 18.5 points at \u2212125, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Allen Graves Under 10.5 points at \u2212120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "line",
+   "text": "Allen Graves: line 10.5 at \u2212128 \u2192 10.5 at \u2212120",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Miles Bridges Under 13.5 points \u2014 no longer +EV at tonight's line (14.5 at -130)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "p|4278355|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Obi Toppin Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -104)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "g|401909328|total|Over",
+   "kind": "line",
+   "text": "PHI @ IND Over 229.5: line 230.5 at \u2212105 \u2192 229.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "g|401909327|spread|away",
+   "kind": "added",
+   "text": "Added: MIL +10.5 (MIL @ DET) at \u2212112, conviction 29",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T14:46:45Z",
+   "key": "g|401909335|spread|away",
+   "kind": "removed",
+   "text": "Removed: NO +2.5 (NO @ LAC) \u2014 other plays ranked higher",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2382,7 +2704,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 9
+  "picks": 10
  },
  "leans_record": {
   "w": 23,
@@ -2391,5 +2713,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T14:30:29Z"
+ "updated": "2026-11-27T14:46:45Z"
 }
