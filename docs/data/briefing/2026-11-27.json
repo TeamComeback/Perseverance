@@ -26,22 +26,22 @@
   "p|4395724|pts|Under": {
    "key": "p|4395724|pts|Under",
    "kind": "prop",
-   "label": "Immanuel Quickley Under 18.5 points",
+   "label": "Immanuel Quickley Under 19.5 points",
    "espn_id": "401909329",
    "game": "BKN @ TOR",
    "start": "2026-11-28T00:30Z",
    "side": "Under",
-   "point": 18.5,
-   "dec": 1.98,
-   "am": -102,
+   "point": 19.5,
+   "dec": 1.8,
+   "am": -125,
    "conv": 34,
    "tier": "Pass",
-   "p": 0.495,
-   "p_sim": 0.499,
-   "p_mkt": 0.476,
-   "p_kalshi": null,
-   "ev": -0.02,
-   "verdict": "Pass: recent form and projection agree; the main risk is matchup.",
+   "p": 0.545,
+   "p_sim": 0.559,
+   "p_mkt": 0.524,
+   "p_kalshi": 0.54,
+   "ev": -0.019,
+   "verdict": "Pass: recent form and cushion agree; the main risk is matchup.",
    "home": "TOR",
    "away": "BKN",
    "pid": "4395724",
@@ -51,32 +51,40 @@
    "stat": "pts",
    "proj": 17.1,
    "sim": 18.8,
-   "ob_ind": null,
+   "ob_ind": 19.5,
    "avg10": 17.5,
    "minutes": 31.9,
    "for": [
     {
+     "tag": "simulation",
+     "t": "Goes under in 56% of 10,000 simulated games (sim average 18.8).",
+     "rec": [
+      1702,
+      1521
+     ]
+    },
+    {
      "tag": "projection",
-     "t": "Model projects 17.1 points against a line of 18.5.",
+     "t": "Model projects 17.1 points against a line of 19.5.",
      "rec": [
       1753,
       1620
      ]
     },
     {
-     "tag": "Vegas",
-     "t": "Vegas team total -5 vs model.",
-     "rec": [
-      226,
-      209
-     ]
-    },
-    {
      "tag": "recent form",
-     "t": "Stayed under 18.5 in 7 of his last 10 (4 of the last 5).",
+     "t": "Stayed under 19.5 in 7 of his last 10 (4 of the last 5).",
      "rec": [
       1513,
       1405
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 17.5 in 6 of his last 10.",
+     "rec": [
+      399,
+      378
      ]
     },
     {
@@ -85,14 +93,6 @@
      "rec": [
       980,
       952
-     ]
-    },
-    {
-     "tag": "line move",
-     "t": "The line moved his way (19.5 to 18.5): money has been on the under.",
-     "rec": [
-      221,
-      265
      ]
     }
    ],
@@ -106,8 +106,16 @@
      ]
     },
     {
+     "tag": "tonight's spot",
+     "t": "Against BKN: 3 of 5 under 19.5 (60% vs 80% lately).",
+     "rec": [
+      908,
+      909
+     ]
+    },
+    {
      "tag": "shot volume",
-     "t": "Depends on shot volume: 15.6 shots in the misses vs 11.9 in the hits.",
+     "t": "Depends on shot volume: 15.8 shots in the misses vs 12.1 in the hits.",
      "rec": [
       218,
       221
@@ -123,10 +131,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.02,
-    "floor_am": 102,
-    "line": null,
-    "next": 17.5
+    "floor_dec": 1.835,
+    "floor_am": -120,
+    "line": 19.5,
+    "next": 18.5
    },
    "watch": [
     {
@@ -139,14 +147,14 @@
     }
    ],
    "kill": [
-    "The line reaching 17.5",
-    "The price at 18.5 going past +102",
+    "The line reaching 18.5",
+    "The price at 19.5 going past \u2212120",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 19.5,
-    "now": 18.5,
-    "kalshi": null
+    "now": 19.5,
+    "kalshi": 0.54
    },
    "started": false,
    "published": {
@@ -166,11 +174,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-27T14:16:37Z",
-    "why": "no longer +EV at tonight's line (18.5 at -103)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "p|4397424|tpm|Over": {
    "key": "p|4397424|tpm|Over",
@@ -298,8 +303,11 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T16:31:31Z",
+    "why": "no longer +EV at tonight's line (0.5 at +660)"
+   },
+   "status": "Removed"
   },
   "p|4431736|pts|Under": {
    "key": "p|4431736|pts|Under",
@@ -450,7 +458,7 @@
    "p": 0.535,
    "p_sim": 0.628,
    "p_mkt": 0.515,
-   "p_kalshi": null,
+   "p_kalshi": 0.553,
    "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "TOR",
@@ -565,7 +573,7 @@
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": null
+    "kalshi": 0.553
    },
    "started": false,
    "published": {
@@ -736,7 +744,7 @@
    "p": 0.518,
    "p_sim": 0.663,
    "p_mkt": 0.499,
-   "p_kalshi": null,
+   "p_kalshi": 0.515,
    "ev": -0.02,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "POR",
@@ -851,7 +859,7 @@
    "market": {
     "open": 5.5,
     "now": 5.5,
-    "kalshi": null
+    "kalshi": 0.515
    },
    "started": false,
    "published": {
@@ -1327,9 +1335,9 @@
    "conv": 33,
    "tier": "Pass",
    "p": 0.544,
-   "p_sim": 0.61,
+   "p_sim": 0.582,
    "p_mkt": 0.524,
-   "p_kalshi": null,
+   "p_kalshi": 0.553,
    "ev": -0.02,
    "verdict": "Pass: recent form and simulation agree; the main risk is history.",
    "home": "LAC",
@@ -1340,14 +1348,14 @@
    "opp": "LAC",
    "stat": "pts",
    "proj": 17.6,
-   "sim": 17,
+   "sim": 17.5,
    "ob_ind": 17.5,
    "avg10": 17.4,
    "minutes": 31.7,
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes under in 61% of 10,000 simulated games (sim average 17).",
+     "t": "Goes under in 58% of 10,000 simulated games (sim average 17.5).",
      "rec": [
       1702,
       1521
@@ -1436,7 +1444,7 @@
    "market": {
     "open": 17.5,
     "now": 18.5,
-    "kalshi": null
+    "kalshi": 0.553
    },
    "started": false,
    "published": {
@@ -1610,6 +1618,138 @@
     }
    },
    "first_seen": "2026-11-27T15:01:36Z",
+   "removed": {
+    "at": "2026-11-27T16:31:31Z",
+    "why": "no longer +EV at tonight's line (13.5 at -101)"
+   },
+   "status": "Removed"
+  },
+  "p|4397424|pts|Under": {
+   "key": "p|4397424|pts|Under",
+   "kind": "prop",
+   "label": "Neemias Queta Under 11.5 points",
+   "espn_id": "401909330",
+   "game": "ATL @ BOS",
+   "start": "2026-11-28T01:00Z",
+   "side": "Under",
+   "point": 11.5,
+   "dec": 1.84,
+   "am": -119,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.532,
+   "p_sim": 0.495,
+   "p_mkt": 0.512,
+   "p_kalshi": 0.527,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and tonight's spot agree; the main risk is similar players.",
+   "home": "BOS",
+   "away": "ATL",
+   "pid": "4397424",
+   "name": "Neemias Queta",
+   "team": "BOS",
+   "opp": "ATL",
+   "stat": "pts",
+   "proj": 11.5,
+   "sim": 11.6,
+   "ob_ind": 11.5,
+   "avg10": 10.8,
+   "minutes": 25.4,
+   "for": [
+    {
+     "tag": "recent form",
+     "t": "Stayed under 11.5 in 6 of his last 10 (2 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against ATL: 4 of 5 under 11.5 (80% vs 60% lately).",
+     "rec": [
+      624,
+      607
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (12.5 to 11.5): money has been on the under.",
+     "rec": [
+      221,
+      265
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +6% points vs ATL (157 close comps).",
+     "rec": [
+      725,
+      669
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "ATL gives centers +5% points vs their norm (#7 softest of 30).",
+     "rec": [
+      1161,
+      1104
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 25.6 minutes in the games he went over vs 22.6 otherwise. He's projected for 25.4 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "context",
+     "t": "Moderate matchup.",
+     "rec": [
+      103,
+      112
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.88,
+    "floor_am": -114,
+    "line": null,
+    "next": 10.5
+   },
+   "watch": [],
+   "kill": [
+    "The line reaching 10.5",
+    "The price at 11.5 going past \u2212114",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 12.5,
+    "now": 11.5,
+    "kalshi": 0.527
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T16:31:31Z",
+    "edition": "update",
+    "point": 11.5,
+    "dec": 1.84,
+    "am": -119,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.532,
+    "play_to": {
+     "floor_dec": 1.88,
+     "floor_am": -114,
+     "line": null,
+     "next": 10.5
+    }
+   },
+   "first_seen": "2026-11-27T16:31:31Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -1711,19 +1851,19 @@
    "start": "2026-11-28T00:30Z",
    "side": "away",
    "point": -3.5,
-   "dec": 1.96,
-   "am": -104,
+   "dec": 1.97,
+   "am": -103,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.493,
+   "p": 0.491,
    "p_sim": 0.55,
-   "p_mkt": 0.487,
+   "p_mkt": 0.484,
    "p_kalshi": null,
    "ev": -0.033,
    "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "IND",
    "away": "PHI",
-   "why": "Sim: PHI by 5.2 on average (PHI 119.1, IND 113.9) \u00b7 PHI -3.5 covers in 55% of sims vs 49% DraftKings",
+   "why": "Sim: PHI by 5.2 on average (PHI 119.1, IND 113.9) \u00b7 PHI -3.5 covers in 55% of sims vs 48% DraftKings",
    "for": [],
    "against": [
     {
@@ -1754,8 +1894,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.028,
-    "floor_am": 103,
+    "floor_dec": 2.037,
+    "floor_am": 104,
     "line": null,
     "next": -4.5
    },
@@ -1787,7 +1927,7 @@
    ],
    "kill": [
     "The line reaching -4.5",
-    "The price at -3.5 going past +103",
+    "The price at -3.5 going past +104",
     "A change in Joel Embiid (questionable), Kelly Oubre Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1819,29 +1959,29 @@
   "g|401909333|total|Over": {
    "key": "g|401909333|total|Over",
    "kind": "total",
-   "label": "LAL @ SA Over 225.5",
+   "label": "LAL @ SA Over 226.5",
    "espn_id": "401909333",
    "game": "LAL @ SA",
    "start": "2026-11-28T02:30Z",
    "side": "Over",
-   "point": 225.5,
-   "dec": 1.96,
-   "am": -104,
+   "point": 226.5,
+   "dec": 1.94,
+   "am": -106,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.494,
-   "p_sim": 0.554,
-   "p_mkt": 0.487,
+   "p": 0.498,
+   "p_sim": 0.566,
+   "p_mkt": 0.491,
    "p_kalshi": null,
    "ev": -0.033,
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "SA",
    "away": "LAL",
-   "why": "Sim total 228.4 (after a learned +1.2 correction) vs 225.5 \u00b7 over in 55% of sims vs 49% DraftKings",
+   "why": "Sim total 229.8 (after a learned +1.2 correction) vs 226.5 \u00b7 over in 57% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 55% of 10,000 simulated games.",
+     "t": "Goes over in 57% of 10,000 simulated games.",
      "rec": [
       1702,
       1521
@@ -1851,10 +1991,18 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (232.5 to 225.5).",
+     "t": "The line has moved against this side since it opened (232.5 to 226.5).",
      "rec": [
       223,
       185
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "40% of sims are blowouts, and benches slow the scoring late.",
+     "rec": [
+      560,
+      480
      ]
     },
     {
@@ -1867,10 +2015,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.024,
-    "floor_am": 102,
+    "floor_dec": 2.008,
+    "floor_am": 101,
     "line": null,
-    "next": 226.5
+    "next": 227.5
    },
    "watch": [
     {
@@ -1882,30 +2030,30 @@
      "min": 32.5
     },
     {
+     "pid": "5037871",
+     "name": "Dylan Harper",
+     "team": "SA",
+     "status": "Questionable",
+     "self": false,
+     "min": 30.8
+    },
+    {
      "pid": "4066259",
      "name": "De'Aaron Fox",
      "team": "SA",
      "status": "Questionable",
      "self": false,
      "min": 26.9
-    },
-    {
-     "pid": "5037871",
-     "name": "Dylan Harper",
-     "team": "SA",
-     "status": "Questionable",
-     "self": false,
-     "min": 26.8
     }
    ],
    "kill": [
-    "The line reaching 226.5",
-    "The price at 225.5 going past +102",
-    "A change in Austin Reaves (questionable), De'Aaron Fox (questionable), Dylan Harper (questionable): the model re-prices on the next run"
+    "The line reaching 227.5",
+    "The price at 226.5 going past +101",
+    "A change in Austin Reaves (questionable), Dylan Harper (questionable), De'Aaron Fox (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 225.5,
+    "now": 226.5,
     "kalshi": null
    },
    "started": false,
@@ -1926,11 +2074,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-27T14:16:37Z",
-    "why": "line moved 226.5 \u2192 225.5"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909331|total|Over": {
    "key": "g|401909331|total|Over",
@@ -2491,8 +2636,11 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T16:31:31Z",
+    "why": "confidence fell 28 \u2192 27"
+   },
+   "status": "Removed"
   },
   "g|401909327|spread|away": {
    "key": "g|401909327|spread|away",
@@ -2812,6 +2960,69 @@
    "kind": "line",
    "text": "BKN +9.5 (BKN @ TOR): line 9.5 at \u2212112 \u2192 9.5 at \u2212109",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "p|4395724|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Immanuel Quickley Under 19.5 points at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "p|4395724|pts|Under",
+   "kind": "line",
+   "text": "Immanuel Quickley: line 18.5 at \u2212102 \u2192 19.5 at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "added",
+   "text": "Added: Neemias Queta Under 11.5 points at \u2212119, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "p|4397424|tpm|Over",
+   "kind": "removed",
+   "text": "Removed: Neemias Queta Over 0.5 threes \u2014 no longer +EV at tonight's line (0.5 at +660)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "p|4684272|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Ja'Kobe Walter Under 14.5 points \u2014 no longer +EV at tonight's line (13.5 at -101)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "g|401909328|spread|away",
+   "kind": "line",
+   "text": "PHI -3.5 (PHI @ IND): line -3.5 at \u2212104 \u2192 -3.5 at \u2212103",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "g|401909333|total|Over",
+   "kind": "back",
+   "text": "Back on the board: LAL @ SA Over 226.5 at \u2212106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "g|401909333|total|Over",
+   "kind": "line",
+   "text": "LAL @ SA Over 226.5: line 225.5 at \u2212104 \u2192 226.5 at \u2212106",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T16:31:31Z",
+   "key": "g|401909333|spread|away",
+   "kind": "removed",
+   "text": "Removed: LAL +6.5 (LAL @ SA) \u2014 confidence fell 28 \u2192 27",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2874,6 +3085,11 @@
     "status": "Probable"
    },
    {
+    "name": "Dylan Harper",
+    "team": "SA",
+    "status": "Questionable"
+   },
+   {
     "name": "LaMelo Ball",
     "team": "MIN",
     "status": "Questionable"
@@ -2884,17 +3100,12 @@
     "status": "Questionable"
    },
    {
-    "name": "Dylan Harper",
-    "team": "SA",
-    "status": "Questionable"
-   },
-   {
     "name": "Kelly Oubre Jr.",
     "team": "IND",
     "status": "Questionable"
    }
   ],
-  "picks": 11
+  "picks": 12
  },
  "leans_record": {
   "w": 23,
@@ -2903,5 +3114,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T16:15:26Z"
+ "updated": "2026-11-27T16:31:31Z"
 }
