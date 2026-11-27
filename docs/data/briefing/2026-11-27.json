@@ -39,7 +39,7 @@
    "p": 0.542,
    "p_sim": 0.559,
    "p_mkt": 0.521,
-   "p_kalshi": 0.545,
+   "p_kalshi": 0.555,
    "ev": -0.019,
    "verdict": "Pass: recent form and cushion agree; the main risk is matchup.",
    "home": "TOR",
@@ -154,7 +154,7 @@
    "market": {
     "open": 19.5,
     "now": 19.5,
-    "kalshi": 0.545
+    "kalshi": 0.555
    },
    "started": false,
    "published": {
@@ -725,8 +725,11 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T17:46:51Z",
+    "why": "no longer +EV at tonight's line (26.5 at -104)"
+   },
+   "status": "Removed"
   },
   "p|6589|pts|Under": {
    "key": "p|6589|pts|Under",
@@ -1464,8 +1467,11 @@
     }
    },
    "first_seen": "2026-11-27T14:46:45Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T17:46:51Z",
+    "why": "no longer +EV at tonight's line (17.5 at -104)"
+   },
+   "status": "Removed"
   },
   "p|4684272|pts|Under": {
    "key": "p|4684272|pts|Under",
@@ -1633,14 +1639,14 @@
    "start": "2026-11-28T01:00Z",
    "side": "Under",
    "point": 11.5,
-   "dec": 1.84,
-   "am": -119,
+   "dec": 1.9,
+   "am": -111,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.532,
+   "p": 0.515,
    "p_sim": 0.495,
-   "p_mkt": 0.512,
-   "p_kalshi": 0.521,
+   "p_mkt": 0.496,
+   "p_kalshi": 0.535,
    "ev": -0.021,
    "verdict": "Pass: recent form and tonight's spot agree; the main risk is similar players.",
    "home": "BOS",
@@ -1716,21 +1722,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.88,
-    "floor_am": -114,
+    "floor_dec": 1.942,
+    "floor_am": -106,
     "line": null,
     "next": 10.5
    },
    "watch": [],
    "kill": [
     "The line reaching 10.5",
-    "The price at 11.5 going past \u2212114",
+    "The price at 11.5 going past \u2212106",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 12.5,
     "now": 11.5,
-    "kalshi": 0.521
+    "kalshi": 0.535
    },
    "started": false,
    "published": {
@@ -1750,11 +1756,8 @@
     }
    },
    "first_seen": "2026-11-27T16:31:31Z",
-   "removed": {
-    "at": "2026-11-27T17:31:42Z",
-    "why": "no longer +EV at tonight's line (11.5 at -111)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4017837|pts|Under": {
    "key": "p|4017837|pts|Under",
@@ -1916,6 +1919,317 @@
     }
    },
    "first_seen": "2026-11-27T17:31:42Z",
+   "removed": {
+    "at": "2026-11-27T17:46:51Z",
+    "why": "no longer +EV at tonight's line (12.5 at -135)"
+   },
+   "status": "Removed"
+  },
+  "p|5093267|pts|Under": {
+   "key": "p|5093267|pts|Under",
+   "kind": "prop",
+   "label": "Collin Murray-Boyles Under 10.5 points",
+   "espn_id": "401909329",
+   "game": "BKN @ TOR",
+   "start": "2026-11-28T00:30Z",
+   "side": "Under",
+   "point": 10.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.544,
+   "p_sim": 0.537,
+   "p_mkt": 0.524,
+   "p_kalshi": 0.543,
+   "ev": -0.02,
+   "verdict": "Pass: recent form and cushion agree; the main risk is matchup.",
+   "home": "TOR",
+   "away": "BKN",
+   "pid": "5093267",
+   "name": "Collin Murray-Boyles",
+   "team": "TOR",
+   "opp": "BKN",
+   "stat": "pts",
+   "proj": 9.6,
+   "sim": 10.3,
+   "ob_ind": 10.5,
+   "avg10": 9.4,
+   "minutes": 23.3,
+   "for": [
+    {
+     "tag": "projection",
+     "t": "Model projects 9.6 points against a line of 10.5.",
+     "rec": [
+      1753,
+      1620
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 10.5 in 6 of his last 10 (4 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 8.5 in 6 of his last 10.",
+     "rec": [
+      399,
+      378
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs BKN: 5.2 points/g in 4 games (-4%).",
+     "rec": [
+      484,
+      459
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against BKN: 4 of 4 under 10.5 (100% vs 60% lately).",
+     "rec": [
+      624,
+      607
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +5% points vs BKN (132 close comps).",
+     "rec": [
+      725,
+      669
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "Barrett out: points +5% tonight. With him off the floor (982 possessions) his usage goes 16% \u2192 17%; 87% of his recent games were next to Barrett.",
+     "rec": [
+      1161,
+      1104
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 29.4 minutes in the games he went over vs 22 otherwise. He's projected for 23.3 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 10.5,
+    "next": 9.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    }
+   ],
+   "kill": [
+    "The line reaching 9.5",
+    "The price at 10.5 going past \u2212119",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 10.5,
+    "now": 10.5,
+    "kalshi": 0.543
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T17:46:51Z",
+    "edition": "update",
+    "point": 10.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.544,
+    "play_to": {
+     "floor_dec": 1.838,
+     "floor_am": -119,
+     "line": 10.5,
+     "next": 9.5
+    }
+   },
+   "first_seen": "2026-11-27T17:46:51Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "p|4997536|pts|Under": {
+   "key": "p|4997536|pts|Under",
+   "kind": "prop",
+   "label": "Gui Santos Under 9.5 points",
+   "espn_id": "401909336",
+   "game": "GS @ POR",
+   "start": "2026-11-28T02:30Z",
+   "side": "Under",
+   "point": 9.5,
+   "dec": 1.77,
+   "am": -130,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.553,
+   "p_sim": 0.516,
+   "p_mkt": 0.532,
+   "p_kalshi": 0.545,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and cushion agree; the main risk is tonight's spot.",
+   "home": "POR",
+   "away": "GS",
+   "pid": "4997536",
+   "name": "Gui Santos",
+   "team": "GS",
+   "opp": "POR",
+   "stat": "pts",
+   "proj": 9.1,
+   "sim": 9.5,
+   "ob_ind": 9.5,
+   "avg10": 7.8,
+   "minutes": 20.7,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 7.8 points over his last 10; the line is 9.5.",
+     "rec": [
+      667,
+      591
+     ]
+    },
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -6 vs model.",
+     "rec": [
+      226,
+      209
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 9.5 in 7 of his last 10 (2 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 7.5 in 6 of his last 10.",
+     "rec": [
+      399,
+      378
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against POR: 6 of 6 under 9.5 (100% vs 65% lately).",
+     "rec": [
+      624,
+      607
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "usage",
+     "t": "+152% without Curry.",
+     "rec": [
+      158,
+      124
+     ]
+    },
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +7% points vs POR (22 close comps).",
+     "rec": [
+      725,
+      669
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 26 minutes in the games he went over vs 19.3 otherwise. He's projected for 20.7 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "On the road: 9 of 20 under 9.5 (45% vs 65% lately).",
+     "rec": [
+      908,
+      909
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.808,
+    "floor_am": -124,
+    "line": 9.5,
+    "next": 8.5
+   },
+   "watch": [
+    {
+     "pid": "3975",
+     "name": "Stephen Curry",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 22.5
+    }
+   ],
+   "kill": [
+    "The line reaching 8.5",
+    "The price at 9.5 going past \u2212124",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 8.5,
+    "now": 9.5,
+    "kalshi": 0.545
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T17:46:51Z",
+    "edition": "update",
+    "point": 9.5,
+    "dec": 1.77,
+    "am": -130,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.553,
+    "play_to": {
+     "floor_dec": 1.808,
+     "floor_am": -124,
+     "line": 9.5,
+     "next": 8.5
+    }
+   },
+   "first_seen": "2026-11-27T17:46:51Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -2453,29 +2767,29 @@
   "g|401909328|total|Over": {
    "key": "g|401909328|total|Over",
    "kind": "total",
-   "label": "PHI @ IND Over 229.5",
+   "label": "PHI @ IND Over 230.5",
    "espn_id": "401909328",
    "game": "PHI @ IND",
    "start": "2026-11-28T00:30Z",
    "side": "Over",
-   "point": 229.5,
-   "dec": 1.86,
-   "am": -116,
-   "conv": 29,
+   "point": 230.5,
+   "dec": 1.95,
+   "am": -105,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.52,
-   "p_sim": 0.59,
-   "p_mkt": 0.512,
+   "p": 0.496,
+   "p_sim": 0.57,
+   "p_mkt": 0.488,
    "p_kalshi": null,
-   "ev": -0.034,
+   "ev": -0.032,
    "verdict": "Pass: simulation carries it; the main risk is line move.",
    "home": "IND",
    "away": "PHI",
-   "why": "Sim total 234.2 (after a learned +1.2 correction) vs 229.5 \u00b7 over in 59% of sims vs 51% DraftKings",
+   "why": "Sim total 234.2 (after a learned +1.2 correction) vs 230.5 \u00b7 over in 57% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 59% of 10,000 simulated games.",
+     "t": "Goes over in 57% of 10,000 simulated games.",
      "rec": [
       1702,
       1521
@@ -2485,7 +2799,7 @@
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (234.5 to 229.5).",
+     "t": "The line has moved against this side since it opened (234.5 to 230.5).",
      "rec": [
       223,
       185
@@ -2501,10 +2815,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.923,
-    "floor_am": -108,
+    "floor_dec": 2.016,
+    "floor_am": 102,
     "line": null,
-    "next": 230.5
+    "next": 231.5
    },
    "watch": [
     {
@@ -2533,13 +2847,13 @@
     }
    ],
    "kill": [
-    "The line reaching 230.5",
-    "The price at 229.5 going past \u2212108",
+    "The line reaching 231.5",
+    "The price at 230.5 going past +102",
     "A change in Joel Embiid (questionable), Kelly Oubre Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 229.5,
+    "now": 230.5,
     "kalshi": null
    },
    "started": false,
@@ -2561,7 +2875,7 @@
    },
    "first_seen": "2026-11-27T14:16:37Z",
    "removed": null,
-   "status": "New"
+   "status": "Past play-to"
   },
   "g|401909329|spread|away": {
    "key": "g|401909329|spread|away",
@@ -2928,29 +3242,29 @@
   "g|401909326|total|Over": {
    "key": "g|401909326|total|Over",
    "kind": "total",
-   "label": "MIA @ NY Over 222.5",
+   "label": "MIA @ NY Over 221.5",
    "espn_id": "401909326",
    "game": "MIA @ NY",
    "start": "2026-11-28T00:00Z",
    "side": "Over",
-   "point": 222.5,
-   "dec": 1.94,
-   "am": -106,
+   "point": 221.5,
+   "dec": 1.86,
+   "am": -116,
    "conv": 30,
    "tier": "Pass",
-   "p": 0.499,
-   "p_sim": 0.575,
-   "p_mkt": 0.491,
+   "p": 0.521,
+   "p_sim": 0.599,
+   "p_mkt": 0.512,
    "p_kalshi": null,
    "ev": -0.032,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "NY",
    "away": "MIA",
-   "why": "Sim total 226.2 (after a learned +1.2 correction) vs 222.5 \u00b7 over in 57% of sims vs 49% DraftKings",
+   "why": "Sim total 226.2 (after a learned +1.2 correction) vs 221.5 \u00b7 over in 60% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 57% of 10,000 simulated games.",
+     "t": "Goes over in 60% of 10,000 simulated games.",
      "rec": [
       1702,
       1521
@@ -2958,14 +3272,14 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 225.0 points, 2.5 on your side of 222.5.",
+     "t": "Team ratings project 225.0 points, 3.5 on your side of 221.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (232.5 to 222.5).",
+     "t": "The line has moved against this side since it opened (232.5 to 221.5).",
      "rec": [
       223,
       185
@@ -2989,10 +3303,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.004,
-    "floor_am": 100,
+    "floor_dec": 1.919,
+    "floor_am": -109,
     "line": null,
-    "next": 223.5
+    "next": 222.5
    },
    "watch": [
     {
@@ -3021,13 +3335,13 @@
     }
    ],
    "kill": [
-    "The line reaching 223.5",
-    "The price at 222.5 going past +100",
+    "The line reaching 222.5",
+    "The price at 221.5 going past \u2212109",
     "A change in Karl-Anthony Towns (day-to-day), OG Anunoby (doubtful), Giannis Antetokounmpo (probable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 222.5,
+    "now": 221.5,
     "kalshi": null
    },
    "started": false,
@@ -3049,7 +3363,7 @@
    },
    "first_seen": "2026-11-27T17:02:30Z",
    "removed": null,
-   "status": "New"
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -3430,6 +3744,69 @@
    "kind": "line",
    "text": "PHI @ IND Over 229.5: line 230.5 at \u2212105 \u2192 229.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|5093267|pts|Under",
+   "kind": "added",
+   "text": "Added: Collin Murray-Boyles Under 10.5 points at \u2212125, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Neemias Queta Under 11.5 points at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "line",
+   "text": "Neemias Queta: line 11.5 at \u2212119 \u2192 11.5 at \u2212111",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|4997536|pts|Under",
+   "kind": "added",
+   "text": "Added: Gui Santos Under 9.5 points at \u2212130, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|4065648|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jayson Tatum Under 27.5 points \u2014 no longer +EV at tonight's line (26.5 at -104)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|5144091|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jeremiah Fears Under 18.5 points \u2014 no longer +EV at tonight's line (17.5 at -104)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "p|4017837|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Ivica Zubac Under 12.5 points \u2014 no longer +EV at tonight's line (12.5 at -135)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "g|401909326|total|Over",
+   "kind": "line",
+   "text": "MIA @ NY Over 221.5: line 222.5 at \u2212106 \u2192 221.5 at \u2212116 \u2014 past the play-to line; don't add at this number",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T17:46:51Z",
+   "key": "g|401909328|total|Over",
+   "kind": "line",
+   "text": "PHI @ IND Over 230.5: line 229.5 at \u2212116 \u2192 230.5 at \u2212105 \u2014 past the play-to line; don't add at this number",
+   "alert": false
   }
  ],
  "narratives": [
@@ -3512,7 +3889,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 13
+  "picks": 15
  },
  "leans_record": {
   "w": 23,
@@ -3521,5 +3898,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T17:31:42Z"
+ "updated": "2026-11-27T17:46:51Z"
 }
