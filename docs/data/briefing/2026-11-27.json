@@ -2261,15 +2261,15 @@
    "start": "2026-11-28T00:30Z",
    "side": "away",
    "point": 9.5,
-   "dec": 1.89,
-   "am": -112,
-   "conv": 30,
+   "dec": 1.92,
+   "am": -109,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.512,
+   "p": 0.505,
    "p_sim": 0.586,
-   "p_mkt": 0.504,
+   "p_mkt": 0.496,
    "p_kalshi": null,
-   "ev": -0.032,
+   "ev": -0.03,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "TOR",
    "away": "BKN",
@@ -2313,8 +2313,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.953,
-    "floor_am": -105,
+    "floor_dec": 1.98,
+    "floor_am": -102,
     "line": null,
     "next": 8.5
    },
@@ -2338,7 +2338,7 @@
    ],
    "kill": [
     "The line reaching 8.5",
-    "The price at 9.5 going past \u2212105"
+    "The price at 9.5 going past \u2212102"
    ],
    "market": {
     "open": null,
@@ -2805,6 +2805,13 @@
    "kind": "removed",
    "text": "Removed: PHI @ IND Over 229.5 \u2014 line moved 234.5 \u2192 232.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T16:01:30Z",
+   "key": "g|401909329|spread|away",
+   "kind": "line",
+   "text": "BKN +9.5 (BKN @ TOR): line 9.5 at \u2212112 \u2192 9.5 at \u2212109",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2896,5 +2903,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T15:45:27Z"
+ "updated": "2026-11-27T16:01:30Z"
 }
