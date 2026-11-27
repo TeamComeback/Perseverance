@@ -511,3 +511,9 @@ Nothing they write changes a bet or a setting until the owner promotes an agent 
 - **Value** preset: hit 55%+, price -130 or better, sorted by hit chance. Clear resets everything.
 - When the limits leave nothing, the empty state says how many props pass each limit alone and what to loosen.
 - On Nov 27 the slate had no props at 60%+ hit chance with a price better than -140: the market charges more for the likelier props.
+
+## Simulation on the player card (Nov 27)
+- The player card ("The bet" section, under the stat tiles) has a **Simulation** box built from the saved overnight sims (`sims.json`: average, deciles, outcome counts, game correlations): average, range (8 in 10 games), Over % and Under % at the card's line (counted from the outcome counts, so they move with the − / + line and show push % on whole-number lines), a bar chart of simulated outcomes with the line marked and the bet side colored, and a game-flow note (pts / reb / ast only, from the saved margin and total correlations) when the link is strong.
+- A player without a saved sim shows a gray "No sim yet for this player tonight".
+- Sim tab: "10–90%" is now "Typical range", with a one-line explanation. The game-level parts and script chips are unchanged.
+- `tools/check.js` step 5c.

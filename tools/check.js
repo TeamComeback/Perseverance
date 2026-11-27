@@ -132,6 +132,23 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           return {n: days.length, open: days.filter(d => d.open).length, sorted: keys.every((k, i) => i === 0 || k <= keys[i - 1]), menus: [...document.querySelectorAll("#v-bets > details.sec")].filter(d => d.open).length, sortBtn: !!document.getElementById("bfSort")}; });
         r.n && !r.open && r.sorted && !r.menus && !r.sortBtn ? ok(`${r.n} dates, all closed, newest first, all menus closed`) : bad("My bets layout: " + JSON.stringify(r));
       } catch (e) { bad("my bets collapsed: " + e.message); }
+      // simulation box on the player card: shown with avg, typical range, over/under at the card's line; moves with the line; shown for every player with a saved sim
+      console.log("5c. simulation box on the player card");
+      try {
+        const sc = await p.evaluate(async () => { D.sims = D.sims || await get("sims.json", {games: {}}); const r = propRows().find(x => x.line != null && D.sims.games[x.espn_id] && D.sims.games[x.espn_id].players[x.pid] && D.sims.games[x.espn_id].players[x.pid].h[x.stat]); return r && {pid: r.pid, stat: r.stat}; });
+        if (!sc) ok("sim box: no simmed player tonight (skipped)");
+        else {
+          await p.evaluate(x => openPlayer(x.pid, x.stat), sc); await p.waitForTimeout(1500);
+          const a = await p.evaluate(() => { const b = document.querySelector(".simb"); return b ? {txt: b.innerText, over: b.querySelectorAll(".kv .v")[2].textContent, bars: b.querySelectorAll(".sbars i").length} : null; });
+          await p.evaluate(() => { for (let i = 0; i < 6; i++) document.querySelector('.lineset .step[data-d="1"]').click(); }); await p.waitForTimeout(700);
+          const b2 = await p.evaluate(() => { const b = document.querySelector(".simb"); return b ? b.querySelectorAll(".kv .v")[2].textContent : null; });
+          a && /range/i.test(a.txt) && a.bars > 3 ? ok(`sim box on the card: ${a.over} over, ${a.bars} bars`) : bad("sim box missing or empty: " + JSON.stringify(a));
+          a && b2 && a.over !== b2 ? ok(`sim over % moves with the line (${a.over} → ${b2})`) : bad(`sim over % did not move with the line (${a && a.over} → ${b2})`);
+          const nos = await p.evaluate(() => { const g = Object.values(D.sims.games)[0], r = propRows().find(x => x.line != null && !(D.sims.games[x.espn_id] && D.sims.games[x.espn_id].players[x.pid])); return r ? (document.body.dataset.x = 1, simCardHtml(r, r.stat, r.line, "Over")) : "skip"; });
+          nos === "skip" || /No sim yet/.test(nos) ? ok("player without a sim: gray note, no empty boxes") : bad("player without a sim shows: " + nos.slice(0, 80));
+          await p.evaluate(() => history.back()); await p.waitForTimeout(300);
+        }
+      } catch (e) { bad("sim box: " + e.message); }
       // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};

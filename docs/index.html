@@ -601,6 +601,11 @@ a{color:var(--sky)}
 .ur.win{box-shadow:inset 3px 0 0 var(--wine-hi)}
 .ur .l1{display:flex;align-items:baseline;gap:8px;min-width:0}
 .ur .nm{font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.simb .simkv{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.simb .simkv>div{padding:6px 8px}
+.simb{margin-top:10px;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.sbars{display:flex;align-items:flex-end;gap:1px;height:44px;margin-top:8px}.sbars i{flex:1;min-width:2px;background:#ffffff1f;border-radius:1px 1px 0 0}
+.sbars i.o{background:var(--sky)}.sbars i.u{background:var(--wine-hi)}.sbars i.ln{box-shadow:1px 0 0 var(--gold)}
+.sbx{display:flex;justify-content:space-between;font:600 10px var(--mono);color:var(--dim);margin-top:2px}.sbx span:nth-child(2){color:var(--gold)}
 .ur .ubt{flex:none;font:700 12.5px var(--mono);color:var(--sky)} .ur .ubt.Under{color:var(--wine-hi)}
 .ur .od{flex:none;font:600 12.5px var(--mono);color:var(--text);min-width:38px;text-align:right}
 .ur .l2{margin-top:2px;font-size:11.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1902,6 +1907,40 @@ function simPOver(pid, game, stat, line) {
   for (let i = 0; i < q.length; i++) if (q[i] < line) below = (i + 1) / 10; else if (q[i] === line && i < q.length - 1) below = Math.max(below, (i + 0.5) / 10);
   return {p: Math.min(0.95, Math.max(0.05, 1 - below - 0.05)), avg: sp.s[stat][0]};
 }
+// ---- Simulation box on the player card: his saved sim (sims.json: avg, deciles, outcome counts, game correlations), read at the line on the card
+function simGameNote(g, p, stat) {                      // what game flow does to this stat, from the sim's saved correlations (pts / reb / ast only)
+  const c = g && g.corr; if (!c || !c.cols) return "";
+  const col = k => c.cols.indexOf(k), r = (a, b) => a === b ? 1 : a < 0 || b < 0 ? null : c.tri[Math.max(a, b) * (Math.max(a, b) - 1) / 2 + Math.min(a, b)];
+  const k = col(p.pid + "|" + stat); if (k < 0) return "";
+  const m = r(k, col("margin")), t = r(k, col("total")), bits = [];
+  if (m != null) { const mine = p.home ? m : -m; if (mine >= 0.15) bits.push("more when his team is winning"); else if (mine <= -0.15) bits.push("more when his team is trailing"); }
+  if (t != null) { if (t >= 0.15) bits.push("more in high-scoring games"); else if (t <= -0.1) bits.push("more in low-scoring games"); }
+  return bits.length ? `<div class="desc" style="margin-top:4px">Game flow: ${bits.join(" and ")}.</div>` : "";
+}
+function simCardHtml(p, stat, line, side) {
+  if (!D.sims || !D.sims.games) return "";
+  const g = D.sims.games[p.game], sp = g && g.players && g.players[p.pid];
+  if (!sp || !sp.s || !sp.s[stat] || !sp.h || !sp.h[stat]) return `<div class="simb"><div class="lbl" style="margin-top:0">Simulation</div><div class="desc">No sim yet for this player tonight.</div></div>`;
+  const q = sp.s[stat], h = sp.h[stat], keys = Object.keys(h).map(Number).sort((a, b) => a - b);
+  let tot = 0, ov = 0, un = 0, pu = 0; keys.forEach(v => { const n = h[v]; tot += n; if (v > line) ov += n; else if (v < line) un += n; else pu += n; });
+  if (!tot) return "";
+  const pO = Math.round(ov / tot * 100), pU = Math.round(un / tot * 100), push = Math.round(pu / tot * 100);
+  // bars: every value in the 0.5% to 99.5% band, the line marked, the side being bet in color
+  let cum = 0, lo = keys[0], hi = keys[keys.length - 1]; for (const v of keys) { cum += h[v]; if (cum / tot >= 0.005) { lo = v; break; } }
+  cum = 0; for (const v of keys.slice().reverse()) { cum += h[v]; if (cum / tot >= 0.005) { hi = v; break; } }
+  const mx = Math.max(...keys.filter(v => v >= lo && v <= hi).map(v => h[v] || 0)) || 1, bars = [];
+  for (let v = lo; v <= hi; v++) { const n = h[v] || 0, on = side === "Over" ? v > line : side === "Under" ? v < line : false;
+    bars.push(`<i class="${on ? (side === "Over" ? "o" : "u") : ""}${v === line ? " ln" : ""}" style="height:${Math.max(2, Math.round(n / mx * 100))}%" title="${v}: ${(n / tot * 100).toFixed(1)}%"></i>`); }
+  return `<div class="simb"><div class="lbl" style="margin-top:0">Simulation · ${tot.toLocaleString()} games</div>
+    <div class="kv simkv">
+      <div><div class="k">Average</div><div class="v">${f1(q[0])}</div></div>
+      <div title="8 of 10 simulated games land in this range"><div class="k">Range</div><div class="v">${q[1]}–${q[9]}</div></div>
+      <div><div class="k">Over ${f1(line)}</div><div class="v ${side === "Over" ? "pos" : ""}">${pO}%</div></div>
+      <div><div class="k">Under ${f1(line)}</div><div class="v ${side === "Under" ? "pos" : ""}">${pU}%${push ? ` <small class="dim">push ${push}%</small>` : ""}</div></div>
+    </div>
+    <div class="sbars" aria-label="Simulated outcomes">${bars.join("")}</div>
+    <div class="sbx"><span>${lo}</span><span>line ${f1(line)}</span><span>${hi}</span></div><div class="desc" style="margin-top:2px">Range: 8 of 10 simulated games land inside it.</div>${simGameNote(g, p, stat)}</div>`;
+}
 function cardCase(pc) {
   if (!window.CASE) return null;
   const p = pc.p, s = pc.stat, dk = ((D.dkday || {}).props || {})[p.pid + "|" + s], at = dk && dk.c && dk.c[0] === pc.line;
@@ -2672,6 +2711,7 @@ function renderCard() {
       ${quick.map(([k, xs]) => `<div><div class="k">${k}</div><div class="v">${hr(xs, pc)} <small>${hrPct(xs, pc)}</small></div></div>`).join("")}
       <div><div class="k">${esc(p.opp)} vs ${esc(p.role)}</div><div class="v">#${p.dvp[s][1]} <small>${pct(p.dvp[s][0] - 1, 0)}</small></div></div>
     </div>
+    ${simCardHtml(p, s, pc.line, pc.side)}
     ${cs ? `<div class="card" style="padding:10px 12px;margin-top:8px"><div class="lbl" style="margin-top:0">${esc(pc.side)} ${pc.line} · the short version ${cs.conv != null ? cvBadge(cs) : ""}</div>
       <div class="verd" style="margin-top:2px">${esc(cs.verdict)}</div>${caseHtml(cs, cs.ladder, pc.line, pc.side, true)}</div>` : ""}
     `, true)}

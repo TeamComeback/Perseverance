@@ -1501,7 +1501,7 @@ function showStored() {
       ${G.cover_home != null ? `<div><div class="k">${esc(G.home)} ${sp > 0 ? "+" : ""}${f1(sp)}</div><div class="v">${Math.round(G.cover_home * 100)}%</div></div>` : ""}
     </div>
     <div class="chips" id="mcs">${STATS.map(k => `<button data-s="${k}" class="${k === st ? "on" : ""}">${STATN[k]}</button>`).join("")}</div>
-    <div class="scroll"><table class="tbl"><tr><th>Player</th><th>Min</th><th>Avg</th><th>10–90%</th><th>Line</th><th>Over</th><th>Under</th></tr>
+    <div class="desc" style="margin:6px 0 2px">Typical range: 8 of 10 simulated games land inside it. Tap a player for his card with the full simulation.</div><div class="scroll"><table class="tbl"><tr><th>Player</th><th>Min</th><th>Avg</th><th>Typical range</th><th>Line</th><th>Over</th><th>Under</th></tr>
     ${rows.map(r => `<tr data-pid="${r.pid}" data-stat="${st}" style="cursor:pointer"><td class="t">${esc(lastName(r.x.name))} <span class="dim">${esc(r.x.team)}</span></td><td>${f1(r.x.min)}</td><td><b>${f1(r.q[0])}</b></td>
       <td class="dim">${r.q[1]}–${r.q[9]}</td><td>${f1(r.line)} <span class="dim">${esc(r.src)}</span></td>
       <td class="${r.po >= 0.55 ? "h" : ""}">≈${Math.round(r.po * 100)}%</td><td class="${1 - r.po >= 0.55 ? "h" : ""}">≈${Math.round((1 - r.po) * 100)}%</td></tr>`).join("")}</table></div>
@@ -1551,7 +1551,7 @@ function showMC() {
     ${sc[0] !== "all" ? `<div class="desc" style="margin:2px 0 6px"><b style="color:var(--text)">${esc(sc[1])}</b> happens in <b style="color:var(--text)">${Math.round(idx.length / N * 100)}%</b> of sims (${idx.length.toLocaleString()} games). Over % below is inside those games; the change is vs all games.
       ${tied.length ? `<br>Most tied to this script: ${tied.map(r => `<b style="color:var(--text)">${esc(r.w.last)}</b> ${r.d > 0 ? "over" : "under"} ${f1(r.line)} <span class="h">+${Math.abs(Math.round(r.d * 100))} pts</span>`).join(" · ")}. Bets that move together like this belong in the same parlay, or shouldn't be stacked if you're already on the script.` : ""}</div>` : ""}
     <div class="chips" id="mcs">${STATS.map(k => `<button data-s="${k}" class="${k === st ? "on" : ""}">${STATN[k]}</button>`).join("")}</div>
-    <div class="scroll"><table class="tbl"><tr><th>Player</th><th>Min</th><th>Avg</th><th>10–90%</th><th>Line</th><th>Over</th>${sc[0] !== "all" ? "<th>vs all</th>" : "<th>Under</th>"}</tr>
+    <div class="desc" style="margin:6px 0 2px">Typical range: 8 of 10 simulated games land inside it. Tap a player for his card with the full simulation.</div><div class="scroll"><table class="tbl"><tr><th>Player</th><th>Min</th><th>Avg</th><th>Typical range</th><th>Line</th><th>Over</th>${sc[0] !== "all" ? "<th>vs all</th>" : "<th>Under</th>"}</tr>
     ${rows.map(r => `<tr data-pid="${r.pid}" data-stat="${st}" style="cursor:pointer"><td class="t">${esc(r.w.last)} <span class="dim">${esc(P.teams[r.w.side].ab)}</span></td><td>${f1(r.min)}</td><td><b>${f1(r.mean)}</b></td>
       <td class="dim">${r.p10}–${r.p90}</td><td>${f1(r.line)} <span class="dim">${esc(r.src)}</span></td>
       <td class="${r.po >= 0.55 ? "h" : ""}">${Math.round(r.po * 100)}%</td>${sc[0] !== "all" ? `<td class="${Math.abs(r.po - r.poAll) >= 0.08 ? (r.po > r.poAll ? "h" : "m") : "dim"}">${r.po - r.poAll > 0 ? "+" : ""}${Math.round((r.po - r.poAll) * 100)}</td>` : `<td class="${1 - r.po >= 0.55 ? "h" : ""}">${Math.round((1 - r.po) * 100)}%</td>`}</tr>`).join("")}</table></div>
