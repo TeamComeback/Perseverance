@@ -5957,6 +5957,27 @@
    "kind": "removed",
    "text": "Removed: MIA @ NY Over 222.5 \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T23:36:08Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Neemias Queta Under 11.5 points: Celtics center Mitchell Robinson is questionable with an illness; if he sits, Queta is expected to keep the starting job and could play more than projected, which is how this under loses.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T23:36:08Z",
+   "key": "p|4278049|pts|Under",
+   "kind": "override",
+   "text": "Writer flags Daniel Gafford Under 10.5 points: Kyrie Irving is listed questionable for Dallas at Phoenix with knee management; a late scratch changes the Dallas rotation the model priced.",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T23:36:08Z",
+   "key": "g|401909328|total|Over",
+   "kind": "override",
+   "text": "Writer flags PHI @ IND Over 227.5: Philadelphia has ruled out Jaylen Brown (hamstring) and lists Joel Embiid as questionable with an illness at Indiana; the over depends on Embiid's status.",
+   "alert": false
   }
  ],
  "narratives": [
@@ -6011,9 +6032,72 @@
     }
    ],
    "changes_at_write": 106
+  },
+  {
+   "edition": "final",
+   "at": "2026-11-27T23:36:08Z",
+   "author": "claude",
+   "headline": "Final: no prop is clean at its play-to price; the board leans on game totals and late news on Embiid, Irving and Robinson",
+   "briefing": "Eleven-game holiday slate with nothing tipped yet, and the props board thinned out all day: most of this morning's and midday's unders were pulled as the lines moved to 'no longer +EV at tonight's line'. Of the five props still listed, four (Allen Graves, Jalen Johnson, Gui Santos, Daniel Gafford) are marked past play-to, and the fifth, Neemias Queta Under 11.5, is listed at \u2212110 against a play-to of \u2212105, so none can be added at its own number tonight. All five are Pass-tier at conviction 33 or 34. The game-line leans still holding are DAL @ PHX Over 225.5, MEM @ MIN Over 220.5 and an upgraded PHI @ IND Over 227.5; BKN +9.5 and GS @ POR Over 216.5 are past play-to. The record argues for restraint: final picks are 20-25-0 (-5.69u), morning picks 16-27-0 (-12.28u), and game lines 23-48 (-27.38u) since 2026-11-11, though closing-line moves on morning picks ran 30 toward and 11 against. Still open before tip: Joel Embiid (illness, questionable), Kyrie Irving (knee management, questionable) and Mitchell Robinson in Boston (illness, questionable), whose status decides Queta's minutes.",
+   "cards": {
+    "p|4397424|pts|Under": "The only prop listed as New: the line moved his way from 12.5 to 11.5, and he stayed under 11.5 in 4 of 5 against ATL. The risk is minutes: he misses when he plays long, he is projected for 25.4, and with Mitchell Robinson questionable he is expected to keep starting. At \u2212110 it is already past the \u2212105 play-to.",
+    "p|5149115|pts|Under": "The case is form, not price: averaging 6.5 over his last 10 and under 9.5 in 8 of 10. But the line dropped from 10.5 to 9.5 and \u2212108 is past the \u2212103 play-to; with RJ Barrett out his usage jumps, and long minutes (projected 27.3) are what beat this under. Hold, don't add.",
+    "p|4701230|pts|Under": "BOS is the #2 toughest defense on power forwards and the sim has him under in 57%. CJ McCollum is out, which pushes his usage up, and \u2212123 is past the \u2212118 play-to.",
+    "p|4997536|pts|Under": "Under 9.5 in 6 of 6 against POR, but Stephen Curry is out and his usage rises sharply without him; Damian Lillard is also out for Portland. At \u2212128 it is past the \u2212122 play-to.",
+    "p|4278049|pts|Under": "Under 10.5 in 8 of his last 10 and PHX is #4 toughest on the position, but he went over in 3 of 5 against PHX and \u2212127 is past the \u2212121 play-to. Kyrie Irving is questionable; the model re-prices on the next run if that changes."
+   },
+   "leans_note": "Leans only, never best bets: PHI @ IND Over 227.5 was upgraded after Dean Wade was ruled out, but Jaylen Brown is out and Embiid is questionable for Philadelphia, so that total depends on news still pending.",
+   "sources": [
+    {
+     "title": "ClutchPoints: Hawks vs. Celtics NBA Cup injury report",
+     "url": "https://clutchpoints.com/nba/boston-celtics/hawks-vs-celtics-injury-report-mitchell-robinson"
+    },
+    {
+     "title": "Yahoo Sports: Celtics injury report, key center vs. Hawks",
+     "url": "https://sports.yahoo.com/nba/articles/celtics-injury-report-key-center-165744627.html"
+    },
+    {
+     "title": "Dallas Sports Journal: Kyrie Irving questionable for Mavericks vs. Suns",
+     "url": "https://dallassportsjournal.com/kyrie-irving-questionable-mavericks-suns-injury-report/"
+    },
+    {
+     "title": "ESPN: 76ers' Brown out at Pacers; Embiid questionable",
+     "url": "https://www.espn.com/nba/story/_/id/50606614/76ers-jaylen-brown-hamstring-friday-pacers"
+    },
+    {
+     "title": "KFGO: Damian Lillard (calf) ruled out vs. Warriors",
+     "url": "https://kfgo.com/2026/11/27/trail-blazers-g-damian-lillard-calf-ruled-out-vs-warriors/"
+    }
+   ],
+   "changes_at_write": 162
   }
  ],
- "overrides": [],
+ "overrides": [
+  {
+   "at": "2026-11-27T23:36:08Z",
+   "edition": "final",
+   "key": "p|4397424|pts|Under",
+   "action": "flag",
+   "reason": "Celtics center Mitchell Robinson is questionable with an illness; if he sits, Queta is expected to keep the starting job and could play more than projected, which is how this under loses.",
+   "source": "https://clutchpoints.com/nba/boston-celtics/hawks-vs-celtics-injury-report-mitchell-robinson"
+  },
+  {
+   "at": "2026-11-27T23:36:08Z",
+   "edition": "final",
+   "key": "p|4278049|pts|Under",
+   "action": "flag",
+   "reason": "Kyrie Irving is listed questionable for Dallas at Phoenix with knee management; a late scratch changes the Dallas rotation the model priced.",
+   "source": "https://dallassportsjournal.com/kyrie-irving-questionable-mavericks-suns-injury-report/"
+  },
+  {
+   "at": "2026-11-27T23:36:08Z",
+   "edition": "final",
+   "key": "g|401909328|total|Over",
+   "action": "flag",
+   "reason": "Philadelphia has ruled out Jaylen Brown (hamstring) and lists Joel Embiid as questionable with an illness at Indiana; the over depends on Embiid's status.",
+   "source": "https://www.espn.com/nba/story/_/id/50606614/76ers-jaylen-brown-hamstring-friday-pacers"
+  }
+ ],
  "alerts": 6,
  "slate": {
   "games": 11,
@@ -6055,5 +6139,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T23:34:24Z"
+ "updated": "2026-11-27T23:36:08Z"
 }
