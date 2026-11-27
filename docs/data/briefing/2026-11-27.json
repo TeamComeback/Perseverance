@@ -1025,8 +1025,11 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T15:01:36Z",
+    "why": "no longer +EV at tonight's line (18.5 at -105)"
+   },
+   "status": "Removed"
   },
   "p|4066383|pts|Under": {
    "key": "p|4066383|pts|Under",
@@ -1455,6 +1458,160 @@
    "first_seen": "2026-11-27T14:46:45Z",
    "removed": null,
    "status": "Past play-to"
+  },
+  "p|4684272|pts|Under": {
+   "key": "p|4684272|pts|Under",
+   "kind": "prop",
+   "label": "Ja'Kobe Walter Under 14.5 points",
+   "espn_id": "401909329",
+   "game": "BKN @ TOR",
+   "start": "2026-11-28T00:30Z",
+   "side": "Under",
+   "point": 14.5,
+   "dec": 1.79,
+   "am": -127,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.547,
+   "p_sim": 0.535,
+   "p_mkt": 0.526,
+   "p_kalshi": null,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and tonight's spot agree; the main risk is history.",
+   "home": "TOR",
+   "away": "BKN",
+   "pid": "4684272",
+   "name": "Ja'Kobe Walter",
+   "team": "TOR",
+   "opp": "BKN",
+   "stat": "pts",
+   "proj": 13.4,
+   "sim": 14.2,
+   "ob_ind": 14.5,
+   "avg10": 12.3,
+   "minutes": 34.0,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 12.3 points over his last 10; the line is 14.5.",
+     "rec": [
+      667,
+      591
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 13.4 points against a line of 14.5.",
+     "rec": [
+      1753,
+      1620
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 14.5 in 6 of his last 10 (2 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 12.5 in 6 of his last 10.",
+     "rec": [
+      399,
+      378
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against BKN: 7 of 8 under 14.5 (88% vs 65% lately).",
+     "rec": [
+      624,
+      607
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "usage",
+     "t": "+20% without Barrett.",
+     "rec": [
+      158,
+      124
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "Barrett out: points +5% tonight. With him off the floor (1,431 possessions) his usage goes 15% \u2192 15%; 81% of his recent games were next to Barrett.",
+     "rec": [
+      1161,
+      1104
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 35.9 minutes in the games he went over vs 31.1 otherwise. He's projected for 34 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs BKN: 10.5 points/g in 4 games (+7%).",
+     "rec": [
+      452,
+      443
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.828,
+    "floor_am": -121,
+    "line": 14.5,
+    "next": 13.5
+   },
+   "watch": [
+    {
+     "pid": "4395625",
+     "name": "RJ Barrett",
+     "team": "TOR",
+     "status": "Out",
+     "self": false,
+     "min": 36.6
+    }
+   ],
+   "kill": [
+    "The line reaching 13.5",
+    "The price at 14.5 going past \u2212121",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 14.5,
+    "now": 14.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T15:01:36Z",
+    "edition": "update",
+    "point": 14.5,
+    "dec": 1.79,
+    "am": -127,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.547,
+    "play_to": {
+     "floor_dec": 1.828,
+     "floor_am": -121,
+     "line": 14.5,
+     "next": 13.5
+    }
+   },
+   "first_seen": "2026-11-27T15:01:36Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -1554,19 +1711,19 @@
    "start": "2026-11-28T00:30Z",
    "side": "away",
    "point": -3.5,
-   "dec": 1.97,
-   "am": -103,
+   "dec": 1.96,
+   "am": -104,
    "conv": 31,
    "tier": "Pass",
-   "p": 0.492,
+   "p": 0.494,
    "p_sim": 0.562,
-   "p_mkt": 0.484,
+   "p_mkt": 0.487,
    "p_kalshi": null,
    "ev": -0.031,
    "verdict": "Pass: simulation carries it; the main risk is team model.",
    "home": "IND",
    "away": "PHI",
-   "why": "Sim: PHI by 5.7 on average (PHI 119.4, IND 113.7) \u00b7 PHI -3.5 covers in 56% of sims vs 48% DraftKings",
+   "why": "Sim: PHI by 5.7 on average (PHI 119.4, IND 113.7) \u00b7 PHI -3.5 covers in 56% of sims vs 49% DraftKings",
    "for": [
     {
      "tag": "simulation",
@@ -1606,8 +1763,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.033,
-    "floor_am": 103,
+    "floor_dec": 2.024,
+    "floor_am": 102,
     "line": null,
     "next": -4.5
    },
@@ -1639,7 +1796,7 @@
    ],
    "kill": [
     "The line reaching -4.5",
-    "The price at -3.5 going past +103",
+    "The price at -3.5 going past +102",
     "A change in Joel Embiid (questionable), Kelly Oubre Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -1665,11 +1822,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-27T14:16:37Z",
-    "why": "confidence fell 31 \u2192 29"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "g|401909333|total|Over": {
    "key": "g|401909333|total|Over",
@@ -2101,8 +2255,11 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-27T15:01:36Z",
+    "why": "line moved 234.5 \u2192 232.5"
+   },
+   "status": "Removed"
   },
   "g|401909329|spread|away": {
    "key": "g|401909329|spread|away",
@@ -2622,6 +2779,41 @@
    "kind": "removed",
    "text": "Removed: NO +2.5 (NO @ LAC) \u2014 other plays ranked higher",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T15:01:36Z",
+   "key": "p|4684272|pts|Under",
+   "kind": "added",
+   "text": "Added: Ja'Kobe Walter Under 14.5 points at \u2212127, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T15:01:36Z",
+   "key": "p|4701230|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jalen Johnson Under 18.5 points \u2014 no longer +EV at tonight's line (18.5 at -105)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T15:01:36Z",
+   "key": "g|401909328|spread|away",
+   "kind": "back",
+   "text": "Back on the board: PHI -3.5 (PHI @ IND) at \u2212104",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T15:01:36Z",
+   "key": "g|401909328|spread|away",
+   "kind": "line",
+   "text": "PHI -3.5 (PHI @ IND): line -3.5 at \u2212103 \u2192 -3.5 at \u2212104",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T15:01:36Z",
+   "key": "g|401909328|total|Over",
+   "kind": "removed",
+   "text": "Removed: PHI @ IND Over 229.5 \u2014 line moved 234.5 \u2192 232.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -2704,7 +2896,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 10
+  "picks": 11
  },
  "leans_record": {
   "w": 23,
@@ -2713,5 +2905,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T14:46:45Z"
+ "updated": "2026-11-27T15:01:36Z"
 }
