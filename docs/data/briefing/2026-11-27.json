@@ -451,16 +451,16 @@
    "start": "2026-11-28T00:30Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.86,
-   "am": -116,
+   "dec": 1.87,
+   "am": -115,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.527,
+   "p": 0.524,
    "p_sim": 0.628,
-   "p_mkt": 0.507,
-   "p_kalshi": 0.554,
+   "p_mkt": 0.504,
+   "p_kalshi": 0.563,
    "ev": -0.02,
-   "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
+   "verdict": "Pass: recent form and second market agree; the main risk is minutes.",
    "home": "TOR",
    "away": "BKN",
    "pid": "5149115",
@@ -476,7 +476,7 @@
    "for": [
     {
      "tag": "second market",
-     "t": "Kalshi likes it more: 55% there vs 51% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
+     "t": "Kalshi likes it more: 56% there vs 50% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
      "rec": [
       176,
       146
@@ -550,8 +550,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.898,
-    "floor_am": -111,
+    "floor_dec": 1.908,
+    "floor_am": -110,
     "line": null,
     "next": 9.5
    },
@@ -567,13 +567,13 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212111",
+    "The price at 10.5 going past \u2212110",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.554
+    "kalshi": 0.563
    },
    "started": false,
    "published": {
@@ -593,11 +593,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-27T17:31:42Z",
-    "why": "no longer +EV at tonight's line (10.5 at -128)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -890,8 +887,11 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T18:46:33Z",
+    "why": "no longer +EV at tonight's line (5.5 at -112)"
+   },
+   "status": "Removed"
   },
   "p|4701230|pts|Under": {
    "key": "p|4701230|pts|Under",
@@ -1206,7 +1206,7 @@
    "p": 0.544,
    "p_sim": 0.623,
    "p_mkt": 0.524,
-   "p_kalshi": 0.554,
+   "p_kalshi": 0.561,
    "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "IND",
@@ -1330,7 +1330,7 @@
    "market": {
     "open": 11.5,
     "now": 12.5,
-    "kalshi": 0.554
+    "kalshi": 0.561
    },
    "started": false,
    "published": {
@@ -1653,8 +1653,11 @@
     }
    },
    "first_seen": "2026-11-27T15:01:36Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T18:46:33Z",
+    "why": "no longer +EV at tonight's line (13.5 at -101)"
+   },
+   "status": "Removed"
   },
   "p|4397424|pts|Under": {
    "key": "p|4397424|pts|Under",
@@ -1782,8 +1785,11 @@
     }
    },
    "first_seen": "2026-11-27T16:31:31Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-27T18:46:33Z",
+    "why": "no longer +EV at tonight's line (11.5 at -111)"
+   },
+   "status": "Removed"
   },
   "p|4017837|pts|Under": {
    "key": "p|4017837|pts|Under",
@@ -2264,6 +2270,306 @@
     "why": "no longer +EV at tonight's line (9.5 at -128)"
    },
    "status": "Removed"
+  },
+  "p|4709138|pts|Under": {
+   "key": "p|4709138|pts|Under",
+   "kind": "prop",
+   "label": "Brandin Podziemski Under 15.5 points",
+   "espn_id": "401909336",
+   "game": "GS @ POR",
+   "start": "2026-11-28T02:30Z",
+   "side": "Under",
+   "point": 15.5,
+   "dec": 1.96,
+   "am": -104,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.499,
+   "p_sim": 0.528,
+   "p_mkt": 0.48,
+   "p_kalshi": 0.506,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and tonight's spot agree; the main risk is usage.",
+   "home": "POR",
+   "away": "GS",
+   "pid": "4709138",
+   "name": "Brandin Podziemski",
+   "team": "GS",
+   "opp": "POR",
+   "stat": "pts",
+   "proj": 15,
+   "sim": 15.3,
+   "ob_ind": 15.5,
+   "avg10": 15,
+   "minutes": 31.4,
+   "for": [
+    {
+     "tag": "recent form",
+     "t": "Stayed under 15.5 in 7 of his last 10 (4 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 46% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      980,
+      952
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against POR: 5 of 6 under 15.5 (83% vs 45% lately).",
+     "rec": [
+      624,
+      607
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "POR gives shooting guards -6% points vs their norm (#6 toughest of 30).",
+     "rec": [
+      1096,
+      1073
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone under his posted line in 7 of 10 tracked games.",
+     "rec": [
+      266,
+      274
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "usage",
+     "t": "+23% without Curry.",
+     "rec": [
+      158,
+      124
+     ]
+    },
+    {
+     "tag": "shot volume",
+     "t": "Depends on shot volume: 14.9 shots in the misses vs 9.1 in the hits.",
+     "rec": [
+      218,
+      221
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.004,
+    "floor_am": 100,
+    "line": null,
+    "next": 14.5
+   },
+   "watch": [
+    {
+     "pid": "6606",
+     "name": "Damian Lillard",
+     "team": "POR",
+     "status": "Out",
+     "self": false,
+     "min": 31.9
+    },
+    {
+     "pid": "3975",
+     "name": "Stephen Curry",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 22.5
+    }
+   ],
+   "kill": [
+    "The line reaching 14.5",
+    "The price at 15.5 going past +100",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 16.5,
+    "now": 15.5,
+    "kalshi": 0.506
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T18:46:33Z",
+    "edition": "update",
+    "point": 15.5,
+    "dec": 1.96,
+    "am": -104,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.499,
+    "play_to": {
+     "floor_dec": 2.004,
+     "floor_am": 100,
+     "line": null,
+     "next": 14.5
+    }
+   },
+   "first_seen": "2026-11-27T18:46:33Z",
+   "removed": null,
+   "status": "Past play-to"
+  },
+  "p|5175737|pts|Under": {
+   "key": "p|5175737|pts|Under",
+   "kind": "prop",
+   "label": "Yaxel Lendeborg Under 18.5 points",
+   "espn_id": "401909336",
+   "game": "GS @ POR",
+   "start": "2026-11-28T02:30Z",
+   "side": "Under",
+   "point": 18.5,
+   "dec": 1.98,
+   "am": -102,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.494,
+   "p_sim": 0.54,
+   "p_mkt": 0.476,
+   "p_kalshi": 0.505,
+   "ev": -0.022,
+   "verdict": "Pass: recent form and blowout agree; the main risk is minutes.",
+   "home": "POR",
+   "away": "GS",
+   "pid": "5175737",
+   "name": "Yaxel Lendeborg",
+   "team": "GS",
+   "opp": "POR",
+   "stat": "pts",
+   "proj": 17.9,
+   "sim": 18.1,
+   "ob_ind": 18.5,
+   "avg10": 17,
+   "minutes": 31.0,
+   "for": [
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -6 vs model.",
+     "rec": [
+      226,
+      209
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 18.5 in 6 of his last 10 (4 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 46% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      980,
+      952
+     ]
+    },
+    {
+     "tag": "line move",
+     "t": "The line moved his way (19.5 to 18.5): money has been on the under.",
+     "rec": [
+      221,
+      265
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 33.6 minutes in the games he went over vs 30.1 otherwise. He's projected for 31 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "shot volume",
+     "t": "Depends on shot volume: 18 shots in the misses vs 11.5 in the hits.",
+     "rec": [
+      218,
+      221
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 2.024,
+    "floor_am": 102,
+    "line": null,
+    "next": 17.5
+   },
+   "watch": [
+    {
+     "pid": "6606",
+     "name": "Damian Lillard",
+     "team": "POR",
+     "status": "Out",
+     "self": false,
+     "min": 31.9
+    },
+    {
+     "pid": "3975",
+     "name": "Stephen Curry",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 22.5
+    }
+   ],
+   "kill": [
+    "The line reaching 17.5",
+    "The price at 18.5 going past +102",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 19.5,
+    "now": 18.5,
+    "kalshi": 0.505
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T18:46:33Z",
+    "edition": "update",
+    "point": 18.5,
+    "dec": 1.98,
+    "am": -102,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.494,
+    "play_to": {
+     "floor_dec": 2.024,
+     "floor_am": 102,
+     "line": null,
+     "next": 17.5
+    }
+   },
+   "first_seen": "2026-11-27T18:46:33Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -2914,8 +3220,11 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-27T18:46:33Z",
+    "why": "line moved 234.5 \u2192 232.5"
+   },
+   "status": "Removed"
   },
   "g|401909329|spread|away": {
    "key": "g|401909329|spread|away",
@@ -3396,6 +3705,131 @@
    "first_seen": "2026-11-27T17:02:30Z",
    "removed": null,
    "status": "New"
+  },
+  "g|401909336|total|Over": {
+   "key": "g|401909336|total|Over",
+   "kind": "total",
+   "label": "GS @ POR Over 216.5",
+   "espn_id": "401909336",
+   "game": "GS @ POR",
+   "start": "2026-11-28T02:30Z",
+   "side": "Over",
+   "point": 216.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 30,
+   "tier": "Pass",
+   "p": 0.51,
+   "p_sim": 0.604,
+   "p_mkt": 0.5,
+   "p_kalshi": null,
+   "ev": -0.03,
+   "verdict": "Pass: simulation and team model agree; the main risk is line move.",
+   "home": "POR",
+   "away": "GS",
+   "why": "Sim total 221.5 (after a learned +1.2 correction) vs 216.5 \u00b7 over in 60% of sims vs 50% DraftKings",
+   "for": [
+    {
+     "tag": "simulation",
+     "t": "Goes over in 60% of 10,000 simulated games.",
+     "rec": [
+      1702,
+      1521
+     ]
+    },
+    {
+     "tag": "team model",
+     "t": "Team ratings project 224.8 points, 8.3 on your side of 216.5.",
+     "rec": null
+    }
+   ],
+   "against": [
+    {
+     "tag": "line move",
+     "t": "The line has moved against this side since it opened (221.5 to 216.5).",
+     "rec": [
+      223,
+      185
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "46% of sims are blowouts, and benches slow the scoring late.",
+     "rec": [
+      560,
+      480
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "Game lines are the hardest market to beat: in the backtest our team ratings went 644-685 against DraftKings' totals. Treat this as a lean.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.961,
+    "floor_am": -104,
+    "line": null,
+    "next": 217.5
+   },
+   "watch": [
+    {
+     "pid": "6606",
+     "name": "Damian Lillard",
+     "team": "POR",
+     "status": "Out",
+     "self": false,
+     "min": 31.9
+    },
+    {
+     "pid": "4279888",
+     "name": "Ja Morant",
+     "team": "POR",
+     "status": "Out",
+     "self": false,
+     "min": 26.0
+    },
+    {
+     "pid": "3975",
+     "name": "Stephen Curry",
+     "team": "GS",
+     "status": "Out",
+     "self": false,
+     "min": 22.5
+    }
+   ],
+   "kill": [
+    "The line reaching 217.5",
+    "The price at 216.5 going past \u2212104"
+   ],
+   "market": {
+    "open": null,
+    "now": 216.5,
+    "kalshi": null
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T18:46:33Z",
+    "edition": "update",
+    "point": 216.5,
+    "dec": 1.9,
+    "am": -111,
+    "conv": 30,
+    "tier": "Pass",
+    "p": 0.51,
+    "play_to": {
+     "floor_dec": 1.961,
+     "floor_am": -104,
+     "line": null,
+     "next": 217.5
+    }
+   },
+   "first_seen": "2026-11-27T18:46:33Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "changes": [
@@ -3951,6 +4385,69 @@
    "kind": "line",
    "text": "MIA @ NY Over 222.5: line 221.5 at \u2212116 \u2192 222.5 at \u2212105",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Allen Graves Under 10.5 points at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "line",
+   "text": "Allen Graves: line 10.5 at \u2212116 \u2192 10.5 at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|4709138|pts|Under",
+   "kind": "added",
+   "text": "Added: Brandin Podziemski Under 15.5 points at \u2212104, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|5175737|pts|Under",
+   "kind": "added",
+   "text": "Added: Yaxel Lendeborg Under 18.5 points at \u2212102, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|6589|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Draymond Green Under 5.5 points \u2014 no longer +EV at tonight's line (5.5 at -112)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|4684272|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Ja'Kobe Walter Under 13.5 points \u2014 no longer +EV at tonight's line (13.5 at -101)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Neemias Queta Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -111)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "g|401909336|total|Over",
+   "kind": "added",
+   "text": "Added: GS @ POR Over 216.5 at \u2212111, conviction 30",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T18:46:33Z",
+   "key": "g|401909328|total|Over",
+   "kind": "removed",
+   "text": "Removed: PHI @ IND Over 229.5 \u2014 line moved 234.5 \u2192 232.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -4018,11 +4515,6 @@
     "status": "Questionable"
    },
    {
-    "name": "LaMelo Ball",
-    "team": "MIN",
-    "status": "Questionable"
-   },
-   {
     "name": "De'Aaron Fox",
     "team": "SA",
     "status": "Questionable"
@@ -4031,9 +4523,14 @@
     "name": "Kelly Oubre Jr.",
     "team": "IND",
     "status": "Questionable"
+   },
+   {
+    "name": "Mo Bamba",
+    "team": "UTAH",
+    "status": "Questionable"
    }
   ],
-  "picks": 15
+  "picks": 17
  },
  "leans_record": {
   "w": 23,
@@ -4042,5 +4539,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T18:31:33Z"
+ "updated": "2026-11-27T18:46:33Z"
 }
