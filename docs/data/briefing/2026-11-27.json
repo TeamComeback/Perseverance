@@ -461,9 +461,9 @@
    "p": 0.524,
    "p_sim": 0.628,
    "p_mkt": 0.504,
-   "p_kalshi": 0.562,
+   "p_kalshi": 0.559,
    "ev": -0.02,
-   "verdict": "Pass: recent form and second market agree; the main risk is minutes.",
+   "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "TOR",
    "away": "BKN",
    "pid": "5149115",
@@ -576,7 +576,7 @@
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.562
+    "kalshi": 0.559
    },
    "started": false,
    "published": {
@@ -596,11 +596,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-27T19:46:26Z",
-    "why": "no longer +EV at tonight's line (10.5 at -128)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -915,7 +912,7 @@
    "p": 0.541,
    "p_sim": 0.573,
    "p_mkt": 0.52,
-   "p_kalshi": 0.515,
+   "p_kalshi": 0.509,
    "ev": -0.02,
    "verdict": "Pass: recent form and matchup agree; the main risk is matchup.",
    "home": "BOS",
@@ -1030,7 +1027,7 @@
    "market": {
     "open": 18.5,
     "now": 18.5,
-    "kalshi": 0.515
+    "kalshi": 0.509
    },
    "started": false,
    "published": {
@@ -1368,14 +1365,14 @@
    "start": "2026-11-28T02:30Z",
    "side": "Under",
    "point": 18.5,
-   "dec": 1.8,
-   "am": -125,
+   "dec": 1.79,
+   "am": -127,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.544,
+   "p": 0.547,
    "p_sim": 0.582,
-   "p_mkt": 0.524,
-   "p_kalshi": 0.562,
+   "p_mkt": 0.526,
+   "p_kalshi": 0.552,
    "ev": -0.02,
    "verdict": "Pass: recent form and simulation agree; the main risk is history.",
    "home": "LAC",
@@ -1459,8 +1456,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.838,
-    "floor_am": -119,
+    "floor_dec": 1.828,
+    "floor_am": -121,
     "line": 18.5,
     "next": 17.5
    },
@@ -1476,13 +1473,13 @@
    ],
    "kill": [
     "The line reaching 17.5",
-    "The price at 18.5 going past \u2212119",
+    "The price at 18.5 going past \u2212121",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 17.5,
     "now": 18.5,
-    "kalshi": 0.562
+    "kalshi": 0.552
    },
    "started": false,
    "published": {
@@ -1502,11 +1499,8 @@
     }
    },
    "first_seen": "2026-11-27T14:46:45Z",
-   "removed": {
-    "at": "2026-11-27T17:46:51Z",
-    "why": "no longer +EV at tonight's line (17.5 at -104)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4684272|pts|Under": {
    "key": "p|4684272|pts|Under",
@@ -2279,8 +2273,11 @@
     }
    },
    "first_seen": "2026-11-27T17:46:51Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T20:16:36Z",
+    "why": "no longer +EV at tonight's line (9.5 at -128)"
+   },
+   "status": "Removed"
   },
   "p|4709138|pts|Under": {
    "key": "p|4709138|pts|Under",
@@ -2916,7 +2913,7 @@
    "p": 0.53,
    "p_sim": 0.553,
    "p_mkt": 0.509,
-   "p_kalshi": 0.508,
+   "p_kalshi": 0.502,
    "ev": -0.019,
    "verdict": "Pass: recent form and cushion agree; the main risk is minutes.",
    "home": "UTAH",
@@ -3032,7 +3029,7 @@
    "market": {
     "open": 21.5,
     "now": 20.5,
-    "kalshi": 0.508
+    "kalshi": 0.502
    },
    "started": false,
    "published": {
@@ -3214,8 +3211,11 @@
     }
    },
    "first_seen": "2026-11-27T19:46:26Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T20:16:36Z",
+    "why": "no longer +EV at tonight's line (14.5 at -111)"
+   },
+   "status": "Removed"
   }
  },
  "leans": {
@@ -5297,6 +5297,41 @@
    "kind": "removed",
    "text": "Removed: GS @ POR Over 216.5 \u2014 line moved 216.5 \u2192 217.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T20:16:36Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Allen Graves Under 10.5 points at \u2212115",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:16:36Z",
+   "key": "p|5144091|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Jeremiah Fears Under 18.5 points at \u2212127",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:16:36Z",
+   "key": "p|5144091|pts|Under",
+   "kind": "line",
+   "text": "Jeremiah Fears: line 18.5 at \u2212125 \u2192 18.5 at \u2212127",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:16:36Z",
+   "key": "p|4997536|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Gui Santos Under 9.5 points \u2014 no longer +EV at tonight's line (9.5 at -128)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T20:16:36Z",
+   "key": "p|4683678|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Scoot Henderson Under 15.5 points \u2014 no longer +EV at tonight's line (14.5 at -111)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -5410,5 +5445,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T20:00:57Z"
+ "updated": "2026-11-27T20:16:36Z"
 }
