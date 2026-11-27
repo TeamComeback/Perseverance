@@ -84,6 +84,15 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           const mxs = await p.evaluate(() => { setFlt("sort", ""); setFlt("mxPos", "tough"); const r = [...document.querySelectorAll("#v-props .ur")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
             return {n: r.length, okAll: r.every(x => mxInfo(x).pos >= MX.hi), line: !!document.querySelector("#v-props .mxrec"), sel: !!document.querySelector('#fbar select[data-f="mxPos"]')}; });
           mxs.sel && mxs.okAll && mxs.line ? ok(`matchup dropdown: ${mxs.n} rows, all tough, record line shown`) : bad("matchup dropdown: " + JSON.stringify(mxs));
+          // hit chance and price limits: every row meets both; Value preset sets 55% / -130; an empty result explains itself
+          const hp = await p.evaluate(() => { store.set("flt", {}); setFlt("pre", "priced"); setFlt("hit", "55"); setFlt("price", "-130");
+            const r = [...document.querySelectorAll("#v-props .ur")].map(el => propRows().find(x => String(x.pid) === el.dataset.pid && x.stat === el.dataset.stat)).filter(Boolean);
+            return {n: r.length, ok: r.every(x => x.p_win >= 0.55 && x.am >= -130), sel: !!document.querySelector('#fbar select[data-f="hit"]') && !!document.querySelector('#fbar select[data-f="price"]')}; });
+          hp.sel && hp.ok ? ok(`hit chance 55%+ and price -130 or better: ${hp.n} rows, all within both limits`) : bad("hit/price filter: " + JSON.stringify(hp));
+          const vp = await p.evaluate(() => { document.querySelector('#fbar button[data-fp="value"]').click(); const f = FLT(); return {f: [f.pre, f.hit, f.price, f.sort].join("|")}; });
+          vp.f === "value|55|-130|win" ? ok("Value preset sets 55% / -130 / hit-chance sort") : bad("Value preset: " + vp.f);
+          const em = await p.evaluate(() => { setFlt("hit", "65"); setFlt("price", "100"); const e = document.querySelector("#v-props .empty"); return e ? e.textContent : (document.querySelectorAll("#v-props .ur").length + " rows"); });
+          /Nothing has both|rows/.test(em) ? ok("empty hit/price result explains itself") : bad("empty message: " + em);
           const old = await p.evaluate(() => { store.set("flt", {mxSort: "win", mxDir: "u", mxPace: "lo", sort: "mx"}); return JSON.stringify(FLT()); });
           /mx(Sort|Dir|Pace)/.test(old) || /"sort":"mx"/.test(old) ? bad("old matchup settings not cleared: " + old) : ok("old hidden matchup settings are cleared");
           await p.evaluate(() => { store.set("flt", {}); fbar("props"); renderProps(); });

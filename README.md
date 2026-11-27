@@ -505,3 +505,9 @@ Nothing they write changes a bet or a setting until the owner promotes an agent 
 - One sort (top bar: Best, Hit chance, Conviction, Edge, Tip time). Hit chance / Conviction / Edge list only props that have that number, each player's best prop by it, so the list changes.
 - One matchup dropdown (Any / Soft / Tough, position matchup). The "More matchup filters" section, presets, pace/defense/line filters and the second sort are gone; a one-line graded record shows under the list when a matchup is set.
 - Old saved settings (`mxSort`, `mxDir`, `mxPace`, `mxDef`, `mxLine`, `mxAll`, sort `mx`) are stripped on read.
+
+## Hit chance and price filters, Value preset (Nov 27)
+- Two top-bar dropdowns on the Players tab: **Hit chance** (55% / 60% / 65%+, the model's win chance for the side shown) and **Price** (-110 / -130 / -150 or better, +100 or better; American odds of the side shown, `row.am >= limit`). They apply in every preset and combine with the matchup, side, stat and sort filters.
+- **Value** preset: hit 55%+, price -130 or better, sorted by hit chance. Clear resets everything.
+- When the limits leave nothing, the empty state says how many props pass each limit alone and what to loosen.
+- On Nov 27 the slate had no props at 60%+ hit chance with a price better than -140: the market charges more for the likelier props.

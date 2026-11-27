@@ -1394,7 +1394,7 @@ function oppsHtml() {
 }
 
 // ===================================================== filters, watchlist, glossary (one set, every tab)
-const FLT0 = {pre: "", sort: "", edge: "", game: "", stat: "", side: "", watch: false, mxPos: ""};
+const FLT0 = {pre: "", sort: "", edge: "", game: "", stat: "", side: "", watch: false, mxPos: "", hit: "", price: ""};
 // one matchup dropdown (position matchup) and one sort; the Nov 23 extras (pace, defense, line, second sort, direction) are cleared from saved settings so nothing hidden can override the list
 const MX_OLD = ["mxPace", "mxDef", "mxLine", "mxSort", "mxDir", "mxAll"];
 const FLT = () => { const f = Object.assign({}, FLT0, store.get("flt", {})); MX_OLD.forEach(k => delete f[k]); if (f.sort === "mx") f.sort = ""; return f; };
@@ -1419,7 +1419,7 @@ function passF(x, opt = {}) {
   if (f.watch && !(w.players.includes(String(x.pid)) || w.games.includes(String(x.espn_id)))) return false;
   return true;
 }
-const PRESETS = [["win", "★ Winning bets"], ["priced", "Priced"], ["matchup", "Matchup"], ["games", "Game lines"], ["all", "All"]];
+const PRESETS = [["win", "★ Winning bets"], ["value", "Value"], ["priced", "Priced"], ["matchup", "Matchup"], ["games", "Game lines"], ["all", "All"]];
 const SORTS = [["", "Best first"], ["win", "Hit chance"], ["conv", "Conviction"], ["edge", "Edge"], ["time", "Tip time"]];
 const fltDirty = f => Object.keys(FLT0).some(k => k === "pre" ? (f.pre && f.pre !== "win") : f[k]);
 function fbar(tab) {
@@ -1435,13 +1435,17 @@ function fbar(tab) {
       ${sel("stat", [["", "All stats"], ...ALL_STATS.map(k => [k, STATN[k]])], "Stat")}
       ${sel("side", [["", "Over + under"], ["Over", "Overs"], ["Under", "Unders"]], "Side")}
       ${sel("mxPos", [["", "Any matchup"], ["soft", "Soft matchup"], ["tough", "Tough matchup"]], "Matchup")}
+      ${sel("hit", [["", "Any hit chance"], ["55", "Hit 55%+"], ["60", "Hit 60%+"], ["65", "Hit 65%+"]], "Minimum hit chance")}
+      ${sel("price", [["", "Any price"], ["-110", "-110 or better"], ["-130", "-130 or better"], ["-150", "-150 or better"], ["100", "+100 or better"]], "Price (odds of the side shown)")}
       ${sel("sort", SORTS.map(([v, l]) => [v, v ? "Sort: " + l : "Sort: best"]), "Sort")}
       ${sel("edge", [["", "Any edge"], ["0", "Edge > 0"], ["3", "Edge 3%+"], ["5", "Edge 5%+"]], "Minimum edge")}
       <button data-ft="watch" class="${f.watch ? "on" : ""}">★ Watchlist</button>
       ${fltDirty(f) ? '<button data-ft="clear">Clear</button>' : ""}</div>
     ${fg ? `<div class="focus">Showing <b>${esc(fg.away)} @ ${esc(fg.home)}</b> only <button data-ft="unfocus">×</button></div>` : ""}`;
   el.querySelectorAll("select").forEach(x => x.onchange = () => setFlt(x.dataset.f, x.value));
-  el.querySelectorAll("button[data-fp]").forEach(b => b.onclick = () => setFlt("pre", b.dataset.fp));
+  el.querySelectorAll("button[data-fp]").forEach(b => b.onclick = () => {
+    if (b.dataset.fp === "value") { const f = FLT(); Object.assign(f, {pre: "value", hit: "55", price: "-130", sort: "win"}); store.set("flt", f); fbar(tab); (RENDER[tab] || renderToday)(); }   // Value: 55%+ hit chance at -130 or better, best hit chance first
+    else setFlt("pre", b.dataset.fp); });
   el.querySelectorAll("button[data-ft]").forEach(b => b.onclick = () => {
     const k = b.dataset.ft;
     if (k === "clear") { store.set("flt", {}); fbar(tab); (RENDER[tab] || renderToday)(); }
@@ -2310,8 +2314,11 @@ function renderProps() {
   }
   const rows = propRows().filter(r => GF.game ? fresh(r) && r.espn_id === GF.game : upcoming(r));
   const minEdge = GF.edge === "" ? null : +GF.edge / 100;
-  const base = rows.filter(r => (pre === "win" ? isWin(r) : pre === "priced" ? r.line != null : true)
-    && (GF.stat ? r.stat === GF.stat : (pre === "priced" || pre === "win" || pre === "all" || PROP_STATS.includes(r.stat)))
+  const minHit = GF.hit === "" ? null : +GF.hit / 100, minAm = GF.price === "" ? null : +GF.price;   // price: American odds of the shown side, -130 or better = -130 and up
+  const hitOk = r => minHit == null || (r.p_win != null && r.p_win >= minHit), priceOk = r => minAm == null || (r.line != null && r.am != null && r.am >= minAm);
+  const base = rows.filter(r => (pre === "win" ? isWin(r) : pre === "priced" || pre === "value" ? r.line != null : true)
+    && (GF.stat ? r.stat === GF.stat : (pre === "priced" || pre === "value" || pre === "win" || pre === "all" || PROP_STATS.includes(r.stat)))
+    && hitOk(r) && priceOk(r)
     && (!GF.side || sideOf(r) === GF.side)
     && (minEdge == null || (r.ev != null && r.ev >= minEdge))
     && (!GF.watch || WATCH().players.includes(String(r.pid)))
@@ -2324,10 +2331,10 @@ function renderProps() {
   const lim = F.all || GF.game ? list.length : F.n;
   const nWin = onePerPlayer(rows.filter(isWin), r => r.ev ?? -1).length;
   const note = {win: `Priced at ${WIN_EDGE * 100}%+ edge, matchup not against it, secure minutes. The market price is the anchor, so on most nights this list is short or empty.`,
-    priced: "Every player with a DraftKings line, best play first.", matchup: "Matchup strength first (no price in it). Tap a player for the full card.",
+    priced: "Every player with a DraftKings line, best play first.", value: "High hit chance at a fair price: 55%+ to win at -130 or better, best hit chance first. Change either dropdown to loosen it.", matchup: "Matchup strength first (no price in it). Tap a player for the full card.",
     games: "Every priced game line, ranked.", all: "Every player and stat tonight."}[pre];
   const body = pre === "games" ? gameLineRows()
-    : list.slice(0, lim).map(uRow).join("") || `<div class="empty">${pre === "win" ? "No winning bets right now. Nothing clears 3% at the current prices; try Priced, or check back after the next price refresh." : "Nothing matches these filters."}</div>`;
+    : list.slice(0, lim).map(uRow).join("") || `<div class="empty">${(minHit != null || minAm != null) && !list.length ? emptyWhy(rows, GF, hitOk, priceOk) : pre === "win" ? "No winning bets right now. Nothing clears 3% at the current prices; try Priced, or check back after the next price refresh." : "Nothing matches these filters."}</div>`;
   const tt = teamTotalsHtml(pz);
   $("v-props").innerHTML = `${searchBox}
     <div class="pnote"><span>${esc(note)}</span>${pre === "win" ? "" : ""}<button class="btn ghost sm" id="rbReprice"${gamesLeft() ? "" : " disabled"}>↻ Re-price</button></div>
@@ -2344,6 +2351,13 @@ function renderProps() {
     try { await BESTREFRESH.reprice(() => {}); store.set("bestview", "local"); renderProps(); toast("Re-priced the games still to tip with DraftKings' current lines"); }
     catch (e2) { toast("Couldn't re-price: " + e2.message); rp.disabled = false; } };
   bindPlayerLinks($("v-props"));
+}
+// when the hit-chance and price limits leave nothing, say which one is doing it
+function emptyWhy(rows, GF, hitOk, priceOk) {
+  const pr = rows.filter(r => r.line != null), nh = pr.filter(hitOk).length, np = pr.filter(priceOk).length;
+  const hl = GF.hit ? GF.hit + "%+ hit chance" : "", pl_ = GF.price ? (+GF.price > 0 ? "+" + GF.price : GF.price) + " or better" : "";
+  if (GF.hit && GF.price) return `Nothing has both ${hl} and a price of ${pl_}. ${nh} props have ${hl}; ${np} are ${pl_}. The market charges more for the likelier props, so loosen the price (try -150) or the hit chance (try 55%).`;
+  return `Nothing matches ${hl || pl_} with the other filters. Loosen one of them.`;
 }
 function teamTotalsHtml(pz) {
   const tt = Object.entries(pz.team_totals || {}).filter(([id, g]) => new Date(g.commence) > Date.now());
