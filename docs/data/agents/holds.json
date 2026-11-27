@@ -1,17 +1,23 @@
 {
  "holds": [
   {
-   "game": "PHI @ IND",
-   "kind": "news",
-   "reason": "The Over 232.5 rests on a sim total of 236.6, but Newsroom lists both Joel Embiid (illness, missed Wednesday) and Jaylen Brown (hamstring imaging, update still pending) questionable; if either sits, PHI's scoring falls and the 4-point sim edge is probably built on a lineup that won't play."
-  },
-  {
    "game": "MEM @ MIN",
    "kind": "news",
-   "reason": "The Over 220.5 (sim 225.1, includes a learned +1.2 correction) ignores that Newsroom flags LaMelo Ball (ankle, no timetable) and Zach Edey (ankle, 9 minutes Wednesday) as questionable; a 4.6-point gap with two starters in doubt looks like missing news rather than edge."
+   "reason": "The Over 220.5 (sim 225.1 vs 50% at DraftKings) is set before LaMelo Ball (MIN, ankle, questionable, no timetable) and Zach Edey (MEM, ankle, 9 min Wednesday) are resolved, and all three model_gaps tonight are MEM rotation players in this game (Kris Murray pra 9.4% vs 50.4% market), a sign the model is missing role news here."
+  },
+  {
+   "game": "PHI @ IND",
+   "kind": "news",
+   "reason": "The Over 232.5 (sim 236.6, 58% vs 49% DraftKings) and Zubac Under 12.5 sit on a game where Jaylen Brown (hamstring imaging, update due Thursday) and Joel Embiid (illness, missed Wednesday) are both questionable for PHI, so the sim's inputs may not match who plays."
+  },
+  {
+   "player": "De'Anthony Melton",
+   "stat": "pts",
+   "kind": "thin_edge",
+   "reason": "Under 11.5 is the widest model-vs-market prop on the board (63% sims vs 52% DraftKings, sim 10.1) with no price edge (EV -2.1%), and the backtest's 10%+ edge bucket hit 51.1% with CLV -3.8% over 237 lines."
   }
  ],
- "notes": "Every Best Bet is tier Pass with negative EV (-1.6% to -3.8%), so nothing on the NBA slate is in line to be bet. model_gaps is empty. I held the two totals whose sim edge rests on lineups the Newsroom flagged. The other Pass rows have no news against them. The five open agent bets are non-NBA (Liga MX, NHL, Liiga). The Devils/Flames arb pair is balanced (5.63 x 3.40 = 19.14 vs 13.38 x 1.43 = 19.13). The three value_fav bets carry ~3.0-3.2% EV, which is thin next to the agent's average settled CLV of -1.9% (54 legs). The brief has no current price for them, so I can't call them stale and am not holding them. Web checks on Brown and Ball found no newer status than the Newsroom's.",
- "updated": "2026-11-26T23:18:45Z",
+ "notes": "All ten Best Bets are tier Pass with negative EV, so holds are for grading. Remaining four totals are all Overs leaning on the same learned +1.2 correction (correlated by method, not game); left MIA @ NY and LAL @ SA alone since the edges are small (55-56% sims). Open agent bets are non-NBA (Liiga, NHL, Liga MX) with no current prices in the brief; the NJ/CGY pair is an arb and holding one leg would unhedge it, and Pachuca-Guadalajara already started at 01:00Z. No fresh web news found beyond the Newsroom's items.",
+ "updated": "2026-11-27T02:19:11Z",
  "by": "skeptic"
 }
