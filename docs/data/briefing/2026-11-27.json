@@ -454,14 +454,14 @@
    "start": "2026-11-28T00:30Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.87,
-   "am": -115,
+   "dec": 1.79,
+   "am": -127,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.524,
+   "p": 0.548,
    "p_sim": 0.628,
-   "p_mkt": 0.504,
-   "p_kalshi": 0.559,
+   "p_mkt": 0.526,
+   "p_kalshi": 0.582,
    "ev": -0.02,
    "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "TOR",
@@ -479,7 +479,7 @@
    "for": [
     {
      "tag": "second market",
-     "t": "Kalshi likes it more: 56% there vs 50% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
+     "t": "Kalshi likes it more: 58% there vs 53% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
      "rec": [
       176,
       146
@@ -553,9 +553,9 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.908,
-    "floor_am": -110,
-    "line": null,
+    "floor_dec": 1.825,
+    "floor_am": -121,
+    "line": 10.5,
     "next": 9.5
    },
    "watch": [
@@ -570,13 +570,13 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212110",
+    "The price at 10.5 going past \u2212121",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 10.5,
     "now": 10.5,
-    "kalshi": 0.559
+    "kalshi": 0.582
    },
    "started": false,
    "published": {
@@ -597,7 +597,7 @@
    },
    "first_seen": "2026-11-27T11:45:29Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Past play-to"
   },
   "p|4065648|pts|Under": {
    "key": "p|4065648|pts|Under",
@@ -912,7 +912,7 @@
    "p": 0.541,
    "p_sim": 0.573,
    "p_mkt": 0.52,
-   "p_kalshi": 0.509,
+   "p_kalshi": 0.505,
    "ev": -0.02,
    "verdict": "Pass: recent form and matchup agree; the main risk is matchup.",
    "home": "BOS",
@@ -1027,7 +1027,7 @@
    "market": {
     "open": 18.5,
     "now": 18.5,
-    "kalshi": 0.509
+    "kalshi": 0.505
    },
    "started": false,
    "published": {
@@ -1499,8 +1499,11 @@
     }
    },
    "first_seen": "2026-11-27T14:46:45Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T20:46:36Z",
+    "why": "no longer +EV at tonight's line (17.5 at -104)"
+   },
+   "status": "Removed"
   },
   "p|4684272|pts|Under": {
    "key": "p|4684272|pts|Under",
@@ -1668,14 +1671,14 @@
    "start": "2026-11-28T01:00Z",
    "side": "Under",
    "point": 11.5,
-   "dec": 1.9,
-   "am": -111,
+   "dec": 1.89,
+   "am": -112,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.515,
+   "p": 0.518,
    "p_sim": 0.495,
-   "p_mkt": 0.496,
-   "p_kalshi": 0.527,
+   "p_mkt": 0.499,
+   "p_kalshi": 0.538,
    "ev": -0.021,
    "verdict": "Pass: recent form and tonight's spot agree; the main risk is similar players.",
    "home": "BOS",
@@ -1751,21 +1754,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.942,
-    "floor_am": -106,
+    "floor_dec": 1.931,
+    "floor_am": -107,
     "line": null,
     "next": 10.5
    },
    "watch": [],
    "kill": [
     "The line reaching 10.5",
-    "The price at 11.5 going past \u2212106",
+    "The price at 11.5 going past \u2212107",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 12.5,
     "now": 11.5,
-    "kalshi": 0.527
+    "kalshi": 0.538
    },
    "started": false,
    "published": {
@@ -1785,11 +1788,8 @@
     }
    },
    "first_seen": "2026-11-27T16:31:31Z",
-   "removed": {
-    "at": "2026-11-27T18:46:33Z",
-    "why": "no longer +EV at tonight's line (11.5 at -111)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4017837|pts|Under": {
    "key": "p|4017837|pts|Under",
@@ -2439,22 +2439,22 @@
   "p|5175737|pts|Under": {
    "key": "p|5175737|pts|Under",
    "kind": "prop",
-   "label": "Yaxel Lendeborg Under 18.5 points",
+   "label": "Yaxel Lendeborg Under 19.5 points",
    "espn_id": "401909336",
    "game": "GS @ POR",
    "start": "2026-11-28T02:30Z",
    "side": "Under",
-   "point": 18.5,
-   "dec": 1.98,
-   "am": -102,
+   "point": 19.5,
+   "dec": 1.8,
+   "am": -125,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.494,
-   "p_sim": 0.54,
-   "p_mkt": 0.476,
-   "p_kalshi": 0.505,
-   "ev": -0.022,
-   "verdict": "Pass: recent form and blowout agree; the main risk is minutes.",
+   "p": 0.544,
+   "p_sim": 0.603,
+   "p_mkt": 0.524,
+   "p_kalshi": 0.565,
+   "ev": -0.02,
+   "verdict": "Pass: recent form and simulation agree; the main risk is minutes.",
    "home": "POR",
    "away": "GS",
    "pid": "5175737",
@@ -2464,40 +2464,48 @@
    "stat": "pts",
    "proj": 17.9,
    "sim": 18.1,
-   "ob_ind": 18.5,
+   "ob_ind": 19.5,
    "avg10": 17,
    "minutes": 31.0,
    "for": [
     {
-     "tag": "Vegas",
-     "t": "Vegas team total -6 vs model.",
+     "tag": "second market",
+     "t": "Kalshi likes it more: 56% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
      "rec": [
-      226,
-      209
+      176,
+      146
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 60% of 10,000 simulated games (sim average 18.1).",
+     "rec": [
+      1702,
+      1521
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 17.9 points against a line of 19.5.",
+     "rec": [
+      1753,
+      1620
      ]
     },
     {
      "tag": "recent form",
-     "t": "Stayed under 18.5 in 6 of his last 10 (4 of the last 5).",
+     "t": "Stayed under 19.5 in 6 of his last 10 (4 of the last 5).",
      "rec": [
       1513,
       1405
      ]
     },
     {
-     "tag": "blowout",
-     "t": "Blowout risk: 46% of sims end 15+ points apart, when starters sit late.",
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 17.5 in 6 of his last 10.",
      "rec": [
-      980,
-      952
-     ]
-    },
-    {
-     "tag": "line move",
-     "t": "The line moved his way (19.5 to 18.5): money has been on the under.",
-     "rec": [
-      221,
-      265
+      399,
+      378
      ]
     }
    ],
@@ -2528,10 +2536,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.024,
-    "floor_am": 102,
-    "line": null,
-    "next": 17.5
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 19.5,
+    "next": 18.5
    },
    "watch": [
     {
@@ -2552,14 +2560,14 @@
     }
    ],
    "kill": [
-    "The line reaching 17.5",
-    "The price at 18.5 going past +102",
+    "The line reaching 18.5",
+    "The price at 19.5 going past \u2212119",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 19.5,
-    "now": 18.5,
-    "kalshi": 0.505
+    "now": 19.5,
+    "kalshi": 0.565
    },
    "started": false,
    "published": {
@@ -2579,11 +2587,8 @@
     }
    },
    "first_seen": "2026-11-27T18:46:33Z",
-   "removed": {
-    "at": "2026-11-27T19:16:27Z",
-    "why": "no longer +EV at tonight's line (19.5 at -120)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "New"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -2737,8 +2742,11 @@
     }
    },
    "first_seen": "2026-11-27T19:16:27Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T20:46:36Z",
+    "why": "no longer +EV at tonight's line (10.5 at -127)"
+   },
+   "status": "Removed"
   },
   "p|3913176|pts|Under": {
    "key": "p|3913176|pts|Under",
@@ -2913,7 +2921,7 @@
    "p": 0.53,
    "p_sim": 0.553,
    "p_mkt": 0.509,
-   "p_kalshi": 0.502,
+   "p_kalshi": 0.505,
    "ev": -0.019,
    "verdict": "Pass: recent form and cushion agree; the main risk is minutes.",
    "home": "UTAH",
@@ -3029,7 +3037,7 @@
    "market": {
     "open": 21.5,
     "now": 20.5,
-    "kalshi": 0.502
+    "kalshi": 0.505
    },
    "started": false,
    "published": {
@@ -4248,29 +4256,29 @@
   "g|401909326|total|Over": {
    "key": "g|401909326|total|Over",
    "kind": "total",
-   "label": "MIA @ NY Over 222.5",
+   "label": "MIA @ NY Over 221.5",
    "espn_id": "401909326",
    "game": "MIA @ NY",
    "start": "2026-11-28T00:00Z",
    "side": "Over",
-   "point": 222.5,
-   "dec": 1.95,
-   "am": -105,
-   "conv": 31,
+   "point": 221.5,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.497,
-   "p_sim": 0.577,
-   "p_mkt": 0.488,
+   "p": 0.52,
+   "p_sim": 0.598,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": -0.031,
+   "ev": -0.032,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "NY",
    "away": "MIA",
-   "why": "Sim total 226.3 (after a learned +1.2 correction) vs 222.5 \u00b7 over in 58% of sims vs 49% DraftKings",
+   "why": "Sim total 226.3 (after a learned +1.2 correction) vs 221.5 \u00b7 over in 60% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 58% of 10,000 simulated games.",
+     "t": "Goes over in 60% of 10,000 simulated games.",
      "rec": [
       1702,
       1521
@@ -4278,14 +4286,14 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 225.0 points, 2.5 on your side of 222.5.",
+     "t": "Team ratings project 225.0 points, 3.5 on your side of 221.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (232.5 to 222.5).",
+     "t": "The line has moved against this side since it opened (232.5 to 221.5).",
      "rec": [
       223,
       185
@@ -4301,10 +4309,10 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.012,
-    "floor_am": 101,
+    "floor_dec": 1.923,
+    "floor_am": -108,
     "line": null,
-    "next": 223.5
+    "next": 222.5
    },
    "watch": [
     {
@@ -4333,13 +4341,13 @@
     }
    ],
    "kill": [
-    "The line reaching 223.5",
-    "The price at 222.5 going past +101",
+    "The line reaching 222.5",
+    "The price at 221.5 going past \u2212108",
     "A change in Karl-Anthony Towns (day-to-day), Giannis Antetokounmpo (probable): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
-    "now": 222.5,
+    "now": 221.5,
     "kalshi": null
    },
    "started": false,
@@ -4361,7 +4369,7 @@
    },
    "first_seen": "2026-11-27T17:02:30Z",
    "removed": null,
-   "status": "New"
+   "status": "Past play-to"
   },
   "g|401909336|total|Over": {
    "key": "g|401909336|total|Over",
@@ -5332,6 +5340,62 @@
    "kind": "removed",
    "text": "Removed: Scoot Henderson Under 15.5 points \u2014 no longer +EV at tonight's line (14.5 at -111)",
    "alert": true
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|5149115|pts|Under",
+   "kind": "line",
+   "text": "Allen Graves: line 10.5 at \u2212115 \u2192 10.5 at \u2212127 \u2014 past the play-to line; don't add at this number",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|5175737|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Yaxel Lendeborg Under 19.5 points at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|5175737|pts|Under",
+   "kind": "line",
+   "text": "Yaxel Lendeborg: line 18.5 at \u2212102 \u2192 19.5 at \u2212125",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Neemias Queta Under 11.5 points at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "line",
+   "text": "Neemias Queta: line 11.5 at \u2212111 \u2192 11.5 at \u2212112",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|5144091|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Jeremiah Fears Under 18.5 points \u2014 no longer +EV at tonight's line (17.5 at -104)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "p|4278049|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Daniel Gafford Under 10.5 points \u2014 no longer +EV at tonight's line (10.5 at -127)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T20:46:36Z",
+   "key": "g|401909326|total|Over",
+   "kind": "line",
+   "text": "MIA @ NY Over 221.5: line 222.5 at \u2212105 \u2192 221.5 at \u2212116 \u2014 past the play-to line; don't add at this number",
+   "alert": false
   }
  ],
  "narratives": [
@@ -5445,5 +5509,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T20:30:30Z"
+ "updated": "2026-11-27T20:46:36Z"
 }
