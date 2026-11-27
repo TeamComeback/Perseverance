@@ -1713,27 +1713,18 @@
    "point": -3.5,
    "dec": 1.96,
    "am": -104,
-   "conv": 31,
+   "conv": 30,
    "tier": "Pass",
-   "p": 0.494,
-   "p_sim": 0.562,
+   "p": 0.493,
+   "p_sim": 0.55,
    "p_mkt": 0.487,
    "p_kalshi": null,
-   "ev": -0.031,
-   "verdict": "Pass: simulation carries it; the main risk is team model.",
+   "ev": -0.033,
+   "verdict": "Pass: the price is the case; the main risk is team model.",
    "home": "IND",
    "away": "PHI",
-   "why": "Sim: PHI by 5.7 on average (PHI 119.4, IND 113.7) \u00b7 PHI -3.5 covers in 56% of sims vs 49% DraftKings",
-   "for": [
-    {
-     "tag": "simulation",
-     "t": "Covers in 56% of 10,000 simulated games.",
-     "rec": [
-      1702,
-      1521
-     ]
-    }
-   ],
+   "why": "Sim: PHI by 5.2 on average (PHI 119.1, IND 113.9) \u00b7 PHI -3.5 covers in 55% of sims vs 49% DraftKings",
+   "for": [],
    "against": [
     {
      "tag": "line move",
@@ -1753,7 +1744,7 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings with tonight's lineups make it IND by 0.0, 3.5 worse than this number.",
+     "t": "Team ratings with tonight's lineups make it PHI by 0.2, 3.3 worse than this number.",
      "rec": null
     },
     {
@@ -1763,8 +1754,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.024,
-    "floor_am": 102,
+    "floor_dec": 2.028,
+    "floor_am": 103,
     "line": null,
     "next": -4.5
    },
@@ -1796,7 +1787,7 @@
    ],
    "kill": [
     "The line reaching -4.5",
-    "The price at -3.5 going past +102",
+    "The price at -3.5 going past +103",
     "A change in Joel Embiid (questionable), Kelly Oubre Jr. (questionable): the model re-prices on the next run"
    ],
    "market": {
@@ -2905,5 +2896,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T15:15:23Z"
+ "updated": "2026-11-27T15:31:40Z"
 }
