@@ -2587,8 +2587,11 @@
     }
    },
    "first_seen": "2026-11-27T18:46:33Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-27T21:46:49Z",
+    "why": "no longer +EV at tonight's line (19.5 at -120)"
+   },
+   "status": "Removed"
   },
   "p|4278049|pts|Under": {
    "key": "p|4278049|pts|Under",
@@ -2914,14 +2917,14 @@
    "start": "2026-11-28T02:30Z",
    "side": "Under",
    "point": 20.5,
-   "dec": 1.85,
-   "am": -118,
+   "dec": 1.88,
+   "am": -114,
    "conv": 34,
    "tier": "Pass",
-   "p": 0.53,
+   "p": 0.522,
    "p_sim": 0.553,
-   "p_mkt": 0.509,
-   "p_kalshi": 0.496,
+   "p_mkt": 0.501,
+   "p_kalshi": 0.495,
    "ev": -0.019,
    "verdict": "Pass: recent form and cushion agree; the main risk is minutes.",
    "home": "UTAH",
@@ -3005,8 +3008,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.887,
-    "floor_am": -113,
+    "floor_dec": 1.916,
+    "floor_am": -109,
     "line": null,
     "next": 19.5
    },
@@ -3030,14 +3033,14 @@
    ],
    "kill": [
     "The line reaching 19.5",
-    "The price at 20.5 going past \u2212113",
+    "The price at 20.5 going past \u2212109",
     "A change in Mo Bamba (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 21.5,
     "now": 20.5,
-    "kalshi": 0.496
+    "kalshi": 0.495
    },
    "started": false,
    "published": {
@@ -3224,6 +3227,168 @@
     "why": "no longer +EV at tonight's line (14.5 at -111)"
    },
    "status": "Removed"
+  },
+  "p|4592492|pts|Under": {
+   "key": "p|4592492|pts|Under",
+   "kind": "prop",
+   "label": "Bones Hyland Under 13.5 points",
+   "espn_id": "401909331",
+   "game": "MEM @ MIN",
+   "start": "2026-11-28T01:30Z",
+   "side": "Under",
+   "point": 13.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.544,
+   "p_sim": 0.545,
+   "p_mkt": 0.524,
+   "p_kalshi": 0.523,
+   "ev": -0.02,
+   "verdict": "Pass: recent form and history agree; the main risk is matchup.",
+   "home": "MIN",
+   "away": "MEM",
+   "pid": "4592492",
+   "name": "Bones Hyland",
+   "team": "MIN",
+   "opp": "MEM",
+   "stat": "pts",
+   "proj": 12.9,
+   "sim": 13.2,
+   "ob_ind": 12.5,
+   "avg10": 10.8,
+   "minutes": 20.3,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 10.8 points over his last 10; the line is 13.5.",
+     "rec": [
+      667,
+      591
+     ]
+    },
+    {
+     "tag": "Vegas",
+     "t": "Vegas team total -8 vs model.",
+     "rec": [
+      226,
+      209
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 13.5 in 7 of his last 10 (4 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs MEM: 6.4 points/g in 5 games (-7%).",
+     "rec": [
+      484,
+      459
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against MEM: 5 of 5 under 13.5 (100% vs 75% lately).",
+     "rec": [
+      624,
+      607
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "similar players",
+     "t": "Players with his profile: +6% points vs MEM (116 close comps).",
+     "rec": [
+      725,
+      669
+     ]
+    },
+    {
+     "tag": "matchup",
+     "t": "MEM gives point guards +6% points vs their norm (#7 softest of 30).",
+     "rec": [
+      1161,
+      1104
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 17.6 minutes in the games he went over vs 12.9 otherwise. He's projected for 20.3 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      406,
+      430
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 13.5,
+    "next": 12.5
+   },
+   "watch": [
+    {
+     "pid": "4432816",
+     "name": "LaMelo Ball",
+     "team": "MIN",
+     "status": "Out",
+     "self": false,
+     "min": 30.1
+    },
+    {
+     "pid": "5041935",
+     "name": "Cameron Boozer",
+     "team": "MEM",
+     "status": "Out",
+     "self": false,
+     "min": 28.4
+    }
+   ],
+   "kill": [
+    "The line reaching 12.5",
+    "The price at 13.5 going past \u2212119",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 14.5,
+    "now": 13.5,
+    "kalshi": 0.523
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T21:46:49Z",
+    "edition": "update",
+    "point": 13.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.544,
+    "play_to": {
+     "floor_dec": 1.838,
+     "floor_am": -119,
+     "line": 13.5,
+     "next": 12.5
+    }
+   },
+   "first_seen": "2026-11-27T21:46:49Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -5424,6 +5589,27 @@
    "kind": "line",
    "text": "MIA @ NY Over 222.5: line 221.5 at \u2212116 \u2192 222.5 at \u2212105",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T21:46:49Z",
+   "key": "p|4433627|pts|Under",
+   "kind": "line",
+   "text": "Keyonte George: line 20.5 at \u2212118 \u2192 20.5 at \u2212114",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T21:46:49Z",
+   "key": "p|4592492|pts|Under",
+   "kind": "added",
+   "text": "Added: Bones Hyland Under 13.5 points at \u2212125, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T21:46:49Z",
+   "key": "p|5175737|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Yaxel Lendeborg Under 19.5 points \u2014 no longer +EV at tonight's line (19.5 at -120)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -5528,7 +5714,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 21
+  "picks": 22
  },
  "leans_record": {
   "w": 23,
@@ -5537,5 +5723,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T21:30:27Z"
+ "updated": "2026-11-27T21:46:49Z"
 }
