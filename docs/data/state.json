@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 51.8,
+  "cash": 46.8,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -22609,14 +22609,18 @@
       "book": "betrivers",
       "fair_p": 0.51,
       "close_p": 0.5077,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.858,
        "gain": 0.0874,
        "n": 3
       },
       "close_at": "2026-11-26T17:45:20Z",
-      "close_mins": 434
+      "close_mins": 434,
+      "final": {
+       "home": 2.0,
+       "away": 1.0
+      }
      }
     ],
     "dec": 2.02,
@@ -22626,10 +22630,10 @@
     "note": "3.0% edge vs 3-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-27T05:16:37Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22639,7 +22643,33 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "LOST: Total 3 vs Under 2.5",
+     "final": "Guadalajara 1 \u2013 Pachuca 2",
+     "legs": [
+      {
+       "outcome": "Under",
+       "result": "loss",
+       "headline": "Total 3 vs Under 2.5",
+       "final": "Guadalajara 1 \u2013 Pachuca 2",
+       "why": [
+        "Game total was 3 against a line of 2.5: under missed by 0.5.",
+        "We priced it at 51% to hit vs 50% needed to break even at 2.02x (+3.0% expected edge).",
+        "Closing consensus 51% vs 50% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "near-miss",
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line",
+      "near-miss"
+     ]
+    },
+    "recap_tried": 1
    },
    {
     "id": "a57d57d2",
@@ -22660,15 +22690,15 @@
       "price": 3.4,
       "book": "betrivers",
       "fair_p": 0.3023,
-      "close_p": 0.2957,
+      "close_p": 0.2958,
       "result": null,
       "shop": {
        "median": 3.343,
        "gain": 0.0171,
        "n": 4
       },
-      "close_at": "2026-11-27T05:00:41Z",
-      "close_mins": 779
+      "close_at": "2026-11-27T05:16:42Z",
+      "close_mins": 763
      }
     ],
     "dec": 3.4,
@@ -22703,15 +22733,15 @@
       "price": 1.43,
       "book": "fanatics",
       "fair_p": 0.7136,
-      "close_p": 0.7043,
+      "close_p": 0.7042,
       "result": null,
       "shop": {
        "median": 1.354,
        "gain": 0.0562,
        "n": 4
       },
-      "close_at": "2026-11-27T05:00:41Z",
-      "close_mins": 779
+      "close_at": "2026-11-27T05:16:42Z",
+      "close_mins": 763
      }
     ],
     "dec": 1.43,
@@ -22753,8 +22783,8 @@
        "gain": 0.0695,
        "n": 3
       },
-      "close_at": "2026-11-27T05:00:41Z",
-      "close_mins": 779
+      "close_at": "2026-11-27T05:16:42Z",
+      "close_mins": 763
      }
     ],
     "dec": 2.0,
@@ -22789,15 +22819,15 @@
       "price": 2.0,
       "book": "draftkings",
       "fair_p": 0.516,
-      "close_p": 0.5153,
+      "close_p": 0.5143,
       "result": null,
       "shop": {
        "median": 1.835,
        "gain": 0.0899,
        "n": 4
       },
-      "close_at": "2026-11-26T20:30:25Z",
-      "close_mins": 1199
+      "close_at": "2026-11-27T05:16:42Z",
+      "close_mins": 673
      }
     ],
     "dec": 2.0,
@@ -22805,6 +22835,47 @@
     "ev": 0.0319,
     "p": 0.516,
     "note": "3.2% edge vs 4-book consensus",
+    "group": null,
+    "issue": null,
+    "status": "open",
+    "payout": null,
+    "profit": null,
+    "settled": null,
+    "shadow": {}
+   },
+   {
+    "id": "fc7a3a28",
+    "placed": "2026-11-27T05:16:42Z",
+    "run": 3,
+    "source": "agent",
+    "playbook": "value_fav",
+    "legs": [
+     {
+      "event_id": "91d74387d259e10c504cb54aea9d4f1e",
+      "sport": "basketball_ncaab",
+      "commence": "2026-11-27T18:00:00Z",
+      "home": "Merrimack Warriors",
+      "away": "Vermont Catamounts",
+      "market": "totals",
+      "outcome": "Over",
+      "point": 128.5,
+      "price": 1.87,
+      "book": "espnbet",
+      "fair_p": 0.5572,
+      "close_p": null,
+      "result": null,
+      "shop": {
+       "median": 1.785,
+       "gain": 0.0479,
+       "n": 2
+      }
+     }
+    ],
+    "dec": 1.87,
+    "stake": 5.0,
+    "ev": 0.0419,
+    "p": 0.5572,
+    "note": "4.2% edge vs 2-book consensus",
     "group": null,
     "issue": null,
     "status": "open",
@@ -22867,11 +22938,11 @@
  },
  "arms": {
   "value_fav": {
-   "bets": 3,
-   "staked": 15.0,
-   "profit": -4.54,
-   "clv_n": 3,
-   "clv_sum": 0.021519000000000288,
+   "bets": 4,
+   "staked": 20.0,
+   "profit": -9.54,
+   "clv_n": 4,
+   "clv_sum": 0.047073000000000365,
    "tags": {
     "blowout": {
      "n": 2,
@@ -22884,11 +22955,16 @@
      "lost": 1
     },
     "beat-closing-line": {
+     "n": 2,
+     "won": 0,
+     "lost": 2
+    },
+    "favorite-upset": {
      "n": 1,
      "won": 0,
      "lost": 1
     },
-    "favorite-upset": {
+    "near-miss": {
      "n": 1,
      "won": 0,
      "lost": 1
@@ -23144,31 +23220,31 @@
  },
  "sports": {
   "basketball_nba": {
-   "last_scanned": "2026-11-27T05:00:40Z",
+   "last_scanned": "2026-11-27T05:16:41Z",
    "bets": 71.0,
    "staked": 376.16999999999996,
    "profit": -112.92
   },
   "icehockey_nhl": {
-   "last_scanned": "2026-11-27T05:00:39Z",
+   "last_scanned": "2026-11-27T05:16:40Z",
    "bets": 3.0,
    "staked": 15.0,
    "profit": -4.1
   },
   "americanfootball_nfl": {
-   "last_scanned": "2026-11-27T05:00:40Z"
+   "last_scanned": "2026-11-27T05:16:40Z"
   },
   "baseball_mlb": {
    "last_scanned": "2026-10-28T20:12:46Z"
   },
   "americanfootball_ncaaf": {
-   "last_scanned": "2026-11-27T05:00:40Z",
+   "last_scanned": "2026-11-27T05:16:41Z",
    "bets": 6.0,
    "staked": 32.629999999999995,
    "profit": -19.89
   },
   "soccer_italy_serie_a": {
-   "last_scanned": "2026-11-27T05:00:40Z"
+   "last_scanned": "2026-11-27T05:16:41Z"
   },
   "basketball_wnba": {
    "last_scanned": "2026-10-30T19:55:09Z"
@@ -23183,13 +23259,16 @@
    "last_scanned": "2026-11-26T06:30:30Z"
   },
   "soccer_usa_mls": {
-   "last_scanned": "2026-11-27T05:00:41Z",
+   "last_scanned": "2026-11-27T05:16:42Z",
    "bets": 2.0,
    "staked": 10.0,
    "profit": -10.0
   },
   "soccer_mexico_ligamx": {
-   "last_scanned": "2026-11-26T17:45:20Z"
+   "last_scanned": "2026-11-26T17:45:20Z",
+   "bets": 1.0,
+   "staked": 5.0,
+   "profit": -5.0
   },
   "boxing_boxing": {
    "last_scanned": "2026-11-27T05:15:24Z"
@@ -23204,16 +23283,16 @@
    "last_scanned": "2026-11-27T05:15:24Z"
   },
   "mma_mixed_martial_arts": {
-   "last_scanned": "2026-11-27T05:00:39Z"
+   "last_scanned": "2026-11-27T05:16:41Z"
   },
   "soccer_spain_la_liga": {
-   "last_scanned": "2026-11-27T05:00:41Z"
+   "last_scanned": "2026-11-27T05:16:41Z"
   },
   "icehockey_ahl": {
-   "last_scanned": "2026-11-27T05:00:41Z"
+   "last_scanned": "2026-11-27T05:16:42Z"
   },
   "soccer_germany_bundesliga": {
-   "last_scanned": "2026-11-27T05:00:40Z"
+   "last_scanned": "2026-11-27T05:16:41Z"
   },
   "basketball_euroleague": {
    "last_scanned": "2026-11-25T07:15:21Z"
@@ -23222,10 +23301,10 @@
    "last_scanned": "2026-10-29T23:54:28Z"
   },
   "soccer_epl": {
-   "last_scanned": "2026-11-27T05:00:40Z"
+   "last_scanned": "2026-11-27T05:16:40Z"
   },
   "basketball_ncaab": {
-   "last_scanned": "2026-11-27T05:00:39Z",
+   "last_scanned": "2026-11-27T05:16:40Z",
    "bets": 13.0,
    "staked": 93.63000000000001,
    "profit": -13.770000000000001
@@ -23279,7 +23358,7 @@
    "last_scanned": "2026-11-17T19:01:11Z"
   },
   "icehockey_liiga": {
-   "last_scanned": "2026-11-26T20:30:25Z"
+   "last_scanned": "2026-11-27T05:16:42Z"
   },
   "soccer_uefa_champs_league_women": {
    "last_scanned": "2026-11-19T18:00:29Z"
@@ -23309,7 +23388,7 @@
    "last_scanned": "2026-11-27T05:00:41Z"
   },
   "soccer_russia_premier_league": {
-   "last_scanned": "2026-11-22T05:45:22Z"
+   "last_scanned": "2026-11-27T05:16:42Z"
   },
   "soccer_france_ligue_two": {
    "last_scanned": "2026-11-23T06:15:21Z"
@@ -23318,7 +23397,7 @@
    "last_scanned": "2026-11-27T05:00:41Z"
   },
   "soccer_sweden_superettan": {
-   "last_scanned": "2026-11-20T05:15:20Z"
+   "last_scanned": "2026-11-27T05:16:41Z"
   },
   "soccer_sweden_allsvenskan": {
    "last_scanned": "2026-11-23T02:30:45Z"
@@ -23348,7 +23427,7 @@
    "last_scanned": "2026-11-26T05:25:10Z"
   },
   "soccer_turkey_super_league": {
-   "last_scanned": "2026-11-26T21:00:38Z"
+   "last_scanned": "2026-11-27T05:16:42Z"
   },
   "soccer_chile_campeonato": {
    "last_scanned": "2026-11-21T07:15:19Z"
@@ -23363,7 +23442,7 @@
    "last_scanned": "2026-11-21T07:30:23Z"
   },
   "soccer_spl": {
-   "last_scanned": "2026-11-24T07:45:20Z"
+   "last_scanned": "2026-11-27T05:16:41Z"
   },
   "soccer_france_ligue_one": {
    "last_scanned": "2026-11-26T23:30:25Z"
@@ -23388,16 +23467,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T16:30:44Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 21: 6 games, 147 players projected, lineups for 6 games."
-  },
-  {
-   "ts": "2026-11-21T16:47:39Z",
-   "kind": "adapt",
-   "text": "Closing-line value is -0.8% over 58 legs, so the market is beating my picks. Raising the minimum edge to 10.2%."
-  },
   {
    "ts": "2026-11-21T16:49:20Z",
    "kind": "adapt",
@@ -24887,6 +24956,16 @@
    "ts": "2026-11-27T05:02:23Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 27: 11 games, 257 players projected, lineups for 0 games."
+  },
+  {
+   "ts": "2026-11-27T05:16:37Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Under 2.5 @ +102 (BetRivers) \u2014 LOST: Total 3 vs Under 2.5 [beat-closing-line, near-miss]"
+  },
+  {
+   "ts": "2026-11-27T05:16:42Z",
+   "kind": "scan",
+   "text": "Scanned icehockey_nhl (15), basketball_ncaab (44), americanfootball_nfl (1), soccer_epl (3), mma_mixed_martial_arts (12), basketball_nba (11), soccer_germany_bundesliga (5), americanfootball_ncaaf (22), soccer_italy_serie_a (3), soccer_spl (4), soccer_spain_la_liga (3), soccer_sweden_superettan (3), soccer_russia_premier_league (3), icehockey_liiga (6), soccer_turkey_super_league (4), icehockey_ahl (12), soccer_usa_mls (2) for 42 credits. Placed 1: Over 128.5 @ -115 (theScore Bet) Equity $80.81."
   }
  ],
  "learned_ids": [
@@ -24990,29 +25069,30 @@
   "9cee21a6",
   "c7000dc7",
   "71cdaeb3",
-  "0cbf3379"
+  "0cbf3379",
+  "9314b6ef"
  ],
  "strategist": null,
- "updated": "2026-11-27T05:15:24Z",
+ "updated": "2026-11-27T05:16:42Z",
  "stats": {
-  "bets": 101,
+  "bets": 102,
   "won": 32,
-  "lost": 67,
-  "shop_n": 45,
-  "shop_avg": 0.0723,
+  "lost": 68,
+  "shop_n": 46,
+  "shop_avg": 0.0718,
   "push": 2,
-  "staked": 579.53,
-  "profit": -170.18,
-  "roi": -0.2937,
+  "staked": 584.53,
+  "profit": -175.18,
+  "roi": -0.2997,
   "clv": 0.0017,
   "clv_n": 82,
   "clv_no_close": 24,
   "close_mins_median": 9,
   "open": 5,
-  "equity": 85.81
+  "equity": 80.81
  },
  "weights": {
-  "value_fav": 0.882,
+  "value_fav": 0.769,
   "value_dog": 0.396,
   "longshot": 0.3,
   "arb": 1.107,
@@ -25024,7 +25104,7 @@
   "value_dog",
   "matchup_under"
  ],
- "dry_scans": 23,
+ "dry_scans": 0,
  "scorecard": {
   "run": 3,
   "current": {
@@ -25053,14 +25133,14 @@
     "paused": false
    },
    "value_fav": {
-    "bets": 2,
+    "bets": 3,
     "won": 1,
-    "lost": 1,
+    "lost": 2,
     "push": 0,
-    "staked": 10.0,
-    "profit": 0.46,
-    "roi": 0.046,
-    "clv": 0.0218,
+    "staked": 15.0,
+    "profit": -4.54,
+    "roi": -0.3027,
+    "clv": 0.0214,
     "open": 3,
     "paused": false
    }
@@ -25127,14 +25207,14 @@
     "paused": true
    },
    "value_fav": {
-    "bets": 3,
+    "bets": 4,
     "won": 1,
-    "lost": 2,
+    "lost": 3,
     "push": 0,
-    "staked": 15.0,
-    "profit": -4.54,
-    "roi": -0.3027,
-    "clv": 0.0131,
+    "staked": 20.0,
+    "profit": -9.54,
+    "roi": -0.477,
+    "clv": 0.0128,
     "open": 3,
     "paused": false
    }
