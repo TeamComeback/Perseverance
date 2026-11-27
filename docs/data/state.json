@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 46.8,
+  "cash": 75.28,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -22691,14 +22691,18 @@
       "book": "betrivers",
       "fair_p": 0.3023,
       "close_p": 0.2941,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 3.343,
        "gain": 0.0171,
        "n": 4
       },
       "close_at": "2026-11-27T07:15:27Z",
-      "close_mins": 644
+      "close_mins": 644,
+      "final": {
+       "home": 5.0,
+       "away": 3.0
+      }
      }
     ],
     "dec": 3.4,
@@ -22708,10 +22712,10 @@
     "note": "Arb: 0.66% locked across 2 books",
     "group": "arb-978dfc077c",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.63,
+    "settled": "2026-11-27T22:00:34Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22721,6 +22725,74 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: Calgary Flames lost by 2",
+     "final": "Calgary Flames 3 \u2013 New Jersey Devils 5",
+     "legs": [
+      {
+       "outcome": "Calgary Flames",
+       "result": "loss",
+       "headline": "Calgary Flames lost by 2",
+       "final": "Calgary Flames 3 \u2013 New Jersey Devils 5",
+       "why": [
+        "Calgary Flames lost by 2.",
+        "We priced it at 30% to hit vs 29% needed to break even at 3.4x (+0.7% expected edge).",
+        "Closing consensus 29% vs 29% implied by our price: the market moved against us before the game."
+       ],
+       "tags": [
+        "underdog-lost",
+        "lost-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "lost-closing-line",
+      "underdog-lost"
+     ],
+     "recaps": [
+      {
+       "kind": "generic",
+       "final": "CGY 3 \u2013 NJ 5",
+       "periods": {
+        "away": [
+         "1",
+         "2",
+         "0"
+        ],
+        "home": [
+         "0",
+         "2",
+         "3"
+        ]
+       },
+       "scoring": [
+        "P1 16:37: Joel Hanley Goal (2) Wrist Shot, assists: Simon Nemec (11), Yegor Sharangovich (7) (CGY 1-0 NJ)",
+        "P2 0:56: Luke Hughes Goal (8) Wrist Shot, assists: Dougie Hamilton (11), Jack Hughes (21) (CGY 1-1 NJ)",
+        "P2 1:08: Timo Meier Goal (8) Wrist Shot, assists: Jack Hughes (22) (CGY 1-2 NJ)",
+        "P2 12:24: Matt Coronato Goal (7) Wrist Shot, assists: Morgan Frost (10), Aydar Suniev (4) (CGY 2-2 NJ)",
+        "P2 18:06: Zach Whitecloud Goal (2) Snap Shot, assists: Yegor Sharangovich (8), Simon Nemec (12) (CGY 3-2 NJ)",
+        "P3 7:35: Jack Hughes Goal (11) Wrist Shot, assists: Arseny Gritsyuk (11), Dougie Hamilton (12) (CGY 3-3 NJ)",
+        "P3 16:02: Connor Brown Goal (8) Wrist Shot, assists: Timo Meier (7), Jack Hughes (23) (CGY 3-4 NJ)",
+        "P3 19:49: Luke Hughes Goal (9) Wrist Shot, assists: Nico Hischier (8) (CGY 3-5 NJ)"
+       ],
+       "leaders": [
+        "NJ Goals: Luke Hughes 2",
+        "NJ Assists: Jack Hughes 3",
+        "NJ Points: Jack Hughes 4",
+        "CGY Goals: Matt Coronato 1",
+        "CGY Assists: Simon Nemec 2",
+        "CGY Points: Yegor Sharangovich 2"
+       ],
+       "story": [
+        "By period: P1 1-0, P2 2-2, P3 0-3 (CGY-NJ).",
+        "8 scores, 3 lead changes.",
+        "Go-ahead score that held: P3 16:02 \u2014 Connor Brown Goal (8) Wrist Shot, assists: Timo Meier (7), Jack Hughes (23)"
+       ],
+       "espn_id": "401892796",
+       "link": "https://www.espn.com/nhl/game/_/gameId/401892796"
+      }
+     ]
     }
    },
    {
@@ -22743,14 +22815,18 @@
       "book": "fanatics",
       "fair_p": 0.7136,
       "close_p": 0.7059,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.354,
        "gain": 0.0562,
        "n": 4
       },
       "close_at": "2026-11-27T07:15:27Z",
-      "close_mins": 644
+      "close_mins": 644,
+      "final": {
+       "home": 5.0,
+       "away": 3.0
+      }
      }
     ],
     "dec": 1.43,
@@ -22760,10 +22836,10 @@
     "note": "Arb: 0.66% locked across 2 books",
     "group": "arb-978dfc077c",
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 19.13,
+    "profit": 5.75,
+    "settled": "2026-11-27T22:00:34Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22773,6 +22849,72 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "WON: New Jersey Devils won by 2",
+     "final": "Calgary Flames 3 \u2013 New Jersey Devils 5",
+     "legs": [
+      {
+       "outcome": "New Jersey Devils",
+       "result": "win",
+       "headline": "New Jersey Devils won by 2",
+       "final": "Calgary Flames 3 \u2013 New Jersey Devils 5",
+       "why": [
+        "New Jersey Devils won by 2.",
+        "We priced it at 70% to hit vs 70% needed to break even at 1.43x (+0.7% expected edge).",
+        "Closing consensus 71% vs 70% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line"
+     ],
+     "recaps": [
+      {
+       "kind": "generic",
+       "final": "CGY 3 \u2013 NJ 5",
+       "periods": {
+        "away": [
+         "1",
+         "2",
+         "0"
+        ],
+        "home": [
+         "0",
+         "2",
+         "3"
+        ]
+       },
+       "scoring": [
+        "P1 16:37: Joel Hanley Goal (2) Wrist Shot, assists: Simon Nemec (11), Yegor Sharangovich (7) (CGY 1-0 NJ)",
+        "P2 0:56: Luke Hughes Goal (8) Wrist Shot, assists: Dougie Hamilton (11), Jack Hughes (21) (CGY 1-1 NJ)",
+        "P2 1:08: Timo Meier Goal (8) Wrist Shot, assists: Jack Hughes (22) (CGY 1-2 NJ)",
+        "P2 12:24: Matt Coronato Goal (7) Wrist Shot, assists: Morgan Frost (10), Aydar Suniev (4) (CGY 2-2 NJ)",
+        "P2 18:06: Zach Whitecloud Goal (2) Snap Shot, assists: Yegor Sharangovich (8), Simon Nemec (12) (CGY 3-2 NJ)",
+        "P3 7:35: Jack Hughes Goal (11) Wrist Shot, assists: Arseny Gritsyuk (11), Dougie Hamilton (12) (CGY 3-3 NJ)",
+        "P3 16:02: Connor Brown Goal (8) Wrist Shot, assists: Timo Meier (7), Jack Hughes (23) (CGY 3-4 NJ)",
+        "P3 19:49: Luke Hughes Goal (9) Wrist Shot, assists: Nico Hischier (8) (CGY 3-5 NJ)"
+       ],
+       "leaders": [
+        "NJ Goals: Luke Hughes 2",
+        "NJ Assists: Jack Hughes 3",
+        "NJ Points: Jack Hughes 4",
+        "CGY Goals: Matt Coronato 1",
+        "CGY Assists: Simon Nemec 2",
+        "CGY Points: Yegor Sharangovich 2"
+       ],
+       "story": [
+        "By period: P1 1-0, P2 2-2, P3 0-3 (CGY-NJ).",
+        "8 scores, 3 lead changes.",
+        "Go-ahead score that held: P3 16:02 \u2014 Connor Brown Goal (8) Wrist Shot, assists: Timo Meier (7), Jack Hughes (23)"
+       ],
+       "espn_id": "401892796",
+       "link": "https://www.espn.com/nhl/game/_/gameId/401892796"
+      }
+     ]
     }
    },
    {
@@ -22795,14 +22937,18 @@
       "book": "fanatics",
       "fair_p": 0.5157,
       "close_p": 0.5005,
-      "result": null,
+      "result": "loss",
       "shop": {
        "median": 1.87,
        "gain": 0.0695,
        "n": 3
       },
       "close_at": "2026-11-27T07:15:27Z",
-      "close_mins": 644
+      "close_mins": 644,
+      "final": {
+       "home": 5.0,
+       "away": 6.0
+      }
      }
     ],
     "dec": 2.0,
@@ -22812,10 +22958,10 @@
     "note": "3.1% edge vs 3-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "lost",
+    "payout": 0.0,
+    "profit": -5.0,
+    "settled": "2026-11-27T22:00:34Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22825,6 +22971,79 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "LOST: Total 11 vs Under 6.5",
+     "final": "Utah Mammoth 6 \u2013 Nashville Predators 5",
+     "legs": [
+      {
+       "outcome": "Under",
+       "result": "loss",
+       "headline": "Total 11 vs Under 6.5",
+       "final": "Utah Mammoth 6 \u2013 Nashville Predators 5",
+       "why": [
+        "Game total was 11 against a line of 6.5: under missed by 4.5.",
+        "We priced it at 52% to hit vs 50% needed to break even at 2x (+3.1% expected edge).",
+        "Closing consensus 50% vs 50% implied by our price: we beat the closing line."
+       ],
+       "tags": [
+        "beat-closing-line"
+       ]
+      }
+     ],
+     "tags": [
+      "beat-closing-line"
+     ],
+     "recaps": [
+      {
+       "kind": "generic",
+       "final": "UTA 6 \u2013 NSH 5",
+       "periods": {
+        "away": [
+         "2",
+         "1",
+         "2",
+         "0",
+         "1"
+        ],
+        "home": [
+         "2",
+         "0",
+         "3",
+         "0",
+         "0"
+        ]
+       },
+       "scoring": [
+        "P1 0:52: Filip Forsberg Goal (10) Slap Shot, assists: Nils Hoglander (6), Shane Wright (4) (UTA 0-1 NSH)",
+        "P1 16:43: Roman Josi Goal (3) Slap Shot, assists: Adam Edstrom (2), Jack Drury (4) (UTA 0-2 NSH)",
+        "P1 18:33: Clayton Keller Goal (6) Backhand, assists: MacKenzie Weegar (5), Vincent Trocheck (11) (UTA 1-2 NSH)",
+        "P1 19:54: Mikhail Sergachev Goal (7) Wrist Shot, assists: MacKenzie Weegar (6), Clayton Keller (25) (UTA 2-2 NSH)",
+        "P2 18:19: Anders Lee Goal (4) Wrist Shot, assists: Dmitri Simashev (3), Mikhail Sergachev (18) (UTA 3-2 NSH)",
+        "P3 2:40: Alexander Kerfoot Goal (3) Wrist Shot, assists: none (UTA 3-3 NSH)",
+        "P3 6:58: Lawson Crouse Goal (5) Wrist Shot, assists: Logan Cooley (16), MacKenzie Weegar (7) (UTA 4-3 NSH)",
+        "P3 7:47: Ross Colton Goal (7) Slap Shot, assists: Adam Wilsby (9) (UTA 4-4 NSH)",
+        "P3 11:46: Mavrik Bourque Goal (2) Wrist Shot, assists: Ryan O'Reilly (15), Nicolas Hague (4) (UTA 4-5 NSH)",
+        "P3 16:05: Anders Lee Goal (5) Wrist Shot, assists: Dylan Guenther (8) (UTA 5-5 NSH)",
+        "P5 0:00: Vincent Trocheck Goal Wrist Shot (UTA 1-0 NSH)"
+       ],
+       "leaders": [
+        "NSH Goals: Alexander Kerfoot 1",
+        "NSH Assists: Nicolas Hague 1",
+        "NSH Points: Roman Josi 1",
+        "UTA Goals: Anders Lee 2",
+        "UTA Assists: MacKenzie Weegar 3",
+        "UTA Points: MacKenzie Weegar 3"
+       ],
+       "story": [
+        "By period: P1 2-2, P2 1-0, P3 2-3, P4 0-0, P5 1-0 (UTA-NSH).",
+        "11 scores, 3 lead changes.",
+        "Go-ahead score that held: P5 0:00 \u2014 Vincent Trocheck Goal Wrist Shot"
+       ],
+       "espn_id": "401892797",
+       "link": "https://www.espn.com/nhl/game/_/gameId/401892797"
+      }
+     ]
     }
    },
    {
@@ -22899,11 +23118,15 @@
       "book": "espnbet",
       "fair_p": 0.5572,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.785,
        "gain": 0.0479,
        "n": 2
+      },
+      "final": {
+       "home": 75.0,
+       "away": 57.0
       }
      }
     ],
@@ -22914,10 +23137,10 @@
     "note": "4.2% edge vs 2-book consensus",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 9.35,
+    "profit": 4.35,
+    "settled": "2026-11-27T22:00:34Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -22927,7 +23150,31 @@
       "hold": false,
       "final": true
      }
-    }
+    },
+    "review": {
+     "headline": "WON: Total 132 vs Over 128.5",
+     "final": "Vermont Catamounts 57 \u2013 Merrimack Warriors 75",
+     "legs": [
+      {
+       "outcome": "Over",
+       "result": "win",
+       "headline": "Total 132 vs Over 128.5",
+       "final": "Vermont Catamounts 57 \u2013 Merrimack Warriors 75",
+       "why": [
+        "Game total was 132 against a line of 128.5: over cleared by 3.5.",
+        "We priced it at 56% to hit vs 53% needed to break even at 1.87x (+4.2% expected edge).",
+        "Consensus fair probability when placed: 56% (no closing price captured)."
+       ],
+       "tags": [
+        "blowout"
+       ]
+      }
+     ],
+     "tags": [
+      "blowout"
+     ]
+    },
+    "recap_tried": 1
    }
   ],
   "runs": [
@@ -22983,15 +23230,15 @@
  },
  "arms": {
   "value_fav": {
-   "bets": 4,
-   "staked": 20.0,
-   "profit": -9.54,
-   "clv_n": 4,
-   "clv_sum": 0.047073000000000365,
+   "bets": 6,
+   "staked": 30.0,
+   "profit": -10.19,
+   "clv_n": 5,
+   "clv_sum": 0.048073000000000254,
    "tags": {
     "blowout": {
-     "n": 2,
-     "won": 1,
+     "n": 3,
+     "won": 2,
      "lost": 1
     },
     "lost-closing-line": {
@@ -23000,9 +23247,9 @@
      "lost": 1
     },
     "beat-closing-line": {
-     "n": 2,
+     "n": 3,
      "won": 0,
-     "lost": 2
+     "lost": 3
     },
     "favorite-upset": {
      "n": 1,
@@ -23094,25 +23341,25 @@
    "clv_gate": false
   },
   "arb": {
-   "bets": 18,
-   "staked": 164.52999999999997,
-   "profit": 1.9099999999999984,
-   "clv_n": 16,
-   "clv_sum": 0.6012965999999995,
+   "bets": 20,
+   "staked": 183.53999999999996,
+   "profit": 2.0299999999999985,
+   "clv_n": 18,
+   "clv_sum": 0.6106735999999993,
    "tags": {
     "underdog-lost": {
-     "n": 6,
+     "n": 7,
      "won": 0,
-     "lost": 6
+     "lost": 7
     },
     "lost-closing-line": {
-     "n": 7,
+     "n": 8,
      "won": 4,
-     "lost": 3
+     "lost": 4
     },
     "beat-closing-line": {
-     "n": 7,
-     "won": 3,
+     "n": 8,
+     "won": 4,
      "lost": 4
     },
     "blowout": {
@@ -23272,9 +23519,9 @@
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-27T07:15:26Z",
-   "bets": 3.0,
-   "staked": 15.0,
-   "profit": -4.1
+   "bets": 6.0,
+   "staked": 39.01,
+   "profit": -8.98
   },
   "americanfootball_nfl": {
    "last_scanned": "2026-11-27T07:15:26Z"
@@ -23350,9 +23597,9 @@
   },
   "basketball_ncaab": {
    "last_scanned": "2026-11-27T07:15:26Z",
-   "bets": 13.0,
-   "staked": 93.63000000000001,
-   "profit": -13.770000000000001
+   "bets": 14.0,
+   "staked": 98.63000000000001,
+   "profit": -9.420000000000002
   },
   "soccer_netherlands_eredivisie": {
    "last_scanned": "2026-11-27T07:45:21Z"
@@ -23512,31 +23759,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-21T22:45:26Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.75% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-21T22:45:41Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
-  },
-  {
-   "ts": "2026-11-21T23:00:43Z",
-   "kind": "research",
-   "text": "Research refresh for Sat Nov 21: 6 games, 149 players projected, lineups for 6 games."
-  },
-  {
-   "ts": "2026-11-21T23:30:32Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.50% so I get enough bets to learn from."
-  },
-  {
-   "ts": "2026-11-21T23:30:41Z",
-   "kind": "focus",
-   "text": "Skipped 37 assists lines, 68 pts+reb+ast lines, 51 reb+ast lines, 23 threes lines: on the graded record the market alone beats the model in those stats, so the agent only bets stats still being measured."
-  },
   {
    "ts": "2026-11-21T23:30:41Z",
    "kind": "props",
@@ -25011,6 +25233,31 @@
    "ts": "2026-11-27T21:45:38Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 27: 11 games, 245 players projected, lineups for 11 games."
+  },
+  {
+   "ts": "2026-11-27T22:00:34Z",
+   "kind": "result",
+   "text": "WON +$4.35: Over 128.5 @ -115 (theScore Bet) \u2014 WON: Total 132 vs Over 128.5 [blowout]"
+  },
+  {
+   "ts": "2026-11-27T22:00:34Z",
+   "kind": "result",
+   "text": "LOST -$5.63: Calgary Flames @ +240 (BetRivers) \u2014 LOST: Calgary Flames lost by 2 [lost-closing-line, underdog-lost]"
+  },
+  {
+   "ts": "2026-11-27T22:00:34Z",
+   "kind": "result",
+   "text": "WON +$5.75: New Jersey Devils @ -233 (Fanatics) \u2014 WON: New Jersey Devils won by 2 [beat-closing-line]"
+  },
+  {
+   "ts": "2026-11-27T22:00:34Z",
+   "kind": "result",
+   "text": "LOST -$5.00: Under 6.5 @ +100 (Fanatics) \u2014 LOST: Total 11 vs Under 6.5 [beat-closing-line]"
+  },
+  {
+   "ts": "2026-11-27T22:00:47Z",
+   "kind": "props",
+   "text": "NBA matchups: 11 games, strongest spots: Klay Thompson ast -13% vs NY; Darius Garland ast +15% vs NO; Tyrese Maxey ra +13% vs IND. Bought prop odds for MIA@NY (ast, ra, pra, team totals), PHI@IND (ra, pra, ast, tpm, team totals), NO@LAC (ast, ra, pra, team totals), MIL@DET (ast, ra, pra, team totals), DAL@PHX (ast, ra, pra, team totals), ATL@BOS (ast, ra, pra, team totals), DEN@UTAH (ast, pra, tpm, ra, team totals), MEM@MIN (ra, tpm, pra, team totals), LAL@SA (pra, tpm, ast, team totals), BKN@TOR (ra, ast, tpm, team totals) (48 credits). Nothing cleared the bar."
   }
  ],
  "learned_ids": [
@@ -25115,32 +25362,36 @@
   "c7000dc7",
   "71cdaeb3",
   "0cbf3379",
-  "9314b6ef"
+  "9314b6ef",
+  "fc7a3a28",
+  "a57d57d2",
+  "bf619664",
+  "56ce09be"
  ],
  "strategist": null,
- "updated": "2026-11-27T21:46:49Z",
+ "updated": "2026-11-27T22:01:56Z",
  "stats": {
-  "bets": 102,
-  "won": 32,
-  "lost": 68,
+  "bets": 106,
+  "won": 34,
+  "lost": 70,
   "shop_n": 46,
   "shop_avg": 0.0718,
   "push": 2,
-  "staked": 584.53,
-  "profit": -175.18,
-  "roi": -0.2997,
+  "staked": 613.54,
+  "profit": -175.71,
+  "roi": -0.2864,
   "clv": 0.0016,
   "clv_n": 82,
-  "clv_no_close": 24,
+  "clv_no_close": 25,
   "close_mins_median": 9,
-  "open": 5,
-  "equity": 80.81
+  "open": 1,
+  "equity": 80.28
  },
  "weights": {
-  "value_fav": 0.769,
+  "value_fav": 0.781,
   "value_dog": 0.396,
   "longshot": 0.3,
-  "arb": 1.107,
+  "arb": 1.108,
   "parlay_ev": 1.0,
   "matchup_over": 1.322,
   "matchup_under": 0.3
@@ -25154,15 +25405,15 @@
   "run": 3,
   "current": {
    "arb": {
-    "bets": 2,
-    "won": 1,
-    "lost": 1,
+    "bets": 4,
+    "won": 2,
+    "lost": 2,
     "push": 0,
-    "staked": 21.96,
-    "profit": 0.35,
-    "roi": 0.0159,
+    "staked": 40.97,
+    "profit": 0.47,
+    "roi": 0.0115,
     "clv": 0.0146,
-    "open": 2,
+    "open": 0,
     "paused": false
    },
    "longshot": {
@@ -25178,29 +25429,29 @@
     "paused": false
    },
    "value_fav": {
-    "bets": 3,
-    "won": 1,
-    "lost": 2,
+    "bets": 5,
+    "won": 2,
+    "lost": 3,
     "push": 0,
-    "staked": 15.0,
-    "profit": -4.54,
-    "roi": -0.3027,
+    "staked": 25.0,
+    "profit": -5.19,
+    "roi": -0.2076,
     "clv": 0.0214,
-    "open": 3,
+    "open": 1,
     "paused": false
    }
   },
   "all": {
    "arb": {
-    "bets": 18,
-    "won": 9,
-    "lost": 9,
+    "bets": 20,
+    "won": 10,
+    "lost": 10,
     "push": 0,
-    "staked": 164.53,
-    "profit": 1.91,
-    "roi": 0.0116,
+    "staked": 183.54,
+    "profit": 2.03,
+    "roi": 0.0111,
     "clv": 0.0339,
-    "open": 2,
+    "open": 0,
     "paused": false
    },
    "longshot": {
@@ -25252,15 +25503,15 @@
     "paused": true
    },
    "value_fav": {
-    "bets": 4,
-    "won": 1,
-    "lost": 3,
+    "bets": 6,
+    "won": 2,
+    "lost": 4,
     "push": 0,
-    "staked": 20.0,
-    "profit": -9.54,
-    "roi": -0.477,
+    "staked": 30.0,
+    "profit": -10.19,
+    "roi": -0.3397,
     "clv": 0.0128,
-    "open": 3,
+    "open": 1,
     "paused": false
    }
   }
