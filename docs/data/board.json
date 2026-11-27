@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T05:30:35Z",
+ "updated": "2026-11-27T05:45:24Z",
  "events": [
   {
    "id": "0d80ad8d9a13dd3db51a952c7e2d19f4",
@@ -15,11 +15,11 @@
        "name": "Australia",
        "team": null,
        "point": null,
-       "price": 2.06,
-       "am": 106,
+       "price": 2.04,
+       "am": 104,
        "book": "fanduel",
        "fair_p": 0.4737,
-       "ev": -0.0242
+       "ev": -0.0337
       },
       {
        "name": "England",
@@ -28,8 +28,8 @@
        "price": 1.8,
        "am": -125,
        "book": "draftkings",
-       "fair_p": 0.5407,
-       "ev": -0.0268
+       "fair_p": 0.5383,
+       "ev": -0.0311
       }
      ]
     }
@@ -10199,6 +10199,97 @@
    }
   },
   {
+   "id": "a9f55fe81307fd9832365915351e9175",
+   "sport": "soccer_brazil_campeonato",
+   "commence": "2026-11-27T23:00:00Z",
+   "home": "Fluminense",
+   "away": "Cruzeiro",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Cruzeiro",
+       "team": null,
+       "point": null,
+       "price": 3.52,
+       "am": 252,
+       "book": "kalshi",
+       "fair_p": 0.276,
+       "ev": -0.0284
+      },
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.6,
+       "am": 260,
+       "book": "draftkings",
+       "fair_p": 0.2667,
+       "ev": -0.0398
+      },
+      {
+       "name": "Fluminense",
+       "team": null,
+       "point": null,
+       "price": 2.05,
+       "am": 105,
+       "book": "betmgm",
+       "fair_p": 0.4586,
+       "ev": -0.0598
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.83,
+       "am": -121,
+       "book": "kalshi",
+       "fair_p": 0.5321,
+       "ev": -0.0264
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 2.04,
+       "am": 104,
+       "book": "betrivers",
+       "fair_p": 0.4776,
+       "ev": -0.0256
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Cruzeiro",
+      "point": null,
+      "price": 3.45,
+      "am": 245
+     },
+     {
+      "name": "Fluminense",
+      "point": null,
+      "price": 2.05,
+      "am": 105
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.6,
+      "am": 260
+     }
+    ]
+   }
+  },
+  {
    "id": "ff2176f4daaef2d1975208c1449ac700",
    "sport": "basketball_ncaab",
    "commence": "2026-11-27T23:00:00Z",
@@ -10813,97 +10904,6 @@
       "point": null,
       "price": 3.05,
       "am": 205
-     }
-    ]
-   }
-  },
-  {
-   "id": "a9f55fe81307fd9832365915351e9175",
-   "sport": "soccer_brazil_campeonato",
-   "commence": "2026-11-27T23:00:00Z",
-   "home": "Fluminense",
-   "away": "Cruzeiro",
-   "lines": [
-    {
-     "market": "h2h",
-     "outcomes": [
-      {
-       "name": "Cruzeiro",
-       "team": null,
-       "point": null,
-       "price": 3.35,
-       "am": 235,
-       "book": "draftkings",
-       "fair_p": 0.2851,
-       "ev": -0.045
-      },
-      {
-       "name": "Draw",
-       "team": null,
-       "point": null,
-       "price": 3.66,
-       "am": 266,
-       "book": "kalshi",
-       "fair_p": 0.2621,
-       "ev": -0.0405
-      },
-      {
-       "name": "Fluminense",
-       "team": null,
-       "point": null,
-       "price": 2.1,
-       "am": 110,
-       "book": "betmgm",
-       "fair_p": 0.4548,
-       "ev": -0.0449
-      }
-     ]
-    },
-    {
-     "market": "totals",
-     "outcomes": [
-      {
-       "name": "Over",
-       "team": null,
-       "point": 2.5,
-       "price": 1.736,
-       "am": -136,
-       "book": "kalshi",
-       "fair_p": 0.5453,
-       "ev": -0.0531
-      },
-      {
-       "name": "Under",
-       "team": null,
-       "point": 2.5,
-       "price": 2.138,
-       "am": 114,
-       "book": "kalshi",
-       "fair_p": 0.4547,
-       "ev": -0.028
-      }
-     ]
-    }
-   ],
-   "dk": {
-    "h2h": [
-     {
-      "name": "Cruzeiro",
-      "point": null,
-      "price": 3.35,
-      "am": 235
-     },
-     {
-      "name": "Fluminense",
-      "point": null,
-      "price": 2.05,
-      "am": 105
-     },
-     {
-      "name": "Draw",
-      "point": null,
-      "price": 3.6,
-      "am": 260
      }
     ]
    }
@@ -18034,6 +18034,188 @@
    }
   },
   {
+   "id": "b1f78b121a05692724da96eb190717e3",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T12:30:00Z",
+   "home": "Peterborough United",
+   "away": "Cambridge United",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Cambridge United",
+       "team": null,
+       "point": null,
+       "price": 2.88,
+       "am": 188,
+       "book": "betmgm",
+       "fair_p": 0.3296,
+       "ev": -0.0506
+      },
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.7,
+       "am": 270,
+       "book": "fanduel",
+       "fair_p": 0.2565,
+       "ev": -0.0511
+      },
+      {
+       "name": "Peterborough United",
+       "team": null,
+       "point": null,
+       "price": 2.25,
+       "am": 125,
+       "book": "fanatics",
+       "fair_p": 0.417,
+       "ev": -0.0618
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.54,
+       "am": -185,
+       "book": "betmgm",
+       "fair_p": 0.6057,
+       "ev": -0.0673
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 2.35,
+       "am": 135,
+       "book": "betrivers",
+       "fair_p": 0.4063,
+       "ev": -0.0451
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Cambridge United",
+      "point": null,
+      "price": 2.85,
+      "am": 185
+     },
+     {
+      "name": "Peterborough United",
+      "point": null,
+      "price": 2.25,
+      "am": 125
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.7,
+      "am": 270
+     }
+    ]
+   }
+  },
+  {
+   "id": "0d70601840f9945db2f60238812fb3a4",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T12:30:00Z",
+   "home": "Milton Keynes Dons",
+   "away": "Notts County",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.8,
+       "am": 280,
+       "book": "fanduel",
+       "fair_p": 0.2524,
+       "ev": -0.0409
+      },
+      {
+       "name": "Milton Keynes Dons",
+       "team": null,
+       "point": null,
+       "price": 1.91,
+       "am": -110,
+       "book": "fanatics",
+       "fair_p": 0.498,
+       "ev": -0.0488
+      },
+      {
+       "name": "Notts County",
+       "team": null,
+       "point": null,
+       "price": 3.9,
+       "am": 290,
+       "book": "betrivers",
+       "fair_p": 0.2572,
+       "ev": 0.0033
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.73,
+       "am": -137,
+       "book": "betrivers",
+       "fair_p": 0.542,
+       "ev": -0.0623
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 2.0,
+       "am": 100,
+       "book": "betmgm",
+       "fair_p": 0.4676,
+       "ev": -0.0649
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Milton Keynes Dons",
+      "point": null,
+      "price": 1.91,
+      "am": -110
+     },
+     {
+      "name": "Notts County",
+      "point": null,
+      "price": 3.55,
+      "am": 255
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.75,
+      "am": 275
+     }
+    ]
+   }
+  },
+  {
    "id": "7a332a2eaa2bf0b790a3432a4fa07d57",
    "sport": "soccer_england_league2",
    "commence": "2026-11-28T12:30:00Z",
@@ -19392,6 +19574,778 @@
      }
     ]
    }
+  },
+  {
+   "id": "df8140d04daa5af2843c31a487896d93",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Wimbledon",
+   "away": "Barnsley",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Barnsley",
+       "team": null,
+       "point": null,
+       "price": 2.35,
+       "am": 135,
+       "book": "fanduel",
+       "fair_p": 0.3984,
+       "ev": -0.0638
+      },
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.7,
+       "am": 270,
+       "book": "fanduel",
+       "fair_p": 0.2588,
+       "ev": -0.0423
+      },
+      {
+       "name": "Wimbledon",
+       "team": null,
+       "point": null,
+       "price": 2.75,
+       "am": 175,
+       "book": "fanduel",
+       "fair_p": 0.3428,
+       "ev": -0.0573
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Barnsley",
+      "point": null,
+      "price": 2.35,
+      "am": 135
+     },
+     {
+      "name": "Wimbledon",
+      "point": null,
+      "price": 2.7,
+      "am": 170
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.65,
+      "am": 265
+     }
+    ]
+   }
+  },
+  {
+   "id": "15cc33a71e190cb051dc95888b8744ca",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Stevenage",
+   "away": "Blackpool",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Blackpool",
+       "team": null,
+       "point": null,
+       "price": 4.1,
+       "am": 310,
+       "book": "fanduel",
+       "fair_p": 0.2467,
+       "ev": 0.0114
+      },
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.7,
+       "am": 270,
+       "book": "betmgm",
+       "fair_p": 0.2592,
+       "ev": -0.0411
+      },
+      {
+       "name": "Stevenage",
+       "team": null,
+       "point": null,
+       "price": 1.91,
+       "am": -110,
+       "book": "draftkings",
+       "fair_p": 0.5002,
+       "ev": -0.0445
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.87,
+       "am": -115,
+       "book": "betrivers",
+       "fair_p": 0.5285,
+       "ev": -0.0118
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 1.95,
+       "am": -105,
+       "book": "betmgm",
+       "fair_p": 0.5054,
+       "ev": -0.0145
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Blackpool",
+      "point": null,
+      "price": 3.7,
+      "am": 270
+     },
+     {
+      "name": "Stevenage",
+      "point": null,
+      "price": 1.91,
+      "am": -110
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.7,
+      "am": 270
+     }
+    ]
+   }
+  },
+  {
+   "id": "9d1416df980b21a991e0a1b7305f928c",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Wycombe Wanderers",
+   "away": "Bradford City",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Bradford City",
+       "team": null,
+       "point": null,
+       "price": 3.1,
+       "am": 210,
+       "book": "espnbet",
+       "fair_p": 0.3043,
+       "ev": -0.0567
+      },
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.45,
+       "am": 245,
+       "book": "draftkings",
+       "fair_p": 0.2749,
+       "ev": -0.0517
+      },
+      {
+       "name": "Wycombe Wanderers",
+       "team": null,
+       "point": null,
+       "price": 2.2,
+       "am": 120,
+       "book": "betrivers",
+       "fair_p": 0.4261,
+       "ev": -0.0626
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.89,
+       "am": -112,
+       "book": "betrivers",
+       "fair_p": 0.519,
+       "ev": -0.019
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 1.91,
+       "am": -110,
+       "book": "betmgm",
+       "fair_p": 0.5122,
+       "ev": -0.0217
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Bradford City",
+      "point": null,
+      "price": 3.1,
+      "am": 210
+     },
+     {
+      "name": "Wycombe Wanderers",
+      "point": null,
+      "price": 2.2,
+      "am": 120
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.45,
+      "am": 245
+     }
+    ]
+   }
+  },
+  {
+   "id": "b306e783e1961e8aaf7cc072799a2270",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Bromley FC",
+   "away": "Burton Albion",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Bromley FC",
+       "team": null,
+       "point": null,
+       "price": 2.3,
+       "am": 130,
+       "book": "draftkings",
+       "fair_p": 0.4134,
+       "ev": -0.0492
+      },
+      {
+       "name": "Burton Albion",
+       "team": null,
+       "point": null,
+       "price": 2.9,
+       "am": 190,
+       "book": "fanduel",
+       "fair_p": 0.3202,
+       "ev": -0.0715
+      },
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.6,
+       "am": 260,
+       "book": "fanduel",
+       "fair_p": 0.2681,
+       "ev": -0.0347
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.78,
+       "am": -128,
+       "book": "betrivers",
+       "fair_p": 0.5366,
+       "ev": -0.0449
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 1.98,
+       "am": -102,
+       "book": "betmgm",
+       "fair_p": 0.4798,
+       "ev": -0.05
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Bromley FC",
+      "point": null,
+      "price": 2.3,
+      "am": 130
+     },
+     {
+      "name": "Burton Albion",
+      "point": null,
+      "price": 2.9,
+      "am": 190
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.5,
+      "am": 250
+     }
+    ]
+   }
+  },
+  {
+   "id": "5c88af05a6d82d9a8bd03b765815e068",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Leicester City",
+   "away": "Mansfield Town",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 4.7,
+       "am": 370,
+       "book": "fanduel",
+       "fair_p": 0.2089,
+       "ev": -0.0183
+      },
+      {
+       "name": "Leicester City",
+       "team": null,
+       "point": null,
+       "price": 1.53,
+       "am": -189,
+       "book": "betmgm",
+       "fair_p": 0.6234,
+       "ev": -0.0462
+      },
+      {
+       "name": "Mansfield Town",
+       "team": null,
+       "point": null,
+       "price": 5.8,
+       "am": 480,
+       "book": "fanduel",
+       "fair_p": 0.1736,
+       "ev": 0.0069
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 3.5,
+       "price": 2.14,
+       "am": 114,
+       "book": "betrivers",
+       "fair_p": 0.4355,
+       "ev": -0.0681
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 3.5,
+       "price": 1.63,
+       "am": -159,
+       "book": "betrivers",
+       "fair_p": 0.5645,
+       "ev": -0.0798
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Leicester City",
+      "point": null,
+      "price": 1.49,
+      "am": -204
+     },
+     {
+      "name": "Mansfield Town",
+      "point": null,
+      "price": 5.75,
+      "am": 475
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 4.5,
+      "am": 350
+     }
+    ]
+   }
+  },
+  {
+   "id": "357d454707738be33e74f2297f2eeecf",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Stockport County FC",
+   "away": "Leyton Orient",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 5.2,
+       "am": 420,
+       "book": "fanduel",
+       "fair_p": 0.1888,
+       "ev": -0.0183
+      },
+      {
+       "name": "Leyton Orient",
+       "team": null,
+       "point": null,
+       "price": 7.0,
+       "am": 600,
+       "book": "betrivers",
+       "fair_p": 0.1394,
+       "ev": -0.0242
+      },
+      {
+       "name": "Stockport County FC",
+       "team": null,
+       "point": null,
+       "price": 1.4,
+       "am": -250,
+       "book": "draftkings",
+       "fair_p": 0.677,
+       "ev": -0.0523
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 3.5,
+       "price": 2.17,
+       "am": 117,
+       "book": "betrivers",
+       "fair_p": 0.4282,
+       "ev": -0.0708
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 3.5,
+       "price": 1.61,
+       "am": -164,
+       "book": "betrivers",
+       "fair_p": 0.5718,
+       "ev": -0.0794
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Leyton Orient",
+      "point": null,
+      "price": 6.5,
+      "am": 550
+     },
+     {
+      "name": "Stockport County FC",
+      "point": null,
+      "price": 1.4,
+      "am": -250
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 4.9,
+      "am": 390
+     }
+    ]
+   }
+  },
+  {
+   "id": "39481a739e0035f378b9028f4468ebf8",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Luton",
+   "away": "Oxford United",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 4.0,
+       "am": 300,
+       "book": "fanatics",
+       "fair_p": 0.2355,
+       "ev": -0.0579
+      },
+      {
+       "name": "Luton",
+       "team": null,
+       "point": null,
+       "price": 1.74,
+       "am": -135,
+       "book": "draftkings",
+       "fair_p": 0.5396,
+       "ev": -0.061
+      },
+      {
+       "name": "Oxford United",
+       "team": null,
+       "point": null,
+       "price": 4.2,
+       "am": 320,
+       "book": "betrivers",
+       "fair_p": 0.2282,
+       "ev": -0.0417
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.57,
+       "am": -175,
+       "book": "betmgm",
+       "fair_p": 0.5938,
+       "ev": -0.0678
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 2.28,
+       "am": 128,
+       "book": "betrivers",
+       "fair_p": 0.411,
+       "ev": -0.0629
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Luton",
+      "point": null,
+      "price": 1.74,
+      "am": -135
+     },
+     {
+      "name": "Oxford United",
+      "point": null,
+      "price": 4.1,
+      "am": 310
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 4.0,
+      "am": 300
+     }
+    ]
+   }
+  },
+  {
+   "id": "b69a3566e8cffd010c8dacfd316f1d81",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Wigan Athletic",
+   "away": "Plymouth Argyle",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.5,
+       "am": 250,
+       "book": "draftkings",
+       "fair_p": 0.2687,
+       "ev": -0.0594
+      },
+      {
+       "name": "Plymouth Argyle",
+       "team": null,
+       "point": null,
+       "price": 2.6,
+       "am": 160,
+       "book": "fanduel",
+       "fair_p": 0.3689,
+       "ev": -0.0408
+      },
+      {
+       "name": "Wigan Athletic",
+       "team": null,
+       "point": null,
+       "price": 2.6,
+       "am": 160,
+       "book": "betrivers",
+       "fair_p": 0.3679,
+       "ev": -0.0434
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.67,
+       "am": -149,
+       "book": "betmgm",
+       "fair_p": 0.5638,
+       "ev": -0.0584
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 2.12,
+       "am": 112,
+       "book": "betrivers",
+       "fair_p": 0.4489,
+       "ev": -0.0483
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "Plymouth Argyle",
+      "point": null,
+      "price": 2.55,
+      "am": 155
+     },
+     {
+      "name": "Wigan Athletic",
+      "point": null,
+      "price": 2.55,
+      "am": 155
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.5,
+      "am": 250
+     }
+    ]
+   }
+  },
+  {
+   "id": "393cf84030ed4ed5d40ccede4a26fca4",
+   "sport": "soccer_england_league1",
+   "commence": "2026-11-28T15:00:00Z",
+   "home": "Sheffield Wednesday",
+   "away": "Reading",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.8,
+       "am": 280,
+       "book": "fanduel",
+       "fair_p": 0.2613,
+       "ev": -0.007
+      },
+      {
+       "name": "Reading",
+       "team": null,
+       "point": null,
+       "price": 2.8,
+       "am": 180,
+       "book": "espnbet",
+       "fair_p": 0.3416,
+       "ev": -0.0436
+      },
+      {
+       "name": "Sheffield Wednesday",
+       "team": null,
+       "point": null,
+       "price": 2.35,
+       "am": 135,
+       "book": "betmgm",
+       "fair_p": 0.4035,
+       "ev": -0.0518
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 2.5,
+       "price": 1.61,
+       "am": -164,
+       "book": "betmgm",
+       "fair_p": 0.5868,
+       "ev": -0.0552
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 2.5,
+       "price": 2.23,
+       "am": 123,
+       "book": "betrivers",
+       "fair_p": 0.4282,
+       "ev": -0.0451
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "6ee9b48137aac75a8de430e086596560",
@@ -21918,6 +22872,166 @@
      }
     ]
    }
+  },
+  {
+   "id": "f1a6ef364461720291fb102552c8ef29",
+   "sport": "soccer_switzerland_superleague",
+   "commence": "2026-11-28T17:00:00Z",
+   "home": "Grasshopper Z\u00fcrich",
+   "away": "FC Basel",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.8,
+       "am": 280,
+       "book": "betmgm",
+       "fair_p": 0.2526,
+       "ev": -0.0402
+      },
+      {
+       "name": "FC Basel",
+       "team": null,
+       "point": null,
+       "price": 2.2,
+       "am": 120,
+       "book": "fanatics",
+       "fair_p": 0.4247,
+       "ev": -0.0656
+      },
+      {
+       "name": "Grasshopper Z\u00fcrich",
+       "team": null,
+       "point": null,
+       "price": 2.9,
+       "am": 190,
+       "book": "fanduel",
+       "fair_p": 0.326,
+       "ev": -0.0547
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 3.5,
+       "price": 2.1,
+       "am": 110,
+       "book": "betmgm",
+       "fair_p": 0.4468,
+       "ev": -0.0617
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 3.5,
+       "price": 1.68,
+       "am": -147,
+       "book": "betrivers",
+       "fair_p": 0.56,
+       "ev": -0.0592
+      }
+     ]
+    }
+   ],
+   "dk": {
+    "h2h": [
+     {
+      "name": "FC Basel",
+      "point": null,
+      "price": 2.2,
+      "am": 120
+     },
+     {
+      "name": "Grasshopper Z\u00fcrich",
+      "point": null,
+      "price": 2.85,
+      "am": 185
+     },
+     {
+      "name": "Draw",
+      "point": null,
+      "price": 3.7,
+      "am": 270
+     }
+    ]
+   }
+  },
+  {
+   "id": "235169de70ee211c049ee3635fd3ffff",
+   "sport": "soccer_switzerland_superleague",
+   "commence": "2026-11-28T17:00:00Z",
+   "home": "FC Vaduz",
+   "away": "FC Zurich",
+   "lines": [
+    {
+     "market": "h2h",
+     "outcomes": [
+      {
+       "name": "Draw",
+       "team": null,
+       "point": null,
+       "price": 3.9,
+       "am": 290,
+       "book": "betmgm",
+       "fair_p": 0.2414,
+       "ev": -0.0584
+      },
+      {
+       "name": "FC Vaduz",
+       "team": null,
+       "point": null,
+       "price": 2.25,
+       "am": 125,
+       "book": "fanatics",
+       "fair_p": 0.419,
+       "ev": -0.0572
+      },
+      {
+       "name": "FC Zurich",
+       "team": null,
+       "point": null,
+       "price": 2.75,
+       "am": 175,
+       "book": "betmgm",
+       "fair_p": 0.344,
+       "ev": -0.054
+      }
+     ]
+    },
+    {
+     "market": "totals",
+     "outcomes": [
+      {
+       "name": "Over",
+       "team": null,
+       "point": 3.5,
+       "price": 1.91,
+       "am": -110,
+       "book": "betmgm",
+       "fair_p": 0.4933,
+       "ev": -0.0579
+      },
+      {
+       "name": "Under",
+       "team": null,
+       "point": 3.5,
+       "price": 1.83,
+       "am": -120,
+       "book": "betrivers",
+       "fair_p": 0.519,
+       "ev": -0.0502
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "e73794c444073fa5a45c54c84fb72b91",
