@@ -912,7 +912,7 @@
    "p": 0.541,
    "p_sim": 0.573,
    "p_mkt": 0.52,
-   "p_kalshi": 0.505,
+   "p_kalshi": 0.501,
    "ev": -0.02,
    "verdict": "Pass: recent form and matchup agree; the main risk is matchup.",
    "home": "BOS",
@@ -1027,7 +1027,7 @@
    "market": {
     "open": 18.5,
     "now": 18.5,
-    "kalshi": 0.505
+    "kalshi": 0.501
    },
    "started": false,
    "published": {
@@ -1788,8 +1788,11 @@
     }
    },
    "first_seen": "2026-11-27T16:31:31Z",
-   "removed": null,
-   "status": "New"
+   "removed": {
+    "at": "2026-11-27T22:46:54Z",
+    "why": "no longer +EV at tonight's line (11.5 at -111)"
+   },
+   "status": "Removed"
   },
   "p|4017837|pts|Under": {
    "key": "p|4017837|pts|Under",
@@ -2599,15 +2602,15 @@
    "start": "2026-11-28T02:00Z",
    "side": "Under",
    "point": 10.5,
-   "dec": 1.83,
-   "am": -120,
+   "dec": 1.79,
+   "am": -127,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.535,
+   "p": 0.547,
    "p_sim": 0.556,
-   "p_mkt": 0.515,
-   "p_kalshi": 0.541,
-   "ev": -0.02,
+   "p_mkt": 0.525,
+   "p_kalshi": 0.54,
+   "ev": -0.021,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "PHX",
    "away": "DAL",
@@ -2698,8 +2701,8 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.869,
-    "floor_am": -115,
+    "floor_dec": 1.828,
+    "floor_am": -121,
     "line": 10.5,
     "next": 9.5
    },
@@ -2715,14 +2718,14 @@
    ],
    "kill": [
     "The line reaching 9.5",
-    "The price at 10.5 going past \u2212115",
+    "The price at 10.5 going past \u2212121",
     "A change in Kyrie Irving (questionable): the model re-prices on the next run",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 9.5,
     "now": 10.5,
-    "kalshi": 0.541
+    "kalshi": 0.54
    },
    "started": false,
    "published": {
@@ -2742,11 +2745,8 @@
     }
    },
    "first_seen": "2026-11-27T19:16:27Z",
-   "removed": {
-    "at": "2026-11-27T20:46:36Z",
-    "why": "no longer +EV at tonight's line (10.5 at -127)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|3913176|pts|Under": {
    "key": "p|3913176|pts|Under",
@@ -3057,8 +3057,11 @@
     }
    },
    "first_seen": "2026-11-27T19:16:27Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-27T22:46:54Z",
+    "why": "no longer +EV at tonight's line (20.5 at -103)"
+   },
+   "status": "Removed"
   },
   "p|4683678|pts|Under": {
    "key": "p|4683678|pts|Under",
@@ -3389,6 +3392,169 @@
     "why": "no longer +EV at tonight's line (13.5 at -127)"
    },
    "status": "Removed"
+  },
+  "p|3147657|pts|Under": {
+   "key": "p|3147657|pts|Under",
+   "kind": "prop",
+   "label": "Mikal Bridges Under 12.5 points",
+   "espn_id": "401909326",
+   "game": "MIA @ NY",
+   "start": "2026-11-28T00:00Z",
+   "side": "Under",
+   "point": 12.5,
+   "dec": 1.9,
+   "am": -111,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.515,
+   "p_sim": 0.545,
+   "p_mkt": 0.496,
+   "p_kalshi": 0.476,
+   "ev": -0.021,
+   "verdict": "Pass: recent form and cushion agree; the main risk is tonight's spot.",
+   "home": "NY",
+   "away": "MIA",
+   "pid": "3147657",
+   "name": "Mikal Bridges",
+   "team": "NY",
+   "opp": "MIA",
+   "stat": "pts",
+   "proj": 12.4,
+   "sim": 12.1,
+   "ob_ind": 11.5,
+   "avg10": 10.2,
+   "minutes": 33.4,
+   "for": [
+    {
+     "tag": "average",
+     "t": "Averaging 10.2 points over his last 10; the line is 12.5.",
+     "rec": [
+      667,
+      591
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 12.5 in 7 of his last 10 (3 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 10.5 in 6 of his last 10.",
+     "rec": [
+      399,
+      378
+     ]
+    },
+    {
+     "tag": "blowout",
+     "t": "Blowout risk: 40% of sims end 15+ points apart, when starters sit late.",
+     "rec": [
+      980,
+      952
+     ]
+    },
+    {
+     "tag": "vs his lines",
+     "t": "Has gone under his posted line in 7 of 10 tracked games.",
+     "rec": [
+      266,
+      274
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "matchup",
+     "t": "Anunoby out: points +6% tonight. With him off the floor (1,297 possessions) his usage goes 16% \u2192 19%; 80% of his recent games were next to Anunoby.",
+     "rec": [
+      1161,
+      1104
+     ]
+    },
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 33.8 minutes in the games he went over vs 26.1 otherwise. He's projected for 33.4 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "history",
+     "t": "His history vs MIA: 20.5 points/g in 4 games (+8%).",
+     "rec": [
+      452,
+      443
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Without OG Anunoby: 3 of 10 under 12.5 (30% vs 80% lately).",
+     "rec": [
+      908,
+      909
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.942,
+    "floor_am": -106,
+    "line": null,
+    "next": 11.5
+   },
+   "watch": [
+    {
+     "pid": "3136195",
+     "name": "Karl-Anthony Towns",
+     "team": "NY",
+     "status": "Day-To-Day",
+     "self": false,
+     "min": 36.3
+    },
+    {
+     "pid": "3934719",
+     "name": "OG Anunoby",
+     "team": "NY",
+     "status": "Out",
+     "self": false,
+     "min": 35.7
+    }
+   ],
+   "kill": [
+    "The line reaching 11.5",
+    "The price at 12.5 going past \u2212106",
+    "A change in Karl-Anthony Towns (day-to-day): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 12.5,
+    "now": 12.5,
+    "kalshi": 0.476
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-27T22:46:54Z",
+    "edition": "update",
+    "point": 12.5,
+    "dec": 1.9,
+    "am": -111,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.515,
+    "play_to": {
+     "floor_dec": 1.942,
+     "floor_am": -106,
+     "line": null,
+     "next": 11.5
+    }
+   },
+   "first_seen": "2026-11-27T22:46:54Z",
+   "removed": null,
+   "status": "Past play-to"
   }
  },
  "leans": {
@@ -4495,20 +4661,12 @@
      "status": "Out",
      "self": false,
      "min": 35.7
-    },
-    {
-     "pid": "3032977",
-     "name": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "status": "Probable",
-     "self": false,
-     "min": 31.5
     }
    ],
    "kill": [
     "The line reaching 222.5",
     "The price at 221.5 going past \u2212108",
-    "A change in Karl-Anthony Towns (day-to-day), Giannis Antetokounmpo (probable): the model re-prices on the next run"
+    "A change in Karl-Anthony Towns (day-to-day): the model re-prices on the next run"
    ],
    "market": {
     "open": null,
@@ -5645,6 +5803,41 @@
    "kind": "line",
    "text": "MIA @ NY Over 221.5: line 222.5 at \u2212105 \u2192 221.5 at \u2212116 \u2014 past the play-to line; don't add at this number",
    "alert": false
+  },
+  {
+   "at": "2026-11-27T22:46:54Z",
+   "key": "p|3147657|pts|Under",
+   "kind": "added",
+   "text": "Added: Mikal Bridges Under 12.5 points at \u2212111, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T22:46:54Z",
+   "key": "p|4278049|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Daniel Gafford Under 10.5 points at \u2212127",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T22:46:54Z",
+   "key": "p|4278049|pts|Under",
+   "kind": "line",
+   "text": "Daniel Gafford: line 10.5 at \u2212120 \u2192 10.5 at \u2212127",
+   "alert": false
+  },
+  {
+   "at": "2026-11-27T22:46:54Z",
+   "key": "p|4397424|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Neemias Queta Under 11.5 points \u2014 no longer +EV at tonight's line (11.5 at -111)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-27T22:46:54Z",
+   "key": "p|4433627|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Keyonte George Under 20.5 points \u2014 no longer +EV at tonight's line (20.5 at -103)",
+   "alert": true
   }
  ],
  "narratives": [
@@ -5719,11 +5912,6 @@
     "status": "Questionable"
    },
    {
-    "name": "Giannis Antetokounmpo",
-    "team": "MIA",
-    "status": "Probable"
-   },
-   {
     "name": "Kyrie Irving",
     "team": "DAL",
     "status": "Questionable"
@@ -5749,7 +5937,7 @@
     "status": "Questionable"
    }
   ],
-  "picks": 22
+  "picks": 23
  },
  "leans_record": {
   "w": 23,
@@ -5758,5 +5946,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-27T22:30:26Z"
+ "updated": "2026-11-27T22:46:54Z"
 }
