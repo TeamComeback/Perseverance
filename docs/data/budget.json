@@ -1,65 +1,9 @@
 {
  "month": "2026-11-17",
- "remaining": 13288,
- "used": 6712,
- "runs": 1017,
+ "remaining": 13284,
+ "used": 6716,
+ "runs": 1018,
  "log": [
-  {
-   "ts": "2026-11-27T05:45:22Z",
-   "ep": "/sports",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:22Z",
-   "ep": "/sports/aussierules_afl/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:22Z",
-   "ep": "/sports/cricket_international_t20/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:22Z",
-   "ep": "/sports/soccer_brazil_campeonato/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:23Z",
-   "ep": "/sports/soccer_england_league1/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:23Z",
-   "ep": "/sports/soccer_germany_dfb_pokal/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:23Z",
-   "ep": "/sports/soccer_italy_coppa_italia/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-27T05:45:23Z",
-   "ep": "/sports/soccer_switzerland_superleague/events",
-   "cost": 0,
-   "rem": 13341,
-   "job": "scan"
-  },
   {
    "ts": "2026-11-27T05:45:23Z",
    "ep": "/sports/soccer_uefa_champs_league/events",
@@ -423,23 +367,65 @@
    "cost": 2,
    "rem": 13288,
    "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports",
+   "cost": 0,
+   "rem": 13288,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports",
+   "cost": 0,
+   "rem": 13288,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_brazil_serie_b/events",
+   "cost": 0,
+   "rem": 13288,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_italy_coppa_italia/events",
+   "cost": 0,
+   "rem": 13288,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_spl/events",
+   "cost": 0,
+   "rem": 13288,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_uefa_champs_league/events",
+   "cost": 0,
+   "rem": 13288,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_spl/odds",
+   "cost": 2,
+   "rem": 13286,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_brazil_serie_b/odds",
+   "cost": 2,
+   "rem": 13284,
+   "job": "scan"
   }
  ],
  "paid": [
-  {
-   "ts": "2026-11-18T00:15:24Z",
-   "ep": "/sports/icehockey_liiga/odds",
-   "cost": 3,
-   "rem": 18668,
-   "job": "scan"
-  },
-  {
-   "ts": "2026-11-18T00:15:24Z",
-   "ep": "/sports/basketball_wncaab/odds",
-   "cost": 3,
-   "rem": 18665,
-   "job": "scan"
-  },
   {
    "ts": "2026-11-18T00:15:24Z",
    "ep": "/sports/cricket_odi/odds",
@@ -10925,6 +10911,20 @@
    "cost": 2,
    "rem": 13288,
    "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_spl/odds",
+   "cost": 2,
+   "rem": 13286,
+   "job": "scan"
+  },
+  {
+   "ts": "2026-11-27T06:30:25Z",
+   "ep": "/sports/soccer_brazil_serie_b/odds",
+   "cost": 2,
+   "rem": 13284,
+   "job": "scan"
   }
  ],
  "ext": [
@@ -10934,12 +10934,12 @@
    "rem": 15231
   }
  ],
- "own_month": 4562,
+ "own_month": 4566,
  "external_month": 1135,
  "monthly": 20000,
  "reserve": 300,
  "jobs_cycle": {
-  "scan": 3071,
+  "scan": 3075,
   "props": 1490,
   "closer": 1
  },
@@ -10967,17 +10967,17 @@
  "cycle_end": "2026-12-17T00:00:00Z",
  "backtest_cap": 5000,
  "jobs_day": {
-  "scan": 151
+  "scan": 155
  },
  "day": "2026-11-27",
  "days_left": 20,
  "day_budget": 455,
- "spent_today": 151,
- "units_today": 7,
+ "spent_today": 155,
+ "units_today": 8,
  "set_aside": 0,
  "ext_rate": 0.0,
  "plan": 20000,
  "allowance": 150,
  "locked": false,
- "updated": "2026-11-27T06:15:21Z"
+ "updated": "2026-11-27T06:30:26Z"
 }
