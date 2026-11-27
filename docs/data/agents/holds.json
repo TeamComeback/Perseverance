@@ -3,21 +3,15 @@
   {
    "game": "MEM @ MIN",
    "kind": "news",
-   "reason": "The Over 220.5 (sim 225.1 vs 50% at DraftKings) is set before LaMelo Ball (MIN, ankle, questionable, no timetable) and Zach Edey (MEM, ankle, 9 min Wednesday) are resolved, and all three model_gaps tonight are MEM rotation players in this game (Kris Murray pra 9.4% vs 50.4% market), a sign the model is missing role news here."
+   "reason": "The Over 220.5 rests on a sim total of 226.6 (62% vs 49% DraftKings) in a game the Newsroom says is scrambled: Edwards out, LaMelo Ball questionable, Boozer and Grant out, Edey and Stewart questionable. A 6-point gap that size is the model missing lineup news, not a better price."
   },
   {
-   "game": "PHI @ IND",
-   "kind": "news",
-   "reason": "The Over 232.5 (sim 236.6, 58% vs 49% DraftKings) and Zubac Under 12.5 sit on a game where Jaylen Brown (hamstring imaging, update due Thursday) and Joel Embiid (illness, missed Wednesday) are both questionable for PHI, so the sim's inputs may not match who plays."
-  },
-  {
-   "player": "De'Anthony Melton",
-   "stat": "pts",
+   "game": "DAL @ PHX",
    "kind": "thin_edge",
-   "reason": "Under 11.5 is the widest model-vs-market prop on the board (63% sims vs 52% DraftKings, sim 10.1) with no price edge (EV -2.1%), and the backtest's 10%+ edge bucket hit 51.1% with CLV -3.8% over 237 lines."
+   "reason": "The Over 225.5 is the model's opinion (sim 231.5, over 63% vs 50% DraftKings), not a stale book, and Kyrie Irving is questionable on a left-knee maintenance tag, so the usage and pace the sim assumes is uncertain."
   }
  ],
- "notes": "All ten Best Bets are tier Pass with negative EV, so holds are for grading. Remaining four totals are all Overs leaning on the same learned +1.2 correction (correlated by method, not game); left MIA @ NY and LAL @ SA alone since the edges are small (55-56% sims). Open agent bets are non-NBA (Liiga, NHL, Liga MX) with no current prices in the brief; the NJ/CGY pair is an arb and holding one leg would unhedge it, and Pachuca-Guadalajara already started at 01:00Z. No fresh web news found beyond the Newsroom's items.",
- "updated": "2026-11-27T02:19:11Z",
+ "notes": "Brunson ast Over 6.5 at 2.11 (683053eb) looks fine: the edge is price, not model (p_model 0.496 vs p_mkt 0.489 across 7 books, model weight 0.026). The line hasn't moved from the 6.5 open, and the Newsroom says he's cleared to play. It's DraftKings' over that's soft (its own under is 1.68). It shares a script with the Pass-tier MIA@NY Over 222.5, but that one isn't being bet. Open bet 8801d46d (KooKoo vs HPK h2h, DraftKings) isn't an NBA market and commenced at 16:30Z, so there's nothing to hold. Worth a look by the owner/Auditor for how a non-NBA leg got onto the value_fav playbook. No Best Bets prop shows up in model_gaps. Every Best Bets item is Pass tier with negative EV. I didn't hold PHI@IND Over 228.5 because Embiid's status is unclear (questionable per the Newsroom, and a CBS headline says he's expected to return), so the direction is unclear. The totals board as a whole leans Over by 4-6 points against the market on every game listed, after a learned +1.2 correction, which reads as a systematic model lean rather than edge.",
+ "updated": "2026-11-27T23:19:38Z",
  "by": "skeptic"
 }
