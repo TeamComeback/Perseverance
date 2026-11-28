@@ -140,6 +140,11 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
         const sj = await (await fetch("http://localhost:8899/sim.js")).text();
         /Move vs pregame/.test(sj) && !/<th>CLV<\/th>/.test(sj) ? ok("live column renamed Move vs pregame") : bad("live CLV header not renamed");
       } catch (e) { bad("edge table: " + e.message); }
+      console.log("5g. calibration shadow card");
+      try {
+        const r = await p.evaluate(async () => { D.calib = await get("calibration.json", null); const h = calibHtml(); return {has: !!D.calib && /Calibration shadow/.test(h), mk: (h.match(/<tr><td class="t">(Spread|Total|Moneyline)/g) || []).length, shadowOnly: /Shadow only/.test(h)}; });
+        r.has && r.mk >= 1 && r.shadowOnly ? ok(`calibration card renders (${r.mk} markets, marked shadow only)`) : bad("calibration card: " + JSON.stringify(r));
+      } catch (e) { bad("calibration card: " + e.message); }
       // simulation box on the player card: shown with avg, typical range, over/under at the card's line; moves with the line; shown for every player with a saved sim
       console.log("5c. simulation box on the player card");
       try {
