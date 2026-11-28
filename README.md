@@ -517,3 +517,9 @@ Nothing they write changes a bet or a setting until the owner promotes an agent 
 - A player without a saved sim shows a gray "No sim yet for this player tonight".
 - Sim tab: "10–90%" is now "Typical range", with a one-line explanation. The game-level parts and script chips are unchanged.
 - `tools/check.js` step 5c.
+
+## Color rules, simulation chart, line history fill-in (Nov 27)
+- **Colors.** Green = winning / hitting / positive; red = losing / missing / negative. Over and Under tags are neutral (blue `--over`, lavender `--under`). The brand pink is now `--accent` (buttons, selected filters, nav); `--gold` is real amber (notes, "small sample", warnings, matchup dots) and no longer the pink. Matchup arrows and chips are neutral (they say the stat goes up or down, not good or bad). Positive EV / injury-opportunity deltas / winning scores are green. Line history O / U is neutral (it is which side of the line he finished on, not a win).
+- **Simulation chart (player card).** One-sentence summary on top ("Under 10.5 cashes in 53% of simulated games. A typical night is 5–17; he averages 10.6."), cash side green and miss side red with percentages labeled over each side, dashed line marker with its number, average marker, value ticks, and faded bars for the rare games outside the typical range.
+- **DraftKings line history (player card).** Lists his last games this season: the line where DraftKings posted one, "no line posted" with what he scored where it did not.
+- `tools/check.js` step 5d.

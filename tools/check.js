@@ -149,6 +149,17 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           await p.evaluate(() => history.back()); await p.waitForTimeout(300);
         }
       } catch (e) { bad("sim box: " + e.message); }
+      // colors: green is only for winning / hitting, red only for losing / missing; Over and Under tags are neutral; the amber note color is not the pink brand color
+      console.log("5d. color rules and line history");
+      try {
+        const cr = await p.evaluate(async () => { const cs = getComputedStyle(document.documentElement), v = k => cs.getPropertyValue(k).trim().toLowerCase();
+          const el = document.createElement("span"); el.className = "lean Under"; document.body.appendChild(el); const under = getComputedStyle(el).color; el.className = "lean Over"; const over = getComputedStyle(el).color; el.remove();
+          const lossRGB = "rgb(255, 93, 115)", winRGB = "rgb(61, 220, 151)";
+          D.dkRecent = D.dkRecent || await get("dk_recent.json", {}); const pl = Object.values(D.players.players).find(x => x.logs && x.logs.length > 3 && ["pts", "ast", "reb"].some(s => (D.dkRecent[x.pid + "|" + s] || []).length)); let hist = "";
+          if (pl) { const s = ["pts", "ast", "reb"].find(s => (D.dkRecent[pl.pid + "|" + s] || []).length); hist = dkHistHtml(pl, s); }
+          return {gold: v("--gold"), accent: v("--accent"), tagsNeutral: ![lossRGB, winRGB].includes(under) && ![lossRGB, winRGB].includes(over), hist: /<table/.test(hist) && !/class="m"|class="h"/.test(hist.replace(/<td class="(h|m)">/g, "")) , histNoRedOver: !/<td class="(h|m)">/.test(hist)}; });
+        cr.gold !== cr.accent && cr.tagsNeutral && cr.histNoRedOver ? ok("Over/Under tags are neutral, amber is not the brand pink, line history O / U is not win/loss colored") : bad("color rules: " + JSON.stringify(cr));
+      } catch (e) { bad("color rules: " + e.message); }
       // one side per prop (dropped best-bet cards are the morning record, so they are left out): every OVER/UNDER tag on every screen, for the same player-stat, must be the same side
       console.log("6. one side per prop on every screen");
       const seen = {};

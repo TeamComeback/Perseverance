@@ -12,7 +12,7 @@
 :root{
   --bg:#0b0f17; --panel:#121826; --panel2:#182033; --panel3:#1e2840; --line:#232c42; --text:#e7ecf5; --dim:#8a94ab; --dim2:#6b7590;
   --mars:#7EC8E3; --mars-d:#7EC8E322; --win:#3ddc97; --win-d:#3ddc9722; --loss:#ff5d73; --loss-d:#ff5d7322;
-  --you:#D8587D; --you-d:#D8587D22; --gold:#D8587D; --gold-d:#D8587D22;
+  --you:#D8587D; --you-d:#D8587D22; --gold:#E8B04A; --gold-d:#E8B04A22; --accent:#D8587D; --over:#7EC8E3; --under:#B9A4E6;
   --mono:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box}
@@ -107,7 +107,7 @@ input.search{width:100%;background:var(--panel2);border:1px solid var(--line);co
 .gs .gs-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;min-height:18px}
 .gs-r{display:flex;align-items:baseline;gap:8px;padding:2px 0;font-size:15px}
 .gs-r .ab{font-weight:800;width:44px}.gs-r .nm{flex:1;color:var(--dim);font-size:13px}.gs-r .sc{font-family:var(--mono);font-weight:700;font-size:17px}
-.gs-r.l{opacity:.55}.gs-r.w .sc{color:var(--gold)}
+.gs-r.l{opacity:.55}.gs-r.w .sc{color:var(--win)}
 .gh{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;text-align:center}
 .gh-t .ab{font-size:20px;font-weight:800}.gh-t .nm{font-size:12px;color:var(--dim)}.gh-t .rec{font-size:11px;color:var(--dim2)}
 .gh-s .sc{font-family:var(--mono);font-size:30px;font-weight:800;white-space:nowrap}.gh-s .st{font-size:12px;color:var(--dim);margin-top:2px}
@@ -121,11 +121,11 @@ input.search{width:100%;background:var(--panel2);border:1px solid var(--line);co
 .pr .rt{text-align:right;font-family:var(--mono);font-size:13px;white-space:nowrap}
 .pr .ln{grid-column:1/-1;font-size:12px;color:var(--dim)}
 .lean{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;letter-spacing:.04em;vertical-align:1px}
-.lean.Over{background:var(--win-d);color:var(--win)} .lean.Under{background:var(--loss-d);color:var(--loss)}
-.mx{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:1px;background:var(--panel3);color:var(--dim)}.mx.up{color:var(--win)}.mx.dn{color:var(--loss)}
+.lean.Over{background:#7EC8E322;color:var(--over)} .lean.Under{background:#B9A4E622;color:var(--under)} .over{color:var(--over)} .under{color:var(--under)}
+.mx{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;vertical-align:1px;background:var(--panel3);color:var(--dim)}.mx.up,.mx.dn{color:var(--text)}
 .cvs{font-size:11px;font-weight:800;padding:1px 6px;border-radius:6px;border:1px solid var(--line);color:var(--dim)}.cvs.Confident{color:var(--win);border-color:#3ddc9766}.cvs.Consider{color:var(--gold)}
 .st{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;margin-left:5px;vertical-align:1px;border:1px solid var(--line);color:var(--dim)}
-.st.s{color:var(--win);border-color:#3ddc9755} .st.q{color:var(--gold);border-color:#D8587D55} .st.o{color:var(--loss);border-color:#ff5d7355}
+.st.s{color:var(--win);border-color:#3ddc9755} .st.q{color:var(--gold);border-color:#E8B04A55} .st.o{color:var(--loss);border-color:#ff5d7355}
 
 /* tables */
 .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
@@ -206,7 +206,7 @@ ul.sig{margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--dim)} ul.sig 
 .rv .q td,.rv .q th{padding:3px 5px;text-align:right;border-bottom:1px solid var(--line)} .rv .q th{color:var(--dim);font-weight:600}
 .rv .q td:first-child,.rv .q th:first-child{text-align:left}
 .tg{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;margin:0 4px 4px 0;background:var(--panel);color:var(--dim);border:1px solid var(--line)}
-.tg.good{color:var(--win);border-color:#3ddc9755} .tg.bad{color:var(--loss);border-color:#ff5d7355} .tg.mid{color:var(--gold);border-color:#D8587D55}
+.tg.good{color:var(--win);border-color:#3ddc9755} .tg.bad{color:var(--loss);border-color:#ff5d7355} .tg.mid{color:var(--gold);border-color:#E8B04A55}
 .tl{border-left:2px solid var(--line);margin-left:4px;padding-left:14px}
 .tl .e{position:relative;padding:7px 0;font-size:13px}
 .tl .e::before{content:"";position:absolute;left:-20px;top:13px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--mars)}
@@ -256,7 +256,7 @@ a.opt .b{font-size:10px;color:var(--dim)}
 a.opt{cursor:pointer}
 .mini2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .mini{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer}
-.mini.agent{border-left:3px solid var(--mars)} .mini.you{border-left:3px solid var(--gold)}
+.mini.agent{border-left:3px solid var(--mars)} .mini.you{border-left:3px solid var(--accent)}
 .mini .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .mini .v{font-family:var(--mono);font-size:19px;font-weight:700}
 .mini .r{font-size:11px;color:var(--dim)}
@@ -272,7 +272,7 @@ a.opt{cursor:pointer}
 .cr .rt .b{font-size:11.5px;color:var(--dim)}
 .cr .why{grid-column:1/-1;font-size:12px;color:var(--dim2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gold{color:var(--gold)} .dots{color:var(--gold);letter-spacing:1px}
-.cr.bb .rk{display:inline-block;min-width:18px;font-family:var(--mono);font-weight:800;color:var(--gold)}
+.cr.bb .rk{display:inline-block;min-width:18px;font-family:var(--mono);font-weight:800;color:var(--accent)}
 .cr.bb .bbn{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12px;color:var(--dim);margin-top:2px}
 .cr.bb .bbn b{color:var(--text)}
 .cr.bb .why{white-space:normal}
@@ -283,7 +283,7 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 .lbt td{vertical-align:top;font-size:12px;white-space:normal}.lbt td .dim{font-size:11px}
 .ownt{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:4px 0 6px;background:var(--panel2)}.ownt b{font-family:var(--mono);font-size:15px}
 .cvb{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--mono);font-weight:800;font-size:12px;padding:2px 7px;border-radius:7px;border:1px solid var(--line);margin-left:6px}
-.cvb.Confident{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Consider{color:var(--gold);border-color:#D8587D55;background:#D8587D12}.cvb.Pass{color:var(--dim)}
+.cvb.Confident{color:var(--win);border-color:#3ddc9755;background:#3ddc9712}.cvb.Consider{color:var(--gold);border-color:#E8B04A55;background:#E8B04A12}.cvb.Pass{color:var(--dim)}
 .verd{grid-column:1/-1;font-size:12.5px;color:var(--text);margin-top:3px;line-height:1.4}
 .case{grid-column:1/-1;margin-top:4px}.case summary{cursor:pointer;font-size:12px;color:var(--dim);padding:4px 0;list-style:none}.case summary::-webkit-details-marker{display:none}.case summary:before{content:"▸ "}.case[open] summary:before{content:"▾ "}
 .case ul{margin:4px 0 8px;padding:0;list-style:none}.case li{font-size:12.5px;line-height:1.45;padding:3px 0 3px 18px;position:relative;color:var(--text)}
@@ -334,7 +334,7 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 @media (prefers-reduced-motion:reduce){.hoop,.hoop *,.ptag .in,.pdot .bob,.bc-tm .sc.pop,.bdg.on{animation:none!important}}
 .btn.ghost{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
 .bxh{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:2px 0 4px}
-.bxh.h{color:var(--mars)} .bxh.a{color:var(--gold)}
+.bxh.h{color:var(--mars)} .bxh.a{color:var(--accent)}
 .bxt{width:100%;border-collapse:collapse;font-size:11.5px;font-family:var(--mono)}
 .bxt th{font:600 9.5px Inter,sans-serif;color:var(--dim);text-align:right;padding:2px 3px}
 .bxt td{text-align:right;padding:2px 3px;border-top:1px solid var(--line);color:var(--dim)}
@@ -342,8 +342,8 @@ tr.rwhy td{font-size:11px;color:var(--dim);padding-top:0;border-top:0;white-spac
 .bxt tr.on td{color:var(--text)} .bxt tr.hot td{background:#7EC8E31f}
 .lbtns{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
 .lbtn{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:99px;padding:6px 10px;font:600 12.5px Inter,sans-serif;cursor:pointer;white-space:nowrap}
-.lbtn b{font-family:var(--mono);color:var(--gold);font-weight:700}
-.lbtn.sm{padding:2px 9px;font-size:15px;line-height:1.3;color:var(--gold)}
+.lbtn b{font-family:var(--mono);color:var(--accent);font-weight:700}
+.lbtn.sm{padding:2px 9px;font-size:15px;line-height:1.3;color:var(--accent)}
 .stale{background:#ff5d7314;border:1px solid #ff5d7355;border-radius:10px;padding:8px 10px;font-size:13px;line-height:1.4;margin:2px 0 6px}
 .plf{margin-top:8px} .plrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .plrow select,.plrow input{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 8px;font:inherit;font-size:14px;min-width:0}
@@ -476,7 +476,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #7EC8E3bb)}
 .tl{background:#10161Fee;padding:10px 12px;cursor:pointer;min-width:0}
 .tl .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
 .tl .v{font-family:var(--mono);font-size:20px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tl.agent .v{color:var(--mars);text-shadow:0 0 14px #7EC8E340} .tl.you .v{color:var(--gold);text-shadow:0 0 14px #D8587D40}
+.tl.agent .v{color:var(--mars);text-shadow:0 0 14px #7EC8E340} .tl.you .v{color:var(--accent);text-shadow:0 0 14px #D8587D40}
 .tl .r{font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fchip{display:inline-block;font:700 10px var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
 .fchip.edge{background:var(--win-d);color:var(--win)} .fchip.skip{background:var(--loss-d);color:var(--loss)} .fchip.watch{background:#ffffff10;color:var(--dim)}
@@ -495,7 +495,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #7EC8E3bb)}
 .lu-n{flex:1;min-width:0;font-size:13.5px;line-height:1.25}
 .lu-n .dim{display:block;font-size:11px}
 .lu-b{background:#ffffff08;border:1px solid var(--line);color:var(--dim);border-radius:99px;padding:5px 9px;font:600 11.5px var(--f-body);cursor:pointer;white-space:nowrap}
-.lu-b.on{background:#D8587D1f;border-color:#D8587D66;color:var(--gold)}
+.lu-b.on{background:#D8587D1f;border-color:#D8587D66;color:var(--accent)}
 .lu-b.in{background:var(--win-d);border-color:#3ddc9755;color:var(--win)}
 .lu-b.out{background:var(--loss-d);border-color:#ff5d7355;color:var(--loss)}
 .lu-b:disabled{opacity:.35;cursor:default}
@@ -504,16 +504,16 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #7EC8E3bb)}
 .fbar{position:sticky;top:0;z-index:20;margin:0 -2px 8px;padding:6px 2px;background:linear-gradient(var(--bg) 70%,#0b0f1700)}
 .fbar .frow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.fbar .frow::-webkit-scrollbar{display:none}.fbar .frow.wrap{flex-wrap:wrap;overflow-x:visible}
 .fbar select,.fbar button{flex:none;background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:6px 10px;font:600 12px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
-.fbar select.on,.fbar button.on{color:var(--gold);border-color:#D8587D66;background:#D8587D14}
+.fbar select.on,.fbar button.on{color:var(--accent);border-color:#D8587D66;background:#D8587D14}
 .mxg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 8px}
 .mxg label{display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--dim);font-weight:600}
 .mxg select{background:var(--panel2);color:var(--dim);border:1px solid var(--line);border-radius:10px;padding:7px 9px;font:600 13px var(--f-body,Inter);-webkit-appearance:none;appearance:none}
-.mxg select.on{color:var(--gold);border-color:#D8587D66;background:#D8587D14}
+.mxg select.on{color:var(--accent);border-color:#D8587D66;background:#D8587D14}
 .mxrec{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--dim2)} .mxrec b{color:var(--text)}
 .mxrec .mxr{padding:6px 0;border-top:1px solid var(--line)} .mxrec .mxr:first-child{border-top:0}
 .cr .why.mxl{white-space:normal}.mxc{display:inline-block;margin:2px 4px 0 0;padding:1px 8px;border-radius:99px;font-size:11px;font-weight:600;background:#ffffff0d;color:var(--dim)}
 .lean.weak{background:#ffffff14;color:var(--dim)}
-.mxc.up{color:var(--win);background:var(--win-d)}.mxc.dn{color:var(--loss);background:var(--loss-d)}
+.mxc.up,.mxc.dn{color:var(--text);background:#ffffff14}
 .fbar .focus{margin-top:6px;font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}.fbar .focus b{color:var(--text)}.fbar .focus button{padding:2px 8px}
 .sstrip{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;font-size:12px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;cursor:pointer}
 .sstrip b{color:var(--text);font-family:var(--mono)}
@@ -524,7 +524,7 @@ nav.tabs button.on svg{filter:drop-shadow(0 0 6px #7EC8E3bb)}
 .bbsw{margin-top:8px;display:flex}.bbsw button{flex:1}
 .cr.bb.drop{opacity:.6}.cr.bb .rt .b .btn{margin-left:6px;padding:3px 9px}
 .cr.bb details.case > summary{padding:4px 0}
-.star{background:none;border:0;color:var(--dim);font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}.star.on{color:var(--gold)}
+.star{background:none;border:0;color:var(--dim);font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}.star.on{color:var(--accent)}
 .gl{border-bottom:1px dotted var(--dim2);cursor:help}
 .mseg{display:flex;margin-bottom:10px}.mseg button{flex:1}
 .gsum{border:1px solid #D8587D55;background:#D8587D0a}.gsum .row2{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}.gsum .row2:first-of-type{border-top:0}.gsum .row2 span:first-child{color:var(--dim)}
@@ -567,7 +567,7 @@ details.rbmore>summary{font-size:12px;color:var(--dim);padding:4px 0 8px 22px;cu
 .brf .bst.Won{background:var(--win-d);color:var(--win)}.brf .bst.Lost{background:var(--loss-d);color:var(--loss)}
 .brf .bst.New,.brf .bst.Upgraded{background:var(--mars-d);color:var(--mars)}.brf .bst.Downgraded,.brf .bst.Past{background:var(--gold-d);color:var(--gold)}
 .brf .nums{font-size:12.5px;color:var(--dim);margin:5px 0 0;font-family:var(--mono)}
-.brf .pt{font-size:13px;margin:6px 0 0}.brf .pt b{color:var(--gold)}
+.brf .pt{font-size:13px;margin:6px 0 0}.brf .pt b{color:var(--accent)}
 .brf .why{font-size:13.5px;margin:8px 0 0;line-height:1.45}
 .brf details{margin-top:8px}.brf details summary{font-size:12.5px;color:var(--mars);cursor:pointer}
 .brf ul{margin:6px 0 0;padding-left:16px;font-size:13px}.brf li{margin-bottom:4px}
@@ -581,7 +581,7 @@ details.rbmore>summary{font-size:12px;color:var(--dim);padding:4px 0 8px 22px;cu
 .allctl{display:flex;justify-content:flex-end;gap:6px;margin:8px 0 -2px}.allctl button{background:none;border:0;color:var(--dim);font:inherit;font-size:12px;cursor:pointer;padding:2px 4px;text-decoration:underline;text-underline-offset:3px}.sched .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2)}
 
 /* ===== Nov 23: cherry wine + sky blue, quieter surfaces, one-line rows ===== */
-:root{--wine:#8E1B3C; --wine-hi:#D8587D; --sky:#7EC8E3; --mars:#7EC8E3; --mars-d:#7EC8E322; --you:#D8587D; --you-d:#D8587D22; --gold:#D8587D; --gold-d:#D8587D22;
+:root{--wine:#8E1B3C; --wine-hi:#D8587D; --sky:#7EC8E3; --mars:#7EC8E3; --mars-d:#7EC8E322; --you:#D8587D; --you-d:#D8587D22; --gold:#E8B04A; --gold-d:#E8B04A22; --accent:#D8587D; --over:#7EC8E3; --under:#B9A4E6;
   --bg:#0E0A0F; --panel:#171119; --panel2:#1E1620; --panel3:#271C2A; --line:#2F2232; --text:#F0E8EE; --dim:#A394A1; --dim2:#7C6E7B}
 body{background:radial-gradient(900px 380px at 50% -140px,#8E1B3C22,transparent 70%),radial-gradient(700px 300px at 100% 0,#7EC8E30d,transparent 70%),var(--bg);background-attachment:fixed}
 .card,details.sec,.gcard,.hint{background:linear-gradient(180deg,#1A131C,#140E16);box-shadow:inset 0 1px 0 #ffffff08,0 8px 22px #00000055}
@@ -603,10 +603,15 @@ a{color:var(--sky)}
 .ur .nm{font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .simb .simkv{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.simb .simkv>div{padding:6px 8px}
 .simb{margin-top:10px;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
-.sbars{display:flex;align-items:flex-end;gap:1px;height:44px;margin-top:8px}.sbars i{flex:1;min-width:2px;background:#ffffff1f;border-radius:1px 1px 0 0}
-.sbars i.o{background:var(--sky)}.sbars i.u{background:var(--wine-hi)}.sbars i.ln{box-shadow:1px 0 0 var(--gold)}
-.sbx{display:flex;justify-content:space-between;font:600 10px var(--mono);color:var(--dim);margin-top:2px}.sbx span:nth-child(2){color:var(--gold)}
-.ur .ubt{flex:none;font:700 12.5px var(--mono);color:var(--sky)} .ur .ubt.Under{color:var(--wine-hi)}
+.simsay{font-size:13.5px;line-height:1.45;margin:2px 0 8px}
+.sbl{display:flex;justify-content:space-between;font:700 11.5px var(--mono);margin-top:10px}
+.sch{position:relative;margin-top:4px}.sbars{display:flex;align-items:flex-end;height:64px;border-bottom:1px solid var(--line)}
+.sbars i{flex:1;min-width:2px;border-left:1px solid var(--panel);border-radius:1px 1px 0 0}.sbars i.w{background:var(--win)}.sbars i.l{background:var(--loss)}.sbars i.p{background:var(--dim)}.sbars i.t{opacity:.4}
+.sln{position:absolute;top:-2px;bottom:0;border-left:2px dashed var(--text);pointer-events:none}.sln b{position:absolute;top:-15px;left:0;transform:translateX(-50%);font:700 10px var(--mono);background:var(--panel3);color:var(--text);padding:0 5px;border-radius:5px;white-space:nowrap}
+.sav{position:absolute;bottom:-5px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:6px solid var(--text);transform:translateX(-50%)}
+.sax{position:relative;height:16px;margin-top:6px;font:600 10px var(--mono);color:var(--dim)}.sax span{position:absolute;transform:translateX(-50%)}
+.slg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;color:var(--dim);margin-top:4px}.slg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}.slg i.w{background:var(--win)}.slg i.l{background:var(--loss)}.slg i.av{background:none;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:7px solid var(--text);border-radius:0;width:0;height:0}
+.ur .ubt{flex:none;font:700 12.5px var(--mono);color:var(--sky)} .ur .ubt.Over{color:var(--over)} .ur .ubt.Under{color:var(--under)}
 .ur .od{flex:none;font:600 12.5px var(--mono);color:var(--text);min-width:38px;text-align:right}
 .ur .l2{margin-top:2px;font-size:11.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ur .l2 .dots{letter-spacing:0}
@@ -1395,7 +1400,7 @@ function oppsHtml() {
   return sec("t-opps", "Injury opportunities", rows.length + "", `<div class="desc" style="margin-bottom:4px">A rotation player is out. These teammates produced the most extra in games he missed (two seasons).</div>` +
     rows.map(o => `<div class="cr" data-pid="${o.pid}" data-stat="${o.stat}"><div><span class="nm">${esc(o.name)}</span> <span class="dim">${esc(o.team)}</span>
       <div class="gm">${esc(o.out)} ${esc((o.status || "out").toLowerCase())} · ${o.n} games without him · ${f1(o.min_without)} min vs ${f1(o.min_with)}</div></div>
-      <div class="rt"><div class="a">${STATN[o.stat]} ${f1(o.without)}</div><div class="b">vs ${f1(o.with)} with · <span class="gold">${pct(o.delta, 0)}</span></div></div></div>`).join(""), true);
+      <div class="rt"><div class="a">${STATN[o.stat]} ${f1(o.without)}</div><div class="b">vs ${f1(o.with)} with · <span class="pos">${pct(o.delta, 0)}</span></div></div></div>`).join(""), true);
 }
 
 // ===================================================== filters, watchlist, glossary (one set, every tab)
@@ -1924,22 +1929,29 @@ function simCardHtml(p, stat, line, side) {
   const q = sp.s[stat], h = sp.h[stat], keys = Object.keys(h).map(Number).sort((a, b) => a - b);
   let tot = 0, ov = 0, un = 0, pu = 0; keys.forEach(v => { const n = h[v]; tot += n; if (v > line) ov += n; else if (v < line) un += n; else pu += n; });
   if (!tot) return "";
-  const pO = Math.round(ov / tot * 100), pU = Math.round(un / tot * 100), push = Math.round(pu / tot * 100);
-  // bars: every value in the 0.5% to 99.5% band, the line marked, the side being bet in color
+  const pO = Math.round(ov / tot * 100), pU = Math.round(un / tot * 100), push = Math.round(pu / tot * 100), cash = side === "Over" ? pO : pU, miss = side === "Over" ? pU : pO;
+  // bars: every value in the 0.5% to 99.5% band, widened to hold the line. Green = the bet cashes, red = it misses, dim = the rare tails outside the typical range
   let cum = 0, lo = keys[0], hi = keys[keys.length - 1]; for (const v of keys) { cum += h[v]; if (cum / tot >= 0.005) { lo = v; break; } }
   cum = 0; for (const v of keys.slice().reverse()) { cum += h[v]; if (cum / tot >= 0.005) { hi = v; break; } }
-  const mx = Math.max(...keys.filter(v => v >= lo && v <= hi).map(v => h[v] || 0)) || 1, bars = [];
-  for (let v = lo; v <= hi; v++) { const n = h[v] || 0, on = side === "Over" ? v > line : side === "Under" ? v < line : false;
-    bars.push(`<i class="${on ? (side === "Over" ? "o" : "u") : ""}${v === line ? " ln" : ""}" style="height:${Math.max(2, Math.round(n / mx * 100))}%" title="${v}: ${(n / tot * 100).toFixed(1)}%"></i>`); }
+  lo = Math.min(lo, Math.floor(line)); hi = Math.max(hi, Math.ceil(line));
+  const n = hi - lo + 1, mx = Math.max(...keys.filter(v => v >= lo && v <= hi).map(v => h[v] || 0)) || 1, X = v => ((v - lo + 0.5) / n * 100).toFixed(2) + "%", bars = [];
+  for (let v = lo; v <= hi; v++) { const c = h[v] || 0, wins = side === "Over" ? v > line : v < line, push_ = v === line, tail = v < q[1] || v > q[9];
+    bars.push(`<i class="${push_ ? "p" : wins ? "w" : "l"}${tail ? " t" : ""}" style="height:${Math.max(2, Math.round(c / mx * 100))}%" title="${v}: ${(c / tot * 100).toFixed(1)}% of games"></i>`); }
+  const step = [1, 2, 5, 10, 20].find(k => n / k <= 7) || 20, ticks = []; for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) ticks.push(`<span style="left:${X(v)}">${v}</span>`);
+  const left = side === "Over" ? ["Under", pU, "l"] : ["Under", pU, "w"], right = side === "Over" ? ["Over", pO, "w"] : ["Over", pO, "l"];
   return `<div class="simb"><div class="lbl" style="margin-top:0">Simulation · ${tot.toLocaleString()} games</div>
+    <div class="simsay"><b class="${cash >= 50 ? "pos" : "neg"}">${esc(side)} ${f1(line)} cashes in ${cash}%</b> of simulated games${push ? ` <span class="dim">(${push}% push)</span>` : ""}. A typical night is <b>${q[1]}–${q[9]}</b>; he averages <b>${f1(q[0])}</b>.</div>
     <div class="kv simkv">
       <div><div class="k">Average</div><div class="v">${f1(q[0])}</div></div>
       <div title="8 of 10 simulated games land in this range"><div class="k">Range</div><div class="v">${q[1]}–${q[9]}</div></div>
-      <div><div class="k">Over ${f1(line)}</div><div class="v ${side === "Over" ? "pos" : ""}">${pO}%</div></div>
-      <div><div class="k">Under ${f1(line)}</div><div class="v ${side === "Under" ? "pos" : ""}">${pU}%${push ? ` <small class="dim">push ${push}%</small>` : ""}</div></div>
+      <div><div class="k">Over ${f1(line)}</div><div class="v ${side === "Over" ? (pO >= 50 ? "pos" : "neg") : ""}">${pO}%</div></div>
+      <div><div class="k">Under ${f1(line)}</div><div class="v ${side === "Under" ? (pU >= 50 ? "pos" : "neg") : ""}">${pU}%</div></div>
     </div>
-    <div class="sbars" aria-label="Simulated outcomes">${bars.join("")}</div>
-    <div class="sbx"><span>${lo}</span><span>line ${f1(line)}</span><span>${hi}</span></div><div class="desc" style="margin-top:2px">Range: 8 of 10 simulated games land inside it.</div>${simGameNote(g, p, stat)}</div>`;
+    <div class="sbl"><span class="${left[2] === "w" ? "pos" : "neg"}">◂ ${left[0]} ${left[1]}%</span><span class="${right[2] === "w" ? "pos" : "neg"}">${right[0]} ${right[1]}% ▸</span></div>
+    <div class="sch"><div class="sbars">${bars.join("")}</div><div class="sln" style="left:${X(line)}"><b>${f1(line)}</b></div><div class="sav" style="left:${X(q[0])}"></div></div>
+    <div class="sax">${ticks.join("")}</div>
+    <div class="slg"><span><i class="w"></i>${esc(side)} cashes</span><span><i class="l"></i>misses</span><span><i class="av"></i>average ${f1(q[0])}</span><span class="dim">faded bars = rare games outside the typical range</span></div>
+    ${simGameNote(g, p, stat)}</div>`;
 }
 function cardCase(pc) {
   if (!window.CASE) return null;
@@ -1980,7 +1992,7 @@ function bestHtml() {
     const g = gOf(x.espn_id), st = g ? g.state : (new Date(x.start) <= Date.now() ? "in" : "pre");
     return st === "in" ? '<span class="pill live">LIVE</span>' : st === "post" ? '<span class="pill fin">FINAL</span>' : "";
   };
-  const evTag = x => x.plus ? `<span class="gold">${pct(x.ev, 1)} EV</span>` : `<span class="dim">no edge at this price</span>`;
+  const evTag = x => x.plus ? `<span class="pos">${pct(x.ev, 1)} EV</span>` : `<span class="dim">no edge at this price</span>`;
   const row = (x, i) => {
     const isProp = x.kind === "prop";
     const bet = isProp ? `${x.side.toUpperCase()} ${f1(x.point)} ${STATN[x.stat] || x.stat}`
@@ -2190,8 +2202,8 @@ function playerBlock(p, bm) {
     const [proj, , mult, sd] = p.proj[s], c = dkPair(p.pid, s), b = bm[p.pid + "|" + s], ol = ourProp(p.game, p.pid, s);
     const arrow = mArrow({mult});
     let read_;
-    if (b && c && b.point === c[0]) read_ = `<b class="${b.side === "Over" ? "pos" : "neg"}">${b.side}</b> · sim ${Math.round(b.p_sim * 100)}% · blended ${Math.round(b.p * 100)}% · ${b.conv} ${b.tier}${b.rank ? ` · #${b.rank}` : " · shorter than −200"} · matchup ${arrow}`;
-    else if (c) { const bs = betSide({pid: p.pid, stat: s, proj, sd}, c[0], c[1], c[2]); read_ = `<b class="${bs.side === "Over" ? "pos" : "neg"}">${bs.side}</b> · model + price ${Math.round(bs.p * 100)}% · not simmed at this line · matchup ${arrow}`; }
+    if (b && c && b.point === c[0]) read_ = `<b class="${b.side === "Over" ? "over" : "under"}">${b.side}</b> · sim ${Math.round(b.p_sim * 100)}% · blended ${Math.round(b.p * 100)}% · ${b.conv} ${b.tier}${b.rank ? ` · #${b.rank}` : " · shorter than −200"} · matchup ${arrow}`;
+    else if (c) { const bs = betSide({pid: p.pid, stat: s, proj, sd}, c[0], c[1], c[2]); read_ = `<b class="${bs.side === "Over" ? "over" : "under"}">${bs.side}</b> · model + price ${Math.round(bs.p * 100)}% · not simmed at this line · matchup ${arrow}`; }
     else read_ = `matchup ${arrow} · no line yet`;
     return `<div class="cr srow" data-pid="${p.pid}" data-stat="${s}"><div><span class="nm" style="font-weight:600">${STATL[s]}</span><div class="gm">proj ${f1(proj)}${ol ? ` · our line ${f1(ol.line)}` : ""}</div></div>
       <div class="rt"><div class="a">${c ? f1(c[0]) : "–"}</div><div class="b">${c ? `o ${amS(Math.round(c[1] >= 2 ? (c[1] - 1) * 100 : -100 / (c[1] - 1)))} / u ${amS(Math.round(c[2] >= 2 ? (c[2] - 1) * 100 : -100 / (c[2] - 1)))}` : "DraftKings"}</div></div>
@@ -2315,7 +2327,7 @@ function uRow(x) {
     if (x.p_win != null) bits.push(`hit ${Math.round(x.p_win * 100)}%`);
     if (x.conv != null) bits.push(`conv ${x.conv}`);
   } else bits.push(`proj ${f1(x.proj)}`);
-  bits.push(`<span class="dots">${dots(ms.n)}</span> ${mArrow(x)}${ag === false ? ' <span class="neg">opposed</span>' : ""}`);
+  bits.push(`<span class="dots">${dots(ms.n)}</span> ${mArrow(x)}${ag === false ? ' <span class="gold">opposed</span>' : ""}`);
   return `<div class="ur${win ? " win" : ""}" data-pid="${x.pid}" data-stat="${x.stat}"><div class="l1"><span class="nm">${esc(x.name)}</span><span class="ubt ${sideOf(x)}">${bet}</span><span class="od">${priced ? amS(x.am) : ""}</span></div>
     <div class="l2">${bits.join(" · ")}${x.more ? ` · +${x.more} more` : ""}</div></div>`;
 }
@@ -2905,15 +2917,23 @@ function bookLine(pid, stat, date, opp) {
   return a.find(e => (!opp || e.opp === opp) && Math.abs(new Date(e.date + "T12:00:00Z") - t) <= 36 * 3600e3) || null;
 }
 function dkHistHtml(p, s) {
-  const rows = (((D.dkRecent || {})[p.pid + "|" + s]) || []).slice().reverse();
+  const dk = (((D.dkRecent || {})[p.pid + "|" + s]) || []), by = {}; dk.forEach(r => by[r[0]] = r);
+  const cur = Math.max(0, ...(p.logs || []).map(l => +l[12] || 0)), logs = (p.logs || []).filter(l => (+l[12] || 0) === cur).slice(-14), seen = new Set(dk.map(r => r[0]));
+  // every recent game, newest first: the DraftKings line where one was posted, "no line" where it was not, so the table is never mostly empty
+  const rows = [...dk.map(r => ({d: r[0], dk: r})), ...logs.filter(l => !seen.has(l[0])).map(l => ({d: l[0], log: l, opp: l[1]}))].sort((x, y) => y.d.localeCompare(x.d)).slice(0, 14);
   if (!rows.length) return '<div class="empty">DraftKings lines for him are saved from today on: where each line opened, where it closed, and what he scored.</div>';
-  const done = rows.filter(r => r[6] === "over" || r[6] === "under"), ov = done.filter(r => r[6] === "over").length;
+  const done = dk.filter(r => r[6] === "over" || r[6] === "under"), ov = done.filter(r => r[6] === "over").length;
   const am_ = d => !d ? "—" : d >= 2 ? "+" + Math.round((d - 1) * 100) : "−" + Math.round(100 / (d - 1));
-  return `${done.length ? `<div class="card" style="padding:9px 12px;margin:6px 0">Over DraftKings' closing line in <b>${ov} of ${done.length}</b> games.</div>` : ""}
+  const noLine = rows.filter(r => !r.dk).length;
+  return `${done.length ? `<div class="card" style="padding:9px 12px;margin:6px 0">Over DraftKings' closing line in <b>${ov} of ${done.length}</b> games. <span class="dim">DraftKings posted this prop in ${dk.length} of his last ${rows.length} games${noLine ? "; the rest show what he scored with no line" : ""}.</span></div>` : ""}
     <div class="scroll"><table class="tbl"><tr><th>Date</th><th>Opp</th><th>Open</th><th>Close</th><th>O / U</th><th>${STATN[s]}</th><th></th></tr>
-    ${rows.map(r => `<tr><td class="t">${esc(r[0].slice(5).replace("-", "/"))}</td><td>${esc(r[7] || "")}</td><td>${f1(r[1])}</td><td>${f1(r[2])}${r[2] !== r[1] ? ` <span class="${r[2] > r[1] ? "h" : "m"}">${r[2] > r[1] ? "↑" : "↓"}</span>` : ""}</td>
+    ${rows.map(x => { if (x.dk) { const r = x.dk;
+      return `<tr><td class="t">${esc(r[0].slice(5).replace("-", "/"))}</td><td>${esc(r[7] || "")}</td><td>${f1(r[1])}</td><td>${f1(r[2])}${r[2] !== r[1] ? ` <span class="dim">${r[2] > r[1] ? "↑" : "↓"}</span>` : ""}</td>
       <td class="dim">${am_(r[3])} / ${am_(r[4])}</td><td>${r[5] == null ? (r[6] === "dnp" ? '<span class="dim">DNP</span>' : '<span class="dim">pending</span>') : f1(r[5])}</td>
-      <td class="${r[6] === "over" ? "h" : r[6] === "under" ? "m" : "dim"}">${r[6] === "over" ? "O" : r[6] === "under" ? "U" : r[6] === "push" ? "P" : ""}</td></tr>`).join("")}</table></div>`;
+      <td class="${r[6] === "over" ? "over" : r[6] === "under" ? "under" : "dim"}">${r[6] === "over" ? "O" : r[6] === "under" ? "U" : r[6] === "push" ? "P" : ""}</td></tr>`; }
+      const l = x.log, v = SV[s](l);
+      return `<tr class="dim"><td class="t">${esc(l[0].slice(5).replace("-", "/"))}</td><td>${esc(x.opp || "")}</td><td>—</td><td>—</td><td class="dim">no line posted</td><td>${f1(v)}</td><td></td></tr>`; }).join("")}</table></div>
+    <div class="desc" style="margin-top:4px">O / U is which side of DraftKings' closing line he finished on; it is not a win or a loss.</div>`;
 }
 function linesCard(p, s) {
   const rows = (D.lines && D.lines.by[p.pid + "|" + s]) || [];
@@ -3215,7 +3235,7 @@ function betList() {
       ${all.settled ? `<span>Record <b class="num">${all.w}-${all.l}</b></span><span>P&amp;L <b class="num ${cls(all.pnl)}">${money(all.pnl, true)}</b></span>` : ""}</div>
     ${groups.length ? groups.map(g => { const t = sum(g.items);
       return `<details class="sub bday" data-day="${g.k}" ${openDays.has(g.k) ? "open" : ""}><summary><span>${dayName(g.k)}</span><span class="meta">${t.n} bet${t.n > 1 ? "s" : ""}${t.open ? ` · ${t.open} open` : ""}${t.settled ? ` · <span class="${cls(t.pnl)}">${money(t.pnl, true)}</span>` : ""}</span></summary>
-        <div class="sb">${g.items.map(({b, who}) => (F.who === "both" ? `<div class="desc" style="margin:8px 0 -6px;font-size:10px;letter-spacing:.1em;color:${who === "you" ? "var(--gold)" : "var(--mars)"}">${who === "you" ? "YOU" : "AGENT"}</div>` : "") + betRow(b)).join("")}</div></details>`; }).join("")
+        <div class="sb">${g.items.map(({b, who}) => (F.who === "both" ? `<div class="desc" style="margin:8px 0 -6px;font-size:10px;letter-spacing:.1em;color:${who === "you" ? "var(--accent)" : "var(--mars)"}">${who === "you" ? "YOU" : "AGENT"}</div>` : "") + betRow(b)).join("")}</div></details>`; }).join("")
       : `<div class="empty">${F.who === "agent" ? "The agent has no bets for this filter." : "No bets for this filter yet. Tap + Log a bet, or Log this bet on any player card."}</div>`}`;
   const L_ = $("betList");
   L_.querySelectorAll("#bfWho button").forEach(b => b.onclick = () => { F.who = b.dataset.k; D.bfOpen = null; save(); betList(); liveTick(); });
