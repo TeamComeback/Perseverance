@@ -13,3 +13,18 @@ def test_hist_add_only_on_change():
     dk.hist_add(h, "games", "g", [1.5, 1.87, 1.94, 214.5, 1.9, 1.9, 2.06, 1.8], "t1")
     assert [p[0] for p in h["props"]["1|pts"]] == ["t1", "t3", "t4"]
     assert len(h["games"]["g"]) == 1
+
+
+def test_edge_record_counts_once_per_game_bucket(tmp_path, monkeypatch):
+    import json
+    from agent import config
+    monkeypatch.setattr(config, "DATA", tmp_path)
+    (tmp_path / "dk").mkdir()
+    snap = lambda ts, ph: {"ts": ts, "line": {"sp_h": 1.91, "sp_a": 1.91}, "sim": {"p_home_cover": ph},
+                           "res": {"spread_home": "won", "spread_away": "lost"}}
+    # two snapshots with the same 10%+ edge on home count once; the away side has no edge
+    G = {"final": True, "live": [snap("a", 0.60), snap("b", 0.61)]}
+    (tmp_path / "dk" / "2026-11-20.json").write_text(json.dumps({"games": {"g1": G}}))
+    e = dk.edge_record()["all"]
+    assert e["large"]["n"] == 1 and e["large"]["w"] == 1 and e["large"]["units"] == 0.91
+    assert e["neg"]["n"] == 1 and e["neg"]["l"] == 1 and e["neg"]["units"] == -1
