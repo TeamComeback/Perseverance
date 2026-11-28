@@ -2,7 +2,7 @@
  "book": {
   "name": "Perseverance",
   "run": 3,
-  "cash": 70.28,
+  "cash": 80.83,
   "start": 100.0,
   "goal": 1000.0,
   "peak": 100.0,
@@ -23201,7 +23201,7 @@
       "book": "draftkings",
       "fair_p": 0.4889,
       "close_p": null,
-      "result": null,
+      "result": "win",
       "shop": {
        "median": 1.91,
        "gain": 0.1047,
@@ -23237,6 +23237,22 @@
          "txt": "MIA games have +5% rebounds up for grabs vs the league (missed shots and extra possessions)"
         }
        ]
+      },
+      "final": {
+       "home": 105.0,
+       "away": 108.0
+      },
+      "actual": 8.0,
+      "box": {
+       "min": 40.0,
+       "pts": 27.0,
+       "reb": 3.0,
+       "ast": 8.0,
+       "tpm": 2.0,
+       "tpa": 9.0,
+       "fga": 19.0,
+       "fta": 10.0,
+       "tov": 5.0
       }
      }
     ],
@@ -23247,10 +23263,10 @@
     "note": "Proj 6.9 vs line 6.5 (norm 6.2, 36 min). Model 50% vs market 49%. MIA gives point guards +13% assists vs their norm (#5 softest of 30) \u00b7 Players with his profile: +11% assists vs MIA (205 close comps) \u00b7 His history vs MIA: 7.5 assists/g in 2 games (+4%)",
     "group": null,
     "issue": null,
-    "status": "open",
-    "payout": null,
-    "profit": null,
-    "settled": null,
+    "status": "won",
+    "payout": 10.55,
+    "profit": 5.55,
+    "settled": "2026-11-28T04:53:53Z",
     "shadow": {
      "newsroom": {
       "hold": false,
@@ -23260,6 +23276,215 @@
       "hold": false,
       "final": true
      }
+    },
+    "review": {
+     "headline": "WON: 8 assists vs Over 6.5",
+     "final": "Miami Heat 108 \u2013 New York Knicks 105",
+     "legs": [
+      {
+       "outcome": "Jalen Brunson Over",
+       "result": "win",
+       "headline": "8 assists vs Over 6.5",
+       "final": "Miami Heat 108 \u2013 New York Knicks 105",
+       "why": [
+        "Jalen Brunson finished with 8 assists against a line of 6.5: over cleared by 1.5.",
+        "Minutes: played 40 vs 36.5 projected.",
+        "Box score: 8 ast, 5 TO.",
+        "Model projected 6.9 (6.2 norm \u00d7 1.12 matchup); actual was +1.1 off (+0.4 standard deviations).",
+        "Matchup read was right: he beat his own norm for the minutes played (6.8) in a matchup the model rated soft.",
+        "Signal: MIA gives point guards +13% assists vs their norm (#5 softest of 30)",
+        "Signal: Players with his profile: +11% assists vs MIA (205 close comps)",
+        "Signal: His history vs MIA: 7.5 assists/g in 2 games (+4%)",
+        "We priced it at 49% to hit vs 47% needed to break even at 2.11x (+3.1% expected edge).",
+        "Consensus fair probability when placed: 49% (no closing price captured)."
+       ],
+       "tags": [
+        "ordinary-variance",
+        "matchup-read-right"
+       ]
+      }
+     ],
+     "tags": [
+      "matchup-read-right",
+      "ordinary-variance"
+     ],
+     "recaps": [
+      {
+       "kind": "basketball",
+       "teams": {
+        "home": "NY",
+        "away": "MIA"
+       },
+       "final": "MIA 108 \u2013 NY 105",
+       "periods": {
+        "away": [
+         31,
+         29,
+         26,
+         22
+        ],
+        "home": [
+         21,
+         23,
+         35,
+         26
+        ]
+       },
+       "largest_lead": {
+        "MIA": 23,
+        "NY": 1
+       },
+       "largest_lead_at": {
+        "MIA": "3:47 2nd Q",
+        "NY": "6:23 4th Q"
+       },
+       "lead_changes": 4,
+       "ties": 3,
+       "runs": [
+        {
+         "team": "MIA",
+         "pts": 15,
+         "from": "10:01 2nd Q",
+         "to": "6:58 2nd Q",
+         "score": "MIA 46-25 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 9,
+         "from": "1:50 2nd Q",
+         "to": "36.6 2nd Q",
+         "score": "MIA 58-44 NY"
+        },
+        {
+         "team": "NY",
+         "pts": 9,
+         "from": "11:31 3rd Q",
+         "to": "9:15 3rd Q",
+         "score": "MIA 61-53 NY"
+        }
+       ],
+       "swings": [
+        {
+         "team": "NY",
+         "swing": 17,
+         "from": "1:50 2nd Q",
+         "to": "5:50 3rd Q",
+         "mins": 8.0,
+         "from_score": "MIA 58-36 NY",
+         "to_score": "MIA 70-65 NY",
+         "pts_for": 29,
+         "pts_against": 12
+        },
+        {
+         "team": "MIA",
+         "swing": 17,
+         "from": "10:27 2nd Q",
+         "to": "3:47 2nd Q",
+         "mins": 6.7,
+         "from_score": "MIA 31-25 NY",
+         "to_score": "MIA 54-31 NY",
+         "pts_for": 23,
+         "pts_against": 6
+        }
+       ],
+       "clutch": [
+        "43.7 4th Q: Bam Adebayo makes 13-foot two point shot (Ryan Conwell assists) (MIA 104-100 NY)",
+        "36.9 4th Q: Jalen Brunson makes 16-foot driving floating jump shot (MIA 104-102 NY)",
+        "12.8 4th Q: James Wiseman makes free throw 1 of 2 (MIA 104-103 NY)",
+        "11.7 4th Q: Davion Mitchell makes free throw 1 of 2 (MIA 105-103 NY)",
+        "11.7 4th Q: Davion Mitchell makes free throw 2 of 2 (MIA 106-103 NY)",
+        "9.8 4th Q: Jalen Brunson makes free throw 2 of 3 (MIA 106-104 NY)",
+        "9.8 4th Q: Jalen Brunson makes free throw 3 of 3 (MIA 106-105 NY)",
+        "7.2 4th Q: Pelle Larsson makes dunk (Davion Mitchell assists) (MIA 108-105 NY)"
+       ],
+       "leaders": [
+        "Giannis Antetokounmpo (MIA): 22 pts, 23 reb, 3 ast, 0-4 3PT in 32 min",
+        "Bam Adebayo (MIA): 25 pts, 7 reb, 0 ast, 1-4 3PT in 37 min",
+        "Jalen Brunson (NY): 27 pts, 3 reb, 8 ast, 2-9 3PT in 40 min",
+        "Karl-Anthony Towns (NY): 19 pts, 10 reb, 4 ast, 1-4 3PT in 34 min"
+       ],
+       "player": {
+        "by_period": [
+         {
+          "per": 1,
+          "label": "Q1",
+          "pts": 2,
+          "reb": 1,
+          "ast": 2,
+          "tpm": 0,
+          "pf": 0,
+          "fga": 4,
+          "fgm": 1
+         },
+         {
+          "per": 2,
+          "label": "Q2",
+          "pts": 9,
+          "reb": 0,
+          "ast": 1,
+          "tpm": 1,
+          "pf": 0,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 3,
+          "label": "Q3",
+          "pts": 10,
+          "reb": 1,
+          "ast": 4,
+          "tpm": 1,
+          "pf": 3,
+          "fga": 5,
+          "fgm": 3
+         },
+         {
+          "per": 4,
+          "label": "Q4",
+          "pts": 6,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0,
+          "pf": 1,
+          "fga": 5,
+          "fgm": 1
+         }
+        ],
+        "threes_at": [
+         "3:23 2nd Q",
+         "4:11 3rd Q"
+        ],
+        "box": {
+         "id": "3934672",
+         "name": "Jalen Brunson",
+         "team": "NY",
+         "min": "40",
+         "pts": 27,
+         "reb": 3,
+         "ast": 8,
+         "3pt": "2-9",
+         "fg": "8-19",
+         "pf": "4",
+         "starter": true
+        }
+       },
+       "story": [
+        "Halftime: MIA 60-44 NY, MIA up 16.",
+        "The 1st quarter decided the most: MIA won it 31-21.",
+        "Largest leads: MIA 23 (3:47 2nd Q), NY 1 (6:23 4th Q). 4 lead changes, 3 ties.",
+        "Momentum swing: NY outscored them 29-12 in 8 minutes (1:50 2nd Q to 5:50 3rd Q), moving it from MIA 58-36 NY to MIA 70-65 NY.",
+        "Momentum swing: MIA outscored them 23-6 in 6.7 minutes (10:27 2nd Q to 3:47 2nd Q), moving it from MIA 31-25 NY to MIA 54-31 NY.",
+        "MIA went on a 15-0 run (10:01 2nd Q to 6:58 2nd Q), making it MIA 46-25 NY.",
+        "NY went on a 9-0 run (1:50 2nd Q to 36.6 2nd Q), making it MIA 58-44 NY.",
+        "Close finish: 8 scoring plays in the last five minutes with the game within six.",
+        "Jalen Brunson by period (AST): Q1 2, Q2 1, Q3 4, Q4 1.",
+        "He went over 6.5 in Q3.",
+        "Threes made at: 3:23 2nd Q, 4:11 3rd Q."
+       ],
+       "espn_id": "401909326",
+       "link": "https://www.espn.com/nba/game/_/gameId/401909326"
+      }
+     ]
     }
    }
   ],
@@ -23475,15 +23700,15 @@
    "clv_gate": false
   },
   "matchup_over": {
-   "bets": 11,
-   "staked": 55.0,
-   "profit": 19.200000000000003,
+   "bets": 12,
+   "staked": 60.0,
+   "profit": 24.750000000000004,
    "clv_n": 9,
    "clv_sum": -0.08185399999999976,
    "tags": {
     "ordinary-variance": {
-     "n": 5,
-     "won": 4,
+     "n": 6,
+     "won": 5,
      "lost": 1
     },
     "blowout": {
@@ -23492,8 +23717,8 @@
      "lost": 3
     },
     "matchup-read-right": {
-     "n": 9,
-     "won": 6,
+     "n": 10,
+     "won": 7,
      "lost": 3
     },
     "minutes-short": {
@@ -23599,9 +23824,9 @@
  "sports": {
   "basketball_nba": {
    "last_scanned": "2026-11-27T07:15:26Z",
-   "bets": 71.0,
-   "staked": 376.16999999999996,
-   "profit": -112.92
+   "bets": 72.0,
+   "staked": 381.16999999999996,
+   "profit": -107.37
   },
   "icehockey_nhl": {
    "last_scanned": "2026-11-27T07:15:26Z",
@@ -23845,16 +24070,6 @@
   }
  },
  "journal": [
-  {
-   "ts": "2026-11-22T03:24:13Z",
-   "kind": "scan",
-   "text": "Scanned americanfootball_nfl (11) for 3 credits. Nothing cleared the bar. Equity $51.35."
-  },
-  {
-   "ts": "2026-11-22T05:00:41Z",
-   "kind": "adapt",
-   "text": "Three scans in a row with nothing worth betting. Easing the minimum edge to 9.75% so I get enough bets to learn from."
-  },
   {
    "ts": "2026-11-22T05:01:35Z",
    "kind": "research",
@@ -25344,6 +25559,16 @@
    "ts": "2026-11-28T04:44:31Z",
    "kind": "research",
    "text": "Research refresh for Fri Nov 27: 11 games, 256 players projected, lineups for 11 games."
+  },
+  {
+   "ts": "2026-11-28T04:53:53Z",
+   "kind": "result",
+   "text": "WON +$5.55: Jalen Brunson Over 6.5 @ +111 (DraftKings) \u2014 WON: 8 assists vs Over 6.5 [matchup-read-right, ordinary-variance]"
+  },
+  {
+   "ts": "2026-11-28T04:53:57Z",
+   "kind": "scan",
+   "text": "No scan this run (allowance 0 credits, 12972 left this cycle)."
   }
  ],
  "learned_ids": [
@@ -25452,26 +25677,27 @@
   "fc7a3a28",
   "a57d57d2",
   "bf619664",
-  "56ce09be"
+  "56ce09be",
+  "683053eb"
  ],
  "strategist": null,
- "updated": "2026-11-28T04:45:33Z",
+ "updated": "2026-11-28T04:53:57Z",
  "stats": {
-  "bets": 106,
-  "won": 34,
+  "bets": 107,
+  "won": 35,
   "lost": 70,
   "shop_n": 47,
   "shop_avg": 0.0725,
   "push": 2,
-  "staked": 613.54,
-  "profit": -175.71,
-  "roi": -0.2864,
+  "staked": 618.54,
+  "profit": -170.16,
+  "roi": -0.2751,
   "clv": 0.0016,
   "clv_n": 82,
-  "clv_no_close": 25,
+  "clv_no_close": 26,
   "close_mins_median": 9,
-  "open": 2,
-  "equity": 80.28
+  "open": 1,
+  "equity": 85.83
  },
  "weights": {
   "value_fav": 0.781,
@@ -25479,7 +25705,7 @@
   "longshot": 0.3,
   "arb": 1.108,
   "parlay_ev": 1.0,
-  "matchup_over": 1.322,
+  "matchup_over": 1.4,
   "matchup_under": 0.3
  },
  "paused": [
@@ -25515,15 +25741,15 @@
     "paused": false
    },
    "matchup_over": {
-    "bets": 0,
-    "won": 0,
+    "bets": 1,
+    "won": 1,
     "lost": 0,
     "push": 0,
-    "staked": 0,
-    "profit": 0,
-    "roi": null,
+    "staked": 5.0,
+    "profit": 5.55,
+    "roi": 1.11,
     "clv": null,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "value_fav": {
@@ -25565,15 +25791,15 @@
     "paused": false
    },
    "matchup_over": {
-    "bets": 11,
-    "won": 7,
+    "bets": 12,
+    "won": 8,
     "lost": 4,
     "push": 0,
-    "staked": 55.0,
-    "profit": 19.2,
-    "roi": 0.3491,
+    "staked": 60.0,
+    "profit": 24.75,
+    "roi": 0.4125,
     "clv": -0.0091,
-    "open": 1,
+    "open": 0,
     "paused": false
    },
    "matchup_under": {
