@@ -4245,7 +4245,13 @@
     "at": "2026-11-27T17:02:30Z",
     "why": "confidence fell 31 \u2192 29"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 24
+   },
+   "clv": null
   },
   "g|401909333|total|Over": {
    "key": "g|401909333|total|Over",
@@ -4665,7 +4671,18 @@
    },
    "first_seen": "2026-11-27T14:16:37Z",
    "removed": null,
-   "status": "Started"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 198
+   },
+   "result_final": {
+    "res": "loss",
+    "units": -1,
+    "actual": 198
+   },
+   "clv": null
   },
   "g|401909329|spread|away": {
    "key": "g|401909329|spread|away",
@@ -5027,7 +5044,13 @@
     "at": "2026-11-27T17:02:30Z",
     "why": "other plays ranked higher"
    },
-   "status": "Removed"
+   "status": "Won",
+   "result": {
+    "res": "win",
+    "units": 0.89,
+    "actual": -15
+   },
+   "clv": null
   },
   "g|401909326|total|Over": {
    "key": "g|401909326|total|Over",
@@ -5140,7 +5163,13 @@
     "at": "2026-11-27T23:34:24Z",
     "why": "other plays ranked higher"
    },
-   "status": "Removed"
+   "status": "Lost",
+   "result": {
+    "res": "loss",
+    "units": -1,
+    "actual": 213
+   },
+   "clv": null
   },
   "g|401909336|total|Over": {
    "key": "g|401909336|total|Over",
@@ -6838,5 +6867,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-28T02:58:34Z"
+ "updated": "2026-11-28T03:00:40Z"
 }
