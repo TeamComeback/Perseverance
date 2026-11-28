@@ -1178,7 +1178,7 @@
     "now": 13.5,
     "kalshi": 0.483
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-27T14:16:37Z",
     "edition": "update",
@@ -1197,7 +1197,7 @@
    },
    "first_seen": "2026-11-27T14:16:37Z",
    "removed": null,
-   "status": "Past play-to"
+   "status": "Started"
   },
   "p|4278355|pts|Under": {
    "key": "p|4278355|pts|Under",
@@ -2139,7 +2139,7 @@
    "p": 0.55,
    "p_sim": 0.557,
    "p_mkt": 0.529,
-   "p_kalshi": 0.54,
+   "p_kalshi": 0.55,
    "ev": -0.021,
    "verdict": "Pass: recent form and cushion agree; the main risk is tonight's spot.",
    "home": "POR",
@@ -2262,7 +2262,7 @@
    "market": {
     "open": 8.5,
     "now": 9.5,
-    "kalshi": 0.54
+    "kalshi": 0.55
    },
    "started": false,
    "published": {
@@ -3885,21 +3885,21 @@
   "p|4066259|pts|Under": {
    "key": "p|4066259|pts|Under",
    "kind": "prop",
-   "label": "De'Aaron Fox Under 13.5 points",
+   "label": "De'Aaron Fox Under 12.5 points",
    "espn_id": "401909333",
    "game": "LAL @ SA",
    "start": "2026-11-28T02:30Z",
    "side": "Under",
-   "point": 13.5,
-   "dec": 1.8,
-   "am": -125,
+   "point": 12.5,
+   "dec": 1.94,
+   "am": -106,
    "conv": 33,
    "tier": "Pass",
-   "p": 0.544,
-   "p_sim": 0.645,
-   "p_mkt": 0.524,
-   "p_kalshi": 0.565,
-   "ev": -0.02,
+   "p": 0.504,
+   "p_sim": 0.595,
+   "p_mkt": 0.485,
+   "p_kalshi": null,
+   "ev": -0.022,
    "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
    "home": "SA",
    "away": "LAL",
@@ -3909,22 +3909,22 @@
    "opp": "LAL",
    "stat": "pts",
    "proj": 10.9,
-   "sim": 11.8,
+   "sim": 11.5,
    "ob_ind": 11.5,
    "avg10": 9.9,
    "minutes": 26.9,
    "for": [
     {
-     "tag": "second market",
-     "t": "Kalshi likes it more: 56% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
+     "tag": "average",
+     "t": "Averaging 9.9 points over his last 10; the line is 12.5.",
      "rec": [
-      176,
-      146
+      667,
+      591
      ]
     },
     {
      "tag": "simulation",
-     "t": "Goes under in 65% of 10,000 simulated games (sim average 11.8).",
+     "t": "Goes under in 59% of 10,000 simulated games (sim average 11.5).",
      "rec": [
       1702,
       1521
@@ -3932,7 +3932,7 @@
     },
     {
      "tag": "projection",
-     "t": "Model projects 10.9 points against a line of 13.5.",
+     "t": "Model projects 10.9 points against a line of 12.5.",
      "rec": [
       1753,
       1620
@@ -3940,7 +3940,7 @@
     },
     {
      "tag": "recent form",
-     "t": "Stayed under 13.5 in 8 of his last 10 (4 of the last 5).",
+     "t": "Stayed under 12.5 in 8 of his last 10 (4 of the last 5).",
      "rec": [
       1513,
       1405
@@ -3948,7 +3948,7 @@
     },
     {
      "tag": "cushion",
-     "t": "Room to spare: he stayed under even 11.5 in 7 of his last 10.",
+     "t": "Room to spare: he stayed under even 10.5 in 7 of his last 10.",
      "rec": [
       399,
       378
@@ -3966,7 +3966,7 @@
     },
     {
      "tag": "tonight's spot",
-     "t": "Against LAL: 1 of 7 under 13.5 (14% vs 55% lately).",
+     "t": "Against LAL: 1 of 7 under 12.5 (14% vs 55% lately).",
      "rec": [
       908,
       909
@@ -3990,40 +3990,21 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.838,
-    "floor_am": -119,
-    "line": 13.5,
-    "next": 12.5
+    "floor_dec": 1.984,
+    "floor_am": -102,
+    "line": null,
+    "next": 11.5
    },
-   "watch": [
-    {
-     "pid": "4066259",
-     "name": "De'Aaron Fox",
-     "team": "SA",
-     "status": "Ques",
-     "self": true,
-     "min": 26.9
-    },
-    {
-     "pid": "5037871",
-     "name": "Dylan Harper",
-     "team": "SA",
-     "status": "Ques",
-     "self": false,
-     "min": 30.8
-    }
-   ],
+   "watch": [],
    "kill": [
-    "The line reaching 12.5",
-    "The price at 13.5 going past \u2212119",
-    "De'Aaron Fox is listed ques: if he is ruled out the bet is off",
-    "A change in Dylan Harper (ques): the model re-prices on the next run",
+    "The line reaching 11.5",
+    "The price at 12.5 going past \u2212102",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 13.5,
-    "now": 13.5,
-    "kalshi": 0.565
+    "now": 12.5,
+    "kalshi": null
    },
    "started": false,
    "published": {
@@ -4128,7 +4109,7 @@
     "now": 224.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-27T11:45:29Z",
     "edition": "morning",
@@ -4147,7 +4128,7 @@
    },
    "first_seen": "2026-11-27T11:45:29Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "g|401909328|spread|away": {
    "key": "g|401909328|spread|away",
@@ -6715,6 +6696,13 @@
    "kind": "removed",
    "text": "Removed: LAL @ SA Over 226.5 \u2014 line moved 226.5 \u2192 225.5",
    "alert": false
+  },
+  {
+   "at": "2026-11-28T02:32:49Z",
+   "key": "p|4066259|pts|Under",
+   "kind": "line",
+   "text": "De'Aaron Fox: line 13.5 at \u2212125 \u2192 12.5 at \u2212106",
+   "alert": false
   }
  ],
  "narratives": [
@@ -6838,20 +6826,9 @@
  "alerts": 6,
  "slate": {
   "games": 11,
-  "to_tip": 5,
+  "to_tip": 4,
   "first": "2026-11-28T00:00Z",
-  "questionable": [
-   {
-    "name": "Dylan Harper",
-    "team": "SA",
-    "status": "Ques"
-   },
-   {
-    "name": "De'Aaron Fox",
-    "team": "SA",
-    "status": "Ques"
-   }
-  ],
+  "questionable": [],
   "picks": 26
  },
  "leans_record": {
@@ -6861,5 +6838,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-28T02:15:48Z"
+ "updated": "2026-11-28T02:32:49Z"
 }

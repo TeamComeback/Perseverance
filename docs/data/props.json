@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T01:47:53Z",
+ "updated": "2026-11-28T02:32:23Z",
  "date": "2026-11-27",
  "priced_date": "2026-11-27",
  "games": [
@@ -50,7 +50,7 @@
    "away": "DAL",
    "start": "2026-11-28T02:00Z",
    "espn_id": "401909332",
-   "state": "pre"
+   "state": "in"
   },
   {
    "home": "SA",
@@ -3180,10 +3180,10 @@
    "role": "PF",
    "stat": "ra",
    "stat_name": "reb+ast",
-   "proj": 4.9,
-   "base": 5.33,
+   "proj": 5.03,
+   "base": 5.48,
    "mult": 0.919,
-   "minutes": 16.7,
+   "minutes": 17.2,
    "status": "",
    "start": "2026-11-28T02:30Z",
    "espn_id": "401909333",
@@ -4584,16 +4584,16 @@
    "role": "SF",
    "stat": "pra",
    "stat_name": "pts+reb+ast",
-   "proj": 12.54,
-   "base": 13.51,
+   "proj": 7.88,
+   "base": 8.49,
    "mult": 0.928,
-   "minutes": 23.9,
+   "minutes": 15.0,
    "status": "",
    "start": "2026-11-28T02:30Z",
    "espn_id": "401909333",
    "lean": "Under",
    "strength": 0.0747,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -5240,10 +5240,10 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 6.28,
-   "base": 5.84,
+   "proj": 6.3,
+   "base": 5.87,
    "mult": 1.073,
-   "minutes": 21.8,
+   "minutes": 21.9,
    "status": "",
    "start": "2026-11-28T02:30Z",
    "espn_id": "401909334",
@@ -5677,12 +5677,12 @@
    "base": 1.11,
    "mult": 0.933,
    "minutes": 30.8,
-   "status": "Ques",
+   "status": "",
    "start": "2026-11-28T02:30Z",
    "espn_id": "401909333",
    "lean": "Under",
    "strength": 0.0694,
-   "starter": true,
+   "starter": null,
    "signals": [
     {
      "k": "dvp",
@@ -7385,10 +7385,10 @@
    "role": "PG",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 1.02,
-   "base": 1.09,
+   "proj": 1.25,
+   "base": 1.33,
    "mult": 0.94,
-   "minutes": 22.2,
+   "minutes": 26.6,
    "status": "",
    "start": "2026-11-28T00:30Z",
    "espn_id": "401909329",
@@ -7969,10 +7969,10 @@
    "role": "SF",
    "stat": "tpm",
    "stat_name": "threes",
-   "proj": 0.91,
-   "base": 0.97,
+   "proj": 0.95,
+   "base": 1.0,
    "mult": 0.942,
-   "minutes": 35.7,
+   "minutes": 38.0,
    "status": "",
    "start": "2026-11-28T00:30Z",
    "espn_id": "401909329",
@@ -8138,6 +8138,52 @@
    "open": 1.5
   },
   {
+   "pid": "3064560",
+   "name": "Luke Kornet",
+   "team": "SA",
+   "opp": "LAL",
+   "home": true,
+   "role": "C",
+   "stat": "pra",
+   "stat_name": "pts+reb+ast",
+   "proj": 5.94,
+   "base": 6.31,
+   "mult": 0.942,
+   "minutes": 10.1,
+   "status": "",
+   "start": "2026-11-28T02:30Z",
+   "espn_id": "401909333",
+   "lean": "Under",
+   "strength": 0.0598,
+   "starter": null,
+   "signals": [
+    {
+     "k": "dvp",
+     "v": 0.972,
+     "n": 52.9,
+     "rank": 22,
+     "txt": "LAL gives centers -3% pts+reb+ast vs their norm (#9 toughest of 30)"
+    },
+    {
+     "k": "sim",
+     "v": 0.94,
+     "n": 141,
+     "txt": "Players with his profile: -6% pts+reb+ast vs LAL (141 close comps)"
+    },
+    {
+     "k": "h2h",
+     "v": 1.006,
+     "n": 3,
+     "txt": "His history vs LAL: 15.0 pts+reb+ast/g in 3 games (+1%)"
+    },
+    {
+     "k": "chances",
+     "v": 0.945,
+     "txt": "LAL games have -6% rebounds up for grabs vs the league (missed shots and extra possessions)"
+    }
+   ]
+  },
+  {
    "pid": "4395712",
    "name": "Andrew Nembhard",
    "team": "IND",
@@ -8205,8 +8251,8 @@
    "role": "PG",
    "stat": "ast",
    "stat_name": "assists",
-   "proj": 6.96,
-   "base": 6.56,
+   "proj": 6.97,
+   "base": 6.57,
    "mult": 1.061,
    "minutes": 33.0,
    "status": "",
@@ -8424,7 +8470,7 @@
    "espn_id": "401909333",
    "lean": "Under",
    "strength": 0.0587,
-   "starter": null,
+   "starter": true,
    "signals": [
     {
      "k": "dvp",
@@ -8836,52 +8882,6 @@
      "k": "chances",
      "v": 0.922,
      "txt": "NY games have -8% rebounds up for grabs vs the league (missed shots and extra possessions)"
-    }
-   ]
-  },
-  {
-   "pid": "5106262",
-   "name": "Zuby Ejiofor",
-   "team": "ATL",
-   "opp": "BOS",
-   "home": false,
-   "role": "PF",
-   "stat": "pra",
-   "stat_name": "pts+reb+ast",
-   "proj": 8.73,
-   "base": 9.26,
-   "mult": 0.944,
-   "minutes": 13.8,
-   "status": "",
-   "start": "2026-11-28T01:00Z",
-   "espn_id": "401909330",
-   "lean": "Under",
-   "strength": 0.0576,
-   "starter": null,
-   "signals": [
-    {
-     "k": "dvp",
-     "v": 0.948,
-     "n": 24.0,
-     "rank": 27,
-     "txt": "BOS gives power forwards -5% pts+reb+ast vs their norm (#4 toughest of 30)"
-    },
-    {
-     "k": "sim",
-     "v": 0.94,
-     "n": 142,
-     "txt": "Players with his profile: -6% pts+reb+ast vs BOS (142 close comps)"
-    },
-    {
-     "k": "h2h",
-     "v": 1.0,
-     "n": 0,
-     "txt": "No history vs BOS yet"
-    },
-    {
-     "k": "chances",
-     "v": 0.963,
-     "txt": "BOS games have -4% rebounds up for grabs vs the league (missed shots and extra possessions)"
     }
    ]
   }
@@ -14951,6 +14951,7 @@
   "devin vassell": "4395630",
   "stephon castle": "4845367",
   "keldon johnson": "4395723",
+  "luke kornet": "3064560",
   "dylan harper": "5037871",
   "deaaron fox": "4066259",
   "luka doncic": "3945274",
