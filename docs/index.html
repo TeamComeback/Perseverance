@@ -3307,6 +3307,7 @@ async function renderTrends() {
   if (!D.sb) D.sb = await get("scoreboard.json", {});
   if (!D.simlog) D.simlog = await get("sims_log.json", {agg: {}, graded: {}});
   if (!D.livetrack) D.livetrack = await get("live_track.json", {agg: {}});
+  if (!D.calib) D.calib = await get("calibration.json", null);
   if (!D.kt) D.kt = await get("kalshi_track.json", null);
   await getLines();
   const T = D.trends;
@@ -3367,6 +3368,21 @@ function minutesHtml() {
     ${all ? `<div class="desc" style="margin-top:4px">All time: ${f1(all[1] / all[0])} min average miss over ${all[0]} player-games.</div>` : ""}
     ${mm.length ? `<div class="lbl">Biggest misses · ${esc(days[days.length - 1])}</div>` + mm.map(m => `<div class="ti"><span>${esc(m.n)} <span class="dim">· ${esc(m.g)}</span></span><b class="${m.dnp ? "neg" : m.a > m.p ? "pos" : "neg"}">${m.dnp ? `${f1(m.p)} → DNP` : `${f1(m.p)} → ${m.a}`}</b></div>`).join("") : ""}`;
 }
+// calibration shadow: how far to trust the sim vs DraftKings' number, learned nightly; shown only, never applied (agent/calib.py)
+function calibHtml() {
+  const C = D.calib; if (!C || !C.w) return "";
+  const MKN = {spread: "Spread", total: "Total", ml: "Moneyline"}, pc = x => Math.round(x * 100) + "%";
+  const hit = a => { const d = a.w + a.l; return d ? a.w / d : 0; }, roi = a => { const d = a.w + a.l; return d ? a.units / d : 0; };
+  const rs = a => `${a.n}</td><td>${a.w}-${a.l}</td><td><b>${pc(hit(a))}</b></td><td class="${roi(a) > 0 ? "h" : roi(a) < 0 ? "m" : ""}">${(roi(a) > 0 ? "+" : "") + Math.round(roi(a) * 100)}%`;
+  const bm = Object.keys(C.by_market || {}).map(k => { const b = C.by_market[k];
+    return `<tr><td class="t">${MKN[k] || k}</td><td>${b.n}</td><td><b>${pc(C.w[k])}</b></td><td class="dim">${b.sim.toFixed(3)}</td><td class="dim">${b.market.toFixed(3)}</td><td class="${b.cal < b.sim ? "h" : "m"}">${b.cal.toFixed(3)}</td></tr>`; }).join("");
+  const sh = C.shadow || {};
+  return `<div class="lbl">Calibration shadow · learning how far to trust the sim</div>
+    <div class="desc">Each night the agent learns how much of the sim's chance to keep and how much to take from DraftKings' own number, per market. <b>Sim weight</b> is that share. The log-loss columns (lower is better) score each day with a weight learned from the other days only. <b>Shadow only</b>: nothing on the live screen or in any bet uses it yet. ${C.ready ? '<b class="gold">Ready for you to look at promoting it.</b>' : `It becomes a promotion candidate after ${C.promote_at} graded games (${C.games} so far) if it keeps beating the raw sim.`}</div>
+    <div class="scroll"><table class="tbl"><tr><th>Market</th><th>Snapshots</th><th>Sim weight</th><th>Sim</th><th>DK</th><th>Calibrated</th></tr>${bm}</table></div>
+    ${sh.raw && sh.cal ? `<div class="scroll"><table class="tbl"><tr><th>Bets with ${pc(C.edge)}+ edge</th><th>Bets</th><th>W-L</th><th>Hit</th><th>ROI</th></tr>
+      <tr><td class="t">Raw sim says so</td><td>${rs(sh.raw)}</td></tr><tr><td class="t">Calibrated says so</td><td>${rs(sh.cal)}</td></tr></table></div>` : ""}`;
+}
 // live record by size of the sim's edge: do bigger edges really hit more often than their price needs?
 function edgeHtml() {
   const E = D.livetrack && D.livetrack.edge, A = E && E.all; if (!A) return "";
@@ -3386,7 +3402,7 @@ function liveTrackHtml() {
   const MK = {spread: "spread", ml: "moneyline", over: "over", under: "under"};
   const rows = keys.map(k => { const [st, cp, mk] = k.split("|"), a = A[k]; return {st, cp, mk, a}; })
     .sort((x, y) => (x.st + x.cp + x.mk).localeCompare(y.st + y.cp + y.mk));
-  return edgeHtml() + `<div class="desc">Flat $1 on each live bet that fit the situation. <b>ROI</b> = profit per $1 bet; <b>sim EV</b> = what the sim expected. These need hundreds of bets before they mean much.</div>
+  return calibHtml() + edgeHtml() + `<div class="desc">Flat $1 on each live bet that fit the situation. <b>ROI</b> = profit per $1 bet; <b>sim EV</b> = what the sim expected. These need hundreds of bets before they mean much.</div>
     <div class="scroll"><table class="tbl"><tr><th>Situation</th><th>Bets</th><th>W-L-P</th><th>ROI</th><th>Sim EV</th></tr>
     ${rows.map(r => { const [n, w, l, p, u, ev] = r.a, roi = n - p ? u / n : 0;
       return `<tr><td class="t">${ST[r.st] || r.st} · ${CP[r.cp] || r.cp} · ${MK[r.mk] || r.mk}</td><td>${n}</td><td>${w}-${l}-${p}</td><td class="${roi > 0 ? "h" : roi < 0 ? "m" : ""}">${(roi > 0 ? "+" : "") + Math.round(roi * 100)}%</td><td class="dim">${(ev / n > 0 ? "+" : "") + Math.round(ev / n * 100)}%</td></tr>`; }).join("")}</table></div>

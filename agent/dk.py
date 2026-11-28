@@ -368,6 +368,11 @@ def grade(log=print):
         lt["edge"] = edge_record()
     except Exception as e:
         log(f"[dk] live edge record failed: {e}")
+    try:                                    # calibration shadow: learns how far to trust the sim vs the market (calib.py)
+        from . import calib
+        calib.run(log)
+    except Exception as e:
+        log(f"[dk] calibration shadow failed: {e}")
     lt["updated"] = store.iso(store.now())
     store.save("live_track.json", lt)
     prune()

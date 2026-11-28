@@ -383,6 +383,10 @@
    "name": "Learned settings",
    "fresh_h": 30
   },
+  "calibration.json": {
+   "name": "Calibration shadow",
+   "fresh_h": 30
+  },
   "checks.json": {
    "name": "Inspection report",
    "fresh_h": 6
@@ -1196,6 +1200,21 @@
    ],
    "writes": [
     "tuning.json"
+   ]
+  },
+  {
+   "id": "calibrator",
+   "company": "audit",
+   "title": "Calibration Analyst",
+   "code": [
+    "agent/calib.py"
+   ],
+   "job": "Learns each night how much of the sim's live chances to trust against DraftKings' own numbers. Shadow only: scored, never applied, until the owner promotes it.",
+   "reads": [
+    "dk/*"
+   ],
+   "writes": [
+    "calibration.json"
    ]
   },
   {
