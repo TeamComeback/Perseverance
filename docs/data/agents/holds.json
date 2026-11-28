@@ -1,17 +1,36 @@
 {
  "holds": [
   {
-   "game": "MEM @ MIN",
+   "player": "De'Aaron Fox",
+   "stat": "pts",
+   "game": "LAL @ SA",
    "kind": "news",
-   "reason": "The Over 220.5 rests on a sim total of 226.6 (62% vs 49% DraftKings) in a game the Newsroom says is scrambled: Edwards out, LaMelo Ball questionable, Boozer and Grant out, Edey and Stewart questionable. A 6-point gap that size is the model missing lineup news, not a better price."
+   "reason": "Newsroom has Fox questionable (shin) after missing time, so the 65%-vs-52% under edge rests on a minutes guess the model can't know, and the Newsroom found no reason the model is right."
+  },
+  {
+   "game": "PHI @ IND",
+   "kind": "news",
+   "reason": "The over 228.5 leans on a sim total of 236.8 while Embiid is questionable (illness, missed the last two games) and the model's gap list projects him at 36.5 minutes and 45.3 PRA, so the 8-point gap is likely the model assuming he plays full minutes."
   },
   {
    "game": "DAL @ PHX",
-   "kind": "thin_edge",
-   "reason": "The Over 225.5 is the model's opinion (sim 231.5, over 63% vs 50% DraftKings), not a stale book, and Kyrie Irving is questionable on a left-knee maintenance tag, so the usage and pace the sim assumes is uncertain."
+   "kind": "news",
+   "reason": "The over 224.5 (sim 230.1) ignores that Kyrie Irving is questionable on a knee-management tag, and Flagg's PRA sits in model_gaps (model 34.2 vs market 39.5), a sign the model is not pricing Dallas lineup news."
+  },
+  {
+   "player": "Collin Murray-Boyles",
+   "stat": "pts",
+   "game": "BKN @ TOR",
+   "kind": "correlated",
+   "reason": "Third bet on a low-Toronto-scoring script (with Allen Graves under 9.5 and BKN +9.5), and the weakest one: under in 53% of sims vs 53% at DraftKings, zero price edge."
+  },
+  {
+   "bet_id": "8801d46d",
+   "kind": "other",
+   "reason": "KooKoo vs HPK h2h at 2.00 is not an NBA market (commence 2026-11-27T16:30Z) and is still listed open more than nine hours after start, so it looks like a mis-matched event or a settlement miss and should be checked rather than counted."
   }
  ],
- "notes": "Brunson ast Over 6.5 at 2.11 (683053eb) looks fine: the edge is price, not model (p_model 0.496 vs p_mkt 0.489 across 7 books, model weight 0.026). The line hasn't moved from the 6.5 open, and the Newsroom says he's cleared to play. It's DraftKings' over that's soft (its own under is 1.68). It shares a script with the Pass-tier MIA@NY Over 222.5, but that one isn't being bet. Open bet 8801d46d (KooKoo vs HPK h2h, DraftKings) isn't an NBA market and commenced at 16:30Z, so there's nothing to hold. Worth a look by the owner/Auditor for how a non-NBA leg got onto the value_fav playbook. No Best Bets prop shows up in model_gaps. Every Best Bets item is Pass tier with negative EV. I didn't hold PHI@IND Over 228.5 because Embiid's status is unclear (questionable per the Newsroom, and a CBS headline says he's expected to return), so the direction is unclear. The totals board as a whole leans Over by 4-6 points against the market on every game listed, after a learned +1.2 correction, which reads as a systematic model lean rather than edge.",
- "updated": "2026-11-27T23:19:38Z",
+ "notes": "Every Best Bet is Pass tier with negative EV, so holds mark the ones with a concrete reason. No Best Bets prop overlaps model_gaps. Brunson ast O6.5 (683053eb) is not held: Newsroom has Brunson, Towns and Hart cleared with Anunoby out, and the game is already live. MEM @ MIN over 219.5 not held but watch: Edwards out, Ball and Edey questionable. Backtest context: model-side CLV is -4.0% on average and the agent's bets -1.9%, so model-only leans like these totals have not been beating the close.",
+ "updated": "2026-11-28T02:19:11Z",
  "by": "skeptic"
 }
