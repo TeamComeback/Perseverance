@@ -1062,15 +1062,15 @@
    "start": "2026-11-28T02:00Z",
    "side": "Under",
    "point": 13.5,
-   "dec": 1.97,
-   "am": -103,
-   "conv": 34,
+   "dec": 1.99,
+   "am": -101,
+   "conv": 33,
    "tier": "Pass",
-   "p": 0.497,
-   "p_sim": 0.512,
-   "p_mkt": 0.479,
-   "p_kalshi": null,
-   "ev": -0.021,
+   "p": 0.491,
+   "p_sim": 0.501,
+   "p_mkt": 0.473,
+   "p_kalshi": 0.483,
+   "ev": -0.022,
    "verdict": "Pass: recent form and average agree; the main risk is similar players.",
    "home": "PHX",
    "away": "DAL",
@@ -1080,8 +1080,8 @@
    "opp": "DAL",
    "stat": "pts",
    "proj": 13.2,
-   "sim": 13.6,
-   "ob_ind": 13.5,
+   "sim": 13.7,
+   "ob_ind": 12.5,
    "avg10": 11.6,
    "minutes": 27.1,
    "for": [
@@ -1103,7 +1103,7 @@
     },
     {
      "tag": "blowout",
-     "t": "Blowout risk: 37% of sims end 15+ points apart, when starters sit late.",
+     "t": "Blowout risk: 38% of sims end 15+ points apart, when starters sit late.",
      "rec": [
       980,
       952
@@ -1153,21 +1153,30 @@
     }
    ],
    "play_to": {
-    "floor_dec": 2.012,
-    "floor_am": 101,
+    "floor_dec": 2.037,
+    "floor_am": 104,
     "line": null,
     "next": 12.5
    },
-   "watch": [],
+   "watch": [
+    {
+     "pid": "6442",
+     "name": "Kyrie Irving",
+     "team": "DAL",
+     "status": "Out",
+     "self": false,
+     "min": 31.9
+    }
+   ],
    "kill": [
     "The line reaching 12.5",
-    "The price at 13.5 going past +101",
+    "The price at 13.5 going past +104",
     "His minutes projection falling 15% or more"
    ],
    "market": {
     "open": 14.5,
     "now": 13.5,
-    "kalshi": null
+    "kalshi": 0.483
    },
    "started": false,
    "published": {
@@ -1187,11 +1196,8 @@
     }
    },
    "first_seen": "2026-11-27T14:16:37Z",
-   "removed": {
-    "at": "2026-11-27T14:46:45Z",
-    "why": "no longer +EV at tonight's line (14.5 at -130)"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Past play-to"
   },
   "p|4278355|pts|Under": {
    "key": "p|4278355|pts|Under",
@@ -2133,7 +2139,7 @@
    "p": 0.55,
    "p_sim": 0.557,
    "p_mkt": 0.529,
-   "p_kalshi": 0.535,
+   "p_kalshi": 0.54,
    "ev": -0.021,
    "verdict": "Pass: recent form and cushion agree; the main risk is tonight's spot.",
    "home": "POR",
@@ -2256,7 +2262,7 @@
    "market": {
     "open": 8.5,
     "now": 9.5,
-    "kalshi": 0.535
+    "kalshi": 0.54
    },
    "started": false,
    "published": {
@@ -3713,8 +3719,11 @@
     }
    },
    "first_seen": "2026-11-28T00:46:28Z",
-   "removed": null,
-   "status": "Past play-to"
+   "removed": {
+    "at": "2026-11-28T01:48:27Z",
+    "why": "no longer +EV at tonight's line (13.5 at -119)"
+   },
+   "status": "Removed"
   },
   "p|5061589|pts|Under": {
    "key": "p|5061589|pts|Under",
@@ -3867,6 +3876,173 @@
     }
    },
    "first_seen": "2026-11-28T01:02:49Z",
+   "removed": {
+    "at": "2026-11-28T01:48:27Z",
+    "why": "no longer +EV at tonight's line (6.5 at -128)"
+   },
+   "status": "Removed"
+  },
+  "p|4066259|pts|Under": {
+   "key": "p|4066259|pts|Under",
+   "kind": "prop",
+   "label": "De'Aaron Fox Under 13.5 points",
+   "espn_id": "401909333",
+   "game": "LAL @ SA",
+   "start": "2026-11-28T02:30Z",
+   "side": "Under",
+   "point": 13.5,
+   "dec": 1.8,
+   "am": -125,
+   "conv": 33,
+   "tier": "Pass",
+   "p": 0.544,
+   "p_sim": 0.645,
+   "p_mkt": 0.524,
+   "p_kalshi": 0.565,
+   "ev": -0.02,
+   "verdict": "Pass: recent form and simulation agree; the main risk is tonight's spot.",
+   "home": "SA",
+   "away": "LAL",
+   "pid": "4066259",
+   "name": "De'Aaron Fox",
+   "team": "SA",
+   "opp": "LAL",
+   "stat": "pts",
+   "proj": 10.9,
+   "sim": 11.8,
+   "ob_ind": 11.5,
+   "avg10": 9.9,
+   "minutes": 26.9,
+   "for": [
+    {
+     "tag": "second market",
+     "t": "Kalshi likes it more: 56% there vs 52% at DraftKings. When the two have split by 4+ points, the result went Kalshi's way 585 of 1074 times.",
+     "rec": [
+      176,
+      146
+     ]
+    },
+    {
+     "tag": "simulation",
+     "t": "Goes under in 65% of 10,000 simulated games (sim average 11.8).",
+     "rec": [
+      1702,
+      1521
+     ]
+    },
+    {
+     "tag": "projection",
+     "t": "Model projects 10.9 points against a line of 13.5.",
+     "rec": [
+      1753,
+      1620
+     ]
+    },
+    {
+     "tag": "recent form",
+     "t": "Stayed under 13.5 in 8 of his last 10 (4 of the last 5).",
+     "rec": [
+      1513,
+      1405
+     ]
+    },
+    {
+     "tag": "cushion",
+     "t": "Room to spare: he stayed under even 11.5 in 7 of his last 10.",
+     "rec": [
+      399,
+      378
+     ]
+    }
+   ],
+   "against": [
+    {
+     "tag": "minutes",
+     "t": "It misses when he plays long: 33 minutes in the games he went over vs 28.4 otherwise. He's projected for 26.9 tonight.",
+     "rec": [
+      1581,
+      1532
+     ]
+    },
+    {
+     "tag": "tonight's spot",
+     "t": "Against LAL: 1 of 7 under 13.5 (14% vs 55% lately).",
+     "rec": [
+      908,
+      909
+     ]
+    },
+    {
+     "tag": "model record",
+     "t": "The market has out-predicted the model on points this season, so lean on the price here.",
+     "rec": [
+      406,
+      430
+     ]
+    },
+    {
+     "tag": "season",
+     "t": "Season: 9 of 16 under this number.",
+     "rec": [
+      5,
+      6
+     ]
+    }
+   ],
+   "play_to": {
+    "floor_dec": 1.838,
+    "floor_am": -119,
+    "line": 13.5,
+    "next": 12.5
+   },
+   "watch": [
+    {
+     "pid": "4066259",
+     "name": "De'Aaron Fox",
+     "team": "SA",
+     "status": "Ques",
+     "self": true,
+     "min": 26.9
+    },
+    {
+     "pid": "5037871",
+     "name": "Dylan Harper",
+     "team": "SA",
+     "status": "Ques",
+     "self": false,
+     "min": 30.8
+    }
+   ],
+   "kill": [
+    "The line reaching 12.5",
+    "The price at 13.5 going past \u2212119",
+    "De'Aaron Fox is listed ques: if he is ruled out the bet is off",
+    "A change in Dylan Harper (ques): the model re-prices on the next run",
+    "His minutes projection falling 15% or more"
+   ],
+   "market": {
+    "open": 13.5,
+    "now": 13.5,
+    "kalshi": 0.565
+   },
+   "started": false,
+   "published": {
+    "at": "2026-11-28T01:48:27Z",
+    "edition": "update",
+    "point": 13.5,
+    "dec": 1.8,
+    "am": -125,
+    "conv": 33,
+    "tier": "Pass",
+    "p": 0.544,
+    "play_to": {
+     "floor_dec": 1.838,
+     "floor_am": -119,
+     "line": 13.5,
+     "next": 12.5
+    }
+   },
+   "first_seen": "2026-11-28T01:48:27Z",
    "removed": null,
    "status": "Past play-to"
   }
@@ -3875,29 +4051,29 @@
   "g|401909332|total|Over": {
    "key": "g|401909332|total|Over",
    "kind": "total",
-   "label": "DAL @ PHX Over 225.5",
+   "label": "DAL @ PHX Over 224.5",
    "espn_id": "401909332",
    "game": "DAL @ PHX",
    "start": "2026-11-28T02:00Z",
    "side": "Over",
-   "point": 225.5,
-   "dec": 1.9,
-   "am": -111,
-   "conv": 32,
+   "point": 224.5,
+   "dec": 1.86,
+   "am": -116,
+   "conv": 31,
    "tier": "Pass",
-   "p": 0.513,
-   "p_sim": 0.628,
-   "p_mkt": 0.5,
+   "p": 0.522,
+   "p_sim": 0.618,
+   "p_mkt": 0.512,
    "p_kalshi": null,
-   "ev": -0.026,
+   "ev": -0.028,
    "verdict": "Pass: simulation and team model agree; the main risk is line move.",
    "home": "PHX",
    "away": "DAL",
-   "why": "Sim total 231.5 (after a learned +1.2 correction) vs 225.5 \u00b7 over in 63% of sims vs 50% DraftKings",
+   "why": "Sim total 230.1 (after a learned +1.2 correction) vs 224.5 \u00b7 over in 62% of sims vs 51% DraftKings",
    "for": [
     {
      "tag": "simulation",
-     "t": "Goes over in 63% of 10,000 simulated games.",
+     "t": "Goes over in 62% of 10,000 simulated games.",
      "rec": [
       1702,
       1521
@@ -3905,14 +4081,14 @@
     },
     {
      "tag": "team model",
-     "t": "Team ratings project 228.0 points, 2.5 on your side of 225.5.",
+     "t": "Team ratings project 228.0 points, 3.5 on your side of 224.5.",
      "rec": null
     }
    ],
    "against": [
     {
      "tag": "line move",
-     "t": "The line has moved against this side since it opened (227.5 to 225.5).",
+     "t": "The line has moved against this side since it opened (227.5 to 224.5).",
      "rec": [
       223,
       185
@@ -3928,29 +4104,28 @@
     }
    ],
    "play_to": {
-    "floor_dec": 1.949,
-    "floor_am": -105,
+    "floor_dec": 1.916,
+    "floor_am": -109,
     "line": null,
-    "next": 226.5
+    "next": 225.5
    },
    "watch": [
     {
      "pid": "6442",
      "name": "Kyrie Irving",
      "team": "DAL",
-     "status": "Questionable",
+     "status": "Out",
      "self": false,
-     "min": 31.0
+     "min": 31.9
     }
    ],
    "kill": [
-    "The line reaching 226.5",
-    "The price at 225.5 going past \u2212105",
-    "A change in Kyrie Irving (questionable): the model re-prices on the next run"
+    "The line reaching 225.5",
+    "The price at 224.5 going past \u2212109"
    ],
    "market": {
     "open": null,
-    "now": 225.5,
+    "now": 224.5,
     "kalshi": null
    },
    "started": false,
@@ -3971,11 +4146,8 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": {
-    "at": "2026-11-28T01:02:49Z",
-    "why": "confidence fell 32 \u2192 29"
-   },
-   "status": "Removed"
+   "removed": null,
+   "status": "Holding"
   },
   "g|401909328|spread|away": {
    "key": "g|401909328|spread|away",
@@ -4204,8 +4376,11 @@
     }
    },
    "first_seen": "2026-11-27T11:45:29Z",
-   "removed": null,
-   "status": "Holding"
+   "removed": {
+    "at": "2026-11-28T01:48:27Z",
+    "why": "line moved 226.5 \u2192 225.5"
+   },
+   "status": "Removed"
   },
   "g|401909331|total|Over": {
    "key": "g|401909331|total|Over",
@@ -4295,7 +4470,7 @@
     "now": 219.5,
     "kalshi": null
    },
-   "started": false,
+   "started": true,
    "published": {
     "at": "2026-11-27T11:45:29Z",
     "edition": "morning",
@@ -4314,7 +4489,7 @@
    },
    "first_seen": "2026-11-27T11:45:29Z",
    "removed": null,
-   "status": "Holding"
+   "status": "Started"
   },
   "g|401909335|spread|away": {
    "key": "g|401909335|spread|away",
@@ -6470,6 +6645,76 @@
    "kind": "line",
    "text": "MEM @ MIN Over 219.5: line 220.5 at \u2212105 \u2192 219.5 at \u2212116",
    "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "p|4066259|pts|Under",
+   "kind": "added",
+   "text": "Added: De'Aaron Fox Under 13.5 points at \u2212125, conviction 33",
+   "alert": true
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "back",
+   "text": "Back on the board: Miles Bridges Under 13.5 points at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "line",
+   "text": "Miles Bridges: line 13.5 at \u2212103 \u2192 13.5 at \u2212101",
+   "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "p|4066383|pts|Under",
+   "kind": "injury",
+   "text": "Kyrie Irving ruled out (Miles Bridges Under 13.5 points re-priced: 13.5 at \u2212101, conviction 33)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "p|3064290|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Aaron Gordon Under 12.5 points \u2014 no longer +EV at tonight's line (13.5 at -119)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "p|5061589|pts|Under",
+   "kind": "removed",
+   "text": "Removed: Yves Missi Under 6.5 points \u2014 no longer +EV at tonight's line (6.5 at -128)",
+   "alert": true
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "g|401909332|total|Over",
+   "kind": "back",
+   "text": "Back on the board: DAL @ PHX Over 224.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "g|401909332|total|Over",
+   "kind": "line",
+   "text": "DAL @ PHX Over 224.5: line 225.5 at \u2212111 \u2192 224.5 at \u2212116",
+   "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "g|401909332|total|Over",
+   "kind": "injury",
+   "text": "Kyrie Irving questionable \u2192 out (DAL @ PHX Over 224.5 re-priced: 224.5 at \u2212116, conviction 31)",
+   "alert": false
+  },
+  {
+   "at": "2026-11-28T01:48:27Z",
+   "key": "g|401909333|total|Over",
+   "kind": "removed",
+   "text": "Removed: LAL @ SA Over 226.5 \u2014 line moved 226.5 \u2192 225.5",
+   "alert": false
   }
  ],
  "narratives": [
@@ -6593,21 +6838,21 @@
  "alerts": 6,
  "slate": {
   "games": 11,
-  "to_tip": 6,
+  "to_tip": 5,
   "first": "2026-11-28T00:00Z",
   "questionable": [
    {
     "name": "Dylan Harper",
     "team": "SA",
-    "status": "Questionable"
+    "status": "Ques"
    },
    {
     "name": "De'Aaron Fox",
     "team": "SA",
-    "status": "Questionable"
+    "status": "Ques"
    }
   ],
-  "picks": 25
+  "picks": 26
  },
  "leans_record": {
   "w": 23,
@@ -6616,5 +6861,5 @@
   "since": "2026-11-11"
  },
  "patterns_n": 5776,
- "updated": "2026-11-28T01:45:35Z"
+ "updated": "2026-11-28T01:48:27Z"
 }
