@@ -523,3 +523,6 @@ Nothing they write changes a bet or a setting until the owner promotes an agent 
 - **Simulation chart (player card).** One-sentence summary on top ("Under 10.5 cashes in 53% of simulated games. A typical night is 5–17; he averages 10.6."), cash side green and miss side red with percentages labeled over each side, dashed line marker with its number, average marker, value ticks, and faded bars for the rare games outside the typical range.
 - **DraftKings line history (player card).** Lists his last games this season: the line where DraftKings posted one, "no line posted" with what he scored where it did not.
 - `tools/check.js` step 5d.
+
+## Live record by sim edge size (Nov 27)
+The Trends live tracker now shows how live bets did by how big the sim's edge was (none, under 5%, 5-10%, 10-20%, 20%+). Each bet counts once per game per bucket, at the first snapshot with that much edge. It compares hit rate to what the sim said and to what the price needs. Built by `edge_record()` in `agent/dk.py`, saved as `edge` in `live_track.json` each morning. The live table's old "CLV" column is renamed "Move vs pregame": it only shows how far the number moved since pregame, not value.

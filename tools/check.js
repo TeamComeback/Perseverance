@@ -132,6 +132,14 @@ catch (e) { bad("city map: " + ((e.stderr || "") + (e.stdout || "")).trim().repl
           return {n: days.length, open: days.filter(d => d.open).length, sorted: keys.every((k, i) => i === 0 || k <= keys[i - 1]), menus: [...document.querySelectorAll("#v-bets > details.sec")].filter(d => d.open).length, sortBtn: !!document.getElementById("bfSort")}; });
         r.n && !r.open && r.sorted && !r.menus && !r.sortBtn ? ok(`${r.n} dates, all closed, newest first, all menus closed`) : bad("My bets layout: " + JSON.stringify(r));
       } catch (e) { bad("my bets collapsed: " + e.message); }
+      // live tracker: record by sim edge size, and the live table says "Move vs pregame" not CLV
+      console.log("5f. live record by sim edge size");
+      try {
+        const r = await p.evaluate(async () => { D.livetrack = D.livetrack || await get("live_track.json", {}); const h = edgeHtml(); return {rows: (h.match(/<tr>/g) || []).length, has: /Live record by sim edge size/.test(h) || h === ""}; });
+        r.has ? ok(`edge table renders (${r.rows} rows)`) : bad("edge table: " + JSON.stringify(r));
+        const sj = await (await fetch("http://localhost:8899/sim.js")).text();
+        /Move vs pregame/.test(sj) && !/<th>CLV<\/th>/.test(sj) ? ok("live column renamed Move vs pregame") : bad("live CLV header not renamed");
+      } catch (e) { bad("edge table: " + e.message); }
       // simulation box on the player card: shown with avg, typical range, over/under at the card's line; moves with the line; shown for every player with a saved sim
       console.log("5c. simulation box on the player card");
       try {

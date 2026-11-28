@@ -222,6 +222,63 @@ def recent_live_bets(days=KEEP_DAYS, keep=400):
     return out[:keep]
 
 
+EDGE_BUCKETS = (("neg", None, 0.0), ("small", 0.0, 0.05), ("medium", 0.05, 0.10), ("large", 0.10, 0.20), ("huge", 0.20, 9.0))
+
+
+def edge_record(days=KEEP_DAYS):
+    """Live bets by size of the sim's edge (Nov 27 2026). Every graded live snapshot prices six bets (two spreads, over,
+    under, two moneylines) with the sim's chance; the edge is sim chance x DraftKings' price - 1. A bet counts ONCE per
+    game per bucket, at the first snapshot where it had that much edge, because snapshots 15 minutes apart are the same
+    bet. Flat $1: units = price - 1 on a win, -1 on a loss. 'p' is what the sim said, 'need' the break-even rate, so
+    sim vs hit vs need shows whether bigger sim edges really hit more than their price needs.
+    Returns {"all": {bucket: row}, "mk": {"bucket|spread": row, ...}}."""
+    root = config.DATA / DIR
+    out = {"all": {}, "mk": {}}
+    if not root.exists():
+        return out
+    seen = set()
+
+    def add(key, res, price, p):
+        r = out["all" if "|" not in key else "mk"].setdefault(key, {"n": 0, "w": 0, "l": 0, "push": 0, "units": 0.0, "p": 0.0, "need": 0.0})
+        r["n"] += 1
+        if res == "push":
+            r["push"] += 1
+            return
+        r["w" if res == "won" else "l"] += 1
+        r["units"] = round(r["units"] + ((price - 1) if res == "won" else -1), 3)
+        r["p"] = round(r["p"] + p, 4)
+        r["need"] = round(r["need"] + 1 / price, 4)
+
+    for f in sorted(root.glob("*.json"), reverse=True)[:days]:
+        try:
+            db = json.loads(f.read_text())
+        except Exception:
+            continue
+        for eid, G in (db.get("games") or {}).items():
+            if not G.get("final"):
+                continue
+            for s in sorted(G.get("live", []), key=lambda x: x.get("ts") or ""):
+                L, sim, res = s.get("line") or {}, s.get("sim") or {}, s.get("res") or {}
+                if not res or res.get("stale"):
+                    continue
+                ph, po, pw = sim.get("p_home_cover"), sim.get("p_over"), sim.get("p_home_win")
+                cand = [("spread_home", L.get("sp_h"), ph), ("spread_away", L.get("sp_a"), None if ph is None else 1 - ph),
+                        ("over", L.get("ov"), po), ("under", L.get("un"), None if po is None else 1 - po),
+                        ("ml_home", L.get("ml_h"), pw), ("ml_away", L.get("ml_a"), None if pw is None else 1 - pw)]
+                for name, price, pr in cand:
+                    if name not in res or not price or pr is None:
+                        continue
+                    ev = pr * price - 1
+                    b = next(k for k, lo, hi in EDGE_BUCKETS if (lo is None or ev >= lo) and ev < hi)
+                    key = (f.stem, eid, name, b)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    add(b, res[name], price, pr)
+                    add(f"{b}|{name.split('_')[0]}", res[name], price, pr)
+    return out
+
+
 def grade(log=print):
     """After the games: grade props (box scores) and every live snapshot. Returns games graded."""
     lt = store.load("live_track.json", {"agg": {}, "graded": []})
@@ -307,6 +364,10 @@ def grade(log=print):
         lt["bets"] = recent_live_bets()
     except Exception as e:
         log(f"[dk] live bet list failed: {e}")
+    try:
+        lt["edge"] = edge_record()
+    except Exception as e:
+        log(f"[dk] live edge record failed: {e}")
     lt["updated"] = store.iso(store.now())
     store.save("live_track.json", lt)
     prune()

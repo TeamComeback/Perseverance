@@ -3367,6 +3367,16 @@ function minutesHtml() {
     ${all ? `<div class="desc" style="margin-top:4px">All time: ${f1(all[1] / all[0])} min average miss over ${all[0]} player-games.</div>` : ""}
     ${mm.length ? `<div class="lbl">Biggest misses · ${esc(days[days.length - 1])}</div>` + mm.map(m => `<div class="ti"><span>${esc(m.n)} <span class="dim">· ${esc(m.g)}</span></span><b class="${m.dnp ? "neg" : m.a > m.p ? "pos" : "neg"}">${m.dnp ? `${f1(m.p)} → DNP` : `${f1(m.p)} → ${m.a}`}</b></div>`).join("") : ""}`;
 }
+// live record by size of the sim's edge: do bigger edges really hit more often than their price needs?
+function edgeHtml() {
+  const E = D.livetrack && D.livetrack.edge, A = E && E.all; if (!A) return "";
+  const N = [["neg", "Sim saw no edge"], ["small", "Under 5%"], ["medium", "5-10%"], ["large", "10-20%"], ["huge", "20%+"]];
+  const rows = N.filter(([k]) => A[k]).map(([k, t]) => { const r = A[k], d = r.w + r.l, roi = d ? r.units / d : 0;
+    return `<tr><td class="t">${t}</td><td>${r.n}</td><td>${r.w}-${r.l}-${r.push}</td><td><b>${d ? Math.round(r.w / d * 100) : 0}%</b></td><td class="dim">${d ? Math.round(r.p / d * 100) : 0}%</td><td class="dim">${d ? Math.round(r.need / d * 100) : 0}%</td><td class="${roi > 0 ? "h" : roi < 0 ? "m" : ""}">${(roi > 0 ? "+" : "") + Math.round(roi * 100)}%</td></tr>`; }).join("");
+  return `<div class="lbl">Live record by sim edge size</div>
+    <div class="scroll"><table class="tbl"><tr><th>Sim edge (EV)</th><th>Bets</th><th>W-L-P</th><th>Hit</th><th>Sim said</th><th>Price needs</th><th>ROI</th></tr>${rows}</table></div>
+    <div class="desc">Every live snapshot prices the spread, total and moneyline both ways. Each bet counts once per game, the first time it had that much edge. <b>Hit</b> is how often it won; if the sim is right, Hit should match <b>Sim said</b> and beat <b>Price needs</b> as the edge grows. Flat $1.</div>`;
+}
 function liveTrackHtml() {
   const A = (D.livetrack && D.livetrack.agg) || {};
   const keys = Object.keys(A);
@@ -3376,7 +3386,7 @@ function liveTrackHtml() {
   const MK = {spread: "spread", ml: "moneyline", over: "over", under: "under"};
   const rows = keys.map(k => { const [st, cp, mk] = k.split("|"), a = A[k]; return {st, cp, mk, a}; })
     .sort((x, y) => (x.st + x.cp + x.mk).localeCompare(y.st + y.cp + y.mk));
-  return `<div class="desc">Flat $1 on each live bet that fit the situation. <b>ROI</b> = profit per $1 bet; <b>sim EV</b> = what the sim expected. These need hundreds of bets before they mean much.</div>
+  return edgeHtml() + `<div class="desc">Flat $1 on each live bet that fit the situation. <b>ROI</b> = profit per $1 bet; <b>sim EV</b> = what the sim expected. These need hundreds of bets before they mean much.</div>
     <div class="scroll"><table class="tbl"><tr><th>Situation</th><th>Bets</th><th>W-L-P</th><th>ROI</th><th>Sim EV</th></tr>
     ${rows.map(r => { const [n, w, l, p, u, ev] = r.a, roi = n - p ? u / n : 0;
       return `<tr><td class="t">${ST[r.st] || r.st} · ${CP[r.cp] || r.cp} · ${MK[r.mk] || r.mk}</td><td>${n}</td><td>${w}-${l}-${p}</td><td class="${roi > 0 ? "h" : roi < 0 ? "m" : ""}">${(roi > 0 ? "+" : "") + Math.round(roi * 100)}%</td><td class="dim">${(ev / n > 0 ? "+" : "") + Math.round(ev / n * 100)}%</td></tr>`; }).join("")}</table></div>
